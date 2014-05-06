@@ -1,7 +1,10 @@
 Framework Concepts
+==================
 
 The Fluid Infusion Framework is built on a number of important concepts. This page outlines some of the fundamental design goals of Infusion, providing terminology to help clarify these goals. Descriptions elsewhere in the documentation may also make use of particular terms in certain ways, and this page collects together some of the conceptual and background knowledge you might need to help you interpret these descriptions.
+
 Model Objects
+-------------
 
 The greatest goal of the framework is transparency—data is pure data, and markup is pure markup. Infusion doesn't impose any inheritance hierarchies or strict contracts on how you structure your data model.
 
@@ -10,22 +13,30 @@ In Infusion, a tree of objects has the status of being a Model Object if it can 
 Note that this does not prohibit functions, DOM nodes, etc. from appearing in a model, just so long as the meaning of the object tree is not destroyed through the operation of fluid.copy(). The point here is that Infusion doesn't impose a formal contract on model objects: as long as fluid.copy() succeeds, you're good. For reference, the current implementation of fluid.copy() simply forwards the operation to jQuery.extend(true, ...). In practice, your model objects will often be JSON-compatible data suitable for sharing between your JavaScript code and other services on the Web.
 
 An analogy from another environment, Java, is a POJO or "Plain Old Java Object". The J could just as easily be substituted for "JavaScript" in this case.
+
 EL Paths
+--------
 
 In some parts of the framework, we refer to "EL expressions". This is a somewhat historical phrase that perhaps sounds like it says more than it is trying to. All we mean by EL expressions are dot-separated paths built of names—for example if you had defined an object zar with a member boo which has a member baz, you could access the nested JavaScript property by writing the expression zar.boo.baz. If it were held in a string value, this would become an EL expression—that is, the string "zar.boo.baz" is an EL expression which designates the same piece of data we just referenced. The framework includes machinery for interpreting such expressions held in strings rather than at the JavaScript language level. This is useful because it abstracts references to pieces of data from the actual data itself - and to even store these references in documents separately from a running program. It is possible to replace one object tree with another, but still to maintain a stable reference to the same subproperty baz, whoever it happens to be today. This is particularly important in web applications where data claiming to be "your data" can suddenly arrive from anywhere (a JSON feed, some persistence, a particularly aggressive version management system, etc). However it got here, you know it is your data because it is at the right path.
 
 EL expressions within Infusion can be evaluated by the framework utilities fluid.get() and fluid.set(), and also global functions can be similarly invoked by fluid.invokeGlobalFunction(). EL path expressions of this sort are fundamental to Infusion's model-oriented thinking, and the operation of the Infusion ChangeApplier.
+
 Events
+------
 
 Events in Infusion are model-oriented, and aren't specific to the DOM. Events have a very plain implementation in Infusion —  an event here is really just another kind of function call. Any function signature can be an event signature, any function can be an event listener, and an event's fire method is a plain function handle that can be handed around just like any other function. There is no special kind of "Event Object" that gets handed around to event listeners, and anyone can easily define a new event by simply calling fluid.makeEventFirer(). In practice, users should use the events which are created automatically by the framework as part of the initialisation of every Evented Component. Just by writing the event name in a component's options structure, an event type is automatically created. No code required.
 
 Infusion Events are so close to the language that they are a suitable replacement/implementation for features found in other frameworks, such as the "delegates" found in Mac OS X's Cocoa environment, or in Microsoft's C#. Since event signatures are completely free (free as in "like a bird", not like either beer or speech), any function can potentially actually be an event listener. It is all a matter of perspective.
+
 MVC
+---
 
 Fluid Infusion is not formally a Model-View-Controller framework, although it embodies the separation of concerns that MVC implies. Both models and views are first-class constructs in Infusion, and are both represented by built-in framework Grades. The weak link in MVC is the controller layer. Controllers are typically conceived of as the "glue" of an application: all the code that connects models and views together. Controllers are often the most brittle and least reusable part of an architecture. There's no controller layer in Infusion; Infusion takes the approach that the glue should be taken care of for you. Infusion applications consist, as much as possible, of pure view and model code. Even event binding itself can be performed declaratively, eliminating yet another source of controller code.
 
 Infusion has a clear concept of a view: the ViewComponent. As mentioned above, models are central to the framework as well, represented by the ModelComponent grade - every ViewComponent is automatically a ModelComponent also. The overall design of Fluid is aimed to reduce to zero the code at the controller level of an application. Instead, Infusion emphasizes declarative configuration, the powerful and flexible Events system, and the automated approach to data binding enabled by the EL system and the ChangeApplier.
+
 Declarative Configuration
+-------------------------
 
 Less code is better. If you can represent aspects of your application as data rather than as imperative logic, there is a clear benefit to application design: data is transparent, and is easier to operate on and transform with algorithms. It's also easier to understand by both code in the application and by humans reading the design. In order to understand a data-oriented component, one merely needs to understand the layout of the data it works with, rather than looking at its implementation or understanding all the details of the contract behind its API documentation.
 
@@ -34,7 +45,9 @@ Standard conventions also help simplify your application architecture. Wherever 
 The Fluid Renderer takes the concept of declarative configuration to a level not achieved with other frameworks. The renderer reduces the entire binding and controller function of an application to a declarative form, a component tree. In this form, the user interface is extremely amenable to inspection, interpretation and re-processing.
 
 Historically, the desire to be able to treat logic as data has strong roots, for example in the LISP community. However, where all application code is on a common footing, designs become tangled and hard to interpret. By providing domain-specific forms for carefully selected parts of an application's functionality, typically at the Controller level, the complexity of code operating on this data can be reduced and transparency increased. It is a productive middle ground, between all application code becoming a candidate to be data (as in LISP), and none of it (as in Java).
+
 IoC
+---
 
 IoC stands for Inversion of Control, the traditional name given to this programming concept by its early promoters, Ralph Johnson and Martin Fowler. IoC is actually the technique that naturally results when trying to make sure that dependencies in a codebase are correctly organised. The goal is to eliminate cycles of knowledge and points of dependency weakness within an application architecture.
 
@@ -43,7 +56,9 @@ IoC is a crucial mechanism of avoiding tight binding between framework component
 This "don't call us, we'll call you" approach to instantiation is one of the cornerstones of IoC programming. Instantiation is performed by the framework after it has performed all dependent lookups, rather than being in the hands of users whereby they may get themselves into dependency tangles and requiring other components to have too much knowledge of the other parts of the system.
 
 This somewhat vague-seeming description is an attempt to codify a way of thinking that can really only be internalised by repeated (and sometimes painful!) experience. Those unfamiliar with the benefits should read around some of the links above, and also experiment with the relationships between some framework components and their subcomponents.
+
 Markup agnosticism
+------------------
 
 Markup agnosticism is ubiquitous throughout Infusion. We don't bake in assumptions about the nature and structure of a user interface's markup, recognizing that components need to be customized and adapted for different context.
 
