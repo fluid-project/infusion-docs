@@ -19,8 +19,8 @@ terms of Fluid's [Event System](EventSystem.md), which you should be familiar wi
 
 ### Thinking behind the ChangeApplier ###
 
-The ChangeApplier is a natural outgrowth of Fluid's focus on (transparent) model-directed programming
-- see the Framework Concepts discussion on [Model Objects](FrameworkConcepts.md#ModelObjects).
+The ChangeApplier is a natural outgrowth of Fluid's focus on (transparent) model-directed programming- see
+the Framework Concepts discussion on [Model Objects](FrameworkConcepts.md#ModelObjects).
 "Morally", a model should be "fully transparent" - meaning, that it consists of standard POJOs and
 is available for inspection by reading, using standard language constructs, at all times. For example,
 if model is a JavaScript variable holding the overall model, accessing a field within the model is as
