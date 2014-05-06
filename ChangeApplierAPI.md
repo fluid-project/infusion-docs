@@ -140,9 +140,9 @@ applier.modelChanged.addListener(pathSpec, listener, namespace)
 applier.modelChanged.removeListener(listener)
 ```
 
-*This style of listening to changes is **not recommended**. Since such a listener can only be attached once a component and its applier have been fully constructed, it will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where it is registered. This implies that the state of the model that it sees cannot be fully predicted without a knowledge of the entire surrounding of the component tree.*
+_This style of listening to changes is **not recommended**. Since such a listener can only be attached once a component and its applier have been fully constructed, it will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where it is registered. This implies that the state of the model that it sees cannot be fully predicted without a knowledge of the entire surrounding of the component tree._
 
-The listener is notified after the change (or set of coordinated changes) has already been applied to the model - it is too late to affect this process and so this event is not *preventable*. The signature for these listeners is
+The listener is notified after the change (or set of coordinated changes) has already been applied to the model - it is too late to affect this process and so this event is not _preventable_. The signature for these listeners is
 
 ```javascript
 function listener(value, oldValue, pathSegs, changeRequests)
@@ -363,7 +363,7 @@ var applier = fluid.makeHolderChangeApplier(holder, options); // currently produ
 var applier = fluid.makeNewChangeApplier(holder, options); // produces a new "relay-aware" applier
 ```
 
-In every case the `options` argument is optional. Where the parameter `model` appears it directly represents the model to be managed by the applier. Where parameter `holder` appears, it represents instead an object which is expected *to be a container for the model* where the model itself is held in this object at the member named `model`. In framework use this argument will actually hold the owning component itself, although the applier makes no use of any properties of this object other than the one held at `model`.
+In every case the `options` argument is optional. Where the parameter `model` appears it directly represents the model to be managed by the applier. Where parameter `holder` appears, it represents instead an object which is expected _to be a container for the model_ where the model itself is held in this object at the member named `model`. In framework use this argument will actually hold the owning component itself, although the applier makes no use of any properties of this object other than the one held at `model`.
 
 Under the old ChangeApplier semantics, the `model` handle was closed over and remained constant for the lifetime of the applier. The framework contained utilities such a `fluid.model.copyModel` which assisted the user in working with a model with changing contents whilst keeping its base reference constant. Under the new ChangeApplier semantics, the `model` base reference is not stable and in fact starts by holding the value `undefined` as every model component initialises.
 
