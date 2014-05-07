@@ -6,7 +6,7 @@ The Infusion Model Relay system is a powerful scheme for supplying declarative c
 
 ### Two Styles for Configuring Model Relay ###
 
-There are two primary styles of configuration for setting up model relay - firstly, using the _implicit syntax_ which just consists of [IoC References](IoCReferences.md) from the model configuration for one model-bearing component to another - that is, in the component's configuration under the top-level model entry. Secondly, the _explicit syntax_ involves an entry in the component's top-level `modelRelay` entry expressing a more complex rule, most likely involving some form of [Model Transformation](ModelTransformation.md) to apply during the relay process. Both of these styles will set up a permanent and bidirectional relationship between the two models at the ends of the relay - the relationship will be established as the component(s) construct (during the _[initial transaction](#TheInitialTransaction)_), and will persist until one of the components at the endpoints is destroyed.
+There are two primary styles of configuration for setting up model relay - firstly, using the _implicit syntax_ which just consists of [IoC References](IoCReferences.md) from the model configuration for one model-bearing component to another - that is, in the component's configuration under the top-level model entry. Secondly, the _explicit syntax_ involves an entry in the component's top-level `modelRelay` entry expressing a more complex rule, most likely involving some form of [Model Transformation](ModelTransformation.md) to apply during the relay process. Both of these styles will set up a permanent and bidirectional relationship between the two models at the ends of the relay - the relationship will be established as the component(s) construct (during the _[initial transaction](#the-initial-transaction)_), and will persist until one of the components at the endpoints is destroyed.
 
 ### How Model Relay Updates Propagate ###
 
@@ -68,24 +68,24 @@ This style is used when we require a [Model Transformation](ModelTransformation.
             <td>source</td>
             <td>String (EL Reference or short local path)</td>
             <td>The source model path to be linked by this relay rule</td>
-            <td>`"volume"` / `"{someComponent}.model.volume"`</td>
+            <td>"volume" / "{someComponent}.model.volume"</td>
         </tr>
         <tr>
             <td>target</td>
             <td>String (EL Reference or short local path)</td>
             <td>The target model path to be linked by this relay rule</td>
-            <td>`"volume"` / `"{someComponent}.model.volume"`</td>
+            <td>"volume" / "{someComponent}.model.volume"</td>
         </tr>
         <tr>
             <td>singleTransform</td>
             <td>JSON (single [Model Transformation](ModelTransformation.md) rule)</td>
             <td>A short form which can be used where the transformation consists of just a single Model Transformation transform rule</td>
-            <td>```javascript
+            <td><pre>
 {
     type: "fluid.linearScale",
     factor: 100
 }
-```
+</pre>
             </td>
         </tr>
         <tr>
