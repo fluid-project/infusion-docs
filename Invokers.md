@@ -9,39 +9,54 @@ The Infusion IoC system provides a mechanism for creating the public functions (
 ###Standard invoker binding to a function using `funcName`, `func` ###
 
 An invoker can specified with either the funcName property to reference a free function by its global name (e.g. fluid.copy, console.log, etc.) or the func property to reference an existing function (perhaps another invoker) from elsewhere in the component tree.
-Property
-	
-Description
 
-funcName
-
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+`funcName`
 or
-
-func
-	
-
+`func`
+            </td>
+            <td>
 Required
 
-type: string
+type: `string`
 
-funcName - A string representing the name of a free function.
+`funcName` - A string representing the name of a free function.
 
-func - A string representing an IoC reference to a function which is attached to the component tree
-args	
-
+`func - A string representing an IoC reference to a function which is attached to the component tree
+     `       </td>
+        </tr>
+        <tr>
+            <td>`args`</td>
+            <td>
 Optional
 
-type: array
+type: `array`
 
-An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including IoC references. In this context, you may also use references of the form {arguments}.n, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged.
-dynamic	
-
+An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including IoC references. In this context, you may also use references of the form `{arguments}.n`, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged.
+            </td>
+        </tr>
+        <tr>
+            <td>`dynamic`</td>
+            <td>
 Optional
 
-type: boolean
+type: `boolean`
 
-By default, the values specified in the args property are cached, with the exception of those defined by {arguments}.n. If any of these arguments reference a value that may change between invocations of the invoker, this flag should be set to true. Note that using this option will reduce performance.
-
+By default, the values specified in the args property are cached, with the exception of those defined by `{arguments}.n`. If any of these arguments reference a value that may change between invocations of the invoker, this flag should be set to true. Note that using this option will reduce performance.
+            </td>
+        </tr>
+    </tbody>
+</table>
+	
 #### An invoker record in context ####
 
 The following skeleton example defines an invoker named invokerName attached to a component of type component.name. When a component of the type is instantiated, for example with a line such as var that = component.name(), the invoker will then be available as a function directly attached to the instance, callable under the name invokerName - e.g. as that.invokerName(....args....)
@@ -86,6 +101,8 @@ xyz.widget.add = function (a, b) {return a + b;};
 #### Compact Format ####
 
 Alternatively, invokers can be specified in a compact single line format. However, arguments specified in the invoker can only be strings or IoC References. Strings which can be converted into Numbers or Booleans will be so converted before being interpreted. Dynamic invokers are specified with an "!" before the arguments (equivalent to the dynamic: true annotation in the full syntax)
+
+```javascript
 fluid.defaults("component.name", {
     ...
     invokers: {
@@ -96,6 +113,7 @@ fluid.defaults("component.name", {
     }
     ...
 });
+```
 
 __Example:__
 
@@ -116,7 +134,7 @@ fluid.defaults("xyz.widget", {
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
-__Example__
+#### Example ####
 
 ```javascript
 fluid.defaults("fluid.uploader.fileQueue", {
@@ -143,31 +161,52 @@ If the invoker's record contains the field changePath (rather than the standard 
 "this"-ist invoker binding to a OO-style JavaScript function referencing "this"
 
 Specifying an invoker with a "this" property allows the invocation of functions whose body makes a reference to the special JavaScript value "this". These are generally functions external to the Infusion framework, since it is a Fluid community standard to write "that"-ist functions whose execution is independent of the calling context. These can be any functions, but will most often be used for jQuery methods. See Declarative this-ism in IoC for more details. Note that the string this must always be quoted when appearing as a key as it is a JavaScript keyword.
-property
-	
-Description
-"this"	
 
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>`"this"`</td>
+            <td>
 Required
 
-type: object
+type: `object`
 
 The object used referenced by "this" internally in the function. For a jQuery method, this is usually an jQuery element.
-method	
-
+            </td>
+        </tr>
+        <tr>
+            <td>`method`</td>
+            <td>
 Required
 
-type: string
+type: `string`
 
-The name of the "thisist" function (attached to the this object designated above) to call.
-args	
-
+The name of the "thisist" function (attached to the `this` object designated above) to call.
+            </td>
+        </tr>
+        <tr>
+            <td>`args`</td>
+            <td>
 Optional
 
-type: array
+type: `array
+`
+An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including IoC references. In this context, you may also use references of the form `{arguments}.n`, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged. Identical to role in `func/funcName` style invokers.
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including IoC references. In this context, you may also use references of the form {arguments}.n, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged. Identical to role in func/funcName style invokers.
-Format
+
+#### Format ####
+
+```javascript
 fluid.defaults("component.name", {
     ...
     invokers: {
@@ -179,6 +218,7 @@ fluid.defaults("component.name", {
     }
     ...
 });
+```
 
 __Example:__
 
@@ -196,7 +236,7 @@ fluid.defaults("xyz.widget", {
 }); 
 ```
 
-__Example__
+#### Example ####
 
 ```javascript
 fluid.defaults("fluid.uploader.html5Strategy.browseButtonView", {
