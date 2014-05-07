@@ -8,7 +8,7 @@ The Infusion IoC system provides a mechanism for creating the public functions (
 
 ###Standard invoker binding to a function using `funcName`, `func` ###
 
-An invoker can specified with either the funcName property to reference a free function by its global name (e.g. fluid.copy, console.log, etc.) or the func property to reference an existing function (perhaps another invoker) from elsewhere in the component tree.
+An invoker can specified with either the funcName property to reference a free function by its global name (e.g. `fluid.copy`, `console.log`, etc.) or the func property to reference an existing function (perhaps another invoker) from elsewhere in the component tree.
 
 <table>
     <thead>
@@ -47,7 +47,7 @@ By default, the values specified in the args property are cached, with the excep
 	
 #### An invoker record in context ####
 
-The following skeleton example defines an invoker named invokerName attached to a component of type component.name. When a component of the type is instantiated, for example with a line such as var that = component.name(), the invoker will then be available as a function directly attached to the instance, callable under the name invokerName - e.g. as that.invokerName(....args....)
+The following skeleton example defines an invoker named invokerName attached to a component of type component.name. When a component of the type is instantiated, for example with a line such as `var that = component.name();`, the invoker will then be available as a function directly attached to the instance, callable under the name `invokerName` - e.g. as `that.invokerName(....args....)`
 
 ```javascript
 fluid.defaults("component.name", {
@@ -65,7 +65,7 @@ fluid.defaults("component.name", {
 ```
 __Example:__
 
-The following example defines a component of type xyz.widget, with two invokers named addTwo and subtractTwo - the former binds onto a free function named xyz.widget.add, the latter binds onto another invoker elsewhere in the tree, which is not shown. Note that there is no necessary relationship between the name of a component and the name of a free function which is bound to it. If there is a close relationship between the purpose of a function and a related component, it is a helpful convention to prefix its name with the component name, as here - however, any free function may be bound via its global name to any component.
+The following example defines a component of type `xyz.widget`, with two invokers named `addTwo` and `subtractTwo` - the former binds onto a free function named `xyz.widget.add`, the latter binds onto another invoker elsewhere in the tree, which is not shown. Note that there is no necessary relationship between the name of a component and the name of a free function which is bound to it. If there is a close relationship between the purpose of a function and a related component, it is a helpful convention to prefix its name with the component name, as here - however, any free function may be bound via its global name to any component.
 
 ```javascript
 fluid.defaults("xyz.widget", {
@@ -88,7 +88,7 @@ xyz.widget.add = function (a, b) {return a + b;};
 
 #### Compact Format ####
 
-Alternatively, invokers can be specified in a compact single line format. However, arguments specified in the invoker can only be strings or IoC References. Strings which can be converted into Numbers or Booleans will be so converted before being interpreted. Dynamic invokers are specified with an "!" before the arguments (equivalent to the dynamic: true annotation in the full syntax)
+Alternatively, invokers can be specified in a compact single line format. However, arguments specified in the invoker can only be strings or IoC References. Strings which can be converted into Numbers or Booleans will be so converted before being interpreted. Dynamic invokers are specified with an "!" before the arguments (equivalent to the `dynamic: true` annotation in the full syntax)
 
 ```javascript
 fluid.defaults("component.name", {
@@ -145,10 +145,11 @@ fluid.defaults("fluid.uploader.fileQueue", {
 
 ### Invoker triggering a model change to some component's model ###
 
-If the invoker's record contains the field changePath (rather than the standard func/funcName) this is recognised as a special type of invoker triggering a change to a particular component's model via its ChangeApplier. This type of record is documented in its own section with the ChangeApplier API. The compact syntax may not be used with this variety of record.
-"this"-ist invoker binding to a OO-style JavaScript function referencing "this"
+If the invoker's record contains the field changePath (rather than the standard func/funcName) this is recognised as a special type of invoker triggering a change to a particular component's model via its [ChangeApplier](ChangeApplier.md). This type of record is documented in its own section with the [ChangeApplier API](ChangeApplierAPI.md). The compact syntax may not be used with this variety of record.
 
-Specifying an invoker with a "this" property allows the invocation of functions whose body makes a reference to the special JavaScript value "this". These are generally functions external to the Infusion framework, since it is a Fluid community standard to write "that"-ist functions whose execution is independent of the calling context. These can be any functions, but will most often be used for jQuery methods. See Declarative this-ism in IoC for more details. Note that the string this must always be quoted when appearing as a key as it is a JavaScript keyword.
+### "this"-ist invoker binding to a OO-style JavaScript function referencing "this" ###
+
+Specifying an invoker with a __`"this"`__ property allows the invocation of functions whose body makes a reference to the special JavaScript value `"this"`. These are generally functions external to the Infusion framework, since it is a Fluid community standard to write "that"-ist functions whose execution is independent of the calling context. These can be any functions, but will most often be used for jQuery methods. See [Declarative this-ism in IoC](DeclarativeThisismInIoC.md) for more details. Note that the string this must always be quoted when appearing as a key as it is a JavaScript keyword.
 
 <table>
     <thead>
@@ -176,7 +177,7 @@ The name of the "thisist" function (attached to the <code>this</code> object des
             <td><code>args</code></td>
             <td><strong>Optional</strong><br/>
                 type: <code>array</code><br/>
-An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including IoC references. In this context, you may also use references of the form <code>{arguments}.n</code>, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged. Identical to role in <code>func/funcName</code> style invokers.
+An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including [IoC references](IoCReferences.md). In this context, you may also use references of the form <code>{arguments}.n</code>, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged. Identical to role in <code>func/funcName</code> style invokers.
             </td>
         </tr>
     </tbody>
