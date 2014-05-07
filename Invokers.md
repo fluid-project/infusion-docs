@@ -19,39 +19,27 @@ An invoker can specified with either the funcName property to reference a free f
     </thead>
     <tbody>
         <tr>
-            <td>
-`funcName`
-or
-`func`
+            <td><code>funcName</code> or <code>func</code>
             </td>
-            <td>
-Required
-
-type: `string`
-
-`funcName` - A string representing the name of a free function.
-
-`func - A string representing an IoC reference to a function which is attached to the component tree
-     `       </td>
-        </tr>
-        <tr>
-            <td>`args`</td>
-            <td>
-Optional
-
-type: `array`
-
-An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including IoC references. In this context, you may also use references of the form `{arguments}.n`, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged.
+            <td><strong>Required</strong><br/>
+                type: <code>string</code><br/>
+                <code>funcName</code> - A string representing the name of a free function.<br/>
+                <code>fun</code> - A string representing an IoC reference to a function which is attached to the component tree
             </td>
         </tr>
         <tr>
-            <td>`dynamic`</td>
+            <td><code>args</code></td>
             <td>
-Optional
-
-type: `boolean`
-
-By default, the values specified in the args property are cached, with the exception of those defined by `{arguments}.n`. If any of these arguments reference a value that may change between invocations of the invoker, this flag should be set to true. Note that using this option will reduce performance.
+                <strong>Optional</strong><br/>
+                type: <code>array</code><br/>
+An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including IoC references. In this context, you may also use references of the form <code>{arguments}.n</code>, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged.
+            </td>
+        </tr>
+        <tr>
+            <td><code>dynamic</code></td>
+            <td><strong>Optional</strong><br/>
+                type: <code>boolean</code><br/>
+By default, the values specified in the args property are cached, with the exception of those defined by <code>{arguments}.n</code>. If any of these arguments reference a value that may change between invocations of the invoker, this flag should be set to true. Note that using this option will reduce performance.
             </td>
         </tr>
     </tbody>
@@ -171,33 +159,24 @@ Specifying an invoker with a "this" property allows the invocation of functions 
     </thead>
     <tbody>
         <tr>
-            <td>`"this"`</td>
-            <td>
-Required
-
-type: `object`
-
+            <td><code>"this"</code></td>
+            <td><strong>Required</strong><br/>
+                type: <code>object</code>
 The object used referenced by "this" internally in the function. For a jQuery method, this is usually an jQuery element.
             </td>
         </tr>
         <tr>
-            <td>`method`</td>
-            <td>
-Required
-
-type: `string`
-
-The name of the "thisist" function (attached to the `this` object designated above) to call.
+            <td><code>method</code></td>
+            <td><strong>Required</strong><br/>
+                type: <code>string</code><br/>
+The name of the "thisist" function (attached to the <code>this</code> object designated above) to call.
             </td>
         </tr>
         <tr>
-            <td>`args`</td>
-            <td>
-Optional
-
-type: `array
-`
-An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including IoC references. In this context, you may also use references of the form `{arguments}.n`, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged. Identical to role in `func/funcName` style invokers.
+            <td><code>args</code></td>
+            <td><strong>Optional</strong><br/>
+                type: <code>array</code><br/>
+An array of arguments to be passed into the function specified by the func or funcName property. The values in the array can be of any type, including IoC references. In this context, you may also use references of the form <code>{arguments}.n</code>, where n is an integer indexing from 0 which refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged. Identical to role in <code>func/funcName</code> style invokers.
             </td>
         </tr>
     </tbody>
