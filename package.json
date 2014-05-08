@@ -1,0 +1,8 @@
+{
+  "name": "infusion-docs",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-markdown": "^0.5.0"
+  }
+}
