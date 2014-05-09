@@ -22,8 +22,10 @@ A top-level options block named **`events`** is supported on every component der
 
 <table>
   <thead>
-    <td><strong>Type</strong></td>
-    <td><strong>Description</strong></td>
+    <tr>
+      <td><strong>Type</strong></td>
+      <td><strong>Description</strong></td>
+    </tr>
   </thead>
   <tr>
     <td><code>null</code></td>
@@ -130,3 +132,95 @@ represents that the function with the global name `fluid.moduleLayout.defaultOnS
 ###Listeners to events held elsewhere
 
 Rather than a simple string, the key in a `listeners` structure can hold any [IoC Reference](IoCReferences.md) which resolves to an event anywhere in the component tree - that is, even one belonging to a different component. In this case the listener on the right hand side will be attached to that event rather than one of this component's own events. The framework will make sure to automatically deregister the listener when this component is destroyed. Many more complex cases are possible, including the wholesale injection of events from one component to another, and the creation of new events derived from existing ones. You can consult the page [Event injection and boiling](EventInjectionAndBoiling.md) for more details.
+
+
+Using events and listeners procedurally
+---------------------------------------
+
+Traditional procedural APIs corresponding to all the above declarations exist. However, they are not encouraged for typical users of the framework. 
+
+###Constructing an event firer procedurally
+
+The Fluid event system is operated by instances of an *event firer* which are created by a call to `fluid.event.makeEventFirer()`. It is recommended that users don't construct event firers by hand but instead rely on the framework's facilities for automatically constructing these given event blocks in [component options](ComponentConfigurationOptions.md). The signature of `fluid.event.makeEventFirer` is not stable and will be revised in the 2.0 release of Infusion:
+
+```javascript
+var myFirer = fluid.event.makeEventFirer(unicast, preventable, name);
+```
+
+<table>
+  <thead>
+    <tr>
+      <td>Argument</td>
+      <td>Type</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tr>
+    <td><code>unicast</code> (optional) DEPRECATED</td>
+    <td><code>boolean</code></td>
+    <td>
+      If <code>true</code>, this event firer is a *unicast* event firer (see [Event Types](InfusionEventSystem.md)).
+    </td>
+  </tr>
+  <tr>
+    <td><code>preventable</code> (optional)</td>
+    <td><code>boolean</code></td>
+    <td>
+      If <code>true</code>, this event firer represents a *preventable* action (see [Event Types](InfusionEventSystem.md)).
+    </td>
+  </tr>
+  <tr>
+    <td><code>name</code> (optional)</td>
+    <td><code>string</code></td>
+    <td>
+      A name for this event firer, useful for diagnostic and debugging purposes
+    </td>
+  </tr>
+</table>
+
+###Using an event firer procedurally
+
+Once an event firer is constructed, it can be called with the following methods (these do form a stable API):
+
+<table>
+  <thead>
+    <tr>
+      <td>Method</td>
+      <td>Arguments</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tr>
+    <td><code>addListener</code></td>
+    <td><code>listener: Function,String,
+listener specification
+</code></td>
+    <td>
+      Registers the supplied listener with this firer. The listener represents a function of a particular signature which is determined between the firer and listener of an event. The namespace parameter is an optional String which defines a key representing a particular *function* of the listener. At most one listener may be registered with a firer with a particular key. This is a similar system to that operated by the JQuery namespaced events system. For an event firer which is of type `unicast`, the namespace argument will be ignored and will default to a fixed value.
+
+A complex object may be supplied holding a listener specification. The structure of this object does not form a stable API.
+    </td>
+  </tr>
+  <tr>
+    <td><code>removeListener</code></td>
+    <td><code>listener: String/Function</code></td>
+    <td>
+      Supplies either the same listener object which was previously supplied to `addListener`, or else the String representing its namespace key. The designated listener will be removed from the list of registered listeners for this fierer.
+    </td>
+  </tr>
+  <tr>
+    <td><code>fire</code></td>
+    <td>(arbitrary)</td>
+    <td>
+      Fires an event to all the registered listeners. They will each be invoked with the exact argument list which is supplied to `fire` itself. If this is a *preventable* event, `fire` may return `true` indicating that a listener has requested to prevent the effect represented by this event.
+    </td>
+  </tr>
+  <tr>
+    <td><code>destroy</code></td>
+    <td>none</td>
+    <td>	
+      Destroys this event firer. If an event is currently in the process of firing, no further listeners will be notified after the current listener returns. Any firing action performed in the future on this firer will be a no-op.
+    </td>
+  </tr>
+</table>
+
