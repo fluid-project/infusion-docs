@@ -4,7 +4,7 @@ Infusion Event System
 Overview
 --------
 
-Infusion *events* are one of the most basic and widely used facilities in the framework. Almost every Infusion component exposes one or more events and/or listeners to events fired by itself or other components. A component opts in to the event system by mentioning `fluid.eventedComponent` or some other grade derived from it such as `fluid.viewComponent` in its list of parent [Component Grades](ComponentGrades.md).
+Infusion ***events*** are one of the most basic and widely used facilities in the framework. Almost every Infusion component exposes one or more events and/or listeners to events fired by itself or other components. A component opts in to the event system by mentioning `fluid.eventedComponent` or some other grade derived from it such as `fluid.viewComponent` in its list of parent [Component Grades](ComponentGrades.md).
 
 An Infusion event (or more precisely, a particular firing of an Infusion event) represents
 
@@ -159,14 +159,14 @@ var myFirer = fluid.event.makeEventFirer(unicast, preventable, name);
     <td><code>unicast</code> (optional) DEPRECATED</td>
     <td><code>boolean</code></td>
     <td>
-      If <code>true</code>, this event firer is a *unicast* event firer (see [Event Types](InfusionEventSystem.md)).
+      If <code>true</code>, this event firer is a <em>unicast</em> event firer (see <a href="InfusionEventSystem.md">Event Types</a>).
     </td>
   </tr>
   <tr>
     <td><code>preventable</code> (optional)</td>
     <td><code>boolean</code></td>
     <td>
-      If <code>true</code>, this event firer represents a *preventable* action (see [Event Types](InfusionEventSystem.md)).
+      If <code>true</code>, this event firer represents a <em>preventable</em> action (see <a href="InfusionEventSystem.md">Event Types</a>).
     </td>
   </tr>
   <tr>
@@ -196,7 +196,7 @@ Once an event firer is constructed, it can be called with the following methods 
 listener specification
 </code></td>
     <td>
-      Registers the supplied listener with this firer. The listener represents a function of a particular signature which is determined between the firer and listener of an event. The namespace parameter is an optional String which defines a key representing a particular *function* of the listener. At most one listener may be registered with a firer with a particular key. This is a similar system to that operated by the JQuery namespaced events system. For an event firer which is of type `unicast`, the namespace argument will be ignored and will default to a fixed value.
+      Registers the supplied listener with this firer. The listener represents a function of a particular signature which is determined between the firer and listener of an event. The namespace parameter is an optional String which defines a key representing a particular <em>function</em> of the listener. At most one listener may be registered with a firer with a particular key. This is a similar system to that operated by the JQuery namespaced events system. For an event firer which is of type <code>unicast</code>, the namespace argument will be ignored and will default to a fixed value.
 
 A complex object may be supplied holding a listener specification. The structure of this object does not form a stable API.
     </td>
@@ -205,14 +205,14 @@ A complex object may be supplied holding a listener specification. The structure
     <td><code>removeListener</code></td>
     <td><code>listener: String/Function</code></td>
     <td>
-      Supplies either the same listener object which was previously supplied to `addListener`, or else the String representing its namespace key. The designated listener will be removed from the list of registered listeners for this fierer.
+      Supplies either the same listener object which was previously supplied to <code>addListener</code>, or else the String representing its namespace key. The designated listener will be removed from the list of registered listeners for this fierer.
     </td>
   </tr>
   <tr>
     <td><code>fire</code></td>
     <td>(arbitrary)</td>
     <td>
-      Fires an event to all the registered listeners. They will each be invoked with the exact argument list which is supplied to `fire` itself. If this is a *preventable* event, `fire` may return `true` indicating that a listener has requested to prevent the effect represented by this event.
+      Fires an event to all the registered listeners. They will each be invoked with the exact argument list which is supplied to <code>fire</code> itself. If this is a <em>preventable</em> event, <code>fire</code> may return <code>true</code> indicating that a listener has requested to prevent the effect represented by this event.
     </td>
   </tr>
   <tr>
