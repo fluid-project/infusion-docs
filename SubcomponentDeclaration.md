@@ -1,7 +1,7 @@
 Subcomponent Declaration
 ========================
 
-In the Infusion IoC system, a component declares its (static) subcomponents through the `components` property of the defaults, using `fluid.defaults`:
+In the Infusion IoC system, a component declares its (static) subcomponents through the `components` property of the defaults, using [`fluid.defaults`](FluidDefaults.md):
 
 ```javascript
 fluid.defaults("my.component.name", {
@@ -58,7 +58,7 @@ The properties allowed at top level in the subcomponent record are as follows:
         <tr>
             <td><code>options</code> (Optional)</td>
             <td>Object</td>
-            <td>These are options to be passed to the subcomponent as "user options." Note that these are not the default options for the subcomponent, rather these options override the defaults. The defaults for the component will have already been registered by the <code>fluid.defaults</code> call(s) appropriate for its type and <a href="ComponentGrades.md">grade names</a>.</td>
+            <td>These are options to be passed to the subcomponent as "user options." Note that these are not the default options for the subcomponent, rather these options override the defaults. The defaults for the component will have already been registered by the <a href="FluidDefaults.md"><code>fluid.defaults</code></a> call(s) appropriate for its type and <a href="ComponentGrades.md">grade names</a>.</td>
             <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     options: {
