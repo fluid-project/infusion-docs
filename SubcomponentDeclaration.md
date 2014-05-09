@@ -2,6 +2,8 @@ Subcomponent Declaration
 ========================
 
 In the Infusion IoC system, a component declares its (static) subcomponents through the components property of the defaults, using fluid.defaults:
+
+```javascript
 fluid.defaults("my.component.name", {
     ...
     components: {
@@ -11,8 +13,7 @@ fluid.defaults("my.component.name", {
     },
     ....
 });
-
- 
+```
 
 Note that as with the use of dynamic grades, what could be called a kind of "dynamic subcomponent" can be added after the fact to any component simply by arranging for additional entries in its components options, via any of the usual routes - for example, direct arguments to its creator function, options distributed by distributeOptions, or by 2nd-level nested components entries in the subcomponent record of the defaults of a component grandparent. Later on in this section we will see direct framework facilities for other kinds of dynamic subcomponents, those driven by dynamic data or event firing.
 
@@ -20,6 +21,8 @@ Basic Subcomponent Declaration
 ------------------------------
 
 The subcomponent declaration has the following form, holding the subcomponent record as the value corresponding to the key holding the subcomponent's member name (in this case subcomponent1):
+
+```javascript
 fluid.defaults("my.component.name", {
     ...
     components: {
@@ -30,6 +33,7 @@ fluid.defaults("my.component.name", {
     },
     ....
 });
+```
 
 The properties allowed at top level in the subcomponent record are as follows:
 
@@ -90,7 +94,8 @@ Note that the entire subcomponent record may be replaced by a simple IoC referen
 
 Examples
 --------
- 
+
+```javascript
 fluid.defaults("cspace.admin", {
     gradeNames: ["fluid.rendererComponent", "autoInit"],
     components: {
@@ -103,20 +108,18 @@ fluid.defaults("cspace.admin", {
         }
     }
 });
+```
 
- 
-
- 
+```javascript
 fluid.defaults("cspace.admin.showAddButton", {
     gradeNames: ["autoInit", "fluid.modelComponent"],
     components: { // injected component declaration
         permissionsResolver: "{permissionsResolver}"
     }
 });
+```
 
- 
-
- 
+```javascript
 fluid.defaults("gpii.explorationTool.modelTransformer", {
     gradeNames: ["fluid.modelComponent", "fluid.uiOptions.modelRelay", "autoInit"],
     components: {
@@ -133,6 +136,7 @@ fluid.defaults("gpii.explorationTool.modelTransformer", {
         }
     }
 });
+```
 
 Dynamic components
 ------------------
@@ -152,6 +156,8 @@ Although this facility is powerful, the reader will note the peculiar asymmetry 
 ### Dynamic subcomponents with a source array
 
 This scheme for declaring a dynamic component is announced by making use of the sources entry at top-level in the dynamic component's component record. The following defaults block defines a component which in practice will instantiate two subcomponents, one for each element in the array values that it declares in its own options:
+
+```javascript
 fluid.defaults("examples.dynamicComponentRoot", {
     gradeNames: ["fluid.littleComponent", "autoInit"],
     values: [2, 3],
@@ -169,12 +175,15 @@ fluid.defaults("examples.dynamicComponentRoot", {
 var that = examples.dynamicComponentRoot();
 var firstValue = that.dynamic.options.source; // 2
 var secondValue = that["dynamic-1"].options.source; // 3
+```
 
 The sources entry will be expanded in the context of the parent component, and must hold a reference to an array. Within the configuration for the dynamic component, two special IoC context names are available. One is named {source} and holds a reference to the particular array element which was used to expand the record into a component - in the above example, successively the values 2, and 3. The other is named {sourcePath} and holds a reference to the array index which was used - in the above example, successively the values 0 and 1.
 
 ### Dynamic subcomponents with a source event
 
 The use of this scheme for dynamic components is announced by using the standard createOnEvent top-level member that we met earlier when writing standard components subcomponent blocks. The syntax is the same, but the semantic is different. For a standard subcomponent, createOnEvent will destroy and then recreate a component at the same path on each firing of the specified event. In contrast, for a dynamic subcomponent, createOnEvent will construct a fresh subcomponent at successive different paths on each firing of the event. The naming of these paths is described in the previous section but in practice should not be a concern for the user.
+
+```javascript
 fluid.defaults("examples.dynamicEventRoot", {
     gradeNames: ["fluid.eventComponent", "autoInit"],
     events: {
@@ -196,6 +205,7 @@ that.events.creationEvent.fire(2);
 var firstValue = that.dynamic.options.argument; // 2
 that.events.creationEvent.fire(3);
 var secondValue = that["dynamic-1"].options.argument; // 3
+```
 
 In this case, rather than exposing the special context names {source} and {sourcePath} as with array-sourced dynamic components, the configuration for the dynamic components block instead just exposes the more standard context name {arguments} which we have seen used both with invokers and event listeners. In this case, the context name {arguments} is bound onto the argument list that was used to fire the event which triggered the creation of the particular dynamic subcomponent. The example shows the argument list successively holding the value [2] and then the value [3].
 
