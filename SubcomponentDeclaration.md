@@ -37,55 +37,64 @@ fluid.defaults("my.component.name", {
 
 The properties allowed at top level in the subcomponent record are as follows:
 
-Property
-    
-Type
-    
-
-Description
-    
-
-Example
-
-type
-    String  
-
-This is the grade name of the type of subcomponent to be created. May be an IoC Reference.
-    
-subcomponent1: {
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>type</td>
+            <td>String</td>
+            <td>This is the grade name of the type of subcomponent to be created. May be an IoC Reference.</td>
+            <td><pre><code>subcomponent1: {
     type: "my.component.gradename"
-}
-options (Optional)  Object  These are options to be passed to the subcomponent as "user options." Note that these are not the default options for the subcomponent, rather these options override the defaults. The defaults for the component will have already been registered by the fluid.defaults call(s) appropriate for its type and grade names.    
-subcomponent1: {
+}</code></pre></td>
+        </tr>
+        <tr>
+            <td>options (Optional)</td>
+            <td>Object</td>
+            <td>These are options to be passed to the subcomponent as "user options." Note that these are not the default options for the subcomponent, rather these options override the defaults. The defaults for the component will have already been registered by the fluid.defaults call(s) appropriate for its type and grade names.</td>
+            <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     options: {
         myOptions: "{name}.options.someOption",
         ...
     }
-}
+}</code></pre></td>
+        </tr>
+        <tr>
+            <td>createOnEvent (Optional)</td>
+            <td>String</td>
+            <td><p>Specifies an event that will trigger the creation of the subcomponent. This option is used when the subcomponent should not be created immediately as part of the construction process of its parent, but rather at a later time signalled by the firing of the specified event. If this value is a simple string, it represents an event held on the parent component - it may also take the form of an IoC reference to an event elsewhere in the component tree.</p>
 
-createOnEvent (Optional)
-    String  
-
-Specifies an event that will trigger the creation of the subcomponent. This option is used when the subcomponent should not be created immediately as part of the construction process of its parent, but rather at a later time signalled by the firing of the specified event. If this value is a simple string, it represents an event held on the parent component - it may also take the form of an IoC reference to an event elsewhere in the component tree.
-
-Note that if the specified event fires multiple times, the corresponding component will be destroyed and then recreated on every firing of the event after the first time.
-    
-subcomponent1: {
+<p>Note that if the specified event fires multiple times, the corresponding component will be destroyed and then recreated on every firing of the event after the first time.</p></td>
+            <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     createOnEvent: "someEvent"
-}
-
-priority (Optional)
-    Number or "first"/"last"    
-
-Specifies the order priority of the creation of the particular subcomponent. During component tree instantiation, the framework will sort the collection of subcomponents based on the priority specified. Note that use of this option should be discouraged as it leads to fragile configuration. If you find yourself using it, please report the instance to the development team to see if a better solution can be found.
-    
-subcomponent1: {
+}</code></pre></td>
+        </tr>
+        <tr>
+            <td>priority (Optional)</td>
+            <td>Number or "first"/"last"</td>
+            <td>Specifies the order priority of the creation of the particular subcomponent. During component tree instantiation, the framework will sort the collection of subcomponents based on the priority specified. Note that use of this option should be discouraged as it leads to fragile configuration. If you find yourself using it, please report the instance to the development team to see if a better solution can be found.</td>
+            <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     priority: "first"
-}
-container (Required only for View components)   String  This property is a CSS-style selector identifying the container element to be used for this subcomponent. This property is required for any View components.     
+}</code></pre></td>
+        </tr>
+        <tr>
+            <td>container (Required only for View components)</td>
+            <td>String</td>
+            <td>This property is a CSS-style selector identifying the container element to be used for this subcomponent. This property is required for any View components.</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 Injected Subcomponent Declaration
 ---------------------------------
