@@ -2,6 +2,9 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        clean: {
+            html: "html"
+        },
         markdown: {
             all: {
                 files: [
@@ -23,6 +26,7 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-markdown');
 
     grunt.registerTask('default', ['markdown']);
