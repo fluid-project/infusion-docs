@@ -6,7 +6,7 @@ The author of an Infusion component describes the structure of part of an IoC **
 
 A parent component declares what subcomponents it requires through the components block of the parent component's default options using [fluid.defaults](fluidDefaults.md). This list of subcomponents will be examined when the parent component ask the Framework to create subcomponents, as described below in [Creating Subcomponents](#creating-subcomponents).
 
-In this example, the default type for myComponentName 's subcomponent mySubComponent1 is specified as type name subComponent1Name.
+In this example, the default type for the subcomponent, `mySubComponent1`, of `myComponentName` is specified as type name `subComponent1Name`.
 
 ```javascript
 fluid.defaults("myNamespace.myComponentName", {
