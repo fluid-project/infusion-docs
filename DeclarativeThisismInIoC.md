@@ -90,7 +90,7 @@ fluid.defaults("demo.hw", {
 });
 ```
 
-In the following example, taken from the Infusion Table of Contente comonent, **this-ist** functions are used to attach methods to the component object in the `invokers` option.
+In the following example, taken from the Infusion Table of Contente component, **this-ist** functions are used to attach methods to the component object in the `invokers` option.
 
 ```javascript
 fluid.defaults("fluid.tableOfContents", {
@@ -128,7 +128,7 @@ fluid.defaults("fluid.inlineEdit.tinyMCE", {
 });
 ```
 
-In the following example, taken from the Infusion Pager component, a **this-ist** function is used to set the container's `role` attribute to _"application"_ using the jQuery **attr()** function.
+In the following example, taken from the Infusion Pager component, a **this-ist** function is used to set the container's `role` attribute to _"application"_ using the jQuery `attr()` function.
 
 ```javascript
 fluid.defaults("fluid.pager", {
