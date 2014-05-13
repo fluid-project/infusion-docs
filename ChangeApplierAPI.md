@@ -6,7 +6,8 @@ This section explains and documents the various Javascript API calls for instant
 
 ### Declarative style ###
 
-The declarative style for registering interest in change events uses an entry in the modelListeners options area of a modelRelayComponent. These listeners are attached to the applier during the construction process of the entire component (and its surrounding tree) and so will therefore become notified as part of the [initial transaction](ModelRelay#the-initial-transaction) - they will therefore get to observe the model changing state from its primordial value of undefined to holding their initial resolved value. This is the **recommended** way of listening to model changes using the ChangeApplier system.
+The declarative style for registering interest in change events uses an entry in the `modelListeners` options area of a `modelRelayComponent`. These listeners are attached to the applier during the construction process of the entire component (and its surrounding tree) and so will therefore become notified as part of the [initial transaction](ModelRelay#the-initial-transaction) - they will therefore get to observe the model changing state from its primordial value of undefined to holding their initial resolved value. This is the **recommended** way of listening to model changes using the ChangeApplier system.
+
 Each record in the modelListeners block has the format `<modelPathReference>: <modelListener declaration>`. The left and right hand sides of this definition will be explained in the subsequent sections:
 
 #### Model Path References ####
@@ -52,7 +53,7 @@ A `<modelPathReference>` has the form:
     </tbody>
 </table>
 
-The 4 examples presented in the "Examples" column are parallel for the two cases - they respectively match changes occurring in the same parts of the target model, only in the first row they match into the model attached to this component (the same one in which the modelListeners record appears) and in the second row they match into the model attached to another component - one referenced by the [Context Expression](Contexts.md) otherComponent.
+The 4 examples presented in the _"Examples"_ column are parallel for the two cases - they respectively match changes occurring in the same parts of the target model, only in the first row they match into the model attached to this component (the same one in which the `modelListeners` record appears) and in the second row they match into the model attached to another component - one referenced by the [Context Expression](Contexts.md) `otherComponent`.
 
 #### Model Listener Declaration ####
 
@@ -181,7 +182,7 @@ Users will in many cases only be interested in the first argument in this signat
 
 ### Declarative style ###
 
-The declarative style for firing model changes involve a kind of IoC record that is supported in various places in component configuration, in particular as part of the definition of both [Invokers](Invokers.md) and [Listeners](Events.md) of an IoC-configured component. This style of record is recognised by its use of the special member changePath which determines which path in which component model will receive the change.
+The declarative style for firing model changes involve a kind of IoC record that is supported in various places in component configuration, in particular as part of the definition of both [Invokers](Invokers.md) and [Listeners](Events.md) of an IoC-configured component. This style of record is recognised by its use of the special member `changePath` which determines which path in which component model will receive the change.
 
 <table>
     <thead>
