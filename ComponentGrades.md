@@ -76,7 +76,7 @@ The Infusion Framework already contains several predefined component grades that
     </tbody>
 </table>
 
-_**[1]** About the special "relay" grades - as part of the work on the [New ChangeApplier](NewNotesOnTheChangeApplier.md) coming up to the 1.5 release of Infusion, every standard grade descended from fluid.modelComponent has acquired a parallel version including the word "relay" that allows access to the new ChangeApplier on an "opt in basis". During the course of 2014 we will be incrementally updating each Infusion component to the new "relay" grades, and once this work is complete, the "relay" grades will be renamed back to their standard (left column) names and the old ChangeApplier implementation will be abolished._
+_**[1]** About the special "relay" grades - as part of the work on the [New ChangeApplier](http://wiki.fluidproject.org/display/fluid/New+Notes+on+the+ChangeApplier) coming up to the 1.5 release of Infusion, every standard grade descended from fluid.modelComponent has acquired a parallel version including the word "relay" that allows access to the new ChangeApplier on an "opt in basis". During the course of 2014 we will be incrementally updating each Infusion component to the new "relay" grades, and once this work is complete, the "relay" grades will be renamed back to their standard (left column) names and the old ChangeApplier implementation will be abolished._
 
 ## Specifying Parent Grades ##
 
