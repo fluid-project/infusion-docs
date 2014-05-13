@@ -216,6 +216,8 @@ fluid.defaults("examples.distributingRootComponent", {
 });
 ```
 
+In the above example, every subcomponent of `examples.distributingRootComponent` which had a grade content of `examples.componentOne` would automatically have [mixed](https://en.wikipedia.org/wiki/Mixin) in a grade of `examples.componentTwo`, causing them all to behave as if they were instances of `examples.combinedComponent`.
+
 ## Raw Dynamic Grades ##
 
 Another very powerful framework facility is the use of raw dynamic grades. In this scheme, the gradeNames list for any component may include any standard [IoC reference](IoCReferences.md) which may resolve to either a String or Array of Strings directly holding one or more grade names, or else a zero-arg function which can be invoked to obtain such a value. In this way, the developer can specify additional grade names based on dynamic material (potentially not known at the time of definition) such as a function (method or invoker) or a property in component options. Note that use of this facility should be discouraged in favour of any of the other techniques on this page - e.g. standard dynamic grades or grade linkage - in future versions of the framework the use of raw dynamic grades may impose a big performance penalty.
