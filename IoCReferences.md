@@ -64,10 +64,10 @@ References always take the syntactic form `{context-name}.some.path.segments` - 
             <td>
                 <ul>
                     <li>
-                        <code>&#60;iocss expression&#62;</code>> is an <a href="IoCSS.md">IoCSS</a> expression referencing a component.
+                        <code>&#60;iocss expression&#62;</code> is an <a href="IoCSS.md">IoCSS</a> expression referencing a component.
                     </li>
                     <li>
-                        <code>&#60;path to member&#62;</code>> is an EL path into the referenced component's members.
+                        <code>&#60;path to member&#62;</code> is an EL path into the referenced component's members.
                         <p>
                             <em>Note that full IoCSS expressions are not valid in all contexts. They can primarily be used in the <code>target</code> field of the <code>distributeOptions</code> record.</em>
                         </p>
