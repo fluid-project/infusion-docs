@@ -2,8 +2,8 @@
 
 The [Infusion Event System](InfusionEventSystem.md) explains how to declare events of various types attached to a single component. Within a larger design, sometimes it is necessary to
 
-1 collaborate between multiple components in a component tree on **sharing** references to event firers (**event injection**)
-2 present an event with a particular signature fired by a component as one with a different signature in a listener (**event boiling**)
+1. collaborate between multiple components in a component tree on **sharing** references to event firers (**event injection**)
+2. present an event with a particular signature fired by a component as one with a different signature in a listener (**event boiling**)
 
 Both of these capabilities rely on the [IoC - Inversion of Control](IoCInversionOfControl.md) system and on the tree of components in question being an IoC-driven tree.
 
