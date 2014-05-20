@@ -11,7 +11,7 @@ Table of Contents
   * [Component Grades](ComponentGrades.md)
   * [Options Merging](http://wiki.fluidproject.org/display/docs/Options+Merging)
   * [Component Lifecycle](ComponentLifecycle.md)
-* Inversion Of Control
+* Inversion of Control
   * [How To Use Infusion IoC](HowToUseInfusionIoC.md)
   * [Subcomponent Declaration](http://wiki.fluidproject.org/display/docs/Subcomponent+Declaration)
   * [Contexts](http://wiki.fluidproject.org/display/docs/Contexts)
