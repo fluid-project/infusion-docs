@@ -1,8 +1,8 @@
 Infusion Documentation
 ======================
 
-Table of Contents
------------------
+Infusion
+--------
 
 * [Framework Concepts](http://wiki.fluidproject.org/display/docs/Framework+Concepts)
 * Components
@@ -28,3 +28,8 @@ Table of Contents
 * [Model Relay](http://wiki.fluidproject.org/display/docs/Model+Relay)
 * [Progressive Enhancement](ProgressiveEnhancement.md)
 * [Renderer](http://wiki.fluidproject.org/display/docs/Renderer)
+
+Tutorials
+---------
+
+* [Getting started with Infusion](http://wiki.fluidproject.org/display/docs/Tutorial+-+Getting+started+with+Infusion)
