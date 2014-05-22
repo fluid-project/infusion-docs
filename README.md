@@ -33,6 +33,9 @@ Tutorials
 ---------
 
 * [Getting started with Infusion (wiki)](http://wiki.fluidproject.org/display/docs/Tutorial+-+Getting+started+with+Infusion)
+* [Adding a Basic Preferences Editor to a Site (wiki)](http://wiki.fluidproject.org/display/docs/Tutorial+-+Adding+a+Basic+Preferences+Editor+to+a+Site)
+* [Working With A Preferences Editor On Your Site (wiki)](http://wiki.fluidproject.org/display/docs/Working+With+A+Preferences+Editor+On+Your+Site)
+* [Localization in the Preferences Framework (wiki)](http://wiki.fluidproject.org/display/docs/Localization+in+the+Preferences+Framework)
 
 API
 ---
