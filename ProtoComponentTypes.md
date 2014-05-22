@@ -22,46 +22,46 @@ The following tables describe the different types of components and the fields u
                 A control which holds a single value, such as headers, labels, etc.
             </td>
             <td>
-                ```javascript
-                componentID: { fieldName: valueOrBinding }
-                ```
+                <pre><code>
+                    componentID: { fieldName: valueOrBinding }
+                </code></pre>
             </td>
             <td>
-                ```javascript
-                var protoTree = {
-                    mainHeader: "Carving Woods",
-                    sectionHeader1: "Sassafras",
-                    sectionHeader1: "Butternut",
-                    sectionHeader1: "Basswood"
-                };
-                ```
+                <pre><code>
+                    var protoTree = {
+                        mainHeader: "Carving Woods",
+                        sectionHeader1: "Sassafras",
+                        sectionHeader1: "Butternut",
+                        sectionHeader1: "Basswood"
+                    };
+                </code></pre>
             </td>
         </tr>
         <tr>
             <th>Array of Bound</th>
             <td>repeated Bound fields</td>
             <td>
-                ```javascript
-                componentID: { 
-                    fieldName: [
-                        valueOrBinding1,
-                        valueOrBinding2,
-                        ...
-                    ]
-                }
-                ```
+                <pre><code>
+                    componentID: { 
+                        fieldName: [
+                            valueOrBinding1,
+                            valueOrBinding2,
+                            ...
+                        ]
+                    }
+                </code></pre>
             </td>
             <td>
-                ```javascript
-                var protoTree = {
-                    mainHeader: "Carving Woods",
-                    sectionHeaders: [
-                        "Sassafras",
-                        "Butternut",
-                        "Basswood"
-                    ]
-                };
-                ```
+                <pre><code>
+                    var protoTree = {
+                        mainHeader: "Carving Woods",
+                        sectionHeaders: [
+                            "Sassafras",
+                            "Butternut",
+                            "Basswood"
+                        ]
+                    };
+                </code></pre>
             </td>
         </tr>
         <tr>
@@ -70,25 +70,25 @@ The following tables describe the different types of components and the fields u
                 A selection control where a user chooses either one or many options from a set of alternatives, such as a drop-down
             </td>
             <td>
-                ```javascript
-                componentID: {
-                    selection: valueOrBinding,
-                    optionlist: [array of internal values],
-                    optionnames: [array of display strings]
-                }
-                ```
+                <pre><code>
+                    componentID: {
+                        selection: valueOrBinding,
+                        optionlist: [array of internal values],
+                        optionnames: [array of display strings]
+                    }
+                </code></pre>
                 For information on how to create trees for radio buttons and checkboxes, see <a href="RendererComponentTreeExpanders.md">Renderer Component Tree Expanders</a>.
             </td>
             <td>
-                ```javascript
-                var protoTree = {
-                    contact-addressType1: {
-                        selection: "${fields.addressType1}",
-                        optionlist: ["Home", "Work"],
-                        optionnames: ["home", "work"]
-                    }
-                };
-                ```
+                <pre><code>
+                    var protoTree = {
+                        contact-addressType1: {
+                            selection: "${fields.addressType1}",
+                            optionlist: ["Home", "Work"],
+                            optionnames: ["home", "work"]
+                        }
+                    };
+                </code></pre>
             </td>
         </tr>
         <tr>
@@ -97,22 +97,22 @@ The following tables describe the different types of components and the fields u
                 A reference to a URL, such as a hyperlink
             </td>
             <td>
-                ```javascript
-                componentID: {
-                    target: destinationUrl,
-                    linktext: stringToDisplay
-                }
-                ```
+                <pre><code>
+                    componentID: {
+                        target: destinationUrl,
+                        linktext: stringToDisplay
+                    }
+                </code></pre>
             </td>
             <td>
-                ```javascript
-                var protoTree = {
-                    contact-addressType1: {
-                        target: "http://company.com/help/${topic.url}",
-                        linktext: "${topic.name}"
-                    }
-                };
-                ```
+                <pre><code>
+                    var protoTree = {
+                        contact-addressType1: {
+                            target: "http://company.com/help/${topic.url}",
+                            linktext: "${topic.name}"
+                        }
+                    };
+                </code></pre>
             </td>
         </tr>
         <tr>
@@ -121,11 +121,11 @@ The following tables describe the different types of components and the fields u
                 A component that contains other components in a free-form way
             </td>
             <td>
-                ```javascript
-                componentID: {
-                    children: [array of other protocomponents]
-                }
-                ```
+                <pre><code>
+                    componentID: {
+                        children: [array of other protocomponents]
+                    }
+                </code></pre>
             </td>
             <td></td>
         </tr>
@@ -135,23 +135,23 @@ The following tables describe the different types of components and the fields u
                 A component that encapsulates the data needed to resolve a localised message. Similar to a Bound, but the value is a key into a string bundle
             </td>
             <td>
-                ```javascript
-                componentID: {
-                    messageKey: key,
-                    args: [/* array of arguments to be interpolated into the message format */]
-                }
-                ```
+                <pre><code>
+                    componentID: {
+                        messageKey: key,
+                        args: [/* array of arguments to be interpolated into the message format */]
+                    }
+                </code></pre>
                 See <a href="fluid.formatMessage.md">fluid.formatMessage</a> for more information about message formatting.
             </td>
             <td>
-                ```javascript
-                var protoTree = {
-                    instructions: {
-                        messageKey: "instructionKey",
-                        args: ["thing", 3, "%path1"]
-                    }
-                };
-                ```
+                <pre><code>
+                    var protoTree = {
+                        instructions: {
+                            messageKey: "instructionKey",
+                            args: ["thing", 3, "%path1"]
+                        }
+                    };
+                </code></pre>
             </td>
         </tr>
     </tbody>
