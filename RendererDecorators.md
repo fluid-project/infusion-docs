@@ -41,7 +41,7 @@ The following table provides an overview of the currently-supported decorators. 
     <tbody>
         <tr>
             <td rowspan="2">
-                <a href="#jQuery-decorator">
+                <a href="#jquery-decorator">
                     <code>jQuery</code> or <code>$</code>
                 </a>
             </td>
@@ -64,14 +64,8 @@ The following table provides an overview of the currently-supported decorators. 
             <td>Arguments to the jQuery function</td>
         </tr>
         <tr>
-            <td><code>fluid.enhance.supportsBinaryXHR</code></td>
             <td>
-                Determines whether or not the browser supports binary XHR.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="#addClass-decorator">
+                <a href="#addclass-decorator">
                     <code>addClass</code>
                 </a>
             </td>
@@ -89,7 +83,7 @@ The following table provides an overview of the currently-supported decorators. 
         </tr>
         <tr>
             <td>
-                <a href="#removeClass-decorator">
+                <a href="#removeclass-decorator">
                     <code>removeClass</code>
                 </a>
             </td>
