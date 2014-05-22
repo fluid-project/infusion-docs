@@ -49,13 +49,13 @@ The following table provides an overview of the currently-supported decorators. 
             <td>String</td>
             <td>jQuery function to be invoked</td>
             <td rowspan="2">
-                ```javascript
-                decorators: [{
-                    type: "jQuery",
-                    func: "click",
-                    args: function() { $(this).hide(); }
-                }]
-                ```
+                <pre><code>
+                    decorators: [{
+                        type: "jQuery",
+                        func: "click",
+                        args: function() { $(this).hide(); }
+                    }]
+                </code></pre>
             </td>
         </tr>
         <tr>
@@ -73,12 +73,12 @@ The following table provides an overview of the currently-supported decorators. 
             <td>String</td>
             <td>Space-separated list of CSS class names</td>
             <td>
-                ```javascript
-                decorators: [{
-                    type: "addClass",
-                    classes: "fl-widget fl-centred"
-                }]
-                ```
+                <pre><code>
+                    decorators: [{
+                        type: "addClass",
+                        classes: "fl-widget fl-centred"
+                    }]
+                </code></pre>
             </td>
         </tr>
         <tr>
@@ -91,12 +91,12 @@ The following table provides an overview of the currently-supported decorators. 
             <td>String</td>
             <td>Space-separated list of CSS class names</td>
             <td>
-                ```javascript
-                decorators: [{
-                    type: "removeClass",
-                    classes: "fl-hidden"
-                }]
-                ```
+                <pre><code>
+                    decorators: [{
+                        type: "removeClass",
+                        classes: "fl-hidden"
+                    }]
+                </code></pre>
             </td>
         </tr>
         <tr>
@@ -109,13 +109,13 @@ The following table provides an overview of the currently-supported decorators. 
             <td>String</td>
             <td>Global function name to be invoked</td>
             <td rowspan="4">
-                ```javascript
-                decorators: [{
-                    type: "jQuery",
-                    func: "click",
-                    args: function() { $(this).hide(); }
-                }]
-                ```
+                <pre><code>
+                    decorators: [{
+                        type: "jQuery",
+                        func: "click",
+                        args: function() { $(this).hide(); }
+                    }]
+                </code></pre>
             </td>
         </tr>
         <tr>
@@ -147,12 +147,12 @@ The following table provides an overview of the currently-supported decorators. 
                 The key, or nickname for the decorated node - its allocated id will be stored in <code>idMap</code> under this key
             </td>
             <td>
-                ```javascript
-                decorators: [{
-                    type: "identify",
-                    key: "mySpecialName"
-                }]
-                ```
+                <pre><code>
+                    decorators: [{
+                        type: "identify",
+                        key: "mySpecialName"
+                    }]
+                </code></pre>
             </td>
         </tr>
         <tr>
@@ -165,12 +165,12 @@ The following table provides an overview of the currently-supported decorators. 
             <td>Object</td>
             <td>The attribute map to be applied to the rendered node</td>
             <td>
-                ```javascript
-                decorators: [{
-                    type: "attrs",
-                    attributes: ""
-                }]
-                ```
+                <pre><code>
+                    decorators: [{
+                        type: "attrs",
+                        attributes: ""
+                    }]
+                </code></pre>
             </td>
         </tr>
         <tr>
@@ -183,13 +183,13 @@ The following table provides an overview of the currently-supported decorators. 
             <td>String</td>
             <td>Name of event handler to be bound</td>
             <td rowspan="2">
-                ```javascript
-                decorators: [{
-                    type: "event",
-                    event: "click",
-                    handler: myHandler
-                }]
-                ```
+                <pre><code>
+                    decorators: [{
+                        type: "event",
+                        event: "click",
+                        handler: myHandler
+                    }]
+                </code></pre>
             </td>
         </tr>
         <tr>
