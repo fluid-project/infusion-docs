@@ -29,7 +29,7 @@ fluid.defaults("fluid.tests.parentComponent", {
         }
     }
 });
- 
+
 fluid.defaults("fluid.tests.childComponent", {
     gradeNames: ["fluid.eventedComponent", "autoInit"],
     events: {
@@ -63,13 +63,13 @@ fluid.defaults("fluid.tests.parentComponent", {
        }
     }
 });
- 
+
 fluid.defaults("fluid.tests.childComponent", {
     gradeNames: ["fluid.eventedComponent", "autoInit"],
     events: {
         parentEvent: null
     }
-}); 
+});
 ```
 
 ## Event Boiling ##
@@ -79,6 +79,10 @@ A **boiled** event is derived from another event (a **base event**) but allows t
 Boiled events are useful in wiring together consumers and producers of events who have different expectations - these differences can arise, for example, through the development of the codebases being in different lifecycles - perhaps the producer of the event is part of framework code which is not going to be updated for a long time, but has been written with a poorly planned API which does not expose crucial information which the event consumer requires.
 
 Suggestions are still welcomed for more a suitable name than **boiled events**.
+
+### Boiling One Single Event ###
+
+A boiled event is defined in just the same place as a standard event - in the `events` block of a component's defaults. The configuration ("right-hand side") value is more complex than that for a simple event - it needs to specify not only the base event, but also the transformation performed on the argument list. The configured value must contain two elements, the event property, which references the event to be boiled, and the `args` which specifies the argument list which will be received by listeners to the boiled event. This uses the standard `{context}.pathName` format for contextualised EL values which is used in IoC, with the addition that one extra context object is in scope - the context `{arguments}` allows the argument list to refer to the original argument list that was presented when the base event was fired. For example:
 
 #### Example 3 ####
 
@@ -100,7 +104,7 @@ fluid.defaults("fluid.tests.eventBoiled", {
 
 ### Boiling Multiple Events ###
 
-The event boiling can be used to boil multiple events that are either from the same or a different component. 
+The event boiling can be used to boil multiple events that are either from the same or a different component.
 
 #### Example 4 ####
 
@@ -130,7 +134,7 @@ fluid.defaults("fluid.tests.parentComponent", {
         }
     }
 });
- 
+
 fluid.defaults("fluid.tests.eventChild3", {
     gradeNames: ["fluid.eventedComponent", "autoInit"],
     events: {
@@ -145,7 +149,7 @@ The same syntax can be used to boil events from the same component, where the re
 
 ### Receiving a Different Signature in the Listener ###
 
-A more lightweight alternative to injecting or fabricating new events wholesale through boiling is to apply the process to just a single listener. This most often the appropriate approach, especially when the listener enjoys a signature that is not held in common with particularly many other functions around the architecture. The syntax used for listener boiling is actually identical to that applied for defining [Invokers](Invokers.md). 
+A more lightweight alternative to injecting or fabricating new events wholesale through boiling is to apply the process to just a single listener. This most often the appropriate approach, especially when the listener enjoys a signature that is not held in common with particularly many other functions around the architecture. The syntax used for listener boiling is actually identical to that applied for defining [Invokers](Invokers.md).
 
 Here is an example of a component which defines a single event, `simpleEvent` - the firer for it uses a signature `int value, boolean flag` but we have a listener that requires a different signature `Object that, int value` where the first argument consists of the component itself and the 2nd argument consists of the supplied first argument:
 
@@ -153,7 +157,7 @@ Here is an example of a component which defines a single event, `simpleEvent` - 
 examples.externalListener = function (that, value) {
     console.log("Received value ", value, " fired from component ", that);
 };
- 
+
 fluid.defaults("examples.boiledListenerComponent", {
     gradeNames: ["fluid.eventedComponent", "autoInit"],
     events: {
@@ -161,15 +165,15 @@ fluid.defaults("examples.boiledListenerComponent", {
     },
     listeners: {
         simpleEvent: { // In practice it's unlikely that this listener would be written in the same grade as the event,
-                       // since this case there would be little reason for the signature to mismatch. It's more likely 
-                       // this configuration would appear in another grade, or supplied as direct options, 
+                       // since this case there would be little reason for the signature to mismatch. It's more likely
+                       // this configuration would appear in another grade, or supplied as direct options,
  // subcomponent options, or distributeOptions
             funcName: "examples.externalListener",
             args: ["{that}", "{arguments.0"]
         }
     }
 });
- 
+
 var that = examples.boiledListenerComponent();
 that.fire(5, true); // listener above will log 5, that
 ```
@@ -195,7 +199,7 @@ fluid.defaults("examples.injectedListenerParent", {
         }
     }
 });
- 
+
 var that = examples.injectedListenerParent();
 that.events.parentEvent.fire(that, 5); // strikes above listener through injected listener attachment
 ```

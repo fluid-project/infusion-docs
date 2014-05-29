@@ -12,9 +12,9 @@ If you are creating a component that requires the use of the Renderer, you shoul
 fluid.defaults("my.component", {
     gradeNames: ["fluid.rendererComponent", "autoInit"],
     ... // put your options here
-     
+
 });
- 
+
 var that = my.component();
 ```
 
@@ -31,7 +31,7 @@ For detailed information on how to use this method, see [Renderer Components](Re
 
 ### `fluid.render` ###
 
-If you are not using `fluid.initRendererComponent`, you can use the primary renderer function, [fluid.render](fluid.render.md):
+If you are not using `fluid.rendererComponent`, you can use the primary renderer function, [fluid.render](fluid.render.md):
 
 ```javascript
 var template = fluid.render(source, target, tree, options);
@@ -57,8 +57,8 @@ In addition to these primary ways of using the Renderer, there are a several oth
 
 ### `fluid.rerender` ###
 
-For detailed information on how to use this function, see [fluid.reRender](fluid.reRender).
+For detailed information on how to use this function, see [fluid.reRender](fluid.reRender.md).
 
-### fluid.fetchResources ###
+### `fluid.fetchResources` ###
 
-For detailed information on how to use this function, see [fluid.fetchResources](fluid.fetchResources).
+For detailed information on how to use this function, see [fluid.fetchResources](fluid.fetchResources.md).

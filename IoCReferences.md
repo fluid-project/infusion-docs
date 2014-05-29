@@ -98,7 +98,7 @@ The set of components which are in scope for resolution from this site are shown
 
 ## Examples of `{<componentRef>}` ##
 
-In the example below, the IoC reference "{that}" on line 6 refers to the component in which it is being used.
+In the example below, the IoC reference `{that}` refers to the component in which it is being used.
 
 ```javascript
 fluid.defaults("fluid.prefs.separatedPanel", {
@@ -128,7 +128,7 @@ fluid.defaults("fluid.prefs.separatedPanel", {
 
 The above two examples are equivalent.
 
-In the example below, the IoC expression `{fluid.prefs.enactors.tableOfContents}` on line 6 refers to the component being defined by the `defaults` block. The short name `tableOfContents` cannot be used here, because it would not be unique: It would be unclear whether the nickname was referring to `fluid.prefs.enactors.tableOfContents` or `fluid.tableOfContents`.
+In the example below, the IoC expression `{fluid.prefs.enactors.tableOfContents}` refers to the component being defined by the `defaults` block. The short name `tableOfContents` cannot be used here, because it would not be unique: It would be unclear whether the nickname was referring to `fluid.prefs.enactors.tableOfContents` or `fluid.tableOfContents`.
 
 ```javascript
 fluid.defaults("fluid.prefs.enactors.tableOfContents", {
@@ -143,7 +143,7 @@ fluid.defaults("fluid.prefs.enactors.tableOfContents", {
 });
 ```
 
-Another way to avoid the ambiguity mentioned above would be to use the member name, which is the name used when defining the subcomponent in the components block. In the example below `{toc}` on line 10 refers to the name used to define the subcomponent on line 4.
+Another way to avoid the ambiguity mentioned above would be to use the member name, which is the name used when defining the subcomponent in the components block. In the example below `{toc}` refers to the name used to define the subcomponent in the component block.
 
 ```javascript
 fluid.defaults("fluid.prefs.enactors.tableOfContents", {
@@ -167,9 +167,9 @@ fluid.defaults("fluid.prefs.enactors.tableOfContents", {
 
 The example below includes several IoC references. All of them are inside a subcomponent declaration and all include `{controllers}`, which in this case is a reference to the parent component. Specifically:
 
-* on lines 16 and 17, the references are to the model and applier that are members of the parent component;
-* on lines 19-21, the references are to events defined on the parent component, on lines 7-10;
-* line 14 uses a reference to one of the selectors defined on the parent component, on line 4.
+* `{controllers}.model` and `{controllers}.applier` are references to the model and applier that are members of the parent component;
+* the IoC expressions in the subcomponent's events block are references to events defined on the parent component's event block;
+* `{controllers}.dom.scrubberContainer` is a reference to one of the selectors defined on the parent component.
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.controllers", {
@@ -202,7 +202,7 @@ fluid.defaults("fluid.videoPlayer.controllers", {
 
 ## Examples of `{arguments}.x` ##
 
-The example below uses the `{arguments}.x` syntax on line 9 to deliver the first and second arguments passed to listeners to the `onMove` event to the `fluid.moduleLayout.onMoveListener` function.
+The example below uses the `{arguments}.x` syntax to deliver the first and second arguments passed to listeners to the `onMove` event to the `fluid.moduleLayout.onMoveListener` function.
 
 ```javascript
 fluid.defaults("fluid.moduleLayoutHandler", {
@@ -221,7 +221,7 @@ fluid.defaults("fluid.moduleLayoutHandler", {
 
 ## Examples of `{<iocss expression>}` ##
 
-The example below uses an [IoCSS](IoCSS.md) expression on line 17. The expression refers to the `images` selector defined (on line 4) in the `moreText` subcomponent (lines 10-12) that is a direct descendent of the current component.
+The example below uses an [IoCSS](IoCSS.md) expression `{that > moreText}.options.selectors.images`. The expression refers to the `images` selector in the `moreText` subcomponent that is a direct descendent of the current component.
 
 ```javascript
 fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
@@ -274,9 +274,9 @@ fluid.defaults("fluid.pagedTable", {
 
 The above example defines a `rangeAnnotator`, which is used as a subcomponent of a pagedTable. This definition uses several IoC references:
 
-* on line 5, the expression "{pagedTable}.events.onRenderPageLinks" is used to refer to the onRenderPageLinks event of the pagedTable component
+* the expression "{pagedTable}.events.onRenderPageLinks" is used to refer to the onRenderPageLinks event of the pagedTable component
 
-* on line 7, three IoC references are used:
+* the IoC references:
     * `{pagedTable}.events.onRenderPageLinks` refers to the `pagedTable` component
     * `{arguments}.0` and `{arguments}.1` refer to the first and second arguments supplied when the source event is fired `onRenderPageLinks`
 
@@ -291,7 +291,7 @@ fluid.defaults("fluid.videoPlayer.languageControls.eventBinder", {
 });
 ```
 
-The above example uses two IoC references on line 4:
+The above example uses two IoC references:
 
 * `{button}.events.onPress` refers to the `onPress` even of the `button` component
 * `{menu}.toggleView` refers to the `toggleView` method of the `menu` component
@@ -317,8 +317,8 @@ fluid.defaults("fluid.uploader", {
 
 The above example uses IoC references in the `distributeOptions` block:
 
-* line 9 identifies the `options` block of the current `that` (i.e. `fluid.uploader`)
-* line 12 identifies the `uploaderImpl` subcomponent of the current `that` (defined on line 4) (see [IoCSS](IoCSS.md) for more information about this notation)
+* `{that}.options` identifies the `options` block of the current `that` (i.e. `fluid.uploader`)
+* `{that > uploaderImpl}.options` identifies the `uploaderImpl` subcomponent of the current `that` (`fluid.uploader`) (see [IoCSS](IoCSS.md) for more information about this notation)
 
 ## Reserved IoC Names ##
 

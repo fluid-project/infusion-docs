@@ -202,7 +202,7 @@ The following fields are supported by the `fluid.renderer.selection.inputs` expa
         <tr>
             <td><code>labelId</code></td>
             <td>The ID of the label for the input element.</td>
-            <td><code>String</code></td>
+            <td>String</td>
             <td>none</td>
         </tr>
         <tr>
@@ -286,7 +286,7 @@ The following fields are supported by the `fluid.renderer.condition` expander:
 
 #### Examples ####
 
-In this example, the `condition` is `that.options.showDeleteButton`. The renderer will evaluate the component's `showDeleteButton` option and if it is `true` will use the component tree specified by `trueTree`. Note that no `falseTree` is provided. If the option is `false` or not present, nothing will be rendered.
+In the following example, the `condition` is `that.options.showDeleteButton`. The renderer will evaluate the component's `showDeleteButton` option and if it is `true` will use the component tree specified by `trueTree`. Note that no `falseTree` is provided. If the option is `false` or not present, nothing will be rendered.
 
 ```javascript
 expander: {
@@ -311,7 +311,7 @@ expander: {
 }
 ```
 
-In this example, the `condition` is the return value of a call to `that.showMediumImage()`. If the function returns `true`, the image should be shown, and the `trueTree` component subtree will be used to render it. If the return value is `false`, the image should not be shown, and the `falseTree` subtree will be used to properly render the **empty space** instead of an image.
+In the following example, the `condition` is the return value of a call to `that.showMediumImage()`. If the function returns `true`, the image should be shown, and the `trueTree` component subtree will be used to render it. If the return value is `false`, the image should not be shown, and the `falseTree` subtree will be used to properly render the **empty space** instead of an image.
 
 ```javascript
 expander: {
@@ -346,7 +346,7 @@ expander: {
 }
 ```
 
-In this example, the `condition` is a call to the function `cspace.header.assertMenuItemDisplay()` with a particular argument taken from the `itemName` subcomponent. If the function call returns `true`, the renderer component subtree specified by `trueTree` will be used.
+In the following example, the `condition` is a call to the function `cspace.header.assertMenuItemDisplay()` with a particular argument taken from the `itemName` subcomponent. If the function call returns `true`, the renderer component subtree specified by `trueTree` will be used.
 
 ```javascript
 expander: {

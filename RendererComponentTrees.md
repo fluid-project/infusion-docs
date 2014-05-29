@@ -12,7 +12,7 @@ A renderer **component tree** describes the UI in terms of **renderer components
 }
 ```
 
-The renderer component for the selection is independent of whether or not it is rendered using a <select> element, a set of radio buttons, or a set of checkboxes.
+The renderer component for the selection is independent of whether or not it is rendered using a `<select>` element, a set of radio buttons, or a set of checkboxes.
 
 ## ProtoTrees ##
 

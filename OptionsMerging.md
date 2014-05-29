@@ -27,25 +27,25 @@ The following are the policy types that are supported, determined by the key's v
     </thead>
     <tbody>
         <tr>
-            <td><code>replace</code></td>
+            <td><code>"replace"</code></td>
             <td>
                 If any value is found at the EL path in a <code>source</code> object, the value held at the <code>target</code> path will be cleared (that is, blasted back to an empty state with no properties) before the values are copied.
             </td>
         </tr>
         <tr>
-            <td><code>noexpand</code></td>
+            <td><code>"noexpand"</code></td>
             <td>
                 Apply no <a href="ExpansionOfComponentOptions.md">expansion</a> to any of the options material in the tree below this path. Unless you also specify <code>nomerge</code>, although no expansion occurs, the contents of the source options will be merged together as if they consist of pure JSON material.
             </td>
         </tr>
         <tr>
-            <td><code>nomerge</code></td>
+            <td><code>"nomerge"</code></td>
             <td>
                 Can be specified together with, or separately from, <code>noexpand</code>. This directs the framework to perform no merging when multiple values are discovered at the same path - instead, the rightmost value from any of the sources will be chosen as the final value. The framework will make a good attempt to preserve the exact object handle present at that path in the final options structure. This is the appropriate policy when the option value does not consist of pure JSON material but instead contains some form of <em>exotic material</em> such as a Fluid component or native object (e.g. Date, Float32Array, Socket, etc.). The framework detects some kinds of native object (e.g. DOM nodes, jQuery objects) and protects them from merging without the use of this option.
             </td>
         </tr>
         <tr>
-            <td>Any other string value</td>
+            <td>Any other String value</td>
             <td>
                 The value will be interpreted as an EL path into a source object. If no user-supplied value is present at this options path (other than those supplied in <a href="UnderstandingComponentOptionsAndTheirDefaults.md">defaults</a>), the value will be taken from the final merged value held at this specified EL path. That is, this style of <code>policy</code> is used to specify that an options value has a default value which defaults to the value of <em>another supplied option</em>.
             </td>

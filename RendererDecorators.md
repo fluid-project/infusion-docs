@@ -250,7 +250,7 @@ Here is a simple component for which we will remove a CSS class:
 }
 ```
 
-### identify decorator ###
+### `identify` decorator ###
 
 Useful in more intricate scenarios, where the rendered nodes need to be easily and quickly retrievable, perhaps where events bound to one node need to manipulate another, or when nodes are part of a wider relation, such as table cells and their headers. The model behind the `identify` decorator, is that the node is given a free _nickname_ by the user, by which its final HTML id, and hence the node itself, can be quickly looked up later. This works in conjunction with a lookup table named `idMap` which is passed in the options structure to the renderer driver. As rendering progresses, the final HTML id allocated to the node is stored in `idMap` under the key provided to the `identify` decorator.
 
@@ -317,7 +317,7 @@ _Note specifying a value of `null` will remove the attribute._
 
 The final implemented decorator, `event`, allows direct access to the functionality of binding a raw browser event to the rendered node. This is not generally recommended, since this is more safely and portably achieved using `jQuery`. However, it is possible this might be a useful function in some special situation. The decorator has a member called `handler` which is directly assigned to be the native event handler for the event named `event`.
 
-For example, this decorator: 
+For example, this decorator:
 
 ```javascript
 decorators: {

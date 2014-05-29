@@ -10,9 +10,9 @@ If you are creating a component that requires the use of the Renderer, you shoul
 fluid.defaults("my.component", {
     gradeNames: ["fluid.rendererComponent", "autoInit"],
     .. // put your options here
-     
+
 });
- 
+
 var that = my.component();
 ```
 
@@ -163,7 +163,7 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
                     </dd>
                     <dt><dfn><code>applier</code></dfn></dt>
                     <dd>
-                        The internal <a href="ChangeApplier.md">Change Applier Component</a> that is used by this renderer component. 
+                        The internal <a href="ChangeApplier.md">Change Applier Component</a> that is used by this renderer component.
                     </dd>
                     <dt><dfn><code>that</code></dfn></dt>
                     <dd>The reference to the current renderer component.</dd>
@@ -179,10 +179,6 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
             <td>
                 The first event to be fired before events <code>onRenderTree</code> and <code>afterRender</code>.
             </td>
-        </tr>
-        <tr>
-            <th>Availability</th>
-            <td>Infusion 1.4 and later</td>
         </tr>
     </tbody>
 </table>
@@ -222,10 +218,6 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
                 The event fired after <code>prepareModelForRender</code> and before <code>afterRender</code>.
             </td>
         </tr>
-        <tr>
-            <th>Availability</th>
-            <td>Infusion 1.4 and later</td>
-        </tr>
     </tbody>
 </table>
 
@@ -257,10 +249,6 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
             <td>
                 The event fired after <code>onRenderTree</code> and <code>afterRender</code>.
             </td>
-        </tr>
-        <tr>
-            <th>Availability</th>
-            <td>Infusion 1.4 and later</td>
         </tr>
     </tbody>
 </table>
@@ -332,8 +320,8 @@ fluid.defaults("fluid.examples.renderer", {
         }
     }
 });
- 
- 
+
+
 var that = fluid.examples.renderer("#options");
 ```
 
