@@ -68,17 +68,17 @@ This style is used when we require a [Model Transformation](ModelTransformation.
             <td>source</td>
             <td>String (EL Reference or short local path)</td>
             <td>The source model path to be linked by this relay rule</td>
-            <td>"volume" / "{someComponent}.model.volume"</td>
+            <td><code>"volume"</code> / <code>"{someComponent}.model.volume"</code></td>
         </tr>
         <tr>
             <td>target</td>
             <td>String (EL Reference or short local path)</td>
             <td>The target model path to be linked by this relay rule</td>
-            <td>"volume" / "{someComponent}.model.volume"</td>
+            <td><code>"volume"</code> / <code>"{someComponent}.model.volume"</code></td>
         </tr>
         <tr>
             <td>singleTransform</td>
-            <td>JSON (single [Model Transformation](ModelTransformation.md) rule)</td>
+            <td>JSON (single <a href="ModelTransformation.md">Model Transformation</a> rule)</td>
             <td>A short form which can be used where the transformation consists of just a single Model Transformation transform rule</td>
             <td><pre>
 {
@@ -90,9 +90,9 @@ This style is used when we require a [Model Transformation](ModelTransformation.
         </tr>
         <tr>
             <td>transform</td>
-            <td>JSON (full [Model Transformation](ModelTransformation.md) document)</td>
+            <td>JSON (full <a href="ModelTransformation.md">Model Transformation</a> document)</td>
             <td>A long form which allows any valid Model Transformation document to be used to mediate the relay</td>
-            <td>See guide at (http://wiki.gpii.net/index.php/Architecture_-_Available_transformation_functions)</td>
+            <td>See this <a href="http://wiki.gpii.net/index.php/Architecture_-_Available_transformation_functions">list of available transformation functions</a> for more information.</td>
         </tr>
     </tbody>
 </table>
