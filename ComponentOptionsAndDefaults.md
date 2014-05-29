@@ -8,7 +8,7 @@ options that can be set by integrators to customize the behaviour. For example, 
 options for configuring the text content of the tooltip, the length of time the user must hover
 before the tooltip appears, the 'invitation text' that should be displayed in the field if it is empty, and other things.
 
-![image of an Inline Edit component with a tooltip](images/inline-edit-example.png)
+![image of an Inline Edit component with a tooltip](images/viewMode.png)
 
 Developers who are integrating an Inline Edit into their web application can use these options to
 customize the Inline Edit for their particular needs.
