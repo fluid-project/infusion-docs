@@ -24,7 +24,7 @@ the Framework Concepts discussion on [Model Objects](FrameworkConcepts.md#ModelO
 "Morally", a model should be "fully transparent" - meaning, that it consists of standard POJOs and
 is available for inspection by reading, using standard language constructs, at all times. For example,
 if model is a JavaScript variable holding the overall model, accessing a field within the model is as
-simple as writing a standard Javascript expression model.field1.subfield2 etc. In practice, we don't
+simple as writing a standard Javascript expression `model.field1.subfield2` etc. In practice, we don't
 advise that users in practice write JavaScript code that inspects models manually - instead, they
 should use the declarative features supplied by ChangeApplier both to trigger changes and react to them.
 
