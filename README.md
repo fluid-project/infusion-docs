@@ -4,7 +4,7 @@ Infusion Documentation
 Infusion
 --------
 
-* [Framework Concepts (wiki)](http://wiki.fluidproject.org/display/docs/Framework+Concepts)
+* [Framework Concepts](FrameworkConcepts.md)
 * Components
   * [Understanding Infusion Components](UnderstandingInfusionComponents.md)
   * [Understanding Component Options And Their Defaults](ComponentOptionsAndDefaults.md)
@@ -13,7 +13,7 @@ Infusion
   * [Component Lifecycle](ComponentLifecycle.md)
 * Inversion of Control
   * [How To Use Infusion IoC](HowToUseInfusionIoC.md)
-  * [Subcomponent Declaration (wiki)](http://wiki.fluidproject.org/display/docs/Subcomponent+Declaration)
+  * [Subcomponent Declaration](SubcomponentDeclaration.md)
   * [Contexts](Contexts.md)
   * [Invokers](Invokers.md)
   * [Expansion Of Component Options](ExpansionOfComponentOptions.md)
