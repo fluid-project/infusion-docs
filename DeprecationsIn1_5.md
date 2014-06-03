@@ -14,7 +14,7 @@ _**Note:** that this list is may not be exhaustive as other things may also be r
         <tr>
             <td>FSS</td>
             <td>
-                There are no CSS Framework requirements for wokring with Infusion. Infusion's strategy going forward will be to use custom CSS for component specific styling and [Foundation](http://foundation.zurb.com/) for demos, as needed.
+                There are no CSS Framework requirements for wokring with Infusion. Infusion's strategy going forward will be to use custom CSS for component specific styling and <a href="http://foundation.zurb.com/">Foundation</a> for demos, as needed.
             </td>
         </tr>
         <tr>
