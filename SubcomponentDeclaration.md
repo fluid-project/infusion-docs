@@ -156,7 +156,7 @@ Both of these schemes make use of a special top-level area in a component's opti
 
 ### Naming of dynamic components
 
-The actual member names given to dynamic components follows a very straightforward scheme. The very first such component created will have the same name as the `dynamicComponents` record entry. Subsequent such components will have the name <key>-<n> where <key> represents the record entry name and <n> holds an integer, initially with value 1, which will increment for each further dynamic component constructed using the record. In practice you should not use this information to "go looking" for dynamic components, but instead should expect to observe their effects by some scheme such as injecting events down into them to which they register listeners, or broadcasting listeners down into them by use of [distributeOptions](IoCSS.md) or [dynamic grades](ComponentGrades.md).
+The actual member names given to dynamic components follows a very straightforward scheme. The very first such component created will have the same name as the `dynamicComponents` record entry. Subsequent such components will have the name `<key>-<n>` where `<key>` represents the record entry name and `<n>` holds an integer, initially with value 1, which will increment for each further dynamic component constructed using the record. In practice you should not use this information to "go looking" for dynamic components, but instead should expect to observe their effects by some scheme such as injecting events down into them to which they register listeners, or broadcasting listeners down into them by use of [distributeOptions](IoCSS.md) or [dynamic grades](ComponentGrades.md).
 
 ### Future evolution of dynamic components
 
