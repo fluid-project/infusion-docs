@@ -16,4 +16,4 @@ If you want to use Infusion, you'll likely want to create components. Here's how
     * [Tutorial - Evented Components](Tutorial-EventedComponents.md)
     * [Tutorial - View Components](Tutorial-ViewComponents.md)
     * [Tutorial - Renderer Components](Tutorial-RendererComponents.md)
-5. [Tutorial - Subcompnoents](Tutorial-Subcomponents.md)
+5. [Tutorial - Subcomponents](Tutorial-Subcomponents.md)

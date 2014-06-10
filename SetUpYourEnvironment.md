@@ -6,7 +6,7 @@ If you haven't already, it might be helpful to read our [Developer Introduction 
 
 ## Set Up Directory Structure ##
 
-For this tutorial we'll assume this component is being created for your own use, not as a contribution to Infusion. If you do want to contribute your component to Infusion, the directory set-up and requirements will be a little different and is explained in [Contributing Code](ContributingCode.md).
+For this tutorial we'll assume this component is being created for your own use, not as a contribution to Infusion. If you do want to contribute your component to Infusion, the directory set-up and requirements will be a little different and is explained in [Contributing Code](http://wiki.fluidproject.org/display/fluid/Contributing+Code).
 
 Let's suppose you're creating a component that will display a bar graph of some data. First, set up your file folders in the following structure.
 

@@ -28,7 +28,7 @@ Each of these is discussed below.
 
 ### Data Model ###
 
-A renderer component supports a model (just as [Tutorial - Model Components](Tutorial-ModelComponents.md) and [Tutorial - View Components](Tutorial-ViewComponents.md) do). The model of a renderer component contains any data that is to be rendered by the component.
+A renderer component supports a model (just as [Model Components](Tutorial-ModelComponents.md) and [View Components](Tutorial-ViewComponents.md) do). The model of a renderer component contains any data that is to be rendered by the component.
 
 ### Templates ###
 

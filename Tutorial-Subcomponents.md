@@ -50,7 +50,7 @@ In addition to the `type` of subcomponent, other configuration information can b
 
 The Infusion [UI Options](UserInterfaceOptions.md) component presents a collection of controls that allow a user to specify their preferences for customizing the presentation of the user interface and content resources. It works with the User Interface Enhancer (UI Enhancer), which carries out the transformations based on the recorded preferences.
 
-The UI Options component has a component tree as shown to the right. Essentially:
+The UI Options component has a component tree as shown below. Essentially:
 
 * UI Options comes in three different versions, each of which have a UI Options subcomponent:
     * Separated Panel,
