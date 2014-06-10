@@ -4,7 +4,7 @@
 
 One of the primary functions of the Infusion [Preferences Framework](PreferencesFramework.md) is to allow you to create a Preferences Editor: a collection of adjusters that users can use to set their interface preferences.
 
-The Preferences Framework provides a utility that creates and instantiates a preferences editor in a single step, given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary](AuxiliarySchemaForPreferencesFramework.md) schemas.
+The Preferences Framework provides a utility that creates and instantiates a preferences editor in a single step, given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary](ASchemaForPreferencesFramework.md) schemas.
 
 ```javascript
 var prefsEditor = fluid.prefs.create(container[, options]);
@@ -102,12 +102,6 @@ Integrators can use one of these grades, or define their own grade, using one of
     <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a <a href="SettingsStore.md">Settings Store</a>.</td>
     <td>Integrators can define their own store grade by using the built-in default grade <code>"fluid.globalSettingsStore"</code> as a base grade.</td>
     <td><code>"fluid.globalSettingsStore"</code></td>
-</tr>
-<tr>
-    <td><code></code></td>
-    <td>(Optional) </td>
-    <td></td>
-    <td></td>
 </tr>
 <tr>
     <td><code>enhancerType</code></td>
