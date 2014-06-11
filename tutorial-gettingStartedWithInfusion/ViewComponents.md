@@ -1,8 +1,13 @@
-# Tutorial - View Components #
+# View Components #
+
+---
+Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
+
+---
 
 In most cases, you will likely be creating a component that will actually want to do something with your HTML page: process form input, update displays, etc. `little`, `evented` and `model` components don't provide any support for this: you'll need a **view component**.
 
-A view component provides support for a model and events (i.e. it is a model component and an evented component). It also provides supports for interaction with the DOM. The most useful of these is the [DOM Binder](DOMBinder.md). If your application has a user interface, you likely have a list of DOM elements you're interested in working with. A DOM Binder provides very easy, configurable access to these elements.
+A view component provides support for a model and events (i.e. it is a model component and an evented component). It also provides supports for interaction with the DOM. The most useful of these is the [DOM Binder](../DOMBinder.md). If your application has a user interface, you likely have a list of DOM elements you're interested in working with. A DOM Binder provides very easy, configurable access to these elements.
 
 ## Declaring a View Component ##
 
@@ -74,4 +79,4 @@ fluid.defaults("tutorials.currencyConverter", {
 });
 ```
 
-So far we have not added any behaviour to this skeleton view component - we'll orchestrate together all the model, event and view code we've seen so far together into a working component in our final section on [Tutorial - Renderer Components](Tutorial-RendererComponents.md).
+So far we have not added any behaviour to this skeleton view component - we'll orchestrate together all the model, event and view code we've seen so far together into a working component in our final section on [Renderer Components](RendererComponents.md).

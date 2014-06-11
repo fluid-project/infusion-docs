@@ -1,11 +1,16 @@
-# Tutorial - Model Components #
+# Model Components #
 
-Many components manage an internal [model](ModelObjects.md). For example:
+---
+Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 
-* the Infusion [Pager](Pager.md) component, which allows users to break up long lists of items into separate pages, maintains a model including what the current page is, how many items are shown per page, how the list is sorted, etc.
-* the Infusion [UI Options](UserInterfaceOptions.md) component uses a slider that maintains a model including the minimum and maximum values and the current setting
+---
 
-The Infusion Framework provides supports for model-bearing components. When you declare a component to be a **model component**, the Framework will automatically construct a ChangeApplier, which wraps the model with special functions that can be used to query and modify the model. The [ChangeApplier](ChangeApplier.md) helps to manage changes to the model, by maintaining lists of subscribers who can register interest in changes to different parts of it, and coordinating updates to this component's model with updates to other component models which are linked to it. It also allows you to add checks that can prevent changes to the model if necessary (e.g validation).
+Many components manage an internal [model](../ModelObjects.md). For example:
+
+* the Infusion [Pager](../Pager.md) component, which allows users to break up long lists of items into separate pages, maintains a model including what the current page is, how many items are shown per page, how the list is sorted, etc.
+* the Infusion [UI Options](../UserInterfaceOptions.md) component uses a slider that maintains a model including the minimum and maximum values and the current setting
+
+The Infusion Framework provides supports for model-bearing components. When you declare a component to be a **model component**, the Framework will automatically construct a ChangeApplier, which wraps the model with special functions that can be used to query and modify the model. The [ChangeApplier](../ChangeApplier.md) helps to manage changes to the model, by maintaining lists of subscribers who can register interest in changes to different parts of it, and coordinating updates to this component's model with updates to other component models which are linked to it. It also allows you to add checks that can prevent changes to the model if necessary (e.g validation).
 
 ## Declaring a Model Component ##
 
@@ -25,7 +30,7 @@ fluid.defaults("tutorials.modelBearingComponent", {
 });
 ```
 
-The `model` record can consist of any JSON material, as well as containing [IoC references](IoCReferences.md) to the models and options of other components, as well as [expanders](ExpansionOfComponentOptions.md). Any IoC references to another component's model will set up a permanent [model relay](ModelRelay.md) between the two models at the endpoints of the reference. This relay will be bidirectional - any updates propagated into either of the models linked by the relay by their respective ChangeAppliers will be relayed into the model at the other end of the link.
+The `model` record can consist of any JSON material, as well as containing [IoC references](../IoCReferences.md) to the models and options of other components, as well as [expanders](../ExpansionOfComponentOptions.md). Any IoC references to another component's model will set up a permanent [model relay](../ModelRelay.md) between the two models at the endpoints of the reference. This relay will be bidirectional - any updates propagated into either of the models linked by the relay by their respective ChangeAppliers will be relayed into the model at the other end of the link.
 
 ## Using The Change Applier ##
 

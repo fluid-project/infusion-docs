@@ -2,7 +2,7 @@
 
 ## Background ##
 
-If you haven't already, it might be helpful to read our [Developer Introduction to Infusion Framework](DeveloperIntroductionToInfusionFramework.md) before starting this tutorial.
+If you haven't already, it might be helpful to read our [Developer Introduction to Infusion Framework](../DeveloperIntroductionToInfusionFramework.md) before starting this tutorial.
 
 ## Set Up Directory Structure ##
 

@@ -1,9 +1,14 @@
-# Tutorial - Evented Components #
+# Evented Components #
+
+---
+Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
+
+---
 
 Many times, you will be creating a component that works in an environment where other things are operating, and it will probably need to notify those other things of key **events** in its lifecycle. Events can be used to trigger changes in the visual appearance of a component, or actions by other components. For example:
 
-* the Infusion [Reorderer](Reorderer.md) component provides drag-and-drop functionality for lists, grids, etc. Its operation has several key events, such as when a move is initiated, when it's completed, etc.
-* the Infusion [Uploader](Uploader.md) component, a queued multi-file uploader, has events including when a file is successfully added to the queue, when each file starts being uploaded, when each upload completes, etc.
+* the Infusion [Reorderer](../Reorderer.md) component provides drag-and-drop functionality for lists, grids, etc. Its operation has several key events, such as when a move is initiated, when it's completed, etc.
+* the Infusion [Uploader](../Uploader.md) component, a queued multi-file uploader, has events including when a file is successfully added to the queue, when each file starts being uploaded, when each upload completes, etc.
 
 The Infusion Framework defines its own event system. Infusion events differ from browser events in that they are not bound to the DOM or its insfrastructure. Infusion events can be used for anything, not only user-interface related events.
 
@@ -30,7 +35,7 @@ fluid.defaults("tutorials.eventedComponent", {
 The contents of the `events` object is a set of key-value pairs where the key is the event name and the value is the event type.
 
 * **Event naming conventions**: You can call your events anything you like, but Infusion has adopted the convention of prefacing events with on or after to indicate whether or not the event is being fired before some action is taken, or after the action has completed.
-* **Event types**: If the event is a standard event defined on this component, you will normally write `null` here. Event types supported by the framework are described at the [Infusion Event System](InfusionEventSystem.md). Another possibility is to inject an event appearing elsewhere in the component tree by use of an [IoC reference](IoCReferences.md) such as `{myOtherComponent}.events.myEvent`.
+* **Event types**: If the event is a standard event defined on this component, you will normally write `null` here. Event types supported by the framework are described at the [Infusion Event System](../InfusionEventSystem.md). Another possibility is to inject an event appearing elsewhere in the component tree by use of an [IoC reference](../IoCReferences.md) such as `{myOtherComponent}.events.myEvent`.
 
 ### Example: Saving and Deleting ###
 
@@ -55,7 +60,7 @@ When you declare your component to be an **evented** component, the Framework wi
 
 ### Example: Saving and Deleting ###
 
-Our record editor component will likely have public methods for the saving and removing of records. We will define these methods using the framework facility for [invokers](Invokers.md). These methods will be responsible for firing the events.
+Our record editor component will likely have public methods for the saving and removing of records. We will define these methods using the framework facility for [invokers](../Invokers.md). These methods will be responsible for firing the events.
 
 ```javascript
 // Declare the events in the defaults
@@ -107,7 +112,7 @@ Component grades can be combined, if necessary. Suppose we wish to add events to
 
 ### Compatibility note:###
 
-During the transition period between Infusion 1.5 and Infusion 2.0 it is recommended that authors of new code use the names `fluid.modelRelayComponent` and `fluid.standardRelayComponent` rather than `fluid.modelComponent` and `fluid.standardComponent` respectively. See [Component Grades](ComponentGrades.md) for details.
+During the transition period between Infusion 1.5 and Infusion 2.0 it is recommended that authors of new code use the names `fluid.modelRelayComponent` and `fluid.standardRelayComponent` rather than `fluid.modelComponent` and `fluid.standardComponent` respectively. See [Component Grades](../ComponentGrades.md) for details.
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
