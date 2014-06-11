@@ -1,5 +1,10 @@
 # Set up your environment #
 
+---
+Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
+
+---
+
 ## Background ##
 
 If you haven't already, it might be helpful to read our [Developer Introduction to Infusion Framework](../DeveloperIntroductionToInfusionFramework.md) before starting this tutorial.
