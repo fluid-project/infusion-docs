@@ -18,7 +18,7 @@ var builder = fluid.prefs.builder(<options>);
 ### Return Value ###
 
 <table>
-<tr><td>Object</td><td>The builder object. See <a href="#builder-structure">Builder Structure</a> below for more information.</td></tr>
+<tr><td>Object</td><td>The builder object. See <a href="#builder-object">Builder Object</a> below for more information.</td></tr>
 </table>
 
 ### Options ###
