@@ -96,7 +96,7 @@ Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/Mod
 
 ## Examples ##
 
-** Example: Enactor that calls a setter function when the model changes **
+**Example: Enactor that calls a setter function when the model changes**
 ```javascript
 fluid.defaults("gpii.enactor.cursorSize", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
@@ -128,7 +128,7 @@ gpii.enactor.cursorSize.set = function (times, cursorDiv) {
 };
 ```
 
-** Example: Enactor that uses a text-to-speech server to self-voice a page **
+**Example: Enactor that uses a text-to-speech server to self-voice a page**
 ```javascript
 fluid.defaults("gpii.explorationTool.enactors.selfVoicing", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
