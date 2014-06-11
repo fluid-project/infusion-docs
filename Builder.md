@@ -12,13 +12,13 @@ var builder = fluid.prefs.builder(<options>);
 ### Parameters ###
 
 <table>
-<tr><td><code>options</code></td><td>(Object) The configuration options for the builder. See [Options](#options) below for more information.</td></tr>
+<tr><td><code>options</code></td><td>(Object) The configuration options for the builder. See <a href="#options">Options</a> below for more information.</td></tr>
 </table>
 
 ### Return Value ###
 
 <table>
-<tr><td>Object</td><td>The builder object. See [Builder Structure](#builder-structure) below for more information.</td></tr>
+<tr><td>Object</td><td>The builder object. See <a href="#builder-structure">Builder Structure</a> below for more information.</td></tr>
 </table>
 
 ### Options ###
@@ -35,13 +35,13 @@ This option can be used to specify the names of grades that define schemas, as a
 </tr>
 <tr>
     <td><code>primarySchema</code></td>
-    <td>(Optional) A JavaScript object providing primary schema details. See [Processing the Schemas](#processing-the-schemas) below for more details.</td>
+    <td>(Optional) A JavaScript object providing primary schema details. See <a href="#processing-the-schemas">Processing the Schemas</a> below for more details.</td>
     <td>Object</td>
     <td><code>{}</code></td>
 </tr>
 <tr>
     <td><code>auxiliarySchema</code></td>
-    <td>(Optional) A JavaScript object providing auxiliary schema details. See [Processing the Schemas](#processing-the-schemas) below for more details. If you do not specify the grade name of a grade that includes an auxiliary schema, you must include this option.</td>
+    <td>(Optional) A JavaScript object providing auxiliary schema details. See <a href="#processing-the-schemas">Processing the Schemas</a> below for more details. If you do not specify the grade name of a grade that includes an auxiliary schema, you must include this option.</td>
     <td>Object</td>
     <td><code>{}</code></td>
 </tr>
