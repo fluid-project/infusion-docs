@@ -14,6 +14,7 @@ var builder = fluid.prefs.builder(<options>);
 <table>
 <tr><td><code>options</code></td><td>(Object) The configuration options for the builder. See <a href="#options">Options</a> below for more information.</td></tr>
 </table>
+where `options` is a JavaScript object containing information configuring your builder.
 
 ### Return Value ###
 
@@ -137,12 +138,12 @@ The builder object returned by a call to `fluid.prefs.builder()` has the followi
 <tr>
     <td><code>options.assembledPrefsEditorGrade</code></td>
     <td>String</td>
-    <td><a href="ComponentGrades.md">Grade name</a> of the constructed preferences editor; Can be used to instantiate the <a href="PreferencesEditor.md">preferences editor</a>, <a href="UIEnhancer.md">enhancer</a> and <a href="SettingsStore.md">settings store</a> using `<a href="fluid.invokeGlobalFunction.md">fluid.invokeGlobalFunction</a>`.</td>
+    <td><a href="ComponentGrades.md">Grade name</a> of the constructed preferences editor; Can be used to instantiate the <a href="PreferencesEditor.md">preferences editor</a>, <a href="UIEnhancer.md">enhancer</a> and <a href="SettingsStore.md">settings store</a> using <code><a href="fluid.invokeGlobalFunction.md">fluid.invokeGlobalFunction</a></code>.</td>
 </tr>
 <tr>
     <td><code>options.assembledUIEGrade</code></td>
     <td>String</td>
-    <td><a href="ComponentGrades.md">Grade name</a> of the constructed <a href="UIEnhancer.md">enhancer</a>; Can be used to instantiate the enhancer and <a href="SettingsStore.md">settings store</a> using `<a href="fluid.invokeGlobalFunction.md">fluid.invokeGlobalFunction</a>`.</td>
+    <td><a href="ComponentGrades.md">Grade name</a> of the constructed <a href="UIEnhancer.md">enhancer</a>; Can be used to instantiate the enhancer and <a href="SettingsStore.md">settings store</a> using <code><a href="fluid.invokeGlobalFunction.md">fluid.invokeGlobalFunction</a></code>.</td>
 </tr>
 </table>
 
