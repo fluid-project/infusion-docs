@@ -35,7 +35,7 @@ So what does this look like in general?
 })(jQuery, fluid_1_5);
 ```
 
-You might like to think of the [`fluid.registerNamespace`](fluid.registerNamespace.md) call as equivalent to a line such as `var mynamespace = mynamespace || {};` written at the global scope. It is less cumbersome and more expressive of your intention, as well as easily allowing you to declare nested namespaces in one definition. Use this framework utility unless your requirements are very sophisticated (that is, you are writing a framework which you expect to be version-managed independently of both jQuery and fluid - in which case you should supply your framework's global object as an argument to the overall file closure.
+You might like to think of the [`fluid.registerNamespace`](../fluid.registerNamespace.md) call as equivalent to a line such as `var mynamespace = mynamespace || {};` written at the global scope. It is less cumbersome and more expressive of your intention, as well as easily allowing you to declare nested namespaces in one definition. Use this framework utility unless your requirements are very sophisticated (that is, you are writing a framework which you expect to be version-managed independently of both jQuery and fluid - in which case you should supply your framework's global object as an argument to the overall file closure.
 
 The parameters to the anonymous function, `$` and `fluid`, will be used as shorthand for the arguments that were passed in: `jQuery` and `fluid_1_5` respectively. This allow us, for example, to upgrade to the next version of Infusion (e.g. `fluid_1_5`) simply by changing the one argument, instead of having to change every single use of the word `fluid`.
 

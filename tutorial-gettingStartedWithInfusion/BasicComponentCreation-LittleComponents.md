@@ -9,7 +9,7 @@ The definition of a component involves two things:
 
 ## Grade and Default Options ##
 
-A component's grade and any default options are registered with the framework using a call to [`fluid.defaults`](fluid.defaults.md), which has two parameters: the component name and an object containing the defaults. The parent grades for the component are specified in an array in the defaults called `gradeNames`. For a **little component**, specify the grade as `fluid.littleComponent`:
+A component's grade and any default options are registered with the framework using a call to [`fluid.defaults`](../fluid.defaults.md), which has two parameters: the component name and an object containing the defaults. The parent grades for the component are specified in an array in the defaults called `gradeNames`. For a **little component**, specify the grade as `fluid.littleComponent`:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
@@ -21,7 +21,7 @@ fluid.defaults("tutorials.simpleComponent", {
 
 ### Options ###
 
-Integrators can override your defaults when they instantiate the component, to customize its appearance or behaviour. The Framework will take care of [merging the integrator's values](OptionsMerging.md) with your defaults.
+Integrators can override your defaults when they instantiate the component, to customize its appearance or behaviour. The Framework will take care of [merging the integrator's values](../OptionsMerging.md) with your defaults.
 
 We'll go through some examples of options, to give you an idea of what they're all about.
 
@@ -38,7 +38,7 @@ fluid.defaults("tutorials.currencyConverter", {
 
 #### Example: Inline Edit ####
 
-The Infusion [Inline Edit](InlineEdit.md) component uses a tooltip and defines (among other things) defaults for the delay before the tooltip appears, the text to display - even whether or not to enable it at all:
+The Infusion [Inline Edit](../InlineEdit.md) component uses a tooltip and defines (among other things) defaults for the delay before the tooltip appears, the text to display - even whether or not to enable it at all:
 
 ```javascript
 fluid.defaults("fluid.inlineEdit", {
@@ -52,7 +52,7 @@ fluid.defaults("fluid.inlineEdit", {
 
 #### Example: Progress ####
 
-The Infusion [Progress](Progress.md) component uses jQuery animations to show and hide a progress bar. The defaults include objects that are passed to jQuery to configure the animations:
+The Infusion [Progress](../Progress.md) component uses jQuery animations to show and hide a progress bar. The defaults include objects that are passed to jQuery to configure the animations:
 
 ```javascript
 fluid.defaults("fluid.progress", {
@@ -76,7 +76,7 @@ fluid.defaults("fluid.progress", {
 
 ## The Creator Function ##
 
-All components have a **creator function**: a public function that is invoked to instantiate the component. In general, the framework will instantiate the creator function for you automatically, given the component's default options. The framework will in general also take responsibility for calling the creator function for you automatically as well, when your component is registered as a [subcomponent](SubcomponentDeclaration.md) of another. In the rare case you need to construct a component directly using a JavaScript function call, Infusion components have a standardized function signature:
+All components have a **creator function**: a public function that is invoked to instantiate the component. In general, the framework will instantiate the creator function for you automatically, given the component's default options. The framework will in general also take responsibility for calling the creator function for you automatically as well, when your component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another. In the rare case you need to construct a component directly using a JavaScript function call, Infusion components have a standardized function signature:
 
 * **little**, **evented** and **model** components accept a single argument: options
 * **view** and **renderer** components accept two arguments: container and options
@@ -85,14 +85,14 @@ _(We'll get into what these arguments are soon.)_
 
 Creator functions can be defined in one of two ways
 
-1. using [IoC - Inversion of Control](IoC-InversionOfControl.md): The framework will create the function according to your specifications
+1. using [IoC - Inversion of Control](../IoC-InversionOfControl.md): The framework will create the function according to your specifications
 2. directly: You write the function yourself - this option is not recommended and the ability to do this will be removed in Infusion 2.0
 
 ### Using IoC ###
 
 #### Automatic creator function generation ####
 
-The [IoC - Inversion of Control](IoC-InversionOfControl.md) system can automatically generate a component creator function for you. This is accomplished by added a special grade to the `gradeNames` property: **"autoInit"**:
+The [IoC - Inversion of Control](../IoC-InversionOfControl.md) system can automatically generate a component creator function for you. This is accomplished by added a special grade to the `gradeNames` property: **"autoInit"**:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {

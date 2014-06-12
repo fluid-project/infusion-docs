@@ -1,6 +1,6 @@
 # Pick a component type #
 
-The Infusion Framework provides lots of supports for creating components. We have defined a number of different types, or grades, of component, and the Framework will automatically set up different stuff for you depending on which grade of component you create. (For more advanced information about grades, see [Component Grades](ComponentGrades.md).)
+The Infusion Framework provides lots of supports for creating components. We have defined a number of different types, or grades, of component, and the Framework will automatically set up different stuff for you depending on which grade of component you create. (For more advanced information about grades, see [Component Grades](../ComponentGrades.md).)
 
 The basic types are:
 
@@ -14,7 +14,7 @@ These types of components build upon each other, a teeny little bit like inherit
 
 * **model** and **evented components** add support for models and events (respectively) to **little components**
 * **view components** support models and events, and also add support for views.
-* **renderer components** are **view components** with the [Renderer](Renderer.md) added.
+* **renderer components** are **view components** with the [Renderer](../Renderer.md) added.
 
 ![A venn diagram showing the composition of grades](images/component-grades-venn-diagram.svg)
 
