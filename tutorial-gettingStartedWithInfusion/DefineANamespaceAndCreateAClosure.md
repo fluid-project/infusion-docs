@@ -1,5 +1,10 @@
 # Define a namespace and create a clousre #
 
+---
+Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
+
+---
+
 Infusion code generally follows a few conventions that we recommend, and that we'll use in this tutorial. We'll start with two of them:
 
 1. namespacing, and

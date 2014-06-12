@@ -137,7 +137,7 @@ While it is not necessary to create event handlers to update the model when user
     responding to changes in the model by updating the converted amount
     refreshing the display when the result is updated.
 
-We can clean up the implementation of our component from the [Evented Components tutorial](../EventedComponents.md) still further by writing these event handlers also in a declarative form. The display update can be handled by a `modelListeners` entry of the kind we have seen before:
+We can clean up the implementation of our component from the [Evented Components tutorial](EventedComponents.md) still further by writing these event handlers also in a declarative form. The display update can be handled by a `modelListeners` entry of the kind we have seen before:
 
 ```javascript
 modelListeners: {

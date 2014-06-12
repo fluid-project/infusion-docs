@@ -27,7 +27,7 @@ fluid.defaults("tutorials.viewBearingComponent", {
 });
 ```
 
-_**Note:** View components automatically also provide support for model and events, so you don't need to include those in your `gradeNames` list.
+_**Note:** View components automatically also provide support for model and events, so you don't need to include those in your `gradeNames` list._
 
 ### Selectors ###
 
@@ -37,7 +37,7 @@ The `selectors` property in your defaults is the list of DOM elements you want t
 
 Consider a simple user interface for the currency converter example we looked at earlier:
 
-![Currency Converter Screenshot](images/curr-converter-screenshot.png)
+![Currency Converter Screenshot](../images/curr-converter-screenshot.png)
 
 There are several elements we'll need to identify:
 
@@ -46,7 +46,7 @@ There are several elements we'll need to identify:
 * the "Convert!" button
 * the output of the results
 
-We make sure our HTML has unique classes or IDs on each of these elements. The Infusion convention is to use class names that are prefaced with "flc-<componentName>" (where "flc" is short for "fluid component"). We'll adopt a similar convention here, and use a preface of "tut-currencyConverter-" for "tutorial currency converter." So here's what this might look like:
+We make sure our HTML has unique classes or IDs on each of these elements. The Infusion convention is to use class names that are prefaced with `flc-<componentName>` (where `flc` is short for "fluid component"). We'll adopt a similar convention here, and use a preface of `tut-currencyConverter-` for "tutorial currency converter". So here's what this might look like:
 
 ```html
 <h1>Currency Converter</h1>
