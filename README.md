@@ -42,6 +42,7 @@ Infusion
   * [Builder](Builder.md)
     * [Primary Schema](PrimarySchemaForPreferencesFramework.md)
     * [Auxiliary Schema](AuxiliarySchemaForPreferencesFramework.md)
+  * [Enactors](Enactors.md)
 
 Tutorials
 ---------
