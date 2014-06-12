@@ -9,13 +9,14 @@ An Enactor is an [Infusion component](UnderstandingInfusionComponents.md) that "
 
 Enactors defaults must include certain things:
 
-* the `fluid.prefs.enactor` grade
+* the `fluid.prefs.enactor` [grade](ComponentGrades.md)
 * a preferences map (only when using [schemas](PrimarySchemaForPreferencesFramework.md))
 
 Each of these is explained below.
 
 ### Grade ###
 
+Enactors must be defined using the `fluid.prefs.enactors` [grade](ComponentGrades.md), as shown in the following code block:
 ```javascript
 fluid.defaults("my.pref.enactor", {
     gradeNames: ["fluid.prefs.enactors", "autoInit"],
@@ -23,7 +24,7 @@ fluid.defaults("my.pref.enactor", {
 });
 ```
 
-Enactors are, by default, [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md) and [evented components](tutorial-gettingStartedWithInfusion/EventedComponents.md), so they automatically provides support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the `[fluid.viewComponent](fluid.viewComponent.md)` grade should be used, and the `selectors` option should be provided, as shown in the following example:
+Enactors are, by default, [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md) and [evented components](tutorial-gettingStartedWithInfusion/EventedComponents.md), so they automatically provides support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewComponent`](fluid.viewComponent.md) grade should be used, and the `selectors` option should be provided, as shown in the following example:
 ```javascript
 fluid.defaults("my.pref.enactor", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
@@ -34,7 +35,7 @@ fluid.defaults("my.pref.enactor", {
  });
 ```
 
-If you are defining several enactors which share common functionality, you can create a single grade that includes that functionality and uses the fluid.prefs.enactors grade, then use your common grade for your enactors, as illustrated in the following code sample:
+If you are defining several enactors which share common functionality, you can create a single grade that includes that functionality and uses the `fluid.prefs.enactors` grade, then use your common grade for your enactors, as illustrated in the following code sample:
 ```javascript
 // shared grade, defining common functionality
 fluid.defaults("my.pref.enactorGrade", {
@@ -92,7 +93,7 @@ fluid.defaults("fluid.prefs.enactors.textFont", {
 
 ## Models and Model Changes ##
 
-Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md): They automatically have a top-level property called model which holds the Enactor's internal model representing the preference it acts upon. It is not necessary for you to define this property directly; its structure will be inferred from the preferences map. If you are working with grades instead of with schemas, the model will be inferred from the rules supplied for the Panel.
+Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md): They automatically have a top-level property called `model` which holds the Enactor's internal model representing the preference it acts upon. It is not necessary for you to define this property directly; its structure will be inferred from the preferences map. If you are working with grades instead of with schemas, the model will be inferred from the rules supplied for the Panel.
 
 ## Examples ##
 

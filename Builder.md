@@ -49,10 +49,10 @@ This option can be used to specify the names of grades that define schemas, as a
 
 _**NOTE:** You must provide at least one of_
 
-* the `auxiliarySchema option`, or
+* the `auxiliarySchema` option, or
 * a `gradeName` indicating an auxiliary schema.
 
-If you provide both, they will be merged (with the auxiliarySchema overriding anything in the grade schema), but you must provide at least one.
+If you provide both, they will be merged (with the `auxiliarySchema` overriding anything in the grade schema), but you must provide at least one.
 
 ## Usage ##
 
@@ -120,8 +120,8 @@ var myBuilder = fluid.prefs.builder({
 
 The Preferences Framework builds an internal, preliminary primary schema as follows:
 
-1. It combines any schemas it finds in the fluid.prefs.schemas namespace;
-1. It merges these with any information found in the primarySchema option.
+1. It combines any schemas it finds in the `fluid.prefs.schemas` namespace;
+2. It merges these with any information found in the `primarySchema` option.
 
 This preliminary schema is then filtered based on the preferences found in the auxiliary schema to produce the subset of only preferences found in both the primary and auxiliary schemas. This set of preferences will be the final set supported by the builder. NOTE: All panels and enactors defined in the auxiliary schema will be created and rendered, but _only those that have corresponding preferences in the primary schema will actually work_.
 
@@ -137,12 +137,12 @@ The builder object returned by a call to `fluid.prefs.builder()` has the followi
 <tr>
     <td><code>options.assembledPrefsEditorGrade</code></td>
     <td>String</td>
-    <td>[Grade name](ComponentGrades.md) of the constructed preferences editor; Can be used to instantiate the [preferences editor](PreferencesEditor.md), [enhancer](UIEnhancer.md) and [settings store](SettingsStore.md) using `[fluid.invokeGlobalFunction](fluid.invokeGlobalFunction.md)`.</td>
+    <td><a href="ComponentGrades.md">Grade name</a> of the constructed preferences editor; Can be used to instantiate the <a href="PreferencesEditor.md">preferences editor</a>, <a href="UIEnhancer.md">enhancer</a> and <a href="SettingsStore.md">settings store</a> using `<a href="fluid.invokeGlobalFunction.md">fluid.invokeGlobalFunction</a>`.</td>
 </tr>
 <tr>
     <td><code>options.assembledUIEGrade</code></td>
     <td>String</td>
-    <td>[Grade name](ComponentGrades.md) of the constructed [enhancer](UIEnhancer.md); Can be used to instantiate the enhancer and [settings store](SettingsStore.md) using `[fluid.invokeGlobalFunction](fluid.invokeGlobalFunction.md)`.</td>
+    <td><a href="ComponentGrades.md">Grade name</a> of the constructed <a href="UIEnhancer.md">enhancer</a>; Can be used to instantiate the enhancer and <a href="SettingsStore.md">settings store</a> using `<a href="fluid.invokeGlobalFunction.md">fluid.invokeGlobalFunction</a>`.</td>
 </tr>
 </table>
 
