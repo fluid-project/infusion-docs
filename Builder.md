@@ -30,7 +30,7 @@ where `options` is a JavaScript object containing information configuring your b
     <td><code>gradeNames</code></td>
     <td>(Optional) A list of grade names to be used for the builder.
 
-This option can be used to specify the names of grades that define schemas, as an alternative to specifying the schemas through the direct options. If you do not provide the `auxiliarySchema` option, you must include the grade name of a grade that includes an auxiliary schema.</td>
+This option can be used to specify the names of grades that define schemas, as an alternative to specifying the schemas through the direct options. If you do not provide the <code>auxiliarySchema</code> option, you must include the grade name of a grade that includes an auxiliary schema.</td>
     <td>Array of strings</td>
     <td>none</td>
 </tr>
@@ -124,7 +124,7 @@ The Preferences Framework builds an internal, preliminary primary schema as foll
 1. It combines any schemas it finds in the `fluid.prefs.schemas` namespace;
 2. It merges these with any information found in the `primarySchema` option.
 
-This preliminary schema is then filtered based on the preferences found in the auxiliary schema to produce the subset of only preferences found in both the primary and auxiliary schemas. This set of preferences will be the final set supported by the builder. NOTE: All panels and enactors defined in the auxiliary schema will be created and rendered, but _only those that have corresponding preferences in the primary schema will actually work_.
+This preliminary schema is then filtered based on the preferences found in the auxiliary schema to produce the subset of only preferences found in both the primary and auxiliary schemas. This set of preferences will be the final set supported by the builder. _**NOTE:** All panels and enactors defined in the auxiliary schema will be created and rendered, but only those that have corresponding preferences in the primary schema will actually work_.
 
 ## Output of Builder ##
 
