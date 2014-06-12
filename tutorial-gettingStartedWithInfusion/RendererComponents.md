@@ -101,7 +101,7 @@ As mentioned above, you also need to provide a renderer component tree. Create a
 
 In general, renderer component trees contain one entry per renderer component. One renderer component is typically one element in a user interface, for example: a text entry field, a set of radio buttons, a row in a table.
 
-In a renderer component tree, the binding to the data model is specified using a special notation: the [EL path](../FrameworkConcepts.md#el) into the data model is enclosed in `"${...}"`. Some types of renderer components, such as a selection, have a particular format. For details see [ProtoComponent Types](../ProtoComponentTypes.md). The preferred way of specifying the component tree to a renderer component is via the `protoTree` top-level option.
+In a renderer component tree, the binding to the data model is specified using a special notation: the [EL path](../FrameworkConcepts.md#el-paths) into the data model is enclosed in `"${...}"`. Some types of renderer components, such as a selection, have a particular format. For details see [ProtoComponent Types](../ProtoComponentTypes.md). The preferred way of specifying the component tree to a renderer component is via the `protoTree` top-level option.
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
