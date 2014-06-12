@@ -36,7 +36,7 @@ The [Auxiliary Schema](AuxiliarySchemaForPreferencesFramework.md) defines all th
 * where to find HTML templates and string bundles,
 * what component to use to act on preference settings.
 
-The Auxiliary Schema links to the preferences specified in the Primary Schema using the preference name, which is used as the type in a preferences block:
+The Auxiliary Schema links to the preferences specified in the Primary Schema using the preference name, which is used as the `type` in a preferences block:
 
 ```javascript
 {
@@ -70,7 +70,7 @@ The Auxiliary Schema also specifies which components should be used for the pane
 
 ## Panel Component ##
 
-Each [panel component](Panels.md) must include a `preference map` option in its defaults, called preferenceMap. The Preferences Framework uses the preference map to populate some of the panel's defaults using information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md).
+Each [panel component](Panels.md) must include a preference map option in its defaults, called `preferenceMap`. The Preferences Framework uses the preference map to populate some of the panel's defaults using information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md).
 
 ### Example: ###
 
@@ -90,7 +90,7 @@ fluid.defaults("fluid.prefs.panel.textSize", {
 
 ## Enactor Component ##
 
-Each enactor component must include a `preference map` option in its defaults, called preferenceMap. As with the panels, the Preferences Framework uses the preference map to populate some of the enactor's defaults using information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md). The structure of the enactor's preference map is the same as that for the panel.
+Each enactor component must include a preference map option in its defaults, called `preferenceMap`. As with the panels, the Preferences Framework uses the preference map to populate some of the enactor's defaults using information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md). The structure of the enactor's preference map is the same as that for the panel.
 
 ### Example: ###
 
