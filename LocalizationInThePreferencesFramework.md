@@ -1,7 +1,13 @@
+Localization in the Preferences Framework
+=========================================
+
 Overview
+--------
 
 Localization in the Preferences Framework makes use of message bundles: JSON files containing the strings that are to be used in the interface. The Preferences Framework combines any message bundles into a single bundle and makes that bundle available to the components that need to use the strings.
+
 Message Bundles
+---------------
 
 Message bundles are JSON files containing key/value pairs representing the message key and the localized text associated with it. Each set of localized text should be contained in its own message bundle.
 {
@@ -19,13 +25,15 @@ Message bundles cannot contain arrays. Instead a namespace should be used to gro
     "contrast-lgdg": "Low contrast",
     "contrastLabel": "Colour & Contrast"
 }
+
 Preferences Editor Component Hierarchy
+--------------------------------------
 
 Understanding how to access message bundles is helped by understanding the general structure of the components of a preferences editor. The diagram below illustrates this structure and shows where the messages can be accessed. The rest of this page provides specific details about how to specify message bundles and how to retrieve strings.
 
 [Figure 1: Structure of preferences editor components]
 
-PrefsEditorLoader
+### PrefsEditorLoader
 
 All versions of preferences editors (separated panel, full page with preview and full page without preview) are instances of a "PrefsEditorLoader" components. The PrefsEditorLoader coordinates the work of its three subcomponents: MessageLoader, TemplateLoader and PrefsEditor. In particular, the PrefsEditorLoader
 
@@ -35,7 +43,7 @@ All versions of preferences editors (separated panel, full page with preview and
 
 To access the message bundle from other components on the IoC tree, use "{prefsEditorLoader}.msgResolver".
 
-PrefsEditor
+### PrefsEditor
 
 PrefsEditor is the host component that holds all the actual panel (or adjuster) components as subcomponents. By default, the message bundle is not passed down to PrefsEditor. If your PrefsEditor component will need direct access to the message bundle, provide it at the instantiation of any PrefsEditor instance, as shown in the following example:
 fluid.prefs.separatedPanel("#myPrefsEditor", {
@@ -46,10 +54,12 @@ fluid.prefs.separatedPanel("#myPrefsEditor", {
 
 If the message bundle is provided to PrefsEditor this way, access it within the PrefsEditor component using "{that}.options.msgResolver".
 
-Panels
+### Panels
 
 The message bundle is attached to each panel component as the parentBundle option. To access it from within a panel, use "{that}.options.parentBundle".
+
 Adding Message Bundles
+----------------------
 
 Message bundles can be specified in one of two ways:
 
@@ -59,9 +69,9 @@ Message bundles can be specified in one of two ways:
 The Preferences Framework will load and combine all of the Message Bundles into a single Message Bundle which is bound to the prefsEditorLoader component at the msgResolver property (as described above).
 
 Any panel that has the grade "fluid.prefs.defaultPanel" will have access to the combined Message Bundle at its parentBundle option (as described above). When using the auxiliary schema, all panels are assigned the grade "fluid.prefs.defaultPanel" by the Framework.
-
  
-Example Auxiliary Schema
+### Example Auxiliary Schema
+
 {
     "namespace": "fluid.prefs.constructed",
     "templatePrefix": "../../../framework/preferences/html/",
@@ -102,7 +112,9 @@ Example Auxiliary Schema
         }
     }
 }
-Example Message Loader Specification
+
+### Example Message Loader Specification
+
 fluid.defaults("my.messageLoader", {
     gradeNames: ["fluid.prefs.resourceLoader", "autoInit"],
     templates: {
@@ -117,8 +129,11 @@ fluid.prefs.separatedPanel("#myPrefsEditor", {
     },
     ...
 });
+
 Using Message Bundles
-In the ProtoTrees
+---------------------
+
+### In the ProtoTrees
 
 Strings from the Message Bundles are rendered into the templates through the protoTrees, using the messagekey, the name of the string in the bundle:
 Example use in a ProtoTree
@@ -138,7 +153,8 @@ JSON message bundle
     "linksChoiceLabel": "Underline and bold",
     "inputsChoiceLabel": "Enlarge buttons, menus, text-fields, and other inputs"
 }
-IoC References
+
+### IoC References
 
 Message Bundles can also be resolved directly through an IoC reference making use of the msgLookup property, which is automatically created for any panel component. This process is quite similar to how IoC references to selectors are resolved.
 fluid.defaults("fluid.slidingPanel", {
@@ -201,7 +217,8 @@ It is accessed the same way that an individual string is referenced, except that
     }
     ...
 });
-Direct Access
+
+### Direct Access
 
 The strings can also be accessed directly, outside of the context of IoC references or renderer protoTrees (for example, in an invoker function), by making function calls to the internal string bundle lookup() method.
 that.msgLookup.lookup(value); // where value is either the string name or the key in the stringArrayIndex to lookup.
