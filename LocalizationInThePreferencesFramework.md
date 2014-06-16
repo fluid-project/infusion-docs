@@ -10,12 +10,17 @@ Message Bundles
 ---------------
 
 Message bundles are JSON files containing key/value pairs representing the message key and the localized text associated with it. Each set of localized text should be contained in its own message bundle.
+
+```javascript
 {
     "slidingPanelShowText": "+ Show Display Preferences",
     "slidingPanelHideText": "- Hide"
 }
+```
 
 Message bundles cannot contain arrays. Instead a namespace should be used to group message keys together. This will require extra processing when using the messages. (See Using Message Bundles below). Note that the namespace should not include ".", which is used for path parsing.
+
+```javascript
 {
     "contrast-default": "Default",
     "contrast-bw": "Black on white",
@@ -25,32 +30,36 @@ Message bundles cannot contain arrays. Instead a namespace should be used to gro
     "contrast-lgdg": "Low contrast",
     "contrastLabel": "Colour & Contrast"
 }
+```
 
 Preferences Editor Component Hierarchy
 --------------------------------------
 
 Understanding how to access message bundles is helped by understanding the general structure of the components of a preferences editor. The diagram below illustrates this structure and shows where the messages can be accessed. The rest of this page provides specific details about how to specify message bundles and how to retrieve strings.
 
-[Figure 1: Structure of preferences editor components]
+![Figure 1: Structure of preferences editor components](images/PrefsFrameworkLocalization.png)
 
 ### PrefsEditorLoader
 
 All versions of preferences editors (separated panel, full page with preview and full page without preview) are instances of a "PrefsEditorLoader" components. The PrefsEditorLoader coordinates the work of its three subcomponents: MessageLoader, TemplateLoader and PrefsEditor. In particular, the PrefsEditorLoader
 
-    parses and assembles JSON strings loaded by the MessageLoader,
-    runs the assembled JSON through the message resolver to create the lookup function, and
-    attaches the message resolver bundle as a member, accessible through "that.msgResolver".
+- parses and assembles JSON strings loaded by the MessageLoader,
+- runs the assembled JSON through the message resolver to create the lookup function, and
+- attaches the message resolver bundle as a member, accessible through "that.msgResolver".
 
 To access the message bundle from other components on the IoC tree, use "{prefsEditorLoader}.msgResolver".
 
 ### PrefsEditor
 
 PrefsEditor is the host component that holds all the actual panel (or adjuster) components as subcomponents. By default, the message bundle is not passed down to PrefsEditor. If your PrefsEditor component will need direct access to the message bundle, provide it at the instantiation of any PrefsEditor instance, as shown in the following example:
+
+```javascript
 fluid.prefs.separatedPanel("#myPrefsEditor", {
     prefsEditor: {
         msgResolver: "{prefsEditorLoader}.msgResolver"
     }
 });
+```
 
 If the message bundle is provided to PrefsEditor this way, access it within the PrefsEditor component using "{that}.options.msgResolver".
 
@@ -63,8 +72,8 @@ Adding Message Bundles
 
 Message bundles can be specified in one of two ways:
 
-    through the auxiliary schema (if schemas are being used), or
-    directly to the messageLoader (if grades are being used).
+1. through the auxiliary schema (if schemas are being used), or
+1. directly to the messageLoader (if grades are being used).
 
 The Preferences Framework will load and combine all of the Message Bundles into a single Message Bundle which is bound to the prefsEditorLoader component at the msgResolver property (as described above).
 
@@ -72,6 +81,7 @@ Any panel that has the grade "fluid.prefs.defaultPanel" will have access to the 
  
 ### Example Auxiliary Schema
 
+```javascript
 {
     "namespace": "fluid.prefs.constructed",
     "templatePrefix": "../../../framework/preferences/html/",
@@ -112,9 +122,11 @@ Any panel that has the grade "fluid.prefs.defaultPanel" will have access to the 
         }
     }
 }
+```
 
 ### Example Message Loader Specification
 
+```javascript
 fluid.defaults("my.messageLoader", {
     gradeNames: ["fluid.prefs.resourceLoader", "autoInit"],
     templates: {
@@ -129,6 +141,7 @@ fluid.prefs.separatedPanel("#myPrefsEditor", {
     },
     ...
 });
+```
 
 Using Message Bundles
 ---------------------
@@ -157,6 +170,8 @@ JSON message bundle
 ### IoC References
 
 Message Bundles can also be resolved directly through an IoC reference making use of the msgLookup property, which is automatically created for any panel component. This process is quite similar to how IoC references to selectors are resolved.
+
+```javascript
 fluid.defaults("fluid.slidingPanel", {
     ...
     strings: {
@@ -165,36 +180,16 @@ fluid.defaults("fluid.slidingPanel", {
     }
     ...
 });
+```
 
 There are other, more complex cases where an array of strings is required (for example, for a set of radio buttons or a drop-down). In these cases, a stringArrayIndex in the components options needs to be specified. This defines both
 
-    which strings to include and
-    the order in which they should be returned.
+1. which strings to include and
+1. the order in which they should be returned.
 
 It is accessed the same way that an individual string is referenced, except that reference should point to the key in the stringArrayIndex instead of a single string name. In the example below, the stringArrayIndex is used on line 4 to define the theme string bundle, and the theme string bundle is referenced on line 15:
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-    
+
+```javascript
     fluid.defaults("fluid.prefs.panel.contrast", {
     ...
     stringArrayIndex: {
@@ -217,8 +212,12 @@ It is accessed the same way that an individual string is referenced, except that
     }
     ...
 });
+```
 
 ### Direct Access
 
 The strings can also be accessed directly, outside of the context of IoC references or renderer protoTrees (for example, in an invoker function), by making function calls to the internal string bundle lookup() method.
+
+```javascript
 that.msgLookup.lookup(value); // where value is either the string name or the key in the stringArrayIndex to lookup.
+```
