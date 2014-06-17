@@ -149,8 +149,17 @@ Using Message Bundles
 ### In the ProtoTrees
 
 Strings from the Message Bundles are rendered into the templates through the protoTrees, using the messagekey, the name of the string in the bundle:
-Example use in a ProtoTree
-fluid.defaults("fluid.prefs.panels.linksControls", {
+
+<table>
+    <thead>
+        <tr>
+            <th>Example use in a ProtoTree</th>
+            <th>JSON message bundle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td valign="baseline"><pre><code>fluid.defaults("fluid.prefs.panels.linksControls", {
     ...
     protoTree: {
         label: {messagekey: "linksLabel"},
@@ -159,13 +168,15 @@ fluid.defaults("fluid.prefs.panels.linksControls", {
         links: "${links}",
         inputsLarger: "${inputsLarger}"
     }
-});
-JSON message bundle
-{
-    "linksLabel": "Links & buttons",
+});</code></pre></td>
+            <td valign="baseline"><pre><code>{
+    "linksLabel": "Links &amp; buttons",
     "linksChoiceLabel": "Underline and bold",
     "inputsChoiceLabel": "Enlarge buttons, menus, text-fields, and other inputs"
-}
+}</code></pre></td>
+        </tr>
+    </tbody>
+</table>
 
 ### IoC References
 
