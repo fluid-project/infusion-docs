@@ -16,7 +16,7 @@ Each of these is explained below.
 
 ## Grade ##
 
-Panels must be defined using the `fluid.prefs.panel` [grade](ComponentGrades.md), as shown on line 2 in the following code block:
+Panels must be defined using the `fluid.prefs.panel` [grade](ComponentGrades.md), as shown in the following code block:
 
 ```javascript
 fluid.defaults("my.pref.panel", {
@@ -129,9 +129,31 @@ fluid.defaults("fluid.prefs.panel.layoutControls", {
 
 In rare cases, it may not be possible to specify the protoTree in a declarative manner. In these cases, use the `produceTree` option to declare the name of a function that will generate the required protoTree.
 
+```javascript
+fluid.defaults("fluid.prefs.panel.layoutControls", {
+    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    selectors: {
+        label: ".flc-prefsEditor-toc-label",
+        choiceLabel: ".flc-prefsEditor-toc-choice-label",
+        toc: ".flc-prefsEditor-toc"
+    },
+    invokers: {
+        produceTree: "fluid.prefs.panel.layoutControls.produceTree"
+    }
+});
+
+fluid.prefs.panel.layoutControls.produceTree = function () {
+    return {
+        label: {messagekey: "tocLabel"},
+        choiceLabel: {messagekey: "tocChoiceLabel"},
+        toc: "${toc}"
+    };
+}
+```
+
 ## Models and Model Changes ##
 
-Panels are, by default, Infusion [model components](Tutorial-ModelComponents.md): They automatically have a top-level property called `model` which holds the Panel's internal model representing the preference it acts upon. It is not necessary for you to define this property directly; its structure will be inferred from the preferences map. If you are working with grades instead of with schemas, the model will be inferred from the rules supplied for the Panel.
+Panels are, by default, Infusion [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md): They automatically have a top-level property called `model` which holds the Panel's internal model representing the preference it acts upon. It is not necessary for you to define this property directly; its structure will be inferred from the preferences map. If you are working with grades instead of with schemas, the model will be inferred from the rules supplied for the Panel.
 
 ## Examples ##
 

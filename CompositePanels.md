@@ -8,7 +8,7 @@ _**NOTE:** Subpanels **must** contain only one preference._
 
 ## Grades ##
 
-Composite panels must be defined with the `fluid.prefs.compositePanel` [grade](ComponentGrades.md), as shown on line 2 in the following code block:
+Composite panels must be defined with the `fluid.prefs.compositePanel` [grade](ComponentGrades.md), as shown in the following code block:
 
 ```javascript
 fluid.defaults("my.panels.composite", {
@@ -46,7 +46,7 @@ groups: {
 }
 ```
 
-In the code block above, the `panels` list on line 7 is an array of names. These are derived from the keys in the auxiliary schema that associate panels with preferences.
+In the code block above, the `panels` list is an array of names. These are derived from the keys in the auxiliary schema that associate panels with preferences.
 
 ## Templates ##
 
@@ -63,7 +63,7 @@ A composite panel and its subpanels can each have their own JSON message file.
 ## Examples ##
 
 Composite panel HTML template:
-```javascript
+```html
 <div class="my-composite-panel">
     <div class="subpanel-1-container"></div>
     <div class="subpanel-2-container"></div>
