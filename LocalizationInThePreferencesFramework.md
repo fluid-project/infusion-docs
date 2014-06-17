@@ -41,7 +41,7 @@ Understanding how to access message bundles is helped by understanding the gener
 
 ### PrefsEditorLoader
 
-All versions of preferences editors (separated panel, full page with preview and full page without preview) are instances of a "PrefsEditorLoader" components. The PrefsEditorLoader coordinates the work of its three subcomponents: MessageLoader, TemplateLoader and PrefsEditor. In particular, the PrefsEditorLoader
+All versions of preferences editors (separated panel, full page with preview and full page without preview) are instances of a "PrefsEditorLoader" component. The PrefsEditorLoader coordinates the work of its three subcomponents: MessageLoader, TemplateLoader and PrefsEditor. In particular, the PrefsEditorLoader
 
 - parses and assembles JSON strings loaded by the MessageLoader,
 - runs the assembled JSON through the [message resolver](http://wiki.fluidproject.org/display/docs/fluid.messageResolver) to create the lookup function, and
@@ -51,7 +51,7 @@ To access the message bundle from other components on the IoC tree, use "`{prefs
 
 ### PrefsEditor
 
-PrefsEditor is the host component that holds all the actual panel (or adjuster) components as subcomponents. By default, the message bundle is not passed down to PrefsEditor. If your PrefsEditor component will need direct access to the message bundle, provide it at the instantiation of any PrefsEditor instance, as shown in the following example:
+PrefsEditor is the host component that holds all the actual panel (or adjuster) components as subcomponents. By default, the message bundle is *not* passed down to PrefsEditor. If your PrefsEditor component will need direct access to the message bundle, provide it at the instantiation of any PrefsEditor instance, as shown in the following example:
 
 ```javascript
 fluid.prefs.separatedPanel("#myPrefsEditor", {
