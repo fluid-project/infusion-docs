@@ -26,19 +26,22 @@ For a control involving repeated data (e.g. a drop-down or radio buttons), your 
 
 Some Examples
 
-| HTML element | Sample Markup |
-|--------------|---------------|
-|drop-down|```html
-<label for="magnifier-position"></label>
-<select id="magnifier-position"></select>
-```|
-|checkbox|```html
-<input type="checkbox" id="media-choice"/>
-<label for="media-choice"></label>
-```|
-|radio button|```html
-<div>
-    <input type="radio" name="theme" id="bw" value="bw" />
-    <label for="bw"></label>
-</div>
-```| 
+<table>
+    <thead>
+        <tr>
+            <th>HTML element</th>
+            <th>Sample Markup</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>drop-down</td>
+            <td>
+                ```html
+                <label for="magnifier-position"></label>
+                <select id="magnifier-position"></select>
+                ```
+            </td>
+        </tr>
+    </tbody>
+</table>
