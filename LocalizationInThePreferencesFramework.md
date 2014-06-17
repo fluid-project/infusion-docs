@@ -159,7 +159,7 @@ Strings from the Message Bundles are rendered into the templates through the pro
     </thead>
     <tbody>
         <tr>
-            <td style="vertical-align:baseline"><pre><code>fluid.defaults("fluid.prefs.panels.linksControls", {
+            <td valign="baseline"><pre><code>fluid.defaults("fluid.prefs.panels.linksControls", {
     ...
     protoTree: {
         label: {messagekey: "linksLabel"},
@@ -169,7 +169,7 @@ Strings from the Message Bundles are rendered into the templates through the pro
         inputsLarger: "${inputsLarger}"
     }
 });</code></pre></td>
-            <td style="vertical-align:baseline"><pre><code>{
+            <td valign="baseline"><pre><code>{
     "linksLabel": "Links &amp; buttons",
     "linksChoiceLabel": "Underline and bold",
     "inputsChoiceLabel": "Enlarge buttons, menus, text-fields, and other inputs"
