@@ -38,8 +38,8 @@ Some Examples
             <td>drop-down</td>
             <td>
                 <pre><code>
-                &lt;label for="magnifier-position"&gt;&lt;/label&gt;
-                &lt;select id="magnifier-position"&gt;&lt;/select&gt;
+&lt;label for="magnifier-position"&gt;&lt;/label&gt;
+&lt;select id="magnifier-position"&gt;&lt;/select&gt;
                 </code></pre>
             </td>
         </tr>
@@ -47,8 +47,8 @@ Some Examples
             <td>checkbox</td>
             <td>
                 <pre><code>
-                &lt;input type="checkbox" id="media-choice"/&gt;
-                &lt;label for="media-choice"&gt;&lt;/label&gt;
+&lt;input type="checkbox" id="media-choice"/&gt;
+&lt;label for="media-choice"&gt;&lt;/label&gt;
                 </code></pre>
             </td>
         </tr>
@@ -56,10 +56,10 @@ Some Examples
             <td>radio button</td>
             <td>
                 <pre><code>
-                    &lt;div&gt;
-                        &lt;input type="radio" name="theme" id="bw" value="bw" /&gt;
-                        &lt;label for="bw"&gt;&lt;/label&gt;
-                    &lt;/div&gt;
+&lt;div&gt;
+    &lt;input type="radio" name="theme" id="bw" value="bw" /&gt;
+    &lt;label for="bw"&gt;&lt;/label&gt;
+&lt;/div&gt;
                 </code></pre>
             </td>
         </tr>
@@ -88,8 +88,8 @@ Some Examples
             <td>drop-down</td>
             <td>
                 <pre><code>
-                &lt;label class="flc-prefsEditor-magPositionLabel" for="magnifier-position"&gt;&lt;/label&gt;
-                &lt;select class="flc-prefsEditor-magPositionInput" id="magnifier-position"&gt;&lt;/select&gt;
+&lt;label class="flc-prefsEditor-magPositionLabel" for="magnifier-position"&gt;&lt;/label&gt;
+&lt;select class="flc-prefsEditor-magPositionInput" id="magnifier-position"&gt;&lt;/select&gt;
                 </code></pre>
             </td>
         </tr>
@@ -97,8 +97,8 @@ Some Examples
             <td>checkbox</td>
             <td>
                 <pre><code>
-                &lt;input class="flc-prefsEditor-captionsInput" type="checkbox" id="captions-choice"/&gt;
-                &lt;label class="flc-prefsEditor-captionsLabel" for="captions-choice"&gt;&lt;/label&gt;
+&lt;input class="flc-prefsEditor-captionsInput" type="checkbox" id="captions-choice"/&gt;
+&lt;label class="flc-prefsEditor-captionsLabel" for="captions-choice"&gt;&lt;/label&gt;
                 </code></pre>
             </td>
         </tr>
@@ -106,10 +106,10 @@ Some Examples
             <td>radio button</td>
             <td>
                 <pre><code>
-                    &lt;div class="flc-prefsEditor-themeRow"&gt;
-                        &lt;input class="flc-prefsEditor-themeInput" type="radio" name="theme" id="bw" value="bw" /&gt;
-                        &lt;label class="flc-prefsEditor-themeLabel" for="bw"&gt;&lt;/label&gt;
-                    &lt;/div&gt;
+&lt;div class="flc-prefsEditor-themeRow"&gt;
+    &lt;input class="flc-prefsEditor-themeInput" type="radio" name="theme" id="bw" value="bw" /&gt;
+    &lt;label class="flc-prefsEditor-themeLabel" for="bw"&gt;&lt;/label&gt;
+&lt;/div&gt;
                 </code></pre>
             </td>
         </tr>
@@ -128,7 +128,7 @@ The CSS required will, of course, be dependent on the design. Some examples from
 
 ### Example 1: A radio button styled colour and contrast panel ###
 
-** UI and MARKUP **
+**UI and MARKUP**
 
 ![a radio button styled colour and contrast panel](../images/radio-styled.png)
 
@@ -148,7 +148,7 @@ The CSS required will, of course, be dependent on the design. Some examples from
 </div>
 ```
 
-** CSS **
+**CSS**
 
 For the header:
 ```css
@@ -198,7 +198,7 @@ For the radio buttons:
 
 ### Example 2: A checkbox styled table of contents panel ###
 
-** UI and MARKUP **
+**UI and MARKUP**
 
 ![a checkbox styled table of contents panel](../images/checkbox-styled.png)
 
@@ -219,7 +219,7 @@ For the radio buttons:
 </div>
 ```
 
-** CSS **
+**CSS**
 
 For the switch:
 ```css
