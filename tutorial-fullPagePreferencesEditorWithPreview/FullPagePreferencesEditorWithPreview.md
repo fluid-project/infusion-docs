@@ -28,7 +28,7 @@ These are the basic steps to create a UI Options page for your site:
 * [Step 2: Add dependencies to the page](#step-2-add-dependencies-to-the-page)
 * [Step 3: Write a script to create the UI Options component](#step-3-write-a-script-to-create-the-ui-options-component)
 * [Step 4: Prepare the Preview template](#step-4-prepare-the-preview-template)
-* [One last thing!](#one-last-thing!)
+* [One last thing!](#one-last-thing)
 
 The rest of this tutorial will explain each of these steps in detail.
 
