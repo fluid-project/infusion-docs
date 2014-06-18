@@ -38,7 +38,8 @@ Each enactor defines a "preference map," which map the information in the [Prima
         },
         ...
     }
-}```
+}
+```
 
 ### Examples ###
 
