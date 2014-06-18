@@ -29,12 +29,12 @@ Each enactor defines a "preference map," which map the information in the [Prima
 ### Format ###
 
 ```json
-preferenceMap: {
-    <key of preference from primary schema>: {
-        <path in enactor's options where value should be held>: <key in primary schema where value held>
-        ... any number of the above, as required ...
+"preferenceMap": {
+    "<key of preference from primary schema>": {
+        "<path in enactor's options where value should be held>": "<key in primary schema where value held>"
+        ...
     },
-    ... any number of the above, as required ...
+    ...
 }
 ```
 

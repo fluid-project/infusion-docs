@@ -27,13 +27,13 @@ Each panel and enactor defines a "preference map," which map the information in 
 ### Format ###
 
 ```json
-preferenceMap: {
-    <key from primary schema>: {
-        <path in panel's options where value should be held>: <key in primary schema where value held>,
-        <path in panel's options where value should be held>: <key in primary schema where value held>,
-        ... any number of the above, as required ...
+"preferenceMap": {
+    "<key from primary schema>": {
+        "<path in panel's options where value should be held>": "<key in primary schema where value held>",
+        "<path in panel's options where value should be held>": "<key in primary schema where value held>",
+        ...
     },
-    ... any number of the above, as required ...
+    ...
 }
 ```
 
