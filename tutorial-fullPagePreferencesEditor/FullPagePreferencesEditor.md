@@ -25,9 +25,9 @@ You're putting together a website that you know will have a diverse audience. Yo
 
 These are the basic steps to create a UI Options page for your site:
 
-* [Step 1: Prepare your page](#step-1:-prepare-your-page)
-* [Step 2: Add dependencies to the page](#step-2:-add-dependencies-to-the-page)
-* [Step 3: Write a script to create the UI Options component](#step-3:-write-a-script-to-create-the-ui-options-component)
+* [Step 1: Prepare your page](#step-1-prepare-your-page)
+* [Step 2: Add dependencies to the page](#step-2-add-dependencies-to-the-page)
+* [Step 3: Write a script to create the UI Options component](#step-3-write-a-script-to-create-the-ui-options-component)
 * [One last thing!](#one-last-thing!)
 
 The rest of this tutorial will explain each of these steps in detail.
@@ -106,7 +106,7 @@ Note that the `infusion-custom.js` file is a concatenation of all of the JavaScr
 
 ## Step 3: Write a Script to Create the UI Options Component ##
 
-The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1](#step-1:-prepare-your-page).
+The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1](#step-1-prepare-your-page).
 
 ```html
 <body>
@@ -125,7 +125,7 @@ The simplest way to add the UI Options component to your page is using a `<scrip
 1. the selector of the container for the component, and
 2. an options object for configuring the component.
 
-The selector for our UI Options will be the ID of the `<div>` we created in [Step 1](#step-1:-prepare-your-page).
+The selector for our UI Options will be the ID of the `<div>` we created in [Step 1](#step-1-prepare-your-page).
 
 We will use the options to tell the component about two things:
 
