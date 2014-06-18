@@ -17,7 +17,6 @@ See Also:
 * [Tutorial - User Interface Options](../tutorial-userInterfaceOptions/UserInterfaceOptions.md)
 * [Working With A Preferences Editor On Your Site](../WorkingWithAPreferencesEditorOnYourSite.md)
 * [UI Options Instructional Demos](http://build.fluidproject.org/infusion/instructionalDemos/framework/preferences/)
-* [Full Page UI Options](../tutorial-fullPagePreferencesEditor/FullPagePreferencesEditor.md)
 
 ## Scenario ##
 
