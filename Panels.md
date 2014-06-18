@@ -127,8 +127,11 @@ fluid.defaults("fluid.prefs.panel.layoutControls", {
 });
 ```
 
-In rare cases, it may not be possible to specify the protoTree in a declarative manner. In these cases, use the `produceTree` option to declare the name of a function that will generate the required protoTree.
+### Prototree (or produceTree function) ###
 
+The `protoTree` option defines the Renderer component tree – the instructions to the Renderer for how to render the data. In general, it consists of one property per selector, defining how that particular element in the template should be used. The property will define which element in the data model to use, or a message key in a message bundle if the element is a label. See the [Renderer](Renderer.md) documentation for information on how to define Renderer protoTrees.
+
+__Example: A checkbox adjuster__
 ```javascript
 fluid.defaults("fluid.prefs.panel.layoutControls", {
     gradeNames: ["fluid.prefs.panel", "autoInit"],
@@ -137,19 +140,15 @@ fluid.defaults("fluid.prefs.panel.layoutControls", {
         choiceLabel: ".flc-prefsEditor-toc-choice-label",
         toc: ".flc-prefsEditor-toc"
     },
-    invokers: {
-        produceTree: "fluid.prefs.panel.layoutControls.produceTree"
-    }
-});
-
-fluid.prefs.panel.layoutControls.produceTree = function () {
-    return {
+    protoTree: {
         label: {messagekey: "tocLabel"},
         choiceLabel: {messagekey: "tocChoiceLabel"},
         toc: "${toc}"
-    };
-}
+    }
+});
 ```
+
+In rare cases, it may not be possible to specify the protoTree in a declarative manner. In these cases, use the `produceTree` option to declare the name of a function that will generate the required protoTree.
 
 ## Models and Model Changes ##
 
