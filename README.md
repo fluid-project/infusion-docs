@@ -37,6 +37,12 @@ Infusion
   * [Cutpoints](Cutpoints.md)
   * [Renderer Components](RendererComponents.md)
   * [Renderer Decorators](RendererDecorators.md)
+* [Preferences Framework](PreferencesFramework.md)
+  * [Preferences Editor](PreferencesEditor.md)
+  * [Builder](Builder.md)
+    * [Primary Schema](PrimarySchemaForPreferencesFramework.md)
+    * [Auxiliary Schema](AuxiliarySchemaForPreferencesFramework.md)
+  * [Enactors](Enactors.md)
 
 Tutorials
 ---------
