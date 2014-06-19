@@ -45,9 +45,9 @@ All versions of preferences editors (separated panel, full page with preview and
 
 - parses and assembles JSON strings loaded by the MessageLoader,
 - runs the assembled JSON through the [message resolver](http://wiki.fluidproject.org/display/docs/fluid.messageResolver) to create the lookup function, and
-- attaches the message resolver bundle as a member, accessible through "`that.msgResolver`".
+- attaches the message resolver bundle as a member, accessible through `that.msgResolver`.
 
-To access the message bundle from other components on the IoC tree, use "`{prefsEditorLoader}.msgResolver`".
+To access the message bundle from other components on the IoC tree, use `{prefsEditorLoader}.msgResolver`.
 
 ### PrefsEditor
 
@@ -61,11 +61,11 @@ fluid.prefs.separatedPanel("#myPrefsEditor", {
 });
 ```
 
-If the message bundle is provided to PrefsEditor this way, access it within the PrefsEditor component using "`{that}.options.msgResolver`".
+If the message bundle is provided to PrefsEditor this way, access it within the PrefsEditor component using `{that}.options.msgResolver`.
 
 ### Panels
 
-The message bundle is attached to each panel component as the `parentBundle` option. To access it from within a panel, use "`{that}.options.parentBundle`".
+The message bundle is attached to each panel component as the `parentBundle` option. To access it from within a panel, use `{that}.options.parentBundle`.
 
 Adding Message Bundles
 ----------------------
@@ -77,7 +77,7 @@ Message bundles can be specified in one of two ways:
 
 The Preferences Framework will load and combine all of the Message Bundles into a single Message Bundle which is bound to the `prefsEditorLoader` component at the `msgResolver` property (as described above).
 
-Any panel that has the grade "`fluid.prefs.defaultPanel`" will have access to the combined Message Bundle at its `parentBundle` option (as described above). When using the auxiliary schema, all panels are assigned the grade "`fluid.prefs.defaultPanel`" by the Framework.
+Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the combined Message Bundle at its `parentBundle` option (as described above). When using the auxiliary schema, all panels are assigned the grade `fluid.prefs.defaultPanel` by the Framework.
  
 ### Example Auxiliary Schema
 
