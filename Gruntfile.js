@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                     markdownOptions: {
                         gfm: true,
                         tables: true,
-                        breaks: true
+                        breaks: false
                     }
                 }
             }
