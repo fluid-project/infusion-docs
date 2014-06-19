@@ -198,7 +198,7 @@ There are other, more complex cases where an array of strings is required (for e
 1. which strings to include and
 1. the order in which they should be returned.
 
-It is accessed the same way that an individual string is referenced, except that reference should point to the key in the `stringArrayIndex` instead of a single string name. In the example below, the `stringArrayIndex` is used on line 4 to define the `theme` string bundle, and the `theme` string bundle is referenced on line 15 ('`optionnames: "${{that}.msgLookup.theme}"`'):
+It is accessed the same way that an individual string is referenced, except that reference should point to the key in the `stringArrayIndex` instead of a single string name. In the example below, the `stringArrayIndex` is used to define the `theme` string bundle, and the `theme` string bundle is referenced within the `protoTree.expander.tree` ('`optionnames: "${{that}.msgLookup.theme}"`'):
 
 ```javascript
     fluid.defaults("fluid.prefs.panel.contrast", {
