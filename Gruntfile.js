@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        src: '*.md',
+                        src: ['*.md', 'tutorial-gettingStartedWithInfusion/*.md'],
                         dest: 'html/',
                         ext: '.html'
                     }
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                     markdownOptions: {
                         gfm: true,
                         tables: true,
-                        breaks: true
+                        breaks: false
                     }
                 }
             }
