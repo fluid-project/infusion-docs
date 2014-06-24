@@ -142,7 +142,7 @@ componentID: {
     args: [] // array of arguments to be interpolated into the message format
 }
                 </code></pre>
-                See <a href="fluid.formatMessage.md">fluid.formatMessage</a> for more information about message formatting.
+                See <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/JavaProperties.js#L93-L115">fluid.formatMessage</a> for more information about message formatting.
             </td>
             <td>
                 <pre><code>
