@@ -1,6 +1,6 @@
 # ChangeApplier API #
 
-This section explains and documents the various Javascript API calls for instantiating and working with ChangeAppliers. In practice, users will use the ChangeAppliers which are automatically constructed for every [Model Component](TutorialModelComponents.md) as its top-level member applier and will not construct their own. Furthermore, a good deal of the use made of ChangeAppliers will take the form of [Declarative Configuration](FrameworkConcepts#declarative-configuration) rather than literal JavaScript API calls - many more declarative uses are supported in Infusion 1.5 and even more will be supported in Infusion 2.0. This page presents both programmatic calls and their declarative equivalents where they exist.
+This section explains and documents the various Javascript API calls for instantiating and working with ChangeAppliers. In practice, users will use the ChangeAppliers which are automatically constructed for every [Model Component](tutorial-gettingStartedWithInfusion/ModelComponents.md) as its top-level member applier and will not construct their own. Furthermore, a good deal of the use made of ChangeAppliers will take the form of [Declarative Configuration](FrameworkConcepts#declarative-configuration) rather than literal JavaScript API calls - many more declarative uses are supported in Infusion 1.5 and even more will be supported in Infusion 2.0. This page presents both programmatic calls and their declarative equivalents where they exist.
 
 ## Registering interest in model changes using a ChangeApplier ##
 

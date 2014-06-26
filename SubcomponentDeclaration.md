@@ -90,7 +90,7 @@ The properties allowed at top level in the subcomponent record are as follows:
         <tr>
             <td><code>container</code> (Required only for View components)</td>
             <td>String</td>
-            <td>This property is a CSS-style selector identifying the container element to be used for this subcomponent. This property is required for any <a href="TutorialViewComponents.md">View components</a>.</td>
+            <td>This property is a CSS-style selector identifying the container element to be used for this subcomponent. This property is required for any <a href="tutorial-gettingStartedWithInfusion/ViewComponents.md">View components</a>.</td>
             <td></td>
         </tr>
     </tbody>

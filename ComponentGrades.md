@@ -35,21 +35,21 @@ The Infusion Framework already contains several predefined component grades that
             <td>fluid.littleComponent</td>
             <td></td>
             <td>
-                A "little" component is the most basic component: it supports options merging with defaults (<a href="BasicComponentCreationLittleComponents.md">Little Components</a>). All Fluid components are derived from this grade, and in general all things not derived from this grade are non-components (e.g. plain functions, or model transformation transforms, etc.)
+                A "little" component is the most basic component: it supports options merging with defaults (<a href="tutorial-gettingStartedWithInfusion/BasicComponentCreation-LittleComponents.md">Little Components</a>). All Fluid components are derived from this grade, and in general all things not derived from this grade are non-components (e.g. plain functions, or model transformation transforms, etc.)
             </td>
         </tr>
         <tr>
             <td>fluid.modelComponent</td>
             <td>fluid.modelRelayComponent</td>
             <td>
-                A "model" component is already a little component that additionally provides supports for a component's model, defined in the components options, and operations on it (<a href="TutorialModelComponents.md">Tutorial - Model Components</a>).
+                A "model" component is already a little component that additionally provides supports for a component's model, defined in the components options, and operations on it (<a href="tutorial-gettingStartedWithInfusion/ModelComponents.md">Tutorial - Model Components</a>).
             </td>
         </tr>
         <tr>
             <td>fluid.eventedComponent</td>
             <td></td>
             <td>
-                An "evented" component is already a little component that additionally instantiates event firers based on default framework events (onCreate, onDestroy, onDetach) and events declared in the options (<a href="TutorialEventedComponents.md">Tutorial - Evented Components</a>).
+                An "evented" component is already a little component that additionally instantiates event firers based on default framework events (onCreate, onDestroy, onDetach) and events declared in the options (<a href="tutorial-gettingStartedWithInfusion/EventedComponents.md">Tutorial - Evented Components</a>).
             </td>
         </tr>
         <tr>
@@ -63,14 +63,14 @@ The Infusion Framework already contains several predefined component grades that
             <td>fluid.viewComponent</td>
             <td>fluid.viewRelayComponent</td>
             <td>
-                A "view" component is a fluid.standardComponent is bound to a DOM container node, holds a <a href="DOMBinder.md">DOM Binder</a> and supports a view (<a href="TutorialViewComponents.md">Tutorial - View Components).
+                A "view" component is a fluid.standardComponent is bound to a DOM container node, holds a <a href="DOMBinder.md">DOM Binder</a> and supports a view (<a href="tutorial-gettingStartedWithInfusion/ViewComponents.md">Tutorial - View Components).
             </td>
         </tr>
         <tr>
             <td>fluid.rendererComponent</td>
             <td>fluid.rendererRelayComponent</td>
             <td>
-                A "renderer" component is already a vew component that bears a renderer. There are additional features provided by this component grade specified on the <a href="RendererComponents.md#useful-functions-and-events">Useful functions and events</a> section of the <a href="TutorialRendererComponents.md">Tutorial - Renderer Components</a> page
+                A "renderer" component is already a vew component that bears a renderer. There are additional features provided by this component grade specified on the <a href="RendererComponents.md#useful-functions-and-events">Useful functions and events</a> section of the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a> page
             </td>
         </tr>
     </tbody>
@@ -179,7 +179,7 @@ var myCombinedComponent = examples.componentOne({
 
 ### Delivering a dynamic gradeName via a subcomponent record: ###
 
-Another possibility is to supply the additional gradeNames via a [subcomponent record](TutorialSubcomponents.md) - for example
+Another possibility is to supply the additional gradeNames via a [subcomponent record](tutorial-gettingStartedWithInfusion/Subcomponents.md) - for example
 
 ```javascript
 fluid.defaults("examples.rootComponent", {

@@ -159,14 +159,14 @@ var myFirer = fluid.event.makeEventFirer(unicast, preventable, name);
     <td><code>unicast</code> (optional) DEPRECATED</td>
     <td><code>boolean</code></td>
     <td>
-      If <code>true</code>, this event firer is a <em>unicast</em> event firer (see <a href="InfusionEventSystem.md">Event Types</a>).
+      If <code>true</code>, this event firer is a <em>unicast</em> event firer.
     </td>
   </tr>
   <tr>
     <td><code>preventable</code> (optional)</td>
     <td><code>boolean</code></td>
     <td>
-      If <code>true</code>, this event firer represents a <em>preventable</em> action (see <a href="InfusionEventSystem.md">Event Types</a>).
+      If <code>true</code>, this event firer represents a <em>preventable</em> action (see <a href="InfusionEventSystem.md#declaring-an-event-on-a-component">Declaring an event on a component</a>).
     </td>
   </tr>
   <tr>

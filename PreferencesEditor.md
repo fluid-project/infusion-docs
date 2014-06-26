@@ -98,7 +98,7 @@ Integrators can use one of these grades, or define their own grade, using one of
 </tr>
 <tr>
     <td><code>storeType</code></td>
-    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a <a href="SettingsStore.md">Settings Store</a>.</td>
+    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a Settings Store.</td>
     <td>Integrators can define their own store grade by using the built-in default grade <code>"fluid.globalSettingsStore"</code> as a base grade.</td>
     <td><code>"fluid.globalSettingsStore"</code></td>
 </tr>
@@ -134,7 +134,7 @@ Integrators can use one of these grades, or define their own grade, using one of
 </tr>
 <tr>
     <td><code>store</code></td>
-    <td>(Optional) The data structure that configures the <code>store</code> component. See <a href="SettingsStore.md">Settings Store</a> for what is accepted in the data structure.</td>
+    <td>(Optional) The data structure that configures the <code>store</code> component. See Settings Store for what is accepted in the data structure.</td>
     <td></td>
     <td></td>
 </tr>

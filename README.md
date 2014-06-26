@@ -31,7 +31,7 @@ Infusion
 * [Renderer](Renderer.md)
   * [How To Use the Renderer](HowToUseTheRenderer.md)
   * Component Trees
-    * [Renderer Component Trees](RendererComponentsTrees.md)
+    * [Renderer Component Trees](RendererComponentTrees.md)
     * [ProtoComponent Types](ProtoComponentTypes.md)
     * [Renderer Component Tree Expanders](RendererComponentTreeExpanders.md)
   * [Cutpoints](Cutpoints.md)

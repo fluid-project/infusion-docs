@@ -143,7 +143,7 @@ The builder object returned by a call to `fluid.prefs.builder()` has the followi
 <tr>
     <td><code>options.assembledUIEGrade</code></td>
     <td>String</td>
-    <td><a href="ComponentGrades.md">Grade name</a> of the constructed <a href="UIEnhancer.md">enhancer</a>; Can be used to instantiate the enhancer and <a href="SettingsStore.md">settings store</a> using <code><a href="fluid.invokeGlobalFunction.md">fluid.invokeGlobalFunction</a></code>.</td>
+    <td><a href="ComponentGrades.md">Grade name</a> of the constructed <a href="UIEnhancer.md">enhancer</a>; Can be used to instantiate the enhancer and settings store using <code><a href="fluid.invokeGlobalFunction.md">fluid.invokeGlobalFunction</a></code>.</td>
 </tr>
 </table>
 
