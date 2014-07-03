@@ -57,7 +57,7 @@ The `container` is a CSS-based [selector](http://docs.jquery.com/Selectors), sin
 
 #### options ####
 
-The `options` object is an optional data structure that configures the Uploader, as described in the [Options](#options) section below.
+The `options` object is an optional data structure that configures the Uploader, as described in the [Options](#options-1) section below.
 
 ## Supported Events ##
 
@@ -645,7 +645,7 @@ strings: {
         <tr>
             <td><code>demo</code></td>
             <td>
-                Boolean indicating whether to run in "demo" mode. See <a href="#runninglocally">Running locally: "demo" mode</a> below.
+                Boolean indicating whether to run in "demo" mode. See <a href="#unning-locally-demo-mode">Running locally: "demo" mode</a> below.
             </td>
             <td>false</td>
             <td><code>demo: false</code></td>
