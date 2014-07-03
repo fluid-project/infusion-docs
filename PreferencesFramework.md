@@ -13,7 +13,6 @@ The Preferences Framework allows for the creation of a customized [Preferences E
 * [Builder](Builder.md)
     * [Primary Schema for Preferences Framework](PrimarySchemaForPreferencesFramework.md)
     * [Auxiliary Schema for Preferences Framework](AuxiliarySchemaForPreferencesFramework.md)
-* [Using the Preferences Framework with User-Defined Grades](UsingThePreferencesFrameworkWithUser-DefinedGrades.md)
 * [Enactors](Enactors.md)
 * [Panels](Panels.md)
     * [Composite Panels](CompositePanels.md)
