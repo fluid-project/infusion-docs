@@ -38,10 +38,12 @@ Infusion
   * [Renderer Components](RendererComponents.md)
   * [Renderer Decorators](RendererDecorators.md)
 * [Preferences Framework](PreferencesFramework.md)
+  * [Preferences Editor](PreferencesEditor.md)
   * [Builder](Builder.md)
     * [Primary Schema](PrimarySchemaForPreferencesFramework.md)
     * [Auxiliary Schema](AuxiliarySchemaForPreferencesFramework.md)
     * [Connecting the Parts of a Preferences Editor](ConnectingThePartsOfAPreferencesEditor.md)
+  * [Enactors](Enactors.md)
 
 Tutorials
 ---------
