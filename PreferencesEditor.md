@@ -134,7 +134,7 @@ Integrators can use one of these grades, or define their own grade, using one of
 </tr>
 <tr>
     <td><code>store</code></td>
-    <td>(Optional) The data structure that configures the <code>store</code> component. See Settings Store for what is accepted in the data structure.</td>
+    <td>(Optional) The data structure that configures the <code>store</code> component.</td>
     <td></td>
     <td></td>
 </tr>
