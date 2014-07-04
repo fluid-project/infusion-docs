@@ -15,7 +15,7 @@ customize the Inline Edit for their particular needs.
 
 A component creator will typically define default values for as many of the component's options as
 possible, so that the component will work "out of the box," without customization. This is done with
-a call to [fluid.defaults](fluid.defaults.html), which registers the component's defaults with the Framework.
+a call to [fluid.defaults](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539), which registers the component's defaults with the Framework.
 
 When a component is instantiated, the first thing that the Framework does is merge any
 integrator-provided customizations with the component's defaults, before the initialization of the
