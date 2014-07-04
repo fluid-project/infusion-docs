@@ -11,14 +11,14 @@ The template for **CSS classnames** (i.e. class names use for styling) looks lik
 
 **[fluid:state]** = _optional_ a modifier of the **ROLE** or **THING**, which is only temporary and dependant on other actions (eg. fl-button-left-**disabled**, fl-widget-content-**draggable**)
 
-Some examples of FSS class names:
+Some examples of these class names:
 
 * `fl-col-flex`: a flexible width column
 * `fl-tabs-left`: left-oriented tabs
 * `fl-grid-caption`: the caption of an image in a grid
 * `fl-widget-titlebar`: the titlebar of a widget
 
-The template for **Infusion selectors** (i.e. classnames used for programmatic manipulation of the DOM) looks like **flc-[fluid:componentName]-[fluid:thing]-[fluid:role]-[fluid:state]**, with the same guidelines as FSS selectors.
+The template for **Infusion selectors** (i.e. classnames used for programmatic manipulation of the DOM) looks like **flc-[fluid:componentName]-[fluid:thing]-[fluid:role]-[fluid:state]**, with the same guidelines as CSS selectors.
 
 Some examples of component selectors:
 
