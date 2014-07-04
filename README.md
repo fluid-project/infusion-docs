@@ -43,6 +43,7 @@ Infusion
     * [Primary Schema](PrimarySchemaForPreferencesFramework.md)
     * [Auxiliary Schema](AuxiliarySchemaForPreferencesFramework.md)
   * [Enactors](Enactors.md)
+  * [Localization in the Preferences Framework](LocalizationInThePreferencesFramework.md)
 
 Tutorials
 ---------
