@@ -52,7 +52,7 @@ While developers are free to define whatever options they like for their compone
                 A list of resources (such as HTML files, CSS files, data files) that are required by the component.
             </td>
             <td>
-                Object as required by <a href="RendererAPI.md#fetchResources">fluid.fetchResources</a>
+                Object as required by <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/FluidRequests.js#L24-L50">fluid.fetchResources</a>
             </td>
             <td>none</td>
         </tr>
@@ -87,7 +87,7 @@ While developers are free to define whatever options they like for their compone
             </td>
             <td>Object</td>
             <td>
-                See the documentation for <a href="fluid.renderer.createRendererSubcomponent.md">fluid.renderer.createRendererSubcomponent</a>
+                See the documentation for <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/RendererUtilities.js#L62-L100">fluid.renderer.createRendererSubcomponent</a>
             </td>
         </tr>
         <tr>

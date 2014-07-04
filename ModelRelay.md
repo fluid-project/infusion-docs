@@ -2,7 +2,7 @@
 
 ## Overview ##
 
-The Infusion Model Relay system is a powerful scheme for supplying declarative configuration which specifies rules for keeping multiple pieces of model state around the component tree automatically up to date with each other's changes. Because each model relay rule supplies a link between an inner core of models scattered around the component tree, around which other listeners in the periphery of each component (generally, in its view layer) only react after all updates have finished propagating in the model layer, we sometimes refer to the complete set of these linked models as the model skeleton of the component tree.
+The Infusion Model Relay system is a powerful scheme for supplying declarative configuration which specifies rules for keeping multiple pieces of model state around the component tree automatically up to date with each other's changes. Because each model relay rule supplies a link between an inner core of models scattered around the component tree, around which other listeners in the periphery of each component (generally, in its view layer) only react after all updates have finished propagating in the model layer, we sometimes refer to the complete set of these linked models as the _model skeleton_ of the component tree.
 
 ### Two Styles for Configuring Model Relay ###
 
@@ -10,11 +10,11 @@ There are two primary styles of configuration for setting up model relay - first
 
 ### How Model Relay Updates Propagate ###
 
-All of a set of models which are linked by relay rules are called a model skeleton. Whenever an update is received to any model which is part of the skeleton (via its [ChangeApplier](ChangeApplier.md)), a "transaction" begins in order to propagate it to all the related models to which it should be synchronised. The framework will keep propagating the change to all the models in the skeleton until they have all been brought up to date - however, these updates will initially occur privately, within the transaction and any external listeners will not be notified during the update process, in order to not become confused by receiving multiple notifications as the synchronisation occurs. Only once the framework has computed final synchronised values for all of the models in the skeleton will the transaction end, and then all listeners (via their respective ChangeAppliers) will be notified all at once.
+A set of models which are linked by relay rules are called a _**model skeleton**_. Whenever an update is received to any model which is part of the skeleton (via its [ChangeApplier](ChangeApplier.md)), a "transaction" begins in order to propagate it to all the related models to which it should be synchronised. The framework will keep propagating the change to all the models in the skeleton until they have all been brought up to date - however, these updates will initially occur privately, within the transaction and any external listeners will not be notified during the update process, in order to not become confused by receiving multiple notifications as the synchronisation occurs. Only once the framework has computed final synchronised values for all of the models in the skeleton will the transaction end, and then all listeners (via their respective ChangeAppliers) will be notified all at once.
 
 ### The Initial Transaction ###
 
-Whenever a new model-bearing component (or an entire tree of model-bearing components) constructs, there will be a particular large style of update transaction known as an __initial transaction__. This is extremely similar to any other synchronisation transaction caused by a model relay update, although it will typically involve more data since all of the initial values of all the involved models must be taken into account - these result from any of the normal sources for component configuration, including [defaults](fluid.defaults.html), user-supplied values, [distributed](IoCSS.md) options, etc.. During the initial transaction, any declaratively registered listeners will observe all of the new models go through the transition from holding their primordial value of `undefined` to holding their correct synchronised initial values. As with any other relay update transaction, this will appear to all the observers to occur in a single step even though from the point of view of the framework it may be a complex process involving many passes through the components.
+Whenever a new model-bearing component (or an entire tree of model-bearing components) constructs, there will be a particular large style of update transaction known as an __initial transaction__.   This is extremely similar to any other synchronisation transaction caused by a model relay update, although it will typically involve more data since all of the initial values of all the involved models must be taken into account - these result from any of the normal sources for component configuration, including [defaults](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539), user-supplied values, [distributed](IoCSS.md) options, etc.. During the initial transaction, any declaratively registered listeners will observe all of the new models go through the transition from holding their primordial value of `undefined` to holding their correct synchronised initial values. As with any other relay update transaction, this will appear to all the observers to occur in a single step even though from the point of view of the framework it may be a complex process involving many passes through the components.
 
 ## Implicit Model Relay style ##
 
@@ -45,15 +45,15 @@ console.log(that.child.model.childValue); // 3 - parent's value has been synchro
 The IoC expression `{examples.implicitModelRelay}.model.parentValue` here refers from one field of the child's model called `childValue` to one field of the parent's model called `parentValue`. This sets up a permanent model relay linking these two fields. From the construction point onwards, the framework will ensure that all updates made to one field will be reflected in the other. For example, here are some further pieces of code we could write, following on from the above example - these use the programmatic [ChangeApplier API](ChangeApplierAPI.md) although in practice it is desirable to express as many such updates as declaratively as possible:
 
 ```javascript
-that.applier.change("parentValue", 4); // update the parent's model field to hold the value 4
-console.log(that.child.model.childValue); // 4 - The child's model value has been updated
+that.applier.change("parentValue", 4);      // update the parent's model field to hold the value 4
+console.log(that.child.model.childValue);   // 4 - The child's model value has been updated
 that.child.applier.change("childValue", 5); // update the child's model to hold the value 5
-console.log(that.model.parentValue); // 5 - The parent's model value has been updated
+console.log(that.model.parentValue);        // 5 - The parent's model value has been updated
 ```
 
 ## Explicit Model Relay Style ##
 
-This style is used when we require a [Model Transformation](ModelTransformation.md) rule to mediate between the updates synchronising one model value with another. The simple implicit style is only capable of "moving" the same value between one path and another. Sometimes different models choose different strategies for representing "the same value" - for example, one component might represent a sound volume level on a scale of 0-100, whereas another might use a range of 0-1. The framework is capable accommodating this kind of difference in viewpoint by allowing the user to explicitly list a transformation rule relating one model's instance of a value with another. This is done using the `modelRelay` section of a component's top-level options. Here is the layout of this block:
+This style is used when we require a [Model Transformation](ModelTransformation.md) rule to mediate between the updates synchronising one model value with another. The simple implicit style is only capable of "moving" the same value between one path and another. Sometimes different models choose different strategies for representing "the same value" - for example, one component might represent a sound volume level on a scale of 0-100, whereas another might use a range of 0-1. The framework is capable of accommodating this kind of difference in viewpoint by allowing the user to explicitly list a transformation rule relating one model's instance of a value with another. This is done using the `modelRelay` section of a component's top-level options. Here is the layout of this block:
 
 ### Model Relay Block Layout ###
 
@@ -124,7 +124,7 @@ console.log(that.child.model.volume); // 0.95 - transformed during the initial t
 that.applier.change("volume", 50);
 console.log(that.child.model.volume); // 0.5 - transformed to update with outer value
 that.child.applier.change("volume", 1);
-console.log(that.model.volume); // 100 - inverse transformed to accept update from child component
+console.log(that.model.volume);       // 100 - inverse transformed to accept update from child component
 ```
 
 In general those transformations which are _**invertible**_ are the best choice for this kind of linkage. If the transforms are not invertible (or have no inverse defined in the framework), the updates will propagate only in one direction. This can still be highly useful.
