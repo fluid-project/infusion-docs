@@ -4,7 +4,7 @@
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferncesEditorUsingThePreferencesFramework.md)
 
 This article describes how to use the Infusion [Preferences Framework](../PreferencesFramework.md)
-to create an [Auxiliary Schema](../AuxiliarySchemaforPreferencesFramework.md), a JSON document that defines how panels are combined in a preferences editor.
+to create an [Auxiliary Schema](../AuxiliarySchemaForPreferencesFramework.md), a JSON document that defines how panels are combined in a preferences editor.
 
 ---
 
@@ -15,11 +15,11 @@ An auxiliary schema includes two parts:
 1. Several [top-level members](../AuxiliarySchemaForPreferencesFramework.md#top-level-properties), defining globally-used values, and
 2. [One object per preference](../AuxiliarySchemaForPreferencesFramework.md#preference-block-properties), defining the specific requirements for that preference.
 
-For detailed information about what members are required and permitted in an auxilliary schema, see [Auxiliary Schema for Preferences Framework](../AuxiliarySchemaforPreferencesFramework.md).
+For detailed information about what members are required and permitted in an auxilliary schema, see [Auxiliary Schema for Preferences Framework](../AuxiliarySchemaForPreferencesFramework.md).
 
 ## Example: UI Options Preferences ##
 
-The following example shows the auxiliary schema that would be used for the preferences defined in the [primary schema example](CreatingAPrimarySchema.md#example:-selected-ui-options-preferences).
+The following example shows the auxiliary schema that would be used for the preferences defined in the [primary schema example](CreatingAPrimarySchema.md#example-selected-ui-options-preferences).
 
 ```javascript
 fluid.defaults("fluid.prefs.auxSchema.starter", {
@@ -94,7 +94,7 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
 
 ## Example: Video Player Captions and Transcripts Preferences ##
 
-The following example shows the auxiliary schema that would be used by the Video Player to add extra panels to Preferences Editor for the preferences defined in the [primary schema example](CreatingAPrimarySchema.md#example:-video-player-extra-preferences).
+The following example shows the auxiliary schema that would be used by the Video Player to add extra panels to Preferences Editor for the preferences defined in the [primary schema example](CreatingAPrimarySchema.md#example-video-player-extra-preferences).
 
 ```javascript
 fluid.videoPlayer.auxSchema = {
