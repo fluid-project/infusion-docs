@@ -10,6 +10,7 @@ Preferences Editors are constructed by combining three main parts:
 The Preferences Framework provides all the lifecycle events, configuration hooks, and persistence infrastructure required to support hooking these pieces together, as well as providing some pre-existing panels and enactors that can be re-used if desired.
 
 There are two main ways you will likely use the Preferences Framework:
+
 1. to add a Preferences Editor to a page
     * In addition to the user interface for adjusting preferences, this mode will also add the data store and the enactors to the page.
 2. or to add only the data store and enactors to a page
