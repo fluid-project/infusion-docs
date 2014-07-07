@@ -73,7 +73,7 @@ API
     * [Layout Reorderer (wiki)](http://wiki.fluidproject.org/display/docs/Layout+Reorderer+API)
     * [Image Reorderer (wiki)](http://wiki.fluidproject.org/display/docs/Image+Reorderer+API)
   * [User Interface Options (wiki)](http://wiki.fluidproject.org/display/docs/User+Interface+Options+API)
-  * [Uploader (wiki)](http://wiki.fluidproject.org/display/docs/Uploader+API)
+  * [Uploader](UploaderAPI.md)
   * [Undo (wiki)](http://wiki.fluidproject.org/display/docs/Undo+API)
   * [Table of Contents (wiki)](http://wiki.fluidproject.org/display/docs/Table+of+Contents+API)
 * [Framework API (wiki)](http://wiki.fluidproject.org/display/docs/Framework+API)
