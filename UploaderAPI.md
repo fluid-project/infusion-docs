@@ -537,7 +537,7 @@ totalProgressBar: {
         <tr>
             <td><code>focusWithEvent</code></td>
             <td>
-                Javascript object containing selectors for markup elements that should obtain focus after certain <a href="#events">events</a>.
+                Javascript object containing selectors for markup elements that should obtain focus after certain <a href="#supported-events">events</a>.
             </td>
             <td>
                 Keys in the object are supported event names.
