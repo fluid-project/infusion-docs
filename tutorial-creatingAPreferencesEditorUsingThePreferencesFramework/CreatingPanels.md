@@ -22,7 +22,7 @@ The configuration information used to define a preferences panel must include ce
 
 ## PreferenceMap ##
 
-Each panel and enactor defines a "preference map," which map the information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md) into your Panel. The preference map is used to copy the default preference value from the primary schema into the Panel's model. It can also be used to copy any other necessary information from the primary schema into the Panel, such as enumerations, minimums and maximums, etc. The values can be mapped to any path in the Panels options, and then they can be accessed through those paths.
+Each panel and enactor defines a "preference map," which map the information in the [Primary Schema](../PrimarySchemaForPreferencesFramework.md) into your Panel. The preference map is used to copy the default preference value from the primary schema into the Panel's model. It can also be used to copy any other necessary information from the primary schema into the Panel, such as enumerations, minimums and maximums, etc. The values can be mapped to any path in the Panels options, and then they can be accessed through those paths.
 
 ### Format ###
 
