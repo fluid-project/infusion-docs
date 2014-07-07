@@ -27,6 +27,7 @@ The Uploader utilizes the concept of progressive enhancement. The goal is to ens
 The Infusion Uploader, like many Fluid components, is really one interface to a collection of components that work together to provide a unified user experience.
 
 The Uploader provides a facade object, called a `strategy`, which represents the entire subsystem for a particular implementation of Uploader. There are currently two different strategies available to choose from:
+
 1. `fluid.uploader.html5Strategy`, which provides the modern HTML 5 implementation of Uploader
 2. `fluid.uploader.progressiveStrategy`, which uses the new Infusion [IoC - Inversion of Control System](IoC-InversionOfControl.md) to deliver the best possible version of Uploader based on the capabilities of the user's browser.
 
