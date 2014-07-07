@@ -91,7 +91,7 @@ The Uploader fires the following events
                 The event is fired when files have been selected for addition to the file queue.
                 <strong><em>HTML5 only.</em></strong>
             </td>
-            <td>numFiles</td>
+            <td><code>numFiles</code></td>
             <td>The number of files selected.</td>
         </tr>
         <tr>
@@ -100,7 +100,7 @@ The Uploader fires the following events
             <td>
                 This event is fired for each file that is queued after the File Selection Dialog window is closed.
             </td>
-            <td>file</td>
+            <td><code>file</code></td>
             <td>
                 <dl>
                     <dt><code>file</code></dt>
@@ -116,7 +116,7 @@ The Uploader fires the following events
             <td>
                 Event is fired for each file that is removed from the filequeue model
             </td>
-            <td>file</td>
+            <td><code>file</code></td>
             <td>
                 <dl>
                     <dt><code>file</code></dt>
@@ -132,7 +132,7 @@ The Uploader fires the following events
             <td>
                 This event is fired for each file that was not queued after the File Selection Dialog window is closed.
             </td>
-            <td>file, errorCode</td>
+            <td><code>file</code>, <code>errorCode</code></td>
             <td>
                 <dl>
                     <dt><code>file</code></dt>
@@ -164,7 +164,7 @@ The Uploader fires the following events
             <td>
                 This event at the beginning of the entire upload cycle.
             </td>
-            <td>fileList</td>
+            <td><code>fileList</code></td>
             <td>
                 <dl>
                     <dt><code>fileList</code></dt>
@@ -180,7 +180,7 @@ The Uploader fires the following events
             <td>
                 This event is fired immediately before the file is uploaded.
             </td>
-            <td>file</td>
+            <td><code>file</code></td>
             <td>
                 <dl>
                     <dt><code>file</code></dt>
@@ -196,7 +196,7 @@ The Uploader fires the following events
             <td>
                 This event is fired periodically by the upload manager during a file upload and is useful for providing UI updates on the page. Also keeps up-to-date the overall progress of the currently uploading batch.
             </td>
-            <td>file, fileBytesComplete, fileTotalBytes</td>
+            <td><code>file</code>, <code>fileBytesComplete</code>, <code>fileTotalBytes</code></td>
             <td>
                 <dl>
                     <dt><code>file</code></dt>
@@ -218,7 +218,7 @@ The Uploader fires the following events
             <td>
                 This event is fired any time an individual file upload is interrupted or does not complete successfully.
             </td>
-            <td>file, error, status, xhr</td>
+            <td><code>file</code>, <code>error</code>, <code>status</code>, <code>xhr</code></td>
             <td>
                 <dl>
                     <dt><code>file</code></dt>
@@ -246,7 +246,7 @@ The Uploader fires the following events
             <td>
                 This event is fired when an upload completes and the server returns a HTTP 200 status code.
             </td>
-            <td>file, responseText, xhr</td>
+            <td><code>file</code>, <code>responseText</code>, <code>xhr</code></td>
             <td>
                 <dl>
                     <dt><code>file</code></dt>
@@ -270,7 +270,7 @@ The Uploader fires the following events
             <td>
                 This event is fired for each file uploaded whether or not the file is uploaded successfully, <code>onFileSuccess</code>, or the file failed to upload, <code>onFileError</code>. At this point the upload process for the currently uploading file is complete and the upload for the next file in the queue is started.
             </td>
-            <td>file</td>
+            <td><code>file</code></td>
             <td>
                 <dl>
                     <dt><code>file</code></dt>
@@ -286,7 +286,7 @@ The Uploader fires the following events
             <td>
                 This event is fired at the end of an upload cycle when all the files have either been uploaded, failed to upload, the user stopped the upload cycle, or there was an unrecoverable error in the upload process and the upload cycle was stopped.
             </td>
-            <td>fileList</td>
+            <td><code>fileList</code></td>
             <td>
                 <dl>
                     <dt><code>fileList</code></dt>
@@ -422,7 +422,7 @@ The Uploader supports a "plug-and-play" architecture that allows for many of the
 
 The Uploader and its sub-components are also highly configurable; you can make many adjustments to the user experience through a combination of HTML, CSS and the built-in configuration options. To customize the component for your own needs, start with these out-of-the-box features. If you need more flexibility, feel free to to write your own sub-component.
 
-In addition to the Uploader options, there are also options specifically for the FileQueueView, Progress, and strategy subcomponents.
+In addition to the Uploader options, there are also options specifically for the FileQueueView, Progress, and `strategy` subcomponents.
 
 ### Uploader Subcomponents ###
 
@@ -442,8 +442,8 @@ In addition to the Uploader options, there are also options specifically for the
                 The strategy for how files are uploaded to the server (e.g. HTML 5, etc.)
             </td>
             <td>
-                <code>fluid.uploader.progressiveStrategy</code>,
-                <code>fluid.uploader.html5Strategy"</code>
+                <code>"fluid.uploader.progressiveStrategy"</code>,
+                <code>"fluid.uploader.html5Strategy"</code>
             </td>
             <td>
                 <pre>
@@ -462,7 +462,7 @@ strategy: {
 Currently there is only one fileQueueView sub-component.
             </td>
             <td>
-                <code>fluid.fileQueueView</code>
+                <code>"fluid.fileQueueView"</code>
             </td>
             <td>
                 <pre>
