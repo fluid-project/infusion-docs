@@ -55,7 +55,7 @@ Depending on what the component is for, some will include infrastructure to supp
 * a view
 * a renderer
 
-New kinds of components are created by passing configuration information to the '[fluid.defaults](fluidDefaults.md)' function. 
+New kinds of components are created by passing configuration information to the '[fluid.defaults](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539)' function. 
 This function will create the **creator function** that will be used to instantiate the component.
 The Framework provides [supports for automatically creating components of various types, or 'grades'](ComponentGrades.md); 
 as well, developers can create their own grades.

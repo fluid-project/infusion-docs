@@ -38,7 +38,7 @@ cspace.autocomplete.popup = function (container, options) {
 
 ### Generated ###
 
-If you are using [fluid.rendererComponent](fluid.rendererComponent.md), you can provide a function of your own that will be used to generate cutpoints. The function must accept an object containing a set of named selectors, and will also accept options (see [fluid.renderer.selectorsToCutpoints](fluid.renderer.selectorsToCutpoints.md) for a description of the options).
+If you are using [fluid.rendererComponent](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/RendererUtilities.js#L139-L141), you can provide a function of your own that will be used to generate cutpoints. The function must accept an object containing a set of named selectors, and will also accept options (see [fluid.renderer.selectorsToCutpoints](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/RendererUtilities.js#L268-L285) for a description of the options).
 
 ```javascript
 // Set the cutpointGenerator option of the Renderer component to your cutpoint

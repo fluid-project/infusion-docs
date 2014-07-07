@@ -31,7 +31,7 @@ For detailed information on how to use this method, see [Renderer Components](Re
 
 ### `fluid.render` ###
 
-If you are not using `fluid.rendererComponent`, you can use the primary renderer function, [fluid.render](fluid.render.md):
+If you are not using `fluid.rendererComponent`, you can use the primary renderer function, [fluid.render](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1551-L1570):
 
 ```javascript
 var template = fluid.render(source, target, tree, options);
@@ -39,17 +39,17 @@ var template = fluid.render(source, target, tree, options);
 
 This function can be used at any time to render a component tree. This function will render the component tree into the `target` node, using the `source` (which either references a DOM node or contains a string) as the template.
 
-For detailed information on how to use this function, see [fluid.render](fluid.render.md).
+For detailed information on how to use this function, see [fluid.render](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1551-L1570).
 
 ### `fluid.selfRender` ###
 
-This function is similar to [fluid.render](fluid.render.md), except that it assumes that the markup used to source the template is within the target node:
+This function is similar to [fluid.render](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1551-L1570), except that it assumes that the markup used to source the template is within the target node:
 
 ```javascript
 var template = fluid.selfRender(node, tree, options);
 ```
 
-For detailed information on how to use this function, see [fluid.selfRender](fluid.selfRender.md).
+For detailed information on how to use this function, see [fluid.selfRender](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1572-L1588).
 
 ## Other Renderer Functions ##
 
@@ -57,8 +57,8 @@ In addition to these primary ways of using the Renderer, there are a several oth
 
 ### `fluid.rerender` ###
 
-For detailed information on how to use this function, see [fluid.reRender](fluid.reRender.md).
+For detailed information on how to use this function, see [fluid.reRender](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1480-L1527).
 
 ### `fluid.fetchResources` ###
 
-For detailed information on how to use this function, see [fluid.fetchResources](fluid.fetchResources.md).
+For detailed information on how to use this function, see [fluid.fetchResources](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/FluidRequests.js#L24-L50).
