@@ -531,7 +531,7 @@ totalProgressBar: {
             <td>
                 Keys in the object are event names, values are functions or arrays of functions.
             </td>
-            <td>see <a href="#events">Supported Events</a></td>
+            <td>see <a href="#supported-events">Supported Events</a></td>
         </tr>
         <tr>
             <td><code>focusWithEvent</code></td>
@@ -645,7 +645,7 @@ strings: {
         <tr>
             <td><code>demo</code></td>
             <td>
-                Boolean indicating whether to run in "demo" mode. See <a href="#unning-locally-demo-mode">Running locally: "demo" mode</a> below.
+                Boolean indicating whether to run in "demo" mode. See <a href="#running-locally-demo-mode">Running locally: "demo" mode</a> below.
             </td>
             <td>false</td>
             <td><code>demo: false</code></td>
@@ -902,7 +902,7 @@ The different parts of the Uploader interface each have their own set of selecto
 
 #### Progress ####
 
-_**Note:** Please see the Progress API document for a full description of Fluid Progress._
+_**Note:** Please see the [Progress API](ProgressAPI.md) document for a full description of Fluid Progress._
 
 Uploader uses the following selector options for Progress:
 
