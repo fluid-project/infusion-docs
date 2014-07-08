@@ -59,6 +59,7 @@ Tutorials
 * [Adding a Basic Preferences Editor to a Site (wiki)](http://wiki.fluidproject.org/display/docs/Tutorial+-+Adding+a+Basic+Preferences+Editor+to+a+Site)
 * [Working With A Preferences Editor On Your Site (wiki)](http://wiki.fluidproject.org/display/docs/Working+With+A+Preferences+Editor+On+Your+Site)
 * [Creating a New Adjuster UI](tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.md)
+* [Creating a preferences Editor Using the Preferences Framework](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 
 API
 ---
