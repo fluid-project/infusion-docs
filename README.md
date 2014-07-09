@@ -43,14 +43,21 @@ Infusion
     * [Primary Schema](PrimarySchemaForPreferencesFramework.md)
     * [Auxiliary Schema](AuxiliarySchemaForPreferencesFramework.md)
   * [Enactors](Enactors.md)
+  * [Panels](Panels.md)
+    * [Composite Panels](CompositePanels.md)
+    * [Conditional Subpanels](ConditionalSubpanels.md)
+  * [Localization in the Preferences Framework](LocalizationInThePreferencesFramework.md)
+* General
+  * [Class Name Conventions](ClassNameConventions.md)
 
 Tutorials
 ---------
 
 * [Getting started with Infusion](tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.md)
+* [How to Create and Use Font Icons](tutorial-creatingANewAdjusterUI/HowToCreateAndUseFontIcons.md)
 * [Adding a Basic Preferences Editor to a Site (wiki)](http://wiki.fluidproject.org/display/docs/Tutorial+-+Adding+a+Basic+Preferences+Editor+to+a+Site)
 * [Working With A Preferences Editor On Your Site (wiki)](http://wiki.fluidproject.org/display/docs/Working+With+A+Preferences+Editor+On+Your+Site)
-* [Localization in the Preferences Framework (wiki)](http://wiki.fluidproject.org/display/docs/Localization+in+the+Preferences+Framework)
+* [Creating a New Adjuster UI](tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.md)
 
 API
 ---
@@ -66,7 +73,7 @@ API
     * [Layout Reorderer (wiki)](http://wiki.fluidproject.org/display/docs/Layout+Reorderer+API)
     * [Image Reorderer (wiki)](http://wiki.fluidproject.org/display/docs/Image+Reorderer+API)
   * [User Interface Options (wiki)](http://wiki.fluidproject.org/display/docs/User+Interface+Options+API)
-  * [Uploader (wiki)](http://wiki.fluidproject.org/display/docs/Uploader+API)
+  * [Uploader](UploaderAPI.md)
   * [Undo (wiki)](http://wiki.fluidproject.org/display/docs/Undo+API)
   * [Table of Contents (wiki)](http://wiki.fluidproject.org/display/docs/Table+of+Contents+API)
 * [Framework API (wiki)](http://wiki.fluidproject.org/display/docs/Framework+API)
