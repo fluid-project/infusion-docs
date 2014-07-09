@@ -13,7 +13,6 @@ The Preferences Framework allows for the creation of a customized [Preferences E
 * [Builder](Builder.md)
     * [Primary Schema for Preferences Framework](PrimarySchemaForPreferencesFramework.md)
     * [Auxiliary Schema for Preferences Framework](AuxiliarySchemaForPreferencesFramework.md)
-* [Using the Preferences Framework with User-Defined Grades](UsingThePreferencesFrameworkWithUser-DefinedGrades.md)
 * [Enactors](Enactors.md)
 * [Panels](Panels.md)
     * [Composite Panels](CompositePanels.md)
@@ -23,15 +22,8 @@ The Preferences Framework allows for the creation of a customized [Preferences E
 
 ## Tutorials ##
 
-* [Tutorial - Creating a Preferences Editor Using the Preferences Framework](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
-    * [Creating a Primary Schema](CreatingAPrimarySchema.md)
-    * [Creating Enactors](CreatingEnactors.md)
-    * [Creating Panels](CreatingPanels.md)
-    * [Creating an Auxiliary Schema](CreatingAnAuxiliarySchema.md)
-    * [Instantiating the Preferences Editor](InstantiatingThePreferencesEditor.md)
-    * [Instantiating the Enhancer and Settings Store Only](InstantiatingTheEnhancerAndSettingsStoreOnly.md)
-    * [Styling the Preferences Editor](StylingThePreferencesEditor.md)
-* [Tutorial - Full Page Preferences Editor](FullPagePreferencesEditor.md)
-* [Tutorial - Full Page Preferences Editor (with Preview)](FullPagePreferencesEditorWithPreview.md)
-* [Tutorial - Creating a New Adjuster UI](CreatingANewAdjusterUI.md)
+* [Tutorial - Creating a Preferences Editor Using the Preferences Framework](tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.md)
+* [Tutorial - Full Page Preferences Editor](tutorial-fullPagePreferencesEditor/FullPagePreferencesEditor.md)
+* [Tutorial - Full Page Preferences Editor (with Preview)](tutorial-fullPagePreferencesEditorWithPreview/FullPagePreferencesEditorWithPreview.md)
+* [Tutorial - Creating a New Adjuster UI](tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.md)
 
