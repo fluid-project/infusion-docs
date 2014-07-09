@@ -122,13 +122,13 @@ Integrators can use one of these grades, or define their own grade, using one of
 </tr>
 <tr>
     <td><code>prefsEditor</code></td>
-    <td>(Optional) The data structure that configures the <code>prefsEditor</code> component. See <a href="#prefseditor-options">above</a> for what is accepted in the data structure.</td>
+    <td>(Optional) The data structure that configures the internal <code>prefsEditor</code> component.</td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td><code>uiEnhancer</code></td>
-    <td>(Optional) The data structure that configures the <code>uiEnhancer</code> component. See UI Enhancer for what is accepted in the data structure.</td>
+    <td>(Optional) The data structure that configures the <code>uiEnhancer</code> component.</td>
     <td></td>
     <td></td>
 </tr>
