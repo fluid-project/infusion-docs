@@ -4,7 +4,7 @@
 
 The ChangeApplier is a core part of the architecture of Fluid Infusion, which coordinates access to
 [model state](FrameworkConcepts.md) across a tree of components.
-Every [model-bearing component](Tutorial-ModelBearingComponent.md) has a ChangeApplier automatically
+Every [model-bearing component](tutorial-gettingStartedWithInfusion/ModelComponents.md ) has a ChangeApplier automatically
 constructed by the framework, which can be used either programmatically or declaratively to trigger
 changes in the component's model state or register to be notified of changes. The model state in a
 component tree is coordinated globally by the [Model Relay](ModelRelay.md) system as part of the
@@ -15,7 +15,7 @@ The [ChangeApplier API](ChangeApplierAPI.md) and semantic has stabilised in the 
 and differs substantially from that in previous releases.
 
 As well as being based on Fluid's model-directed thinking, the ChangeApplier is also implemented in
-terms of Fluid's [Event System](EventSystem.md), which you should be familiar with before using the ChangeApplier.
+terms of Fluid's [Event System](InfusionEventSystem.md), which you should be familiar with before using the ChangeApplier.
 
 ### Thinking behind the ChangeApplier ###
 

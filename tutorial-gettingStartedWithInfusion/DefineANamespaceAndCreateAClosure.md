@@ -1,4 +1,4 @@
-# Define a namespace and create a clousre #
+# Define a namespace and create a closure #
 
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
