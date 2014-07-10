@@ -1,7 +1,7 @@
 # Creating Panels #
 
 ---
-Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferncesEditorUsingThePreferencesFramework.md)
+Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 
 This article describes how to use the Infusion [Preferences Framework](../PreferencesFramework.md)
 to create Panels, user interfaces that display adjusters, or controls, allowing users to modify their settings for various preferences.

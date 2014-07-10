@@ -1,7 +1,7 @@
 # Instantiating the Preferences Editor #
 
 ---
-Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferncesEditorUsingThePreferencesFramework.md)
+Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 
 This article describes how to instantiate a preferences editor created using the Infusion [Preferences Framework](../PreferencesFramework.md)
 

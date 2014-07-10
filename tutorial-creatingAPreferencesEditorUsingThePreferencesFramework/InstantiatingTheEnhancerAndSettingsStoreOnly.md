@@ -1,7 +1,7 @@
 # Instantiating the Enhancer and Settings Store Only #
 
 ---
-Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferncesEditorUsingThePreferencesFramework.md)
+Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 
 This article describes how to use the Infusion [Preferences Framework](../PreferencesFramework.md)
 to use the [Builder](../Builder.md), a tool that creates a preferences editor from schema documents.

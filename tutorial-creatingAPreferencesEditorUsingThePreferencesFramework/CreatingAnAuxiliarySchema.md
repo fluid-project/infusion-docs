@@ -1,7 +1,7 @@
 # Creating an Auxiliary Schema #
 
 ---
-Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferncesEditorUsingThePreferencesFramework.md)
+Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 
 This article describes how to use the Infusion [Preferences Framework](../PreferencesFramework.md)
 to create an [Auxiliary Schema](../AuxiliarySchemaForPreferencesFramework.md), a JSON document that defines how panels are combined in a preferences editor.
