@@ -43,7 +43,7 @@ var prefsEditor = fluid.prefs.create(container[, options]);
 </tr>
 <tr>
     <td><code>prefsEditor</code></td>
-    <td>(Optional) Configuration options for the preferences editor itself. See <a href="#prefsEditor-options">PrefsEditor Options</a> below for more information.</td>
+    <td>(Optional) Configuration options for the preferences editor itself. See <a href="#prefseditor-options">PrefsEditor Options</a> below for more information.</td>
     <td>Object</td>
     <td><code>{}</code></td>
 </tr>
@@ -98,13 +98,13 @@ Integrators can use one of these grades, or define their own grade, using one of
 </tr>
 <tr>
     <td><code>storeType</code></td>
-    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a <a href="SettingsStore.md">Settings Store</a>.</td>
+    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a Settings Store.</td>
     <td>Integrators can define their own store grade by using the built-in default grade <code>"fluid.globalSettingsStore"</code> as a base grade.</td>
     <td><code>"fluid.globalSettingsStore"</code></td>
 </tr>
 <tr>
     <td><code>enhancerType</code></td>
-    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a <a href="UIEnhancer.md">UI Enhancer</a>.</td>
+    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a UI Enhancer.</td>
     <td>Integrators can define their own enhancer grade by using the built-in default grade <code>"fluid.pageEnhancer"</code> as a base grade.</td>
     <td><code>"fluid.pageEnhancer"</code></td>
 </tr>
@@ -122,19 +122,19 @@ Integrators can use one of these grades, or define their own grade, using one of
 </tr>
 <tr>
     <td><code>prefsEditor</code></td>
-    <td>(Optional) The data structure that configures the <code>prefsEditor</code> component. See <a href="#prefsEditor-options">above</a> for what is accepted in the data structure.</td>
+    <td>(Optional) The data structure that configures the internal <code>prefsEditor</code> component.</td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td><code>uiEnhancer</code></td>
-    <td>(Optional) The data structure that configures the <code>uiEnhancer</code> component. See <a href="UIEnhancer.md">UI Enhancer</a> for what is accepted in the data structure.</td>
+    <td>(Optional) The data structure that configures the <code>uiEnhancer</code> component.</td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td><code>store</code></td>
-    <td>(Optional) The data structure that configures the <code>store</code> component. See <a href="SettingsStore.md">Settings Store</a> for what is accepted in the data structure.</td>
+    <td>(Optional) The data structure that configures the <code>store</code> component.</td>
     <td></td>
     <td></td>
 </tr>

@@ -159,7 +159,7 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
                 <dl>
                     <dt><dfn><code>model</code></dfn></dt>
                     <dd>
-                        The internal <a href="ModelComponents.md">Model Component</a> that is used by this renderer component.
+                        The internal <a href="tutorial-gettingStartedWithInfusion/ModelComponents.md">Model Component</a> that is used by this renderer component.
                     </dd>
                     <dt><dfn><code>applier</code></dfn></dt>
                     <dd>

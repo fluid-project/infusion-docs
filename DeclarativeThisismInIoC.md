@@ -45,7 +45,7 @@ A **this-ist** function can be declaratively bound to [invokers](Invokers.md) an
         <tr>
             <td>args</td>
             <td>
-                <em>(Optional)</em> The argument or array of arguments to be passed into the function. This can include <a href="IoCReferences.md">IoC References</a> and <a href="Expanders.md">expanders</a>, in addition to strings, objects, booleans, etc.
+                <em>(Optional)</em> The argument or array of arguments to be passed into the function. This can include <a href="IoCReferences.md">IoC References</a> and expanders, in addition to strings, objects, booleans, etc.
             </td>
         </tr>
         <tr>

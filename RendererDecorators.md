@@ -10,7 +10,7 @@ Decorators allow users of the Renderer to attach various things, such as functio
 
 To use a decorator, include it in the component tree for the component in question, using the `decorators` field. This field contains an array of objects providing configuration information for the desired decorators. The contents of each object will vary based on the decorator type. For example, the `addClass` decorator will specify a string of class names, the jQuery decorator will specify a function name and a list of parameters.
 
-Decorators are specified using a notation similar to that of [Subcomponents](Subcomponents.md) in an `options` structure. They include a `type` field and whatever other fields are necessary, based on the type:
+Decorators are specified using a notation similar to that of [Subcomponents](tutorial-gettingStartedWithInfusion/Subcomponents.md) in an `options` structure. They include a `type` field and whatever other fields are necessary, based on the type:
 
 ```javascript
 {
