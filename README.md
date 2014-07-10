@@ -60,6 +60,8 @@ Tutorials
 * [Working With A Preferences Editor On Your Site (wiki)](http://wiki.fluidproject.org/display/docs/Working+With+A+Preferences+Editor+On+Your+Site)
 * [Creating a New Adjuster UI](tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.md)
 * [Creating a preferences Editor Using the Preferences Framework](tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.md)
+* Migrating to Infusion 1.5
+    * [UI Options Migration](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
 
 API
 ---
