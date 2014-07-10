@@ -16,7 +16,7 @@ The configuration information used to define a preferences panel must include ce
 
 * the `fluid.prefs.panel` and `autoInit` grades (provided by the Framework)
 * a Preference Map (see [below](#preferencemap))
-* a renderer [proto-tree](RendererComponentTrees.md) or [`produceTree`](../ComponentConfigurationOptions.md#producetree) function
+* a renderer [proto-tree](RendererComponentTrees.md) or `produceTree` function
 * selectors for rendering the controls, labels, etc
 * any other information required by the panel
 

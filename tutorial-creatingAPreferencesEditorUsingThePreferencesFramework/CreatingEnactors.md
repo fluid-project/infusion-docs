@@ -16,7 +16,7 @@ The configuration information used to define an enactor must include certain req
 
 * the `fluid.prefs.enactors` and `autoInit` [grades](../ComponentGrades.md) (provided by the Framework)
 * a Preference Map (see [below](#preferencemap))
-* a renderer [proto-tree](../RendererComponentTrees.md) or [`produceTree`](../ComponentConfigurationOptions.md#producetree) function
+* a renderer [proto-tree](../RendererComponentTrees.md) or `produceTree` function
 * selectors for rendering the controls, labels, etc
 * any other information required by the enactor
 
