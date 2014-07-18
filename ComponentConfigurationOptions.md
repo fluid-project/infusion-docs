@@ -15,7 +15,7 @@ The following options are supported by all component grades:
 * components
 * dynamicComponents
 
-*`gradeNames`*
+### `gradeNames` ###
 <table>
   <tr>
     <th>Description</th>
@@ -28,10 +28,14 @@ The following options are supported by all component grades:
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><code>fluid.defaults("component.name", {
+    <td><pre>
+<code>
+fluid.defaults("component.name", {
     gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "autoInit"],
     ...
-});</code></td>
+});
+</code>
+</pre></td>
   </tr>
   <tr>
     <th>See also</th>
