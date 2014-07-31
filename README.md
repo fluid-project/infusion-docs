@@ -8,6 +8,7 @@ Infusion
 * Components
   * [Understanding Infusion Components](UnderstandingInfusionComponents.md)
   * [Understanding Component Options And Their Defaults](ComponentOptionsAndDefaults.md)
+  * [Component Configuration Options](ComponentConfigurationOptions.md)
   * [Component Grades](ComponentGrades.md)
   * [Options Merging](OptionsMerging.md)
   * [Component Lifecycle](ComponentLifecycle.md)
