@@ -7,13 +7,6 @@ Some predefined options should not be overridden by integrators: They are strict
 ## Options Supported By All Components Grades ##
 
 The following options are supported by all component grades:
-* gradeNames
-* nickName
-* mergePolicy
-* invokers
-* members
-* components
-* dynamicComponents
 
 ### `gradeNames` ###
 <table>
@@ -29,12 +22,10 @@ The following options are supported by all component grades:
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "autoInit"],
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
@@ -56,12 +47,10 @@ fluid.defaults("component.name", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     nickName: "myComponentName",
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
@@ -83,16 +72,14 @@ fluid.defaults("component.name", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     mergePolicy: {
         option1: "noexpand",
         option2: "nomerge",
         ....
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
@@ -114,15 +101,13 @@ fluid.defaults("component.name", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     invokers: {
         inv1: {...},
         inv2: {...},
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
@@ -145,15 +130,13 @@ fluid.defaults("component.name", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     members: {
         member1: "{that}.options.optionsValue",
         member2: "{theOther}.dom.otherSelector",
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
 </table>
@@ -171,8 +154,7 @@ fluid.defaults("component.name", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     components: {
         subcomponent1: {
             type: "component.subcomp1",
@@ -181,8 +163,7 @@ fluid.defaults("component.name", {
         ...
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
@@ -204,8 +185,7 @@ fluid.defaults("component.name", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     dynamicComponents: {
         dynamic1: {
             type: "component.subcomp1",
@@ -215,8 +195,7 @@ fluid.defaults("component.name", {
         ...
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
@@ -238,11 +217,6 @@ Components defined with a grade of `modelComponent/modelRelayComponent` support 
 
 See also: [Component Grades](ComponentGrades.md)
 
-The following options are supported by model components:
-* model
-* applier
-* changeApplierOptions
-
 ### `model` ###
 <table>
   <tr>
@@ -251,41 +225,37 @@ The following options are supported by model components:
   </tr>
   <tr>
     <th>Notes</th>
-    <td>If a <a href="ChangeApplier">ChangeApplier</a> is not provided using the <a href="#applier">applier</a> option, the Framework will create one for the provided model. </td>
+    <td>If a <a href="ChangeApplier.md">ChangeApplier</a> is not provided using the <a href="#applier">applier</a> option, the Framework will create one for the provided model. </td>
   </tr>
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("fluid.pager", {
+<code>fluid.defaults("fluid.pager", {
     model: {
         pageIndex: undefined,
         pageSize: 10,
         totalRange: undefined
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>Example Override</th>
     <td><pre>
-<code>
-var myPager = fluid.pager(container, {
+<code>var myPager = fluid.pager(container, {
     model: {
         pageIndex: 1
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="ModelObjects.md">Model Objects</a>
-        <a href="ChangeApplierAPI.md">ChangeApplier API</a>
-        <code><a href="#applier">applier</a></code>
+    <td><a href="FrameworkConcepts.md#model-objects">Model Objects</a><br/>
+        <a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
+        <code><a href="#applier">applier</a></code><br/>
         <code><a href="#changeApplierOptions">changeApplierOptions</a></code></td>
   </tr>
 </table>
@@ -305,18 +275,16 @@ This option is most commonly used to share a common ChangeApplier between compon
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     applier: "{parentComponent.applier}",
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="Foo.md">ChangeApplier API</a>
-    <a href="#model"><code>model</code></a>
+    <td><a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
+    <a href="#model"><code>model</code></a><br/>
     <a href="#changeApplierOptions"><code>changeApplierOptions</code></a></td>
   </tr>
 </table>
@@ -333,47 +301,41 @@ fluid.defaults("component.name", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>
+    <td><pre><code>
 fluid.defaults("component.name", {
     model: {...},
     changeApplierOptions: {
         cullUnchanged: true
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>Example Override</th>
     <td><pre>
-<code>
-var myComp = component.name(container, {
+<code>var myComp = component.name(container, {
     model: {...},
     changeApplierOptions: {
         cullUnchanged: true
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="Foo.md">ChangeApplier API</a>
-    <a href="#model"><code>model</code></a>
+    <td><a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
+    <a href="#model"><code>model</code></a><br/>
     <a href="#applier"><code>applier</code></a></td>
   </tr>
 </table>
 
 ## Evented Components ##
 
-Components defined with a grade of eventedComponent support all of the common options described above, as well as those defined below. Component developers are free to define their own additional options.
+Components defined with a grade of `eventedComponent` support all of the common options described above, as well as those defined below. Component developers are free to define their own additional options.
 
 See also: [Component Grades](ComponentGrades.md)
-
-The following options are supported by evented components:
 
 ### `events` ###
 <table>
@@ -388,20 +350,18 @@ The following options are supported by evented components:
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     events: {
         onSave: "preventable",
         onReady: null
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="InfusionEventSystem.md">Infusion Event System</a>></td>
+    <td><a href="InfusionEventSystem.md">Infusion Event System</a></td>
   </tr>
 </table>
 
@@ -409,22 +369,43 @@ fluid.defaults("component.name", {
 <table>
   <tr>
     <th>Description</th>
-    <td></td>
+    <td>An object defining listener functions for the events supported by a component.</td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td></td>
+    <td>Both component developers and integrators can define listeners for events.
+<a href="Invokers.md">Invokers</a> and <a href="ExpansionOfComponentOptions.md">Expanders</a> can be used as listeners here. Note that as well as being a simple string holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC Reference</a> to any other event held in the component tree (for example <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, a the value associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a> or else follow the syntax of an invoker indicating that the registered listener receives a different signature from the one that the event has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).</td>
   </tr>
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-</code>
+<code>  
+fluid.defaults("component.name", {
+    events: {
+        onSave: "preventable",
+        onReady: null
+    },
+    listeners: {
+        onSave: "component.name.saveValidatorFn"
+    },
+    ...
+});</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>var myComp = component.name(container, {
+    listeners: {
+        onReady: "myNamespace.myReadyNotificationFn",
+    },
+    ...
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="Foo.md">Foo</a></td>
+    <td><a href="InfusionEventSystem.md">Infusion Event System</a></td>
   </tr>
 </table>
 
@@ -451,8 +432,7 @@ Component developers are free to define their own additional options.
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("fluid.progress", {
+<code>fluid.defaults("fluid.progress", {
     selectors: {
         displayElement: ".flc-progress",
         progressBar: ".flc-progress-bar",
@@ -461,22 +441,19 @@ fluid.defaults("fluid.progress", {
         ariaElement: ".flc-progress-bar"
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>Example Override</th>
     <td><pre>
-<code>
-var myEdit = fluid.progress(container, {
+<code>var myEdit = fluid.progress(container, {
     selectors: {
         indicator: "div.progress-indicator",
         label: "span.progress-label"
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
@@ -506,8 +483,7 @@ Component developers are free to define their own additional options.
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("cspace.header", {
+<code>fluid.defaults("cspace.header", {
     selectors: {
         menuItem: ".csc-header-menu-item",
         label: ".csc-header-link",
@@ -518,8 +494,7 @@ fluid.defaults("cspace.header", {
     },
     selectorsToIgnore: ["searchBox", "logout"],
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
 </table>
@@ -533,8 +508,7 @@ fluid.defaults("cspace.header", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("cspace.header", {
+<code>fluid.defaults("cspace.header", {
     selectors: {
         menuItem: ".csc-header-menu-item",
         label: ".csc-header-link",
@@ -545,8 +519,7 @@ fluid.defaults("cspace.header", {
     },
     repeatingSelectors: ["menuItem"],
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
 </table>
@@ -566,8 +539,7 @@ fluid.defaults("cspace.header", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-cspace.confirmationDialog.produceTree = function (that) {
+<code>cspace.confirmationDialog.produceTree = function (that) {
     var tree = {
         ...
     };
@@ -576,13 +548,12 @@ cspace.confirmationDialog.produceTree = function (that) {
 fluid.defaults("cspace.confirmationDialog", {
     produceTree: cspace.confirmationDialog.produceTree,
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="#protoTree">protoTree</a>
+    <td><a href="#protoTree">protoTree</a><br/>
     <a href="RendererComponentTrees.md">Renderer Component Tree</a></td>
   </tr>
 </table>
@@ -602,8 +573,7 @@ fluid.defaults("cspace.confirmationDialog", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("cspace.searchTips", {
+<code>fluid.defaults("cspace.searchTips", {
     protoTree: {
         searchTips: {decorators: {"addClass": "{styles}.searchTips"}},
         title: {
@@ -621,15 +591,13 @@ fluid.defaults("cspace.searchTips", {
         }
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>Example Override</th>
     <td><pre>
-<code>
-var searchTips = cspace.searchTips(container, {
+<code>var searchTips = cspace.searchTips(container, {
     protoTree: {
         searchTips: {decorators: {"addClass": "{styles}.searchTips"}},
         title: {
@@ -647,14 +615,13 @@ var searchTips = cspace.searchTips(container, {
         }
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="#produceTree">produceTree</a>
-    <a href="RendererComponentTrees.md">Renderer Component Tree</a>
+    <td><a href="#produceTree">produceTree</a><br/>
+    <a href="RendererComponentTrees.md">Renderer Component Tree</a><br/>
     <a href="ProtoComponentTypes.md">ProtoComponent Types</a></td>
   </tr>
 </table>
@@ -672,8 +639,7 @@ var searchTips = cspace.searchTips(container, {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     resources: {
         headerTemplate: {
             href: "../templates/Header.html"
@@ -683,23 +649,20 @@ fluid.defaults("component.name", {
         }
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>Example Override</th>
     <td><pre>
-<code>
-var myComp = component.name(container, {
+<code>var myComp = component.name(container, {
     resources: {
         footerTemplate: {
             href: "../templates/FrontPageFooter.html"
         }
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
@@ -721,9 +684,7 @@ var myComp = component.name(container, {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-    
-fluid.defaults("cspace.searchToRelateDialog", {
+<code>fluid.defaults("cspace.searchToRelateDialog", {
     gradeNames: ["fluid.rendererComponent", "autoInit"],
     strings: {
         createNewButton: "Create",
@@ -734,23 +695,20 @@ fluid.defaults("cspace.searchToRelateDialog", {
         addButton: "Add to current record"
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>Example Override</th>
     <td><pre>
-<code>
-var myDialog = cspace.searchToRelateDialog(container, {
+<code>var myDialog = cspace.searchToRelateDialog(container, {
     strings: {
         relationshipType: "Select a relationship type from the list below:",
         createNew: "Create a new record:",
         addButton: "Add this record to the current record"
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
@@ -772,33 +730,28 @@ var myDialog = cspace.searchToRelateDialog(container, {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-    
-fluid.defaults("fluid.tableOfContents.levels", {
+<code>fluid.defaults("fluid.tableOfContents.levels", {
     rendererFnOptions: {
         noexpand: true
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>Example Override</th>
     <td><pre>
-<code>
-var recEditor = cspace.recordEditor(container, {
+<code>var recEditor = cspace.recordEditor(container, {
     rendererFnOptions: {
         rendererTargetSelector: "dialog"
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="RendererComponents.md">Renderer Components</a>
+    <td><a href="RendererComponents.md">Renderer Components</a><br/>
     <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100"><code>fluid.renderer.createRendererSubcomponent</code></a></td>
   </tr>
 </table>
@@ -812,32 +765,28 @@ var recEditor = cspace.recordEditor(container, {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("cspace.searchBox", {
+<code>fluid.defaults("cspace.searchBox", {
     rendererOptions: {
         autoBind: false
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>Example Override</th>
     <td><pre>
-<code>
-var search = cspace.searchBox(container, {
+<code>var search = cspace.searchBox(container, {
     rendererOptions: {
         autoBind: true
     },
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="RendererComponents.md">Renderer Components</a>
+    <td><a href="RendererComponents.md">Renderer Components</a><br/>
     <a href="#rendererFnOptions"><code>rendererFnOptions</code></a></td>
   </tr>
 </table>
@@ -855,30 +804,25 @@ var search = cspace.searchBox(container, {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>
-fluid.defaults("cspace.login", {
+<code>fluid.defaults("cspace.login", {
     gradeNames: ["fluid.rendererComponent", "autoInit"],
     renderOnInit: true,
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>Example Override</th>
     <td><pre>
-<code>
-var login = cspace.login(container, {
+<code>var login = cspace.login(container, {
     renderOnInit: false,
     ...
-});
-</code>
+});</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="Foo.md">Foo</a>
-    <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248"><code>fluid.initRendererComponent</code></a></td>
+    <td><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248"><code>fluid.initRendererComponent</code></a></td>
   </tr>
 </table>
 

@@ -5,7 +5,7 @@ Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.
 
 ---
 
-Many components manage an internal [model](../ModelObjects.md). For example:
+Many components manage an internal [model](../FrameworkConcepts.md#model-objects). For example:
 
 * the Infusion [Pager](../Pager.md) component, which allows users to break up long lists of items into separate pages, maintains a model including what the current page is, how many items are shown per page, how the list is sorted, etc.
 * the Infusion [UI Options](../UserInterfaceOptions.md) component uses a slider that maintains a model including the minimum and maximum values and the current setting
