@@ -230,13 +230,13 @@ fluid.defaults("component.name", {
 
 Components defined with a grade of `littleComponent` support all of the common options described above, and no others. Component developers are free to define their own additional options.
 
-See also: [ComponentGrades.md Component Grades]
+See also: [Component Grades](ComponentGrades.md)
 
 ## Model Components ##
 
 Components defined with a grade of `modelComponent/modelRelayComponent` support all of the common options described above, as well as those defined below. Component developers are free to define their own additional options.
 
-See also: [ComponentGrades.md Component Grades]
+See also: [Component Grades](ComponentGrades.md)
 
 The following options are supported by model components:
 * model
@@ -298,18 +298,26 @@ var myPager = fluid.pager(container, {
   </tr>
   <tr>
     <th>Notes</th>
-    <td></td>
+    <td>It is not necessary to provide an applier: By default, an applier will be created with <code>fluid.makeChangeApplier()</code>, using any options specified with <a href="#changeApplierOptions"><code>changeApplierOptions</code></a>.
+
+This option is most commonly used to share a common ChangeApplier between components in a component tree: the <code>applier</code> option can be used to reference the ChangeApplier of another component in the tree.</td>
   </tr>
   <tr>
     <th>Example Definition</th>
     <td><pre>
 <code>
+fluid.defaults("component.name", {
+    applier: "{parentComponent.applier}",
+    ...
+});
 </code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="Foo.md">Foo</a></td>
+    <td><a href="Foo.md">ChangeApplier API</a>
+    <a href="#model"><code>model</code></a>
+    <a href="#changeApplierOptions"><code>changeApplierOptions</code></a></td>
   </tr>
 </table>
 
@@ -317,29 +325,87 @@ var myPager = fluid.pager(container, {
 <table>
   <tr>
     <th>Description</th>
-    <td></td>
+    <td>Options that will be passed on to <code>fluid.makeChangeApplier()</code> if a ChangeApplier is not provided using the <a href="#applier"><code>applier</code></a> option.</td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td></td>
+    <td>If a ChangeApplier is provided using the <a href="#applier"><code>applier</code></a> option, this option will be ignored. </td>
   </tr>
   <tr>
     <th>Example Definition</th>
     <td><pre>
 <code>
+fluid.defaults("component.name", {
+    model: {...},
+    changeApplierOptions: {
+        cullUnchanged: true
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>
+var myComp = component.name(container, {
+    model: {...},
+    changeApplierOptions: {
+        cullUnchanged: true
+    },
+    ...
+});
 </code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="Foo.md">Foo</a></td>
+    <td><a href="Foo.md">ChangeApplier API</a>
+    <a href="#model"><code>model</code></a>
+    <a href="#applier"><code>applier</code></a></td>
   </tr>
 </table>
 
 ## Evented Components ##
 
+Components defined with a grade of eventedComponent support all of the common options described above, as well as those defined below. Component developers are free to define their own additional options.
 
-### `invokers` ###
+See also: [Component Grades](ComponentGrades.md)
+
+The following options are supported by evented components:
+
+### `events` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An object containing key/value pairs that define the events the component will fire: the keys are the event names, the values define the type of the event (see <a href="InfusionEventSystem.md">Infusion Event System</a> for information on the different event types).</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>The Framework will create event firers for the listed events. It is the responsibility of the component to fire the events at the appropriate times.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+fluid.defaults("component.name", {
+    events: {
+        onSave: "preventable",
+        onReady: null
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="InfusionEventSystem.md">Infusion Event System</a>></td>
+  </tr>
+</table>
+
+### `listeners` ###
 <table>
   <tr>
     <th>Description</th>
@@ -364,8 +430,455 @@ var myPager = fluid.pager(container, {
 
 ## View Components ##
 
+Components defined with a grade of `viewComponent` are also model components and evented components, so they support
+* all of the common options described above,
+* `modelComponent` options described above,
+* `eventedComponent` options described above,
+* and those defined below.
+
+Component developers are free to define their own additional options.
+
+### `selectors` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An object containing names CSS-based selectors identifying where in the DOM different elements can be found.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>The Framework will create a <a href="DOMBinder.md">DOM Binder</a> that should be used to access the elements identified by selectors. The DOM Binder attaches a function to the component object called <code>locate()</code> which retrieves the element given the selector name.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+fluid.defaults("fluid.progress", {
+    selectors: {
+        displayElement: ".flc-progress",
+        progressBar: ".flc-progress-bar",
+        indicator: ".flc-progress-indicator",
+        label: ".flc-progress-label",
+        ariaElement: ".flc-progress-bar"
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>
+var myEdit = fluid.progress(container, {
+    selectors: {
+        indicator: "div.progress-indicator",
+        label: "span.progress-label"
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="DOMBinder.md">DOM Binder</a></td>
+  </tr>
+</table>
+
 
 ## Renderer Components ##
 
+Components defined with a grade of `rendererComponent` are also view components (and hence model components and evented components), so they support
+* all of the common options described above,
+* `modelComponent` options described above,
+* `eventedComponent` options described above,
+* `viewComponent` options described above,
+* and those defined below.
 
+Component developers are free to define their own additional options.
+
+### `selectorsToIgnore` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An array of selector names identifying elements that will be ignored by the Renderer. These elements will be displayed exactly as provided in the template, with no processing</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+fluid.defaults("cspace.header", {
+    selectors: {
+        menuItem: ".csc-header-menu-item",
+        label: ".csc-header-link",
+        searchBox: ".csc-header-searchBox",
+        logout: ".csc-header-logout",
+        user: ".csc-header-user",
+        userName: ".csc-header-userName"
+    },
+    selectorsToIgnore: ["searchBox", "logout"],
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+</table>
+
+### `repeatingSelectors` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An array of selector names identifying elements that will be repeated by the Renderer based on the data being rendered. For example, the selector for a table row that will be replicated many times should appear in the list of repeating selectors.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+fluid.defaults("cspace.header", {
+    selectors: {
+        menuItem: ".csc-header-menu-item",
+        label: ".csc-header-link",
+        searchBox: ".csc-header-searchBox",
+        logout: ".csc-header-logout",
+        user: ".csc-header-user",
+        userName: ".csc-header-userName"
+    },
+    repeatingSelectors: ["menuItem"],
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+</table>
+
+### `produceTree` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A function that will return a <a href="RendererComponentTrees.md">Renderer Component Tree</a> for the component.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>The referenced function must accept the component object as its only parameter and return a Renderer component tree.
+
+<em>NOTE that if both <code>produceTree</code> and <code><a href="#protoTree">protoTree</a></code> are specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em></td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+cspace.confirmationDialog.produceTree = function (that) {
+    var tree = {
+        ...
+    };
+    return tree;
+};
+fluid.defaults("cspace.confirmationDialog", {
+    produceTree: cspace.confirmationDialog.produceTree,
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="#protoTree">protoTree</a>
+    <a href="RendererComponentTrees.md">Renderer Component Tree</a></td>
+  </tr>
+</table>
+
+### `protoTree` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A tree of Renderer <a href="ProtoComponentTypes.md">protocomponents</a>.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+<em>NOTE that if both <code><a href="#produceTree">produceTree</a></code> and <code>protoTree</code> are specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em></td>
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+fluid.defaults("cspace.searchTips", {
+    protoTree: {
+        searchTips: {decorators: {"addClass": "{styles}.searchTips"}},
+        title: {
+            decorators: {"addClass": "{styles}.title"},
+            messagekey: "searchTips-title"
+        },
+        expander: {
+            repeatID: "instructions",
+            type: "fluid.renderer.repeat",
+            pathAs: "row",
+            controlledBy: "messagekeys",
+            tree: {
+                messagekey: "${{row}}"
+            }
+        }
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>
+var searchTips = cspace.searchTips(container, {
+    protoTree: {
+        searchTips: {decorators: {"addClass": "{styles}.searchTips"}},
+        title: {
+            decorators: {"addClass": "{styles}.title"},
+            messagekey: "searchTips-title"
+        },
+        expander: {
+            repeatID: "instructions",
+            type: "fluid.renderer.repeat",
+            pathAs: "row",
+            controlledBy: "messagekeys",
+            tree: {
+                messagekey: "${{row}}"
+            }
+        }
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="#produceTree">produceTree</a>
+    <a href="RendererComponentTrees.md">Renderer Component Tree</a>
+    <a href="ProtoComponentTypes.md">ProtoComponent Types</a></td>
+  </tr>
+</table>
+
+### `resources` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An object that lists resources (such as HTML files, CSS files, data files) required by the component.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>The specified resources will be loaded automatically and the file content will be stored within the resources object itself.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+fluid.defaults("component.name", {
+    resources: {
+        headerTemplate: {
+            href: "../templates/Header.html"
+        },
+        footerTemplate: {
+            href: "../templates/Footer.html"
+        }
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>
+var myComp = component.name(container, {
+    resources: {
+        footerTemplate: {
+            href: "../templates/FrontPageFooter.html"
+        }
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/core/js/FluidRequests.js#L24-L50"><code>fluid.fetchResources</code></a></td>
+  </tr>
+</table>
+
+### `strings` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An object containing named strings or string templates. The strings will be used by the Renderer.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>The Framework will create a Message Resolver and add it to the component object if the <code>strings</code> option is present.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+    
+fluid.defaults("cspace.searchToRelateDialog", {
+    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    strings: {
+        createNewButton: "Create",
+        title: "Add Related %recordType Record",
+        closeAlt: "close button",
+        relationshipType: "Select relationship type:",
+        createNew: "Create new record:",
+        addButton: "Add to current record"
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>
+var myDialog = cspace.searchToRelateDialog(container, {
+    strings: {
+        relationshipType: "Select a relationship type from the list below:",
+        createNew: "Create a new record:",
+        addButton: "Add this record to the current record"
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/core/js/Fluid.js#L2441-L2451"><code>fluid.messageResolver</code></a></td>
+  </tr>
+</table>
+
+### `rendererFnOptions` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>Options that will be passed directly to the renderer creation function, <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100"><code>fluid.renderer.createRendererSubcomponent</code></a></td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+    
+fluid.defaults("fluid.tableOfContents.levels", {
+    rendererFnOptions: {
+        noexpand: true
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>
+var recEditor = cspace.recordEditor(container, {
+    rendererFnOptions: {
+        rendererTargetSelector: "dialog"
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="RendererComponents.md">Renderer Components</a>
+    <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100"><code>fluid.renderer.createRendererSubcomponent</code></a></td>
+  </tr>
+</table>
+
+### `rendererOptions` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>Options that will be included in the <a href="#rendererFnOptions"><code>rendererFnOptions</code></a> as <code>rendererOptions</code></td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+fluid.defaults("cspace.searchBox", {
+    rendererOptions: {
+        autoBind: false
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>
+var search = cspace.searchBox(container, {
+    rendererOptions: {
+        autoBind: true
+    },
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="RendererComponents.md">Renderer Components</a>
+    <a href="#rendererFnOptions"><code>rendererFnOptions</code></a></td>
+  </tr>
+</table>
+
+### `renderOnInit` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A boolean flag indicating whether or not the component should render itself automatically once initialization has completed. By default, renderer components do not render themselves automatically.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>This option is valid both for "autoInit" components and for components that are initialized manually, through <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248"><code>fluid.initRendererComponent</code></a>.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>
+fluid.defaults("cspace.login", {
+    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    renderOnInit: true,
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>
+var login = cspace.login(container, {
+    renderOnInit: false,
+    ...
+});
+</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="Foo.md">Foo</a>
+    <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248"><code>fluid.initRendererComponent</code></a></td>
+  </tr>
+</table>
 
