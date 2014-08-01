@@ -17,7 +17,7 @@ The following options are supported by all component grades:
   <tr>
     <th>Notes</th>
     <td>In addition to the grade names, the array should include the special "autoInit" value, which instructs the Framework to create the component creator function automatically.
-        *NOTE*: "autoInit" is the preferred way of creating components, and will become the default for Infusion 2.0. Always use this grade name, unless you have a special reason to not want the framework to fabricate a creator function (perhaps, because your grade is not instantiable).</td>
+        <em><strong>NOTE:</strong> "autoInit" is the preferred way of creating components, and will become the default for Infusion 2.0. Always use this grade name, unless you have a special reason to not want the framework to fabricate a creator function (perhaps, because your grade is not instantiable).</em></td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -149,7 +149,7 @@ The following options are supported by all component grades:
   </tr>
   <tr>
     <th>Notes</th>
-    <td>This (the <em>subcomponent record</em>) is one of the core sources from which the options configuring a component in a particular context. The total set of options sources are: i) the original defaults record, ii) the subcomponent record, iii) direct user options (supplied to a component creator function), iv) <a href="IoCSS.md">distributed options</a>.</td>
+    <td>This (the <strong>subcomponent record</strong>) is one of the core sources from which the options configuring a component in a particular context. The total set of options sources are: i) the original defaults record, ii) the subcomponent record, iii) direct user options (supplied to a component creator function), iv) <a href="IoCSS.md">distributed options</a>.</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -207,13 +207,13 @@ The following options are supported by all component grades:
 
 ## Little Components ##
 
-Components defined with a grade of `littleComponent` support all of the common options described above, and no others. Component developers are free to define their own additional options.
+Components defined with a grade of `littleComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, and no others. Component developers are free to define their own additional options.
 
 See also: [Component Grades](ComponentGrades.md)
 
 ## Model Components ##
 
-Components defined with a grade of `modelComponent/modelRelayComponent` support all of the common options described above, as well as those defined below. Component developers are free to define their own additional options.
+Components defined with a grade of `modelComponent/modelRelayComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
 
 See also: [Component Grades](ComponentGrades.md)
 
@@ -225,7 +225,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>Notes</th>
-    <td>If a <a href="ChangeApplier.md">ChangeApplier</a> is not provided using the <a href="#applier">applier</a> option, the Framework will create one for the provided model. </td>
+    <td>If a <a href="ChangeApplier.md">ChangeApplier</a> is not provided using the <code><a href="#applier">applier</a></code> option, the Framework will create one for the provided model. </td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -256,7 +256,7 @@ See also: [Component Grades](ComponentGrades.md)
     <td><a href="FrameworkConcepts.md#model-objects">Model Objects</a><br/>
         <a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
         <code><a href="#applier">applier</a></code><br/>
-        <code><a href="#changeApplierOptions">changeApplierOptions</a></code></td>
+        <code><a href="#changeapplieroptions">changeApplierOptions</a></code></td>
   </tr>
 </table>
 
@@ -268,7 +268,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>Notes</th>
-    <td>It is not necessary to provide an applier: By default, an applier will be created with <code>fluid.makeChangeApplier()</code>, using any options specified with <a href="#changeApplierOptions"><code>changeApplierOptions</code></a>.
+    <td>It is not necessary to provide an applier: By default, an applier will be created with <code>fluid.makeChangeApplier()</code>, using any options specified with <a href="#changeapplieroptions"><code>changeApplierOptions</code></a>.
 
 This option is most commonly used to share a common ChangeApplier between components in a component tree: the <code>applier</code> option can be used to reference the ChangeApplier of another component in the tree.</td>
   </tr>
@@ -285,7 +285,7 @@ This option is most commonly used to share a common ChangeApplier between compon
     <th>See also</th>
     <td><a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
     <a href="#model"><code>model</code></a><br/>
-    <a href="#changeApplierOptions"><code>changeApplierOptions</code></a></td>
+    <a href="#changeapplieroptions"><code>changeApplierOptions</code></a></td>
   </tr>
 </table>
 
@@ -333,7 +333,7 @@ fluid.defaults("component.name", {
 
 ## Evented Components ##
 
-Components defined with a grade of `eventedComponent` support all of the common options described above, as well as those defined below. Component developers are free to define their own additional options.
+Components defined with a grade of `eventedComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
 
 See also: [Component Grades](ComponentGrades.md)
 
@@ -412,9 +412,9 @@ fluid.defaults("component.name", {
 ## View Components ##
 
 Components defined with a grade of `viewComponent` are also model components and evented components, so they support
-* all of the common options described above,
-* `modelComponent` options described above,
-* `eventedComponent` options described above,
+* all of the [common options](#options-supported-by-all-components-grades) described above,
+* [`modelComponent` options](#model-components) described above,
+* [`eventedComponent` options](#evented-components) described above,
 * and those defined below.
 
 Component developers are free to define their own additional options.
@@ -466,10 +466,10 @@ Component developers are free to define their own additional options.
 ## Renderer Components ##
 
 Components defined with a grade of `rendererComponent` are also view components (and hence model components and evented components), so they support
-* all of the common options described above,
-* `modelComponent` options described above,
-* `eventedComponent` options described above,
-* `viewComponent` options described above,
+* all of the [common options](#options-supported-by-all-components-grades) described above,
+* [`modelComponent` options](#model-components) described above,
+* [`eventedComponent` options](#evented-components) described above,
+* [`viewComponent` options](#view-components) described above,
 * and those defined below.
 
 Component developers are free to define their own additional options.
@@ -553,7 +553,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="#protoTree">protoTree</a><br/>
+    <td><a href="#prototree">protoTree</a><br/>
     <a href="RendererComponentTrees.md">Renderer Component Tree</a></td>
   </tr>
 </table>
@@ -567,7 +567,7 @@ fluid.defaults("cspace.confirmationDialog", {
   <tr>
     <th>Notes</th>
     <td>
-<em>NOTE that if both <code><a href="#produceTree">produceTree</a></code> and <code>protoTree</code> are specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em></td>
+<em>NOTE that if both <code><a href="#producetree">produceTree</a></code> and <code>protoTree</code> are specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em></td>
     </td>
   </tr>
   <tr>
@@ -620,7 +620,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="#produceTree">produceTree</a><br/>
+    <td><a href="#producetree">produceTree</a><br/>
     <a href="RendererComponentTrees.md">Renderer Component Tree</a><br/>
     <a href="ProtoComponentTypes.md">ProtoComponent Types</a></td>
   </tr>
@@ -760,7 +760,7 @@ fluid.defaults("cspace.confirmationDialog", {
 <table>
   <tr>
     <th>Description</th>
-    <td>Options that will be included in the <a href="#rendererFnOptions"><code>rendererFnOptions</code></a> as <code>rendererOptions</code></td>
+    <td>Options that will be included in the <a href="#rendererfnoptions"><code>rendererFnOptions</code></a> as <code>rendererOptions</code></td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -787,7 +787,7 @@ fluid.defaults("cspace.confirmationDialog", {
   <tr>
     <th>See also</th>
     <td><a href="RendererComponents.md">Renderer Components</a><br/>
-    <a href="#rendererFnOptions"><code>rendererFnOptions</code></a></td>
+    <a href="#rendererfnoptions"><code>rendererFnOptions</code></a></td>
   </tr>
 </table>
 
@@ -799,7 +799,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Notes</th>
-    <td>This option is valid both for "autoInit" components and for components that are initialized manually, through <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248"><code>fluid.initRendererComponent</code></a>.</td>
+    <td>This option is valid both for <code>"autoInit"</code> components and for components that are initialized manually, through <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248"><code>fluid.initRendererComponent</code></a>.</td>
   </tr>
   <tr>
     <th>Example Definition</th>
