@@ -146,7 +146,7 @@ The following options are supported by all component grades:
   <tr>
     <th>Notes</th>
     <td>This (the <strong>subcomponent record</strong>) is one of the core sources from which the options configuring a component in a particular context. The total set of options sources are:
-    <ol style="list-style-type: lower-roman;">
+    <ol>
     <li>the original defaults record,</li>
     <li>the subcomponent record,</li>
     <li>direct user options (supplied to a component creator function),</li>
