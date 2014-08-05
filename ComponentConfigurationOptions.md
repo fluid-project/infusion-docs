@@ -16,8 +16,8 @@ The following options are supported by all component grades:
   </tr>
   <tr>
     <th>Notes</th>
-    <td>In addition to the grade names, the array should include the special "autoInit" value, which instructs the Framework to create the component creator function automatically.
-        <em><strong>NOTE:</strong> "autoInit" is the preferred way of creating components, and will become the default for Infusion 2.0. Always use this grade name, unless you have a special reason to not want the framework to fabricate a creator function (perhaps, because your grade is not instantiable).</em></td>
+    <td>In addition to the grade names, the array should include the special <code>"autoInit"</code> value, which instructs the Framework to create the component creator function automatically.
+        <em><strong>NOTE:</strong> <code>"autoInit"</code> is the preferred way of creating components, and will become the default for Infusion 2.0. Always use this grade name, unless you have a special reason to not want the framework to fabricate a creator function (perhaps, because your grade is not instantiable).</em></td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -95,10 +95,6 @@ The following options are supported by all component grades:
     <td>An object defining methods on the component whose arguments are resolved from the environment as well as the direct argument list at invocation time.</td>
   </tr>
   <tr>
-    <th>Notes</th>
-    <td></td>
-  </tr>
-  <tr>
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("component.name", {
@@ -149,7 +145,14 @@ The following options are supported by all component grades:
   </tr>
   <tr>
     <th>Notes</th>
-    <td>This (the <strong>subcomponent record</strong>) is one of the core sources from which the options configuring a component in a particular context. The total set of options sources are: i) the original defaults record, ii) the subcomponent record, iii) direct user options (supplied to a component creator function), iv) <a href="IoCSS.md">distributed options</a>.</td>
+    <td>This (the <strong>subcomponent record</strong>) is one of the core sources from which the options configuring a component in a particular context. The total set of options sources are:
+    <ol style="list-style-type: lower-roman;">
+    <li>the original defaults record,</li>
+    <li>the subcomponent record,</li>
+    <li>direct user options (supplied to a component creator function),</li>
+    <li><a href="IoCSS.md">distributed options</a>.</li>
+    </ol>
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -264,11 +267,11 @@ See also: [Component Grades](ComponentGrades.md)
 <table>
   <tr>
     <th>Description</th>
-    <td>A <a href="ChangeApplier.md">ChangeApplier</a> object for the model provided with the <a href="#model">model</a> option.</td>
+    <td>A <a href="ChangeApplier.md">ChangeApplier</a> object for the model provided with the <code><a href="#model">model</a></code> option.</td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td>It is not necessary to provide an applier: By default, an applier will be created with <code>fluid.makeChangeApplier()</code>, using any options specified with <a href="#changeapplieroptions"><code>changeApplierOptions</code></a>.
+    <td>It is not necessary to provide an applier: By default, an applier will be created with <code>fluid.makeChangeApplier()</code>, using any options specified with <code><a href="#changeapplieroptions">changeApplierOptions</a></code>.
 
 This option is most commonly used to share a common ChangeApplier between components in a component tree: the <code>applier</code> option can be used to reference the ChangeApplier of another component in the tree.</td>
   </tr>
@@ -284,8 +287,8 @@ This option is most commonly used to share a common ChangeApplier between compon
   <tr>
     <th>See also</th>
     <td><a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
-    <a href="#model"><code>model</code></a><br/>
-    <a href="#changeapplieroptions"><code>changeApplierOptions</code></a></td>
+    <code><a href="#model">model</a></code><br/>
+    <code><a href="#changeapplieroptions">changeApplierOptions</a></code></td>
   </tr>
 </table>
 
@@ -293,11 +296,11 @@ This option is most commonly used to share a common ChangeApplier between compon
 <table>
   <tr>
     <th>Description</th>
-    <td>Options that will be passed on to <code>fluid.makeChangeApplier()</code> if a ChangeApplier is not provided using the <a href="#applier"><code>applier</code></a> option.</td>
+    <td>Options that will be passed on to <code>fluid.makeChangeApplier()</code> if a ChangeApplier is not provided using the <code><a href="#applier">applier</a></code> option.</td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td>If a ChangeApplier is provided using the <a href="#applier"><code>applier</code></a> option, this option will be ignored. </td>
+    <td>If a ChangeApplier is provided using the <code><a href="#applier">applier</a></code> option, this option will be ignored. </td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -326,8 +329,8 @@ fluid.defaults("component.name", {
   <tr>
     <th>See also</th>
     <td><a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
-    <a href="#model"><code>model</code></a><br/>
-    <a href="#applier"><code>applier</code></a></td>
+    <code><a href="#model">model</a></code><br/>
+    <code><a href="#applier">applier</a></code></td>
   </tr>
 </table>
 
@@ -667,7 +670,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/core/js/FluidRequests.js#L24-L50"><code>fluid.fetchResources</code></a></td>
+    <td><code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/core/js/FluidRequests.js#L24-L50">fluid.fetchResources</a></code></td>
   </tr>
 </table>
 
@@ -713,7 +716,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/core/js/Fluid.js#L2441-L2451"><code>fluid.messageResolver</code></a></td>
+    <td><code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/core/js/Fluid.js#L2441-L2451">fluid.messageResolver</a></code></td>
   </tr>
 </table>
 
@@ -721,11 +724,7 @@ fluid.defaults("cspace.confirmationDialog", {
 <table>
   <tr>
     <th>Description</th>
-    <td>Options that will be passed directly to the renderer creation function, <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100"><code>fluid.renderer.createRendererSubcomponent</code></a></td>
-  </tr>
-  <tr>
-    <th>Notes</th>
-    <td></td>
+    <td>Options that will be passed directly to the renderer creation function, <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100">fluid.renderer.createRendererSubcomponent</a></code></td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -752,7 +751,7 @@ fluid.defaults("cspace.confirmationDialog", {
   <tr>
     <th>See also</th>
     <td><a href="RendererComponents.md">Renderer Components</a><br/>
-    <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100"><code>fluid.renderer.createRendererSubcomponent</code></a></td>
+    <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100">fluid.renderer.createRendererSubcomponent</a></code></td>
   </tr>
 </table>
 
@@ -760,7 +759,7 @@ fluid.defaults("cspace.confirmationDialog", {
 <table>
   <tr>
     <th>Description</th>
-    <td>Options that will be included in the <a href="#rendererfnoptions"><code>rendererFnOptions</code></a> as <code>rendererOptions</code></td>
+    <td>Options that will be included in the <code><a href="#rendererfnoptions">rendererFnOptions</a></code> as <code>rendererOptions</code></td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -787,7 +786,7 @@ fluid.defaults("cspace.confirmationDialog", {
   <tr>
     <th>See also</th>
     <td><a href="RendererComponents.md">Renderer Components</a><br/>
-    <a href="#rendererfnoptions"><code>rendererFnOptions</code></a></td>
+    <code><a href="#rendererfnoptions">rendererFnOptions</a></code></td>
   </tr>
 </table>
 
@@ -799,7 +798,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Notes</th>
-    <td>This option is valid both for <code>"autoInit"</code> components and for components that are initialized manually, through <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248"><code>fluid.initRendererComponent</code></a>.</td>
+    <td>This option is valid both for <code>"autoInit"</code> components and for components that are initialized manually, through <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248">fluid.initRendererComponent</a></code>.</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -822,7 +821,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248"><code>fluid.initRendererComponent</code></a></td>
+    <td><code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248">fluid.initRendererComponent</a></code></td>
   </tr>
 </table>
 
