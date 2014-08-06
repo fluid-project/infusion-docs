@@ -537,7 +537,7 @@ Component developers are free to define their own additional options.
     <th>Notes</th>
     <td>The referenced function must accept the component object as its only parameter and return a Renderer component tree.
 
-<em>NOTE that if both <code>produceTree</code> and <code><a href="#protoTree">protoTree</a></code> are specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em></td>
+<em>NOTE that if both <code>produceTree</code> and <code><a href="#prototree">protoTree</a></code> are specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em></td>
   </tr>
   <tr>
     <th>Example Definition</th>
