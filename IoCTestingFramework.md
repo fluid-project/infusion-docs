@@ -139,16 +139,17 @@ in its sequence member, representing a sequence of actions (either executors or 
 <tr>
 <th>Fixture name</th><th>Field name</th><th>Field type</th><th>Field description</th><th>Fixture category</th></tr>
 <tr class="duckrow">
-<td rowspan="2" class="blockcell">Function executor</td><td>func</td><td>Function/function name</td><td>function to be executed</td><td rowspan="2" class="blockcell">executor</td></tr>
+<td rowspan="2" class="blockcell">Function executor</td>
+<td>func<sup>&dagger;</sup></td><td>Function/function name</td><td>function to be executed</td><td rowspan="2" class="blockcell">executor</td></tr>
 <tr><td>args [optional]</td><td>Object/Array</td><td>arguments to be supplied to function</td></tr>
 <tr class="duckrow">
-<td rowspan="4" class="blockcell">Event listener</td><td>event</td><td>Fluid event firer</td><td>The event to which the listener will be bound</td><td rowspan="4" class="blockcell">binder</td></tr>
+<td rowspan="4" class="blockcell">Event listener</td><td>event<sup>&dagger;</sup></td><td>Fluid event firer</td><td>The event to which the listener will be bound</td><td rowspan="4" class="blockcell">binder</td></tr>
 <tr class="alt-a-row"><td>listener</td><td>Function/function name</td><td>The listener to be bound to the event</td></tr>
 <tr class="alt-b-row"><td>listenerMaker</td><td>Function/function name</td><td>A function which will produce a listener to be bound</td></tr>
 <tr class="alt-b-row">
 <td>makerArgs [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td></tr>
 <tr class="duckrow">
-<td rowspan="6" class="blockcell">Change event listener</td><td>changeEvent</td><td>Fluid event firer corresponding to a change event (currently <code>modelChanged</code>, <code>guards</code> or <code>postGuards</code>)</td><td>Change event to be listened to</td><td rowspan="6" class="blockcell">binder</td></tr>
+<td rowspan="6" class="blockcell">Change event listener</td><td>changeEvent<sup>&dagger;</sup></td><td>Fluid event firer corresponding to a change event (currently <code>modelChanged</code>, <code>guards</code> or <code>postGuards</code>)</td><td>Change event to be listened to</td><td rowspan="6" class="blockcell">binder</td></tr>
 <tr class="alt-a-row"><td>path</td><td>string</td><td>A path specification matching the EL paths for which the listener is to be registered, as per the <a href="http://wiki.fluidproject.org/display/fluid/ChangeApplier+API">ChangeApplier API</a></td></tr>
 <tr class="alt-b-row"><td>spec</td><td>Object</td><td>A record holding a structured description of the required listener properties, as per the ChangeApplier API</td></tr>
 <tr class="alt-a-row"><td>listener</td><td>Function/function name</td><td>The listener to be bound to the event</td></tr>
@@ -156,11 +157,11 @@ in its sequence member, representing a sequence of actions (either executors or 
 <tr class="alt-b-row">
 <td>makerArgs [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td></tr>
 <tr class="duckrow">
-<td rowspan="3" class="blockcell">jQuery event trigger</td><td>jQueryTrigger</td><td>string</td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered</td><td rowspan="3" class="blockcell">executor</td></tr>
+<td rowspan="3" class="blockcell">jQuery event trigger</td><td>jQueryTrigger<sup>&dagger;</sup></td><td>string</td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered</td><td rowspan="3" class="blockcell">executor</td></tr>
 <tr><td>args [optional]</td><td>Object/Array</td><td>additional arguments to be supplied to <code>jQuery.trigger</code></td></tr>
 <tr><td>element</td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which the event is to be triggered</td></tr>
 <tr class="duckrow">
-<td rowspan="6" class="blockcell">jQuery event binder</td><td>jQueryBind</td><td>string</td><td>The name of a jQuery event for which a listener is to be registered</td><td rowspan="6" class="blockcell">binder</td></tr>
+<td rowspan="6" class="blockcell">jQuery event binder</td><td>jQueryBind<sup>&dagger;</sup></td><td>string</td><td>The name of a jQuery event for which a listener is to be registered</td><td rowspan="6" class="blockcell">binder</td></tr>
 <tr><td>element</td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which a listener is to be bound</td></tr>
 <tr><td>args [optional]</td><td>Object/Array</td><td>additional arguments to be supplied to <code>jQuery.one</code></td></tr>
 <tr class="alt-a-row"><td>listener</td><td>Function/function name</td><td>The listener to be bound to the event</td></tr>
