@@ -19,6 +19,7 @@ _**Note:** actual paths may vary, as they are dependent on the location of infus
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-reset-global.css" />
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-base-global.css" />
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-layout.css" />
+<link rel="stylesheet" type="text/css" href="infusion/lib/jquery/plugins/tooltip/css/jquery.tooltip.css" media="all" />
 <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/default-theme/jquery.ui.theme.css" />
 
 <link rel="stylesheet" type="text/css" href="infusion/components/pager/css/Pager.css" />
@@ -67,8 +68,6 @@ _**Note:** actual paths may vary, as they are dependent on the location of infus
 
 #### CSS Files ####
 
-(NO CHANGE)
-
 ```html
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-reset-global.css" />
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-base-global.css" />
@@ -110,6 +109,9 @@ _**Note:** actual paths may vary, as they are dependent on the location of infus
 
 ### In 1.5 ###
 
+These configuration blocks show how a minimal configuration of the Pager has changed between the versions. Numerous
+other configuration options are of course supported as listed in the API documentation.
+
 ```javascript
 fluid.pagedTable("container", 
     dataModel: ...,
@@ -143,7 +145,8 @@ fluid.pager("container",
 });
 ```
 
-In general:
+### General configuration changes
+
 * Every "pseudocomponent" attached to the Pager (e.g. pagerBar, summary, pageSize) etc. is now a genuine IoC-configured component, and
 should have its options entered in the `components` area rather than at top level as before
 * The single monolithic component `Pager` has been factored into 3 components, plain `Pager` which now just has responsibility for paging,
@@ -154,6 +157,8 @@ their functionality.
 markup rather than use the old-fashioned markup pollution based on the special attribute `rsf:id`).
 * The duplicate component `pagerBarSecondary` has been removed and `pagerBar` is instead initialised as a standard IoC-driven *dynamic component* which will create
 as many pager bars as there are matching elements in the markup 
+
+### Change in type names
 
 The following table shows the changes in the type names of 1.4 components moving to 1.5 (remember that when used, these must also be housed in the `components` block
 of the parent component, rather than appearing at top level as before):
@@ -171,5 +176,5 @@ of the parent component, rather than appearing at top level as before):
 
 
 Note that the Pager Component remains in "Sneak Peek" mode for the 1.5 release and its API is not expected to be stable. Please get in touch with the Infusion team
-on IRC or the mailing lists if you are contemplating any non-trivial usage.
+on IRC or the mailing lists (see http://wiki.fluidproject.org/display/fluid/Collaborate ) if you are contemplating any non-trivial usage.
 
