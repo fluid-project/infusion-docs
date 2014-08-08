@@ -12,6 +12,8 @@ Infusion
   * [Component Grades](ComponentGrades.md)
   * [Options Merging](OptionsMerging.md)
   * [Component Lifecycle](ComponentLifecycle.md)
+* [DOM Binder](DOMBinder.md)
+  * [DOM Binder API](DOMBinderAPI.md)
 * Inversion of Control
   * [How To Use Infusion IoC](HowToUseInfusionIoC.md)
   * [Subcomponent Declaration](SubcomponentDeclaration.md)
