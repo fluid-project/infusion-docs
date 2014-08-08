@@ -29,7 +29,7 @@ component defines default values for the selectors, but implementors are free to
 need to change the structure of the markup.
 
 The DOM Binder also ensures that a component accesses only markup specific to itself, and not to any other similar 
-components that might be on the same page. Each Infusion [View Component](tutorial-gettingStartedWithInfusion/ViewComponents) 
+components that might be on the same page. Each Infusion [View Component](tutorial-gettingStartedWithInfusion/ViewComponents.md) 
 is scoped to a particular node in the 
 DOM called its **_container_**. The DOM Binder limits any queries to that container.
 
@@ -39,9 +39,11 @@ searches are do not have to be recomputed from the DOM on every query.
 
 ## How Infusion Components Use the DOM Binder ##
 
-The Infusion Framework automatically creates a DOM Binder for any [View Component](tutorial-gettingStartedWithInfusion/ViewComponents) 
+The Infusion Framework automatically creates a DOM Binder for any [View Component](tutorial-gettingStartedWithInfusion/ViewComponents.md) 
 as it constructs and attaches 
-it to the component as a top-level member named dom. View Components specify a set of names selectors in 
+it to the component as a top-level member named `dom`.
+
+View Components specify a set of names selectors in 
 the component's defaults called `selectors`:
 
 ```javascript
@@ -58,7 +60,7 @@ DOM elements related to this component can be resolved declaratively using the d
 if `{newComponent}` is a reference to an instance of the above component, a reference to one of its 
 DOM binder elements as declared above could be written as `{newComponent}.dom.uiBit1`.
 
-The full programmatic API to the DOM binder also available through this dom member (see 
+The full programmatic API to the DOM binder also available through this `dom` member (see 
 [DOM Binder API](DomBinderAPI.md) for information about available methods). 
 For convenience, the DOM Binder's `locate()` function is also added to the component as a top-level instance member.
 
@@ -135,7 +137,7 @@ in the way that `locate()` is. They need to be accessed through the DOM Binder's
 that.dom.fastLocate(name);
 ```
 
-The fastLocate() method retrieves the DOM node from the DOM Binder's cache instead of querying the DOM directly: 
+The `fastLocate()` method retrieves the DOM node from the DOM Binder's cache instead of querying the DOM directly: 
 When `fastLocate()` is used instead of `locate()`, if the results of the search are already present in the DOM 
 binder's cache, they will be returned directly without searching the DOM again. This can be very much more rapid, 
 but runs the risk of returning stale results. The DOM binder's cache is populated for a query 
@@ -163,9 +165,9 @@ The `refresh()` method refreshes the cache for one or more selector names, ready
 
 The Inline Edit component requires three parts in its user interface:
 
-* a field to display the text that can be edited
-* a field that can actually edit the text
-* a container for the edit field
+* a field to display the text that can be edited,
+* a field that can actually edit the text, and
+* a container for the edit field.
 
 The component declares selector names for these elements, and provides defaults, in its call to `fluid.defaults()`:
 
