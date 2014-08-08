@@ -30,14 +30,16 @@ The DOM Binder object is attached to the component as a member called `dom`.
         <td><code>selectors</code></td>
         <td>Object</td>
         <td>a collection of named jQuery selectors, of the form
+<pre>
 <code>
 {
-    name1: <selector1>,
-    name2: <selector2>,
+    name1: &lt;selector1&gt;,
+    name2: &lt;selector2&gt;,
     ....
 }
 </code>
-Note that selector values may be specified using IoC references to other selectors or expanders.
+</pre>
+Note that selector values may be specified using <a href="IoCReferences.md">IoC references</a> to other selectors or expanders.
         </td>
     </tr>
 </table>
@@ -104,7 +106,7 @@ Finds the named element within the specified container.
 fastLocate(name[, localContainer]);
 ```
 
-Finds the named element within the specified container, using the value in the DOM Binder's cache if present (i.e. the DOM itself will not be searched again). The DOM binder's cache is populated for a query, whenever a query is submitted via locate().
+Finds the named element within the specified container, using the value in the DOM Binder's cache if present (i.e. the DOM itself will not be searched again). The DOM binder's cache is populated for a query, whenever a query is submitted via `locate()`.
 
 **Return:** a jQuery object.
 
@@ -132,7 +134,7 @@ Finds the named element within the specified container, using the value in the D
 clear()
 ```
 
-The clear() method completely clears the cache for the DOM binder for all queries. It should be used whenever, for example, the container's markup is replaced completely, or otherwise is known to change in a wholesale way.
+Completely clears the cache for the DOM binder for all queries. It should be used whenever, for example, the container's markup is replaced completely, or otherwise is known to change in a wholesale way.
 
 ### refresh ###
 
@@ -140,10 +142,10 @@ The clear() method completely clears the cache for the DOM binder for all querie
 refresh(names[, localContainer]);
 ```
 
-The refresh() method refreshes the cache for one or more selector names, ready for subsequent calls to fastLocate(). It functions exactly as for a call to locate() except that
+Refreshes the cache for one or more selector names, ready for subsequent calls to `fastLocate()`. It functions exactly as for a call to `locate()` except that
 
-    The queried results are not returned to the user, but simply populated into the cache, and
-    More than one selector name (as an array) may be sent to refresh rather than just a single one.
+* The queried results are not returned to the user, but simply populated into the cache, and
+* More than one selector name (as an array) may be sent to refresh rather than just a single one.
 
 <table>
     <tr>
