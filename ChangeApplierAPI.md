@@ -130,7 +130,7 @@ The values of sources supported as values in `excludeSource` and `includeSource`
 <table>
     <thead>
         <tr>
-            <th colspan="2">Values for sources supported as entries in `excludeSource` and `includeSource` as part of a model listener declaration</th>
+            <th colspan="2">Values for sources supported as entries in <code>excludeSource</code> and <code>includeSource</code> as part of a model listener declaration</th>
         </tr>
         <tr>
             <th>Source</th>
@@ -145,7 +145,7 @@ The values of sources supported as values in `excludeSource` and `includeSource`
         </tr>
         <tr>
             <td>relay</td>
-            <td>A change resulting from <a href="ModelRelay.md><em>model relay</em></a> from another linked component in the model skeleton, elsewhere in the component tree.</td>
+            <td>A change resulting from <a href="ModelRelay.md"><em>model relay</em></a> from another linked component in the model skeleton, elsewhere in the component tree.</td>
         </tr>
         <tr>
             <td>local</td>
