@@ -57,7 +57,12 @@ The 4 examples presented in the _"Examples"_ column are parallel for the two cas
 
 #### Model Listener Declaration ####
 
-A model listener declaration block has exactly the same form and meaning as any of the record types supported by [Invokers](Invokers.md) and [Listeners](EventInjectionAndBoiling.md#listener-boiling) - including the one-string compact syntax documented with [Invokers](Invokers.md). The only difference is that an extra [context name](Contexts.md) is available in this block by the name of change. This is bound to the particular change event which triggered this listener. This context behaves as an object with the following fields:
+A model listener declaration block has exactly the same form and meaning as any of the record types supported by [Invokers](Invokers.md) and [Listeners](EventInjectionAndBoiling.md#listener-boiling) - including the one-string compact syntax documented with [Invokers](Invokers.md). There are two extra features that are supported in
+model listener blocks that are not supported in standard listener declarations. These are the special context name `change`, and the ability to filter a change based on its _source_.
+
+
+#### The special context `change`
+An extra [context name](Contexts.md) is available in a model listener block by the name of `change`. This is bound to the particular change event which triggered this listener. This context behaves as an object with the following fields:
 
 <table>
     <thead>
@@ -88,6 +93,87 @@ A model listener declaration block has exactly the same form and meaning as any 
         </tr>
     </tbody>
 </table>
+
+#### Source tracking and filtering in model listener blocks
+
+Each transaction holding one or more changes is associated with a particular _source_. Model listeners can use two special directives, `excludeSource` and `includeSource` in order to register their
+interest or disinterest in receiving changes from particular sources. The default behaviour is to receive all changes from all sources. The values of these fields are single strings representing sources,
+or arrays of these strings. The three currently supported sources are `init`, `relay` and `local` - custom user-defined sources may be supported in the future.
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Fields of a model listener declaration operating source filtering</th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>excludeSource</td>
+            <td>String/Array of String</td>
+            <td>A source or set of sources for which this listener should not receive notifications</td>
+        </tr>
+        <tr>
+            <td>includeSource</td>
+            <td>String/Array of String</td>
+            <td>A source or set of sources for which this listener should receive notifications. If <code>excludeSource</code> is empty, <em>only</em> changes from these sources will be received. If <code>excludeSource</code> is not empty, these values will take priority.</td>
+        </tr>
+    </tbody>
+</table>
+
+The values of sources supported as values in `excludeSource` and `includeSource` are as follows:
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Values for sources supported as entries in `excludeSource` and `includeSource` as part of a model listener declaration</th>
+        </tr>
+        <tr>
+            <th>Source</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>init</td>
+            <td>The change arising from the <em>initial transaction</em>. During this change, the listener will observe the value of the model changing from <code>undefined</code> to its consistent initial value, during the 
+            overall process of component construction</td>
+        </tr>
+        <tr>
+            <td>relay</td>
+            <td>A change resulting from <a href="ModelRelay.md><em>model relay</em></a> from another linked component in the model skeleton, elsewhere in the component tree.</td>
+        </tr>
+        <tr>
+            <td>local</td>
+            <td>A change directly triggered via the ChangeApplier on this component - either via a declarative record holding <code>changePath</code>, or programmatically using an <code>applier.change()</code> call</td>
+        </tr>
+    </tbody>
+</table>
+
+Example featuring source filtering:
+
+```javascript
+fluid.defaults("examples.sourceExample1", {
+    gradeNames: ["fluid.modelRelayComponent", "autoInit"],
+    model: "initial value",
+    modelListeners: {
+        things: {
+            funcName: "console.log",
+            excludeSource: "init",
+            args: "{change}.value"
+        }
+    }
+});
+
+var that = examples.sourceExample1();
+that.applier.change("things", "new value");
+```
+
+This example will not log the transition from the initial model state of `undefined` to the console. It will, however, log the value `new value` triggered via the ChangeApplier API.  
 
 #### Wildcards in model path references ####
 
