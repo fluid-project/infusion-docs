@@ -1,4 +1,4 @@
-# User Interface Options #
+# User Interface Options API #
 
 The **User Interface Options (UI Options)** component  allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
 
@@ -124,7 +124,7 @@ For information on the different types of events, see [Infusion Event System](In
             <td>
                 This event fires when the UI Options interface has been rendered into the iframe.
 
-                <p><em><strong>Note:</strong> use onReady if the listener needs UI Options to be both rendered and ready to use.</em></p>
+                <p><em><strong>Note:</strong> use <code>onReady</code> if the listener needs UI Options to be both rendered and ready to use.</em></p>
             </td>
         </tr>
         <tr>
@@ -273,7 +273,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>prefsEditor</code> option allows you to specify a data structure to config the prefsEditor component.
+                The <code>prefsEditor</code> option allows you to specify a data structure to config the <code>prefsEditor</code> component.
             </td>
         </tr>
         <tr>
@@ -307,7 +307,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>prefsEditorType</code> option allows you to specify a custom prefsEditorLoader [grade](ComponentGrades.md) component.
+                The <code>prefsEditorType</code> option allows you to specify a custom <code>prefsEditorLoader</code> <a href="ComponentGrades.md">grade</a> component.
             </td>
         </tr>
         <tr>
@@ -336,7 +336,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Description</th>
             <td>
-                The `enhancerType` option allows you to specify a custom enhancer [grade](ComponentGrades.md) component.
+                The <code>enhancerType</code> option allows you to specify a custom <code>enhancer</code> <a href="ComponentGrades.md">grade</a> component.
             </td>
         </tr>
         <tr>
@@ -365,7 +365,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Description</th>
             <td>
-                The `storeType` option allows you to specify a custom store [grade](ComponentGrades.md) component.
+                The <code>storeType</code> option allows you to specify a custom <code>store</code> <a href="ComponentGrades.md">grade</a> component.
             </td>
         </tr>
         <tr>
@@ -404,7 +404,7 @@ fluid.uiOptions.fullNoPreview("#myContainer", {
             <td>
                 <p>To change the text size of the page by a multiplier factor.</p>
 
-                <p>The corresponding starter [primary schema](PrimarySchemaForPreferencesFramework.md) component for the "Text Size" preference is <code>fluid.prefs.schemas.textSize</code>. To modify its default information, you can redefine this component before calling the [Creator](#creator) <code>fluid.uiOptions.prefsEditor</code>.<p>
+                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Text Size" preference is <code>fluid.prefs.schemas.textSize</code>. To modify its default information, you can redefine this component before calling the <a href="#creator>Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
             </td>
         </tr>
         <tr>
@@ -465,7 +465,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
             <td>
                 <p>To change the line space of the page by a multiplier factor.</p>
 
-                <p>The corresponding starter [primary schema](PrimarySchemaForPreferencesFramework.md) component for the "Line Space" preference is <code>fluid.prefs.schemas.lineSpace</code>. To modify its default information, you can redefine this component before calling the [Creator](#creator) <code>fluid.uiOptions.prefsEditor</code>.<p>
+                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Line Space" preference is <code>fluid.prefs.schemas.lineSpace</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
             </td>
         </tr>
         <tr>
@@ -526,7 +526,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
             <td>
                 <p>To change the text font of the page.</p>
 
-                <p>The corresponding starter [primary schema](PrimarySchemaForPreferencesFramework.md) component for the "Text Font" preference is <code>fluid.prefs.schemas.textFont</code>. To modify its default information, you can redefine this component before calling the [Creator](#creator) <code>fluid.uiOptions.prefsEditor</code>.<p>
+                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Text Font" preference is <code>fluid.prefs.schemas.textFont</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
             </td>
         </tr>
         <tr>
@@ -583,7 +583,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
             <td>
                 <p>To change the foreground and background of the page.</p>
 
-                <p>The corresponding starter [primary schema](PrimarySchemaForPreferencesFramework.md) component for the "Contrast" preference is <code>fluid.prefs.schemas.contrast</code>. To modify its default information, you can redefine this component before calling the [Creator](#creator) <code>fluid.uiOptions.prefsEditor</code>.<p>
+                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Contrast" preference is <code>fluid.prefs.schemas.contrast</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
             </td>
         </tr>
         <tr>
@@ -640,7 +640,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
             <td>
                 <p>To create and render a section of "Table of Contents" at the top of the page.</p>
 
-                <p>The corresponding starter [primary schema](PrimarySchemaForPreferencesFramework.md) component for the "Table of Contents" preference is <code>fluid.prefs.schemas.tableOfContents</code>. To modify its default information, you can redefine this component before calling the [Creator](#creator) <code>fluid.uiOptions.prefsEditor</code>.<p>
+                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Table of Contents" preference is <code>fluid.prefs.schemas.tableOfContents</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
             </td>
         </tr>
         <tr>
@@ -695,7 +695,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
             <td>
                 <p>To underline and bold links on the page.</p>
 
-                <p>The corresponding starter [primary schema](PrimarySchemaForPreferencesFramework.md) component for the "Emphasize Links" preference is <code>fluid.prefs.schemas.emphasizeLinks</code>. To modify its default information, you can redefine this component before calling the [Creator](#creator) <code>fluid.uiOptions.prefsEditor</code>.<p>
+                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Emphasize Links" preference is <code>fluid.prefs.schemas.emphasizeLinks</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
             </td>
         </tr>
         <tr>
@@ -750,7 +750,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
             <td>
                 <p>To enlarge input fields on the page.</p>
 
-                <p>The corresponding starter [primary schema](PrimarySchemaForPreferencesFramework.md) component for the "Inputs Larger" preference is <code>fluid.prefs.schemas.inputsLarger</code>. To modify its default information, you can redefine this component before calling the [Creator](#creator) <code>fluid.uiOptions.prefsEditor</code>.<p>
+                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Inputs Larger" preference is <code>fluid.prefs.schemas.inputsLarger</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
             </td>
         </tr>
         <tr>
