@@ -50,11 +50,11 @@ The following table provides an overview of the currently-supported decorators. 
             <td>jQuery function to be invoked</td>
             <td rowspan="2">
                 <pre><code>
-                    decorators: [{
-                        type: "jQuery",
-                        func: "click",
-                        args: function() { $(this).hide(); }
-                    }]
+decorators: [{
+    type: "jQuery",
+    func: "click",
+    args: function() { $(this).hide(); }
+}]
                 </code></pre>
             </td>
         </tr>
@@ -74,10 +74,10 @@ The following table provides an overview of the currently-supported decorators. 
             <td>Space-separated list of CSS class names</td>
             <td>
                 <pre><code>
-                    decorators: [{
-                        type: "addClass",
-                        classes: "fl-widget fl-centred"
-                    }]
+decorators: [{
+    type: "addClass",
+    classes: "fl-widget fl-centred"
+}]
                 </code></pre>
             </td>
         </tr>
@@ -92,10 +92,10 @@ The following table provides an overview of the currently-supported decorators. 
             <td>Space-separated list of CSS class names</td>
             <td>
                 <pre><code>
-                    decorators: [{
-                        type: "removeClass",
-                        classes: "fl-hidden"
-                    }]
+decorators: [{
+    type: "removeClass",
+    classes: "fl-hidden"
+}]
                 </code></pre>
             </td>
         </tr>
@@ -110,11 +110,12 @@ The following table provides an overview of the currently-supported decorators. 
             <td>Global function name to be invoked</td>
             <td rowspan="4">
                 <pre><code>
-                    decorators: [{
-                        type: "jQuery",
-                        func: "click",
-                        args: function() { $(this).hide(); }
-                    }]
+decorators: [{
+    type: "fluid",
+    func: "fluid.componentName",
+    container: container,
+    options: options
+}]
                 </code></pre>
             </td>
         </tr>
@@ -148,10 +149,10 @@ The following table provides an overview of the currently-supported decorators. 
             </td>
             <td>
                 <pre><code>
-                    decorators: [{
-                        type: "identify",
-                        key: "mySpecialName"
-                    }]
+decorators: [{
+    type: "identify",
+    key: "mySpecialName"
+}]
                 </code></pre>
             </td>
         </tr>
@@ -166,10 +167,10 @@ The following table provides an overview of the currently-supported decorators. 
             <td>The attribute map to be applied to the rendered node</td>
             <td>
                 <pre><code>
-                    decorators: [{
-                        type: "attrs",
-                        attributes: ""
-                    }]
+decorators: [{
+    type: "attrs",
+    attributes: ""
+}]
                 </code></pre>
             </td>
         </tr>
@@ -184,11 +185,11 @@ The following table provides an overview of the currently-supported decorators. 
             <td>Name of event handler to be bound</td>
             <td rowspan="2">
                 <pre><code>
-                    decorators: [{
-                        type: "event",
-                        event: "click",
-                        handler: myHandler
-                    }]
+decorators: [{
+    type: "event",
+    event: "click",
+    handler: myHandler
+}]
                 </code></pre>
             </td>
         </tr>
