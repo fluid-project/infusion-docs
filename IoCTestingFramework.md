@@ -49,7 +49,7 @@ including a summary of work in progress on [December 5th](http://lists.idrc.ocad
 
 ## How to Use the IoC Testing Framework ##
 
-The IoC Testing framework requires the use of two new kinds of Fluid component, which are packaged as "grades" within the implementation in the 
+The IoC Testing framework requires the use of two new kinds of Fluid component, which are packaged as ["grades"](ComponentGrades.md) within the implementation in the 
 file IoCTestUtils.js. In order to make use of the framework, the tester must derive their own component types from these grades, and assemble 
 them into various component trees corresponding to the desired integration scenarios.
 
@@ -124,7 +124,7 @@ In cases where we apply *sequence testing*, the fixture record may instead hold 
 representing sequence points to be attained by the test case.
 
 In order to run this test case, we can either simply construct an instance of the environment tree by calling `fluid.tests.myTestTree()`, 
-or submit its name to the global driver function fluid.test.runTests as `fluid.test.runTests("fluid.tests.myTestTree")`. 
+or submit its name to the global driver function `fluid.test.runTests` as `fluid.test.runTests("fluid.tests.myTestTree")`. 
 The latter method should be used when running multiple environments within the same file to ensure that their execution is properly serialised.
 
 ### Supported fixture records ###
@@ -133,7 +133,7 @@ The IoC testing system currently supports the following 5 types of fixture recor
 "executors", which actively trigger an action, and "binders" which register some form of listener in order to receive an event from 
 the tree under test. These are recognised using a "duck typing system" similar to that used in the Fluid Renderer. These records may 
 either form the complete payload for a test held in the `tests` section of a `TestCaseHolder`, or may appear as elements of an array held 
-in its sequence member, representing a sequence of actions (either executors or binders) to be performed by the test case.
+in its `sequence` member, representing a sequence of actions (either executors or binders) to be performed by the test case.
 
 <table class="mytable">
     <tr>
@@ -141,46 +141,46 @@ in its sequence member, representing a sequence of actions (either executors or 
     </tr>
     <tr class="duckrow">
         <td rowspan="2" class="blockcell">Function executor</td>
-        <td>func <strong>*</strong></td><td>Function/function name</td><td>function to be executed</td><td rowspan="2" class="blockcell">executor</td>
+        <td>func <a href="#ducktype"><strong>[*]</strong></a></td><td>Function/function name</td><td>function to be executed</td><td rowspan="2" class="blockcell">executor</td>
     </tr>
     <tr>
         <td>args [optional]</td><td>Object/Array</td><td>arguments to be supplied to function</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="4" class="blockcell">Event listener</td><td>event <strong>*</strong></td><td>Fluid event firer</td><td>The event to which the listener will be bound</td><td rowspan="4" class="blockcell">binder</td>
+        <td rowspan="4" class="blockcell">Event listener</td><td>event <a href="#ducktype"><strong>[*]</strong></a></td><td>Fluid event firer</td><td>The event to which the listener will be bound</td><td rowspan="4" class="blockcell">binder</td>
     </tr>
     <tr class="alt-a-row">
-        <td>listener<sup>&dagger;</sup></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+        <td>listener<a href="#alternatives"><sup>&dagger;</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
     </tr>
     <tr class="alt-b-row">
-        <td>listenerMaker<sup>&Dagger;</sup></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
+        <td>listenerMaker<a href="#alternatives"><a href="#alternatives"><sup>&dagger;</sup></a></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
     </tr>
     <tr class="alt-b-row">
-        <td>makerArgs<sup>&Dagger;</sup> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+        <td>makerArgs<a href="#alternatives"><sup>&Dagger;</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="6" class="blockcell">Change event listener</td><td>changeEvent <strong>*</strong></td><td>Fluid event firer corresponding to a change event (currently <code>
+        <td rowspan="6" class="blockcell">Change event listener</td><td>changeEvent <a href="#ducktype"><strong>[*]</strong></a></td><td>Fluid event firer corresponding to a change event (currently <code>
             modelChanged</code>, <code>
             guards</code> or <code>
             postGuards</code>)</td><td>Change event to be listened to</td><td rowspan="6" class="blockcell">binder</td>
     </tr>
     <tr class="alt-a-row">
-        <td>path<sup>&dagger;</sup></td><td>string</td><td>A path specification matching the EL paths for which the listener is to be registered, as per the <a href="http://wiki.fluidproject.org/display/fluid/ChangeApplier+API">ChangeApplier API</a></td>
+        <td>path<a href="#alternatives"><sup>&dagger;</sup></a></td><td>string</td><td>A path specification matching the EL paths for which the listener is to be registered, as per the <a href="ChangeApplierAPI.md">ChangeApplier API</a></td>
     </tr>
     <tr class="alt-b-row">
-        <td>spec<sup>&Dagger;</sup></td><td>Object</td><td>A record holding a structured description of the required listener properties, as per the ChangeApplier API</td>
+        <td>spec<a href="#alternatives"><sup>&Dagger;</sup></a></td><td>Object</td><td>A record holding a structured description of the required listener properties, as per the ChangeApplier API</td>
     </tr>
     <tr class="alt-a-row">
-        <td>listener<sup>&dagger;</sup></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+        <td>listener<a href="#alternatives"><sup>&dagger;</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
     </tr>
     <tr class="alt-b-row">
-        <td>listenerMaker<sup>&Dagger;</sup></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
+        <td>listenerMaker<a href="#alternatives"><sup>&Dagger;</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
     </tr>
     <tr class="alt-b-row">
-        <td>makerArgs<sup>&Dagger;</sup> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+        <td>makerArgs<a href="#alternatives"><sup>&Dagger;</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="3" class="blockcell">jQuery event trigger</td><td>jQueryTrigger <strong>*</strong></td><td>string</td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered</td><td rowspan="3" class="blockcell">executor</td>
+        <td rowspan="3" class="blockcell">jQuery event trigger</td><td>jQueryTrigger <a href="#ducktype"><strong>[*]</strong></a></td><td>string</td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered</td><td rowspan="3" class="blockcell">executor</td>
     </tr>
     <tr>
         <td>args [optional]</td><td>Object/Array</td><td>additional arguments to be supplied to <code>
@@ -190,7 +190,7 @@ in its sequence member, representing a sequence of actions (either executors or 
         <td>element</td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which the event is to be triggered</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="6" class="blockcell">jQuery event binder</td><td>jQueryBind <strong>*</strong></td><td>string</td><td>The name of a jQuery event for which a listener is to be registered</td><td rowspan="6" class="blockcell">binder</td>
+        <td rowspan="6" class="blockcell">jQuery event binder</td><td>jQueryBind <a href="#ducktype"><strong>[*]</strong></a></td><td>string</td><td>The name of a jQuery event for which a listener is to be registered</td><td rowspan="6" class="blockcell">binder</td>
     </tr>
     <tr>
         <td>element</td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which a listener is to be bound</td>
@@ -200,26 +200,26 @@ in its sequence member, representing a sequence of actions (either executors or 
             jQuery.one</code></td>
     </tr>
     <tr class="alt-a-row">
-        <td>listener<sup>&dagger;</sup></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+        <td>listener<a href="#alternatives"><sup>&dagger;</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
     </tr>
     <tr class="alt-b-row">
-        <td>listenerMaker<sup>&Dagger;</sup></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
+        <td>listenerMaker<a href="#alternatives"><sup>&Dagger;</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
     </tr>
     <tr class="alt-b-row">
-        <td>makerArgs<sup>&Dagger;</sup> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+        <td>makerArgs<a href="#alternatives"><sup>&Dagger;</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
 </table>
 
 In each case in this table,
 
 * The "type" field may be taken as comprising a string holding an IoC specification (context-qualified EL path) for the type in question.
-* Fields marked with __*__ are the essential "duck typing fields" which define the type of the fixture records and are mandatory.
-* Fields marked with &dagger;and &Dagger; are alternatives to each other - they may not be used simultaneously within the same fixture. 
+* <a name="ducktype"></a>Fields marked with __\[*\]__ are the essential "duck typing fields" which define the type of the fixture records and are mandatory.
+* <a name="alternatives"></a>Fields marked with &dagger;and &Dagger; are alternatives to each other - they may not be used simultaneously within the same fixture. 
 
 ### A More Complex Example ###
 
 This example shows sequence testing of a component `fluid.tests.asyncTest` with genuine asynchronous behaviour (as well as synchronous 
-event-driven behaviour). The component under the test is an Infusion [Renderer component](tutorial-gettingStarteWithInfusion/RendererComponents.md) 
+event-driven behaviour). The component under the test is an Infusion [Renderer component](tutorial-gettingStartedWithInfusion/RendererComponents.md) 
 which renders a button, and a model-bound text entry 
 field. The component defines a listener to clicks to the button which asynchronously (via `window.setTimeout`) fires to an Infusion [event](InfusionEventSystem.md) named 
 `buttonClicked`. Separately, the component binds listeners to change events from the text field, which are corresponded with the standard 
@@ -392,6 +392,6 @@ fluid.tests.startRendering = function (asyncTest, instantiator) {
 ```
 
 It's anticipated that such lengthy fixture lists will in practice themselves be generated from other more 
-suitable and concise forms in JSON structures, either by Fluid's Model Transformation system, or otherwise - 
+suitable and concise forms in JSON structures, either by Fluid's [Model Transformation](to-do/ModelTransformation.md) system, or otherwise - 
 as well as making better use of a growing library of standardised assertion and triggering functions such as `fluid.tests.changeField`.
 
