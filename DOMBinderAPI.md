@@ -90,12 +90,12 @@ Finds the named element within the specified container.
     <tr>
         <td><code>name</code></td>
         <td>String</td>
-        <td>The selector name, as declared in the component's defaults</td>
+        <td>The selector name, as declared in the component's <code>defaults</code></td>
     </tr>
     <tr>
         <td><code>localContainer</code></td>
         <td>Object</td>
-        <td>Optional. The container element used to constrain the search for the element. Defaults to the component container..
+        <td>Optional. The container element used to constrain the search for the element. Defaults to the component container.
         </td>
     </tr>
 </table>
@@ -119,12 +119,12 @@ Finds the named element within the specified container, using the value in the D
     <tr>
         <td><code>name</code></td>
         <td>String</td>
-        <td>The selector name, as declared in the component's defaults</td>
+        <td>The selector name, as declared in the component's <code>defaults</code></td>
     </tr>
     <tr>
         <td><code>localContainer</code></td>
         <td>Object</td>
-        <td>Optional. The container element used to constrain the search for the element. Defaults to the component container..
+        <td>Optional. The container element used to constrain the search for the element. Defaults to the component container.
         </td>
     </tr>
 </table>

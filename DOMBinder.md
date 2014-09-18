@@ -31,7 +31,7 @@ need to change the structure of the markup.
 The DOM Binder also ensures that a component accesses only markup specific to itself, and not to any other similar 
 components that might be on the same page. Each Infusion [View Component](tutorial-gettingStartedWithInfusion/ViewComponents.md) 
 is scoped to a particular node in the 
-DOM called its **_container_**. The DOM Binder limits any queries to that container.
+DOM called its `container`. The DOM Binder limits any queries to that container.
 
 The DOM Binder also caches information, allowing efficient access for searches that are performed very 
 frequently on material that is not changing - for example within mouse event loops. Caching means these 
@@ -57,11 +57,11 @@ fluid.defaults("fluid.newComponent", {
 ```
 
 DOM elements related to this component can be resolved declaratively using the dom member. For example, 
-if `{newComponent}` is a reference to an instance of the above component, a reference to one of its 
+if `{newComponent}` is a [reference](IoCReferences.md) to an instance of the above component, a reference to one of its 
 DOM binder elements as declared above could be written as `{newComponent}.dom.uiBit1`.
 
 The full programmatic API to the DOM binder also available through this `dom` member (see 
-[DOM Binder API](DomBinderAPI.md) for information about available methods). 
+[DOM Binder API](DOMBinderAPI.md) for information about available methods). 
 For convenience, the DOM Binder's `locate()` function is also added to the component as a top-level instance member.
 
 Unless they are otherwise qualified, all searches performed by the DOM binder attached to a particular 
@@ -159,11 +159,11 @@ The `refresh()` method refreshes the cache for one or more selector names, ready
 `fastLocate()`. It functions exactly as for a call to `locate()` except that
 
 * The queried results are not returned to the user, but simply populated into the cache, and
-* More than one selector name (as an array) may be sent to refresh rather than just a single one.
+* More than one selector name (as an array) may be sent to `refresh` rather than just a single one.
     
 ## Example: Inline Edit ##
 
-The Inline Edit component requires three parts in its user interface:
+The [Inline Edit](to-do/InlineEdit.md) component requires three parts in its user interface:
 
 * a field to display the text that can be edited,
 * a field that can actually edit the text, and
@@ -179,6 +179,7 @@ fluid.defaults("fluid.inlineEdit", {
         edit: ".edit"
     },
     ....
+});
 ```
 
 Here, the default selectors use class names. To use these defaults, an implementer can simply attach these 
