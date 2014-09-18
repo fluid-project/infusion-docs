@@ -141,46 +141,46 @@ in its `sequence` member, representing a sequence of actions (either executors o
     </tr>
     <tr class="duckrow">
         <td rowspan="2" class="blockcell">Function executor</td>
-        <td>func <a href="#ducktype"><strong>[*]</strong></a></td><td>Function/function name</td><td>function to be executed</td><td rowspan="2" class="blockcell">executor</td>
+        <td>func <a href="#ducktype"><sup>[*]</sup></a></td><td>Function/function name</td><td>function to be executed</td><td rowspan="2" class="blockcell">executor</td>
     </tr>
     <tr>
         <td>args [optional]</td><td>Object/Array</td><td>arguments to be supplied to function</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="4" class="blockcell">Event listener</td><td>event <a href="#ducktype"><strong>[*]</strong></a></td><td>Fluid event firer</td><td>The event to which the listener will be bound</td><td rowspan="4" class="blockcell">binder</td>
+        <td rowspan="4" class="blockcell">Event listener</td><td>event <a href="#ducktype"><sup>[*]</sup></a></td><td>Fluid event firer</td><td>The event to which the listener will be bound</td><td rowspan="4" class="blockcell">binder</td>
     </tr>
     <tr class="alt-a-row">
-        <td>listener<a href="#alternatives"><sup>&dagger;</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+        <td>listener<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
     </tr>
     <tr class="alt-b-row">
-        <td>listenerMaker<a href="#alternatives"><a href="#alternatives"><sup>&dagger;</sup></a></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
+        <td>listenerMaker<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
     </tr>
     <tr class="alt-b-row">
-        <td>makerArgs<a href="#alternatives"><sup>&Dagger;</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+        <td>makerArgs<a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="6" class="blockcell">Change event listener</td><td>changeEvent <a href="#ducktype"><strong>[*]</strong></a></td><td>Fluid event firer corresponding to a change event (currently <code>
+        <td rowspan="6" class="blockcell">Change event listener</td><td>changeEvent <a href="#ducktype"><sup>[*]</sup></a></td><td>Fluid event firer corresponding to a change event (currently <code>
             modelChanged</code>, <code>
             guards</code> or <code>
             postGuards</code>)</td><td>Change event to be listened to</td><td rowspan="6" class="blockcell">binder</td>
     </tr>
     <tr class="alt-a-row">
-        <td>path<a href="#alternatives"><sup>&dagger;</sup></a></td><td>string</td><td>A path specification matching the EL paths for which the listener is to be registered, as per the <a href="ChangeApplierAPI.md">ChangeApplier API</a></td>
+        <td>path<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>string</td><td>A path specification matching the EL paths for which the listener is to be registered, as per the <a href="ChangeApplierAPI.md">ChangeApplier API</a></td>
     </tr>
     <tr class="alt-b-row">
-        <td>spec<a href="#alternatives"><sup>&Dagger;</sup></a></td><td>Object</td><td>A record holding a structured description of the required listener properties, as per the ChangeApplier API</td>
+        <td>spec<a href="#alternatives"><sup>[&Dagger;]</sup></a></td><td>Object</td><td>A record holding a structured description of the required listener properties, as per the ChangeApplier API</td>
     </tr>
     <tr class="alt-a-row">
-        <td>listener<a href="#alternatives"><sup>&dagger;</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+        <td>listener<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
     </tr>
     <tr class="alt-b-row">
-        <td>listenerMaker<a href="#alternatives"><sup>&Dagger;</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
+        <td>listenerMaker<a href="#alternatives"><sup>[&Dagger;]</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
     </tr>
     <tr class="alt-b-row">
-        <td>makerArgs<a href="#alternatives"><sup>&Dagger;</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+        <td>makerArgs<a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="3" class="blockcell">jQuery event trigger</td><td>jQueryTrigger <a href="#ducktype"><strong>[*]</strong></a></td><td>string</td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered</td><td rowspan="3" class="blockcell">executor</td>
+        <td rowspan="3" class="blockcell">jQuery event trigger</td><td>jQueryTrigger <a href="#ducktype"><sup>[*]</sup></a></td><td>string</td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered</td><td rowspan="3" class="blockcell">executor</td>
     </tr>
     <tr>
         <td>args [optional]</td><td>Object/Array</td><td>additional arguments to be supplied to <code>
@@ -190,7 +190,7 @@ in its `sequence` member, representing a sequence of actions (either executors o
         <td>element</td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which the event is to be triggered</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="6" class="blockcell">jQuery event binder</td><td>jQueryBind <a href="#ducktype"><strong>[*]</strong></a></td><td>string</td><td>The name of a jQuery event for which a listener is to be registered</td><td rowspan="6" class="blockcell">binder</td>
+        <td rowspan="6" class="blockcell">jQuery event binder</td><td>jQueryBind <a href="#ducktype"><sup>[*]</sup></a></td><td>string</td><td>The name of a jQuery event for which a listener is to be registered</td><td rowspan="6" class="blockcell">binder</td>
     </tr>
     <tr>
         <td>element</td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which a listener is to be bound</td>
@@ -200,21 +200,21 @@ in its `sequence` member, representing a sequence of actions (either executors o
             jQuery.one</code></td>
     </tr>
     <tr class="alt-a-row">
-        <td>listener<a href="#alternatives"><sup>&dagger;</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+        <td>listener<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
     </tr>
     <tr class="alt-b-row">
-        <td>listenerMaker<a href="#alternatives"><sup>&Dagger;</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
+        <td>listenerMaker<a href="#alternatives"><sup>[&Dagger;]</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
     </tr>
     <tr class="alt-b-row">
-        <td>makerArgs<a href="#alternatives"><sup>&Dagger;</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+        <td>makerArgs<a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
 </table>
 
 In each case in this table,
 
 * The "type" field may be taken as comprising a string holding an IoC specification (context-qualified EL path) for the type in question.
-* <a name="ducktype"></a>Fields marked with __\[*\]__ are the essential "duck typing fields" which define the type of the fixture records and are mandatory.
-* <a name="alternatives"></a>Fields marked with &dagger;and &Dagger; are alternatives to each other - they may not be used simultaneously within the same fixture. 
+* <a name="ducktype"></a>Fields marked with \[*\] are the essential "duck typing fields" which define the type of the fixture records and are mandatory.
+* <a name="alternatives"></a>Fields marked with \[&dagger;\] and \[&Dagger;\] are alternatives to each other - they may not be used simultaneously within the same fixture. 
 
 ### A More Complex Example ###
 
