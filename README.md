@@ -59,6 +59,7 @@ Tutorials
 
 * [Getting started with Infusion](tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.md)
 * [How to Create and Use Font Icons](tutorial-creatingANewAdjusterUI/HowToCreateAndUseFontIcons.md)
+* [User Interface Options](tutorial-userInterfaceOptions/UserInterfaceOptions.md)
 * [Adding a Basic Preferences Editor to a Site (wiki)](http://wiki.fluidproject.org/display/docs/Tutorial+-+Adding+a+Basic+Preferences+Editor+to+a+Site)
 * [Working With A Preferences Editor On Your Site (wiki)](http://wiki.fluidproject.org/display/docs/Working+With+A+Preferences+Editor+On+Your+Site)
 * [Creating a New Adjuster UI](tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.md)
@@ -79,7 +80,7 @@ API
     * [Grid Reorderer (wiki)](http://wiki.fluidproject.org/display/docs/Grid+Reorderer+API)
     * [Layout Reorderer (wiki)](http://wiki.fluidproject.org/display/docs/Layout+Reorderer+API)
     * [Image Reorderer (wiki)](http://wiki.fluidproject.org/display/docs/Image+Reorderer+API)
-  * [User Interface Options (wiki)](http://wiki.fluidproject.org/display/docs/User+Interface+Options+API)
+  * [User Interface Options](UserInterfaceOptionsAPI.md)
   * [Uploader](UploaderAPI.md)
   * [Undo (wiki)](http://wiki.fluidproject.org/display/docs/Undo+API)
   * [Table of Contents (wiki)](http://wiki.fluidproject.org/display/docs/Table+of+Contents+API)
