@@ -190,7 +190,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>See also</th>
             <td>
-                <a href="TableOfContentsAPI.md">Table of Contents API</a>
+                <a href="to-do/TableOfContentsAPI.md">Table of Contents API</a>
             </td>
         </tr>
     </tbody>
@@ -387,7 +387,7 @@ fluid.uiOptions.fullNoPreview("#myContainer", {
         <tr>
             <th>See also</th>
             <td>
-                <a href="CookieSettingsStore.md">Cookie Settings Store</a>
+                <a href="to-do/CookieSettingsStore.md">Cookie Settings Store</a>
             </td>
         </tr>
     </tbody>
