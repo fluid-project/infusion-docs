@@ -1,6 +1,6 @@
 # DOM Binder API #
 
-**NOTE:** A DOM Binder is automatically created by the Framework for any view component. 
+**NOTE:** A DOM Binder is automatically created by the Framework for any [view component](tutorial-gettingStartedWithInfusion/ViewComponents.md). 
 **_Component developers are not expected to ever create a DOM Binder themselves._**
 
 ## Creation ##
@@ -145,7 +145,7 @@ refresh(names[, localContainer]);
 Refreshes the cache for one or more selector names, ready for subsequent calls to `fastLocate()`. It functions exactly as for a call to `locate()` except that
 
 * The queried results are not returned to the user, but simply populated into the cache, and
-* More than one selector name (as an array) may be sent to refresh rather than just a single one.
+* More than one selector name (as an array) may be sent to `refresh` rather than just a single one.
 
 <table>
     <tr>
