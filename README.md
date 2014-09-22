@@ -12,6 +12,7 @@ Infusion
   * [Component Grades](ComponentGrades.md)
   * [Options Merging](OptionsMerging.md)
   * [Component Lifecycle](ComponentLifecycle.md)
+* [DOM Binder](DOMBinder.md)
 * Inversion of Control
   * [How To Use Infusion IoC](HowToUseInfusionIoC.md)
   * [Subcomponent Declaration](SubcomponentDeclaration.md)
@@ -84,3 +85,4 @@ API
   * [Undo (wiki)](http://wiki.fluidproject.org/display/docs/Undo+API)
   * [Table of Contents (wiki)](http://wiki.fluidproject.org/display/docs/Table+of+Contents+API)
 * [Framework API (wiki)](http://wiki.fluidproject.org/display/docs/Framework+API)
+* [DOM Binder API](DOMBinderAPI.md)
