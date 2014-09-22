@@ -70,3 +70,23 @@ fluid.merge(policy, target, source-1, ... source-n);
 ```
 
 where `policy` is the _merge policy object_ (may be empty), `target` is the object to (destructively) be the target of the merge operation, and `source-1` through `source-n` are a list of a number of "source" options structure from which the merge is to be performed.
+
+## Examples ##
+
+Below is a transcript of a Node REPL session showing a simple example where we have 2 documents to merge, and we wish for the common array in both of them to contain the concatenated values from both in the final document.
+
+```bash
+> var one = { cool: "wow", mylist: [1, 1] };
+> var two = { neat: "awesum", mylist: [2, 3, 5, 8]};
+> fluid.merge({mylist: fluid.arrayConcatPolicy},{},one,two);
+{ neat: 'awesum',
+  mylist:
+   [ 1,
+     1,
+     2,
+     3,
+     5,
+     8 ],
+  cool: 'wow' }
+>
+```
