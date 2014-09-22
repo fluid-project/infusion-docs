@@ -63,6 +63,7 @@ Tutorials
 * [Creating a preferences Editor Using the Preferences Framework](tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 * Migrating to Infusion 1.5
     * [UI Options Migration](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
+    * [Pager Migration](tutorial-migratingToInfusion1.5/PagerMigration.md)
 
 API
 ---

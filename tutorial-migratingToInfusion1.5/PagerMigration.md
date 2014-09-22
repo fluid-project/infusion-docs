@@ -19,7 +19,6 @@ _**Note:** actual paths may vary, as they are dependent on the location of infus
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-reset-global.css" />
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-base-global.css" />
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-layout.css" />
-<link rel="stylesheet" type="text/css" href="infusion/lib/jquery/plugins/tooltip/css/jquery.tooltip.css" media="all" />
 <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/default-theme/jquery.ui.theme.css" />
 
 <link rel="stylesheet" type="text/css" href="infusion/components/pager/css/Pager.css" />
@@ -72,6 +71,7 @@ _**Note:** actual paths may vary, as they are dependent on the location of infus
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-reset-global.css" />
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-base-global.css" />
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-layout.css" />
+<link rel="stylesheet" type="text/css" href="infusion/lib/jquery/plugins/tooltip/css/jquery.tooltip.css" media="all" />
 <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/default-theme/jquery.ui.theme.css" />
 
 <link rel="stylesheet" type="text/css" href="infusion/components/pager/css/Pager.css" />
