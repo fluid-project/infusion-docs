@@ -275,7 +275,7 @@ Whilst component tree nodes are allocated a `fullID` in a regular way by a stabl
 
 This is a highly powerful decorator, that completes the **active** functionality supplied by the `jQuery` and `identify` decorators. Use of the `fluid` decorator allows any [Fluid Component](to-do/Components.md) to be scheduled to be instantiated against the rendered markup, as it is added to the target document. These decorators promote markup agnosticism, as well as developer efficiency – without them, one would be left to rescan the just-rendered markup once again, in order to convert it from raw markup to an active interface. With these decorators and the component tree, one has a surface with which to talk about the **function** of the interface whilst leaving design and markup issues in their own space.
 
-The full form of the decorator takes three members, `func`, `container` and `args`, mirroring the instantiation syntax of a standard Fluid Component - as described in [Fluid Component API](to-do/InfusionComponentAPI.md), this takes the form:
+The full form of the decorator takes three members, `func`, `container` and `args`, mirroring the instantiation syntax of a standard Fluid Component - as described in [Fluid Component API](to-do/FluidComponentAPI.md), this takes the form:
 
 ```javascript
 fluid.componentName = function(container, options);
