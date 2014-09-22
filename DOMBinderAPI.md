@@ -156,7 +156,7 @@ Refreshes the cache for one or more selector names, ready for subsequent calls t
     <tr>
         <td><code>names</code></td>
         <td>String or Array of Strings</td>
-        <td>The selector name or names to refresh, as declared in the component's defaults</td>
+        <td>The selector name or names to refresh, as declared in the component's <code>defaults</code></td>
     </tr>
     <tr>
         <td><code>localContainer</code></td>
