@@ -8,9 +8,10 @@
 
 ### Pager ###
 
-* RSF ID's no longer required
+* RSF IDs no longer required
 * Components have been renamed
 * Components have been restructured
+** See migration guide
 
 ### UI Options ###
 
@@ -20,7 +21,7 @@
 ### Uploader ###
 
 * Flash version removed (see: [FLUID-5354](http://issues.fluidproject.org/browse/FLUID-5354))
-* Support for Firefox 3.x's implmentation of HTML5 upload
+* Support for Firefox 3.x's implementation of HTML5 upload removed
 
 ## Framework API Changes ##
 
