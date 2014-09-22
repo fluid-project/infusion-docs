@@ -53,7 +53,7 @@ In addition to the `type` of subcomponent, other configuration information can b
 
 ## Example: User Interface Options ##
 
-The Infusion [UI Options](../UserInterfaceOptions.md) component presents a collection of controls that allow a user to specify their preferences for customizing the presentation of the user interface and content resources. It works with the User Interface Enhancer (UI Enhancer), which carries out the transformations based on the recorded preferences.
+The Infusion [UI Options](../to-do/UserInterfaceOptions.md) component presents a collection of controls that allow a user to specify their preferences for customizing the presentation of the user interface and content resources. It works with the User Interface Enhancer (UI Enhancer), which carries out the transformations based on the recorded preferences.
 
 The UI Options component has a component tree as shown below. Essentially:
 

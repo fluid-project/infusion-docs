@@ -25,7 +25,7 @@ Some examples of component selectors:
 * `flc-progress-label`: the label for a progress bar ([Progress](Progress.md) component)
 * `flc-reorderer-dropWarning`: the drop warning used with the reorderer ([Reorderer](Reorderer.md) component)
 * `flc-inlineEdit-textEditButton`: the 'edit' button used with an inline edit ([Inline Edit](InlineEdit.md) component
-* `flc-pager-pageLink-skip`: a page link that should be skipped ([Pager](Pager.md) component)
+* `flc-pager-pageLink-skip`: a page link that should be skipped ([Pager](to-do/Pager.md) component)
 
 When combining class names for styling and class names for selectors, the convention is 
 

@@ -43,7 +43,7 @@ fluid.defaults("tutorials.currencyConverter", {
 
 #### Example: Inline Edit ####
 
-The Infusion [Inline Edit](../InlineEdit.md) component uses a tooltip and defines (among other things) defaults for the delay before the tooltip appears, the text to display - even whether or not to enable it at all:
+The Infusion [Inline Edit](../to-do/InlineEdit.md) component uses a tooltip and defines (among other things) defaults for the delay before the tooltip appears, the text to display - even whether or not to enable it at all:
 
 ```javascript
 fluid.defaults("fluid.inlineEdit", {
@@ -57,7 +57,7 @@ fluid.defaults("fluid.inlineEdit", {
 
 #### Example: Progress ####
 
-The Infusion [Progress](../Progress.md) component uses jQuery animations to show and hide a progress bar. The defaults include objects that are passed to jQuery to configure the animations:
+The Infusion [Progress](../to-do/Progress.md) component uses jQuery animations to show and hide a progress bar. The defaults include objects that are passed to jQuery to configure the animations:
 
 ```javascript
 fluid.defaults("fluid.progress", {
@@ -90,14 +90,14 @@ _(We'll get into what these arguments are soon.)_
 
 Creator functions can be defined in one of two ways
 
-1. using [IoC - Inversion of Control](../IoC-InversionOfControl.md): The framework will create the function according to your specifications
+1. using [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md): The framework will create the function according to your specifications
 2. directly: You write the function yourself - this option is not recommended and the ability to do this will be removed in Infusion 2.0
 
 ### Using IoC ###
 
 #### Automatic creator function generation ####
 
-The [IoC - Inversion of Control](../IoC-InversionOfControl.md) system can automatically generate a component creator function for you. This is accomplished by added a special grade to the `gradeNames` property: **"autoInit"**:
+The [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md) system can automatically generate a component creator function for you. This is accomplished by added a special grade to the `gradeNames` property: **"autoInit"**:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {

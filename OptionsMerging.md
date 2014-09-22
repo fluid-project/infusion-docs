@@ -47,7 +47,7 @@ The following are the policy types that are supported, determined by the key's v
         <tr>
             <td>Any other String value</td>
             <td>
-                The value will be interpreted as an EL path into a source object. If no user-supplied value is present at this options path (other than those supplied in <a href="UnderstandingComponentOptionsAndTheirDefaults.md">defaults</a>), the value will be taken from the final merged value held at this specified EL path. That is, this style of <code>policy</code> is used to specify that an options value has a default value which defaults to the value of <em>another supplied option</em>.
+                The value will be interpreted as an EL path into a source object. If no user-supplied value is present at this options path (other than those supplied in <a href="ComponentOptionsAndDefaults.md">defaults</a>), the value will be taken from the final merged value held at this specified EL path. That is, this style of <code>policy</code> is used to specify that an options value has a default value which defaults to the value of <em>another supplied option</em>.
             </td>
         </tr>
         <tr>
