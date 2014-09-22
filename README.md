@@ -51,6 +51,7 @@ Infusion
   * [Localization in the Preferences Framework](LocalizationInThePreferencesFramework.md)
 * General
   * [Class Name Conventions](ClassNameConventions.md)
+  * [IoC Testing Framework](IoCTestingFramework.md)
 
 Tutorials
 ---------
