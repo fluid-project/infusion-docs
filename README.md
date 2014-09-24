@@ -12,6 +12,7 @@ Infusion
   * [Component Grades](ComponentGrades.md)
   * [Options Merging](OptionsMerging.md)
   * [Component Lifecycle](ComponentLifecycle.md)
+* [DOM Binder](DOMBinder.md)
 * Inversion of Control
   * [How To Use Infusion IoC](HowToUseInfusionIoC.md)
   * [Subcomponent Declaration](SubcomponentDeclaration.md)
@@ -51,6 +52,7 @@ Infusion
   * [Localization in the Preferences Framework](LocalizationInThePreferencesFramework.md)
 * General
   * [Class Name Conventions](ClassNameConventions.md)
+  * [IoC Testing Framework](IoCTestingFramework.md)
 
 Tutorials
 ---------
@@ -63,6 +65,8 @@ Tutorials
 * [Creating a New Adjuster UI](tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.md)
 * [Creating a preferences Editor Using the Preferences Framework](tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 * Migrating to Infusion 1.5
+    * [API Changes from 1.4 to 1.5](APIChangesFrom1_4To1_5.md)
+    * [Deprecations In 1.5](DeprecationsIn1_5.md)
     * [UI Options Migration](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
     * [Pager Migration](tutorial-migratingToInfusion1.5/PagerMigration.md)
 
@@ -84,3 +88,4 @@ API
   * [Undo (wiki)](http://wiki.fluidproject.org/display/docs/Undo+API)
   * [Table of Contents (wiki)](http://wiki.fluidproject.org/display/docs/Table+of+Contents+API)
 * [Framework API (wiki)](http://wiki.fluidproject.org/display/docs/Framework+API)
+* [DOM Binder API](DOMBinderAPI.md)
