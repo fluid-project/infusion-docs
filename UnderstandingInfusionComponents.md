@@ -59,3 +59,17 @@ New kinds of components are created by passing configuration information to the 
 This function will create the **creator function** that will be used to instantiate the component.
 The Framework provides [supports for automatically creating components of various types, or 'grades'](ComponentGrades.md); 
 as well, developers can create their own grades.
+
+## Instantiating A Component ##
+*Example:*
+```
+var myInlineEdit = fluid.inlineEdit(".title-container", {
+    styles: {
+        edit: "demo-title-edit demo-edit"
+    },
+    strings: {
+        defaultViewText: "Edit this",
+        defaultFocussedViewText: "Edit this (click or press enter)"
+    }
+});
+```
