@@ -300,7 +300,7 @@ There is no specially dehydrated form for the `fluid` decorator – however, lik
 
 ### `attrs` Decorator ###
 
-The `attrs` director is simple and crude - it allows freeform access to all of the attributes of the rendered node. Since this is not likely to result in a very markup-agnostic relationship, its use is only recommended in special situations. Its direct equivalent on the server-side was [UIFreeAttributeDecorator](https://source.caret.cam.ac.uk/rsf/projects/RSFUtil/trunk/src/uk/org/ponder/rsf/components/decorators/UIFreeAttributeDecorator.java). The decorator takes a value named `attributes` which is a free hash of keys to values, which will be applied _"on top of"_ the target node as it is rendered, overwriting any values which were inherited from the original markup template.
+The `attrs` director is simple and crude - it allows freeform access to all of the attributes of the rendered node. Since this is not likely to result in a very markup-agnostic relationship, its use is only recommended in special situations. The decorator takes a value named `attributes` which is a free hash of keys to values, which will be applied _"on top of"_ the target node as it is rendered, overwriting any values which were inherited from the original markup template.
 
 ```javascript
 {

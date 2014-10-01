@@ -58,7 +58,7 @@ The properties allowed at top level in the subcomponent record are as follows:
         <tr>
             <td><code>options</code> (Optional)</td>
             <td>Object</td>
-            <td>These are options to be passed to the subcomponent as "user options." Note that these are not the default options for the subcomponent, rather these options override the defaults. The defaults for the component will have already been registered by the <a href="FluidDefaults.md"><code>fluid.defaults</code></a> call(s) appropriate for its type and <a href="ComponentGrades.md">grade names</a>.</td>
+            <td>These are options to be passed to the subcomponent as "user options." Note that these are not the default options for the subcomponent, rather these options override the defaults. The defaults for the component will have already been registered by the <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539"><code>fluid.defaults</code></a> call(s) appropriate for its type and <a href="ComponentGrades.md">grade names</a>.</td>
             <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     options: {
