@@ -104,7 +104,7 @@ Integrators can use one of these grades, or define their own grade, using one of
 </tr>
 <tr>
     <td><code>enhancerType</code></td>
-    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a UI Enhancer.</td>
+    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a <a href="to-do/UIEnhancer.md">UI Enhancer</a>.</td>
     <td>Integrators can define their own enhancer grade by using the built-in default grade <code>"fluid.pageEnhancer"</code> as a base grade.</td>
     <td><code>"fluid.pageEnhancer"</code></td>
 </tr>
@@ -128,7 +128,7 @@ Integrators can use one of these grades, or define their own grade, using one of
 </tr>
 <tr>
     <td><code>uiEnhancer</code></td>
-    <td>(Optional) The data structure that configures the <code>uiEnhancer</code> component.</td>
+    <td>(Optional) The data structure that configures the <code>uiEnhancer</code> component. See <a href="to-do/UIEnhancer.md">UI Enhancer</a> for what is accepted in the data structure.</td>
     <td></td>
     <td></td>
 </tr>

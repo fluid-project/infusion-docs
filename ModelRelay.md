@@ -6,7 +6,7 @@ The Infusion Model Relay system is a powerful scheme for supplying declarative c
 
 ### Two Styles for Configuring Model Relay ###
 
-There are two primary styles of configuration for setting up model relay - firstly, using the _implicit syntax_ which just consists of [IoC References](IoCReferences.md) from the model configuration for one model-bearing component to another - that is, in the component's configuration under the top-level model entry. Secondly, the _explicit syntax_ involves an entry in the component's top-level `modelRelay` entry expressing a more complex rule, most likely involving some form of [Model Transformation](ModelTransformation.md) to apply during the relay process. Both of these styles will set up a permanent and bidirectional relationship between the two models at the ends of the relay - the relationship will be established as the component(s) construct (during the _[initial transaction](#the-initial-transaction)_), and will persist until one of the components at the endpoints is destroyed.
+There are two primary styles of configuration for setting up model relay - firstly, using the _implicit syntax_ which just consists of [IoC References](IoCReferences.md) from the model configuration for one model-bearing component to another - that is, in the component's configuration under the top-level model entry. Secondly, the _explicit syntax_ involves an entry in the component's top-level `modelRelay` entry expressing a more complex rule, most likely involving some form of [Model Transformation](to-do/ModelTransformation.md) to apply during the relay process. Both of these styles will set up a permanent and bidirectional relationship between the two models at the ends of the relay - the relationship will be established as the component(s) construct (during the _[initial transaction](#the-initial-transaction)_), and will persist until one of the components at the endpoints is destroyed.
 
 ### How Model Relay Updates Propagate ###
 
@@ -53,7 +53,7 @@ console.log(that.model.parentValue);        // 5 - The parent's model value has 
 
 ## Explicit Model Relay Style ##
 
-This style is used when we require a [Model Transformation](ModelTransformation.md) rule to mediate between the updates synchronising one model value with another. The simple implicit style is only capable of "moving" the same value between one path and another. Sometimes different models choose different strategies for representing "the same value" - for example, one component might represent a sound volume level on a scale of 0-100, whereas another might use a range of 0-1. The framework is capable of accommodating this kind of difference in viewpoint by allowing the user to explicitly list a transformation rule relating one model's instance of a value with another. This is done using the `modelRelay` section of a component's top-level options. Here is the layout of this block:
+This style is used when we require a [Model Transformation](to-do/ModelTransformation.md) rule to mediate between the updates synchronising one model value with another. The simple implicit style is only capable of "moving" the same value between one path and another. Sometimes different models choose different strategies for representing "the same value" - for example, one component might represent a sound volume level on a scale of 0-100, whereas another might use a range of 0-1. The framework is capable of accommodating this kind of difference in viewpoint by allowing the user to explicitly list a transformation rule relating one model's instance of a value with another. This is done using the `modelRelay` section of a component's top-level options. Here is the layout of this block:
 
 ### Model Relay Block Layout ###
 
@@ -78,7 +78,7 @@ This style is used when we require a [Model Transformation](ModelTransformation.
         </tr>
         <tr>
             <td>singleTransform</td>
-            <td>JSON (single <a href="ModelTransformation.md">Model Transformation</a> rule)</td>
+            <td>JSON (single <a href="to-do/ModelTransformation.md">Model Transformation</a> rule)</td>
             <td>A short form which can be used where the transformation consists of just a single Model Transformation transform rule</td>
             <td><pre>
 {
@@ -90,7 +90,7 @@ This style is used when we require a [Model Transformation](ModelTransformation.
         </tr>
         <tr>
             <td>transform</td>
-            <td>JSON (full <a href="ModelTransformation.md">Model Transformation</a> document)</td>
+            <td>JSON (full <a href="to-do/ModelTransformation.md">Model Transformation</a> document)</td>
             <td>A long form which allows any valid Model Transformation document to be used to mediate the relay</td>
             <td>See this <a href="http://wiki.gpii.net/index.php/Architecture_-_Available_transformation_functions">list of available transformation functions</a> for more information.</td>
         </tr>

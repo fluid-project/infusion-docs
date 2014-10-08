@@ -5,7 +5,7 @@ The [Infusion Event System](InfusionEventSystem.md) explains how to declare even
 1. collaborate between multiple components in a component tree on **sharing** references to event firers (**event injection**)
 2. present an event with a particular signature fired by a component as one with a different signature in a listener (**event boiling**)
 
-Both of these capabilities rely on the [IoC - Inversion of Control](IoCInversionOfControl.md) system and on the tree of components in question being an IoC-driven tree.
+Both of these capabilities rely on the [IoC - Inversion of Control](to-do/IoCInversionOfControl.md) system and on the tree of components in question being an IoC-driven tree.
 
 ## Event Injection ##
 
@@ -180,7 +180,7 @@ that.fire(5, true); // listener above will log 5, that
 
 ### Injecting a Listener to an Event Elsewhere in the Tree ###
 
-Similarly to the previous section, rather than transmitting an entire event around the component tree just so that one listener can be attached to it, it is often more efficient (although it can be more confusing for the reader) to simply inject the listener itself. Note that with this built-in syntax the listener can only be injected into (registered as a listener to) a component which is visible as a parent or a sibling of the current component, using a standard upward-matching [IoC Context Selector](Contexts.md). If you need the more powerful facility to inject a listener _downwards_ (that is, to one or more components that may not yet be constructed) please see the section describing the use of the [distributeOptions](IoCSS) options block.
+Similarly to the previous section, rather than transmitting an entire event around the component tree just so that one listener can be attached to it, it is often more efficient (although it can be more confusing for the reader) to simply inject the listener itself. Note that with this built-in syntax the listener can only be injected into (registered as a listener to) a component which is visible as a parent or a sibling of the current component, using a standard upward-matching [IoC Context Selector](Contexts.md). If you need the more powerful facility to inject a listener _downwards_ (that is, to one or more components that may not yet be constructed) please see the section describing the use of the [distributeOptions](IoCSS.md) options block.
 
 ```javascript
 fluid.defaults("examples.injectedListenerParent", {

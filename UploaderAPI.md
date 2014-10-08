@@ -480,7 +480,7 @@ fileQueueView: {
                 Specifies the type and options to use for the total progress bar.
             </td>
             <td>
-                See the <a href="ProgressAPI.md">Progress API documentation</a> for a full descriptions of the available options.
+                See the <a href="to-do/ProgressAPI.md">Progress API documentation</a> for a full descriptions of the available options.
             </td>
             <td>
                 <pre>
@@ -903,7 +903,7 @@ The different parts of the Uploader interface each have their own set of selecto
 
 #### Progress ####
 
-_**Note:** Please see the [Progress API](ProgressAPI.md) document for a full description of Fluid Progress._
+_**Note:** Please see the [Progress API](to-do/ProgressAPI.md) document for a full description of Fluid Progress._
 
 Uploader uses the following selector options for Progress:
 

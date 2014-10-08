@@ -7,8 +7,8 @@ Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.
 
 Many times, you will be creating a component that works in an environment where other things are operating, and it will probably need to notify those other things of key **events** in its lifecycle. Events can be used to trigger changes in the visual appearance of a component, or actions by other components. For example:
 
-* the Infusion [Reorderer](../Reorderer.md) component provides drag-and-drop functionality for lists, grids, etc. Its operation has several key events, such as when a move is initiated, when it's completed, etc.
-* the Infusion [Uploader](../Uploader.md) component, a queued multi-file uploader, has events including when a file is successfully added to the queue, when each file starts being uploaded, when each upload completes, etc.
+* the Infusion [Reorderer](../to-do/Reorderer.md) component provides drag-and-drop functionality for lists, grids, etc. Its operation has several key events, such as when a move is initiated, when it's completed, etc.
+* the Infusion [Uploader](../to-do/Uploader.md) component, a queued multi-file uploader, has events including when a file is successfully added to the queue, when each file starts being uploaded, when each upload completes, etc.
 
 The Infusion Framework defines its own event system. Infusion events differ from browser events in that they are not bound to the DOM or its insfrastructure. Infusion events can be used for anything, not only user-interface related events.
 

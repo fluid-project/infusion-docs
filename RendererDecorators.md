@@ -273,9 +273,9 @@ Whilst component tree nodes are allocated a `fullID` in a regular way by a stabl
 
 ## `fluid` Decorator ##
 
-This is a highly powerful decorator, that completes the **active** functionality supplied by the `jQuery` and `identify` decorators. Use of the `fluid` decorator allows any [Fluid Component](Components.md) to be scheduled to be instantiated against the rendered markup, as it is added to the target document. These decorators promote markup agnosticism, as well as developer efficiency – without them, one would be left to rescan the just-rendered markup once again, in order to convert it from raw markup to an active interface. With these decorators and the component tree, one has a surface with which to talk about the **function** of the interface whilst leaving design and markup issues in their own space.
+This is a highly powerful decorator, that completes the **active** functionality supplied by the `jQuery` and `identify` decorators. Use of the `fluid` decorator allows any [Fluid Component](to-do/Components.md) to be scheduled to be instantiated against the rendered markup, as it is added to the target document. These decorators promote markup agnosticism, as well as developer efficiency – without them, one would be left to rescan the just-rendered markup once again, in order to convert it from raw markup to an active interface. With these decorators and the component tree, one has a surface with which to talk about the **function** of the interface whilst leaving design and markup issues in their own space.
 
-The full form of the decorator takes three members, `func`, `container` and `args`, mirroring the instantiation syntax of a standard Fluid Component - as described in [Fluid Component API](FluidComponentAPI.md), this takes the form:
+The full form of the decorator takes three members, `func`, `container` and `args`, mirroring the instantiation syntax of a standard Fluid Component - as described in [Understanding Infusion Components](UnderstandingInfusionComponents.md), this takes the form:
 
 ```javascript
 fluid.componentName = function(container, options);
@@ -300,7 +300,7 @@ There is no specially dehydrated form for the `fluid` decorator – however, lik
 
 ### `attrs` Decorator ###
 
-The `attrs` director is simple and crude - it allows freeform access to all of the attributes of the rendered node. Since this is not likely to result in a very markup-agnostic relationship, its use is only recommended in special situations. Its direct equivalent on the server-side was [UIFreeAttributeDecorator](https://source.caret.cam.ac.uk/rsf/projects/RSFUtil/trunk/src/uk/org/ponder/rsf/components/decorators/UIFreeAttributeDecorator.java). The decorator takes a value named `attributes` which is a free hash of keys to values, which will be applied _"on top of"_ the target node as it is rendered, overwriting any values which were inherited from the original markup template.
+The `attrs` director is simple and crude - it allows freeform access to all of the attributes of the rendered node. Since this is not likely to result in a very markup-agnostic relationship, its use is only recommended in special situations. The decorator takes a value named `attributes` which is a free hash of keys to values, which will be applied _"on top of"_ the target node as it is rendered, overwriting any values which were inherited from the original markup template.
 
 ```javascript
 {
