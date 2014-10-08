@@ -63,7 +63,7 @@ myComponent.myEvent.fire(97, false); // firer of event can supply whatever argum
 // but these should conform to some agreed signature
 ```
 
-As a real-world example, here is a block of configuration taken from Infusion's [Reorderer](Reorderer.md) component: 
+As a real-world example, here is a block of configuration taken from Infusion's [Reorderer](to-do/Reorderer.md) component: 
 
 ```javascript
 events: {
