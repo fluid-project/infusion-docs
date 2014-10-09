@@ -1,3 +1,8 @@
+---
+title: Composite Panels
+layout: default
+---
+
 # Composite Panels #
 
 ## Overview ##

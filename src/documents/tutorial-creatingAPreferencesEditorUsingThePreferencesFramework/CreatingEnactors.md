@@ -1,3 +1,8 @@
+---
+title: Creating Enactors
+layout: default
+---
+
 # Creating Enactors #
 
 ---

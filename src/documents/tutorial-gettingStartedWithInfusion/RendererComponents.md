@@ -1,3 +1,8 @@
+---
+title: Renderer Components
+layout: default
+---
+
 # Renderer Components #
 
 ---

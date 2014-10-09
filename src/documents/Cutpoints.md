@@ -1,3 +1,8 @@
+---
+title: Cutpoints
+layout: default
+---
+
 # Cutpoints #
 
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_

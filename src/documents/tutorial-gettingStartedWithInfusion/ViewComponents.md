@@ -1,3 +1,8 @@
+---
+title: View Components
+layout: default
+---
+
 # View Components #
 
 ---

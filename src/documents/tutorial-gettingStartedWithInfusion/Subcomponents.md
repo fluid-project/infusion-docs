@@ -1,3 +1,8 @@
+---
+title: Subcomponents
+layout: default
+---
+
 # Subcomponents #
 
 ---

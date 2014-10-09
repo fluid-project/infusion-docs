@@ -1,3 +1,8 @@
+---
+title: Framework Concepts
+layout: default
+---
+
 Framework Concepts
 ==================
 

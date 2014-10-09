@@ -1,3 +1,8 @@
+---
+title: Uploader API
+layout: default
+---
+
 # Uploader API #
 
 ## Uploader Overview ##

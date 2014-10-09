@@ -1,3 +1,8 @@
+---
+title: Contexts
+layout: default
+---
+
 # Contexts #
 
 Components may have different requirements depending on the context in which they are operating.

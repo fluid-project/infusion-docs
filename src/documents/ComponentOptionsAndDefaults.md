@@ -1,3 +1,8 @@
+---
+title: Understanding Component Options And Their Defaults
+layout: default
+---
+
 # Understanding Component Options And Their Defaults #
 
 ## Overview ##

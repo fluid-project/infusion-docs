@@ -1,3 +1,8 @@
+---
+title: Component Grades
+layout: default
+---
+
 # Component Grades #
 
 ## Overview ##

@@ -1,3 +1,8 @@
+---
+title: Pick a component type
+layout: default
+---
+
 # Pick a component type #
 
 ---

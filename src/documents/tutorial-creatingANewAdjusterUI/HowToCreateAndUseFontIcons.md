@@ -1,3 +1,8 @@
+---
+title: How to Create and Use Font Icons
+layout: default
+---
+
 # How to Create and Use Font Icons #
 
 ## Introduction ##

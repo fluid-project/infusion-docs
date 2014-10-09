@@ -1,3 +1,8 @@
+---
+title: Instantiating the Enhancer and Settings Store Only
+layout: default
+---
+
 # Instantiating the Enhancer and Settings Store Only #
 
 ---

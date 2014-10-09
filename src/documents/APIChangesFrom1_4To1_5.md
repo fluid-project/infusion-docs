@@ -1,3 +1,8 @@
+---
+title: API Changes from 1.4 to 1.5
+layout: default
+---
+
 # API Changes from 1.4 to 1.5 #
 
 ## Component API Changes ##

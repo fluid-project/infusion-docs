@@ -1,3 +1,8 @@
+---
+title: Preferences Editor
+layout: default
+---
+
 # Preferences Editor #
 
 ## Overview ##

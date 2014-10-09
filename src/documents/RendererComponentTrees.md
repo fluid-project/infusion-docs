@@ -1,3 +1,8 @@
+---
+title: Renderer Component Trees
+layout: default
+---
+
 # Renderer Component Trees #
 
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_

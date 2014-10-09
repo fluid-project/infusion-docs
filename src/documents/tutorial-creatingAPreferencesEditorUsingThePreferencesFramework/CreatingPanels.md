@@ -1,3 +1,8 @@
+---
+title: Creating Panels
+layout: default
+---
+
 # Creating Panels #
 
 ---

@@ -1,3 +1,8 @@
+---
+title: Connecting the Parts of a Preferences Editor
+layout: default
+---
+
 # Connecting the Parts of a Preferences Editor #
 
 _**Note:** This page describes how to work with the infusion Preferences Framework using schemas and the builder. It does NOT describe using the alternative technique, grades._

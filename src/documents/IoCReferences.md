@@ -1,3 +1,8 @@
+---
+title: IoC References
+layout: default
+---
+
 # IoC References #
 
 ## Overview ##

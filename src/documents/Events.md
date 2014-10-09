@@ -1,3 +1,8 @@
+---
+title: Events
+layout: default
+---
+
 # Events #
 
 * [Infusion Event System](InfusionEventSystem.md)

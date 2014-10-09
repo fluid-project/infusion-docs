@@ -1,3 +1,8 @@
+---
+title: Styling the Preferences Editor
+layout: default
+---
+
 # Styling the Preferences Editor #
 
 ---

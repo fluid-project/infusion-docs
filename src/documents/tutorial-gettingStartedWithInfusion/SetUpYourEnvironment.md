@@ -1,3 +1,8 @@
+---
+title: Set up your environment
+layout: default
+---
+
 # Set up your environment #
 
 ---

@@ -1,3 +1,8 @@
+---
+title: DOM Binder
+layout: default
+---
+
 # DOM Binder #
 
 ## Overview ##

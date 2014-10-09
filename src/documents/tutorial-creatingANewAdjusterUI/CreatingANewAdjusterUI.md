@@ -1,3 +1,8 @@
+---
+title: Creating a New Adjuster UI
+layout: default
+---
+
 # Creating a New Adjuster UI #
 
 ## Decide what type of control it is ##

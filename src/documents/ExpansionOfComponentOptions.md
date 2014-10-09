@@ -1,3 +1,8 @@
+---
+title: Expansion of Component Options
+layout: default
+---
+
 # Expansion of Component Options #
 
 ## Expanders ##

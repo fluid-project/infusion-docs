@@ -1,3 +1,8 @@
+---
+title: Declarative this-ism in IoC
+layout: default
+---
+
 # Declarative this-ism in IoC #
 
 ## Introduction ##

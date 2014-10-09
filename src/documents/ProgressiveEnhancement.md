@@ -1,3 +1,8 @@
+---
+title: Progressive Enhancement
+layout: default
+---
+
 # Progressive Enhancement #
 
 _**Note:** This functionality is **Sneak Peek** status. This means that the **APIs may change**. We welcome your feedback, ideas, and code, but please use caution if you use this new functionality._

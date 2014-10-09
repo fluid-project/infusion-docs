@@ -1,3 +1,8 @@
+---
+title: Conditional Subpanels
+layout: default
+---
+
 # Conditional Subpanels #
 
 ## Overview ##

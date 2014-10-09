@@ -1,3 +1,8 @@
+---
+title: Pager 1.5 Migration
+layout: default
+---
+
 # Pager 1.5 Migration #
 
 

@@ -1,3 +1,8 @@
+---
+title: Infusion Documentation
+layout: default
+---
+
 Infusion Documentation
 ======================
 

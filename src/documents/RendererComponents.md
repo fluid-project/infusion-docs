@@ -1,3 +1,8 @@
+---
+title: Renderer Components
+layout: default
+---
+
 # Renderer Components #
 
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_

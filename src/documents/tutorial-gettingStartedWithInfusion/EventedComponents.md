@@ -1,3 +1,8 @@
+---
+title: Evented Components
+layout: default
+---
+
 # Evented Components #
 
 ---

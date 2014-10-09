@@ -1,3 +1,8 @@
+---
+title: Preferences Framework
+layout: default
+---
+
 # Preferences Framework #
 
 ## Overview ##

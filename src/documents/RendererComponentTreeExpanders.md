@@ -1,3 +1,8 @@
+---
+title: Renderer Component Tree Expanders
+layout: default
+---
+
 # Renderer Component Tree Expanders #
 
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_

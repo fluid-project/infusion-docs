@@ -1,3 +1,8 @@
+---
+title: Creating an Auxiliary Schema
+layout: default
+---
+
 # Creating an Auxiliary Schema #
 
 ---

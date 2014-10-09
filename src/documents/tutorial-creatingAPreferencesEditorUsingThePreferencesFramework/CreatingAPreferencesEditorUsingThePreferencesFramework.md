@@ -1,3 +1,8 @@
+---
+title: Creating a Preferences Editor Using the Preferences Framework
+layout: default
+---
+
 # Creating a Preferences Editor Using the Preferences Framework #
 
 ## Overview ##

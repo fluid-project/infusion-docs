@@ -1,3 +1,8 @@
+---
+title: UI Options 1.5 Migration
+layout: default
+---
+
 # UI Options 1.5 Migration #
 
 

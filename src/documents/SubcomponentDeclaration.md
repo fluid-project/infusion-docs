@@ -1,3 +1,8 @@
+---
+title: Subcomponent Declaration
+layout: default
+---
+
 Subcomponent Declaration
 ========================
 

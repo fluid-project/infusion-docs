@@ -1,3 +1,8 @@
+---
+title: Developer Introduction to the Infusion Framework
+layout: default
+---
+
 # Developer Introduction to the Infusion Framework #
 
 _This page is still under construction. An archived version can be found on the

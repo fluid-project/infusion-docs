@@ -1,3 +1,8 @@
+---
+title: ChangeApplier
+layout: default
+---
+
 # ChangeApplier #
 
 ## Overview ##

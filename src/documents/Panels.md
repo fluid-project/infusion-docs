@@ -1,3 +1,8 @@
+---
+title: Panels
+layout: default
+---
+
 # Panels #
 
 ## Overview ##

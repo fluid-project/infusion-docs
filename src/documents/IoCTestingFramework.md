@@ -1,3 +1,8 @@
+---
+title: The IoC Testing Framework
+layout: default
+---
+
 # The IoC Testing Framework #
 
 ## Overview ##

@@ -1,3 +1,8 @@
+---
+title: Model Components
+layout: default
+---
+
 # Model Components #
 
 ---

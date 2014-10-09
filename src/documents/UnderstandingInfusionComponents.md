@@ -1,3 +1,8 @@
+---
+title: Understanding Infusion Components
+layout: default
+---
+
 # Understanding Infusion Components #
 
 Every Infusion application is structured as a set of **components**. An Infusion component can represent

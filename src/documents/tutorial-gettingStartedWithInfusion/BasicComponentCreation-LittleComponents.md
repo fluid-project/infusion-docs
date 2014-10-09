@@ -1,3 +1,8 @@
+---
+title: Basic Component Creation - Little Components
+layout: default
+---
+
 # Basic Component Creation - Little Components #
 
 ---

@@ -1,3 +1,8 @@
+---
+title: Creating a Primary Schema
+layout: default
+---
+
 # Creating a Primary Schema #
 
 ---

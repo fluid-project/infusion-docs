@@ -1,3 +1,8 @@
+---
+title: Instantiating the Preferences Editor
+layout: default
+---
+
 # Instantiating the Preferences Editor #
 
 ---
