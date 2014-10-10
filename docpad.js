@@ -15,6 +15,13 @@ var relativeUrl = function (forUrl) {
 }
 
 module.exports = {
+    documentsPaths: [
+        "pages-copy"
+    ],
+    filesPaths: [
+        "static",
+        "images-copy"
+    ],
     renderSingleExtensions: true,
     plugins: {
         handlebars: {
