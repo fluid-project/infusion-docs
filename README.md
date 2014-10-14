@@ -4,7 +4,7 @@ Infusion Documentation
 Browse the Infusion Documentation on GitHub
 -------------------------------------------
 
-You can [browse the Infusion Documentation directly on GitHub](src/documents) using the source code browser.
+You can [browse the Infusion Documentation directly on GitHub](src/documents).
 
 Build with DocPad
 -----------------
