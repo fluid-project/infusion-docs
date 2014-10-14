@@ -7,6 +7,7 @@
     "docpad": "~6.69.1",
     "docpad-plugin-handlebars": "~2.3.0",
     "docpad-plugin-highlightjs": "~2.2.2",
-    "docpad-plugin-marked": "~2.2.1"
+    "docpad-plugin-marked": "~2.2.1",
+    "ncp": "^1.0.1"
   }
 }

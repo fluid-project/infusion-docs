@@ -1,4 +1,6 @@
 var URI = require('URIjs');
+var path = require('path');
+var ncp = require('ncp');
 
 var rewriteMdLinks = function (content) {
     return content.replace(/(<a\s[^>]*href="[\w-/\.]+)\.md(["#])/gm, "$1.html$2");
@@ -14,7 +16,13 @@ var relativeUrl = function (forUrl) {
     return URI(forUrl).relativeTo(this.document.url);
 }
 
+var rootPath = process.cwd();
+var imagesSrcDir = path.join(rootPath, "src", "documents", "images");
+var imagesDestDir = "out/images";
+
 module.exports = {
+    rootPath: rootPath,
+    ignorePaths: [ imagesSrcDir ],
     renderSingleExtensions: true,
     plugins: {
         handlebars: {
@@ -23,6 +31,11 @@ module.exports = {
                 githubLocation: githubLocation,
                 relativeUrl: relativeUrl
             }
+        }
+    },
+    events: {
+        writeAfter: function (opts, next) {
+            ncp.ncp(imagesSrcDir, imagesDestDir, next);
         }
     }
 }
