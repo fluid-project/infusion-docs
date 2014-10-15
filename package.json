@@ -1,0 +1,13 @@
+{
+  "name": "infusion-docs",
+  "version": "1.5.0",
+  "description": "Infusion Documentation",
+  "dependencies": {
+    "URIjs": "^1.14.1",
+    "docpad": "~6.69.1",
+    "docpad-plugin-handlebars": "~2.3.0",
+    "docpad-plugin-highlightjs": "~2.2.2",
+    "docpad-plugin-marked": "~2.2.1",
+    "ncp": "^1.0.1"
+  }
+}
