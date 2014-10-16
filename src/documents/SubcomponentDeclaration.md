@@ -3,9 +3,6 @@ title: Subcomponent Declaration
 layout: default
 ---
 
-Subcomponent Declaration
-========================
-
 In the Infusion IoC system, a component declares its (static) subcomponents through the `components` property of the defaults, using [`fluid.defaults`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539):
 
 ```javascript

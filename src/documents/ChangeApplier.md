@@ -3,8 +3,6 @@ title: ChangeApplier
 layout: default
 ---
 
-# ChangeApplier #
-
 ## Overview ##
 
 The ChangeApplier is a core part of the architecture of Fluid Infusion, which coordinates access to

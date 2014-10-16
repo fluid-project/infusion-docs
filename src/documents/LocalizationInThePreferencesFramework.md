@@ -3,9 +3,6 @@ title: Localization in the Preferences Framework
 layout: default
 ---
 
-Localization in the Preferences Framework
-=========================================
-
 Overview
 --------
 

@@ -3,8 +3,6 @@ title: DOM Binder
 layout: default
 ---
 
-# DOM Binder #
-
 ## Overview ##
 
 The purpose of the DOM Binder is to relax the coupling between a component and its markup: A DOM Binder handles any 

@@ -3,8 +3,6 @@ title: Class Name Conventions
 layout: default
 ---
 
-# Class Name Conventions #
-
 The template for **CSS classnames** (i.e. class names use for styling) looks like **fl-[fluid:thing]-[fluid:role]-[fluid:state]**, with some guidelines:
 
 1. multiple words are in camelCase, so they might look like **fl-[fluid:multiWordThing]-[fluid:multiWordRole]-[fluid:state]**

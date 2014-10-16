@@ -3,8 +3,6 @@ title: Conditional Subpanels
 layout: default
 ---
 
-# Conditional Subpanels #
-
 ## Overview ##
 
 Conditional subpanels are subpanels that are only displayed if the value of a specified boolean preference is true. This functionality allows adjusters to be displayed or hidden based on the setting of another on/off adjuster.

@@ -3,8 +3,6 @@ title: Understanding Component Options And Their Defaults
 layout: default
 ---
 
-# Understanding Component Options And Their Defaults #
-
 ## Overview ##
 
 One of the key principles that Infusion components operate on is configurability. Components have

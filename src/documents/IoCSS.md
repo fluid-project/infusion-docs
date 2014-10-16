@@ -3,8 +3,6 @@ title: IoCSS
 layout: default
 ---
 
-# IoCSS #
-
 ## distributeOptions and IoCSS: Downward-Matching CSS-Like Context Selectors For Options Forwarding ##
 
 The `distributeOptions` option is a top-level block supported by every IoC-configured component. It specifies how options should be distributed to subcomponents further down the tree.

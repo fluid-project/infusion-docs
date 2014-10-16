@@ -3,8 +3,6 @@ title: Declarative this-ism in IoC
 layout: default
 ---
 
-# Declarative this-ism in IoC #
-
 ## Introduction ##
 
 Typically in Infusion, all functions and components adhere to a **that-ist** approach. This approach implies that the meaning of any function value remains the same, however the function is invoked. This is in contrast to the **this-ist** approach used frequently in JavaScript code, where the context of a function (the value of `this` within its body) depends on where the caller has stored it before invoking it. When working with Infusion, there are times when you will need to interact with a library and or function that requires a `this`, which is a keyword typically intended to refer back to itself. The most common example would be using a jQuery element.

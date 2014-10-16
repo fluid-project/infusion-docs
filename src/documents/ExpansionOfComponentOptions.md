@@ -3,8 +3,6 @@ title: Expansion of Component Options
 layout: default
 ---
 
-# Expansion of Component Options #
-
 ## Expanders ##
 
 Infusion component options, as written in `fluid.defaults` blocks, go through a process called **expansion** when they are used to instantiate a component. Two kinds of expansion happen during this process -

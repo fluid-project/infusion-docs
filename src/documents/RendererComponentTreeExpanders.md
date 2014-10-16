@@ -3,8 +3,6 @@ title: Renderer Component Tree Expanders
 layout: default
 ---
 
-# Renderer Component Tree Expanders #
-
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_
 
 The Renderer offers some utility functions for simplifying the tree-creation process. These functions are called **expanders** because they expand information you provide into a full component tree. These expanders are specified in the prototree itself by name and and are provided options to control the expansion process. For example:

@@ -3,8 +3,6 @@ title: Panels
 layout: default
 ---
 
-# Panels #
-
 ## Overview ##
 
 A Panel is an [Infusion component](UnderstandingInfusionComponents.md) that present adjusters, or controls, to the user to allow them to adjust the preference settings. Panels are [Renderer components](RendererComponents.md) that work with an HTML template.

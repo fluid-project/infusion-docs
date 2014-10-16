@@ -3,8 +3,6 @@ title: Renderer Decorators
 layout: default
 ---
 
-# Renderer Decorators #
-
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_
 
 ## Overview ##

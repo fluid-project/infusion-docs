@@ -3,8 +3,6 @@ title: IoC References
 layout: default
 ---
 
-# IoC References #
-
 ## Overview ##
 
 The Infusion IoC Framework uses a basic syntax for referencing objects in the current [context](Contexts.md).

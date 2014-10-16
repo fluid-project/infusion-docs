@@ -3,8 +3,6 @@ title: How To Use The Renderer
 layout: default
 ---
 
-# How To Use The Renderer #
-
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_
 
 ## Recommended Ways of Using the Renderer ##

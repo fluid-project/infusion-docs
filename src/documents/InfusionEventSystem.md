@@ -3,9 +3,6 @@ title: Infusion Event System
 layout: default
 ---
 
-Infusion Event System
-=====================
-
 Overview
 --------
 

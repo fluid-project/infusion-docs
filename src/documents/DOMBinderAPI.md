@@ -3,8 +3,6 @@ title: DOM Binder API
 layout: default
 ---
 
-# DOM Binder API #
-
 **NOTE:** A DOM Binder is automatically created by the Framework for any [view component](tutorial-gettingStartedWithInfusion/ViewComponents.md). 
 **_Component developers are not expected to ever create a DOM Binder themselves._**
 

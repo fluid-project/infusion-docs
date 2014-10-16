@@ -3,8 +3,6 @@ title: Invokers
 layout: default
 ---
 
-# Invokers #
-
 ## Overview ##
 
 The Infusion IoC system provides a mechanism for creating the public functions (or "methods",

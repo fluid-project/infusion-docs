@@ -3,8 +3,6 @@ title: Preferences Framework
 layout: default
 ---
 
-# Preferences Framework #
-
 ## Overview ##
 
 The Infusion Preferences Framework offers a reusable set of schemas, programming APIs, and UI building blocks specific to the creation, persistence, and integration of preference editors into a variety of web-based applications, content management systems, and delivery environments. It does not prescribe a single means by which content should be delivered to users. Instead, the Preferences Framework architecture provides an event-driven API that enables different, pluggable personalization strategies to listen for changes in a user's preferences and respond accordingly.

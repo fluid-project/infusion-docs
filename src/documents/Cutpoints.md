@@ -3,8 +3,6 @@ title: Cutpoints
 layout: default
 ---
 
-# Cutpoints #
-
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_
 
 A **cutpoint** is a mapping between a component in the renderer component tree and markup in the template.It consists of two fields: The `ID` of the component in the tree and a `selector` for the element in the template:

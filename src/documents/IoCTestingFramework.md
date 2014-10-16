@@ -3,9 +3,8 @@ title: The IoC Testing Framework
 layout: default
 ---
 
-# The IoC Testing Framework #
-
 ## Overview ##
+
 The IoC Testing Framework is written using our existing jqUnit wrapper for jQuery's [QUnit](http://qunitjs.com/) as a base.
 The IoC Testing Framework is both written using Fluid's [IoC](HowToUseInfusionIoC.md) system, as well as being designed to test components
 which are themselves written using IoC. This framework aims to extend our power to write tests in various directions at the same time. 
