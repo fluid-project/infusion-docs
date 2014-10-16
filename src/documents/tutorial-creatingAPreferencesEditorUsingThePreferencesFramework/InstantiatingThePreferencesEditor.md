@@ -3,8 +3,6 @@ title: Instantiating the Preferences Editor
 layout: default
 ---
 
-# Instantiating the Preferences Editor #
-
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 

@@ -3,8 +3,6 @@ title: How to Create and Use Font Icons
 layout: default
 ---
 
-# How to Create and Use Font Icons #
-
 ## Introduction ##
 
 Using a font to represent an icon has advantages over the traditional method of using an image, namely:

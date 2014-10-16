@@ -3,8 +3,6 @@ title: Instantiating the Enhancer and Settings Store Only
 layout: default
 ---
 
-# Instantiating the Enhancer and Settings Store Only #
-
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 

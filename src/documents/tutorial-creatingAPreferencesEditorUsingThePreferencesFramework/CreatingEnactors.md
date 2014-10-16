@@ -3,8 +3,6 @@ title: Creating Enactors
 layout: default
 ---
 
-# Creating Enactors #
-
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 

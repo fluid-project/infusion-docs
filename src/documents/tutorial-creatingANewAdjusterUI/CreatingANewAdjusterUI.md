@@ -3,8 +3,6 @@ title: Creating a New Adjuster UI
 layout: default
 ---
 
-# Creating a New Adjuster UI #
-
 ## Decide what type of control it is ##
 
 Based on the nature of the setting, different types of controls will be appropriate:
