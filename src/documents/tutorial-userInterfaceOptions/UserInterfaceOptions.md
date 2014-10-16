@@ -3,8 +3,6 @@ title: User Interface Options
 layout: default
 ---
 
-# User Interface Options #
-
 The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
 
 UI Options does three things:

@@ -3,8 +3,6 @@ title: Evented Components
 layout: default
 ---
 
-# Evented Components #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 

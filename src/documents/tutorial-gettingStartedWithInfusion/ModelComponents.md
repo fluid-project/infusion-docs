@@ -3,8 +3,6 @@ title: Model Components
 layout: default
 ---
 
-# Model Components #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 

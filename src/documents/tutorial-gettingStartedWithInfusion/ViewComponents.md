@@ -3,8 +3,6 @@ title: View Components
 layout: default
 ---
 
-# View Components #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 

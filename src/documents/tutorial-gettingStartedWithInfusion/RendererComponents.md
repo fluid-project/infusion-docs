@@ -3,8 +3,6 @@ title: Renderer Components
 layout: default
 ---
 
-# Renderer Components #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 

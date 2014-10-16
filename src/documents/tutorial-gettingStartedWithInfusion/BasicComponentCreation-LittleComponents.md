@@ -3,8 +3,6 @@ title: Basic Component Creation - Little Components
 layout: default
 ---
 
-# Basic Component Creation - Little Components #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 

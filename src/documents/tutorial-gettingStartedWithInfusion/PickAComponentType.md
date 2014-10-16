@@ -3,8 +3,6 @@ title: Pick a component type
 layout: default
 ---
 
-# Pick a component type #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 
