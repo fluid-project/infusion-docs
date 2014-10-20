@@ -4,10 +4,10 @@
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>{{document.title}} | Fluid Infusion</title>
-        <link rel="stylesheet" href="{{{relativeUrl '/css/normalize.css'}}}">
-        <link rel="stylesheet" href="{{{relativeUrl '/css/foundation.css'}}}">
-        <link rel="stylesheet" href="{{{relativeUrl '/css/highlightjs-custom.css'}}}">
-        <link rel="stylesheet" href="{{{relativeUrl '/css/infusion-docs.css'}}}">
+        <link rel="stylesheet" href="{{{relativeUrl '/css/normalize.css' document.url}}}">
+        <link rel="stylesheet" href="{{{relativeUrl '/css/foundation.css' document.url}}}">
+        <link rel="stylesheet" href="{{{relativeUrl '/css/highlightjs-custom.css' document.url}}}">
+        <link rel="stylesheet" href="{{{relativeUrl '/css/infusion-docs.css' document.url}}}">
     </head>
     <body class="infusion-docs">
 
@@ -25,6 +25,17 @@
                     <a class="infusion-docs-linkDOCS" href="" title="Docs">DOCS</a>
                 </nav>
             </header>
+
+            <nav>
+                {{#each siteStructure}}
+                    {{sectionName}}
+                    <ul>
+                    {{#each pages}}
+                        <li><a href="{{relativeUrl href ../../document.url}}">{{pageName}}</a></li>
+                    {{/each}}
+                    </ul>
+                {{/each}}
+            </nav>
 
             <article class="row infusion-docs-mainContent">
 

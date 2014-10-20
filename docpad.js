@@ -12,6 +12,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 var URI = require('URIjs');
 var path = require('path');
 var ncp = require('ncp');
+var fs = require('fs');
 
 // The documentation root on GitHub:
 // Used to build URLs for "Edit on GitHub" links
@@ -35,9 +36,11 @@ var githubLocation = function () {
 // Helper function to build relative URLs:
 // Used for links to static resources such as CSS files. So that the generated
 // DocPad output is independent of the URL that it is hosted at.
-var relativeUrl = function (forUrl) {
-    return URI(forUrl).relativeTo(this.document.url);
+var relativeUrl = function (forUrl, relativeToUrl) {
+    return URI(forUrl).relativeTo(relativeToUrl);
 }
+
+var siteStructure = JSON.parse(fs.readFileSync("site-structure.json"));
 
 // We locate the images within the src/documents directory so that images can
 // be viewed on GitHub, as well as in the DocPad output. We need to
@@ -52,6 +55,9 @@ module.exports = {
     rootPath: rootPath,
     ignorePaths: [ imagesSrcDir ],
     renderSingleExtensions: true,
+    templateData: {
+        siteStructure: siteStructure
+    },
     plugins: {
         handlebars: {
             helpers: {
