@@ -3,8 +3,6 @@ title: Uploader API
 layout: default
 ---
 
-## Uploader Overview ##
-
 The Infusion Uploader provides an easy way for users to upload many files at once, providing useful feedback about the status and progress of each file along the way.
 
 Uploader implements a couple different ways to upload multiple files. With its built-in support for progressive enhancement, users will automatically receive a version of the Uploader best suited to the capabilities of their browsers. There are two different flavours of Uploader:

@@ -3,8 +3,6 @@ title: Component Grades
 layout: default
 ---
 
-## Overview ##
-
 A component **grade** extends the notion of component defaults ([fluid.defaults](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539)). In fact, every **fluid.defaults** directive introduces a **grade** into the system of Fluid Infusion components, which can be built on to derive further grades/components. This derivation occurs by mentioning the name of the original grade within the **gradeNames** section of the derived component.
 
 Developers can create their own **fluid.defaults / grades** as well as use them to build upon each other, and compose them as needed.

@@ -3,8 +3,6 @@ title: Understanding Component Options And Their Defaults
 layout: default
 ---
 
-## Overview ##
-
 One of the key principles that Infusion components operate on is configurability. Components have
 options that can be set by integrators to customize the behaviour. For example, the Infusion
 [Inline Edit](http://build.fluidproject.org/infusion/demos/inlineEdit/) component has

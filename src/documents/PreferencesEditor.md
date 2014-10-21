@@ -3,8 +3,6 @@ title: Preferences Editor
 layout: default
 ---
 
-## Overview ##
-
 One of the primary functions of the Infusion [Preferences Framework](PreferencesFramework.md) is to allow you to create a Preferences Editor: a collection of adjusters that users can use to set their interface preferences.
 
 The Preferences Framework provides a utility that creates and instantiates a preferences editor in a single step, given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary](AuxiliarySchemaForPreferencesFramework.md) schemas.

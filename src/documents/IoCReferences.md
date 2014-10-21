@@ -3,8 +3,6 @@ title: IoC References
 layout: default
 ---
 
-## Overview ##
-
 The Infusion IoC Framework uses a basic syntax for referencing objects in the current [context](Contexts.md).
 
 References always take the syntactic form `{context-name}.some.path.segments` - the meaning and form of the context name can vary and have a different meaning in different contexts:

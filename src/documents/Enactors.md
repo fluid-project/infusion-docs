@@ -3,8 +3,6 @@ title: Enactors
 layout: default
 ---
 
-## Overview ##
-
 An Enactor is an [Infusion component](UnderstandingInfusionComponents.md) that "acts upon" a preference setting, making whatever adjustments that are necessary to enact the preference. There are only a few requirements for an Enactor, since its nature is determined by the preference it acts upon. For example:
 
 * the 'text size' enactor provided by the Preferences Framework defines functions that adjust CSS on the page;

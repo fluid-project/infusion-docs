@@ -3,8 +3,6 @@ title: Composite Panels
 layout: default
 ---
 
-## Overview ##
-
 Composite panels allow you to combine several small panels – subpanels – into one larger panel. Subpanels are defined normally in an [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md); Composite panels define a list of subpanels that should be included in the composite panel.
 
 _**NOTE:** Subpanels **must** contain only one preference._
