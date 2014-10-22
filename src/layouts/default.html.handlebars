@@ -43,6 +43,10 @@
 
                 <div class="infusion-docs-githubLink"><a href="{{githubLocation}}">Edit on GitHub</a></div>
 
+                {{#if document.noteRendererChangesPost15}}
+                <div class="infusion-docs-note"><strong>Note:</strong> The renderer will undergo significant changes post Infusion 1.5</div>
+                {{/if}}
+
 {{{rewriteMdLinks content}}}
 
             </article>
