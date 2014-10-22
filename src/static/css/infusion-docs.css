@@ -47,7 +47,9 @@ body {
     font-size: 1.2rem;
 }
 
-
+.infusion-docs-container p {
+    font-size: 1.2rem;
+}
 
 .infusion-docs-container .infusion-docs-mainContent { 
     max-width: 48rem; 
@@ -150,11 +152,14 @@ body {
     font-size: 1.7rem;
 }
 
-.infusion-docs-emphasisParagraph {
+div.infusion-docs-note {
     border-left: solid;
     border-left-width: 0.3rem;
     border-color: #5DB93C;
     padding-left: 0.4rem;
+    font-style: italic;
+    line-height: 1.6rem;
+    margin-bottom: 2rem;
 }
 
 .infusion-docs-container .infusion-docs-githubLink a:before {
@@ -165,6 +170,11 @@ body {
     content: "\e600";
     font-size: 1.3rem;
     padding-right: 0.5rem;
+}
+
+.infusion-docs-container .infusion-docs-githubLink {
+    line-height: 1.6rem;
+    margin-bottom: 2rem;
 }
 
 .infusion-docs-container h1 {
