@@ -100,7 +100,7 @@ Where exactly on your page you put this <div> is up to you, but it will depend o
 * the UI Options own CSS files, and
 * the main Infusion JavaScript file, `infusion_custom.js`.
 
-In the header of your file, link to the FSS CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package).
+In the header of your file, link to the CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package).
 
 ```html
 <!-- Required CSS files -->
