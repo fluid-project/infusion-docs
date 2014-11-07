@@ -5,6 +5,8 @@ layout: default
 
 # How To Use The Renderer #
 
+There are several different ways to use the Infusion [Renderer](Renderer.md), including the recommended Renderer Component and various Renderer functions.
+
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_
 
 ## Recommended Ways of Using the Renderer ##

@@ -5,6 +5,8 @@ layout: default
 
 # IoCSS #
 
+The Infusion Inversion of Control (IoC) system includes a simple method for distributing options from top-level components through the component tree. This method is dubbed "IoCSS" because it uses a CSS-like syntax.
+
 ## distributeOptions and IoCSS: Downward-Matching CSS-Like Context Selectors For Options Forwarding ##
 
 The `distributeOptions` option is a top-level block supported by every IoC-configured component. It specifies how options should be distributed to subcomponents further down the tree.
