@@ -110,7 +110,7 @@ fluid.defaults("tutorials.simpleComponent", {
 });
 ```
 
-_**Note:** in Infusion 2.0, **"autoInit"** will become the default for all components and will not need to be specified_
+<div class="infusion-docs-note"><strong>Note:</strong> in Infusion 2.0, <strong>"autoInit"</strong> will become the default for all components and will not need to be specified</div>
 
 #### Public API methods ####
 
@@ -164,7 +164,7 @@ You'll notice that in this case we have been able to avoid binding to the entire
 
 ### Writing your own creator function ###
 
-_**Note:** the scheme described here is not recommended for new code, and is described here only for completeness. The ability for users to write their component creator functions directly in JavaScript code will be **removed** in Infusion 2.0._
+<div class="infusion-docs-note"><strong>Note:</strong> the scheme described here is not recommended for new code, and is described here only for completeness. The ability for users to write their component creator functions directly in JavaScript code will be <strong>removed</strong> in Infusion 2.0.</div>
 
 Creator functions follow a few basic steps:
 
