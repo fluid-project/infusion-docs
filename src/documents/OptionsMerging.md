@@ -64,7 +64,7 @@ The following are the policy types that are supported, determined by the key's v
 
 ## fluid.merge signature ##
 
-_**NOTE:** The use of `fluid.merge` directly is deprecated. The framework user should never need to invoke `fluid.merge` directly - it is invoked automatically by the framework as part of standard component initialisation._
+<div class="infusion-docs-note"><strong>Note:</strong> The use of <code>fluid.merge</code> directly is deprecated. The framework user should never need to invoke <code>fluid.merge</code> directly - it is invoked automatically by the framework as part of standard component initialisation.</div>
 
 The signature to fluid.merge is
 
