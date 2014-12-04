@@ -5,7 +5,7 @@ layout: default
 
 # API Changes from 1.4 to 1.5 #
 
-This page contains a list of the features, API's, and etc. that are have changed in Infusion 1.5.
+This page contains a list of the features, APIs, and etc. that have changed in Infusion 1.5.
 
 ## Component API Changes ##
 
