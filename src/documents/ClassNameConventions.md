@@ -9,11 +9,7 @@ Infusion components use various conventions for defining CSS class names. These 
 
 ## CSS classnames ##
 
-The template for **CSS classnames** (i.e. class names use for styling) take the form
-
-    **fl-[fluid:thing]-[fluid:role]-[fluid:state]**
-
-with some guidelines:
+The template for **CSS classnames** (i.e. class names use for styling) take the form **fl-[fluid:thing]-[fluid:role]-[fluid:state]** with some guidelines:
 
 1. multiple words are in camelCase, so they might look like **fl-[fluid:multiWordThing]-[fluid:multiWordRole]-[fluid:state]**
 2. components are always the first "thing", so they would look like **fl-[fluid:componentName]-[fluid:thing]-[fluid:role]-[fluid:state]**
