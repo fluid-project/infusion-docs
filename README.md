@@ -30,5 +30,5 @@ docpad run --env static
 Point your browser to:
 
 ```
-http://localhost:9778/README.html
+http://localhost:9778/
 ```

@@ -76,7 +76,7 @@ This option can be used to specify the names of grades that define schemas, as a
 </tr>
 </table>
 
-_**NOTE:** You **must** provide at least one of_
+<div class="infusion-docs-note"><strong>Note:</strong> You <strong>must</strong> provide at least one of</div>
 
 * the `auxiliarySchema` option, or
 * a gradeName indicating an auxiliary schema.

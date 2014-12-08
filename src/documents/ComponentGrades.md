@@ -83,7 +83,7 @@ _**[1]** About the special "relay" grades - as part of the work on the [New Chan
 
 A component's grades should be specified using the `gradeNames` option in the components defaults block, as shown in the examples below. The `gradeNames` option holds a string or Array of Strings.
 
-_**NOTE:** In the examples below, the `autoInit` flag is not actually a grade, but is added to the `gradeNames` array to control how the component is created. See [Initializing Graded Components](#initializing-graded-components) below for more information about the `autoInit` flag. The `autoInit` flag will soon become the default. Always use the `autoInit` flag, unless you have a very good reason not to._
+<div class="infusion-docs-note"><strong>Note:</strong> In the examples below, the <code>autoInit</code> flag is not actually a grade, but is added to the <code>gradeNames</code> array to control how the component is created. See <a href="#initializing-graded-components">Initializing Graded Components</a> below for more information about the <code>autoInit</code> flag. The <code>autoInit</code> flag will soon become the default. Always use the <code>autoInit</code> flag, unless you have a very good reason not to.</div>
 
 ```javascript
 fluid.defaults("fluid.uploader.demoRemote", {
@@ -122,7 +122,7 @@ fluid.defaults("fluid.uploader.fileQueueView", {
 var that = fluid.uploader.fileQueueView( ... ); // The framework has automatically generated this function since the component is autoInit
 ```
 
-_**NOTE:** The `autoInit` flag should always be used if you expect the grade to be directly instantiated as a component. It can be omitted if the only use of the grade is as an "add-on" ("[mixin](https://en.wikipedia.org/wiki/Mixin)") to another grade hierarchy._
+<div class="infusion-docs-note"><strong>Note:</strong> The <code>autoInit</code> flag should always be used if you expect the grade to be directly instantiated as a component. It can be omitted if the only use of the grade is as an "add-on" ("<a href="https://en.wikipedia.org/wiki/Mixin">mixin</a>") to another grade hierarchy.</div>
 
 ## Combining Grades ##
 
@@ -160,7 +160,7 @@ fluid.defaults("examples.combinedComponent", {
 }); 
 ```
 
-_**NOTE:** All the material from the component defaults will be merged by the framework, including records such as `events`, `listeners`, `members`, `components`, `invokers` and `model`. Some of these, e.g. `listeners` will receive custom merging algorithms sensitive to their context - for example showing awareness of [listener namespaces](InfusionEventSystem.md)._
+<div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>, <code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md">listener namespaces</a>.</div>
 
 ## Dynamic Grades ##
 

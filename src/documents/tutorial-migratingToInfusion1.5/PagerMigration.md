@@ -11,7 +11,7 @@ This page will walk you through the process of upgrading your existing 1.4 Pager
 
 ## Dependency Changes ##
 
-_**Note:** actual paths may vary, as they are dependent on the location of infusion._
+<div class="infusion-docs-note"><strong>Note:</strong> actual paths may vary, as they are dependent on the location of infusion.</div>
 
 ### In 1.5 ###
 

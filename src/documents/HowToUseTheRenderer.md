@@ -1,9 +1,8 @@
 ---
 title: How To Use The Renderer
 layout: default
+noteRendererChangesPost15: true
 ---
-
-_**Note:** The renderer will undergo significant changes post Infusion 1.5_
 
 ## Recommended Ways of Using the Renderer ##
 
