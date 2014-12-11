@@ -151,8 +151,8 @@ fluid.defaults("tutorials.currencyConverter", {
             args: ["{that}", "{arguments}.0"] // amount
     },
     modelListeners: {
-        "convertedAmount" {
-            func: "{that}.events.conversionUpdated.fire",
+        convertedAmount: {
+            funcName: "{that}.events.conversionUpdated.fire",
             args: "{change}.value"
         }
     }
