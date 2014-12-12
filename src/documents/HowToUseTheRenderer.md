@@ -7,6 +7,8 @@ layout: default
 
 _**Note:** The renderer will undergo significant changes post Infusion 1.5_
 
+There are several different ways to use the Infusion [Renderer](Renderer.md), including the recommended Renderer Component and various Renderer functions.
+
 ## Recommended Ways of Using the Renderer ##
 
 ### Renderer Component ###

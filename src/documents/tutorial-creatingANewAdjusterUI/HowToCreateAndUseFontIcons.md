@@ -5,25 +5,25 @@ layout: default
 
 # How to Create and Use Font Icons #
 
-## Introduction ##
+Using a font to render an icon has several advantages over the traditional method of using an image. This tutorial will explain how to create Font Icons. 
 
-Using a font to represent an icon has advantages over the traditional method of using an image, namely:
+Some of the advantages of icons include:
 
-* Scalable - works nicely regardless of client's magnification or view device DPI
-* Can change the colour with CSS
-* Can do everything traditional icons can (e.g. change opacity, rotation, etc.)
-* Can add strokes, gradients, shadows, and etc.
-* Convert to text (with ligatures)
-* Ligatures are read by screen readers
-* Changing icons to fonts is as simple as changing the font-family in CSS
+* Scalable - works nicely regardless of client's magnification or view device DPI;
+* Can change the colour with CSS;
+* Can do everything traditional icons can (e.g. change opacity, rotation, etc.);
+* Can add strokes, gradients, shadows, and etc.;
+* Convert to text (with ligatures);
+* Ligatures are read by screen readers;
+* Changing icons to fonts is as simple as changing the font-family in CSS.
 
-However there are some shortcomings to keep in mind:
+However, there are some shortcomings to keep in mind:
 
-* Icon fonts are generally mono tone in colour
-* IE8 and IE9 do not support ligatures
-* Globally changing fonts will cause the text vs the icon to show
-* In situations where there is existing text accompanying an icon, specific markup containers need to be created for the icon
-* Modifying icon fonts is as involved as generated a new icon graphic in the "traditional" way - there is no real time saved in that regard
+* Icon fonts are generally mono tone in colour.
+* IE8 and IE9 do not support ligatures.
+* Globally changing fonts will cause the text vs the icon to show.
+* In situations where there is existing text accompanying an icon, specific markup containers need to be created for the icon.
+* Modifying icon fonts is as involved as generated a new icon graphic in the "traditional" way - there is no real time saved in that regard.
 
 ## Procedure Summary ##
 
@@ -147,7 +147,8 @@ To illustrate this problem, assume Comic Sans is the font applied to the `<body>
 
 ```html
 <body>
-    <a href="contact.html" id="contact_form">Contact us</a> /* "Contact Us" should be in comic sans  */
+    /* "Contact Us" should be in comic sans  */
+    <a href="contact.html" id="contact_form">Contact us</a>
 </body>
 ```
 
@@ -175,7 +176,8 @@ To overcome this issue, a new separate element should be created in the HTML for
 
 ```html
 <body>
-    <span id="#icon-envelope"></span><a href="contact.html" id="contact_form">Contact us</a> /* "Contact Us" should be in comic sans */
+    /* "Contact Us" should be in comic sans */
+    <span id="#icon-envelope"></span><a href="contact.html" id="contact_form">Contact us</a>
 </body>
 ```
 
@@ -210,7 +212,8 @@ It's common for images to be used in functional ways such as acting as a button 
 The problem here is if we replace the image in the anchor with an icon font, any text descriptions (the alt text) will be removed as well - causing a possible usability and accessibility issue.
 
 ```html
-<a href="download.html"></a>  /* The alt text is now gone, causing a usability and accessibility problem. */
+/* The alt text is now gone, causing a usability and accessibility problem. */
+<a href="download.html"></a>
 ```
 
 ```css
@@ -231,7 +234,8 @@ a:before {
 To bring back some semantics and to help improve accessibility, we use "aria-label" to describe the functionality.
 
 ```html
-<a href="download.html" aria-label="Download our latest stuff!"></a>  /* Aria-label takes the place of alt text. */
+/* Aria-label takes the place of alt text. */
+<a href="download.html" aria-label="Download our latest stuff!"></a>
 ```
 
 ### Cross-Browser Oddities ###
