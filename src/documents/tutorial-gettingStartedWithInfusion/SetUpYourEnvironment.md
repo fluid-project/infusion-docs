@@ -25,7 +25,6 @@ Create:
 * Two directories called "bargraph" and "shared"
 * A directory called "sample-data" within bargraph
 * Two directories within shared called "css" and "js"
-* A directory within css called "fss"
 * A directory within js called "infusion"
 
 Your directories should now appear like the following:
@@ -38,10 +37,10 @@ Your directories should now appear like the following:
     * js
         * infusion
 
-Add Infusion
+## Add Infusion ##
 
 A lot of the functionality of our component will be driven by Infusion code, so we'll need to add these dependencies to our component.
 
-* Download the [latest release of Fluid Infusion](http://fluidproject.org/products/infusion/download-infusion/) and unzip it.
-* Copy the contents of the src/framework/fss/ into our shared/css/fss directory.
+* Download the [latest release of Fluid Infusion](https://github.com/fluid-project/infusion/releases/) and unzip it.
+* Follow the instructions in the [Readme file](https://github.com/fluid-project/infusion/blob/master/README.md) to [create your Infusion package](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package). 
 * Copy the infusion-all.js file into js/infusion
