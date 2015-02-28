@@ -23,7 +23,7 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 ### UI Options ###
 
 * Major refactoring into a preferences framework
-    * See migration guide
+    * See [migration guide](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
 
 ### Uploader ###
 
