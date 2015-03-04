@@ -66,7 +66,7 @@ The Auxiliary Schema also specifies which components should be used for the pane
             ...
         },
         "enactor": {
-            "type": "fluid.prefs.enactors.textSize",  <<<=== This type is the name of the enactor component
+            "type": "fluid.prefs.enactor.textSize",  <<<=== This type is the name of the enactor component
             ...
         }
     }
@@ -100,8 +100,8 @@ Each enactor component must include a preference map option in its defaults, cal
 ### Example: ###
 
 ```javascript
-fluid.defaults("fluid.prefs.enactors.textSize", {
-   gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+fluid.defaults("fluid.prefs.enactor.textSize", {
+   gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
    preferenceMap: {
        "fluid.prefs.textSize": {  <<<=== This property name must match the name specified in the primary schema
            "model.value": "default"

@@ -96,7 +96,7 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
-            "type": "fluid.prefs.enactors.textSize"
+            "type": "fluid.prefs.enactor.textSize"
         },
         "panel": {
             "type": "fluid.prefs.panels.textSize",
@@ -108,7 +108,7 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
     "lineSpace": {
         "type": "fluid.prefs.lineSpace",
         "enactor": {
-            "type": "fluid.prefs.enactors.lineSpace",
+            "type": "fluid.prefs.enactor.lineSpace",
             "fontSizeMap": {
                 "xx-small": "9px",
                 "x-small": "11px",

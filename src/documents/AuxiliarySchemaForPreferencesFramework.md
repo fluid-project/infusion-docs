@@ -95,7 +95,7 @@ For detailed information about how to work with composite panels, see [Composite
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
-            "type": "fluid.prefs.enactors.textSize"
+            "type": "fluid.prefs.enactor.textSize"
         },
         "panel": {
             "type": "fluid.prefs.panels.textSize",
@@ -107,7 +107,7 @@ For detailed information about how to work with composite panels, see [Composite
     "lineSpace": {
         "type": "fluid.prefs.lineSpace",
         "enactor": {
-            "type": "fluid.prefs.enactors.lineSpace",
+            "type": "fluid.prefs.enactor.lineSpace",
             "fontSizeMap": {
                 "xx-small": "9px",
                 "x-small": "11px",
@@ -135,7 +135,7 @@ For detailed information about how to work with composite panels, see [Composite
             "verdana": "fl-font-uio-verdana"
         },
         "enactor": {
-            "type": "fluid.prefs.enactors.textFont",
+            "type": "fluid.prefs.enactor.textFont",
             "classes": "@textFont.classes"
         },
         "panel": {
@@ -157,7 +157,7 @@ For detailed information about how to work with composite panels, see [Composite
             "lgdg": "fl-theme-lgdg-prefsEditor fl-theme-lgdg"
         },
         "enactor": {
-            "type": "fluid.prefs.enactors.contrast",
+            "type": "fluid.prefs.enactor.contrast",
             "classes": "@contrast.classes"
         },
         "panel": {
@@ -171,7 +171,7 @@ For detailed information about how to work with composite panels, see [Composite
     "tableOfContents": {
         "type": "fluid.prefs.tableOfContents",
         "enactor": {
-            "type": "fluid.prefs.enactors.tableOfContents",
+            "type": "fluid.prefs.enactor.tableOfContents",
             "tocTemplate": "../../../../components/tableOfContents/html/TableOfContents.html"
         },
         "panel": {
@@ -184,7 +184,7 @@ For detailed information about how to work with composite panels, see [Composite
     "emphasizeLinks": {
         "type": "fluid.prefs.emphasizeLinks",
         "enactor": {
-            "type": "fluid.prefs.enactors.emphasizeLinks",
+            "type": "fluid.prefs.enactor.emphasizeLinks",
             "cssClass": "fl-link-enhanced"
         },
         "panel": {
@@ -253,7 +253,7 @@ Each preference block can contain configuration for _at most_ one enactor and on
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
-            "type": "fluid.prefs.enactors.textSize"
+            "type": "fluid.prefs.enactor.textSize"
         },
         "panel": {
             "type": "fluid.prefs.panels.textSize",
@@ -267,7 +267,7 @@ Each preference block can contain configuration for _at most_ one enactor and on
     "textSize.additional": {
         "type": "fluid.prefs.textSize",
         "enactor": {
-            "type": "fluid.prefs.enactors.foo"
+            "type": "fluid.prefs.enactor.foo"
         },
         "panel": {
             "type": "fluid.prefs.panels.foo",
@@ -294,7 +294,7 @@ The example below shows two preferences (`emphasizeLinks` and `inputsLarger`)  s
     "emphasizeLinks": {
         "type": "fluid.prefs.emphasizeLinks",
         "enactor": {
-            "type": "fluid.prefs.enactors.emphasizeLinks",
+            "type": "fluid.prefs.enactor.emphasizeLinks",
             "cssClass": "fl-link-enhanced"
         },
         "panel": {
@@ -307,7 +307,7 @@ The example below shows two preferences (`emphasizeLinks` and `inputsLarger`)  s
     "inputsLarger": {
         "type": "fluid.prefs.inputsLarger",
         "enactor": {
-            "type": "fluid.prefs.enactors.inputsLarger",
+            "type": "fluid.prefs.enactor.inputsLarger",
             "cssClass": "fl-text-larger"
         },
         "panel": {
