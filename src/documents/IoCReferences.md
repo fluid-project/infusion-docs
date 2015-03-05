@@ -137,7 +137,7 @@ In the example below, the IoC expression `{fluid.prefs.enactor.tableOfContents}`
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.tableOfContents", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     components: {
         tableOfContents: {
             type: "fluid.tableOfContents",
@@ -152,7 +152,7 @@ Another way to avoid the ambiguity mentioned above would be to use the member na
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.tableOfContents", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     components: {
         toc: {
             type: "fluid.tableOfContents",
@@ -178,7 +178,7 @@ The example below includes several IoC references. All of them are inside a subc
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.controllers", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
     selectors: {
         scrubberContainer: ".flc-videoPlayer-scrubberContainer",
     },
@@ -193,7 +193,6 @@ fluid.defaults("fluid.videoPlayer.controllers", {
             container: "{controllers}.dom.scrubberContainer",
             options: {
                 model: "{controllers}.model",
-                applier: "{controllers}.applier",
                 events: {
                     onScrub: "{controllers}.events.onScrub",
                     afterScrub: "{controllers}.events.afterScrub",
@@ -230,7 +229,7 @@ The example below uses an [IoCSS](IoCSS.md) expression `{that > moreText}.option
 
 ```javascript
 fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
-    gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     selectors: {
         images: "img, [role~='img']"
     },

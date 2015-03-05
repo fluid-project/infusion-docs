@@ -31,10 +31,10 @@ fluid.defaults("my.pref.enactor", {
 });
 ```
 
-Enactors are, by default, [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md) and [evented components](tutorial-gettingStartedWithInfusion/EventedComponents.md), so they automatically provides support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewComponent`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/FluidView.js#L34-L36) grade should be used, and the `selectors` option should be provided, as shown in the following example:
+Enactors are, by default, [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md) and [evented components](tutorial-gettingStartedWithInfusion/EventedComponents.md), so they automatically provides support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewRelayComponent`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/FluidView.js#L40-L42) grade should be used, and the `selectors` option should be provided, as shown in the following example:
 ```javascript
 fluid.defaults("my.pref.enactor", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     selectors: {
         <selectors as required>
     },
@@ -107,7 +107,7 @@ Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/Mod
 **Example: Enactor that calls a setter function when the model changes**
 ```javascript
 fluid.defaults("gpii.enactor.fontSize", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     preferenceMap: {
         "gpii.primarySchema.fontSize": {
             "model.value": "default"

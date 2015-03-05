@@ -25,7 +25,7 @@ The configuration information used to define an enactor must include certain req
 * selectors for rendering the controls, labels, etc
 * any other information required by the enactor
 
-If the enactor will be modifying the view of the interface, you will also want to add the `fluid.viewComponent` grade as well as selectors.
+If the enactor will be modifying the view of the interface, you will also want to add the `fluid.viewRelayComponent` grade as well as selectors.
 
 ## PreferenceMap ##
 
@@ -62,7 +62,7 @@ fluid.defaults("fluid.prefs.enactor.textSize", {
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.emphasizeLinks", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor.styleElements", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor.styleElements", "autoInit"],
     preferenceMap: {
         "fluid.prefs.emphasizeLinks": {
             "model.value": "default"
@@ -123,7 +123,7 @@ fluid.defaults("gpii.pmt.enactors.magnification", {
     ....
     modelListeners: {
         "magnificationFactor": {
-            funcName: "gpii.pmt.enactors.magnification.magnify",
+            listener: "gpii.pmt.enactors.magnification.magnify",
             args: ["{that}", "{change}.value"]
         }
     }
@@ -138,7 +138,7 @@ The actions that an enactor will take will be entirely dependent on what the ena
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.lineSpace", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     preferenceMap: {
         "fluid.prefs.lineSpace": {
             "model.value": "default"
@@ -148,7 +148,7 @@ fluid.defaults("fluid.prefs.enactor.lineSpace", {
     invokers: {
         set: {
             funcName: "fluid.prefs.enactor.lineSpace.set",
-            args: ["{arguments}.0", "{that}"]
+            args: ["{arguments}.0", "{that}", "{that}.getLineHeightMultiplier"]
         },
         getTextSizeInPx: {
             funcName: "fluid.prefs.enactor.getTextSizeInPx",
@@ -158,20 +158,17 @@ fluid.defaults("fluid.prefs.enactor.lineSpace", {
             funcName: "fluid.prefs.enactor.lineSpace.getLineHeight",
             args: "{that}.container"
         },
-        numerizeLineHeight: {
-            funcName: "fluid.prefs.enactor.lineSpace.numerizeLineHeight",
-            args: [{expander: {func: "{that}.getLineHeight"}}, {expander: {func: "{that}.getTextSizeInPx"}}]
-        }
-    },
-    listeners: {
-        onCreate: {
-            listener: "{that}.set",
-            args: "{that}.model.value"
+        getLineHeightMultiplier: {
+            funcName: "fluid.prefs.enactor.lineSpace.getLineHeightMultiplier",
+            args: [{expander: {func: "{that}.getLineHeight"}}, {expander: {func: "{that}.getTextSizeInPx"}}],
+            dynamic: true
         }
     },
     modelListeners: {
-        "value": "fluid.prefs.enactor.lineSpace.set",
-        args: ["{that}", "{change}.value"]
+        value: {
+            listener: "{that}.set",
+            args: ["{change}.value"]
+        }
     }
 });
 
@@ -184,10 +181,10 @@ fluid.prefs.enactor.lineSpace.set = function (that, newValue) {
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.tableOfContents", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     preferenceMap: {
         "fluid.prefs.tableOfContents": {
-            "model.value": "default"
+            "model.toc": "default"
         }
     },
     tocTemplate: null,  // must be supplied by implementors
@@ -227,19 +224,23 @@ fluid.defaults("fluid.prefs.enactor.tableOfContents", {
         afterTocRender: null,
         onLateRefreshRelay: null
     },
-    listeners: {
-        onCreate: {
-            listener: "{that}.applyToc",
-            args: "{that}.model.value"
-        }
-    },
     modelListeners: {
-        "value": "fluid.prefs.enactor.tableOfContents.applyToc",
-        args: ["{that}", "{change}.value"]
+        toc: {
+            listener: "{that}.applyToc",
+            args: ["{change}.value"]
+        }
     }
 });
 
-fluid.prefs.enactor.tableOfContents.applyToc = function (that, newValue) {
-    that.applyToc(newValue);
+fluid.prefs.enactor.tableOfContents.applyToc = function (value, that) {
+    if (value) {
+        if (that.tableOfContents) {
+            that.tableOfContents.show();
+        } else {
+            that.events.onCreateTOCReady.fire();
+        }
+    } else if (that.tableOfContents) {
+        that.tableOfContents.hide();
+    }
 };
 ```

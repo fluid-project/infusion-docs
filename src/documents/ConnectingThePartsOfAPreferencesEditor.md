@@ -101,7 +101,7 @@ Each enactor component must include a preference map option in its defaults, cal
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textSize", {
-   gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+   gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
    preferenceMap: {
        "fluid.prefs.textSize": {  <<<=== This property name must match the name specified in the primary schema
            "model.value": "default"
