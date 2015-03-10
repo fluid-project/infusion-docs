@@ -110,7 +110,7 @@ fluid.defaults("fluid.prefs.separatedPanel", {
     gradeNames: ["fluid.prefs.prefsEditorLoader", "autoInit"],
     listeners: {
         onCreate: {
-            listener: "fluid.prefs.prefsEditorLoader.hideReset",
+            funcName: "fluid.prefs.prefsEditorLoader.hideReset",
             args: ["{that}"]
         }
     }
@@ -124,7 +124,7 @@ fluid.defaults("fluid.prefs.separatedPanel", {
     gradeNames: ["fluid.prefs.prefsEditorLoader", "autoInit"],
     listeners: {
         onCreate: {
-            listener: "fluid.prefs.prefsEditorLoader.hideReset",
+            funcName: "fluid.prefs.prefsEditorLoader.hideReset",
             args: ["{separatedPanel}"]
         }
     }
@@ -216,7 +216,7 @@ fluid.defaults("fluid.moduleLayoutHandler", {
     },
     listeners: {
         onMove: {
-            listener: "fluid.moduleLayout.onMoveListener",
+            funcName: "fluid.moduleLayout.onMoveListener",
             args: ["{arguments}.0", "{arguments}.1", "{that}.layout"]
         }
     }

@@ -9,9 +9,10 @@ The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3
 
 ## Browser Support ##
 The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) is supported. At the moment when this document is written, Mar 4 2015, these browsers include:
-* Chrome 33+ 
+* Chrome 31+ 
 * Chrome for Android 40+
 * Safari 7.1+
+* iOS Safari 7.1+
 
 ## Creator ##
 
@@ -84,7 +85,7 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>queueSpeech</code> method allows you to append the text to the end of the queue to begin speaking after the other texts in the queue have been spoken. This method can also be used to remove all texts from the queue by passing in the `interrupt` argument with a true value.
+                The <code>queueSpeech</code> method allows you to append the text to the end of the queue to begin speaking after the other texts in the queue have been spoken. Setting the `interrupt` argument to true will remove all texts from the queue before adding the text to the queue.
             </td>
         </tr>
         <tr>
@@ -97,11 +98,11 @@ var tts = fluid.textToSpeech({
                     </dd>
                     <dt>interrupt</dt>
                     <dd>
-                        An optional boolean value. Passing in a true value to remove all texts from the queue. Passing in the false value doesn't interfere the component state.
+                        An optional boolean value. The default value is false. Setting it to true will remove all texts from the queue before adding the text. Setting it to false does not interfere the component state.
                     </dd>
                     <dt>options</dt>
                     <dd>
-                        An optional javascript object. To config the internal `SpeechSynthesisUtterance` instance. Refer to <a href="#utteranceopts-options">utteranceOpts Options</a> for the options that can be defined in this object.
+                        An optional javascript object. To config the internal `SpeechSynthesisUtterance` instance. Anything that can go in <a href="#utteranceopts-options">utteranceOpts</a> can also be used as an option to this method.
                     </dd>
                 </dl>
             </td>
@@ -157,7 +158,7 @@ fluid.queueSpeech("Hello world", false, {
         <tr>
             <th>Description</th>
             <td>
-                The <code>pause</code> method allows you to immediately pause any texts that are being spoken..
+                The <code>pause</code> method allows you to immediately pause any texts that are being spoken.
             </td>
         </tr>
         <tr>
@@ -203,7 +204,14 @@ fluid.queueSpeech("Hello world", false, {
         <tr>
             <th>Description</th>
             <td>
-                The <code>getVoices</code> method allows you to get a list of all the voices that are supported by the browser.
+                The <code>getVoices</code> method allows you to get a list of all the voices that are supported by the browser. This list is an array of <code>SpeechSynthesisVoice</code> objects. Each of these <code>SpeechSynthesisVoice</code> objects has a number of attributes:
+                <ul>
+                <li>name: A human-readable name that describes the voice.</li>
+                <li>voiceURI: A URI specifying the location of the speech synthesis service for this voice.</li>
+                <li>lang: The language code for this voice.</li>
+                <li>default: Set to true if this is the default voice used by the browser.</li>
+                <li>localService: The API can use both local and remote services to handle speech synthesis. If this attribute is set to true the speech synthesis for this voice is handled by a local service. If it’s false a remote service is being used. This attribute can be useful if you’re building an app that needs to work offline. You could use a remote service when an internet connection is present, and fallback to a local service if a connection is not available.</li>
+                </ul>
             </td>
         </tr>
         <tr>
@@ -227,7 +235,7 @@ The events fired by the Text To Speech component are described below.
         <tr>
             <th>Description</th>
             <td>
-                This event fires when the text has begun to be spoken.
+                This event fires when texts in the queue have begun to be spoken.
             </td>
         </tr>
         <tr>
@@ -250,7 +258,7 @@ The events fired by the Text To Speech component are described below.
         <tr>
             <th>Description</th>
             <td>
-                This event fires when the speaking stops.
+                This event fires when the speaking stops, which occurs when all the texts in the queue have been spoken or the speaking is manually stopped.
             </td>
         </tr>
         <tr>
@@ -367,7 +375,7 @@ The events fired by the Text To Speech component are described below.
 
 _**Note:** If needed, please read the [Component Configuration Options](ComponentConfigurationOptions.md) document for a full description of infusion component options._
 
-The only option supported by the Text To Speech component is `utteranceOpts`This option is a javascript object that contains a number of attributes that users can use to define the behaviour of their `SpeechSynthesisUtterance` instances. [The `SpeechSynthesisUtterance` instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) is a part of the web speech API that the Text To Speech component interacts with. These attributes include:
+The only option supported by the Text To Speech component is `utteranceOpts`. This option is a javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with). These attributes include:
 
 ### `text` ###
 
@@ -409,7 +417,7 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>lang</code> option gives you the ability to specify the language of the text.
+                The <code>lang</code> option gives you ability to specify a <a href="http://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the voice.
             </td>
         </tr>
         <tr>
@@ -442,7 +450,8 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>voiceURI</code> option specifies speech synthesis voice and the location of the speech synthesis service that the web application wishes to use.
+                The <code>voiceURI</code> option is a A string that specifies the speech synthesis voice and the location of the speech synthesis service that the web application wishes to use. Calling the <a href=""#getvoices"">getVoices</a> method returns an array of all available voices, from which you can get the value of the <code>voiceURI</code> attribute.<br />
+                <strong>Note</strong>: In Chrome and Safari, the <code>voiceURI</code> attribute is named <code>voice</code> instead.
             </td>
         </tr>
         <tr>
@@ -458,13 +467,7 @@ fluid.textToSpeech({
 <code>
 fluid.textToSpeech({
     utteranceOpts: {
-        voiceURI: {
-            "default": false,
-            "localService": false,
-            "lang": "en-GB",
-            "name": "Google UK English Male",
-            "voiceURI": "Google UK English Male"
-        }
+        voiceURI: "Google UK English Male"
     }
 });
 </code>
@@ -536,7 +539,7 @@ fluid.textToSpeech({
 <code>
 fluid.textToSpeech({
     utteranceOpts: {
-        rate: 5
+        rate: 2.5
     }
 });
 </code>
@@ -569,7 +572,7 @@ fluid.textToSpeech({
 <code>
 fluid.textToSpeech({
     utteranceOpts: {
-        pitch: 2
+        pitch: 1.2
     }
 });
 </code>

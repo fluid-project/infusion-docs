@@ -123,7 +123,7 @@ fluid.defaults("gpii.pmt.enactors.magnification", {
     ....
     modelListeners: {
         "magnificationFactor": {
-            listener: "gpii.pmt.enactors.magnification.magnify",
+            funcName: "gpii.pmt.enactors.magnification.magnify",
             args: ["{that}", "{change}.value"]
         }
     }
@@ -166,7 +166,7 @@ fluid.defaults("fluid.prefs.enactor.lineSpace", {
     },
     modelListeners: {
         value: {
-            listener: "{that}.set",
+            funcName: "{that}.set",
             args: ["{change}.value"]
         }
     }
@@ -226,7 +226,7 @@ fluid.defaults("fluid.prefs.enactor.tableOfContents", {
     },
     modelListeners: {
         toc: {
-            listener: "{that}.applyToc",
+            funcName: "{that}.applyToc",
             args: ["{change}.value"]
         }
     }
