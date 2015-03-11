@@ -59,3 +59,75 @@ fluid.default("fluid.parent", {
     }
 });
 ```
+
+## Enactor Listener Changes ##
+
+### In 1.5 ###
+
+In Infusion 1.5, enactors use non-relay components where the decalration of model listeners had not been implemented. Enactors use:
+* The `finalInit()` function to register model listeners
+* An `onCreate` listener to apply the initial preference value that the model receives:
+
+```javascript
+fluid.defaults("fluid.prefs.enactor.textSize", {
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    preferenceMap: {
+        "fluid.prefs.textSize": {
+            "model.value": "default"
+        }
+    },
+    invokers: {
+        set: {
+            funcName: "fluid.prefs.enactor.textSize.set",
+            args: ["{arguments}.0", "{that}"]
+        }
+    },
+    listeners: {
+        onCreate: {
+            listener: "{that}.set",
+            args: "{that}.model.value"
+        }
+    }
+});
+
+fluid.prefs.enactor.textSize.set = function (value, that) {
+    that.root.css("font-size", value + "px");
+};
+
+fluid.prefs.enactor.textSize.finalInit = function (that) {
+    that.applier.modelChanged.addListener("value", function (newModel) {
+        that.set(newModel.value);
+    });
+};
+```
+
+### In 2.0 ###
+
+In Infusion 2.0 where enactors use relay components, the `finalInit()` and the `onCreate` listener are replaced by declaring a model listener:
+
+```javascript
+fluid.defaults("fluid.prefs.enactor.textSize", {
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    preferenceMap: {
+        "fluid.prefs.textSize": {
+            "model.value": "default"
+        }
+    },
+    invokers: {
+        set: {
+            funcName: "fluid.prefs.enactor.textSize.set",
+            args: ["{arguments}.0", "{that}"]
+        }
+    },
+    modelListeners: {
+        value: {
+            listener: "{that}.set",
+            args: ["{change}.value"]
+        }
+    }
+});
+
+fluid.prefs.enactor.textSize.set = function (value, that) {
+    that.root.css("font-size", value + "px");
+};
+```

@@ -8,7 +8,7 @@ layout: default
 The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) to queue up and read texts.
 
 ## Browser Support ##
-The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) is supported. At the moment when this document is written, Mar 4 2015, these browsers include:
+The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section). At the time of writing, Mar 4 2015, these browsers include:
 * Chrome 31+ 
 * Chrome for Android 40+
 * Safari 7.1+
@@ -85,7 +85,7 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>queueSpeech</code> method allows you to append the text to the end of the queue to begin speaking after the other texts in the queue have been spoken. Setting the `interrupt` argument to true will remove all texts from the queue before adding the text to the queue.
+                The <code>queueSpeech</code> method allows you to append `text` to the end of the queue to begin speaking after the other texts in the queue have been spoken. Setting the <code>interrupt</code> argument to true will remove all texts from the queue before adding <code>text</code> to the queue.
             </td>
         </tr>
         <tr>
@@ -94,15 +94,15 @@ var tts = fluid.textToSpeech({
                 <dl>
                     <dt>text</dt>
                     <dd>
-                        The string of the text to be appended to the end of the queue to be spoken.
+                        The string of text to be appended to the queue and spoken.
                     </dd>
                     <dt>interrupt</dt>
                     <dd>
-                        An optional boolean value. The default value is false. Setting it to true will remove all texts from the queue before adding the text. Setting it to false does not interfere the component state.
+                        An optional boolean value. The default value is false. Setting it to true will remove all texts from the queue before adding the text. Setting it to false will not affect previously queued texts.
                     </dd>
                     <dt>options</dt>
                     <dd>
-                        An optional javascript object. To config the internal `SpeechSynthesisUtterance` instance. Anything that can go in <a href="#utteranceopts-options">utteranceOpts</a> can also be used as an option to this method.
+                        An optional javascript object. Allows for the configuration of the specific <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration passed in here takes the same form as <a href="#utteranceopts-options">utteranceOpts</a> and will override them for this instance only.
                     </dd>
                 </dl>
             </td>
@@ -377,6 +377,8 @@ _**Note:** If needed, please read the [Component Configuration Options](Componen
 
 The only option supported by the Text To Speech component is `utteranceOpts`. This option is a javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with). These attributes include:
 
+_**Note:** Not all browsers support all these options and some browsers may take different ranges._
+
 ### `text` ###
 
 <table>
@@ -384,7 +386,8 @@ The only option supported by the Text To Speech component is `utteranceOpts`. Th
         <tr>
             <th>Description</th>
             <td>
-                The <code>text</code> option allows you to set the text that you wish to be spoken. Be careful with this option as it will override any text that was previously passed.
+                The <code>text</code> option allows you to set the text that you wish to be spoken. 
+                <strong>Note</strong>: Be careful with this option as it will override any text that was previously passed.
             </td>
         </tr>
         <tr>
@@ -450,7 +453,7 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>voiceURI</code> option is a A string that specifies the speech synthesis voice and the location of the speech synthesis service that the web application wishes to use. Calling the <a href=""#getvoices"">getVoices</a> method returns an array of all available voices, from which you can get the value of the <code>voiceURI</code> attribute.<br />
+                The <code>voiceURI</code> option is a string that specifies the speech synthesis voice and the location of the speech synthesis service that the web application wishes to use. Calling the <a href=""#getvoices"">getVoices</a> method returns an array of all available voices, from which you can get the value of the <code>voiceURI</code> attribute.<br />
                 <strong>Note</strong>: In Chrome and Safari, the <code>voiceURI</code> attribute is named <code>voice</code> instead.
             </td>
         </tr>
