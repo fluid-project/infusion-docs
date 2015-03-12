@@ -29,7 +29,7 @@ String templates give us the ability to describe things like file paths using va
 
 ## Writing a component that uses `fluid.stringTemplate`.
 
-Here is a simple component that has a `templates` block (containing strings with variables) and a `terms` block (containing a map of variable names and replacement values).  These names are arbitrary, you can name each of these whatever is most meaningful for you component.
+Here is a simple component that has a `templates` block (containing strings with variables) and a `terms` block (containing a map of variable names and replacement values).  These names are arbitrary, you can name each of these whatever is most meaningful for your component.
 
 You could also use an `expander` to provide "convenience" variables with the transformed values, as in the following example:
 
