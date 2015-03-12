@@ -110,7 +110,7 @@ The final piece is handled by an [`expander` block](../ExpansionOfComponentOptio
   },
 ```
 
-The `expander` block will be replaced with the value returned by our `parseTemplates` invoker, and `logState` is called with the expanded value, which in our case is a map of transformed values.  We will then have sensible output that we can work with.
+The `expander` block will be replaced with the value returned by our `parseTemplates` invoker, and we will then have sensible output that we can work with in our own functions and IoC references.
 
 ### Overriding options from a child component
 
