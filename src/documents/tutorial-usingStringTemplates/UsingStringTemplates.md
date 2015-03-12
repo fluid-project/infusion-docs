@@ -288,7 +288,7 @@ The output returned is:
   }
 ```
 
-We directly set the value of the term `one` to null, and that value was displayed in the transformed results, just as it would if we used string concatenation with a null value.
+We directly set the value of the term `one` to `null`, and that value was displayed in the transformed results, just as it would if we used string concatenation with a `null` value.
 
 Our configuration attempted to use a (bad) IoC reference to replace the value of the term `two`.  Since the reference was not resolved, the default value from our `fluid.defaults` was used instead.
 
