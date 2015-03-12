@@ -14,6 +14,7 @@ This tutorial covers why you might use string templates, and gives a basic examp
 3.  Override "terms" and "templates" from a child component.
 
 This tutorial assumes that you are already familiar with [Infusion](../tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.md), and in particular with:
+
 1. [Defining components](../tutorial-gettingStartedWithInfusion/BasicComponentCreation-LittleComponents.md)
 2. [Defining invokers](../Invokers.md)
 3. [Defining and using expanders](../ExpansionOfComponentOptions.md)
@@ -32,7 +33,8 @@ Here is a simple component that has a `templates` block (containing strings with
 
 You could also use an `expander` to provide "convenience" variables with the transformed values, as in the following example:
 
-```
+
+```javascript
   "use strict";
   var fluid = fluid || require("infusion");
   var gpii  = fluid.registerNamespace("gpii");
@@ -114,8 +116,7 @@ The `expander` block will be replaced with the value returned by our `parseTempl
 
 In the next example, we will look at creating a child component that overrides some of our variables in its default configuration.  Here's the updated code:
 
-```
-  // Sample demonstration of fluid.stringTemplate to parse %variable references...
+```javascript
   "use strict";
   var fluid = fluid || require("infusion");
   var gpii  = fluid.registerNamespace("gpii");
@@ -177,7 +178,7 @@ In the next example, we will look at creating a child component that overrides s
 
 For this example, we're using our own invoker (`logState`) to display a range of variables.  The `logState` function is called when our component is created, as configured in our `listeners` block:
 
-```
+```javascript
   listeners: {
       onCreate: [
           {
@@ -204,7 +205,7 @@ We also added a child component, `gpii.sandbox.variables.child`.  We have overri
 
 We could also have created an instance of the parent variable using code like:
 
-```
+```javascript
   gpii.sandbox.variables.base({
     templates: {
         one: "The term named one is set to '%one', also, I am a custom template."
@@ -233,7 +234,7 @@ This should give you a good idea how to extend or adapt existing components that
 
 It is important to know what happens when a term is missing or has no value.  Here's a quick example that covers a few common problems.
 
-```
+```javascript
   "use strict";
   var fluid = fluid || require("infusion");
   var gpii  = fluid.registerNamespace("gpii");
@@ -279,12 +280,12 @@ It is important to know what happens when a term is missing or has no value.  He
 The output returned is:
 
 ```
-transformed options:
-{
-  "one": "The term named 'one' is set to 'null'.",
-  "two": "The term named 'two' is set to 'value two'.",
-  "three": "The term named 'three' is set to '%three'."
-}
+  transformed options:
+  {
+    "one": "The term named 'one' is set to 'null'.",
+    "two": "The term named 'two' is set to 'value two'.",
+    "three": "The term named 'three' is set to '%three'."
+  }
 ```
 
 We directly set the value of the term `one` to null, and that value was displayed in the transformed results, just as it would if we used string concatenation with a null value.
