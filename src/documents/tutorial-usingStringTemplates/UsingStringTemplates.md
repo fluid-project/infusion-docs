@@ -292,6 +292,6 @@ We directly set the value of the term `one` to null, and that value was displaye
 
 Our configuration attempted to use a (bad) IoC reference to replace the value of the term `two`.  Since the reference was not resolved, the default value from our `fluid.defaults` was used instead.
 
-There is no term defined that corresponds to the template `three`.  Variables with no corresponding `term` are left as raw percent references.  This makes it seem like you can use the percent operator in templates without escaping it, as long as there is no corresponding `term`.  This is almost true.
+There is no term defined that corresponds to the template `three`.  Variables with no corresponding `term` are left as raw percent references.  You can use the percent operator in templates without escaping it, but be aware that if anyone adds a `term` that matches the value after the percent sign, the results may be unexpected.
 
 If you're having trouble with your transformed output, this example will hopefully help you troubleshoot further.
