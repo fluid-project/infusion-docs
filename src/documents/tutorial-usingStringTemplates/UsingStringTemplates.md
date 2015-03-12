@@ -5,7 +5,7 @@ layout: default
 
 # Using String Templates #
 
-In the Infusion [Preference Framework](../PreferencesFramework.md), a "string template" is a mechanism for resolving variables within a string.
+In the Infusion [Preference Framework](../PreferencesFramework.md), a "string template" is a mechanism for [resolving (interpolating)](http://en.wikipedia.org/wiki/String_interpolation) variables within a string.
 
 This tutorial covers why you might use string templates, and gives a basic example of how to use string templates to:
 
@@ -47,7 +47,7 @@ In this example, we've used an `expander` to provide "convenience" variables wit
               func: "{that}.parseTemplates"
           }
       },
-      terms:      {
+      terms: {
           one: "base one",
           two: "base two"
       },
@@ -58,7 +58,7 @@ In this example, we've used an `expander` to provide "convenience" variables wit
       invokers: {
           parseTemplates: {
               funcName: "fluid.transform",
-              args: ["{that}.options.templates","{that}.transformTemplate"]
+              args: ["{that}.options.templates", "{that}.transformTemplate"]
           },
           transformTemplate: {
               funcName: "fluid.stringTemplate",
@@ -67,7 +67,7 @@ In this example, we've used an `expander` to provide "convenience" variables wit
       }
   });
 
-  var simpler = gpii.sandbox.variables.simpler({});
+  var simpler = gpii.sandbox.variables.simpler();
   console.log("transformed options:\n" + JSON.stringify(simpler.options.transformed, null, 2));
 ```
 
@@ -124,7 +124,7 @@ In the next example, we will look at creating a child component that overrides s
   fluid.registerNamespace("gpii.sandbox.variables.base");
   fluid.defaults("gpii.sandbox.variables.base", {
       gradeNames: ["autoInit", "fluid.eventedComponent"],
-      terms:      {
+      terms: {
           one: "base one",
           two: "base two"
       },
@@ -168,12 +168,12 @@ In the next example, we will look at creating a child component that overrides s
       templates: {
           one: "The term named one is set to '%one', also, I am a custom template."
       },
-      terms:      {
+      terms: {
           two: "child two"
       }
   });
 
-  gpii.sandbox.variables.child({});
+  gpii.sandbox.variables.child();
 ```
 
 For this example, we're using our own invoker (`logState`) to display a range of variables.  The `logState` function is called when our component is created, as configured in our `listeners` block:
@@ -210,7 +210,7 @@ We could also have created an instance of the parent variable using code like:
     templates: {
         one: "The term named one is set to '%one', also, I am a custom template."
     },
-    terms:      {
+    terms: {
         two: "configured two"
     }
   });
@@ -247,7 +247,7 @@ It is important to know what happens when a term is missing or has no value.  He
               func: "{that}.parseTemplates"
           }
       },
-      terms:      {
+      terms: {
           one: "value one",
           two: "value two"
       },
