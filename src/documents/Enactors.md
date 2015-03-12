@@ -31,7 +31,8 @@ fluid.defaults("my.pref.enactor", {
 });
 ```
 
-Enactors are, by default, [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md) and [evented components](tutorial-gettingStartedWithInfusion/EventedComponents.md), so they automatically provides support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewRelayComponent`](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L40-L42) grade should be used, and the `selectors` option should be provided, as shown in the following example:
+Enactors are, by default, [standard relay components](ComponentGrades.md
+), so they automatically provide support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewRelayComponent`](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L40-L42) grade should be used, and the `selectors` option should be provided, as shown in the following example:
 ```javascript
 fluid.defaults("my.pref.enactor", {
     gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],

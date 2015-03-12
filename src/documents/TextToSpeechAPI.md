@@ -14,6 +14,8 @@ The Text To Speech component can be used in browsers that support [Web Speech Sy
 * Safari 7.1+
 * iOS Safari 7.1+
 
+_**Note:** Find the latest browser support data for Web Speech Synthesis API from [caniuse.com](http://caniuse.com/#feat=web-speech)._
+
 ## Creator ##
 
 Use the following function to create a Text To Speech component:
@@ -85,7 +87,7 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>queueSpeech</code> method allows you to append `text` to the end of the queue to begin speaking after the other texts in the queue have been spoken. Setting the <code>interrupt</code> argument to true will remove all texts from the queue before adding <code>text</code> to the queue.
+                The <code>queueSpeech</code> method allows you to append <code>text</code> to the end of the queue to begin speaking after the other texts in the queue have been spoken. Setting the <code>interrupt</code> argument to true will remove all texts from the queue before adding <code>text</code> to the queue.
             </td>
         </tr>
         <tr>
@@ -371,13 +373,15 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-## `utteranceOpts` Options ##
+## `utteranceOpts` Option ##
 
 _**Note:** If needed, please read the [Component Configuration Options](ComponentConfigurationOptions.md) document for a full description of infusion component options._
 
-The only option supported by the Text To Speech component is `utteranceOpts`. This option is a javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with). These attributes include:
+The only option supported by the Text To Speech component is `utteranceOpts`. This option is a javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with). 
 
-_**Note:** Not all browsers support all these options and some browsers may take different ranges._
+_**Note:** Not all speech synthesizers support all these attributes and some may take different ranges._
+
+These attributes include:
 
 ### `text` ###
 
@@ -386,8 +390,8 @@ _**Note:** Not all browsers support all these options and some browsers may take
         <tr>
             <th>Description</th>
             <td>
-                The <code>text</code> option allows you to set the text that you wish to be spoken. 
-                <strong>Note</strong>: Be careful with this option as it will override any text that was previously passed.
+                The <code>text</code> attribute allows you to set the text that you wish to be spoken. 
+                <strong>Note</strong>: Be careful with this attribute as it will override any text that was previously passed.
             </td>
         </tr>
         <tr>
@@ -420,7 +424,7 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>lang</code> option gives you ability to specify a <a href="http://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the voice.
+                The <code>lang</code> attribute gives you ability to specify a <a href="http://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the voice.
             </td>
         </tr>
         <tr>
@@ -453,7 +457,7 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>voiceURI</code> option is a string that specifies the speech synthesis voice and the location of the speech synthesis service that the web application wishes to use. Calling the <a href=""#getvoices"">getVoices</a> method returns an array of all available voices, from which you can get the value of the <code>voiceURI</code> attribute.<br />
+                The <code>voiceURI</code> attribute is a string that specifies the speech synthesis voice and the location of the speech synthesis service that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can get the value of the <code>voiceURI</code> attribute.<br />
                 <strong>Note</strong>: In Chrome and Safari, the <code>voiceURI</code> attribute is named <code>voice</code> instead.
             </td>
         </tr>
@@ -493,7 +497,7 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>volume</code> option allows you to adjust the volume of the speech. This is a float value between 0 and 1.
+                The <code>volume</code> attribute allows you to adjust the volume of the speech. This is a float value between 0 and 1.
             </td>
         </tr>
         <tr>
@@ -526,7 +530,7 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>rate</code> option allows you to define the speed at which the text should be spoken. This is a float value between 0 and 10.
+                The <code>rate</code> attribute allows you to define the speed at which the text should be spoken. This is a float value between 0 and 10.
             </td>
         </tr>
         <tr>
@@ -559,7 +563,7 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>pitch</code> option allows you to control how high or low the text is spoken. This is a float value between 0 and 2.
+                The <code>pitch</code> attribute allows you to control how high or low the text is spoken. This is a float value between 0 and 2.
             </td>
         </tr>
         <tr>
