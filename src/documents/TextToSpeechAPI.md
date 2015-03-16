@@ -9,7 +9,7 @@ The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3
 
 ## Browser Support ##
 The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section). At the time of writing, Mar 4 2015, these browsers include:
-* Chrome 31+ 
+* Chrome 31+
 * Chrome for Android 40+
 * Safari 7.1+
 * iOS Safari 7.1+
@@ -66,7 +66,7 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>See also</th>
             <td>
-                <a href="#utteranceopts-options">Utteranceopts Options</a>
+                <a href="#utteranceopts-option">Utteranceopts Option</a>
             </td>
         </tr>
     </tbody>
@@ -104,7 +104,7 @@ var tts = fluid.textToSpeech({
                     </dd>
                     <dt>options</dt>
                     <dd>
-                        An optional javascript object. Allows for the configuration of the specific <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration passed in here takes the same form as <a href="#utteranceopts-options">utteranceOpts</a> and will override them for this instance only.
+                        An optional javascript object. Allows for the configuration of the specific <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration passed in here takes the same form as <a href="#utteranceopts-option">utteranceOpts</a> and will override them for this instance only.
                     </dd>
                 </dl>
             </td>
@@ -377,7 +377,7 @@ The events fired by the Text To Speech component are described below.
 
 _**Note:** If needed, please read the [Component Configuration Options](ComponentConfigurationOptions.md) document for a full description of infusion component options._
 
-The only option supported by the Text To Speech component is `utteranceOpts`. This option is a javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with). 
+The only option supported by the Text To Speech component is `utteranceOpts`. This option is a javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with).
 
 _**Note:** Not all speech synthesizers support all these attributes and some may take different ranges._
 
@@ -390,7 +390,7 @@ These attributes include:
         <tr>
             <th>Description</th>
             <td>
-                The <code>text</code> attribute allows you to set the text that you wish to be spoken. 
+                The <code>text</code> attribute allows you to set the text that you wish to be spoken.
                 <strong>Note</strong>: Be careful with this attribute as it will override any text that was previously passed.
             </td>
         </tr>
