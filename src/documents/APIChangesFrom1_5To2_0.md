@@ -1,5 +1,5 @@
 ---
-title: UI Options 2.0 Migration
+title: API Changes from 1.5 to 2.0
 layout: default
 ---
 
