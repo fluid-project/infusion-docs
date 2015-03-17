@@ -92,16 +92,6 @@ If you provide both, they will be merged (with the `auxiliarySchema` overriding 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
 <tr>
-    <td><code>prefsEditorType</code></td>
-    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of preference editor.</td>
-    <td>The Preferences Framework provides three built-in types of editor:
-<code>"fluid.prefs.separatedPanelPrefsEditor"</code>
-<code>"fluid.prefs.fullNoPreview"</code>
-<code>"fluid.prefs.fullPreview"</code>
-Integrators can use one of these grades, or define their own grade, using one of these grades as a base grade.</td>
-    <td><code>"fluid.prefs.separatedPanelPrefsEditor"</code></td>
-</tr>
-<tr>
     <td><code>storeType</code></td>
     <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a Settings Store.</td>
     <td>Integrators can define their own store grade by using the built-in default grade <code>"fluid.globalSettingsStore"</code> as a base grade.</td>
@@ -174,6 +164,7 @@ The preferences editor will be instantiated and rendered into the container spec
     build: {
         gradeNames: ["fluid.prefs.auxSchema.starter"],
         auxiliarySchema: {
+            "loaderGrades": "fluid.prefs.fullPreview",
             "template": "prefsEditorPreview.html",
             "tableOfContents": {
                 "enactor": {
@@ -181,9 +172,6 @@ The preferences editor will be instantiated and rendered into the container spec
                 }
             }
         }
-    },
-    prefsEditor: {
-        prefsEditorType: "fluid.prefs.fullPreview"
     }
 });
 ```

@@ -19,6 +19,8 @@ An auxiliary schema must contain some required properties, described below. In a
 
 * `namespace` (optional; recommended)
   * the namespace of the component to call to initialize the constructed grades
+* `loaderGrades` (optional)
+  * an array of grades to be applied to the `prefsEditorLoader`. To modify the default prefsEditor type (`"fluid.prefs.separatedPanel"`), a valid alternative should be supplied here.
 * `messagePrefix`
   * defines the path to the directory containing the messages
 * `message`
@@ -29,7 +31,7 @@ An auxiliary schema must contain some required properties, described below. In a
 * `template`
   * the path to the template for the prefs editor itself
   * use `%prefix` to use the prefix specified by `templatePrefix` as part of the path
-        
+
 ### Preference block properties ###
 
 Preference blocks can be given any property name, so long as the name is unique within the schema. Preference blocks will have the following properties:
@@ -63,7 +65,7 @@ Preference blocks can be given any property name, so long as the name is unique 
 
 * `type`
   * used to identify the component to use
-  
+
 ### Composite Panel properties ###
 
 * `groups`
@@ -79,18 +81,18 @@ For detailed information about how to work with composite panels, see [Composite
     // The author of the auxiliary schema will provide the namespace, which will be used
     //for the component to call to initialize the constructed grades.
     "namespace": "fluid.prefs.constructed",
- 
+
     // The common path to settings panel templates.
     // The template defined in "panels" element will take precedence over this definition.
     "templatePrefix": "../../../framework/preferences/html/",
- 
+
     // The path to the preferences editor own template (e.g. the separated panel prefs editor template)
     "template": "%prefix/SeparatedPanelPrefsEditor.html",
- 
+
     // The common path to settings panel messages.
     // The message defined in "panels" element will take precedence over this definition.
     "messagePrefix": "../../../framework/preferences/messages/",
- 
+
     "message": "%prefix/prefsEditor.json",
     "textSize": {
         "type": "fluid.prefs.textSize",

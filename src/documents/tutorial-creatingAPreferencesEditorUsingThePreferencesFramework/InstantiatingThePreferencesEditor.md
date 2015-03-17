@@ -49,13 +49,16 @@ The Preferences Framework also provides built-in configurations for two full-pag
 #### Sample Instantiation of a Full-page Preferences Editor with No Preview ####
 
 ```javascript
+
+var myAuxiliarySchema = {
+    loaderGrades: ["fluid.prefs.fullNoPreview"],
+    ...
+};
+
 var myEditor = fluid.prefs.create(".prefs-editor-container", {
     build: {
         primarySchema: myPrimarySchema,
-        auxiliaryScham: myAuxiliarySchema
-    },
-    prefsEditor: {
-        prefsEditorType: "fluid.prefs.fullNoPreview"
+        auxiliarySchema: myAuxiliarySchema
     }
 });
 ```
@@ -63,13 +66,17 @@ var myEditor = fluid.prefs.create(".prefs-editor-container", {
 #### Sample Instantiation of a Full-page Preferences Editor with a Preview ####
 
 ```javascript
+var myAuxiliarySchema = {
+    loaderGrades: ["fluid.prefs.fullPreview"],
+    ...
+};
+
 var myEditor = fluid.prefs.create(".prefs-editor-container", {
     build: {
         primarySchema: myPrimarySchema,
         auxiliaryScham: myAuxiliarySchema
     },
     prefsEditor: {
-        prefsEditorType: "fluid.prefs.fullPreview",
         prefsEditor: {
             preview: {
                 templateUrl: "html/previewTemplate.html"
@@ -101,6 +108,7 @@ _**NOTE:** If you're going to use the builder, your auxiliary schema **MUST** sp
 ```javascript
 vary myAuxiliarySchema = {
     namespace: "my.prefs",
+    loaderGrades: ["fluid.prefs.fullPreview"],
     ...
 };
 
@@ -117,6 +125,7 @@ fluid.defaults("my.auxSchemaGrade", {
     gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
     auxiliarySchema: {
         namespace: "my.prefs",
+        loaderGrades: ["fluid.prefs.fullPreview"],
         ....
     }
 });
@@ -141,7 +150,6 @@ var myEditor = my.prefs.prefsEditor(".prefs-editor-container");
 
 ```javascript
 var myEditor = my.prefs.prefsEditor(".prefs-editor-container", {
-    prefsEditorType: "fluid.prefs.fullPreview",
     prefsEditor: {
         preview: {
             templateUrl: "html/previewTemplate.html"

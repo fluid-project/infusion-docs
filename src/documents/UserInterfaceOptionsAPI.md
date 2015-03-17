@@ -305,35 +305,6 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `prefsEditorType` ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                The <code>prefsEditorType</code> option allows you to specify a custom <code>prefsEditorLoader</code> <a href="ComponentGrades.md">grade</a> component.
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>"fluid.pageEnhancer"</td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.uiOptions.prefsEditor("#myContainer", {
-    prefsEditorType: "myNamespace.myPrefsEditor"
-});
-</code>
-</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
 ### `enhancerType` ###
 
 <table>
@@ -397,4 +368,3 @@ fluid.uiOptions.fullNoPreview("#myContainer", {
         </tr>
     </tbody>
 </table>
-
