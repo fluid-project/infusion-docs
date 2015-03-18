@@ -110,7 +110,7 @@ fluid.defaults("fluid.prefs.separatedPanel", {
     gradeNames: ["fluid.prefs.prefsEditorLoader", "autoInit"],
     listeners: {
         onCreate: {
-            listener: "fluid.prefs.prefsEditorLoader.hideReset",
+            funcName: "fluid.prefs.prefsEditorLoader.hideReset",
             args: ["{that}"]
         }
     }
@@ -124,7 +124,7 @@ fluid.defaults("fluid.prefs.separatedPanel", {
     gradeNames: ["fluid.prefs.prefsEditorLoader", "autoInit"],
     listeners: {
         onCreate: {
-            listener: "fluid.prefs.prefsEditorLoader.hideReset",
+            funcName: "fluid.prefs.prefsEditorLoader.hideReset",
             args: ["{separatedPanel}"]
         }
     }
@@ -133,15 +133,15 @@ fluid.defaults("fluid.prefs.separatedPanel", {
 
 The above two examples are equivalent.
 
-In the example below, the IoC expression `{fluid.prefs.enactors.tableOfContents}` refers to the component being defined by the `defaults` block. The short name `tableOfContents` cannot be used here, because it would not be unique: It would be unclear whether the nickname was referring to `fluid.prefs.enactors.tableOfContents` or `fluid.tableOfContents`.
+In the example below, the IoC expression `{fluid.prefs.enactor.tableOfContents}` refers to the component being defined by the `defaults` block. The short name `tableOfContents` cannot be used here, because it would not be unique: It would be unclear whether the nickname was referring to `fluid.prefs.enactor.tableOfContents` or `fluid.tableOfContents`.
 
 ```javascript
-fluid.defaults("fluid.prefs.enactors.tableOfContents", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+fluid.defaults("fluid.prefs.enactor.tableOfContents", {
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     components: {
         tableOfContents: {
             type: "fluid.tableOfContents",
-            container: "{fluid.prefs.enactors.tableOfContents}.container",
+            container: "{fluid.prefs.enactor.tableOfContents}.container",
             options: {...}
         }
     }
@@ -151,12 +151,12 @@ fluid.defaults("fluid.prefs.enactors.tableOfContents", {
 Another way to avoid the ambiguity mentioned above would be to use the member name, which is the name used when defining the subcomponent in the components block. In the example below `{toc}` refers to the name used to define the subcomponent in the component block.
 
 ```javascript
-fluid.defaults("fluid.prefs.enactors.tableOfContents", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+fluid.defaults("fluid.prefs.enactor.tableOfContents", {
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     components: {
         toc: {
             type: "fluid.tableOfContents",
-            container: "{fluid.prefs.enactors.tableOfContents}.container",
+            container: "{fluid.prefs.enactor.tableOfContents}.container",
             options: {
                 components: {
                     type: "fluid.tableOfContents.levels",
@@ -178,7 +178,7 @@ The example below includes several IoC references. All of them are inside a subc
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.controllers", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
     selectors: {
         scrubberContainer: ".flc-videoPlayer-scrubberContainer",
     },
@@ -193,7 +193,6 @@ fluid.defaults("fluid.videoPlayer.controllers", {
             container: "{controllers}.dom.scrubberContainer",
             options: {
                 model: "{controllers}.model",
-                applier: "{controllers}.applier",
                 events: {
                     onScrub: "{controllers}.events.onScrub",
                     afterScrub: "{controllers}.events.afterScrub",
@@ -217,7 +216,7 @@ fluid.defaults("fluid.moduleLayoutHandler", {
     },
     listeners: {
         onMove: {
-            listener: "fluid.moduleLayout.onMoveListener",
+            funcName: "fluid.moduleLayout.onMoveListener",
             args: ["{arguments}.0", "{arguments}.1", "{that}.layout"]
         }
     }
@@ -230,7 +229,7 @@ The example below uses an [IoCSS](IoCSS.md) expression `{that > moreText}.option
 
 ```javascript
 fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
-    gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     selectors: {
         images: "img, [role~='img']"
     },
