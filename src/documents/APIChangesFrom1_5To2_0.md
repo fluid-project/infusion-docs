@@ -3,14 +3,17 @@ title: API Changes from 1.5 to 2.0
 layout: default
 ---
 
-# UI Options 2.0 Migration #
+# API Changes from 1.5 to 2.0 #
 
+## Framework Changes ##
 
-## Namespace Changes ##
+### Preferences Framework ###
+
+#### Namespace Changes ####
 
 Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
-## Component Grade Changes ##
+#### Component Grade Changes ####
 
 _**Note:** According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored._
 
@@ -19,9 +22,9 @@ _**Note:** According to the [comment](https://github.com/fluid-project/infusion/
 * Replace "fluid.viewComponent" with "fluid.viewRelayComponent"
 * Replace "fluid.rendererComponent" with "fluid.rendererRelayComponent"
 
-## Model Sharing Changes ##
+#### Model Sharing Changes ####
 
-### In 1.5 ###
+##### In 1.5 #####
 
 In Infusion 1.5, sharing models between non-relay components requires the change applier to be shared as a member option along with the model:
 
@@ -42,7 +45,7 @@ fluid.default("fluid.parent", {
 });
 ```
 
-### In 2.0 ###
+##### In 2.0 #####
 
 In Infusion 2.0 where relay components are introduced, sharing models no longer requires the change applier to be shared:
 
@@ -60,9 +63,9 @@ fluid.default("fluid.parent", {
 });
 ```
 
-## Enactor Listener Changes ##
+#### Enactor Listener Changes ####
 
-### In 1.5 ###
+##### In 1.5 #####
 
 In Infusion 1.5, enactors use non-relay components where the decalration of model listeners had not been implemented. Enactors use:
 * The `finalInit()` function to register model listeners
@@ -101,7 +104,7 @@ fluid.prefs.enactor.textSize.finalInit = function (that) {
 };
 ```
 
-### In 2.0 ###
+##### In 2.0 #####
 
 In Infusion 2.0 where enactors use relay components, the `finalInit()` and the `onCreate` listener are replaced by declaring a model listener:
 
