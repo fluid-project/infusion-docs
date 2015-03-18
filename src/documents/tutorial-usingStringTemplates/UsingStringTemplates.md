@@ -87,7 +87,7 @@ What makes this all work is our `invokers` block:
   invokers: {
       parseTemplates: {
           funcName: "fluid.transform",
-          args: ["{that}.options.templates","{that}.transformTemplate"]
+          args: ["{that}.options.templates", "{that}.transformTemplate"]
       },
       transformTemplate: {
           funcName: "fluid.stringTemplate",
@@ -143,7 +143,7 @@ In the next example, we will look at creating a child component that overrides s
       invokers: {
           parseTemplates: {
               funcName: "fluid.transform",
-              args: ["{that}.options.templates","{that}.transformTemplate"]
+              args: ["{that}.options.templates", "{that}.transformTemplate"]
           },
           transformTemplate: {
               funcName: "fluid.stringTemplate",
@@ -259,7 +259,7 @@ It is important to know what happens when a term is missing or has no value.  He
       invokers: {
           parseTemplates: {
               funcName: "fluid.transform",
-              args: ["{that}.options.templates","{that}.transformTemplate"]
+              args: ["{that}.options.templates", "{that}.transformTemplate"]
           },
           transformTemplate: {
               funcName: "fluid.stringTemplate",
