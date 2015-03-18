@@ -135,11 +135,11 @@ fluid.prefs.enactor.textSize.set = function (value, that) {
 };
 ```
 
-## Schema Changes ##
+#### Schema Changes ####
 
-### Specifying a prefsEditor type ###
+##### Specifying a prefsEditor type #####
 
-#### In 1.5 ####
+###### In 1.5 ######
 
 In Infusion 1.5 a `prefsEditorType` option was used to specify the type. The default was `"fluid.prefs.separatedPanel"`.
 
@@ -170,7 +170,7 @@ fluid.prefs.create(container, {
 });
 ```
 
-#### In 2.0 ####
+###### In 2.0 ######
 
 In Infusion 2.0 the prefsEditor type is specified in a grade passed into the prefsEditorLoader via the `loaderGrades` property in the auxiliarySchema.
 By default the `"fluid.prefs.separatedPanel"` grade is applied. Any grade to be applied to the prefsEditorLoader can be passed in; however, you must also supply the type grade as the default will be replaced by any modification.
