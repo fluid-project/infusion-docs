@@ -17,7 +17,7 @@ A `<modelPathReference>` has the form:
 <table>
     <thead>
         <tr>
-            <th colspan="3">Syntax definition for &#60;modelPathReference&#62; - the key in modelListeners options block for a modelRelayComponent</th>
+            <th colspan="3">Syntax definition for &lt;modelPathReference&gt; - the key in modelListeners options block for a modelRelayComponent</th>
         </tr>
         <tr>
             <th>Syntax</th>
@@ -31,10 +31,10 @@ A `<modelPathReference>` has the form:
             <td>Reference to a model path in this component</td>
             <td>
                 <ul>
-                    <li>"modelPath"</li>
-                    <li>"modelPath.*"</li>
-                    <li>""</li>
-                    <li>"*"</li>
+                    <li><code>"modelPath"</code></li>
+                    <li><code>"modelPath.*"</code></li>
+                    <li><code>""</code></li>
+                    <li><code>"*"</code></li>
                 </ul>
             </td>
         </tr>
@@ -43,10 +43,10 @@ A `<modelPathReference>` has the form:
             <td>Reference to a model path in another component</td>
             <td>
                 <ul>
-                    <li>"{otherComponent}.model.modelPath"</li>
-                    <li>"{otherComponent}.model.modelPath.*"</li>
-                    <li>"{otherComponent}.model"</li>
-                    <li>"{otherComponent}.model.*"</li>
+                    <li><code>"{otherComponent}.model.modelPath"</code></li>
+                    <li><code>"{otherComponent}.model.modelPath.*"</code></li>
+                    <li><code>"{otherComponent}.model"</code></li>
+                    <li><code>"{otherComponent}.model.*"</code></li>
                 </ul>
             </td>
         </tr>
@@ -67,7 +67,7 @@ An extra [context name](Contexts.md) is available in a model listener block by t
 <table>
     <thead>
         <tr>
-            <th colspan="3">Members of the {change} object bound in a model listener declaration</th>
+            <th colspan="3">Members of the <code>{change}</code> object bound in a model listener declaration</th>
         </tr>
         <tr>
             <th>Member</th>
@@ -77,17 +77,17 @@ An extra [context name](Contexts.md) is available in a model listener block by t
     </thead>
     <tbody>
         <tr>
-            <td>{change}.value</td>
+            <td><code>{change}.value</code></td>
             <td>Any type</td>
             <td>The new value which is now held at the model path matched by this model listener block</td>
         </tr>
         <tr>
-            <td>{change}.oldValue</td>
+            <td><code>{change}.oldValue</code></td>
             <td>Any type</td>
             <td>The previous value which was held at the matched model path, before it was overwritten by the change being listened to</td>
         </tr>
         <tr>
-            <td>{change}.path</td>
+            <td><code>{change}.path</code></td>
             <td>String</td>
             <td>The path at which this change occurred. In general this will be the same as the path registered as the modelPathReference for this block - however it may be one segment longer if a wildcard path was used (see next section)</td>
         </tr>
@@ -113,12 +113,12 @@ or arrays of these strings. The three currently supported sources are `init`, `r
     </thead>
     <tbody>
         <tr>
-            <td>excludeSource</td>
+            <td><code>excludeSource</code></td>
             <td>String/Array of String</td>
             <td>A source or set of sources for which this listener should not receive notifications</td>
         </tr>
         <tr>
-            <td>includeSource</td>
+            <td><code>includeSource</code></td>
             <td>String/Array of String</td>
             <td>A source or set of sources for which this listener should receive notifications. If <code>excludeSource</code> is empty, <em>only</em> changes from these sources will be received. If <code>excludeSource</code> is not empty, these values will take priority.</td>
         </tr>
@@ -139,16 +139,16 @@ The values of sources supported as values in `excludeSource` and `includeSource`
     </thead>
     <tbody>
         <tr>
-            <td>init</td>
+            <td><code>init</code></td>
             <td>The change arising from the <em>initial transaction</em>. During this change, the listener will observe the value of the model changing from <code>undefined</code> to its consistent initial value, during the 
             overall process of component construction</td>
         </tr>
         <tr>
-            <td>relay</td>
+            <td><code>relay</code></td>
             <td>A change resulting from <a href="ModelRelay.md"><em>model relay</em></a> from another linked component in the model skeleton, elsewhere in the component tree.</td>
         </tr>
         <tr>
-            <td>local</td>
+            <td><code>local</code></td>
             <td>A change directly triggered via the ChangeApplier on this component - either via a declarative record holding <code>changePath</code>, or programmatically using an <code>applier.change()</code> call</td>
         </tr>
     </tbody>
@@ -244,19 +244,19 @@ function listener(value, oldValue, pathSegs, changeRequests)
     </thead>
     <tbody>
         <tr>
-            <td>value</td>
+            <td><code>value</code></td>
             <td>The new (current) model value held at the path for which this listener registered interest</td>
         </tr>
         <tr>
-            <td>oldValue</td>
+            <td><code>oldValue</code></td>
             <td>A "snapshot" of the previous model value held at that path</td>
         </tr>
         <tr>
-            <td>pathSegs</td>
+            <td><code>pathSegs</code></td>
             <td>An array of <code>String</code> path segments holding the path at which <code>value</code> and <code>oldValue</code> are/were held</td>
         </tr>
         <tr>
-            <td>changeRequests</td>
+            <td><code>changeRequests</code></td>
             <td>A single <code>ChangeRequest</code> object or an array of them (see below) which were responsible for this change (may be empty)</td>
         </tr>
     </tbody>
@@ -283,25 +283,25 @@ The declarative style for firing model changes involve a kind of IoC record that
     </thead>
     <tbody>
         <tr>
-            <td>changePath</td>
-            <td>&#60;model path reference&#62; (String)</td>
+            <td><code>changePath</code></td>
+            <td>&lt;model path reference&gt; (String)</td>
             <td>
                 The reference to the model path in a model somewhere in the component tree where the change is to be triggered. This has the same syntax as the model path references documented above for declarative listening, only wildcard forms are not supported. Four examples: 
                 <ul>
-                    <li>"modelPath"</li>
-                    <li>""</li>
-                    <li>"{otherComponent}.model.modelPath"</li>
-                    <li>"{otherComponent}.model"</li>
+                    <li><code>"modelPath"</code></li>
+                    <li><code>""</code></li>
+                    <li><code>"{otherComponent}.model.modelPath"</code></li>
+                    <li><code>"{otherComponent}.model"</code></li>
                 </ul>
             </td>
         </tr>
         <tr>
-            <td>value</td>
+            <td><code>value</code></td>
             <td>Any type</td>
             <td>The value which should be stored at the path referenced by <code>changePath</code>. If this contains compound objects (built with <code>{}</code>), these will be merged into the existing values in the model. If this contains arrays (built with <code>[]</code>) these will overwrite existing values at that path.</td>
         </tr>
         <tr>
-            <td>type</td>
+            <td><code>type</code></td>
             <td>String (optional)</td>
             <td>If this holds the value <code>DELETE</code>, this change will remove the value held at <code>changePath</code>. In this case, <code>value</code> should not be supplied. This is the recommended way of removing material from a model - it has the effect of the <code>delete</code> primitive of the JavaScript language. Sending changes holding a <code>value</code> of <code>null</code> or <code>undefined</code> does not have the same effect, as per the JavaScript language spec.</td>
         </tr>
@@ -347,18 +347,18 @@ applier.change(path, value, type)
     </thead>
     <tbody>
         <tr>
-            <td>path</td>
+            <td><code>path</code></td>
             <td>String</td>
             <td>An EL path into the model where the change is to occur.</td>
         </tr>
         <tr>
-            <td>value</td>
+            <td><code>value</code></td>
             <td>Any type</td>
             <td>An object which is to be added into the model</td>
         </tr>
         <tr>
-            <td>type</td>
-            <td>(optional) "ADD" or "DELETE"</td>
+            <td><code>type</code></td>
+            <td>(optional) <code>"ADD"</code> or <code>"DELETE"</code></td>
             <td>A key string indicating whether this is an <code>ADD</code> request (the default) or a <code>DELETE</code> request (a request to unlink a part of the model)</td>
         </tr>
     </tbody>
