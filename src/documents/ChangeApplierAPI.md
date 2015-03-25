@@ -22,7 +22,7 @@ A `<modelPathReference>` has the form:
 <table>
     <thead>
         <tr>
-            <th colspan="3">Syntax definition for &lt;modelPathReference&gt; - the key in modelListeners options block for a modelRelayComponent</th>
+            <th colspan="3">Syntax definition for <code>&lt;modelPathReference&gt;</code> - the key in <code>modelListeners</code> options block for a <code>modelRelayComponent</code></th>
         </tr>
         <tr>
             <th>Syntax</th>
@@ -62,7 +62,8 @@ The 4 examples presented in the _"Examples"_ column are parallel for the two cas
 
 #### Model Listener Declaration ####
 
-A model listener declaration block has exactly the same form and meaning as any of the record types supported by [Invokers](Invokers.md) and [Listeners](EventInjectionAndBoiling.md#listener-boiling) - including the one-string compact syntax documented with [Invokers](Invokers.md). There are two extra features that are supported in
+A model listener declaration block has exactly the same form and meaning as any of the record types supported by [Invokers](Invokers.md) and [Listeners](EventInjectionAndBoiling.md#listener-boiling) - 
+including the one-string compact syntax documented with [Invokers](Invokers.md#compact-format). There are two extra features that are supported in
 model listener blocks that are not supported in standard listener declarations. These are the special context name `change`, and the ability to filter a change based on its _source_.
 
 
@@ -94,7 +95,7 @@ An extra [context name](Contexts.md) is available in a model listener block by t
         <tr>
             <td><code>{change}.path</code></td>
             <td>String</td>
-            <td>The path at which this change occurred. In general this will be the same as the path registered as the modelPathReference for this block - however it may be one segment longer if a wildcard path was used (see next section)</td>
+            <td>The path at which this change occurred. In general this will be the same as the path registered as the <code>modelPathReference</code> for this block - however it may be one segment longer if a wildcard path was used (see section on <a href="#wildcards-in-model-path-references">wildcards</a>)</td>
         </tr>
     </tbody>
 </table>
@@ -164,7 +165,9 @@ Example featuring source filtering:
 ```javascript
 fluid.defaults("examples.sourceExample1", {
     gradeNames: ["fluid.modelRelayComponent", "autoInit"],
-    model: "initial value",
+    model: {
+        things: "initial value"
+    },
     modelListeners: {
         things: {
             funcName: "console.log",
@@ -232,7 +235,7 @@ applier.modelChanged.addListener(pathSpec, listener, namespace)
 applier.modelChanged.removeListener(listener)
 ```
 
-_This style of listening to changes is **not recommended**. Since such a listener can only be attached once a component and its applier have been fully constructed, it will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where it is registered. This implies that the state of the model that it sees cannot be fully predicted without a knowledge of the entire surrounding of the component tree._
+**NOTE**: _This style of listening to changes is **not recommended**. Since such a listener can only be attached once a component and its applier have been fully constructed, it will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where it is registered. This implies that the state of the model that it sees cannot be fully predicted without a knowledge of the entire surrounding of the component tree._
 
 The listener is notified after the change (or set of coordinated changes) has already been applied to the model - it is too late to affect this process and so this event is not _preventable_. The signature for these listeners is
 
@@ -289,7 +292,7 @@ The declarative style for firing model changes involve a kind of IoC record that
     <tbody>
         <tr>
             <td><code>changePath</code></td>
-            <td>&lt;model path reference&gt; (String)</td>
+            <td><code>&lt;modelPathReference&gt;</code> (String)</td>
             <td>
                 The reference to the model path in a model somewhere in the component tree where the change is to be triggered. This has the same syntax as the model path references documented above for declarative listening, only wildcard forms are not supported. Four examples: 
                 <ul>
