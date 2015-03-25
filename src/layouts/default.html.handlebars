@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{document.title}} | Fluid Infusion</title>
+    <link rel="stylesheet" href="{{{relativeUrl '/css/normalize.css'}}}">
+    <link rel="stylesheet" href="{{{relativeUrl '/css/foundation.css'}}}">
+    <link rel="stylesheet" href="{{{relativeUrl '/css/highlightjs/default.css'}}}">
+    <style type="text/css">
+        .infusion-docs .row { max-width: 54rem; }
+        .infusion-docs pre code { line-height: 1.3rem; font-weight: normal; }
+    </style>
+</head>
+<body class="infusion-docs">
+    <div class="row">
+        <p><a href="{{githubLocation}}">Edit on GitHub</a></p>
+{{{rewriteMdLinks content}}}
+    </div>
+</body>
+</html>
