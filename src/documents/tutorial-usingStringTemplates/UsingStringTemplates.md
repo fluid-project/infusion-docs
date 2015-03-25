@@ -133,7 +133,7 @@ In the next example, we will look at creating a child component that overrides s
           two: "The term named 'two' is set to '%two'."
       },
       listeners: {
-          onCreate: [
+          "onCreate.log": [
               {
                   funcName: "gpii.sandbox.variables.base.logState",
                   args:     ["{that}", {expander: {func: "{that}.parseTemplates"}}]
@@ -180,7 +180,7 @@ For this example, we're using our own invoker (`logState`) to display a range of
 
 ```javascript
   listeners: {
-      onCreate: [
+      "onCreate.log": [
           {
               funcName: "gpii.sandbox.variables.base.logState",
               args:     ["{that}", {expander: {func: "{that}.parseTemplates"}}]
