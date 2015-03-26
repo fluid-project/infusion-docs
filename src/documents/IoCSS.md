@@ -23,7 +23,6 @@ fluid.uiOptions(".my-uio-container", {
         templateLoader: {
             options: {
                 templatePrefix: "../../myTemplates"
-                }
             }
         }
     }

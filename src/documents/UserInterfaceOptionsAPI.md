@@ -5,7 +5,7 @@ layout: default
 
 # User Interface Options API #
 
-The **User Interface Options (UI Options)** component  allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
+The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
 
 UI Options does three things:
 * places a preferences editor dialog with a set of six panels in a collapsible panel at the top of the page, accessible through a button in the upper right corner of the page;
