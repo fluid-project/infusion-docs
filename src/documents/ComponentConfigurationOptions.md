@@ -3,8 +3,6 @@ title: Component Configuration Options
 layout: default
 ---
 
-# Component Configuration Options #
-
 Infusion components are configured using options that are defined by the component developer and customized by the integrator. While component developers are free to define whatever options are appropriate for their component, the Infusion Framework supports a number of predefined options. This page briefly describes these predefined options and provides links more information about the related Framework functionality.
 
 Some predefined options should not be overridden by integrators: They are strictly for the use of the component developer. This is noted in the descriptions below.

@@ -3,8 +3,6 @@ title: Subcomponents
 layout: default
 ---
 
-# Subcomponents #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 

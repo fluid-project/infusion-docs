@@ -3,8 +3,6 @@ title: View Components
 layout: default
 ---
 
-# View Components #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 
@@ -32,7 +30,7 @@ fluid.defaults("tutorials.viewBearingComponent", {
 });
 ```
 
-_**Note:** View components automatically also provide support for model and events, so you don't need to include those in your `gradeNames` list._
+<div class="infusion-docs-note"><strong>Note:</strong> View components automatically also provide support for model and events, so you don't need to include those in your <code>gradeNames</code> list.</div>
 
 ### Selectors ###
 

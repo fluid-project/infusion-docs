@@ -3,10 +3,6 @@ title: Conditional Subpanels
 layout: default
 ---
 
-# Conditional Subpanels #
-
-## Overview ##
-
 Conditional subpanels are subpanels that are only displayed if the value of a specified boolean preference is true. This functionality allows adjusters to be displayed or hidden based on the setting of another on/off adjuster.
 
 The relationship between the controlling boolean preference and its dependent subpanels is defined in the panels property of the groups block. The panels property has one required property: always, which is an array of keys defining panels which should always be displayed. Other properties use a preference name as a key; the preference must be a boolean preference that is in a subpanel in the 'always' list. The value is an array of panel keys that should be displayed only if the specified preference is true.

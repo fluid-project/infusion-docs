@@ -3,10 +3,6 @@ title: Invokers
 layout: default
 ---
 
-# Invokers #
-
-## Overview ##
-
 The Infusion IoC system provides a mechanism for creating the public functions (or "methods",
 in OO terminology) of a component. Invokers can bind free functions, IoC resolved functions, and
 "this" based functions to the component, and to the context of the component. Invokers allow the

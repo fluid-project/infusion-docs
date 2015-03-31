@@ -3,8 +3,6 @@ title: Enactors
 layout: default
 ---
 
-# Enactors #
-
 An Enactor is an [Infusion component](UnderstandingInfusionComponents.md) that "acts upon" a preference setting, making whatever adjustments that are necessary to enact the preference.
 
 ## Requirements ##

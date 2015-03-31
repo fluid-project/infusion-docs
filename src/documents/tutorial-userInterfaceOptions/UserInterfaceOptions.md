@@ -3,8 +3,6 @@ title: User Interface Options
 layout: default
 ---
 
-# User Interface Options #
-
 The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
 
 UI Options does three things:
@@ -81,7 +79,7 @@ If you open this page in your browser now, you'll only see the button in the upp
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
-_**Note:** that it doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. (After you've finished the tutorial, check out the instructional demo Fat Panel UI Options - Custom Show-Hide Button for an example of configuring the button text.)_
+<div class="infusion-docs-note"><strong>Note:</strong> that it doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. (After you've finished the tutorial, check out the instructional demo Fat Panel UI Options - Custom Show-Hide Button for an example of configuring the button text.)</div>
 
 ### The Table of Contents ###
 
@@ -122,7 +120,7 @@ In the header of your file, link to the FSS CSS files with `<link>` tags (you ma
 <link rel="stylesheet" type="text/css" href="lib/infusion/lib/jquery/ui/css/fl-theme-dglg/dglg.css" />
 ```
 
-_**Note:** The theme "dark-grey on light-grey" is planned for a future release. Therefore css/fl-theme-dglg/dglg.css is currently optional._
+<div class="infusion-docs-note"><strong>Note:</strong> The theme "dark-grey on light-grey" is planned for a future release. Therefore css/fl-theme-dglg/dglg.css is currently optional.</div>
 
 We'll also need the UI Options CSS files:
 
@@ -138,7 +136,7 @@ We'll use the `<script>` tag to link to the Infusion library:
 <script type="text/javascript" src="lib/infusion/infusion-custom.js"></script>
 ```
 
-_**Note:** that the `infusion-custom.js` file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle._
+<div class="infusion-docs-note"><strong>Note:</strong> that the <code>infusion-custom.js</code> file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
 
 If you open this page in your browser now, you'll only see that the button has been styled differently: it is in the upper right corner and the font has been changed. You can also see the bar of the sliding panel. The button still doesn't do anything, since we still haven't added the UI Options component to the page.
 

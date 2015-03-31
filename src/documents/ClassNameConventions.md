@@ -3,8 +3,6 @@ title: Class Name Conventions
 layout: default
 ---
 
-# Class Name Conventions #
-
 Infusion components use various conventions for defining CSS class names. These conventions prevent confusion, making it easier for developers and integrators to be clear on what's what when creating or using components.
 
 ## CSS classnames ##

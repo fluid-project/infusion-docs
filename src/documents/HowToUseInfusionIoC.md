@@ -3,8 +3,6 @@ title: How to Use Infusion IoC
 layout: default
 ---
 
-# How to Use Infusion IoC #
-
 The author of an Infusion component describes the structure of part of an IoC **component tree** that is rooted at a particular component, by describing what subcomponents the component has.
 
 ## Declaring Subcomponents ##

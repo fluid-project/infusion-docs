@@ -1,11 +1,8 @@
 ---
 title: Renderer
 layout: default
+noteRendererChangesPost15: true
 ---
-
-# Renderer #
-
-_**Note:** The renderer will undergo significant changes post Infusion 1.5_
 
 The Infusion Framework includes a client-side **Renderer** that allows users to create user interface templates in pure HTML, and render the pages entirely on the client side. The Renderer offers a clean separation of Model and View: it works with internal [Renderer Component Trees](RendererComponentTrees.md) that are independent of the mark-up, supporting the Infusion goal of [markup agnosticism](FrameworkConcepts.md).
 

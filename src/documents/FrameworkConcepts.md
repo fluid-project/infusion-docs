@@ -3,9 +3,6 @@ title: Framework Concepts
 layout: default
 ---
 
-Framework Concepts
-==================
-
 The Fluid Infusion Framework is built on a number of important concepts. This page outlines some of the fundamental design goals of Infusion, providing terminology to help clarify these goals. Descriptions elsewhere in the documentation may also make use of particular terms in certain ways, and this page collects together some of the conceptual and background knowledge you might need to help you interpret these descriptions.
 
 Model Objects

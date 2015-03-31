@@ -3,8 +3,6 @@ title: Component Lifecycle
 layout: default
 ---
 
-# Component Lifecycle #
-
 Every Fluid component has a standard lifecycle, various points of which are signalled by firing of standard framework events. Every component which has a grade of [fluid.eventedComponent](ComponentGrades.md) is able to receive and react to these events. The events, in the expected order of firing for a component, are as follows:
 
 <table>

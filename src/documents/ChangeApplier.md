@@ -3,10 +3,6 @@ title: ChangeApplier
 layout: default
 ---
 
-# ChangeApplier #
-
-## Overview ##
-
 The ChangeApplier is a core part of the architecture of Fluid Infusion, which coordinates access to
 [model state](FrameworkConcepts.md) across a tree of components.
 Every [model-bearing component](tutorial-gettingStartedWithInfusion/ModelComponents.md ) has a ChangeApplier automatically

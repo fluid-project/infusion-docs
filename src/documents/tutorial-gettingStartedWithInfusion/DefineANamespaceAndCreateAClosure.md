@@ -3,8 +3,6 @@ title: Define a namespace and create a closure
 layout: default
 ---
 
-# Define a namespace and create a closure #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 

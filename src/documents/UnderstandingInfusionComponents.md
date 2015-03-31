@@ -3,8 +3,6 @@ title: Understanding Infusion Components
 layout: default
 ---
 
-# Understanding Infusion Components #
-
 Every Infusion application is structured as a set of **components**. An Infusion component can represent
 a visible component on screen, a collection of related functionality such as an **object** as in object-orientation,
 or simply a unit of work or relationship between other components. This page provides resources to help you understand components, how they're designed and how to work with them.

@@ -3,9 +3,6 @@ title: Pager 1.5 Migration
 layout: default
 ---
 
-# Pager 1.5 Migration #
-
-
 This page will walk you through the process of upgrading your existing 1.4 Pager component implementation to the new 1.5 version. This tutorial assumes that:
 
 * you are already familiar with HTML, Javascript and CSS
@@ -14,7 +11,7 @@ This page will walk you through the process of upgrading your existing 1.4 Pager
 
 ## Dependency Changes ##
 
-_**Note:** actual paths may vary, as they are dependent on the location of infusion._
+<div class="infusion-docs-note"><strong>Note:</strong> actual paths may vary, as they are dependent on the location of infusion.</div>
 
 ### In 1.5 ###
 

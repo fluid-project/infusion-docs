@@ -3,10 +3,9 @@ title: Deprecations in 1.5
 layout: default
 ---
 
-# Deprecations in 1.5 #
-
 This page contains a list of the features, API's, and etc. that are deprecated in Infusion 1.5.
-_**Note:** that this list is may not be exhaustive as other things may also be removed from the 2.0 release._
+
+<div class="infusion-docs-note"><strong>Note:</strong> that this list is may not be exhaustive as other things may also be removed from the 2.0 release.</div>
 
 <table>
     <thead>

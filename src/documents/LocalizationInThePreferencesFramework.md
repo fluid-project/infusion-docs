@@ -3,12 +3,6 @@ title: Localization in the Preferences Framework
 layout: default
 ---
 
-Localization in the Preferences Framework
-=========================================
-
-Overview
---------
-
 Localization in the Preferences Framework makes use of message bundles: JSON files containing the strings that are to be used in the interface. The Preferences Framework combines any message bundles into a single bundle and makes that bundle available to the components that need to use the strings.
 
 Message Bundles

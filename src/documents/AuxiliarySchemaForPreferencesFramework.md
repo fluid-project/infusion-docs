@@ -3,8 +3,6 @@ title: Auxiliary Schema for Preferences Framework
 layout: default
 ---
 
-# Auxiliary Schema for Preferences Framework #
-
 An Auxiliary Schema is a JSON document that defines the information needed to build a preferences editor interface, including
 
 * what component(s) to use to render the preference panels,
