@@ -3,6 +3,8 @@ title: Creating a Preferences Editor Using the Preferences Framework
 layout: default
 ---
 
+A Preferences Editor is a web application that supports the creation and modification of a user's preferred settings for a device or application. The [Preferences Framework](../PreferencesFramework.md) can be used to build many different forms of preferences editors, but the process of building a preferences editor remains the same.
+
 Preferences Editors are constructed by combining three main parts:
 * **panels** containing controls for users to adjust a preference setting;
 * a **data store** providing persistence for the user's selections; and

@@ -100,7 +100,7 @@ fluid.defaults("tutorials.currencyConverter", {
             args: ["{that}", "{arguments}.0", "{arguments}.1"] // currency, newRate
         },
         convert: {
-            funcName: "tutorials.currencyConverted.convert",
+            funcName: "tutorials.currencyConverter.convert",
             args: ["{that}", "{arguments}.0"] // amount
         }
     }
@@ -111,7 +111,7 @@ tutorials.currencyConverter.updateRate = function (that, currency, newRate) {
     that.applier.change(["rates", currency], newRate);
 };
 
-tutorials.currencyConvert.convert = function (that, amount) {
+tutorials.currencyConverter.convert = function (that, amount) {
     return amount * that.model.rates[that.model.currentSelection];
 };
 ```

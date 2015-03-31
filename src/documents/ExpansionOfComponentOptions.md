@@ -3,12 +3,14 @@ title: Expansion of Component Options
 layout: default
 ---
 
-## Expanders ##
+Infusion component options, as written in `fluid.defaults` blocks, go through a process called **expansion** when they are used to instantiate a component.
 
-Infusion component options, as written in `fluid.defaults` blocks, go through a process called **expansion** when they are used to instantiate a component. Two kinds of expansion happen during this process -
+Two kinds of expansion happen during this process:
 
 * Expansion of IoC references, written as strings in the form `{context}.path` as a result of the Value Resolution process, and
 * Expansion of **expanders**, which are blocks of JSON occurring in the options with the key expander
+
+## Expanders ##
 
 The standard use of an expander is to designate a function to be called when instantiating the component options, which produces a value based on processing the expander arguments. This can be useful when static definition of a default option is not possible.
 

@@ -66,6 +66,8 @@ Tutorials
 * [Working With A Preferences Editor On Your Site](to-do/WorkingWithPrefsEditorOnSite.md)
 * [Creating a New Adjuster UI](tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.md)
 * [Creating a preferences Editor Using the Preferences Framework](tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.md)
+* Migrating to Infusion 2.0
+    * [API Changes from 1.5 to 2.0](APIChangesFrom1_5To2_0.md)
 * Migrating to Infusion 1.5
     * [API Changes from 1.4 to 1.5](APIChangesFrom1_4To1_5.md)
     * [Deprecations In 1.5](DeprecationsIn1_5.md)
@@ -88,5 +90,6 @@ API
   * [Uploader](UploaderAPI.md)
   * [Undo](to-do/UndoAPI.md)
   * [Table of Contents](to-do/TableOfContentsAPI.md)
+  * [Text to Speech](TextToSpeechAPI.md)
 * [Framework API](to-do/FrameworkAPI.md)
 * [DOM Binder API](DOMBinderAPI.md)

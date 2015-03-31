@@ -3,6 +3,8 @@ title: API Changes from 1.4 to 1.5
 layout: default
 ---
 
+This page contains a list of the features, APIs, and etc. that have changed in Infusion 1.5.
+
 ## Component API Changes ##
 
 ### Inline Edit ###

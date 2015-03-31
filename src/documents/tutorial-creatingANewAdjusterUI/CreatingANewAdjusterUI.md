@@ -3,6 +3,10 @@ title: Creating a New Adjuster UI
 layout: default
 ---
 
+In the Infusion [Preference Framework](../PreferencesFramework.md), an "adjuster" is a single control for adjusting a particular preference. Common types of adjusters include checkboxes, radio buttons and sliders.
+
+This tutorial describes how to create the user interface for an adjuster.
+
 ## Decide what type of control it is ##
 
 Based on the nature of the setting, different types of controls will be appropriate:

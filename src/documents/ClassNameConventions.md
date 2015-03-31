@@ -3,7 +3,11 @@ title: Class Name Conventions
 layout: default
 ---
 
-The template for **CSS classnames** (i.e. class names use for styling) looks like **fl-[fluid:thing]-[fluid:role]-[fluid:state]**, with some guidelines:
+Infusion components use various conventions for defining CSS class names. These conventions prevent confusion, making it easier for developers and integrators to be clear on what's what when creating or using components.
+
+## CSS classnames ##
+
+The template for **CSS classnames** (i.e. class names use for styling) take the form **fl-[fluid:thing]-[fluid:role]-[fluid:state]** with some guidelines:
 
 1. multiple words are in camelCase, so they might look like **fl-[fluid:multiWordThing]-[fluid:multiWordRole]-[fluid:state]**
 2. components are always the first "thing", so they would look like **fl-[fluid:componentName]-[fluid:thing]-[fluid:role]-[fluid:state]**
@@ -21,7 +25,13 @@ Some examples of these class names:
 * `fl-grid-caption`: the caption of an image in a grid
 * `fl-widget-titlebar`: the titlebar of a widget
 
-The template for **Infusion selectors** (i.e. classnames used for programmatic manipulation of the DOM) looks like **flc-[fluid:componentName]-[fluid:thing]-[fluid:role]-[fluid:state]**, with the same guidelines as CSS selectors.
+## Infusion selectors ##
+
+The template for **Infusion selectors** (i.e. classnames used for programmatic manipulation of the DOM) take the form
+
+    **flc-[fluid:componentName]-[fluid:thing]-[fluid:role]-[fluid:state]**
+
+with the same guidelines as CSS selectors.
 
 Some examples of component selectors:
 

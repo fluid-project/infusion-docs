@@ -282,7 +282,7 @@ This option is most commonly used to share a common ChangeApplier between compon
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("component.name", {
-    applier: "{parentComponent.applier}",
+    applier: "{parentComponent}.applier",
     ...
 });</code>
 </pre></td>

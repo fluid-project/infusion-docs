@@ -3,6 +3,10 @@ title: DOM Binder API
 layout: default
 ---
 
+The DOM Binder provides a degree of separation between a component and its interface by handling any interaction the component may have with its markup.
+
+See the [DOM Binder documentation](DOMBinder.md) for more information about how DOM Binders work.
+
 **NOTE:** A DOM Binder is automatically created by the Framework for any [view component](tutorial-gettingStartedWithInfusion/ViewComponents.md). 
 **_Component developers are not expected to ever create a DOM Binder themselves._**
 
