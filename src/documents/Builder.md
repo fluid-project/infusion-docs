@@ -8,7 +8,7 @@ The Infusion [Preferences Framework](PreferencesFramework.md) includes a tool ca
 var builder = fluid.prefs.builder(<options>);
 ```
 
-**NOTE:** In this form, the namespace property of the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md) is required.
+<div class="infusion-docs-note"><strong>Note:</strong> In this form, the namespace property of the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md) is required.</div>
 
 ### Parameters ###
 
