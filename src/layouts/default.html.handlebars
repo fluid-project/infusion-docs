@@ -24,17 +24,20 @@
                     <a href="" title="A P I">API</a>
                 </nav>
             </header>
-            
+
             <div class="row infusion-docs-mainBody">
 
                 <nav class="infusion-docs-TOC small-12 medium-3 column">
                     {{#each siteStructure}}
-                        {{sectionName}}
-                        <ul>
-                        {{#each pages}}
-                            <li><a href="{{relativeUrl href ../../document.url}}">{{pageName}}</a></li>
+                        <span class="infusion-docs-category">{{category}}</span>
+                        {{#each sections}}
+                            <span class="infusion-docs-sectionName">{{sectionName}}</span>
+                            <ul>
+                                {{#each pages}}
+                                    <li><a href="{{relativeUrl href ../../document.url}}">{{pageName}}</a></li>
+                                {{/each}}
+                            </ul>
                         {{/each}}
-                       </ul>
                     {{/each}}
                 </nav>
 
@@ -54,7 +57,7 @@
                     </div>
 
                 </article>
-            
+
             </div>
 
             <footer class="row infusion-docs-footer">

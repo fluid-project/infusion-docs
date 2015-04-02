@@ -58,8 +58,8 @@ body {
     font-size: 1.2rem;
 }
 
-.infusion-docs-container .infusion-docs-mainContent { 
-    max-width: 42rem; 
+.infusion-docs-container .infusion-docs-mainContent {
+    max-width: 42rem;
 }
 
 .infusion-docs a {
@@ -71,12 +71,12 @@ body {
     background: #323232;
 }
 
-.infusion-docs pre code { 
+.infusion-docs pre code {
     font-weight: normal;
     background-color: #FFF;
     border-width: 3px;
-    border-color: #666; 
-    padding: 12px; 
+    border-color: #666;
+    padding: 12px;
     color: #000;
     margin-bottom: 1rem;
 }
@@ -155,6 +155,17 @@ body {
 .infusion-docs .infusion-docs-TOC {
     padding-top: 4rem;
     margin-right: 4rem;
+}
+
+.infusion-docs-category {
+    font-weight: bold;
+    margin: 1.5rem 0 1rem 0;
+    display:block;
+}
+
+.infusion-docs-sectionName {
+    margin: 0.5rem 0;
+    display: block;
 }
 
 .infusion-docs-container {
@@ -263,7 +274,7 @@ div.infusion-docs-note {
     text-align: center;
     line-height: 0.5rem;
     max-width: 100%;
-} 
+}
 
 .infusion-docs-footer p {
     line-height: 0.5rem;
@@ -277,7 +288,7 @@ div.infusion-docs-note {
     color: #008cba;
     background: #f2f2f2;
 }
-    
+
 .infusion-docs-footerInfusion {
     font-size: 1.2rem
 }
@@ -288,4 +299,3 @@ div.infusion-docs-note {
         padding-right: 1rem;
         padding-left: 1rem;
     }
-
