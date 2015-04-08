@@ -16,29 +16,20 @@ If you haven't already, it might be helpful to read our [Developer Introduction 
 
 For this tutorial we'll assume this component is being created for your own use, not as a contribution to Infusion. If you do want to contribute your component to Infusion, the directory set-up and requirements will be a little different and is explained in [Contributing Code](http://wiki.fluidproject.org/display/fluid/Contributing+Code).
 
-Let's suppose you're creating a component that will display a bar graph of some data. First, set up your file folders in the following structure.
-
-Create:
-
-* Two directories called "bargraph" and "shared"
-* A directory called "sample-data" within bargraph
-* Two directories within shared called "css" and "js"
-* A directory within js called "infusion"
-
-Your directories should now appear like the following:
-
-* bargraph
-    * sample-data
-* shared
-    * css
-        * fss
-    * js
-        * infusion
-
-## Add Infusion ##
-
-A lot of the functionality of our component will be driven by Infusion code, so we'll need to add these dependencies to our component.
-
-* Download the [latest release of Fluid Infusion](https://github.com/fluid-project/infusion/releases/) and unzip it.
+Let's suppose you're creating a component that will display a bar graph of some data. You'll need to get a copy of Infusion:
+* Download the [latest release of Fluid Infusion](https://github.com/fluid-project/infusion/releases/) and unpack it (or check out the master branch for the very latest, unreleased version).
 * Follow the instructions in the [Readme file](https://github.com/fluid-project/infusion/blob/master/README.md) to [create your Infusion package](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package). 
-* Copy the infusion-all.js file into js/infusion
+* The build process places the output in a .zip file in the "products" folder. Unpack that archive and place the resulting "infusion" folder in a "lib" folder in your source hierarchy.
+
+So supposing your project is in a folder called "bargraph," your source hierarchy might look like this:
+* bargraph
+    * src
+    * sample-data
+* lib
+    * infusion
+
+All of the Infusion JavaScript is in a single file in the "infusion" folder called ```infusion-all.js``` (unless you provided custom options to your grunt command). You will need to link to this file in your HTML headers.
+
+Note that the "infusion" folder actually contains some files you don't need, but it's not required to remove them, so we won't worry about that right now.
+
+Next: [Define a namespace and create a closure](DefineANamespaceAndCreateAClosure.md)

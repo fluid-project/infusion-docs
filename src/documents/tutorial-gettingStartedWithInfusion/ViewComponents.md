@@ -83,3 +83,5 @@ fluid.defaults("tutorials.currencyConverter", {
 ```
 
 So far we have not added any behaviour to this skeleton view component - we'll orchestrate together all the model, event and view code we've seen so far together into a working component in our final section on [Renderer Components](RendererComponents.md).
+
+Next: [Renderer Components](RendererComponents.md)

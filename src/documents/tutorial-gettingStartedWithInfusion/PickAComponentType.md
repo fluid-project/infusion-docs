@@ -27,3 +27,5 @@ These types of components build upon each other, a teeny little bit like inherit
 ![A venn diagram showing the composition of grades](../images/component-grades-venn-diagram.svg)
 
 For this tutorial, we suggest you work through all of the examples in order, to understand what each type of component offers. That way, you'll be in a better position to decide which grade you'll need for your components. Regardless of grade, the basic process for creating a component is the same. The next page in this tutorial will explain this basic process using the **little component**, but you will see the same process for each of the component types.
+
+Next: [Basic Component Creation - Little Components](BasicComponentCreation-LittleComponents.md)

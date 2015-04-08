@@ -214,4 +214,6 @@ fluid.defaults("tutorials.currencyConverter", {
 });
 ```
 
-Impressively we have succeeded in implementing all of this component design without a single line of user JavaScript code.
+Impressively, we have succeeded in implementing all of this component design without a single line of user JavaScript code.
+
+Next: [Subcomponents](Subcomponents.md)

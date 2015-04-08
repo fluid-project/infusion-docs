@@ -115,3 +115,5 @@ tutorials.currencyConverter.convert = function (that, amount) {
     return amount * that.model.rates[that.model.currentSelection];
 };
 ```
+
+Next: [Evented Components](EventedComponents.md)
