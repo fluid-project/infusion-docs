@@ -3,12 +3,6 @@ title: Localization in the Preferences Framework
 layout: default
 ---
 
-Localization in the Preferences Framework
-=========================================
-
-Overview
---------
-
 Localization in the Preferences Framework makes use of message bundles: JSON files containing the strings that are to be used in the interface. The Preferences Framework combines any message bundles into a single bundle and makes that bundle available to the components that need to use the strings.
 
 Message Bundles
@@ -96,7 +90,7 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
-            "type": "fluid.prefs.enactors.textSize"
+            "type": "fluid.prefs.enactor.textSize"
         },
         "panel": {
             "type": "fluid.prefs.panels.textSize",
@@ -108,7 +102,7 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
     "lineSpace": {
         "type": "fluid.prefs.lineSpace",
         "enactor": {
-            "type": "fluid.prefs.enactors.lineSpace",
+            "type": "fluid.prefs.enactor.lineSpace",
             "fontSizeMap": {
                 "xx-small": "9px",
                 "x-small": "11px",

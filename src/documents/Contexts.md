@@ -3,8 +3,6 @@ title: Contexts
 layout: default
 ---
 
-# Contexts #
-
 Components may have different requirements depending on the context in which they are operating.
 For example, a subcomponent might operate differently when running on a production server versus 
 when testing locally off the file system, and differently still when operating in the context of 

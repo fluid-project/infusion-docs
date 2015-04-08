@@ -3,11 +3,11 @@ title: Enactors
 layout: default
 ---
 
-# Enactors #
+An Enactor is an [Infusion component](UnderstandingInfusionComponents.md) that "acts upon" a preference setting, making whatever adjustments that are necessary to enact the preference.
 
-## Overview ##
+## Requirements ##
 
-An Enactor is an [Infusion component](UnderstandingInfusionComponents.md) that "acts upon" a preference setting, making whatever adjustments that are necessary to enact the preference. There are only a few requirements for an Enactor, since its nature is determined by the preference it acts upon. For example:
+There are only a few requirements for an Enactor, since its nature is determined by the preference it acts upon. For example:
 
 * the 'text size' enactor provided by the Preferences Framework defines functions that adjust CSS on the page;
 * a 'self-voicing' enactor defined for the GPII Exploration Tool defines functions that use a server-based text-to-speech engine to speak text found on the page.
@@ -21,18 +21,19 @@ Each of these is explained below.
 
 ### Grade ###
 
-Enactors must be defined using the `fluid.prefs.enactors` [grade](ComponentGrades.md), as shown in the following code block:
+Enactors must be defined using the `fluid.prefs.enactor` [grade](ComponentGrades.md), as shown in the following code block:
 ```javascript
 fluid.defaults("my.pref.enactor", {
-    gradeNames: ["fluid.prefs.enactors", "autoInit"],
+    gradeNames: ["fluid.prefs.enactor", "autoInit"],
     ...
 });
 ```
 
-Enactors are, by default, [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md) and [evented components](tutorial-gettingStartedWithInfusion/EventedComponents.md), so they automatically provides support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewComponent`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/FluidView.js#L34-L36) grade should be used, and the `selectors` option should be provided, as shown in the following example:
+Enactors are, by default, [standard relay components](ComponentGrades.md
+), so they automatically provide support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewRelayComponent`](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L40-L42) grade should be used, and the `selectors` option should be provided, as shown in the following example:
 ```javascript
 fluid.defaults("my.pref.enactor", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     selectors: {
         <selectors as required>
     },
@@ -40,11 +41,11 @@ fluid.defaults("my.pref.enactor", {
  });
 ```
 
-If you are defining several enactors which share common functionality, you can create a single grade that includes that functionality and uses the `fluid.prefs.enactors` grade, then use your common grade for your enactors, as illustrated in the following code sample:
+If you are defining several enactors which share common functionality, you can create a single grade that includes that functionality and uses the `fluid.prefs.enactor` grade, then use your common grade for your enactors, as illustrated in the following code sample:
 ```javascript
 // shared grade, defining common functionality
 fluid.defaults("my.pref.enactorGrade", {
-    gradeNames: ["fluid.prefs.enactors", "autoInit"],
+    gradeNames: ["fluid.prefs.enactor", "autoInit"],
     <common defaults>
 });
  
@@ -86,8 +87,8 @@ preferenceMap: {
 Typically, an enactor will work with only a single preference and will only be concerned with the default value, so the preference map will be quite simple. The following example shows the preference map used in the Preference Framework's text font enactor:
 
 ```javascript
-fluid.defaults("fluid.prefs.enactors.textFont", {
-    gradeNames: ["fluid.prefs.enactors.classSwapper", "autoInit"],
+fluid.defaults("fluid.prefs.enactor.textFont", {
+    gradeNames: ["fluid.prefs.enactor.classSwapper", "autoInit"],
     preferenceMap: {
         "fluid.prefs.textFont": {
             "model.value": "default"
@@ -104,10 +105,10 @@ Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/Mod
 
 **Example: Enactor that calls a setter function when the model changes**
 ```javascript
-fluid.defaults("gpii.enactor.cursorSize", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+fluid.defaults("gpii.enactor.fontSize", {
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     preferenceMap: {
-        "gpii.primarySchema.cursorSize": {
+        "gpii.primarySchema.fontSize": {
             "model.value": "default"
         }
     },
@@ -116,67 +117,83 @@ fluid.defaults("gpii.enactor.cursorSize", {
     },
     invokers: {
         set: {
-            funcName: "gpii.enactor.cursorSize.set",
-            args: ["{that}.model.value", "{that}.dom.cursorDiv"],
-            dynamic: true
+            funcName: "gpii.enactor.fontSize.set",
+            args: ["{arguments}.0", "{that}.dom.cursorDiv"]
         }
     },
-    listeners: {
-        "onCreate.init": {
-            listener: "{that}.applier.modelChanged.addListener",
-            args: ["value", "{that}.set"]
+    modelListeners: {
+        value: {
+            funcName: "{that}.set",
+            args: ["{change}.value"]
         }
     }
 });
  
-gpii.enactor.cursorSize.set = function (times, cursorDiv) {
+gpii.enactor.fontSize.set = function (times, cursorDiv) {
     cursorDiv.css("font-size", times + "em");
 };
 ```
 
-**Example: Enactor that uses a text-to-speech server to self-voice a page**
+**Example: Enactor that uses a speak enactor to self-voice a page**
 ```javascript
-fluid.defaults("gpii.explorationTool.enactors.selfVoicing", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
-    model: {
-        value: false
-    },
-    listeners: {
-        "afterAnnounce.next": "{that}.announceNext"
-    },
-    events: {
-        afterAnnounce: null,
-        onError: null
+fluid.defaults("fluid.prefs.enactor.selfVoicing", {
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor.speak", "autoInit"],
+    modelListeners: {
+        "enabled": {
+            funcName: "{that}.handleSelfVoicing",
+            args: ["{change}.value"]
+        }
     },
     invokers: {
         handleSelfVoicing: {
-            funcName: "gpii.explorationTool.enactors.selfVoicing.handleSelfVoicing",
-            args: "{that}"
+            funcName: "fluid.prefs.enactor.selfVoicing.handleSelfVoicing",
+            // Pass in invokers to force them to be resolved
+            args: ["{that}.options.strings.welcomeMsg", "{that}.queueSpeech", "{that}.readFromDOM", "{that}.cancel", "{arguments}.0"]
         },
-        announce: {
-            funcName: "gpii.explorationTool.enactors.selfVoicing.announce",
-            args: ["{that}", "{arguments}.0"]
-        },
-        announceNext: {
-            funcName: "gpii.explorationTool.enactors.selfVoicing.announceNext",
-            args: "{that}"
+        readFromDOM: {
+            funcName: "fluid.prefs.enactor.selfVoicing.readFromDOM",
+            args: ["{that}", "{that}.container"]
         }
     },
-    members: {
-        seen: [],
-        speaking: false
-    },
     strings: {
-        loaded: "text to speech enabled"
-    },
-    styles: {
-        current: "fl-selfVoicing-current"
-    },
- 
-    // Fireworks Server
-    ttsUrl: "http://tts.idrc.ocadu.ca?q=%text",
- 
-    lang: "en"
+        welcomeMsg: "text to speech enabled"
+    }
 });
+
+fluid.prefs.enactor.selfVoicing.handleSelfVoicing = function (welcomeMsg, queueSpeech, readFromDOM, cancel, enabled) {
+    if (enabled) {
+        queueSpeech(welcomeMsg, true);
+        readFromDOM();
+    } else {
+        cancel();
+    }
+};
+
+// Constants representing DOM node types.
+fluid.prefs.enactor.selfVoicing.nodeType = {
+    ELEMENT_NODE: 1,
+    TEXT_NODE: 3
+};
+
+fluid.prefs.enactor.selfVoicing.readFromDOM = function (that, elm) {
+    elm = $(elm);
+    var nodes = elm.contents();
+    fluid.each(nodes, function (node) {
+        if (node.nodeType === fluid.prefs.enactor.selfVoicing.nodeType.TEXT_NODE && node.nodeValue) {
+            that.queueSpeech(node.nodeValue);
+        }
+
+        if (node.nodeType === fluid.prefs.enactor.selfVoicing.nodeType.ELEMENT_NODE && window.getComputedStyle(node).display !== "none") {
+            if (node.nodeName === "IMG") {
+                var altText = node.getAttribute("alt");
+                if (altText) {
+                    that.queueSpeech(altText);
+                }
+            } else {
+                fluid.prefs.enactor.selfVoicing.readFromDOM(that, node);
+            }
+        }
+    });
+};
 ```
 

@@ -3,9 +3,6 @@ title: The IoC Testing Framework
 layout: default
 ---
 
-# The IoC Testing Framework #
-
-## Overview ##
 The IoC Testing Framework is written using our existing jqUnit wrapper for jQuery's [QUnit](http://qunitjs.com/) as a base.
 The IoC Testing Framework is both written using Fluid's [IoC](HowToUseInfusionIoC.md) system, as well as being designed to test components
 which are themselves written using IoC. This framework aims to extend our power to write tests in various directions at the same time. 
@@ -104,7 +101,7 @@ as well as the test fixture code itself:
 ```javascript
 fluid.defaults("fluid.tests.catTester", {
     gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
-    testCases: [ /* declarative specification of tests */ {
+    modules: [ /* declarative specification of tests */ {
         name: "Cat test case",
         tests: [{
             expect: 1,
@@ -122,7 +119,7 @@ fluid.tests.globalCatTest = function (catt) {
 };
 ```
 
-The standard structure inside a `fluid.test.testCaseHolder` shows an outer layer of containment, `testCases`, corresponding to a 
+The standard structure inside a `fluid.test.testCaseHolder` shows an outer layer of containment, `modules`, corresponding to a 
 QUnit `module`, and then a entry named `tests`, holding an array of structures corresponding to a QUnit `testCase`. Here we define a single 
 test case which holds a single *fixture record* which executes a global function, `fluid.tests.globalCatTest` which makes one jqUnit assertion. 
 In cases where we apply *sequence testing*, the fixture record may instead hold an entry named sequence which holds an array of fixture records 
@@ -320,7 +317,7 @@ fluid.defaults("fluid.tests.asyncTester", {
     gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
     newTextValue:     "newTextValue",
     furtherTextValue: "furtherTextValue",
-    testCases: [ {
+    modules: [ {
         name: "Async test case",
         tests: [{
             name: "Rendering sequence",

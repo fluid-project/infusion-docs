@@ -3,10 +3,6 @@ title: Uploader API
 layout: default
 ---
 
-# Uploader API #
-
-## Uploader Overview ##
-
 The Infusion Uploader provides an easy way for users to upload many files at once, providing useful feedback about the status and progress of each file along the way.
 
 Uploader implements a couple different ways to upload multiple files. With its built-in support for progressive enhancement, users will automatically receive a version of the Uploader best suited to the capabilities of their browsers. There are two different flavours of Uploader:
@@ -21,7 +17,7 @@ The HTML 5 version of the Uploader will be delivered to modern, standards-compli
 * Safari 4+
 * Google Chrome
 
-_**NOTE:** As of Infusion 1.5, the Flash version of the Uploader has been removed due to a [cross-site scripting vulnerability](https://nealpoole.com/blog/2012/05/xss-and-csrf-via-swf-applets-swfupload-plupload/)._
+<div class="infusion-docs-note"><strong>Note:</strong> As of Infusion 1.5, the Flash version of the Uploader has been removed due to a <a href="https://nealpoole.com/blog/2012/05/xss-and-csrf-via-swf-applets-swfupload-plupload/">cross-site scripting vulnerability</a>.</div>
 
 ### Progressive Enhancement ###
 
@@ -908,7 +904,7 @@ The different parts of the Uploader interface each have their own set of selecto
 
 #### Progress ####
 
-_**Note:** Please see the [Progress API](to-do/ProgressAPI.md) document for a full description of Fluid Progress._
+<div class="infusion-docs-note"><strong>Note:</strong> Please see the <a href="to-do/ProgressAPI.md">Progress API</a> document for a full description of Fluid Progress.</div>
 
 Uploader uses the following selector options for Progress:
 

@@ -1,19 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>{{document.title}} | Fluid Infusion</title>
-    <link rel="stylesheet" href="{{{relativeUrl '/css/normalize.css'}}}">
-    <link rel="stylesheet" href="{{{relativeUrl '/css/foundation.css'}}}">
-    <link rel="stylesheet" href="{{{relativeUrl '/css/highlightjs/default.css'}}}">
-    <style type="text/css">
-        .infusion-docs .row { max-width: 54rem; }
-        .infusion-docs pre code { line-height: 1.3rem; font-weight: normal; }
-    </style>
-</head>
-<body class="infusion-docs">
-    <div class="row">
-        <p><a href="{{githubLocation}}">Edit on GitHub</a></p>
-{{{rewriteMdLinks content}}}
-    </div>
-</body>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>{{document.title}} | Fluid Infusion</title>
+        <link rel="stylesheet" href="{{{relativeUrl '/css/normalize.css' document.url}}}">
+        <link rel="stylesheet" href="{{{relativeUrl '/css/foundation.css' document.url}}}">
+        <link rel="stylesheet" href="{{{relativeUrl '/css/highlightjs-custom.css' document.url}}}">
+        <link rel="stylesheet" href="{{{relativeUrl '/css/infusion-docs.css' document.url}}}">
+    </head>
+    <body class="infusion-docs">
+
+        <div class="container infusion-docs-container">
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-6 column">
+                    <a class="infusion-docs-fluidLogoText" href="http://wiki.fluidproject.org/display/fluid/Fluid+Infusion" target="_blank" title="infusion">infusion</a>
+                </div>
+
+                <nav class="small-12 medium-6 column">
+                    <a href="" title="Frameworks">FRAMEWORKS</a>
+                    <a href="" title="Tutorials">TUTORIALS</a>
+                    <a href="" title="A P I">API</a>
+                </nav>
+            </header>
+            
+            <div class="row infusion-docs-mainBody">
+
+                <nav class="infusion-docs-TOC small-12 medium-3 column">
+                    {{#each siteStructure}}
+                        {{sectionName}}
+                        <ul>
+                        {{#each pages}}
+                            <li><a href="{{relativeUrl href ../../document.url}}">{{pageName}}</a></li>
+                        {{/each}}
+                       </ul>
+                    {{/each}}
+                </nav>
+
+                <article class="row infusion-docs-mainContent small-12 medium-9 column">
+
+                    <h1>{{document.title}}</h1>
+
+                    <p class="infusion-docs-githubLink"><a href="{{githubLocation}}" target="_blank">Edit on GitHub</a></p>
+
+                    {{#if document.noteRendererChangesPost15}}
+                    <div class="infusion-docs-note"><strong>Note:</strong> The renderer will undergo significant changes post Infusion 1.5
+                    </div>
+                    {{/if}}
+
+                    <div class="infusion-docs-articleBody">
+                        {{{rewriteMdLinks content}}}
+                    </div>
+
+                </article>
+            
+            </div>
+
+            <footer class="row infusion-docs-footer">
+                <p class="infusion-docs-footerInfusion">Infusion is created by <a href="http://fluidproject.org/" target="_blank">fluidproject.org</a></p>
+                <p>Fluid is a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+            </footer>
+
+        </div> <!-- end container -->
+
+    </body>
 </html>

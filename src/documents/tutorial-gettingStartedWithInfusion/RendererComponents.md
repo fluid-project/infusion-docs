@@ -3,8 +3,6 @@ title: Renderer Components
 layout: default
 ---
 
-# Renderer Components #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 
@@ -17,7 +15,7 @@ In the previous [View Components Tutorial's](ViewComponents.md) currency convert
 
 Both of these things can be avoided by using a **renderer component**, which is a view component with the addition of the [Infusion Renderer](../Renderer.md).
 
-_**Note:** the direct use of the Infusion Renderer as described here will be withdrawn in the Infusion 2.0 release. Currently the renderer is in transition to being rewritten as a standard part of the IoC framework rather than requiring special JSON configuration in the form of renderer component trees._
+<div class="infusion-docs-note"><strong>Note:</strong> the direct use of the Infusion Renderer as described here will be withdrawn in the Infusion 2.0 release. Currently the renderer is in transition to being rewritten as a standard part of the IoC framework rather than requiring special JSON configuration in the form of renderer component trees.</div>
 
 The Renderer will populate an HTML template with the contents of a data model. In the case of the currency converter, this means that the currency list can be specified only in the data model, and an empty HTML `<select>` element will be populated with the data from the model, eliminating the duplication.
 

@@ -3,8 +3,6 @@ title: Subcomponents
 layout: default
 ---
 
-# Subcomponents #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 
@@ -77,17 +75,17 @@ You can see from this tree that the UIOptions component is being re-used by the 
 These relationships can be expressed using the following definitions:
 
 ```javascript
-fluid.defaults("fluid.fatPanelUIOptions", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+fluid.defaults("fluid.separatedPanel", {
+    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
     components: {
         uiOptions: {
             type: "fluid.uiOptions",
+            createOnEvent: "onUIOptionsTemplateReady",
             container: ".flc-slidingPanel-panel"
         },
         slidingPanel: {
             type: "fluid.slidingPanel",
-            priority: "last",
-            container: "{fatPanelUIOptions}.container"
+            container: "{separatedPanel}.container"
         },
         preview: {
             type: "fluid.uiOptions.livePreview"
@@ -96,59 +94,55 @@ fluid.defaults("fluid.fatPanelUIOptions", {
 });
 
 fluid.defaults("fluid.fullNoPreviewUIOptions", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
     components: {
         uiOptions: {
             type: "fluid.uiOptions",
+            createOnEvent: "onUIOptionsTemplateReady",
             container: "{fullNoPreviewUIOptions}.container"
         }
     }
 });
 
 fluid.defaults("fluid.fullPreviewUIOptions", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
     components: {
         uiOptions: {
             type: "fluid.uiOptions",
+            createOnEvent: "onUIOptionsTemplateReady",
             container: "{fullPreviewUIOptions}.container"
         },
         preview: {
             type: "fluid.uiOptions.preview",
-            createOnEvent: "onReady"
+            createOnEvent: "onUIOptionsReady"
         }
     }
 });
 
 fluid.defaults("fluid.uiOptions", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
     components: {
         textControls: {
             type: "fluid.uiOptions.textControls",
             container: "{uiOptions}.dom.textControls",
-            createOnEvent: "onUIOptionsTemplateReady",
             options: {
                 textSize: "{uiOptions}.options.textSize",
                 lineSpacing: "{uiOptions}.options.lineSpacing",
                 model: "{uiOptions}.model",
-                applier: "{uiOptions}.applier"
             }
         },
         layoutControls: {
             type: "fluid.uiOptions.layoutControls",
             container: "{uiOptions}.dom.layoutControls",
-            createOnEvent: "onUIOptionsTemplateReady",
             options: {
                 model: "{uiOptions}.model",
-                applier: "{uiOptions}.applier"
             }
         },
         linksControls: {
             type: "fluid.uiOptions.linksControls",
             container: "{uiOptions}.dom.linksControls",
-            createOnEvent: "onUIOptionsTemplateReady",
             options: {
                 model: "{uiOptions}.model",
-                applier: "{uiOptions}.applier"
             }
         }
     }

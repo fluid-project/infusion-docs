@@ -3,8 +3,6 @@ title: Instantiating the Enhancer and Settings Store Only
 layout: default
 ---
 
-# Instantiating the Enhancer and Settings Store Only #
-
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 
@@ -24,7 +22,7 @@ Adding the settings store and enhancer requires a two-step process:
 
 Build the settings store and enhancer with a call to the Preferences Framework Builder (this call also builds a preferences editor, but you aren't required to instantiate it). The Builder can be used with either the `auxiliarySchema` property or with an auxiliary schema grade.
 
-_**NOTE:** Your auxiliary schema **MUST** specify a namespace. You'll need this namespace to access the components created by the builder._
+<div class="infusion-docs-note"><strong>Note:</strong> Your auxiliary schema <strong>MUST</strong> specify a namespace. You'll need this namespace to access the components created by the builder.</div>
 
 ### Example: Using the Builder with the `auxiliarySchema` Property ###
 

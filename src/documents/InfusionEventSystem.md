@@ -3,12 +3,6 @@ title: Infusion Event System
 layout: default
 ---
 
-Infusion Event System
-=====================
-
-Overview
---------
-
 Infusion ***events*** are one of the most basic and widely used facilities in the framework. Almost every Infusion component exposes one or more events and/or listeners to events fired by itself or other components. A component opts in to the event system by mentioning `fluid.eventedComponent` or some other grade derived from it such as `fluid.viewComponent` in its list of parent [Component Grades](ComponentGrades.md).
 
 An Infusion event (or more precisely, a particular firing of an Infusion event) represents

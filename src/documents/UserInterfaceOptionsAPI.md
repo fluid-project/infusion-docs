@@ -3,8 +3,6 @@ title: User Interface Options API
 layout: default
 ---
 
-# User Interface Options API #
-
 The **User Interface Options (UI Options)** component  allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
 
 UI Options does three things:
@@ -14,7 +12,7 @@ UI Options does three things:
 
 UI Options is a convenient way to add a simple separated-panel preferences editor to any page. The interface will automatically support the set of "starter" preferences provided by the [Preferences Framework](PreferencesFramework.md), in their default configuration.
 
-_**Note:** If you require any customization of UI Options, you should consider  using the [Builder](Builder.md) tool of the [Preferences Framework](PreferencesFramework.md) directly._
+<div class="infusion-docs-note"><strong>Note:</strong> If you require any customization of UI Options, you should consider  using the <a href="Builder.md">Builder</a> tool of the <a href="PreferencesFramework.md">Preferences Framework</a> directly.</div>
 
 ![Screen shot of the UI Options Component](images/uio-showcase.png "Screen shot of the UI Options Component")
 

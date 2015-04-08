@@ -3,8 +3,6 @@ title: Set up your environment
 layout: default
 ---
 
-# Set up your environment #
-
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
 

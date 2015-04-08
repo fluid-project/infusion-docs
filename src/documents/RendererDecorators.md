@@ -1,13 +1,8 @@
 ---
 title: Renderer Decorators
 layout: default
+noteRendererChangesPost15: true
 ---
-
-# Renderer Decorators #
-
-_**Note:** The renderer will undergo significant changes post Infusion 1.5_
-
-## Overview ##
 
 Decorators allow users of the Renderer to attach various things, such as functions, class names, etc., to the components at render time. A number of different types of decorators are currently supported.
 

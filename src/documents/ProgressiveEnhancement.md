@@ -3,9 +3,7 @@ title: Progressive Enhancement
 layout: default
 ---
 
-# Progressive Enhancement #
-
-_**Note:** This functionality is **Sneak Peek** status. This means that the **APIs may change**. We welcome your feedback, ideas, and code, but please use caution if you use this new functionality._
+<div class="infusion-docs-note"><strong>Note:</strong> This functionality is <strong>Sneak Peek</strong> status. This means that the <strong>APIs may change</strong>. We welcome your feedback, ideas, and code, but please use caution if you use this new functionality.</div>
 
 The Infusion Framework's Progressive Enhancement module provides support for automatic detection of browser features. The results of the checks can be used to influence the configuration of components, etc.
 

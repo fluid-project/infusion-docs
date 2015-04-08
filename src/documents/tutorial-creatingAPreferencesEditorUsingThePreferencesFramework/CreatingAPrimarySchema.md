@@ -3,8 +3,6 @@ title: Creating a Primary Schema
 layout: default
 ---
 
-# Creating a Primary Schema #
-
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 

@@ -1,13 +1,8 @@
 ---
 title: Renderer Components
 layout: default
+noteRendererChangesPost15: true
 ---
-
-# Renderer Components #
-
-_**Note:** The renderer will undergo significant changes post Infusion 1.5_
-
-## Overview ##
 
 If you are creating a component that requires the use of the Renderer, you should use the `fluid.rendererComponent` grade as a [parent grade](ComponentGrades.md) in your component's defaults block:
 
