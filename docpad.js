@@ -31,38 +31,25 @@ var githubLocation = function () {
     // in case we're on Windows, replace "\" in the path with "/"
     var relativePath = this.document.relativePath.replace(/\\/g, "/");
     return githubDocRoot + relativePath;
-}
+};
 
 // Helper function to build relative URLs:
 // Used for links to static resources such as CSS files. So that the generated
 // DocPad output is independent of the URL that it is hosted at.
 var relativeUrl = function (forUrl, relativeToUrl) {
     return URI(forUrl).relativeTo(relativeToUrl);
-}
+};
 
 // Helper function to determine if two values are equal
 // Used to determine which table of contents category to display on a particular
 // page.
-var ifEquals = function(a, b, opts) {
-    if(a == b)
-        return opts.fn(this);
-    else
-        return null;
-}
-
-// Helper function to determine an input URL string is the same as the active /
-// displayed URL.
-// This is used during Table of Contents generation to ensure the active page
-// item in the ToC is not a link.
-var checkActive = function(inputUrl, activeUrl, opts) {
-    if (relativeUrl (inputUrl, activeUrl).toString().length > 0) {
-        // if activeUrl and inputUrl are not the same
-        return opts.fn(this);
+var ifEqual = function (a, b, options) {
+    if (a == b) {
+        return options.fn(this);
+    } else {
+        return options.inverse(this);
     }
-    else {
-        return null;
-    }
-}
+};
 
 var siteStructure = JSON.parse(fs.readFileSync("site-structure.json"));
 
@@ -88,8 +75,7 @@ module.exports = {
                 rewriteMdLinks: rewriteMdLinks,
                 githubLocation: githubLocation,
                 relativeUrl: relativeUrl,
-                ifEquals: ifEquals,
-                checkActive: checkActive
+                ifEqual: ifEqual
             }
         }
     },
@@ -98,4 +84,4 @@ module.exports = {
             ncp.ncp(imagesSrcDir, imagesDestDir, next);
         }
     }
-}
+};

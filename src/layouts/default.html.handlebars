@@ -29,21 +29,23 @@
                 <nav class="infusion-docs-TOC small-12 medium-3 column">
                     {{#each siteStructure}}
                         {{! Output only the table of contents matching the current document's category }}
-                        {{#ifEquals category ../document.category}}
+                        {{#ifEqual category ../document.category}}
                             <span class="infusion-docs-category">{{category}}</span>
                             {{#each sections}}
                                 <span class="infusion-docs-sectionName">{{sectionName}}</span>
                                 <ul>
                                     {{#each pages}}
                                         <li>
-                                            {{#checkActive href ../../../../document.url}}<a href="{{relativeUrl href ../../../../../document.url}}">{{/checkActive}}
-                                            <span class="infusion-docs-TOC-pageName">{{pageName}}</span>
-                                            {{#checkActive href ../../../../document.url}}</a>{{/checkActive}}
+                                            {{#ifEqual href ../../../../document.url}}
+                                                <span class="infusion-docs-TOC-pageName">{{pageName}}</span>
+                                            {{else}}
+                                                <a href="{{relativeUrl href ../../../../../document.url}}"><span class="infusion-docs-TOC-pageName">{{pageName}}</span></a>
+                                            {{/ifEqual}}
                                         </li>
                                     {{/each}}
                                 </ul>
                             {{/each}}
-                        {{/ifEquals}}
+                        {{/ifEqual}}
                     {{/each}}
                 </nav>
 
