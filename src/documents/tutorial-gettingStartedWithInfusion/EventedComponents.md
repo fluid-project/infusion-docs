@@ -1,6 +1,7 @@
 ---
 title: Evented Components
 layout: default
+category: Tutorials
 ---
 
 ---

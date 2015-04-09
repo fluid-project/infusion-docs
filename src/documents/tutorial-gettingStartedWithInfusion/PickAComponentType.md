@@ -1,6 +1,7 @@
 ---
 title: Pick a component type
 layout: default
+category: Tutorials
 ---
 
 ---

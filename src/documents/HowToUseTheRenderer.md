@@ -2,6 +2,7 @@
 title: How To Use The Renderer
 layout: default
 noteRendererChangesPost15: true
+category: Infusion
 ---
 
 There are several different ways to use the Infusion [Renderer](Renderer.md), including the recommended Renderer Component and various Renderer functions.

@@ -1,6 +1,7 @@
 ---
 title: Builder
 layout: default
+category: Infusion
 ---
 
 The Infusion [Preferences Framework](PreferencesFramework.md) includes a tool called the Builder, which automatically creates all the components you need given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary schemas](AuxiliarySchemaForPreferencesFramework.md). The builder constructs all the components necessary to render the preferences editor, store preferences, and respond to changes in preferences. However, you'll generallyl want to use the simpler method "fluid.prefs.create" for creating and instantiating a [Preferences Editor](PreferencesEditor.md).
@@ -167,20 +168,20 @@ The functions created include:
 var myBuilder = fluid.prefs.builder({
     // use the Framework-provided starter schema grade
     gradeNames: ["fluid.prefs.auxSchema.starter"],
- 
+
     // override the paths in the starter grade
     auxiliarySchema: {
         "templatePrefix": "../../../framework/preferences/html/",
         "messagePrefix": "../../../framework/preferences/messages/"
     }
- 
+
     // by not providing a primarySchema, the 'starter' prefs will be used
 });
- 
+
 // instantiate the default 'fat panel' version of the preferences editor
 // (along with the enhancer and settings store)
 fluid.invokeGlobalFunction(builder.options.assembledPrefsEditorGrade, [".fat-panel-container"]);
- 
+
 // alternatively, the same instantiation can be accomplished using the public function
 fluid.prefs.constructed.prefsEditor(".fat-panel-container");
 ```
@@ -230,5 +231,3 @@ var myBuilder = fluid.prefs.builder({
 // instantiate the editor, enhancer and settings store
 my.prefs.editor.prefsEditor(".my-editor-container");
 ```
-
-

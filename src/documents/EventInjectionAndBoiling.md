@@ -1,6 +1,7 @@
 ---
 title: Event Injection and Boiling
 layout: default
+category: Infusion
 ---
 
 The [Infusion Event System](InfusionEventSystem.md) explains how to declare events of various types attached to a single component. Within a larger design, sometimes it is necessary to

@@ -40,6 +40,30 @@ var relativeUrl = function (forUrl, relativeToUrl) {
     return URI(forUrl).relativeTo(relativeToUrl);
 }
 
+// Helper function to determine if two values are equal
+// Used to determine which table of contents category to display on a particular
+// page.
+var ifEquals = function(a, b, opts) {
+    if(a == b)
+        return opts.fn(this);
+    else
+        return null;
+}
+
+// Helper function to determine an input URL string is the same as the active /
+// displayed URL.
+// This is used during Table of Contents generation to ensure the active page
+// item in the ToC is not a link.
+var checkActive = function(inputUrl, activeUrl, opts) {
+    if (relativeUrl (inputUrl, activeUrl).toString().length > 0) {
+        // if activeUrl and inputUrl are not the same
+        return opts.fn(this);
+    }
+    else {
+        return null;
+    }
+}
+
 var siteStructure = JSON.parse(fs.readFileSync("site-structure.json"));
 
 // We locate the images within the src/documents directory so that images can
@@ -63,7 +87,9 @@ module.exports = {
             helpers: {
                 rewriteMdLinks: rewriteMdLinks,
                 githubLocation: githubLocation,
-                relativeUrl: relativeUrl
+                relativeUrl: relativeUrl,
+                ifEquals: ifEquals,
+                checkActive: checkActive
             }
         }
     },

@@ -1,6 +1,7 @@
 ---
 title: API Changes from 1.5 to 2.0
 layout: default
+category: Infusion
 ---
 
 This page contains a list of the features, APIs, and etc. that have changed in Infusion 2.0.

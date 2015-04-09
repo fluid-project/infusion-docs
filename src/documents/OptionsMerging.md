@@ -1,6 +1,7 @@
 ---
 title: Options Merging
 layout: default
+category: Infusion
 ---
 
 The framework merges a component's **defaults** with the `options` specified by the user at runtime. Default options for a component are registered by the component developer using the `fluid.defaults()` function. The framework combines these values with those supplied by the user to the component creator function.

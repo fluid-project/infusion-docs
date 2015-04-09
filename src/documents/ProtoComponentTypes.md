@@ -2,6 +2,7 @@
 title: ProtoComponent Types
 layout: default
 noteRendererChangesPost15: true
+category: Infusion
 ---
 
 The Renderer categorizes components into different types depending on the nature of the data that is to be rendered. Different component types will have different fields, but in general, the values of the fields will contain either the actual data or a reference to a data model containing the data. The component types are not stated explicitly in the object, but the type is inferred by the Renderer based on the presence of particular fields.

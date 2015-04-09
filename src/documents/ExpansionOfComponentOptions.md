@@ -1,6 +1,7 @@
 ---
 title: Expansion of Component Options
 layout: default
+category: Infusion
 ---
 
 Infusion component options, as written in `fluid.defaults` blocks, go through a process called **expansion** when they are used to instantiate a component.
@@ -123,5 +124,3 @@ fluid.defaults("cspace.specBuilder", {
     }
 });
 ```
-
-

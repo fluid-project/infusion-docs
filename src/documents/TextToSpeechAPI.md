@@ -1,6 +1,7 @@
 ---
 title: Text To Speech API
 layout: default
+category: API
 ---
 
 The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) to queue up and read texts.

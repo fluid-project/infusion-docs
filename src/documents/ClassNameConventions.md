@@ -1,6 +1,7 @@
 ---
 title: Class Name Conventions
 layout: default
+category: Infusion
 ---
 
 Infusion components use various conventions for defining CSS class names. These conventions prevent confusion, making it easier for developers and integrators to be clear on what's what when creating or using components.
@@ -40,7 +41,7 @@ Some examples of component selectors:
 * `flc-inlineEdit-textEditButton`: the 'edit' button used with an inline edit ([Inline Edit](to-do/InlineEdit.md) component
 * `flc-pager-pageLink-skip`: a page link that should be skipped ([Pager](to-do/Pager.md) component)
 
-When combining class names for styling and class names for selectors, the convention is 
+When combining class names for styling and class names for selectors, the convention is
 
 ```html
 <el class="flc-* fl-*">

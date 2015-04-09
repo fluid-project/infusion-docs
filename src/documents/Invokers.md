@@ -1,6 +1,7 @@
 ---
 title: Invokers
 layout: default
+category: Infusion
 ---
 
 The Infusion IoC system provides a mechanism for creating the public functions (or "methods",
@@ -64,7 +65,7 @@ will reduce performance.
         </tr>
     </tbody>
 </table>
-	
+
 #### An invoker record in context ####
 
 The following skeleton example defines an invoker named invokerName attached to a component of
@@ -111,8 +112,8 @@ fluid.defaults("xyz.widget", {
         }
     }
     ...
-}); 
- 
+});
+
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
@@ -144,15 +145,15 @@ fluid.defaults("xyz.widget", {
     ...
     invokers: {
         // regular invokers:
-        addVal: "xyz.widget.add({that}.staticVal, {arguments}.0)", 
+        addVal: "xyz.widget.add({that}.staticVal, {arguments}.0)",
         subtractVal: "{parent}.subtract({arguments}.0, {that}.staticVal)",
         // dynamic invokers:
         addMax: "xyz.widget.add!({that}.dynamicMaxVal, {arguments}.0)",
         subtractMax: "{parent}.subtract!({arguments}.0, {that}.dynamicMaxVal)"
     }
     ...
-}); 
- 
+});
+
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
@@ -263,7 +264,7 @@ fluid.defaults("xyz.widget", {
         }
     }
     ...
-}); 
+});
 ```
 
 #### Example ####

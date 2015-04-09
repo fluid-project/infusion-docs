@@ -1,6 +1,7 @@
 ---
 title: Infusion Event System
 layout: default
+category: Infusion
 ---
 
 Infusion ***events*** are one of the most basic and widely used facilities in the framework. Almost every Infusion component exposes one or more events and/or listeners to events fired by itself or other components. A component opts in to the event system by mentioning `fluid.eventedComponent` or some other grade derived from it such as `fluid.viewComponent` in its list of parent [Component Grades](ComponentGrades.md).
@@ -35,8 +36,8 @@ A top-level options block named **`events`** is supported on every component der
   <tr>
     <td><code>preventable</code></td>
     <td>
-      The event represents a <em>preventable</em> action. 
-      The listeners may each return a boolean value of <code>false</code>, representing both 
+      The event represents a <em>preventable</em> action.
+      The listeners may each return a boolean value of <code>false</code>, representing both
       <ul>
         <li>that further listeners should fail to be queried, and </li>
         <li>that the operation represented by the event should be cancelled.</li>
@@ -48,21 +49,21 @@ A top-level options block named **`events`** is supported on every component der
 
 For every such entry in the `events` section of a component's options, the framework will construct a corresponding ***event firer*** with the same name in the `events` section of the constructed component. The most common use of an event firer is to call its member named `fire` with some set of arguments. Here is a simple, self-contained example:
 
-```javascript 
+```javascript
 fluid.defaults("examples.eventedComponent", {
     gradeNames: ["fluid.eventedComponent", "autoInit"],
     events: {
         myEvent: null
     }
 });
- 
+
 var myComponent = examples.eventedComponent();
- 
-myComponent.myEvent.fire(97, false); // firer of event can supply whatever arguments they like, 
+
+myComponent.myEvent.fire(97, false); // firer of event can supply whatever arguments they like,
 // but these should conform to some agreed signature
 ```
 
-As a real-world example, here is a block of configuration taken from Infusion's [Reorderer](to-do/Reorderer.md) component: 
+As a real-world example, here is a block of configuration taken from Infusion's [Reorderer](to-do/Reorderer.md) component:
 
 ```javascript
 events: {
@@ -82,7 +83,7 @@ This indicates that the Reorderer supports 6 events of the listed types, of whic
 var myCallback = myComponent.myEvent.fire;
 myCallback(42, true);
 ```
- 
+
 
 In general you shouldn't fire any of a component's events unless invited to by its documentation - you may disrupt its state. However, registering listeners to a component's events is always safe.
 
@@ -95,7 +96,7 @@ Both as part of defaults, and also as supplied instantiation options, a fluid co
 examples.myListener = function (number, condition) {
     console.log("Event listener received number " + number + " and condition " + condition);
 };
- 
+
 fluid.defaults("examples.eventedComponent", {
     gradeNames: ["fluid.eventedComponent", "autoInit"],
     events: {
@@ -105,7 +106,7 @@ fluid.defaults("examples.eventedComponent", {
         myEvent: "examples.myListener"
     }
 });
-  
+
 var myComponent = examples.eventedComponent();
 myComponent.myEvent.fire(97, false);
 // console logs "Event listener received number 97 and condition false"
@@ -136,7 +137,7 @@ Rather than a simple string, the key in a `listeners` structure can hold any [Io
 Using events and listeners procedurally
 ---------------------------------------
 
-Traditional procedural APIs corresponding to all the above declarations exist. However, they are not encouraged for typical users of the framework. 
+Traditional procedural APIs corresponding to all the above declarations exist. However, they are not encouraged for typical users of the framework.
 
 ###Constructing an event firer procedurally
 
@@ -217,9 +218,8 @@ A complex object may be supplied holding a listener specification. The structure
   <tr>
     <td><code>destroy</code></td>
     <td>none</td>
-    <td>	
+    <td>
       Destroys this event firer. If an event is currently in the process of firing, no further listeners will be notified after the current listener returns. Any firing action performed in the future on this firer will be a no-op.
     </td>
   </tr>
 </table>
-

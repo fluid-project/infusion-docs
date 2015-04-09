@@ -1,12 +1,13 @@
 ---
 title: Contexts
 layout: default
+category: Infusion
 ---
 
 Components may have different requirements depending on the context in which they are operating.
-For example, a subcomponent might operate differently when running on a production server versus 
-when testing locally off the file system, and differently still when operating in the context of 
-automated tests. In a more fine-grained way, a component may behave differently when operating in 
+For example, a subcomponent might operate differently when running on a production server versus
+when testing locally off the file system, and differently still when operating in the context of
+automated tests. In a more fine-grained way, a component may behave differently when operating in
 a browser with different capabilities, or on behalf of a user who has expressed particular needs or
 preferences. Infusion's IoC system allows the values and behaviour attached to components to be
 responsive to their context, conditioned by the visibility of certain strings known as context names

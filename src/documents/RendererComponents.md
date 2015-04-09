@@ -2,6 +2,7 @@
 title: Renderer Components
 layout: default
 noteRendererChangesPost15: true
+category: Infusion
 ---
 
 If you are creating a component that requires the use of the Renderer, you should use the `fluid.rendererComponent` grade as a [parent grade](ComponentGrades.md) in your component's defaults block:

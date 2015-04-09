@@ -1,6 +1,7 @@
 ---
 title: Set up your environment
 layout: default
+category: Tutorials
 ---
 
 ---

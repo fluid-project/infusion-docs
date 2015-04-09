@@ -1,6 +1,7 @@
 ---
 title: Creating an Auxiliary Schema
 layout: default
+category: Tutorials
 ---
 
 ---

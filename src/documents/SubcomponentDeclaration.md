@@ -1,6 +1,7 @@
 ---
 title: Subcomponent Declaration
 layout: default
+category: Infusion
 ---
 
 In the Infusion IoC system, a component declares its (static) subcomponents through the `components` property of the defaults, using [`fluid.defaults`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539):
@@ -103,7 +104,7 @@ The properties allowed at top level in the subcomponent record are as follows:
 
 Note that the entire subcomponent record may be replaced by a simple IoC reference to a component held elsewhere in the component tree. In this case the subcomponent is known as an _**injected component**_ - the already existing component reference is simply copied into the parent component's member field. Note that as a result of growing power in the IoC framework to perform most actions "in place" with respect to an existing component in its original location without having to inject it elsewhere. Should you find yourself using injected components, it is worth flagging the issue to the development team to see if a better solution could be found.
 
-### Examples ### 
+### Examples ###
 
 ```javascript
 fluid.defaults("cspace.admin", {
@@ -180,7 +181,7 @@ fluid.defaults("examples.dynamicComponentRoot", {
         }
     }
 });
- 
+
 var that = examples.dynamicComponentRoot();
 var firstValue = that.dynamic.options.source; // 2
 var secondValue = that["dynamic-1"].options.source; // 3
@@ -208,7 +209,7 @@ fluid.defaults("examples.dynamicEventRoot", {
         }
     }
 });
- 
+
 var that = examples.dynamicEventRoot();
 that.events.creationEvent.fire(2);
 var firstValue = that.dynamic.options.argument; // 2

@@ -1,6 +1,7 @@
 ---
 title: IoCSS
 layout: default
+category: Infusion
 ---
 
 The Infusion Inversion of Control (IoC) system includes a simple method for distributing options from top-level components through the component tree. This method is dubbed "IoCSS" because it uses a CSS-like syntax.
@@ -15,7 +16,7 @@ As component trees become larger, it will often happen that a high-level compone
 
 ```javascript
 // without developer's use of IoCSS, user writes
- 
+
 fluid.uiOptions(".my-uio-container", {
     components: {
         templateLoader: {
@@ -25,23 +26,23 @@ fluid.uiOptions(".my-uio-container", {
             }
         }
     }
-); 
+);
 ```
 
 The example above shows a simplified version of a situation with Infusion's "UI Options" component. In practice, the user of the component would have to write an even more deeply nested piece of configuration than this, if the developer had not made use of the `distributeOptions` directive in the component's options block, together with the use of "IoCSS" expressions to distribute the user's options to the right place in the component tree, as shown in the following example:
 
 ```javascript
 // developer writes:
- 
+
 fluid.defaults("fluid.uiOptions", {
     distributeOptions: {
         source: "{that}.options.templatePrefix",
         target: "{that > templateLoader}.options.templatePrefix"
     }
 });
- 
+
 // user writes:
- 
+
 fluid.uiOptions(".my-uio-container", {
     templatePrefix: "../../myTemplates"
 });
@@ -97,7 +98,7 @@ fluid.defaults("fluid.tests.uploader", {
         target: "{that > uploaderImpl}.options" // Target a directly nested component matching the context "uploaderImpl"
         source: "{that}.options",               // Distribute ALL of our options there, except exclusions:
         exclusions: ["components.uploaderContext", "components.uploaderImpl"], // options targetted directly at these subcomponents are left undisturbed in place
- 
+
     }],
     progressiveCheckerOptions: {
         checks: [{

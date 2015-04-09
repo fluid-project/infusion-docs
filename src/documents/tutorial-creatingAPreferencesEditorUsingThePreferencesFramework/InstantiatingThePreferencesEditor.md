@@ -1,6 +1,7 @@
 ---
 title: Instantiating the Preferences Editor
 layout: default
+category: Tutorials
 ---
 
 ---
