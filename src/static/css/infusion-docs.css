@@ -48,18 +48,24 @@
          url("../fonts/github-1.ttf"),
          url("../fonts/github-1.eot");
 }
-
+html
 body {
     font-size: 12px;
     font-size: 1.2rem;
+}
+
+pre {
+    white-space: pre-wrap;
 }
 
 .infusion-docs-container p {
     font-size: 1.2rem;
 }
 
-.infusion-docs-container .infusion-docs-mainContent {
-    max-width: 42rem;
+.infusion-docs-mainContent {
+    padding-left: 4rem;
+    padding-bottom: 6rem;
+    min-height: 44rem;
 }
 
 .infusion-docs a {
@@ -95,7 +101,6 @@ body {
 
 .infusion-docs table td {
     border:1px solid #e7e7e7;
-    /*line-height: 1.5rem;*/
 }
 
 .infusion-docs-container .infusion-docs-header {
@@ -153,9 +158,8 @@ body {
 }
 
 .infusion-docs-TOC {
-    margin-right: 4rem;
-    background: #fff;
     min-height: 44rem;
+    background: #fff;
 }
 
 .infusion-docs-TOC ul {
@@ -189,7 +193,6 @@ body {
     padding-left: 0;
 }
 
-
 .infusion-docs-container {
     font-family: "OpenSans";
     background-color: #f2f2f2;
@@ -197,11 +200,6 @@ body {
 
 .infusion-docs-mainBody {
     margin: 0;
-}
-
-.infusion-docs-mainContent {
-    margin: 0 0 6rem 0;
-    min-height: 30rem;
 }
 
 div.infusion-docs-note {
@@ -300,7 +298,7 @@ div.infusion-docs-note {
 }
 
 .infusion-docs-footer p {
-    line-height: 0.5rem;
+    line-height: 1rem;
 }
 
 .infusion-docs-footer a {

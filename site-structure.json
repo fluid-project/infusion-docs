@@ -118,7 +118,6 @@
                 "pages":
                 [
                     { "pageName": "Getting started with Infusion", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
-                    { "pageName": "How to Create and Use Font Icons", "href": "/tutorial-creatingANewAdjusterUI/HowToCreateAndUseFontIcons.html" },
                     { "pageName": "User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" },
                     { "pageName": "Adding a Basic Preferences Editor to a Site", "href": "/to-do/AddingPrefsEditorToSite.html" },
                     { "pageName": "Working With A Preferences Editor On Your Site", "href": "/to-do/WorkingWithPrefsEditorOnSite.html" },

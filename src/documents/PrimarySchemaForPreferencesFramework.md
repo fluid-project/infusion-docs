@@ -1,7 +1,7 @@
 ---
 title: Primary Schema for Preferences Framework
 layout: default
-category: Tutorials
+category: Infusion
 ---
 
 A Primary Schema is a JSON document that contains the information necessary to define desired preferences using the format specified by the [JSON Schema specification](http://json-schema.org/documentation.html). A Primary Schema defines such things as the type of the preference, its default value, the limits of its range (if appropriate), an enumeration of possible values (if appropriate), etc.
