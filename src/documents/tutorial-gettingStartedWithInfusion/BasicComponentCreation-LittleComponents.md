@@ -194,7 +194,7 @@ var tutorial = tutorial || {};
         return that;
     };
 
-})(jQuery, fluid_1_5);
+})(jQuery, fluid_2_0);
 ```
 
 #### Example: Currency Converter Creator Function ####

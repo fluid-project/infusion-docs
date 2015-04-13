@@ -30,6 +30,6 @@ So supposing your project is in a folder called "bargraph," your source hierarch
 
 All of the Infusion JavaScript is in a single file in the "infusion" folder called ```infusion-all.js``` (unless you provided custom options to your grunt command). You will need to link to this file in your HTML headers.
 
-<strong>NOTE:</strong> The "infusion" folder actually contains some files you don't need, but it's not required to remove them, so we won't worry about that right now.
+**NOTE:** The "infusion" folder actually contains some files you don't need, but it's not required to remove them, so we won't worry about that right now.
 
 Next: [Define a namespace and create a closure](DefineANamespaceAndCreateAClosure.md)
