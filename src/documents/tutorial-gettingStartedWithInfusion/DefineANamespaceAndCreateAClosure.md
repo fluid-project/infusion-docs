@@ -49,20 +49,20 @@ The parameters to the anonymous function, `$` and `fluid`, will be used as short
 
 ### Example ###
 
-So what might this look like in your bargraph application? Well, you might call the global namespace `visualizer` and create a public function called `barGraph` that can be used by anyone to instantiate a bar graph component:
+So what might this look like in your currency converter application? Well, you might call the global namespace `currency` and create a public function called `converter` that can be used by anyone to instantiate a converter component:
 
 ```javascript
 (function ($, fluid) {
-    fluid.registerNamespace("visualizer");
-    // put any private things the bar graph will need here
+    fluid.registerNamespace("currency");
+    // put any private things the currency converter will need here
 
 
-    // EITHER: the public bar graph creation function - this is discouraged
-    visualizer.barGraph = function () {
+    // EITHER: the converter creation function - this is discouraged
+    currency.converter = function () {
         ...
     };
     // OR: a creator function automatically managed by Infusion - this is recommended
-    fluid.defaults("visualizer.barGraph", {
+    fluid.defaults("currency.converter", {
         ...
     });
 
