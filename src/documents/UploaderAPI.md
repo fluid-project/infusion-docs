@@ -986,7 +986,7 @@ However there are times when you want to run the uploader with out a server: whe
 
 To run locally you must specify `demo: true` in your compontent configuration:
 
-```javscript
+```javascript
 var myUploader = fluid.progressiveEnhanceableUploader(".flc-uploader", ".fl-ProgEnhance-basic", {
     demo: true
 });

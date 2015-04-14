@@ -9,10 +9,9 @@ You may obtain a copy of the ECL 2.0 License and BSD License at
 https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 */
 
-var URI = require('URIjs');
-var path = require('path');
-var ncp = require('ncp');
-var fs = require('fs');
+var URI = require("URIjs");
+var path = require("path");
+var fs = require("fs-extra");
 
 // The documentation root on GitHub:
 // Used to build URLs for "Edit on GitHub" links
@@ -80,8 +79,28 @@ module.exports = {
         }
     },
     events: {
-        writeAfter: function (opts, next) {
-            ncp.ncp(imagesSrcDir, imagesDestDir, next);
+        generateBefore: function () {
+            // Empty the "out" directory before generation to ensure
+            // that we don't get multiple nested
+            // infusion/latest/... copies
+            fs.emptyDirSync("out");
+        },
+        writeAfter: function () {
+            // Copy the images
+            fs.copySync(imagesSrcDir, imagesDestDir);
+
+            // Move the contents of the out directory to
+            // out/infusion/latest. We need to do this to prepare the
+            // structure for the ghpages plugin as it does not support
+            // deploying to a location other than the root.
+            fs.removeSync("tmp-out");
+            fs.renameSync("out", "tmp-out");
+            fs.mkdirsSync("out/infusion");
+            fs.renameSync("tmp-out", "out/infusion/latest");
+
+            // Copy the files for GitHub Pages:
+            // redirect index.htmls and CNAME
+            fs.copySync(path.join(rootPath, "src", "ghpages-files"), "out");
         }
     }
 };
