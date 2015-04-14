@@ -11,7 +11,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
 var URI = require("URIjs");
 var path = require("path");
-var fs = require('fs-extra');
+var fs = require("fs-extra");
 
 // The documentation root on GitHub:
 // Used to build URLs for "Edit on GitHub" links
