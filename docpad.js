@@ -98,8 +98,9 @@ module.exports = {
             fs.mkdirsSync("out/infusion");
             fs.renameSync("tmp-out", "out/infusion/latest");
 
-            // Copy the redirect index.htmls
-            fs.copySync(path.join(rootPath, "src", "redirects"), "out");
+            // Copy the files for GitHub Pages:
+            // redirect index.htmls and CNAME
+            fs.copySync(path.join(rootPath, "src", "ghpages-files"), "out");
         }
     }
 };
