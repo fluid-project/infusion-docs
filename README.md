@@ -32,3 +32,10 @@ Point your browser to:
 ```
 http://localhost:9778/
 ```
+
+Deploy to GitHub Pages
+----------------------
+
+```
+docpad deploy-ghpages --env static
+```
