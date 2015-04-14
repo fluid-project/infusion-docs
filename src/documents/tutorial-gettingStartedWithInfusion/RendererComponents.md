@@ -137,8 +137,8 @@ fluid.defaults("tutorials.currencyConverter", {
 
 While it is not necessary to create event handlers to update the model when users change the controls (the renderer provides incoming data binding support automatically), you still need event handlers for:
 
-    responding to changes in the model by updating the converted amount
-    refreshing the display when the result is updated.
+* responding to changes in the model by updating the converted amount
+* refreshing the display when the result is updated.
 
 We can clean up the implementation of our component from the [Evented Components tutorial](EventedComponents.md) still further by writing these event handlers also in a declarative form. The display update can be handled by a `modelListeners` entry of the kind we have seen before:
 
@@ -214,4 +214,6 @@ fluid.defaults("tutorials.currencyConverter", {
 });
 ```
 
-Impressively we have succeeded in implementing all of this component design without a single line of user JavaScript code.
+Impressively, we have succeeded in implementing all of this component design without a single line of user JavaScript code.
+
+Next: [Subcomponents](Subcomponents.md)
