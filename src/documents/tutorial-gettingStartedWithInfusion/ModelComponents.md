@@ -1,6 +1,7 @@
 ---
 title: Model Components
 layout: default
+category: Tutorials
 ---
 
 ---

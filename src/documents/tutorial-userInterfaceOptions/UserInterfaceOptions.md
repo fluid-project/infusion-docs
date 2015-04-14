@@ -1,6 +1,7 @@
 ---
 title: User Interface Options
 layout: default
+category: Tutorials
 ---
 
 The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
@@ -25,7 +26,7 @@ You're putting together a website that you know will have a diverse audience. Yo
 
 These are the basic steps to add UI Options to your website:
 
-1. [Download and install the Infusion library](#download and-install-the-infusion-library)
+1. [Download and install the Infusion library](#download-and-install-the-infusion-library)
 2. [Prepare your page](#prepare-your-page)
     * [The Sliding Panel](#the-sliding-panel)
     * [The Table of Contents](#the-table-of-contents)

@@ -1,6 +1,7 @@
 ---
 title: Styling the Preferences Editor
 layout: default
+category: Tutorials
 ---
 
 ---

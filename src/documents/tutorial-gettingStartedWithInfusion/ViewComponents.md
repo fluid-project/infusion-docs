@@ -1,6 +1,7 @@
 ---
 title: View Components
 layout: default
+category: Tutorials
 ---
 
 ---

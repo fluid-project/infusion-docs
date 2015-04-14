@@ -2,6 +2,7 @@
 title: Renderer Decorators
 layout: default
 noteRendererChangesPost15: true
+category: Infusion
 ---
 
 Decorators allow users of the Renderer to attach various things, such as functions, class names, etc., to the components at render time. A number of different types of decorators are currently supported.

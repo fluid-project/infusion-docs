@@ -1,6 +1,7 @@
 ---
 title: Instantiating the Enhancer and Settings Store Only
 layout: default
+category: Tutorials
 ---
 
 ---

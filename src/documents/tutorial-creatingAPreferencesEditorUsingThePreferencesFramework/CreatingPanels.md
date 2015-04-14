@@ -1,6 +1,7 @@
 ---
 title: Creating Panels
 layout: default
+category: Tutorials
 ---
 
 ---

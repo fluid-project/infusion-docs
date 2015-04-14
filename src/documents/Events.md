@@ -1,6 +1,7 @@
 ---
 title: Events
 layout: default
+category: Infusion
 ---
 
 * [Infusion Event System](InfusionEventSystem.md)

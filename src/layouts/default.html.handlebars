@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="{{{relativeUrl '/css/foundation.css' document.url}}}">
         <link rel="stylesheet" href="{{{relativeUrl '/css/highlightjs-custom.css' document.url}}}">
         <link rel="stylesheet" href="{{{relativeUrl '/css/infusion-docs.css' document.url}}}">
+
+        <link rel="icon" type="image/png" href="{{{relativeUrl '/images/favico.png' document.url}}}">
     </head>
     <body class="infusion-docs">
 
@@ -15,30 +17,41 @@
 
             <header class="row infusion-docs-header">
                 <div class="infusion-docs-fluidLogo small-12 medium-6 column">
-                    <a class="infusion-docs-fluidLogoText" href="http://wiki.fluidproject.org/display/fluid/Fluid+Infusion" target="_blank" title="infusion">infusion</a>
+                    <a class="infusion-docs-fluidLogoText" href="{{{relativeUrl '/index.html' document.url}}}" title="Infusion">infusion</a>
                 </div>
 
                 <nav class="small-12 medium-6 column">
-                    <a href="" title="Frameworks">FRAMEWORKS</a>
-                    <a href="" title="Tutorials">TUTORIALS</a>
-                    <a href="" title="A P I">API</a>
+                    <a href="{{{relativeUrl '/index.html' document.url}}}" title="Infusion">Infusion</a>
+                    <a href="{{{relativeUrl '/index-tutorials.html' document.url}}}" title="Tutorials">Tutorials</a>
+                    <a href="{{{relativeUrl '/index-api.html' document.url}}}" title="A P I">API</a>
                 </nav>
             </header>
-            
-            <div class="row infusion-docs-mainBody">
 
+            <div class="row infusion-docs-mainBody">
                 <nav class="infusion-docs-TOC small-12 medium-3 column">
                     {{#each siteStructure}}
-                        {{sectionName}}
-                        <ul>
-                        {{#each pages}}
-                            <li><a href="{{relativeUrl href ../../document.url}}">{{pageName}}</a></li>
-                        {{/each}}
-                       </ul>
+                        {{! Output only the table of contents matching the current document's category }}
+                        {{#ifEqual category ../document.category}}
+                            <span class="infusion-docs-category">{{category}}</span>
+                            {{#each sections}}
+                                <span class="infusion-docs-sectionName">{{sectionName}}</span>
+                                <ul>
+                                    {{#each pages}}
+                                        <li>
+                                            {{#ifEqual href ../../../../document.url}}
+                                                <span class="infusion-docs-TOC-pageName">{{pageName}}</span>
+                                            {{else}}
+                                                <a href="{{relativeUrl href ../../../../../document.url}}"><span class="infusion-docs-TOC-pageName">{{pageName}}</span></a>
+                                            {{/ifEqual}}
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            {{/each}}
+                        {{/ifEqual}}
                     {{/each}}
                 </nav>
 
-                <article class="row infusion-docs-mainContent small-12 medium-9 column">
+                <article class="infusion-docs-mainContent small-12 medium-9 column">
 
                     <h1>{{document.title}}</h1>
 
@@ -54,11 +67,11 @@
                     </div>
 
                 </article>
-            
+
             </div>
 
             <footer class="row infusion-docs-footer">
-                <p class="infusion-docs-footerInfusion">Infusion is created by <a href="http://fluidproject.org/" target="_blank">fluidproject.org</a></p>
+                <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a></p>
                 <p>Fluid is a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
             </footer>
 

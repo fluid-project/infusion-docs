@@ -1,6 +1,7 @@
 ---
 title: User Interface Options API
 layout: default
+category: API
 ---
 
 The **User Interface Options (UI Options)** component  allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
@@ -395,4 +396,3 @@ fluid.uiOptions.fullNoPreview("#myContainer", {
         </tr>
     </tbody>
 </table>
-

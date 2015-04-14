@@ -31,14 +31,25 @@ var githubLocation = function () {
     // in case we're on Windows, replace "\" in the path with "/"
     var relativePath = this.document.relativePath.replace(/\\/g, "/");
     return githubDocRoot + relativePath;
-}
+};
 
 // Helper function to build relative URLs:
 // Used for links to static resources such as CSS files. So that the generated
 // DocPad output is independent of the URL that it is hosted at.
 var relativeUrl = function (forUrl, relativeToUrl) {
     return URI(forUrl).relativeTo(relativeToUrl);
-}
+};
+
+// Helper function to determine if two values are equal
+// Used to determine which table of contents category to display on a particular
+// page.
+var ifEqual = function (a, b, options) {
+    if (a == b) {
+        return options.fn(this);
+    } else {
+        return options.inverse(this);
+    }
+};
 
 var siteStructure = JSON.parse(fs.readFileSync("site-structure.json"));
 
@@ -63,7 +74,8 @@ module.exports = {
             helpers: {
                 rewriteMdLinks: rewriteMdLinks,
                 githubLocation: githubLocation,
-                relativeUrl: relativeUrl
+                relativeUrl: relativeUrl,
+                ifEqual: ifEqual
             }
         }
     },
@@ -72,4 +84,4 @@ module.exports = {
             ncp.ncp(imagesSrcDir, imagesDestDir, next);
         }
     }
-}
+};

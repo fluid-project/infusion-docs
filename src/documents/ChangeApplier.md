@@ -1,6 +1,7 @@
 ---
 title: ChangeApplier
 layout: default
+category: Infusion
 ---
 
 The ChangeApplier is a core part of the architecture of Fluid Infusion, which coordinates access to
@@ -33,4 +34,3 @@ This is in contrast to many other frameworks, which generally take one of two ro
 insisting that a model is composed of some form of more or less "magic" objects - these might be
 derived from a base class or interface which is called "Model" or "Storage" - or else allowing "any
 old objects" to serve as model material without providing assistance in coordinating updates.
-

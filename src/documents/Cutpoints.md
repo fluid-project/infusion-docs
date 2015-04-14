@@ -2,6 +2,7 @@
 title: Cutpoints
 layout: default
 noteRendererChangesPost15: true
+category: Infusion
 ---
 
 A **cutpoint** is a mapping between a component in the renderer component tree and markup in the template.

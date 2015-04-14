@@ -1,6 +1,7 @@
 ---
 title: Component Grades
 layout: default
+category: Infusion
 ---
 
 A component **grade** extends the notion of component defaults ([fluid.defaults](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539)). In fact, every **fluid.defaults** directive introduces a **grade** into the system of Fluid Infusion components, which can be built on to derive further grades/components. This derivation occurs by mentioning the name of the original grade within the **gradeNames** section of the derived component.
@@ -117,8 +118,8 @@ fluid.defaults("fluid.uploader.fileQueueView", {
     gradeNames: ["fluid.viewComponent", "autoInit"],
     ...
 });
- 
- 
+
+
 var that = fluid.uploader.fileQueueView( ... ); // The framework has automatically generated this function since the component is autoInit
 ```
 
@@ -136,9 +137,9 @@ fluid.defaults("examples.componentOne", {
     },
     option1: "TEST"
 });
- 
- 
- 
+
+
+
 fluid.defaults("examples.componentTwo", {
     gradeNames: ["fluid.modelComponent", "autoInit"],
     model: {
@@ -147,7 +148,7 @@ fluid.defaults("examples.componentTwo", {
     },
     option2: "TEST2"
 });
- 
+
 fluid.defaults("examples.combinedComponent", {
     gradeNames: ["examples.componentOne", "examples.componentTwo", "autoInit"]
     // The resulting defaults for component examples.combinedComponent will look like this:
@@ -157,7 +158,7 @@ fluid.defaults("examples.combinedComponent", {
     // },
     // option1: "TEST",
     // option2: "TEST2"
-}); 
+});
 ```
 
 <div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>, <code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md">listener namespaces</a>.</div>
@@ -168,13 +169,13 @@ Grades supplied as arguments to a constructing component in the `gradeNames` fie
 
 ### Delivering a dynamic gradeName as a direct argument: ###
 
-There are numerous ways that these additional gradeNames could be delivered - for example, as a direct argument to a component's creator function: 
+There are numerous ways that these additional gradeNames could be delivered - for example, as a direct argument to a component's creator function:
 
 ```javascript
 var myCombinedComponent = examples.componentOne({
     gradeNames: "examples.componentTwo"
-}); 
-// creates a component that behaves exactly (except for its typeName) 
+});
+// creates a component that behaves exactly (except for its typeName)
 // as if it was created via examples.combinedComponent() above
 ```
 
@@ -185,7 +186,7 @@ Another possibility is to supply the additional gradeNames via a [subcomponent r
 ```javascript
 fluid.defaults("examples.rootComponent", {
     components: {
-        myCombinedComponent: { // This component also behaves (except for typeName) 
+        myCombinedComponent: { // This component also behaves (except for typeName)
                                // as if was created via examples.combinedComponent
             type: "examples.componentOne",
             options: {
@@ -232,7 +233,7 @@ fluid.defaults("fluid.componentWithDynamicGrade", {
         getDynamicGradeName: "fluid.componentWithDynamicGrade.getDynamicGradeName"
     }
 });
- 
+
 // When resolved our fluid.componentWithDynamicGrade will have all the functionality of a fluid.modelComponent grade.
 // NOTE: developers can also return an array of grade names. These grade names can be custom grade names.
 fluid.componentWithDynamicGrade.getDynamicGradeName = function () {
@@ -253,7 +254,7 @@ The following example demonstrates the process from end to end:
 fluid.defaults("examples.gradeLinkageComponent", {
     gradeNames: ["examples.componentOne", "fluid.applyGradeLinkage", "autoInit"],
 });
- 
+
 // Sets up a "grade linkage record" that states that any opted-in component which comes to
 // have both "examples.componentOne" AND "examples.componentTwo" as grades through any route,
 // will automatically be also given grade "examples.componentOneAndTwo"
@@ -262,7 +263,7 @@ fluid.defaults("examples.oneTwoLinkage", {
     contextGrades: ["examples.componentOne", "examples.componentTwo"],
     resultGrades: "examples.componentOneAndTwo"
 });
- 
+
 // Construct an instance of our component supplying an additional dynamic grade of "examples.componentTwo" -
 // this will activate the grade linkage system and automatically supply the further grade of "examples.componentOneAndTwo"
 var that = examples.gradeLinkageComponent({

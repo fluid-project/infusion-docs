@@ -1,6 +1,7 @@
 ---
 title: Creating a New Adjuster UI
 layout: default
+category: Tutorials
 ---
 
 In the Infusion [Preference Framework](../PreferencesFramework.md), an "adjuster" is a single control for adjusting a particular preference. Common types of adjusters include checkboxes, radio buttons and sliders.
@@ -144,7 +145,7 @@ The CSS required will, of course, be dependent on the design. Some examples from
   <span class="fl-icon-contrast"></span>
   <span class="flc-prefsEditor-contrast-label heading-text"></span>
 </h2>
- 
+
 <div class="flc-prefsEditor-themeRow fl-choice">
   <input type="radio" class="flc-prefsEditor-themeInput fl-hidden-accessible" name="theme" id="bw" value="bw" />
   <div class="fl-indicator"></div>
@@ -181,10 +182,10 @@ For the radio buttons:
 /* Theme radio buttons */
 .fl-prefsEditor .fl-choice {
     display: inline;
-    float: left;   
+    float: left;
 }
 .fl-prefsEditor .fl-choice label {
-    margin-right: 5px; 
+    margin-right: 5px;
     border: 1px solid black;
     border-radius: 5px;
     height: 3em;
@@ -214,7 +215,7 @@ For the radio buttons:
   <span class="fl-icon-toc"></span>
   <span class="flc-prefsEditor-toc-label heading-text"></span>
 </h2>
- 
+
 <div class="fl-prefsEditor-onoff">
   <input type="checkbox" id="toc-choice" class="flc-prefsEditor-toc" />
   <label for="toc-choice">
@@ -246,7 +247,7 @@ For the switch:
     font-size: 1.2em;
     font-weight: 600;
 }
- 
+
 /* Hide input */
 .fl-prefsEditor .fl-prefsEditor-onoff input {
     border: 0 none;
@@ -258,18 +259,18 @@ For the switch:
     position: absolute;
     width: 1px;
 }
- 
+
 .fl-prefsEditor .fl-prefsEditor-onoff input:focus + label {
     outline: 2px solid black;
 }
- 
+
 .fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch {
     padding-left: 3em;
     width: 2em;
     background-color: #2da750;
     box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.63) inset;
 }
- 
+
 /* With data attributes defining the on/off text, localizing the templates is easier */
 .fl-prefsEditor .fl-prefsEditor-onoff input + label [data-checkboxStateOn]:before {
     content: attr(data-checkboxStateOn);
@@ -277,7 +278,7 @@ For the switch:
 .fl-prefsEditor .fl-prefsEditor-onoff input + label [data-checkboxStateOff]:after {
     content: attr(data-checkboxStateOff);
 }
- 
+
 /* The "on" portion of the toggle and the knob. */
 .fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:before {
     color: #fff;
@@ -301,18 +302,18 @@ For the switch:
         color-stop(0, rgb(205,204,202)),
         color-stop(1, rgb(244,244,244))
     );
-    background-image: linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%); 
+    background-image: linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
     box-shadow: 0.2em 0.2em 0.5em #888;
 }
- 
+
 /* The "off" portion of the toggle. */
 .fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:after {
     float:left;
     position:relative;
-    top: 0.36em;   
+    top: 0.36em;
     left: 0.5em;
 }
- 
+
 /* The dark inner circle to the toggle knob. */
 .fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch-inner {
     border: 1px solid #493A30;
@@ -326,7 +327,7 @@ For the switch:
     box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
     display:inline-block;
 }
- 
+
 .fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch .fl-prefsEditor-switch-inner {
     top:-1.6em;
     left: 0.46em;

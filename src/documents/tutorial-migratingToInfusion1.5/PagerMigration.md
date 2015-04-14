@@ -1,6 +1,7 @@
 ---
 title: Pager 1.5 Migration
 layout: default
+category: Infusion
 ---
 
 This page will walk you through the process of upgrading your existing 1.4 Pager component implementation to the new 1.5 version. This tutorial assumes that:
@@ -115,7 +116,7 @@ These configuration blocks show how a minimal configuration of the Pager has cha
 other configuration options are of course supported as listed in the API documentation.
 
 ```javascript
-fluid.pagedTable("container", 
+fluid.pagedTable("container",
     dataModel: ...,
     columnDefs: ...,
     components: {
@@ -128,13 +129,13 @@ fluid.pagedTable("container",
         }
     }
 });
-    
+
 ```
 
 ### In 1.4 ###
 
 ```javascript
-fluid.pager("container", 
+fluid.pager("container",
     dataModel: ...,
     columnDefs: ...,
     bodyRenderer: {
@@ -158,7 +159,7 @@ their functionality.
 * The user is recommended to configure the rendering components (`fluid.table.selfRender`, `fluid.pager.renderedPageList`) using selectors to bind onto
 markup rather than use the old-fashioned markup pollution based on the special attribute `rsf:id`).
 * The duplicate component `pagerBarSecondary` has been removed and `pagerBar` is instead initialised as a standard IoC-driven *dynamic component* which will create
-as many pager bars as there are matching elements in the markup 
+as many pager bars as there are matching elements in the markup
 
 ### Change in type names
 
@@ -179,4 +180,3 @@ of the parent component, rather than appearing at top level as before):
 
 Note that the Pager Component remains in "Sneak Peek" mode for the 1.5 release and its API is not expected to be stable. Please get in touch with the Infusion team
 on IRC or the mailing lists (see http://wiki.fluidproject.org/display/fluid/Collaborate ) if you are contemplating any non-trivial usage.
-

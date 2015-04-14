@@ -1,6 +1,7 @@
 ---
 title: Developer Introduction to the Infusion Framework
 layout: default
+category: Tutorials
 ---
 
 _This page is still under construction. An archived version can be found on the

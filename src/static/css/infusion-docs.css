@@ -48,18 +48,24 @@
          url("../fonts/github-1.ttf"),
          url("../fonts/github-1.eot");
 }
-
+html
 body {
     font-size: 12px;
     font-size: 1.2rem;
+}
+
+pre {
+    white-space: pre-wrap;
 }
 
 .infusion-docs-container p {
     font-size: 1.2rem;
 }
 
-.infusion-docs-container .infusion-docs-mainContent { 
-    max-width: 42rem; 
+.infusion-docs-mainContent {
+    padding-left: 4rem;
+    padding-bottom: 6rem;
+    min-height: 44rem;
 }
 
 .infusion-docs a {
@@ -71,12 +77,12 @@ body {
     background: #323232;
 }
 
-.infusion-docs pre code { 
+.infusion-docs pre code {
     font-weight: normal;
     background-color: #FFF;
     border-width: 3px;
-    border-color: #666; 
-    padding: 12px; 
+    border-color: #666;
+    padding: 12px;
     color: #000;
     margin-bottom: 1rem;
 }
@@ -95,7 +101,6 @@ body {
 
 .infusion-docs table td {
     border:1px solid #e7e7e7;
-    /*line-height: 1.5rem;*/
 }
 
 .infusion-docs-container .infusion-docs-header {
@@ -152,9 +157,40 @@ body {
     background: none;
 }
 
-.infusion-docs .infusion-docs-TOC {
-    padding-top: 4rem;
-    margin-right: 4rem;
+.infusion-docs-TOC {
+    min-height: 44rem;
+    background: #fff;
+}
+
+.infusion-docs-TOC ul {
+    list-style-type: none;
+}
+
+.infusion-docs-TOC li {
+    margin-bottom: 1rem;
+}
+
+.infusion-docs-category {
+    font-weight: bold;
+    margin: 1.5rem 0 1rem 0;
+    display:block;
+}
+
+.infusion-docs-sectionName {
+    margin: 1rem 0;
+    display: block;
+}
+
+.infusion-docs-TOC li .infusion-docs-TOC-pageName {
+    /* By default give each item in the TOC an active page style. */
+    border-left: solid 0.2rem #FFCB00;
+    padding-left: 0.2rem;
+}
+
+.infusion-docs-TOC li a .infusion-docs-TOC-pageName {
+    /* If the TOC item is a link, then hide the active page styling */
+    border: none;
+    padding-left: 0;
 }
 
 .infusion-docs-container {
@@ -164,10 +200,6 @@ body {
 
 .infusion-docs-mainBody {
     margin: 0;
-}
-
-.infusion-docs-mainContent {
-    margin: 0 0 6rem 0;
 }
 
 div.infusion-docs-note {
@@ -263,10 +295,10 @@ div.infusion-docs-note {
     text-align: center;
     line-height: 0.5rem;
     max-width: 100%;
-} 
+}
 
 .infusion-docs-footer p {
-    line-height: 0.5rem;
+    line-height: 1rem;
 }
 
 .infusion-docs-footer a {
@@ -277,7 +309,7 @@ div.infusion-docs-note {
     color: #008cba;
     background: #f2f2f2;
 }
-    
+
 .infusion-docs-footerInfusion {
     font-size: 1.2rem
 }
@@ -288,4 +320,3 @@ div.infusion-docs-note {
         padding-right: 1rem;
         padding-left: 1rem;
     }
-

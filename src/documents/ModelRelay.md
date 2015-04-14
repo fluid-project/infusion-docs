@@ -1,6 +1,7 @@
 ---
 title: Model Relay
 layout: default
+category: Infusion
 ---
 
 The Infusion Model Relay system is a powerful scheme for supplying declarative configuration which specifies rules for keeping multiple pieces of model state around the component tree automatically up to date with each other's changes. Because each model relay rule supplies a link between an inner core of models scattered around the component tree, around which other listeners in the periphery of each component (generally, in its view layer) only react after all updates have finished propagating in the model layer, we sometimes refer to the complete set of these linked models as the _model skeleton_ of the component tree.
@@ -38,7 +39,7 @@ fluid.defaults("examples.implicitModelRelay", {
         }
     }
 });
- 
+
 var that = examples.implicitModelRelay();
 console.log(that.child.model.childValue); // 3 - parent's value has been synchronised to child on construction
 ```
@@ -119,7 +120,7 @@ fluid.defaults("examples.explicitModelRelay", {
         }
     }
 });
- 
+
 var that = examples.explicitModelRelay();
 console.log(that.child.model.volume); // 0.95 - transformed during the initial transaction to sync with outer value
 that.applier.change("volume", 50);

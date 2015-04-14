@@ -1,6 +1,7 @@
 ---
 title: Creating Enactors
 layout: default
+category: Tutorials
 ---
 
 ---

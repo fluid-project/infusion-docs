@@ -1,6 +1,7 @@
 ---
 title: Localization in the Preferences Framework
 layout: default
+category: Infusion
 ---
 
 Localization in the Preferences Framework makes use of message bundles: JSON files containing the strings that are to be used in the interface. The Preferences Framework combines any message bundles into a single bundle and makes that bundle available to the components that need to use the strings.
@@ -77,7 +78,7 @@ Message bundles can be specified in one of two ways:
 The Preferences Framework will load and combine all of the Message Bundles into a single Message Bundle which is bound to the `prefsEditorLoader` component at the `msgResolver` property (as described above).
 
 Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the combined Message Bundle at its `parentBundle` option (as described above). When using the auxiliary schema, all panels are assigned the grade `fluid.prefs.defaultPanel` by the Framework.
- 
+
 ### Example Auxiliary Schema
 
 ```javascript

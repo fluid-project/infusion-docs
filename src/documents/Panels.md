@@ -1,6 +1,7 @@
 ---
 title: Panels
 layout: default
+category: Infusion
 ---
 
 A Panel is an [Infusion component](UnderstandingInfusionComponents.md) that present adjusters, or controls, to the user to allow them to adjust the preference settings. Panels are [Renderer components](RendererComponents.md) that work with an HTML template.
@@ -33,13 +34,13 @@ fluid.defaults("my.pref.panelGrade", {
     gradeNames: ["fluid.prefs.panel", "autoInit"],
     <common defaults>
 });
- 
+
 // one specific panel, which uses the shared grade
 fluid.defaults("my.pref.panel2", {
     gradeNames: ["my.pref.panelGrade", "autoInit"],
     <defaults specific to panel 1>
 });
- 
+
 // another specific panel, which uses the shared grade
 fluid.defaults("my.pref.panel2", {
     gradeNames: ["my.pref.panelGrade", "autoInit"],
@@ -227,7 +228,7 @@ fluid.defaults("demo.panels.vol", {
         label: ".mpe-slider-label",
         multiplier: ".mpe-slider-multiplier",
         vol: ".mpe-slider",
- 
+
         // selectors for the radio buttons
         posLabel: ".mpe-radio-label",
         volPosRow: ".mpe-radioRow",
@@ -254,7 +255,7 @@ fluid.defaults("demo.panels.vol", {
         // protoTree for rendering slider labels
         label: {messagekey: "volLabel"},
         multiplier: {messagekey: "volMultiplier"},
- 
+
         // protoTree for the radio buttons
         posLabel: {messagekey: "volPosLabel"},
         expander: {

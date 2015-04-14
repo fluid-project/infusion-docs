@@ -1,6 +1,7 @@
 ---
 title: Basic Component Creation - Little Components
 layout: default
+category: Tutorials
 ---
 
 ---

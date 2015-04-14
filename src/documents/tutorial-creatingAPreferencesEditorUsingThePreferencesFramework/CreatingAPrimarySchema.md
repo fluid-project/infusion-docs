@@ -1,6 +1,7 @@
 ---
 title: Creating a Primary Schema
 layout: default
+category: Tutorials
 ---
 
 ---

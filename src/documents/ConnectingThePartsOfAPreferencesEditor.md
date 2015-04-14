@@ -1,6 +1,7 @@
 ---
 title: Connecting the Parts of a Preferences Editor
 layout: default
+category: Infusion
 ---
 
 Creating a Preferences Editor using the Infusion Preferences Framework involves various pieces: schemas, Infusion components, templates, etc. This page describes what you need to do to connect all the parts together.
