@@ -4,13 +4,11 @@
   "description": "Infusion Documentation",
   "dependencies": {
     "URIjs": "^1.14.1",
-    "async": "^0.9.0",
     "docpad": "~6.69.1",
     "docpad-plugin-ghpages": "~2.4.4",
     "docpad-plugin-handlebars": "~2.3.0",
     "docpad-plugin-highlightjs": "~2.2.2",
     "docpad-plugin-marked": "~2.2.1",
-    "ncp": "^1.0.1",
-    "rimraf": "^2.3.2"
+    "fs-extra": "^0.18.0"
   }
 }

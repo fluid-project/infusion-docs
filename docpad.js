@@ -11,10 +11,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
 var URI = require("URIjs");
 var path = require("path");
-var ncp = require("ncp");
-var fs = require("fs");
-var rimraf = require("rimraf");
-var async = require("async");
+var fs = require('fs-extra');
 
 // The documentation root on GitHub:
 // Used to build URLs for "Edit on GitHub" links
@@ -64,37 +61,6 @@ var rootPath = process.cwd();
 var imagesSrcDir = path.join(rootPath, "src", "documents", "images");
 var imagesDestDir = "out/images";
 
-var copyImages = function (callback) {
-    ncp.ncp(imagesSrcDir, imagesDestDir, callback);
-};
-
-// Move the contents of the out directory to out/infusion/latest. We
-// need to do this to prepare the structure for the ghpages plugin as
-// it does not support deploying to a location other than the root.
-var moveToInfusionLatest = function (next) {
-    async.series([
-        function (callback) {
-            rimraf("tmp-out", callback);
-        },
-        function (callback) {
-            fs.rename("out", "tmp-out", callback);
-        },
-        function (callback) {
-            fs.mkdir("out", callback);
-        },
-        function (callback) {
-            fs.mkdir("out/infusion", callback);
-        },
-        function (callback) {
-            fs.rename("tmp-out", "out/infusion/latest", callback);
-        }
-    ], next);
-};
-
-var copyRedirects = function (callback) {
-    ncp.ncp(path.join(rootPath, "src", "redirects"), "out", callback);
-};
-
 module.exports = {
     rootPath: rootPath,
     ignorePaths: [ imagesSrcDir ],
@@ -113,12 +79,27 @@ module.exports = {
         }
     },
     events: {
-        writeAfter: function (opts, next) {
-            async.series([
-                copyImages,
-                moveToInfusionLatest,
-                copyRedirects
-            ], next);
+        generateBefore: function () {
+            // Empty the "out" directory before generation to ensure
+            // that we don't get multiple nested
+            // infusion/latest/... copies
+            fs.emptyDirSync("out");
+        },
+        writeAfter: function () {
+            // Copy the images
+            fs.copySync(imagesSrcDir, imagesDestDir);
+
+            // Move the contents of the out directory to
+            // out/infusion/latest. We need to do this to prepare the
+            // structure for the ghpages plugin as it does not support
+            // deploying to a location other than the root.
+            fs.removeSync("tmp-out");
+            fs.renameSync("out", "tmp-out");
+            fs.mkdirsSync("out/infusion");
+            fs.renameSync("tmp-out", "out/infusion/latest");
+
+            // Copy the redirect index.htmls
+            fs.copySync(path.join(rootPath, "src", "redirects"), "out");
         }
     }
 };
