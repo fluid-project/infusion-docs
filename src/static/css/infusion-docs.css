@@ -1,31 +1,31 @@
 @font-face {
-    font-family: "OpenSans";
-    src: url("../fonts/OpenSans-Regular.ttf");
+    font-family: "OpenSans", Arial, Helvetica;
+    src: url("../fonts/OpenSans-Regular.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "OpenSans-Bold";
-    src: url("../fonts/OpenSans-Bold.ttf");
+    src: url("../fonts/OpenSans-Bold.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "OpenSans-Semibold";
-    src: url("../fonts/OpenSans-Semibold.ttf");
+    src: url("../fonts/OpenSans-Semibold.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "OpenSans-Light";
-    src: url("../fonts/OpenSans-Light.ttf");
+    src: url("../fonts/OpenSans-Light.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "RobotoSlab";
-    src: url("../fonts/RobotoSlab-Regular.ttf");
+    src: url("../fonts/RobotoSlab-Regular.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "RobotoSlab-Bold";
-    src: url("../fonts/RobotoSlab-Bold.ttf");
+    src: url("../fonts/RobotoSlab-Bold.ttf") format('truetype');
 }
 
 @font-face {
@@ -68,10 +68,6 @@ pre {
     min-height: 44rem;
 }
 
-.infusion-docs a {
-    font-weight: bold;
-}
-
 .infusion-docs-mainContent a:hover {
     color: #ffcb00;
     background: #323232;
@@ -106,7 +102,7 @@ pre {
 .infusion-docs-container .infusion-docs-header {
     background-color: #323232;
     height: 3.2rem;
-    font-family: "OpenSans";
+    font-family: "OpenSans", Arial, Helvetica;
     font-size: 1.1rem;
     text-align: right;
     word-spacing: 2rem;
@@ -127,7 +123,7 @@ pre {
 .infusion-docs-container .infusion-docs-fluidLogo {
     text-align: left;
     font-size: 1.6rem;
-    font-family: "OpenSans-Light";
+    font-family: "OpenSans-Light", Arial, Helvetica;
     letter-spacing: 0.2rem;
 }
 
@@ -194,7 +190,6 @@ pre {
 }
 
 .infusion-docs-container {
-    font-family: "OpenSans";
     background-color: #f2f2f2;
 }
 
@@ -271,7 +266,7 @@ div.infusion-docs-note {
 }
 
 .infusion-docs-container .infusion-docs-figureCaption {
-    font-family: "OpenSans";
+    font-family: "OpenSans", Arial, Helvetica;
     font-size: 1rem;
     padding-top: 1rem;
     padding-left: 1.5rem;
@@ -290,7 +285,7 @@ div.infusion-docs-note {
     height: 6.6rem;
     padding-top: 2rem;
     color: #FFFFFF;
-    font-family: "OpenSans";
+    font-family: "OpenSans", Arial, Helvetica;
     font-size: 1.1rem;
     text-align: center;
     line-height: 0.5rem;
