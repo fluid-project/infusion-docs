@@ -48,14 +48,24 @@
          url("../fonts/github-1.ttf"),
          url("../fonts/github-1.eot");
 }
-html
-body {
+html body {
     font-size: 12px;
     font-size: 1.2rem;
+    line-height: 1.6;
 }
 
 pre {
     white-space: pre-wrap;
+}
+
+ /* override foundation, so UIO's line-spacing will work */
+.infusion-docs h1, .infusion-docs h2, .infusion-docs h3, .infusion-docs h4, .infusion-docs h5, .infusion-docs h6,
+.infusion-docs p,
+.infusion-docs table tbody tr td,
+.infusion-docs table tr td,
+.infusion-docs ul,
+.infusion-docs dl {
+    line-height: inherit;
 }
 
 .infusion-docs-container p {
@@ -105,7 +115,7 @@ pre {
 
 .infusion-docs-container .infusion-docs-header {
     background-color: #323232;
-    height: 6rem;
+    height: 7rem;
     font-family: "OpenSans";
     font-size: 1.1rem;
     text-align: right;
@@ -119,7 +129,7 @@ pre {
     font-family: "infusion_logo";
     content: "\e606";
     color: #ffb200;
-    font-size: 1.3rem;
+    font-size: 2rem;
     text-align: bottom;
     padding-right: 0.2rem;
 }
@@ -212,13 +222,11 @@ div.infusion-docs-note {
     border-color: #5DB93C;
     padding-left: 0.4rem;
     font-style: italic;
-    line-height: 1.6;
     margin-bottom: 2rem;
 }
 
 .infusion-docs-container .infusion-docs-githubLink a:before {
     display: inline-block;
-    line-height: 1.6;
     vertical-align: bottom;
     font-family: "github";
     content: "\e600";
@@ -227,14 +235,14 @@ div.infusion-docs-note {
 }
 
 .infusion-docs-container .infusion-docs-githubLink {
-    line-height: 1.6;
     margin-bottom: 2rem;
 }
 
 .infusion-docs-container h1 {
     font-size: 3.0rem;
     font-family: "RobotoSlab";
-    padding-top: 12.5rem;
+    margin-top: 6rem;
+    padding-top: 10rem;
     padding-bottom: 6rem;
 }
 
@@ -283,7 +291,6 @@ div.infusion-docs-note {
     color: #4c4c4c;
     text-align: left;
     margin-top: 1rem;
-    line-height: 1.5;
     border-top: solid;
     border-color: #f2f2f2;
     border-top-width: 0.3rem;
@@ -291,18 +298,12 @@ div.infusion-docs-note {
 
 .infusion-docs-container .infusion-docs-footer {
     background-color: #323232;
-    height: 6.6rem;
     padding-top: 2rem;
     color: #FFFFFF;
     font-family: "OpenSans";
     font-size: 1.1rem;
     text-align: center;
-    line-height: 0.5;
     max-width: 100%;
-}
-
-.infusion-docs-footer p {
-    line-height: 1;
 }
 
 .infusion-docs-footer a {
@@ -329,7 +330,7 @@ div.infusion-docs-note {
 }
 
 .infusion-docs-container .infusion-docs-toc {
-    margin-bottom: -6rem;
+    margin-bottom: -10rem;
 }
 .infusion-docs-container .infusion-docs-toc h1 {
     padding-top: 1rem;
