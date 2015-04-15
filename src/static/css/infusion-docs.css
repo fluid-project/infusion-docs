@@ -105,7 +105,7 @@ pre {
 
 .infusion-docs-container .infusion-docs-header {
     background-color: #323232;
-    height: 3.2rem;
+    height: 6rem;
     font-family: "OpenSans";
     font-size: 1.1rem;
     text-align: right;
@@ -129,6 +129,7 @@ pre {
     font-size: 1.6rem;
     font-family: "OpenSans-Light";
     letter-spacing: 0.2rem;
+    margin-top: 2.7rem;
 }
 
 .infusion-docs-container .infusion-docs-fluidLogo a {
@@ -314,6 +315,23 @@ div.infusion-docs-note {
     font-size: 1.2rem
 }
 
+.fl-prefsEditor-separatedPanel .fl-panelBar .fl-prefsEditor-buttons {
+    margin-right: 2rem;
+}
+.fl-prefsEditor-separatedPanel .fl-prefsEditor-showHide,
+.fl-prefsEditor-separatedPanel .fl-prefsEditor-reset {
+    font-size: 1.1rem;
+    padding-top: 0.5rem;
+    height: 0.8rem;
+}
+
+.infusion-docs-container .infusion-docs-toc {
+    margin-bottom: -6rem;
+}
+.infusion-docs-container .infusion-docs-toc h1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
 @media only screen and (max-width: 50rem) {
     .infusion-docs-container .infusion-docs-mainContent {
         max-width: 100%;
