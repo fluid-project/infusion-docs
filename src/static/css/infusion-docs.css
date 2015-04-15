@@ -111,7 +111,7 @@ pre {
     text-align: right;
     word-spacing: 2rem;
     padding-right: 2rem;
-    line-height: 3rem;
+    line-height: 2;
     max-width: 100%;
 }
 
@@ -129,13 +129,16 @@ pre {
     font-size: 1.6rem;
     font-family: "OpenSans-Light";
     letter-spacing: 0.2rem;
-    margin-top: 2.7rem;
+    margin-top: 2.5rem;
 }
 
 .infusion-docs-container .infusion-docs-fluidLogo a {
     color: #ffb200;
 }
 
+.infusion-docs-container .infusion-docs-header nav {
+    line-height: 3;
+}
 .infusion-docs-container .infusion-docs-header nav a {
     color: #FFFFFF;
 }
@@ -209,13 +212,13 @@ div.infusion-docs-note {
     border-color: #5DB93C;
     padding-left: 0.4rem;
     font-style: italic;
-    line-height: 1.6rem;
+    line-height: 1.6;
     margin-bottom: 2rem;
 }
 
 .infusion-docs-container .infusion-docs-githubLink a:before {
     display: inline-block;
-    line-height: 1.6rem;
+    line-height: 1.6;
     vertical-align: bottom;
     font-family: "github";
     content: "\e600";
@@ -224,7 +227,7 @@ div.infusion-docs-note {
 }
 
 .infusion-docs-container .infusion-docs-githubLink {
-    line-height: 1.6rem;
+    line-height: 1.6;
     margin-bottom: 2rem;
 }
 
@@ -280,7 +283,7 @@ div.infusion-docs-note {
     color: #4c4c4c;
     text-align: left;
     margin-top: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.5;
     border-top: solid;
     border-color: #f2f2f2;
     border-top-width: 0.3rem;
@@ -294,12 +297,12 @@ div.infusion-docs-note {
     font-family: "OpenSans";
     font-size: 1.1rem;
     text-align: center;
-    line-height: 0.5rem;
+    line-height: 0.5;
     max-width: 100%;
 }
 
 .infusion-docs-footer p {
-    line-height: 1rem;
+    line-height: 1;
 }
 
 .infusion-docs-footer a {
