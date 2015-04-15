@@ -147,7 +147,7 @@ pre {
 }
 
 .infusion-docs-container .infusion-docs-header nav {
-    line-height: 3;
+    margin-top: 1rem;
 }
 .infusion-docs-container .infusion-docs-header nav a {
     color: #FFFFFF;
