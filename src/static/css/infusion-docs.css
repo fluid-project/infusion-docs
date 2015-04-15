@@ -335,9 +335,25 @@ div.infusion-docs-note {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
+.fl-theme-yb .infusion-docs-fluidLogoText::before {
+    color: #ffff00;
+}
+.fl-theme-wb .infusion-docs-fluidLogoText::before {
+    color: #ffffff;
+}
+.fl-theme-by .infusion-docs-fluidLogoText::before,
+.fl-theme-bw .infusion-docs-fluidLogoText::before {
+    color: #000000;
+}
+.fl-theme-lgdg .infusion-docs-fluidLogoText::before {
+    color: #bdbdbb;
+}
+
 @media only screen and (max-width: 50rem) {
     .infusion-docs-container .infusion-docs-mainContent {
         max-width: 100%;
         padding-right: 1rem;
         padding-left: 1rem;
     }
+}
