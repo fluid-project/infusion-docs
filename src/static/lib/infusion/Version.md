@@ -28,6 +28,7 @@ code that is included in the infusion-uio.js file or is not required by this plu
 * src/framework/preferences/preferencesDependencies.json
 * src/framework/renderer/
 * src/lib/fastXmlPull/
+* src/lib/fonts/fontsDependencies.json
 * src/lib/jquery/core/
 * src/lib/jquery/plugins/
 * src/lib/jquery/ui/jQueryUICoreDependencies.json

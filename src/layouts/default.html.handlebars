@@ -18,16 +18,6 @@
     </head>
     <body class="infusion-docs">
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-                    "templatePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/html/' document.url}}}",
-                    "messagePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/messages/' document.url}}}",
-                    "tocTemplate": "{{{relativeUrl '/lib/infusion/src/components/tableOfContents/html/TableOfContents.html' document.url}}}"
-                });
-            });
-        </script>
-
         <div class="container infusion-docs-container">
 
             <!-- BEGIN markup for Preference Editor -->
@@ -44,6 +34,14 @@
                 </div>
             </div>
             <!-- END markup for Preference Editor -->
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    "templatePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/html/' document.url}}}",
+                    "messagePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/messages/' document.url}}}",
+                    "tocTemplate": "{{{relativeUrl '/lib/infusion/src/components/tableOfContents/html/TableOfContents.html' document.url}}}"
+                });
+            </script>
 
             <header class="row infusion-docs-header">
                 <div class="infusion-docs-fluidLogo small-12 medium-3 column">

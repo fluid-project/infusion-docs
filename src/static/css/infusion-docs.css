@@ -326,7 +326,8 @@ div.infusion-docs-note {
 .fl-prefsEditor-separatedPanel .fl-prefsEditor-reset {
     font-size: 1.1rem;
     padding-top: 0.5rem;
-    height: 0.8rem;
+    height: 2rem;
+    margin-bottom: 0.7rem;
 }
 
 .infusion-docs-container .infusion-docs-toc {
