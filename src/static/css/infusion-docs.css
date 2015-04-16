@@ -58,6 +58,16 @@ pre {
     white-space: pre-wrap;
 }
 
+a:focus {
+    outline: solid 0.2rem #008cba;
+}
+
+.infusion-docs-header a:focus,
+.infusion-docs-footer a:focus {
+    outline: 0.2rem solid #ffb200;
+}
+
+
 .infusion-docs-container p {
     font-size: 1.2rem;
 }
