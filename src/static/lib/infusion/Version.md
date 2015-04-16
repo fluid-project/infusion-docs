@@ -37,3 +37,4 @@ code that is included in the infusion-uio.js file or is not required by this plu
 * src/lib/json/
 * src/lib/normamlize/normalizeDependencies.json
 * README.md
+* ReleaseNotes.md

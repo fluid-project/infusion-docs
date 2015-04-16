@@ -338,6 +338,14 @@ div.infusion-docs-note {
     padding-bottom: 1rem;
 }
 
+.infusion-docs.fl-text-larger .fl-prefsEditor-separatedPanel .fl-prefsEditor-showHide,
+.infusion-docs.fl-text-larger .fl-prefsEditor-separatedPanel .fl-prefsEditor-reset{
+    height: 2.5rem;
+}
+.infusion-docs.fl-text-larger .fl-prefsEditor-separatedPanel .fl-prefsEditor-showHide {
+    min-width: 13rem;
+}
+
 .fl-theme-yb .infusion-docs-fluidLogoText::before {
     color: #ffff00;
 }
