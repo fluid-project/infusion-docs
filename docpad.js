@@ -13,6 +13,8 @@ var URI = require("URIjs");
 var path = require("path");
 var fs = require("fs-extra");
 
+var docsVersion = "development";
+
 // The documentation root on GitHub:
 // Used to build URLs for "Edit on GitHub" links
 var githubDocRoot = "https://github.com/fluid-project/infusion-docs/blob/master/src/documents/";
@@ -82,7 +84,7 @@ module.exports = {
         generateBefore: function () {
             // Empty the "out" directory before generation to ensure
             // that we don't get multiple nested
-            // infusion/latest/... copies
+            // infusion/<version>/... copies
             fs.emptyDirSync("out");
         },
         writeAfter: function () {
@@ -90,13 +92,13 @@ module.exports = {
             fs.copySync(imagesSrcDir, imagesDestDir);
 
             // Move the contents of the out directory to
-            // out/infusion/latest. We need to do this to prepare the
+            // out/infusion/<version>. We need to do this to prepare the
             // structure for the ghpages plugin as it does not support
             // deploying to a location other than the root.
             fs.removeSync("tmp-out");
             fs.renameSync("out", "tmp-out");
             fs.mkdirsSync("out/infusion");
-            fs.renameSync("tmp-out", "out/infusion/latest");
+            fs.renameSync("tmp-out", "out/infusion/" + docsVersion);
 
             // Copy the files for GitHub Pages:
             // redirect index.htmls and CNAME
