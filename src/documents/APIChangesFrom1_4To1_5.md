@@ -35,15 +35,15 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 * `expander` renamed to `transform`
 
-### `fluid.defaults`
+### fluid.defaults`
 
 * the `true` flag has been removed
 
-### `fluid.merge` ###
+### fluid.merge ###
 
 * the `reverse` merge policy has been removed
 * now returns a fresh block of options, rather than a target passed in.
 
-### `fluid.alias` ###
+### fluid.alias ###
 
 * `fluid.alias` has been removed

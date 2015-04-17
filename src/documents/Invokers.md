@@ -15,7 +15,7 @@ around the component tree and within the argument list.
 
 ## Types of Invokers ##
 
-###Standard invoker binding to a function using `funcName`, `func` ###
+###Standard invoker binding to a function using funcName, func ###
 
 An invoker can specified with either the **`funcName`** property to reference a free function by its
 global name (e.g. `fluid.copy`, `console.log`, etc.) or the **`func`** property to reference an existing

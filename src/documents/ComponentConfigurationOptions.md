@@ -12,7 +12,7 @@ Some predefined options should not be overridden by integrators: They are strict
 
 The following options are supported by all component grades:
 
-### `gradeNames` ###
+### gradeNames ###
 <table>
   <tr>
     <th>Description</th>
@@ -38,7 +38,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `nickName` ###
+### nickName ###
 <table>
   <tr>
     <th>Description</th>
@@ -63,7 +63,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `mergePolicy` ###
+### mergePolicy ###
 <table>
   <tr>
     <th>Description</th>
@@ -92,7 +92,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `invokers` ###
+### invokers ###
 <table>
   <tr>
     <th>Description</th>
@@ -116,7 +116,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `members` ###
+### members ###
 <table>
   <tr>
     <th>Description</th>
@@ -141,7 +141,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `components` ###
+### components ###
 <table>
   <tr>
     <th>Description</th>
@@ -179,7 +179,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `dynamicComponents` ###
+### dynamicComponents ###
 <table>
   <tr>
     <th>Description</th>
@@ -224,7 +224,7 @@ Components defined with a grade of `modelComponent/modelRelayComponent` support 
 
 See also: [Component Grades](ComponentGrades.md)
 
-### `model` ###
+### model ###
 <table>
   <tr>
     <th>Description</th>
@@ -267,7 +267,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `applier` ###
+### applier ###
 <table>
   <tr>
     <th>Description</th>
@@ -296,7 +296,7 @@ This option is most commonly used to share a common ChangeApplier between compon
   </tr>
 </table>
 
-### `changeApplierOptions` ###
+### changeApplierOptions ###
 <table>
   <tr>
     <th>Description</th>
@@ -344,7 +344,7 @@ Components defined with a grade of `eventedComponent` support all of the [common
 
 See also: [Component Grades](ComponentGrades.md)
 
-### `events` ###
+### events ###
 <table>
   <tr>
     <th>Description</th>
@@ -372,7 +372,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `listeners` ###
+### listeners ###
 <table>
   <tr>
     <th>Description</th>
@@ -426,7 +426,7 @@ Components defined with a grade of `viewComponent` are also model components and
 
 Component developers are free to define their own additional options.
 
-### `selectors` ###
+### selectors ###
 <table>
   <tr>
     <th>Description</th>
@@ -481,7 +481,7 @@ Components defined with a grade of `rendererComponent` are also view components 
 
 Component developers are free to define their own additional options.
 
-### `selectorsToIgnore` ###
+### selectorsToIgnore ###
 <table>
   <tr>
     <th>Description</th>
@@ -506,7 +506,7 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### `repeatingSelectors` ###
+### repeatingSelectors ###
 <table>
   <tr>
     <th>Description</th>
@@ -531,7 +531,7 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### `produceTree` ###
+### produceTree ###
 <table>
   <tr>
     <th>Description</th>
@@ -565,7 +565,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `protoTree` ###
+### protoTree ###
 <table>
   <tr>
     <th>Description</th>
@@ -633,7 +633,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `resources` ###
+### resources ###
 <table>
   <tr>
     <th>Description</th>
@@ -678,7 +678,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `strings` ###
+### strings ###
 <table>
   <tr>
     <th>Description</th>
@@ -724,7 +724,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `rendererFnOptions` ###
+### rendererFnOptions ###
 <table>
   <tr>
     <th>Description</th>
@@ -759,7 +759,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `rendererOptions` ###
+### rendererOptions ###
 <table>
   <tr>
     <th>Description</th>
@@ -794,7 +794,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `renderOnInit` ###
+### renderOnInit ###
 <table>
   <tr>
     <th>Description</th>
