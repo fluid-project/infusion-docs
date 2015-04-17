@@ -45,8 +45,7 @@
                 "sectionName": "ChangeApplier",
                 "pages":
                 [
-                    { "pageName": "ChangeApplier", "href": "/ChangeApplier.html" },
-                    { "pageName": "ChangeApplier API", "href": "/ChangeApplierAPI.html" }
+                    { "pageName": "ChangeApplier", "href": "/ChangeApplier.html" }
                 ]
             },
             {
@@ -114,17 +113,51 @@
         "sections":
         [
             {
-                "sectionName": "",
+                "sectionName":"Getting Started",
                 "pages":
                 [
                     { "pageName": "Getting started with Infusion", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
-                    { "pageName": "User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" },
+                    { "pageName": "Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
+                    { "pageName": "Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
+                    { "pageName": "Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
+                    { "pageName": "Basic Component Creation - Little Components", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-LittleComponents.html"},
+                    { "pageName": "Model Components", "href": "/tutorial-gettingStartedWithInfusion/ModelComponents.html"},
+                    { "pageName": "Evented Components", "href": "/tutorial-gettingStartedWithInfusion/EventedComponents.html"},
+                    { "pageName": "View Components", "href": "/tutorial-gettingStartedWithInfusion/ViewComponents.html"},
+                    { "pageName": "Renderer Components", "href": "/tutorial-gettingStartedWithInfusion/RendererComponents.html"},
+                    { "pageName": "Subcomponents", "href": "/tutorial-gettingStartedWithInfusion/Subcomponents.html"}
+                ]
+            },
+            {
+                "sectionName": "Preferences Editor",
+                "pages":
+                [
+                    { "pageName": "Creating a preferences Editor Using the Preferences Framework", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.html" },
+                    { "pageName": "Creating a Primary Schema", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPrimarySchema.html" },
+                    { "pageName": "Creating Panels", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingPanels.html" },
+                    { "pageName": "Creating Enactors", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingEnactors.html" },
+                    { "pageName": "Creating an Auxiliary Schema", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAnAuxiliarySchema.html" },
+                    { "pageName": "Instantiating the Preferences Editor", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/InstantiatingThePreferencesEditor.html" },
+                    { "pageName": "Instantiating the Enhancer and Settings Store Only", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/InstantiatingTheEnhancerAndSettingsStoreOnly.html" },
+                    { "pageName": "Styling the Preferences Editor", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/StylingThePreferencesEditor.html" },
                     { "pageName": "Adding a Basic Preferences Editor to a Site", "href": "/to-do/AddingPrefsEditorToSite.html" },
                     { "pageName": "Working With A Preferences Editor On Your Site", "href": "/to-do/WorkingWithPrefsEditorOnSite.html" },
-                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.html" },
-                    { "pageName": "How to Create and Use Font Icons", "href": "/tutorial-creatingANewAdjusterUI/HowToCreateAndUseFontIcons.html" },
-                    { "pageName": "Creating a preferences Editor Using the Preferences Framework", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.html" },
                     { "pageName": "Using String Templates", "href": "/tutorial-usingStringTemplates/UsingStringTemplates.html" }
+                ]
+            },
+            {
+                "sectionName": "Creating an Adjuster UI",
+                "pages":
+                [
+                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.html" },
+                    { "pageName": "How to Create and Use Font Icons", "href": "/tutorial-creatingANewAdjusterUI/HowToCreateAndUseFontIcons.html" }
+                ]
+            },
+            {
+                "sectionName": "User Interface Options",
+                "pages":
+                [
+                    { "pageName": "User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" }
                 ]
             }
         ]
@@ -150,6 +183,7 @@
                     { "pageName": "Uploader", "href": "/UploaderAPI.html" },
                     { "pageName": "Undo", "href": "/to-do/UndoAPI.html" },
                     { "pageName": "Table of Contents", "href": "/to-do/TableOfContentsAPI.html" },
+                    { "pageName": "ChangeApplier API", "href": "/ChangeApplierAPI.html" },
                     { "pageName": "Framework API", "href": "/to-do/FrameworkAPI.html" },
                     { "pageName": "DOM Binder API", "href": "/DOMBinderAPI.html" }
                 ]
