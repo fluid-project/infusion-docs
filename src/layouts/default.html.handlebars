@@ -7,20 +7,48 @@
         <link rel="stylesheet" href="{{{relativeUrl '/css/normalize.css' document.url}}}">
         <link rel="stylesheet" href="{{{relativeUrl '/css/foundation.css' document.url}}}">
         <link rel="stylesheet" href="{{{relativeUrl '/css/highlightjs-custom.css' document.url}}}">
+        <link rel="stylesheet" type="text/css" href="{{{relativeUrl '/lib/infusion/src/framework/preferences/css/Enactors.css' document.url}}}" />
+        <link rel="stylesheet" type="text/css" href="{{{relativeUrl '/lib/infusion/src/framework/preferences/css/PrefsEditor.css' document.url}}}" />
+        <link rel="stylesheet" type="text/css" href="{{{relativeUrl '/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css' document.url}}}" />
         <link rel="stylesheet" href="{{{relativeUrl '/css/infusion-docs.css' document.url}}}">
 
         <link rel="icon" type="image/png" href="{{{relativeUrl '/images/favico.png' document.url}}}">
+
+        <script type="text/javascript" src="{{{relativeUrl '/lib/infusion/infusion-uio.js' document.url}}}"></script>
     </head>
     <body class="infusion-docs">
 
         <div class="container infusion-docs-container">
 
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                    </span>
+                </div>
+            </div>
+            <!-- END markup for Preference Editor -->
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    "templatePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/html/' document.url}}}",
+                    "messagePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/messages/' document.url}}}",
+                    "tocTemplate": "{{{relativeUrl '/lib/infusion/src/components/tableOfContents/html/TableOfContents.html' document.url}}}"
+                });
+            </script>
+
             <header class="row infusion-docs-header">
-                <div class="infusion-docs-fluidLogo small-12 medium-6 column">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
                     <a class="infusion-docs-fluidLogoText" href="{{{relativeUrl '/index.html' document.url}}}" title="Infusion">infusion</a>
                 </div>
 
-                <nav class="small-12 medium-6 column">
+                <nav class="small-12 medium-9 column">
                     <a href="{{{relativeUrl '/index.html' document.url}}}" title="Infusion">Infusion</a>
                     <a href="{{{relativeUrl '/index-tutorials.html' document.url}}}" title="Tutorials">Tutorials</a>
                     <a href="{{{relativeUrl '/index-api.html' document.url}}}" title="A P I">API</a>
@@ -53,6 +81,8 @@
 
                 <article class="infusion-docs-mainContent small-12 medium-9 column">
 
+                    <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
                     <h1>{{document.title}}</h1>
 
                     <p class="infusion-docs-githubLink"><a href="{{githubLocation}}" target="_blank">Edit on GitHub</a></p>
@@ -71,8 +101,8 @@
             </div>
 
             <footer class="row infusion-docs-footer">
-                <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a></p>
-                <p>Fluid is a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
             </footer>
 
         </div> <!-- end container -->

@@ -48,25 +48,25 @@
          url("../fonts/github-1.ttf"),
          url("../fonts/github-1.eot");
 }
-html
-body {
+html body {
     font-size: 12px;
     font-size: 1.2rem;
+    line-height: 1.6;
 }
 
 pre {
     white-space: pre-wrap;
 }
 
-a:focus {
-    outline: solid 0.2rem #008cba;
+ /* override foundation, so UIO's line-spacing will work */
+.infusion-docs h1, .infusion-docs h2, .infusion-docs h3, .infusion-docs h4, .infusion-docs h5, .infusion-docs h6,
+.infusion-docs p,
+.infusion-docs table tbody tr td,
+.infusion-docs table tr td,
+.infusion-docs ul,
+.infusion-docs dl {
+    line-height: inherit;
 }
-
-.infusion-docs-header a:focus,
-.infusion-docs-footer a:focus {
-    outline: 0.2rem solid #ffb200;
-}
-
 
 .infusion-docs-container p {
     font-size: 1.2rem;
@@ -111,13 +111,13 @@ a:focus {
 
 .infusion-docs-container .infusion-docs-header {
     background-color: #323232;
-    height: 3.2rem;
+    height: 7rem;
     font-family: "OpenSans", Arial, Helvetica;
     font-size: 1.1rem;
     text-align: right;
     word-spacing: 2rem;
     padding-right: 2rem;
-    line-height: 3rem;
+    line-height: 2;
     max-width: 100%;
 }
 
@@ -125,7 +125,7 @@ a:focus {
     font-family: "infusion_logo";
     content: "\e606";
     color: #ffb200;
-    font-size: 1.3rem;
+    font-size: 2rem;
     text-align: bottom;
     padding-right: 0.2rem;
 }
@@ -135,12 +135,16 @@ a:focus {
     font-size: 1.6rem;
     font-family: "OpenSans-Light", Arial, Helvetica;
     letter-spacing: 0.2rem;
+    margin-top: 2.5rem;
 }
 
 .infusion-docs-container .infusion-docs-fluidLogo a {
     color: #ffb200;
 }
 
+.infusion-docs-container .infusion-docs-header nav {
+    margin-top: 1rem;
+}
 .infusion-docs-container .infusion-docs-header nav a {
     color: #FFFFFF;
 }
@@ -213,13 +217,11 @@ div.infusion-docs-note {
     border-color: #5DB93C;
     padding-left: 0.4rem;
     font-style: italic;
-    line-height: 1.6rem;
     margin-bottom: 2rem;
 }
 
 .infusion-docs-container .infusion-docs-githubLink a:before {
     display: inline-block;
-    line-height: 1.6rem;
     vertical-align: bottom;
     font-family: "github";
     content: "\e600";
@@ -228,14 +230,14 @@ div.infusion-docs-note {
 }
 
 .infusion-docs-container .infusion-docs-githubLink {
-    line-height: 1.6rem;
     margin-bottom: 2rem;
 }
 
 .infusion-docs-container h1 {
     font-size: 3.0rem;
     font-family: "RobotoSlab";
-    padding-top: 12.5rem;
+    margin-top: 6rem;
+    padding-top: 10rem;
     padding-bottom: 6rem;
 }
 
@@ -284,7 +286,6 @@ div.infusion-docs-note {
     color: #4c4c4c;
     text-align: left;
     margin-top: 1rem;
-    line-height: 1.5rem;
     border-top: solid;
     border-color: #f2f2f2;
     border-top-width: 0.3rem;
@@ -292,18 +293,12 @@ div.infusion-docs-note {
 
 .infusion-docs-container .infusion-docs-footer {
     background-color: #323232;
-    height: 6.6rem;
     padding-top: 2rem;
     color: #FFFFFF;
     font-family: "OpenSans", Arial, Helvetica;
     font-size: 1.1rem;
     text-align: center;
-    line-height: 0.5rem;
     max-width: 100%;
-}
-
-.infusion-docs-footer p {
-    line-height: 1rem;
 }
 
 .infusion-docs-footer a {
@@ -319,9 +314,51 @@ div.infusion-docs-note {
     font-size: 1.2rem
 }
 
+.fl-prefsEditor-separatedPanel .fl-panelBar .fl-prefsEditor-buttons {
+    margin-right: 2rem;
+}
+.fl-prefsEditor-separatedPanel .fl-prefsEditor-showHide,
+.fl-prefsEditor-separatedPanel .fl-prefsEditor-reset {
+    font-size: 1.1rem;
+    padding-top: 0.5rem;
+    height: 2rem;
+    margin-bottom: 0.7rem;
+}
+
+.infusion-docs-container .infusion-docs-toc {
+    margin-bottom: -10rem;
+}
+.infusion-docs-container .infusion-docs-toc h1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.infusion-docs.fl-text-larger .fl-prefsEditor-separatedPanel .fl-prefsEditor-showHide,
+.infusion-docs.fl-text-larger .fl-prefsEditor-separatedPanel .fl-prefsEditor-reset{
+    height: 2.5rem;
+}
+.infusion-docs.fl-text-larger .fl-prefsEditor-separatedPanel .fl-prefsEditor-showHide {
+    min-width: 13rem;
+}
+
+.fl-theme-yb .infusion-docs-fluidLogoText::before {
+    color: #ffff00;
+}
+.fl-theme-wb .infusion-docs-fluidLogoText::before {
+    color: #ffffff;
+}
+.fl-theme-by .infusion-docs-fluidLogoText::before,
+.fl-theme-bw .infusion-docs-fluidLogoText::before {
+    color: #000000;
+}
+.fl-theme-lgdg .infusion-docs-fluidLogoText::before {
+    color: #bdbdbb;
+}
+
 @media only screen and (max-width: 50rem) {
     .infusion-docs-container .infusion-docs-mainContent {
         max-width: 100%;
         padding-right: 1rem;
         padding-left: 1rem;
     }
+}
