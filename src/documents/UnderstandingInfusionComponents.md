@@ -48,8 +48,7 @@ Most will have:
 * a **creator function**
   * the function that implementors invoke, which returns the component object itself
 * configuration options
-  * various values that control the operation of the component, which can be overridden by implementors
-        to customize the component
+  * various values that control the operation of the component, which can be overridden by implementors to customize the component
 * public functions
 
 Depending on what the component is for, some will include infrastructure to support
