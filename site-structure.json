@@ -76,7 +76,8 @@
                     { "pageName": "Panels", "href": "/Panels.html" },
                     { "pageName": "Composite Panels", "href": "/CompositePanels.html" },
                     { "pageName": "Conditional Subpanels", "href": "/ConditionalSubpanels.html" },
-                    { "pageName": "Localization in the Preferences Framework", "href": "/LocalizationInThePreferencesFramework.html" }
+                    { "pageName": "Localization in the Preferences Framework", "href": "/LocalizationInThePreferencesFramework.html" },
+                    { "pageName": "Using String Templates", "href": "/tutorial-usingStringTemplates/UsingStringTemplates.html" }
                 ]
             },
             {
@@ -157,13 +158,6 @@
                 "pages":
                 [
                     { "pageName": "User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" }
-                ]
-            },
-            {
-                "sectionName": "",
-                "pages":
-                [
-                    { "pageName": "Using String Templates", "href": "/tutorial-usingStringTemplates/UsingStringTemplates.html" }
                 ]
             }
         ]
