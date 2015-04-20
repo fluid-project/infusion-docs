@@ -22,7 +22,7 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 ### UI Options ###
 
 * Major refactoring into a preferences framework
-    * See migration guide
+** See migration guide
 
 ### Uploader ###
 
@@ -35,7 +35,7 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 * `expander` renamed to `transform`
 
-### fluid.defaults`
+### fluid.defaults ###
 
 * the `true` flag has been removed
 

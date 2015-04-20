@@ -60,7 +60,7 @@ For detailed information on how to use this function, see [fluid.selfRender](htt
 
 In addition to these primary ways of using the Renderer, there are a several other functions that are useful in certain circumstances. These are described here.
 
-### fluid.rerender ###
+### fluid.reRender ###
 
 For detailed information on how to use this function, see [fluid.reRender](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1480-L1527).
 

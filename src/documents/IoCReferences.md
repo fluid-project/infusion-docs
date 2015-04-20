@@ -98,7 +98,7 @@ For a conventional IoC reference (of the style `<componentRef>` rather than the 
 
 The set of components which are in scope for resolution from this site are shown in yellow in this diagram. These are components which are either i) an ancestor of the component holding the reference site, or ii) a sibling of such a component. The context reference matches a component if it matches via one of the 3 rules in the above table - **either** it agrees with a fully-qualified grade or type name of a component, **or** it agrees with the last path segment of such a name. If no context name matches anywhere in the tree, the reference expression resolves to `undefined`. In this case, if the path segments following the context name in the reference expression are not empty, the framework will throw an error.
 
-## Examples of {<componentRef>} ##
+## Examples of {&lt;componentRef&gt;} ##
 
 In the example below, the IoC reference `{that}` refers to the component in which it is being used.
 
@@ -165,7 +165,7 @@ fluid.defaults("fluid.prefs.enactor.tableOfContents", {
 });
 ```
 
-## Examples of {<componentRef>}.<path to member> ##
+## Examples of {&lt;componentRef&gt;}.&lt;path to member&gt; ##
 
 The example below includes several IoC references. All of them are inside a subcomponent declaration and all include `{controllers}`, which in this case is a reference to the parent component. Specifically:
 
@@ -220,7 +220,7 @@ fluid.defaults("fluid.moduleLayoutHandler", {
 });
 ```
 
-## Examples of {<iocss expression>} ##
+## Examples of {&lt;iocss expression&gt;} ##
 
 The example below uses an [IoCSS](IoCSS.md) expression `{that > moreText}.options.selectors.images`. The expression refers to the `images` selector in the `moreText` subcomponent that is a direct descendent of the current component.
 

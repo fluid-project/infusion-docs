@@ -48,7 +48,7 @@ A Renderer Template is an HTML file or snippet that provides guidance to the Ren
 
 ### Component Trees ###
 
-A renderer component tree is an abstract representation of how the data is to be rendered. A **renderer component** (not to be confused with [Infusion Components](../to-do/UnderstandingInfusionComponents.md)) is a JavaScript object that represent the contents and data binding function of a view, separate from any particular rendering of it.
+A renderer component tree is an abstract representation of how the data is to be rendered. A **renderer component** (not to be confused with [Infusion Components](../UnderstandingInfusionComponents.md)) is a JavaScript object that represent the contents and data binding function of a view, separate from any particular rendering of it.
 
 The simplest way to specify a component tree is to create a function that returns the tree and specify the function name using the `produceTree` option (see the example below).
 
