@@ -73,7 +73,7 @@ var tts = fluid.textToSpeech({
 
 ## Supported Methods ##
 
-### `queueSpeech` ###
+### queueSpeech ###
 
 <table>
     <tbody>
@@ -123,7 +123,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### `cancel` ###
+### cancel ###
 
 <table>
     <tbody>
@@ -146,7 +146,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### `pause` ###
+### pause ###
 
 <table>
     <tbody>
@@ -169,7 +169,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### `resume` ###
+### resume ###
 
 <table>
     <tbody>
@@ -192,7 +192,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### `getVoices` ###
+### getVoices ###
 
 <table>
     <tbody>
@@ -229,7 +229,7 @@ fluid.queueSpeech("Hello world", false, {
 
 The events fired by the Text To Speech component are described below.
 
-### `onStart` ###
+### onStart ###
 
 <table>
     <tbody>
@@ -252,7 +252,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onStop` ###
+### onStop ###
 
 <table>
     <tbody>
@@ -275,7 +275,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onPause` ###
+### onPause ###
 
 <table>
     <tbody>
@@ -298,7 +298,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onResume` ###
+### onResume ###
 
 <table>
     <tbody>
@@ -321,7 +321,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onError` ###
+### onError ###
 
 <table>
     <tbody>
@@ -344,7 +344,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onSpeechQueued` ###
+### onSpeechQueued ###
 
 <table>
     <tbody>
@@ -372,7 +372,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-## `utteranceOpts` Option ##
+## utteranceOpts` Option ##
 
 <div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the [Component Configuration Options](ComponentConfigurationOptions.md) document for a full description of infusion component options.</div>
 
@@ -382,7 +382,7 @@ The only option supported by the Text To Speech component is `utteranceOpts`. Th
 
 These attributes include:
 
-### `text` ###
+### text ###
 
 <table>
     <tbody>
@@ -416,7 +416,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `lang` ###
+### lang ###
 
 <table>
     <tbody>
@@ -449,7 +449,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `voiceURI` ###
+### voiceURI ###
 
 <table>
     <tbody>
@@ -489,7 +489,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `volume` ###
+### volume ###
 
 <table>
     <tbody>
@@ -522,7 +522,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `rate` ###
+### rate ###
 
 <table>
     <tbody>
@@ -555,7 +555,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `pitch` ###
+### pitch ###
 
 <table>
     <tbody>

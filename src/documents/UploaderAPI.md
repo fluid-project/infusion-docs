@@ -656,7 +656,7 @@ strings: {
     </tbody>
 </table>
 
-### `queueSettings` Options ###
+### queueSettings Options ###
 
 <table>
     <thead>
@@ -728,7 +728,7 @@ strings: {
     </tbody>
 </table>
 
-### `htmlStrategy` Options ###
+### htmlStrategy Options ###
 
 <table>
     <thead>
