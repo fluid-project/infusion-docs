@@ -52,7 +52,7 @@ In the `distributeOptions` block above, the context `{that > templateLoader}` is
 
 As well as converting the exposed options structure of a component into a more compact form, `distributeOptions` is also a powerful tool for maintaining API stability for a component or family of components. Since the binding of IoCSS selectors such as `that > templateLoader` onto child components is flexible, the component tree could be refactored in quite an aggressive way without requiring changes in either the user's configuration, or even the `distributeOptions` block itself. If the refactoring was even more thorough (involving wholesale removal of the target component, or a change in its important grades), the developer could still maintain stability of the external user API just by changing the `distributeOptions` block. In terms of a standard discussion on [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern "Design Patterns"), the use of `distributeOptions` could be seen as an automated and declarative scheme for achieving the ends of the [Facade Design Pattern](https://en.wikipedia.org/wiki/Facade_pattern "Facade Design Pattern"), without the need for either user or developer code.
 
-## `distributeOptions` format ##
+## distributeOptions format ##
 
 The `distributeOptions` option is a top-level block supported by every IoC-configured component, holding an array of objects (or single object) containing the following properties:
 
@@ -81,7 +81,7 @@ Descendent rules
 |E F|Matches any F component that is a descendant of an E component|
 |E > F|Matches any F component that is a direct child of an E component|
 
-## Example: `source` ##
+## Example: source ##
 ```javascript
 fluid.defaults("fluid.tests.uploader", {
     gradeNames: ["fluid.littleComponent", "autoInit"],
@@ -109,7 +109,7 @@ fluid.defaults("fluid.tests.uploader", {
 });
 ```
 
-## Example: `record` ##
+## Example: record ##
 ```javascript
 fluid.defaults("fluid.moduleLayoutHandler", {
     gradeNames: ["fluid.layoutHandler", "autoInit"],

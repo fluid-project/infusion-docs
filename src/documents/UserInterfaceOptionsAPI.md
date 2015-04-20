@@ -93,7 +93,7 @@ var myComponent = component.name("#myContainerID", {
 For information on the different types of events, see [Infusion Event System](InfusionEventSystem.md).
 
 
-### `onReady` ###
+### onReady ###
 
 <table>
     <tbody>
@@ -119,7 +119,7 @@ For information on the different types of events, see [Infusion Event System](In
     </tbody>
 </table>
 
-### `onPrefsEditorReady` ###
+### onPrefsEditorReady ###
 
 <table>
     <tbody>
@@ -163,7 +163,7 @@ var uio = fluid.uiOptions.prefsEditor(".myContainer", {
 
 The options supported by UI Options are described below.
 
-### `tocTemplate` ###
+### tocTemplate ###
 
 <table>
     <tbody>
@@ -200,7 +200,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `templatePrefix` ###
+### templatePrefix ###
 
 <table>
     <tbody>
@@ -235,7 +235,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `messagePrefix` ###
+### messagePrefix ###
 
 <table>
     <tbody>
@@ -270,7 +270,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `prefsEditor` ###
+### prefsEditor ###
 
 <table>
     <tbody>
@@ -304,7 +304,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `prefsEditorType` ###
+### prefsEditorType ###
 
 <table>
     <tbody>
@@ -333,7 +333,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `enhancerType` ###
+### enhancerType ###
 
 <table>
     <tbody>
@@ -362,7 +362,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `storeType` ###
+### storeType ###
 
 <table>
     <tbody>
