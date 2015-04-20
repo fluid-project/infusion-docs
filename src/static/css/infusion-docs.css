@@ -88,7 +88,7 @@ a:focus {
     min-height: 44rem;
 }
 
-.infusion-docs-mainContent a:hover {
+.infusion-docs-container a:hover {
     color: #ffcb00;
     background: #323232;
 }
@@ -246,8 +246,7 @@ div.infusion-docs-note {
 .infusion-docs-container h1 {
     font-size: 3.0rem;
     font-family: "RobotoSlab";
-    margin-top: 6rem;
-    padding-top: 10rem;
+    margin-top: 10rem;
     padding-bottom: 6rem;
 }
 
@@ -335,9 +334,6 @@ div.infusion-docs-note {
     margin-bottom: 0.7rem;
 }
 
-.infusion-docs-container .infusion-docs-toc {
-    margin-bottom: -10rem;
-}
 .infusion-docs-container .infusion-docs-toc h1 {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -351,24 +347,81 @@ div.infusion-docs-note {
     min-width: 13rem;
 }
 
-.fl-theme-yb .infusion-docs-fluidLogoText::before {
-    color: #ffff00;
-}
-.fl-theme-wb .infusion-docs-fluidLogoText::before {
-    color: #ffffff;
-}
-.fl-theme-by .infusion-docs-fluidLogoText::before,
-.fl-theme-bw .infusion-docs-fluidLogoText::before {
-    color: #000000;
-}
-.fl-theme-lgdg .infusion-docs-fluidLogoText::before {
-    color: #bdbdbb;
-}
-
 @media only screen and (max-width: 50rem) {
     .infusion-docs-container .infusion-docs-mainContent {
         max-width: 100%;
         padding-right: 1rem;
         padding-left: 1rem;
     }
+}
+
+
+/* Styles for high-contrast themes */
+.fl-theme-yb .infusion-docs-fluidLogoText::before {
+    color: #ffff00 !important;
+}
+.fl-theme-wb .infusion-docs-fluidLogoText::before {
+    color: #ffffff !important;
+}
+.fl-theme-by .infusion-docs-fluidLogoText::before,
+.fl-theme-bw .infusion-docs-fluidLogoText::before {
+    color: #000000 !important;
+}
+.fl-theme-lgdg .infusion-docs-fluidLogoText::before {
+    color: #bdbdbb !important;
+}
+
+.fl-theme-bw a:focus,
+.fl-theme-bw .fl-prefsEditor-buttons button:focus,
+.fl-theme-by a:focus,
+.fl-theme-by .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #000000 !important;
+}
+.fl-theme-wb a:focus,
+.fl-theme-wb .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #ffffff !important;
+}
+.fl-theme-yb a:focus,
+.fl-theme-yb .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #ffff00 !important;
+}
+.fl-theme-lgdg a:focus,
+.fl-theme-lgdg .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #bdbdbb !important;
+}
+
+.fl-theme-bw .infusion-docs-container a:hover,
+.fl-theme-bw .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-bw .fl-prefsEditor-buttons button:hover,
+.fl-theme-bw .infusion-docs-header a:hover:before {
+    color: #ffffff !important;
+    background: #000000 !important;
+}
+.fl-theme-wb .infusion-docs-container a:hover,
+.fl-theme-wb .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-wb .fl-prefsEditor-buttons button:hover,
+.fl-theme-wb .infusion-docs-header a:hover:before {
+    color: #000000 !important;
+    background: #ffffff !important;
+}
+.fl-theme-by .infusion-docs-container a:hover,
+.fl-theme-by .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-by .fl-prefsEditor-buttons button:hover,
+.fl-theme-by .infusion-docs-header a:hover:before {
+    color: #ffff00 !important;
+    background: #000000 !important;
+}
+.fl-theme-yb .infusion-docs-container a:hover,
+.fl-theme-yb .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-yb .fl-prefsEditor-buttons button:hover,
+.fl-theme-yb .infusion-docs-header a:hover:before {
+    color: #000000 !important;
+    background: #ffff00 !important;
+}
+.fl-theme-lgdg .infusion-docs-container a:hover,
+.fl-theme-lgdg .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-lgdg .fl-prefsEditor-buttons button:hover,
+.fl-theme-lgdg .infusion-docs-header a:hover:before {
+    color: #555555 !important;
+    background: #bdbdbb !important;
 }
