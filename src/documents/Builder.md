@@ -16,6 +16,7 @@ var builder = fluid.prefs.builder(<options>);
 <table>
 <tr><td><code>options</code></td><td>(Object) The configuration options for the builder. See <a href="#options">Options</a> below for more information.</td></tr>
 </table>
+
 where `options` is a JavaScript object containing information configuring your builder.
 
 ### Return Value ###

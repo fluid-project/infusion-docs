@@ -58,6 +58,16 @@ pre {
     white-space: pre-wrap;
 }
 
+.fl-prefsEditor-buttons button:focus,
+a:focus {
+    outline: solid 0.2rem #008cba;
+}
+
+.infusion-docs-header a:focus,
+.infusion-docs-footer a:focus {
+    outline: 0.2rem solid #ffb200;
+}
+
  /* override foundation, so UIO's line-spacing will work */
 .infusion-docs h1, .infusion-docs h2, .infusion-docs h3, .infusion-docs h4, .infusion-docs h5, .infusion-docs h6,
 .infusion-docs p,
