@@ -23,14 +23,11 @@ The Infusion Framework already contains several predefined component grades that
             <td>autoinit</td>
             <td></td>
             <td>
-                <p>
-                    A special directive grade that instructs the framework to automatically construct a globally named creator function (with the same name as the grade) responsible for the construction of the component. NOTE: for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
-                </p>
-                <p>
-                    <em>
-                        <strong>NOTE:</strong> for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
-                    </em>
-                </p>
+                A special directive grade that instructs the framework to automatically construct a globally named creator function (with the same name as the grade) responsible for the construction of the component. NOTE: for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
+                <br/>
+                <em>
+                    <strong>NOTE:</strong> for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
+                </em>
             </td>
         </tr>
         <tr>
@@ -72,7 +69,7 @@ The Infusion Framework already contains several predefined component grades that
             <td>fluid.rendererComponent</td>
             <td>fluid.rendererRelayComponent</td>
             <td>
-                A "renderer" component is already a vew component that bears a renderer. There are additional features provided by this component grade specified on the <a href="RendererComponents.md#useful-functions-and-events">Useful functions and events</a> section of the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a> page
+                A "renderer" component is already a vew component that bears a renderer. There are additional features provided by this component grade specified on the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md#useful-functions-and-events">Useful functions and events</a> section of the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a> page
             </td>
         </tr>
     </tbody>

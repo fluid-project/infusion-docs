@@ -35,7 +35,7 @@ These are the basic steps to add UI Options to your website:
 
 The rest of this tutorial will explain each of these steps in detail.
 
-# Download and install the Infusion library #
+## Download and install the Infusion library ##
 
 1. Get the current source code from github as a [ZIP file]( https://github.com/fluid-project/infusion/archive/master.zip)
 2. Unpack the zip file you just downloaded and cd into the "infusion-master" folder that results.

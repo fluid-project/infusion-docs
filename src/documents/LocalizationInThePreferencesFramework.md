@@ -6,8 +6,8 @@ category: Infusion
 
 Localization in the Preferences Framework makes use of message bundles: JSON files containing the strings that are to be used in the interface. The Preferences Framework combines any message bundles into a single bundle and makes that bundle available to the components that need to use the strings.
 
-Message Bundles
----------------
+## Message Bundles
+
 
 Message bundles are JSON files containing key/value pairs representing the message key and the localized text associated with it. Each set of localized text should be contained in its own message bundle.
 
@@ -32,8 +32,7 @@ Message bundles cannot contain arrays. Instead a namespace should be used to gro
 }
 ```
 
-Preferences Editor Component Hierarchy
---------------------------------------
+## Preferences Editor Component Hierarchy
 
 Understanding how to access message bundles is helped by understanding the general structure of the components of a preferences editor. The diagram below illustrates this structure and shows where the messages can be accessed. The rest of this page provides specific details about how to specify message bundles and how to retrieve strings.
 
@@ -67,8 +66,8 @@ If the message bundle is provided to PrefsEditor this way, access it within the 
 
 The message bundle is attached to each panel component as the `parentBundle` option. To access it from within a panel, use `{that}.options.parentBundle`.
 
-Adding Message Bundles
-----------------------
+## Adding Message Bundles
+
 
 Message bundles can be specified in one of two ways:
 
@@ -143,8 +142,7 @@ fluid.prefs.separatedPanel("#myPrefsEditor", {
 });
 ```
 
-Using Message Bundles
----------------------
+## Using Message Bundles
 
 ### In the ProtoTrees
 

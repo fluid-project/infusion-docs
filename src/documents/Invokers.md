@@ -15,7 +15,7 @@ around the component tree and within the argument list.
 
 ## Types of Invokers ##
 
-###Standard invoker binding to a function using `funcName`, `func` ###
+### Standard invoker binding to a function using funcName, func ###
 
 An invoker can specified with either the **`funcName`** property to reference a free function by its
 global name (e.g. `fluid.copy`, `console.log`, etc.) or the **`func`** property to reference an existing
@@ -157,7 +157,7 @@ fluid.defaults("xyz.widget", {
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
-#### Example ####
+__Example:__
 
 ```javascript
 fluid.defaults("fluid.uploader.fileQueue", {
@@ -267,7 +267,7 @@ fluid.defaults("xyz.widget", {
 });
 ```
 
-#### Example ####
+__Example:__
 
 ```javascript
 fluid.defaults("fluid.uploader.html5Strategy.browseButtonView", {

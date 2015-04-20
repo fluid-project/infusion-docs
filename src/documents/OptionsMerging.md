@@ -10,7 +10,7 @@ Left unchecked, this options merging code becomes unruly and verbose. The vast m
 
 The Fluid component API therefore contains a specialised merging routine, `fluid.merge`, which allows the user to specify an (optional) more fine-grained **merge policy** object, which allows detailed behaviour during options merging to still be specified by a declarative strategy.
 
-## Use of `fluid.merge` ##
+## Use of fluid.merge ##
 
 `fluid.merge` is invoked automatically by the framework as part of standard component initialisation. However, the component author does have the capability of directing the operation of `fluid.merge` by means of specifying the `policy` object. Every standard Fluid component accepts a top-level option named `mergePolicy`  which will be supplied as the policy argument to `fluid.merge`. This option itself also undergoes merging, **although the user may not specify policy for the merging of the mergePolicy**, and users may contribute material into the mergePolicy from any parent grades of the component, arguments, etc.
 
