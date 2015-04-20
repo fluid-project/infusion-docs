@@ -23,14 +23,11 @@ The Infusion Framework already contains several predefined component grades that
             <td>autoinit</td>
             <td></td>
             <td>
-                <p>
-                    A special directive grade that instructs the framework to automatically construct a globally named creator function (with the same name as the grade) responsible for the construction of the component. NOTE: for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
-                </p>
-                <p>
-                    <em>
-                        <strong>NOTE:</strong> for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
-                    </em>
-                </p>
+                A special directive grade that instructs the framework to automatically construct a globally named creator function (with the same name as the grade) responsible for the construction of the component. NOTE: for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
+                <br/>
+                <em>
+                    <strong>NOTE:</strong> for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
+                </em>
             </td>
         </tr>
         <tr>
