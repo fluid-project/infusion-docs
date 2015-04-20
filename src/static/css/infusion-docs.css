@@ -347,15 +347,6 @@ div.infusion-docs-note {
     min-width: 13rem;
 }
 
-@media only screen and (max-width: 50rem) {
-    .infusion-docs-container .infusion-docs-mainContent {
-        max-width: 100%;
-        padding-right: 1rem;
-        padding-left: 1rem;
-    }
-}
-
-
 /* Styles for high-contrast themes */
 .fl-theme-yb .infusion-docs-fluidLogoText::before {
     color: #ffff00 !important;
