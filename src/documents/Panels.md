@@ -1,11 +1,8 @@
 ---
 title: Panels
 layout: default
+category: Infusion
 ---
-
-# Panels #
-
-## Overview ##
 
 A Panel is an [Infusion component](UnderstandingInfusionComponents.md) that present adjusters, or controls, to the user to allow them to adjust the preference settings. Panels are [Renderer components](RendererComponents.md) that work with an HTML template.
 
@@ -37,13 +34,13 @@ fluid.defaults("my.pref.panelGrade", {
     gradeNames: ["fluid.prefs.panel", "autoInit"],
     <common defaults>
 });
- 
+
 // one specific panel, which uses the shared grade
 fluid.defaults("my.pref.panel2", {
     gradeNames: ["my.pref.panelGrade", "autoInit"],
     <defaults specific to panel 1>
 });
- 
+
 // another specific panel, which uses the shared grade
 fluid.defaults("my.pref.panel2", {
     gradeNames: ["my.pref.panelGrade", "autoInit"],
@@ -231,37 +228,34 @@ fluid.defaults("demo.panels.vol", {
         label: ".mpe-slider-label",
         multiplier: ".mpe-slider-multiplier",
         vol: ".mpe-slider",
- 
+
         // selectors for the radio buttons
         posLabel: ".mpe-radio-label",
         volPosRow: ".mpe-radioRow",
         volPosLabel: ".mpe-radioLabel",
         volPosInput: ".mpe-radioInput"
     },
+    selectorsToIgnore: ["vol"],
+    components: {
+        // The subcomponent for rendering the slider
+        vol: {
+            type: "fluid.textfieldSlider",
+            container: "{that}.dom.vol",
+            createOnEvent: "onDomBind",
+            options: {
+                model: {
+                    value: "{demo.panels.vol}.model.volume"
+                },
+                range: "{demo.panels.vol}.options.range",
+                sliderOptions: "{demo.panels.vol}.options.sliderOptions"
+            }
+        }
+    },
     protoTree: {
-        // protoTree for the slider
+        // protoTree for rendering slider labels
         label: {messagekey: "volLabel"},
         multiplier: {messagekey: "volMultiplier"},
-        vol: {
-            decorators: {
-                type: "fluid",
-                func: "fluid.textfieldSlider",
-                options: {
-                    rules: {
-                        // the textfieldSlider uses an internal model path of 'value',
-                        // so we must relate that to our model path
-                        "volume": "value"
-                    },
-                    model: {
-                        value: "{demo.panels.vol}.model.volume"
-                    },
-                    sourceApplier: "{demo.panels.vol}.applier",
-                    range: "{demo.panels.vol}.options.range",
-                    sliderOptions: "{demo.panels.vol}.options.sliderOptions"
-                }
-            }
-        },
- 
+
         // protoTree for the radio buttons
         posLabel: {messagekey: "volPosLabel"},
         expander: {

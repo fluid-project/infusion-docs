@@ -1,9 +1,8 @@
 ---
 title: Model Components
 layout: default
+category: Tutorials
 ---
-
-# Model Components #
 
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
@@ -22,7 +21,7 @@ The Infusion Framework provides supports for model-bearing components. When you 
 To use a model with your component, you need to use the `fluid.modelComponent` (or `fluid.modelRelayComponent`) grade. To do this:
 
 * specify a grade of `fluid.modelComponent`, or a grade derived from it (such as `fluid.standardComponent`, `fluid.viewComponent`, etc.) as part of your component's parent grades
-    * _**Note:** for the Infusion 1.5 release cycle, the grade of `fluid.modelRelayComponent` gives access to more modern ChangeApplier facilities, and `fluid.modelComponent` is retained for backwards compatibility with older code. The compatibility implementation will be removed before Infusion 2.0._
+    * <div class="infusion-docs-note"><strong>Note:</strong> For the Infusion 1.5 release cycle, the grade of `fluid.modelRelayComponent` gives access to more modern ChangeApplier facilities, and `fluid.modelComponent` is retained for backwards compatibility with older code. The compatibility implementation will be removed before Infusion 2.0.</div>
 * Optionally, you may include a model property in your defaults holding some initial values suitable for your component's model
 
 ```javascript
@@ -102,7 +101,7 @@ fluid.defaults("tutorials.currencyConverter", {
             args: ["{that}", "{arguments}.0", "{arguments}.1"] // currency, newRate
         },
         convert: {
-            funcName: "tutorials.currencyConverted.convert",
+            funcName: "tutorials.currencyConverter.convert",
             args: ["{that}", "{arguments}.0"] // amount
         }
     }
@@ -113,7 +112,9 @@ tutorials.currencyConverter.updateRate = function (that, currency, newRate) {
     that.applier.change(["rates", currency], newRate);
 };
 
-tutorials.currencyConvert.convert = function (that, amount) {
+tutorials.currencyConverter.convert = function (that, amount) {
     return amount * that.model.rates[that.model.currentSelection];
 };
 ```
+
+Next: [Evented Components](EventedComponents.md)

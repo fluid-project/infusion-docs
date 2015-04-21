@@ -1,11 +1,8 @@
 ---
 title: IoC References
 layout: default
+category: Infusion
 ---
-
-# IoC References #
-
-## Overview ##
 
 The Infusion IoC Framework uses a basic syntax for referencing objects in the current [context](Contexts.md).
 
@@ -101,7 +98,7 @@ For a conventional IoC reference (of the style `<componentRef>` rather than the 
 
 The set of components which are in scope for resolution from this site are shown in yellow in this diagram. These are components which are either i) an ancestor of the component holding the reference site, or ii) a sibling of such a component. The context reference matches a component if it matches via one of the 3 rules in the above table - **either** it agrees with a fully-qualified grade or type name of a component, **or** it agrees with the last path segment of such a name. If no context name matches anywhere in the tree, the reference expression resolves to `undefined`. In this case, if the path segments following the context name in the reference expression are not empty, the framework will throw an error.
 
-## Examples of `{<componentRef>}` ##
+## Examples of {&lt;componentRef&gt;} ##
 
 In the example below, the IoC reference `{that}` refers to the component in which it is being used.
 
@@ -110,7 +107,7 @@ fluid.defaults("fluid.prefs.separatedPanel", {
     gradeNames: ["fluid.prefs.prefsEditorLoader", "autoInit"],
     listeners: {
         onCreate: {
-            listener: "fluid.prefs.prefsEditorLoader.hideReset",
+            funcName: "fluid.prefs.prefsEditorLoader.hideReset",
             args: ["{that}"]
         }
     }
@@ -124,7 +121,7 @@ fluid.defaults("fluid.prefs.separatedPanel", {
     gradeNames: ["fluid.prefs.prefsEditorLoader", "autoInit"],
     listeners: {
         onCreate: {
-            listener: "fluid.prefs.prefsEditorLoader.hideReset",
+            funcName: "fluid.prefs.prefsEditorLoader.hideReset",
             args: ["{separatedPanel}"]
         }
     }
@@ -133,15 +130,15 @@ fluid.defaults("fluid.prefs.separatedPanel", {
 
 The above two examples are equivalent.
 
-In the example below, the IoC expression `{fluid.prefs.enactors.tableOfContents}` refers to the component being defined by the `defaults` block. The short name `tableOfContents` cannot be used here, because it would not be unique: It would be unclear whether the nickname was referring to `fluid.prefs.enactors.tableOfContents` or `fluid.tableOfContents`.
+In the example below, the IoC expression `{fluid.prefs.enactor.tableOfContents}` refers to the component being defined by the `defaults` block. The short name `tableOfContents` cannot be used here, because it would not be unique: It would be unclear whether the nickname was referring to `fluid.prefs.enactor.tableOfContents` or `fluid.tableOfContents`.
 
 ```javascript
-fluid.defaults("fluid.prefs.enactors.tableOfContents", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+fluid.defaults("fluid.prefs.enactor.tableOfContents", {
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     components: {
         tableOfContents: {
             type: "fluid.tableOfContents",
-            container: "{fluid.prefs.enactors.tableOfContents}.container",
+            container: "{fluid.prefs.enactor.tableOfContents}.container",
             options: {...}
         }
     }
@@ -151,24 +148,24 @@ fluid.defaults("fluid.prefs.enactors.tableOfContents", {
 Another way to avoid the ambiguity mentioned above would be to use the member name, which is the name used when defining the subcomponent in the components block. In the example below `{toc}` refers to the name used to define the subcomponent in the component block.
 
 ```javascript
-fluid.defaults("fluid.prefs.enactors.tableOfContents", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+fluid.defaults("fluid.prefs.enactor.tableOfContents", {
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     components: {
         toc: {
             type: "fluid.tableOfContents",
-            container: "{fluid.prefs.enactors.tableOfContents}.container",
+            container: "{fluid.prefs.enactor.tableOfContents}.container",
             options: {
                 components: {
                     type: "fluid.tableOfContents.levels",
                     container: "{toc}.dom.tocContainer"
                 }
             }
-        }  
+        }
     }
 });
 ```
 
-## Examples of `{<componentRef>}.<path to member>` ##
+## Examples of {&lt;componentRef&gt;}.&lt;path to member&gt; ##
 
 The example below includes several IoC references. All of them are inside a subcomponent declaration and all include `{controllers}`, which in this case is a reference to the parent component. Specifically:
 
@@ -178,7 +175,7 @@ The example below includes several IoC references. All of them are inside a subc
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.controllers", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
     selectors: {
         scrubberContainer: ".flc-videoPlayer-scrubberContainer",
     },
@@ -193,7 +190,6 @@ fluid.defaults("fluid.videoPlayer.controllers", {
             container: "{controllers}.dom.scrubberContainer",
             options: {
                 model: "{controllers}.model",
-                applier: "{controllers}.applier",
                 events: {
                     onScrub: "{controllers}.events.onScrub",
                     afterScrub: "{controllers}.events.afterScrub",
@@ -205,7 +201,7 @@ fluid.defaults("fluid.videoPlayer.controllers", {
 });
 ```
 
-## Examples of `{arguments}.x` ##
+## Examples of {arguments}.x ##
 
 The example below uses the `{arguments}.x` syntax to deliver the first and second arguments passed to listeners to the `onMove` event to the `fluid.moduleLayout.onMoveListener` function.
 
@@ -217,20 +213,20 @@ fluid.defaults("fluid.moduleLayoutHandler", {
     },
     listeners: {
         onMove: {
-            listener: "fluid.moduleLayout.onMoveListener",
+            funcName: "fluid.moduleLayout.onMoveListener",
             args: ["{arguments}.0", "{arguments}.1", "{that}.layout"]
         }
     }
 });
 ```
 
-## Examples of `{<iocss expression>}` ##
+## Examples of {&lt;iocss expression&gt;} ##
 
 The example below uses an [IoCSS](IoCSS.md) expression `{that > moreText}.options.selectors.images`. The expression refers to the `images` selector in the `moreText` subcomponent that is a direct descendent of the current component.
 
 ```javascript
 fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
-    gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
     selectors: {
         images: "img, [role~='img']"
     },

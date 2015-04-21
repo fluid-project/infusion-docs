@@ -1,9 +1,8 @@
 ---
 title: User Interface Options API
 layout: default
+category: API
 ---
-
-# User Interface Options API #
 
 The **User Interface Options (UI Options)** component  allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
 
@@ -14,7 +13,7 @@ UI Options does three things:
 
 UI Options is a convenient way to add a simple separated-panel preferences editor to any page. The interface will automatically support the set of "starter" preferences provided by the [Preferences Framework](PreferencesFramework.md), in their default configuration.
 
-_**Note:** If you require any customization of UI Options, you should consider  using the [Builder](Builder.md) tool of the [Preferences Framework](PreferencesFramework.md) directly._
+<div class="infusion-docs-note"><strong>Note:</strong> If you require any customization of UI Options, you should consider  using the <a href="Builder.md">Builder</a> tool of the <a href="PreferencesFramework.md">Preferences Framework</a> directly.</div>
 
 ![Screen shot of the UI Options Component](images/uio-showcase.png "Screen shot of the UI Options Component")
 
@@ -94,7 +93,7 @@ var myComponent = component.name("#myContainerID", {
 For information on the different types of events, see [Infusion Event System](InfusionEventSystem.md).
 
 
-### `onReady` ###
+### onReady ###
 
 <table>
     <tbody>
@@ -120,7 +119,7 @@ For information on the different types of events, see [Infusion Event System](In
     </tbody>
 </table>
 
-### `onPrefsEditorReady` ###
+### onPrefsEditorReady ###
 
 <table>
     <tbody>
@@ -164,7 +163,7 @@ var uio = fluid.uiOptions.prefsEditor(".myContainer", {
 
 The options supported by UI Options are described below.
 
-### `tocTemplate` ###
+### tocTemplate ###
 
 <table>
     <tbody>
@@ -201,7 +200,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `templatePrefix` ###
+### templatePrefix ###
 
 <table>
     <tbody>
@@ -236,7 +235,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `messagePrefix` ###
+### messagePrefix ###
 
 <table>
     <tbody>
@@ -271,7 +270,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `prefsEditor` ###
+### prefsEditor ###
 
 <table>
     <tbody>
@@ -305,7 +304,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `prefsEditorType` ###
+### prefsEditorType ###
 
 <table>
     <tbody>
@@ -334,7 +333,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `enhancerType` ###
+### enhancerType ###
 
 <table>
     <tbody>
@@ -363,7 +362,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `storeType` ###
+### storeType ###
 
 <table>
     <tbody>
@@ -393,409 +392,6 @@ fluid.uiOptions.fullNoPreview("#myContainer", {
             <th>See also</th>
             <td>
                 <a href="to-do/CookieSettingsStore.md">Cookie Settings Store</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-## Modifiable Preference Defaults ##
-
-### Text Size ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                <p>To change the text size of the page by a multiplier factor.</p>
-
-                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Text Size" preference is <code>fluid.prefs.schemas.textSize</code>. To modify its default information, you can redefine this component before calling the <a href="#creator>Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.textSize", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.textSize": {
-            "type": "number",
-            "default": 1,   // The default is the original text size
-            "minimum": 1,   // The minimum value allowed
-            "maximum": 2,   // The maximum value allowed
-            "divisibleBy": 0.1  // The stepper value for the slider
-        }
-    }
-});
-</code>
-</pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.textSize", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.textSize": {
-            "type": "number",
-            "default": 5,
-            "minimum": 1,
-            "maximum": 10,
-            "divisibleBy": 1
-        }
-    }
-});
-
-fluid.uiOptions.prefsEditor("#myContainer", {
-    tocTemplate: "html/myTocTemplate.html"
-});
-</code>
-</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### Line Space ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                <p>To change the line space of the page by a multiplier factor.</p>
-
-                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Line Space" preference is <code>fluid.prefs.schemas.lineSpace</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.lineSpace", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.lineSpace": {
-            "type": "number",
-            "default": 1,   // The default text size is 1, the original line space
-            "minimum": 1,   // The minimum value allowed
-            "maximum": 2,   // The maximum value allowed
-            "divisibleBy": 0.1  // The stepper value for the slider
-        }
-    }
-});
-</code>
-</pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.lineSpace", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.lineSpace": {
-            "type": "number",
-            "default": 1,
-            "minimum": 0.5,
-            "maximum": 2.5,
-            "divisibleBy": 0.1
-        }
-    }
-});
-
-fluid.uiOptions.prefsEditor("#myContainer", {
-    tocTemplate: "html/myTocTemplate.html"
-});
-</code>
-</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### Text Font ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                <p>To change the text font of the page.</p>
-
-                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Text Font" preference is <code>fluid.prefs.schemas.textFont</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.textFont", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.textFont": {
-            "type": "string",      // The data type
-            "default": "default",  // The default is the original font
-            "enum": ["default", "times", "comic", "arial", "verdana"]  // The enumeration of possible values
-        }
-    }
-});
-</code>
-</pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.textFont", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.textFont": {
-            "type": "string",
-            "default": "arial",
-            "enum": ["default","comic", "arial"]
-        }
-    }
-});
-
-fluid.uiOptions.prefsEditor("#myContainer", {
-    tocTemplate: "html/myTocTemplate.html"
-});
-</code>
-</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### Contrast ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                <p>To change the foreground and background of the page.</p>
-
-                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Contrast" preference is <code>fluid.prefs.schemas.contrast</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.contrast", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.contrast": {
-            "type": "string",     // The data type
-            "default": "default", // The default is the original contrast settings
-            "enum": ["default", "bw", "wb", "by", "yb", "lgdg"] // The enumeration of possible values
-        }
-    }
-});
-</code>
-</pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.contrast", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.contrast": {
-            "type": "string",
-            "default": "bw",
-            "enum": ["default", "bw", "wb"]
-        }
-    }
-});
-
-fluid.uiOptions.prefsEditor("#myContainer", {
-    tocTemplate: "html/myTocTemplate.html"
-});
-</code>
-</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### Table of Contents ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                <p>To create and render a section of "Table of Contents" at the top of the page.</p>
-
-                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Table of Contents" preference is <code>fluid.prefs.schemas.tableOfContents</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.tableOfContents", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.tableOfContents": {
-            "type": "boolean",   // The data type
-            "default": false     // Not to show table of contents by default
-        }
-    }
-});
-</code>
-</pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.tableOfContents", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.tableOfContents": {
-            "type": "boolean",
-            "default": true
-        }
-    }
-});
-
-fluid.uiOptions.prefsEditor("#myContainer", {
-    tocTemplate: "html/myTocTemplate.html"
-});
-</code>
-</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### Emphasize Links ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                <p>To underline and bold links on the page.</p>
-
-                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Emphasize Links" preference is <code>fluid.prefs.schemas.emphasizeLinks</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.emphasizeLinks", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.emphasizeLinks": {
-            "type": "boolean",   // The data type
-            "default": false     // Not to emphasize links by default
-        }
-    }
-});
-</code>
-</pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.emphasizeLinks", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.emphasizeLinks": {
-            "type": "boolean",
-            "default": true
-        }
-    }
-});
-
-fluid.uiOptions.prefsEditor("#myContainer", {
-    tocTemplate: "html/myTocTemplate.html"
-});
-</code>
-</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### Inputs Larger ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                <p>To enlarge input fields on the page.</p>
-
-                <p>The corresponding starter <a href="PrimarySchemaForPreferencesFramework.md">primary schema</a> component for the "Inputs Larger" preference is <code>fluid.prefs.schemas.inputsLarger</code>. To modify its default information, you can redefine this component before calling the <a href="#creator">Creator</a> <code>fluid.uiOptions.prefsEditor</code>.<p>
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.inputsLarger", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.inputsLarger": {
-            "type": "boolean",   // The data type
-            "default": false     // Not to enlarge input fields by default
-        }
-    }
-});
-</code>
-</pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.defaults("fluid.prefs.schemas.inputsLarger", {
-    gradeNames: ["autoInit", "fluid.prefs.schemas"],
-    schema: {
-        "fluid.prefs.inputsLarger": {
-            "type": "boolean",
-            "default": true
-        }
-    }
-});
-
-fluid.uiOptions.prefsEditor("#myContainer", {
-    tocTemplate: "html/myTocTemplate.html"
-});
-</code>
-</pre>
             </td>
         </tr>
     </tbody>

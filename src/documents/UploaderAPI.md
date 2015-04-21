@@ -1,11 +1,8 @@
 ---
 title: Uploader API
 layout: default
+category: API
 ---
-
-# Uploader API #
-
-## Uploader Overview ##
 
 The Infusion Uploader provides an easy way for users to upload many files at once, providing useful feedback about the status and progress of each file along the way.
 
@@ -21,7 +18,7 @@ The HTML 5 version of the Uploader will be delivered to modern, standards-compli
 * Safari 4+
 * Google Chrome
 
-_**NOTE:** As of Infusion 1.5, the Flash version of the Uploader has been removed due to a [cross-site scripting vulnerability](https://nealpoole.com/blog/2012/05/xss-and-csrf-via-swf-applets-swfupload-plupload/)._
+<div class="infusion-docs-note"><strong>Note:</strong> As of Infusion 1.5, the Flash version of the Uploader has been removed due to a <a href="https://nealpoole.com/blog/2012/05/xss-and-csrf-via-swf-applets-swfupload-plupload/">cross-site scripting vulnerability</a>.</div>
 
 ### Progressive Enhancement ###
 
@@ -659,7 +656,7 @@ strings: {
     </tbody>
 </table>
 
-### `queueSettings` Options ###
+### queueSettings Options ###
 
 <table>
     <thead>
@@ -731,7 +728,7 @@ strings: {
     </tbody>
 </table>
 
-### `htmlStrategy` Options ###
+### htmlStrategy Options ###
 
 <table>
     <thead>
@@ -908,7 +905,7 @@ The different parts of the Uploader interface each have their own set of selecto
 
 #### Progress ####
 
-_**Note:** Please see the [Progress API](to-do/ProgressAPI.md) document for a full description of Fluid Progress._
+<div class="infusion-docs-note"><strong>Note:</strong> Please see the <a href="to-do/ProgressAPI.md">Progress API</a> document for a full description of Fluid Progress.</div>
 
 Uploader uses the following selector options for Progress:
 
@@ -988,7 +985,7 @@ However there are times when you want to run the uploader with out a server: whe
 
 To run locally you must specify `demo: true` in your compontent configuration:
 
-```javscript
+```javascript
 var myUploader = fluid.progressiveEnhanceableUploader(".flc-uploader", ".fl-ProgEnhance-basic", {
     demo: true
 });

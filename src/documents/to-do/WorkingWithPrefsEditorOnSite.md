@@ -1,9 +1,8 @@
 ---
 title: Working With A Preferences Editor On Your Site
 layout: default
+category: Tutorials
 ---
-
-# Working With A Preferences Editor On Your Site #
 
 _This page is still under construction. An archived version can be found on the
 [Working With A Preferences Editor On Your Site](http://wiki.fluidproject.org/display/docs/Working+With+A+Preferences+Editor+On+Your+Site)

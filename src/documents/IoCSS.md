@@ -1,9 +1,10 @@
 ---
 title: IoCSS
 layout: default
+category: Infusion
 ---
 
-# IoCSS #
+The Infusion Inversion of Control (IoC) system includes a simple method for distributing options from top-level components through the component tree. This method is dubbed "IoCSS" because it uses a CSS-like syntax.
 
 ## distributeOptions and IoCSS: Downward-Matching CSS-Like Context Selectors For Options Forwarding ##
 
@@ -15,7 +16,7 @@ As component trees become larger, it will often happen that a high-level compone
 
 ```javascript
 // without developer's use of IoCSS, user writes
- 
+
 fluid.uiOptions(".my-uio-container", {
     components: {
         templateLoader: {
@@ -25,23 +26,23 @@ fluid.uiOptions(".my-uio-container", {
             }
         }
     }
-); 
+);
 ```
 
 The example above shows a simplified version of a situation with Infusion's "UI Options" component. In practice, the user of the component would have to write an even more deeply nested piece of configuration than this, if the developer had not made use of the `distributeOptions` directive in the component's options block, together with the use of "IoCSS" expressions to distribute the user's options to the right place in the component tree, as shown in the following example:
 
 ```javascript
 // developer writes:
- 
+
 fluid.defaults("fluid.uiOptions", {
     distributeOptions: {
         source: "{that}.options.templatePrefix",
         target: "{that > templateLoader}.options.templatePrefix"
     }
 });
- 
+
 // user writes:
- 
+
 fluid.uiOptions(".my-uio-container", {
     templatePrefix: "../../myTemplates"
 });
@@ -51,7 +52,7 @@ In the `distributeOptions` block above, the context `{that > templateLoader}` is
 
 As well as converting the exposed options structure of a component into a more compact form, `distributeOptions` is also a powerful tool for maintaining API stability for a component or family of components. Since the binding of IoCSS selectors such as `that > templateLoader` onto child components is flexible, the component tree could be refactored in quite an aggressive way without requiring changes in either the user's configuration, or even the `distributeOptions` block itself. If the refactoring was even more thorough (involving wholesale removal of the target component, or a change in its important grades), the developer could still maintain stability of the external user API just by changing the `distributeOptions` block. In terms of a standard discussion on [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern "Design Patterns"), the use of `distributeOptions` could be seen as an automated and declarative scheme for achieving the ends of the [Facade Design Pattern](https://en.wikipedia.org/wiki/Facade_pattern "Facade Design Pattern"), without the need for either user or developer code.
 
-## `distributeOptions` format ##
+## distributeOptions format ##
 
 The `distributeOptions` option is a top-level block supported by every IoC-configured component, holding an array of objects (or single object) containing the following properties:
 
@@ -80,7 +81,7 @@ Descendent rules
 |E F|Matches any F component that is a descendant of an E component|
 |E > F|Matches any F component that is a direct child of an E component|
 
-## Example: `source` ##
+## Example: source ##
 ```javascript
 fluid.defaults("fluid.tests.uploader", {
     gradeNames: ["fluid.littleComponent", "autoInit"],
@@ -97,7 +98,7 @@ fluid.defaults("fluid.tests.uploader", {
         target: "{that > uploaderImpl}.options" // Target a directly nested component matching the context "uploaderImpl"
         source: "{that}.options",               // Distribute ALL of our options there, except exclusions:
         exclusions: ["components.uploaderContext", "components.uploaderImpl"], // options targetted directly at these subcomponents are left undisturbed in place
- 
+
     }],
     progressiveCheckerOptions: {
         checks: [{
@@ -108,7 +109,7 @@ fluid.defaults("fluid.tests.uploader", {
 });
 ```
 
-## Example: `record` ##
+## Example: record ##
 ```javascript
 fluid.defaults("fluid.moduleLayoutHandler", {
     gradeNames: ["fluid.layoutHandler", "autoInit"],

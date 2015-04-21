@@ -1,9 +1,8 @@
 ---
 title: Component Configuration Options
 layout: default
+category: Infusion
 ---
-
-# Component Configuration Options #
 
 Infusion components are configured using options that are defined by the component developer and customized by the integrator. While component developers are free to define whatever options are appropriate for their component, the Infusion Framework supports a number of predefined options. This page briefly describes these predefined options and provides links more information about the related Framework functionality.
 
@@ -13,7 +12,7 @@ Some predefined options should not be overridden by integrators: They are strict
 
 The following options are supported by all component grades:
 
-### `gradeNames` ###
+### gradeNames ###
 <table>
   <tr>
     <th>Description</th>
@@ -39,7 +38,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `nickName` ###
+### nickName ###
 <table>
   <tr>
     <th>Description</th>
@@ -64,7 +63,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `mergePolicy` ###
+### mergePolicy ###
 <table>
   <tr>
     <th>Description</th>
@@ -93,7 +92,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `invokers` ###
+### invokers ###
 <table>
   <tr>
     <th>Description</th>
@@ -117,7 +116,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `members` ###
+### members ###
 <table>
   <tr>
     <th>Description</th>
@@ -142,7 +141,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `components` ###
+### components ###
 <table>
   <tr>
     <th>Description</th>
@@ -180,7 +179,7 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### `dynamicComponents` ###
+### dynamicComponents ###
 <table>
   <tr>
     <th>Description</th>
@@ -225,7 +224,7 @@ Components defined with a grade of `modelComponent/modelRelayComponent` support 
 
 See also: [Component Grades](ComponentGrades.md)
 
-### `model` ###
+### model ###
 <table>
   <tr>
     <th>Description</th>
@@ -268,7 +267,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `applier` ###
+### applier ###
 <table>
   <tr>
     <th>Description</th>
@@ -284,7 +283,7 @@ This option is most commonly used to share a common ChangeApplier between compon
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("component.name", {
-    applier: "{parentComponent.applier}",
+    applier: "{parentComponent}.applier",
     ...
 });</code>
 </pre></td>
@@ -297,7 +296,7 @@ This option is most commonly used to share a common ChangeApplier between compon
   </tr>
 </table>
 
-### `changeApplierOptions` ###
+### changeApplierOptions ###
 <table>
   <tr>
     <th>Description</th>
@@ -345,7 +344,7 @@ Components defined with a grade of `eventedComponent` support all of the [common
 
 See also: [Component Grades](ComponentGrades.md)
 
-### `events` ###
+### events ###
 <table>
   <tr>
     <th>Description</th>
@@ -373,7 +372,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `listeners` ###
+### listeners ###
 <table>
   <tr>
     <th>Description</th>
@@ -427,7 +426,7 @@ Components defined with a grade of `viewComponent` are also model components and
 
 Component developers are free to define their own additional options.
 
-### `selectors` ###
+### selectors ###
 <table>
   <tr>
     <th>Description</th>
@@ -482,7 +481,7 @@ Components defined with a grade of `rendererComponent` are also view components 
 
 Component developers are free to define their own additional options.
 
-### `selectorsToIgnore` ###
+### selectorsToIgnore ###
 <table>
   <tr>
     <th>Description</th>
@@ -507,7 +506,7 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### `repeatingSelectors` ###
+### repeatingSelectors ###
 <table>
   <tr>
     <th>Description</th>
@@ -532,7 +531,7 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### `produceTree` ###
+### produceTree ###
 <table>
   <tr>
     <th>Description</th>
@@ -566,7 +565,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `protoTree` ###
+### protoTree ###
 <table>
   <tr>
     <th>Description</th>
@@ -634,7 +633,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `resources` ###
+### resources ###
 <table>
   <tr>
     <th>Description</th>
@@ -679,7 +678,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `strings` ###
+### strings ###
 <table>
   <tr>
     <th>Description</th>
@@ -725,7 +724,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `rendererFnOptions` ###
+### rendererFnOptions ###
 <table>
   <tr>
     <th>Description</th>
@@ -760,7 +759,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `rendererOptions` ###
+### rendererOptions ###
 <table>
   <tr>
     <th>Description</th>
@@ -795,7 +794,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `renderOnInit` ###
+### renderOnInit ###
 <table>
   <tr>
     <th>Description</th>
@@ -829,4 +828,3 @@ fluid.defaults("cspace.confirmationDialog", {
     <td><code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248">fluid.initRendererComponent</a></code></td>
   </tr>
 </table>
-

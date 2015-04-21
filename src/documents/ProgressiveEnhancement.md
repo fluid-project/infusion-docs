@@ -1,11 +1,10 @@
 ---
 title: Progressive Enhancement
 layout: default
+category: Infusion
 ---
 
-# Progressive Enhancement #
-
-_**Note:** This functionality is **Sneak Peek** status. This means that the **APIs may change**. We welcome your feedback, ideas, and code, but please use caution if you use this new functionality._
+<div class="infusion-docs-note"><strong>Note:</strong> This functionality is <strong>Sneak Peek</strong> status. This means that the <strong>APIs may change</strong>. We welcome your feedback, ideas, and code, but please use caution if you use this new functionality.</div>
 
 The Infusion Framework's Progressive Enhancement module provides support for automatic detection of browser features. The results of the checks can be used to influence the configuration of components, etc.
 
@@ -116,12 +115,12 @@ fluid.videoPlayer.controllers.supportFullscreen = function () {
         return !!$("<div></div>")[0][name] || undefined;
     });
 };
- 
+
 // Register the result of the check in the static environment.
 fluid.enhance.check({
     "fluid.browser.supportsFullScreen": "fluid.videoPlayer.controllers.supportFullscreen",
 });
- 
+
 // Use the check result to enable a full-screen button only in browsers that support full-screen.
 // If full-screen is not supported, the default configuration for "fullScreenButton" is an empty subcomponent.
 fluid.demands("fullScreenButton", ["fluid.browser.supportsFullScreen"], {
@@ -137,12 +136,12 @@ fluid.videoPlayer.isSafari = function () {
     var ua = navigator.userAgent.toLowerCase();
     return ((ua.indexOf("safari") > 0) && (ua.indexOf("chrome") < 0)) ? fluid.typeTag("fluid.browser.safari") : undefined;
 };
- 
+
 // Register the result of the check in the static environment.
 fluid.enhance.check({
     "fluid.browser.safari": "fluid.videoPlayer.isSafari"
 });
- 
+
 // Use the check result to configure a custom function that will override the default if the browser is Safari.
 fluid.demands("fluid.videoPlayer.showControllers", ["fluid.browser.safari", "fluid.videoPlayer"], {
     funcName: "fluid.videoPlayer.showControllersSimple",

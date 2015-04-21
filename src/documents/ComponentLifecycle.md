@@ -1,9 +1,8 @@
 ---
 title: Component Lifecycle
 layout: default
+category: Infusion
 ---
-
-# Component Lifecycle #
 
 Every Fluid component has a standard lifecycle, various points of which are signalled by firing of standard framework events. Every component which has a grade of [fluid.eventedComponent](ComponentGrades.md) is able to receive and react to these events. The events, in the expected order of firing for a component, are as follows:
 
@@ -81,7 +80,7 @@ Every Fluid component has a standard lifecycle, various points of which are sign
             </dl>
             </td>
             <td>
-                Fired after the component and its children have been completely destroyed. 
+                Fired after the component and its children have been completely destroyed.
                 <p>
                     <em><strong>NOTE:</strong> at this point you may only safely access plain data members of the component such as id and typeName. Do not attempt to invoke any methods, fire any events, or resolve any IoC references from listeners to this event.</em>
                 </p>

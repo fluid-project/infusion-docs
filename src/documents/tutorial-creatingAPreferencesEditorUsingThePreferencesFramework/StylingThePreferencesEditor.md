@@ -1,9 +1,8 @@
 ---
 title: Styling the Preferences Editor
 layout: default
+category: Tutorials
 ---
-
-# Styling the Preferences Editor #
 
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)

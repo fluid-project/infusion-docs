@@ -1,9 +1,8 @@
 ---
 title: Auxiliary Schema for Preferences Framework
 layout: default
+category: Infusion
 ---
-
-# Auxiliary Schema for Preferences Framework #
 
 An Auxiliary Schema is a JSON document that defines the information needed to build a preferences editor interface, including
 
@@ -29,7 +28,7 @@ An auxiliary schema must contain some required properties, described below. In a
 * `template`
   * the path to the template for the prefs editor itself
   * use `%prefix` to use the prefix specified by `templatePrefix` as part of the path
-        
+
 ### Preference block properties ###
 
 Preference blocks can be given any property name, so long as the name is unique within the schema. Preference blocks will have the following properties:
@@ -63,7 +62,7 @@ Preference blocks can be given any property name, so long as the name is unique 
 
 * `type`
   * used to identify the component to use
-  
+
 ### Composite Panel properties ###
 
 * `groups`
@@ -79,23 +78,23 @@ For detailed information about how to work with composite panels, see [Composite
     // The author of the auxiliary schema will provide the namespace, which will be used
     //for the component to call to initialize the constructed grades.
     "namespace": "fluid.prefs.constructed",
- 
+
     // The common path to settings panel templates.
     // The template defined in "panels" element will take precedence over this definition.
     "templatePrefix": "../../../framework/preferences/html/",
- 
+
     // The path to the preferences editor own template (e.g. the separated panel prefs editor template)
     "template": "%prefix/SeparatedPanelPrefsEditor.html",
- 
+
     // The common path to settings panel messages.
     // The message defined in "panels" element will take precedence over this definition.
     "messagePrefix": "../../../framework/preferences/messages/",
- 
+
     "message": "%prefix/prefsEditor.json",
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
-            "type": "fluid.prefs.enactors.textSize"
+            "type": "fluid.prefs.enactor.textSize"
         },
         "panel": {
             "type": "fluid.prefs.panels.textSize",
@@ -107,7 +106,7 @@ For detailed information about how to work with composite panels, see [Composite
     "lineSpace": {
         "type": "fluid.prefs.lineSpace",
         "enactor": {
-            "type": "fluid.prefs.enactors.lineSpace",
+            "type": "fluid.prefs.enactor.lineSpace",
             "fontSizeMap": {
                 "xx-small": "9px",
                 "x-small": "11px",
@@ -135,7 +134,7 @@ For detailed information about how to work with composite panels, see [Composite
             "verdana": "fl-font-uio-verdana"
         },
         "enactor": {
-            "type": "fluid.prefs.enactors.textFont",
+            "type": "fluid.prefs.enactor.textFont",
             "classes": "@textFont.classes"
         },
         "panel": {
@@ -157,7 +156,7 @@ For detailed information about how to work with composite panels, see [Composite
             "lgdg": "fl-theme-lgdg-prefsEditor fl-theme-lgdg"
         },
         "enactor": {
-            "type": "fluid.prefs.enactors.contrast",
+            "type": "fluid.prefs.enactor.contrast",
             "classes": "@contrast.classes"
         },
         "panel": {
@@ -171,7 +170,7 @@ For detailed information about how to work with composite panels, see [Composite
     "tableOfContents": {
         "type": "fluid.prefs.tableOfContents",
         "enactor": {
-            "type": "fluid.prefs.enactors.tableOfContents",
+            "type": "fluid.prefs.enactor.tableOfContents",
             "tocTemplate": "../../../../components/tableOfContents/html/TableOfContents.html"
         },
         "panel": {
@@ -184,7 +183,7 @@ For detailed information about how to work with composite panels, see [Composite
     "emphasizeLinks": {
         "type": "fluid.prefs.emphasizeLinks",
         "enactor": {
-            "type": "fluid.prefs.enactors.emphasizeLinks",
+            "type": "fluid.prefs.enactor.emphasizeLinks",
             "cssClass": "fl-link-enhanced"
         },
         "panel": {
@@ -253,7 +252,7 @@ Each preference block can contain configuration for _at most_ one enactor and on
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
-            "type": "fluid.prefs.enactors.textSize"
+            "type": "fluid.prefs.enactor.textSize"
         },
         "panel": {
             "type": "fluid.prefs.panels.textSize",
@@ -267,7 +266,7 @@ Each preference block can contain configuration for _at most_ one enactor and on
     "textSize.additional": {
         "type": "fluid.prefs.textSize",
         "enactor": {
-            "type": "fluid.prefs.enactors.foo"
+            "type": "fluid.prefs.enactor.foo"
         },
         "panel": {
             "type": "fluid.prefs.panels.foo",
@@ -294,7 +293,7 @@ The example below shows two preferences (`emphasizeLinks` and `inputsLarger`)  s
     "emphasizeLinks": {
         "type": "fluid.prefs.emphasizeLinks",
         "enactor": {
-            "type": "fluid.prefs.enactors.emphasizeLinks",
+            "type": "fluid.prefs.enactor.emphasizeLinks",
             "cssClass": "fl-link-enhanced"
         },
         "panel": {
@@ -307,7 +306,7 @@ The example below shows two preferences (`emphasizeLinks` and `inputsLarger`)  s
     "inputsLarger": {
         "type": "fluid.prefs.inputsLarger",
         "enactor": {
-            "type": "fluid.prefs.enactors.inputsLarger",
+            "type": "fluid.prefs.enactor.inputsLarger",
             "cssClass": "fl-text-larger"
         },
         "panel": {

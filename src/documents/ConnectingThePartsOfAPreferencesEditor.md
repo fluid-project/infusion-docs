@@ -1,13 +1,12 @@
 ---
 title: Connecting the Parts of a Preferences Editor
 layout: default
+category: Infusion
 ---
 
-# Connecting the Parts of a Preferences Editor #
-
-_**Note:** This page describes how to work with the infusion Preferences Framework using schemas and the builder. It does NOT describe using the alternative technique, grades._
-
 Creating a Preferences Editor using the Infusion Preferences Framework involves various pieces: schemas, Infusion components, templates, etc. This page describes what you need to do to connect all the parts together.
+
+<div class="infusion-docs-note"><strong>Note:</strong> This page describes how to work with the infusion Preferences Framework using schemas and the builder. It does NOT describe using the alternative technique, grades.</div>
 
 ## Primary Schema ##
 
@@ -66,7 +65,7 @@ The Auxiliary Schema also specifies which components should be used for the pane
             ...
         },
         "enactor": {
-            "type": "fluid.prefs.enactors.textSize",  <<<=== This type is the name of the enactor component
+            "type": "fluid.prefs.enactor.textSize",  <<<=== This type is the name of the enactor component
             ...
         }
     }
@@ -100,8 +99,8 @@ Each enactor component must include a preference map option in its defaults, cal
 ### Example: ###
 
 ```javascript
-fluid.defaults("fluid.prefs.enactors.textSize", {
-   gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+fluid.defaults("fluid.prefs.enactor.textSize", {
+   gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
    preferenceMap: {
        "fluid.prefs.textSize": {  <<<=== This property name must match the name specified in the primary schema
            "model.value": "default"

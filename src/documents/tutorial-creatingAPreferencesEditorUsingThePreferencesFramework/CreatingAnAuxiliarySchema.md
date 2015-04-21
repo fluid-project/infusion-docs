@@ -1,9 +1,8 @@
 ---
 title: Creating an Auxiliary Schema
 layout: default
+category: Tutorials
 ---
-
-# Creating an Auxiliary Schema #
 
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
@@ -41,7 +40,7 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
         "lineSpace": {
             "type": "fluid.prefs.lineSpace",
             "enactor": {
-                "type": "fluid.prefs.enactors.lineSpace",
+                "type": "fluid.prefs.enactor.lineSpace",
                 "fontSizeMap": {
                     "xx-small": "9px",
                     "x-small": "11px",
@@ -69,7 +68,7 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
                 "Verdana": "fl-font-uio-verdana"
             },
             "enactor": {
-                "type": "fluid.prefs.enactors.textFont",
+                "type": "fluid.prefs.enactor.textFont",
                 "classes": "@textFont.classes"
             },
             "panel": {
@@ -83,7 +82,7 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
         "tableOfContents": {
             "type": "fluid.prefs.tableOfContents",
             "enactor": {
-                "type": "fluid.prefs.enactors.tableOfContents",
+                "type": "fluid.prefs.enactor.tableOfContents",
                 "tocTemplate": "../../../components/tableOfContents/html/TableOfContents.html"
             },
             "panel": {

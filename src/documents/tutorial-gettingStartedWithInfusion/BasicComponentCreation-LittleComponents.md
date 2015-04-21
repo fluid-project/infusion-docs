@@ -1,9 +1,8 @@
 ---
 title: Basic Component Creation - Little Components
 layout: default
+category: Tutorials
 ---
-
-# Basic Component Creation - Little Components #
 
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
@@ -86,7 +85,7 @@ fluid.defaults("fluid.progress", {
 
 ## The Creator Function ##
 
-All components have a **creator function**: a public function that is invoked to instantiate the component. In general, the framework will instantiate the creator function for you automatically, given the component's default options. The framework will in general also take responsibility for calling the creator function for you automatically as well, when your component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another. In the rare case you need to construct a component directly using a JavaScript function call, Infusion components have a standardized function signature:
+All components have a **creator function**: a public function that is invoked to instantiate the component. In general, the framework will instantiate the creator function for you automatically, given the component's default options. When your component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another, the framework will also take responsibility for calling the creator function for you automatically. In the rare case you need to construct a component directly using a JavaScript function call, Infusion components have a standardized function signature:
 
 * **little**, **evented** and **model** components accept a single argument: options
 * **view** and **renderer** components accept two arguments: container and options
@@ -96,7 +95,7 @@ _(We'll get into what these arguments are soon.)_
 Creator functions can be defined in one of two ways
 
 1. using [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md): The framework will create the function according to your specifications
-2. directly: You write the function yourself - this option is not recommended and the ability to do this will be removed in Infusion 2.0
+2. directly: You write the function yourself - *this option is not recommended, and the ability to do this will be removed in Infusion 2.0*
 
 ### Using IoC ###
 
@@ -112,7 +111,7 @@ fluid.defaults("tutorials.simpleComponent", {
 });
 ```
 
-_**Note:** in Infusion 2.0, **"autoInit"** will become the default for all components and will not need to be specified_
+<div class="infusion-docs-note"><strong>Note:</strong> in Infusion 2.0, <strong>"autoInit"</strong> will become the default for all components and will not need to be specified</div>
 
 #### Public API methods ####
 
@@ -166,7 +165,7 @@ You'll notice that in this case we have been able to avoid binding to the entire
 
 ### Writing your own creator function ###
 
-_**Note:** the scheme described here is not recommended for new code, and is described here only for completeness. The ability for users to write their component creator functions directly in JavaScript code will be **removed** in Infusion 2.0._
+<div class="infusion-docs-note"><strong>Note:</strong> the scheme described here is not recommended for new code, and is described here only for completeness. The ability for users to write their component creator functions directly in JavaScript code will be <strong>removed</strong> in Infusion 2.0.</div>
 
 Creator functions follow a few basic steps:
 
@@ -196,7 +195,7 @@ var tutorial = tutorial || {};
         return that;
     };
 
-})(jQuery, fluid_1_5);
+})(jQuery, fluid_2_0);
 ```
 
 #### Example: Currency Converter Creator Function ####
@@ -216,3 +215,5 @@ tutorials.currencyConverter = function (options) {
     return that;
 };
 ```
+
+Next: [Model Components](ModelComponents.md)

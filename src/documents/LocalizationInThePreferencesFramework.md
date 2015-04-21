@@ -1,18 +1,13 @@
 ---
 title: Localization in the Preferences Framework
 layout: default
+category: Infusion
 ---
-
-Localization in the Preferences Framework
-=========================================
-
-Overview
---------
 
 Localization in the Preferences Framework makes use of message bundles: JSON files containing the strings that are to be used in the interface. The Preferences Framework combines any message bundles into a single bundle and makes that bundle available to the components that need to use the strings.
 
-Message Bundles
----------------
+## Message Bundles
+
 
 Message bundles are JSON files containing key/value pairs representing the message key and the localized text associated with it. Each set of localized text should be contained in its own message bundle.
 
@@ -37,8 +32,7 @@ Message bundles cannot contain arrays. Instead a namespace should be used to gro
 }
 ```
 
-Preferences Editor Component Hierarchy
---------------------------------------
+## Preferences Editor Component Hierarchy
 
 Understanding how to access message bundles is helped by understanding the general structure of the components of a preferences editor. The diagram below illustrates this structure and shows where the messages can be accessed. The rest of this page provides specific details about how to specify message bundles and how to retrieve strings.
 
@@ -72,8 +66,8 @@ If the message bundle is provided to PrefsEditor this way, access it within the 
 
 The message bundle is attached to each panel component as the `parentBundle` option. To access it from within a panel, use `{that}.options.parentBundle`.
 
-Adding Message Bundles
-----------------------
+## Adding Message Bundles
+
 
 Message bundles can be specified in one of two ways:
 
@@ -83,7 +77,7 @@ Message bundles can be specified in one of two ways:
 The Preferences Framework will load and combine all of the Message Bundles into a single Message Bundle which is bound to the `prefsEditorLoader` component at the `msgResolver` property (as described above).
 
 Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the combined Message Bundle at its `parentBundle` option (as described above). When using the auxiliary schema, all panels are assigned the grade `fluid.prefs.defaultPanel` by the Framework.
- 
+
 ### Example Auxiliary Schema
 
 ```javascript
@@ -96,7 +90,7 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
-            "type": "fluid.prefs.enactors.textSize"
+            "type": "fluid.prefs.enactor.textSize"
         },
         "panel": {
             "type": "fluid.prefs.panels.textSize",
@@ -108,7 +102,7 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
     "lineSpace": {
         "type": "fluid.prefs.lineSpace",
         "enactor": {
-            "type": "fluid.prefs.enactors.lineSpace",
+            "type": "fluid.prefs.enactor.lineSpace",
             "fontSizeMap": {
                 "xx-small": "9px",
                 "x-small": "11px",
@@ -148,8 +142,7 @@ fluid.prefs.separatedPanel("#myPrefsEditor", {
 });
 ```
 
-Using Message Bundles
----------------------
+## Using Message Bundles
 
 ### In the ProtoTrees
 

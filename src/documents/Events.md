@@ -1,9 +1,8 @@
 ---
 title: Events
 layout: default
+category: Infusion
 ---
-
-# Events #
 
 * [Infusion Event System](InfusionEventSystem.md)
 * [ChangeApplier](ChangeApplier.md)

@@ -1,13 +1,13 @@
 Infusion Documentation
 ======================
 
-Browse the Infusion Documentation on GitHub
--------------------------------------------
+## Browse the Infusion Documentation on GitHub
+
 
 You can [browse the Infusion Documentation directly on GitHub](src/documents).
 
-Build with DocPad
------------------
+## Build with DocPad
+
 
 Install DocPad:
 
@@ -30,5 +30,11 @@ docpad run --env static
 Point your browser to:
 
 ```
-http://localhost:9778/README.html
+http://localhost:9778/
+```
+
+## Deploy to GitHub Pages
+
+```
+docpad deploy-ghpages --env static
 ```

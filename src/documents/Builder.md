@@ -1,24 +1,22 @@
 ---
 title: Builder
 layout: default
+category: Infusion
 ---
-
-# Builder #
-
-## Overview ##
 
 The Infusion [Preferences Framework](PreferencesFramework.md) includes a tool called the Builder, which automatically creates all the components you need given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary schemas](AuxiliarySchemaForPreferencesFramework.md). The builder constructs all the components necessary to render the preferences editor, store preferences, and respond to changes in preferences. However, you'll generallyl want to use the simpler method "fluid.prefs.create" for creating and instantiating a [Preferences Editor](PreferencesEditor.md).
 ```javascript
 var builder = fluid.prefs.builder(<options>);
 ```
 
-**NOTE:** In this form, the namespace property of the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md) is required.
+<div class="infusion-docs-note"><strong>Note:</strong> In this form, the namespace property of the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md) is required.</div>
 
 ### Parameters ###
 
 <table>
 <tr><td><code>options</code></td><td>(Object) The configuration options for the builder. See <a href="#options">Options</a> below for more information.</td></tr>
 </table>
+
 where `options` is a JavaScript object containing information configuring your builder.
 
 ### Return Value ###
@@ -53,7 +51,7 @@ This option can be used to specify the names of grades that define schemas, as a
 </tr>
 </table>
 
-_**NOTE:** You must provide at least one of_
+<div class="infusion-docs-note"><strong>Note:</strong> You must provide at least one of</div>
 
 * the `auxiliarySchema` option, or
 * a `gradeName` indicating an auxiliary schema.
@@ -129,7 +127,9 @@ The Preferences Framework builds an internal, preliminary primary schema as foll
 1. It combines any schemas it finds in the `fluid.prefs.schemas` namespace;
 2. It merges these with any information found in the `primarySchema` option.
 
-This preliminary schema is then filtered based on the preferences found in the auxiliary schema to produce the subset of only preferences found in both the primary and auxiliary schemas. This set of preferences will be the final set supported by the builder. _**NOTE:** All panels and enactors defined in the auxiliary schema will be created and rendered, but only those that have corresponding preferences in the primary schema will actually work_.
+This preliminary schema is then filtered based on the preferences found in the auxiliary schema to produce the subset of only preferences found in both the primary and auxiliary schemas. This set of preferences will be the final set supported by the builder.
+
+<div class="infusion-docs-note"><strong>Note:</strong> All panels and enactors defined in the auxiliary schema will be created and rendered, but only those that have corresponding preferences in the primary schema will actually work.</div>
 
 ## Output of Builder ##
 
@@ -169,20 +169,20 @@ The functions created include:
 var myBuilder = fluid.prefs.builder({
     // use the Framework-provided starter schema grade
     gradeNames: ["fluid.prefs.auxSchema.starter"],
- 
+
     // override the paths in the starter grade
     auxiliarySchema: {
         "templatePrefix": "../../../framework/preferences/html/",
         "messagePrefix": "../../../framework/preferences/messages/"
     }
- 
+
     // by not providing a primarySchema, the 'starter' prefs will be used
 });
- 
+
 // instantiate the default 'fat panel' version of the preferences editor
 // (along with the enhancer and settings store)
 fluid.invokeGlobalFunction(builder.options.assembledPrefsEditorGrade, [".fat-panel-container"]);
- 
+
 // alternatively, the same instantiation can be accomplished using the public function
 fluid.prefs.constructed.prefsEditor(".fat-panel-container");
 ```
@@ -232,5 +232,3 @@ var myBuilder = fluid.prefs.builder({
 // instantiate the editor, enhancer and settings store
 my.prefs.editor.prefsEditor(".my-editor-container");
 ```
-
-
