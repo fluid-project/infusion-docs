@@ -4,7 +4,7 @@ layout: default
 category: API
 ---
 
-The Image Reorderer is a convenience function for applying the Reorderer to images within a collection.. This page provides technical details of the API.
+The Image Reorderer is a convenience function for applying the Reorderer to images within a collection. This page provides technical details of the API.
 
 ## Creating an Image Reorderer ##
 
@@ -96,7 +96,7 @@ requestedPosition = {
             <td>`afterMove`</td>
             <td>default</td>
             <td>
-            This event fires after an item has successfully been moved. For more information, see [Talking to the Server Using The afterMove Event](http://wiki.fluidproject.org/display/docs/Talking+to+the+Server+Using+The+afterMove+Event).
+            This event fires after an item has successfully been moved. For more information, see [Talking to the Server Using The afterMove Event](to-do/TalkingToTheServerUsingTheAfterMoveEvent.md).
 
             This event replaces the `afterMoveCallbackUrl` option, which was deprecated at version 1.1.2.
             </td>
@@ -146,6 +146,186 @@ requestedPosition = {
 </table>
 
 ## Options ##
+
+### General options ###
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>`selectors`</td>
+            <td>JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more information.</td>
+            <td>The object must be a list of objects containing any subset of the following keys:
+                * `dropWarning`
+                * `movables`
+                * `selectables`
+                * `dropTargets`
+                * `grabHandle`
+                * `stylisticOffset`
+            </td>
+            <td>
+                <pre>
+                    <code>
+selectors: {
+    dropWarning: ".flc-reorderer-dropWarning",
+    movables:    ".flc-reorderer-movable",
+    selectables: ".flc-reorderer-movable",
+    dropTargets: ".flc-reorderer-movable",
+    grabHandle:  "",
+    stylisticOffset: ""
+}
+                    </code>
+                </pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>`listeners`</td>
+            <td>JavaScript object containing listeners to be attached to the supported events.</td>
+            <td>Keys in the object are event names, values are functions or arrays of functions.</td>
+            <td>See [Supported Events](#supported-events)</td>
+        </tr>
+
+        <tr>
+            <td>`styles`</td>
+            <td>an object containing CSS class names for styling the Reorderer.</td>
+            <td>The object may contain any of the keys defined in the default class names (shown to the right). Any class names not provided will revert to the default.</td>
+            <td>
+                <pre>
+                    <code>
+styles: {
+    defaultStyle: "fl-reorderer-movable-default",
+    selected: "fl-reorderer-movable-selected",
+    dragging: "fl-reorderer-movable-dragging",
+    mouseDrag: "fl-reorderer-movable-dragging",
+    hover: "fl-reorderer-movable-hover",
+    dropMarker: "fl-reorderer-dropMarker",
+    avatar: "fl-reorderer-avatar"
+}
+                    </code>
+                </pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>`keysets`</td>
+            <td>an object containing sets of keycodes to use for directional navigation, and for the modifier key used for moving a movable item.</td>
+            <td>
+                The object must be a list of objects containing the following keys:
+
+                * `modifier` : a function that returns true or false, indicating whether or not the required modifier(s) are activated
+                * `up`
+                * `down`
+                * `right`
+                * `left`
+            </td>
+            <td>
+                <pre>
+                    <code>
+fluid.reorderer.defaultKeysets = [{
+    modifier : function (evt) {
+        return evt.ctrlKey;
+    },
+    up : fluid.reorderer.keys.UP,
+    down : fluid.reorderer.keys.DOWN,
+    right : fluid.reorderer.keys.RIGHT,
+    left : fluid.reorderer.keys.LEFT
+},
+{
+    modifier : function (evt) {
+        return evt.ctrlKey;
+    },
+    up : fluid.reorderer.keys.i,
+    down : fluid.reorderer.keys.m,
+    right : fluid.reorderer.keys.k,
+    left : fluid.reorderer.keys.j
+}];
+                    </code>
+                </pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>`selectablesTabindex`</td>
+            <td>Normally injected automatically from the layoutHandler</td>
+            <td>String [IoC expression](IoCReferences.md)</td>
+            <td>
+                <pre>
+                    <code>
+selectablesTabindex: "{that}.layoutHandler.options.selectablesTabindex"
+                    </code>
+                </pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>`avatarCreator`</td>
+            <td>a function that returns a valid DOM node to be used as the dragging avatar</td>
+            <td></td>
+            <td>
+
+The item being dragged will be cloned</td>
+        </tr>
+
+        <tr>
+            <td>`disableWrap`</td>
+            <td>This option is used to disable wrapping of elements within the container.</td>
+            <td>boolean</td>
+            <td>false</td>
+        </tr>
+
+        <tr>
+            <td>`mergePolicy`</td>
+            <td>an object describing how user options should be merged in with defaults
+For information on options merging, see [Options Merging](OptionsMerging.md)</td>
+            <td></td>
+            <td>
+                <pre>
+                    <code>
+mergePolicy: {
+    keysets: "replace",
+    "selectors.selectables":
+        "selectors.movables",
+    "selectors.dropTargets":
+        "selectors.movables"
+}
+                    </code>
+                </pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+### Image Reorderer Options
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td><strong>Deprecated as of 1.1.2:</strong>
+`afterMoveCallbackUrl`</span></td>
+            <td>If an URL is provided with this option, the current state of the component model will be sent to that URL after a move is carried out using a default afterMove event handler.</td>
+            <td>an URL</td>
+            <td>none</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Selectors ###
 
@@ -267,186 +447,6 @@ selectors: {
     </tbody>
 </table>
 
-### General options ###
-
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Values</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-            <td>selectors</td>
-            <td>JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more information.</td>
-            <td>The object must be a list of objects containing any subset of the following keys:
-                * `dropWarning`
-                * `movables`
-                * `selectables`
-                * `dropTargets`
-                * `grabHandle`
-                * `stylisticOffset`
-            </td>
-            <td>
-                <pre>
-                    <code>
-selectors: {
-    dropWarning: ".flc-reorderer-dropWarning",
-    movables:    ".flc-reorderer-movable",
-    selectables: ".flc-reorderer-movable",
-    dropTargets: ".flc-reorderer-movable",
-    grabHandle:  "",
-    stylisticOffset: ""
-}
-                    </code>
-                </pre>
-            </td>
-        </tr>
-
-        <tr>
-            <td>listeners</td>
-            <td>JavaScript object containing listeners to be attached to the supported events.</td>
-            <td>Keys in the object are event names, values are functions or arrays of functions.</td>
-            <td>See [Supported Events](#supported-events)</td>
-        </tr>
-
-        <tr>
-            <td>styles</td>
-            <td>an object containing CSS class names for styling the Reorderer.</td>
-            <td>The object may contain any of the keys defined in the default class names (shown to the right). Any class names not provided will revert to the default.</td>
-            <td>
-                <pre>
-                    <code>
-styles: {
-    defaultStyle: "fl-reorderer-movable-default",
-    selected: "fl-reorderer-movable-selected",
-    dragging: "fl-reorderer-movable-dragging",
-    mouseDrag: "fl-reorderer-movable-dragging",
-    hover: "fl-reorderer-movable-hover",
-    dropMarker: "fl-reorderer-dropMarker",
-    avatar: "fl-reorderer-avatar"
-}
-                    </code>
-                </pre>
-            </td>
-        </tr>
-
-        <tr>
-            <td>keysets</td>
-            <td>an object containing sets of keycodes to use for directional navigation, and for the modifier key used for moving a movable item.</td>
-            <td>
-                The object must be a list of objects containing the following keys:
-
-                * `modifier` : a function that returns true or false, indicating whether or not the required modifier(s) are activated
-                * `up`
-                * `down`
-                * `right`
-                * `left`
-            </td>
-            <td>
-                <pre>
-                    <code>
-fluid.reorderer.defaultKeysets = [{
-    modifier : function (evt) {
-        return evt.ctrlKey;
-    },
-    up : fluid.reorderer.keys.UP,
-    down : fluid.reorderer.keys.DOWN,
-    right : fluid.reorderer.keys.RIGHT,
-    left : fluid.reorderer.keys.LEFT
-},
-{
-    modifier : function (evt) {
-        return evt.ctrlKey;
-    },
-    up : fluid.reorderer.keys.i,
-    down : fluid.reorderer.keys.m,
-    right : fluid.reorderer.keys.k,
-    left : fluid.reorderer.keys.j
-}];
-                    </code>
-                </pre>
-            </td>
-        </tr>
-
-        <tr>
-            <td>selectablesTabindex</td>
-            <td>Normally injected automatically from the layoutHandler</td>
-            <td>String [IoC expression](IoCReferences.md)</td>
-            <td>
-                <pre>
-                    <code>
-selectablesTabindex: "{that}.layoutHandler.options.selectablesTabindex"
-                    </code>
-                </pre>
-            </td>
-        </tr>
-
-        <tr>
-            <td>avatarCreator</td>
-            <td>a function that returns a valid DOM node to be used as the dragging avatar</td>
-            <td></td>
-            <td>
-
-The item being dragged will be cloned</td>
-        </tr>
-
-        <tr>
-            <td>disableWrap</td>
-            <td>This option is used to disable wrapping of elements within the container.</td>
-            <td>boolean</td>
-            <td>false</td>
-        </tr>
-
-        <tr>
-            <td>mergePolicy</td>
-            <td>an object describing how user options should be merged in with defaults
-For information on options merging, see [Options Merging](OptionsMerging.md)</td>
-            <td></td>
-            <td>
-                <pre>
-                    <code>
-mergePolicy: {
-    keysets: "replace",
-    "selectors.selectables":
-        "selectors.movables",
-    "selectors.dropTargets":
-        "selectors.movables"
-}
-                    </code>
-                </pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### Image Reorderer Options
-
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Values</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-            <td><strong>Deprecated as of 1.1.2:</strong>
-afterMoveCallbackUrl</span></td>
-            <td>If an URL is provided with this option, the current state of the component model will be sent to that URL after a move is carried out using a default afterMove event handler. See [Deprecated - afterMoveCallback](http://wiki.fluidproject.org/display/Infusion13/Deprecated+-+afterMoveCallback) for info. </td>
-            <td>an URL</td>
-            <td>none</td>
-        </tr>
-    </tbody>
-</table>
-
 ## Styling the Image Reorderer
 
 The Image Reorderer includes default CSS styles that it applies to the thumbnails. The application of styles is based on known class names. The _default_ class names are described below, and can be used by including the Image Reorderer stylesheet:
@@ -468,7 +468,7 @@ NOTE that the default class names can be overridden with your own classes using 
 
 ## Dependencies
 
-The Image Reorderer dependencies can be met by including the `MyInfusion.js` file in the header of the HTML file:
+The Image Reorderer dependencies can be met by including the `infusion-custom.js` file in the header of the HTML file:
 ```
 <script type="text/javascript" src="MyInfusion.js"></script>
 ```
@@ -480,9 +480,23 @@ Alternatively, the individual file requirements are:
 <script type="text/javascript" src="lib/jquery/ui/js/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="lib/jquery/ui/js/jquery.ui.mouse.js"></script>
 <script type="text/javascript" src="lib/jquery/ui/js/jquery.ui.draggable.js"></script>
-<script type="text/javascript" src="framework/core/js/jquery/jquery.keyboard-a11y.js"></script>
-<script type="text/javascript" src="framework/core/js//Fluid.js"></script>
+<script type="text/javascript" src="framework/core/js/FluidDocument.js"></script>
+<script type="text/javascript" src="framework/core/js/jquery.keyboard-a11y.js"></script>
+<script type="text/javascript" src="framework/core/js/Fluid.js"></script>
 <script type="text/javascript" src="framework/core/js/FluidDOMUtilities.js"></script>
+<script type="text/javascript" src="framework/core/js/FluidIoC.js"></script>
+<script type="text/javascript" src="framework/core/js/FluidView.js"></script>
+<script type="text/javascript" src="framework/core/js/DataBinding.js"></script>
+<script type="text/javascript" src="components/reorderer/js/ReordererDOMUtilities.js"></script>
 <script type="text/javascript" src="components/reorderer/js/GeometricManager.js"></script>
 <script type="text/javascript" src="components/reorderer/js/Reorderer.js"></script>
-<script type="text/javascript" src="components/reorderer/js/ImageReorderer.js"></script>```
+<script type="text/javascript" src="components/reorderer/js/ImageReorderer.js"></script>
+```
+
+The Image Reorderer also requires the following stylesheets:
+
+```
+<link rel="stylesheet" type="text/css" href="framework/core/css/fluid.css" />
+<link rel="stylesheet" type="text/css" href="components/reorderer/css/Reorderer.css" />
+<link rel="stylesheet" type="text/css" href="components/reorderer/css/ImageReorderer.css" />
+```
