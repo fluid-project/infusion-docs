@@ -9,23 +9,24 @@ Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.
 
 ---
 
-Many times, you will be creating a component that works in an environment where other things are operating, and it will probably need to notify those other things of key **events** in its lifecycle. Events can be used to trigger changes in the visual appearance of a component, or actions by other components. For example:
+Many times, you will be creating a component that works in an environment where other things are operating, and it will probably need to notify those other things of key **events** in its lifecycle. 
+Events can be used to trigger changes in the visual appearance of a component, or actions by other components. For example:
 
 * the Infusion [Reorderer](../to-do/Reorderer.md) component provides drag-and-drop functionality for lists, grids, etc. Its operation has several key events, such as when a move is initiated, when it's completed, etc.
 * the Infusion [Uploader](../to-do/Uploader.md) component, a queued multi-file uploader, has events including when a file is successfully added to the queue, when each file starts being uploaded, when each upload completes, etc.
 
 The Infusion Framework defines its own event system. Infusion events differ from browser events in that they are not bound to the DOM or its insfrastructure. Infusion events can be used for anything, not only user-interface related events.
 
-## Declaring an Evented Component ##
+## Declaring a Component ##
 
-To use events with your component is to use the **eventedComponent** grade. To do this:
+All standard Fluid components descended from `fluid.component` support events. To take advantage of this,
 
-* specify a grade of `fluid.eventedComponent`, and
+* specify a grade of `fluid.component`, and
 * include an `events` property in your defaults, listing the events your component will fire.
 
 ```javascript
 fluid.defaults("tutorials.eventedComponent", {
-    gradeNames: ["fluid.eventedComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     ...
     events: {
         onAnAction: null,
@@ -48,7 +49,7 @@ Suppose you're creating a component that is responsible for managing records of 
 ```javascript
 // Declare the events in the defaults
 fluid.defaults("tutorials.recordEditor", {
-    gradeNames: ["fluid.eventedComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     ...
     events: {
         afterSave: null,
@@ -69,7 +70,7 @@ Our record editor component will likely have public methods for the saving and r
 ```javascript
 // Declare the events in the defaults
 fluid.defaults("tutorials.recordEditor", {
-    gradeNames: ["fluid.eventedComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     events: {
         afterSave: null,
         onRemove: "preventable",
@@ -112,15 +113,11 @@ tutorials.recordEditor.remove = function (that) {
 
 ## Example: Currency Converter ##
 
-Component grades can be combined, if necessary. Suppose we wish to add events to the model-bearing currency converter shown on the previous page. We can declare the component to be both a model component and an evented component by using the standard framework grade `fluid.standardComponent` which is a built-in defined as the combination of `fluid.eventedComponent` and `fluid.modelComponent`. The user can define such combinations themselves by just adding the list of grades directly into `gradeNames`.
-
-### Compatibility note:###
-
-During the transition period between Infusion 1.5 and Infusion 2.0 it is recommended that authors of new code use the names `fluid.modelRelayComponent` and `fluid.standardRelayComponent` rather than `fluid.modelComponent` and `fluid.standardComponent` respectively. See [Component Grades](../ComponentGrades.md) for details.
+Component grades can be combined, if necessary. Suppose we wish to add events to the model-bearing currency converter shown on the previous page. We can declare the component to be both a model component and an evented component by using the standard framework grade `fluid.modelComponent` which is a built-in defined as the combination of `fluid.component` and `fluid.modelComponent`. The user can define such combinations themselves by just adding the list of grades directly into `gradeNames`.
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.standardComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent", "autoInit"],
     model: {
         rates: {
             euro: 0.712,

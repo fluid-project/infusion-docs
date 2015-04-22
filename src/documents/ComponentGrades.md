@@ -14,14 +14,38 @@ The Infusion Framework already contains several predefined component grades that
     <thead>
         <tr>
             <th>Grade Name</th>
-            <th>"Relay" Version <sup>[1]</sup></th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>autoinit</td>
-            <td></td>
+            <td><code>fluid.component</code></td>
+            <td>
+                A "little" component is the most basic component: it supports options merging with defaults (<a href="tutorial-gettingStartedWithInfusion/BasicComponentCreation-LittleComponents.md">Little Components</a>), as well as
+                that instantiating event firers based on default framework events (onCreate, onDestroy, onDetach) 
+                and events declared in the options (<a href="tutorial-gettingStartedWithInfusion/EventedComponents.md">Tutorial - Evented Components</a>. All Fluid components are derived from this grade, and in general all things not derived from this grade are non-components (e.g. plain functions, or model transformation transforms, etc.)
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.modelComponent</code></td>
+            <td>
+                A "model" component is a little component that additionally provides supports for a component's model, defined in the components options, and operations on it (<a href="tutorial-gettingStartedWithInfusion/ModelComponents.md">Tutorial - Model Components</a>).
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.viewComponent</code></td>
+            <td>
+                A "view" component is a fluid.modelComponent is bound to a DOM container node, holds a <a href="DOMBinder.md">DOM Binder</a> and supports a view (<a href="tutorial-gettingStartedWithInfusion/ViewComponents.md">Tutorial - View Components).
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.rendererComponent</code></td>
+            <td>
+                A "renderer" component is a view component that also bears a renderer. There are additional features provided by this component grade specified on the <a href="RendererComponents.md#useful-functions-and-events">Useful functions and events</a> section of the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a> page
+            </td>
+        </tr>
+        <tr>
+            <td><code>autoInit</code></td>
             <td>
                 <p>
                     A special directive grade that instructs the framework to automatically construct a globally named creator function (with the same name as the grade) responsible for the construction of the component. NOTE: for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
@@ -33,62 +57,18 @@ The Infusion Framework already contains several predefined component grades that
                 </p>
             </td>
         </tr>
-        <tr>
-            <td>fluid.littleComponent</td>
-            <td></td>
-            <td>
-                A "little" component is the most basic component: it supports options merging with defaults (<a href="tutorial-gettingStartedWithInfusion/BasicComponentCreation-LittleComponents.md">Little Components</a>). All Fluid components are derived from this grade, and in general all things not derived from this grade are non-components (e.g. plain functions, or model transformation transforms, etc.)
-            </td>
-        </tr>
-        <tr>
-            <td>fluid.modelComponent</td>
-            <td>fluid.modelRelayComponent</td>
-            <td>
-                A "model" component is already a little component that additionally provides supports for a component's model, defined in the components options, and operations on it (<a href="tutorial-gettingStartedWithInfusion/ModelComponents.md">Tutorial - Model Components</a>).
-            </td>
-        </tr>
-        <tr>
-            <td>fluid.eventedComponent</td>
-            <td></td>
-            <td>
-                An "evented" component is already a little component that additionally instantiates event firers based on default framework events (onCreate, onDestroy, onDetach) and events declared in the options (<a href="tutorial-gettingStartedWithInfusion/EventedComponents.md">Tutorial - Evented Components</a>).
-            </td>
-        </tr>
-        <tr>
-            <td>fluid.standardComponent</td>
-            <td>fluid.standardRelayComponent</td>
-            <td>
-                A compound of fluid.modelComponent and fluid.eventedComponent
-            </td>
-        </tr>
-        <tr>
-            <td>fluid.viewComponent</td>
-            <td>fluid.viewRelayComponent</td>
-            <td>
-                A "view" component is a fluid.standardComponent is bound to a DOM container node, holds a <a href="DOMBinder.md">DOM Binder</a> and supports a view (<a href="tutorial-gettingStartedWithInfusion/ViewComponents.md">Tutorial - View Components).
-            </td>
-        </tr>
-        <tr>
-            <td>fluid.rendererComponent</td>
-            <td>fluid.rendererRelayComponent</td>
-            <td>
-                A "renderer" component is already a vew component that bears a renderer. There are additional features provided by this component grade specified on the <a href="RendererComponents.md#useful-functions-and-events">Useful functions and events</a> section of the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a> page
-            </td>
-        </tr>
     </tbody>
 </table>
 
-_**[1]** About the special "relay" grades - as part of the work on the [New ChangeApplier](http://wiki.fluidproject.org/display/fluid/New+Notes+on+the+ChangeApplier) in the 1.5 release of Infusion, every standard grade descended from fluid.modelComponent has acquired a parallel version including the word "relay" that allows access to the new ChangeApplier on an "opt in basis". During the course of 2014 we will be incrementally updating each Infusion component to the new "relay" grades, and once this work is complete, the "relay" grades will be renamed back to their standard (left column) names and the old ChangeApplier implementation will be abolished._
-
 ## Specifying Parent Grades ##
 
-A component's grades should be specified using the `gradeNames` option in the components defaults block, as shown in the examples below. The `gradeNames` option holds a string or Array of Strings.
+A component's grades should be specified using the `gradeNames` option in the components defaults block, as shown in the examples below. The `gradeNames` option holds a `String` or `Array of String`.
 
 <div class="infusion-docs-note"><strong>Note:</strong> In the examples below, the <code>autoInit</code> flag is not actually a grade, but is added to the <code>gradeNames</code> array to control how the component is created. See <a href="#initializing-graded-components">Initializing Graded Components</a> below for more information about the <code>autoInit</code> flag. The <code>autoInit</code> flag will soon become the default. Always use the <code>autoInit</code> flag, unless you have a very good reason not to.</div>
 
 ```javascript
 fluid.defaults("fluid.uploader.demoRemote", {
-    gradeNames: ["fluid.eventedComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     ...
 });
 ```
@@ -109,7 +89,8 @@ fluid.defaults("cspace.util.relationResolver", {
 
 ## Initializing Graded Components ##
 
-The Framework offers support for automatic initialization of graded component through `autoInit`. When the `autoInit` flag is added to the `gradeNames` array, the Framework will create the creator function automatically – the developer does not need to write a creator function.
+The Framework offers support for automatic initialization of graded component through `autoInit`. When the `autoInit` flag is added to the `gradeNames` array, the Framework will create the creator function automatically - 
+the developer does not need to write a creator function.
 
 To use the `autoInit` flag, add it to the array of `gradeNames`, as shown below:
 
@@ -119,15 +100,16 @@ fluid.defaults("fluid.uploader.fileQueueView", {
     ...
 });
 
-
-var that = fluid.uploader.fileQueueView( ... ); // The framework has automatically generated this function since the component is autoInit
+// The framework has automatically generated this function since the component is autoInit
+var that = fluid.uploader.fileQueueView( ... );
 ```
 
 <div class="infusion-docs-note"><strong>Note:</strong> The <code>autoInit</code> flag should always be used if you expect the grade to be directly instantiated as a component. It can be omitted if the only use of the grade is as an "add-on" ("<a href="https://en.wikipedia.org/wiki/Mixin">mixin</a>") to another grade hierarchy.</div>
 
 ## Combining Grades ##
 
-Since the `fluid.defaults` directive introduces a grade into the system, various components can be composed to create new ones. Options, fields and methods introduced by the ancestor grades will be merged. The merging happens, firstly in hierarchical order (grades comprising the ancestor grade are resolved before the actual component grades resolution) and secondly in the left-to-right order (defaults from the grade on the right taking precedence over the defaults from the grade on the left, more details can be found at the JIRA [FLUID-5085](http://issues.fluidproject.org/browse/FLUID-5085)). For example:
+Since the `fluid.defaults` directive introduces a grade into the system, various components can be composed to create new ones. Options, fields and methods introduced by the ancestor grades will be merged. 
+The merging happens, firstly in hierarchical order (grades comprising the ancestor grade are resolved before the actual component grades resolution) and secondly in the right-to-left order (defaults from the grade on the left taking precedence over the defaults from the grade on the right, more details can be found at the JIRA [FLUID-5085](http://issues.fluidproject.org/browse/FLUID-5085)). For example:
 
 ```javascript
 fluid.defaults("examples.componentOne", {
@@ -151,9 +133,10 @@ fluid.defaults("examples.componentTwo", {
 
 fluid.defaults("examples.combinedComponent", {
     gradeNames: ["examples.componentOne", "examples.componentTwo", "autoInit"]
-    // The resulting defaults for component examples.combinedComponent will look like this:
+    // The resulting defaults for component examples.combinedComponent 
+    // will behave as if the following had been written:
     // model: {
-    //     field1: false,
+    //     field1: true,
     //     field2: true
     // },
     // option1: "TEST",
@@ -205,7 +188,7 @@ Perhaps one of the most powerful possibilities is to distribute dynamic gradeNam
 fluid.defaults("examples.distributingRootComponent", {
     distributeOptions: {
         record: "examples.componentTwo",
-        target: "{that examples.componentOne}.options.gradeNames}"
+        target: "{that examples.componentOne}.options.gradeNames"
     },
     components: {
         myCombinedComponent1: {
@@ -228,7 +211,7 @@ For example:
 
 ```javascript
 fluid.defaults("fluid.componentWithDynamicGrade", {
-    gradeNames: ["fluid.littleComponent", "autoInit", "{that}.getDynamicGradeName"],
+    gradeNames: ["fluid.component", "autoInit", "{that}.getDynamicGradeName"],
     invokers: {
         getDynamicGradeName: "fluid.componentWithDynamicGrade.getDynamicGradeName"
     }
@@ -236,40 +219,9 @@ fluid.defaults("fluid.componentWithDynamicGrade", {
 
 // When resolved our fluid.componentWithDynamicGrade will have all the functionality of a fluid.modelComponent grade.
 // NOTE: developers can also return an array of grade names. These grade names can be custom grade names.
+// NOTE: This facility is fragile and should be used as a scheme for "last-ditch polymorphism"
 fluid.componentWithDynamicGrade.getDynamicGradeName = function () {
     return "fluid.modelComponent";
 };
 ```
 
-## Grade Linkage ##
-
-A powerful scheme for producing components whose grade content depends on combinations of other grades, or else to "advise" an already existing grade to append further grades into its components without redefining it, is **grade linkage**. In the current framework this is an experimental and extremely expensive (in CPU) facility which is only available on an "opt-in" basis, although it will be optimised and refined in future versions of the framework. The original implementation and the need for it are described in the JIRA [FLUID-5212](http://issues.fluidproject.org/browse/FLUID-5212). This rarely-required facility covers the part of the framework's responsibilities that mostly relate to situations where some form of [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch) is required.
-
-A component opts in to the grade linkage system by including the framework grade `fluid.applyGradeLinkage`. This grade may itself be supplied dynamically by any of the schemes listed earlier in this page. Whenever an instance of a component which has opted in starts to construct, the complete list of all of its grades, both static and dynamic, are checked against all grade linkage records which have been registered into the system holding the grade `fluid.gradeLinkageRecord`. Each of these linkage records will have the grades that they list in the field `contextGrades` checked against the component's total set of grades - if **every one** of them appears in the component, then all of the grades mentioned in the record's `resultGrades` entry will be added into the constructing component's set of grades. The dynamic grade resolution process will then kick off again until no further grades arrive.
-
-The following example demonstrates the process from end to end:
-
-```javascript
-// Sets up a component which opts into the grade linkage system and has a parent grade of "examples.componentOne"
-fluid.defaults("examples.gradeLinkageComponent", {
-    gradeNames: ["examples.componentOne", "fluid.applyGradeLinkage", "autoInit"],
-});
-
-// Sets up a "grade linkage record" that states that any opted-in component which comes to
-// have both "examples.componentOne" AND "examples.componentTwo" as grades through any route,
-// will automatically be also given grade "examples.componentOneAndTwo"
-fluid.defaults("examples.oneTwoLinkage", {
-    gradeNames: ["fluid.gradeLinkageRecord", "autoInit"],
-    contextGrades: ["examples.componentOne", "examples.componentTwo"],
-    resultGrades: "examples.componentOneAndTwo"
-});
-
-// Construct an instance of our component supplying an additional dynamic grade of "examples.componentTwo" -
-// this will activate the grade linkage system and automatically supply the further grade of "examples.componentOneAndTwo"
-var that = examples.gradeLinkageComponent({
-    gradeNames: "examples.componentTwo"
-});
-fluid.hasGrade(that.options, "examples.componentOneAndTwo"); // true
-```
-
-Once the implementation for this feature has bedded down, the framework grade `fluid.applyGradeLinkage` will be removed and all components will be opted-in by default.

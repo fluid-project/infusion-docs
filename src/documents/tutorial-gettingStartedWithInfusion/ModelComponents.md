@@ -18,10 +18,9 @@ The Infusion Framework provides supports for model-bearing components. When you 
 
 ## Declaring a Model Component ##
 
-To use a model with your component, you need to use the `fluid.modelComponent` (or `fluid.modelRelayComponent`) grade. To do this:
+To use a model with your component, you need to use the `fluid.modelComponent` grade. To do this:
 
-* specify a grade of `fluid.modelComponent`, or a grade derived from it (such as `fluid.standardComponent`, `fluid.viewComponent`, etc.) as part of your component's parent grades
-    * <div class="infusion-docs-note"><strong>Note:</strong> For the Infusion 1.5 release cycle, the grade of `fluid.modelRelayComponent` gives access to more modern ChangeApplier facilities, and `fluid.modelComponent` is retained for backwards compatibility with older code. The compatibility implementation will be removed before Infusion 2.0.</div>
+* specify a grade of `fluid.modelComponent`, or a grade derived from it (such as `fluid.modelComponent`, `fluid.viewComponent`, etc.) as part of your component's parent grades
 * Optionally, you may include a model property in your defaults holding some initial values suitable for your component's model
 
 ```javascript
@@ -46,7 +45,7 @@ As an example, let's consider a component that need to record a date. Your `mode
 
 ```javascript
 fluid.defaults("tutorials.modelBearingComponent", {
-    gradeNames: ["fluid.modelRelayComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent", "autoInit"],
     ...
     model: {
         date: null

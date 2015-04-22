@@ -55,7 +55,7 @@ The following are the policy types that are supported, determined by the key's v
             </td>
         </tr>
         <tr>
-            <td>Function</td>
+            <td><code>Function</code></td>
             <td>
                 This option allows the user to take complete control of the merging process at this path with a custom <code>policy</code> function. The value holds as a function which accepts two arguments (target, source) representing the sub-objects which are about to enter merging. The function will be invoked on these arguments and no further operations will be performed on this subtree. The return value of the function will become the next **running value** of the target and may be supplied as argument 1 to another invocation of the same policy function. These semantics are the same as those of the standard functional algorithm known as <a href="https://en.wikipedia.org/wiki/Fold_(higher-order_function)">reduce</a> (or fold, accumulate, etc.)
             </td>
@@ -67,7 +67,7 @@ The following are the policy types that are supported, determined by the key's v
 
 <div class="infusion-docs-note"><strong>Note:</strong> The use of <code>fluid.merge</code> directly is deprecated. The framework user should never need to invoke <code>fluid.merge</code> directly - it is invoked automatically by the framework as part of standard component initialisation.</div>
 
-The signature to fluid.merge is
+The signature to `fluid.merge` is
 
 ```javascript
 fluid.merge(policy, target, source-1, ... source-n);

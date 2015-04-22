@@ -1,5 +1,5 @@
 ---
-title: Basic Component Creation - Little Components
+title: Basic Component Creation - Components
 layout: default
 category: Tutorials
 ---
@@ -9,7 +9,7 @@ Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.
 
 ---
 
-Regardless of which grade of component you use, the basic structure will be the same. We'll use the simplest grade, a **little component**, to illustrate what this structure is. In future pages explaining other grades, you'll see the same principles.
+Regardless of which grade of component you use, the basic structure will be the same. We'll use the simplest grade, a plain **component**, to illustrate what this structure is. In future pages explaining other grades, you'll see the same principles.
 
 The definition of a component involves two things:
 
@@ -18,11 +18,11 @@ The definition of a component involves two things:
 
 ## Grade and Default Options ##
 
-A component's grade and any default options are registered with the framework using a call to [`fluid.defaults`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539), which has two parameters: the component name and an object containing the defaults. The parent grades for the component are specified in an array in the defaults called `gradeNames`. For a **little component**, specify the grade as `fluid.littleComponent`:
+A component's grade and any default options are registered with the framework using a call to [`fluid.defaults`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539), which has two parameters: the component name and an object containing the defaults. The parent grades for the component are specified in an array in the defaults called `gradeNames`. For a **little component**, specify the grade as `fluid.component`:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     option1: "default value 1",
     ...
 });
@@ -40,7 +40,7 @@ Suppose you're creating a currency converter. You might wish to specify a defaul
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     exchangeRate: 1.035
 });
 ```
@@ -87,7 +87,7 @@ fluid.defaults("fluid.progress", {
 
 All components have a **creator function**: a public function that is invoked to instantiate the component. In general, the framework will instantiate the creator function for you automatically, given the component's default options. When your component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another, the framework will also take responsibility for calling the creator function for you automatically. In the rare case you need to construct a component directly using a JavaScript function call, Infusion components have a standardized function signature:
 
-* **little**, **evented** and **model** components accept a single argument: options
+* plain, **evented** and **model** components accept a single argument: options
 * **view** and **renderer** components accept two arguments: container and options
 
 _(We'll get into what these arguments are soon.)_
@@ -105,7 +105,7 @@ The [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md) system can a
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     option1: "default value 1",
     ...
 });
@@ -119,7 +119,7 @@ The standard means of adding public API functions to a component is to express t
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     option1: "default value 1",
     ...
     invokers: {
@@ -144,7 +144,7 @@ So what would our currency converter example look like, create using IoC:
 
 ```javascript
 fluid.defaults("tutorials.currencyConverterAuto", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     exchangeRate: 1.035,
     invokers: {
         convert: {

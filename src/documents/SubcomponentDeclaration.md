@@ -169,12 +169,12 @@ This scheme for declaring a dynamic component is announced by making use of the 
 
 ```javascript
 fluid.defaults("examples.dynamicComponentRoot", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     values: [2, 3],
     dynamicComponents: {
         dynamic: {
             sources: "{that}.options.values",
-            type: "fluid.littleComponent",
+            type: "fluid.component",
             options: {
                 source: "{source}"
             }
@@ -202,7 +202,7 @@ fluid.defaults("examples.dynamicEventRoot", {
     dynamicComponents: {
         dynamic: {
             createOnEvent: "creationEvent",
-            type: "fluid.littleComponent",
+            type: "fluid.component",
             options: {
                 argument: "{arguments}.0"
             }

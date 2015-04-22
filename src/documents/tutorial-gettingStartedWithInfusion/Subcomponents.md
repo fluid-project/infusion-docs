@@ -23,17 +23,17 @@ The subcomponent object can contain many properties, but the main one is the `ty
 ```javascript
 // Define one subcomponent
 fluid.defaults("tutorials.subcomponent1", {
-    gradeNames: ["fluid.littleComponent", "autoInit"]
+    gradeNames: ["fluid.component", "autoInit"]
 });
 
 // Define another subcomponent
 fluid.defaults("tutorials.subcomponent2", {
-    gradeNames: ["fluid.littleComponent", "autoInit"]
+    gradeNames: ["fluid.component", "autoInit"]
 });
 
 // Define the parent component, to use the subcomponents
 fluid.defaults("tutorials.parentComponent", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component", "autoInit"],
     components: {
         child1: {
             type: "tutorials.subcomponent1"

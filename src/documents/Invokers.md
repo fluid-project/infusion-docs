@@ -18,7 +18,7 @@ around the component tree and within the argument list.
 ###Standard invoker binding to a function using `funcName`, `func` ###
 
 An invoker can specified with either the **`funcName`** property to reference a free function by its
-global name (e.g. `fluid.copy`, `console.log`, etc.) or the **`func`** property to reference an existing
+global name (e.g. `fluid.copy`, `fluid.log`, etc.) or the **`func`** property to reference an existing
 function (perhaps another invoker) from elsewhere in the component tree.
 
 <table>
@@ -51,16 +51,6 @@ references of the form <code>{arguments}.n</code>, where n is an integer indexin
 to the position of the originating argument, to use arguments passed in when the invoker is called.
 If no args are specified, all of the arguments passed into the invoker are sent to the underlying
 function unchanged.
-            </td>
-        </tr>
-        <tr>
-            <td><code>dynamic</code></td>
-            <td><strong>Optional</strong><br/>
-                type: <code>boolean</code><br/>
-By default, the values specified in the args property are cached, with the exception of those
-defined by <code>{arguments}.n</code>. If any of these arguments reference a value that may change
-between invocations of the invoker, this flag should be set to true. Note that using this option
-will reduce performance.
             </td>
         </tr>
     </tbody>
@@ -117,7 +107,7 @@ fluid.defaults("xyz.widget", {
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
-#### Compact Format ####
+#### Compact format for invokers ####
 
 Alternatively, invokers can be specified in a compact single line format. However, arguments
 specified in the invoker can only be strings or [IoC References](IoCReferences.md). Strings which can be converted
@@ -144,12 +134,8 @@ __Example:__
 fluid.defaults("xyz.widget", {
     ...
     invokers: {
-        // regular invokers:
         addVal: "xyz.widget.add({that}.staticVal, {arguments}.0)",
-        subtractVal: "{parent}.subtract({arguments}.0, {that}.staticVal)",
-        // dynamic invokers:
-        addMax: "xyz.widget.add!({that}.dynamicMaxVal, {arguments}.0)",
-        subtractMax: "{parent}.subtract!({arguments}.0, {that}.dynamicMaxVal)"
+        subtractVal: "{parent}.subtract({arguments}.0, {that}.staticVal)"
     }
     ...
 });
@@ -190,7 +176,7 @@ this variety of record.
 
 Specifying an invoker with a __`"this"`__ property allows the invocation of functions whose body
 makes a reference to the special JavaScript value `"this"`. These are generally functions external
-to the Infusion framework, since it is a Fluid community standard to write "that"-ist functions
+to the Infusion framework such as `console.log`, since it is a Fluid community standard to write "that"-ist functions
 whose execution is independent of the calling context. These can be any functions, but will most
 often be used for jQuery methods. See [Declarative this-ism in IoC](DeclarativeThisismInIoC.md)
 for more details. Note that the string `this` must always be quoted when appearing as a key as it is
