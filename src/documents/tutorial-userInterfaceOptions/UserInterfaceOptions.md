@@ -94,40 +94,17 @@ Where exactly on your page you put this <div> is up to you, but it will depend o
 
 ## Add dependencies to the page ##
 
-UI Options depends upon [Fluid Skinning System (FSS)](http://wiki.fluidproject.org/display/docs/Fluid+Skinning+System+-+FSS) and the Infusion Framework, so you will need to add to your pages dependencies for
-
-* the FSS CSS files,
-* the UI Options own CSS files, and
+* the CSS files, and
 * the main Infusion JavaScript file, `infusion_custom.js`.
 
-In the header of your file, link to the FSS CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package).
+In the header of your file, link to the CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package).
 
 ```html
-<!-- Required CSS files -->
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/fss/css/fss-layout.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/fss/css/fss-text.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/preferences/css/fss/fss-theme-bw-prefsEditor.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/preferences/css/fss/fss-theme-wb-prefsEditor.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/preferences/css/fss/fss-theme-by-prefsEditor.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/preferences/css/fss/fss-theme-yb-prefsEditor.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/preferences/css/fss/fss-theme-lgdg-prefsEditor.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/preferences/css/fss/fss-theme-dglg-prefsEditor.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/preferences/css/fss/fss-text-prefsEditor.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/lib/jquery/ui/css/fl-theme-by/by.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/lib/jquery/ui/css/fl-theme-yb/yb.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/lib/jquery/ui/css/fl-theme-bw/bw.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/lib/jquery/ui/css/fl-theme-wb/wb.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/lib/jquery/ui/css/fl-theme-lgdg/lgdg.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/lib/jquery/ui/css/fl-theme-dglg/dglg.css" />
-```
-
-<div class="infusion-docs-note"><strong>Note:</strong> The theme "dark-grey on light-grey" is planned for a future release. Therefore css/fl-theme-dglg/dglg.css is currently optional.</div>
-
-We'll also need the UI Options CSS files:
-
-```html
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/preferences/css/PrefsEditor.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+<link rel="stylesheet" type="text/css" href="lib/infusion/src/lib/normalize/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/core/css/fluid.css" />
+<link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+<link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+<link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
 ```
 
 We'll use the `<script>` tag to link to the Infusion library:

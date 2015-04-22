@@ -136,7 +136,7 @@ The CSS required will, of course, be dependent on the design. Some examples from
 
 ### Example 1: A radio button styled colour and contrast panel ###
 
-**UI and MARKUP**
+#### UI and MARKUP ####
 
 ![a radio button styled colour and contrast panel](../images/radio-styled.png)
 
@@ -156,57 +156,67 @@ The CSS required will, of course, be dependent on the design. Some examples from
 </div>
 ```
 
-**CSS**
+#### Stylus ####
 
 For the header:
-```css
-.fl-prefsEditor .fl-icon-contrast {
-    font-family: 'InfusionIcons' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    -webkit-font-smoothing: antialiased;
-    float:left;
-    margin: 0.2em 0.3em 0 0;
-    font-size: 1.5em;
-}
-.fl-prefsEditor .fl-icon-toc:before {
-    content: "\e005";
+
+```stylus
+.fl-prefsEditor {
+    .fl-icon-contrast {
+        font-family: 'InfusionIcons' !important;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        float:left;
+        margin: 0.2em 0.3em 0 0;
+        font-size: 1.5em;
+    }
+
+    .fl-icon-toc:before {
+        content: "\e005";
+    }
 }
 ```
 
 For the radio buttons:
-```css
+
+```stylus
 /* Theme radio buttons */
-.fl-prefsEditor .fl-choice {
-    display: inline;
-    float: left;
-}
-.fl-prefsEditor .fl-choice label {
-    margin-right: 5px;
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 3em;
-    width: 3em;
-    text-align: center;
-    vertical-align: middle;
-    display: inline-block;
-    line-height: 3em !important;
-    padding: 2px;
-}
-.fl-prefsEditor .fl-choice .fl-preview-A {
-    font-size: 2em;
-}
-.fl-prefsEditor .fl-choice input:focus ~ label {
-    outline: 2px solid black;
+.fl-prefsEditor {
+    .fl-choice {
+        display: inline;
+        float: left;
+
+        label {
+            margin-right: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 3em;
+            width: 3em;
+            text-align: center;
+            vertical-align: middle;
+            display: inline-block;
+            line-height: 3em !important;
+            padding: 2px;
+        }
+
+        .fl-preview-A {
+            font-size: 2em;
+        }
+
+        input:focus ~ label {
+            outline: 2px solid black;
+        }
+    }
 }
 ```
 
 ### Example 2: A checkbox styled table of contents panel ###
 
-**UI and MARKUP**
+#### UI and MARKUP ####
 
 ![a checkbox styled table of contents panel](../images/checkbox-styled.png)
 
@@ -227,109 +237,106 @@ For the radio buttons:
 </div>
 ```
 
-**CSS**
+#### Stylus ####
 
 For the switch:
-```css
-/* The container for the toggle, which is also a label for the hidden checkbox. */
-.fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch {
-    border-radius:50px;
-    border: 1px solid #776D67;
-    width: 5em;
-    height: 2em;
-    background-color: #E6E6E6;
-    box-shadow: 1em 1.1em 0 0 rgba(250,250,250,0.53) inset;
-    overflow:hidden;
-    vertical-align: middle;
-    display:inline-block;
-    transition-duration: 0.2s;
-    transition-property: padding-left, width, background-color, margin-left;
-    font-size: 1.2em;
-    font-weight: 600;
-}
 
-/* Hide input */
-.fl-prefsEditor .fl-prefsEditor-onoff input {
-    border: 0 none;
-    clip: rect(0px, 0px, 0px, 0px);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
+```stylus
+.fl-prefsEditor {
+    // ON/OFF Switch for checkboxes
+    // The container for the toggle, which is also a label for the hidden checkbox.
+    .fl-prefsEditor-onoff {
+        .fl-prefsEditor-switch {
+            border-radius:50px;
+            border: 1px solid #776D67;
+            width: 5em;
+            height: 2em;
+            background-color: #E6E6E6;
+            box-shadow: 1em 1.1em 0 0 rgba(250,250,250,0.53) inset;
+            overflow: hidden;
+            vertical-align: middle;
+            display:inline-block;
+            transition-duration: 0.2s;
+            transition-property: padding-left, width, background-color, margin-left;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
 
-.fl-prefsEditor .fl-prefsEditor-onoff input:focus + label {
-    outline: 2px solid black;
-}
+        // Hide input
+        input {
+            border: 0 none;
+            clip: rect(0px, 0px, 0px, 0px);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
 
-.fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch {
-    padding-left: 3em;
-    width: 2em;
-    background-color: #2da750;
-    box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.63) inset;
-}
+        input:focus + label {
+            outline: 2px solid black;
+        }
 
-/* With data attributes defining the on/off text, localizing the templates is easier */
-.fl-prefsEditor .fl-prefsEditor-onoff input + label [data-checkboxStateOn]:before {
-    content: attr(data-checkboxStateOn);
-}
-.fl-prefsEditor .fl-prefsEditor-onoff input + label [data-checkboxStateOff]:after {
-    content: attr(data-checkboxStateOff);
-}
+        input:checked + label .fl-prefsEditor-switch {
+            padding-left: 3em;
+            width: 2em;
+            background-color: #2da750;
+            box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.63) inset;
 
-/* The "on" portion of the toggle and the knob. */
-.fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:before {
-    color: #fff;
-    border: 1px solid #776D67;
-    border-radius: 50px;
-    float:left;
-    width:1.9em;
-    height: 1.9em; /* Width and height of the knob. */
-    text-indent:-1.6em;
-    line-height:1.7em;
-    text-shadow: 1px 1px 1px #000;
-    background-color: #fff;
-    background-image: -o-linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
-    background-image: -moz-linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
-    background-image: -webkit-linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
-    background-image: -ms-linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, rgb(205,204,202)),
-        color-stop(1, rgb(244,244,244))
-    );
-    background-image: linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
-    box-shadow: 0.2em 0.2em 0.5em #888;
-}
+            .fl-prefsEditor-switch-inner {
+                top:-1.6em;
+                left: 0.46em;
+            }
+        }
+        // With data attributes defining the on/off text, localizing the templates is easier
+        input + label {
+            [data-checkboxStateOn]:before {
+                content: attr(data-checkboxStateOn);
+            }
+            [data-checkboxStateOff]:after {
+                content: attr(data-checkboxStateOff);
+            }
 
-/* The "off" portion of the toggle. */
-.fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:after {
-    float:left;
-    position:relative;
-    top: 0.36em;
-    left: 0.5em;
-}
+            // The "on" portion of the toggle and the knob.
+            .fl-prefsEditor-switch {
+                &:before {
+                    color: #fff;
+                    border: 1px solid #776D67;
+                    border-radius: 50px;
+                    float:left;
+                    width:1.9em;
+                    height: 1.9em; // Width and height of the knob.
+                    text-indent:-1.6em;
+                    line-height:1.7em;
+                    text-shadow: 1px 1px 1px #000;
+                    background-color: #fff;
+                    box-shadow: 0.2em 0.2em 0.5em #888;
+                    background-image: linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
+                }
+                // The "off" portion of the toggle.
+                &:after {
+                    float: left;
+                    position: relative;
+                    top: 0.36em;
+                    left: 0.5em;
+                }
+            }
+        }
 
-/* The dark inner circle to the toggle knob. */
-.fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch-inner {
-    border: 1px solid #493A30;
-    border-radius: 50px;
-    width: 1em;
-    height: 1em;
-    position:relative;
-    left:-2.85em;
-    top:0.46em;
-    background-color: #675243;
-    box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
-    display:inline-block;
-}
-
-.fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch .fl-prefsEditor-switch-inner {
-    top:-1.6em;
-    left: 0.46em;
+        // The dark inner circle to the toggle knob.
+        .fl-prefsEditor-switch-inner {
+            border: 1px solid #493A30;
+            border-radius: 50px;
+            width: 1em;
+            height: 1em;
+            position: relative;
+            left: -2.85em;
+            top: 0.46em;
+            background-color: #675243;
+            box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
+            display: inline-block;
+        }
+    }
 }
 ```

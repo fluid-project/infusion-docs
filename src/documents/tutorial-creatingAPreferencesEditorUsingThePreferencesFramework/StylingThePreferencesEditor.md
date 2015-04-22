@@ -46,8 +46,8 @@ The Preferences Framework includes a number of CSS stylesheets that are used to 
             <td>all full-page, with preview</td>
         </tr>
         <tr>
-            <td>ie8.css</td>
-            <td>pages requiring support in Internet Explorer 8</td>
+            <td>Enactors.css</td>
+            <td>all versions making use of the starter enactors</td>
         </tr>
     </tbody>
 </table>
