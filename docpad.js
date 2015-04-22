@@ -78,6 +78,11 @@ module.exports = {
                 relativeUrl: relativeUrl,
                 ifEqual: ifEqual
             }
+        },
+        highlightjs: {
+            aliases: {
+                stylus: "css"
+            }
         }
     },
     events: {

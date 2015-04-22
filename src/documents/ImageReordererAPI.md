@@ -470,7 +470,7 @@ NOTE that the default class names can be overridden with your own classes using 
 
 The Image Reorderer dependencies can be met by including the `infusion-custom.js` file in the header of the HTML file:
 ```
-<script type="text/javascript" src="MyInfusion.js"></script>
+<script type="text/javascript" src="infusion-custom.js"></script>
 ```
 
 Alternatively, the individual file requirements are:
