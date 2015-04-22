@@ -943,7 +943,7 @@ The Uploader dependencies can be met by including in the header of the HTML file
 as shown below:
 
 ```html
-<link rel="stylesheet" type="text/css" href="/framework/fss/css/fss-layout.css" />
+<link rel="stylesheet" type="text/css" href="/framework/core/css/fluid.css" />
 <link rel="stylesheet" type="text/css" href="components/uploader/css/Uploader.css" />
 <script type="text/javascript" src="framework/core/js/infusion-all.js"></script>
 ```
@@ -951,8 +951,7 @@ as shown below:
 Alternatively, the individual file requirements are:
 
 ```html
-<link rel="stylesheet" type="text/css" href="../../../framework/fss/css/fss-reset.css" />
-<link rel="stylesheet" type="text/css" href="../../../framework/fss/css/fss-layout.css" />
+<link rel="stylesheet" type="text/css" href="../../../framework/core/css/fluid.css" />
 <link rel="stylesheet" type="text/css" href="../css/Uploader.css" />
 
 <!-- Fluid and jQuery Dependencies -->

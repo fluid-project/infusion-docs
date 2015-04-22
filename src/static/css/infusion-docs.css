@@ -48,6 +48,7 @@
          url("../fonts/github-1.ttf"),
          url("../fonts/github-1.eot");
 }
+
 html body {
     font-size: 12px;
     font-size: 1.2rem;
@@ -56,6 +57,10 @@ html body {
 
 pre {
     white-space: pre-wrap;
+}
+
+td {
+    vertical-align: top;
 }
 
 .fl-prefsEditor-buttons button:focus,
