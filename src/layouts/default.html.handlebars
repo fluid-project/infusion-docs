@@ -20,6 +20,13 @@
 
         <div class="container infusion-docs-container">
 
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+            
             <!-- BEGIN markup for Preference Editor -->
             <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
                 <!-- This is the div that will contain the Preference Editor component -->
@@ -56,7 +63,7 @@
             </header>
 
             <div class="row infusion-docs-mainBody">
-                <nav class="infusion-docs-TOC small-12 medium-3 column">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column">
                     {{#each siteStructure}}
                         {{! Output only the table of contents matching the current document's category }}
                         {{#ifEqual category ../document.category}}
@@ -79,7 +86,7 @@
                     {{/each}}
                 </nav>
 
-                <article class="infusion-docs-mainContent small-12 medium-9 column">
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column">
 
                     <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
 
