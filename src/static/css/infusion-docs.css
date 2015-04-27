@@ -157,20 +157,24 @@ a:focus {
     color: #ffb200;
 }
 
-.infusion-docs-container .infusion-docs-header nav {
+.infusion-docs-header nav {
     margin-top: 1rem;
 }
-.infusion-docs-container .infusion-docs-header nav a {
+.infusion-docs-header nav a {
     color: #FFFFFF;
 }
 
-.infusion-docs-container .infusion-docs-header a:hover {
+.infusion-docs-header a:hover {
     color: #008cba;
     background: #f2f2f2;
 }
 
 .infusion-docs-header a:hover:before {
     color: #008cba;
+}
+
+.infusion-docs-category-active {
+    border-bottom: 0.2rem solid #ffb200;
 }
 
 .infusion-docs-container .infusion-docs-header .infusion-docs-linkDOCS {
