@@ -386,8 +386,7 @@ See also: [Component Grades](ComponentGrades.md)
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>  
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     events: {
         onSave: "preventable",
         onReady: null

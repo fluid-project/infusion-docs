@@ -94,6 +94,8 @@ a:focus {
     min-height: 44rem;
 }
 
+.infusion-docs-mainContent code a:hover,
+.infusion-docs-mainContent a:hover code,
 .infusion-docs-container a:hover {
     color: #ffcb00;
     background: #323232;
@@ -102,9 +104,9 @@ a:focus {
 .infusion-docs pre code {
     font-weight: normal;
     background-color: #FFF;
-    border-width: 3px;
-    border-color: #666;
-    padding: 12px;
+    border: 0.1rem dotted #ddd;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
     color: #000;
     margin-bottom: 1rem;
 }
@@ -112,13 +114,16 @@ a:focus {
 .infusion-docs-mainContent code {
     font-weight: normal;
     background-color: #FFF;
-    border-width: 3px;
-    border-color: #666;
-    border-style: solid;
-    border-radius: 8px;
-    padding: 5px 7px 1px;
-    color: #C03;
-    font-size: 0.8rem;
+    color: #000;
+    font-size: inherit;
+}
+
+.infusion-docs-mainContent code a,
+.infusion-docs-mainContent a code {
+    font-size: inherit;
+    border-bottom: 0.1rem dotted #008cba;
+    color: #008cba;
+    background: 0;
 }
 
 .infusion-docs table td {
