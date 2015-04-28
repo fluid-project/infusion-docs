@@ -73,6 +73,11 @@ a:focus {
     outline: 0.2rem solid #ffb200;
 }
 
+#skip {
+    float: left;
+    height: 0rem;
+}
+
 #skip a,
 #skip a:hover,
 #skip a:visited {
