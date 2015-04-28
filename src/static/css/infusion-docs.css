@@ -206,6 +206,10 @@ a:focus {
     border-top: 0.1rem solid #efefef;
 }
 
+.infusion-docs-TOC li:first-child {
+    border-top: none;
+}
+
 .infusion-docs-category {
     font-weight: bold;
     margin: 1.5rem 0 1rem 0;
