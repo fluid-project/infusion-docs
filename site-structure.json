@@ -1,6 +1,7 @@
 [
     {
         "category": "Infusion",
+        "categoryHref": "/index.html",
         "sections":
         [
             {
@@ -110,6 +111,7 @@
     },
     {
         "category": "Tutorials",
+        "categoryHref": "/index-tutorials.html",
         "sections":
         [
             {
@@ -164,6 +166,7 @@
     },
     {
         "category": "API",
+        "categoryHref": "/index-api.html",
         "sections":
         [
             {

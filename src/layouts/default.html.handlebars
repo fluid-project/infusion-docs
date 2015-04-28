@@ -56,9 +56,14 @@
                 </div>
 
                 <nav class="small-12 medium-9 column">
-                    <a href="{{{relativeUrl '/index.html' document.url}}}" title="Infusion">Infusion</a>
-                    <a href="{{{relativeUrl '/index-tutorials.html' document.url}}}" title="Tutorials">Tutorials</a>
-                    <a href="{{{relativeUrl '/index-api.html' document.url}}}" title="A P I">API</a>
+                    {{! Highlight the (active) category the document belongs to. }}
+                    {{#each siteStructure}}
+                        {{#ifEqual category ../document.category}}
+                            <a href="{{{relativeUrl categoryHref ../../document.url}}}" title="{{category}}" class="infusion-docs-category-active">{{category}}</a>
+                        {{else}}
+                            <a href="{{{relativeUrl categoryHref ../../document.url}}}" title="{{category}}">{{category}}</a>
+                        {{/ifEqual}}
+                    {{/each}}
                 </nav>
             </header>
 
