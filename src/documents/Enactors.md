@@ -1,9 +1,8 @@
 ---
 title: Enactors
 layout: default
+category: Infusion
 ---
-
-# Enactors #
 
 An Enactor is an [Infusion component](UnderstandingInfusionComponents.md) that "acts upon" a preference setting, making whatever adjustments that are necessary to enact the preference.
 
@@ -50,13 +49,13 @@ fluid.defaults("my.pref.enactorGrade", {
     gradeNames: ["fluid.prefs.enactor", "autoInit"],
     <common defaults>
 });
- 
+
 // one specific enactor, which uses the shared grade
 fluid.defaults("my.pref.enactor1", {
     gradeNames: ["my.pref.enactorGrade", "autoInit"],
     <defaults specific to enactor 1>
 });
- 
+
 // another specific enactor, which uses the shared grade
 fluid.defaults("my.pref.enactor2", {
     gradeNames: ["my.pref.enactorGrade", "autoInit"],
@@ -130,7 +129,7 @@ fluid.defaults("gpii.enactor.fontSize", {
         }
     }
 });
- 
+
 gpii.enactor.fontSize.set = function (times, cursorDiv) {
     cursorDiv.css("font-size", times + "em");
 };
@@ -198,4 +197,3 @@ fluid.prefs.enactor.selfVoicing.readFromDOM = function (that, elm) {
     });
 };
 ```
-

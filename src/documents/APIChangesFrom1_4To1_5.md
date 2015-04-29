@@ -1,9 +1,8 @@
 ---
 title: API Changes from 1.4 to 1.5
 layout: default
+category: Infusion
 ---
-
-# API Changes from 1.4 to 1.5 #
 
 This page contains a list of the features, APIs, and etc. that have changed in Infusion 1.5.
 
@@ -23,7 +22,7 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 ### UI Options ###
 
 * Major refactoring into a preferences framework
-    * See migration guide
+    * See [migration guide](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
 
 ### Uploader ###
 
@@ -36,15 +35,15 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 * `expander` renamed to `transform`
 
-### `fluid.defaults`
+### fluid.defaults ###
 
 * the `true` flag has been removed
 
-### `fluid.merge` ###
+### fluid.merge ###
 
 * the `reverse` merge policy has been removed
 * now returns a fresh block of options, rather than a target passed in.
 
-### `fluid.alias` ###
+### fluid.alias ###
 
 * `fluid.alias` has been removed

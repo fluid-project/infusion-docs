@@ -1,9 +1,8 @@
 ---
 title: Subcomponents
 layout: default
+category: Tutorials
 ---
-
-# Subcomponents #
 
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)

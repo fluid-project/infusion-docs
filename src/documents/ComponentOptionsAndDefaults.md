@@ -1,11 +1,8 @@
 ---
 title: Understanding Component Options And Their Defaults
 layout: default
+category: Infusion
 ---
-
-# Understanding Component Options And Their Defaults #
-
-## Overview ##
 
 One of the key principles that Infusion components operate on is configurability. Components have
 options that can be set by integrators to customize the behaviour. For example, the Infusion
@@ -38,7 +35,7 @@ to see, so component developers must use these names, and not override them for 
 
 For example, view components work with the DOM, displaying values and manipulating the interface in
 response to user inputs and actions. In order to do this, the components need to have access to the
-relevant DOM elements. The Framework supports a `selectors` option for this. The `selectors` option 
+relevant DOM elements. The Framework supports a `selectors` option for this. The `selectors` option
 contains a list of named selectors that identify the DOM elements a component will work with.
 Considering again the example of the Inline Edit component, the component has a button that users
 can activate to switch from view mode into edit mode, so the "selectors" option contains a selector
@@ -57,5 +54,5 @@ fluid.defaults("inlineEdit", {
 
 ## Subcomponents ##
 
-In addition to simple configurations, a components defaults are used to identify its subcomponents, 
+In addition to simple configurations, a components defaults are used to identify its subcomponents,
 as described in [Understanding Infusion Components](UnderstandingInfusionComponents.md).

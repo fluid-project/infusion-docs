@@ -1,15 +1,14 @@
 ---
 title: How to Use Infusion IoC
 layout: default
+category: Infusion
 ---
-
-# How to Use Infusion IoC #
 
 The author of an Infusion component describes the structure of part of an IoC **component tree** that is rooted at a particular component, by describing what subcomponents the component has.
 
 ## Declaring Subcomponents ##
 
-A parent component declares what subcomponents it requires through the components block of the parent component's default options using [fluid.defaults](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539). This list of subcomponents will be examined when the parent component ask the Framework to create subcomponents, as described below in [Creating Subcomponents](#creating-subcomponents).
+A parent component declares what subcomponents it requires through the components block of the parent component's default options using [fluid.defaults](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539). This list of subcomponents will be examined when the parent component asks the Framework to create subcomponents.
 
 In this example, the default type for the subcomponent, `mySubComponent1`, of `myComponentName` is specified as type name `subComponent1Name`.
 

@@ -1,9 +1,8 @@
 ---
 title: Auxiliary Schema for Preferences Framework
 layout: default
+category: Infusion
 ---
-
-# Auxiliary Schema for Preferences Framework #
 
 An Auxiliary Schema is a JSON document that defines the information needed to build a preferences editor interface, including
 

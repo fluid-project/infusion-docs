@@ -1,11 +1,8 @@
 ---
 title: Invokers
 layout: default
+category: Infusion
 ---
-
-# Invokers #
-
-## Overview ##
 
 The Infusion IoC system provides a mechanism for creating the public functions (or "methods",
 in OO terminology) of a component. Invokers can bind free functions, IoC resolved functions, and
@@ -18,7 +15,7 @@ around the component tree and within the argument list.
 
 ## Types of Invokers ##
 
-###Standard invoker binding to a function using `funcName`, `func` ###
+### Standard invoker binding to a function using funcName, func ###
 
 An invoker can specified with either the **`funcName`** property to reference a free function by its
 global name (e.g. `fluid.copy`, `console.log`, etc.) or the **`func`** property to reference an existing
@@ -68,7 +65,7 @@ will reduce performance.
         </tr>
     </tbody>
 </table>
-	
+
 #### An invoker record in context ####
 
 The following skeleton example defines an invoker named invokerName attached to a component of
@@ -115,8 +112,8 @@ fluid.defaults("xyz.widget", {
         }
     }
     ...
-}); 
- 
+});
+
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
@@ -148,19 +145,19 @@ fluid.defaults("xyz.widget", {
     ...
     invokers: {
         // regular invokers:
-        addVal: "xyz.widget.add({that}.staticVal, {arguments}.0)", 
+        addVal: "xyz.widget.add({that}.staticVal, {arguments}.0)",
         subtractVal: "{parent}.subtract({arguments}.0, {that}.staticVal)",
         // dynamic invokers:
         addMax: "xyz.widget.add!({that}.dynamicMaxVal, {arguments}.0)",
         subtractMax: "{parent}.subtract!({arguments}.0, {that}.dynamicMaxVal)"
     }
     ...
-}); 
- 
+});
+
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
-#### Example ####
+__Example:__
 
 ```javascript
 fluid.defaults("fluid.uploader.fileQueue", {
@@ -267,10 +264,10 @@ fluid.defaults("xyz.widget", {
         }
     }
     ...
-}); 
+});
 ```
 
-#### Example ####
+__Example:__
 
 ```javascript
 fluid.defaults("fluid.uploader.html5Strategy.browseButtonView", {

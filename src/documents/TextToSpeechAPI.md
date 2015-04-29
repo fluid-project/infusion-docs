@@ -1,9 +1,8 @@
 ---
 title: Text To Speech API
 layout: default
+category: API
 ---
-
-# Text To Speech API #
 
 The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) to queue up and read texts.
 
@@ -14,7 +13,7 @@ The Text To Speech component can be used in browsers that support [Web Speech Sy
 * Safari 7.1+
 * iOS Safari 7.1+
 
-_**Note:** Find the latest browser support data for Web Speech Synthesis API from [caniuse.com](http://caniuse.com/#feat=web-speech)._
+<div class="infusion-docs-note"><strong>Note:</strong> Find the latest browser support data for Web Speech Synthesis API from [caniuse.com](http://caniuse.com/#feat=web-speech).</div>
 
 ## Creator ##
 
@@ -74,7 +73,7 @@ var tts = fluid.textToSpeech({
 
 ## Supported Methods ##
 
-### `queueSpeech` ###
+### queueSpeech ###
 
 <table>
     <tbody>
@@ -124,7 +123,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### `cancel` ###
+### cancel ###
 
 <table>
     <tbody>
@@ -147,7 +146,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### `pause` ###
+### pause ###
 
 <table>
     <tbody>
@@ -170,7 +169,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### `resume` ###
+### resume ###
 
 <table>
     <tbody>
@@ -193,7 +192,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### `getVoices` ###
+### getVoices ###
 
 <table>
     <tbody>
@@ -226,11 +225,11 @@ fluid.queueSpeech("Hello world", false, {
 
 ## Supported Events ##
 
-_**Note:** If needed, please read the [Infusion Event System](InfusionEventSystem.md) document for a full description of infusion events._
+<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the [Infusion Event System](InfusionEventSystem.md) document for a full description of infusion events.</div>
 
 The events fired by the Text To Speech component are described below.
 
-### `onStart` ###
+### onStart ###
 
 <table>
     <tbody>
@@ -253,7 +252,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onStop` ###
+### onStop ###
 
 <table>
     <tbody>
@@ -276,7 +275,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onPause` ###
+### onPause ###
 
 <table>
     <tbody>
@@ -299,7 +298,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onResume` ###
+### onResume ###
 
 <table>
     <tbody>
@@ -322,7 +321,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onError` ###
+### onError ###
 
 <table>
     <tbody>
@@ -345,7 +344,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### `onSpeechQueued` ###
+### onSpeechQueued ###
 
 <table>
     <tbody>
@@ -373,17 +372,17 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-## `utteranceOpts` Option ##
+## utteranceOpts` Option ##
 
-_**Note:** If needed, please read the [Component Configuration Options](ComponentConfigurationOptions.md) document for a full description of infusion component options._
+<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the [Component Configuration Options](ComponentConfigurationOptions.md) document for a full description of infusion component options.</div>
 
 The only option supported by the Text To Speech component is `utteranceOpts`. This option is a javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with).
 
-_**Note:** Not all speech synthesizers support all these attributes and some may take different ranges._
+<div class="infusion-docs-note"><strong>Note:</strong> Not all speech synthesizers support all these attributes and some may take different ranges.</div>
 
 These attributes include:
 
-### `text` ###
+### text ###
 
 <table>
     <tbody>
@@ -417,7 +416,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `lang` ###
+### lang ###
 
 <table>
     <tbody>
@@ -450,7 +449,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `voiceURI` ###
+### voiceURI ###
 
 <table>
     <tbody>
@@ -490,7 +489,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `volume` ###
+### volume ###
 
 <table>
     <tbody>
@@ -523,7 +522,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `rate` ###
+### rate ###
 
 <table>
     <tbody>
@@ -556,7 +555,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### `pitch` ###
+### pitch ###
 
 <table>
     <tbody>

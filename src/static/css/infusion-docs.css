@@ -1,0 +1,485 @@
+@font-face {
+    font-family: "OpenSans", Arial, Helvetica;
+    src: url("../fonts/OpenSans-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "OpenSans-Bold";
+    src: url("../fonts/OpenSans-Bold.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "OpenSans-Semibold";
+    src: url("../fonts/OpenSans-Semibold.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "OpenSans-Light";
+    src: url("../fonts/OpenSans-Light.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "RobotoSlab";
+    src: url("../fonts/RobotoSlab-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "RobotoSlab-Bold";
+    src: url("../fonts/RobotoSlab-Bold.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "infusion-docs";
+    src: url("../fonts/infusion-docs.eot#iefix") format("embedded-opentype"), /*IE8 fix */
+         url("../fonts/infusion-docs.ttf"),
+         url("../fonts/infusion-docs.eot");
+}
+
+@font-face {
+    font-family: "infusion_logo";
+    src: url("../fonts/infusion_logo.eot#iefix") format("embedded-opentype"), /*IE8 fix */
+         url("../fonts/infusion_logo.ttf"),
+         url("../fonts/infusion_logo.eot");
+}
+
+@font-face {
+    font-family: "github";
+    src: url("../fonts/github-1.eot#iefix") format("embedded-opentype"), /*IE8 fix */
+         url("../fonts/github-1.ttf"),
+         url("../fonts/github-1.eot");
+}
+
+html body {
+    font-size: 12px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+td {
+    vertical-align: top;
+}
+
+.fl-prefsEditor-buttons button:focus,
+.infusion-docs-TOC li a:focus .infusion-docs-TOC-pageName,
+a:focus {
+    outline: solid 0.2rem #008cba;
+}
+
+.infusion-docs-header a:focus,
+.infusion-docs-footer a:focus {
+    outline: 0.2rem solid #ffb200;
+}
+
+#skip {
+    float: left;
+    height: 0rem;
+}
+
+#skip a,
+#skip a:hover,
+#skip a:visited {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
+
+#skip a:active,
+#skip a:focus {
+    height: auto;
+    position: static;
+    width: auto;
+}
+
+ /* override foundation, so UIO's line-spacing will work */
+.infusion-docs h1, .infusion-docs h2, .infusion-docs h3, .infusion-docs h4, .infusion-docs h5, .infusion-docs h6,
+.infusion-docs p,
+.infusion-docs table tbody tr td,
+.infusion-docs table tr td,
+.infusion-docs ul,
+.infusion-docs dl {
+    line-height: inherit;
+}
+
+.infusion-docs-container p {
+    font-size: 1.2rem;
+}
+
+.infusion-docs-mainContent {
+    padding-left: 4rem;
+    padding-bottom: 6rem;
+    min-height: 44rem;
+}
+
+.infusion-docs-mainContent code a:hover,
+.infusion-docs-mainContent a:hover code,
+.infusion-docs-container a:hover {
+    color: #ffcb00;
+    background: #323232;
+}
+
+.infusion-docs pre code {
+    font-weight: normal;
+    background-color: #FFF;
+    border: 0.1rem dotted #ddd;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.infusion-docs-mainContent code {
+    font-weight: normal;
+    background-color: #FFF;
+    color: #000;
+    font-size: inherit;
+}
+
+.infusion-docs-mainContent code a,
+.infusion-docs-mainContent a code {
+    font-size: inherit;
+    border-bottom: 0.1rem dotted #008cba;
+    color: #008cba;
+    background: 0;
+}
+
+.infusion-docs table td {
+    border:1px solid #e7e7e7;
+}
+
+.infusion-docs-container .infusion-docs-header {
+    background-color: #323232;
+    height: 7rem;
+    font-family: "OpenSans", Arial, Helvetica;
+    font-size: 1.1rem;
+    text-align: right;
+    word-spacing: 2rem;
+    padding-right: 2rem;
+    line-height: 2;
+    max-width: 100%;
+}
+
+.infusion-docs-fluidLogoText:before {
+    font-family: "infusion_logo";
+    content: "\e606";
+    color: #ffb200;
+    font-size: 2rem;
+    text-align: bottom;
+    padding-right: 0.2rem;
+}
+
+.infusion-docs-container .infusion-docs-fluidLogo {
+    text-align: left;
+    font-size: 1.6rem;
+    font-family: "OpenSans-Light", Arial, Helvetica;
+    letter-spacing: 0.2rem;
+    margin-top: 2.5rem;
+}
+
+.infusion-docs-container .infusion-docs-fluidLogo a {
+    color: #ffb200;
+}
+
+.infusion-docs-header nav {
+    margin-top: 1rem;
+}
+.infusion-docs-header nav a {
+    color: #FFFFFF;
+}
+
+.infusion-docs-header a:hover {
+    color: #008cba;
+    background: #f2f2f2;
+}
+
+.infusion-docs-header a:hover:before {
+    color: #008cba;
+}
+
+.infusion-docs-category-active {
+    border-bottom: 0.2rem solid #ffb200;
+}
+
+.infusion-docs-container .infusion-docs-header .infusion-docs-linkDOCS {
+    color: #FFCB00;
+}
+
+.infusion-docs-container .infusion-docs-header .infusion-docs-linkDOCS:hover {
+    color: #FFCB00;
+    background: none;
+}
+
+.infusion-docs-TOC {
+    min-height: 44rem;
+    background: #fff;
+}
+
+.infusion-docs-TOC ul {
+    list-style-type: none;
+}
+
+.infusion-docs-TOC li {
+    padding: 0.6rem 0;
+    border-top: 0.1rem solid #efefef;
+}
+
+.infusion-docs-TOC li:first-child {
+    border-top: none;
+}
+
+.infusion-docs-category {
+    font-weight: bold;
+    margin: 1.5rem 0 1rem 0;
+    display:block;
+}
+
+.infusion-docs-sectionName {
+    margin: 1rem 0;
+    display: block;
+}
+
+.infusion-docs-TOC li a:focus {
+    outline: none;
+}
+
+.infusion-docs-TOC li .infusion-docs-TOC-pageName {
+    /* By default give each item in the TOC an active page style. */
+    border-left: solid 0.2rem #FFCB00;
+    padding-left: 0.2rem;
+    display: block;
+}
+
+.infusion-docs-TOC li a .infusion-docs-TOC-pageName {
+    /* If the TOC item is a link, then hide the active page styling */
+    border: none;
+    padding-left: 0;
+}
+
+.infusion-docs-container {
+    background-color: #f2f2f2;
+}
+
+.infusion-docs-mainBody {
+    margin: 0;
+}
+
+div.infusion-docs-note {
+    border-left: solid;
+    border-left-width: 0.3rem;
+    border-color: #5DB93C;
+    padding-left: 0.4rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.infusion-docs-container .infusion-docs-githubLink a:before {
+    display: inline-block;
+    vertical-align: bottom;
+    font-family: "github";
+    content: "\e600";
+    font-size: 1.3rem;
+    padding-right: 0.5rem;
+}
+
+.infusion-docs-container .infusion-docs-githubLink {
+    margin-bottom: 2rem;
+}
+
+.infusion-docs-container h1 {
+    font-size: 3.0rem;
+    font-family: "RobotoSlab";
+    margin-top: 10rem;
+    padding-bottom: 6rem;
+}
+
+.infusion-docs-container h2 {
+    font-size: 2.5rem;
+    font-family: "RobotoSlab";
+    padding-top: 4.6rem;
+    padding-bottom: 2.5rem;
+}
+
+.infusion-docs-container h3 {
+    font-size: 1.5rem;
+    font-family: "RobotoSlab-Bold";
+    padding-top: 2rem;
+}
+
+.infusion-docs-articleBody > p:first-child {
+    font-size: 1.4rem;
+}
+
+.infusion-docs-container .infusion-docs-navList {
+    font-size: 1.1rem;
+}
+
+.infusion-docs-container .infusion-docs-paragraphBullets {
+    font-size: 1.3rem;
+}
+
+.infusion-docs-container .infusion-docs-paragraphBullets li {
+    padding-bottom: 0.25rem;
+}
+.infusion-docs-container .infusion-docs-figure {
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding-top: 1.8rem;
+    padding-bottom: 1.1rem;
+}
+
+.infusion-docs-container .infusion-docs-figureCaption {
+    font-family: "OpenSans", Arial, Helvetica;
+    font-size: 1rem;
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    color: #4c4c4c;
+    text-align: left;
+    margin-top: 1rem;
+    border-top: solid;
+    border-color: #f2f2f2;
+    border-top-width: 0.3rem;
+}
+
+.infusion-docs-container .infusion-docs-footer {
+    background-color: #323232;
+    padding-top: 2rem;
+    color: #FFFFFF;
+    font-family: "OpenSans", Arial, Helvetica;
+    text-align: center;
+    max-width: 100%;
+}
+
+.infusion-docs-footer p {
+    font-size: 0.8rem;
+}
+
+.infusion-docs-footer a {
+    color: #ffcb00;
+}
+
+.infusion-docs-footer a:hover {
+    color: #008cba;
+    background: #f2f2f2;
+}
+
+.infusion-docs-footerInfusion {
+    font-size: 1.2rem
+}
+
+.fl-prefsEditor-separatedPanel .fl-panelBar .fl-prefsEditor-buttons {
+    margin-right: 2rem;
+}
+.fl-prefsEditor-separatedPanel .fl-prefsEditor-showHide,
+.fl-prefsEditor-separatedPanel .fl-prefsEditor-reset {
+    font-size: 1.1rem;
+    padding-top: 0.5rem;
+    height: 2rem;
+    margin-bottom: 0.7rem;
+}
+
+.infusion-docs-container .infusion-docs-toc h1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.infusion-docs.fl-text-larger .fl-prefsEditor-separatedPanel .fl-prefsEditor-showHide,
+.infusion-docs.fl-text-larger .fl-prefsEditor-separatedPanel .fl-prefsEditor-reset{
+    height: 2.5rem;
+}
+.infusion-docs.fl-text-larger .fl-prefsEditor-separatedPanel .fl-prefsEditor-showHide {
+    min-width: 13rem;
+}
+
+/* Styles for high-contrast themes */
+.fl-theme-yb .infusion-docs-fluidLogoText::before {
+    color: #ffff00 !important;
+}
+.fl-theme-wb .infusion-docs-fluidLogoText::before {
+    color: #ffffff !important;
+}
+.fl-theme-by .infusion-docs-fluidLogoText::before,
+.fl-theme-bw .infusion-docs-fluidLogoText::before {
+    color: #000000 !important;
+}
+.fl-theme-lgdg .infusion-docs-fluidLogoText::before {
+    color: #bdbdbb !important;
+}
+
+.fl-theme-bw a:focus,
+.fl-theme-bw .fl-prefsEditor-buttons button:focus,
+.fl-theme-bw a:focus .infusion-docs-TOC-pageName,
+.fl-theme-by a:focus,
+.fl-theme-by .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #000000 !important;
+}
+.fl-theme-wb a:focus,
+.fl-theme-wb a:focus .infusion-docs-TOC-pageName,
+.fl-theme-wb .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #ffffff !important;
+}
+.fl-theme-yb a:focus,
+.fl-theme-yb a:focus .infusion-docs-TOC-pageName,
+.fl-theme-yb .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #ffff00 !important;
+}
+.fl-theme-lgdg a:focus,
+.fl-theme-lgdg a:focus .infusion-docs-TOC-pageName,
+.fl-theme-lgdg .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #bdbdbb !important;
+}
+
+/*
+Focus style exception: don't have focus appear around the anchor.
+Instead have it appear around the enclosed
+*/
+.fl-theme-bw .infusion-docs-TOC li a:focus,
+.fl-theme-wb .infusion-docs-TOC li a:focus,
+.fl-theme-by .infusion-docs-TOC li a:focus,
+.fl-theme-yb .infusion-docs-TOC li a:focus,
+.fl-theme-lgdg .infusion-docs-TOC li a:focus {
+    outline:none !important;
+}
+
+.fl-theme-bw .infusion-docs-container a:hover,
+.fl-theme-bw .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-bw .fl-prefsEditor-buttons button:hover,
+.fl-theme-bw .infusion-docs-header a:hover:before {
+    color: #ffffff !important;
+    background: #000000 !important;
+}
+.fl-theme-wb .infusion-docs-container a:hover,
+.fl-theme-wb .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-wb .fl-prefsEditor-buttons button:hover,
+.fl-theme-wb .infusion-docs-header a:hover:before {
+    color: #000000 !important;
+    background: #ffffff !important;
+}
+.fl-theme-by .infusion-docs-container a:hover,
+.fl-theme-by .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-by .fl-prefsEditor-buttons button:hover,
+.fl-theme-by .infusion-docs-header a:hover:before {
+    color: #ffff00 !important;
+    background: #000000 !important;
+}
+.fl-theme-yb .infusion-docs-container a:hover,
+.fl-theme-yb .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-yb .fl-prefsEditor-buttons button:hover,
+.fl-theme-yb .infusion-docs-header a:hover:before {
+    color: #000000 !important;
+    background: #ffff00 !important;
+}
+.fl-theme-lgdg .infusion-docs-container a:hover,
+.fl-theme-lgdg .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-lgdg .fl-prefsEditor-buttons button:hover,
+.fl-theme-lgdg .infusion-docs-header a:hover:before {
+    color: #555555 !important;
+    background: #bdbdbb !important;
+}

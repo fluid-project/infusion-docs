@@ -1,9 +1,8 @@
 ---
 title: ChangeApplier API
 layout: default
+category: API
 ---
-
-# ChangeApplier API #
 
 This section explains and documents the various Javascript API calls for instantiating and working with ChangeAppliers. In practice, users will use the ChangeAppliers which are automatically constructed for every [Model Component](tutorial-gettingStartedWithInfusion/ModelComponents.md) as its top-level member applier and will not construct their own. Furthermore, a good deal of the use made of ChangeAppliers will take the form of [Declarative Configuration](FrameworkConcepts.md#declarative-configuration) rather than literal JavaScript API calls - many more declarative uses are supported in Infusion 1.5 and even more will be supported in Infusion 2.0. This page presents both programmatic calls and their declarative equivalents where they exist.
 
@@ -62,7 +61,7 @@ The 4 examples presented in the _"Examples"_ column are parallel for the two cas
 
 #### Model Listener Declaration ####
 
-A model listener declaration block has exactly the same form and meaning as any of the record types supported by [Invokers](Invokers.md) and [Listeners](EventInjectionAndBoiling.md#listener-boiling) - 
+A model listener declaration block has exactly the same form and meaning as any of the record types supported by [Invokers](Invokers.md) and [Listeners](EventInjectionAndBoiling.md#listener-boiling) -
 including the one-string compact syntax documented with [Invokers](Invokers.md#compact-format). There are two extra features that are supported in
 model listener blocks that are not supported in standard listener declarations. These are the special context name `change`, and the ability to filter a change based on its _source_.
 
@@ -146,7 +145,7 @@ The values of sources supported as values in `excludeSource` and `includeSource`
     <tbody>
         <tr>
             <td><code>init</code></td>
-            <td>The change arising from the <em>initial transaction</em>. During this change, the listener will observe the value of the model changing from <code>undefined</code> to its consistent initial value, during the 
+            <td>The change arising from the <em>initial transaction</em>. During this change, the listener will observe the value of the model changing from <code>undefined</code> to its consistent initial value, during the
             overall process of component construction</td>
         </tr>
         <tr>
@@ -185,7 +184,7 @@ This example will not log the transition from the initial model state of `undefi
 
 #### Wildcards in model path references ####
 
-The last path segment of a model path reference may or may not be `"*"`. Whether it is `"*"` or not, the reference matches exactly the same set of changes - the only difference is in how they are reported. A path reference of `"things"` will match all changes occurring below this path segment, and report all those occurring within a single transaction as a single change. A path reference of `"things.*"` will match the same changes, but will report one change for each immediately nested path segment touched by the changes. For example, the following definition will log just one 
+The last path segment of a model path reference may or may not be `"*"`. Whether it is `"*"` or not, the reference matches exactly the same set of changes - the only difference is in how they are reported. A path reference of `"things"` will match all changes occurring below this path segment, and report all those occurring within a single transaction as a single change. A path reference of `"things.*"` will match the same changes, but will report one change for each immediately nested path segment touched by the changes. For example, the following definition will log just one
 
 ```javascript
 fluid.defaults("examples.pathExample1", {
@@ -197,7 +196,7 @@ fluid.defaults("examples.pathExample1", {
         }
     }
 });
- 
+
 var that = examples.pathExample1();
 that.applier.change("things", {a: 1, b: 2});
 // this logs {a: 1, b: 2}, "things" to the console
@@ -215,7 +214,7 @@ fluid.defaults("examples.pathExample2", {
         }
     }
 });
- 
+
 var that = examples.pathExample2();
 that.applier.change("things", {a: 1, b: 2}); // logs 2 lines
 // Line 1: 1, "things.a"
@@ -294,7 +293,7 @@ The declarative style for firing model changes involve a kind of IoC record that
             <td><code>changePath</code></td>
             <td><code>&lt;modelPathReference&gt;</code> (String)</td>
             <td>
-                The reference to the model path in a model somewhere in the component tree where the change is to be triggered. This has the same syntax as the model path references documented above for declarative listening, only wildcard forms are not supported. Four examples: 
+                The reference to the model path in a model somewhere in the component tree where the change is to be triggered. This has the same syntax as the model path references documented above for declarative listening, only wildcard forms are not supported. Four examples:
                 <ul>
                     <li><code>"modelPath"</code></li>
                     <li><code>""</code></li>
@@ -331,7 +330,7 @@ fluid.defaults("examples.changeExample", {
         }
     }
 });
- 
+
 var that = examples.changeExample();
 that.changer("finalValue");
 console.log(that.model); // "finalValue"
@@ -389,7 +388,7 @@ Users can freely define very fine or coarse-grained listeners for changes in a m
 ```javascript
 fluid.defaults("my.component", {
     gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "autoInit"],
-     
+
     invokers: {
         printChange: {
             "this": "console",
@@ -397,7 +396,7 @@ fluid.defaults("my.component", {
             args: ["{arguments}.0"]
         }
     },
- 
+
     model: {
         cats: {
             hugo: {
@@ -410,7 +409,7 @@ fluid.defaults("my.component", {
             }
         }
     },
- 
+
     modelListeners: {
         // Will fire individual change events whenever any part of "cats.hugo" changes.
         // {change}.value will correspond to each changed path within "hugo".
@@ -418,7 +417,7 @@ fluid.defaults("my.component", {
             funcName: "{that}.printChange",
             args: [{change}.value]
         },
- 
+
         // Will fire a single composite change event whenever any part of "cats.clovis" changes.
         // {change}.value will contain the new state of the "clovis" object.
         "cats.clovis": {
@@ -427,7 +426,7 @@ fluid.defaults("my.component", {
         }
     }
 });
- 
+
 // Example usage.
 var c = my.component();
 c.applier.change("cats.hugo", {
@@ -436,7 +435,7 @@ c.applier.change("cats.hugo", {
 });
 > "Hugonaut"
 > ["hard to tell"]
- 
+
 c.applier.change("cats.clovis.name", "THER CATTT!");
 > {name: "THER CATTT!", colours: ["white", "black spots", "black moustache"]}
 ```
@@ -451,7 +450,7 @@ Instantiating a ChangeApplier manually is possible but is not recommended for ge
 
 ```javascript
 var applier = fluid.makeChangeApplier(model, options); // currently produces an "old-style" applier
- 
+
     OR
 var applier = fluid.makeHolderChangeApplier(holder, options); // currently produces an "old-style" applier
     OR

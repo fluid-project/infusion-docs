@@ -1,9 +1,8 @@
 ---
 title: Developer Introduction to the Infusion Framework
 layout: default
+category: Tutorials
 ---
-
-# Developer Introduction to the Infusion Framework #
 
 _This page is still under construction. An archived version can be found on the
 [Developer Introduction to the Infusion Framework](http://wiki.fluidproject.org/display/docs/Developer+Introduction+to+Infusion+Framework)

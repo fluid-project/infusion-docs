@@ -1,9 +1,8 @@
 ---
 title: Creating an Auxiliary Schema
 layout: default
+category: Tutorials
 ---
-
-# Creating an Auxiliary Schema #
 
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)

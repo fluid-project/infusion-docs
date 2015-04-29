@@ -3,11 +3,7 @@ title: Infusion Documentation
 layout: default
 ---
 
-Infusion Documentation
-======================
-
-Infusion
---------
+## Infusion
 
 * [Framework Concepts](FrameworkConcepts.md)
 * Components
@@ -59,8 +55,7 @@ Infusion
   * [Class Name Conventions](ClassNameConventions.md)
   * [IoC Testing Framework](IoCTestingFramework.md)
 
-Tutorials
----------
+## Tutorials
 
 * [Getting started with Infusion](tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.md)
 * [How to Create and Use Font Icons](tutorial-creatingANewAdjusterUI/HowToCreateAndUseFontIcons.md)
@@ -77,8 +72,7 @@ Tutorials
     * [UI Options Migration](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
     * [Pager Migration](tutorial-migratingToInfusion1.5/PagerMigration.md)
 
-API
----
+## API
 
 * Component APIs
   * [Inline Edit](to-do/InlineEditAPI.md)

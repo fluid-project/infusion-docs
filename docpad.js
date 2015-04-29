@@ -9,9 +9,11 @@ You may obtain a copy of the ECL 2.0 License and BSD License at
 https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 */
 
-var URI = require('URIjs');
-var path = require('path');
-var ncp = require('ncp');
+var URI = require("URIjs");
+var path = require("path");
+var fs = require("fs-extra");
+
+var docsVersion = "development";
 
 // The documentation root on GitHub:
 // Used to build URLs for "Edit on GitHub" links
@@ -30,14 +32,27 @@ var githubLocation = function () {
     // in case we're on Windows, replace "\" in the path with "/"
     var relativePath = this.document.relativePath.replace(/\\/g, "/");
     return githubDocRoot + relativePath;
-}
+};
 
 // Helper function to build relative URLs:
 // Used for links to static resources such as CSS files. So that the generated
 // DocPad output is independent of the URL that it is hosted at.
-var relativeUrl = function (forUrl) {
-    return URI(forUrl).relativeTo(this.document.url);
-}
+var relativeUrl = function (forUrl, relativeToUrl) {
+    return URI(forUrl).relativeTo(relativeToUrl);
+};
+
+// Helper function to determine if two values are equal
+// Used to determine which table of contents category to display on a particular
+// page.
+var ifEqual = function (a, b, options) {
+    if (a == b) {
+        return options.fn(this);
+    } else {
+        return options.inverse(this);
+    }
+};
+
+var siteStructure = JSON.parse(fs.readFileSync("site-structure.json"));
 
 // We locate the images within the src/documents directory so that images can
 // be viewed on GitHub, as well as in the DocPad output. We need to
@@ -52,18 +67,47 @@ module.exports = {
     rootPath: rootPath,
     ignorePaths: [ imagesSrcDir ],
     renderSingleExtensions: true,
+    templateData: {
+        siteStructure: siteStructure
+    },
     plugins: {
         handlebars: {
             helpers: {
                 rewriteMdLinks: rewriteMdLinks,
                 githubLocation: githubLocation,
-                relativeUrl: relativeUrl
+                relativeUrl: relativeUrl,
+                ifEqual: ifEqual
+            }
+        },
+        highlightjs: {
+            aliases: {
+                stylus: "css"
             }
         }
     },
     events: {
-        writeAfter: function (opts, next) {
-            ncp.ncp(imagesSrcDir, imagesDestDir, next);
+        generateBefore: function () {
+            // Empty the "out" directory before generation to ensure
+            // that we don't get multiple nested
+            // infusion/<version>/... copies
+            fs.emptyDirSync("out");
+        },
+        writeAfter: function () {
+            // Copy the images
+            fs.copySync(imagesSrcDir, imagesDestDir);
+
+            // Move the contents of the out directory to
+            // out/infusion/<version>. We need to do this to prepare the
+            // structure for the ghpages plugin as it does not support
+            // deploying to a location other than the root.
+            fs.removeSync("tmp-out");
+            fs.renameSync("out", "tmp-out");
+            fs.mkdirsSync("out/infusion");
+            fs.renameSync("tmp-out", "out/infusion/" + docsVersion);
+
+            // Copy the files for GitHub Pages:
+            // redirect index.htmls and CNAME
+            fs.copySync(path.join(rootPath, "src", "ghpages-files"), "out");
         }
     }
-}
+};

@@ -1,9 +1,8 @@
 ---
 title: User Interface Options API
 layout: default
+category: API
 ---
-
-# User Interface Options API #
 
 The **User Interface Options (UI Options)** component  allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
 
@@ -14,7 +13,7 @@ UI Options does three things:
 
 UI Options is a convenient way to add a simple separated-panel preferences editor to any page. The interface will automatically support the set of "starter" preferences provided by the [Preferences Framework](PreferencesFramework.md), in their default configuration.
 
-_**Note:** If you require any customization of UI Options, you should consider  using the [Builder](Builder.md) tool of the [Preferences Framework](PreferencesFramework.md) directly._
+<div class="infusion-docs-note"><strong>Note:</strong> If you require any customization of UI Options, you should consider  using the <a href="Builder.md">Builder</a> tool of the <a href="PreferencesFramework.md">Preferences Framework</a> directly.</div>
 
 ![Screen shot of the UI Options Component](images/uio-showcase.png "Screen shot of the UI Options Component")
 
@@ -94,7 +93,7 @@ var myComponent = component.name("#myContainerID", {
 For information on the different types of events, see [Infusion Event System](InfusionEventSystem.md).
 
 
-### `onReady` ###
+### onReady ###
 
 <table>
     <tbody>
@@ -120,7 +119,7 @@ For information on the different types of events, see [Infusion Event System](In
     </tbody>
 </table>
 
-### `onPrefsEditorReady` ###
+### onPrefsEditorReady ###
 
 <table>
     <tbody>
@@ -164,7 +163,7 @@ var uio = fluid.uiOptions.prefsEditor(".myContainer", {
 
 The options supported by UI Options are described below.
 
-### `tocTemplate` ###
+### tocTemplate ###
 
 <table>
     <tbody>
@@ -201,7 +200,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `templatePrefix` ###
+### templatePrefix ###
 
 <table>
     <tbody>
@@ -236,7 +235,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `messagePrefix` ###
+### messagePrefix ###
 
 <table>
     <tbody>
@@ -271,7 +270,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `prefsEditor` ###
+### prefsEditor ###
 
 <table>
     <tbody>
@@ -305,7 +304,36 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `enhancerType` ###
+### prefsEditorType ###
+
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>prefsEditorType</code> option allows you to specify a custom <code>prefsEditorLoader</code> <a href="ComponentGrades.md">grade</a> component.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>"fluid.pageEnhancer"</td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+<pre>
+<code>
+fluid.uiOptions.prefsEditor("#myContainer", {
+    prefsEditorType: "myNamespace.myPrefsEditor"
+});
+</code>
+</pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+### enhancerType ###
 
 <table>
     <tbody>
@@ -334,7 +362,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### `storeType` ###
+### storeType ###
 
 <table>
     <tbody>

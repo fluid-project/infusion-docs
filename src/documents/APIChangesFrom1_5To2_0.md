@@ -1,9 +1,10 @@
 ---
 title: API Changes from 1.5 to 2.0
 layout: default
+category: Infusion
 ---
 
-# API Changes from 1.5 to 2.0 #
+This page contains a list of the features, APIs, and etc. that have changed in Infusion 2.0.
 
 ## Framework Changes ##
 
@@ -15,7 +16,7 @@ Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
 #### Component Grade Changes ####
 
-_**Note:** According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored._
+<div class="infusion-docs-note"><strong>Note:</strong> According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
 
 * Replace "fluid.modelComponent" with "fluid.modelRelayComponent"
 * Replace "fluid.standardComponent" with "fluid.standardRelayComponent"
