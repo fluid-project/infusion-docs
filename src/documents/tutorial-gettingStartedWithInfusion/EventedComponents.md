@@ -26,7 +26,7 @@ All standard Fluid components descended from `fluid.component` support events. T
 
 ```javascript
 fluid.defaults("tutorials.eventedComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     ...
     events: {
         onAnAction: null,
@@ -49,7 +49,7 @@ Suppose you're creating a component that is responsible for managing records of 
 ```javascript
 // Declare the events in the defaults
 fluid.defaults("tutorials.recordEditor", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     ...
     events: {
         afterSave: null,
@@ -70,7 +70,7 @@ Our record editor component will likely have public methods for the saving and r
 ```javascript
 // Declare the events in the defaults
 fluid.defaults("tutorials.recordEditor", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         afterSave: null,
         onRemove: "preventable",
@@ -117,7 +117,7 @@ Component grades can be combined, if necessary. Suppose we wish to add events to
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         rates: {
             euro: 0.712,

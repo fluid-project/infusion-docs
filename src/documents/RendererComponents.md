@@ -9,7 +9,7 @@ If you are creating a component that requires the use of the Renderer, you shoul
 
 ```javascript
 fluid.defaults("my.component", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     .. // put your options here
 
 });
@@ -284,7 +284,7 @@ This function calls `that.render(that.produceTree());` This function is only pre
 
 ```javascript
 fluid.defaults("fluid.examples.renderer", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     selectors: {
         textFont: ".flc-examples-text-font",
         notInProtoTree: ".flc-examples-not-in-protoTree"

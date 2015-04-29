@@ -49,7 +49,7 @@ Here is a component which has a child component which sets up a model relay rela
 
 ```javascript
 fluid.defaults("examples.implicitModelRelay", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
          parentValue: 3
     },
@@ -151,7 +151,7 @@ Here is an example of two components linked by explicit model relay representing
 
 ```javascript
 fluid.defaults("examples.explicitModelRelay", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         volume: 95
     },

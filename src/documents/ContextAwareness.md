@@ -55,6 +55,9 @@ described in the following table:
 
 The result of the `contextAwareness` record is that a number of the elements within `checks` will be evaluated in the visible context, and result in a number of `gradeNames` which will then be
 contributed into the `gradeNames` of the instantiating component in a particular order. This order is governed by both the `priority` entry at the adaptation level as well as at the check level.
+
+##Structure of members in a `checkRecord`
+
 The `checkRecord` structure which is used in the first row of this table is described now:
 
 <table>
@@ -71,7 +74,7 @@ The `checkRecord` structure which is used in the first row of this table is desc
     <tbody>
         <tr>
             <td><code>contextValue</code></td>
-            <td><code>String</code> [IoC reference](IoCReferences.md)</td>
+            <td><code>String</code> <a href="IoCReferences.md">IoC reference</a></td>
             <td>A standard IoC reference, either consisting of a bare context reference such as <code>{contextName}</code> or to a precise value such as <code>{contextName}.further.path</code> which should be sought by this check.
             If a bare context name is supplied, the checked path will default to <code>options.value</code>. If the context name does not match, the expression will evaluate to <code>undefined</code></td>
         </tr>
@@ -88,21 +91,21 @@ The `checkRecord` structure which is used in the first row of this table is desc
         </tr>
         <tr>
             <td><code>priority</code></td>
-            <td><code>Priority</code> value - see [Priorities](Priorities.md) for a full explanation</td>
+            <td><code>Priority</code> value - see <a href="Priorities.md">Priorities</a> for a full explanation</td>
             <td>The priority (if any) that the <code>gradeNames</code> resulting from this dimension should have over those resulting from any other dimension. This should be an entry of the form
             <code>before:adaptationName</code> or <code>after:adaptationName</code> for one of the other dimensions attached to this component within <code>contextAwareness</code></td>
         </tr>
     </tbody>
 </table>
 
-## Example `contextAwareness` record
+### Example `contextAwareness` record
 
 The most adaptible component in the framework is currently the [Uploader](togo/Uploader.md) which currently can respond to three "dimensions" of adaptation. Two of these,
 `technology` and `liveness`,  are advertised in its own `contextAwareness` record:
 
 ```javascript
 fluid.defaults("fluid.uploader", {
-    gradeNames: ["fluid.viewComponent", "fluid.contextAware", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.contextAware"],
     contextAwareness: {
         technology: {
             defaultGradeNames: "fluid.uploader.singleFile"
@@ -126,6 +129,8 @@ API supported by Firefox 3.x. Although all technologies other than a modern HTML
 engines still exists and could be contributed to in future. The `liveness` adaptation relates to the mocking infrastructure for the Uploader which exists at two levels. Firstly, there is 
 the "demo uploader" which mocks all of the engine-side implementation, and secondly the uploader can be run in various styles of integration tests which only mock the transport level which
 actually performs the file upload.
+
+### Example of dynamically broadcasting a fresh adaptation
 
 Finally, a third dimension of adaptation is supported by the Uploader's capability to be configured in a way that it will respond to previous instances of its own API - in particular that
 delivered for Infusion 1.2, released in April 2010, and Infusion 1.3, released in November 2010. This is implemented by allowing a dynamic contribution of a fresh dimension to the uploader's
@@ -180,7 +185,7 @@ removing them when they are no longer required.
 These contexts can be issued with a call of the form:
 
 ```
-fluid.contextAware.makeChecks(<checkStructure>)
+fluid.contextAware.makeChecks(<checkStructure>);
 ```
 
 The `checkStructure` argument is a hash of `contextName` strings to a `checkEntry` record which is documented in the following table:
@@ -200,7 +205,7 @@ The `checkStructure` argument is a hash of `contextName` strings to a `checkEntr
     <tbody>
         <tr>
             <td><code>func</code>/<code>funcName</code></td>
-            <td><code>String</code> [IoC reference](IoCReferences.md)</td>
+            <td><code>String</code> <a href="IoCReferences.md">IoC reference</a></td>
             <td>A function or function name to be evaluated to produce the context value</td>
         </tr>
         <tr>
@@ -212,5 +217,111 @@ The `checkStructure` argument is a hash of `contextName` strings to a `checkEntr
     </tbody>
 </table>
 
+You must supply exactly one of `func`, `funcName` or `value`.
+
+### Example of `fluid.contextAware.makeChecks`
+
+```
+fluid.contextAware.makeChecks({
+    "fluid.browser.supportsBinaryXHR": {
+        funcName: "fluid.enhance.supportsBinaryXHR"
+    },
+    "fluid.browser.supportsFormData": {
+        funcName: "fluid.enhance.supportsFormData"
+    }
+});
+```
+
+In the above example, the two global functions `fluid.enhance.supportsBinaryXHR` and `fluid.enhance.supportsFormData` will be executed, and their
+return values added into contexts with the names `fluid.browser.supportsBinaryXHR` and `fluid.browser.supportsFormData`.
+
+The contexts registered by ``fluid.contextAware.makeChecks`` can be erased from the system by the use of the call 
+
+```
+fluid.contextAware.forgetChecks(`contextNames`);
+```
+
+Here, `contextNames` is can hold either a `String` or `Array of String` holding the keys from the structures previously supplied to `fluid.contextAware.makeChecks`
+
+### Example of `fluid.contextAware.forgetChecks`
+
+For example, the checks registered in the above example `fluid.contextAware.makeChecks` call could be erased by a call to
+
+```
+fluid.contextAware.forgetChecks(["fluid.browser.supportsBinaryXHR", "fluid.browser.supportsFormData"]);
+```
+
 
 ## Defining and broadcasting a fresh adaptation in one operation with `fluid.contextAware.makeAdaptation`
+
+A very common use case is to define an adaptation (that is, a `distributeOptions` block which targets the `contextAwareness` area of a collection
+of componentsin the tree), and then to create an instance of a single, well-known component which actually broadcasts the adaptation. This was
+what we did in two steps (`fluid.defaults` plus `fluid.constructSingle`) in the above [example `contextAwareness` broadcast](#example-of-dynamically-broadcasting-a-fresh-adaptation)
+can be done in a single step using the `fluid.contextAware.makeAdaptation` API. 
+
+```
+fluid.contextAware.makeAdaptation(<adaptationRecord>);
+```
+
+This accepts a single complex structure `adaptationRecord` with a number of fields that need to be filled in:
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Members of a <code>adaptationRecord</code> record supplied as an argument to <code>fluid.contextAware.makeAdaptation</code></th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>distributionName</code></td>
+            <td><code>String</code></td>
+            <td>A grade name &#8212; the name to be given to the <strong>fabricated grade</strong> which performs the broadcast</td>
+        </tr>
+        <tr>
+            <td><code>targetName</code></td>
+            <td><code>String</code></td>
+            <td>A grade name &#8212; the name of the grade to <strong>receive the adaptation</strong></td>
+        </tr>
+        <tr>
+            <td><code>adaptationName</code></td>
+            <td><code>String</code></td>
+            <td>The name of the <code>contextAwareness</code> record (the top-level <code>adaptationRecord</code>) to receive the broadcast record &#8212; this will be a simple string</td>
+        </tr>
+        <tr>
+            <td><code>checkName</code></td>
+            <td><code>String</code></td>
+            <td>The name of the <code>checkRecord</code> record (<strong>within</strong> the <code>adaptationRecord</code>) to receive the broadcast record &#8212; this will be a simple string</td>
+        </tr>
+        
+        <tr>
+            <td><code>record</code></td>
+            <td><code>Object</code> (<code>checkRecord</code>)</td>
+            <td>The <a href="#structure-of-members-in-a-checkRecord"><code>checkRecord</code></a> which is to be broadcast &#8212; containing fields <code>contextValue</code>, <code>gradeNames</code> etc. 
+            <a href="#structure-of-members-in-a-checkRecord">as described above</a></td>
+        </tr>
+    </tbody>
+</table>
+
+### Example of calling `fluid.contextAware.makeAdaptation`
+
+For example, the pair of calls in the above [example `contextAwareness` broadcast](#example-of-dynamically-broadcasting-a-fresh-adaptation) could be achieved by the following single
+call to `fluid.contextAware.makeAdaptation`:
+
+```
+fluid.contextAware.makeAdaptation({
+    distributionName: "fluid.uploader.compatibility.distributor.1_3",
+    targetName: "fluid.uploader",
+    adaptationName: "apiCompatibility",
+    checkName: "1_2",
+    record: {
+        contextValue: "{fluid.uploader.requiredApi}.options.value",
+        equals: "fluid_1_2",
+        gradeNames: "fluid.uploader.compatibility.1_2"
+    }
+});
+```

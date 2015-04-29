@@ -70,7 +70,7 @@ This simple example shows the testing of a simple component, `fluid.tests.cat` w
 ```javascript
 /** Component under test **/
 fluid.defaults("fluid.tests.cat", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     invokers: {
         makeSound: "fluid.tests.cat.makeSound"
     }
@@ -86,7 +86,7 @@ In order to test this single component, we embed it appropriately within a *test
 
 ```javascript
 fluid.defaults("fluid.tests.myTestTree", {
-    gradeNames: ["fluid.test.testEnvironment", "autoInit"],
+    gradeNames: ["fluid.test.testEnvironment"],
     components: {
         cat: {       // instance of component under test
             type: "fluid.tests.cat"
@@ -103,7 +103,7 @@ as well as the test fixture code itself:
 
 ```javascript
 fluid.defaults("fluid.tests.catTester", {
-    gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
+    gradeNames: ["fluid.test.testCaseHolder"],
     modules: [ /* declarative specification of tests */ {
         name: "Cat test case",
         tests: [{
@@ -163,7 +163,7 @@ fluid.tests.getCatModules = function () {
 };
 
 fluid.defaults("fluid.tests.catTester", {
-    gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
+    gradeNames: ["fluid.test.testCaseHolder"],
     moduleSource: {
         funcName: "fluid.tests.getCatModules" 
     }
@@ -278,7 +278,7 @@ ChangeApplier events resulting from corresponding changes to the component's mod
 ```javascript
 /** Component under test **/
 fluid.defaults("fluid.tests.asyncTest", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     model: {
         textValue: "initialValue"
     },
@@ -301,7 +301,7 @@ fluid.defaults("fluid.tests.asyncTest", {
 });
 
 fluid.defaults("fluid.tests.buttonChild", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     events: {
         buttonClicked: "{asyncTest}.events.buttonClicked"
     }
@@ -319,7 +319,7 @@ within an overall `testEnvironment`:
 
 ```javascript
 fluid.defaults("fluid.tests.asyncTestTree", {
-    gradeNames: ["fluid.test.testEnvironment", "autoInit"],
+    gradeNames: ["fluid.test.testEnvironment"],
     markupFixture: ".flc-async-root",
     components: {
         asyncTest: {
@@ -364,7 +364,7 @@ The TestCaseHolder makes reference to a few global utility functions which are r
 
 ```javascript
 fluid.defaults("fluid.tests.asyncTester", {
-    gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
+    gradeNames: ["fluid.test.testCaseHolder"],
     newTextValue:     "newTextValue",
     furtherTextValue: "furtherTextValue",
     modules: [ {

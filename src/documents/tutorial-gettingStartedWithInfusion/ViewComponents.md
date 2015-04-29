@@ -22,7 +22,7 @@ To create a view component, you need to use the **viewComponent** grade. To do t
 
 ```javascript
 fluid.defaults("tutorials.viewBearingComponent", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     ...
     selectors: {
         selector1: ".class1",
@@ -73,7 +73,7 @@ So far, the JavaScript to instantiate this component and specify these selectors
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     selectors: {
         amount: ".tut-currencyConverter-amount",
         currency: ".tut-currencyConverter-currency-selecter",

@@ -44,19 +44,6 @@ The Infusion Framework already contains several predefined component grades that
                 A "renderer" component is a view component that also bears a renderer. There are additional features provided by this component grade specified on the <a href="RendererComponents.md#useful-functions-and-events">Useful functions and events</a> section of the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a> page
             </td>
         </tr>
-        <tr>
-            <td><code>autoInit</code></td>
-            <td>
-                <p>
-                    A special directive grade that instructs the framework to automatically construct a globally named creator function (with the same name as the grade) responsible for the construction of the component. NOTE: for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
-                </p>
-                <p>
-                    <em>
-                        <strong>NOTE:</strong> for the Infusion 2.0 release this grade will become redundant as it will be the default for every grade
-                    </em>
-                </p>
-            </td>
-        </tr>
     </tbody>
 </table>
 
@@ -64,47 +51,41 @@ The Infusion Framework already contains several predefined component grades that
 
 A component's grades should be specified using the `gradeNames` option in the components defaults block, as shown in the examples below. The `gradeNames` option holds a `String` or `Array of String`.
 
-<div class="infusion-docs-note"><strong>Note:</strong> In the examples below, the <code>autoInit</code> flag is not actually a grade, but is added to the <code>gradeNames</code> array to control how the component is created. See <a href="#initializing-graded-components">Initializing Graded Components</a> below for more information about the <code>autoInit</code> flag. The <code>autoInit</code> flag will soon become the default. Always use the <code>autoInit</code> flag, unless you have a very good reason not to.</div>
-
 ```javascript
 fluid.defaults("fluid.uploader.demoRemote", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     ...
 });
 ```
 
 ```javascript
 fluid.defaults("cspace.messageBarImpl", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     ...
 });
 ```
 
 ```javascript
 fluid.defaults("cspace.util.relationResolver", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     ...
 });
 ```
 
-## Initializing Graded Components ##
+## Initializing Components ##
 
-The Framework offers support for automatic initialization of graded component through `autoInit`. When the `autoInit` flag is added to the `gradeNames` array, the Framework will create the creator function automatically - 
-the developer does not need to write a creator function.
+The framework will automatically construct a creator function for any component which is derived (even indirectly) from `fluid.component`:
 
-To use the `autoInit` flag, add it to the array of `gradeNames`, as shown below:
 
 ```javascript
 fluid.defaults("fluid.uploader.fileQueueView", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     ...
 });
 
-// The framework has automatically generated this function since the component is autoInit
+// The framework has automatically generated this function since the grade is a component grade
 var that = fluid.uploader.fileQueueView( ... );
 ```
-
-<div class="infusion-docs-note"><strong>Note:</strong> The <code>autoInit</code> flag should always be used if you expect the grade to be directly instantiated as a component. It can be omitted if the only use of the grade is as an "add-on" ("<a href="https://en.wikipedia.org/wiki/Mixin">mixin</a>") to another grade hierarchy.</div>
 
 ## Combining Grades ##
 
@@ -113,7 +94,7 @@ The merging happens, firstly in hierarchical order (grades comprising the ancest
 
 ```javascript
 fluid.defaults("examples.componentOne", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         field1: true
     },
@@ -123,7 +104,7 @@ fluid.defaults("examples.componentOne", {
 
 
 fluid.defaults("examples.componentTwo", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         field1: false,
         field2: true
@@ -132,7 +113,7 @@ fluid.defaults("examples.componentTwo", {
 });
 
 fluid.defaults("examples.combinedComponent", {
-    gradeNames: ["examples.componentOne", "examples.componentTwo", "autoInit"]
+    gradeNames: ["examples.componentOne", "examples.componentTwo"]
     // The resulting defaults for component examples.combinedComponent 
     // will behave as if the following had been written:
     // model: {
@@ -211,7 +192,7 @@ For example:
 
 ```javascript
 fluid.defaults("fluid.componentWithDynamicGrade", {
-    gradeNames: ["fluid.component", "autoInit", "{that}.getDynamicGradeName"],
+    gradeNames: ["fluid.component", "{that}.getDynamicGradeName"],
     invokers: {
         getDynamicGradeName: "fluid.componentWithDynamicGrade.getDynamicGradeName"
     }

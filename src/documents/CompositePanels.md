@@ -14,7 +14,7 @@ Composite panels must be defined with the `fluid.prefs.compositePanel` [grade](C
 
 ```javascript
 fluid.defaults("my.panels.composite", {
-    gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
+    gradeNames: ["fluid.prefs.compositePanel"],
     ...
 });
 ```
@@ -25,7 +25,7 @@ Subpanels are defined with the `fluid.prefs.panel` grade, the same grade used fo
 
 ```javascript
 fluid.defaults("my.panels.subanel", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     ...
 });
 ```

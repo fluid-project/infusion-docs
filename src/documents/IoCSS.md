@@ -106,7 +106,7 @@ one or more subcomponents of the current component:
 
 ```javascript
 fluid.defaults("kettle.use.session.io", {
-    gradeNames: ["autoInit", "fluid.component"],
+    gradeNames: ["fluid.component"],
     distributeOptions: {
         record: "kettle.sessionManager.io",
         target: "{that sessionManager}.options.gradeNames"
@@ -119,7 +119,7 @@ The `sessionManager`, wherever it is in the set of child components, will be gra
 ## Complex Example: `record` ##
 ```javascript
 fluid.defaults("fluid.moduleLayoutHandler", {
-    gradeNames: ["fluid.layoutHandler", "autoInit"],
+    gradeNames: ["fluid.layoutHandler"],
     ...
     distributeOptions: {
     // unusual: not an IoCSS selector - upward-matching selector distributes options back to parent before instantiation ends
@@ -153,7 +153,7 @@ fluid.defaults("fluid.moduleLayoutHandler", {
 ## Example: `source` ##
 ```javascript
 fluid.defaults("fluid.tests.uploader", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     components: {
         uploaderContext: {
             type: "fluid.progressiveCheckerForComponent",
@@ -199,7 +199,7 @@ fluid.defaults("fluid.debug.listeningView", {
 });
 
 fluid.defaults("fluid.debug.viewMapper", {
-    gradeNames: ["fluid.component", "fluid.resolveRoot", "autoInit"],
+    gradeNames: ["fluid.component", "fluid.resolveRoot"],
     // Distribute the grade `fluid.debug.listeningView` to every viewComponent in the system
     distributeOptions: {
         record: "fluid.debug.listeningView",

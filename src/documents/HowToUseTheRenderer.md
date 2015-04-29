@@ -15,7 +15,7 @@ If you are creating a component that requires the use of the Renderer, you shoul
 
 ```javascript
 fluid.defaults("my.component", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     ... // put your options here
 
 });

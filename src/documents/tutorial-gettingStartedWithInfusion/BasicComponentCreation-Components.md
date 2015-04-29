@@ -22,7 +22,7 @@ A component's grade and any default options are registered with the framework us
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     option1: "default value 1",
     ...
 });
@@ -40,7 +40,7 @@ Suppose you're creating a currency converter. You might wish to specify a defaul
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     exchangeRate: 1.035
 });
 ```
@@ -101,17 +101,15 @@ Creator functions can be defined in one of two ways
 
 #### Automatic creator function generation ####
 
-The [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md) system can automatically generate a component creator function for you. This is accomplished by added a special grade to the `gradeNames` property: **"autoInit"**:
+The [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md) system will automatically generate a component creator function for you. This is accomplished simply by deriving from the framework component grade `fluid.component`:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     option1: "default value 1",
     ...
 });
 ```
-
-<div class="infusion-docs-note"><strong>Note:</strong> in Infusion 2.0, <strong>"autoInit"</strong> will become the default for all components and will not need to be specified</div>
 
 #### Public API methods ####
 
@@ -119,7 +117,7 @@ The standard means of adding public API functions to a component is to express t
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     option1: "default value 1",
     ...
     invokers: {
@@ -144,7 +142,7 @@ So what would our currency converter example look like, create using IoC:
 
 ```javascript
 fluid.defaults("tutorials.currencyConverterAuto", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     exchangeRate: 1.035,
     invokers: {
         convert: {

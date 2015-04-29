@@ -57,7 +57,7 @@ Here is part of a grade definition from the framework's Uploader component imple
 
 ```javascript
 fluid.defaults("fluid.uploader.errorPanel.section", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
 ...
     listeners: {
         "onCreate.bindHandlers": {

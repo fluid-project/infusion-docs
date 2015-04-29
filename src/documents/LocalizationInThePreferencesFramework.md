@@ -128,7 +128,7 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
 
 ```javascript
 fluid.defaults("my.messageLoader", {
-    gradeNames: ["fluid.prefs.resourceLoader", "autoInit"],
+    gradeNames: ["fluid.prefs.resourceLoader"],
     templates: {
         magnification: "%prefix/magnification.json",
         cursorSize: "%prefix/cursorSize.json"
@@ -137,7 +137,7 @@ fluid.defaults("my.messageLoader", {
 fluid.prefs.separatedPanel("#myPrefsEditor", {
     ...
     messageLoader: {
-        gradeNames: ["my.messageLoader", "autoInit"]
+        gradeNames: ["my.messageLoader"]
     },
     ...
 });

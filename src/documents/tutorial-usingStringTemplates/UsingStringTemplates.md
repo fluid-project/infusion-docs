@@ -40,7 +40,7 @@ In this example, we've used an `expander` to provide "convenience" variables wit
 
   fluid.registerNamespace("gpii.sandbox.variables.simpler");
   fluid.defaults("gpii.sandbox.variables.simpler", {
-      gradeNames: ["autoInit", "fluid.component"],
+      gradeNames: ["fluid.component"],
       transformed: {
           expander: {
               func: "{that}.parseTemplates"
@@ -122,7 +122,7 @@ In the next example, we will look at creating a child component that overrides s
 
   fluid.registerNamespace("gpii.sandbox.variables.base");
   fluid.defaults("gpii.sandbox.variables.base", {
-      gradeNames: ["autoInit", "fluid.component"],
+      gradeNames: ["fluid.component"],
       terms: {
           one: "base one",
           two: "base two"
@@ -163,7 +163,7 @@ In the next example, we will look at creating a child component that overrides s
 
   fluid.registerNamespace("gpii.sandbox.variables.child");
   fluid.defaults("gpii.sandbox.variables.child", {
-      gradeNames: ["autoInit", "gpii.sandbox.variables.base"],
+      gradeNames: ["gpii.sandbox.variables.base"],
       templates: {
           one: "The term named one is set to '%one', also, I am a custom template."
       },
@@ -240,7 +240,7 @@ It is important to know what happens when a term is missing or has no value.  He
 
   fluid.registerNamespace("gpii.sandbox.variables.empty");
   fluid.defaults("gpii.sandbox.variables.empty", {
-      gradeNames: ["autoInit", "fluid.component"],
+      gradeNames: ["fluid.component"],
       transformed: {
           expander: {
               func: "{that}.parseTemplates"

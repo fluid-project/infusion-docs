@@ -25,7 +25,7 @@ To use a model with your component, you need to use the `fluid.modelComponent` g
 
 ```javascript
 fluid.defaults("tutorials.modelBearingComponent", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     ...
     model: {
         ...
@@ -45,7 +45,7 @@ As an example, let's consider a component that need to record a date. Your `mode
 
 ```javascript
 fluid.defaults("tutorials.modelBearingComponent", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     ...
     model: {
         date: null
@@ -61,7 +61,7 @@ tutorials.getCurrentDate = function () {
  };
 
 fluid.defaults("tutorials.datedComponent", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         date: {
             expander: {
@@ -79,7 +79,7 @@ The currency converter example we presented on the previous page might be more h
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         currentSelection: "euro",
         rates: {

@@ -109,7 +109,7 @@ If a grade name is used to provide the auxiliary schema, the grade must meet cer
 
 ```javascript
 fluid.defaults("my.editor.auxSchema", {
-    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    gradeNames: ["fluid.prefs.auxSchema"],
     auxiliarySchema: {
         // auxiliary schema specifics here
     }
@@ -202,7 +202,7 @@ var myPrefsPrimary = {
 // define a grade containing the auxiliary schema, specifying
 // the panel and enactor for the preference
 fluid.defaults("my.prefs.editor.aux", {
-    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    gradeNames: ["fluid.prefs.auxSchema"],
     auxiliarySchema: {
         namespace: "my.prefs.editor",
         templatePrefix: "templates/",

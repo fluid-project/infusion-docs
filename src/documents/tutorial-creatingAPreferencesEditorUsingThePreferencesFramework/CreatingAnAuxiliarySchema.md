@@ -27,7 +27,7 @@ The following example shows the auxiliary schema that would be used for the pref
 
 ```javascript
 fluid.defaults("fluid.prefs.auxSchema.starter", {
-    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    gradeNames: ["fluid.prefs.auxSchema"],
     auxiliarySchema: {
         // The global values:
         "namespace": "fluid.prefs.constructed",

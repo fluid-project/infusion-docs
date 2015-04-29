@@ -23,7 +23,7 @@ The second defaults block defines defaults for `childComponent`. Here, the refer
 
 ```javascript
 fluid.defaults("fluid.tests.parentComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         parentEvent: null
     },
@@ -35,7 +35,7 @@ fluid.defaults("fluid.tests.parentComponent", {
 });
 
 fluid.defaults("fluid.tests.childComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         parentEvent: "{parentComponent}.events.parentEvent"
     }
@@ -52,7 +52,7 @@ Here, the base component `childComponent` contains a standard local definition o
 
 ```javascript
 fluid.defaults("fluid.tests.parentComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         parentEvent: null
     },
@@ -69,7 +69,7 @@ fluid.defaults("fluid.tests.parentComponent", {
 });
 
 fluid.defaults("fluid.tests.childComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         parentEvent: null
     }
@@ -95,7 +95,7 @@ In this code block, the component defines two events - one **basic event** named
 ```javascript
 
 fluid.defaults("fluid.tests.eventBoiled", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         boiledLocal: {
             event: "localEvent",
@@ -116,7 +116,7 @@ The example below shows boiling from a different component, the boiled event `bo
 
 ```javascript
 fluid.defaults("fluid.tests.parentComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         parentEvent1: null,
         parentEvent2: null
@@ -140,7 +140,7 @@ fluid.defaults("fluid.tests.parentComponent", {
 });
 
 fluid.defaults("fluid.tests.eventChild3", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         boiledDouble: null
     }
@@ -163,7 +163,7 @@ examples.externalListener = function (that, value) {
 };
 
 fluid.defaults("examples.boiledListenerComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         simpleEvent: null
     },
@@ -188,7 +188,7 @@ Similarly to the previous section, rather than transmitting an entire event arou
 
 ```javascript
 fluid.defaults("examples.injectedListenerParent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         parentEvent: null,
     },

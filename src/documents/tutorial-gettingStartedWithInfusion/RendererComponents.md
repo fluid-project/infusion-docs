@@ -80,7 +80,7 @@ The currency converter example we've been evolving over the course of this tutor
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     selectors: {
         amount: ".tut-currencyConverter-amount",
         currency: ".tut-currencyConverter-currency-selecter",
@@ -109,7 +109,7 @@ In a renderer component tree, the binding to the data model is specified using a
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     selectors: {
         amount: ".tut-currencyConverter-amount",
         currency: ".tut-currencyConverter-currency-selecter",
@@ -153,7 +153,7 @@ modelListeners: {
 
 This directs the framework to automatically refresh the rendered view whenever the computed converted currency value is updated - this is done by binding a listener onto the renderer's automatically generated `refreshView` method to trigger from any changes received to the model's `result` field.
 
-Arranging declaratively to perform the currency conversion requires a more interesting kind of definition. Any transformation that can be expressed as part of Infusion's [Model Transformation](../to-do/ModelTransformation.md) system can be used to construct a [Model Relay](../ModelRelay.md) rule which can keep two component models (or two parts of the same component model) synchronised with each other's changes, where the synchronisation automatically takes account of a transformation rule. In this case we can recognise that the transformation performed by this component is one of the standard rules supplied with the framework, [`fluid.transforms.linearScale`](http://wiki.gpii.net/index.php/Architecture_-_Available_transformation_functions#Scale_value_with_optional_offset_.28fluid.transforms.linearScale.29) (if it weren't part of the standard set, it would be easy to use any suitable free function as the transforming rule). With the current Infusion version of 1.5, this requires upgrading the base grade of our component from `fluid.rendererComponent` to `fluid.rendererRelayComponent`. This requirement will go away in Infusion 2.0, along with the use of the "old renderer". The relay rule looks like this:
+Arranging declaratively to perform the currency conversion requires a more interesting kind of definition. Any transformation that can be expressed as part of Infusion's [Model Transformation](../to-do/ModelTransformation.md) system can be used to construct a [Model Relay](../ModelRelay.md) rule which can keep two component models (or two parts of the same component model) synchronised with each other's changes, where the synchronisation automatically takes account of a transformation rule. In this case we can recognise that the transformation performed by this component is one of the standard rules supplied with the framework, [`fluid.transforms.linearScale`](http://wiki.gpii.net/index.php/Architecture_-_Available_transformation_functions#Scale_value_with_optional_offset_.28fluid.transforms.linearScale.29) (if it weren't part of the standard set, it would be easy to use any suitable free function as the transforming rule). 
 
 ```javascript
 modelRelay: {
@@ -173,7 +173,7 @@ Putting it all together, you have the following:
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.rendererRelayComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     selectors: {
         amount: ".tut-currencyConverter-amount",
         currency: ".tut-currencyConverter-currency-selecter",

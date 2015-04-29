@@ -104,7 +104,7 @@ For example, the following code is an error, since `that2` cannot see the compon
 
 ```javascript
 fluid.defaults("examples.freeComponent1", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     freeValue: 42
 });
 
@@ -125,14 +125,14 @@ longer being used. The user must call `destroy()` on such instances themselves.
 
 ``javascript
 fluid.defaults("examples.rootComponent1", {
-    gradeNames: ["fluid.component", "fluid.resolveRootSingle", "autoInit"],
+    gradeNames: ["fluid.component", "fluid.resolveRootSingle"],
     singleRootType: "examples.rootComponent1",
     rootValue: 42
 });
 
 
 fluid.defaults("examples.rootFinder", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     value: "{rootComponent1}.options.rootValue"
 });
 

@@ -18,10 +18,9 @@ Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
 <div class="infusion-docs-note"><strong>Note:</strong> According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
 
-* Replace "fluid.modelComponent" with "fluid.modelRelayComponent"
-* Replace "fluid.modelComponent" with "fluid.standardRelayComponent"
-* Replace "fluid.viewComponent" with "fluid.viewRelayComponent"
-* Replace "fluid.rendererComponent" with "fluid.rendererRelayComponent"
+* Replace "fluid.eventedComponent" with "fluid.component"
+* Replace "fluid.standardComponent" with "fluid.modelComponent"
+* Remove "autoInit" - it is now the default for every component
 
 #### Model Sharing Changes ####
 
@@ -31,7 +30,7 @@ In Infusion 1.5, sharing models between non-relay components requires the change
 
 ```javascript
 fluid.default("fluid.parent", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     components: {
         child: {
             type: "fluid.modelComponent",
@@ -48,14 +47,15 @@ fluid.default("fluid.parent", {
 
 ##### In 2.0 #####
 
-In Infusion 2.0 where relay components are introduced, sharing models no longer requires the change applier to be shared:
+In Infusion 2.0 where relay components are introduced, the change applier must not be configured separately - model sharing
+just happens automatically:
 
 ```javascript
 fluid.default("fluid.parent", {
-    gradeNames: ["fluid.standardRelayComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     components: {
         child: {
-            type: "fluid.standardRelayComponent",
+            type: "fluid.modelComponent",
             options: {
                 model: "{parent}.model"
             }
@@ -74,7 +74,7 @@ In Infusion 1.5, enactors use non-relay components where the decalration of mode
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textSize", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     preferenceMap: {
         "fluid.prefs.textSize": {
             "model.value": "default"
@@ -111,7 +111,7 @@ In Infusion 2.0 where enactors use relay components, the `finalInit()` and the `
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textSize", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     preferenceMap: {
         "fluid.prefs.textSize": {
             "model.value": "default"

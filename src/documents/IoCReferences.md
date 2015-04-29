@@ -116,7 +116,7 @@ In the example below, the IoC reference `{that}` refers to the component in whic
 
 ```javascript
 fluid.defaults("fluid.prefs.separatedPanel", {
-    gradeNames: ["fluid.prefs.prefsEditorLoader", "autoInit"],
+    gradeNames: ["fluid.prefs.prefsEditorLoader"],
     listeners: {
         onCreate: {
             funcName: "fluid.prefs.prefsEditorLoader.hideReset",
@@ -130,7 +130,7 @@ This could equally be written using the short name of the `fluid.prefs.separated
 
 ```javascript
 fluid.defaults("fluid.prefs.separatedPanel", {
-    gradeNames: ["fluid.prefs.prefsEditorLoader", "autoInit"],
+    gradeNames: ["fluid.prefs.prefsEditorLoader"],
     listeners: {
         onCreate: {
             funcName: "fluid.prefs.prefsEditorLoader.hideReset",
@@ -147,7 +147,7 @@ The short name `tableOfContents` must not be used here, because it would not be 
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.tableOfContents", {
-    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     components: {
         tableOfContents: {
             type: "fluid.tableOfContents",
@@ -163,7 +163,7 @@ In the example below `{toc}` refers to the name used to define the subcomponent 
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.tableOfContents", {
-    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     components: {
         toc: {
             type: "fluid.tableOfContents",
@@ -189,7 +189,7 @@ The example below includes several IoC references. All of them are inside a subc
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.controllers", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     selectors: {
         scrubberContainer: ".flc-videoPlayer-scrubberContainer",
     },
@@ -221,7 +221,7 @@ The example below uses the `{arguments}.n` syntax to deliver the first and secon
 
 ```javascript
 fluid.defaults("fluid.moduleLayoutHandler", {
-    gradeNames: ["fluid.layoutHandler", "autoInit"],
+    gradeNames: ["fluid.layoutHandler"],
     events: {
         onMove: "{reorderer}.events.onMove"
     },
@@ -240,13 +240,13 @@ The example below uses an [IoCSS](IoCSS.md) expression `{that > moreText}.option
 
 ```javascript
 fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
-    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     selectors: {
         images: "img, [role~='img']"
     },
 });
 fluid.defaults("gpii.explorationTool.enactorSet", {
-    gradeNames: ["fluid.uiEnhancer.starterEnactors", "autoInit"],
+    gradeNames: ["fluid.uiEnhancer.starterEnactors"],
     components: {
         moreText: {
             type: "gpii.explorationTool.enactors.showMoreText"
@@ -267,7 +267,7 @@ fluid.defaults("gpii.explorationTool.enactorSet", {
 ```javascript
 // Range Annotator
 fluid.defaults("fluid.pagedTable.rangeAnnotator", {
-    gradeNames : ["fluid.component", "autoInit"],
+    gradeNames : ["fluid.component"],
     listeners : {
         "{pagedTable}.events.onRenderPageLinks" : {
             funcName : "fluid.pagedTable.rangeAnnotator.onRenderPageLinks",
@@ -277,7 +277,7 @@ fluid.defaults("fluid.pagedTable.rangeAnnotator", {
 });
 // Paged Table
 fluid.defaults("fluid.pagedTable", {
-    gradeNames : ["fluid.pager", "fluid.table", "autoInit"],
+    gradeNames : ["fluid.pager", "fluid.table"],
     components : {
         rangeAnnotator : {
             type : "fluid.pagedTable.rangeAnnotator"
@@ -299,7 +299,7 @@ The above example defines a `rangeAnnotator`, which is used as a subcomponent of
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.languageControls.eventBinder", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     listeners: {
         "{button}.events.onPress": "{menu}.toggleView"
     }
@@ -315,7 +315,7 @@ The above example uses two IoC references:
 
 ```javascript
 fluid.defaults("fluid.uploader", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     components: {
         uploaderImpl: {
             type: "fluid.uploaderImpl"

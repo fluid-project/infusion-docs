@@ -22,15 +22,10 @@ The following options are supported by all component grades, that is, those deri
     <td>A <code>String</code> or <code>Array of String</code> <a href="ComponentGrades.md">grade names</a>.</td>
   </tr>
   <tr>
-    <th>Notes</th>
-    <td>In addition to the grade names, the array should include the special <code>"autoInit"</code> value, which instructs the Framework to create the component creator function automatically.
-        <em><strong>NOTE:</strong> <code>"autoInit"</code> is the preferred way of creating components, and will become the default for Infusion 2.0. Always use this grade name, unless you have a special reason to not want the framework to fabricate a creator function (perhaps, because your grade is not instantiable).</em></td>
-  </tr>
-  <tr>
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("component.name", {
-    gradeNames: ["fluid.modelComponent", "fluid.component", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     ...
 });</code>
 </pre></td>
@@ -134,7 +129,7 @@ The following options are supported by all component grades, that is, those deri
     <td><pre>
 <code>  
 fluid.defaults("component.name", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         onSave: "preventable",
         onReady: null
@@ -213,7 +208,7 @@ fluid.defaults("component.name", {
     <td><pre>
 <code>  
 fluid.defaults("component.name", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     distributeOptions: {
         namespace: "myDistribution",
         record: "another.grade.name",
@@ -366,7 +361,7 @@ fluid.defaults("fluid.tests.allChangeRecorder", {
     <th>Example Definition</th>
     <td><pre>
 fluid.defaults("examples.volumeModelRelay", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         volumeAsPercent: 95,
     },
@@ -468,7 +463,7 @@ Component developers are free to define their own additional options.
     <th>Example Definition</th>
     <td><pre>
 fluid.defaults("demo.initGridReorderer", {
-    gradeNames: ["fluid.reorderGrid", "autoInit"],
+    gradeNames: ["fluid.reorderGrid"],
     styles: {
         dragging: "demo-gridReorderer-dragging",
         avatar: "demo-gridReorderer-avatar",
@@ -708,7 +703,7 @@ fluid.defaults("cspace.confirmationDialog", {
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("cspace.searchToRelateDialog", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     strings: {
         createNewButton: "Create",
         title: "Add Related %recordType Record",
@@ -817,14 +812,10 @@ fluid.defaults("cspace.confirmationDialog", {
     <td>A boolean flag indicating whether or not the component should render itself automatically once initialization has completed. By default, renderer components do not render themselves automatically.</td>
   </tr>
   <tr>
-    <th>Notes</th>
-    <td>This option is valid both for <code>"autoInit"</code> components and for components that are initialized manually, through <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248">fluid.initRendererComponent</a></code>.</td>
-  </tr>
-  <tr>
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("cspace.login", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     renderOnInit: true,
     ...
 });</code>

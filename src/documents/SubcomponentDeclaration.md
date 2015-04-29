@@ -108,7 +108,7 @@ Note that the entire subcomponent record may be replaced by a simple IoC referen
 
 ```javascript
 fluid.defaults("cspace.admin", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     components: {
         adminRecordEditor: { // view subcomponent declaration
             type: "cspace.recordEditor",
@@ -123,7 +123,7 @@ fluid.defaults("cspace.admin", {
 
 ```javascript
 fluid.defaults("cspace.admin.showAddButton", {
-    gradeNames: ["autoInit", "fluid.modelComponent"],
+    gradeNames: ["fluid.modelComponent"],
     components: { // injected component declaration
         permissionsResolver: "{permissionsResolver}"
     }
@@ -132,7 +132,7 @@ fluid.defaults("cspace.admin.showAddButton", {
 
 ```javascript
 fluid.defaults("gpii.explorationTool.modelTransformer", {
-    gradeNames: ["fluid.modelComponent", "fluid.uiOptions.modelRelay", "autoInit"],
+    gradeNames: ["fluid.modelComponent", "fluid.uiOptions.modelRelay"],
     components: {
         highContrast: { // complex subcomponent declaration with priority and createOnEvent
             type: "gpii.explorationTool.panels.highContrast",
@@ -169,7 +169,7 @@ This scheme for declaring a dynamic component is announced by making use of the 
 
 ```javascript
 fluid.defaults("examples.dynamicComponentRoot", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     values: [2, 3],
     dynamicComponents: {
         dynamic: {
@@ -195,7 +195,7 @@ The use of this scheme for dynamic components is announced by using the standard
 
 ```javascript
 fluid.defaults("examples.dynamicEventRoot", {
-    gradeNames: ["fluid.eventComponent", "autoInit"],
+    gradeNames: ["fluid.eventComponent"],
     events: {
         creationEvent: null
     },

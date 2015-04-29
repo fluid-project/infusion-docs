@@ -23,17 +23,17 @@ The subcomponent object can contain many properties, but the main one is the `ty
 ```javascript
 // Define one subcomponent
 fluid.defaults("tutorials.subcomponent1", {
-    gradeNames: ["fluid.component", "autoInit"]
+    gradeNames: ["fluid.component"]
 });
 
 // Define another subcomponent
 fluid.defaults("tutorials.subcomponent2", {
-    gradeNames: ["fluid.component", "autoInit"]
+    gradeNames: ["fluid.component"]
 });
 
 // Define the parent component, to use the subcomponents
 fluid.defaults("tutorials.parentComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     components: {
         child1: {
             type: "tutorials.subcomponent1"
@@ -77,7 +77,7 @@ These relationships can be expressed using the following definitions:
 
 ```javascript
 fluid.defaults("fluid.separatedPanel", {
-    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     components: {
         uiOptions: {
             type: "fluid.uiOptions",
@@ -95,7 +95,7 @@ fluid.defaults("fluid.separatedPanel", {
 });
 
 fluid.defaults("fluid.fullNoPreviewUIOptions", {
-    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     components: {
         uiOptions: {
             type: "fluid.uiOptions",
@@ -106,7 +106,7 @@ fluid.defaults("fluid.fullNoPreviewUIOptions", {
 });
 
 fluid.defaults("fluid.fullPreviewUIOptions", {
-    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     components: {
         uiOptions: {
             type: "fluid.uiOptions",
@@ -121,7 +121,7 @@ fluid.defaults("fluid.fullPreviewUIOptions", {
 });
 
 fluid.defaults("fluid.uiOptions", {
-    gradeNames: ["fluid.viewRelayComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     components: {
         textControls: {
             type: "fluid.uiOptions.textControls",

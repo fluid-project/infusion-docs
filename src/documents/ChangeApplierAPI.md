@@ -163,7 +163,7 @@ Example featuring source filtering:
 
 ```javascript
 fluid.defaults("examples.sourceExample1", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         things: "initial value"
     },
@@ -193,7 +193,7 @@ The last path segment of a model path reference may or may not be `"*"`. Whether
 
 ```javascript
 fluid.defaults("examples.pathExample1", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     modelListeners: {
         things: {
             funcName: "fluid.log",
@@ -211,7 +211,7 @@ However, the following example which just differs in the listener path (swapping
 
 ```javascript
 fluid.defaults("examples.pathExample2", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     modelListeners: {
         "things.*": {
             funcName: "fluid.log",
@@ -328,7 +328,7 @@ In the below example, we construct an invoker that will set the entire model of 
 
 ```javascript
 fluid.defaults("examples.changeExample", {
-    gradeNames: ["fluid.modelComponent", "autoInit"],
+    gradeNames: ["fluid.modelComponent"],
     model: "initialValue",
     invokers: {
         changer: {
@@ -394,7 +394,7 @@ Users can freely define very fine or coarse-grained listeners for changes in a m
 
 ```javascript
 fluid.defaults("my.component", {
-    gradeNames: ["fluid.modelComponent", "fluid.component", "autoInit"],
+    gradeNames: ["fluid.modelComponent", "fluid.component"],
 
     invokers: {
         printChange: {

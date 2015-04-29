@@ -80,7 +80,7 @@ Each [panel component](Panels.md) must include a preference map option in its de
 
 ```javascript
 fluid.defaults("fluid.prefs.panel.textSize", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "fluid.prefs.textSize": {  <<<=== This property name must match the name specified in the primary schema
             "model.value": "default",
@@ -100,7 +100,7 @@ Each enactor component must include a preference map option in its defaults, cal
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textSize", {
-   gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
+   gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
    preferenceMap: {
        "fluid.prefs.textSize": {  <<<=== This property name must match the name specified in the primary schema
            "model.value": "default"

@@ -53,7 +53,7 @@ For every such entry in the `events` section of a component's options, the frame
 
 ```javascript
 fluid.defaults("examples.eventedComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         myEvent: null
     }
@@ -109,7 +109,7 @@ examples.myListener = function (number, condition) {
 };
 
 fluid.defaults("examples.eventedComponent", {
-    gradeNames: ["fluid.component", "autoInit"],
+    gradeNames: ["fluid.component"],
     events: {
         myEvent: null
     },
