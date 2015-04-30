@@ -18,6 +18,8 @@ An auxiliary schema must contain some required properties, described below. In a
 
 * `namespace` (optional; recommended)
   * the namespace of the component to call to initialize the constructed grades
+* `loaderGrades` (optional)
+  * an array of grades to be applied to the `prefsEditorLoader`. To modify the default prefsEditor type (`"fluid.prefs.separatedPanel"`), a valid alternative should be supplied here.
 * `messagePrefix`
   * defines the path to the directory containing the messages
 * `message`
