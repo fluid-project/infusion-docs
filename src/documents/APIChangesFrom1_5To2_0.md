@@ -8,20 +8,7 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 ## Framework Changes ##
 
-### Preferences Framework ###
-
-#### Namespace Changes ####
-
-Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
-
-#### Component Grade Changes ####
-
-<div class="infusion-docs-note"><strong>Note:</strong> According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
-
-* Replace "fluid.modelComponent" with "fluid.modelRelayComponent"
-* Replace "fluid.standardComponent" with "fluid.standardRelayComponent"
-* Replace "fluid.viewComponent" with "fluid.viewRelayComponent"
-* Replace "fluid.rendererComponent" with "fluid.rendererRelayComponent"
+### Core Framework ###
 
 #### Model Sharing Changes ####
 
@@ -63,6 +50,21 @@ fluid.default("fluid.parent", {
     }
 });
 ```
+
+### Preferences Framework ###
+
+#### Namespace Changes ####
+
+Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
+
+#### Component Grade Changes ####
+
+<div class="infusion-docs-note"><strong>Note:</strong> According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
+
+* Replace "fluid.modelComponent" with "fluid.modelRelayComponent"
+* Replace "fluid.standardComponent" with "fluid.standardRelayComponent"
+* Replace "fluid.viewComponent" with "fluid.viewRelayComponent"
+* Replace "fluid.rendererComponent" with "fluid.rendererRelayComponent"
 
 #### Enactor Listener Changes ####
 
@@ -142,7 +144,7 @@ fluid.prefs.enactor.textSize.set = function (value, that) {
 
 ###### In 1.5 ######
 
-In Infusion 1.5 a `prefsEditorType` option was used to specify the type. The default was `"fluid.prefs.separatedPanel"`.
+In Infusion 1.5, a `prefsEditorType` option was used to specify the type. The default was `"fluid.prefs.separatedPanel"`.
 
 ```javascript
 // using a previous constructed grade
@@ -173,11 +175,77 @@ fluid.prefs.create(container, {
 
 ###### In 2.0 ######
 
-In Infusion 2.0 the prefsEditor type is specified in a grade passed into the prefsEditorLoader via the `loaderGrades` property in the auxiliarySchema.
+In Infusion 2.0, the prefsEditor type is specified in a grade passed into the prefsEditorLoader via the `loaderGrades` property in the auxiliarySchema.
 By default the `"fluid.prefs.separatedPanel"` grade is applied. Any grade to be applied to the prefsEditorLoader can be passed in; however, you must also supply the type grade as the default will be replaced by any modification.
 
 ```javascript
 var auxiliarySchema = {
     "loaderGrades": ["fluid.prefs.fullNoPreview"]
 };
+```
+
+#### PrefsEditor Model Structure Changes ####
+
+##### A new model path for preferences #####
+
+###### In 1.5 ######
+
+In Infusion 1.5, all preferences reside at the root of the `prefEditor` component model.
+
+```javascript
+/*******************************************************************************
+ * Starter root Model
+ *
+ * Provides the default values for the starter enhancer/panels models
+ *******************************************************************************/
+
+fluid.defaults("fluid.prefs.initialModel.starter", {
+    gradeNames: ["fluid.prefs.initialModel", "autoInit"],
+    members: {
+        // TODO: This information is supposed to be generated from the JSON
+        // schema describing various preferences. For now it's kept in top
+        // level prefsEditor to avoid further duplication.
+        initialModel: {
+            textFont: "default",          // key from classname map
+            theme: "default",             // key from classname map
+            textSize: 1,                  // in points
+            lineSpace: 1,                 // in ems
+            toc: false,                   // boolean
+            links: false,                 // boolean
+            inputsLarger: false           // boolean
+        }
+    }
+});
+```
+
+###### In 2.0 ######
+
+In Infusion 2.0, preferences are moved to a model path named "preferences" so the prefsEditor model can be used to save other user data as well. This means, the enhancer model no longer receives the entire prefsEditor model. It only receives the value of "preferences" path.
+
+```javascript
+/*******************************************************************************
+ * Starter prefsEditor Model
+ *
+ * Provides the default values for the starter prefsEditor model
+ *******************************************************************************/
+
+fluid.defaults("fluid.prefs.initialModel.starter", {
+    gradeNames: ["fluid.prefs.initialModel", "autoInit"],
+    members: {
+        // TODO: This information is supposed to be generated from the JSON
+        // schema describing various preferences. For now it's kept in top
+        // level prefsEditor to avoid further duplication.
+        initialModel: {
+            preferences: {
+                textFont: "default",          // key from classname map
+                theme: "default",             // key from classname map
+                textSize: 1,                  // in points
+                lineSpace: 1,                 // in ems
+                toc: false,                   // boolean
+                links: false,                 // boolean
+                inputsLarger: false           // boolean
+            }
+        }
+    }
+});
 ```
