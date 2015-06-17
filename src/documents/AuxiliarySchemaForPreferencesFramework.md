@@ -21,7 +21,7 @@ An auxiliary schema must contain some required properties, described below. In a
 * `loaderGrades` (optional)
   * an array of grades to be applied to the `prefsEditorLoader`. To modify the default prefsEditor type (`"fluid.prefs.separatedPanel"`), a valid alternative should be supplied here.
 * `terms`
-  * defines paths to directories containing the messages and templates
+  * defines paths to directories containing the message files and template files. This property is used to define all common terms used by `fluid.prefs.resourceLoader`.
 * `message`
   * the path to the message bundle for the prefs editor itself
   * provided the term name defined in the `terms` block for the path to the directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
