@@ -132,8 +132,10 @@ Add the script block as shown below:
     $(document).ready(function () {
         fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
             tocTemplate: "lib/infusion/components/tableOfContents/html/TableOfContents.html",
-            templatePrefix: "lib/infusion/framework/preferences/html/",
-            messagePrefix: "lib/infusion/framework/preferences/messages/"
+            terms: {
+                templatePrefix: "lib/infusion/framework/preferences/html/",
+                messagePrefix: "lib/infusion/framework/preferences/messages/"
+            }
         });
     })
     </script>
@@ -155,10 +157,10 @@ The selector for our UI Options will be the classname of the `<div>` we created 
 
 The options tell the component about two things:
 
-* where to find the UI Options HTML templates included in Infusion: the `templatePrefix` option, and
-* where to find the message bundles, the strings that will be used in the interface: the `messagePrefix` option.
+* where to find the UI Options HTML templates included in Infusion: the `terms.templatePrefix` option, and
+* where to find the message bundles, the strings that will be used in the interface: the `terms.messagePrefix` option.
 
-In the code above, the `messagePrefix` option is referencing the default strings provided by the component.
+In the code above, the `terms.messagePrefix` option is referencing the default strings provided by the component.
 
 ## Congratulations! ##
 

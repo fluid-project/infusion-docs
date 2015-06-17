@@ -200,19 +200,28 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### templatePrefix ###
+### terms ###
 
 <table>
     <tbody>
         <tr>
             <th>Description</th>
             <td>
-                The <code>templatePrefix</code> option allows you to specify a custom relative path to the templates used by the UI Options interface. These templates can be found in the source tree of the Infusion distribution.
+                The <code>terms</code> option allows you to specify custom relative paths to the templates and message bundles used by the UI Options interface. These templates can be found in the source tree of the Infusion distribution.
             </td>
         </tr>
         <tr>
             <th>Default</th>
-            <td>"../../framework/preferences/html/"</td>
+            <td>
+<pre>
+<code>
+{
+    templatePrefix: "../../framework/preferences/html/",
+    messagePrefix: "../../framework/preferences/messages/"
+}
+</code>
+</pre>
+            </td>
         </tr>
         <tr>
             <th>Example</th>
@@ -220,51 +229,13 @@ fluid.uiOptions.prefsEditor("#myContainer", {
 <pre>
 <code>
 fluid.uiOptions.prefsEditor("#myContainer", {
-    templatePrefix: "../infusion/framework/preferences/html/"
+    terms: {
+        templatePrefix: "../infusion/framework/preferences/html/",
+        messagePrefix: "../infusion/framework/preferences/messages/"
+    }
 });
 </code>
 </pre>
-            </td>
-        </tr>
-        <tr>
-            <th>See also</th>
-            <td>
-                <a href="#messageprefix">messagePrefix</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### messagePrefix ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                The <code>messagePrefix</code> option allows you to specify a custom relative path to the messages used by the UI Options interface. These message files can be found in the source tree of the Infusion distribution.
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>"../../framework/preferences/messages/"</td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.uiOptions.prefsEditor("#myContainer", {
-    messagePrefix: "../infusion/framework/preferences/messages/"
-});
-</code>
-</pre>
-            </td>
-        </tr>
-        <tr>
-            <th>See also</th>
-            <td>
-                <a href="#templateprefix">templatePrefix</a>
             </td>
         </tr>
     </tbody>
