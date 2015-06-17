@@ -1,11 +1,10 @@
 ---
 title: How to Create and Use Font Icons
 layout: default
+category: Tutorials
 ---
 
-# How to Create and Use Font Icons #
-
-Using a font to render an icon has several advantages over the traditional method of using an image. This tutorial will explain how to create Font Icons. 
+Using a font to render an icon has several advantages over the traditional method of using an image. This tutorial will explain how to create Font Icons.
 
 Some of the advantages of icons include:
 
@@ -37,11 +36,11 @@ However, there are some shortcomings to keep in mind:
     src: url('../fonts/CustomIcons.ttf'),
          url('../fonts/CustomIcons.eot');
 }
- 
+
 a.myLink-icon {
     font-family: 'CustomIcons';
 }
- 
+
 a.myLink-icon:before {
     content: "\e000"; /* The custom Unicode (aka. PUA) for the icon you want. */
     color: #ED3820;   /* Custom colour. */
@@ -103,7 +102,7 @@ Next, add the new font to the CSS markup.
          url('../fonts/CustomIcons.ttf'),
          url('../fonts/CustomIcons.eot');
 }
- 
+
 #contact_form {
     background: url("../images/envelope.png"); /*existing image that will be replaced by icon */
     font-family: 'CustomIcons';                /*the new font icon */
@@ -119,12 +118,12 @@ Finally, add the new icon into the BEFORE pseudo class and delete any references
          url('../fonts/CustomIcons.ttf'),
          url('../fonts/CustomIcons.eot');
 }
- 
+
 #contact_form {
     /* old icon image has been removed. */
     font-family: 'CustomIcons';                /*the new font icon */
 }
- 
+
 #contact_form:before {
     content: "\e000";                          /*the custom Unicode (aka. PUA) for the icon.*/
 }
@@ -154,21 +153,21 @@ To illustrate this problem, assume Comic Sans is the font applied to the `<body>
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';               
+    font-family: 'CustomIcons';
     src: url('../fonts/CustomIcons.ttf'),
          url('../fonts/CustomIcons.eot');
 }
- 
+
 body {
     font-family: 'Comic Sans MS';
 }
- 
+
 #contact_form {
-    font-family: 'CustomIcons';               
+    font-family: 'CustomIcons';
 }
- 
+
 #contact_form:before {
-    content: "\e000";                        
+    content: "\e000";
 }
 ```
 
@@ -187,11 +186,11 @@ To overcome this issue, a new separate element should be created in the HTML for
     src: url('../fonts/CustomIcons.ttf'),
          url('../fonts/CustomIcons.eot');
 }
- 
+
 body {
     font-family: 'Comic Sans MS';
 }
- 
+
 #icon-envelope {
     font-family: 'CustomIcons';
 }
@@ -218,11 +217,11 @@ The problem here is if we replace the image in the anchor with an icon font, any
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';               
+    font-family: 'CustomIcons';
     src: url('../fonts/CustomIcons.ttf'),
          url('../fonts/CustomIcons.eot');
 }
- 
+
 a {
     font-family: 'CustomIcons';
 }

@@ -1,9 +1,8 @@
 ---
 title: Instantiating the Preferences Editor
 layout: default
+category: Tutorials
 ---
-
-# Instantiating the Preferences Editor #
 
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
@@ -49,13 +48,16 @@ The Preferences Framework also provides built-in configurations for two full-pag
 #### Sample Instantiation of a Full-page Preferences Editor with No Preview ####
 
 ```javascript
+
+var myAuxiliarySchema = {
+    loaderGrades: ["fluid.prefs.fullNoPreview"],
+    ...
+};
+
 var myEditor = fluid.prefs.create(".prefs-editor-container", {
     build: {
         primarySchema: myPrimarySchema,
-        auxiliaryScham: myAuxiliarySchema
-    },
-    prefsEditor: {
-        prefsEditorType: "fluid.prefs.fullNoPreview"
+        auxiliarySchema: myAuxiliarySchema
     }
 });
 ```
@@ -63,13 +65,17 @@ var myEditor = fluid.prefs.create(".prefs-editor-container", {
 #### Sample Instantiation of a Full-page Preferences Editor with a Preview ####
 
 ```javascript
+var myAuxiliarySchema = {
+    loaderGrades: ["fluid.prefs.fullPreview"],
+    ...
+};
+
 var myEditor = fluid.prefs.create(".prefs-editor-container", {
     build: {
         primarySchema: myPrimarySchema,
         auxiliaryScham: myAuxiliarySchema
     },
     prefsEditor: {
-        prefsEditorType: "fluid.prefs.fullPreview",
         prefsEditor: {
             preview: {
                 templateUrl: "html/previewTemplate.html"
@@ -94,13 +100,14 @@ The single function call described in the previous section actually carries out 
 
 Build the editor, settings store and enhancer with a call to the Preferences Framework Builder. As with the single function call described above, the Builder can be used with either the `auxiliarySchema` property or with an auxiliary schema grade.
 
-_**NOTE:** If you're going to use the builder, your auxiliary schema **MUST** specify a namespace. You'll need this namespace to access the components created by the builder._
+<div class="infusion-docs-note"><strong>Note:</strong> If you're going to use the builder, your auxiliary schema <strong>MUST</strong> specify a namespace. You'll need this namespace to access the components created by the builder.</div>
 
 #### Example: Using the Builder with the `auxiliarySchema` Property ####
 
 ```javascript
 vary myAuxiliarySchema = {
     namespace: "my.prefs",
+    loaderGrades: ["fluid.prefs.fullPreview"],
     ...
 };
 
@@ -117,6 +124,7 @@ fluid.defaults("my.auxSchemaGrade", {
     gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
     auxiliarySchema: {
         namespace: "my.prefs",
+        loaderGrades: ["fluid.prefs.fullPreview"],
         ....
     }
 });
@@ -141,7 +149,6 @@ var myEditor = my.prefs.prefsEditor(".prefs-editor-container");
 
 ```javascript
 var myEditor = my.prefs.prefsEditor(".prefs-editor-container", {
-    prefsEditorType: "fluid.prefs.fullPreview",
     prefsEditor: {
         preview: {
             templateUrl: "html/previewTemplate.html"

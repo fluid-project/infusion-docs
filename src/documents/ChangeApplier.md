@@ -1,11 +1,8 @@
 ---
 title: ChangeApplier
 layout: default
+category: Infusion
 ---
-
-# ChangeApplier #
-
-## Overview ##
 
 The ChangeApplier is a core part of the architecture of Fluid Infusion, which coordinates access to
 [model state](FrameworkConcepts.md) across a tree of components.
@@ -13,7 +10,7 @@ Every [model-bearing component](tutorial-gettingStartedWithInfusion/ModelCompone
 constructed by the framework, which can be used either programmatically or declaratively to trigger
 changes in the component's model state or register to be notified of changes. The model state in a
 component tree is coordinated globally by the [Model Relay](ModelRelay.md) system as part of the
-*[model skeleton](ModelRelay.md#HowModelRelayUpdatesPropagate)* which
+*[model skeleton](ModelRelay.md#how-model-relay-updates-propagate)* which
 consists of those models which are linked together by relay specifications.
 
 The [ChangeApplier API](ChangeApplierAPI.md) and semantic has stabilised in the Infusion 1.5 release
@@ -25,7 +22,7 @@ terms of Fluid's [Event System](InfusionEventSystem.md), which you should be fam
 ### Thinking behind the ChangeApplier ###
 
 The ChangeApplier is a natural outgrowth of Fluid's focus on (transparent) model-directed programming- see
-the Framework Concepts discussion on [Model Objects](FrameworkConcepts.md#ModelObjects).
+the Framework Concepts discussion on [Model Objects](FrameworkConcepts.md#model-objects).
 "Morally", a model should be "fully transparent" - meaning, that it consists of standard POJOs and
 is available for inspection by reading, using standard language constructs, at all times. For example,
 if model is a JavaScript variable holding the overall model, accessing a field within the model is as
@@ -37,4 +34,3 @@ This is in contrast to many other frameworks, which generally take one of two ro
 insisting that a model is composed of some form of more or less "magic" objects - these might be
 derived from a base class or interface which is called "Model" or "Storage" - or else allowing "any
 old objects" to serve as model material without providing assistance in coordinating updates.
-

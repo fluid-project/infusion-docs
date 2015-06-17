@@ -1,9 +1,8 @@
 ---
 title: Adding a Basic Preferences Editor to a Site
 layout: default
+category: Tutorials
 ---
-
-# Adding a Basic Preferences Editor to a Site #
 
 _This page is still under construction. An archived version can be found on the
 [Adding a Basic Preferences Editor to a Site](http://wiki.fluidproject.org/display/docs/Tutorial+-+Adding+a+Basic+Preferences+Editor+to+a+Site)

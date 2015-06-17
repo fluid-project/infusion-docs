@@ -1,9 +1,10 @@
 ---
 title: API Changes from 1.5 to 2.0
 layout: default
+category: Infusion
 ---
 
-# API Changes from 1.5 to 2.0 #
+This page contains a list of the features, APIs, and etc. that have changed in Infusion 2.0.
 
 ## Framework Changes ##
 
@@ -15,7 +16,7 @@ Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
 #### Component Grade Changes ####
 
-_**Note:** According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored._
+<div class="infusion-docs-note"><strong>Note:</strong> According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
 
 * Replace "fluid.modelComponent" with "fluid.modelRelayComponent"
 * Replace "fluid.standardComponent" with "fluid.standardRelayComponent"
@@ -132,5 +133,51 @@ fluid.defaults("fluid.prefs.enactor.textSize", {
 
 fluid.prefs.enactor.textSize.set = function (value, that) {
     that.root.css("font-size", value + "px");
+};
+```
+
+#### Schema Changes ####
+
+##### Specifying a prefsEditor type #####
+
+###### In 1.5 ######
+
+In Infusion 1.5 a `prefsEditorType` option was used to specify the type. The default was `"fluid.prefs.separatedPanel"`.
+
+```javascript
+// using a previous constructed grade
+your.constructed.prefsEditor(".container", {
+    prefsEditorType: "fluid.prefs.fullNoPreview"
+});
+
+// using fluid.prefs.create to construct the grade
+fluid.prefs.create(container, {
+    build: {
+        gradeNames: ["fluid.prefs.auxSchema.starter"],
+        auxiliarySchema: {
+            "template": "%prefix/FullNoPreviewPrefsEditor.html",
+            "templatePrefix": "../../../../../src/framework/preferences/html/",
+            "messagePrefix": "../../../../../src/framework/preferences/messages/",
+            "tableOfContents": {
+                "enactor": {
+                    "tocTemplate": "../../../../../src/components/tableOfContents/html/TableOfContents.html"
+                }
+            }
+        }
+    },
+    prefsEditor: {
+        prefsEditorType: "fluid.prefs.fullNoPreview"
+    }
+});
+```
+
+###### In 2.0 ######
+
+In Infusion 2.0 the prefsEditor type is specified in a grade passed into the prefsEditorLoader via the `loaderGrades` property in the auxiliarySchema.
+By default the `"fluid.prefs.separatedPanel"` grade is applied. Any grade to be applied to the prefsEditorLoader can be passed in; however, you must also supply the type grade as the default will be replaced by any modification.
+
+```javascript
+var auxiliarySchema = {
+    "loaderGrades": ["fluid.prefs.fullNoPreview"]
 };
 ```

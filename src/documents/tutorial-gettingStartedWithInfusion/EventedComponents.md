@@ -1,9 +1,8 @@
 ---
 title: Evented Components
 layout: default
+category: Tutorials
 ---
-
-# Evented Components #
 
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
@@ -171,3 +170,5 @@ tutorials.currencyConverter.updateAmount = function (that, amount) {
 ## Notes on declarative programming: ##
 
 It's a long-term goal of the Infusion framework that as much logic as possible can be expressed as declarative configuration, rather than as manual JavaScript code. By comparing in this page's history, you can see that since it was first written, the majority of the implementation can now be expressed in configuration (e.g., the invoker definitions, the implementation of `updateCurrency` and the model listener). In future versions of Infusion, 100% of this component will be expressible as configuration - it can't be handled by the current framework because of the indirection into the model from itself (the fact that `updateRate` and `updateAmount` use `model.currentSelection` and `currency` as model indexes). You can track this work at [FLUID-5286](http://issues.fluidproject.org/browse/FLUID-5286).
+
+Next: [View Components](ViewComponents.md)

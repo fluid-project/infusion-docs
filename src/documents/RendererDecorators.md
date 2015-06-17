@@ -1,13 +1,9 @@
 ---
 title: Renderer Decorators
 layout: default
+noteRendererChangesPost15: true
+category: Infusion
 ---
-
-# Renderer Decorators #
-
-_**Note:** The renderer will undergo significant changes post Infusion 1.5_
-
-## Overview ##
 
 Decorators allow users of the Renderer to attach various things, such as functions, class names, etc., to the components at render time. A number of different types of decorators are currently supported.
 
@@ -206,7 +202,7 @@ decorators: [{
     </tbody>
 </table>
 
-### `jQuery` Decorator ###
+### jQuery Decorator ###
 
 Perhaps the most frequently used decorator is the jQuery decorator. This will accept any jQuery function and its arguments, and invoke that function, as the rendered markup is placed into the document. Here is an example of specifying a UILink component together with a jQuery-bound `click()` handler:
 
@@ -222,7 +218,7 @@ Any number of decorators of any types could be accommodated in the `decorators` 
 
 An alternative name for the jQuery decorator is `$` - this can be used interchangeably for `jQuery` as a type name.
 
-### `addClass` Decorator ###
+### addClass Decorator ###
 
 The `addClass` decorator allows a CSS class to be attached to the rendered node. It has just one argument/member, which is a space-separated list of CSS classes in just the same form that would have been accepted by `jQuery.addClass`.
 
@@ -239,7 +235,7 @@ Here is a simple component which has been decorated with two CSS classes:
 }
 ```
 
-### `removeClass` Decorator ###
+### removeClass Decorator ###
 
 The `removeClass` decorator allows a CSS class to be removed from the rendered node. It has just one argument/member, which is a space-separated list of CSS classes. It is identical in syntax to the `addClass` decorator, but opposite in function.
 
@@ -256,7 +252,7 @@ Here is a simple component for which we will remove a CSS class:
 }
 ```
 
-### `identify` decorator ###
+### identify decorator ###
 
 Useful in more intricate scenarios, where the rendered nodes need to be easily and quickly retrievable, perhaps where events bound to one node need to manipulate another, or when nodes are part of a wider relation, such as table cells and their headers. The model behind the `identify` decorator, is that the node is given a free _nickname_ by the user, by which its final HTML id, and hence the node itself, can be quickly looked up later. This works in conjunction with a lookup table named `idMap` which is passed in the options structure to the renderer driver. As rendering progresses, the final HTML id allocated to the node is stored in `idMap` under the key provided to the `identify` decorator.
 
@@ -276,9 +272,9 @@ fluid.jById(idMap["this-catt"]).show();
 
 Whilst component tree nodes are allocated a `fullID` in a regular way by a stable algorithm involving their `ID` values and structure, this may not always relate them in a stable way in the global document - firstly, trees may be processed and reaggregated, which might change their ID or containment structure, and secondly, they may come to collide with already existing IDs in the document and hence come to be relabelled further. The "identify nickname" system lets developers to get at exactly the nodes they are interested in, in a simple, stable and efficient way.
 
-## `fluid` Decorator ##
+## fluid Decorator ##
 
-This is a highly powerful decorator, that completes the **active** functionality supplied by the `jQuery` and `identify` decorators. Use of the `fluid` decorator allows any [Fluid Component](to-do/Components.md) to be scheduled to be instantiated against the rendered markup, as it is added to the target document. These decorators promote markup agnosticism, as well as developer efficiency – without them, one would be left to rescan the just-rendered markup once again, in order to convert it from raw markup to an active interface. With these decorators and the component tree, one has a surface with which to talk about the **function** of the interface whilst leaving design and markup issues in their own space.
+This is a highly powerful decorator, that completes the **active** functionality supplied by the `jQuery` and `identify` decorators. Use of the `fluid` decorator allows any [Fluid Component](UnderstandingInfusionComponents.md) to be scheduled to be instantiated against the rendered markup, as it is added to the target document. These decorators promote markup agnosticism, as well as developer efficiency – without them, one would be left to rescan the just-rendered markup once again, in order to convert it from raw markup to an active interface. With these decorators and the component tree, one has a surface with which to talk about the **function** of the interface whilst leaving design and markup issues in their own space.
 
 The full form of the decorator takes three members, `func`, `container` and `args`, mirroring the instantiation syntax of a standard Fluid Component - as described in [Understanding Infusion Components](UnderstandingInfusionComponents.md), this takes the form:
 
@@ -303,7 +299,7 @@ _Note that rather than specifying `container` and `options` separately, one can 
 
 There is no specially dehydrated form for the `fluid` decorator – however, like all renderer decorators it may be dehydrated to the extent of having its `type` field folded onto a key field on `decorators` if there is just one decorator of a particular type.
 
-### `attrs` Decorator ###
+### attrs Decorator ###
 
 The `attrs` director is simple and crude - it allows freeform access to all of the attributes of the rendered node. Since this is not likely to result in a very markup-agnostic relationship, its use is only recommended in special situations. The decorator takes a value named `attributes` which is a free hash of keys to values, which will be applied _"on top of"_ the target node as it is rendered, overwriting any values which were inherited from the original markup template.
 
@@ -319,7 +315,7 @@ The `attrs` director is simple and crude - it allows freeform access to all of t
 
 _Note specifying a value of `null` will remove the attribute._
 
-### `event` Decorator ###
+### event Decorator ###
 
 The final implemented decorator, `event`, allows direct access to the functionality of binding a raw browser event to the rendered node. This is not generally recommended, since this is more safely and portably achieved using `jQuery`. However, it is possible this might be a useful function in some special situation. The decorator has a member called `handler` which is directly assigned to be the native event handler for the event named `event`.
 

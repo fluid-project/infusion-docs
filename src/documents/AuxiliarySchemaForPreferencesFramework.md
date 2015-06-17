@@ -1,9 +1,8 @@
 ---
 title: Auxiliary Schema for Preferences Framework
 layout: default
+category: Infusion
 ---
-
-# Auxiliary Schema for Preferences Framework #
 
 An Auxiliary Schema is a JSON document that defines the information needed to build a preferences editor interface, including
 
@@ -19,6 +18,8 @@ An auxiliary schema must contain some required properties, described below. In a
 
 * `namespace` (optional; recommended)
   * the namespace of the component to call to initialize the constructed grades
+* `loaderGrades` (optional)
+  * an array of grades to be applied to the `prefsEditorLoader`. To modify the default prefsEditor type (`"fluid.prefs.separatedPanel"`), a valid alternative should be supplied here.
 * `terms`
   * defines paths to directories containing the messages and templates
 * `message`
@@ -26,7 +27,7 @@ An auxiliary schema must contain some required properties, described below. In a
   * provided the term name defined in the `terms` block for the path to the directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
 * `template`
   * the path to the template for the prefs editor itself
-  * provided the term name defined in the `terms` block for the path to the directory containing the messages is `templatePrefix`, use `%templatePrefix` to reference the prefix specified by `templatePrefix` as part of the path
+  * provided the term name defined in the `terms` block for the path to the directory containing the html templates is `templatePrefix`, use `%templatePrefix` to reference the prefix specified by `templatePrefix` as part of the path
         
 ### Preference block properties ###
 
@@ -40,7 +41,6 @@ Preference blocks can be given any property name, so long as the name is unique 
 * `enactor`
   * specifies the configuration for the enactor component
   * each preference block can specify only one enactor
-
 
 #### Panel properties ####
 
@@ -56,12 +56,11 @@ Preference blocks can be given any property name, so long as the name is unique 
   * the path to the message bundle for the panel
   * provided the term name defined in [the top level `terms` property](#top-level-properties) for the path to the directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
 
-
 #### Enactor properties ####
 
 * `type`
   * used to identify the component to use
-  
+
 ### Composite Panel properties ###
 
 * `groups`

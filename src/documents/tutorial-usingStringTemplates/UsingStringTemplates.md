@@ -1,9 +1,8 @@
 ---
 title: Using String Templates
 layout: default
+category: Tutorials
 ---
-
-# Using String Templates #
 
 In the Infusion [Preference Framework](../PreferencesFramework.md), a "string template" is a mechanism for [resolving (interpolating)](http://en.wikipedia.org/wiki/String_interpolation) variables within a string.
 

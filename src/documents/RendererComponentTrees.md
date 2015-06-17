@@ -1,13 +1,11 @@
 ---
 title: Renderer Component Trees
 layout: default
+noteRendererChangesPost15: true
+category: Infusion
 ---
 
-# Renderer Component Trees #
-
-_**Note:** The renderer will undergo significant changes post Infusion 1.5_
-
-A renderer **component tree** describes the UI in terms of **renderer components** (not to be confused with [Infusion Components](to-do/Components.md)). A renderer component is a data structure that represent the contents and data binding function of a view, separate from any particular rendering of it. For example, the component representing a 'selection' would include information regarding the available choices, the display strings associated with the choices, and the current selection:
+A renderer **component tree** describes the UI in terms of **renderer components** (not to be confused with [Infusion Components](UnderstandingInfusionComponents.md)). A renderer component is a data structure that represent the contents and data binding function of a view, separate from any particular rendering of it. For example, the component representing a 'selection' would include information regarding the available choices, the display strings associated with the choices, and the current selection:
 
 ```javascript
 {

@@ -1,11 +1,8 @@
 ---
 title: Preferences Editor
 layout: default
+category: Infusion
 ---
-
-# Preferences Editor #
-
-## Overview ##
 
 One of the primary functions of the Infusion [Preferences Framework](PreferencesFramework.md) is to allow you to create a Preferences Editor: a collection of adjusters that users can use to set their interface preferences.
 
@@ -80,7 +77,7 @@ This option can be used to specify the names of grades that define schemas, as a
 </tr>
 </table>
 
-_**NOTE:** You **must** provide at least one of_
+<div class="infusion-docs-note"><strong>Note:</strong> You <strong>must</strong> provide at least one of</div>
 
 * the `auxiliarySchema` option, or
 * a gradeName indicating an auxiliary schema.
@@ -91,16 +88,6 @@ If you provide both, they will be merged (with the `auxiliarySchema` overriding 
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
-<tr>
-    <td><code>prefsEditorType</code></td>
-    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of preference editor.</td>
-    <td>The Preferences Framework provides three built-in types of editor:
-<code>"fluid.prefs.separatedPanelPrefsEditor"</code>
-<code>"fluid.prefs.fullNoPreview"</code>
-<code>"fluid.prefs.fullPreview"</code>
-Integrators can use one of these grades, or define their own grade, using one of these grades as a base grade.</td>
-    <td><code>"fluid.prefs.separatedPanelPrefsEditor"</code></td>
-</tr>
 <tr>
     <td><code>storeType</code></td>
     <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a Settings Store.</td>
@@ -174,6 +161,7 @@ The preferences editor will be instantiated and rendered into the container spec
     build: {
         gradeNames: ["fluid.prefs.auxSchema.starter"],
         auxiliarySchema: {
+            "loaderGrades": "fluid.prefs.fullPreview",
             "template": "prefsEditorPreview.html",
             "tableOfContents": {
                 "enactor": {
@@ -181,9 +169,6 @@ The preferences editor will be instantiated and rendered into the container spec
                 }
             }
         }
-    },
-    prefsEditor: {
-        prefsEditorType: "fluid.prefs.fullPreview"
     }
 });
 ```

@@ -1,9 +1,8 @@
 ---
 title: Creating Enactors
 layout: default
+category: Tutorials
 ---
-
-# Creating Enactors #
 
 ---
 Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)

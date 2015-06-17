@@ -1,9 +1,8 @@
 ---
 title: Options Merging
 layout: default
+category: Infusion
 ---
-
-# Options Merging #
 
 The framework merges a component's **defaults** with the `options` specified by the user at runtime. Default options for a component are registered by the component developer using the `fluid.defaults()` function. The framework combines these values with those supplied by the user to the component creator function.
 
@@ -11,7 +10,7 @@ Left unchecked, this options merging code becomes unruly and verbose. The vast m
 
 The Fluid component API therefore contains a specialised merging routine, `fluid.merge`, which allows the user to specify an (optional) more fine-grained **merge policy** object, which allows detailed behaviour during options merging to still be specified by a declarative strategy.
 
-## Use of `fluid.merge` ##
+## Use of fluid.merge ##
 
 `fluid.merge` is invoked automatically by the framework as part of standard component initialisation. However, the component author does have the capability of directing the operation of `fluid.merge` by means of specifying the `policy` object. Every standard Fluid component accepts a top-level option named `mergePolicy`  which will be supplied as the policy argument to `fluid.merge`. This option itself also undergoes merging, **although the user may not specify policy for the merging of the mergePolicy**, and users may contribute material into the mergePolicy from any parent grades of the component, arguments, etc.
 
@@ -66,7 +65,7 @@ The following are the policy types that are supported, determined by the key's v
 
 ## fluid.merge signature ##
 
-_**NOTE:** The use of `fluid.merge` directly is deprecated. The framework user should never need to invoke `fluid.merge` directly - it is invoked automatically by the framework as part of standard component initialisation._
+<div class="infusion-docs-note"><strong>Note:</strong> The use of <code>fluid.merge</code> directly is deprecated. The framework user should never need to invoke <code>fluid.merge</code> directly - it is invoked automatically by the framework as part of standard component initialisation.</div>
 
 The signature to fluid.merge is
 

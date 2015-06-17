@@ -1,11 +1,9 @@
 ---
 title: How To Use The Renderer
 layout: default
+noteRendererChangesPost15: true
+category: Infusion
 ---
-
-# How To Use The Renderer #
-
-_**Note:** The renderer will undergo significant changes post Infusion 1.5_
 
 There are several different ways to use the Infusion [Renderer](Renderer.md), including the recommended Renderer Component and various Renderer functions.
 
@@ -36,7 +34,7 @@ This function will:
 For detailed information on how to use this method, see [Renderer Components](RendererComponents.md).
 
 
-### `fluid.render` ###
+### fluid.render ###
 
 If you are not using `fluid.rendererComponent`, you can use the primary renderer function, [fluid.render](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1551-L1570):
 
@@ -48,7 +46,7 @@ This function can be used at any time to render a component tree. This function 
 
 For detailed information on how to use this function, see [fluid.render](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1551-L1570).
 
-### `fluid.selfRender` ###
+### fluid.selfRender ###
 
 This function is similar to [fluid.render](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1551-L1570), except that it assumes that the markup used to source the template is within the target node:
 
@@ -62,10 +60,10 @@ For detailed information on how to use this function, see [fluid.selfRender](htt
 
 In addition to these primary ways of using the Renderer, there are a several other functions that are useful in certain circumstances. These are described here.
 
-### `fluid.rerender` ###
+### fluid.reRender ###
 
 For detailed information on how to use this function, see [fluid.reRender](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1480-L1527).
 
-### `fluid.fetchResources` ###
+### fluid.fetchResources ###
 
 For detailed information on how to use this function, see [fluid.fetchResources](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/FluidRequests.js#L24-L50).

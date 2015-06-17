@@ -1,9 +1,8 @@
 ---
 title: View Components
 layout: default
+category: Tutorials
 ---
-
-# View Components #
 
 ---
 Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
@@ -32,7 +31,7 @@ fluid.defaults("tutorials.viewBearingComponent", {
 });
 ```
 
-_**Note:** View components automatically also provide support for model and events, so you don't need to include those in your `gradeNames` list._
+<div class="infusion-docs-note"><strong>Note:</strong> View components automatically also provide support for model and events, so you don't need to include those in your <code>gradeNames</code> list.</div>
 
 ### Selectors ###
 
@@ -85,3 +84,5 @@ fluid.defaults("tutorials.currencyConverter", {
 ```
 
 So far we have not added any behaviour to this skeleton view component - we'll orchestrate together all the model, event and view code we've seen so far together into a working component in our final section on [Renderer Components](RendererComponents.md).
+
+Next: [Renderer Components](RendererComponents.md)
