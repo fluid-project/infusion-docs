@@ -181,3 +181,69 @@ var auxiliarySchema = {
     "loaderGrades": ["fluid.prefs.fullNoPreview"]
 };
 ```
+
+##### A new "terms" block #####
+
+###### In 1.5 ######
+
+In Infusion 1.5, `messagePrefix` and `templatePrefix` are root level data defined in the auxiliary schema. When referring to them for locations of message bundles or html templates, a common `%prefix` is used, which causes confusion.
+
+```javascript
+fluid.defaults("fluid.prefs.auxSchema.starter", {
+    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    auxiliarySchema: {
+        "loaderGrades": ["fluid.prefs.separatedPanel"],
+        "namespace": "fluid.prefs.constructed", // The author of the auxiliary schema will provide this and will be the component to call to initialize the constructed PrefsEditor.
+        "templatePrefix": "../../framework/preferences/html/",  // The common path to settings panel templates. The template defined in "panels" element will take precedence over this definition.
+        "template": "%prefix/SeparatedPanelPrefsEditor.html",
+        "messagePrefix": "../../framework/preferences/messages/",  // The common path to settings panel templates. The template defined in "panels" element will take precedence over this definition.
+        "message": "%prefix/prefsEditor.json",
+        "textSize": {
+            "type": "fluid.prefs.textSize",
+            "enactor": {
+                "type": "fluid.prefs.enactor.textSize"
+            },
+            "panel": {
+                "type": "fluid.prefs.panel.textSize",
+                "container": ".flc-prefsEditor-text-size",  // the css selector in the template where the panel is rendered
+                "template": "%prefix/PrefsEditorTemplate-textSize.html",
+                "message": "%prefix/textSize.json"
+            }
+        }
+        ...
+    }
+});
+```
+
+###### In 2.0 ######
+
+In Infusion 2.0, both `templatePrefix` and `messagePrefix` become sub-elements of a `terms` block. The `terms` block is used to define all string templates used by `fluid.prefs.resourceLoader`. To refer to these terms, rather than using an ambiguous `%prefix`, use the defined term names such as `%templatePrefix` or `%messagePrefix`.
+
+```javascript
+fluid.defaults("fluid.prefs.auxSchema.starter", {
+    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    auxiliarySchema: {
+        "loaderGrades": ["fluid.prefs.separatedPanel"],
+        "namespace": "fluid.prefs.constructed", // The author of the auxiliary schema will provide this and will be the component to call to initialize the constructed PrefsEditor.
+        "terms": {
+            "templatePrefix": "../../framework/preferences/html",  // Must match the keyword used below to identify the common path to settings panel templates.
+            "messagePrefix": "../../framework/preferences/messages"  // Must match the keyword used below to identify the common path to message files.
+        },
+        "template": "%templatePrefix/SeparatedPanelPrefsEditor.html",
+        "message": "%messagePrefix/prefsEditor.json",
+        "textSize": {
+            "type": "fluid.prefs.textSize",
+            "enactor": {
+                "type": "fluid.prefs.enactor.textSize"
+            },
+            "panel": {
+                "type": "fluid.prefs.panel.textSize",
+                "container": ".flc-prefsEditor-text-size",  // the css selector in the template where the panel is rendered
+                "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
+                "message": "%messagePrefix/textSize.json"
+            }
+        },
+        ...
+    }
+});
+```
