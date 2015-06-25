@@ -27,7 +27,6 @@ fluid.uiOptions(".my-uio-container", {
         templateLoader: {
             options: {
                 templatePrefix: "../../myTemplates"
-                }
             }
         }
     }
@@ -66,7 +65,7 @@ use of the target root context `/` to match (and "advise", in AOP terminology) a
 the distribution itself can be either advised itself, or destroyed completely - thus "withdrawing" the "advice" from the system. 
 
 
-## `distributeOptions` format ##
+## distributeOptions format ##
 
 The `distributeOptions` option is a top-level block supported by every IoC-configured component, holding an array of records, hash of records, or single record containing the following properties:
 
@@ -114,9 +113,13 @@ fluid.defaults("kettle.use.session.io", {
 });
 ```
 
+<<<<<<< HEAD
 The `sessionManager`, wherever it is in the set of child components, will be granted the additional grade `kettle.sessionManager.io`.
 
 ## Complex Example: `record` ##
+=======
+## Example: record ##
+>>>>>>> master
 ```javascript
 fluid.defaults("fluid.moduleLayoutHandler", {
     gradeNames: ["fluid.layoutHandler"],

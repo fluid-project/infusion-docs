@@ -31,10 +31,12 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
     auxiliarySchema: {
         // The global values:
         "namespace": "fluid.prefs.constructed",
-        "templatePrefix": "../../../framework/preferences/html/", // The common path to settings panel templates
-        "template": "%prefix/SeparatedPanelPrefsEditor.html",
-        "messagePrefix": "../../../framework/preferences/messages/",
-        "message": "%prefix/prefsEditor.json",
+        "terms": {
+            "templatePrefix": "../../../framework/preferences/html/",
+            "messagePrefix": "../../../framework/preferences/messages/",
+        },
+        "template": "%templatePrefix/SeparatedPanelPrefsEditor.html",
+        "message": "%messagePrefix/prefsEditor.json",
 
         // The preference-specific information:
         "lineSpace": {
@@ -54,8 +56,8 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
             "panel": {
                 "type": "fluid.prefs.panels.lineSpace",
                 "container": ".flc-prefsEditor-line-space",  // the css selector in the template where the panel is rendered
-                "template": "%prefix/PrefsEditorTemplate-lineSpace.html",
-                "message": "%prefix/lineSpace.json"
+                "template": "%templatePrefix/PrefsEditorTemplate-lineSpace.html",
+                "message": "%messagePrefix/lineSpace.json"
             }
         },
         "textFont": {
@@ -75,8 +77,8 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
                 "type": "fluid.prefs.panels.textFont",
                 "container": ".flc-prefsEditor-text-font",  // the css selector in the template where the panel is rendered
                 "classnameMap": {"textFont": "@textFont.classes"},
-                "template": "%prefix/PrefsEditorTemplate-textFont.html",
-                "message": "%prefix/textFont.json"
+                "template": "%templatePrefix/PrefsEditorTemplate-textFont.html",
+                "message": "%messagePrefix/textFont.json"
             }
         },
         "tableOfContents": {
@@ -88,8 +90,8 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
             "panel": {
                 "type": "fluid.prefs.panels.layoutControls",
                 "container": ".flc-prefsEditor-layout-controls",  // the css selector in the template where the panel is rendered
-                "template": "%prefix/PrefsEditorTemplate-layout.html",
-                "message": "%prefix/tableOfContents.json"
+                "template": "%templatePrefix/PrefsEditorTemplate-layout.html",
+                "message": "%messagePrefix/tableOfContents.json"
             }
         }
     }
@@ -104,8 +106,6 @@ The following example shows the auxiliary schema that would be used by the Video
 fluid.videoPlayer.auxSchema = {
     "namespace": "fluid.prefs.vp",
     "template": "../html/SeparatedPanelPrefsEditor.html",
-    "templatePrefix": "../lib/infusion/framework/preferences/html/",
-    "messagePrefix": "../lib/infusion/framework/preferences/messages/",
     captions: {
         type: "fluid.videoPlayer.captions",
         panel: {

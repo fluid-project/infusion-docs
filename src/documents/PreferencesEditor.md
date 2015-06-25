@@ -89,16 +89,6 @@ If you provide both, they will be merged (with the `auxiliarySchema` overriding 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
 <tr>
-    <td><code>prefsEditorType</code></td>
-    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of preference editor.</td>
-    <td>The Preferences Framework provides three built-in types of editor:
-<code>"fluid.prefs.separatedPanelPrefsEditor"</code>
-<code>"fluid.prefs.fullNoPreview"</code>
-<code>"fluid.prefs.fullPreview"</code>
-Integrators can use one of these grades, or define their own grade, using one of these grades as a base grade.</td>
-    <td><code>"fluid.prefs.separatedPanelPrefsEditor"</code></td>
-</tr>
-<tr>
     <td><code>storeType</code></td>
     <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a Settings Store.</td>
     <td>Integrators can define their own store grade by using the built-in default grade <code>"fluid.globalSettingsStore"</code> as a base grade.</td>
@@ -111,14 +101,8 @@ Integrators can use one of these grades, or define their own grade, using one of
     <td><code>"fluid.pageEnhancer"</code></td>
 </tr>
 <tr>
-    <td><code>templatePrefix</code></td>
-    <td>(Optional) A string value representing the relative path to the directory containing the template files. This value will overwrite the <code>templatePrefix</code> value supplied by <a href="AuxiliarySchemaForPreferencesFramework.md">auxiliary schemas</a>.</td>
-    <td></td>
-    <td></td>
-</tr>
-<tr>
-    <td><code>messagePrefix</code></td>
-    <td>(Optional) A string value representing the relative path to the directory containing the message files. This value will overwrite the <code>messagePrefix</code> value supplied by <a href="AuxiliarySchemaForPreferencesFramework.md">auxiliary schemas</a>.</td>
+    <td><code>terms</code></td>
+    <td>(Optional) A object containing relative paths to directories containing the template files and the message bundles. This value will overwrite the <code>terms</code> value supplied by <a href="AuxiliarySchemaForPreferencesFramework.md">auxiliary schemas</a>.</td>
     <td></td>
     <td></td>
 </tr>
@@ -171,6 +155,7 @@ The preferences editor will be instantiated and rendered into the container spec
     build: {
         gradeNames: ["fluid.prefs.auxSchema.starter"],
         auxiliarySchema: {
+            "loaderGrades": "fluid.prefs.fullPreview",
             "template": "prefsEditorPreview.html",
             "tableOfContents": {
                 "enactor": {
@@ -178,9 +163,6 @@ The preferences editor will be instantiated and rendered into the container spec
                 }
             }
         }
-    },
-    prefsEditor: {
-        prefsEditorType: "fluid.prefs.fullPreview"
     }
 });
 ```

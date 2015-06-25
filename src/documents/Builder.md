@@ -16,6 +16,7 @@ var builder = fluid.prefs.builder(<options>);
 <table>
 <tr><td><code>options</code></td><td>(Object) The configuration options for the builder. See <a href="#options">Options</a> below for more information.</td></tr>
 </table>
+
 where `options` is a JavaScript object containing information configuring your builder.
 
 ### Return Value ###
@@ -93,8 +94,10 @@ You may need to override the template and message bundle path prefixes, if your 
 var myBuilder = fluid.prefs.builder({
     gradeNames: ["fluid.prefs.auxSchema.starter"],
     auxiliarySchema: {
-        "templatePrefix": "<custom relative path to template folder>",
-        "messagePrefix": "<custom relative path to messages folder>"
+        "terms": {
+            "templatePrefix": "<custom relative path to template folder>",
+            "messagePrefix": "<custom relative path to messages folder>"
+        }
     }
 });
 ```
@@ -171,8 +174,10 @@ var myBuilder = fluid.prefs.builder({
 
     // override the paths in the starter grade
     auxiliarySchema: {
-        "templatePrefix": "../../../framework/preferences/html/",
-        "messagePrefix": "../../../framework/preferences/messages/"
+        "terms": {
+            "templatePrefix": "../../../framework/preferences/html/",
+            "messagePrefix": "../../../framework/preferences/messages/"
+        }
     }
 
     // by not providing a primarySchema, the 'starter' prefs will be used
@@ -205,10 +210,12 @@ fluid.defaults("my.prefs.editor.aux", {
     gradeNames: ["fluid.prefs.auxSchema"],
     auxiliarySchema: {
         namespace: "my.prefs.editor",
-        templatePrefix: "templates/",
-        template: "%prefix/MyEditorTemplate.html",
-        messagePrefix: "messages/",
-        message: "%prefix/MyEditorStrings.html",
+        terms: {
+            templatePrefix: "templates/",
+            messagePrefix: "messages/"
+        },
+        template: "%templatePrefix/MyEditorTemplate.html",
+        message: "%messagePrefix/MyEditorStrings.html",
         textSize: {
             type: "my.prefs.textSize",
             enactor: {
@@ -217,8 +224,8 @@ fluid.defaults("my.prefs.editor.aux", {
             panel: {
                 type: "my.prefs.panels.textSize", // defined elsewhere
                 container: ".my-text-size",
-                template: "%prefix/textSizeTemplate.html",
-                message: "%prefix/textSize.json"
+                template: "%templatePrefix/textSizeTemplate.html",
+                message: "%messagePrefix/textSize.json"
             }
         }
     }

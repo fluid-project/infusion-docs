@@ -1,6 +1,7 @@
 [
     {
         "category": "Infusion",
+        "categoryHref": "/index.html",
         "sections":
         [
             {
@@ -110,6 +111,7 @@
     },
     {
         "category": "Tutorials",
+        "categoryHref": "/index-tutorials.html",
         "sections":
         [
             {
@@ -164,6 +166,7 @@
     },
     {
         "category": "API",
+        "categoryHref": "/index-api.html",
         "sections":
         [
             {
@@ -177,7 +180,7 @@
                     { "pageName": "List Reorderer", "href": "/to-do/ListReordererAPI.html" },
                     { "pageName": "Grid Reorderer", "href": "/to-do/GridReordererAPI.html" },
                     { "pageName": "Layout Reorderer", "href": "/to-do/LayoutReordererAPI.html" },
-                    { "pageName": "Image Reorderer", "href": "/to-do/ImageReordererAPI.html" },
+                    { "pageName": "Image Reorderer", "href": "/ImageReordererAPI.html" },
                     { "pageName": "Text to Speech", "href": "/TextToSpeechAPI.html" },
                     { "pageName": "User Interface Options", "href": "/UserInterfaceOptionsAPI.html" },
                     { "pageName": "Uploader", "href": "/UploaderAPI.html" },

@@ -15,7 +15,7 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 
 <div class="infusion-docs-note"><strong>Note:</strong> actual paths may vary, as they are dependent on the location of infusion.</div>
 
-### In 1.5 ###
+### In 1.5
 
 #### CSS Files ####
 
@@ -91,7 +91,7 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 <script type="text/javascript" src="infusion/components/uiOptions/js/UIOptions.js"></script>
 ```
 
-### In 1.4 ###
+### In 1.4
 
 #### Theme Files ####
 
@@ -144,19 +144,21 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 
 ## Instantiation Changes ##
 
-### In 1.5 ###
+### In 1.5
 
 ```javascript
 fluid.uiOptions.prefsEditor("container", {
-    templatePrefix: "pathToTemplates",
-    messagePrefix: "pathToMessages",
+    terms: {
+        templatePrefix: "pathToTemplates",
+        messagePrefix: "pathToMessages",
+    },
     tocTemplate: "pathToTemplate"
 });
 ```
 
 <div class="infusion-docs-note"><strong>Note:</strong> If you'd like to provide a custom theme to use as the default theme, you should use the <a href="../PreferencesFramework.md">Preferences Framework</a> instead</div>
 
-### In 1.4 ###
+### In 1.4
 
 ```javascript
 fluid.pageEnhancer({

@@ -48,6 +48,7 @@
          url("../fonts/github-1.ttf"),
          url("../fonts/github-1.eot");
 }
+
 html body {
     font-size: 12px;
     font-size: 1.2rem;
@@ -56,6 +57,44 @@ html body {
 
 pre {
     white-space: pre-wrap;
+}
+
+td {
+    vertical-align: top;
+}
+
+.fl-prefsEditor-buttons button:focus,
+.infusion-docs-TOC li a:focus .infusion-docs-TOC-pageName,
+a:focus {
+    outline: solid 0.2rem #008cba;
+}
+
+.infusion-docs-header a:focus,
+.infusion-docs-footer a:focus {
+    outline: 0.2rem solid #ffb200;
+}
+
+#skip {
+    float: left;
+    height: 0rem;
+}
+
+#skip a,
+#skip a:hover,
+#skip a:visited {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
+
+#skip a:active,
+#skip a:focus {
+    height: auto;
+    position: static;
+    width: auto;
 }
 
  /* override foundation, so UIO's line-spacing will work */
@@ -78,7 +117,9 @@ pre {
     min-height: 44rem;
 }
 
-.infusion-docs-mainContent a:hover {
+.infusion-docs-mainContent code a:hover,
+.infusion-docs-mainContent a:hover code,
+.infusion-docs-container a:hover {
     color: #ffcb00;
     background: #323232;
 }
@@ -86,9 +127,9 @@ pre {
 .infusion-docs pre code {
     font-weight: normal;
     background-color: #FFF;
-    border-width: 3px;
-    border-color: #666;
-    padding: 12px;
+    border: 0.1rem dotted #ddd;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
     color: #000;
     margin-bottom: 1rem;
 }
@@ -96,13 +137,16 @@ pre {
 .infusion-docs-mainContent code {
     font-weight: normal;
     background-color: #FFF;
-    border-width: 3px;
-    border-color: #666;
-    border-style: solid;
-    border-radius: 8px;
-    padding: 5px 7px 1px;
-    color: #C03;
-    font-size: 0.8rem;
+    color: #000;
+    font-size: inherit;
+}
+
+.infusion-docs-mainContent code a,
+.infusion-docs-mainContent a code {
+    font-size: inherit;
+    border-bottom: 0.1rem dotted #008cba;
+    color: #008cba;
+    background: 0;
 }
 
 .infusion-docs table td {
@@ -142,20 +186,24 @@ pre {
     color: #ffb200;
 }
 
-.infusion-docs-container .infusion-docs-header nav {
+.infusion-docs-header nav {
     margin-top: 1rem;
 }
-.infusion-docs-container .infusion-docs-header nav a {
+.infusion-docs-header nav a {
     color: #FFFFFF;
 }
 
-.infusion-docs-container .infusion-docs-header a:hover {
+.infusion-docs-header a:hover {
     color: #008cba;
     background: #f2f2f2;
 }
 
 .infusion-docs-header a:hover:before {
     color: #008cba;
+}
+
+.infusion-docs-category-active {
+    border-bottom: 0.2rem solid #ffb200;
 }
 
 .infusion-docs-container .infusion-docs-header .infusion-docs-linkDOCS {
@@ -177,7 +225,12 @@ pre {
 }
 
 .infusion-docs-TOC li {
-    margin-bottom: 1rem;
+    padding: 0.6rem 0;
+    border-top: 0.1rem solid #efefef;
+}
+
+.infusion-docs-TOC li:first-child {
+    border-top: none;
 }
 
 .infusion-docs-category {
@@ -191,10 +244,15 @@ pre {
     display: block;
 }
 
+.infusion-docs-TOC li a:focus {
+    outline: none;
+}
+
 .infusion-docs-TOC li .infusion-docs-TOC-pageName {
     /* By default give each item in the TOC an active page style. */
     border-left: solid 0.2rem #FFCB00;
     padding-left: 0.2rem;
+    display: block;
 }
 
 .infusion-docs-TOC li a .infusion-docs-TOC-pageName {
@@ -236,8 +294,7 @@ div.infusion-docs-note {
 .infusion-docs-container h1 {
     font-size: 3.0rem;
     font-family: "RobotoSlab";
-    margin-top: 6rem;
-    padding-top: 10rem;
+    margin-top: 10rem;
     padding-bottom: 6rem;
 }
 
@@ -296,9 +353,12 @@ div.infusion-docs-note {
     padding-top: 2rem;
     color: #FFFFFF;
     font-family: "OpenSans", Arial, Helvetica;
-    font-size: 1.1rem;
     text-align: center;
     max-width: 100%;
+}
+
+.infusion-docs-footer p {
+    font-size: 0.8rem;
 }
 
 .infusion-docs-footer a {
@@ -325,9 +385,6 @@ div.infusion-docs-note {
     margin-bottom: 0.7rem;
 }
 
-.infusion-docs-container .infusion-docs-toc {
-    margin-bottom: -10rem;
-}
 .infusion-docs-container .infusion-docs-toc h1 {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -341,24 +398,88 @@ div.infusion-docs-note {
     min-width: 13rem;
 }
 
+/* Styles for high-contrast themes */
 .fl-theme-yb .infusion-docs-fluidLogoText::before {
-    color: #ffff00;
+    color: #ffff00 !important;
 }
 .fl-theme-wb .infusion-docs-fluidLogoText::before {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 .fl-theme-by .infusion-docs-fluidLogoText::before,
 .fl-theme-bw .infusion-docs-fluidLogoText::before {
-    color: #000000;
+    color: #000000 !important;
 }
 .fl-theme-lgdg .infusion-docs-fluidLogoText::before {
-    color: #bdbdbb;
+    color: #bdbdbb !important;
 }
 
-@media only screen and (max-width: 50rem) {
-    .infusion-docs-container .infusion-docs-mainContent {
-        max-width: 100%;
-        padding-right: 1rem;
-        padding-left: 1rem;
-    }
+.fl-theme-bw a:focus,
+.fl-theme-bw .fl-prefsEditor-buttons button:focus,
+.fl-theme-bw a:focus .infusion-docs-TOC-pageName,
+.fl-theme-by a:focus,
+.fl-theme-by .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #000000 !important;
+}
+.fl-theme-wb a:focus,
+.fl-theme-wb a:focus .infusion-docs-TOC-pageName,
+.fl-theme-wb .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #ffffff !important;
+}
+.fl-theme-yb a:focus,
+.fl-theme-yb a:focus .infusion-docs-TOC-pageName,
+.fl-theme-yb .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #ffff00 !important;
+}
+.fl-theme-lgdg a:focus,
+.fl-theme-lgdg a:focus .infusion-docs-TOC-pageName,
+.fl-theme-lgdg .fl-prefsEditor-buttons button:focus {
+    outline: 0.2rem solid #bdbdbb !important;
+}
+
+/*
+Focus style exception: don't have focus appear around the anchor.
+Instead have it appear around the enclosed
+*/
+.fl-theme-bw .infusion-docs-TOC li a:focus,
+.fl-theme-wb .infusion-docs-TOC li a:focus,
+.fl-theme-by .infusion-docs-TOC li a:focus,
+.fl-theme-yb .infusion-docs-TOC li a:focus,
+.fl-theme-lgdg .infusion-docs-TOC li a:focus {
+    outline:none !important;
+}
+
+.fl-theme-bw .infusion-docs-container a:hover,
+.fl-theme-bw .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-bw .fl-prefsEditor-buttons button:hover,
+.fl-theme-bw .infusion-docs-header a:hover:before {
+    color: #ffffff !important;
+    background: #000000 !important;
+}
+.fl-theme-wb .infusion-docs-container a:hover,
+.fl-theme-wb .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-wb .fl-prefsEditor-buttons button:hover,
+.fl-theme-wb .infusion-docs-header a:hover:before {
+    color: #000000 !important;
+    background: #ffffff !important;
+}
+.fl-theme-by .infusion-docs-container a:hover,
+.fl-theme-by .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-by .fl-prefsEditor-buttons button:hover,
+.fl-theme-by .infusion-docs-header a:hover:before {
+    color: #ffff00 !important;
+    background: #000000 !important;
+}
+.fl-theme-yb .infusion-docs-container a:hover,
+.fl-theme-yb .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-yb .fl-prefsEditor-buttons button:hover,
+.fl-theme-yb .infusion-docs-header a:hover:before {
+    color: #000000 !important;
+    background: #ffff00 !important;
+}
+.fl-theme-lgdg .infusion-docs-container a:hover,
+.fl-theme-lgdg .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-lgdg .fl-prefsEditor-buttons button:hover,
+.fl-theme-lgdg .infusion-docs-header a:hover:before {
+    color: #555555 !important;
+    background: #bdbdbb !important;
 }

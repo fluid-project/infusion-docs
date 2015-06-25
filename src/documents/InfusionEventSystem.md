@@ -15,8 +15,7 @@ An Infusion event can be fired at any time, and any collection of JavaScript obj
 
 Rather than firing and listening to events in raw JavaScript code, we recommend using the framework to encode firing and listening to events declaratively. We'll show how this syntax works first, and then later show procedural equivalents and more details.
 
-Declaring an event on a component
----------------------------------
+## Declaring an event on a component
 
 A top-level options block named **`events`** is supported on every component derived from the core framework grade `fluid.component`. The keys in this block represent the event name, and the values represent the type of the event. Currently only two event types are supported, represented by the values `null` and `preventable` (this second value is almost never used). This table explains the meaning of the two values:
 
@@ -90,8 +89,7 @@ myCallback(42, true);
 
 In general you shouldn't fire any of a component's events unless invited to by its documentation - you may disrupt its state. However, registering listeners to a component's events is always safe.
 
-Registering a listener to an event
-----------------------------------
+## Registering a listener to an event
 
 Both as part of defaults, and also as supplied instantiation options, an Infusion component can accept a structure named `listeners`. 
 In the simplest form, the keys of the `listeners` structure are taken from the set of `events` present in the component's [Grade](ComponentGrades.md), and the values are either single listener specifications or arrays of listener specifications. 
@@ -196,12 +194,11 @@ In this case, you can use the long form record, where the listener record takes 
 </table>
 
 
-Using events and listeners procedurally
----------------------------------------
+## Using events and listeners procedurally
 
 Traditional procedural APIs corresponding to all the above declarations exist. However, they are not encouraged for typical users of the framework.
 
-###Constructing an event firer procedurally
+### Constructing an event firer procedurally
 
 The Fluid event system is operated by instances of an *event firer* which are created by a call to `fluid.event.makeEventFirer()`. It is recommended that users don't construct event firers by hand but instead rely on the framework's facilities for automatically constructing these given event blocks in [component options](ComponentConfigurationOptions.md). The signature of `fluid.event.makeEventFirer` is not stable and will be revised in the 2.0 release of Infusion:
 
@@ -233,7 +230,7 @@ var myFirer = fluid.makeEventFirer(options);
   </tr>
 </table>
 
-###Using an event firer procedurally
+### Using an event firer procedurally
 
 Once an event firer is constructed, it can be called with the following methods (these do form a stable API):
 

@@ -127,8 +127,7 @@ The following options are supported by all component grades, that is, those deri
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>  
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     gradeNames: ["fluid.component"],
     events: {
         onSave: "preventable",
@@ -206,8 +205,7 @@ fluid.defaults("component.name", {
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>  
-fluid.defaults("component.name", {
+<code>fluid.defaults("component.name", {
     gradeNames: ["fluid.component"],
     distributeOptions: {
         namespace: "myDistribution",

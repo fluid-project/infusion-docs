@@ -135,3 +135,115 @@ fluid.prefs.enactor.textSize.set = function (value, that) {
     that.root.css("font-size", value + "px");
 };
 ```
+
+#### Schema Changes ####
+
+##### Specifying a prefsEditor type #####
+
+###### In 1.5 ######
+
+In Infusion 1.5 a `prefsEditorType` option was used to specify the type. The default was `"fluid.prefs.separatedPanel"`.
+
+```javascript
+// using a previous constructed grade
+your.constructed.prefsEditor(".container", {
+    prefsEditorType: "fluid.prefs.fullNoPreview"
+});
+
+// using fluid.prefs.create to construct the grade
+fluid.prefs.create(container, {
+    build: {
+        gradeNames: ["fluid.prefs.auxSchema.starter"],
+        auxiliarySchema: {
+            "template": "%prefix/FullNoPreviewPrefsEditor.html",
+            "templatePrefix": "../../../../../src/framework/preferences/html/",
+            "messagePrefix": "../../../../../src/framework/preferences/messages/",
+            "tableOfContents": {
+                "enactor": {
+                    "tocTemplate": "../../../../../src/components/tableOfContents/html/TableOfContents.html"
+                }
+            }
+        }
+    },
+    prefsEditor: {
+        prefsEditorType: "fluid.prefs.fullNoPreview"
+    }
+});
+```
+
+###### In 2.0 ######
+
+In Infusion 2.0 the prefsEditor type is specified in a grade passed into the prefsEditorLoader via the `loaderGrades` property in the auxiliarySchema.
+By default the `"fluid.prefs.separatedPanel"` grade is applied. Any grade to be applied to the prefsEditorLoader can be passed in; however, you must also supply the type grade as the default will be replaced by any modification.
+
+```javascript
+var auxiliarySchema = {
+    "loaderGrades": ["fluid.prefs.fullNoPreview"]
+};
+```
+
+##### A new "terms" block #####
+
+###### In 1.5 ######
+
+In Infusion 1.5, `messagePrefix` and `templatePrefix` are root level data defined in the auxiliary schema. When referring to them for locations of message bundles or html templates, a common `%prefix` is used, which causes confusion.
+
+```javascript
+fluid.defaults("fluid.prefs.auxSchema.starter", {
+    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    auxiliarySchema: {
+        "loaderGrades": ["fluid.prefs.separatedPanel"],
+        "namespace": "fluid.prefs.constructed", // The author of the auxiliary schema will provide this and will be the component to call to initialize the constructed PrefsEditor.
+        "templatePrefix": "../../framework/preferences/html/",  // The common path to settings panel templates. The template defined in "panels" element will take precedence over this definition.
+        "template": "%prefix/SeparatedPanelPrefsEditor.html",
+        "messagePrefix": "../../framework/preferences/messages/",  // The common path to settings panel templates. The template defined in "panels" element will take precedence over this definition.
+        "message": "%prefix/prefsEditor.json",
+        "textSize": {
+            "type": "fluid.prefs.textSize",
+            "enactor": {
+                "type": "fluid.prefs.enactor.textSize"
+            },
+            "panel": {
+                "type": "fluid.prefs.panel.textSize",
+                "container": ".flc-prefsEditor-text-size",  // the css selector in the template where the panel is rendered
+                "template": "%prefix/PrefsEditorTemplate-textSize.html",
+                "message": "%prefix/textSize.json"
+            }
+        }
+        ...
+    }
+});
+```
+
+###### In 2.0 ######
+
+In Infusion 2.0, both `templatePrefix` and `messagePrefix` become sub-elements of a `terms` block. The `terms` block is used to define all string templates used by `fluid.prefs.resourceLoader`. To refer to these terms, rather than using an ambiguous `%prefix`, use the defined term names such as `%templatePrefix` or `%messagePrefix`.
+
+```javascript
+fluid.defaults("fluid.prefs.auxSchema.starter", {
+    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    auxiliarySchema: {
+        "loaderGrades": ["fluid.prefs.separatedPanel"],
+        "namespace": "fluid.prefs.constructed", // The author of the auxiliary schema will provide this and will be the component to call to initialize the constructed PrefsEditor.
+        "terms": {
+            "templatePrefix": "../../framework/preferences/html",  // Must match the keyword used below to identify the common path to settings panel templates.
+            "messagePrefix": "../../framework/preferences/messages"  // Must match the keyword used below to identify the common path to message files.
+        },
+        "template": "%templatePrefix/SeparatedPanelPrefsEditor.html",
+        "message": "%messagePrefix/prefsEditor.json",
+        "textSize": {
+            "type": "fluid.prefs.textSize",
+            "enactor": {
+                "type": "fluid.prefs.enactor.textSize"
+            },
+            "panel": {
+                "type": "fluid.prefs.panel.textSize",
+                "container": ".flc-prefsEditor-text-size",  // the css selector in the template where the panel is rendered
+                "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
+                "message": "%messagePrefix/textSize.json"
+            }
+        },
+        ...
+    }
+});
+```

@@ -254,9 +254,9 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
     </tbody>
 </table>
 
-## Functions on `that` ##
+## Functions on "that" ##
 
-### `render(tree)` ##
+### render(tree) ##
 
 ```javascript
 that.render(tree);
@@ -264,7 +264,7 @@ that.render(tree);
 
 Expands the provided `tree`, generates cutpoints, and renders the `tree`.
 
-### `produceTree()` ###
+### produceTree() ###
 
 ```javascript
 that.produceTree();
@@ -272,7 +272,7 @@ that.produceTree();
 
 This function is only present if a `protoTree` has been provided in the options. This function can be overridden by providing a `produceTree` in the options.
 
-### `refreshView()` ###
+### refreshView() ###
 
 ```javascript
 that.refreshView();
