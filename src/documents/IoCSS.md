@@ -113,13 +113,10 @@ fluid.defaults("kettle.use.session.io", {
 });
 ```
 
-<<<<<<< HEAD
 The `sessionManager`, wherever it is in the set of child components, will be granted the additional grade `kettle.sessionManager.io`.
 
 ## Complex Example: `record` ##
-=======
-## Example: record ##
->>>>>>> master
+
 ```javascript
 fluid.defaults("fluid.moduleLayoutHandler", {
     gradeNames: ["fluid.layoutHandler"],
