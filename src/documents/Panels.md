@@ -117,13 +117,13 @@ __Example: A checkbox adjuster__
 fluid.defaults("fluid.prefs.panel.layoutControls", {
     gradeNames: ["fluid.prefs.panel", "autoInit"],
     selectors: {
+        toc: ".flc-prefsEditor-toc",
         label: ".flc-prefsEditor-toc-label",
-        choiceLabel: ".flc-prefsEditor-toc-choice-label",
-        toc: ".flc-prefsEditor-toc"
+        tocDescr: ".flc-prefsEditor-toc-descr"
     },
     protoTree: {
         label: {messagekey: "tocLabel"},
-        choiceLabel: {messagekey: "tocChoiceLabel"},
+        tocDescr: {messagekey: "tocDescr"},
         toc: "${toc}"
     }
 });
@@ -138,13 +138,13 @@ __Example: A checkbox adjuster__
 fluid.defaults("fluid.prefs.panel.layoutControls", {
     gradeNames: ["fluid.prefs.panel", "autoInit"],
     selectors: {
+        toc: ".flc-prefsEditor-toc",
         label: ".flc-prefsEditor-toc-label",
-        choiceLabel: ".flc-prefsEditor-toc-choice-label",
-        toc: ".flc-prefsEditor-toc"
+        tocDescr: ".flc-prefsEditor-toc-descr"
     },
     protoTree: {
         label: {messagekey: "tocLabel"},
-        choiceLabel: {messagekey: "tocChoiceLabel"},
+        tocDescr: {messagekey: "tocDescr"},
         toc: "${toc}"
     }
 });

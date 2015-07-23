@@ -141,18 +141,20 @@ The CSS required will, of course, be dependent on the design. Some examples from
 ![a radio button styled colour and contrast panel](../images/radio-styled.png)
 
 ```html
- <h2>
-  <span class="fl-icon-contrast"></span>
-  <span class="flc-prefsEditor-contrast-label heading-text"></span>
+<h2>
+    <span class="fl-icon-contrast"></span>
+    <span class="flc-prefsEditor-contrast-label heading-text"></span>
 </h2>
+<p class="flc-prefsEditor-contrast-descr"></p>
 
 <div class="flc-prefsEditor-themeRow fl-choice">
-  <input type="radio" class="flc-prefsEditor-themeInput fl-hidden-accessible" name="theme" id="bw" value="bw" />
-  <div class="fl-indicator"></div>
-  <label for="bw" class="flc-prefsEditor-theme-label fl-theme-bw-prefsEditor">
-    <span class="fl-preview-A"></span>
-    <span class="fl-hidden-accessible"></span>
-  </label>
+    <input type="radio" class="flc-prefsEditor-themeInput fl-hidden-accessible" name="theme" id="default" value="default" />
+    <div class="fl-indicator"></div>
+    <label for="default" class="flc-prefsEditor-theme-label">
+        <span class="fl-preview-A"></span>
+        <span class="fl-hidden-accessible"></span>
+        <span class="fl-crossout"></span>
+    </label>
 </div>
 ```
 
@@ -170,7 +172,7 @@ For the header:
         font-variant: normal;
         text-transform: none;
         -webkit-font-smoothing: antialiased;
-        float:left;
+        float: left;
         margin: 0.2em 0.3em 0 0;
         font-size: 1.5em;
     }
@@ -202,9 +204,13 @@ For the radio buttons:
             line-height: 3em !important;
             padding: 2px;
         }
-
         .fl-preview-A {
             font-size: 2em;
+        }
+        
+        // Pseudo content to prevent AT from reading display 'a'
+        .fl-preview-A:before {
+            content: "a";
         }
 
         input:focus ~ label {
@@ -220,20 +226,21 @@ For the radio buttons:
 
 ![a checkbox styled table of contents panel](../images/checkbox-styled.png)
 
+**Note:** Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708 JIRA](https://issues.fluidproject.org/browse/FLUID-5708)
+
 ```html
 <h2>
-  <span class="fl-icon-toc"></span>
-  <span class="flc-prefsEditor-toc-label heading-text"></span>
+    <span class="fl-icon-toc"></span>
+    <span class="flc-prefsEditor-toc-label heading-text"></span>
 </h2>
-
 <div class="fl-prefsEditor-onoff">
-  <input type="checkbox" id="toc-choice" class="flc-prefsEditor-toc" />
-  <label for="toc-choice">
-    <span class="fl-prefsEditor-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
-      <span class="fl-prefsEditor-switch-inner"></span>
-    </span>
-    <span class="flc-prefsEditor-toc-choice-label"></span>
-  </label>
+    <input type="checkbox" id="toc-choice" class="flc-prefsEditor-toc" />
+    <label for="toc-choice">
+        <span class="flc-prefsEditor-toc-descr"></span>
+        <span class="fl-prefsEditor-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+        <span class="fl-prefsEditor-switch-inner"></span>
+        </span>
+    </label>
 </div>
 ```
 
@@ -242,101 +249,101 @@ For the radio buttons:
 For the switch:
 
 ```stylus
-.fl-prefsEditor {
-    // ON/OFF Switch for checkboxes
-    // The container for the toggle, which is also a label for the hidden checkbox.
-    .fl-prefsEditor-onoff {
-        .fl-prefsEditor-switch {
-            border-radius:50px;
-            border: 1px solid #776D67;
-            width: 5em;
-            height: 2em;
-            background-color: #E6E6E6;
-            box-shadow: 1em 1.1em 0 0 rgba(250,250,250,0.53) inset;
-            overflow: hidden;
-            vertical-align: middle;
-            display:inline-block;
-            transition-duration: 0.2s;
-            transition-property: padding-left, width, background-color, margin-left;
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-
-        // Hide input
-        input {
-            border: 0 none;
-            clip: rect(0px, 0px, 0px, 0px);
-            height: 1px;
-            margin: -1px;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            width: 1px;
-        }
-
-        input:focus + label {
-            outline: 2px solid black;
-        }
-
-        input:checked + label .fl-prefsEditor-switch {
-            padding-left: 3em;
-            width: 2em;
-            background-color: #2da750;
-            box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.63) inset;
-
-            .fl-prefsEditor-switch-inner {
-                top:-1.6em;
-                left: 0.46em;
-            }
-        }
-        // With data attributes defining the on/off text, localizing the templates is easier
-        input + label {
-            [data-checkboxStateOn]:before {
-                content: attr(data-checkboxStateOn);
-            }
-            [data-checkboxStateOff]:after {
-                content: attr(data-checkboxStateOff);
-            }
-
-            // The "on" portion of the toggle and the knob.
-            .fl-prefsEditor-switch {
-                &:before {
-                    color: #fff;
-                    border: 1px solid #776D67;
-                    border-radius: 50px;
-                    float:left;
-                    width:1.9em;
-                    height: 1.9em; // Width and height of the knob.
-                    text-indent:-1.6em;
-                    line-height:1.7em;
-                    text-shadow: 1px 1px 1px #000;
-                    background-color: #fff;
-                    box-shadow: 0.2em 0.2em 0.5em #888;
-                    background-image: linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
-                }
-                // The "off" portion of the toggle.
-                &:after {
-                    float: left;
-                    position: relative;
-                    top: 0.36em;
-                    left: 0.5em;
-                }
-            }
-        }
-
-        // The dark inner circle to the toggle knob.
+// ON/OFF Switch for checkboxes
+// The container for the toggle, which is also a label for the hidden checkbox.
+.fl-prefsEditor-onoff {
+    .fl-prefsEditor-switch {
+        border-radius: 50px;
+        border: 1px solid #776D67;
+        width: 5em;
+        height: 2em;
+        background-color: #E6E6E6;
+        box-shadow: 1em 1.1em 0 0 rgba(250, 250, 250, 0.53) inset;
+        overflow: hidden;
+        vertical-align: middle;
+        display: block;
+        margin-top: 1em;
+        transition-duration: 0.2s;
+        transition-property: padding-left, width, background-color, margin-left;
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+  
+    // Hide input while still being screen reader accessible
+    input {
+        border: 0 none;
+        clip: rect(0px, 0px, 0px, 0px);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+  
+    input:focus + label {
+        outline: 2px solid black;
+    }
+  
+    input:checked + label .fl-prefsEditor-switch {
+        padding-left: 3em;
+        width: 2em;
+        background-color: #2da750;
+        box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.63) inset;
         .fl-prefsEditor-switch-inner {
-            border: 1px solid #493A30;
-            border-radius: 50px;
-            width: 1em;
-            height: 1em;
-            position: relative;
-            left: -2.85em;
-            top: 0.46em;
-            background-color: #675243;
-            box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
-            display: inline-block;
+            top: -1.6em;
+            left: 0.46em;
         }
+    }
+  
+    // With data attributes defining the on/off text, localizing the templates is easier
+    input + label {
+        [data-checkboxStateOn]:before {
+            content: attr(data-checkboxStateOn);
+        }
+        [data-checkboxStateOff]:after {
+            content: attr(data-checkboxStateOff);
+        }
+      
+        // The "on" portion of the toggle and the knob.
+        .fl-prefsEditor-switch {
+            &:before {
+                color: #fff;
+                border: 1px solid #776D67;
+                border-radius: 50px;
+                float: left;
+                width: 1.9em;
+                height: 1.9em; // Width and height of the knob.
+                text-indent: -1.6em;
+                line-height: 1.7em;
+                text-shadow: 1px 1px 1px #000;
+                background-color: #fff;
+                box-shadow: 0.2em 0.2em 0.5em #888;
+                background-image: linear-gradient(bottom, rgb(205, 204, 202) 0%, rgb(244, 244, 244) 100%);
+            }
+          
+            // The "off" portion of the toggle.
+            &:after {
+                float: left;
+                position: relative;
+                top: 0.36em;
+                left: 0.5em;
+            }
+        }
+    }
+  
+    // The dark inner circle to the toggle knob.
+    .fl-prefsEditor-switch-inner {
+        border: 1px solid #493A30;
+        border-radius: 50px;
+        width: 1em;
+        height: 1em;
+        position: relative;
+        left: -2.85em;
+        top: 0.46em;
+        background-color: #675243;
+        box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
+        display: inline-block;
     }
 }
 ```
