@@ -247,3 +247,61 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
     }
 });
 ```
+#### UI Options Changes ####
+Changes and additions are being made to UI Options in order to improve its compliance with accesibility standards.
+
+Additional descriptors were added to panels without. These include the text size, text font, line space, and contrast panels while remaining panels underwent updates.
+
+#####** Message Bundles and Selectors **#####
+New key value pair references and selectors added.
+
+*Additions*
+* textSizeDescr
+* textFontDescr
+* lineSpaceDescr
+* contrastDescr
+
+Selectors share the same name as the key value pair references.
+
+*Changes*
+<table>
+<tr><th> 1.5</th><th>2.0</th></tr>
+<tr>
+    <td><code>speakChoiceLabel</code></td>
+    <td><code>speakDescr</code></td>
+</tr>
+<tr>
+    <td><code>tocChoiceLabel</code></td>
+    <td><code>tocDescr</code></td>
+</tr>
+<tr>
+    <td><code>simplifyChoiceLabel</code></td>
+    <td><code>simplifyDescr</code></td>
+</tr>
+</table>
+
+#####** CSS Class Selectors **#####
+New CSS class selectors to compliment the new selectors
+
+*Additions*
+* flc-prefsEditor-contrast-descr
+* flc-prefsEditor-linespace-descr
+* flc-prefsEditor-textsize-descr
+* flc-prefsEditor-textfont-descr
+
+*Changes*
+<table>
+<tr><th> 1.5</th><th>2.0</th></tr>
+<tr>
+    <td><code>flc-prefsEditor-toc-choice-label </code></td>
+    <td><code>flc-prefsEditor-toc-descr</code></td>
+</tr>
+<tr>
+    <td><code>flc-prefsEditor-speak-choice-label</code></td>
+    <td><code>flc-prefsEditor-speak-descr</code></td>
+</tr>
+<tr>
+    <td><code>demo-prefsEditor-simplify-choice-label</code></td>
+    <td><code>demo-prefsEditor-simplify-descr</code></td>
+</tr>
+</table>

@@ -108,15 +108,8 @@ fluid.defaults("fluid.prefs.panel.lineSpace", {
         label: ".flc-prefsEditor-line-space-label",
         narrowIcon: ".flc-prefsEditor-line-space-narrowIcon",
         wideIcon: ".flc-prefsEditor-line-space-wideIcon",
-        multiplier: ".flc-prefsEditor-multiplier"
-    },
-    selectors: {
-            lineSpace: ".flc-prefsEditor-line-space",
-            label: ".flc-prefsEditor-line-space-label",
-            narrowIcon: ".flc-prefsEditor-line-space-narrowIcon",
-            wideIcon: ".flc-prefsEditor-line-space-wideIcon",
-            multiplier: ".flc-prefsEditor-multiplier",
-            lineSpaceDescr: ".flc-prefsEditor-linespace-descr"
+        multiplier: ".flc-prefsEditor-multiplier",
+        lineSpaceDescr: ".flc-prefsEditor-linespace-descr"
     },
     selectorsToIgnore: ["lineSpace"],
     components: {
