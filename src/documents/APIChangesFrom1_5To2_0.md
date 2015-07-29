@@ -50,7 +50,7 @@ Changes and additions are being made to UI Options in order to improve its compl
 <table>
 <tr><th> 1.5</th><th>2.0</th></tr>
 <tr>
-    <td><code>flc-prefsEditor-toc-choice-label </code></td>
+    <td><code>flc-prefsEditor-toc-choice-label</code></td>
     <td><code>flc-prefsEditor-toc-descr</code></td>
 </tr>
 <tr>
