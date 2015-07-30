@@ -226,7 +226,7 @@ For the radio buttons:
 
 ![a checkbox styled table of contents panel](../images/checkbox-styled.png)
 
-**Note:** Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708 JIRA](https://issues.fluidproject.org/browse/FLUID-5708)
+**Note:** *Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708 JIRA](https://issues.fluidproject.org/browse/FLUID-5708)*
 
 ```html
 <h2>

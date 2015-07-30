@@ -13,53 +13,53 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 #### Panel Changes ####
 Changes and additions are being made to UI Options in order to improve its compliance with accesibility standards.
 
-##### Message Bundle Keys and Selectors #####
+##### Message Bundle Keys #####
 
 ######Additions######
-* `textSizeDescr`
-* `textFontDescr`
-* `lineSpaceDescr`
-* `contrastDescr`
+* `textSizeDescr: {messagekey: "textSizeDescr"}`
+* `textFontDescr: {messagekey: "textFontDescr"}`
+* `lineSpaceDescr: {messagekey: "lineSpaceDescr"}`
+* `contrastDescr: {messagekey: "contrastDescr"}`
 
 ######Changes######
 <table>
 <tr><th> 1.5</th><th>2.0</th></tr>
 <tr>
-    <td><code>speakChoiceLabel</code></td>
-    <td><code>speakDescr</code></td>
+    <td><code>choiceLabel: {messagekey: "speakChoiceLabel"}</code></td>
+    <td><code>speakDescr: {messagekey: "speakDescr"}</code></td>
 </tr>
 <tr>
-    <td><code>tocChoiceLabel</code></td>
-    <td><code>tocDescr</code></td>
+    <td><code>choiceLabel: {messagekey: "tocChoiceLabel"}</code></td>
+    <td><code>tocDescr: {messagekey: "tocDescr"}</code></td>
 </tr>
 <tr>
-    <td><code>simplifyChoiceLabel</code></td>
-    <td><code>simplifyDescr</code></td>
+    <td><code>choiceLabel: {messagekey: "simplifyChoiceLabel"}</code></td>
+    <td><code>simplifyDescr: {messagekey: "simplifyDescr"}</code></td>
 </tr>
 </table>
 
-##### CSS Selectors #####
+##### Selectors #####
 
 ######Additions######
-* `.flc-prefsEditor-contrast-descr`
-* `.flc-prefsEditor-linespace-descr`
-* `.flc-prefsEditor-textsize-descr`
-* `.flc-prefsEditor-textfont-descr`
+* `contrastDescr: .flc-prefsEditor-contrast-descr`
+* `lineSpaceDescr: .flc-prefsEditor-line-space-descr`
+* `textSizeDescr: .flc-prefsEditor-text-size-descr`
+* `textFontDescr: .flc-prefsEditor-text-font-descr`
 
 ######Changes######
 <table>
 <tr><th> 1.5</th><th>2.0</th></tr>
 <tr>
-    <td><code>flc-prefsEditor-toc-choice-label</code></td>
-    <td><code>flc-prefsEditor-toc-descr</code></td>
+    <td><code>choiceLabel: ".flc-prefsEditor-toc-choice-label"</code></td>
+    <td><code>tocDescr: ".flc-prefsEditor-toc-descr"</code></td>
 </tr>
 <tr>
-    <td><code>flc-prefsEditor-speak-choice-label</code></td>
-    <td><code>flc-prefsEditor-speak-descr</code></td>
+    <td><code>choiceLabel: ".flc-prefsEditor-speak-choice-label"</code></td>
+    <td><code>speakDescr: ".flc-prefsEditor-speak-descr"</code></td>
 </tr>
 <tr>
-    <td><code>demo-prefsEditor-simplify-choice-label</code></td>
-    <td><code>demo-prefsEditor-simplify-descr</code></td>
+    <td><code>choiceLabel: ".demo-prefsEditor-simplify-choice-label"</code></td>
+    <td><code>simplifyDescr: ".demo-prefsEditor-simplify-descr"</code></td>
 </tr>
 </table>
 
