@@ -16,25 +16,25 @@ Changes and additions are being made to UI Options in order to improve its compl
 ##### Message Bundle Keys #####
 
 ######Additions######
-* `textSizeDescr: {messagekey: "textSizeDescr"}`
-* `textFontDescr: {messagekey: "textFontDescr"}`
-* `lineSpaceDescr: {messagekey: "lineSpaceDescr"}`
-* `contrastDescr: {messagekey: "contrastDescr"}`
+* `textSizeDescr`
+* `textFontDescr`
+* `lineSpaceDescr`
+* `contrastDescr`
 
 ######Changes######
 <table>
 <tr><th> 1.5</th><th>2.0</th></tr>
 <tr>
-    <td><code>choiceLabel: {messagekey: "speakChoiceLabel"}</code></td>
-    <td><code>speakDescr: {messagekey: "speakDescr"}</code></td>
+    <td><code>choiceLabel</code></td>
+    <td><code>speakDescr</code></td>
 </tr>
 <tr>
-    <td><code>choiceLabel: {messagekey: "tocChoiceLabel"}</code></td>
-    <td><code>tocDescr: {messagekey: "tocDescr"}</code></td>
+    <td><code>choiceLabel</code></td>
+    <td><code>tocDescr</code></td>
 </tr>
 <tr>
-    <td><code>choiceLabel: {messagekey: "simplifyChoiceLabel"}</code></td>
-    <td><code>simplifyDescr: {messagekey: "simplifyDescr"}</code></td>
+    <td><code>choiceLabel</code></td>
+    <td><code>simplifyDescr</code></td>
 </tr>
 </table>
 
@@ -56,10 +56,6 @@ Changes and additions are being made to UI Options in order to improve its compl
 <tr>
     <td><code>choiceLabel: ".flc-prefsEditor-speak-choice-label"</code></td>
     <td><code>speakDescr: ".flc-prefsEditor-speak-descr"</code></td>
-</tr>
-<tr>
-    <td><code>choiceLabel: ".demo-prefsEditor-simplify-choice-label"</code></td>
-    <td><code>simplifyDescr: ".demo-prefsEditor-simplify-descr"</code></td>
 </tr>
 </table>
 
