@@ -11,7 +11,6 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 ### Preferences Framework ###
 
 #### Panel Changes ####
-Changes and additions are being made to UI Options in order to improve its compliance with accesibility standards.
 
 ##### Message Bundle Keys #####
 
