@@ -10,13 +10,61 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 ### Preferences Framework ###
 
+#### Panel Changes ####
+
+##### Message Bundle Keys #####
+
+######Additions######
+* `textSizeDescr`
+* `textFontDescr`
+* `lineSpaceDescr`
+* `contrastDescr`
+
+######Changes######
+<table>
+<tr><th> 1.5</th><th>2.0</th></tr>
+<tr>
+    <td><code>choiceLabel</code></td>
+    <td><code>speakDescr</code></td>
+</tr>
+<tr>
+    <td><code>choiceLabel</code></td>
+    <td><code>tocDescr</code></td>
+</tr>
+<tr>
+    <td><code>choiceLabel</code></td>
+    <td><code>simplifyDescr</code></td>
+</tr>
+</table>
+
+##### Selectors #####
+
+######Additions######
+* `contrastDescr: .flc-prefsEditor-contrast-descr`
+* `lineSpaceDescr: .flc-prefsEditor-line-space-descr`
+* `textSizeDescr: .flc-prefsEditor-text-size-descr`
+* `textFontDescr: .flc-prefsEditor-text-font-descr`
+
+######Changes######
+<table>
+<tr><th> 1.5</th><th>2.0</th></tr>
+<tr>
+    <td><code>choiceLabel: ".flc-prefsEditor-toc-choice-label"</code></td>
+    <td><code>tocDescr: ".flc-prefsEditor-toc-descr"</code></td>
+</tr>
+<tr>
+    <td><code>choiceLabel: ".flc-prefsEditor-speak-choice-label"</code></td>
+    <td><code>speakDescr: ".flc-prefsEditor-speak-descr"</code></td>
+</tr>
+</table>
+
 #### Namespace Changes ####
 
 Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
 #### Component Grade Changes ####
 
-<div class="infusion-docs-note"><strong>Note:</strong> According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> According to the <a href="https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39">comment</a> on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
 
 * Replace "fluid.modelComponent" with "fluid.modelRelayComponent"
 * Replace "fluid.standardComponent" with "fluid.standardRelayComponent"
