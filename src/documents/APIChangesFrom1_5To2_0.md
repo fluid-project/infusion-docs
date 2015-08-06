@@ -64,7 +64,7 @@ Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
 #### Component Grade Changes ####
 
-<div class="infusion-docs-note"><strong>Note:</strong> According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> According to the <a href="https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39">comment</a> on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
 
 * Replace "fluid.modelComponent" with "fluid.modelRelayComponent"
 * Replace "fluid.standardComponent" with "fluid.standardRelayComponent"
