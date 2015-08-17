@@ -12,7 +12,8 @@ listener, or a set of options or grades may take priority over another during op
 
 The priority system is designed to be "open" in the face of evolving application designs that are worked on by different groups. As well as standard
 fixed priorities (represented by numbers or _extremal values_ such as `"first"` or `"last"`), Infusion priorities may be _constraint-based_ in which
-an element defines its priority only with respect to another element which is identified by _namespace_. These constraint-based priorities are
+an element defines its priority only with respect to another element which is identified by _namespace_. The syntax and idiom for namespaces follows that for
+[event listeners](InfusionEventSystem.md#registering-a-listener-to-an-event). These constraint-based priorities are
 much less brittle than the use of fixed priorities, and are recommended whenever a priority directive seems to be required.
 
 ## Supported values for priorities ##

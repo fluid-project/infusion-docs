@@ -321,7 +321,7 @@ fluid.contextAware.forgetChecks(["fluid.browser.supportsBinaryXHR",
 ## Defining and broadcasting a fresh adaptation in one operation with `fluid.contextAware.makeAdaptation`
 
 A very common use case is to define an adaptation (that is, a `distributeOptions` block which targets the `contextAwareness` area of a collection
-of componentsin the tree), and then to create an instance of a single, well-known component which actually broadcasts the adaptation. This was
+of components in the tree), and then to create an instance of a single, well-known component which actually broadcasts the adaptation. This was
 what we did in two steps (`fluid.defaults` plus `fluid.constructSingle`) in the above [example `contextAwareness` broadcast](#example-of-dynamically-broadcasting-a-fresh-adaptation)
 - this can be done in a single step using the `fluid.contextAware.makeAdaptation` API. 
 

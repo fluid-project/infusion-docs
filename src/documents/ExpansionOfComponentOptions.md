@@ -52,7 +52,7 @@ The basic form of an expander record is very similar to that of an [Invoker](Inv
     </tbody>
 </table>
 
-Note that unlike an invoker which evalutes its arguments every time it is used by its caller, an expander evaluates only once - when the component whose options hold it is constructing.
+Note that unlike an invoker which evaluates its arguments every time it is used by its caller, an expander evaluates only once - when the component whose options hold it is constructing.
 
 ### Examples ###
 

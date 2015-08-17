@@ -266,7 +266,7 @@ fluid.defaults("examples.eventedComponent", {
 <table>
   <tr>
     <th>Description</th>
-    <td>An object containing named definitions of the component's dynamic subcomponents. Rather than exactly one subcomponent being associated with its parent from these records, there may be one subcomponent per element of an array, or one per firing of an event.</td>
+    <td>An object containing named definitions of the component's <a href="SubcomponentDeclaration.md#dynamic-components">dynamic subcomponents</a>. Rather than exactly one subcomponent being associated with its parent from these records, there may be one subcomponent per element of an array, or one per firing of an event.</td>
   </tr>
   <tr>
     <th>Notes</th>
