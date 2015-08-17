@@ -197,7 +197,7 @@ fluid.defaults("examples.injectedListenerParent", {
             type: "fluid.component",
             options: {
                 listeners: {
-                    "{injectedListenerParent}.events.parentEvent", "examples.externalListener"
+                    "{injectedListenerParent}.events.parentEvent": "examples.externalListener"
                 }
             }
         }
