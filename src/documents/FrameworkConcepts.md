@@ -10,24 +10,22 @@ The Fluid Infusion Framework is built on a number of important concepts. This pa
 
 The greatest goal of the framework is *transparency* &#8212; data is pure data, and markup is pure markup. Infusion doesn't impose any inheritance hierarchies or strict contracts on how you structure your data model.
 
-In Infusion, a tree of objects has the status of being a Model Object if it can successfully be copied by the framework utility function `fluid.copy()`. 
-This function duplicates an object tree in a very clear way: each object is cloned recursively, except for immutable values such as strings, numbers, functions, etc. which are copied across. 
+In Infusion, a tree of objects has the status of being a model if it can successfully be copied by the framework utility function `fluid.copy()`. 
+This function duplicates an object tree by cloning it recursively, except for immutable values such as strings, numbers, functions, etc. which are copied across. 
 If everything that is important to you about the object has been successfully cloned, then it is a suitable model object.
 
-We recommend that all objects stored in the `model` area of a component conform to an even stricter definition - that they are equivalent to their form as serialised as JSON. This implies that they
+We recommend that all objects stored in the `model` area of a component conform to an even stricter definition - that they are equivalent to their form serialised as JSON. This implies that they
 consist of only the following types: `Array`, `Object`, `String`, `Number` and `Boolean`. In addition, the following values for `Number` should not be used - `Infinity`, `-Infinity` and `NaN`. The value
 `undefined` also can not be safely stored within a model.
-
-An analogy from another environment, Java, is a [POJO](http://en.wikipedia.org/wiki/POJO) or "Plain Old Java Object". The J could just as easily be substituted for "JavaScript" in this case.
 
 ## EL Paths
 
 In some parts of the framework, we refer to "EL expressions". This is a somewhat historical phrase that perhaps sounds like it says more than it is trying to. 
-All we mean by EL expressions are dot-separated paths built from names &emdash; for example if you had defined an object `zar` with a member `boo` which has a member `baz`, 
+All we mean by EL expressions are dot-separated paths built from names &#8212; for example if you had defined an object `zar` with a member `boo` which has a member `baz`, 
 you could access the nested JavaScript property by writing the expression `zar.boo.baz`. 
 If it were held in a string value, this would become an EL expression &#8212; that is, the string `"zar.boo.baz"` is an EL expression which designates the same piece of data we just referenced. 
 The framework includes machinery for interpreting such expressions held in strings rather than at the JavaScript language level. 
-This is useful because it abstracts references to pieces of data from the actual data itself - and to even store these references in documents separately from a running program. 
+This is useful because it abstracts references to pieces of data from the actual data itself &#8212; and allows these references to be stored in documents separately from a running program. 
 It is possible to replace one object tree with another, but still to maintain a stable reference to the same subproperty `baz`, whoever it happens to be today. 
 This is particularly important in web applications where data claiming to be "your data" can suddenly arrive from anywhere (a JSON feed, some persistence, 
 a particularly aggressive version management system, etc). However it got here, you know it is your data because it is at the right path.
@@ -40,7 +38,7 @@ invoked by `fluid.invokeGlobalFunction()`. EL path expressions of this sort are 
 Events in Infusion are model-oriented, and aren't specific to the DOM. [Events](InfusionEventSystem.md) have a very plain implementation in Infusion &#8212; an event here is really just another kind of function call. 
 Any function signature can be an event signature, any function can be an event listener, and an event's `fire` method is a plain function handle that can be handed around just like any other function. 
 There is no special kind of "Event Object" that gets handed around to event listeners, and anyone can easily define a new event by simply calling `fluid.makeEventFirer()`. 
-In practice, users should use the events which are created automatically by the framework as part of the initialisation of every [Evented Component](tutorial-gettingStartedWithInfusion/EventedComponents.md). 
+In practice, users should use the events which are created automatically by the framework as part of the initialisation of every [Component](tutorial-gettingStartedWithInfusion/EventedComponents.md). 
 Just by writing the event name in a component's options structure, an event type is automatically created. No code required.
 
 Infusion Events are so close to the language that they are a suitable replacement/implementation for features found in other frameworks, such as the "delegates" found in Mac OS X's Cocoa environment, 

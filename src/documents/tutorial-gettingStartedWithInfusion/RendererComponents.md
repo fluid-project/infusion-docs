@@ -80,7 +80,7 @@ The currency converter example we've been evolving over the course of this tutor
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.rendererComponent"],
+    gradeNames: "fluid.rendererComponent",
     selectors: {
         amount: ".tut-currencyConverter-amount",
         currency: ".tut-currencyConverter-currency-selecter",
@@ -109,7 +109,7 @@ In a renderer component tree, the binding to the data model is specified using a
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.rendererComponent"],
+    gradeNames: "fluid.rendererComponent",
     selectors: {
         amount: ".tut-currencyConverter-amount",
         currency: ".tut-currencyConverter-currency-selecter",
@@ -173,7 +173,7 @@ Putting it all together, you have the following:
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.rendererComponent"],
+    gradeNames: "fluid.rendererComponent",
     selectors: {
         amount: ".tut-currencyConverter-amount",
         currency: ".tut-currencyConverter-currency-selecter",

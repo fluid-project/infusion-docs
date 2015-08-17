@@ -1,10 +1,13 @@
 ---
 title: ChangeApplier API
 layout: default
-category: API
+category: Infusion
 ---
 
-This section explains and documents the various Javascript API calls for instantiating and working with ChangeAppliers. In practice, users will use the ChangeAppliers which are automatically constructed for every [Model Component](tutorial-gettingStartedWithInfusion/ModelComponents.md) as its top-level member applier and will not construct their own. Furthermore, a good deal of the use made of ChangeAppliers will take the form of [Declarative Configuration](FrameworkConcepts.md#declarative-configuration) rather than literal JavaScript API calls - many more declarative uses are supported in Infusion 1.5 and even more will be supported in Infusion 2.0. This page presents both programmatic calls and their declarative equivalents where they exist.
+This section explains and documents the various Javascript API calls for instantiating and working with [ChangeApplier](ChangeApplier.md)s. 
+In practice, users will use the ChangeAppliers which are automatically constructed for every [Model Component](tutorial-gettingStartedWithInfusion/ModelComponents.md) as its top-level member applier and will not construct their own. 
+Furthermore, a good deal of the use made of ChangeAppliers will take the form of [Declarative Configuration](FrameworkConcepts.md#declarative-configuration) rather than 
+literal JavaScript API calls - many declarative uses were supported in Infusion 1.5 and even more will be supported in Infusion 2.0. This page presents both programmatic calls and their declarative equivalents where they exist.
 
 ## Registering interest in model changes using a ChangeApplier ##
 
@@ -240,7 +243,7 @@ applier.modelChanged.removeListener(listener)
 ```
 
 **NOTE**: _This style of listening to changes is **discouraged**, but may be the right choice in some applications_. For example - the listener to be attached may not be available
-at the time the component is constructed. Note that programmatically attached listeners will miss observation of the initial transaction as any other model changes that have occurred up to the point where they are registered.
+at the time the component is constructed. Note that programmatically attached listeners will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where they are registered.
 
 The listener is notified after the change (or set of coordinated changes) has already been applied to the model - it is too late to affect this process and so this event is not _preventable_. The signature for these listeners is
 
@@ -453,16 +456,14 @@ These are not recommended for typical users of the framework, and are not stable
 
 ### Instantiating a ChangeApplier ###
 
-Instantiating a ChangeApplier manually is no longer recommended in current versions of the framework. Its implementation is tightly bound into its location in 
+Instantiating a ChangeApplier manually is not recommended in current versions of the framework. Its implementation is tightly bound into its location in 
 an IoC component tree and should be constructed by the IoC system itself.
-
-Under the old ChangeApplier semantics, the `model` handle was closed over and remained constant for the lifetime of the applier. The framework contained utilities such a `fluid.model.copyModel` which assisted the user in working with a model with changing contents whilst keeping its base reference constant. Under the new ChangeApplier semantics, the `model` base reference is not stable and in fact starts by holding the value `undefined` as every model component initialises.
 
 ### Operating transactions manually ###
 
-A user may be interested in economising on notifications to model updates - by batching these up into a single transaction, there will
+A user may be interested in economising on notifications to model updates; by batching these up into a single transaction, there will
 just be a single notification of each listener which is impacted around the model skeleton. This facility is unstable and will be 
-rewritten for the Infusion 2.0 release.
+rewritten prior to the final Infusion 2.0 release.
 
 A transaction can be opened using the `initiate()` method of the applier function which returns a transaction object:
 

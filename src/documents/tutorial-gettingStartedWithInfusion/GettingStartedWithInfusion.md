@@ -16,7 +16,6 @@ If you want to use Infusion, you'll likely want to create components. Here's how
 2. [Define a namespace and create a closure](DefineANamespaceAndCreateAClosure.md)
 3. [Pick a component type](PickAComponentType.md)
 4. [Basic Component Creation - Plain Components](BasicComponentCreation-Components.md)
-    * [Evented Components](EventedComponents.md)
     * [Model Components](ModelComponents.md)
     * [View Components](ViewComponents.md)
     * [Renderer Components](RendererComponents.md)

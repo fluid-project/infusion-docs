@@ -98,6 +98,8 @@ IoC references may be used almost anywhere within a component's options, for exa
 For a conventional IoC reference (of the style `<componentRef>` rather than the style `<iocss expression>`), a search is begun upwards from the site of the reference in the component tree to find the first component which matches the context name. 
 The following diagram shows a possible such reference site in green:
 
+**NOTE**: The following diagram needs to be updated to reflect the Infusion 2.0 visibility rules
+
 ![IoC Reference Diagram](images/IoC-scope.svg "IoC Reference Diagram")
 
 The set of components which are in scope for resolution from this site are shown in yellow in this diagram. These are components which are either 
@@ -183,7 +185,7 @@ fluid.defaults("fluid.prefs.enactor.tableOfContents", {
 
 The example below includes several IoC references. All of them are inside a subcomponent declaration and all include `{controllers}`, which in this case is a reference to the parent component. Specifically:
 
-* `{controllers}.model` is references to the model that is a members of the parent component - note that this reference sets up a permanent [model relay](ModelRelay.md) between these two models;
+* `{controllers}.model` is a reference to the model that is a member of the parent component - note that this reference sets up a permanent [model relay](ModelRelay.md) between these two models;
 * the IoC expressions in the subcomponent's events block are references to events defined on the parent component's event block;
 * `{controllers}.dom.scrubberContainer` is a reference to one of the selectors defined on the parent component.
 

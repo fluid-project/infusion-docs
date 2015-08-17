@@ -4,9 +4,7 @@ layout: default
 category: Infusion
 ---
 
-This page contains a list of the features, API's, and etc. that are deprecated in Infusion 1.5.
-
-<div class="infusion-docs-note"><strong>Note:</strong> that this list is may not be exhaustive as other things may also be removed from the 2.0 release.</div>
+This page contains a list of the features, API's, and etc. that were deprecated in Infusion 1.5, and removed in Infusion 2.0.
 
 <table>
     <thead>
@@ -24,6 +22,12 @@ This page contains a list of the features, API's, and etc. that are deprecated i
         </tr>
         <tr>
             <td>demands</td>
+            <td>
+                Use distributeOptions and/or dynamic grades instead
+            </td>
+        </tr>
+        <tr>
+            <td>grade linkage operated by the <code>fluid.applyGradeLinkage</code> grade</td>
             <td>
                 Use distributeOptions and/or dynamic grades instead
             </td>

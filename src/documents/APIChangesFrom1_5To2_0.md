@@ -8,19 +8,54 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 ## Framework Changes ##
 
-### Preferences Framework ###
+### Core Framework Changes ###
 
-#### Namespace Changes ####
-
-Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
+This section describes major APIs that were in common use. For information about less widely-used features removed in 2.0, consult [Deprecations in 1.5)(DeprecationsIn1_5.md).
 
 #### Component Grade Changes ####
 
-<div class="infusion-docs-note"><strong>Note:</strong> According to the [comment](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L38-L39) on the implementation for relay components, in Infusion 2.0, relay components will be renamed back to its original names. If the rename has been made, this section can be ignored.</div>
-
-* Replace "fluid.eventedComponent" with "fluid.component"
-* Replace "fluid.standardComponent" with "fluid.modelComponent"
+* Replace "fluid.eventedComponent" and "fluid.littleComponent" with "fluid.component"
+* Replace "fluid.standardComponent", "fluid.modelRelayComponent" and "fluid.standardRelayComponent" with "fluid.modelComponent"
+* Replace "fluid.viewRelayComponent" with "fluid.viewComponent"
+* Replace "fluid.rendererRelayComponent" with "fluid.rendererComponent"
 * Remove "autoInit" - it is now the default for every component
+
+#### fluid.demands ####
+
+`fluid.demands` has been removed from the framework. Depending on your use case, these uses can be replaced by one or more of:
+
+* [dynamic grades](ComponentGrades.md#dynamic-grades)
+* [options distributions](IoCSS.md)
+* [context awareness directives](ContextAwareness.md)
+
+#### Manual lifecycle points ####
+
+The component events `preInit`, `postInit` and `finalInit` have been removed. Instead use listeners to `onCreate` together with a suitable namespace
+and [priority](Priorities.md) declaration if necessary.
+
+The component events `onAttach` and `onClear` have also been removed.
+
+#### Dynamic invokers ####
+In Infusion 1.5, standard invokers cached all of their arguments that were not part of `{arguments}` or `{that}.model` on their first use, unless they
+had the annotation `dynamic: true`. In 2.0, all invoker arguments are evaluated freshly on each invokation, and the `dynamic: true` annotation is no
+longer used.
+
+#### Options distributions ####
+
+Every component now supports a top-level options area named `distributeOptions`, which contains records which include `priority` and `namespace` entries - consult the page on [options distributions](IoCSS.md) for more details.
+
+#### Progressive Enhancement becomes Context Awareness ####
+
+The old "progressive enhancement" API has been removed and replaced with a new API [ContextAwareness](ContextAwareness.md). 
+
+#### Constraint-based priorities ####
+
+In addition to the old-style numeric and `first`/`last` priorities, constraint-based priorities of the form `before:namespace` and `after:namespace` are supported
+on event listeners as well as in numerous other areas of configuration - consult [Priorities](Priorities.md).
+
+#### `fluid.makeEventFirer` ####
+
+The utility `fluid.event.makeEventFirer` has been moved to `fluid.makeEventFirer` and accepts an options structure rather than an argument list.
 
 #### Model Sharing Changes ####
 
@@ -47,7 +82,7 @@ fluid.default("fluid.parent", {
 
 ##### In 2.0 #####
 
-In Infusion 2.0 where relay components are introduced, the change applier must not be configured separately - model sharing
+In Infusion 2.0 where relay components are introduced, the [change applier](ChangeApplierAPI.md) must not be configured separately - model sharing
 just happens automatically:
 
 ```javascript
@@ -63,6 +98,20 @@ fluid.default("fluid.parent", {
     }
 });
 ```
+
+#### Model Reference Changes ####
+
+In Infusion 1.5, the base model reference `that.model` could be relied upon to be i) an Object, and ii) constant for the lifetime of a component. In Infusion 2.0,
+this model reference may change at any time and therefore must not be closed over. In addition, `that.model` may hold any JS type including primitives, `null` and `undefined`.
+
+
+### Preferences Framework ###
+
+#### Namespace Changes ####
+
+Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
+
+#### Schema Changes ####
 
 #### Enactor Listener Changes ####
 
@@ -135,8 +184,6 @@ fluid.prefs.enactor.textSize.set = function (value, that) {
     that.root.css("font-size", value + "px");
 };
 ```
-
-#### Schema Changes ####
 
 ##### Specifying a prefsEditor type #####
 

@@ -4,7 +4,8 @@ layout: default
 category: Infusion
 ---
 
-The Infusion Model Relay system is a powerful scheme for supplying declarative configuration which specifies rules for keeping multiple pieces of model state around the component tree automatically up to date with each other's changes. 
+The Infusion Model Relay system is a powerful scheme for supplying declarative configuration that specifies rules for keeping multiple pieces of model state around the component tree automatically up to date with each other's changes. 
+
 We sometimes use the term _**model skeleton**_ to refer to a connected set of models around the component tree which are related together by relay rules. This appeals to the idea that these models form an inner core which
 arrive at a set of mutually consistent model values, before they start to notify listeners out in the periphery of each component (generally, in its view layer). The system might make several passes over the model skeleton in
 order to satisfy all the relay rules, and then update all [`modelListeners`](ChangeApplierAPI.md#model-listener-declaration) as a single operation &#8212; presenting them with a consistent snapshot of the state of the entire
@@ -13,14 +14,14 @@ application design.
 
 Every Infusion component descended from the grade `fluid.modelComponent` (a model-bearing component) supports a configuration area named `modelRelay` in which these rules can be defined.
 
-### Two Styles for Configuring Model Relay ###
+### Two styles for configuring model relay ###
 
 There are two primary styles of configuration for setting up model relay &#8212; firstly, using the _implicit syntax_ which just consists of [IoC References](IoCReferences.md) from the model configuration for one model-bearing component to another &#8212;
 that is, in the component's configuration under the top-level model entry. Secondly, the _explicit syntax_ involves an entry in the component's top-level `modelRelay` entry expressing a more complex rule, 
 most likely involving some form of [Model Transformation](to-do/ModelTransformation.md) to apply during the relay process. Both of these styles will set up a permanent and bidirectional relationship between the two models at the ends of the relay &#8212; 
 the relationship will be established as the component(s) construct (during the _[initial transaction](#the-initial-transaction)_), and will persist until one of the components at the endpoints is destroyed.
 
-### How Model Relay Updates Propagate ###
+### How model relay updates propagate ###
 
 A set of models which are linked by relay rules are called a _**model skeleton**_. Whenever an update is received to any model which is part of the skeleton (via its [ChangeApplier](ChangeApplier.md)), a "transaction" 
 begins in order to propagate it to all the related models to which it should be synchronised. The framework will keep propagating the change to all the models in the skeleton until they have all been brought up to date &#8212; 
@@ -30,19 +31,19 @@ synchronisation occurs. Only once the framework has computed final synchronised 
 If any of these listeners have a [`priority`](Priorities.md) field attached to the listener declaration, the framework will sort all of these listeners globally across the entire model skeleton impacted by the change, before starting to
 notify them.
 
-### The Initial Transaction ###
+### The initial transaction ###
 
-Whenever a new model-bearing component (or an entire tree of model-bearing components) constructs, there will be a particular large style of update transaction known as an __initial transaction__.  
+Whenever a new model-bearing component (or an entire tree of model-bearing components) constructs, there will be a particular, large style of update transaction known as an __initial transaction__.  
 This is very similar to any other synchronisation transaction caused by a model relay update, although it will typically involve more data since all of the initial values of all the involved models must be taken into account &#8212; 
 these result from any of the normal sources for component configuration, including [defaults](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539), user-supplied values, 
-[distributed](IoCSS.md) options, etc.. During the initial transaction, any declaratively registered listeners will observe all of the new models go through the transition from holding their primordial value of `undefined` 
+[distributed](IoCSS.md) options, etc. During the initial transaction, any declaratively registered listeners will observe all of the new models go through the transition from holding their primordial value of `undefined` 
 to holding their correct synchronised initial values. As with any other relay update transaction, this will appear to all the observers to occur in a single step even though from the point of view of the framework it may be a 
 complex process involving many passes through the components.
 
 You can control which components have the default values for their models honoured and which ignored during the initial transaction, by using the directives `forward` and `backward` - these are discussed in the section 
 [Controlling Propagation Through a Relay Rule](#controlling-propagation-through-a-relay-rule).
 
-## Implicit Model Relay style ##
+## Implicit model relay style ##
 
 This is the most straightforward style for setting up model relay. This takes the form of a simple [IoC Reference](IoCReferences.md) between one component's model and other. 
 Here is a component which has a child component which sets up a model relay relationship with it:
@@ -83,7 +84,7 @@ that.child.applier.change("childValue", 5); // update the child's model to hold 
 console.log(that.model.parentValue);        // 5 - The parent's model value has been updated
 ```
 
-## Explicit Model Relay Style ##
+## Explicit model relay style ##
 
 This style is used when we require a [Model Transformation](to-do/ModelTransformation.md) rule to mediate between the updates synchronising one model value with another, or more control over the occasions
 when the updates occur. 
@@ -92,7 +93,7 @@ one component might represent a sound volume level on a scale of 0-100, whereas 
 The framework is capable of accommodating this kind of difference in viewpoint by allowing the user to explicitly list a transformation rule relating one model's instance of a value with another. 
 This is done using the `modelRelay` section of a component's top-level options. Here is the layout of this block:
 
-### Model Relay Block Layout ###
+### Model relay block layout ###
 
 <table>
     <thead>
@@ -126,7 +127,7 @@ This is done using the `modelRelay` section of a component's top-level options. 
             </td>
         </tr>
         <tr>
-            <td>transform</td>
+            <td><code>transform</code></td>
             <td>JSON (full <a href="to-do/ModelTransformation.md">Model Transformation</a> document)</td>
             <td>A long form of <code>singleTransform</code> which allows any valid Model Transformation document to be used to mediate the relay</td>
             <td>See this <a href="http://wiki.gpii.net/index.php/Architecture_-_Available_transformation_functions">list of available transformation functions</a> for more information.</td>
@@ -134,14 +135,14 @@ This is done using the `modelRelay` section of a component's top-level options. 
         <tr>
             <td><code>forward</code> (optional)</td>
             <td>One of the strings <code>never</code>, <code>initOnly</code>, <code>liveOnly</code> or <code>always</code> (the default)</td>
-            <td>Control the situations in which the forward leg of the transform operates - <code>initOnly</code> will have it only operated during the <a href="#the-initial-transaction">initial transaction</a> that this 
+            <td>Control the situations in which the <a href="#controlling-propagation-through-a-relay-rule">forward leg</a> of the transform operates - <code>initOnly</code> will have it only operated during the <a href="#the-initial-transaction">initial transaction</a> that this 
             component participates in, and <code>liveOnly</code> will only have it operated after construction of the component (at all times other than the initial transaction).</td>
             <td><code>initOnly</code></td> 
         </tr>
         <tr>
             <td><code>backward</code> (optional)</td>
             <td>One of the strings <code>never</code>, <code>initOnly</code>, <code>liveOnly</code> or <code>always</code> (the default)</td>
-            <td>Control the situations in which the backward leg of the transform operates &#8212; assuming that it is already an invertible transformation. The same meaning for the codes as for <code>forward</code>
+            <td>Control the situations in which the <a href="#controlling-propagation-through-a-relay-rule">backward leg</a> of the transform operates &#8212; assuming that it is already an invertible transformation. The same meaning for the codes as for <code>forward</code>
             <td><code>liveOnly</code></td>
         </tr>
     </tbody>
@@ -182,9 +183,9 @@ console.log(that.model.volume);       // 100 - inverse transformed to accept upd
 
 In general those transformations which are _**invertible**_ are the best choice for this kind of linkage. If the transforms are not invertible (or have no inverse defined in the framework), 
 the updates will propagate only in one direction. This can still be highly useful. In addition to its invertibility, the propagation of updates through a relay rule can be fine-tuned by the options
-`forward` and `backward`:
+`forward` and `backward`, as described in the following section.
 
-####Controlling Propagation Through a Relay Rule####
+####Controlling propagation through a relay rule####
 
 Each explicit relay rule can accept options `forward` and `backward` which allows the configurer to control the occasions on which the relay is operated in those directions &#8212; that is, `forward` representing
 the direction from `source` to `target`, and `backward` representing the direction from `target` to `source`. If the transform is not
@@ -203,7 +204,7 @@ A rule of `initOnly` is less often useful, but can be helpful in controlling the
 
 Compare these directives with the related ones used for source guarding in [model listeners](ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks) (`init`, `relay` and `local`).
 
-####General notes on Model Relay Rules####
+####General notes on model relay rules####
 
 **NOTE**: Any plain function which accepts one argument and returns one argument is suitable to appear in the `type` field of a `transform` or `singleTransform` rule &#8212; e.g. `fluid.identity`. This is a quick and easy way
 of setting up "ad hoc" transforms. If the function accepts multiple arguments, or an argument which holds a complex structure derived from several values around the model, you should instead use the transform with type
@@ -213,7 +214,7 @@ of setting up "ad hoc" transforms. If the function accepts multiple arguments, o
 a parallel option whose name ends in `Path` - e.g. `inputPath`, `outputPath`, `leftPath`, `rightPath`, etc. - **_these forms with `Path` are not used in relay documents_** &#8212; the relay system automatically takes up
 the role of gearing values to the arguments of transforms when you write an IoC reference in any of those slots. Relay documents are just written with the simple option names, e.g. `input`, `output`, `left`, `right` etc. 
 
-## Note on Future Evolution and some Technicalities ##
+## Note on future evolution and some technicalities ##
 
 The use of the term "transactions" to describe the process by which the model skeleton updates is not entirely consistent with its use elsewhere in the industry. 
 Those interested in more semantic and detailed discussion can consult [New Notes on the ChangeApplier](http://wiki.fluidproject.org/display/fluid/New+Notes+on+the+ChangeApplier) 

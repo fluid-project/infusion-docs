@@ -8,7 +8,7 @@ The Infusion Inversion of Control (IoC) system includes a simple method for dist
 a special block named `distributeOptions` which is supported in the options of every Infusion component. The key addressing scheme needed to make this system work &#8212; the
 means for determining where the target of the distribution is &#8212; is dubbed "IoCSS" because it uses a syntax and idiom very similar to that used in [CSS selectors](https://en.wikipedia.org/wiki/Cascading_Style_Sheets#Selector).
 
-## `distributeOptions and IoCSS`: Downward-Matching CSS-Like Context Selectors For Options Forwarding ##
+## `distributeOptions` and IoCSS: Downward-matching CSS-like context selectors for options forwarding ##
 
 The `distributeOptions` option is a top-level block supported by every Infusion component. It specifies how options should be distributed to components elsewhere in the tree. A typical, conservative
 usage would have a component distribute only *downwards* to its own subcomponents, but it is also possible to use the considerable power of `distributeOptions` to distribute to *any component
@@ -67,7 +67,7 @@ the distribution itself can be either advised itself, or destroyed completely - 
 
 ## distributeOptions format ##
 
-The `distributeOptions` option is a top-level block supported by every IoC-configured component, holding an array of records, hash of records, or single record containing the following properties:
+The `distributeOptions` option is a top-level block supported by every Infusion component, holding an array of records, hash of records, or single record containing the following properties:
 
 | Name | Description |
 |------|-------------|
@@ -76,7 +76,7 @@ The `distributeOptions` option is a top-level block supported by every IoC-confi
 |`source`|(Mutually exclusive with `record`) An [IoC expression](IoCReferences.md) into the options structure of the source component, referencing what to copy to the target.|
 |&nbsp;&nbsp;`removeSource`|(Only possible if `source` is used) true/false: If true, the `source` options block is removed from its original site in the options structure when it is forwarded to the `target`.|
 |&nbsp;&nbsp;`exclusions`|(Only possible if `source` is used) A list of EL paths into the `source` material which should not be forwarded. Whether or not `removeSource` is used, these will be retained in their original position in the source component's options.|
-|`priority`|(Optional) a [Priority specification](Priorities.md) specifying how the priority of this distribution is to be resolved with respect to any other options distributions which are targetted at the same component in the tree as this one. Typically one will write `after:otherNamespace` to indicate that this distribution should be stronger than (should merge options on top of) another distribution whose `namespace` is `otherNamespace`, or `before:otherNamespace` to indicate that this distribution should be weaker than (have option merged on top of by) a distribution whose `namespace` is `otherNamespace`.|
+|`priority`|(Optional) a [Priority specification](Priorities.md) specifying how the priority of this distribution is to be resolved with respect to any other options distributions which are targetted at the same component in the tree as this one. Typically one will write `after:otherNamespace` to indicate that this distribution should be stronger than (i.e. should merge options on top of) another distribution whose `namespace` is `otherNamespace`, or `before:otherNamespace` to indicate that this distribution should be weaker than (have option merged on top of by) a distribution whose `namespace` is `otherNamespace`.|
 |`namespace`|(Optional, recommended) A `namespace` to identify this options distribution amongst others in an extended design. This can be used by the `priority` field of other distributions in order to defer to it or be deferred to by it. (The framework should also ensure to uniquify distributions with respect to namespace at the target - not currently implemented)|
 
 In the case that a hash of these records is provided, the keys of the structure will be interpreted as the `namespace` of the distribution.

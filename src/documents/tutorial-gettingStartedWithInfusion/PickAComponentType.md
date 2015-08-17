@@ -13,16 +13,15 @@ The Infusion Framework provides lots of supports for creating components. We hav
 
 The basic types are:
 
-* **little component**: the most basic type
+* **plain component**: the most basic type
 * **model component**: for components that will have to maintain an abstract data model
-* **evented component**: for components that want to fire events
 * **view component**: for components that have a user interface
 * **renderer component**: for components that want to render the user interface using a template
 
 These types of components build upon each other, a teeny little bit like inheritance:
 
-* **model** and **evented components** add support for models and events (respectively) to **little components**
-* **view components** support models and events, and also add support for views.
+* **model** components add support for models to **plain components**
+* **view components** support models, and also add support for views.
 * **renderer components** are **view components** with the [Renderer](../Renderer.md) added.
 
 ![A venn diagram showing the composition of grades](../images/component-grades-venn-diagram.svg)

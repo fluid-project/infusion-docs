@@ -21,7 +21,7 @@ If your tests don't involve a number of back-to-back asynchronous interactions, 
 ### Integration testing with component tree ###
 
 The concept of *context* in Infusion IoC is derived from the entire collection of components held in an IoC component tree.
-The behaviour of each component is potentially altered by all of the other components with which is deployed 
+The behaviour of each component is potentially altered by all of the other components with which it is deployed 
 - for a detailed guide to the operation of scope within Infusion IoC, please consult the page on [Contexts](Contexts.md).
 Therefore in order to test component behaviour in context, we need a testing system whose lifecycle (in particular, the lifecycle
 of setup and teardown common to all testing systems) is aligned with the lifecycle of component trees - as well as a testing system which enables testing directives to be referred to any components within the tree in an IoC-natural way.

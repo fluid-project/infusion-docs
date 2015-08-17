@@ -2,6 +2,8 @@
   "name": "infusion-docs",
   "version": "1.5.0",
   "description": "Infusion Documentation",
+  "license" : "CC-BY-3.0",
+  "repository": "https://github.com/fluid-project/infusion-docs",
   "dependencies": {
     "URIjs": "^1.14.1",
     "docpad": "~6.69.1",

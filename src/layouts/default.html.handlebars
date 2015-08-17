@@ -15,8 +15,10 @@
         <link rel="icon" type="image/png" href="{{{relativeUrl '/images/favico.png' document.url}}}">
 
         <script type="text/javascript" src="{{{relativeUrl '/lib/infusion/infusion-uio.js' document.url}}}"></script>
+        <script type="text/javascript" src="{{{relativeUrl '/js/infusion-docs.js' document.url}}}"></script>
+        
     </head>
-    <body class="infusion-docs">
+    <body class="infusion-docs fl-theme-prefsEditor-default">
 
         <div class="container infusion-docs-container">
 
@@ -36,11 +38,10 @@
                 <div class="fl-panelBar">
                     <span class="fl-prefsEditor-buttons">
                         <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
-                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
                     </span>
                 </div>
             </div>
-            <!-- END markup for Preference Editor -->
 
             <script type="text/javascript">
                 fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
@@ -49,6 +50,8 @@
                     "tocTemplate": "{{{relativeUrl '/lib/infusion/src/components/tableOfContents/html/TableOfContents.html' document.url}}}"
                 });
             </script>
+
+            <!-- END markup for Preference Editor -->
 
             <header class="row infusion-docs-header">
                 <div class="infusion-docs-fluidLogo small-12 medium-3 column">
@@ -118,6 +121,10 @@
             </footer>
 
         </div> <!-- end container -->
+        <script>
+            fluid.docs.scrollActivePageTocIntoView();
+        </script>
 
     </body>
+    
 </html>

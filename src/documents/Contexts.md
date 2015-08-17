@@ -14,6 +14,10 @@ responsive to their context, conditioned by the visibility of certain strings kn
 at locations in the component tree. Each component in the tree exposes a collection of these
 __*context names*__, which are derived from the component's type and [grade names](ComponentGrades.md).
 
+All Infusion components are stored in a single-rooted **_component tree_** - this stores every component which
+has been instantiated in a particular **_Infusion context_**. This context is global to the JavaScript context 
+which has loaded Infusion - for example, a frame within a browser, or a node.js process.
+
 ## How context names are derived ##
 
 Configuration material makes use of context names, when it is [expanding](ExpansionOfComponentOptions.md).
@@ -27,7 +31,7 @@ virtual machine operated by the runtime - for example that derived from a browse
 [V8 context](https://developers.google.com/v8/embed#contexts)). These names can be matched by the
 names appearing in curly brackets at the beginning of EL path expressions like
 `"{contextName}.furtherPath"`. Each component in the tree can give rise to a context name through
-up to four strategies:
+three strategies:
 
 1. The fully qualified name typeName or gradeNames of the component that is found in the context,
 e.g. `"fluid.uploader.progressiveStrategy"`
@@ -58,16 +62,16 @@ in two kinds of "scopes" or "environments".
 components, searching __upwards__ through the tree from the parent of the component where the context
 name is held.
 * Following this, a search is made in the *resolver root*, which is notionally a separate tree
-of components which holds all components which has been instantiated with the grade `fluid.resolveRoot` anywhere in the
+of components which holds all components which has been instantiated with the grade [`fluid.resolveRoot`](#global-components-fluidresolveroot-and-fluidresolverootsingle) (see below) anywhere in the
 current component tree.
+
+**NOTE**: The following diagram needs to be updated to reflect the Infusion 2.0 visibility rules
 
 ![Diagram showing coloured squared representing components in a component tree](images/IoC-scope.svg)
 
 ## Global components: `fluid.resolveRoot` and `fluid.resolveRootSingle`
 
-All Infusion components are stored in a single-rooted **_component tree_** - this stores every component which
-has been instantiated in a particular **_Infusion context_**. This context is global to the JavaScript context 
-which has loaded Infusion - for example, a frame within a browser, or a node.js process. Even when you 
+All Infusion components are stored in a single-rooted, global **_component tree_**. Even when you 
 instantiate apparently "freely-floating" components with a line such as
 
 ```
@@ -100,6 +104,33 @@ respect to which the instance is required to be unique. This needs to be listed 
 framework would not be able to tell which of the component's `gradeNames` or `type` was intended to hold the name of the
 type whose instance was expected to be unique.
 
+<table>
+    <thead>
+        <tr>
+            <th>Grade Name</th>
+            <th>Ensures Global Visibility</th>
+            <th>Behaviour on Constructing Fresh Instance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>fluid.resolveRoot</code></td>
+            <td>Yes</td>
+            <td>
+                Each fresh instance is made globally visible
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.resolveRootSIngle</code></td>
+            <td>Yes</td>
+            <td>
+                A fresh instance that holds the same value of the option <code>singleRootType</code> displaces the previous one from global visibility (but does not destroy it)
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
 For example, the following code is an error, since `that2` cannot see the component `that` with context name `freeComponent1`. 
 
 ```javascript
@@ -123,7 +154,7 @@ create a second instance of it, this instance becomes the globally visible one.
 JavaScript does not supply schemes for reference tracking, there is no way for the framework to determine when a component is no
 longer being used. The user must call `destroy()` on such instances themselves. 
 
-``javascript
+```javascript
 fluid.defaults("examples.rootComponent1", {
     gradeNames: ["fluid.component", "fluid.resolveRootSingle"],
     singleRootType: "examples.rootComponent1",
@@ -140,7 +171,8 @@ var root1 = examples.rootComponent1();
 
 var that1 = examples.rootFinder();
 
-console.log("Resolved root value: " + that1.options.value); // OK: Receives 42 from resolveRootSingle component
+console.log("Resolved root value: " + that1.options.value);
+// OK: Receives 42 from resolveRootSingle component
 
 var root2 = examples.rootComponent1({ // construct a fresh instance, displacing the original
     rootValue: 43
@@ -148,10 +180,21 @@ var root2 = examples.rootComponent1({ // construct a fresh instance, displacing 
 
 var that2 = examples.rootFinder();
 
-console.log("Resolved root value: " + that2.options.value); // OK: Receives 43 from resolveRootSingle component
+console.log("Resolved root value: " + that2.options.value);
+// OK: Receives 43 from resolveRootSingle component
 
 root1.destroy(); // clean up all our free components
 that1.destroy();
 root2.destroy();
 that2.destroy();
 ```
+
+## Allowing a component to adapt to its context ##
+
+There are three principal routes that a component can be influenced by its context, listed from the most straightforward to the most heavyweight:
+
+* Firstly, a component can simply include a contextualised reference in its configuration, as we saw above - e.g. `{rootComponent1}.options.rootValue`. This
+value is fetched from the specified part of the context and becomes part of the component's options when it is instantiated
+* Secondly, an [options distribution](IoCSS.md) can be targetted at the component from elsewhere in the tree, using the IoCSS context expressions described above.
+* Thirdly, the component can derive from the [`fluid.contextAware`](ContextAwareness.md) grade in order to set up complex arbitration amongst multiple sources of context
+which can influence the component along several axes simultaneously.

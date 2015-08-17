@@ -20,7 +20,7 @@ The Infusion Framework provides supports for model-bearing components. When you 
 
 To use a model with your component, you need to use the `fluid.modelComponent` grade. To do this:
 
-* specify a grade of `fluid.modelComponent`, or a grade derived from it (such as `fluid.modelComponent`, `fluid.viewComponent`, etc.) as part of your component's parent grades
+* specify a grade of `fluid.modelComponent`, or a grade derived from it (such as `fluid.viewComponent`, etc.) as part of your component's parent grades
 * Optionally, you may include a model property in your defaults holding some initial values suitable for your component's model
 
 ```javascript
@@ -33,7 +33,63 @@ fluid.defaults("tutorials.modelBearingComponent", {
 });
 ```
 
-The `model` record can consist of any JSON material, as well as containing [IoC references](../IoCReferences.md) to the models and options of other components, as well as [expanders](../ExpansionOfComponentOptions.md). Any IoC references to another component's model will set up a permanent [model relay](../ModelRelay.md) between the two models at the endpoints of the reference. This relay will be bidirectional - any updates propagated into either of the models linked by the relay by their respective ChangeAppliers will be relayed into the model at the other end of the link.
+## Example: Currency Converter ##
+
+We can extend our currency converter example from the previous section by storing a set of rates for different currencies in its model, as well a user's selected currency and its value in original and converted forms:
+
+```javascript
+fluid.defaults("tutorials.currencyConverter", {
+    gradeNames: "fluid.modelComponent",
+    model: {
+        rates: {
+            euro: 0.712,
+            yen: 81.841,
+            yuan: 6.609,
+            usd: 1.02,
+            rupee: 45.789
+        },
+        currentSelection: "euro",
+        amount: 0,
+        convertedAmount: 0
+    },
+    events: {
+        conversionUpdated: null
+    },
+    invokers: {
+        updateCurrency: {
+            changePath: "currentSelection",
+            value: "{arguments}.0"
+        },
+        updateRate: {
+            funcName: "tutorials.currencyConverter.updateRate",
+            args: ["{that}", "{arguments}.0", "{arguments}.1"] // currency, newRate
+        },
+        updateAmount: {
+            funcName: "tutorials.currencyConverter.updateAmount",
+            args: ["{that}", "{arguments}.0"] // amount
+    },
+    modelListeners: {
+        convertedAmount: {
+            funcName: "{that}.events.conversionUpdated.fire",
+            args: "{change}.value"
+        }
+    }
+});
+
+tutorials.currencyConverter.updateRate = function (that, currency, newRate) {
+    that.applier.change(["rates", currency], newRate);
+};
+
+tutorials.currencyConverter.updateAmount = function (that, amount) {
+    var convertedAmount = amount * that.model.rates[that.model.currentSelection];
+    that.applier.change("convertedAmount", convertedAmount);
+};
+```
+## Contents of the model and its relation to other models
+
+The `model` record can consist of any JSON material, as well as containing [IoC references](../IoCReferences.md) to the models and options of other components, as well as [expanders](../ExpansionOfComponentOptions.md). 
+Any IoC references to another component's model will set up a permanent [model relay](../ModelRelay.md) between the two models at the endpoints of the reference. 
+This relay will be bidirectional - any updates propagated into either of the models linked by the relay by their respective ChangeAppliers will be relayed into the model at the other end of the link.
 
 ## Using The Change Applier ##
 
@@ -41,7 +97,8 @@ The Framework will attach both your model and its ChangeApplier to the component
 
 ## Example: Dated Component ##
 
-As an example, let's consider a component that need to record a date. Your `model` will include a date field - if you wished to give it an initial default value of `null` (actually this practice is not recommended - it is better to only supply default values which are actually useful in a particular context), it could be initialised as follows:
+As an example, let's consider a component that need to record a date. Your `model` will include a date field - if you wished to give it an initial default value of `null` 
+(actually this practice is not recommended - it is better to only supply default values which are actually useful in a particular context), it could be initialised as follows:
 
 ```javascript
 fluid.defaults("tutorials.modelBearingComponent", {

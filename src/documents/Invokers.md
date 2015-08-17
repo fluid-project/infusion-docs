@@ -4,14 +4,16 @@ layout: default
 category: Infusion
 ---
 
-The Infusion IoC system provides a mechanism for creating the public functions (or "methods",
-in OO terminology) of a component. Invokers can bind free functions, IoC resolved functions, and
-"this" based functions to the component, and to the context of the component. Invokers allow the
-signature of the bound function to differ arbitrarily from the signature applied by the caller.
-As well as allowing the traditional OO facility for shifting the "this" (or "that") argument
+The public and implementation functions on your component ("methods",
+in OO terminology) are defined by configuration representing ***invokers***. 
+
+Invokers can bind free functions, IoC resolved functions, and
+`this` based functions to the component, and to the context of the component. Invokers allow the
+signature received in the bound function to differ from the signature sent by the caller.
+As well as allowing the traditional OO facility for shifting the `that` argument
 representing the component itself in and out of the argument list, this also allows for much
 more powerful reuse of existing functions where signature elements can be sourced freely from
-around the component tree and within the argument list.
+around the component tree and within the original argument list.
 
 ## Types of Invokers ##
 
@@ -35,7 +37,7 @@ function (perhaps another invoker) from elsewhere in the component tree.
             <td><strong>Required</strong><br/>
                 type: <code>string</code><br/>
                 <code>funcName</code> - A string representing the name of a free function.<br/>
-                <code>fun</code> - A string representing an IoC reference to a function which is
+                <code>func</code> - A string representing an IoC reference to a function which is
                                 attached to the component tree
             </td>
         </tr>
@@ -62,7 +64,7 @@ The following skeleton example defines an invoker named invokerName attached to 
 type component.name. When a component of the type is instantiated, for example with a line such
 as `var that = component.name();`, the invoker will then be available as a function directly
 attached to the instance, callable under the name `invokerName` - e.g. as
-`that.invokerName(....args....)`
+`that.invokerName(...args...)`
 
 ```javascript
 fluid.defaults("component.name", {
@@ -70,8 +72,7 @@ fluid.defaults("component.name", {
     invokers: {
         invokerName: {
             funcName: <fully namespaced string name of function>,
-            args: <array of arguments>,
-            dynamic: <boolean>
+            args: <array of arguments>
         },
         ...
     }
@@ -111,16 +112,13 @@ xyz.widget.add = function (a, b) {return a + b;};
 
 Alternatively, invokers can be specified in a compact single line format. However, arguments
 specified in the invoker can only be strings or [IoC References](IoCReferences.md). Strings which can be converted
-into Numbers or Booleans will be so converted before being interpreted. Dynamic invokers are
-specified with an "!" before the arguments (equivalent to the `dynamic: true` annotation in the
-full syntax)
+into Numbers or Booleans will be so converted before being interpreted.
 
 ```javascript
 fluid.defaults("component.name", {
     ...
     invokers: {
-        invokerName: "<fully namespaced string name of function>(<comma-separated ioc references>)",
-        dynamicInvokerName: "<fully namespaced string name of function>!(<comma-separated ioc references>)",
+        invokerName: "<fully namespaced string name of function>(<comma-separated ioc references>)"
         },
         ...
     }
@@ -155,8 +153,7 @@ fluid.defaults("fluid.uploader.fileQueue", {
         },
         startFile: {
             funcName: "fluid.uploader.fileQueue.startFile",
-            args: "{that}.currentBatch",
-            dynamic: true
+            args: "{that}.currentBatch"
         },
         ...
     },

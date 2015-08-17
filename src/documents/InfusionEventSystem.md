@@ -171,7 +171,7 @@ In this case, you can use the long form record, where the listener record takes 
     <td><code>args</code> (optional)</td>
     <td>Any JSON type</td>
     <td>If supplied, this structure will be used to replace the actual arguments received by the listener, rather than necessarily receiving the exact signature fired by the firer. Any [IoC references](IoCReferences.md) or [expanders](ExpansionOfComponentOptions.md) will be expanded
-    at the time of invoking the listeners, with the additional possibility of referring to the original argument list by using the special context `{arguments}'. Consult [Event Injection and Boiling](EventInjectionAndBoiling.md) for more details of this process.</td>
+    at the time of invoking the listeners, with the additional possibility of referring to the original argument list by using the special context `{arguments}`. Consult [Event Injection and Boiling](EventInjectionAndBoiling.md) for more details of this process.</td>
   </tr>
   <tr>
     <td><code>namespace</code> (optional)</td>
@@ -184,11 +184,8 @@ In this case, you can use the long form record, where the listener record takes 
     <td><code>String</code> or <code>Number</code></td>
     <td>This field allows the configurer to control the sequence in which several listeners to the same event are notified. The recommended form of this field is either `before:otherNamespace` or `after:otherNamespace` where `otherNamespace` represents the `namespace` of some other
     listener attached to this firer. The framework will sort all the listeners attached to a single firer so that such a listener is fired immediately before or after the other target listener, unless a further constraint positions a third listener in between them.
-    If a group of listeners express a cyclic set of constraints, the framework will signal an error. If there is no listener with the target namespace, the constraint is ignored. There are other possibilities for the `priority` field which are not
-    generally recommended. Firstly, the field might hold a simple number representing the priority. The convention is that listeners with **_higher priority numbers_** are notified **_before_** listeners with lower ones. That is, a listener with priority 2 is
-    notified before a listener with priority 1. Secondly, the field can hold one of the strings `"first"` or `"last`" representing an **_extremal priority_**. Listeners with these priorities are notified either before or after all listeners with finite numerical
-    priorities. Finally, the extremal priorities themselves may be further annotated by an _extremal priority class_ that allows for further classes of infinite priorities that can beat those defined at the base levels. For example, an extremal priority of `last:testing` would
-    be used within test cases in order to guarantee that it would be notified definitely after all listeners present in the actual implementation, even those which already had a plain priority of `last`. More details are present in the page on [Priorities](Priorities.md). 
+    If a group of listeners express a cyclic set of constraints, the framework will signal an error. If there is no listener with the target namespace, the constraint is ignored. There are other possibilities for the `priority` field which are not - 
+    more details are present in the page on [Priorities](Priorities.md). 
     </td>
   </tr>
 </table>
