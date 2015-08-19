@@ -19,19 +19,19 @@ Every Fluid component has a standard lifecycle, various points of which are sign
             <td>onCreate</td>
             <td>
                 <dl>
-                    <dt><dfn>that {Object}</dfn></dt>
+                    <dt><dfn><code>that {Object}</code></dfn></dt>
                     <dd>the component being constructed</dd>
                 </dl>
             </td>
             <td>
-                Fired when component construction is complete - that is, all options have been merged for the component and all subcomponents (which were not marked with <a href="tutorial-gettingStartedWithInfusion/Subcomponents.md">createOnEvent</a>) have constructed.
+                Fired when component construction is complete - that is, all options have been merged for the component and all subcomponents (which were not marked with <a href="SubcomponentDeclaration.md#basic-subcomponent-declaration">createOnEvent</a>) have constructed.
             </td>
         </tr>
         <tr>
             <td>onDestroy</td>
             <td>
                 <dl>
-                    <dt><dfn>that {Object}</dfn></dt>
+                    <dt><dfn><code>that {Object}</code></dfn></dt>
                     <dd>the component being destroyed</dd>
                 </dl>
             </td>
@@ -43,7 +43,7 @@ Every Fluid component has a standard lifecycle, various points of which are sign
             <td>afterDestroy</td>
             <td>
             <dl>
-                <dt><dfn>that {Object}</dfn></dt>
+                <dt><dfn><code>that {Object}</code></dfn></dt>
                 <dd>the component which has been destroyed</dd>
             </dl>
             </td>

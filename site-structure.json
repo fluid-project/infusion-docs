@@ -11,11 +11,12 @@
                 [
                     { "pageName": "Framework Concepts", "href": "/FrameworkConcepts.html"},
                     { "pageName": "Understanding Infusion Components", "href": "/UnderstandingInfusionComponents.html" },
-                    { "pageName": "Understanding Component Options And Their Defaults", "href": "/ComponentOptionsAndDefaults.html" },
+                    { "pageName": "Understanding Component Options And Defaults", "href": "/ComponentOptionsAndDefaults.html" },
                     { "pageName": "Component Configuration Options", "href": "/ComponentConfigurationOptions.html" },
                     { "pageName": "Component Grades", "href": "/ComponentGrades.html" },
                     { "pageName": "Options Merging", "href": "/OptionsMerging.html" },
-                    { "pageName": "Component Lifecycle", "href": "/ComponentLifecycle.html" }
+                    { "pageName": "Component Lifecycle", "href": "/ComponentLifecycle.html" },
+                    { "pageName": "Priorities", "href": "/Priorities.html" }
                 ]
             },
             {
@@ -37,9 +38,7 @@
                 "sectionName": "Events",
                 "pages":
                 [
-                    { "pageName": "Events", "href": "/Events.html" },
                     { "pageName": "Infusion Event System", "href": "/InfusionEventSystem.html" },
-                    { "pageName": "Priorities", "href": "/Priorities.html" },
                     { "pageName": "Event injection and boiling", "href": "/EventInjectionAndBoiling.html" }
                 ]
             },
@@ -131,9 +130,8 @@
                     { "pageName": "Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
                     { "pageName": "Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
                     { "pageName": "Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
-                    { "pageName": "Basic Component Creation - Little Components", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-LittleComponents.html"},
+                    { "pageName": "Basic Component Creation", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"},
                     { "pageName": "Model Components", "href": "/tutorial-gettingStartedWithInfusion/ModelComponents.html"},
-                    { "pageName": "Evented Components", "href": "/tutorial-gettingStartedWithInfusion/EventedComponents.html"},
                     { "pageName": "View Components", "href": "/tutorial-gettingStartedWithInfusion/ViewComponents.html"},
                     { "pageName": "Renderer Components", "href": "/tutorial-gettingStartedWithInfusion/RendererComponents.html"},
                     { "pageName": "Subcomponents", "href": "/tutorial-gettingStartedWithInfusion/Subcomponents.html"}

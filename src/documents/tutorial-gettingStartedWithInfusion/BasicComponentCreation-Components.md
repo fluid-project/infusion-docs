@@ -89,8 +89,8 @@ All components have a **creator function**: a public function that is invoked to
 When your component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another, the framework will also take responsibility for calling the creator function for you automatically. 
 In the rare case you need to construct a component directly using a JavaScript function call, Infusion components have a standardized function signature:
 
-* plain and **model** components accept a single argument: options
-* **view** and **renderer** components accept two arguments: container and options
+* plain and **model** components accept a single argument: `options`
+* **view** and **renderer** components accept two arguments: `container` and `options`
 
 _(We'll get into what these arguments are soon.)_
 
@@ -163,7 +163,7 @@ You'll notice that in this case we have been able to avoid binding to the entire
 is of more general utility than just for building a component method. 
 This has happened because its responsibilities are particularly well-defined - you should always take the opportunity to restrict the binding behaviour of your public functions in this way whenever it is appropriate.
 
-## Defining and firing [events](#../Events.md)
+## Defining and firing [events](../InfusionEventSystem.md)
 
 Many times, you will be creating a component that works in an environment where other things are operating, and it will probably need to notify those other things of key **events** in its lifecycle. 
 Events can be used to trigger changes in the visual appearance of a component, or actions by other components. For example:

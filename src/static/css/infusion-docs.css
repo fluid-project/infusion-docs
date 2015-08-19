@@ -115,6 +115,7 @@ a:focus {
     padding-left: 4rem;
     padding-bottom: 6rem;
     min-height: 44rem;
+    width: 80%;
 }
 
 .infusion-docs-mainContent code a:hover,
@@ -165,6 +166,10 @@ a:focus {
     max-width: 100%;
     position: fixed;
     z-index: 2;
+}
+
+.infusion-docs-fluidCategories {
+    top: 3rem;
 }
 
 .infusion-docs-fluidLogoText:before {
@@ -224,8 +229,8 @@ a:focus {
     position: fixed;
     width: 15rem;
     height: 100vh;
+    padding-bottom: 7rem;
     overflow-y: scroll;
-    z-index: 1;
 }
 
 .infusion-docs-TOC ul {
@@ -275,6 +280,9 @@ a:focus {
 
 .infusion-docs-mainBody {
     margin: 0;
+    position: absolute;
+    top: 7rem;
+    max-width: 75rem;
 }
 
 div.infusion-docs-note {
@@ -302,7 +310,7 @@ div.infusion-docs-note {
 .infusion-docs-container h1 {
     font-size: 3.0rem;
     font-family: "RobotoSlab";
-    margin-top: 6rem;
+    margin-top: 5rem;
     padding-bottom: 4rem;
 }
 
@@ -359,6 +367,7 @@ div.infusion-docs-note {
 .infusion-docs-container .infusion-docs-footer {
     background-color: #323232;
     padding-top: 2rem;
+    margin-top: 5rem;
     color: #FFFFFF;
     font-family: "OpenSans", Arial, Helvetica;
     text-align: center;
@@ -380,6 +389,12 @@ div.infusion-docs-note {
 
 .infusion-docs-footerInfusion {
     font-size: 1.2rem
+}
+
+.fl-prefsEditor-separatedPanel {
+    position: fixed;
+    z-index: 10;
+    width: 100%
 }
 
 .fl-prefsEditor-separatedPanel .fl-panelBar .fl-prefsEditor-buttons {

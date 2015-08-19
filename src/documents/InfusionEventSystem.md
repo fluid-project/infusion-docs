@@ -193,43 +193,12 @@ In this case, you can use the long form record, where the listener record takes 
 
 ## Using events and listeners procedurally
 
-Traditional procedural APIs corresponding to all the above declarations exist. However, they are not encouraged for typical users of the framework.
-
-### Constructing an event firer procedurally
-
-The Fluid event system is operated by instances of an *event firer* which are created by a call to `fluid.event.makeEventFirer()`. It is recommended that users don't construct event firers by hand but instead rely on the framework's facilities for automatically constructing these given event blocks in [component options](ComponentConfigurationOptions.md). The signature of `fluid.event.makeEventFirer` is not stable and will be revised in the 2.0 release of Infusion:
-
-```javascript
-var myFirer = fluid.makeEventFirer(options);
-```
-
-<table>
-  <thead>
-    <tr>
-      <td>Option</td>
-      <td>Type</td>
-      <td>Description</td>
-    </tr>
-  </thead>
-  <tr>
-    <td><code>preventable</code> (optional) DEPRECATED</td>
-    <td><code>boolean</code></td>
-    <td>
-      If <code>true</code>, this event firer represents a <em>preventable</em> action (see <a href="InfusionEventSystem.md#declaring-an-event-on-a-component">Declaring an event on a component</a>).
-    </td>
-  </tr>
-  <tr>
-    <td><code>name</code> (optional)</td>
-    <td><code>string</code></td>
-    <td>
-      A name for this event firer, useful for diagnostic and debugging purposes
-    </td>
-  </tr>
-</table>
+Traditional procedural APIs corresponding to all the above declarations exist. However, these APIs, with the exception of the `fire` method of an event, are not encouraged for typical users of the framework.
+For managing the lifecycle of event firers, as well as adding and removing listeners, you are recommended to use the declarative configuration above.
 
 ### Using an event firer procedurally
 
-Once an event firer is constructed, it can be called with the following methods (these do form a stable API):
+Once an event firer is constructed, it can be called with the following methods (these form a stable API - but only the `fire` method is recommended for typical users):
 
 <table>
   <thead>
@@ -261,7 +230,8 @@ listener specification
     <td><code>fire</code></td>
     <td>(arbitrary)</td>
     <td>
-      Fires an event to all the registered listeners. They will each be invoked with the exact argument list which is supplied to <code>fire</code> itself. If this is a <em>preventable</em> event, <code>fire</code> may return <code>true</code> indicating that a listener has requested to prevent the effect represented by this event.
+      Fires an event to all the registered listeners. They will each be invoked with the exact argument list which is supplied to <code>fire</code> itself. 
+      If this is a <em>preventable</em> event, <code>fire</code> may return <code>true</code> indicating that a listener has requested to prevent the effect represented by this event.
     </td>
   </tr>
   <tr>
@@ -269,6 +239,40 @@ listener specification
     <td>none</td>
     <td>
       Destroys this event firer. If an event is currently in the process of firing, no further listeners will be notified after the current listener returns. Any firing action performed in the future on this firer will be a no-op.
+    </td>
+  </tr>
+</table>
+
+### Constructing an event firer procedurally
+
+The Fluid event system is operated by instances of an *event firer* which are created by a call to `fluid.event.makeEventFirer()`. 
+It is recommended that users don't construct event firers by hand but instead rely on the framework's facilities for automatically constructing these given event 
+blocks in [component options](ComponentConfigurationOptions.md). The signature of `fluid.event.makeEventFirer` is not stable and will be revised in the 2.0 release of Infusion:
+
+```javascript
+var myFirer = fluid.makeEventFirer(options);
+```
+
+<table>
+  <thead>
+    <tr>
+      <td>Option</td>
+      <td>Type</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tr>
+    <td><code>preventable</code> (optional) DEPRECATED</td>
+    <td><code>boolean</code></td>
+    <td>
+      If <code>true</code>, this event firer represents a <em>preventable</em> action (see <a href="InfusionEventSystem.md#declaring-an-event-on-a-component">Declaring an event on a component</a>).
+    </td>
+  </tr>
+  <tr>
+    <td><code>name</code> (optional)</td>
+    <td><code>string</code></td>
+    <td>
+      A name for this event firer, useful for diagnostic and debugging purposes
     </td>
   </tr>
 </table>

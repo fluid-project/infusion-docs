@@ -5,7 +5,7 @@ category: Infusion
 ---
 
 Many elements of an Infusion application (in particular, [Listeners](InfusionEventSystem.md#registering-a-listener-to-an-event), 
-[Model Listeners](ChangeApplierAPI.md#model-listener-declaration), [Options Distributions](IoCSS.md) and [Subcomponents](SubcomponentDeclaration.md) ) 
+[Model Listeners](ChangeApplierAPI.md#model-listener-declaration), [Options Distributions](IoCSS.md) and [Subcomponents](SubcomponentDeclaration.md)) 
 accept a standardised entry named ``priority`` which allows the position of that element within a list of similar elements to be adjusted.
 Depending on what the element is, the effect of the priority will be different &#8212; for example, a listener may be notified earlier or later than another
 listener, or a set of options or grades may take priority over another during options merging.

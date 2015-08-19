@@ -10,7 +10,7 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 ### Core Framework Changes ###
 
-This section describes major APIs that were in common use. For information about less widely-used features removed in 2.0, consult [Deprecations in 1.5)(DeprecationsIn1_5.md).
+This section describes major APIs that were in common use. For information about less widely-used features removed in 2.0, consult [Deprecations in 1.5](DeprecationsIn1_5.md).
 
 #### Component Grade Changes ####
 
@@ -19,6 +19,7 @@ This section describes major APIs that were in common use. For information about
 * Replace "fluid.viewRelayComponent" with "fluid.viewComponent"
 * Replace "fluid.rendererRelayComponent" with "fluid.rendererComponent"
 * Remove "autoInit" - it is now the default for every component
+* Order of merging component grades has reversed - grades at the right-hand end of the `gradeNames` list now take priority over those at the left
 
 #### fluid.demands ####
 

@@ -4,21 +4,25 @@ layout: default
 category: Infusion
 ---
 
-The framework merges a component's **defaults** with the `options` specified by the user at runtime. Default options for a component are registered by the component developer using the `fluid.defaults()` function. The framework combines these values with those supplied by the user to the component creator function.
+The framework merges a component's **defaults** with the `options` specified by the user at runtime. Default options for a component are registered by the component developer using the `fluid.defaults()` function. 
+The framework combines these values with those supplied by the user to the component creator function.
 
-Left unchecked, this options merging code becomes unruly and verbose. The vast majority of merging can be taken care of by a simple call to a standard "object merging function" such as `jQuery.extend` - however, there are a few cases where this behaviour is inappropriate, and where manual merging code might still be required.
+Left unchecked, this options merging code becomes unruly and verbose. The vast majority of merging can be taken care of by a simple call to a standard "object merging function" such as `jQuery.extend` - however, there are a few cases where this behaviour is inappropriate, 
+and where manual merging code might still be required.
 
 The Fluid component API therefore contains a specialised merging routine, `fluid.merge`, which allows the user to specify an (optional) more fine-grained **merge policy** object, which allows detailed behaviour during options merging to still be specified by a declarative strategy.
 
 ## Use of fluid.merge ##
 
-`fluid.merge` is invoked automatically by the framework as part of standard component initialisation. However, the component author does have the capability of directing the operation of `fluid.merge` by means of specifying the `policy` object. Every standard Fluid component accepts a top-level option named `mergePolicy`  which will be supplied as the policy argument to `fluid.merge`. This option itself also undergoes merging, **although the user may not specify policy for the merging of the mergePolicy**, and users may contribute material into the mergePolicy from any parent grades of the component, arguments, etc.
+`fluid.merge` is invoked automatically by the framework as part of standard component initialisation. However, the component author does have the capability of directing the operation of `fluid.merge` by means of specifying the `policy` object. 
+Every standard Fluid component accepts a top-level option named `mergePolicy`  which will be supplied as the policy argument to `fluid.merge`. This option itself also undergoes merging, **although the user may not specify policy for the merging of the mergePolicy**, and users may contribute material into the mergePolicy from any parent grades of the component, arguments, etc.
 
 ## Structure of the Merge Policy Object ##
 
 The merge policy object is a hash of keys, which represent EL paths into the target object, onto values which represent a policy.
 
-By default if there is no policy specified, a deep merge is done together with [expansion](ExpansionOfComponentOptions.md). Firstly, any IoC references and expanders in the source objects will be expanded. Secondly, everything in the source objects are copied over the target object, in a manner very similar to the operation of the jQuery API method `$.extend(true, ...)`. Anything that existed in the target but was not present in any of the source objects will continue to be present in the resulting merged object.
+By default if there is no policy specified, a deep merge is done together with [expansion](ExpansionOfComponentOptions.md). Firstly, any IoC references and expanders in the source objects will be expanded. Secondly, everything in the source objects are copied over the target object, 
+in a manner very similar to the operation of the jQuery API method `$.extend(true, ...)`. Anything that existed in the target but was not present in any of the source objects will continue to be present in the resulting merged object.
 
 The following are the policy types that are supported, determined by the key's value in the policy object. For the custom policies in the first three rows, combinations may be applied by separating them with commas - e.g. `noexpand`, `nomerge`.
 

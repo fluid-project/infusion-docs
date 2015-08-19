@@ -284,7 +284,7 @@ Users will in most cases only be interested in the first argument in this signat
 
 ### Declarative style for triggering a change###
 
-The declarative style for triggering model changes involve a kind of IoC record (a _change record_) that is supported in various places in component configuration, in particular as part of the definition of both [Invokers](Invokers.md) and [Listeners](Events.md) of an IoC-configured component. 
+The declarative style for triggering model changes involve a kind of IoC record (a _change record_) that is supported in various places in component configuration, in particular as part of the definition of both [Invokers](Invokers.md) and [Listeners](InfusionEventSystem.md) of an IoC-configured component. 
 This style of record is recognised by its use of the special member `changePath` which determines which path in which component model will receive the change.
 
 <table>
