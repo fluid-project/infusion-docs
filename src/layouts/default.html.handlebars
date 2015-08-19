@@ -70,7 +70,7 @@
                 </nav>
             </header>
 
-            <div class="row infusion-docs-mainBody">
+            <div class="infusion-docs-mainBody">
                 <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
                     {{#each siteStructure}}
                         {{! Output only the table of contents matching the current document's category }}
@@ -95,26 +95,28 @@
                 </nav>
 
                 <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
 
-                    <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
-
-                    <h1>{{document.title}}</h1>
-
-                    <p class="infusion-docs-githubLink"><a href="{{githubLocation}}" target="_blank">Edit on GitHub</a></p>
-
-                    {{#if document.noteRendererChangesPost15}}
-                    <div class="infusion-docs-note"><strong>Note:</strong> The renderer will undergo significant changes post Infusion 1.5
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+    
+                        <h1>{{document.title}}</h1>
+    
+                        <p class="infusion-docs-githubLink"><a href="{{githubLocation}}" target="_blank">Edit on GitHub</a></p>
+    
+                        {{#if document.noteRendererChangesPost15}}
+                        <div class="infusion-docs-note"><strong>Note:</strong> The renderer will undergo significant changes post Infusion 1.5
+                        </div>
+                        {{/if}}
+    
+                        <div class="infusion-docs-articleBody">
+                            {{{rewriteMdLinks content}}}
+                        </div>
                     </div>
-                    {{/if}}
 
-                    <div class="infusion-docs-articleBody">
-                        {{{rewriteMdLinks content}}}
-                    </div>
-
-                <footer class="row infusion-docs-footer">
-                    <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
-                    a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
-                </footer>
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
 
                 </article>
                 

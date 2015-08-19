@@ -111,11 +111,11 @@ a:focus {
     font-size: 1.2rem;
 }
 
-.infusion-docs-mainContent {
-    padding-left: 4rem;
-    padding-bottom: 6rem;
-    min-height: 44rem;
-    width: 80%;
+.infusion-docs-mainContent { /* Operates the main scrollbar for main content */
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 .infusion-docs-mainContent code a:hover,
@@ -230,7 +230,8 @@ a:focus {
     width: 15rem;
     height: 100vh;
     padding-bottom: 7rem;
-    overflow-y: scroll;
+    overflow-y: auto;
+    z-index: 1;
 }
 
 .infusion-docs-TOC ul {
@@ -276,13 +277,21 @@ a:focus {
 
 .infusion-docs-container {
     background-color: #f2f2f2;
+    height: 100%;
+}
+
+.infusion-docs-articleContainer {
+    width: 80%;
+    padding-left: 17rem;
+    min-height: 70vh;
 }
 
 .infusion-docs-mainBody {
     margin: 0;
-    position: absolute;
-    top: 7rem;
-    max-width: 75rem;
+    position: fixed;
+    width: 100%;
+    height: 100%; /* Relies on border-box box sizing from foundation */
+    padding-top: 7rem;
 }
 
 div.infusion-docs-note {
@@ -367,11 +376,13 @@ div.infusion-docs-note {
 .infusion-docs-container .infusion-docs-footer {
     background-color: #323232;
     padding-top: 2rem;
-    margin-top: 5rem;
     color: #FFFFFF;
     font-family: "OpenSans", Arial, Helvetica;
     text-align: center;
     max-width: 100%;
+    margin-left: 10rem;
+    position: absolute;
+    width: 90%;
 }
 
 .infusion-docs-footer p {
