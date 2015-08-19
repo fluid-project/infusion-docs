@@ -94,32 +94,31 @@ var that = fluid.uploader.fileQueueView( ... );
 ## Combining Grades ##
 
 Since the `fluid.defaults` directive introduces a grade into the system, various components can be composed to create new ones. Options, fields and methods introduced by the ancestor grades will be merged. 
-The merging happens, firstly in hierarchical order (grades comprising the ancestor grade are resolved before the actual component grades resolution) and secondly in the right-to-left order 
+The merging happens, firstly in hierarchical order (grades comprising the ancestor grade are resolved before the actual component grades resolution) and secondly in the left-to-right order 
 (defaults from the grade on the left taking precedence over the defaults from the grade on the right). Those interested in fine details should note that this is a very different scheme to the [C3 linearization algorithm](https://en.wikipedia.org/wiki/C3_linearization) 
 that is commonly used for resolving multiple inheritance. Other than preventing infinite cycles of resolution, the framework will allow the same grade to appear any number of times in the list of grades,
-and each time it will be effective in overriding definitions occuring in grades to the right. 
+and each time it will be effective in overriding definitions occuring in grades to the left in the same `gradeNames` list. 
 
 
 Here is a simple example:
 
 ```javascript
 fluid.defaults("examples.componentOne", {
-    gradeNames: ["fluid.modelComponent"],
-    model: {
-        field1: true
-    },
-    option1: "TEST"
-});
-
-
-
-fluid.defaults("examples.componentTwo", {
-    gradeNames: ["fluid.modelComponent"],
+    gradeNames: "fluid.modelComponent",
     model: {
         field1: false,
         field2: true
     },
-    option2: "TEST2"
+    option: "TEST1"
+});
+
+fluid.defaults("examples.componentTwo", {
+    gradeNames: "fluid.modelComponent",
+    model: {
+        field1: true
+    },
+    option: "TEST2"
+
 });
 
 fluid.defaults("examples.combinedComponent", {
@@ -130,12 +129,12 @@ fluid.defaults("examples.combinedComponent", {
     //     field1: true,
     //     field2: true
     // },
-    // option1: "TEST",
-    // option2: "TEST2"
+    // option: "TEST2"
 });
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>, <code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md">listener namespaces</a>.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>, 
+<code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md">listener namespaces</a>.</div>
 
 ## Dynamic Grades ##
 
