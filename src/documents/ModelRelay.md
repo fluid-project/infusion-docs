@@ -50,7 +50,7 @@ Here is a component which has a child component which sets up a model relay rela
 
 ```javascript
 fluid.defaults("examples.implicitModelRelay", {
-    gradeNames: ["fluid.modelComponent"],
+    gradeNames: "fluid.modelComponent",
     model: {
          parentValue: 3
     },
@@ -118,18 +118,18 @@ This is done using the `modelRelay` section of a component's top-level options. 
             <td><code>singleTransform</code></td>
             <td>JSON (single <a href="to-do/ModelTransformation.md">Model Transformation</a> rule)</td>
             <td>A short form which can be used where the transformation consists of just a single Model Transformation transform rule. Use either this or <code>transform</code></td>
-            <td><pre>
+            <td><code>
 {
     type: "fluid.linearScale",
     factor: 100
 }
-</pre>
+</code>
             </td>
         </tr>
         <tr>
             <td><code>transform</code></td>
             <td>JSON (full <a href="to-do/ModelTransformation.md">Model Transformation</a> document)</td>
-            <td>A long form of <code>singleTransform</code> which allows any valid Model Transformation document to be used to mediate the relay</td>
+            <td>A long form of <code>singleTransform</code> which allows any valid Model Transformation document to be used to mediate the relay. This is an infrequently used form.</td>
             <td>See this <a href="http://wiki.gpii.net/index.php/Architecture_-_Available_transformation_functions">list of available transformation functions</a> for more information.</td>
         </tr>
         <tr>
@@ -152,7 +152,7 @@ Here is an example of two components linked by explicit model relay representing
 
 ```javascript
 fluid.defaults("examples.explicitModelRelay", {
-    gradeNames: ["fluid.modelComponent"],
+    gradeNames: "fluid.modelComponent",
     model: {
         volume: 95
     },
@@ -185,7 +185,7 @@ In general those transformations which are _**invertible**_ are the best choice 
 the updates will propagate only in one direction. This can still be highly useful. In addition to its invertibility, the propagation of updates through a relay rule can be fine-tuned by the options
 `forward` and `backward`, as described in the following section.
 
-####Controlling propagation through a relay rule####
+#### Controlling propagation through a relay rule ####
 
 Each explicit relay rule can accept options `forward` and `backward` which allows the configurer to control the occasions on which the relay is operated in those directions &#8212; that is, `forward` representing
 the direction from `source` to `target`, and `backward` representing the direction from `target` to `source`. If the transform is not
@@ -204,7 +204,7 @@ A rule of `initOnly` is less often useful, but can be helpful in controlling the
 
 Compare these directives with the related ones used for source guarding in [model listeners](ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks) (`init`, `relay` and `local`).
 
-####General notes on model relay rules####
+#### General notes on model relay rules ####
 
 **NOTE**: Any plain function which accepts one argument and returns one argument is suitable to appear in the `type` field of a `transform` or `singleTransform` rule &#8212; e.g. `fluid.identity`. This is a quick and easy way
 of setting up "ad hoc" transforms. If the function accepts multiple arguments, or an argument which holds a complex structure derived from several values around the model, you should instead use the transform with type

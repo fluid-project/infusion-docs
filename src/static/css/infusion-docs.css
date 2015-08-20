@@ -127,6 +127,7 @@ a:focus {
 
 .infusion-docs pre code {
     font-weight: normal;
+    font-size: smaller;
     background-color: #FFF;
     border: 0.1rem dotted #ddd;
     border-radius: 0.2rem;

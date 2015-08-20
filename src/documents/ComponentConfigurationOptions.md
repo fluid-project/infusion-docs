@@ -25,7 +25,7 @@ The following options are supported by all component grades, that is, those deri
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("component.name", {
-    gradeNames: ["fluid.modelComponent"],
+    gradeNames: "fluid.modelComponent",
     ...
 });</code>
 </pre></td>

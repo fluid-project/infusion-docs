@@ -13,12 +13,13 @@ Regardless of which grade of component you use, the basic structure will be the 
 
 The definition of a component involves two things:
 
-1. declare the component **grade** and any default values for the component's **options**. Options are used by integrators to customize the behaviour of a component.
-2. define any public **functions** that the component requires to do its work.
+1. declare the component **grade** and any default values for the component's **options**. Options are used by users and integrators to customize the behaviour of a component.
+2. define any public **functions** (invokers) and other members that the component requires to do its work.
 
 ## Grade and Default Options ##
 
-A component's grade and any default options are registered with the framework using a call to [`fluid.defaults`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539), which has two parameters: the component name and an object containing the defaults. The parent grades for the component are specified in an array in the defaults called `gradeNames`. For a **little component**, specify the grade as `fluid.component`:
+A component's grade and any default options are registered with the framework using a call to [`fluid.defaults`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539), which has two parameters: 
+the component name and an object containing the defaults. The parent grades for the component are specified in an array or single string in the defaults called `gradeNames`. For a plain component, specify the grade as `fluid.component`:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
@@ -86,7 +87,7 @@ fluid.defaults("fluid.progress", {
 ## The Creator Function ##
 
 All components have a **creator function**: a public function that is invoked to instantiate the component. The framework will instantiate the creator function for you automatically, given the component's default options. 
-When your component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another, the framework will also take responsibility for calling the creator function for you automatically. 
+When your component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another component, the framework will also take responsibility for calling the creator function for you automatically. 
 In the rare case you need to construct a component directly using a JavaScript function call, Infusion components have a standardized function signature:
 
 * plain and **model** components accept a single argument: `options`
@@ -102,7 +103,7 @@ The [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md) system will 
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
-    gradeNames: ["fluid.component"],
+    gradeNames: "fluid.component",
     option1: "default value 1",
     ...
 });

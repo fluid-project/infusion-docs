@@ -93,7 +93,7 @@ This relay will be bidirectional - any updates propagated into either of the mod
 
 ## Using The Change Applier ##
 
-The Framework will attach both your model and its ChangeApplier to the component object as top-level properties. Your methods can read the model directly, using `that.model.*`, but the ChangeApplier should be used to make any changes to the model, using `that.applier.change();`.
+The Framework will attach both your model and its ChangeApplier to the component object as top-level properties. Your methods can read the model directly, using `that.model.<some-path>`, but the ChangeApplier should be used to make any changes to the model, using `that.applier.change();`.
 
 ## Example: Dated Component ##
 
@@ -110,7 +110,9 @@ fluid.defaults("tutorials.modelBearingComponent", {
 });
 ```
 
-Suppose that you want the `date` initialized to the current date at the time the component is instantiated, and you want this to happen before other component initialization happens. You can specify an initial value for the `date` field by use of an IoC facility known as an expander. This allows you to schedule the action of any function during the initialization process and have the results entered into the component's configuration. Our work comes in two parts - firstly, writing a global helper function which returns the current date, named `tutorials.getCurrentDate`. The second part writes an expander within the model definition to invoke our helper function:
+Suppose that you want the `date` initialized to the current date at the time the component is instantiated, and you want this to happen before other component initialization happens. 
+You can specify an initial value for the `date` field by use of an IoC facility known as an [expander](../ExpansionOfComponentOptions.md#expanders). This allows you to schedule the action of any function during the initialization process and have the results entered into the component's configuration. 
+Our work comes in two parts - firstly, writing a global helper function which returns the current date, named `tutorials.getCurrentDate`. The second part writes an expander within the model definition to invoke our helper function:
 
 ```javascript
 tutorials.getCurrentDate = function () {
@@ -129,6 +131,8 @@ fluid.defaults("tutorials.datedComponent", {
     }
 });
 ```
+
+**NOTE** There is a [compact form](../ExpansionOfComponentOptions.md#compact-format-for-expanders) for writing an expander as a single string - we could have written the above definition instead with `date: "@expand:tutorials.getCurrentDate()"` in place of the small JSON block inside the model.
 
 ## Example: Currency Converter ##
 
@@ -173,4 +177,4 @@ tutorials.currencyConverter.convert = function (that, amount) {
 };
 ```
 
-Next: [Evented Components](EventedComponents.md)
+Next: [View Components](ViewComponents.md)
