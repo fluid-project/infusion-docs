@@ -136,6 +136,8 @@ fluid.defaults("examples.combinedComponent", {
 <div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>, 
 <code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md">listener namespaces</a>.</div>
 
+**NOTE**: In the current framework, all grades derived from `fluid.viewComponent` (as well as `fluid.rendererComponent`, etc.) must be listed ***AFTER*** all those that are not. This problem will be resolved before the Infusion 2.0 final release. 
+
 ## Dynamic Grades ##
 
 Grades supplied as arguments to a constructing component in the `gradeNames` field will be added into the grade list of the particular component instance, as if a new `fluid.defaults` block had been issued creating a new "type" in the system - however, the main `type` of the component will not change. This facility could be thought of as a form of "type evolution" or [Schema evolution](http://scholarworks.umass.edu/cgi/viewcontent.cgi?article=1041&context=cs_faculty_pubs). All dynamic grades take precedence over (that is, are merged in after) all static grades.
