@@ -14,7 +14,7 @@ In this example, the default type for the subcomponent, `mySubComponent1`, of `m
 
 ```javascript
 fluid.defaults("myNamespace.myComponentName", {
-    gradeNames: ["autoInit", ...],
+    gradeNames: [...],
     ...
     components: {
         mySubComponent1: {

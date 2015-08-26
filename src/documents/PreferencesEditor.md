@@ -101,14 +101,8 @@ If you provide both, they will be merged (with the `auxiliarySchema` overriding 
     <td><code>"fluid.pageEnhancer"</code></td>
 </tr>
 <tr>
-    <td><code>templatePrefix</code></td>
-    <td>(Optional) A string value representing the relative path to the directory containing the template files. This value will overwrite the <code>templatePrefix</code> value supplied by <a href="AuxiliarySchemaForPreferencesFramework.md">auxiliary schemas</a>.</td>
-    <td></td>
-    <td></td>
-</tr>
-<tr>
-    <td><code>messagePrefix</code></td>
-    <td>(Optional) A string value representing the relative path to the directory containing the message files. This value will overwrite the <code>messagePrefix</code> value supplied by <a href="AuxiliarySchemaForPreferencesFramework.md">auxiliary schemas</a>.</td>
+    <td><code>terms</code></td>
+    <td>(Optional) A object containing relative paths to directories containing the template files and the message bundles. This value will overwrite the <code>terms</code> value supplied by <a href="AuxiliarySchemaForPreferencesFramework.md">auxiliary schemas</a>.</td>
     <td></td>
     <td></td>
 </tr>

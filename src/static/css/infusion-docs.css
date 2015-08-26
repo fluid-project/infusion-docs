@@ -111,10 +111,11 @@ a:focus {
     font-size: 1.2rem;
 }
 
-.infusion-docs-mainContent {
-    padding-left: 4rem;
-    padding-bottom: 6rem;
-    min-height: 44rem;
+.infusion-docs-mainContent { /* Operates the main scrollbar for main content */
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 .infusion-docs-mainContent code a:hover,
@@ -126,6 +127,7 @@ a:focus {
 
 .infusion-docs pre code {
     font-weight: normal;
+    font-size: smaller;
     background-color: #FFF;
     border: 0.1rem dotted #ddd;
     border-radius: 0.2rem;
@@ -163,6 +165,12 @@ a:focus {
     padding-right: 2rem;
     line-height: 2;
     max-width: 100%;
+    position: fixed;
+    z-index: 2;
+}
+
+.infusion-docs-fluidCategories {
+    top: 3rem;
 }
 
 .infusion-docs-fluidLogoText:before {
@@ -218,6 +226,13 @@ a:focus {
 .infusion-docs-TOC {
     min-height: 44rem;
     background: #fff;
+    top: 7rem;
+    position: fixed;
+    width: 15rem;
+    height: 100vh;
+    padding-bottom: 7rem;
+    overflow-y: auto;
+    z-index: 1;
 }
 
 .infusion-docs-TOC ul {
@@ -263,10 +278,21 @@ a:focus {
 
 .infusion-docs-container {
     background-color: #f2f2f2;
+    height: 100%;
+}
+
+.infusion-docs-articleContainer {
+    width: 80%;
+    padding-left: 17rem;
+    min-height: 70vh;
 }
 
 .infusion-docs-mainBody {
     margin: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%; /* Relies on border-box box sizing from foundation */
+    padding-top: 7rem;
 }
 
 div.infusion-docs-note {
@@ -294,15 +320,15 @@ div.infusion-docs-note {
 .infusion-docs-container h1 {
     font-size: 3.0rem;
     font-family: "RobotoSlab";
-    margin-top: 10rem;
-    padding-bottom: 6rem;
+    margin-top: 5rem;
+    padding-bottom: 4rem;
 }
 
 .infusion-docs-container h2 {
     font-size: 2.5rem;
     font-family: "RobotoSlab";
-    padding-top: 4.6rem;
-    padding-bottom: 2.5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .infusion-docs-container h3 {
@@ -355,6 +381,9 @@ div.infusion-docs-note {
     font-family: "OpenSans", Arial, Helvetica;
     text-align: center;
     max-width: 100%;
+    margin-left: 10rem;
+    position: absolute;
+    width: 90%;
 }
 
 .infusion-docs-footer p {
@@ -372,6 +401,12 @@ div.infusion-docs-note {
 
 .infusion-docs-footerInfusion {
     font-size: 1.2rem
+}
+
+.fl-prefsEditor-separatedPanel {
+    position: fixed;
+    z-index: 10;
+    width: 100%
 }
 
 .fl-prefsEditor-separatedPanel .fl-panelBar .fl-prefsEditor-buttons {

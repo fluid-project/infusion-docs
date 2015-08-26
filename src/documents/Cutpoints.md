@@ -49,7 +49,7 @@ If you are using [fluid.rendererComponent](https://github.com/fluid-project/infu
 // Set the cutpointGenerator option of the Renderer component to your cutpoint
 // generator function
 fluid.defaults("fluid.myRendererComponent", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     rendererFnOptions: {
         rendererOptions: rendererOptions,
         repeatingSelectors: that.options.repeatingSelectors,

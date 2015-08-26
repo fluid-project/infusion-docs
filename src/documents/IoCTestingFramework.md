@@ -11,18 +11,18 @@ As well as creating an idiomatic way of writing *integration tests* addressed at
 trees, the IoC testing framework also considerably eases the task of testing *complex event sequences* - that is, sequences of application state
 that are derived from an alternating conversation between user interaction and application response.
 
-**NOTE**: The IoC Testing framework is only for integration testing requiring asynchrony, i.e. testing that involves either
+**NOTE**: The IoC Testing framework is primarily for integration testing requiring asynchrony, i.e. testing that involves either
 
 1. user interaction via the DOM, or
 2. AJAX requests.
 
-If it does not, it is much better to use more simple techniques.
+If your tests don't involve a number of back-to-back asynchronous interactions, it is better to express them as plain jqUnit tests.
 
 ### Integration testing with component tree ###
 
 The concept of *context* in Infusion IoC is derived from the entire collection of components held in an IoC component tree.
-The behaviour of each component is potentially altered by all of the other components which are *in scope* from the site of the component
-under consideration - for a detailed guide to the operation of scope within Infusion IoC, please consult the page on [Contexts](Contexts.md).
+The behaviour of each component is potentially altered by all of the other components with which it is deployed 
+- for a detailed guide to the operation of scope within Infusion IoC, please consult the page on [Contexts](Contexts.md).
 Therefore in order to test component behaviour in context, we need a testing system whose lifecycle (in particular, the lifecycle
 of setup and teardown common to all testing systems) is aligned with the lifecycle of component trees - as well as a testing system which enables testing directives to be referred to any components within the tree in an IoC-natural way.
 
@@ -32,7 +32,7 @@ of setup and teardown common to all testing systems) is aligned with the lifecyc
 The idiom to be used when binding event listeners which are responsible for *implementing* application behaviour is very different from that to be
 used when *testing* the application behaviour. Implementation listeners are typically bound permanently - that is, for the entire
 lifecycle of the component holding the listener. This is in order to make application behaviour as regular as possible, and in order to make
-it as easy as possible to reason about application behaviour in the absence of race conditions. However, when writing tests directed at an
+it as easy as possible to reason about application behaviour by excluding race conditions. However, when writing tests directed at an
 event stream, typically the behaviour required for the listener to each individual event in the sequence is different - since the testing
 assertion(s) held in the listener will be verifying a component state against required conditions which change with each successive event.
 Carried to the fullest extent, this typically results in convoluted, brittle code, holding deeply nested sequences of event binding
@@ -52,8 +52,8 @@ including a summary of work in progress on [December 5th](http://lists.idrc.ocad
 
 ## How to Use the IoC Testing Framework ##
 
-The IoC Testing framework requires the use of two new kinds of Fluid component, which are packaged as ["grades"](ComponentGrades.md) within the implementation in the
-file IoCTestUtils.js. In order to make use of the framework, the tester must derive their own component types from these grades, and assemble
+Writing fixtures using the IoC Testing framework requires the test implementor to derive from two special ["grades"](ComponentGrades.md) which are packaged within the testing framework implementation in the
+file `IoCTestUtils.js`. The tester must derive their own component types from these grades, and assemble
 them into various component trees corresponding to the desired integration scenarios.
 
 The first type of component corresponds to the overall root of the component tree under test - the test *environment*, defined in the grade
@@ -70,12 +70,14 @@ This simple example shows the testing of a simple component, `fluid.tests.cat` w
 ```javascript
 /** Component under test **/
 fluid.defaults("fluid.tests.cat", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component"],
+    invokers: {
+        makeSound: "fluid.tests.cat.makeSound"
+    }
 });
-fluid.tests.cat.preInit = function (that) {
-    that.makeSound = function () {
-        return "meow";
-    };
+
+fluid.tests.cat.makeSound = function () {
+    return "meow";
 };
 ```
 
@@ -84,7 +86,7 @@ In order to test this single component, we embed it appropriately within a *test
 
 ```javascript
 fluid.defaults("fluid.tests.myTestTree", {
-    gradeNames: ["fluid.test.testEnvironment", "autoInit"],
+    gradeNames: ["fluid.test.testEnvironment"],
     components: {
         cat: {       // instance of component under test
             type: "fluid.tests.cat"
@@ -101,7 +103,7 @@ as well as the test fixture code itself:
 
 ```javascript
 fluid.defaults("fluid.tests.catTester", {
-    gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
+    gradeNames: ["fluid.test.testCaseHolder"],
     modules: [ /* declarative specification of tests */ {
         name: "Cat test case",
         tests: [{
@@ -120,15 +122,54 @@ fluid.tests.globalCatTest = function (catt) {
 };
 ```
 
+### `modules`, `tests` and `sequence` ###
+
 The standard structure inside a `fluid.test.testCaseHolder` shows an outer layer of containment, `modules`, corresponding to a
 QUnit `module`, and then a entry named `tests`, holding an array of structures corresponding to a QUnit `testCase`. Here we define a single
-test case which holds a single *fixture record* which executes a global function, `fluid.tests.globalCatTest` which makes one jqUnit assertion.
-In cases where we apply *sequence testing*, the fixture record may instead hold an entry named sequence which holds an array of fixture records
-representing sequence points to be attained by the test case.
+test case which holds a single *fixture record* which executes a global function, `fluid.tests.globalCatTest` which makes one jqUnit assertion. 
+This is not realistic for a normal use of the framework, which as we mentioned in the introduction only achieves its value when testing a sequence
+of fixtures back to back. Normally, the entry within `tests` will instead hold an entry named `sequence` which holds an array of fixture records
+representing sequence points to be attained by the test case. 
+An example of the `sequence` entry appears below in the [asyncTester example](#testcaseholder-demonstrating-sequence-record).
 
 In order to run this test case, we can either simply construct an instance of the environment tree by calling `fluid.tests.myTestTree()`,
 or submit its name to the global driver function `fluid.test.runTests` as `fluid.test.runTests("fluid.tests.myTestTree")`.
 The latter method should be used when running multiple environments within the same file to ensure that their execution is properly serialised.
+
+### Using `moduleSource` for dynamic test fixtures ###
+
+For highly dynamic tests, you may want to assemble your sequence elements dynamically for each test rather than list them statically. In this case,
+you can replace `modules` with the entry `moduleSource` which takes the same form as an [invoker](Invokers.md] record with entries `func`/`funcName` and `args`, 
+and returns a list of fixtures in the same format as `modules`. Again, in a real example, this would use the `sequence` form of fixtures shown at the bottom of the page.
+
+```javascript
+// Example of the above fixture written with "moduleSource"
+// Definition of modules as namespaced global so that it is available for others and processing
+fluid.tests.catTesterModules = [{
+    name: "Cat test case",
+    tests: [{
+        expect: 1,
+        name: "Test Global Meow",
+        type: "test",
+        func: "fluid.tests.globalCatTest",
+        args: "{cat}"
+    }
+];
+
+// A helper function which just returns the global - 
+// realistically, it would assemble a sequence using more complex logic 
+fluid.tests.getCatModules = function () {
+    return fluid.tests.catTesterModules;
+};
+
+fluid.defaults("fluid.tests.catTester", {
+    gradeNames: ["fluid.test.testCaseHolder"],
+    moduleSource: {
+        funcName: "fluid.tests.getCatModules" 
+    }
+});
+```
+
 
 ### Supported fixture records ###
 
@@ -144,72 +185,77 @@ in its `sequence` member, representing a sequence of actions (either executors o
     </tr>
     <tr class="duckrow">
         <td rowspan="2" class="blockcell">Function executor</td>
-        <td>func <a href="#ducktype"><sup>[*]</sup></a></td><td>Function/function name</td><td>function to be executed</td><td rowspan="2" class="blockcell">executor</td>
+        <td><code>func</code>/<code>funcName</code><a href="#ducktype"><sup>[&#42;]</sup></a></td><td>Function/function name</td><td>function to be executed</td><td rowspan="2" class="blockcell">executor</td>
     </tr>
     <tr>
-        <td>args [optional]</td><td>Object/Array</td><td>arguments to be supplied to function</td>
+        <td><code>args</code> [optional]</td><td>Object/Array</td><td>arguments to be supplied to function</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="4" class="blockcell">Event listener</td><td>event <a href="#ducktype"><sup>[*]</sup></a></td><td>Fluid event firer</td><td>The event to which the listener will be bound</td><td rowspan="4" class="blockcell">binder</td>
+        <td rowspan="5" class="blockcell">Event listener</td><td><code>event</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td><td>Fluid event firer</td><td>The event to which the listener will be bound</td><td rowspan="4" class="blockcell">binder</td>
     </tr>
     <tr class="alt-a-row">
-        <td>listener<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+        <td><code>listener</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+    </tr>
+    <tr class="alt-a-row">
+        <td><code>args</code><a href="#alternatives"><sup>[&dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener function when it is called - these may contain IoC references including
+        references to the context `{arguments}` as described in [Listener Boiling](EventInjectionAndBoiling.md#listener-boiling)</td>
     </tr>
     <tr class="alt-b-row">
-        <td>listenerMaker<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
+        <td><code>listenerMaker<code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
     </tr>
     <tr class="alt-b-row">
-        <td>makerArgs<a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+        <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="6" class="blockcell">Change event listener</td><td>changeEvent <a href="#ducktype"><sup>[*]</sup></a></td><td>Fluid event firer corresponding to a change event (currently <code>
-            modelChanged</code>, <code>
-            guards</code> or <code>
-            postGuards</code>)</td><td>Change event to be listened to</td><td rowspan="6" class="blockcell">binder</td>
-    </tr>
-    <tr class="alt-a-row">
-        <td>path<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>string</td><td>A path specification matching the EL paths for which the listener is to be registered, as per the <a href="ChangeApplierAPI.md">ChangeApplier API</a></td>
-    </tr>
-    <tr class="alt-b-row">
-        <td>spec<a href="#alternatives"><sup>[&Dagger;]</sup></a></td><td>Object</td><td>A record holding a structured description of the required listener properties, as per the ChangeApplier API</td>
-    </tr>
-    <tr class="alt-a-row">
-        <td>listener<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
-    </tr>
-    <tr class="alt-b-row">
-        <td>listenerMaker<a href="#alternatives"><sup>[&Dagger;]</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
-    </tr>
-    <tr class="alt-b-row">
-        <td>makerArgs<a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
-    </tr>
-    <tr class="duckrow">
-        <td rowspan="3" class="blockcell">jQuery event trigger</td><td>jQueryTrigger <a href="#ducktype"><sup>[*]</sup></a></td><td>string</td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered</td><td rowspan="3" class="blockcell">executor</td>
+        <td rowspan="7" class="blockcell">Change event listener</td><td><code>changeEvent</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td><td>Must be the <code>modelChanged</code> event attached to the ChangeApplier of a component - e.g. a reference of the form <code>{component}.applier.modelChanged</code>
+            </td><td>Change event to be listened to</td><td rowspan="6" class="blockcell">binder</td>
     </tr>
     <tr>
-        <td>args [optional]</td><td>Object/Array</td><td>additional arguments to be supplied to <code>
+        <td><code>path</code></td><td>string</td><td>A path specification matching the EL paths for which the listener is to be registered, as per the <a href="ChangeApplierAPI.md">ChangeApplier API</a>. Just one of <code>path</code> or <code>spec</code> should be used.</td>
+    </tr>
+    <tr>
+        <td><code>spec</code></td><td>Object</td><td>A record holding a structured description of the required listener properties, as per the ChangeApplier API. Just one of <code>path</code> or <code>spec</code> should be used.</td>
+    </tr>
+    <tr class="alt-a-row">
+        <td><code>listener</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+    </tr>
+    <tr class="alt-a-row">
+        <td><code>args</code><a href="#alternatives"><sup>[&dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener function when it is called - these may contain IoC references including
+        references to the context `{arguments}` as described in [Listener Boiling](EventInjectionAndBoiling.md#listener-boiling). `{change}` is not currently supported.</td>
+    </tr>
+    <tr class="alt-b-row">
+        <td><code>listenerMaker</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
+    </tr>
+    <tr class="alt-b-row">
+        <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+    </tr>
+    <tr class="duckrow">
+        <td rowspan="3" class="blockcell">jQuery event trigger</td><td><code>jQueryTrigger</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td><td>string</td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered</td><td rowspan="3" class="blockcell">executor</td>
+    </tr>
+    <tr>
+        <td><code>args</code> [optional]</td><td>Object/Array</td><td>additional arguments to be supplied to <code>
             jQuery.trigger</code></td>
     </tr>
     <tr>
-        <td>element</td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which the event is to be triggered</td>
+        <td><code>element</code></td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which the event is to be triggered</td>
     </tr>
     <tr class="duckrow">
-        <td rowspan="6" class="blockcell">jQuery event binder</td><td>jQueryBind <a href="#ducktype"><sup>[*]</sup></a></td><td>string</td><td>The name of a jQuery event for which a listener is to be registered</td><td rowspan="6" class="blockcell">binder</td>
+        <td rowspan="6" class="blockcell">jQuery event binder</td><td><code>jQueryBind</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td><td>string</td><td>The name of a jQuery event for which a listener is to be registered</td><td rowspan="6" class="blockcell">binder</td>
     </tr>
     <tr>
-        <td>element</td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which a listener is to be bound</td>
+        <td><code>element</code></td><td>jQueryable (DOM element, jQuery, or selector)</td><td>The jQuery object on which a listener is to be bound</td>
     </tr>
     <tr>
-        <td>args [optional]</td><td>Object/Array</td><td>additional arguments to be supplied to <code>
-            jQuery.one</code></td>
+        <td><code>args</code> [optional]</td><td>Object/Array</td><td>additional arguments to be supplied to <code>jQuery.one</code></td>
     </tr>
     <tr class="alt-a-row">
-        <td>listener<a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
+        <td><code>listener</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td><td>Function/function name</td><td>The listener to be bound to the event</td>
     </tr>
     <tr class="alt-b-row">
-        <td>listenerMaker<a href="#alternatives"><sup>[&Dagger;]</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
+        <td><code>listenerMaker</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td><td>Function/function name</td><td>A function which will produce a listener to be bound</td>
     </tr>
     <tr class="alt-b-row">
-        <td>makerArgs<a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+        <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
 </table>
 
@@ -217,9 +263,10 @@ In each case in this table,
 
 * The "type" field may be taken as comprising a string holding an IoC specification (context-qualified EL path) for the type in question.
 * <a name="ducktype"></a>Fields marked with \[*\] are the essential "duck typing fields" which define the type of the fixture records and are mandatory.
-* <a name="alternatives"></a>Fields marked with \[&dagger;\] and \[&Dagger;\] are alternatives to each other - they may not be used simultaneously within the same fixture.
+* <a name="alternatives"></a>Fields marked with \[&dagger;\] and \[&Dagger;\] are alternatives to each other - they may not be used simultaneously within the same fixture. The idea is that you may use just one of the styles `listener` or `listenerMaker` to
+specify an event listener. Since the framework now supports "argument boiling" for listeners, `listenerMaker` is mostly unnecessary.
 
-### A More Complex Example ###
+### A More Complex Example using `sequence` ###
 
 This example shows sequence testing of a component `fluid.tests.asyncTest` with genuine asynchronous behaviour (as well as synchronous
 event-driven behaviour). The component under the test is an Infusion [Renderer component](tutorial-gettingStartedWithInfusion/RendererComponents.md)
@@ -231,7 +278,7 @@ ChangeApplier events resulting from corresponding changes to the component's mod
 ```javascript
 /** Component under test **/
 fluid.defaults("fluid.tests.asyncTest", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     model: {
         textValue: "initialValue"
     },
@@ -254,7 +301,7 @@ fluid.defaults("fluid.tests.asyncTest", {
 });
 
 fluid.defaults("fluid.tests.buttonChild", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     events: {
         buttonClicked: "{asyncTest}.events.buttonClicked"
     }
@@ -272,7 +319,7 @@ within an overall `testEnvironment`:
 
 ```javascript
 fluid.defaults("fluid.tests.asyncTestTree", {
-    gradeNames: ["fluid.test.testEnvironment", "autoInit"],
+    gradeNames: ["fluid.test.testEnvironment"],
     markupFixture: ".flc-async-root",
     components: {
         asyncTest: {
@@ -313,9 +360,11 @@ a click event using the `jQueryTrigger` fixture type, and listening to that even
 
 The TestCaseHolder makes reference to a few global utility functions which are reproduced below.
 
+#### `testCaseHolder` demonstrating `sequence` record ####
+
 ```javascript
 fluid.defaults("fluid.tests.asyncTester", {
-    gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
+    gradeNames: ["fluid.test.testCaseHolder"],
     newTextValue:     "newTextValue",
     furtherTextValue: "furtherTextValue",
     modules: [ {

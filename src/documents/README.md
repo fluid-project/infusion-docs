@@ -23,7 +23,7 @@ layout: default
   * [IoCSS](IoCSS.md)
   * [Declarative this-ism In IoC](DeclarativeThisismInIoC.md)
   * [IoC References](IoCReferences.md)
-* [Events](Events.md)
+* Events
   * [Infusion Event System](InfusionEventSystem.md)
   * [Event injection and boiling](EventInjectionAndBoiling.md)
 * ChangeApplier

@@ -50,7 +50,7 @@ the component's defaults called `selectors`:
 
 ```javascript
 fluid.defaults("fluid.newComponent", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     selectors: {
         uiBit1: ".className1",
         uiBit2: ".className2"
@@ -80,7 +80,7 @@ component member using the `members` option:
 
 ```javascript
 fluid.defaults("fluid.tutorials.buttonHolder", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     selectors: {
         button: ".button"
     },
@@ -95,7 +95,7 @@ and [Event Listeners](InfusionEventSystem.md), as shown in the following example
 
 ```javascript
 fluid.defaults("fluid.tutorials.buttonHolder", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     selectors: {
         status: ".holder-status",
         indicator: ".holder-ind"

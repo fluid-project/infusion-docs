@@ -13,20 +13,21 @@ The Infusion Framework provides lots of supports for creating components. We hav
 
 The basic types are:
 
-* **little component**: the most basic type
+* **plain component**: the most basic type
 * **model component**: for components that will have to maintain an abstract data model
-* **evented component**: for components that want to fire events
 * **view component**: for components that have a user interface
 * **renderer component**: for components that want to render the user interface using a template
 
 These types of components build upon each other, a teeny little bit like inheritance:
 
-* **model** and **evented components** add support for models and events (respectively) to **little components**
-* **view components** support models and events, and also add support for views.
+* **model** components add support for models to **plain components**
+* **view components** support models, and also add support for views.
 * **renderer components** are **view components** with the [Renderer](../Renderer.md) added.
+
+**NOTE**: The following diagram needs to be updated for the Infusion 2.0 framework - the "evented" and "little" component grades have been folded into plain `fluid.component`.
 
 ![A venn diagram showing the composition of grades](../images/component-grades-venn-diagram.svg)
 
 For this tutorial, we suggest you work through all of the examples in order, to understand what each type of component offers. That way, you'll be in a better position to decide which grade you'll need for your components. Regardless of grade, the basic process for creating a component is the same. The next page in this tutorial will explain this basic process using the **little component**, but you will see the same process for each of the component types.
 
-Next: [Basic Component Creation - Little Components](BasicComponentCreation-LittleComponents.md)
+Next: [Basic Component Creation](BasicComponentCreation-Components.md)

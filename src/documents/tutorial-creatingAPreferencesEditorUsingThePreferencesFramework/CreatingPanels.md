@@ -18,7 +18,7 @@ In the [Preferences Framework](../PreferencesFramework.md), "Panels" are Infusio
 
 The configuration information used to define a preferences panel must include certain required information:
 
-* the `fluid.prefs.panel` and `autoInit` grades (provided by the Framework)
+* the `fluid.prefs.panel` grade (provided by the Framework)
 * a Preference Map (see [below](#preferencemap))
 * a renderer [proto-tree](../RendererComponentTrees.md) or `produceTree` function
 * selectors for rendering the controls, labels, etc
@@ -47,7 +47,7 @@ Each panel and enactor defines a "preference map," which map the information in 
 
 ```javascript
 fluid.defaults("fluid.prefs.panel.textSize", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "fluid.prefs.textSize": {
             "model.value": "default",
@@ -61,7 +61,7 @@ fluid.defaults("fluid.prefs.panel.textSize", {
 
 ```javascript
 fluid.defaults("fluid.prefs.panel.textFont", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "fluid.prefs.textFont": {
             "model.value": "default",
@@ -74,7 +74,7 @@ fluid.defaults("fluid.prefs.panel.textFont", {
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.panels.captionsSettings", {
-    gradeNames: ["fluid.videoPlayer.panels.mediaSettings", "autoInit"],
+    gradeNames: ["fluid.videoPlayer.panels.mediaSettings"],
     preferenceMap: {
         "fluid.videoPlayer.captions": {
             "model.show": "default"
@@ -91,7 +91,7 @@ fluid.defaults("fluid.videoPlayer.panels.captionsSettings", {
 
 ```javascript
 fluid.defaults("fluid.prefs.panel.lineSpace", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "fluid.prefs.lineSpace": {
             "model.value": "default",
@@ -134,7 +134,7 @@ fluid.defaults("fluid.prefs.panel.lineSpace", {
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.panels.captionSettings", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "fluid.videoPlayer.captions": {
             // the key is the internal model path, the value is the path into the schema

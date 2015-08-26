@@ -83,10 +83,12 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
 ```javascript
 {
     "namespace": "fluid.prefs.constructed",
-    "templatePrefix": "../../../framework/preferences/html/",
-    "template": "%prefix/SeparatedPanelPrefsEditor.html",
-    "messagePrefix": "../../../framework/preferences/messages/",
-    "message": "%prefix/prefsEditor.json", // message bundle for the preference editor itself
+    "terms": {
+        "templatePrefix": "../../../framework/preferences/html/",
+        "messagePrefix": "../../../framework/preferences/messages/"
+    },
+    "template": "%templatePrefix/SeparatedPanelPrefsEditor.html",
+    "message": "%messagePrefix/prefsEditor.json", // message bundle for the preference editor itself
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
@@ -95,8 +97,8 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
         "panel": {
             "type": "fluid.prefs.panels.textSize",
             "container": ".flc-prefs-text-size",
-            "template": "%prefix/PrefsEditorTemplate-textSize.html",
-            "message": "%prefix/textSize.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
+            "message": "%messagePrefix/textSize.json"
         }
     },
     "lineSpace": {
@@ -116,8 +118,8 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
         "panel": {
             "type": "fluid.prefs.panels.lineSpace",
             "container": ".flc-prefs-line-space",
-            "template": "%prefix/PrefsEditorTemplate-lineSpace.html",
-            "message": "%prefix/lineSpace.json" // message bundle for the fluid.prefs.panels.lineSpace component
+            "template": "%templatePrefix/PrefsEditorTemplate-lineSpace.html",
+            "message": "%messagePrefix/lineSpace.json" // message bundle for the fluid.prefs.panels.lineSpace component
         }
     }
 }
@@ -127,16 +129,16 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
 
 ```javascript
 fluid.defaults("my.messageLoader", {
-    gradeNames: ["fluid.prefs.resourceLoader", "autoInit"],
+    gradeNames: ["fluid.prefs.resourceLoader"],
     templates: {
-        magnification: "%prefix/magnification.json",
-        cursorSize: "%prefix/cursorSize.json"
+        magnification: "%templatePrefix/magnification.json",
+        cursorSize: "%templatePrefix/cursorSize.json"
     }
 });
 fluid.prefs.separatedPanel("#myPrefsEditor", {
     ...
     messageLoader: {
-        gradeNames: ["my.messageLoader", "autoInit"]
+        gradeNames: ["my.messageLoader"]
     },
     ...
 });

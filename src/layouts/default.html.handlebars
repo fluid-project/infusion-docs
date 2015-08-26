@@ -15,8 +15,10 @@
         <link rel="icon" type="image/png" href="{{{relativeUrl '/images/favico.png' document.url}}}">
 
         <script type="text/javascript" src="{{{relativeUrl '/lib/infusion/infusion-uio.js' document.url}}}"></script>
+        <script type="text/javascript" src="{{{relativeUrl '/js/infusion-docs.js' document.url}}}"></script>
+        
     </head>
-    <body class="infusion-docs">
+    <body class="infusion-docs fl-theme-prefsEditor-default">
 
         <div class="container infusion-docs-container">
 
@@ -36,11 +38,10 @@
                 <div class="fl-panelBar">
                     <span class="fl-prefsEditor-buttons">
                         <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
-                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
                     </span>
                 </div>
             </div>
-            <!-- END markup for Preference Editor -->
 
             <script type="text/javascript">
                 fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
@@ -50,12 +51,14 @@
                 });
             </script>
 
+            <!-- END markup for Preference Editor -->
+
             <header class="row infusion-docs-header">
                 <div class="infusion-docs-fluidLogo small-12 medium-3 column">
                     <a class="infusion-docs-fluidLogoText" href="{{{relativeUrl '/index.html' document.url}}}" title="Infusion">infusion</a>
                 </div>
 
-                <nav class="small-12 medium-9 column">
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
                     {{! Highlight the (active) category the document belongs to. }}
                     {{#each siteStructure}}
                         {{#ifEqual category ../document.category}}
@@ -67,7 +70,7 @@
                 </nav>
             </header>
 
-            <div class="row infusion-docs-mainBody">
+            <div class="infusion-docs-mainBody">
                 <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
                     {{#each siteStructure}}
                         {{! Output only the table of contents matching the current document's category }}
@@ -92,32 +95,39 @@
                 </nav>
 
                 <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
 
-                    <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
-
-                    <h1>{{document.title}}</h1>
-
-                    <p class="infusion-docs-githubLink"><a href="{{githubLocation}}" target="_blank">Edit on GitHub</a></p>
-
-                    {{#if document.noteRendererChangesPost15}}
-                    <div class="infusion-docs-note"><strong>Note:</strong> The renderer will undergo significant changes post Infusion 1.5
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+    
+                        <h1>{{document.title}}</h1>
+    
+                        <p class="infusion-docs-githubLink"><a href="{{githubLocation}}" target="_blank">Edit on GitHub</a></p>
+    
+                        {{#if document.noteRendererChangesPost15}}
+                        <div class="infusion-docs-note"><strong>Note:</strong> The renderer will undergo significant changes post Infusion 1.5
+                        </div>
+                        {{/if}}
+    
+                        <div class="infusion-docs-articleBody">
+                            {{{rewriteMdLinks content}}}
+                        </div>
                     </div>
-                    {{/if}}
 
-                    <div class="infusion-docs-articleBody">
-                        {{{rewriteMdLinks content}}}
-                    </div>
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
 
                 </article>
-
+                
             </div>
 
-            <footer class="row infusion-docs-footer">
-                <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
-                a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
-            </footer>
 
         </div> <!-- end container -->
+        <script>
+            fluid.docs.scrollActivePageTocIntoView();
+        </script>
 
     </body>
+    
 </html>

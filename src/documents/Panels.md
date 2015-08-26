@@ -22,7 +22,7 @@ Panels must be defined using the `fluid.prefs.panel` [grade](ComponentGrades.md)
 
 ```javascript
 fluid.defaults("my.pref.panel", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     ...
 });
 ```
@@ -31,19 +31,19 @@ Panels are, by default, [renderer components](RendererComponents.md), which auto
 ```javascript
 // shared grade, defining common functionality
 fluid.defaults("my.pref.panelGrade", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     <common defaults>
 });
 
 // one specific panel, which uses the shared grade
 fluid.defaults("my.pref.panel2", {
-    gradeNames: ["my.pref.panelGrade", "autoInit"],
+    gradeNames: ["my.pref.panelGrade"],
     <defaults specific to panel 1>
 });
 
 // another specific panel, which uses the shared grade
 fluid.defaults("my.pref.panel2", {
-    gradeNames: ["my.pref.panelGrade", "autoInit"],
+    gradeNames: ["my.pref.panelGrade"],
     <defaults specific to panel 2>
 });
 ```
@@ -77,7 +77,7 @@ The content of a Panel's preference map will be dependent on the preferences bei
 
 ```javascript
 fluid.defaults("fluid.prefs.panel.textFont", {
-    gradeNames: ["fluid.prefs.panel.classSwapper", "autoInit"],
+    gradeNames: ["fluid.prefs.panel.classSwapper"],
     preferenceMap: {
         "fluid.prefs.textFont": {
             "model.value": "default",
@@ -92,7 +92,7 @@ The following example shows the preference map used in the Preference Framework'
 
 ```javascript
 fluid.defaults("fluid.prefs.panel.textSize", {
-    gradeNames: ["fluid.prefs.panel.classSwapper", "autoInit"],
+    gradeNames: ["fluid.prefs.panel.classSwapper"],
     preferenceMap: {
         "fluid.prefs.textSize": {
             "model.value": "default",
@@ -115,7 +115,7 @@ The `selectors` options is a list of names CSS-style selectors. They identify th
 __Example: A checkbox adjuster__
 ```javascript
 fluid.defaults("fluid.prefs.panel.layoutControls", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     selectors: {
         label: ".flc-prefsEditor-toc-label",
         choiceLabel: ".flc-prefsEditor-toc-choice-label",
@@ -136,7 +136,7 @@ The `protoTree` option defines the Renderer component tree – the instructions 
 __Example: A checkbox adjuster__
 ```javascript
 fluid.defaults("fluid.prefs.panel.layoutControls", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     selectors: {
         label: ".flc-prefsEditor-toc-label",
         choiceLabel: ".flc-prefsEditor-toc-choice-label",
@@ -161,7 +161,7 @@ Panels are, by default, Infusion [model components](tutorial-gettingStartedWithI
 __Example: A checkbox adjuster__
 ```javascript
 fluid.defaults("demo.panels.speak", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "demo.speakText": {
             "model.speakText": "default"
@@ -181,7 +181,7 @@ fluid.defaults("demo.panels.speak", {
 __Example: A drop-down adjuster__
 ```javascript
 fluid.defaults("demo.panels.language", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "demo.language": {
             "model.lang": "default",
@@ -209,7 +209,7 @@ fluid.defaults("demo.panels.language", {
 __Example: Two adjusters: a textfieldSlider and a set of radio buttons__
 ```javascript
 fluid.defaults("demo.panels.vol", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         // pref map for the slider
         "demo.volume": {

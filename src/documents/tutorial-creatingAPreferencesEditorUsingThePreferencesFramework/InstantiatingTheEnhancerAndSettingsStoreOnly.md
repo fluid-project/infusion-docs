@@ -43,7 +43,7 @@ fluid.prefs.builder({
 
 ```javascript
 fluid.defaults("my.auxSchemaGrade", {
-    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    gradeNames: ["fluid.prefs.auxSchema"],
     auxiliarySchema: {
         namespace: "my.prefs",
         ....

@@ -20,17 +20,15 @@ An auxiliary schema must contain some required properties, described below. In a
   * the namespace of the component to call to initialize the constructed grades
 * `loaderGrades` (optional)
   * an array of grades to be applied to the `prefsEditorLoader`. To modify the default prefsEditor type (`"fluid.prefs.separatedPanel"`), a valid alternative should be supplied here.
-* `messagePrefix`
-  * defines the path to the directory containing the messages
+* `terms`
+  * defines paths to directories containing the message files and template files. This property is used to define all common terms used by `fluid.prefs.resourceLoader`.
 * `message`
   * the path to the message bundle for the prefs editor itself
-  * use `%prefix` to use the prefix specified by `messagePrefix` as part of the path
-* `templatePrefix`
-  * defines the path to the directory containing the templates
+  * provided the term name defined in the `terms` block for the path to the directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
 * `template`
   * the path to the template for the prefs editor itself
-  * use `%prefix` to use the prefix specified by `templatePrefix` as part of the path
-
+  * provided the term name defined in the `terms` block for the path to the directory containing the html templates is `templatePrefix`, use `%templatePrefix` to reference the prefix specified by `templatePrefix` as part of the path
+        
 ### Preference block properties ###
 
 Preference blocks can be given any property name, so long as the name is unique within the schema. Preference blocks will have the following properties:
@@ -44,7 +42,6 @@ Preference blocks can be given any property name, so long as the name is unique 
   * specifies the configuration for the enactor component
   * each preference block can specify only one enactor
 
-
 #### Panel properties ####
 
 * `type`
@@ -54,11 +51,10 @@ Preference blocks can be given any property name, so long as the name is unique 
   * only used in the "`panel`" block
 * `template`
   * the path to the template for the panel
-  * use `%prefix` to use the prefix specified by `templatePrefix` as part of the path
+  * provided the term name defined in [the top level `terms` property](#top-level-properties) for the path to the directory containing the templates is `templatePrefix`, use `%templatePrefix` to reference the prefix specified by `templatePrefix` as part of the path
 * `message`
   * the path to the message bundle for the panel
-  * use `%prefix` to use the prefix specified by `messagePrefix` as part of the path
-
+  * provided the term name defined in [the top level `terms` property](#top-level-properties) for the path to the directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
 
 #### Enactor properties ####
 
@@ -80,19 +76,21 @@ For detailed information about how to work with composite panels, see [Composite
     // The author of the auxiliary schema will provide the namespace, which will be used
     //for the component to call to initialize the constructed grades.
     "namespace": "fluid.prefs.constructed",
-
-    // The common path to settings panel templates.
-    // The template defined in "panels" element will take precedence over this definition.
-    "templatePrefix": "../../../framework/preferences/html/",
-
+ 
+    // The common terms to use in "template" and "message" properties in "panels" elements
+    "terms": {
+        // The template defined in "panels" element will take precedence over this definition.
+        "templatePrefix": "../../../framework/preferences/html/",
+        // The message defined in "panels" element will take precedence over this definition.
+        "messagePrefix": "../../../framework/preferences/messages/",
+    },
+ 
     // The path to the preferences editor own template (e.g. the separated panel prefs editor template)
-    "template": "%prefix/SeparatedPanelPrefsEditor.html",
+    "template": "%templatePrefix/SeparatedPanelPrefsEditor.html",
+ 
+     // The path to the preferences editor own message file (e.g. the separated panel prefs editor message file)
+    "message": "%messagePrefix/prefsEditor.json",
 
-    // The common path to settings panel messages.
-    // The message defined in "panels" element will take precedence over this definition.
-    "messagePrefix": "../../../framework/preferences/messages/",
-
-    "message": "%prefix/prefsEditor.json",
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
@@ -101,8 +99,8 @@ For detailed information about how to work with composite panels, see [Composite
         "panel": {
             "type": "fluid.prefs.panels.textSize",
             "container": ".flc-prefsEditor-text-size",
-            "template": "%prefix/PrefsEditorTemplate-textSize.html",
-            "message": "%prefix/textSize.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
+            "message": "%messagePrefix/textSize.json"
         }
     },
     "lineSpace": {
@@ -122,8 +120,8 @@ For detailed information about how to work with composite panels, see [Composite
         "panel": {
             "type": "fluid.prefs.panels.lineSpace",
             "container": ".flc-prefsEditor-line-space",
-            "template": "%prefix/PrefsEditorTemplate-lineSpace.html",
-            "message": "%prefix/lineSpace.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-lineSpace.html",
+            "message": "%messagePrefix/lineSpace.json"
         }
     },
     "textFont": {
@@ -143,8 +141,8 @@ For detailed information about how to work with composite panels, see [Composite
             "type": "fluid.prefs.panels.textFont",
             "container": ".flc-prefsEditor-text-font",
             "classnameMap": {"textFont": "@textFont.classes"},
-            "template": "%prefix/PrefsEditorTemplate-textFont.html",
-            "message": "%prefix/textFont.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-textFont.html",
+            "message": "%messagePrefix/textFont.json"
         }
     },
     "contrast": {
@@ -165,8 +163,8 @@ For detailed information about how to work with composite panels, see [Composite
             "type": "fluid.prefs.panels.contrast",
             "container": ".flc-prefsEditor-contrast",
             "classnameMap": {"theme": "@contrast.classes"},
-            "template": "%prefix/PrefsEditorTemplate-contrast.html",
-            "message": "%prefix/contrast.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-contrast.html",
+            "message": "%messagePrefix/contrast.json"
         }
     },
     "tableOfContents": {
@@ -178,8 +176,8 @@ For detailed information about how to work with composite panels, see [Composite
         "panel": {
             "type": "fluid.prefs.panels.layoutControls",
             "container": ".flc-prefsEditor-layout-controls",
-            "template": "%prefix/PrefsEditorTemplate-layout.html",
-            "message": "%prefix/tableOfContents.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-layout.html",
+            "message": "%messagePrefix/tableOfContents.json"
         }
     },
     "emphasizeLinks": {
@@ -191,8 +189,8 @@ For detailed information about how to work with composite panels, see [Composite
         "panel": {
             "type": "fluid.prefs.panels.linksControls",
             "container": ".flc-prefsEditor-links-controls",
-            "template": "%prefix/PrefsEditorTemplate-links.html",
-            "message": "%prefix/links.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-links.html",
+            "message": "%messagePrefix/links.json"
         }
     },
     "inputsLarger": {
@@ -204,15 +202,15 @@ For detailed information about how to work with composite panels, see [Composite
         "panel": {
             "type": "fluid.prefs.panel.inputsLarger",
             "container": ".flc-prefsEditor-inputsLarger",  // the css selector in the template where the panel is rendered
-            "template": "%prefix/PrefsEditorTemplate-inputsLarger.html",
-            "message": "%prefix/inputsLarger.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-inputsLarger.html",
+            "message": "%messagePrefix/inputsLarger.json"
         }
     },
     groups: {
         "linksControls": { // this defines a composite panel
             "container": ".flc-prefsEditor-links-controls",
-            "template": "%prefix/PrefsEditorTemplate-linksControls.html",
-            "message": "%prefix/linksControls.json",
+            "template": "%templatePrefix/PrefsEditorTemplate-linksControls.html",
+            "message": "%messagePrefix/linksControls.json",
             "type": "fluid.prefs.panel.linksControls",
             "panels": ["emphasizeLinks", "inputsLarger"] // the composite panel includes these two subpanels
         }
@@ -259,8 +257,8 @@ Each preference block can contain configuration for _at most_ one enactor and on
         "panel": {
             "type": "fluid.prefs.panels.textSize",
             "container": ".flc-prefsEditor-text-size",
-            "template": "%prefix/PrefsEditorTemplate-textSize.html",
-            "message": "%prefix/textSize.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
+            "message": "%messagePrefix/textSize.json"
         }
     },
     // An additional panel and enactor configured for the same preference
@@ -273,8 +271,8 @@ Each preference block can contain configuration for _at most_ one enactor and on
         "panel": {
             "type": "fluid.prefs.panels.foo",
             "container": ".flc-prefsEditor-foo",
-            "template": "%prefix/PrefsEditorTemplate-foo.html",
-            "message": "%prefix/foo.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-foo.html",
+            "message": "%messagePrefix/foo.json"
         }
     }
     ...
@@ -301,8 +299,8 @@ The example below shows two preferences (`emphasizeLinks` and `inputsLarger`)  s
         "panel": {
             "type": "fluid.prefs.panels.linksControls",
             "container": ".flc-prefsEditor-links-controls",
-            "template": "%prefix/PrefsEditorTemplate-links.html",
-            "message": "%prefix/links.json"
+            "template": "%templatePrefix/PrefsEditorTemplate-links.html",
+            "message": "%messagePrefix/links.json"
         }
     },
     "inputsLarger": {

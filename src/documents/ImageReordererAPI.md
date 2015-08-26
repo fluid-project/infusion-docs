@@ -1,7 +1,7 @@
 ---
 title: Image Reorderer API
 layout: default
-category: API
+category: Components
 ---
 
 The Image Reorderer is a convenience function for applying the Reorderer to images within a collection. This page provides technical details of the API.
