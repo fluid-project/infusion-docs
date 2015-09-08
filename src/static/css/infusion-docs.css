@@ -304,6 +304,23 @@ div.infusion-docs-note {
     margin-bottom: 2rem;
 }
 
+.infusion-docs-callout {
+    display: block;
+    border: 1px solid;
+    border-radius: 0.2rem;
+    float: right;
+    width: 30%;
+    background: #ffffff;
+    padding: 0.4rem;
+    font-size: 95%;
+}
+
+.infusion-docs-callout:before {
+    font-family: "infusion-docs";
+    content: "\e600";
+    padding-right: 0.5rem;
+}
+
 .infusion-docs-container .infusion-docs-githubLink a:before {
     display: inline-block;
     vertical-align: bottom;
