@@ -4,30 +4,28 @@ layout: default
 category: Infusion
 ---
 
-Infusion components are configured using options that are defined by the component developer and customized by the integrator. While component developers are free to define whatever options are appropriate for their component, the Infusion Framework supports a number of predefined options. This page briefly describes these predefined options and provides links more information about the related Framework functionality.
+Infusion components are configured using options that are defined by the component developer and customized by the integrator. 
+While component developers are free to define whatever options are appropriate for their component, the Infusion Framework supports a number of predefined options.
 
-Some predefined options should not be overridden by integrators: They are strictly for the use of the component developer. This is noted in the descriptions below.
+The particular set of options interpreted by the framework is determined by the [Grades](ComponentGrades.md) that the component is derived from. Developers and integrators
+can define further grades which respond to yet further options, which they should document if they expect the options to be generally useful. 
+This page briefly describes these predefined options and provides links to more information about the related framework functionality.
 
 ## Options Supported By All Components Grades ##
 
-The following options are supported by all component grades:
+The following options are supported by all component grades, that is, those derived from `fluid.component`:
 
-### gradeNames ###
+### `gradeNames` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>An array of string <a href="ComponentGrades.md">grade names</a>.</td>
-  </tr>
-  <tr>
-    <th>Notes</th>
-    <td>In addition to the grade names, the array should include the special <code>"autoInit"</code> value, which instructs the Framework to create the component creator function automatically.
-        <em><strong>NOTE:</strong> <code>"autoInit"</code> is the preferred way of creating components, and will become the default for Infusion 2.0. Always use this grade name, unless you have a special reason to not want the framework to fabricate a creator function (perhaps, because your grade is not instantiable).</em></td>
+    <td>A <code>String</code> or <code>Array of String</code> <a href="ComponentGrades.md">grade names</a>.</td>
   </tr>
   <tr>
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("component.name", {
-    gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "autoInit"],
+    gradeNames: "fluid.modelComponent",
     ...
 });</code>
 </pre></td>
@@ -38,65 +36,11 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### nickName ###
+### `invokers` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>Specifies a custom nickname for the component. The nickname is used by the Framework as an extra <a href="Contexts.md">context</a> name which can reference the component. By default, the nickname is derived from the component name.</td>
-  </tr>
-  <tr>
-    <th>Notes</th>
-    <td>This option was historically used to work around various framework deficiencies that have now been corrected. It will be removed from an upcoming revision of the framework.</td>
-  </tr>
-  <tr>
-    <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
-    nickName: "myComponentName",
-    ...
-});</code>
-</pre></td>
-  </tr>
-  <tr>
-    <th>See also</th>
-    <td><code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L2100-L2107">fluid.computeNickName</a></code></td>
-  </tr>
-</table>
-
-### mergePolicy ###
-<table>
-  <tr>
-    <th>Description</th>
-    <td>An object providing instructions for how particular options should be merged when integrator options are merged with default values.</td>
-  </tr>
-  <tr>
-    <th>Notes</th>
-    <td>It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy.</td>
-  </tr>
-  <tr>
-    <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
-    mergePolicy: {
-        option1: "noexpand",
-        option2: "nomerge",
-        ....
-    },
-    ...
-});</code>
-</pre></td>
-  </tr>
-  <tr>
-    <th>See also</th>
-    <td><a href="OptionsMerging.md">Options Merging</a></td>
-  </tr>
-</table>
-
-### invokers ###
-<table>
-  <tr>
-    <th>Description</th>
-    <td>An object defining methods on the component whose arguments are resolved from the environment as well as the direct argument list at invocation time.</td>
+    <td>A record defining methods on the component whose arguments are resolved from the environment as well as the direct argument list at invocation time.</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -116,15 +60,15 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### members ###
+### `members` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>An object defining properties to be added to the component object. These can be anything, including methods, strings, objects, etc. Definitions are evaluated as IoC expressions.</td>
+    <td>A record defining properties to be added to the component object. These can be anything, including methods, strings, objects, etc. Definitions are evaluated as IoC expressions.</td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td><code>members</code> differ from <code>invokers</code> in that the arguments of members are not resolved at invocation time.
+    <td>Defining a method as a Function in <code>members</code> will differ from <code>invokers</code> in that the arguments of members are not resolved at invocation time. The use of such function members is not recommended except where very high invocation performance is required.
         The right-hand-side may contain an <a href="ExpansionOfComponentOptions.md">expander</a> definition, which may perhaps itself resolve onto an <a href="Invokers.md">invoker</a>.</td>
   </tr>
   <tr>
@@ -141,11 +85,88 @@ The following options are supported by all component grades:
   </tr>
 </table>
 
-### components ###
+### `events` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>An object containing named definitions of the component's subcomponents.</td>
+    <td>A record containing key/value pairs that define the events the component will fire: the keys are the event names, the values define the type of the event (see <a href="InfusionEventSystem.md">Infusion Event System</a> for information on the different event types).</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>The Framework will create event firers for the listed events. The builtin events `onCreate`, `onDestroy` and `afterDestroy` will be fired automatically by the framework.
+    It is the responsibility of the component to fire user-defined events at the appropriate times.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>fluid.defaults("component.name", {
+    events: {
+        onSave: "preventable",
+        onReady: null
+    },
+    ...
+});</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="InfusionEventSystem.md">Infusion Event System</a></td>
+  </tr>
+</table>
+
+### `listeners` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A record defining listener functions for the events supported by a component.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>Both component developers and integrators can define listeners for events.
+<a href="Invokers.md">Invokers</a> and the `fire` method of other events can be used as listeners here, as well as any function handle resulting from an <a href="ExpansionOfComponentOptions.md">Expanders</a>. 
+Note that as well as being a simple string holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC Reference</a> 
+to any other event held in the component tree (for example <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, the value associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a> 
+or else follow the syntax of an invoker indicating that the registered listener receives a different signature from the one that the event has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>examples.myListener = function (number, condition) {
+    console.log("Event listener received number " + number + " and condition " + condition);
+};
+
+fluid.defaults("examples.eventedComponent", {
+    gradeNames: ["fluid.component"],
+    events: {
+        myEvent: null
+    },
+    listeners: {
+        "myEvent.myNamespace": "examples.myListener"
+    }
+});</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td><pre>
+<code>var myComp = examples.eventedComponent({
+    listeners: {
+        "myEvent.myNamespace": "examples.myOtherListener",
+    }
+});</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="InfusionEventSystem.md">Infusion Event System</a></td>
+  </tr>
+</table>
+
+### `components` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A record containing named definitions of the component's subcomponents.</td>
   </tr>
   <tr>
     <th>Notes</th>
@@ -175,19 +196,83 @@ The following options are supported by all component grades:
   </tr>
   <tr>
     <th>See also</th>
+    <td><a href="SubcomponentDeclaration.md">Documentation: Subcomponents</a></td>
+  <tr>
+  <tr>
+    <th></th>
     <td><a href="tutorial-gettingStartedWithInfusion/Subcomponents.md">Tutorial: Subcomponents</a></td>
   </tr>
 </table>
 
-### dynamicComponents ###
+### `distributeOptions` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>An object containing named definitions of the component's dynamic subcomponents</td>
+    <td>A record directing the framework to distribute options from this component to one or more other components in the component tree. Either a single record, an <code>Array</code> or <code>Object</code> holding these records is supported.
+    In the <code>Object</code> form, the keys of the object will be taken to represent the <code>namespace</code of the distribution.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>fluid.defaults("component.name", {
+    gradeNames: ["fluid.component"],
+    distributeOptions: {
+        namespace: "myDistribution",
+        record: "another.grade.name",
+        target: "{that target.grade.name}.options.gradeNames"
+    }
+    ...
+});</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="IoCSS.md">IoCSS for options distributions</a></td>
+  </tr>
+</table>
+
+### `mergePolicy` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A record providing instructions for how particular options should be merged when integrator options are merged with default values.</td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td>Some special context names may be available within the subcomponent's definition block, for example <code>{source}</code> and <code>{sourcePath}</code> or <code>{arguments}</code>. This framework facility will be replaced by a more declarative equivalent in time and should be used with caution.</td>
+    <td>It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy. 
+    For example, some noxious circularly-liked structure such as a node.js HTTP `request` object should be protected in such a way. The 2.0 framework will automatically protect an object which fails the `fluid.isPlainObject` test, which will exclude
+    any object with a nondefault constructor or native type such as DOM elements, `TypedArray`s, Infusion components themselves, etc.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>fluid.defaults("component.name", {
+    mergePolicy: {
+        option1: "noexpand",
+        option2: "nomerge",
+        ....
+    },
+    ...
+});</code>
+</pre></td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="OptionsMerging.md">Options Merging</a></td>
+  </tr>
+</table>
+
+### `dynamicComponents` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An object containing named definitions of the component's <a href="SubcomponentDeclaration.md#dynamic-components">dynamic subcomponents</a>. Rather than exactly one subcomponent being associated with its parent from these records, there may be one subcomponent per element of an array, or one per firing of an event.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>Some special context names will be available within the subcomponent's definition block, for example <code>{source}</code> and <code>{sourcePath}</code> or <code>{arguments}</code>, derived from the material responsible for constructing the component. 
+    <em>This framework facility will be replaced by a more declarative equivalent in time - ask on the <a href="http://lists.idrc.ocad.ca/mailman/listinfo/fluid-work">fluid-work mailing list</a> 
+    or <a href="https://wiki.fluidproject.org/display/fluid/IRC+Channel">#fluid-work IRC channel</a> if you seem to find yourself needing to use it.</em></td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -207,32 +292,23 @@ The following options are supported by all component grades:
   </tr>
   <tr>
     <th>See also</th>
+    <td><a href="SubcomponentDeclaration.md#dynamic-components">Documentation: Dynamic components</a></td>
+  <tr><th></th>
     <td><a href="tutorial-gettingStartedWithInfusion/Subcomponents.md">Tutorial: Subcomponents</a></td>
   </tr>
 </table>
 
-
-## Little Components ##
-
-Components defined with a grade of `littleComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, and no others. Component developers are free to define their own additional options.
-
-See also: [Component Grades](ComponentGrades.md)
-
 ## Model Components ##
 
-Components defined with a grade of `modelComponent/modelRelayComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
+Components defined with a grade of `modelComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
 
 See also: [Component Grades](ComponentGrades.md)
 
-### model ###
+### `model` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>An object containing the data model to be used by the component.</td>
-  </tr>
-  <tr>
-    <th>Notes</th>
-    <td>If a <a href="ChangeApplier.md">ChangeApplier</a> is not provided using the <code><a href="#applier">applier</a></code> option, the Framework will create one for the provided model. </td>
+    <td>An record containing the data model to be used by the component.</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -262,174 +338,91 @@ See also: [Component Grades](ComponentGrades.md)
     <th>See also</th>
     <td><a href="FrameworkConcepts.md#model-objects">Model Objects</a><br/>
         <a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
-        <code><a href="#applier">applier</a></code><br/>
-        <code><a href="#changeapplieroptions">changeApplierOptions</a></code></td>
   </tr>
 </table>
 
-### applier ###
+### `modelListeners` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>A <a href="ChangeApplier.md">ChangeApplier</a> object for the model provided with the <code><a href="#model">model</a></code> option.</td>
-  </tr>
-  <tr>
-    <th>Notes</th>
-    <td>It is not necessary to provide an applier: By default, an applier will be created with <code>fluid.makeChangeApplier()</code>, using any options specified with <code><a href="#changeapplieroptions">changeApplierOptions</a></code>.
-
-This option is most commonly used to share a common ChangeApplier between components in a component tree: the <code>applier</code> option can be used to reference the ChangeApplier of another component in the tree.</td>
+    <td>A record defining a set of functions wishing to be notified of changes to the `model`</td>
   </tr>
   <tr>
     <th>Example Definition</th>
     <td><pre>
-<code>fluid.defaults("component.name", {
-    applier: "{parentComponent}.applier",
-    ...
+<code>fluid.defaults("fluid.tests.allChangeRecorder", {
+    gradeNames: "fluid.tests.changeRecorder",
+    modelListeners: {
+        "": "{that}.record({change}.path, {change}.value, {change}.oldValue)"
+    }
 });</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
-    <code><a href="#model">model</a></code><br/>
-    <code><a href="#changeapplieroptions">changeApplierOptions</a></code></td>
+    <td><a href="ChangeApplierAPI.md#model-listener-declaration">Model Listeners</a></td>
   </tr>
 </table>
 
-### changeApplierOptions ###
+### `modelRelay` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>Options that will be passed on to <code>fluid.makeChangeApplier()</code> if a ChangeApplier is not provided using the <code><a href="#applier">applier</a></code> option.</td>
-  </tr>
-  <tr>
-    <th>Notes</th>
-    <td>If a ChangeApplier is provided using the <code><a href="#applier">applier</a></code> option, this option will be ignored. </td>
+    <td>A set of rules or constraints linking values held in this model to those elsewhere in the component tree (or to other values within this model)</td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre><code>
-fluid.defaults("component.name", {
-    model: {...},
-    changeApplierOptions: {
-        cullUnchanged: true
-    },
-    ...
-});</code>
-</pre></td>
-  </tr>
-  <tr>
-    <th>Example Override</th>
     <td><pre>
-<code>var myComp = component.name(container, {
-    model: {...},
-    changeApplierOptions: {
-        cullUnchanged: true
+<code>fluid.defaults("examples.volumeModelRelay", {
+    gradeNames: ["fluid.modelComponent"],
+    model: {
+        volumeAsPercent: 95,
     },
-    ...
+    modelRelay: {
+        source: "volumeAsPercent",
+        target: "volumeAsFraction",
+        singleTransform: {
+            type: "fluid.linearScale",
+            factor: 0.01
+        }
+    }
 });</code>
 </pre></td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
-    <code><a href="#model">model</a></code><br/>
-    <code><a href="#applier">applier</a></code></td>
+    <td><a href="ModelRelay.md">Model Relay</a></td>
   </tr>
 </table>
 
-## Evented Components ##
-
-Components defined with a grade of `eventedComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
-
-See also: [Component Grades](ComponentGrades.md)
-
-### events ###
+### `changeApplierOptions` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>An object containing key/value pairs that define the events the component will fire: the keys are the event names, the values define the type of the event (see <a href="InfusionEventSystem.md">Infusion Event System</a> for information on the different event types).</td>
-  </tr>
-  <tr>
-    <th>Notes</th>
-    <td>The Framework will create event firers for the listed events. It is the responsibility of the component to fire the events at the appropriate times.</td>
-  </tr>
-  <tr>
-    <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
-    events: {
-        onSave: "preventable",
-        onReady: null
-    },
-    ...
-});</code>
-</pre></td>
+    <td>Options that will be passed on to the ChangeApplier constructed for this component. There are currently no such options supported. This section is left as a placeholder, since such options,
+    like lemon-soaked paper napkins, will one day be supported here again.
+    </td>
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="InfusionEventSystem.md">Infusion Event System</a></td>
-  </tr>
-</table>
-
-### listeners ###
-<table>
-  <tr>
-    <th>Description</th>
-    <td>An object defining listener functions for the events supported by a component.</td>
-  </tr>
-  <tr>
-    <th>Notes</th>
-    <td>Both component developers and integrators can define listeners for events.
-<a href="Invokers.md">Invokers</a> and <a href="ExpansionOfComponentOptions.md">Expanders</a> can be used as listeners here. Note that as well as being a simple string holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC Reference</a> to any other event held in the component tree (for example <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, a the value associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a> or else follow the syntax of an invoker indicating that the registered listener receives a different signature from the one that the event has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).</td>
-  </tr>
-  <tr>
-    <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
-    events: {
-        onSave: "preventable",
-        onReady: null
-    },
-    listeners: {
-        onSave: "component.name.saveValidatorFn"
-    },
-    ...
-});</code>
-</pre></td>
-  </tr>
-  <tr>
-    <th>Example Override</th>
-    <td><pre>
-<code>var myComp = component.name(container, {
-    listeners: {
-        onReady: "myNamespace.myReadyNotificationFn",
-    },
-    ...
-});</code>
-</pre></td>
-  </tr>
-  <tr>
-    <th>See also</th>
-    <td><a href="InfusionEventSystem.md">Infusion Event System</a></td>
+    <td><a href="ChangeApplierAPI.md">ChangeApplier API</a></td>
   </tr>
 </table>
 
 ## View Components ##
 
-Components defined with a grade of `viewComponent` are also model components and evented components, so they support
+Components defined with a grade of `viewComponent` are also model components, so they support
 * all of the [common options](#options-supported-by-all-components-grades) described above,
-* [`modelComponent` options](#model-components) described above,
-* [`eventedComponent` options](#evented-components) described above,
+* [`modelComponent` options](#model-components) described above
 * and those defined below.
 
 Component developers are free to define their own additional options.
 
-### selectors ###
+### `selectors` ###
 <table>
   <tr>
     <th>Description</th>
-    <td>An object containing names CSS-based selectors identifying where in the DOM different elements can be found.</td>
+    <td>A record containing named CSS-based selectors identifying where in the DOM relative to the component's `container` different elements can be found.</td>
   </tr>
   <tr>
     <th>Notes</th>
@@ -468,19 +461,51 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
+### `styles` ###
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A record containing named CSS classes that the component will apply to its markup in order to achieve state-dependent styling effects.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>The contents of this block are not interpreted by the framework at all. The existence of this block amounts to a helpful convention that implementors of view components are recommended to use, to organise
+    and advertise the CSS class names that they will apply on behalf of their users</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre>
+<code>fluid.defaults("demo.initGridReorderer", {
+    gradeNames: ["fluid.reorderGrid"],
+    styles: {
+        dragging: "demo-gridReorderer-dragging",
+        avatar: "demo-gridReorderer-avatar",
+        selected: "demo-gridReorderer-selected",
+        dropMarker: "demo-gridReorderer-dropMarker"
+    },
+    disableWrap: true
+});</code>
+</pre></td>
+</tr>
+
+</table>
+
+In addition to the options above, a View Component also accepts an additional argument named `container` which may be supplied either as the first argument to its [Creator Function](UnderstandingInfusionComponents.md)
+or else at top level in its [Subcomponent Record](SubcomponentDeclaration.md). It is not currently supported to supply this value as a standard option in the options record.
 
 ## Renderer Components ##
 
-Components defined with a grade of `rendererComponent` are also view components (and hence model components and evented components), so they support
+Components defined with a grade of `rendererComponent` are also view components (and hence model components), so they support
 * all of the [common options](#options-supported-by-all-components-grades) described above,
 * [`modelComponent` options](#model-components) described above,
-* [`eventedComponent` options](#evented-components) described above,
 * [`viewComponent` options](#view-components) described above,
 * and those defined below.
 
 Component developers are free to define their own additional options.
 
-### selectorsToIgnore ###
+**NOTE**: The Infusion Renderer system will be rewritten completely before the final Infusion 2.0 release - the use of the current renderer and component hierarchy is not recommended.
+
+### `selectorsToIgnore` ###
 <table>
   <tr>
     <th>Description</th>
@@ -505,7 +530,7 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### repeatingSelectors ###
+### `repeatingSelectors` ###
 <table>
   <tr>
     <th>Description</th>
@@ -530,7 +555,7 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### produceTree ###
+### `produceTree` ###
 <table>
   <tr>
     <th>Description</th>
@@ -564,7 +589,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### protoTree ###
+### `protoTree` ###
 <table>
   <tr>
     <th>Description</th>
@@ -632,7 +657,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### resources ###
+### `resources` ###
 <table>
   <tr>
     <th>Description</th>
@@ -677,7 +702,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### strings ###
+### `strings` ###
 <table>
   <tr>
     <th>Description</th>
@@ -691,7 +716,7 @@ fluid.defaults("cspace.confirmationDialog", {
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("cspace.searchToRelateDialog", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     strings: {
         createNewButton: "Create",
         title: "Add Related %recordType Record",
@@ -723,7 +748,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### rendererFnOptions ###
+### `rendererFnOptions` ###
 <table>
   <tr>
     <th>Description</th>
@@ -758,7 +783,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### rendererOptions ###
+### `rendererOptions` ###
 <table>
   <tr>
     <th>Description</th>
@@ -793,21 +818,17 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### renderOnInit ###
+### `renderOnInit` ###
 <table>
   <tr>
     <th>Description</th>
     <td>A boolean flag indicating whether or not the component should render itself automatically once initialization has completed. By default, renderer components do not render themselves automatically.</td>
   </tr>
   <tr>
-    <th>Notes</th>
-    <td>This option is valid both for <code>"autoInit"</code> components and for components that are initialized manually, through <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248">fluid.initRendererComponent</a></code>.</td>
-  </tr>
-  <tr>
     <th>Example Definition</th>
     <td><pre>
 <code>fluid.defaults("cspace.login", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     renderOnInit: true,
     ...
 });</code>

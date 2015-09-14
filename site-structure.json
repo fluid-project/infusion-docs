@@ -5,18 +5,18 @@
         "sections":
         [
             {
-                "sectionName": "Components",
+                "sectionName": "Defining Components",
                 "href":"/Components.html",
                 "pages":
                 [
                     { "pageName": "Framework Concepts", "href": "/FrameworkConcepts.html"},
                     { "pageName": "Understanding Infusion Components", "href": "/UnderstandingInfusionComponents.html" },
-                    { "pageName": "Understanding Component Options And Their Defaults", "href": "/ComponentOptionsAndDefaults.html" },
+                    { "pageName": "Understanding Component Options And Defaults", "href": "/ComponentOptionsAndDefaults.html" },
                     { "pageName": "Component Configuration Options", "href": "/ComponentConfigurationOptions.html" },
                     { "pageName": "Component Grades", "href": "/ComponentGrades.html" },
                     { "pageName": "Options Merging", "href": "/OptionsMerging.html" },
                     { "pageName": "Component Lifecycle", "href": "/ComponentLifecycle.html" },
-                    { "pageName": "DOM Binder", "href": "/DOMBinder.html" }
+                    { "pageName": "Priorities", "href": "/Priorities.html" }
                 ]
             },
             {
@@ -26,27 +26,37 @@
                     { "pageName": "How To Use Infusion IoC", "href": "/HowToUseInfusionIoC.html" },
                     { "pageName": "Subcomponent Declaration", "href": "/SubcomponentDeclaration.html" },
                     { "pageName": "Contexts", "href": "/Contexts.html" },
+                    { "pageName": "ContextAwareness", "href": "/ContextAwareness.html" },
                     { "pageName": "Invokers", "href": "/Invokers.html" },
                     { "pageName": "Expansion Of Component Options", "href": "/ExpansionOfComponentOptions.html" },
+                    { "pageName": "IoC References", "href": "/IoCReferences.html" },
                     { "pageName": "IoCSS", "href": "/IoCSS.html" },
-                    { "pageName": "Declarative this-ism In IoC", "href": "/DeclarativeThisismInIoC.html" },
-                    { "pageName": "IoC References", "href": "/IoCReferences.html" }
+                    { "pageName": "Declarative this-ism In IoC", "href": "/DeclarativeThisismInIoC.html" }
                 ]
             },
             {
                 "sectionName": "Events",
                 "pages":
                 [
-                    { "pageName": "Events", "href": "/Events.html" },
                     { "pageName": "Infusion Event System", "href": "/InfusionEventSystem.html" },
                     { "pageName": "Event injection and boiling", "href": "/EventInjectionAndBoiling.html" }
                 ]
             },
             {
-                "sectionName": "ChangeApplier",
+                "sectionName": "Models",
                 "pages":
                 [
-                    { "pageName": "ChangeApplier", "href": "/ChangeApplier.html" }
+                    { "pageName": "ChangeApplier", "href": "/ChangeApplier.html" },
+                    { "pageName": "ChangeApplier API", "href": "/ChangeApplierAPI.html" },
+                    { "pageName": "Model Relay", "href": "/ModelRelay.html" }
+                ]
+            }, {
+                "sectionName": "Views",
+                "pages":
+                [
+                    { "pageName": "DOM Binder", "href": "/DOMBinder.html" },
+                    { "pageName": "DOM Binder API", "href": "/DOMBinderAPI.html" },
+                    { "pageName": "Class Name Conventions", "href": "/ClassNameConventions.html" }
                 ]
             },
             {
@@ -81,12 +91,10 @@
                 ]
             },
             {
-                "sectionName": "General",
+                "sectionName": "Testing",
                 "pages":
                 [
-                    { "pageName": "Model Relay", "href": "/ModelRelay.html" },
-                    { "pageName": "Progressive Enhancement", "href": "/ProgressiveEnhancement.html" },
-                    { "pageName": "Class Name Conventions", "href": "/ClassNameConventions.html" },
+
                     { "pageName": "IoC Testing Framework", "href": "/IoCTestingFramework.html" }
                 ]
             },
@@ -122,9 +130,8 @@
                     { "pageName": "Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
                     { "pageName": "Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
                     { "pageName": "Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
-                    { "pageName": "Basic Component Creation - Little Components", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-LittleComponents.html"},
+                    { "pageName": "Basic Component Creation", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"},
                     { "pageName": "Model Components", "href": "/tutorial-gettingStartedWithInfusion/ModelComponents.html"},
-                    { "pageName": "Evented Components", "href": "/tutorial-gettingStartedWithInfusion/EventedComponents.html"},
                     { "pageName": "View Components", "href": "/tutorial-gettingStartedWithInfusion/ViewComponents.html"},
                     { "pageName": "Renderer Components", "href": "/tutorial-gettingStartedWithInfusion/RendererComponents.html"},
                     { "pageName": "Subcomponents", "href": "/tutorial-gettingStartedWithInfusion/Subcomponents.html"}
@@ -165,8 +172,8 @@
         ]
     },
     {
-        "category": "API",
-        "categoryHref": "/index-api.html",
+        "category": "Components",
+        "categoryHref": "/index-components.html",
         "sections":
         [
             {
@@ -185,10 +192,7 @@
                     { "pageName": "User Interface Options", "href": "/UserInterfaceOptionsAPI.html" },
                     { "pageName": "Uploader", "href": "/UploaderAPI.html" },
                     { "pageName": "Undo", "href": "/to-do/UndoAPI.html" },
-                    { "pageName": "Table of Contents", "href": "/to-do/TableOfContentsAPI.html" },
-                    { "pageName": "ChangeApplier API", "href": "/ChangeApplierAPI.html" },
-                    { "pageName": "Framework API", "href": "/to-do/FrameworkAPI.html" },
-                    { "pageName": "DOM Binder API", "href": "/DOMBinderAPI.html" }
+                    { "pageName": "Table of Contents", "href": "/to-do/TableOfContentsAPI.html" }
                 ]
             }
         ]

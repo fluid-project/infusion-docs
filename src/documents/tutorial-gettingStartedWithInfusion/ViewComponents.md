@@ -9,9 +9,10 @@ Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.
 
 ---
 
-In most cases, you will likely be creating a component that will actually want to do something with your HTML page: process form input, update displays, etc. `little`, `evented` and `model` components don't provide any support for this: you'll need a **view component**.
+In most cases, you will likely be creating a component that will actually want to do something with your HTML page: process form input, update displays, etc. plain and `model` components don't provide any support for this: you'll need a **view component**.
 
-A view component provides support for a model and events (i.e. it is a model component and an evented component). It also provides supports for interaction with the DOM. The most useful of these is the [DOM Binder](../DOMBinder.md). If your application has a user interface, you likely have a list of DOM elements you're interested in working with. A DOM Binder provides very easy, configurable access to these elements.
+A view component provides support for a model and events (i.e. it is a model component as well as a view component). It also provides supports for interaction with the DOM. The most useful of these is the [DOM Binder](../DOMBinder.md). 
+If your application has a user interface, you likely have a list of DOM elements you're interested in working with. A DOM Binder provides very easy, configurable access to these elements.
 
 ## Declaring a View Component ##
 
@@ -22,7 +23,7 @@ To create a view component, you need to use the **viewComponent** grade. To do t
 
 ```javascript
 fluid.defaults("tutorials.viewBearingComponent", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: "fluid.viewComponent",
     ...
     selectors: {
         selector1: ".class1",
@@ -73,7 +74,7 @@ So far, the JavaScript to instantiate this component and specify these selectors
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: "fluid.viewComponent",
     selectors: {
         amount: ".tut-currencyConverter-amount",
         currency: ".tut-currencyConverter-currency-selecter",

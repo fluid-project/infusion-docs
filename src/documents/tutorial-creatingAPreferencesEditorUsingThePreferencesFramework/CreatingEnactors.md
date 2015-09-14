@@ -18,13 +18,13 @@ In the [Preferences Framework](../PreferencesFramework.md), "Enactors" are Infus
 
 The configuration information used to define an enactor must include certain required information:
 
-* the `fluid.prefs.enactor` and `autoInit` [grades](../ComponentGrades.md) (provided by the Framework)
+* the `fluid.prefs.enactor` [grade](../ComponentGrades.md) (provided by the Framework)
 * a Preference Map (see [below](#preferencemap))
 * a renderer [proto-tree](../RendererComponentTrees.md) or `produceTree` function
 * selectors for rendering the controls, labels, etc
 * any other information required by the enactor
 
-If the enactor will be modifying the view of the interface, you will also want to add the `fluid.viewRelayComponent` grade as well as selectors.
+If the enactor will be modifying the view of the interface, you will also want to add the `fluid.viewComponent` grade as well as selectors.
 
 ## PreferenceMap ##
 
@@ -49,7 +49,7 @@ Each enactor defines a "preference map," which map the information in the [Prima
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textSize", {
-    gradeNames: ["fluid.prefs.panel", "autoInit"],
+    gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "fluid.prefs.textSize": {
             "model.value": "default"
@@ -61,7 +61,7 @@ fluid.defaults("fluid.prefs.enactor.textSize", {
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.emphasizeLinks", {
-    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor.styleElements", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor.styleElements"],
     preferenceMap: {
         "fluid.prefs.emphasizeLinks": {
             "model.value": "default"
@@ -73,7 +73,7 @@ fluid.defaults("fluid.prefs.enactor.emphasizeLinks", {
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.panels.captionsSettings", {
-    gradeNames: ["fluid.videoPlayer.panels.mediaSettings", "autoInit"],
+    gradeNames: ["fluid.videoPlayer.panels.mediaSettings"],
     preferenceMap: {
         "fluid.videoPlayer.displayCaptions": {
             "model.show": "default"
@@ -137,7 +137,7 @@ The actions that an enactor will take will be entirely dependent on what the ena
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.lineSpace", {
-    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     preferenceMap: {
         "fluid.prefs.lineSpace": {
             "model.value": "default"
@@ -180,7 +180,7 @@ fluid.prefs.enactor.lineSpace.set = function (that, newValue) {
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.tableOfContents", {
-    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     preferenceMap: {
         "fluid.prefs.tableOfContents": {
             "model.toc": "default"

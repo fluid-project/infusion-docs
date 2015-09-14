@@ -65,7 +65,7 @@ In the following example, a **this-ist** function is used to attach a listener t
 
 ```javascript
 fluid.defaults("demo.hw", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     selectors: {
         button: "demo-hw-button",
     title: "demo-hw-title"
@@ -96,7 +96,7 @@ In the following example, taken from the Infusion Table of Contente component, *
 
 ```javascript
 fluid.defaults("fluid.tableOfContents", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     ...
     invokers: {
         ...
@@ -117,7 +117,7 @@ In the following example, taken from the Infusion Inline Edit component, a **thi
 
 ```javascript
 fluid.defaults("fluid.inlineEdit.tinyMCE", {
-    gradeNames: ["fluid.inlineEdit", "autoInit"],
+    gradeNames: ["fluid.inlineEdit"],
     listeners: {
         onCreate: {
             "this": "tinyMCE",
@@ -134,7 +134,7 @@ In the following example, taken from the Infusion Pager component, a **this-ist*
 
 ```javascript
 fluid.defaults("fluid.pager", {
-    gradeNames: ["fluid.viewComponent", "autoInit"],
+    gradeNames: ["fluid.viewComponent"],
     ...
     listeners: {
         onCreate: {

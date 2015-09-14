@@ -20,7 +20,7 @@ fluid.defaults("my.component.name", {
 });
 ```
 
-Note that as with the use of [dynamic grades](ComponentGrades.md), what could be called a kind of "dynamic subcomponent" can be added after the fact to any component simply by arranging for additional entries in its `components` options, via any of the usual routes - for example, direct arguments to its creator function, options distributed by [distributeOptions](IoCSS.md), or by 2nd-level nested `components` entries in the subcomponent record of the defaults of a component grandparent. Later on in this section we will see direct framework facilities for other kinds of dynamic subcomponents, those driven by dynamic data or event firing.
+Note that as with the use of [dynamic grades](ComponentGrades.md#dynamic-grades), what could be called a kind of "dynamic subcomponent" can be added after the fact to any component simply by arranging for additional entries in its `components` options, via any of the usual routes - for example, direct arguments to its creator function, options distributed by [distributeOptions](IoCSS.md), or by 2nd-level nested `components` entries in the subcomponent record of the defaults of a component grandparent. Later on in this section we will see direct framework facilities for other kinds of dynamic subcomponents, those driven by dynamic data or event firing.
 
 ## Basic Subcomponent Declaration ##
 
@@ -108,7 +108,7 @@ Note that the entire subcomponent record may be replaced by a simple IoC referen
 
 ```javascript
 fluid.defaults("cspace.admin", {
-    gradeNames: ["fluid.rendererComponent", "autoInit"],
+    gradeNames: ["fluid.rendererComponent"],
     components: {
         adminRecordEditor: { // view subcomponent declaration
             type: "cspace.recordEditor",
@@ -123,7 +123,7 @@ fluid.defaults("cspace.admin", {
 
 ```javascript
 fluid.defaults("cspace.admin.showAddButton", {
-    gradeNames: ["autoInit", "fluid.modelComponent"],
+    gradeNames: ["fluid.modelComponent"],
     components: { // injected component declaration
         permissionsResolver: "{permissionsResolver}"
     }
@@ -132,7 +132,7 @@ fluid.defaults("cspace.admin.showAddButton", {
 
 ```javascript
 fluid.defaults("gpii.explorationTool.modelTransformer", {
-    gradeNames: ["fluid.modelComponent", "fluid.uiOptions.modelRelay", "autoInit"],
+    gradeNames: ["fluid.modelComponent", "fluid.uiOptions.modelRelay"],
     components: {
         highContrast: { // complex subcomponent declaration with priority and createOnEvent
             type: "gpii.explorationTool.panels.highContrast",
@@ -151,7 +151,8 @@ fluid.defaults("gpii.explorationTool.modelTransformer", {
 
 ## Dynamic components ##
 
-A powerful facility known as _**dynamic (sub)components**_ allows you to direct the framework to construct a number of subcomponents whose number is not known in advance from a template subcomponent record. There are two principal varieties of dynamic components. The first requires the existence of a _**source array**_ for the construction - at run-time, the framework will inspect the array you refer to and construct one component from your template for each element of the array. The components which get constructed in this way can each be contextualised by both the contents of the corresponding array element as well as its index. The second requires the existence of a _**source event**_ for the construction. The framework will construct one subcomponent for each firing of the [event](Events.md) - the constructed component can be contextualised by the arguments that the event was fired with.
+A powerful facility known as _**dynamic (sub)components**_ allows you to direct the framework to construct a number of subcomponents whose number is not known in advance from a template subcomponent record. There are two principal varieties of dynamic components. The first requires the existence of a _**source array**_ for the construction - at run-time, the framework will inspect the array you refer to and construct one component from your template for each element of the array. The components which get constructed in this way can each be contextualised by both the contents of the corresponding array element as well as its index. 
+The second requires the existence of a _**source event**_ for the construction. The framework will construct one subcomponent for each firing of the [event](InfusionEventSystem.md) - the constructed component can be contextualised by the arguments that the event was fired with.
 
 Both of these schemes make use of a special top-level area in a component's options, entitled `dynamicComponents`. The structure of this area is almost identical to the standard `components` area described above, with a few differences described in the dedicated subsections below.
 
@@ -169,12 +170,12 @@ This scheme for declaring a dynamic component is announced by making use of the 
 
 ```javascript
 fluid.defaults("examples.dynamicComponentRoot", {
-    gradeNames: ["fluid.littleComponent", "autoInit"],
+    gradeNames: ["fluid.component"],
     values: [2, 3],
     dynamicComponents: {
         dynamic: {
             sources: "{that}.options.values",
-            type: "fluid.littleComponent",
+            type: "fluid.component",
             options: {
                 source: "{source}"
             }
@@ -195,14 +196,14 @@ The use of this scheme for dynamic components is announced by using the standard
 
 ```javascript
 fluid.defaults("examples.dynamicEventRoot", {
-    gradeNames: ["fluid.eventComponent", "autoInit"],
+    gradeNames: ["fluid.eventComponent"],
     events: {
         creationEvent: null
     },
     dynamicComponents: {
         dynamic: {
             createOnEvent: "creationEvent",
-            type: "fluid.littleComponent",
+            type: "fluid.component",
             options: {
                 argument: "{arguments}.0"
             }
@@ -217,6 +218,7 @@ that.events.creationEvent.fire(3);
 var secondValue = that["dynamic-1"].options.argument; // 3
 ```
 
-In this case, rather than exposing the special context names `{source}` and `{sourcePath}` as with array-sourced dynamic components, the configuration for the dynamic components block instead just exposes the more standard context name **`{arguments}`** which we have seen used both with [invokers](Invokers.md) and [event listeners](Events.md). In this case, the context name `{arguments}` is bound onto the argument list that was used to fire the event which triggered the creation of the particular dynamic subcomponent. The example shows the argument list successively holding the value `[2]` and then the value `[3]`.
+In this case, rather than exposing the special context names `{source}` and `{sourcePath}` as with array-sourced dynamic components, the configuration for the dynamic components block instead just 
+exposes the more standard context name **`{arguments}`** which we have seen used both with [invokers](Invokers.md) and [event listeners](InfusionEventSystem.md). In this case, the context name `{arguments}` is bound onto the argument list that was used to fire the event which triggered the creation of the particular dynamic subcomponent. The example shows the argument list successively holding the value `[2]` and then the value `[3]`.
 
 Note that with this scheme, it is quite likely that the user will want to arrange for the destruction of the dynamic subcomponents at some time earlier than the natural destruction time of their parent and all its children. Using this scheme, they must arrange to do so using procedural code which manually schedules a call to the `destroy()` method of the dynamic subcomponent they want destroyed. As we observe above, this awkwardness will be removed when the dynamicComponents facility is replaced in a future revision of the framework that makes more powerful use of the lensing capabilities of the [Model Transformations](to-do/ModelTransformation.md) system.

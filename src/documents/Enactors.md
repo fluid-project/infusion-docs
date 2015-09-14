@@ -25,16 +25,15 @@ Each of these is explained below.
 Enactors must be defined using the `fluid.prefs.enactor` [grade](ComponentGrades.md), as shown in the following code block:
 ```javascript
 fluid.defaults("my.pref.enactor", {
-    gradeNames: ["fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.prefs.enactor"],
     ...
 });
 ```
 
-Enactors are, by default, [standard relay components](ComponentGrades.md
-), so they automatically provide support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewRelayComponent`](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L40-L42) grade should be used, and the `selectors` option should be provided, as shown in the following example:
+Enactors are, by default, [model components](ComponentGrades.md), so they automatically provide support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewComponent`](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L40-L42) grade should be used, and the `selectors` option should be provided, as shown in the following example:
 ```javascript
 fluid.defaults("my.pref.enactor", {
-    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     selectors: {
         <selectors as required>
     },
@@ -46,19 +45,19 @@ If you are defining several enactors which share common functionality, you can c
 ```javascript
 // shared grade, defining common functionality
 fluid.defaults("my.pref.enactorGrade", {
-    gradeNames: ["fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.prefs.enactor"],
     <common defaults>
 });
 
 // one specific enactor, which uses the shared grade
 fluid.defaults("my.pref.enactor1", {
-    gradeNames: ["my.pref.enactorGrade", "autoInit"],
+    gradeNames: ["my.pref.enactorGrade"],
     <defaults specific to enactor 1>
 });
 
 // another specific enactor, which uses the shared grade
 fluid.defaults("my.pref.enactor2", {
-    gradeNames: ["my.pref.enactorGrade", "autoInit"],
+    gradeNames: ["my.pref.enactorGrade"],
     <defaults specific to enactor 2>
 });
 ```
@@ -89,7 +88,7 @@ Typically, an enactor will work with only a single preference and will only be c
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textFont", {
-    gradeNames: ["fluid.prefs.enactor.classSwapper", "autoInit"],
+    gradeNames: ["fluid.prefs.enactor.classSwapper"],
     preferenceMap: {
         "fluid.prefs.textFont": {
             "model.value": "default"
@@ -107,7 +106,7 @@ Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/Mod
 **Example: Enactor that calls a setter function when the model changes**
 ```javascript
 fluid.defaults("gpii.enactor.fontSize", {
-    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     preferenceMap: {
         "gpii.primarySchema.fontSize": {
             "model.value": "default"
@@ -138,7 +137,7 @@ gpii.enactor.fontSize.set = function (times, cursorDiv) {
 **Example: Enactor that uses a speak enactor to self-voice a page**
 ```javascript
 fluid.defaults("fluid.prefs.enactor.selfVoicing", {
-    gradeNames: ["fluid.viewRelayComponent", "fluid.prefs.enactor.speak", "autoInit"],
+    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor.speak"],
     modelListeners: {
         "enabled": {
             funcName: "{that}.handleSelfVoicing",

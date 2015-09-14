@@ -1,7 +1,7 @@
 ---
 title: DOM Binder API
 layout: default
-category: API
+category: Infusion
 ---
 
 The DOM Binder provides a degree of separation between a component and its interface by handling any interaction the component may have with its markup.
