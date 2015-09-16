@@ -116,7 +116,7 @@ Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
 ##### In 1.5 #####
 
-In Infusion 1.5, enactors use non-relay components where the decalration of model listeners had not been implemented. Enactors use:
+In Infusion 1.5, enactors use non-relay components where the declaration of model listeners had not been implemented. Enactors use:
 * The `finalInit()` function to register model listeners
 * An `onCreate` listener to apply the initial preference value that the model receives:
 
@@ -155,7 +155,7 @@ fluid.prefs.enactor.textSize.finalInit = function (that) {
 
 ##### In 2.0 #####
 
-In Infusion 2.0 where enactors use relay components, the `finalInit()` and the `onCreate` listener are replaced by declaring a model listener:
+In Infusion 2.0 enactors use model relay components and the `finalInit()` and the `onCreate` listener are replaced by declaring a model listener:
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textSize", {
@@ -265,11 +265,12 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
 
 ###### In 2.0 ######
 
-In Infusion 2.0, both `templatePrefix` and `messagePrefix` become sub-elements of a `terms` block. The `terms` block is used to define all string templates used by `fluid.prefs.resourceLoader`. To refer to these terms, rather than using an ambiguous `%prefix`, use the defined term names such as `%templatePrefix` or `%messagePrefix`.
+In Infusion 2.0, both `templatePrefix` and `messagePrefix` become sub-elements of a `terms` block. The `terms` block is used to define all string templates used by `fluid.prefs.resourceLoader`. 
+To refer to these terms, rather than using an ambiguous `%prefix`, use the specific term names such as `%templatePrefix` or `%messagePrefix`.
 
 ```javascript
 fluid.defaults("fluid.prefs.auxSchema.starter", {
-    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    gradeNames: "fluid.prefs.auxSchema",
     auxiliarySchema: {
         "loaderGrades": ["fluid.prefs.separatedPanel"],
         "namespace": "fluid.prefs.constructed", // The author of the auxiliary schema will provide this and will be the component to call to initialize the constructed PrefsEditor.
@@ -302,7 +303,7 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
 
 ###### In 1.5 ######
 
-In Infusion 1.5, all preferences reside at the root of the `prefEditor` component model.
+In Infusion 1.5, all preferences reside at the root of the `prefsEditor` component's model.
 
 ```javascript
 /*******************************************************************************
@@ -329,7 +330,8 @@ fluid.defaults("fluid.prefs.initialModel.starter", {
 
 ###### In 2.0 ######
 
-In Infusion 2.0, preferences are moved to a model path named "preferences" so the prefsEditor model can be used to save other user data as well. This means, the enhancer model no longer receives the entire prefsEditor model. It only receives the value of "preferences" path.
+In Infusion 2.0, preferences are moved to a model path named `preferences` so the prefsEditor model can be used to save other user data as well. 
+This means that the enhancer model no longer receives the entire prefsEditor model. It only receives the value held at the path `preferences`.
 
 ```javascript
 /*******************************************************************************
@@ -339,7 +341,7 @@ In Infusion 2.0, preferences are moved to a model path named "preferences" so th
  *******************************************************************************/
 
 fluid.defaults("fluid.prefs.initialModel.starter", {
-    gradeNames: ["fluid.prefs.initialModel", "autoInit"],
+    gradeNames: "fluid.prefs.initialModel",
     members: {
         initialModel: {
             preferences: {
