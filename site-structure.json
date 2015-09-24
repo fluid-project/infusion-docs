@@ -141,6 +141,7 @@
                 "sectionName": "Preferences Editor",
                 "pages":
                 [
+                    { "pageName": "Preferences Framework", "href": "/tutorial-PreferencesFramework/PrefsFramework.html" },
                     { "pageName": "Creating a preferences Editor Using the Preferences Framework", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.html" },
                     { "pageName": "Creating a Primary Schema", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPrimarySchema.html" },
                     { "pageName": "Creating Panels", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingPanels.html" },

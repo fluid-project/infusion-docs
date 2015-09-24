@@ -106,7 +106,38 @@ a:focus {
 .infusion-docs dl {
     line-height: inherit;
 }
+.infusion-docs h1, .infusion-docs h2, .infusion-docs h3, .infusion-docs h4, .infusion-docs h5, .infusion-docs h6 {
+    font-family: "RobotoSlab";
+}
+.infusion-docs-container h1 {
+    font-size: 3.0rem;
+    margin-top: 5rem;
+    padding-bottom: 4rem;
+}
 
+.infusion-docs-container h2 {
+    font-size: 2.5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.infusion-docs-container h3 {
+    font-size: 2rem;
+    padding-top: 2rem;
+}
+.infusion-docs-container h4 {
+    font-size: 1.5rem;
+    padding-top: 2rem;
+}
+.infusion-docs-container h5 {
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+
+.infusion-docs-container ul,
+.infusion-docs-container ol,
+.infusion-docs-container dl,
 .infusion-docs-container p {
     font-size: 1.2rem;
 }
@@ -136,6 +167,12 @@ a:focus {
     margin-bottom: 1rem;
 }
 
+.infusion-docs dt {
+    margin-left: 2em;
+}
+.infusion-docs dd {
+    margin-left: 3em;
+}
 .infusion-docs-mainContent code {
     font-weight: normal;
     background-color: #FFF;
@@ -334,26 +371,6 @@ div.infusion-docs-note {
     margin-bottom: 2rem;
 }
 
-.infusion-docs-container h1 {
-    font-size: 3.0rem;
-    font-family: "RobotoSlab";
-    margin-top: 5rem;
-    padding-bottom: 4rem;
-}
-
-.infusion-docs-container h2 {
-    font-size: 2.5rem;
-    font-family: "RobotoSlab";
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-.infusion-docs-container h3 {
-    font-size: 1.5rem;
-    font-family: "RobotoSlab-Bold";
-    padding-top: 2rem;
-}
-
 .infusion-docs-articleBody > p:first-child {
     font-size: 1.4rem;
 }
@@ -369,7 +386,8 @@ div.infusion-docs-note {
 .infusion-docs-container .infusion-docs-paragraphBullets li {
     padding-bottom: 0.25rem;
 }
-.infusion-docs-container .infusion-docs-figure {
+.infusion-docs-container .infusion-docs-figure.
+.infusion-docs-container figure {
     margin: 0 0 1.5rem 0;
     text-align: center;
     background-color: #FFFFFF;
@@ -377,7 +395,8 @@ div.infusion-docs-note {
     padding-bottom: 1.1rem;
 }
 
-.infusion-docs-container .infusion-docs-figureCaption {
+.infusion-docs-container .infusion-docs-figureCaption,
+.infusion-docs-container figcaption {
     font-family: "OpenSans", Arial, Helvetica;
     font-size: 1rem;
     padding-top: 1rem;
