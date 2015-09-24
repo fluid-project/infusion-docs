@@ -112,13 +112,11 @@ this model reference may change at any time and therefore must not be closed ove
 
 Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
-#### Schema Changes ####
-
 #### Enactor Listener Changes ####
 
 ##### In 1.5 #####
 
-In Infusion 1.5, enactors use non-relay components where the decalration of model listeners had not been implemented. Enactors use:
+In Infusion 1.5, enactors use non-relay components where the declaration of model listeners had not been implemented. Enactors use:
 * The `finalInit()` function to register model listeners
 * An `onCreate` listener to apply the initial preference value that the model receives:
 
@@ -157,7 +155,7 @@ fluid.prefs.enactor.textSize.finalInit = function (that) {
 
 ##### In 2.0 #####
 
-In Infusion 2.0 where enactors use relay components, the `finalInit()` and the `onCreate` listener are replaced by declaring a model listener:
+In Infusion 2.0 enactors use model relay components and the `finalInit()` and the `onCreate` listener are replaced by declaring a model listener:
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textSize", {
@@ -186,11 +184,13 @@ fluid.prefs.enactor.textSize.set = function (value, that) {
 };
 ```
 
+#### Schema Changes ####
+
 ##### Specifying a prefsEditor type #####
 
 ###### In 1.5 ######
 
-In Infusion 1.5 a `prefsEditorType` option was used to specify the type. The default was `"fluid.prefs.separatedPanel"`.
+In Infusion 1.5, a `prefsEditorType` option was used to specify the type. The default was `"fluid.prefs.separatedPanel"`.
 
 ```javascript
 // using a previous constructed grade
@@ -221,7 +221,7 @@ fluid.prefs.create(container, {
 
 ###### In 2.0 ######
 
-In Infusion 2.0 the prefsEditor type is specified in a grade passed into the prefsEditorLoader via the `loaderGrades` property in the auxiliarySchema.
+In Infusion 2.0, the prefsEditor type is specified in a grade passed into the prefsEditorLoader via the `loaderGrades` property in the auxiliarySchema.
 By default the `"fluid.prefs.separatedPanel"` grade is applied. Any grade to be applied to the prefsEditorLoader can be passed in; however, you must also supply the type grade as the default will be replaced by any modification.
 
 ```javascript
@@ -265,11 +265,12 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
 
 ###### In 2.0 ######
 
-In Infusion 2.0, both `templatePrefix` and `messagePrefix` become sub-elements of a `terms` block. The `terms` block is used to define all string templates used by `fluid.prefs.resourceLoader`. To refer to these terms, rather than using an ambiguous `%prefix`, use the defined term names such as `%templatePrefix` or `%messagePrefix`.
+In Infusion 2.0, both `templatePrefix` and `messagePrefix` become sub-elements of a `terms` block. The `terms` block is used to define all string templates used by `fluid.prefs.resourceLoader`. 
+To refer to these terms, rather than using an ambiguous `%prefix`, use the specific term names such as `%templatePrefix` or `%messagePrefix`.
 
 ```javascript
 fluid.defaults("fluid.prefs.auxSchema.starter", {
-    gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
+    gradeNames: "fluid.prefs.auxSchema",
     auxiliarySchema: {
         "loaderGrades": ["fluid.prefs.separatedPanel"],
         "namespace": "fluid.prefs.constructed", // The author of the auxiliary schema will provide this and will be the component to call to initialize the constructed PrefsEditor.
@@ -292,6 +293,67 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
             }
         },
         ...
+    }
+});
+```
+
+#### PrefsEditor Model Structure Changes ####
+
+##### A new model path "preferences" #####
+
+###### In 1.5 ######
+
+In Infusion 1.5, all preferences reside at the root of the `prefsEditor` component's model.
+
+```javascript
+/*******************************************************************************
+ * Starter root Model
+ *
+ * Provides the default values for the starter enhancer/panels models
+ *******************************************************************************/
+
+fluid.defaults("fluid.prefs.initialModel.starter", {
+    gradeNames: ["fluid.prefs.initialModel", "autoInit"],
+    members: {
+        initialModel: {
+            textFont: "default",          // key from classname map
+            theme: "default",             // key from classname map
+            textSize: 1,                  // in points
+            lineSpace: 1,                 // in ems
+            toc: false,                   // boolean
+            links: false,                 // boolean
+            inputsLarger: false           // boolean
+        }
+    }
+});
+```
+
+###### In 2.0 ######
+
+In Infusion 2.0, preferences are moved to a model path named `preferences` so the prefsEditor model can be used to save other user data as well. 
+This means that the enhancer model no longer receives the entire prefsEditor model. It only receives the value held at the path `preferences`.
+
+```javascript
+/*******************************************************************************
+ * Starter prefsEditor Model
+ *
+ * Provides the default values for the starter prefsEditor model
+ *******************************************************************************/
+
+fluid.defaults("fluid.prefs.initialModel.starter", {
+    gradeNames: "fluid.prefs.initialModel",
+    members: {
+        initialModel: {
+            preferences: {
+                textFont: "default",          // key from classname map
+                theme: "default",             // key from classname map
+                textSize: 1,                  // in points
+                lineSpace: 1,                 // in ems
+                toc: false,                   // boolean
+                links: false,                 // boolean
+                inputsLarger: false           // boolean
+            }
+        }
     }
 });
 ```
