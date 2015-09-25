@@ -62,25 +62,25 @@ The Primary Schema, which defines the preferences for the editor, is defined in 
 (you can learn about JSON at http://json.org/):
 
 ```javascript
-    /**
-     * Primary Schema
-     * This schema defines the preference(s) edited by this preference editor:
-     * their names, types, default values, etc.
-     */
-    fluid.defaults("minEditor.primarySchema", {
+/**
+ * Primary Schema
+ * This schema defines the preference(s) edited by this preference editor:
+ * their names, types, default values, etc.
+ */
+fluid.defaults("minEditor.primarySchema", {
 
-        // the base grade for the schema;
-        // using this grade tells the framework that this is a primary schema
-        gradeNames: ["fluid.prefs.schemas"],
+    // the base grade for the schema;
+    // using this grade tells the framework that this is a primary schema
+    gradeNames: ["fluid.prefs.schemas"],
 
-        schema: {
-            // the actual specification of the preference
-            "minEditor.autoPilot": {
-                "type": "boolean",
-                "default": false
-            }
-            }
-    });
+    schema: {
+        // the actual specification of the preference
+        "minEditor.autoPilot": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+});
 ```
 <div class="infusion-docs-callout">
 `fluid.defaults()` is one of the core functions in Infusion: It is used to create components
@@ -141,34 +141,34 @@ The Panel for the preference controls is defined in the `minEditor.js` file.
 A Panel is a component responsible for rendering the user interface controls for a
 preference and tying them to the internal model that represents the preference value:
 ```javascript
-    /**
-     * Panel for the auto-pilot preference
-     */
-    fluid.defaults("minEditor.panels.autoPilot", {
-        gradeNames: ["fluid.prefs.panel"],
+/**
+ * Panel for the auto-pilot preference
+ */
+fluid.defaults("minEditor.panels.autoPilot", {
+    gradeNames: ["fluid.prefs.panel"],
 
-        // the Preference Map maps the information in the primary schema to this panel
-        preferenceMap: {
-            // the key must match the name of the pref in the primary schema
-            "minEditor.autoPilot": {
-                // this key is the path into the panel's model where this preference is stored
-                "model.autoPilot": "default"
-            }
-        },
-
-        // selectors identify elements in the DOM that need to be accessed by the code;
-        // in this case, the Renderer will render data into these particular elements
-        selectors: {
-            autoPilot: ".mec-autoPilot"
-        },
-
-        // the ProtoTree is basically instructions to the Renderer
-        // the keys in the prototree match the selectors above
-        protoTree: {
-            // this value is an IoC reference to the last part of the model path in the preferenceMap
-            autoPilot: "${autoPilot}"
+    // the Preference Map maps the information in the primary schema to this panel
+    preferenceMap: {
+        // the key must match the name of the pref in the primary schema
+        "minEditor.autoPilot": {
+            // this key is the path into the panel's model where this preference is stored
+            "model.autoPilot": "default"
         }
-    });
+    },
+
+    // selectors identify elements in the DOM that need to be accessed by the code;
+    // in this case, the Renderer will render data into these particular elements
+    selectors: {
+        autoPilot: ".mec-autoPilot"
+    },
+
+    // the ProtoTree is basically instructions to the Renderer
+    // the keys in the prototree match the selectors above
+    protoTree: {
+        // this value is an IoC reference to the last part of the model path in the preferenceMap
+        autoPilot: "${autoPilot}"
+    }
+});
 ```
 In this code snippet, the Panel is created using a call to the Infusion Framework function
 `fluid.defaults()`, just as the Primary Schema was. As with the Primary Schema, the call to
@@ -187,7 +187,7 @@ Using this grade automatically buys you a lot of Framework supports necessary fo
 <dd>A Panel must have a _preference map_, which maps the information in the Primary Schema
 into your Panel. Let’s look at this one more closely:
 <pre class="highlight">
-<code class="hljs javascript">"minEditor.autoPilot": {
+<code class="hljs javascript">{
 preferenceMap: {
     "minEditor.autoPilot": {
         "model.autoPilot": "default"
@@ -402,9 +402,9 @@ For our simple preference editor, the build options contains only one property:
 The grade name of our auxiliary schema:
 
 ```javascript
-        build: {
-            gradeNames: ["minEditor.auxSchema"]
-        }
+    build: {
+        gradeNames: ["minEditor.auxSchema"]
+    }
 ```
 The auxiliary schema (plus the primary schema that was registered with the framework automatically)
 contains all the information the Builder needs to construct the preference editor.
