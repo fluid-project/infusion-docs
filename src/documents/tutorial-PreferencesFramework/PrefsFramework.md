@@ -11,6 +11,10 @@ Infusion [Preferences Framework](../PreferencesFramework.md).
 We’ll start by looking at a functional – but very simple – preference editor and explaining how it
 works. From there, we’ll learn about more features of the Preferences Framework by adding functionality to the editor.
 
+Throughout this tutorial, you’ll find links into the documentation for various parts of
+Infusion and the Preferences Framework. You shouldn’t need to visit these links to
+follow the tutorial; they’re there in case you’re interested in reading more about something.
+
 ### Example code ###
 The source code used in this tutorial is one of the examples provided in the Infusion code base,
 which you can download from github: https://github.com/fluid-project/infusion. You’ll find the code
@@ -57,8 +61,9 @@ This tutorial will teach you about creating Panels with multiple Adjusters.
 Let’s take a close look at the code.
 
 #### Primary Schema ####
-The Primary Schema, which defines the preferences for the editor, is defined in the
-`schemas/primary.js` file. The preferences are defined using the JSON format
+The [Primary Schema](../PrimarySchemaForPreferencesFramework.md) is a document that defines the preferences for the editor.
+The Primary Schema for our example editor is defined in the
+`schemas/primary.js` file using the JSON format
 (you can learn about JSON at http://json.org/):
 
 ```javascript
@@ -83,7 +88,7 @@ fluid.defaults("minEditor.primarySchema", {
 });
 ```
 <div class="infusion-docs-callout">
-`fluid.defaults()` is one of the core functions in Infusion: It is used to create components
+`fluid.defaults()` is one of the core functions in Infusion: It is used to create [components](../UnderstandingInfusionComponents.md)
 (the building blocks of any Infusion application) and register them with the Framework.
 </div>
 
@@ -92,7 +97,7 @@ Infusion Framework function `fluid.defaults().`
 
 `fluid.defaults()` accepts two arguments:
 1. a string name, and
-2. a JavaScript object containing options for configuring the component.
+2. a JavaScript object containing [options for configuring](../ComponentConfigurationOptions.md) the component.
 
 In the code snippet above, the first argument – the name – is `“minEditor.primarySchema”`.
 The second argument – the options – is an object containing (in this case) two properties:
@@ -104,16 +109,16 @@ The second argument – the options – is an object containing (in this case) t
 <div class="infusion-docs-callout">
 A **grade** is _very loosely_ analogous to a class, in that using a grade in the definition of a
 component infers the properties of that grade to the component. It’s actually a bit more complex
-than that; later, you’ll probably want to read the documentation about Component Grades.
+than that; later, you’ll probably want to read the documentation about [Component Grades](../ComponentGrades.md).
 This tutorial will explain more about grades as it goes along.
 </div>
 Any call to `fluid.defaults()` must include the `gradeNames` property in the options argument.
-This property defines the base _grade_ for the component.
+This property defines the base _[grade](../ComponentGrades.md)_ for the component.
 
 In a Primary Schema, the `gradeNames` property must include the grade `“fluid.prefs.schemas”`,
 which is defined by the Preferences Framework. **Using this particular grade is what registers
 this component as a Primary Schema with the Framework.** The Framework will automatically record
-this fact, and use this Primary Schema with your preference editor.
+this fact and use this Primary Schema with your preference editor.
 </dd>
 <dt>`schema`</dt>
 <dd>
@@ -131,15 +136,23 @@ the value for this key is an object containing the properties of this preference
 
 Every preference in a primary schema must have at least two properties: `“type”` and `“default”`.
 
-[TK (to come): more info about these two properties]
+_Coming soon: More information about these two properties_
 </dd>
 </dl>
 
 #### Panel ####
 
-The Panel for the preference controls is defined in the `minEditor.js` file.
-A Panel is a component responsible for rendering the user interface controls for a
-preference and tying them to the internal model that represents the preference value:
+<div class="infusion-docs-callout">
+[Models](../FrameworkConcepts.md#model-objects) are central to Infusion, which,
+while not formally a [Model-View-Controller framework](../FrameworkConcepts.md#mvc),
+embodies the the separation of concerns that is central to MVC.
+Most Infusion components have an internal model, for maintaining the state of the component.
+</div>
+
+A [Panel](../Panels.md) is a component responsible for rendering the user interface controls for a
+preference and tying them to the internal [model](../FrameworkConcepts.md#model-objects) that represents the preference value.
+The Panel for the auto-pilot preference control is defined in the `minEditor.js` file:
+
 ```javascript
 /**
  * Panel for the auto-pilot preference
@@ -200,19 +213,26 @@ key is a JavaScript object that defines how this particular preference relates t
 internal data model.
 
 The content of this preference map is a key/value pair:
-* The key, `“model.autoPilot”`, is an “EL path” into the Panel’s data model. An “EL path” is just a
-dot-separated path built from names. In this case, it means “the `autoPilot` property of the `model` property” of the panel.
-* The value, `“default”`, is a reference to the name of the `“default”` property in the Primary Schema.
-
+<ul>
+<li> The key, `“model.autoPilot”`, is an [EL path](../FrameworkConcepts.md#el-paths) into the
+Panel’s data model. An “EL path” is just a
+dot-separated path built from names. In this case, it means “the `autoPilot`
+property of the `model` property” of the panel.</li>
+<li> The value, `“default”`, is a reference to the name of the `“default”` property in the Primary Schema.</li>
+</ul>
 This preference map is saying two things:
-1. The preference called `“minEditor.autoPilot”` should be stored in the Panel’s model
-in a property called `autoPilot`, and
-2. the initial value for the property should be taken from the `“default”` property
-of the Primary Schema.</dd>
+<ol>
+<li>The preference called `“minEditor.autoPilot”` should be stored in the Panel’s model
+in a property called `autoPilot`, and</li>
+<li>the initial value for the property should be taken from the `“default”` property
+of the Primary Schema.</li>
+</ul>
+</dd>
 <dt>`selectors`</dt>
-<dd>A Panel is a _view component_ – a type of Infusion component that has a _view_, that is,
+<dd>A Panel is a _[view component](../tutorial-gettingStartedWithInfusion/ViewComponents.md)_
+– a type of Infusion component that has a _view_, that is,
 a user interface. In order to maintain a separation between the code and the HTML for the view,
-the code interacts with the HTML through named selectors: The code only references the name, and
+the code interacts with the HTML through named [selectors](../ComponentConfigurationOptions.md#-selectors-): The code only references the name, and
 a Framework feature called the DOM Binder looks up the relevant DOM node for the name based
 on the information in this `selectors` option.
 
@@ -222,7 +242,7 @@ Let’s look at this more closely:
     autoPilot: ".mec-autoPilot"
 },</code></pre>
 
-The content of a selectors property is a set of key/value pairs. The key is the ‘name’ of the
+The content of a `selectors` property is a set of key/value pairs. The key is the ‘name’ of the
 selector and the value is the selector itself. This property has only one selector,
 named `autoPilot`. The value is the CSS selector `".mec-autoPilot"`.
 This selector references the actual checkbox in the template for the Panel.
@@ -240,9 +260,9 @@ You can see the `“mec-autoPilot”` class name on the `<input>` element.
 </dd>
 <dt>`prototree`</dt>
 <dd>
-A Panel is also a _renderer component_ – a type of Infusion component that uses the
-Infusion Renderer to render the view based on data in the component’s model.
-The _prototree_ is the instructions for how the data in the component’s model maps to the template.
+A Panel is also a _[renderer component](../RendererComponents.md)_ – a type of Infusion component that uses the
+Infusion [Renderer](../Renderer.md) to render the view based on data in the component’s model.
+The _[prototree](../RendererComponentTrees.md)_ is the instructions for how the data in the component’s model maps to the template.
 Let’s look at this more closely:
 <pre class="highlight">
 <code class="hljs javascript">protoTree: {
@@ -255,15 +275,17 @@ A prototree contains key/value pairs, where
 
 Here, the one key `autoPilot` refers to the selector named autoPilot
 i.e. the reference to the checkbox in the HTML template.
-The value is an _IoC reference_ to the autoPilot property of Panel’s data model.
+The value is an _[IoC reference](../IoCReferences.md)_ to the autoPilot property of Panel’s data model.
 In the Infusion Framework, an _IoC reference_ (IoC stands for Inversion of Control) is a reference
 to an object in the current context using a particular syntax – specifically, the form `{context-name}.some.path.segments`.
-[TK (to come): more information about IoF references...]
+_Coming soon: More information about IoC references._
 </dd>
 </dl>
 
 #### Auxiliary Schema ####
-The Auxiliary Schema, which specifies all the things needed to actually build the preference editor,
+The [Auxiliary Schema](../AuxiliarySchemaForPreferencesFramework.md) is a document that specifies
+all the things needed to actually build the preference editor.
+The Auxiliary Schema for our example editor
 is defined in the `schemas/auxiliary.js` file:
 
 ```javascript
@@ -274,8 +296,8 @@ fluid.defaults("minEditor.auxSchema", {
     }
 });
 ```
-Again, we see the Infusion Framework function `fluid.defaults()` being used to create the schema.
-As with the Primary Schema and the Panel, the call to `fluid.defaults()` is passed two arguments:
+Again, we use `fluid.defaults()` to create the schema.
+As with the Primary Schema and the Panel, `fluid.defaults()` is passed two arguments:
 1) a string name (`"minEditor.auxSchema"`), and 2) a JavaScript object containing configuration options.
 
 Let’s look at the schema in detail.
@@ -295,6 +317,7 @@ it slides down when activated by the user.
 provisions for an iframe in the page to preview any changes made by the editor.
 
 In the code snippet above, the `loaderGrades` option is used to specify the “full page, no preview” form.
+
 ##### Templates #####
 The Auxiliary Schema must declare where to find the main HTML template for the preference editor.
 In our example, this template is located in the same folder as other HTML templates.
@@ -323,18 +346,26 @@ in this example a `<div>` with the class `mec-autoPilot”`:
 ```
 
 The Framework will insert the constructed Panel into this div.
+
 ##### Preferences #####
 The next thing in the auxiliary schema is the configuration for the auto-pilot preference:
 
 ```javascript
-    autoPilot: {
-        type: "minEditor.autoPilot",
-        panel: {
-            type: "minEditor.panels.autoPilot",
-            container: ".mec-autoPilot",
-            template: "%templatePrefix/autoPilot.html"
-        }
+autoPilot: {
+    // this 'type' must match the name of the pref in the primary schema
+    type: "minEditor.autoPilot",
+
+    panel: {
+        // this 'type' must match the name of the panel grade created for this pref
+        type: "minEditor.panels.autoPilot",
+
+        // selector indicating where, in the main template, to place this panel
+        container: ".mec-autoPilot",
+
+        // the template for this panel
+        template: "%templatePrefix/autoPilot.html"
     }
+}
 ```
 
 (The name of the property, `autoPilot`, can actually be anything, but it’s helpful to use the name
@@ -344,7 +375,7 @@ In our example, the auto-pilot preference configuration includes two things:
 1. the type of the preference, and
 2. information about the panel.
 
-The `type` property references the name of the preference as defined in the Primary Schema.
+The value of the `type` property is the name of the preference as defined in the Primary Schema.
 
 The value of the `panel` property is a JavaScript object containing configuration information
 for the panel. Let’s look at each of the properties:
@@ -426,7 +457,6 @@ We’ll edit the Primary Schema definition in `schemas/primary.js` to add the ne
 
 ```javascript
 schema: {
-    // the actual specification of the preference
     "minEditor.autoPilot": {
         "type": "boolean",
         "default": false
@@ -459,9 +489,10 @@ to the one already used for the auto-pilot template:
 We’ve used an `<input>` with type` “range”` for the adjuster.
 The template doesn’t need to set the min, max or value attributes; those are dependent on the
 primary schema and will be added in by the preference editor.
+
 #### JavaScript ####
 
-Edit the `minEditor.js` file to add the panel component for this preference.
+In the `minEditor.js` file, we'll create the panel component for this preference.
 As with the auto-pilot panel, we use a call to `fluid.defaults()`
 and set the grade to `“fluid.prefs.panel”`:
 
@@ -471,8 +502,9 @@ fluid.defaults("minEditor.panels.radioVolume", {
     // options will go here
 });
 ```
-As with the auto-pilot panel, we need a preference map. In this case, we need to map the `minimum`,
-`maximum` and `divisibleBy` values into the component, as well as the default preference value:
+As with the auto-pilot panel, we need a preference map. In addition to the default value,
+we also need to map the `minimum`, `maximum` and `divisibleBy` values
+from the primary schema into the component:
 
 ```javascript
 fluid.defaults("minEditor.panels.radioVolume", {
@@ -495,10 +527,12 @@ fluid.defaults("minEditor.panels.radioVolume", {
     // more will go here
 });
 ```
-The `default` property of the primary schema is mapped to the component’s `model`, but the `minimum`,
+The `default` property of the primary schema is mapped to `model.radioVolume`, but the `minimum`,
 `maximum` and `divisibleBy` are not likely to change over the life of the component, so it’s not
-really appropriate to store them in the model. Instead, we create the `range` property as a
-component option. The Framework will override the values using the content of the Primary Schema.
+really appropriate to store them in the model. Instead, we create a `range` property as a
+component option. We define default values for the minimum, maximum and step, but
+the Framework will override these values using the content of the Primary Schema, as specified by
+the preference map.
 
 As we saw with the auto-pilot panel, we need to declare a named selector to identify the HTML
 element where the preference value will be bound:
@@ -531,8 +565,10 @@ fluid.defaults("minEditor.panels.radioVolume", {
 });
 ```
 
-Finally, we need to define the Renderer prototree – the instructions for rendering the model value into the template:
+Finally, we need to define the Renderer prototree – the instructions for rendering
+the model value into the template:
 
+The
 ```javascript
 fluid.defaults("minEditor.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
@@ -563,8 +599,8 @@ fluid.defaults("minEditor.panels.radioVolume", {
               type: "attrs",
               attributes: {
                   min: "{that}.options.range.min",
-                    max: "{that}.options.range.max",
-                    step: "{that}.options.range.step"
+                  max: "{that}.options.range.max",
+                  step: "{that}.options.range.step"
               }
           }]
         }
@@ -572,12 +608,18 @@ fluid.defaults("minEditor.panels.radioVolume", {
 });
 ```
 
+This prototree is a little bit more complicated than what we used for the auto-pilot preference.
+That prototree needed to do only one thing: bind the model value to the input element.
+For the range input, we still need to bind the model value, but we also need to set the min, max
+and step attributes of the same element. For this, a simple key/value pair isn’t enough.
+
 <div class="infusion-docs-callout">
-Renderer Decorators allow users of the Renderer to attach various things,
+[Renderer Decorators](../RendererDecorators.md) allow users of the Renderer to attach various things,
 such as functions, class names, etc., to the components at render time.
 </div>
 
-This prototree uses the `attrs` _Renderer Decorator_ to add the min, max and step to the element as attributes.
+This prototree uses the `attrs` _[Renderer Decorator](../RendererDecorators.md)_ to add the min,
+max and step to the element as attributes.
 
 ### Adding the panel to the editor ###
 
@@ -605,13 +647,12 @@ radioVolume: {
     }
 }
 ```
-## Enactors ##
-### Enactor component ###
-### Adding the enactor to the auxiliary schema ###
-## More Complicated Panels ##
-### Composite Panels ###
-### Conditional Subpanels ###
-## Localization ##
-### Panels ###
-### The Rest of the Interface ###
-### Specifying the Language ###
+
+## Coming Soon: ##
+Information about
+* Enactors
+* More complicated panels
+* Localization
+* Design consideration
+* Persistence
+* Case studies
