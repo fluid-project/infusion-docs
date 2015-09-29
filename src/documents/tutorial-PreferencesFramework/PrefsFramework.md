@@ -4,12 +4,12 @@ layout: default
 category: Tutorials
 ---
 
-This tutorial will walk you through the process of building a preference editor using the
+This tutorial will walk you through the process of building a Preference Editor using the
 Infusion [Preferences Framework](../PreferencesFramework.md).
 
 ## Introduction ##
-We’ll start by looking at a functional – but very simple – preference editor and explaining how it
-works. From there, we’ll learn about more features of the Preferences Framework by adding functionality to the editor.
+We’ll start by looking at a functional – but very simple – Preference Editor and explaining how it
+works. From there, we’ll learn about more features of the Preferences Framework by adding functionality to the Editor.
 
 Throughout this tutorial, you’ll find links into the documentation for various parts of
 Infusion and the Preferences Framework. You shouldn’t need to visit these links to
@@ -18,51 +18,51 @@ follow the tutorial; they’re there in case you’re interested in reading more
 ### Example code ###
 The source code used in this tutorial is one of the examples provided in the Infusion code base,
 which you can download from github: https://github.com/fluid-project/infusion. You’ll find the code
-for the simple preference editor in the examples folder:
+for the simple Preference Editor in the examples folder:
 https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor.
 We recommend you download the Infusion library and load the example code into your favourite editor.
 <figure>
 ![the folder hierarchy of the samepl code](../images/prefsEditorFolders.png)
-<figcaption>Figure 1: Folder hierarchy for the preference editor example</figcaption>
+<figcaption>Figure 1: Folder hierarchy for the Preference Editor example</figcaption>
 </figure>
 
-The example code is a preference editor for the world’s first flying car.
+The example code is a Preference Editor for the world’s first flying car.
 If you run a local webserver
 (for example using [this approach](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python),
 or using [MAMP](https://www.mamp.info/en/))
 and navigate to the `index.html` file in a browser, you should see this interface:
 <figure>
-![The screen of the example preference editor](../images/simplePrefsEditor.png)
-<figcaption>Figure 2: The screen of the example preference editor</figcaption>
+![The screen of the example Preference Editor](../images/simplePrefsEditor.png)
+<figcaption>Figure 2: The screen of the example Preference Editor</figcaption>
 </figure>
 
-This preference editor has only one preference – a simple boolean setting for the car’s auto-pilot
+This Preference Editor has only one preference – a simple boolean setting for the car’s auto-pilot
 feature – and a ‘save’ button. Try it out: If you check the checkbox and click save, the state of
 the preference will be stored in a cookie, and when you reload the page, the checkbox will be set
 to the saved value. Go ahead, try it.
 
 Let’s talk about what we’re seeing in this interface:
 <figure>
-![The parts of a preference editor screen](../images/prefsEditorParts.png)
-<figcaption>Figure 3: The parts of a preference editor screen</figcaption>
+![The parts of a Preference Editor screen](../images/prefsEditorParts.png)
+<figcaption>Figure 3: The parts of a Preference Editor screen</figcaption>
 </figure>
 
-* This editor is a full-page editor, so all of what you see is Preferences Editor
+* This Editor is a full-page editor, so all of what you see is Preferences Editor
 (the outer, blue dashed line).
 * The content inside the rectangle (outlined with a green dashed line) is called a Panel –
 a container representing one (or more) preferences. This particular Editor has only one Panel,
-but a realistic editor will likely have several. This tutorial will teach you what you need to
-know to add more panels to this editor.
+but a realistic Editor will likely have several. This tutorial will teach you what you need to
+know to add more Panels to this Editor.
 * Inside the Panel is an Adjuster (outlined by the inner-most, orange dashed line) – the controls
 for adjusting a particular preference. This Panel has only one Adjuster in it, but you might want
-to create a panel that has multiple adjusters, say, in the case of very closely-related preferences.
+to create a Panel that has multiple Adjusters, say, in the case of very closely-related preferences.
 This tutorial will teach you about creating Panels with multiple Adjusters.
 
 Let’s take a close look at the code.
 
 #### Primary Schema ####
-The [Primary Schema](../PrimarySchemaForPreferencesFramework.md) is a document that defines the preferences for the editor.
-The Primary Schema for our example editor is defined in the
+The [Primary Schema](../PrimarySchemaForPreferencesFramework.md) is a document that defines the preferences for the Editor.
+The Primary Schema for our example Editor is defined in the
 `schemas/primary.js` file using the JSON format
 (you can learn about JSON at http://json.org/):
 
@@ -118,11 +118,11 @@ This property defines the base _[grade](../ComponentGrades.md)_ for the componen
 In a Primary Schema, the `gradeNames` property must include the grade `“fluid.prefs.schemas”`,
 which is defined by the Preferences Framework. **Using this particular grade is what registers
 this component as a Primary Schema with the Framework.** The Framework will automatically record
-this fact and use this Primary Schema with your preference editor.
+this fact and use this Primary Schema with your Preference Editor.
 </dd>
 <dt>`schema`</dt>
 <dd>
-This property is the JSON definition of the preferences for this preference editor.
+This property is the JSON definition of the preferences for this Preference Editor.
 
 In this particular example, only a single preference is being defined; a boolean called
 “minEditor.autoPilot”. This name of the preference is the key in the JSON definition;
@@ -134,7 +134,7 @@ the value for this key is an object containing the properties of this preference
     "default": false
 }</code></pre>
 
-Every preference in a primary schema must have at least two properties: `“type”` and `“default”`.
+Every preference in a Primary Schema must have at least two properties: `“type”` and `“default”`.
 
 _Coming soon: More information about these two properties_
 </dd>
@@ -186,10 +186,10 @@ fluid.defaults("minEditor.panels.autoPilot", {
 In this code snippet, the Panel is created using a call to the Infusion Framework function
 `fluid.defaults()`, just as the Primary Schema was. As with the Primary Schema, the call to
 `fluid.defaults()` is passed two arguments: 1) a string name (`"minEditor.panels.autoPilot"`), and
-2) a JavaScript object containing options for configuring the component – in this case, the panel.
+2) a JavaScript object containing options for configuring the component – in this case, the Panel.
 
-The screenshot in Figure 2 (above) shows what the panel looks like to the user: A single checkbox
-with a label, with a header above. The options for configuring this panel
+The screenshot in Figure 2 (above) shows what the Panel looks like to the user: A single checkbox
+with a label, with a header above. The options for configuring this Panel
 include four properties: `gradeNames`, `preferenceMap`, `selectors` and `prototree`:
 <dl>
 <dt>`gradeNames`</dt>
@@ -197,7 +197,7 @@ include four properties: `gradeNames`, `preferenceMap`, `selectors` and `prototr
 property in the options argument. Panels must use the `"fluid.prefs.panel"` grade.
 Using this grade automatically buys you a lot of Framework supports necessary for Panels.</dd>
 <dt>`preferenceMap`</dt>
-<dd>A Panel must have a _preference map_, which maps the information in the Primary Schema
+<dd>A Panel must have a _ Preference Map_, which maps the information in the Primary Schema
 into your Panel. Let’s look at this one more closely:
 <pre class="highlight">
 <code class="hljs javascript">{
@@ -207,20 +207,20 @@ preferenceMap: {
     }
 },</code></pre>
 
-The first line of the preference map, `“minEditor.autoPilot”`, is the name of the preference.
+The first line of the  Preference Map, `“minEditor.autoPilot”`, is the name of the preference.
 This exactly matches the name we saw in the Primary Schema earlier. This the value for this
 key is a JavaScript object that defines how this particular preference relates to the Panel’s
 internal data model.
 
-The content of this preference map is a key/value pair:
+The content of this  Preference Map is a key/value pair:
 <ul>
 <li> The key, `“model.autoPilot”`, is an [EL path](../FrameworkConcepts.md#el-paths) into the
 Panel’s data model. An “EL path” is just a
 dot-separated path built from names. In this case, it means “the `autoPilot`
-property of the `model` property” of the panel.</li>
+property of the `model` property” of the Panel.</li>
 <li> The value, `“default”`, is a reference to the name of the `“default”` property in the Primary Schema.</li>
 </ul>
-This preference map is saying two things:
+This  Preference Map is saying two things:
 <ol>
 <li>The preference called `“minEditor.autoPilot”` should be stored in the Panel’s model
 in a property called `autoPilot`, and</li>
@@ -284,8 +284,8 @@ _Coming soon: More information about IoC references._
 
 #### Auxiliary Schema ####
 The [Auxiliary Schema](../AuxiliarySchemaForPreferencesFramework.md) is a document that specifies
-all the things needed to actually build the preference editor.
-The Auxiliary Schema for our example editor
+all the things needed to actually build the Preference Editor.
+The Auxiliary Schema for our example Editor
 is defined in the `schemas/auxiliary.js` file:
 
 ```javascript
@@ -296,30 +296,30 @@ fluid.defaults("minEditor.auxSchema", {
     }
 });
 ```
-Again, we use `fluid.defaults()` to create the schema.
+Again, we use `fluid.defaults()` to create the Schema.
 As with the Primary Schema and the Panel, `fluid.defaults()` is passed two arguments:
 1) a string name (`"minEditor.auxSchema"`), and 2) a JavaScript object containing configuration options.
 
-Let’s look at the schema in detail.
+Let’s look at the Schema in detail.
 
 ##### Loader Grade #####
-The _loader grade_ specifies the _type_ of preference editor:
+The _loader grade_ specifies the _type_ of Preference Editor:
 
 ```javascript
     loaderGrades: ["fluid.prefs.fullNoPreview"],
 ```
 
-The Preference Framework provides three pre-defined types of editor:
+The Preference Framework provides three pre-defined types of Editor:
 1. separated panel (the default): This is a page-width panel collapsed at the top of the page;
 it slides down when activated by the user.
-2. full page, no preview: This is a preference editor that occupies the full page.
-3. full page, with preview: This is a preference editor that occupies the full page, but includes
-provisions for an iframe in the page to preview any changes made by the editor.
+2. full page, no preview: This is a Preference Editor that occupies the full page.
+3. full page, with preview: This is a Preference Editor that occupies the full page, but includes
+provisions for an iframe in the page to preview any changes made by the Editor.
 
 In the code snippet above, the `loaderGrades` option is used to specify the “full page, no preview” form.
 
 ##### Templates #####
-The Auxiliary Schema must declare where to find the main HTML template for the preference editor.
+The Auxiliary Schema must declare where to find the main HTML template for the Preference Editor.
 In our example, this template is located in the same folder as other HTML templates.
 The Auxiliary Schema allows you to define `terms` – strings that can be re-used elsewhere in the
 schema. Here, it is being used to define once the path to where the HTML templates are:
@@ -330,14 +330,14 @@ schema. Here, it is being used to define once the path to where the HTML templat
     },
 ```
 
-The template property specifies the main HTML template for the entire preference editor:
+The template property specifies the main HTML template for the entire Preference Editor:
 
 ```javascript
     template: "%templatePrefix/minEditor.html",
 ```
 You can see the full text of this file, `minEditor.html`, in the github repo:
 https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/minEditor.html
-The main thing to note in the template is the placeholder for the panel,
+The main thing to note in the template is the placeholder for the Panel,
 in this example a `<div>` with the class `mec-autoPilot”`:
 
 ```html
@@ -348,7 +348,7 @@ in this example a `<div>` with the class `mec-autoPilot”`:
 The Framework will insert the constructed Panel into this div.
 
 ##### Preferences #####
-The next thing in the auxiliary schema is the configuration for the auto-pilot preference:
+The next thing in the Auxiliary Schema is the configuration for the auto-pilot preference:
 
 ```javascript
 autoPilot: {
@@ -373,29 +373,29 @@ of the preference.)
 
 In our example, the auto-pilot preference configuration includes two things:
 1. the type of the preference, and
-2. information about the panel.
+2. information about the Panel.
 
 The value of the `type` property is the name of the preference as defined in the Primary Schema.
 
 The value of the `panel` property is a JavaScript object containing configuration information
-for the panel. Let’s look at each of the properties:
+for the Panel. Let’s look at each of the properties:
 <dl>
 <dt>`type`</dt>
-<dd>This is the name of the panel that was defined in the call to `fluid.defaults()` above.</dd>
+<dd>This is the name of the Panel that was defined in the call to `fluid.defaults()` above.</dd>
 <dt>`container`</dt>
-<dd>This is a CSS-based selector referencing the panel’s placeholder element in the main HTML
+<dd>This is a CSS-based selector referencing the Panel’s placeholder element in the main HTML
 template – the one referenced by the `template` property above.</dd>
 <dt>`template`</dt>
-<dd>This is the path and filename of the HTML template for this panel.
+<dd>This is the path and filename of the HTML template for this Panel.
 Note, in this example, how the `templatePrefix` term is being used.</dd>
 </dl>
 
 #### Instantiation ####
 The last thing in the `js/minEditor.js` file is a call to the Preferences Framework
-function `fluid.prefs.create()`. This function actually creates the preference editor.
+function `fluid.prefs.create()`. This function actually creates the Preference Editor.
 It accepts two arguments:
-1. a CSS selector indicating the container element for the preference editor, and
-2. a JavaScript object containing configuration information for the preference editor.
+1. a CSS selector indicating the container element for the Preference Editor, and
+2. a JavaScript object containing configuration information for the Preference Editor.
 
 ```javascript
 minEditor.init = function (container) {
@@ -406,7 +406,7 @@ minEditor.init = function (container) {
     });
 };
 ```
-This function is invoked in the main HTML file for the preference editor, `index.html`.
+This function is invoked in the main HTML file for the Preference Editor, `index.html`.
 You can see the entire file here:
 https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/index.html.
 Let’s look at this invocation:
@@ -419,7 +419,7 @@ Let’s look at this invocation:
 </script>
 ```
 
-In the HTML snippet above, the `<div>` is the container that the preference editor will be
+In the HTML snippet above, the `<div>` is the container that the Preference Editor will be
 rendered inside of. The call to `minEditor.init()` is passed the ID of the element,
 `“#myMinEditor”`, as the container argument.
 
@@ -427,29 +427,29 @@ In the code snippet above, the first argument – `container` – is the CSS ide
 the function. The second argument – the options – is an object containing (in this case) one
 property: `build`. This option is a JavaScript object containing information that will be passed
 to the Builder, a key part of the Preferences Framework.
-The Builder is the core component responsible for actually building the preference editor based
-on all of the configuration information for the preferences, the panels, etc.
-For our simple preference editor, the build options contains only one property:
-The grade name of our auxiliary schema:
+The Builder is the core component responsible for actually building the Preference Editor based
+on all of the configuration information for the preferences, the Panels, etc.
+For our simple Preference Editor, the build options contains only one property:
+The grade name of our Auxiliary Schema:
 
 ```javascript
     build: {
         gradeNames: ["minEditor.auxSchema"]
     }
 ```
-The auxiliary schema (plus the primary schema that was registered with the framework automatically)
-contains all the information the Builder needs to construct the preference editor.
+The Auxiliary Schema (plus the Primary Schema that was registered with the Framework automatically)
+contains all the information the Builder needs to construct the Preference Editor.
 
 ## Adding another preference ##
 
-Let’s use what we’ve learned so far to add another simple preference to the editor:
+Let’s use what we’ve learned so far to add another simple preference to the Editor:
 Preferred volume for the radio. This preference will be a number, and it will have a
 range of possible values.
 
 To add this preference, we’ll need to
 1. define the preference,
-2. create the panel, and
-3. add the panel to the editor.
+2. create the Panel, and
+3. add the Panel to the Editor.
 
 ### Defining the preference ###
 
@@ -470,10 +470,10 @@ schema: {
     }
 }
 ```
-### Creating the panel ###
-#### Template and adjuster ####
-We will need an HTML template for the panel. Since the preference is a range,
-we’ll use a slider for the adjuster.
+### Creating the Panel ###
+#### Template and Adjuster ####
+We will need an HTML template for the Panel. Since the preference is a range,
+we’ll use a slider for the Adjuster.
 
 Create a new file in the `html` folder called `radioVolume.html` and use a structure similar
 to the one already used for the auto-pilot template:
@@ -486,14 +486,14 @@ to the one already used for the auto-pilot template:
     <input type="range" id="minEditor-radioVolume" class="mec-radioVolume"/>
 </section>
 ```
-We’ve used an `<input>` with type` “range”` for the adjuster.
+We’ve used an `<input>` with type` “range”` for the Adjuster.
 The template doesn’t need to set the min, max or value attributes; those are dependent on the
-primary schema and will be added in by the preference editor.
+Primary Schema and will be added in by the Preference Editor.
 
 #### JavaScript ####
 
-In the `minEditor.js` file, we'll create the panel component for this preference.
-As with the auto-pilot panel, we use a call to `fluid.defaults()`
+In the `minEditor.js` file, we'll create the Panel component for this preference.
+As with the auto-pilot Panel, we use a call to `fluid.defaults()`
 and set the grade to `“fluid.prefs.panel”`:
 
 ```javascript
@@ -502,9 +502,9 @@ fluid.defaults("minEditor.panels.radioVolume", {
     // options will go here
 });
 ```
-As with the auto-pilot panel, we need a preference map. In addition to the default value,
+As with the auto-pilot Panel, we need a  Preference Map. In addition to the default value,
 we also need to map the `minimum`, `maximum` and `divisibleBy` values
-from the primary schema into the component:
+from the Primary Schema into the component:
 
 ```javascript
 fluid.defaults("minEditor.panels.radioVolume", {
@@ -527,14 +527,14 @@ fluid.defaults("minEditor.panels.radioVolume", {
     // more will go here
 });
 ```
-The `default` property of the primary schema is mapped to `model.radioVolume`, but the `minimum`,
+The `default` property of the Primary Schema is mapped to `model.radioVolume`, but the `minimum`,
 `maximum` and `divisibleBy` are not likely to change over the life of the component, so it’s not
 really appropriate to store them in the model. Instead, we create a `range` property as a
 component option. We define default values for the minimum, maximum and step, but
 the Framework will override these values using the content of the Primary Schema, as specified by
-the preference map.
+the  Preference Map.
 
-As we saw with the auto-pilot panel, we need to declare a named selector to identify the HTML
+As we saw with the auto-pilot Panel, we need to declare a named selector to identify the HTML
 element where the preference value will be bound:
 
 ```javascript
@@ -621,10 +621,10 @@ such as functions, class names, etc., to the components at render time.
 This prototree uses the `attrs` _[Renderer Decorator](../RendererDecorators.md)_ to add the min,
 max and step to the element as attributes.
 
-### Adding the panel to the editor ###
+### Adding the Panel to the Editor ###
 
 We saw above that the main HTML template for the tool, has a placeholder in it for
-the auto-pilot panel. We will add another placeholder for the radio volume panel
+the auto-pilot Panel. We will add another placeholder for the radio volume Panel
 to the `html/minEditor.html` file:
 
 ```html
@@ -634,8 +634,8 @@ to the `html/minEditor.html` file:
 <!-- placeholder for the radio volume preference panel -->
 <div class="radioVolume"></div>
 ```
-We’ll also need a property in the auxiliary schema, in `schemas/auxiliary.js`,  to provide the
-configuration options specific to the new panel:
+We’ll also need a property in the Auxiliary Schema, in `schemas/auxiliary.js`,  to provide the
+configuration options specific to the new Panel:
 
 ```javascript
 radioVolume: {
@@ -651,7 +651,7 @@ radioVolume: {
 ## Coming Soon: ##
 Information about
 * Enactors
-* More complicated panels
+* More complicated Panels
 * Localization
 * Design consideration
 * Persistence
