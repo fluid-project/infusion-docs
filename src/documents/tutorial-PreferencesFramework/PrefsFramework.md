@@ -87,10 +87,10 @@ fluid.defaults("minEditor.primarySchema", {
     }
 });
 ```
-<div class="infusion-docs-callout">
+<aside class="infusion-docs-callout">
 `fluid.defaults()` is one of the core functions in Infusion: It is used to create [components](../UnderstandingInfusionComponents.md)
 (the building blocks of any Infusion application) and register them with the Framework.
-</div>
+</aside>
 
 In this code snippet, the Primary Schema is created using a call to the
 Infusion Framework function `fluid.defaults().`
@@ -106,12 +106,12 @@ The second argument – the options – is an object containing (in this case) t
 <dl>
 <dt>`gradeNames`</dt>
 <dd>
-<div class="infusion-docs-callout">
+<aside class="infusion-docs-callout">
 A **grade** is _very loosely_ analogous to a class, in that using a grade in the definition of a
 component infers the properties of that grade to the component. It’s actually a bit more complex
 than that; later, you’ll probably want to read the documentation about [Component Grades](../ComponentGrades.md).
 This tutorial will explain more about grades as it goes along.
-</div>
+</aside>
 Any call to `fluid.defaults()` must include the `gradeNames` property in the options argument.
 This property defines the base _[grade](../ComponentGrades.md)_ for the component.
 
@@ -142,12 +142,12 @@ _Coming soon: More information about these two properties_
 
 #### Panel ####
 
-<div class="infusion-docs-callout">
+<aside class="infusion-docs-callout">
 [Models](../FrameworkConcepts.md#model-objects) are central to Infusion, which,
 while not formally a [Model-View-Controller framework](../FrameworkConcepts.md#mvc),
 embodies the the separation of concerns that is central to MVC.
 Most Infusion components have an internal model, for maintaining the state of the component.
-</div>
+</aside>
 
 A [Panel](../Panels.md) is a component responsible for rendering the user interface controls for a
 preference and tying them to the internal [model](../FrameworkConcepts.md#model-objects) that represents the preference value.
@@ -260,7 +260,7 @@ You can see the `“mec-autoPilot”` class name on the `<input>` element.
 </dd>
 <dt>`prototree`</dt>
 <dd>
-A Panel is also a _[renderer component](../RendererComponents.md)_ – a type of Infusion component that uses the
+A Panel is also a _[Renderer component](../RendererComponents.md)_ – a type of Infusion component that uses the
 Infusion [Renderer](../Renderer.md) to render the view based on data in the component’s model.
 The _[prototree](../RendererComponentTrees.md)_ is the instructions for how the data in the component’s model maps to the template.
 Let’s look at this more closely:
@@ -453,7 +453,9 @@ To add this preference, we’ll need to
 
 ### Defining the preference ###
 
-We’ll edit the Primary Schema definition in `schemas/primary.js` to add the new preference definition:
+We’ll edit the Primary Schema definition in `schemas/primary.js` to add the new preference
+definition. It’s `type` is `“number”`, and in addition to the default, we’ll have to define a
+minimum and maximum, as well as the step value:
 
 ```javascript
 schema: {
@@ -486,11 +488,11 @@ to the one already used for the auto-pilot template:
     <input type="range" id="minEditor-radioVolume" class="mec-radioVolume"/>
 </section>
 ```
-We’ve used an `<input>` with type` “range”` for the Adjuster.
+We’ve used an `<input>` with type `“range”` for the Adjuster.
 The template doesn’t need to set the min, max or value attributes; those are dependent on the
 Primary Schema and will be added in by the Preference Editor.
 
-#### JavaScript ####
+#### Panel component ####
 
 In the `minEditor.js` file, we'll create the Panel component for this preference.
 As with the auto-pilot Panel, we use a call to `fluid.defaults()`
@@ -502,9 +504,46 @@ fluid.defaults("minEditor.panels.radioVolume", {
     // options will go here
 });
 ```
-As with the auto-pilot Panel, we need a  Preference Map. In addition to the default value,
-we also need to map the `minimum`, `maximum` and `divisibleBy` values
-from the Primary Schema into the component:
+As with the auto-pilot Panel, we need a  Preference Map:
+
+```javascript
+fluid.defaults("minEditor.panels.radioVolume", {
+    gradeNames: ["fluid.prefs.panel"],
+
+    preferenceMap: {
+        "minEditor.radioVolume": {
+            "model.radioVolume": "default"
+        }
+    },
+
+    // more will go here
+});
+```
+The Panel component also needs to know about the minimum, maximum and step value defined in
+the Primary Schema. These values are not likely to change over the life of the component,
+so it’s not really appropriate to store them in the model. Instead, we create a `range` property
+as a component option:
+
+```javascript
+fluid.defaults("minEditor.panels.radioVolume", {
+    gradeNames: ["fluid.prefs.panel"],
+
+    preferenceMap: {
+        "minEditor.radioVolume": {
+            "model.radioVolume": "default"
+        }
+    },
+    range: {
+        min: 1,
+        max: 10,
+        step: 1
+    },
+
+    // more will go here
+});
+```
+Finally, the Preference Map needs to tell the component to map the Primary Schema values into
+the `range` property:
 
 ```javascript
 fluid.defaults("minEditor.panels.radioVolume", {
@@ -527,14 +566,8 @@ fluid.defaults("minEditor.panels.radioVolume", {
     // more will go here
 });
 ```
-The `default` property of the Primary Schema is mapped to `model.radioVolume`, but the `minimum`,
-`maximum` and `divisibleBy` are not likely to change over the life of the component, so it’s not
-really appropriate to store them in the model. Instead, we create a `range` property as a
-component option. We define default values for the minimum, maximum and step, but
-the Framework will override these values using the content of the Primary Schema, as specified by
-the  Preference Map.
 
-As we saw with the auto-pilot Panel, we need to declare a named selector to identify the HTML
+As we saw with the auto-pilot Panel, we need to define a selector to identify the HTML
 element where the preference value will be bound:
 
 ```javascript
@@ -566,9 +599,49 @@ fluid.defaults("minEditor.panels.radioVolume", {
 ```
 
 Finally, we need to define the Renderer prototree – the instructions for rendering
-the model value into the template:
+the model value into the template. This prototree will need to be a little bit more complicated
+than what we used for the auto-pilot preference. That prototree needed to do only one thing:
+bind the model value to the input element. For the range input, we still need to bind the model
+value, but we _also_ need to set the `min`, `max` and `step` attributes of the element. For this,
+a simple key/value pair isn’t enough.Instead of a simple string reference as the value,
+we’ll use an object with a value property:
 
-The
+```javascript
+    protoTree: {
+        radioVolume: {
+          value: "${radioVolume}"
+        }
+    }
+});
+```
+
+<aside class="infusion-docs-callout">
+[Renderer Decorators](../RendererDecorators.md) allow users of the Renderer to attach various things,
+such as functions, class names, etc., to the components at render time.
+</aside>
+
+To this, we will add a _[Renderer Decorator](../RendererDecorators.md)_ to set the attributes using the contents of
+the `range` property:
+
+```javascript
+    protoTree: {
+        radioVolume: {
+          value: "${radioVolume}",
+          decorators: [{
+              type: "attrs",
+              attributes: {
+                  min: "{that}.options.range.min",
+                  max: "{that}.options.range.max",
+                  step: "{that}.options.range.step"
+              }
+          }]
+        }
+    }
+});
+```
+
+So, this is what our final radio volume Panel component definition looks like:
+
 ```javascript
 fluid.defaults("minEditor.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
@@ -608,24 +681,11 @@ fluid.defaults("minEditor.panels.radioVolume", {
 });
 ```
 
-This prototree is a little bit more complicated than what we used for the auto-pilot preference.
-That prototree needed to do only one thing: bind the model value to the input element.
-For the range input, we still need to bind the model value, but we also need to set the min, max
-and step attributes of the same element. For this, a simple key/value pair isn’t enough.
-
-<div class="infusion-docs-callout">
-[Renderer Decorators](../RendererDecorators.md) allow users of the Renderer to attach various things,
-such as functions, class names, etc., to the components at render time.
-</div>
-
-This prototree uses the `attrs` _[Renderer Decorator](../RendererDecorators.md)_ to add the min,
-max and step to the element as attributes.
-
 ### Adding the Panel to the Editor ###
 
-We saw above that the main HTML template for the tool, has a placeholder in it for
-the auto-pilot Panel. We will add another placeholder for the radio volume Panel
-to the `html/minEditor.html` file:
+We saw above that the main HTML template for the tool, `html/minEditor.html`,
+has a placeholder in it for the auto-pilot Panel
+ We will add another placeholder for the radio volume Panel:
 
 ```html
 <!-- placeholder for the auto-pilot preference panel -->
