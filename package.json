@@ -6,7 +6,6 @@
   "repository": "https://github.com/fluid-project/infusion-docs",
   "dependencies": {
     "URIjs": "^1.14.1",
-    "docpad": "~6.69.1",
     "docpad-plugin-ghpages": "~2.4.4",
     "docpad-plugin-handlebars": "~2.3.0",
     "docpad-plugin-highlightjs": "~2.2.2",
