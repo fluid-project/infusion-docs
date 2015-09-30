@@ -47,7 +47,7 @@ Every component now supports a top-level options area named `distributeOptions`,
 
 #### Progressive Enhancement becomes Context Awareness ####
 
-The old "progressive enhancement" API has been removed and replaced with a new API [ContextAwareness](ContextAwareness.md). 
+The old "progressive enhancement" API has been removed and replaced with a new API [ContextAwareness](ContextAwareness.md).
 
 #### Constraint-based priorities ####
 
@@ -107,6 +107,54 @@ this model reference may change at any time and therefore must not be closed ove
 
 
 ### Preferences Framework ###
+
+#### Panel Changes ####
+
+##### Message Bundle Keys #####
+
+###### Additions ######
+* `textSizeDescr`
+* `textFontDescr`
+* `lineSpaceDescr`
+* `contrastDescr`
+
+###### Changes ######
+<table>
+<tr><th> 1.5</th><th>2.0</th></tr>
+<tr>
+    <td><code>choiceLabel</code></td>
+    <td><code>speakDescr</code></td>
+</tr>
+<tr>
+    <td><code>choiceLabel</code></td>
+    <td><code>tocDescr</code></td>
+</tr>
+<tr>
+    <td><code>choiceLabel</code></td>
+    <td><code>simplifyDescr</code></td>
+</tr>
+</table>
+
+##### Selectors #####
+
+###### Additions ######
+* `contrastDescr: .flc-prefsEditor-contrast-descr`
+* `lineSpaceDescr: .flc-prefsEditor-line-space-descr`
+* `textSizeDescr: .flc-prefsEditor-text-size-descr`
+* `textFontDescr: .flc-prefsEditor-text-font-descr`
+
+###### Changes ######
+<table>
+<tr><th> 1.5</th><th>2.0</th></tr>
+<tr>
+    <td><code>choiceLabel: ".flc-prefsEditor-toc-choice-label"</code></td>
+    <td><code>tocDescr: ".flc-prefsEditor-toc-descr"</code></td>
+</tr>
+<tr>
+    <td><code>choiceLabel: ".flc-prefsEditor-speak-choice-label"</code></td>
+    <td><code>speakDescr: ".flc-prefsEditor-speak-descr"</code></td>
+</tr>
+</table>
 
 #### Namespace Changes ####
 
@@ -265,7 +313,7 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
 
 ###### In 2.0 ######
 
-In Infusion 2.0, both `templatePrefix` and `messagePrefix` become sub-elements of a `terms` block. The `terms` block is used to define all string templates used by `fluid.prefs.resourceLoader`. 
+In Infusion 2.0, both `templatePrefix` and `messagePrefix` become sub-elements of a `terms` block. The `terms` block is used to define all string templates used by `fluid.prefs.resourceLoader`.
 To refer to these terms, rather than using an ambiguous `%prefix`, use the specific term names such as `%templatePrefix` or `%messagePrefix`.
 
 ```javascript
@@ -330,7 +378,7 @@ fluid.defaults("fluid.prefs.initialModel.starter", {
 
 ###### In 2.0 ######
 
-In Infusion 2.0, preferences are moved to a model path named `preferences` so the prefsEditor model can be used to save other user data as well. 
+In Infusion 2.0, preferences are moved to a model path named `preferences` so the prefsEditor model can be used to save other user data as well.
 This means that the enhancer model no longer receives the entire prefsEditor model. It only receives the value held at the path `preferences`.
 
 ```javascript

@@ -108,19 +108,30 @@ fluid.defaults("fluid.prefs.panel.lineSpace", {
         label: ".flc-prefsEditor-line-space-label",
         narrowIcon: ".flc-prefsEditor-line-space-narrowIcon",
         wideIcon: ".flc-prefsEditor-line-space-wideIcon",
-        multiplier: ".flc-prefsEditor-multiplier"
+        multiplier: ".flc-prefsEditor-multiplier",
+        lineSpaceDescr: ".flc-prefsEditor-linespace-descr"
+    },
+    selectorsToIgnore: ["lineSpace"],
+    components: {
+        lineSpace: {
+            type: "fluid.textfieldSlider",
+            container: "{that}.dom.lineSpace",
+            createOnEvent: "afterRender",
+            options: {
+                model: {
+                    value: "{fluid.prefs.panel.lineSpace}.model.lineSpace"
+                },
+                range: "{fluid.prefs.panel.lineSpace}.options.range",
+                sliderOptions: "{fluid.prefs.panel.lineSpace}.options.sliderOptions"
+            }
+        }
     },
     protoTree: {
         label: {messagekey: "lineSpaceLabel"},
         narrowIcon: {messagekey: "lineSpaceNarrowIcon"},
         wideIcon: {messagekey: "lineSpaceWideIcon"},
         multiplier: {messagekey: "multiplier"},
-        lineSpace: {
-            decorators: {
-                type: "fluid",
-                func: "fluid.prefs.textfieldSlider"
-            }
-        }
+        lineSpaceDescr: {messagekey: "lineSpaceDescr"}
     },
     sliderOptions: {
         orientation: "horizontal",
