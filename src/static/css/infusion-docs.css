@@ -341,36 +341,27 @@ div.infusion-docs-note {
     margin-bottom: 2rem;
 }
 
-.infusion-docs-callout-source:after {
-    font-family: "infusion-docs";
-    content: "\e602";
-    color: #5DB93C;
-    font-size: 0.8rem;
-    vertical-align: super;
+.infusion-docs-callout {
+    font-family: "RobotoSlab";
+    margin: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.2rem;
+    background: #ffffff;
+    padding: 0.4rem;
+    font-size: 1.1rem;
+    padding-left: 3rem;
+    position: relative;
 }
 .infusion-docs-callout:before {
     font-family: "infusion-docs";
-    content: "\e602";
+    content: "\e600";
     color: #5DB93C;
-    -moz-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -ms-transform: scaleX(-1);
-    transform: scaleX(-1);
-    display: inline-block;
-    padding-left: 0.5rem;
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0.4rem;
 }
 
-.infusion-docs-callout {
-    display: block;
-    border: 1px solid;
-    border-radius: 0.2rem;
-    float: right;
-    width: 30%;
-    background: #ffffff;
-    padding: 0.4rem;
-    font-size: 95%;
-}
 .infusion-docs-container .infusion-docs-githubLink a:before {
     display: inline-block;
     vertical-align: bottom;
@@ -482,17 +473,22 @@ div.infusion-docs-note {
 }
 
 /* Styles for high-contrast themes */
-.fl-theme-yb .infusion-docs-fluidLogoText::before {
+.fl-theme-yb .infusion-docs-fluidLogoText::before,
+.fl-theme-yb .infusion-docs-callout:before {
     color: #ffff00 !important;
 }
-.fl-theme-wb .infusion-docs-fluidLogoText::before {
+.fl-theme-wb .infusion-docs-fluidLogoText::before,
+.fl-theme-wb .infusion-docs-callout:before {
     color: #ffffff !important;
 }
 .fl-theme-by .infusion-docs-fluidLogoText::before,
-.fl-theme-bw .infusion-docs-fluidLogoText::before {
+.fl-theme-bw .infusion-docs-fluidLogoText::before,
+.fl-theme-by .infusion-docs-callout:before,
+.fl-theme-bw .infusion-docs-callout:before {
     color: #000000 !important;
 }
-.fl-theme-lgdg .infusion-docs-fluidLogoText::before {
+.fl-theme-lgdg .infusion-docs-fluidLogoText::before,
+.fl-theme-lgdg .infusion-docs-callout:before {
     color: #bdbdbb !important;
 }
 

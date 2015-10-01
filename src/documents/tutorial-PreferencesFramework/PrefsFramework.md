@@ -87,14 +87,14 @@ fluid.defaults("minEditor.primarySchema", {
     }
 });
 ```
-<aside class="infusion-docs-callout" id="callout-fluid-defaults">
+
+In this code snippet, the Primary Schema is created using a call to the
+Infusion Framework function `fluid.defaults().`
+
+<aside class="infusion-docs-callout">
 `fluid.defaults()` is one of the core functions in Infusion: It is used to create [components](../UnderstandingInfusionComponents.md)
 (the building blocks of any Infusion application) and register them with the Framework.
 </aside>
-
-In this code snippet, the Primary Schema is created using a call to the
-Infusion Framework function
-<span class="infusion-docs-callout-source" aria-describedby="callout-fluid-defaults">`fluid.defaults().`</span>
 
 `fluid.defaults()` accepts two arguments:
 1. a string name, and
@@ -107,16 +107,14 @@ The second argument – the options – is an object containing (in this case) t
 <dl>
 <dt>`gradeNames`</dt>
 <dd>
-<aside class="infusion-docs-callout" id="callout-grade">
+Any call to `fluid.defaults()` must include the `gradeNames` property in the options argument.
+This property defines the base _[grade](../ComponentGrades.md)_ for the component.
+<aside class="infusion-docs-callout">
 A **grade** is _very loosely_ analogous to a class, in that using a grade in the definition of a
 component infers the properties of that grade to the component. It’s actually a bit more complex
 than that; later, you’ll probably want to read the documentation about [Component Grades](../ComponentGrades.md).
 This tutorial will explain more about grades as it goes along.
 </aside>
-Any call to `fluid.defaults()` must include the `gradeNames` property in the options argument.
-This property defines the base
-<span class="infusion-docs-callout-source" aria-describedby="callout-grade">_[grade](../ComponentGrades.md)_</span>
- for the component.
 
 In a Primary Schema, the `gradeNames` property must include the grade `“fluid.prefs.schemas”`,
 which is defined by the Preferences Framework. **Using this particular grade is what registers
@@ -145,18 +143,16 @@ _Coming soon: More information about these two properties_
 
 #### Panel ####
 
-<aside class="infusion-docs-callout" id="callout-models">
+
+A [Panel](../Panels.md) is a component responsible for rendering the user interface controls for a
+preference and tying them to the internal [model](../FrameworkConcepts.md#model-objects) that represents the preference value.
+The Panel for the auto-pilot preference control is defined in the `minEditor.js` file:
+<aside class="infusion-docs-callout">
 [Models](../FrameworkConcepts.md#model-objects) are central to Infusion, which,
 while not formally a [Model-View-Controller framework](../FrameworkConcepts.md#mvc),
 embodies the the separation of concerns that is central to MVC.
 Most Infusion components have an internal model, for maintaining the state of the component.
 </aside>
-
-A [Panel](../Panels.md) is a component responsible for rendering the user interface controls for a
-preference and tying them to the internal
-<span class="infusion-docs-callout-source" aria-describedby="callout-models">[model](../FrameworkConcepts.md#model-objects)</span>
- that represents the preference value.
-The Panel for the auto-pilot preference control is defined in the `minEditor.js` file:
 
 ```javascript
 /**
@@ -620,15 +616,13 @@ we’ll use an object with a value property:
 });
 ```
 
-<aside class="infusion-docs-callout" id="callout-renderer-decorators">
+
+To this, we will add a _[Renderer Decorator](../RendererDecorators.md)_
+to set the attributes using the contents of the `range` property:
+<aside class="infusion-docs-callout">
 [Renderer Decorators](../RendererDecorators.md) allow users of the Renderer to attach various things,
 such as functions, class names, etc., to the components at render time.
 </aside>
-
-To this, we will add a
-<span class="infusion-docs-callout-source" aria-describedby="callout-renderer-decorators">_[Renderer Decorator](../RendererDecorators.md)_</span>
-to set the attributes using the contents of
-the `range` property:
 
 ```javascript
     protoTree: {
