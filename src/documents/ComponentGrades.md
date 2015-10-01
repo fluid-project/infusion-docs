@@ -95,7 +95,7 @@ var that = fluid.uploader.fileQueueView( ... );
 
 Since the `fluid.defaults` directive introduces a grade into the system, various components can be composed to create new ones. Options, fields and methods introduced by the ancestor grades will be merged. 
 The merging happens, firstly in hierarchical order (grades comprising the ancestor grade are resolved before the actual component grades resolution) and secondly in the left-to-right order 
-(defaults from the grade on the left taking precedence over the defaults from the grade on the right). Those interested in fine details should note that this is a very different scheme to the [C3 linearization algorithm](https://en.wikipedia.org/wiki/C3_linearization) 
+(defaults from the grade on the right taking precedence over the defaults from the grade on the left). Those interested in fine details should note that this is a very different scheme to the [C3 linearization algorithm](https://en.wikipedia.org/wiki/C3_linearization) 
 that is commonly used for resolving multiple inheritance. Other than preventing infinite cycles of resolution, the framework will allow the same grade to appear any number of times in the list of grades,
 and each time it will be effective in overriding definitions occuring in grades to the left in the same `gradeNames` list. 
 
