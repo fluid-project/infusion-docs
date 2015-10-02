@@ -4,13 +4,8 @@ layout: default
 category: Tutorials
 ---
 
----
-Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
-
 This article describes how to use the Infusion [Preferences Framework](../PreferencesFramework.md)
 to use the [Builder](../Builder.md), a tool that creates a preferences editor from schema documents.
-
----
 
 In cases where you are adding a full-page editor to your site, you likely want the user's settings to be applied to every other page on your site as well. On these pages, you don't want to instantiate the preferences editor, but you do need to instantiate the page enhancer and the settings store; without these, the preferences will have no effect.
 

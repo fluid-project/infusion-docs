@@ -149,13 +149,8 @@
                 "sectionName": "Preferences Framework",
                 "pages":
                 [
-                    { "pageName": "Preferences Framework", "href": "/tutorial-PreferencesFramework/PrefsFramework.html" },
-                    { "pageName": "Creating a preferences Editor Using the Preferences Framework", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.html" },
-                    { "pageName": "Creating a Primary Schema", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPrimarySchema.html" },
-                    { "pageName": "Creating Panels", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingPanels.html" },
+                    { "pageName": "Creating a Preference Editor Using the Preferences Framework", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/PrefsFramework.html" },
                     { "pageName": "Creating Enactors", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingEnactors.html" },
-                    { "pageName": "Creating an Auxiliary Schema", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAnAuxiliarySchema.html" },
-                    { "pageName": "Instantiating the Preferences Editor", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/InstantiatingThePreferencesEditor.html" },
                     { "pageName": "Instantiating the Enhancer and Settings Store Only", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/InstantiatingTheEnhancerAndSettingsStoreOnly.html" },
                     { "pageName": "Styling the Preferences Editor", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/StylingThePreferencesEditor.html" },
                     { "pageName": "Adding a Basic Preferences Editor to a Site", "href": "/to-do/AddingPrefsEditorToSite.html" },

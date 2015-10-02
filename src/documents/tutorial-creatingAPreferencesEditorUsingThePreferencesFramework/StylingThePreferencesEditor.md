@@ -4,12 +4,7 @@ layout: default
 category: Tutorials
 ---
 
----
-Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
-
 This article describes how to style a preferences editor created using the Infusion [Preferences Framework](../PreferencesFramework.md).
-
----
 
 The Preferences Framework includes a number of CSS stylesheets that are used to control the layout and appearance of the interface. These stylesheets should be used as the basis for your styles, even if you choose to override some of the styling to make the interface match your application. All stylesheets are found in `src/framework/preferences/css`.
 
