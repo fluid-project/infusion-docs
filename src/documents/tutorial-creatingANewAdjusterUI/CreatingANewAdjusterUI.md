@@ -130,7 +130,7 @@ If the adjuster will be styled to look different than a traditional HTML form el
 
 If the control or its label(s) will include graphics, we recommend using an icon font for the graphics. Icon fonts will automatically adjust to the size and colours specified by the page or by a user's personal settings, without the need for additional CSS.
 
-[How to Create and Use Font Icons](HowToCreateAndUseFontIcons.md)
+[How to Create and Use Font Icons](../tutorial-iconFonts/HowToCreateAndUseFontIcons.md)
 
 The CSS required will, of course, be dependent on the design. Some examples from existing interfaces are provided below, as inspiration.
 
