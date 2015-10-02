@@ -7,6 +7,9 @@ category: Tutorials
 This tutorial will walk you through the process of building a Preference Editor using the
 Infusion [Preferences Framework](../PreferencesFramework.md).
 
+<div class="infusion-docs-note"><strong>Note:</strong> This tutorial is not yet complete.
+Where more information is still to come, this will be clearly noted.</div>
+
 ## Introduction ##
 We’ll start by looking at a functional – but very simple – Preference Editor and explaining how it
 works. From there, we’ll learn about more features of the Preferences Framework by adding functionality to the Editor.
