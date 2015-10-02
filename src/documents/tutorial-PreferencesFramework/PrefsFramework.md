@@ -11,7 +11,8 @@ Infusion [Preferences Framework](../PreferencesFramework.md).
 Where more information is still to come, this will be clearly noted.</div>
 
 ## Introduction ##
-We’ll start by looking at a functional – but very simple – Preference Editor and explaining how it
+A Preferences Editor is a web application that supports the creation and modification
+of a user's preferred settings for a device or application. In this tutorial, we'll look at a functional – but very simple – Preference Editor and explain how it
 works. From there, we’ll learn about more features of the Preferences Framework by adding functionality to the Editor.
 
 Throughout this tutorial, you’ll find links into the documentation for various parts of
@@ -126,35 +127,43 @@ this fact and use this Primary Schema with your Preference Editor.
 </dd>
 <dt>`schema`</dt>
 <dd>
-This property is the JSON definition of the preferences for this Preference Editor.
+This property is the actual JSON definition of the preferences for this Preference Editor.
+</dd>
+</dl>
 
 In this particular example, only a single preference is being defined; a boolean called
-“minEditor.autoPilot”. This name of the preference is the key in the JSON definition;
-the value for this key is an object containing the properties of this preference:
+“minEditor.autoPilot”:
 
-<pre class="highlight">
-<code class="hljs javascript">"minEditor.autoPilot": {
+```javascript
+"minEditor.autoPilot": {
     "type": "boolean",
     "default": false
-}</code></pre>
+}
+```
+The key in the JSON definition is the name of the preference.
+This name will be used throughout the Preferences Framework to associated all the components
+related to the setting. The name can be anything, so long as it is used consistently,
+but keep in mind that it will be used in the persistent storage for the user's preference,
+and will be shared with other technologies that may wish to define enactors to respond to it.
+We recommend that it be thoughtfully namespaced and human-understandable.
 
+The value is an object containing the properties of the preference.
 Every preference in a Primary Schema must have at least two properties: `“type”` and `“default”`.
 
 _Coming soon: More information about these two properties_
-</dd>
-</dl>
 
 #### Panel ####
 
 
-A [Panel](../Panels.md) is a component responsible for rendering the user interface controls for a
-preference and tying them to the internal [model](../FrameworkConcepts.md#model-objects) that represents the preference value.
+A [Panel](../Panels.md) is a [component](../UnderstandingInfusionComponents.md) responsible for rendering the user interface controls for a
+preference and tying them to the internal model] that represents the preference value.
 The Panel for the auto-pilot preference control is defined in the `minEditor.js` file:
 <aside class="infusion-docs-callout">
-[Models](../FrameworkConcepts.md#model-objects) are central to Infusion, which,
-while not formally a [Model-View-Controller framework](../FrameworkConcepts.md#mvc),
-embodies the the separation of concerns that is central to MVC.
-Most Infusion components have an internal model, for maintaining the state of the component.
+[Components](../UnderstandingInfusionComponents.md) are the core building-blocks of
+any Infusion application.
+An Infusion component can represent a visible component on screen, a collection of related
+functionality (such as an object, as in object-orientation), or simply a unit of work or
+relationship between other components.
 </aside>
 
 ```javascript
@@ -202,7 +211,7 @@ property in the options argument. Panels must use the `"fluid.prefs.panel"` grad
 Using this grade automatically buys you a lot of Framework supports necessary for Panels.</dd>
 <dt>`preferenceMap`</dt>
 <dd>A Panel must have a _ Preference Map_, which maps the information in the Primary Schema
-into your Panel. Let’s look at this one more closely:
+into your Panel.Let’s look at this one more closely:
 <pre class="highlight">
 <code class="hljs javascript">{
 preferenceMap: {
@@ -221,7 +230,14 @@ The content of this  Preference Map is a key/value pair:
 <li> The key, `“model.autoPilot”`, is an [EL path](../FrameworkConcepts.md#el-paths) into the
 Panel’s data model. An “EL path” is just a
 dot-separated path built from names. In this case, it means “the `autoPilot`
-property of the `model` property” of the Panel.</li>
+property of the [`model`](../FrameworkConcepts.md#model-objects) property” of the Panel.
+<aside class="infusion-docs-callout">
+[Models](../FrameworkConcepts.md#model-objects) are central to Infusion, which,
+while not formally a [Model-View-Controller framework](../FrameworkConcepts.md#mvc),
+embodies the the separation of concerns that is central to MVC.
+Most Infusion components have an internal model, for maintaining the state of the component.
+</aside>
+</li>
 <li> The value, `“default”`, is a reference to the name of the `“default”` property in the Primary Schema.</li>
 </ul>
 This  Preference Map is saying two things:
@@ -231,6 +247,8 @@ in a property called `autoPilot`, and</li>
 <li>the initial value for the property should be taken from the `“default”` property
 of the Primary Schema.</li>
 </ul>
+A Preference Map can specify other locations for Primary Schema information, besides the model.
+We'll see an example of this when we add antoher panel, later in this tutorial.
 </dd>
 <dt>`selectors`</dt>
 <dd>A Panel is a _[view component](../tutorial-gettingStartedWithInfusion/ViewComponents.md)_
@@ -304,7 +322,42 @@ Again, we use `fluid.defaults()` to create the Schema.
 As with the Primary Schema and the Panel, `fluid.defaults()` is passed two arguments:
 1) a string name (`"minEditor.auxSchema"`), and 2) a JavaScript object containing configuration options.
 
-Let’s look at the Schema in detail.
+Let’s look at the Schema itself in detail:
+```javascript
+auxiliarySchema: {
+    // the loaderGrade identifies the "base" form of preference editor desired
+    loaderGrades: ["fluid.prefs.fullNoPreview"],
+
+    // 'terms' are strings that can be re-used elsewhere in this schema;
+    terms: {
+        templatePrefix: "html"
+    },
+
+    // the main template for the preference editor itself
+    template: "%templatePrefix/minEditor.html",
+
+    autoPilot: {
+        // this 'type' must match the name of the pref in the primary schema
+        type: "minEditor.autoPilot",
+        panel: {
+            // this 'type' must match the name of the panel grade created for this pref
+            type: "minEditor.panels.autoPilot",
+
+            // selector indicating where, in the main template, to place this panel
+            container: ".mec-autoPilot",
+
+            // the template for this panel
+            template: "%templatePrefix/autoPilot.html"
+        }
+    }
+}
+});
+```
+An auxiliary can be generally divided into two types of properties:
+
+1. top-level members, defining globally-used values, and
+2. per-preference members (one per preference), defining the specific requirements for each preference.
+
 
 ##### Loader Grade #####
 The _loader grade_ specifies the _type_ of Preference Editor:
@@ -396,7 +449,7 @@ Note, in this example, how the `templatePrefix` term is being used.</dd>
 
 #### Instantiation ####
 The last thing in the `js/minEditor.js` file is a call to the Preferences Framework
-function `fluid.prefs.create()`. This function actually creates the Preference Editor.
+function [`fluid.prefs.create()`](../PreferencesEditor.md). This function actually creates the Preference Editor.
 It accepts two arguments:
 1. a CSS selector indicating the container element for the Preference Editor, and
 2. a JavaScript object containing configuration information for the Preference Editor.
