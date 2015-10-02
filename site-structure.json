@@ -127,14 +127,14 @@
                 "pages":
                 [
                     { "pageName": "Getting started with Infusion", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
-                    { "pageName": "  Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
-                    { "pageName": "  Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
-                    { "pageName": "  Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
-                    { "pageName": "  Basic Component Creation", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"},
-                    { "pageName": "  Model Components", "href": "/tutorial-gettingStartedWithInfusion/ModelComponents.html"},
-                    { "pageName": "  View Components", "href": "/tutorial-gettingStartedWithInfusion/ViewComponents.html"},
-                    { "pageName": "  Renderer Components", "href": "/tutorial-gettingStartedWithInfusion/RendererComponents.html"},
-                    { "pageName": "  Subcomponents", "href": "/tutorial-gettingStartedWithInfusion/Subcomponents.html"}
+                    { "pageName": "Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
+                    { "pageName": "Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
+                    { "pageName": "Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
+                    { "pageName": "Basic Component Creation", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"},
+                    { "pageName": "Model Components", "href": "/tutorial-gettingStartedWithInfusion/ModelComponents.html"},
+                    { "pageName": "View Components", "href": "/tutorial-gettingStartedWithInfusion/ViewComponents.html"},
+                    { "pageName": "Renderer Components", "href": "/tutorial-gettingStartedWithInfusion/RendererComponents.html"},
+                    { "pageName": "Subcomponents", "href": "/tutorial-gettingStartedWithInfusion/Subcomponents.html"}
                 ]
             },
             {
