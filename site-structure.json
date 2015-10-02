@@ -127,18 +127,26 @@
                 "pages":
                 [
                     { "pageName": "Getting started with Infusion", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
-                    { "pageName": "Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
-                    { "pageName": "Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
-                    { "pageName": "Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
-                    { "pageName": "Basic Component Creation", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"},
-                    { "pageName": "Model Components", "href": "/tutorial-gettingStartedWithInfusion/ModelComponents.html"},
-                    { "pageName": "View Components", "href": "/tutorial-gettingStartedWithInfusion/ViewComponents.html"},
-                    { "pageName": "Renderer Components", "href": "/tutorial-gettingStartedWithInfusion/RendererComponents.html"},
-                    { "pageName": "Subcomponents", "href": "/tutorial-gettingStartedWithInfusion/Subcomponents.html"}
+                    { "pageName": "  Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
+                    { "pageName": "  Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
+                    { "pageName": "  Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
+                    { "pageName": "  Basic Component Creation", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"},
+                    { "pageName": "  Model Components", "href": "/tutorial-gettingStartedWithInfusion/ModelComponents.html"},
+                    { "pageName": "  View Components", "href": "/tutorial-gettingStartedWithInfusion/ViewComponents.html"},
+                    { "pageName": "  Renderer Components", "href": "/tutorial-gettingStartedWithInfusion/RendererComponents.html"},
+                    { "pageName": "  Subcomponents", "href": "/tutorial-gettingStartedWithInfusion/Subcomponents.html"}
                 ]
             },
             {
-                "sectionName": "Preferences Editor",
+                "sectionName": "General",
+                "pages":
+                [
+                    { "pageName": "Using String Templates", "href": "/tutorial-usingStringTemplates/UsingStringTemplates.html" },
+                    { "pageName": "How to Create and Use Font Icons", "href": "/tutorial-iconFonts/HowToCreateAndUseFontIcons.html" }
+                ]
+            },
+            {
+                "sectionName": "Preferences Framework",
                 "pages":
                 [
                     { "pageName": "Creating a preferences Editor Using the Preferences Framework", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.html" },
@@ -151,15 +159,7 @@
                     { "pageName": "Styling the Preferences Editor", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/StylingThePreferencesEditor.html" },
                     { "pageName": "Adding a Basic Preferences Editor to a Site", "href": "/to-do/AddingPrefsEditorToSite.html" },
                     { "pageName": "Working With A Preferences Editor On Your Site", "href": "/to-do/WorkingWithPrefsEditorOnSite.html" },
-                    { "pageName": "Using String Templates", "href": "/tutorial-usingStringTemplates/UsingStringTemplates.html" }
-                ]
-            },
-            {
-                "sectionName": "Creating an Adjuster UI",
-                "pages":
-                [
-                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.html" },
-                    { "pageName": "How to Create and Use Font Icons", "href": "/tutorial-creatingANewAdjusterUI/HowToCreateAndUseFontIcons.html" }
+                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.html" }
                 ]
             },
             {
