@@ -138,7 +138,15 @@
                 ]
             },
             {
-                "sectionName": "Preferences Editor",
+                "sectionName": "General",
+                "pages":
+                [
+                    { "pageName": "Using String Templates", "href": "/tutorial-usingStringTemplates/UsingStringTemplates.html" },
+                    { "pageName": "How to Create and Use Font Icons", "href": "/tutorial-iconFonts/HowToCreateAndUseFontIcons.html" }
+                ]
+            },
+            {
+                "sectionName": "Preferences Framework",
                 "pages":
                 [
                     { "pageName": "Preferences Framework", "href": "/tutorial-PreferencesFramework/PrefsFramework.html" },
@@ -152,15 +160,7 @@
                     { "pageName": "Styling the Preferences Editor", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/StylingThePreferencesEditor.html" },
                     { "pageName": "Adding a Basic Preferences Editor to a Site", "href": "/to-do/AddingPrefsEditorToSite.html" },
                     { "pageName": "Working With A Preferences Editor On Your Site", "href": "/to-do/WorkingWithPrefsEditorOnSite.html" },
-                    { "pageName": "Using String Templates", "href": "/tutorial-usingStringTemplates/UsingStringTemplates.html" }
-                ]
-            },
-            {
-                "sectionName": "Creating an Adjuster UI",
-                "pages":
-                [
-                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.html" },
-                    { "pageName": "How to Create and Use Font Icons", "href": "/tutorial-creatingANewAdjusterUI/HowToCreateAndUseFontIcons.html" }
+                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.html" }
                 ]
             },
             {

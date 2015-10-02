@@ -58,12 +58,13 @@ layout: default
 ## Tutorials
 
 * [Getting started with Infusion](tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.md)
-* [How to Create and Use Font Icons](tutorial-creatingANewAdjusterUI/HowToCreateAndUseFontIcons.md)
+* [How to Create and Use Font Icons](tutorial-iconFonts/HowToCreateAndUseFontIcons.md)
+* [Using String Templates](tutorial-usingStringTemplates/UsingStringTemplates.md)
 * [User Interface Options](tutorial-userInterfaceOptions/UserInterfaceOptions.md)
+* [Creating a preferences Editor Using the Preferences Framework](tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 * [Adding a Basic Preferences Editor to a Site](to-do/AddingPrefsEditorToSite.md)
 * [Working With A Preferences Editor On Your Site](to-do/WorkingWithPrefsEditorOnSite.md)
 * [Creating a New Adjuster UI](tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.md)
-* [Creating a preferences Editor Using the Preferences Framework](tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.md)
 * Migrating to Infusion 2.0
     * [API Changes from 1.5 to 2.0](APIChangesFrom1_5To2_0.md)
 * Migrating to Infusion 1.5
