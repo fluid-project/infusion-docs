@@ -4,10 +4,19 @@ layout: default
 category: Infusion
 ---
 
-A component **grade** is a block of configuration (representable as JSON) with a global name ([fluid.defaults](ComponentOptionsAndDefaults.md)). Every **fluid.defaults** directive introduces a **grade** into the system of Fluid Infusion components, 
-which can be built on to derive further grades/components. This derivation occurs by mentioning the name of the original grade within the **gradeNames** section of the derived component.
+A component **grade** is a block of configuration (representable as JSON) with a global name. A new grade is typically registered into an Infusion runtime by a call to the function [fluid.defaults](ComponentOptionsAndDefaults.md), supplying both the global name (the **grade name**) and the configuration block. 
 
-Developers can create their own **fluid.defaults / grades** as well as use them to build upon each other, and compose them as needed.
+Here's a simple example of defining a new grade, derived from the base framework grade `fluid.component`:
+
+```javascript
+fluid.defaults("examples.myGrade", {
+    gradeNames: "fluid.component"
+});
+```
+
+Each such grade can be built on to derive further grades/components. This derivation occurs by mentioning the name of the original grade (e.g. `examples.myGrade`) within the **gradeNames** section of the derived component.
+
+## The framework's built-in base grades
 
 The Infusion Framework already contains several predefined component grades that normally form the initial building blocks for external components and grades. The following table describes these grades and how they relate to each other.
 
