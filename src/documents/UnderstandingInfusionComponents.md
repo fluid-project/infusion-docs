@@ -40,20 +40,20 @@ made up of several subcomponents: It has the file queue view, which displays the
 
 ## What Does A Component Look Like? ##
 
-A component is a regular JavaScript object that has certain characteristics. The most simple components
-have a typeName and an id, but typical components will have more:
-
-Most will have:
+A component is a regular JavaScript object that has certain characteristics. The simplest varieties of Infusion Components, derived from `fluid.component`, will have:
 
 * a **creator function**
-  * the function that implementors invoke, which returns the component object itself
+  * the function that implementors invoke, which returns a fresh component object
+  * this function is constructed automatically by the framework, given the options in the component's configuration
 * configuration options
   * various values that control the operation of the component, which can be overridden by implementors to customize the component
 * public functions
+  * registered as `invokers` in the component's configuration, these can be invoked by users to trigger component functionality
+* events
+  * registered as `events` in the component's configuration, these can be fired and listened to by users and the implementation
 
 Depending on what the component is for, some will include infrastructure to support
 
-* events
 * a model
 * a view
 * a renderer

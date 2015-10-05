@@ -4,8 +4,7 @@ layout: default
 category: Infusion
 ---
 
-In the Infusion IoC system, a component declares its (static) subcomponents through the `components` property of the defaults, using [`fluid.defaults`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539):
-
+In the Infusion IoC system, a component declares its subcomponents through the `components` property of its [options](ComponentConfigurationOptions.md#-components-). 
 Subcomponent declaration in a defaults block takes the following form:
 
 ```javascript
@@ -20,7 +19,27 @@ fluid.defaults("my.component.name", {
 });
 ```
 
-Note that as with the use of [dynamic grades](ComponentGrades.md#dynamic-grades), what could be called a kind of "dynamic subcomponent" can be added after the fact to any component simply by arranging for additional entries in its `components` options, via any of the usual routes - for example, direct arguments to its creator function, options distributed by [distributeOptions](IoCSS.md), or by 2nd-level nested `components` entries in the subcomponent record of the defaults of a component grandparent. Later on in this section we will see direct framework facilities for other kinds of dynamic subcomponents, those driven by dynamic data or event firing.
+When the parent component is constructed, one subcomponent will be constructed for each entry in the finally elaborated form of its `components` options, and attached to the parent at the paths held as keys in the `components` structure. In this case, executing `var component = my.component.name()` would construct three subcomponents as members of `component` named `subcomponent1`, `subcomponent2` and `subcomponent3`.
+
+## Minimal working example ##
+
+Here's a minimal working example:
+
+```javascript
+fluid.defaults("examples.myParent", {
+    gradeNames: "fluid.component",
+    components: {
+        mySubcomponent: {
+            type: "fluid.component"
+        }
+    }
+});
+
+var component = examples.myParent();
+console.log("Parent component has a child of type ", component.mySubcomponent.typeName);
+```
+
+Component options can arrive at an instantiated component through various routes other than just its defaults - and so further subcomponents can arrive through all these other routes too. For example, with [dynamic grades](ComponentGrades.md#dynamic-grades), further subcomponents can be added after the fact to any component. Other routes for options are direct arguments to its creator function, options distributed by [distributeOptions](IoCSS.md), or by 2nd-level nested `components` entries in the subcomponent record of the defaults of a component grandparent. Later on in this section we will see direct framework facilities for other kinds of dynamic subcomponents, those driven by dynamic data or event firing.
 
 ## Basic Subcomponent Declaration ##
 

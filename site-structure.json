@@ -9,14 +9,14 @@
                 "href":"/Components.html",
                 "pages":
                 [
-                    { "pageName": "Framework Concepts", "href": "/FrameworkConcepts.html"},
                     { "pageName": "Understanding Infusion Components", "href": "/UnderstandingInfusionComponents.html" },
                     { "pageName": "Understanding Component Options And Defaults", "href": "/ComponentOptionsAndDefaults.html" },
                     { "pageName": "Component Configuration Options", "href": "/ComponentConfigurationOptions.html" },
                     { "pageName": "Component Grades", "href": "/ComponentGrades.html" },
                     { "pageName": "Options Merging", "href": "/OptionsMerging.html" },
                     { "pageName": "Component Lifecycle", "href": "/ComponentLifecycle.html" },
-                    { "pageName": "Priorities", "href": "/Priorities.html" }
+                    { "pageName": "Priorities", "href": "/Priorities.html" },
+                    { "pageName": "Framework Concepts", "href": "/FrameworkConcepts.html"}
                 ]
             },
             {
