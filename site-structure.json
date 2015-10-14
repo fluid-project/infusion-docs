@@ -5,6 +5,14 @@
         "sections":
         [
             {
+                "sectionName": "API",
+                "pages":
+                [
+                    { "pageName": "Core API", "href": "/CoreAPI.html" },
+                    { "pageName": "Promises API", "href": "/PromisesAPI.html" }
+                ]
+            },
+            {
                 "sectionName": "Defining Components",
                 "href":"/Components.html",
                 "pages":
