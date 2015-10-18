@@ -9,7 +9,7 @@ category: Infusion
 Infusion's [core API](CoreAPI.md) and [IoC system](HowToUseInfusionIoC.md) are fully supported in node.js. It is supplied with a 
 standard [package.json](https://github.com/fluid-project/infusion/blob/master/package.json) file and registered as a module in [npm's registry](https://www.npmjs.com/package/infusion).
 Infusion's global namespace model, as operated through functions such as [`fluid.registerNamespace`](CoreAPI.md#fluid-registernamespace-path-)
-and [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-) require some care in the node.js environment which makes significant efforts to balkananise
+and [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-) require some care in the node.js environment which makes significant efforts to balkanise
 modules one from another, and to ensure that precisely this kind of thing never occurs — reference to artifacts held
 in a single, shared global namespace.
 
@@ -20,7 +20,7 @@ an application's module tree. Normally `npm`'s standard deduplication algorithm 
 or else in the case the dependency is hosted from `git`. For this case we have produced the [`dedupe-infusion`](https://www.npmjs.com/package/dedupe-infusion) module
 which can be `require`d in the normal way and executed as part of a final build step to ensure that only the topmost instance of the `infusion` module survives. This
 is particularly essential for Infusion because of its global nature — duplicate modules will result in some [grade](ComponentGrades.md) definitions being sent to 
-once instance and some to another, resulting in "global chaos". In fact, Infusion will detect this condition on startup and issue an immediate failure directing you
+once Infusion instance and some to another, resulting in "global chaos". In fact, Infusion will detect this condition on startup and issue an immediate failure directing you
 to run the `dedupe-infusion` task.
 
 ## Accessing and exporting global names
@@ -50,12 +50,12 @@ will coincide in client code.
 
 ## node.js module APIs
 
-Infusion includes a few small utilities to ease the process of working with a node/npm module layout.
+Infusion includes a few small utilities to ease the process of working with a node/npm module layout:
 
 ### fluid.module.register(name, baseDir, moduleRequire)
 
 This is an intensely useful method that will allow you to register your Infusion-aware module and its base path in Infusion's global registery of modules.
-This will allow you, for example, to later issue a call to `fluid.require("${myModule}/myPath)"` for any assert nested within that module, regardless of its location in 
+This will allow you, for example, to later issue a call to `fluid.require("${myModule}/myPath)"` for any asset nested within that module, regardless of its location in 
 the filesystem. Other productive uses of such records are imaginable — for example, issuing `require` directives for modules from their point of view, etc.
 
 * `name {String}` The name of your module. This should agree with its name in the npm registry.
@@ -65,7 +65,7 @@ the filesystem. Other productive uses of such records are imaginable — for exa
 ### fluid.module.resolvePath(path)
 
 Resolve a path expression which may begin with a module reference of the form `${module-name}` into an absolute path relative to that module, using the
-database of base directories registered previously with `fluid.module.register`.If the path does not begin with such a module reference, it is returned unchanged.
+database of base directories registered previously with `fluid.module.register`. If the path does not begin with such a module reference, it is returned unchanged.
 
 * `path {String}` A path expression to be resolved, perhaps containing symbolic module references such as `${module-name}`
 * Returns: `{String}` The path expression with any symbolic module references resolved against the `fluid.module.modules` database
