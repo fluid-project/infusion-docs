@@ -9,7 +9,9 @@
                 "pages":
                 [
                     { "pageName": "Core API", "href": "/CoreAPI.html" },
-                    { "pageName": "Promises API", "href": "/PromisesAPI.html" }
+                    { "pageName": "Promises API", "href": "/PromisesAPI.html" },
+                    { "pageName": "IoC API", "href": "/IoCAPI.html" },
+                    { "pageName": "API and usage in node.js", "href": "/NodeAPI.html" }
                 ]
             },
             {
@@ -31,12 +33,12 @@
                 "sectionName": "Inversion of Control",
                 "pages":
                 [
-                    { "pageName": "How To Use Infusion IoC", "href": "/HowToUseInfusionIoC.html" },
+                    { "pageName": "How to Use Infusion IoC", "href": "/HowToUseInfusionIoC.html" },
                     { "pageName": "Subcomponent Declaration", "href": "/SubcomponentDeclaration.html" },
                     { "pageName": "Contexts", "href": "/Contexts.html" },
                     { "pageName": "ContextAwareness", "href": "/ContextAwareness.html" },
                     { "pageName": "Invokers", "href": "/Invokers.html" },
-                    { "pageName": "Expansion Of Component Options", "href": "/ExpansionOfComponentOptions.html" },
+                    { "pageName": "Expansion of Component Options", "href": "/ExpansionOfComponentOptions.html" },
                     { "pageName": "IoC References", "href": "/IoCReferences.html" },
                     { "pageName": "IoCSS", "href": "/IoCSS.html" },
                     { "pageName": "Declarative this-ism In IoC", "href": "/DeclarativeThisismInIoC.html" }
@@ -72,7 +74,7 @@
                 "pages":
                 [
                     { "pageName": "Renderer", "href": "/Renderer.html" },
-                    { "pageName": "How To Use the Renderer", "href": "/HowToUseTheRenderer.html" },
+                    { "pageName": "How to Use the Renderer", "href": "/HowToUseTheRenderer.html" },
                     { "pageName": "Renderer Component Trees", "href": "/RendererComponentTrees.html" },
                     { "pageName": "ProtoComponent Types", "href": "/ProtoComponentTypes.html" },
                     { "pageName": "Renderer Component Tree Expanders", "href": "/RendererComponentTreeExpanders.html" },
@@ -102,7 +104,7 @@
                 "sectionName": "Testing",
                 "pages":
                 [
-
+                    { "pageName": "Unit Testing with jqUnit", "href": "/jqUnit.html" },
                     { "pageName": "IoC Testing Framework", "href": "/IoCTestingFramework.html" }
                 ]
             },

@@ -107,6 +107,27 @@ a:focus {
     line-height: inherit;
 }
 
+/* Styling for the hover links on headings */
+
+.infusion-docs .infusion-docs-anchor {
+    display: inline-block;
+    padding-right: 4px;
+    margin-left: -2rem;
+}
+
+.infusion-docs-anchor .octicon-link {
+    color: #000;
+    vertical-align: middle;
+}
+
+.infusion-docs-container a.infusion-docs-anchor:hover {
+    background: inherit;
+}
+
+.infusion-docs-anchor span {
+    font-size: 1.7rem;
+}
+
 .infusion-docs-container p {
     font-size: 1.2rem;
 }
@@ -226,11 +247,11 @@ a:focus {
 .infusion-docs-TOC {
     min-height: 44rem;
     background: #fff;
-    top: 7rem;
+    border-top: 7rem solid;
     position: fixed;
     width: 15rem;
-    height: 91vh;
-    padding-bottom: 7rem;
+    height: 100vh;
+    top: 0;
     overflow-y: auto;
     z-index: 1;
 }
