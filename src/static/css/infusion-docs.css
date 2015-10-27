@@ -390,12 +390,10 @@ div.infusion-docs-note {
 .infusion-docs-container .infusion-docs-paragraphBullets li {
     padding-bottom: 0.25rem;
 }
-.infusion-docs-container .infusion-docs-figure.
+.infusion-docs-container .infusion-docs-figure,
 .infusion-docs-container figure {
     margin: 0 0 1.5rem 0;
     text-align: center;
-    background-color: #FFFFFF;
-    padding-top: 1.8rem;
     padding-bottom: 1.1rem;
 }
 

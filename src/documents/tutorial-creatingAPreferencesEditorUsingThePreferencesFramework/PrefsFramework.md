@@ -26,7 +26,7 @@ for the simple Preference Editor in the examples folder:
 https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor.
 We recommend you download the Infusion library and load the example code into your favourite editor.
 <figure>
-![the folder hierarchy of the samepl code](../images/prefsEditorFolders.png)
+![the folder hierarchy of the sample code](../images/prefsEditorFolders.png)
 <figcaption>Figure 1: Folder hierarchy for the Preference Editor example</figcaption>
 </figure>
 
@@ -67,8 +67,8 @@ Let’s take a close look at the code.
 #### Primary Schema ####
 The [Primary Schema](../PrimarySchemaForPreferencesFramework.md) is a document that defines the preferences for the Editor.
 The Primary Schema for our example Editor is defined in the
-`schemas/primary.js` file using the JSON format
-(you can learn about JSON at http://json.org/):
+`schemas/primary.js` file using the JSON schema format
+(you can learn about JSON schemas at http://json-schema.org/):
 
 ```javascript
 /**
@@ -114,8 +114,8 @@ The second argument – the options – is an object containing (in this case) t
 Any call to `fluid.defaults()` must include the `gradeNames` property in the options argument.
 This property defines the base _[grade](../ComponentGrades.md)_ for the component.
 <aside class="infusion-docs-callout">
-A **grade** is _very loosely_ analogous to a class, in that using a grade in the definition of a
-component infers the properties of that grade to the component. It’s actually a bit more complex
+A **grade** is _very loosely_ analogous to a class, in that the properties of the component are
+derived from the elements in the grade document. It’s actually a bit more complex
 than that; later, you’ll probably want to read the documentation about [Component Grades](../ComponentGrades.md).
 This tutorial will explain more about grades as it goes along.
 </aside>
@@ -177,7 +177,8 @@ fluid.defaults("minEditor.panels.autoPilot", {
     preferenceMap: {
         // the key must match the name of the pref in the primary schema
         "minEditor.autoPilot": {
-            // this key is the path into the panel's model where this preference is stored
+            // this key, "model.autoPilot", is the path into the panel's model
+            // where this preference is stored
             "model.autoPilot": "default"
         }
     },
@@ -189,26 +190,28 @@ fluid.defaults("minEditor.panels.autoPilot", {
     },
 
     // the ProtoTree is basically instructions to the Renderer
-    // the keys in the prototree match the selectors above
+    // the keys in the protoTree match the selectors above
     protoTree: {
-        // this value is an IoC reference to the last part of the model path in the preferenceMap
+        // this value is a reference to the last part of the model path in the preferenceMap
         autoPilot: "${autoPilot}"
     }
 });
 ```
 In this code snippet, the Panel is created using a call to the Infusion Framework function
 `fluid.defaults()`, just as the Primary Schema was. As with the Primary Schema, the call to
-`fluid.defaults()` is passed two arguments: 1) a string name (`"minEditor.panels.autoPilot"`), and
-2) a JavaScript object containing options for configuring the component – in this case, the Panel.
+`fluid.defaults()` is passed two arguments:
+1. a string name (`"minEditor.panels.autoPilot"`), and
+2. a JavaScript object containing options for configuring the component – in this case, the Panel.
 
 The screenshot in Figure 2 (above) shows what the Panel looks like to the user: A single checkbox
 with a label, with a header above. The options for configuring this Panel
-include four properties: `gradeNames`, `preferenceMap`, `selectors` and `prototree`:
+include four properties: `gradeNames`, `preferenceMap`, `selectors` and `protoTree`:
 <dl>
 <dt>`gradeNames`</dt>
-<dd>As we saw with the Primary Schema, any call to `fluid.defaults()` must include the `gradeNames`
-property in the options argument. Panels must use the `"fluid.prefs.panel"` grade.
-Using this grade automatically buys you a lot of Framework supports necessary for Panels.</dd>
+<dd>As we saw with the Primary Schema, any call to `fluid.defaults()` must refer to any parent
+grades using the `gradeNames` property. Panels must use the `"fluid.prefs.panel"` grade.
+Using this grade automatically buys you a lot of Framework supports necessary for Panels.
+</dd>
 <dt>`preferenceMap`</dt>
 <dd>A Panel must have a _ Preference Map_, which maps the information in the Primary Schema
 into your Panel.Let’s look at this one more closely:
@@ -221,7 +224,7 @@ preferenceMap: {
 },</code></pre>
 
 The first line of the  Preference Map, `“minEditor.autoPilot”`, is the name of the preference.
-This exactly matches the name we saw in the Primary Schema earlier. This the value for this
+This exactly matches the name we saw in the Primary Schema earlier. The value for this
 key is a JavaScript object that defines how this particular preference relates to the Panel’s
 internal data model.
 
@@ -238,7 +241,7 @@ embodies the the separation of concerns that is central to MVC.
 Most Infusion components have an internal model, for maintaining the state of the component.
 </aside>
 </li>
-<li> The value, `“default”`, is a reference to the name of the `“default”` property in the Primary Schema.</li>
+<li> The value, `“default”`, is an EL path referencing the `“default”` property in the Primary Schema.</li>
 </ul>
 This  Preference Map is saying two things:
 <ol>
@@ -280,18 +283,18 @@ This template is found in the `html/autoPilot.html` file, which looks like this:
 
 You can see the `“mec-autoPilot”` class name on the `<input>` element.
 </dd>
-<dt>`prototree`</dt>
+<dt>`protoTree`</dt>
 <dd>
 A Panel is also a _[Renderer component](../RendererComponents.md)_ – a type of Infusion component that uses the
 Infusion [Renderer](../Renderer.md) to render the view based on data in the component’s model.
-The _[prototree](../RendererComponentTrees.md)_ is the instructions for how the data in the component’s model maps to the template.
+The _[protoTree](../RendererComponentTrees.md)_ is the instructions for how the data in the component’s model maps to the template.
 Let’s look at this more closely:
 <pre class="highlight">
 <code class="hljs javascript">protoTree: {
     autoPilot: "${autoPilot}"
 }</code></pre>
 
-A prototree contains key/value pairs, where
+A protoTree contains key/value pairs, where
 * the key is a selector _name_ specified in the `selectors` option, and
 * the value is the specification for what to render into the DOM node referenced by the selector.
 
@@ -320,7 +323,8 @@ fluid.defaults("minEditor.auxSchema", {
 ```
 Again, we use `fluid.defaults()` to create the Schema.
 As with the Primary Schema and the Panel, `fluid.defaults()` is passed two arguments:
-1) a string name (`"minEditor.auxSchema"`), and 2) a JavaScript object containing configuration options.
+1) a string name (`"minEditor.auxSchema"`), and 2) a JavaScript object literal
+containing configuration options.
 
 Let’s look at the Schema itself in detail:
 ```javascript
@@ -353,7 +357,7 @@ auxiliarySchema: {
 }
 });
 ```
-An auxiliary can be generally divided into two types of properties:
+An auxiliary schema can be generally divided into two types of properties:
 
 1. top-level members, defining globally-used values, and
 2. per-preference members (one per preference), defining the specific requirements for each preference.
@@ -655,9 +659,9 @@ fluid.defaults("minEditor.panels.radioVolume", {
 });
 ```
 
-Finally, we need to define the Renderer prototree – the instructions for rendering
-the model value into the template. This prototree will need to be a little bit more complicated
-than what we used for the auto-pilot preference. That prototree needed to do only one thing:
+Finally, we need to define the Renderer protoTree – the instructions for rendering
+the model value into the template. This protoTree will need to be a little bit more complicated
+than what we used for the auto-pilot preference. That protoTree needed to do only one thing:
 bind the model value to the input element. For the range input, we still need to bind the model
 value, but we _also_ need to set the `min`, `max` and `step` attributes of the element. For this,
 a simple key/value pair isn’t enough.Instead of a simple string reference as the value,
