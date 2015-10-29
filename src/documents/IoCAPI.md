@@ -1,10 +1,8 @@
 ---
-title: IoC API
+title: Infusion IoC API
 layout: default
 category: Infusion
 ---
-
-# Infusion IoC API
 
 Whilst Infusion's [IoC](HowToUseInfusionIoC.md) is primarily a declarative system, operated by a declarative dialect of
 JSON configuration, there are a few language-level APIs which are useful in dealing with the system. Some of these
@@ -21,7 +19,7 @@ component tree - these special APIs are grouped under the heading [Nexus API met
 
 Each instantiated component in the Infusion system has a stable base path in the system's global [component tree](Contexts.md).
 Records about the component are held in Infusion's [instantiator](#fluid-globalinstantiator) where the path and numerous other
-details can be looked up. This utility method accepts a currently instantiated (not [destroyed](CoreAPI.md#fluid-isdestroyed-component-)
+details can be looked up. This utility method accepts a currently instantiated (not [destroyed](CoreAPI.md#fluid-isdestroyed-component-))
 component and returns its path as a set of parsed array segments. This information can be very useful for making calculations about
 the _geometry_ of component trees - that is, which components are descended from which others and which are siblings, etc.
 
@@ -55,7 +53,7 @@ options material. You can use this method too, in order to make sure that any me
 should not normally be necessary - and the use of this API only makes sense during a construction "fit" - during the "semi-static period", you can
 assume that all members of all visible components are concrete. 
 
-This is an analogue of the API [`fluid.get`](CoreAPI.md#fluid-get-model-path-) for use during the "ginger construction process.
+This is an analogue of the API [`fluid.get`](CoreAPI.md#fluid-get-model-path-) for use during the "ginger construction process".
 
 * `component {Component}` The component whose resolved member is required
 * `path {String|Array of String}` The path within the component which is to be resolved
@@ -110,7 +108,7 @@ Construct a component with the supplied options at the specified path in the com
 
 * `path {String|Array of String}` Path where the new component is to be constructed, represented as a string or array of segments
 * `options {Object}` Top-level options supplied to the component - must at the very least include a field `type` holding the component's type. Note that these are expressed
-in the currently hypothetical [post-FLUID-5750](https://issues.fluidproject.org/browse/FLUID-5750) format with `type` alongside the component's options rather than at
+in the future-compatible [post-FLUID-5750](https://issues.fluidproject.org/browse/FLUID-5750) format with `type` alongside the component's options rather than at
 a higher nested level as is currently required in local configuration supplied as [subcomponents](SubcomponentDeclaration.md). 
 * `instantiator {Instantiator}` [optional] The instantiator holding the component to be created - if blank, the [global instantiator](#fluid-globalinstantiator) will be used
 
@@ -118,7 +116,7 @@ a higher nested level as is currently required in local configuration supplied a
 
 Destroys a component held at the specified path. The parent path must represent a component, although the component itself may be nonexistent.
 
-* `path {String|Array of String}` Path where the new component is to be destroyed, represented as a string or array of segments
+* `path {String|Array of String}` Path where the component is to be destroyed, represented as a string or array of segments
 * `instantiator {Instantiator}` [optional] The instantiator holding the component to be destroyed - if blank, the [global instantiator](#fluid-globalinstantiator) will be used
 
 ### fluid.typeNameToMemberName(typeName)

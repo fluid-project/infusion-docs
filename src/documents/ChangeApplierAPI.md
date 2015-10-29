@@ -122,12 +122,12 @@ or arrays of these strings. The three currently supported sources are `init`, `r
     <tbody>
         <tr>
             <td><code>excludeSource</code></td>
-            <td>String/Array of String</td>
+            <td><code>String/Array of String</code></td>
             <td>A source or set of sources for which this listener should not receive notifications</td>
         </tr>
         <tr>
             <td><code>includeSource</code></td>
-            <td>String/Array of String</td>
+            <td><code>String/Array of String</code></td>
             <td>A source or set of sources for which this listener should receive notifications. If <code>excludeSource</code> is empty, <em>only</em> changes from these sources will be received. If <code>excludeSource</code> is not empty, these values will take priority.</td>
         </tr>
     </tbody>
@@ -346,7 +346,7 @@ that.changer("finalValue");
 console.log(that.model); // "finalValue"
 ```
 
-### Programmatic style ###
+### Programmatic style for triggering a change ###
 
 There are two calls which can be used to fire a change request - one informal, using immediate arguments, and a more formal method which constructs a concrete `changeRequest` object.
 
@@ -365,7 +365,7 @@ applier.change(path, value, type)
     <tbody>
         <tr>
             <td><code>path</code></td>
-            <td>String</td>
+            <td><code>String</code></td>
             <td>An EL path into the model where the change is to occur.</td>
         </tr>
         <tr>

@@ -4,12 +4,12 @@ layout: default
 category: Infusion
 ---
 
-Bundled with infusion is ***jqUnit***, a library modelled on the [xUnit](https://en.wikipedia.org/wiki/XUnit) API style which wraps base functionality provided by the
+Bundled with infusion is ***jqUnit***, a library modelled on the [xUnit](https://en.wikipedia.org/wiki/XUnit) API style. jqUnit wraps base functionality provided by the
 popular [QUnit](https://qunitjs.com/). All of the QUnit base functionality remains available in a jqUnit fixture at the `QUnit` namespace, and you should consult the QUnit documentation
 for details of packaging markup-based fixtures and its own API semantic. However, jqUnit is a complete wrapper and it is possible and recommended to write complete
 test suites without reference to QUnit. jqUnit is based on the 1.x API of QUnit, and not the (currently unreleased) 2.x version of QUnit which is API incompatible with QUnit 1.x.
 
-As well as use in the browser, there is also a (currently unstable) node.js module, [node-jqunit](https://github.com/fluid-project/node-jqUnit) which allows the use of the same
+As well as the use of jqUnit in the browser, there is also a node.js module, [node-jqunit](https://github.com/fluid-project/node-jqunit) which allows the use of the same
 testing API for writing node.js tests.
 
 A more advanced piece of infrastructure is the [IoC Testing Framework](#IoCTestingFramework.md) which is useful for writing asynchronous test fixtures targetting Infusion's IoC
@@ -33,7 +33,7 @@ to a call to `jqUnit.asyncTest`, where the fixture ends with `jqUnit.start`.
 
 ### jqUnit.asyncTest(name, testFunc)
 
-Registers (queues) a synchronous test fixture by providing a callback which will run it. Direct passthrough for [QUnit.asyncTest](http://api.qunitjs.com/QUnit.asyncTest/).
+Registers (queues) an asynchronous test fixture by providing a callback which will run it. Direct passthrough for [QUnit.asyncTest](http://api.qunitjs.com/QUnit.asyncTest/).
 
 ### jqUnit.start()
 
@@ -71,86 +71,86 @@ An assertion which unconditionally fails, and then aborts the current fixture. E
 
 ### jqUnit.assertTrue(message, value)
 
-* `value: {Any}` The value to be tested 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is `true`. Equivalent to [`QUnit.ok(value, message)`](http://api.qunitjs.com/ok/).
 
 ### jqUnit.assertFalse(message, value)
 
-* `value: {Any}` The value to be tested 
+* `value {Any}` The value to be tested 
 
-Asserts that the supplied value is `true`. Equivalent to [`QUnit.ok(!value, message)`](http://api.qunitjs.com/ok/).
+Asserts that the supplied value is `false`. Equivalent to [`QUnit.ok(!value, message)`](http://api.qunitjs.com/ok/).
 
 ### jqUnit.assertUndefined(message, value)
 
-* `value: {Any}` The value to be tested 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is `undefined`.
 
 ### jqUnit.assertNotUndefined(message, value)
 
-* `value: {Any}` The value to be tested 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is not `undefined`.
 
 ### jqUnit.assertNull(message, value)
 
-* `value: {Any}` The value to be tested 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is `null`.
 
 ### jqUnit.assertNotNull(message, value)
 
-* `value: {Any}` The value to be tested 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is not `null`.
 
 ### jqUnit.assertValue(message, value)
 
-* `value: {Any}` The value to be tested 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is not `null` or `undefined`.
 
 ### jqUnit.assertNoValue(message, value)
 
-* `value: {Any}` The value to be tested 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is either `null` or `undefined`.
 
 ### jqUnit.assertEquals(message, expected, value)
 
-* `expected: {Any}` The expected value of `value` 
-* `value: {Any}` The value to be tested 
+* `expected {Any}` The expected value of `value` 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is equal to the one supplied as `expected`. This will be performed by a strict equality check (`===`) - equivalent to [`QUnit.strictEqual(actual, expected, message)`](http://api.qunitjs.com/strictEqual/)
 
 ### jqUnit.assertNotEquals(message, unexpected value)
 
-* `unexpected: {Any}` The value that `value` is expected to differ from 
-* `value: {Any}` The value to be tested 
+* `unexpected {Any}` The value that `value` is expected to differ from 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is not equal to the one supplied as `unexpected`. This will be performed by a strict inequality check (`!==`) - equivalent to [`QUnit.notStrictEqual(actual, expected, message)`](http://api.qunitjs.com/notStrictEqual/)
 
 ### jqUnit.assertDeepEq(message, expected, value)
 
-* `expected: {Any}` The expected value of `value` 
-* `value: {Any}` The value to be tested 
+* `expected {Any}` The expected value of `value` 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is equal to the one supplied as `expected`. This will be performed by a deep equality check on the basis of properties only (ignoring constructors and prototypes) - equivalent to [`QUnit.propEqual(actual, expected, message)`](http://api.qunitjs.com/propEqual/)
 
-### jqUnit.assertDeepNeq(message, unexpected value)
+### jqUnit.assertDeepNeq(message, unexpected, value)
 
-* `unexpected: {Any}` The value that `value` is expected to differ from 
-* `value: {Any}` The value to be tested 
+* `unexpected {Any}` The value that `value` is expected to differ from 
+* `value {Any}` The value to be tested 
 
 Asserts that the supplied value is not equal to the one supplied as `unexpected`. This will be performed by a deep equality check on the basis of properties only (ignoring constructors and prototypes) - 
 equivalent to [`QUnit.notPropEqual(actual, expected, message)`](http://api.qunitjs.com/notPropEqual/)
 
 ### jqUnit.assertCanoniseEqual(message, expected, value, canonFunc)
 
-* `expected: {Any}` The expected value of `value` 
-* `value: {Any}` The value to be tested 
-* `canonFunc: {Function: (value {Any}) → Any}` A [canonicalisation](https://en.wikipedia.org/wiki/Canonicalization) function which will be applied to both `expected` and `value` to reduce them
+* `expected {Any}` The expected value of `value` 
+* `value {Any}` The value to be tested 
+* `canonFunc {Function: (value {Any}) → Any}` A [canonicalisation](https://en.wikipedia.org/wiki/Canonicalization) function which will be applied to both `expected` and `value` to reduce them
 to a common form in which they can then be compared by standard deep equality. 
 
 Asserts that the supplied value is equal to the one supplied as `expected`, by deep equality and after applying a "canonicalisation function" to remove irrelevant differences
@@ -159,8 +159,8 @@ or iii) other means. Functions supplied by jqUnit include `jqUnit.canonicaliseFu
 
 ### jqUnit.assertLeftHand(message, expected, value)
 
-* `expected: {Any}` An expected subset of `value` 
-* `value: {Any}` The value to be tested 
+* `expected {Any}` An expected subset of `value` 
+* `value {Any}` The value to be tested 
 
 Assert that the actual value object is a superset (considered in terms of shallow key coincidence) of the
 expected value object. The coincidence between `value` and `expected` is only in terms of top-level keys, but the comparison will 
@@ -169,8 +169,8 @@ have extra top-level keys whose contents will be iignored. "Left hand" (expected
 
 ### jqUnit.assertRightHand(message, expected, value)
 
-* `expected: {Any}` An expected superset of `value` 
-* `value: {Any}` The value to be tested 
+* `expected {Any}` An expected superset of `value` 
+* `value {Any}` The value to be tested 
 
 Assert that the actual value object is a subset (considered in terms of shallow key coincidence) of the
 expected value object. This is the natural converse of `jqUnit.assertLeftHand` but this assertion is rarely used - it is less useful to assert
@@ -266,6 +266,12 @@ will compare equal to
 * `expected {Object|Array}` A condensed JSON respresentation of a set of assertions to make about a subtree of DOM nodes, or an array of these
 * `node {DOM|Array of DOM|jQuery}` The DOM node to be checked against `expected` - this may also be an array of DOM nodes or a jQuery object.
 
+### jqUnit.canonicaliseDom(list)
+
+Canonicalise a list of DOM elements (or a jQuery) by converting elements to their ids (allocated if necessary).
+
+* `list {Array of DOM|jQuery}` An array of DOM nodes or a jQuery
+* Returns: {Array of String} An array of ids for the supplied nodes, allocated via [fluid.allocateSimpleId](ViewAPI.md##fluid-allocatesimpleid-element-).
 
 ### jqUnit.assertDomEquals(message, expected, actual)
 
@@ -277,27 +283,27 @@ be achieved by canonicalising the DOM elements onto their ids by means of the ca
 
 ### jqUnit.isVisible(msg, selector)
 
-Asserts that the DOM nodes identified by `selector` are visible, in terms of matching the jQuery [`:hidden`](https://api.jquery.com/hidden-selector/) pseudoselector.
+Asserts that the DOM nodes identified by `selector` are visible, in terms of not matching the jQuery [`:hidden`](https://api.jquery.com/hidden-selector/) pseudoselector.
 
-* `selector: {jQueryable}` The selector or other jQueryable identifying the DOM nodes to be tested for visibility
+* `selector {jQueryable}` The selector or other jQueryable identifying the DOM nodes to be tested for visibility
 
 ### jqUnit.notVisible(msg, selector)
 
-Asserts that the DOM nodes identified by `selector` are not visible, in terms of not matching the jQuery [`:hidden`](https://api.jquery.com/hidden-selector/) pseudoselector.
+Asserts that the DOM nodes identified by `selector` are not visible, in terms of matching the jQuery [`:hidden`](https://api.jquery.com/hidden-selector/) pseudoselector.
 
-* `selector: {jQueryable}` The selector or other jQueryable identifying the DOM nodes to be tested for invisibility
+* `selector {jQueryable}` The selector or other jQueryable identifying the DOM nodes to be tested for invisibility
 
 ### jqUnit.assertNodeExists (msg, selector)
 
 Asserts that there is at least one node matching the provided selector (or other jQueryable)
 
-* `selector: {jQueryable}` The selector or other jQueryable identifying the DOM nodes to be checked for existence
+* `selector {jQueryable}` The selector or other jQueryable identifying the DOM nodes to be checked for existence
 
 ### jqUnit.assertNodeNotExists (msg, selector)
 
 Asserts that there are no nodes matching the provided selector (or other jQueryable)
 
-* `selector: {jQueryable}` The selector or other jQueryable identifying the DOM nodes to be checked for nonexistence
+* `selector {jQueryable}` The selector or other jQueryable identifying the DOM nodes to be checked for nonexistence
 
 ### jqUnit.subvertAnimations()
  

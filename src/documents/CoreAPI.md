@@ -1,17 +1,15 @@
 ---
-title: Core API
+title: Infusion Core API
 layout: default
 category: Infusion
 ---
 
-# Infusion Core API
-
 This file documents some low-level APIs which are provided by Infusion at the JavaScript level. Note that since
 Infusion's more overarching aim is to enable declarative programming based on JSON structures, by means
 of its [IoC](FrameworkConcepts.md#ioc) system, the documentation in this file doesn't cover very much
-of Infusion's real function. Please consult pages on [Component Grades](#ComponentGrades.md), 
-[Component Configuration Options](#ComponentConfigurationOptions.md), the [Infusion Event System](#InfusionEventSystem.md)
-, etc. for coverage of these wider topics.
+of Infusion's real function. Please consult pages on [Component Grades](ComponentGrades.md), 
+[Component Configuration Options](ComponentConfigurationOptions.md), the [Infusion Event System](InfusionEventSystem.md),
+etc. for coverage of these wider topics.
 
 ## Type checking
 
@@ -89,7 +87,7 @@ Returns `true` if the supplied object is an Infusion component.
 * `component {Component}`
 * Returns: `{Boolean}`
 
-Returns `true` if the supplied Infusion component has been destroyed.
+Returns `true` if the supplied Infusion component has been [destroyed](ComponentLifecycle.md).
 
 ### fluid.hasGrade(options, gradeName)
 
@@ -97,8 +95,8 @@ Returns `true` if the supplied Infusion component has been destroyed.
 * `gradeName {String}`
 * Returns: `{Boolean}`
 
-Returns `true` if the supplied options ([defaults](#fluid-defaults-gradename-options-)) are those of a component which has the supplied grade. These must be options which have
-already been through options merging, since the test is a simpleminded one that simply checks whether the `gradeNames` entry in the options contains the supplied `gradeName`.
+Returns `true` if the supplied options ([defaults](#fluid-defaults-gradename-options-)) are the top-level options of a component which has the supplied grade. These must be options which
+have already been through options merging, since the test is a simpleminded one that simply checks whether the `gradeNames` entry in the options contains the supplied `gradeName`.
 
 ### fluid.componentHasGrade(component, gradeName)
 
@@ -128,16 +126,16 @@ namespaced [Listener](InfusionEventSystem.md) to create abstract (noninstantiabl
 or a string for an object source) 
 * Returns: none
 
-Iterates over a supplied array or hash, invoking a function once for each element. Similar to [`jQuery.each`](http://api.jquery.com/jquery.each/) only the
+Iterates over a supplied array or hash, invoking a function once for each member. Similar to [`jQuery.each`](http://api.jquery.com/jquery.each/) only the
 arguments to `func` are the right way round and the function does not explode on nonvalues. `fluid.each` on `null` or `undefined` is a no-op.
 
 ### fluid.invokeLater(func) 
 
-A standard utility to schedule the invocation of a function after the current function call stack returns. On browsers this defaults to `setTimeout(func, 1)` but in
-other environments can be customised - e.g. to `process.nextTick` in node.js. In future, this could be optimised in the browser to not dispatch into the event queue
-
 * `func {Function}` A function accepting zero arguments which is to be invoked later
 * Returns: none
+
+A standard utility to schedule the invocation of a function after the current function call stack returns. On browsers this defaults to `setTimeout(func, 1)` but in
+other environments can be customised - e.g. to `process.nextTick` in node.js. In future, this could be optimised in the browser to not dispatch into the event queue.
 
 ### fluid.allocateGuid()
 
@@ -165,7 +163,7 @@ pass the `fluid.isPlainObject` test.
 * Returns: `{Any}`
 
 Performs a deep copy (clone) of its argument. This will guard against cloning a circular object by terminating if it reaches a path depth
-greater than `fluid.strategyRecursionBailout`. `fluid.copy` will not copy an object which passes `fluid.isUncopyable`.
+greater than [`fluid.strategyRecursionBailout`](#fluid-strategyrecursionbailout). `fluid.copy` will not copy an object which passes `fluid.isUncopyable`.
 
 ### fluid.makeArray(arg)
 
@@ -180,27 +178,29 @@ Converts the supplied argument to an array (or copies it if it is already an arr
 
 ### fluid.generate(n, generator[, applyFunc])
 
-Fills an array of given size with copies of a value or result of a function invocation
 * `n {Integer}` The size of the array to be filled
-* `generator {Object|Function}` Either a value to be replicated or function to be called. In case of a function, the signature is `(i {Integer}) → Any`, accepting the index position and returning the generated element.
+* `generator {Object|Function}` Either a value to be replicated or function to be called (if the `applyFunc` argument holds `true`). In case of a function, the signature is `(i {Integer}) → Any`, accepting the index position and returning the generated element.
 * `applyFunc {Boolean}` If `true`, the `generator` value is to be treated as a function
 * Returns: `{Array}` An array of length `n` holding the generated elements
 
-### fluid.iota(n[, first])
+Fills an array of given size with copies of a value or result of a function invocation
 
-Returns an array of size `n`, filled with increasing integers, starting at 0 or at the value specified by `first`. The name `iota` originally stems from the 
-[APL](http://stackoverflow.com/questions/9244879/what-does-iota-of-stdiota-stand-for) programming language.
+### fluid.iota(n[, first])
 
 * `n {Integer}` Size of the filled array to be returned
 * `first {Number}` [optional, defaults to 0] First element to appear in the array
 * Returns: `{Array}` An array of length `n` holding the generated elements
 
-### fluid.clear(target)
+Returns an array of size `n`, filled with increasing integers, starting at 0 or at the value specified by `first`. The name `iota` originally stems from the 
+[APL](http://stackoverflow.com/questions/9244879/what-does-iota-of-stdiota-stand-for) programming language.
 
-Clears an object or array of its contents. For objects, each property is deleted. *** The input argument will be destructively modified ***
+
+### fluid.clear(target)
 
 * `target {Object|Array}` The target to be cleared
 * Returns: `{Undefined}`
+
+Clears an object or array of its contents. For objects, each property is deleted. *** The input argument will be destructively modified ***
 
 
 ## Transforming and filtering
@@ -248,7 +248,21 @@ modified by the operation of removing the matched elements.
 
 ### fluid.getMembers(holder, path)
 
-Extracts a particular member from each top-level member of a container, returning a new container of the same type.
+Extracts a particular member from each top-level member of a container, returning a new container of the same type. Example:
+
+```javascript
+var cattes = [{
+    name: "Huggoe"
+    }, {
+    name: "Arthur"
+    }, {
+    name: "THER CATTE"
+    }
+];
+var names = fluid.getMembers(cattes, "name");
+// names now holds ["Huggoe", "Arthur", "THER CATTE"]; 
+```
+
 * `holder {Array|Object}` The container to be filtered
 * `path {String|Array of String}` An [EL path](FrameworkConcepts.md#el-paths) to be fetched from each top-level member
 * Returns: `{Array|Object}` A container of the same type as `holder`, with the members of `holder` deferenced by `path`.
@@ -257,7 +271,7 @@ Extracts a particular member from each top-level member of a container, returnin
 ### fluid.filterKeys(toFilter, keys[, exclude])
 
 Accepts an object to be filtered, and a list of keys. Either all keys not present in
-the list are removed, or only keys present in the list are returned. The suppled object *** is not modified *** but will be shallow cloned by this operation.
+the list are removed (the default), or all keys present in the list are removed (`exclude: true`). The suppled object *** is not modified *** but will be shallow cloned by this operation.
  
 * `toFilter {Array|Object}` The object to be filtered - this will be NOT modified by the operation
 * `keys {Array of String}` The list of keys to operate with
@@ -299,7 +313,26 @@ Converts an array into an object whose keys are the elements of the array, each 
 
 ### fluid.hashToArray(hash, keyName[, func])
 
-Converts a hash into an array by hoisting out the object's keys into an array element via the supplied String `key`, and then transforming the elements via an optional further function `func`.
+Converts a hash into an array by hoisting out the object's keys into an array element via the supplied String `key`, and then transforming the elements via an optional further function `func`. Note that without some further
+means of sorting the resulting array elements, the order of elements in the array will [not be defined](https://es5.github.io/#x12.6.4). Example:
+
+```javascript
+var hash = {
+    "Proailurus":     25000000,
+    "Pseudaelurus":   18500000,
+    "Felis attica":   12000000,
+    "Felis lunensis":  2500000,
+    "CATT":              50000   
+};
+var CATTyears = fluid.hashToArray(hash, "species", function (newElement, oldElement) {
+    newElement.yearsAgo = oldElement;
+});
+// CATTyears now contains [ {
+    species: "Proailurus",
+    yearsAgo: 25000000
+}, { // etc.
+
+```
 
 * `hash {Array}` The hash to be transformed into an array
 * `keyName {String}` The name within the resulting array elements which will receive the string which used to form the element's key in `hash`
@@ -322,11 +355,11 @@ with the non-array elements. The original array *** will not be modified ***. Se
 ### fluid.find(source, func[, deflt])
 
 Scan through a list or hash of objects, terminating on the first member which
-matches a predicate function. The return is the return value from the predicate.
+satisfies a predicate function. The return is the return value from the predicate.
 * `source {Arrayable|Object}` The list or hash of objects to be searched.
 * `func {Function: (element {Any}, index {Number|String}) → Any}` A predicate function, acting on a member. A predicate which
 returns any value which is not `undefined` will terminate the search.
-* `deflt {Object|Undefined}` [optional] A value to be returned in the case no predicate function matches
+* `deflt {Object|Undefined}` [optional] A value to be returned in the case the predicate is not satisfied on any element
 a member. The default will be the natural value of `undefined`
 * Returns: The first return value from the predicate function which is not `undefined`
 
@@ -355,22 +388,22 @@ Searches through the supplied object for the first value which matches the one s
 
 * `tosearch {Object|Array}` The structure to be searched for the supplied value
 * `value {Any}` The value to be found. This will be compared against the structure's members using `===` equality.
-* Returns: `{String|Integer|Undefined}` The first key whose value matches the one supplied, or `undefined` is no value matches
+* Returns: `{String|Integer|Undefined}` The first key (an `Integer` if `tosearch` is an `Array`) whose value matches the one supplied, or `undefined` if no value matches
 
 ### fluid.stableSort(array, func) 
 
 Applies a stable sorting algorithm to the supplied array and comparator (note that [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) in JavaScript is not specified
 to be stable). The algorithm used will be an insertion sort, which whilst quadratic in time, will perform well
 on small array sizes.
-* `array {Array of Any-Element}` The array to be sorted. This input array will be modified in place.
+* `array {Array of Any-Element}` The array to be sorted. *** This input array will be modified in place. ***
 * `func {Function: (a {Any-Element}, b {Any-Element}) → Number}` A comparator returning >0, 0, or <0 on pairs of elements representing their sort order (same contract as [Array.sort comparator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort))
 
 
 ### fluid.compareStringLength(ascending)
 
-Produces a comparator function suitable for use with [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) to sort an array of strings by length
+Produces a comparator function suitable for use with [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) or [fluid.stableSort](#fluid-stablesort-array-func-)to sort an array of strings by length
 
-* `ascending {Booleanish}` `true` if a comparator is to be returned which sorts strings in descending order of length
+* `ascending {Booleanish}` `true` if a comparator is to be returned which sorts strings in ascending order of length
 * Returns: `{Function: (a {String}, b {String}) → Number}` The comparator function to be used for sorting
 
 
@@ -397,8 +430,8 @@ can be sourced from `terms`.
 
 ### fluid.get(model, path)
 
-Accesses an element nested within a [model object](FrameworkConcepts.md#model-object] at the supplied (EL) path. `fluid.get` can
-operate various special behaviour in encountering particular kinds of material - for example, any object implementing a function named `resolvePathSegment` will
+Accesses an element nested within a [model object](FrameworkConcepts.md#model-object) at the supplied (EL) path. `fluid.get` can
+operate various special behaviour in encountering particular kinds of material - for example, any object with a function member named `resolvePathSegment` will
 hand resolution of the next path segment to that function if there is no corresponding concrete member. If `fluid.get` navigates off the end of the available
 model material, this will not trigger an error - all successive indirections will simply return `undefined`. `fluid.get` accepts various esoteric piece of configuration
 allowing it to operate indirection rules encoded in arbitrary JSON material - these are imperfectly supported, contact us if you are interested.
@@ -430,7 +463,7 @@ fundamental invariant to be respected is that
 ```
 Even a functional programmer could admit that. A slight wrinkle, however, is the behaviour of the special path `""` or `[]`, attempting to write a value at the model 
 root. This API is not capable of this and will fail in this case - since it is hampered at the language level by being unable to rewrite the object reference `model` which exists
-in the scope of its caller. The [ChangeApplier](ChangeApplierAPI.md) handles this situation regularly since under its new semantics, the reference `model` is at a known
+in the scope of its caller. The `ADD` message of the [ChangeApplier](ChangeApplierAPI.md#programmatic-style-for-triggering-a-change) can be used to handle this case. Under its new semantics, the reference `model` is at a known
 address in its parent component which can be rebound.
 
 If the path `path` indirects beyond the range of concrete properties in `model`, the implementation will fill in any intermediate path levels with fresh instances of `{}` 
@@ -486,6 +519,7 @@ accepted from external users.
 Log a message to a suitable environmental console (in current implementations, `console.log`). If the first argument to `fluid.log` is
 one of the members of the [`fluid.logLevel`](#fluid-loglevel) structure, this will be taken as the priority of the logged message - else it 
 will default to [`fluid.logLevel.INFO`](#fluid-loglevel). If the logged message priority does not exceed that set by the most recent call to the [`fluid.setLogging`](#fluid-setlogging-loglevel-) function,
+the logging action will be suppressed.
 
 * `logLevel {LogLevel}` [optional] One of the members of the `fluid.logLevel` structure or in general some `fluid.marker` with a numeric value holding a priority
 * `arg1 ... argn {Stringable}` A sequence of arguments to be logged. By default these will be handed unchanged to the multiple arguments of `console.log`. It is wise to convert these
@@ -530,7 +564,7 @@ issue particularly expensive log payload arguments are recommended to guard thei
 
 ### fluid.doLog([arg1, ... argn])
 
-The actual implementation to which `fluid.log` messages and other logging generated by the system. Implemented to forward to `console.debug` and `console.log` but may be monkey-patched by 
+The actual implementation to which `fluid.log` messages and other logging generated by the system are dispatched. Implemented to forward to `console.debug` and `console.log` but may be monkey-patched by 
 clients who require an alternative implementation.
 
 ### fluid.fail([arg1, ... argn])
@@ -547,13 +581,19 @@ the standard event `fluid.failureEvent`
 
 Every call to `fluid.fail` triggers a firing of this global event. This is a standard [Infusion Event](InfusionEventSystem.md) with several handlers installed on startup to take on various functions.
 Extra handlers are registered, and the builtin handlers overriden, to customise error handling behaviour in various contexts - for example, when Infusion is running in node.js, is running a 
-[jqUnit test](https://wiki.fluidproject.org/display/docs/Writing+JavaScript+Unit+Tests) ***TODO - obsolete docs for jqUnit*** or is running in [Kettle](https://github.com/fluid-project/kettle) etc.
+[jqUnit test](jqUnit.md) or is running in [Kettle](https://github.com/fluid-project/kettle) etc.
 There are two currently standard namespaces for listeners to this event:
 
 * `log` - the namespace for the listener which logs the failure to a suitable environment. By default this fires to `fluid.logFailure` which forwards to `fluid.log` before also logging the state of the IoC system by
 using `fluid.logActivity`
 * `fail` - the namespace for the listener which enacts any failure behaviour. By default this calls `fluid.fail` but in a testing environment, for example, will react by failing any current test, or
 in an HTTP server by aborting the handling of any current request with a suitable HTTP status code and message.
+
+### fluid.strategyRecursionBailout
+
+A positive integer (default value 50) above which depth the framework's processing of configuration will bail out, assuming that it has become circularly linked. This can be customised by the user
+(although this is an unlikely requirement), and is read by algorithms such as [`fluid.copy`](#fluid-isdestroyed-component-) and during [options expansion](ExpansionOfComponentOptions.md).
+
 
 ## The global namespace
 
@@ -585,7 +625,7 @@ Returns any value held at a particular global path. This may be an object or a f
 ### fluid.setGlobalValue(path, value)
 
 Write a value to a particular global path. Users are strongly discouraged from storing any mutable information at these paths, but it is accepted that in certain integration scenarios there can be little alternative. 
-Please choose a properly qualified global path name that identifies your project (perhaps, derived from a [domain name](https://en.wikipedia.org/wiki/Domain_name) or [npm package name](https://docs.npmjs.com/misc/faq#why-no-namespaces)
+Please choose a properly qualified global path name that identifies your project (perhaps, derived from a [domain name](https://en.wikipedia.org/wiki/Domain_name) or [npm package name](https://docs.npmjs.com/misc/faq#why-no-namespaces))
 that you have control over. The [Java package naming conventions](https://en.wikipedia.org/wiki/Java_package#Package_naming_conventions) have proved effective at heading off such problems in the past and 
 we intend that Infusion global names should be handled in an analogous way. 
 
@@ -596,17 +636,17 @@ we intend that Infusion global names should be handled in an analogous way.
 
 Invokes a function held at a particular global path with the supplied arguments. Equivalent to `fluid.getGlobalValue` followed by `Function.apply(null, args)`.
 
-* `path {String|Array of String}` The global path holding the function which is to be invoked
+* `functionPath {String|Array of String}` The global path holding the function which is to be invoked
 * `args {Array|Any}` The array of arguments to be supplied to the function. If `args` is not an array, `fluid.makeArray` will be called on it first. 
 * Returns: {Any} Any return value from the function which was invoked
 
 ### fluid.invokeGradedFunction(name, spec)
 
 Invoke a global function by name and named arguments. A courtesy to allow declaratively encoded function calls
-to use named arguments, with names encoded in the defaults for a `fluid.function`, rather than bare arrays.
+to use named arguments, with names encoded in the defaults for a [`fluid.function`](FunctionGrades.md), rather than bare arrays.
 
 * `name {String}` A global name which can be resolved to a `Function`. The defaults for this name must
-resolve onto a grade derived from `fluid.function`. The defaults record should also contain an entry
+resolve onto a grade derived from [`fluid.function`](FunctionGrades.md). The defaults record should also contain an entry
 `argumentMap`, a hash of argument names onto indexes.
 * `spec {Object}` A hash where the keys are keys of the functions `argumentMap`, and the values are the argument values to be sent to the function. The keys will be looked
 up in the `argumentMap` and the values resolved into a flat list of arguments.
@@ -615,7 +655,7 @@ up in the `argumentMap` and the values resolved into a flat list of arguments.
 
 ## Storing and retrieving defaults
 
-Infusion's component system is organised around blocks of JSON which define [grades](#ComponentGrades.md) - another way of describing a grade is as a component's *** default options ***, which 
+Infusion's component system is organised around blocks of JSON which define [grades](ComponentGrades.md) - another way of describing a grade is as a component's *** default options ***, which 
 appeals to a slightly more old-fashioned notion of what a component is. These options are registered into the system and read back from it by using the API `fluid.defaults`. If the options supplied to `fluid.defaults`
 represent a [component grade](ComponentOptionsAndDefaults.md), the framework will automatically construct and register a **component creator function** in the [global namespace](#the-global-namespace) at a path
 which matches the component's grade name. Note that not all defaults correspond to a component - some of them are descended from `fluid.function` in which case they represent a ***function grade*** and hold metadata

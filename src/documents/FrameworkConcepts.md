@@ -30,8 +30,8 @@ It is possible to replace one object tree with another, but still to maintain a 
 This is particularly important in web applications where data claiming to be "your data" can suddenly arrive from anywhere (a JSON feed, some persistence, 
 a particularly aggressive version management system, etc). However it got here, you know it is your data because it is at the right path.
 
-EL paths within Infusion can be evaluated (dereferenced with respect to a particular model) by the framework utilities `fluid.get()` and `fluid.set()`, and also global functions can be similarly 
-invoked by path with `fluid.invokeGlobalFunction()`. EL path expressions of this sort are fundamental to Infusion's model-oriented thinking, and the operation of the Infusion [ChangeApplier](ChangeApplier.md).
+EL paths within Infusion can be evaluated (dereferenced with respect to a particular model) by the framework utilities [`fluid.get()`](CoreAPI.md#fluid-get-model-path-) and [`fluid.set()`](CoreAPI.md#fluid-set-model-path-newvalue-), 
+and also global functions can be similarly invoked by path with `fluid.invokeGlobalFunction()`. EL path expressions of this sort are fundamental to Infusion's model-oriented thinking, and the operation of the Infusion [ChangeApplier](ChangeApplier.md).
 
 The framework will accept an array of path segments (e.g. `["zar", "boo", "baz"]`) wherever it accepts an EL path string, and this array form is somewhat preferable in terms of meaning less work (hence less garbage) for the
 framework (if slightly more work for the writer) as well as heading off escaping issues.
@@ -46,7 +46,7 @@ Events are created automatically by the framework as part of the initialisation 
 Infusion Events are so close to the language that they are a suitable replacement/implementation for features found in other frameworks, such as the "delegates" found in Mac OS X's Cocoa environment, 
 or in Microsoft's C#. Since event signatures are completely free (free as in "like a bird", not like either beer or speech), any function can potentially actually be an event listener. It is all a matter of perspective.
 
-A modern parallel to Infusion's events is node.js's [EventEmitter|https://nodejs.org/api/events.html]. The API and intent is very similar.
+A modern parallel to Infusion's events is node.js's [EventEmitter|https://nodejs.org/api/events.html]. The API and intent are very similar.
 
 ## MVC
 

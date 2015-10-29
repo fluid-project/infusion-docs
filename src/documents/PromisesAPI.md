@@ -1,10 +1,8 @@
 ---
-title: Promises
+title: Infusion Promises API
 layout: default
 category: Infusion
 ---
-
-# Infusion Promises API
 
 [Promises](https://en.wikipedia.org/wiki/Futures_and_promises) are a now widespread programming construct aiming to 
 simplify coding of complex workflows involving values which may be available asynchronously (perhaps as a result
@@ -27,11 +25,21 @@ algorithms of other libraries without adaptation. However, promises from foreign
 
 ## Core Promises API
 
+In our implementation/interpretation, a promise is, in terms of familiar constructions such as [events](InfusionEventSystem.md), 
+
+* A linked pair of event firers, named `resolve` and `reject`
+* At most one of these two events can be fired, at most one time in total
+* Any listeners registered to either of the events after the point of firing will be able to recover the (unique) fired value at the point of registration
+
+Note that this description does not adequately account for the features of specification-conformant promises more widely used in the industry - since these
+implement chaining and asynchronous behaviours which we do not implement.
+
 ### fluid.promise()
 
 * Returns: `{Promise}`
 
-Construct a fresh promise. This is the only point at which fresh promises are constructed within the core API.
+Construct a fresh promise. This is the only point at which fresh promises are constructed within the core API. The structure of the returned `{Promise}` 
+object comprises the following four members:
 
 ### promise.then(onResolve, onReject)
 
@@ -63,22 +71,7 @@ The current disposition of the promise may be inspected at any time. This is a `
 the value `undefined`. If the promise has received `resolve`, `disposition` will hold the string `"resolve"`, or if the
 promise has received `reject`, `disposition` will hold the string `"reject"`.
 
-### Commentary on core API
-
-This is 100% of the core implementation of Infusion promises. It puts us in a position to answer, in terms of familiar constructions
-such as [events](InfusionEventSystem.md), the question "What actually is a promise?" (although not in itself the more important question
-"What can a promise be used for?")
-
-A promise is
-
-* A linked pair of event firers, named `resolve` and `reject`
-* At most one of these two events can be fired, at most one time in total
-* Any listeners registered to either of the events after the point of firing will be able to recover the (unique) fired value at the point of registration
-
-Note that this description does not adequately account for the features of specification-conformant promises more widely used in the industry - since these
-implement chaining and asynchronous behaviours which we do not implement.
-
-### Commentary on requirements
+## Commentary on requirements
 
 As well as evolvability and enormous simplicity, we had a couple of other somewhat soft requirements - readability, and debuggability.
 Modern promise specifications actually ***require*** that fresh promises are constructed at every chaining point, and that every
@@ -121,7 +114,7 @@ termed a "foreign thenable".
 * `value {Any}` A value to be converted ("hoisted") to a promise
 * Returns: `{Promise}` If the supplied value is already a promise, it is returned unchanged. Otherwise a fresh promise is created with the value as resolution and returned.
 
-Coerces any value to a promise. If it is already a promise, it is returned unchanged. Otherwise, `toPromise` constructs a fresh promise resolving to the supplied value.
+Coerces any value to a promise. If it is already a promise, it is returned unchanged.
 
 
 ### fluid.promise.follow(source, target)
@@ -136,25 +129,34 @@ same payloads in each case.
 
 ### fluid.promise.map(source, func)
 
-Returns a promise whose resolved value is mapped from the source promise or value by the supplied function. If the input value is not a promise, it will
-be converted first to a promise via `fluid.toPromise()`. If the input promise rejects, its rejection reason will be propagated unmapped. 
-
-* `source {Object|Promise}` An object or promise whose value is to be mapped (if an object, will be converted first to a promise via `fluid.toPromise()`)
+* `source {Object|Promise}` An object or promise whose value is to be mapped by a function (if an object, will be converted first to a promise via `fluid.toPromise()`)
 * `func {Function: ({Any})  →  Any}` A function which will map the resolved promise value
 * Returns: `{Promise}` A promise for the resolved mapped value.
- 
+
+Returns a promise whose resolved value is mapped from the source promise or value by the supplied function. If the input value is not a promise, it will
+be converted first to a promise via `fluid.toPromise()`. If the input promise rejects, its rejection reason will be propagated unmapped. Example:
+
+```javascript
+var promiseTwo = fluid.toPromise(2);
+var double = function (value) {
+    return value * 2;
+};
+var promiseFour = fluid.promise.map(promiseTwo, double);
+``` 
+
 ## Promise algorithms
 
 The only currently implemented promise algorithms are based around a core skeleton operating an array of promises in a linear sequence. These 
-are responsive to an additional element of our promises API, the  [`fluid.accumulateRejectionReason`](#promise.accumulaterejectionreason-error-) "inverse API" described below.
+are responsive to an additional element of our promises API, the  [`promise.accumulateRejectionReason`](#promise-accumulaterejectionreason-error-) "inverse API" described below.
 
 ### fluid.promise.sequence(sources[, options])
 
 * `sources {Array of {Any|Promise|Function:(options {Object}) →  Any|Promise}}` An array of sources of values or promises which will be evaluated in sequence.
 * `options {Object}` [optional] A structure of options which will be supplied to function members of `sources`.  
 
-Accepts an array of values, promises, functions returning values or functions returning promises and evaluates them in sequence. Note that a standard name for a "function returning a promise" 
-is a *task* - this implementation can be directly compared to [sequence](https://github.com/cujojs/when/blob/master/docs/api.md#whensequence) in the [when.js library](https://github.com/cujojs/when).
+Accepts an array of values, promises, functions returning values or functions returning promises and evaluates them in sequence. Evaluating a value is a no-op which returns the value itself.
+Note that a standard name for a "function returning a promise" is a *task* - this implementation can be directly compared to
+[sequence](https://github.com/cujojs/when/blob/master/docs/api.md#whensequence) in the [when.js library](https://github.com/cujojs/when).
 
 In the case that the source element is a function returning a promise (a task), `fluid.promise.sequence` will ensure that
 at most one of these in "in flight" at a time - that is, the succeeding function will not be invoked
@@ -162,7 +164,7 @@ until the promise at the preceding position has resolved.
 
 ### fluid.promise.fireTransformEvent(event, payload[, options])
 
-* `event {[Event](InfusionEventSystem.md)}` A "pseudoevent" whose listeners are to be treated as sucessive (asynchronous) stages in the process of transforming a payload.
+* `event {`[`Event`](InfusionEventSystem.md)`}` A "pseudoevent" whose listeners are to be treated as sucessive (asynchronous) stages in the process of transforming a payload.
 * `payload {Any}` The original payload input to the transforming chain.
 * `options {Object}` [optional] A set of additional options to be supplied to each listener in the transform chain. Accepts two special options:
     * `reverse: {Boolean}` If `true`, the sequence of handlers will be notified in reverse order
@@ -170,7 +172,7 @@ until the promise at the preceding position has resolved.
 
 This is a slightly esoteric but very powerful API. To get a sense of its overall function, it could be compared with the standard [pipeline](https://github.com/cujojs/when/blob/master/docs/api.md#whenpipeline)
 algorithm supplied with [when.js](https://github.com/cujojs/when) - the concept is that an "initial payload" (which may be empty) is successively
-transformed by sequentially, possibly asynchronous, stages of a pipeline of functions. Each function accepts the return value of its predecessor,
+transformed by sequential, possibly asynchronous, stages of a pipeline of functions. Each function accepts the return value of its predecessor,
 and may synchronously return a transformed payload, or a promise asynchronously yielding such a payload. It may also of course also return a promise which rejects,
 terminating the transform chain.
 
@@ -188,11 +190,11 @@ or the initial `payload` value supplied to `fluid.promise.fireTransformEvent` if
 ## Inverse API recognised by promises consumed by sequential algorithms
 
 Both `fluid.promise.sequence` and `fluid.promise.fireTransformEvent` will recognise the following method supplied by the user on any promise
-returned by one of sources in the sequence:
+returned by one of the sources in the sequence:
 
 ### promise.accumulateRejectionReason(error)
 
-* `error: {Object|Error}` A rejection which has been received from a promise "to the right` of this one in a promise sequence.
+* `error: {Object|Error}` A rejection which has been received from a promise "to the right" of this one in a promise sequence.
 * Returns: `{Object|Error}` A rejection reason which has been "wrapped" or "decorated" in some way in order to add information about the
 function of ***this*** promise. For example, if this promise was intended to resolve by reading a file from the filesystem, the rejection reason
 could be decorated with a string like "while reading file Xxxxx". It's important that the user's implementation preserves all the information in 

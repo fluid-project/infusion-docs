@@ -1,15 +1,13 @@
 ---
-title: node.js Support and API
+title: Infusion node.js Support and API
 layout: default
 category: Infusion
 ---
 
-# Infusion in node.js
-
-Infusion's [core API](CoreAPI.md) and [IoC system](HowToUseInfusionIoC.md) are fully supported in node.js. It is supplied with a 
+Infusion's [core API](CoreAPI.md) and [IoC system](HowToUseInfusionIoC.md) are fully supported in node.js. Infusion is supplied with a 
 standard [package.json](https://github.com/fluid-project/infusion/blob/master/package.json) file and registered as a module in [npm's registry](https://www.npmjs.com/package/infusion).
 Infusion's global namespace model, as operated through functions such as [`fluid.registerNamespace`](CoreAPI.md#fluid-registernamespace-path-)
-and [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-) require some care in the node.js environment which makes significant efforts to balkanise
+and [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-), requires some care in the node.js environment which makes significant efforts to balkanise
 modules one from another, and to ensure that precisely this kind of thing never occurs — reference to artifacts held
 in a single, shared global namespace.
 
@@ -64,8 +62,10 @@ the filesystem. Other productive uses of such records are imaginable — for exa
 
 ### fluid.module.resolvePath(path)
 
-Resolve a path expression which may begin with a module reference of the form `${module-name}` into an absolute path relative to that module, using the
-database of base directories registered previously with `fluid.module.register`. If the path does not begin with such a module reference, it is returned unchanged.
+Resolve a path expression which may begin with a module reference of the form `${module-name}` into an absolute path relative to that module. Note that more
+modules are resolvable here than were necessarily registered with `fluid.module.register` - on startup, Infusion's node module will "pre-inspect" its filesystem path
+to the root in order to discover anything which plausibly looks like a module root - that is, it will recognise a `package.json` file which need not necessarily have a grandparent path of `node_nodules`. 
+If the supplied path does not begin with such a module reference, it is returned unchanged.
 
 * `path {String}` A path expression to be resolved, perhaps containing symbolic module references such as `${module-name}`
 * Returns: `{String}` The path expression with any symbolic module references resolved against the `fluid.module.modules` database
@@ -85,7 +85,7 @@ see everything you can - since it will very likely be higher up in the module tr
 Holds for public inspection Infusion's records of modules as registered via `fluid.module.register`. This will be a hash of `moduleName` to records of the following form:
 
 * `baseDir {String}` the `baseDir` argument supplied to `fluid.module.register` for this module
-* `require {Require}` the `moduleRequier` argument supplied to `fluid.module.register` for this module
+* `require {Require}` the `moduleRequire` argument supplied to `fluid.module.register` for this module
 
 
  
