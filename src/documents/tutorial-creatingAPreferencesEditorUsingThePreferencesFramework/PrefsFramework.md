@@ -111,7 +111,7 @@ The second argument – the options – is an object containing (in this case) t
 <dl>
 <dt>`gradeNames`</dt>
 <dd>
-Any call to `fluid.defaults()` must include the `gradeNames` property in the options argument.
+Almost every call to `fluid.defaults()` includes the `gradeNames` property in the options argument.
 This property defines the base _[grade](../ComponentGrades.md)_ for the component.
 <aside class="infusion-docs-callout">
 A **grade** is _very loosely_ analogous to a class, in that the properties of the component are
@@ -155,8 +155,9 @@ _Coming soon: More information about these two properties_
 #### Panel ####
 
 
-A [Panel](../Panels.md) is a [component](../UnderstandingInfusionComponents.md) responsible for rendering the user interface controls for a
-preference and tying them to the internal model] that represents the preference value.
+A [Panel](../Panels.md) is a [component](../UnderstandingInfusionComponents.md)
+responsible for rendering the user interface controls for a
+preference and tying them to the internal model that represents the preference value.
 The Panel for the auto-pilot preference control is defined in the `minEditor.js` file:
 <aside class="infusion-docs-callout">
 [Components](../UnderstandingInfusionComponents.md) are the core building-blocks of
@@ -192,7 +193,7 @@ fluid.defaults("minEditor.panels.autoPilot", {
     // the ProtoTree is basically instructions to the Renderer
     // the keys in the protoTree match the selectors above
     protoTree: {
-        // this value is a reference to the last part of the model path in the preferenceMap
+        // "${autoPilot}" is a reference to the last part of the model path in the preferenceMap
         autoPilot: "${autoPilot}"
     }
 });
@@ -204,7 +205,7 @@ In this code snippet, the Panel is created using a call to the Infusion Framewor
 2. a JavaScript object containing options for configuring the component – in this case, the Panel.
 
 The screenshot in Figure 2 (above) shows what the Panel looks like to the user: A single checkbox
-with a label, with a header above. The options for configuring this Panel
+and label, with a header above. The options for configuring this Panel
 include four properties: `gradeNames`, `preferenceMap`, `selectors` and `protoTree`:
 <dl>
 <dt>`gradeNames`</dt>
@@ -300,7 +301,7 @@ A protoTree contains key/value pairs, where
 
 Here, the one key `autoPilot` refers to the selector named autoPilot
 i.e. the reference to the checkbox in the HTML template.
-The value is an _[IoC reference](../IoCReferences.md)_ to the autoPilot property of Panel’s data model.
+The value is a reference to the `autoPilot` property of Panel’s data model.
 In the Infusion Framework, an _IoC reference_ (IoC stands for Inversion of Control) is a reference
 to an object in the current context using a particular syntax – specifically, the form `{context-name}.some.path.segments`.
 _Coming soon: More information about IoC references._
@@ -355,7 +356,6 @@ auxiliarySchema: {
         }
     }
 }
-});
 ```
 An auxiliary schema can be generally divided into two types of properties:
 
@@ -383,7 +383,7 @@ In the code snippet above, the `loaderGrades` option is used to specify the “f
 The Auxiliary Schema must declare where to find the main HTML template for the Preference Editor.
 In our example, this template is located in the same folder as other HTML templates.
 The Auxiliary Schema allows you to define `terms` – strings that can be re-used elsewhere in the
-schema. Here, it is being used to define once the path to where the HTML templates are:
+schema. Here, it is being used to define, in a single place, the path to where the HTML templates are:
 
 ```javascript
     terms: {
