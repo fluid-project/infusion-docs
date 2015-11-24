@@ -4,7 +4,7 @@ layout: default
 category: Infusion
 ---
 
-The *** model transformation *** framework is a core part of Infusion and allows you to transform change an input [model](FrameworkConcepts.md#model-objects) (JSON structure) based on a set of rules. 
+The *** model transformation *** framework is a core part of Infusion and allows you to transform an input [model](FrameworkConcepts.md#model-objects) (JSON structure) based on a set of rules. 
 The result will be a new model, built according to the rules specified and the input model. Many kinds of transformation can also have their *inverses* computed
 and operated automatically.
 
@@ -17,7 +17,7 @@ in time be migrated here.
 
 ## fluid.model.transformWithRules(source, rules[, options])
 
-* `model {Object}` The input model to transform - this will not be modified
+* `source {Object}` The input model to transform - this will not be modified
 * `rules {Transform}` A transformation rules object containing instructions on how to transform the model (see [below](#structure-of-a-transformation-document)) for more information)
 * `options {Object}` A set of options governing the kind of transformation to be operated. At present this may contain the values:
     * `isomorphic {Boolean}` If `true` indicating that the output model is to be governed by the same schema found in the input model, or
@@ -45,7 +45,7 @@ A `{SingleTransform}` record is as follows:
 }
 ```
 
-where `transform-type` is the name of a registered transformation function. This will be a [function grade] derived from the base grade `fluid.transformFunction`. Each transformation function can accept arbitrary additional top-level
+where `transform-type` is the name of a registered transformation function. This will be a [function grade](FunctionGrades.md) derived from the base grade `fluid.transformFunction`. Each transformation function can accept arbitrary additional top-level
 options, but many are derived from the grade `fluid.standardInputTransformFunction` which accept a standard input value named `input` (or path named `inputPath`) and/or derived from the grade `fluid.standardOutputTransformFunction`
 which accept an output path named `outputPath`. In general you should consult the [documentation](https://wiki.gpii.net/index.php/Architecture_-_Available_transformation_functions) for each transform function to
 see the names and interpretations of its options. Many transforms will themselves accept configuration of type `{Transform}` in their options, leading transform documents to have a recursive structure. 

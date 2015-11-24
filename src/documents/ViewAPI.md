@@ -90,7 +90,7 @@ the markup to which this component is attached, you must destroy the component u
  
 | Name | Type | Description | Default |
 |------|------|-------------|---------|
-|`dynamicLabel`| `Boolean`| Whether or not an ARIA  live region should be created an associated with the element, as well as the use of `aria-label`| `false` |
+|`dynamicLabel`| `Boolean`| Whether or not an ARIA  live region should be created and associated with the element, as well as the use of `aria-label`| `false` |
 |`liveRegionMarkup`| `String` | The markup to use to create the live region (only used if `dynamicLabel` is `true`).|`"<div class=\"liveRegion fl-offScreen-hidden\" aria-live=\"polite\"></div>"`|
 |`liveRegionId`| `String` | The ID to assign to the live region (only used if `dynamicLabel` is true). |`"fluid-ariaLabeller-liveRegion"`|
 |text| `String` | The text to place in the live region (only used if `dynamicLabel` is true).|none|
@@ -100,7 +100,7 @@ an Infusion `fluid.viewComponent` of type `fluid.ariaLabeller`.
 
 ## Managing Focus and Blur
 
-Infusion includes two "major utilities" for managing focus interactions, [`fluid.globalDismissal`](#fluid-globaldismissal-nodes-dismissfunc-) and [`fluid.deadMansBlur`](#fluid-deadmansblur-control-options-) for managing focus interactions, as well as a few minor utilities.
+Infusion includes two "major utilities" for managing focus interactions, [`fluid.globalDismissal`](#fluid-globaldismissal-nodes-dismissfunc-) and [`fluid.deadMansBlur`](#fluid-deadmansblur-control-options-), as well as a few minor utilities.
 
 ### fluid.globalDismissal(nodes[, dismissFunc])
 
@@ -108,10 +108,10 @@ Infusion includes two "major utilities" for managing focus interactions, [`fluid
 * `dismissFunc {Function: DomEvent  →  None}|Undefined` A function which will be executed when a "dismissal click" is received in the document. If this argument is not supplied, any existing dismissal function will be disarmed.   
     
 Used in the stereotypical situation where a click event (morally, one which shifts focus outside a dialog or other region of interaction - but only actual `click` events
-are supported by this function) should have the effect of "dismissing` the dialog or interaction region. This accepts a free hash of nodes designating the interaction
+are supported by this function) should have the effect of "dismissing" the dialog or interaction region. This accepts a free hash of nodes designating the interaction
 region and an optional "dismissal function". If `dismissFunc` is set, this "arms" the dismissal system, such that when a click
 is received OUTSIDE any of the DOM node hierarchy covered by `nodes`, the dismissal function will be executed, and supplied with the DOM event
-triggered by the click event. `fluid.globalDismissal` is a `one shot deal` - if the `dismissFunc` is executed, the system is disarmed and will need
+triggered by the click event. `fluid.globalDismissal` is a "one shot deal" - if the `dismissFunc` is executed, the system is disarmed and will need
 to be armed again.
 
 ### fluid.deadMansBlur(control, options)
@@ -125,7 +125,7 @@ are delivered simply because focus has moved to another control within the same 
 perverse cases (especially on Internet Explorer) are delivered *after* the focus event which morally causes them. 
 
 This utility uses the following strategy: on receiving a standard `blur` event on the `control`, a timer is started which waits for a short period of
-time (options.delay, defaults to 150ms) to discover whether the reason for the blur interaction is that either a focus or click is being serviced on a nominated
+time (`options.delay`, defaults to 150ms) to discover whether the reason for the blur interaction is that either a focus or click is being serviced on a nominated
 set of "exclusions" (`options.exclusions`, a free hash of elements or jQueries, as accepted by `fluid.globalDismissal`).
 
 If no such event is received within the window, `options.handler` will be called with the argument `control`, to service whatever interaction is required of the
@@ -143,7 +143,7 @@ broadly useful.
 |------|------|-------------|---------|
 |`exclusions`|<code>Object: String  → DomElement&#124;jQuery</code>| A free hash of names onto nodes that a click ***outside*** of will trigger `handler`, *** OR *** that a focus event received within the time window of `delay` from a blur event on `control` will *** cancel *** notification of `handler`| none |
 |`handler`|`Function: (jQueryable)  →  None`| A function which will be invoked when the component has determined that a meaningful blur has been triggered on `control`. It will be invoked with `control` as the argument.| none |
-|`delay`|`Number`| The interval of time that the component will wait after receiving a `blur` event on `control` in order to determine that the reason is that another element within `exclusions` is being focused.|150|
+|`delay`|`Number`| The interval of time (in ms) that the component will wait after receiving a `blur` event on `control` in order to determine that the reason is that another element within `exclusions` is being focused.|150|
 |`backDelay`|`Number`| The interval of time *** before *** a `blur` event in which the component will be sensitive to an anomalous `pre-focusing` of an element within `exclusions` (primarily useful on Internet Explorer)|100|
 |`cancelByDefault`|`Boolean`| If `true`, the focus timer logic of `deadMansBlur` is disabled and it the user is expected to operate the component manually (unsupported API)|`false`|
 

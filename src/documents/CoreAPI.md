@@ -139,12 +139,12 @@ other environments can be customised - e.g. to `process.nextTick` in node.js. In
 
 ### fluid.allocateGuid()
 
+* Returns: `{String}` A string of about a dozen characters that has made moderate efforts to be globally unique.
+
 Allocate a string value that will be unique within this Infusion instance (frame or process), and
 globally unique with high probability (50% chance of collision after a million trials). This has the structure `prefix-id` where
 `prefix` is the value of `fluid.fluidInstance` identifying this Infusion instance, and `id` is a increasing integer initialised at
 1 when this infusion instance starts up.
-
-* Returns: `{String}` A string of about a dozen characters that has made moderate efforts to be globally unique.
 
 
 ## Creation, copying and destroying
@@ -207,10 +207,6 @@ Clears an object or array of its contents. For objects, each property is deleted
 
 ### fluid.transform(source, [fn1, fn2, ...])
 
-Return a list or hash of objects, transformed by one or more functions. Similar to
-[`jQuery.map`](http://api.jquery.com/jquery.map/), but accepts an arbitrary list of transformation functions and does not explode on null sources. 
-`fluid.transform` on a non-array and non-object (e.g. `null`) is a no-op.
-
 * `source {Array|Object}` The initial container of objects to be transformed. If the source is neither an array nor an object, it will be returned untransformed
 * `fn_i {Function} (element {Any}, index {Number|String})→Any` (arbitrary number accepted) An arbitrary number of optional further arguments,
 all of type `Function`, accepting the signature `(element, index)`, where `element` is the
@@ -218,11 +214,11 @@ list member to be transformed, and `index` is its index. Each function will be
 applied in turn to each member, which will be replaced by the return value from the function.
 * Returns: `{Array|Object}` The finally transformed structure, where each member has been replaced by the original member acted on by the function or functions.
 
-### fluid.accumulate(list, fn, initial)
+Return a list or hash of objects, transformed by one or more functions. Similar to
+[`jQuery.map`](http://api.jquery.com/jquery.map/), but accepts an arbitrary list of transformation functions and does not explode on null sources. 
+`fluid.transform` on a non-array and non-object (e.g. `null`) is a no-op.
 
-Scan through a list of objects, "accumulating" a value over them
-(may be a straightforward "sum" or some other chained computation). "accumulate" is the name derived
-from the C++ STL, other names for this algorithm are "reduce" or "[fold](https://en.wikipedia.org/wiki/Fold_%28higher-order_function%29)".
+### fluid.accumulate(list, fn, initial)
 
 * `list {Array}` The list of objects to be accumulated over.
 * `fn {Function: (object {Any}, total {Any-Total}, index {Integer}) → Any-Total}` An "accumulation function" accepting the signature `(object, total, index)` where
@@ -231,12 +227,13 @@ from the C++ STL, other names for this algorithm are "reduce" or "[fold](https:/
 * `arg {Any-Total}` The initial value for the "running total" object.
 * Returns: `{Any-Total}` The final running total object as returned from the final invocation of the function on the last list member.
 
+Scan through a list of objects, "accumulating" a value over them
+(may be a straightforward "sum" or some other chained computation). "accumulate" is the name derived
+from the C++ STL, other names for this algorithm are "reduce" or "[fold](https://en.wikipedia.org/wiki/Fold_%28higher-order_function%29)".
 
 ### fluid.remove_if(source, fn[, target])
 
-Scan through a list or hash of objects, removing those which match a predicate. The source structure *** will be modified in place ***.
-
-* `source {Array|Object}` The list or hash of objects to be scanned over.
+* `source {Array|Object}` The list or hash of objects to be scanned over. This structure *** will be modified in place ***.
 * `fn {Function: (object {Any}, index {Number|String}) → Booleanish }` A predicate function determining whether an element should be
 removed. This accepts the standard signature `(object, index)`. If the predicate returns a "truthy" value, the corresponding object
 will be removed from the source structure.
@@ -245,8 +242,13 @@ receive any objects removed from it.
 * Returns: `{Array|Object}` Either `target`, containing the removed elements, if it was supplied, or else `source`
 modified by the operation of removing the matched elements.
 
+Scan through a list or hash of objects, removing those which match a predicate. The source structure *** will be modified in place ***.
 
 ### fluid.getMembers(holder, path)
+
+* `holder {Array|Object}` The container to be filtered
+* `path {String|Array of String}` An [EL path](FrameworkConcepts.md#el-paths) to be fetched from each top-level member
+* Returns: `{Array|Object}` A container of the same type as `holder`, with the members of `holder` deferenced by `path`.
 
 Extracts a particular member from each top-level member of a container, returning a new container of the same type. Example:
 
@@ -263,55 +265,55 @@ var names = fluid.getMembers(cattes, "name");
 // names now holds ["Huggoe", "Arthur", "THER CATTE"]; 
 ```
 
-* `holder {Array|Object}` The container to be filtered
-* `path {String|Array of String}` An [EL path](FrameworkConcepts.md#el-paths) to be fetched from each top-level member
-* Returns: `{Array|Object}` A container of the same type as `holder`, with the members of `holder` deferenced by `path`.
-
 
 ### fluid.filterKeys(toFilter, keys[, exclude])
 
-Accepts an object to be filtered, and a list of keys. Either all keys not present in
-the list are removed (the default), or all keys present in the list are removed (`exclude: true`). The suppled object *** is not modified *** but will be shallow cloned by this operation.
- 
 * `toFilter {Array|Object}` The object to be filtered - this will be NOT modified by the operation
 * `keys {Array of String}` The list of keys to operate with
 * `exclude {Boolean}` [optional] If `true`, the keys listed are removed rather than included
 * Returns: `{Array|Object}` the filtered object
 
-
+Accepts an object to be filtered, and a list of keys. Either all keys not present in
+the list are removed (the default), or all keys present in the list are removed (`exclude: true`). The suppled object *** is not modified *** but will be shallow cloned by this operation.
+ 
 ### fluid.censorKeys(toCensor, keys)
-
-A convenience wrapper for `fluid.filterKeys` with the argument `exclude` set to `true`. Returns a shallow clone of the supplied object with listed keys removed.
 
 * `toFilter {Array|Object}` The object to be filtered - this will be NOT modified by the operation
 * `keys {Array of String}` The list of keys to operate with
 * Returns: `{Array|Object}` A shallow clone of `toFilter` with the supplied keys removed
 
+A convenience wrapper for `fluid.filterKeys` with the argument `exclude` set to `true`. Returns a shallow clone of the supplied object with listed keys removed.
+
 
 ### fluid.keys(object)
-
-Return the keys in the supplied object as an array. Note that this will return keys found in the prototype chain as well as "own properties", unlike the builtin [`Object.keys()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
 
 * `object {Object}` The object to have its keys listed
 * Returns: `{Array}` An array holding the keys of this object.
 
+Return the keys in the supplied object as an array. Note that this will return keys found in the prototype chain as well as "own properties", unlike the builtin [`Object.keys()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
 
 ### fluid.values(object)
-
-Return the keys in the supplied object as an array. This will return values found in the prototype chain as well as those attached to "own properties".
 
 * `object {Object}` The object to have its values listed
 * Returns: `{Array}` An array holding the values of this object.
 
+Return the keys in the supplied object as an array. This will return values found in the prototype chain as well as those attached to "own properties".
+
 
 ### fluid.arrayToHash(array)
-    
-Converts an array into an object whose keys are the elements of the array, each with the value `true`
+
 * `array {Array of String}` The array to be converted to a hash
 * Returns: `{Object}` An object with value `true` for each key taken from a member of `array`
-
+    
+Converts an array into an object whose keys are the elements of the array, each with the value `true`
 
 ### fluid.hashToArray(hash, keyName[, func])
+
+* `hash {Array}` The hash to be transformed into an array
+* `keyName {String}` The name within the resulting array elements which will receive the string which used to form the element's key in `hash`
+* `func {Function (newElement {Object), oldElement {Object}, key {String}) →  Object }` [optional] receives `(newElement, oldElement, key)` where `newElement` is the freshly cloned element (a fresh `Object obj` which just has `obj[keyName] = key`), 
+`oldElement` is the original hash's element, and `key` is the key of the element in the hash. The function returns the final element that will be added to the array - it may ignore `newElement` if it pleases and make an unrelated
+return. If the function makes no return, `newElement` will be used. If the function is not supplied, the old element is simply deep-cloned onto the new element (same effect as transform `fluid.transforms.objectToArray`).
 
 Converts a hash into an array by hoisting out the object's keys into an array element via the supplied String `key`, and then transforming the elements via an optional further function `func`. Note that without some further
 means of sorting the resulting array elements, the order of elements in the array will [not be defined](https://es5.github.io/#x12.6.4). Example:
@@ -334,28 +336,19 @@ var CATTyears = fluid.hashToArray(hash, "species", function (newElement, oldElem
 
 ```
 
-* `hash {Array}` The hash to be transformed into an array
-* `keyName {String}` The name within the resulting array elements which will receive the string which used to form the element's key in `hash`
-* `func {Function (newElement {Object), oldElement {Object}, key {String}) →  Object }` [optional] receives `(newElement, oldElement, key)` where `newElement` is the freshly cloned element (a fresh `Object obj` which just has `obj[keyName] = key`), 
-`oldElement` is the original hash's element, and `key` is the key of the element in the hash. The function returns the final element that will be added to the array - it may ignore `newElement` if it pleases and make an unrelated
-return. If the function makes no return, `newElement` will be used. If the function is not supplied, the old element is simply deep-cloned onto the new element (same effect as transform `fluid.transforms.objectToArray`).
-
-
 ### fluid.flatten(array)
-
-Converts an array consisting of a mixture of arrays and non-arrays into the concatenation of any inner arrays 
-with the non-array elements. The original array *** will not be modified ***. See description of [mapcat](http://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
 
 * `array {Array}` The array to be flattened
 * Returns: `{Array}` The flattened array.
+
+Converts an array consisting of a mixture of arrays and non-arrays into the concatenation of any inner arrays 
+with the non-array elements. The original array *** will not be modified ***. See description of [mapcat](http://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
 
 
 ## Sorting and searching
 
 ### fluid.find(source, func[, deflt])
 
-Scan through a list or hash of objects, terminating on the first member which
-satisfies a predicate function. The return is the return value from the predicate.
 * `source {Arrayable|Object}` The list or hash of objects to be searched.
 * `func {Function: (element {Any}, index {Number|String}) → Any}` A predicate function, acting on a member. A predicate which
 returns any value which is not `undefined` will terminate the search.
@@ -363,10 +356,11 @@ returns any value which is not `undefined` will terminate the search.
 a member. The default will be the natural value of `undefined`
 * Returns: The first return value from the predicate function which is not `undefined`
 
+Scan through a list or hash of objects, terminating on the first member which
+satisfies a predicate function. The return is the return value from the predicate.
+
 ### fluid.find_if(source, func[, deflt])
 
-Scan through a list or hash of objects, terminating on the first member which
-matches a predicate function. The return value is the first element itself for which the predicate returns other than `false`.
 * `source {Arrayable|Object}` The list or hash of objects to be searched.
 * `func {Function: (element {Any}, index {Number}) → Boolean}` A predicate function, acting on a member. A predicate which
 returns any value which is not `false` will terminate the search.
@@ -374,61 +368,69 @@ returns any value which is not `false` will terminate the search.
 member. The default will be the natural value of `undefined`
 * Returns: The first element for which the value of the predicate function is not `false`
 
-### fluid.contains(tosearch, value)
+Scan through a list or hash of objects, terminating on the first member which
+matches a predicate function. The return value is the first element itself for which the predicate returns other than `false`.
 
-Searches through the supplied structure, and returns `true` if the supplied value can be found, using `===` equality
+### fluid.contains(tosearch, value)
 
 * `tosearch {Object|Array}` The structure to be searched for the supplied value,
 * `value {Any}` The value to be searched for
 * Returns: `{Boolean|Undefined}` Returns `true` if the value was found in the container
 
-### fluid.keyForValue(tosearch, value) {
+Searches through the supplied structure, and returns `true` if the supplied value can be found, using `===` equality
 
-Searches through the supplied object for the first value which matches the one supplied.
+### fluid.keyForValue(tosearch, value) {
 
 * `tosearch {Object|Array}` The structure to be searched for the supplied value
 * `value {Any}` The value to be found. This will be compared against the structure's members using `===` equality.
 * Returns: `{String|Integer|Undefined}` The first key (an `Integer` if `tosearch` is an `Array`) whose value matches the one supplied, or `undefined` if no value matches
 
+Searches through the supplied object for the first value which matches the one supplied.
+
 ### fluid.stableSort(array, func) 
+
+* `array {Array of Any-Element}` The array to be sorted. *** This input array will be modified in place. ***
+* `func {Function: (a {Any-Element}, b {Any-Element}) → Number}` A comparator returning >0, 0, or <0 on pairs of elements representing their sort order (same contract as [Array.sort comparator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort))
 
 Applies a stable sorting algorithm to the supplied array and comparator (note that [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) in JavaScript is not specified
 to be stable). The algorithm used will be an insertion sort, which whilst quadratic in time, will perform well
 on small array sizes.
-* `array {Array of Any-Element}` The array to be sorted. *** This input array will be modified in place. ***
-* `func {Function: (a {Any-Element}, b {Any-Element}) → Number}` A comparator returning >0, 0, or <0 on pairs of elements representing their sort order (same contract as [Array.sort comparator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort))
-
 
 ### fluid.compareStringLength(ascending)
 
-Produces a comparator function suitable for use with [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) or [fluid.stableSort](#fluid-stablesort-array-func-)to sort an array of strings by length
-
 * `ascending {Booleanish}` `true` if a comparator is to be returned which sorts strings in ascending order of length
 * Returns: `{Function: (a {String}, b {String}) → Number}` The comparator function to be used for sorting
+
+Produces a comparator function suitable for use with [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) or [fluid.stableSort](#fluid-stablesort-array-func-) to sort an array of strings by length
 
 
 ## Parsing and rendering
 
 ### fluid.parseInteger(string)
 
-Returns the converted integer if the input string can be converted to an integer. Otherwise, returns `NaN`.
-
 * `string {String}` A string to be converted to an integer
 * Returns: `{Integer|NaN}` The integer value, or `NaN` if the string does not represent an integer 
 
-### fluid.stringTemplate(template, terms) {
+Returns the converted integer if the input string can be converted to an integer. Otherwise, returns `NaN`.
+
+### fluid.stringTemplate(template, terms)
+
+* `template {String}` A string with embedded tokens of the form `%value`
+* `terms {Object: String → Stringable}` A hash which maps tokens to their required interpolated values   
 
 A simple string interpolation system. Accepts a template string with embedded tokens of the form `%value`. Returns a new string with the tokens replaced by the specified values.
 Keys and values can be of any data type that can be coerced into a string. Tokens are not delimited in the template with any syntax - the implementation will replace the longest token which
 can be sourced from `terms`.
 
-* `template {String}` A string with embedded tokens of the form `%value`
-* `terms {Object: String → Stringable}` A hash which maps tokens to their required interpolated values   
-
 
 ## Handling models and paths
 
 ### fluid.get(model, path)
+
+* `model {Any}` The model object to be indirected into. This may be `undefined`, etc. without triggering an error.
+* `path {String|Array of String}` Either a period-separated [EL path](FrameworkConcepts.md#el-paths) representing a chain of properties to be navigated, or else an array of
+path segments representing this
+* Returns: `{Any}` The result of the indirection of the path into the supplied model
 
 Accesses an element nested within a [model object](FrameworkConcepts.md#model-object) at the supplied (EL) path. `fluid.get` can
 operate various special behaviour in encountering particular kinds of material - for example, any object with a function member named `resolvePathSegment` will
@@ -436,20 +438,15 @@ hand resolution of the next path segment to that function if there is no corresp
 model material, this will not trigger an error - all successive indirections will simply return `undefined`. `fluid.get` accepts various esoteric piece of configuration
 allowing it to operate indirection rules encoded in arbitrary JSON material - these are imperfectly supported, contact us if you are interested.
 
-* `model {Any}` The model object to be indirected into. This may be `undefined`, etc. without triggering an error.
-* `path {String|Array of String}` Either a period-separated [EL path](FrameworkConcepts.md#el-paths) representing a chain of properties to be navigated, or else an array of
-path segments representing this
-* Returns: `{Any}` The result of the indirection of the path into the supplied model
-
 ### fluid.getImmediate(model, path) 
-
-An extremely simplistic, high-performance variant of `fluid.get` that supports none of the same bells and whistles - it is only capable of navigating over concrete
-object properties that are actually present in the model, and the path must have already been parsed out into an array of segments. 
-It still, however, operates the same semantic as `fluid.get` for navigating over undefined values.
 
 * `model {Any}` The model object to be indirected into. This may be `undefined`, etc. without triggering an error.
 * `path {Array of String}` An array of path segments representing representing a chain of properties to be navigated
 * Returns: `{Any}` The result of the indirection of the path into the supplied model
+
+An extremely simplistic, high-performance variant of `fluid.get` that supports none of the same bells and whistles - it is only capable of navigating over concrete
+object properties that are actually present in the model, and the path must have already been parsed out into an array of segments. 
+It still, however, operates the same semantic as `fluid.get` for navigating over undefined values.
 
 ### fluid.set(model, path, newValue)
 
@@ -478,37 +475,36 @@ path segments representing this
 
 ### fluid.model.parseEL(EL)
 
-Parses a EL path expression by splitting it on the character `.`. This is a fast, low-quality implementation which assumes that no
-escaping of `.` characters is necessary.
-
 * `EL {String}` The EL path to be parsed
 * Returns: `{Array of String}` The EL path parsed as an array of path segments
 
-### fluid.model.composeSegments([seg1, seg2, ...])
+Parses a EL path expression by splitting it on the character `.`. This is a fast, low-quality implementation which assumes that no
+escaping of `.` characters is necessary.
 
-Compose any number of path segments, none of which may be empty. The inverse to `fluid.model.parseEL` - this is a fast, low-quality implementation which does no escaping.
+### fluid.model.composeSegments([seg1, seg2, ...])
 
 * `seg1 ... segn {String}` The path segments to be composed
 * Returns: `{String}` The EL path composed by concatenating the path segments.
 
+Compose any number of path segments, none of which may be empty. The inverse to `fluid.model.parseEL` - this is a fast, low-quality implementation which does no escaping.
+
 ### fluid.pathUtil.parseEL(EL)
+
+* `EL {String}` The EL path to be parsed
+* Returns: `{Array of String}` The EL path parsed as an array of path segments
 
 Parses a EL path expression by splitting it on the period character "`.`". This is an analog of `fluid.model.parseEL` that will escape the characters `.` as `\.` and `\` as `\\`, allowing
 all possible paths to be expressed. In modern JavaScript VMs, it is not much slower than `fluid.model.parseEL` and should be used in all applications where paths will be 
 accepted from external users. 
 
-* `EL {String}` The EL path to be parsed
-* Returns: `{Array of String}` The EL path parsed as an array of path segments
-
 ### fluid.pathUtil.composeSegments([seg1, seg2, ...])
-
-Compose any number of path segments, none of which may be empty. This is an analog of `fluid.pathUtil.parseEL` that will escape the characters `.` as `\.` and `\` as `\\`, allowing
-all possible paths to be expressed. In modern JavaScript VMs, it is not much slower than `fluid.pathUtil.composeSegments` and should be used in all applications where paths will be 
-accepted from external users. 
 
 * `seg1 ... segn {String}` The path segments to be composed
 * Returns: `{String}` The EL path composed by concatenating the path segments.
 
+Compose any number of path segments, none of which may be empty. This is an analog of `fluid.pathUtil.parseEL` that will escape the characters `.` as `\.` and `\` as `\\`, allowing
+all possible paths to be expressed. In modern JavaScript VMs, it is not much slower than `fluid.pathUtil.composeSegments` and should be used in all applications where paths will be 
+accepted from external users. 
 
 
 
@@ -516,14 +512,14 @@ accepted from external users.
 
 ### fluid.log([logLevel, arg1, ... argn])
 
+* `logLevel {LogLevel}` [optional] One of the members of the `fluid.logLevel` structure or in general some `fluid.marker` with a numeric value holding a priority
+* `arg1 ... argn {Stringable}` A sequence of arguments to be logged. By default these will be handed unchanged to the multiple arguments of `console.log`. It is wise to convert these
+to `String` yourself (e.g. by `JSON.stringify`) if i) this is safe, and ii) you would not be satisfied by the environment's rendering.
+
 Log a message to a suitable environmental console (in current implementations, `console.log`). If the first argument to `fluid.log` is
 one of the members of the [`fluid.logLevel`](#fluid-loglevel) structure, this will be taken as the priority of the logged message - else it 
 will default to [`fluid.logLevel.INFO`](#fluid-loglevel). If the logged message priority does not exceed that set by the most recent call to the [`fluid.setLogging`](#fluid-setlogging-loglevel-) function,
 the logging action will be suppressed.
-
-* `logLevel {LogLevel}` [optional] One of the members of the `fluid.logLevel` structure or in general some `fluid.marker` with a numeric value holding a priority
-* `arg1 ... argn {Stringable}` A sequence of arguments to be logged. By default these will be handed unchanged to the multiple arguments of `console.log`. It is wise to convert these
-to `String` yourself (e.g. by `JSON.stringify`) if i) this is safe, and ii) you would not be satisfied by the environment's rendering.
 
 ### fluid.logLevel
 
@@ -542,11 +538,11 @@ of higher priority than higher numbers. The system maintains a current "logging 
 
 ### fluid.setLogging(logLevel)
 
+* `logLevel {Boolean|LogLevel}` The system logging level to be made current and to be pushed onto the top of the system's stack of logging levels.
+
 Push a value onto the stack of the system's current logging levels. This will become the system's current logging level until there is a corresponding call to `fluid.popLogging`. The argument may either be a boolean,
 in which case one of the standard logging levels (`true: fluid.logLevel.INFO` / `false: fluid.logLevel.IMPORTANT`) will be selected, or else one of the members of the `fluid.logLevel` structure or a `LogLevel` marker
 in general. The stack is initialised with a single element of `fluid.logLevel.IMPORTANT`.
-
-* `logLevel {Boolean|LogLevel}` The system logging level to be made current and to be pushed onto the top of the system's stack of logging levels.
 
 ### fluid.popLogging()
 
@@ -555,12 +551,12 @@ If the stack has only its one original element, this call is a no-op.
 
 ### fluid.passLogLevel(testLogLevel)
 
+* `testLogLevel {LogLevel}` The log level against which the system's current logging level is to be checked.
+* Returns: `{Boolean}` - `true` if a message supplied at that log priority would be logged at the current logging level.
+
 Accepts one of the members of the `fluid.logLevel` structure or a `LogLevel` object in general. Returns `true` if
 a message supplied at that log priority would be logged at the current logging level. Clients who
 issue particularly expensive log payload arguments are recommended to guard their logging statements with this
-
-* `testLogLevel {LogLevel}` The log level against which the system's current logging level is to be checked.
-* Returns: `{Boolean}` - `true` if a message supplied at that log priority would be logged at the current logging level.
 
 ### fluid.doLog([arg1, ... argn])
 
@@ -579,15 +575,15 @@ the standard event `fluid.failureEvent`
 
 ### fluid.failureEvent
 
-Every call to `fluid.fail` triggers a firing of this global event. This is a standard [Infusion Event](InfusionEventSystem.md) with several handlers installed on startup to take on various functions.
-Extra handlers are registered, and the builtin handlers overriden, to customise error handling behaviour in various contexts - for example, when Infusion is running in node.js, is running a 
-[jqUnit test](jqUnit.md) or is running in [Kettle](https://github.com/fluid-project/kettle) etc.
-There are two currently standard namespaces for listeners to this event:
-
 * `log` - the namespace for the listener which logs the failure to a suitable environment. By default this fires to `fluid.logFailure` which forwards to `fluid.log` before also logging the state of the IoC system by
 using `fluid.logActivity`
 * `fail` - the namespace for the listener which enacts any failure behaviour. By default this calls `fluid.fail` but in a testing environment, for example, will react by failing any current test, or
 in an HTTP server by aborting the handling of any current request with a suitable HTTP status code and message.
+
+Every call to `fluid.fail` triggers a firing of this global event. This is a standard [Infusion Event](InfusionEventSystem.md) with several handlers installed on startup to take on various functions.
+Extra handlers are registered, and the builtin handlers overriden, to customise error handling behaviour in various contexts - for example, when Infusion is running in node.js, is running a 
+[jqUnit test](jqUnit.md) or is running in [Kettle](https://github.com/fluid-project/kettle) etc.
+There are two currently standard namespaces for listeners to this event:
 
 ### fluid.strategyRecursionBailout
 
@@ -607,43 +603,40 @@ will need to use these utilities or the helping reference `fluid.global`. See [`
 
 ### fluid.registerNamespace(path)
 
+* `path {String|Array of String}` The global path at which the namespace is to be allocated
+* Returns: `{Any}` Any current value held at the supplied path - or a freshly allocated `{}` to be held at that path if it was previously empty
+
 Ensures that the supplied path has an object allocated in the global namespace, and retrieves the current value. If no value is stored, a fresh `{}` will be assigned at the path, and to all
 currently empty paths leading to the global namespace root. Calls to `fluid.registerNamespace` are very common at the start of Infusion-aware `.js` files - they are analogous to `require` statements,
 only they do not cause any code to be loaded by themselves - but they can grant access to implementations which have been loaded by others, or else provide an intermediate node at which to export
 implementations to others.
 
-* `path {String|Array of String}` The global path at which the namespace is to be allocated
-* Returns: `{Any}` Any current value held at the supplied path - or a freshly allocated `{}` to be held at that path if it was previously empty
-
 ### fluid.getGlobalValue(path)
-
-Returns any value held at a particular global path. This may be an object or a function, depending on what has been stored there. 
 
 * `path {String|Array of String}` The global path from which the value is to be fetched
 * Returns: `{Any}` The value that was stored at the path, or `undefined` if there is none. 
 
+Returns any value held at a particular global path. This may be an object or a function, depending on what has been stored there. 
+
 ### fluid.setGlobalValue(path, value)
+
+* `path {String|Array of String}` The global path at which the value is to be set. 
+* `value {Any}` The value to be written to the global path. This should in general be a function or other immutable value, and an existing value should not be overwritten. This rule can be overlooked in a genuine architectural emergency.
 
 Write a value to a particular global path. Users are strongly discouraged from storing any mutable information at these paths, but it is accepted that in certain integration scenarios there can be little alternative. 
 Please choose a properly qualified global path name that identifies your project (perhaps, derived from a [domain name](https://en.wikipedia.org/wiki/Domain_name) or [npm package name](https://docs.npmjs.com/misc/faq#why-no-namespaces))
 that you have control over. The [Java package naming conventions](https://en.wikipedia.org/wiki/Java_package#Package_naming_conventions) have proved effective at heading off such problems in the past and 
 we intend that Infusion global names should be handled in an analogous way. 
 
-* `path {String|Array of String}` The global path at which the value is to be set. 
-* `value {Any}` The value to be written to the global path. This should in general be a function or other immutable value, and an existing value should not be overwritten. This rule can be overlooked in a genuine architectural emergency.
-
 ### fluid.invokeGlobalFunction(functionPath, args)
-
-Invokes a function held at a particular global path with the supplied arguments. Equivalent to `fluid.getGlobalValue` followed by `Function.apply(null, args)`.
 
 * `functionPath {String|Array of String}` The global path holding the function which is to be invoked
 * `args {Array|Any}` The array of arguments to be supplied to the function. If `args` is not an array, `fluid.makeArray` will be called on it first. 
 * Returns: {Any} Any return value from the function which was invoked
 
-### fluid.invokeGradedFunction(name, spec)
+Invokes a function held at a particular global path with the supplied arguments. Equivalent to `fluid.getGlobalValue` followed by `Function.apply(null, args)`.
 
-Invoke a global function by name and named arguments. A courtesy to allow declaratively encoded function calls
-to use named arguments, with names encoded in the defaults for a [`fluid.function`](FunctionGrades.md), rather than bare arrays.
+### fluid.invokeGradedFunction(name, spec)
 
 * `name {String}` A global name which can be resolved to a `Function`. The defaults for this name must
 resolve onto a grade derived from [`fluid.function`](FunctionGrades.md). The defaults record should also contain an entry
@@ -651,7 +644,9 @@ resolve onto a grade derived from [`fluid.function`](FunctionGrades.md). The def
 * `spec {Object}` A hash where the keys are keys of the functions `argumentMap`, and the values are the argument values to be sent to the function. The keys will be looked
 up in the `argumentMap` and the values resolved into a flat list of arguments.
 * Returns: `{Any}` The return value from the function
-     
+
+Invoke a global function by name and named arguments. A courtesy to allow declaratively encoded function calls
+to use named arguments, with names encoded in the defaults for a [`fluid.function`](FunctionGrades.md), rather than bare arrays.
 
 ## Storing and retrieving defaults
 

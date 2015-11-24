@@ -12,7 +12,7 @@ how to call the function and its purpose.
 ## Registering a global function
 
 A global function is registered within infusion at a stable place in its global namespace by working with the core API functions [fluid.registerNamespace](CoreAPI.md#fluid-registernamespace-path-) and 
-[fluid.setGlobalValue](CoreAPI.md#fluid-setglobalvalue-path-value-) - in practice the latter is rarely used, in favour of directly setting members on namespaces objects.
+[fluid.setGlobalValue](CoreAPI.md#fluid-setglobalvalue-path-value-) - in practice the latter is rarely used, in favour of directly setting members on namespace objects.
 
 If you are working in the browser, the global object (traditionally named `window`) coincides with Fluid's global object (which can be retrieved from `fluid.global` - assuming that you have already managed to resolve the `fluid` object itself).
 If you are working in node.js, you need to make calls to [fluid.registerNamespace](CoreAPI.md#fluid-registernamespace-path-) to bring parts of the global namespace into visibility as variables local to your file.

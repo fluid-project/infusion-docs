@@ -31,8 +31,17 @@ such global searches can be very slow. A more reasonable choice will be some par
 * `selector {String}` An [IoCSS selector](IoCSS.md), in form of a string. Note that since selectors supplied to this function implicitly
 match downwards, they need not contain the "head context" followed by whitespace required in the distributeOptions form. E.g.
 simply `fluid.viewComponent` will match all viewComponents below the root.
-* `flat {Boolean}` [optional] `true` if the search should just be performed at top level of the component tree
- Note that with `flat=true` this search will scan every component in the tree and may well be very slow.
+* `flat {Boolean}` [optional] `true` if the search should just be performed at top level of the component tree. Note that with `flat=true` this search will scan every component in the tree and may well be very slow.
+
+### fluid.makeGradeLinkage(linkageName, inputNames, outputNames)
+
+Registers a grade into the system, and create a global instance of it, which ensures that any components where the grades listed in `inputNames` co-occur (that is, occur
+attached to the same component) will also be supplied the grades listed in `outputNames`. This is a shorthand for an effect that the user can achieve for themselves by
+constructing an instance of a component holding a [`distributeOptions`](IoCSS.md) block globally targetting the co-occuring grades.
+
+* `linkageName {String}` The grade name which will hold the required options distribution. The component instance's global name will be derived from this grade name via [`fluid.typeNameToMemberName`](#fluid-typenametomembername-typename-).
+* `inputNames {Array of String}` The list of grade names which must co-occur in a single component in order to trigger the addition of `outputNames`.
+* `outputNames {String or Array of String}` The grade names which will be added to any component in which the `inputNames` co-occur. 
 
 ### fluid.expand(material, that)
 
