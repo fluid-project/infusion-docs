@@ -20,28 +20,33 @@ consist of only the following types: `Array`, `Object`, `String`, `Number` and `
 
 ## EL Paths
 
-In some parts of the framework, we refer to "EL expressions". This is a somewhat historical phrase that perhaps sounds like it says more than it is trying to. 
-All we mean by EL expressions are dot-separated paths built from names &#8212; for example if you had defined an object `zar` with a member `boo` which has a member `baz`, 
+In some parts of the framework, we refer to "EL paths". This is a somewhat historical phrase that perhaps sounds like it says more than it is trying to. A more accurate name for "EL paths" would be "Model paths". 
+These paths are dot-separated strings built from names &#8212; for example if you had defined an object `zar` with a member `boo` which has a member `baz`, 
 you could access the nested JavaScript property by writing the expression `zar.boo.baz`. 
-If it were held in a string value, this would become an EL expression &#8212; that is, the string `"zar.boo.baz"` is an EL expression which designates the same piece of data we just referenced. 
+If it were held in a string value, this would become an EL path &#8212; that is, the string `"zar.boo.baz"` is an EL path which designates the same piece of data we just referenced. 
 The framework includes machinery for interpreting such expressions held in strings rather than at the JavaScript language level. 
 This is useful because it abstracts references to pieces of data from the actual data itself &#8212; and allows these references to be stored in documents separately from a running program. 
 It is possible to replace one object tree with another, but still to maintain a stable reference to the same subproperty `baz`, whoever it happens to be today. 
 This is particularly important in web applications where data claiming to be "your data" can suddenly arrive from anywhere (a JSON feed, some persistence, 
 a particularly aggressive version management system, etc). However it got here, you know it is your data because it is at the right path.
 
-EL expressions within Infusion can be evaluated by the framework utilities `fluid.get()` and `fluid.set()`, and also global functions can be similarly 
-invoked by `fluid.invokeGlobalFunction()`. EL path expressions of this sort are fundamental to Infusion's model-oriented thinking, and the operation of the Infusion [ChangeApplier](ChangeApplier.md).
+EL paths within Infusion can be evaluated (dereferenced with respect to a particular model) by the framework utilities [`fluid.get()`](CoreAPI.md#fluid-get-model-path-) and [`fluid.set()`](CoreAPI.md#fluid-set-model-path-newvalue-), 
+and also global functions can be similarly invoked by path with `fluid.invokeGlobalFunction()`. EL path expressions of this sort are fundamental to Infusion's model-oriented thinking, and the operation of the Infusion [ChangeApplier](ChangeApplier.md).
+
+The framework will accept an array of path segments (e.g. `["zar", "boo", "baz"]`) wherever it accepts an EL path string, and this array form is somewhat preferable in terms of meaning less work (hence less garbage) for the
+framework (if slightly more work for the writer) as well as heading off escaping issues.
 
 ## Events
 
-[Events](InfusionEventSystem.md) have a very plain implementation in Infusion &#8212; an event here is really just another kind of function call. Events in Infusion and aren't specific to the DOM.  
+[Events](InfusionEventSystem.md) have a very plain implementation in Infusion &#8212; an event here is really just another kind of function call. Events in Infusion aren't specific to the DOM.  
 Any function signature can be an event signature, any function can be an event listener, and an event's `fire` method is a plain function handle that can be handed around just like any other function. 
 There is no special kind of "Event Object" that is fired to event listeners, and anyone can easily define a new event by adding an entry in the `events` section of the options of their component. 
 Events are created automatically by the framework as part of the initialisation of every [Component](tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.md). No code required.
 
 Infusion Events are so close to the language that they are a suitable replacement/implementation for features found in other frameworks, such as the "delegates" found in Mac OS X's Cocoa environment, 
 or in Microsoft's C#. Since event signatures are completely free (free as in "like a bird", not like either beer or speech), any function can potentially actually be an event listener. It is all a matter of perspective.
+
+A modern parallel to Infusion's events is node.js's [EventEmitter|https://nodejs.org/api/events.html]. The API and intent are very similar.
 
 ## MVC
 
@@ -103,7 +108,7 @@ In practice, users of a framework want to be able to use their own markup and cu
 Virtually every other client-side framework ships their widgets as "black boxes:" markup is baked into code and is invisible to the user. 
 This makes it very difficult to customize the widget without cracking open the code and forking it.
 
-The framework [DOM Binder](DOMBinder.md), a universal service which is supplied to every Fluid Component, is the primary vehicle for delivering markup agnosticism. 
+The framework [DOM Binder](DOMBinder.md), a universal service which is supplied to every Infusion [View Component](ComponentConfigurationOptions.md#view-components), is the primary vehicle for delivering markup agnosticism. 
 The DOM Binder allows users to supply their own jQuery selectors to configure a component, allowing them to change the markup and inform the component of how to find important things in the DOM. 
 This entirely removes the hard-baked assumptions about markup within a component, allowing the user to control how it looks and is structured.
 
