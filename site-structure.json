@@ -149,10 +149,10 @@
                 "sectionName": "Preferences Framework",
                 "pages":
                 [
-                    { "pageName": "Creating a Preference Editor Using the Preferences Framework", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/PrefsFramework.html" },
-                    { "pageName": "Creating Enactors", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingEnactors.html" },
-                    { "pageName": "Instantiating the Enhancer and Settings Store Only", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/InstantiatingTheEnhancerAndSettingsStoreOnly.html" },
-                    { "pageName": "Styling the Preferences Editor", "href": "/tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/StylingThePreferencesEditor.html" },
+                    { "pageName": "Creating a Preference Editor Using the Preferences Framework", "href": "/tutorial-prefsFramework/PrefsFramework.html" },
+                    { "pageName": "Creating Enactors", "href": "/tutorial-prefsFramework/CreatingEnactors.html" },
+                    { "pageName": "Instantiating the Enhancer and Settings Store Only", "href": "/tutorial-prefsFramework/InstantiatingTheEnhancerAndSettingsStoreOnly.html" },
+                    { "pageName": "Styling the Preferences Editor", "href": "/tutorial-prefsFramework/StylingThePreferencesEditor.html" },
                     { "pageName": "Adding a Basic Preferences Editor to a Site", "href": "/to-do/AddingPrefsEditorToSite.html" },
                     { "pageName": "Working With A Preferences Editor On Your Site", "href": "/to-do/WorkingWithPrefsEditorOnSite.html" },
                     { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.html" }
