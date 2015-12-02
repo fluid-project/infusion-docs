@@ -1,5 +1,5 @@
 ---
-title: Preferences Framework Tutorial
+title: Creating a Preferences Editor
 layout: default
 category: Tutorials
 ---
