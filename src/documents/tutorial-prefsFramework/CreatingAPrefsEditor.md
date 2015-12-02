@@ -40,7 +40,7 @@ and navigate to the `index.html` file in a browser, you should see this interfac
 <figcaption>Figure 2: The screen of the example Preference Editor</figcaption>
 </figure>
 
-This Preference Editor has only one preference – a simple boolean setting for the car’s auto-pilot
+This Preference Editor has only one preference – a simple boolean setting for the car’s heated seats
 feature – and a ‘save’ button. Try it out: If you check the checkbox and click save, the state of
 the preference will be stored in a cookie, and when you reload the page, the checkbox will be set
 to the saved value. Go ahead, try it.
@@ -84,7 +84,7 @@ fluid.defaults("minEditor.primarySchema", {
 
     schema: {
         // the actual specification of the preference
-        "minEditor.autoPilot": {
+        "minEditor.heatedSeats": {
             "type": "boolean",
             "default": false
         }
@@ -132,10 +132,10 @@ This property is the actual JSON definition of the preferences for this Preferen
 </dl>
 
 In this particular example, only a single preference is being defined; a boolean called
-“minEditor.autoPilot”:
+“minEditor.heatedSeats”:
 
 ```javascript
-"minEditor.autoPilot": {
+"minEditor.heatedSeats": {
     "type": "boolean",
     "default": false
 }
@@ -158,7 +158,7 @@ _Coming soon: More information about these two properties_
 A [Panel](../Panels.md) is a [component](../UnderstandingInfusionComponents.md)
 responsible for rendering the user interface controls for a
 preference and tying them to the internal model that represents the preference value.
-The Panel for the auto-pilot preference control is defined in the `minEditor.js` file:
+The Panel for the heated seats preference control is defined in the `minEditor.js` file:
 <aside class="infusion-docs-callout">
 [Components](../UnderstandingInfusionComponents.md) are the core building-blocks of
 any Infusion application.
@@ -169,39 +169,39 @@ relationship between other components.
 
 ```javascript
 /**
- * Panel for the auto-pilot preference
+ * Panel for the heated seats preference
  */
-fluid.defaults("minEditor.panels.autoPilot", {
+fluid.defaults("minEditor.panels.heatedSeats", {
     gradeNames: ["fluid.prefs.panel"],
 
     // the Preference Map maps the information in the primary schema to this panel
     preferenceMap: {
         // the key must match the name of the pref in the primary schema
-        "minEditor.autoPilot": {
-            // this key, "model.autoPilot", is the path into the panel's model
+        "minEditor.heatedSeats": {
+            // this key, "model.heatedSeats", is the path into the panel's model
             // where this preference is stored
-            "model.autoPilot": "default"
+            "model.heatedSeats": "default"
         }
     },
 
     // selectors identify elements in the DOM that need to be accessed by the code;
     // in this case, the Renderer will render data into these particular elements
     selectors: {
-        autoPilot: ".mec-autoPilot"
+        heatedSeats: ".mec-heatedSeats"
     },
 
     // the ProtoTree is basically instructions to the Renderer
     // the keys in the protoTree match the selectors above
     protoTree: {
-        // "${autoPilot}" is a reference to the last part of the model path in the preferenceMap
-        autoPilot: "${autoPilot}"
+        // "${heatedSeats}" is a reference to the last part of the model path in the preferenceMap
+        heatedSeats: "${heatedSeats}"
     }
 });
 ```
 In this code snippet, the Panel is created using a call to the Infusion Framework function
 `fluid.defaults()`, just as the Primary Schema was. As with the Primary Schema, the call to
 `fluid.defaults()` is passed two arguments:
-1. a string name (`"minEditor.panels.autoPilot"`), and
+1. a string name (`"minEditor.panels.heatedSeats"`), and
 2. a JavaScript object containing options for configuring the component – in this case, the Panel.
 
 The screenshot in Figure 2 (above) shows what the Panel looks like to the user: A single checkbox
@@ -219,21 +219,21 @@ into your Panel.Let’s look at this one more closely:
 <pre class="highlight">
 <code class="hljs javascript">{
 preferenceMap: {
-    "minEditor.autoPilot": {
-        "model.autoPilot": "default"
+    "minEditor.heatedSeats": {
+        "model.heatedSeats": "default"
     }
 },</code></pre>
 
-The first line of the  Preference Map, `“minEditor.autoPilot”`, is the name of the preference.
+The first line of the  Preference Map, `“minEditor.heatedSeats”`, is the name of the preference.
 This exactly matches the name we saw in the Primary Schema earlier. The value for this
 key is a JavaScript object that defines how this particular preference relates to the Panel’s
 internal data model.
 
 The content of this  Preference Map is a key/value pair:
 <ul>
-<li> The key, `“model.autoPilot”`, is an [EL path](../FrameworkConcepts.md#el-paths) into the
+<li> The key, `“model.heatedSeats”`, is an [EL path](../FrameworkConcepts.md#el-paths) into the
 Panel’s data model. An “EL path” is just a
-dot-separated path built from names. In this case, it means “the `autoPilot`
+dot-separated path built from names. In this case, it means “the `heatedSeats`
 property of the [`model`](../FrameworkConcepts.md#model-objects) property” of the Panel.
 <aside class="infusion-docs-callout">
 [Models](../FrameworkConcepts.md#model-objects) are central to Infusion, which,
@@ -246,8 +246,8 @@ Most Infusion components have an internal model, for maintaining the state of th
 </ul>
 This  Preference Map is saying two things:
 <ol>
-<li>The preference called `“minEditor.autoPilot”` should be stored in the Panel’s model
-in a property called `autoPilot`, and</li>
+<li>The preference called `“minEditor.heatedSeats”` should be stored in the Panel’s model
+in a property called `heatedSeats`, and</li>
 <li>the initial value for the property should be taken from the `“default”` property
 of the Primary Schema.</li>
 </ul>
@@ -265,24 +265,24 @@ on the information in this `selectors` option.
 Let’s look at this more closely:
 <pre class="highlight">
 <code class="hljs javascript">selectors: {
-    autoPilot: ".mec-autoPilot"
+    heatedSeats: ".mec-heatedSeats"
 },</code></pre>
 
 The content of a `selectors` property is a set of key/value pairs. The key is the ‘name’ of the
 selector and the value is the selector itself. This property has only one selector,
-named `autoPilot`. The value is the CSS selector `".mec-autoPilot"`.
+named `heatedSeats`. The value is the CSS selector `".mec-heatedSeats"`.
 This selector references the actual checkbox in the template for the Panel.
-This template is found in the `html/autoPilot.html` file, which looks like this:
+This template is found in the `html/heatedSeats.html` file, which looks like this:
 
 <pre class="highlight">
 <code class="hljs html">&lt;section class="me-panel"&gt;
-    &lt;h2&gt;Auto-Pilot&lt;/h2&gt;
+    &lt;h2&gt;Heated Seats&lt;/h2&gt;
 
-    &lt;label for="minEditor-autoPilot"&gt;Enable the auto-pilot when the car starts&lt;/label&gt;
-    &lt;input type="checkbox" id="minEditor-autoPilot" class="mec-autoPilot"/&gt;
+    &lt;label for="minEditor-heatedSeats"&gt;Enable the heated seats when the car starts&lt;/label&gt;
+    &lt;input type="checkbox" id="minEditor-heatedSeats" class="mec-heatedSeats"/&gt;
 &lt;/section&gt;</code></pre>
 
-You can see the `“mec-autoPilot”` class name on the `<input>` element.
+You can see the `“mec-heatedSeats”` class name on the `<input>` element.
 </dd>
 <dt>`protoTree`</dt>
 <dd>
@@ -292,16 +292,16 @@ The _[protoTree](../RendererComponentTrees.md)_ is the instructions for how the 
 Let’s look at this more closely:
 <pre class="highlight">
 <code class="hljs javascript">protoTree: {
-    autoPilot: "${autoPilot}"
+    heatedSeats: "${heatedSeats}"
 }</code></pre>
 
 A protoTree contains key/value pairs, where
 * the key is a selector _name_ specified in the `selectors` option, and
 * the value is the specification for what to render into the DOM node referenced by the selector.
 
-Here, the one key `autoPilot` refers to the selector named autoPilot
+Here, the one key `heatedSeats` refers to the selector named heatedSeats
 i.e. the reference to the checkbox in the HTML template.
-The value is a reference to the `autoPilot` property of Panel’s data model.
+The value is a reference to the `heatedSeats` property of Panel’s data model.
 In the Infusion Framework, an _IoC reference_ (IoC stands for Inversion of Control) is a reference
 to an object in the current context using a particular syntax – specifically, the form `{context-name}.some.path.segments`.
 _Coming soon: More information about IoC references._
@@ -341,18 +341,18 @@ auxiliarySchema: {
     // the main template for the preference editor itself
     template: "%templatePrefix/minEditor.html",
 
-    autoPilot: {
+    heatedSeats: {
         // this 'type' must match the name of the pref in the primary schema
-        type: "minEditor.autoPilot",
+        type: "minEditor.heatedSeats",
         panel: {
             // this 'type' must match the name of the panel grade created for this pref
-            type: "minEditor.panels.autoPilot",
+            type: "minEditor.panels.heatedSeats",
 
             // selector indicating where, in the main template, to place this panel
-            container: ".mec-autoPilot",
+            container: ".mec-heatedSeats",
 
             // the template for this panel
-            template: "%templatePrefix/autoPilot.html"
+            template: "%templatePrefix/heatedSeats.html"
         }
     }
 }
@@ -399,40 +399,40 @@ The template property specifies the main HTML template for the entire Preference
 You can see the full text of this file, `minEditor.html`, in the github repo:
 https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/minEditor.html
 The main thing to note in the template is the placeholder for the Panel,
-in this example a `<div>` with the class `mec-autoPilot”`:
+in this example a `<div>` with the class `mec-heatedSeats”`:
 
 ```html
-<!-- placeholder for the auto-pilot preference panel -->
-<div class="mec-autoPilot"></div>
+<!-- placeholder for the heated seats preference panel -->
+<div class="mec-heatedSeats"></div>
 ```
 
 The Framework will insert the constructed Panel into this div.
 
 ##### Preferences #####
-The next thing in the Auxiliary Schema is the configuration for the auto-pilot preference:
+The next thing in the Auxiliary Schema is the configuration for the heated seats preference:
 
 ```javascript
-autoPilot: {
+heatedSeats: {
     // this 'type' must match the name of the pref in the primary schema
-    type: "minEditor.autoPilot",
+    type: "minEditor.heatedSeats",
 
     panel: {
         // this 'type' must match the name of the panel grade created for this pref
-        type: "minEditor.panels.autoPilot",
+        type: "minEditor.panels.heatedSeats",
 
         // selector indicating where, in the main template, to place this panel
-        container: ".mec-autoPilot",
+        container: ".mec-heatedSeats",
 
         // the template for this panel
-        template: "%templatePrefix/autoPilot.html"
+        template: "%templatePrefix/heatedSeats.html"
     }
 }
 ```
 
-(The name of the property, `autoPilot`, can actually be anything, but it’s helpful to use the name
+(The name of the property, `heatedSeats`, can actually be anything, but it’s helpful to use the name
 of the preference.)
 
-In our example, the auto-pilot preference configuration includes two things:
+In our example, the heated seats preference configuration includes two things:
 1. the type of the preference, and
 2. information about the Panel.
 
@@ -520,7 +520,7 @@ minimum and maximum, as well as the step value:
 
 ```javascript
 schema: {
-    "minEditor.autoPilot": {
+    "minEditor.heatedSeats": {
         "type": "boolean",
         "default": false
     },
@@ -539,7 +539,7 @@ We will need an HTML template for the Panel. Since the preference is a range,
 we’ll use a slider for the Adjuster.
 
 Create a new file in the `html` folder called `radioVolume.html` and use a structure similar
-to the one already used for the auto-pilot template:
+to the one already used for the heated seats template:
 
 ```html
 <section class="me-panel">
@@ -556,7 +556,7 @@ Primary Schema and will be added in by the Preference Editor.
 #### Panel component ####
 
 In the `minEditor.js` file, we'll create the Panel component for this preference.
-As with the auto-pilot Panel, we use a call to `fluid.defaults()`
+As with the heated seats Panel, we use a call to `fluid.defaults()`
 and set the grade to `“fluid.prefs.panel”`:
 
 ```javascript
@@ -565,7 +565,7 @@ fluid.defaults("minEditor.panels.radioVolume", {
     // options will go here
 });
 ```
-As with the auto-pilot Panel, we need a  Preference Map:
+As with the heated seats Panel, we need a  Preference Map:
 
 ```javascript
 fluid.defaults("minEditor.panels.radioVolume", {
@@ -628,7 +628,7 @@ fluid.defaults("minEditor.panels.radioVolume", {
 });
 ```
 
-As we saw with the auto-pilot Panel, we need to define a selector to identify the HTML
+As we saw with the heated seats Panel, we need to define a selector to identify the HTML
 element where the preference value will be bound:
 
 ```javascript
@@ -661,7 +661,7 @@ fluid.defaults("minEditor.panels.radioVolume", {
 
 Finally, we need to define the Renderer protoTree – the instructions for rendering
 the model value into the template. This protoTree will need to be a little bit more complicated
-than what we used for the auto-pilot preference. That protoTree needed to do only one thing:
+than what we used for the heated seats preference. That protoTree needed to do only one thing:
 bind the model value to the input element. For the range input, we still need to bind the model
 value, but we _also_ need to set the `min`, `max` and `step` attributes of the element. For this,
 a simple key/value pair isn’t enough.Instead of a simple string reference as the value,
@@ -745,12 +745,12 @@ fluid.defaults("minEditor.panels.radioVolume", {
 ### Adding the Panel to the Editor ###
 
 We saw above that the main HTML template for the tool, `html/minEditor.html`,
-has a placeholder in it for the auto-pilot Panel
+has a placeholder in it for the heated seats Panel
  We will add another placeholder for the radio volume Panel:
 
 ```html
-<!-- placeholder for the auto-pilot preference panel -->
-<div class="mec-autoPilot"></div>
+<!-- placeholder for the heated seats preference panel -->
+<div class="mec-heatedSeats"></div>
 
 <!-- placeholder for the radio volume preference panel -->
 <div class="radioVolume"></div>
