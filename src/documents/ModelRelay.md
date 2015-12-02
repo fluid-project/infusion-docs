@@ -86,7 +86,7 @@ console.log(that.model.parentValue);        // 5 - The parent's model value has 
 
 ## Explicit model relay style ##
 
-This style is used when we require a [Model Transformation](to-do/ModelTransformation.md) rule to mediate between the updates synchronising one model value with another, or more control over the occasions
+This style is used when we require a [Model Transformation](ModelTransformationAPI.md) rule to mediate between the updates synchronising one model value with another, or more control over the occasions
 when the updates occur. 
 The simple implicit style is only capable of "moving" the same value between one path and another. Sometimes different models choose different strategies for representing "the same value" &#8212; for example, 
 one component might represent a sound volume level on a scale of 0-100, whereas another might use a range of 0-1. 
@@ -116,7 +116,7 @@ This is done using the `modelRelay` section of a component's top-level options. 
         </tr>
         <tr>
             <td><code>singleTransform</code></td>
-            <td>JSON (single <a href="to-do/ModelTransformation.md">Model Transformation</a> rule)</td>
+            <td>JSON (single <a href="ModelTransformationAPI.md">Model Transformation</a> rule)</td>
             <td>A short form which can be used where the transformation consists of just a single Model Transformation transform rule. Use either this or <code>transform</code></td>
             <td><code>
 {

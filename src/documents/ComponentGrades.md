@@ -4,7 +4,8 @@ layout: default
 category: Infusion
 ---
 
-A component **grade** is a block of configuration (representable as JSON) with a global name. A new grade is typically registered into an Infusion runtime by a call to the function [fluid.defaults](ComponentOptionsAndDefaults.md), supplying both the global name (the **grade name**) and the configuration block. 
+A **grade** is a block of configuration (representable as JSON) with a global name. A new grade is typically registered into an Infusion runtime by a call to the function [fluid.defaults](CoreAPI.md#fluid-defaults-gradename-options-), 
+supplying both the global name (the **grade name**) and the configuration block. 
 
 Here's a simple example of defining a new grade, derived from the base framework grade `fluid.component`:
 
@@ -16,7 +17,9 @@ fluid.defaults("examples.myGrade", {
 
 Each such grade can be built on to derive further grades/components. This derivation occurs by mentioning the name of the original grade (e.g. `examples.myGrade`) within the **gradeNames** section of the derived component.
 
-## The framework's built-in base grades
+Most grades you will deal with are *** component grades *** derived from `fluid.component`. However, for some purposes you may also deal with [*** function grades ***](FunctionGrades.md) which are derived from `fluid.function`.
+
+## The framework's built-in component grades
 
 The Infusion Framework already contains several predefined component grades that normally form the initial building blocks for external components and grades. The following table describes these grades and how they relate to each other.
 
@@ -61,8 +64,8 @@ The Infusion Framework already contains several predefined component grades that
 
 ## Specifying Parent Grades ##
 
-A component's grades should be specified using the `gradeNames` option in the components defaults block, as shown in the examples below. If no `gradeNames` are specified, the component cannot be instantiated by itself,
-but it may still function as a "mixin" grade when mentioned as the parent of another component (or non-component). The `gradeNames` option holds a `String` or `Array of String`.
+The parent grades of a newly defined grade should be specified using the `gradeNames` option in the defaults block, as shown in the examples below. If no `gradeNames` are specified, the framework will not construct a component creator function,
+but the grade may still function as a "mixin" grade when mentioned as the parent of another component (or non-component). The `gradeNames` option holds a `String` or `Array of String`.
 
 ```javascript
 fluid.defaults("fluid.uploader.demoRemote", {
@@ -88,7 +91,6 @@ fluid.defaults("cspace.util.relationResolver", {
 ## Initializing Components ##
 
 The framework will automatically construct a creator function for any component which is derived (even indirectly) from `fluid.component`:
-
 
 ```javascript
 fluid.defaults("fluid.uploader.fileQueueView", {
@@ -145,7 +147,7 @@ fluid.defaults("examples.combinedComponent", {
 <div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>, 
 <code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md">listener namespaces</a>.</div>
 
-**NOTE**: In the current framework, all grades derived from `fluid.viewComponent` (as well as `fluid.rendererComponent`, etc.) must be listed ***AFTER*** all those that are not. This problem will be resolved before the Infusion 2.0 final release. 
+**NOTE**: In the current framework, all grades derived from `fluid.viewComponent` (as well as `fluid.rendererComponent`, etc.) must be listed ***AFTER*** all those that are not. This problem will be resolved in a future framework release.
 
 ## Dynamic Grades ##
 

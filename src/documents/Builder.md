@@ -4,7 +4,7 @@ layout: default
 category: Infusion
 ---
 
-The Infusion [Preferences Framework](PreferencesFramework.md) includes a tool called the Builder, which automatically creates all the components you need given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary schemas](AuxiliarySchemaForPreferencesFramework.md). The builder constructs all the components necessary to render the preferences editor, store preferences, and respond to changes in preferences. However, you'll generallyl want to use the simpler method "fluid.prefs.create" for creating and instantiating a [Preferences Editor](PreferencesEditor.md).
+The Infusion [Preferences Framework](PreferencesFramework.md) includes a tool called the Builder, which automatically creates all the components you need given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary schemas](AuxiliarySchemaForPreferencesFramework.md). The builder constructs all the components necessary to render the preferences editor, store preferences, and respond to changes in preferences. However, you'll generally want to use the simpler method "fluid.prefs.create" for creating and instantiating a [Preferences Editor](PreferencesEditor.md).
 ```javascript
 var builder = fluid.prefs.builder(<options>);
 ```

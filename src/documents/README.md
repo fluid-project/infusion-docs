@@ -89,5 +89,5 @@ layout: default
   * [Undo](to-do/UndoAPI.md)
   * [Table of Contents](to-do/TableOfContentsAPI.md)
   * [Text to Speech](TextToSpeechAPI.md)
-* [Framework API](to-do/FrameworkAPI.md)
+* [Core API](CoreAPI.md)
 * [DOM Binder API](DOMBinderAPI.md)

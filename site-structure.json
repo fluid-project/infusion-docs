@@ -5,14 +5,14 @@
         "sections":
         [
             {
-                "sectionName": "Defining Components",
-                "href":"/Components.html",
+                "sectionName": "Writing Configuration",
                 "pages":
                 [
                     { "pageName": "Understanding Infusion Components", "href": "/UnderstandingInfusionComponents.html" },
                     { "pageName": "Understanding Component Options And Defaults", "href": "/ComponentOptionsAndDefaults.html" },
                     { "pageName": "Component Configuration Options", "href": "/ComponentConfigurationOptions.html" },
                     { "pageName": "Component Grades", "href": "/ComponentGrades.html" },
+                    { "pageName": "Function Grades", "href": "/FunctionGrades.html" },
                     { "pageName": "Options Merging", "href": "/OptionsMerging.html" },
                     { "pageName": "Component Lifecycle", "href": "/ComponentLifecycle.html" },
                     { "pageName": "Priorities", "href": "/Priorities.html" },
@@ -20,15 +20,29 @@
                 ]
             },
             {
+                "sectionName": "API",
+                "pages":
+                [
+                    { "pageName": "Core API", "href": "/CoreAPI.html" },
+                    { "pageName": "Promises API", "href": "/PromisesAPI.html" },
+                    { "pageName": "IoC API", "href": "/IoCAPI.html" },
+                    { "pageName": "ChangeApplier API", "href": "/ChangeApplierAPI.html" },
+                    { "pageName": "Model Transformation API", "href": "/ModelTransformationAPI.html" },
+                    { "pageName": "View API", "href": "/ViewAPI.html" },
+                    { "pageName": "DOM Binder API", "href": "/DOMBinderAPI.html" },
+                    { "pageName": "node.js Support and API", "href": "/NodeAPI.html" }
+                ]
+            },
+            {
                 "sectionName": "Inversion of Control",
                 "pages":
                 [
-                    { "pageName": "How To Use Infusion IoC", "href": "/HowToUseInfusionIoC.html" },
+                    { "pageName": "How to Use Infusion IoC", "href": "/HowToUseInfusionIoC.html" },
                     { "pageName": "Subcomponent Declaration", "href": "/SubcomponentDeclaration.html" },
                     { "pageName": "Contexts", "href": "/Contexts.html" },
                     { "pageName": "ContextAwareness", "href": "/ContextAwareness.html" },
                     { "pageName": "Invokers", "href": "/Invokers.html" },
-                    { "pageName": "Expansion Of Component Options", "href": "/ExpansionOfComponentOptions.html" },
+                    { "pageName": "Expansion of Component Options", "href": "/ExpansionOfComponentOptions.html" },
                     { "pageName": "IoC References", "href": "/IoCReferences.html" },
                     { "pageName": "IoCSS", "href": "/IoCSS.html" },
                     { "pageName": "Declarative this-ism In IoC", "href": "/DeclarativeThisismInIoC.html" }
@@ -64,7 +78,7 @@
                 "pages":
                 [
                     { "pageName": "Renderer", "href": "/Renderer.html" },
-                    { "pageName": "How To Use the Renderer", "href": "/HowToUseTheRenderer.html" },
+                    { "pageName": "How to Use the Renderer", "href": "/HowToUseTheRenderer.html" },
                     { "pageName": "Renderer Component Trees", "href": "/RendererComponentTrees.html" },
                     { "pageName": "ProtoComponent Types", "href": "/ProtoComponentTypes.html" },
                     { "pageName": "Renderer Component Tree Expanders", "href": "/RendererComponentTreeExpanders.html" },
@@ -94,7 +108,7 @@
                 "sectionName": "Testing",
                 "pages":
                 [
-
+                    { "pageName": "Unit Testing with jqUnit", "href": "/jqUnit.html" },
                     { "pageName": "IoC Testing Framework", "href": "/IoCTestingFramework.html" }
                 ]
             },

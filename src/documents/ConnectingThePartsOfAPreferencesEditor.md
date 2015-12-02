@@ -6,14 +6,14 @@ category: Infusion
 
 Creating a Preferences Editor using the Infusion Preferences Framework involves various pieces: schemas, Infusion components, templates, etc. This page describes what you need to do to connect all the parts together.
 
-<div class="infusion-docs-note"><strong>Note:</strong> This page describes how to work with the infusion Preferences Framework using schemas and the builder. It does NOT describe using the alternative technique, grades.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> This page describes how to work with the infusion Preferences Framework using schemas and the builder. It does NOT describe using the alternative technique, writing grades by hand.</div>
 
 ## Primary Schema ##
 
-The [Primary Schema](PrimarySchemaForPreferencesFramework.md) defines a "name" for each preference. This is the name that will be used to store the preference in the settingsStore, so we recommend that your preference names be namespaced to your application, to avoid possible conflicts. The name  is also used to tie together all the various bits:
+The [Primary Schema](PrimarySchemaForPreferencesFramework.md) defines a "name" for each preference. This is the name that will be used to store the preference in the settingsStore, so we recommend that your preference names be namespaced to your application, to avoid possible conflicts. The name is also used to tie together all the various bits:
 
 * the auxiliary store specifies this name as the `type` for a preference block, associating the panel and the enactor with the preference;
-* the panel and enactor each use the name in the `preferenceMap`, which tells the builder how to map the panel or enactor's the values in the primary schema into the panel or enactor.
+* the panel and enactor each use the name in the `preferenceMap`, which tells the builder how to map the panel or enactor's values in the primary schema onto the panel or enactor's own model values
 
 ### Example: ###
 
