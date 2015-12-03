@@ -35,13 +35,13 @@ If you run a local webserver
 (for example using [this approach](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python),
 or using [MAMP](https://www.mamp.info/en/))
 and navigate to the `index.html` file in a browser, you should see this interface:
-<figure>
+<figure id="figure2">
 ![The screen of the example Preference Editor](../images/simplePrefsEditor.png)
 <figcaption>Figure 2: The screen of the example Preference Editor</figcaption>
 </figure>
 
 This Preference Editor has only one preference – a simple boolean setting for the car’s heated seats
-feature – and a ‘save’ button. Try it out: If you check the checkbox and click save, the state of
+feature – and a Save button. Try it out: If you check the checkbox and click save, the state of
 the preference will be stored in a cookie, and when you reload the page, the checkbox will be set
 to the saved value. Go ahead, try it.
 
@@ -141,7 +141,7 @@ In this particular example, only a single preference is being defined; a boolean
 }
 ```
 The key in the JSON definition is the name of the preference.
-This name will be used throughout the Preferences Framework to associated all the components
+This name will be used throughout the Preferences Framework to associate all the components
 related to the setting. The name can be anything, so long as it is used consistently,
 but keep in mind that it will be used in the persistent storage for the user's preference,
 and will be shared with other technologies that may wish to define enactors to respond to it.
@@ -204,18 +204,17 @@ In this code snippet, the Panel is created using a call to the Infusion Framewor
 1. a string name (`"minEditor.panels.heatedSeats"`), and
 2. a JavaScript object containing options for configuring the component – in this case, the Panel.
 
-The screenshot in Figure 2 (above) shows what the Panel looks like to the user: A single checkbox
+The screenshot in [Figure 2 (above)](#figure2) shows what the Panel looks like to the user: A single checkbox
 and label, with a header above. The options for configuring this Panel
 include four properties: `gradeNames`, `preferenceMap`, `selectors` and `protoTree`:
 <dl>
 <dt>`gradeNames`</dt>
 <dd>As we saw with the Primary Schema, any call to `fluid.defaults()` must refer to any parent
 grades using the `gradeNames` property. Panels must use the `"fluid.prefs.panel"` grade.
-Using this grade automatically buys you a lot of Framework supports necessary for Panels.
 </dd>
 <dt>`preferenceMap`</dt>
 <dd>A Panel must have a _ Preference Map_, which maps the information in the Primary Schema
-into your Panel.Let’s look at this one more closely:
+into your Panel. Let’s look at this one more closely:
 <pre class="highlight">
 <code class="hljs javascript">{
 preferenceMap: {
@@ -251,7 +250,7 @@ in a property called `heatedSeats`, and</li>
 <li>the initial value for the property should be taken from the `“default”` property
 of the Primary Schema.</li>
 </ul>
-A Preference Map can specify other locations for Primary Schema information, besides the model.
+A Preference Map can specify other destinations for Primary Schema information, besides the model.
 We'll see an example of this when we add antoher panel, later in this tutorial.
 </dd>
 <dt>`selectors`</dt>
@@ -268,7 +267,7 @@ Let’s look at this more closely:
     heatedSeats: ".mec-heatedSeats"
 },</code></pre>
 
-The content of a `selectors` property is a set of key/value pairs. The key is the ‘name’ of the
+The content of a `selectors` property is a set of key/value pairs. The key is the name of the
 selector and the value is the selector itself. This property has only one selector,
 named `heatedSeats`. The value is the CSS selector `".mec-heatedSeats"`.
 This selector references the actual checkbox in the template for the Panel.
@@ -299,10 +298,10 @@ A protoTree contains key/value pairs, where
 * the key is a selector _name_ specified in the `selectors` option, and
 * the value is the specification for what to render into the DOM node referenced by the selector.
 
-Here, the one key `heatedSeats` refers to the selector named heatedSeats
+Here, the one key `heatedSeats` refers to the selector named `heatedSeats`
 i.e. the reference to the checkbox in the HTML template.
 The value is a reference to the `heatedSeats` property of Panel’s data model.
-In the Infusion Framework, an _IoC reference_ (IoC stands for Inversion of Control) is a reference
+In the Infusion Framework, an _[IoC reference](../IoCReferences.md)_ (IoC stands for Inversion of Control) is a reference
 to an object in the current context using a particular syntax – specifically, the form `{context-name}.some.path.segments`.
 _Coming soon: More information about IoC references._
 </dd>
@@ -357,7 +356,7 @@ auxiliarySchema: {
     }
 }
 ```
-An auxiliary schema can be generally divided into two types of properties:
+An auxiliary schema can be generally divided into two kinds of properties:
 
 1. top-level members, defining globally-used values, and
 2. per-preference members (one per preference), defining the specific requirements for each preference.
@@ -399,7 +398,7 @@ The template property specifies the main HTML template for the entire Preference
 You can see the full text of this file, `minEditor.html`, in the github repo:
 https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/minEditor.html
 The main thing to note in the template is the placeholder for the Panel,
-in this example a `<div>` with the class `mec-heatedSeats”`:
+in this example a `<div>` with the class `mec-heatedSeats`:
 
 ```html
 <!-- placeholder for the heated seats preference panel -->
@@ -448,7 +447,7 @@ for the Panel. Let’s look at each of the properties:
 template – the one referenced by the `template` property above.</dd>
 <dt>`template`</dt>
 <dd>This is the path and filename of the HTML template for this Panel.
-Note, in this example, how the `templatePrefix` term is being used.</dd>
+Notice, in this example, how the `templatePrefix` term is being used.</dd>
 </dl>
 
 #### Instantiation ####
@@ -484,7 +483,7 @@ In the HTML snippet above, the `<div>` is the container that the Preference Edit
 rendered inside of. The call to `minEditor.init()` is passed the ID of the element,
 `“#myMinEditor”`, as the container argument.
 
-In the code snippet above, the first argument – `container` – is the CSS identifier passed in to
+In the code snippet above, the first argument – `container` – is the CSS identifier passed to
 the function. The second argument – the options – is an object containing (in this case) one
 property: `build`. This option is a JavaScript object containing information that will be passed
 to the Builder, a key part of the Preferences Framework.
@@ -664,7 +663,7 @@ the model value into the template. This protoTree will need to be a little bit m
 than what we used for the heated seats preference. That protoTree needed to do only one thing:
 bind the model value to the input element. For the range input, we still need to bind the model
 value, but we _also_ need to set the `min`, `max` and `step` attributes of the element. For this,
-a simple key/value pair isn’t enough.Instead of a simple string reference as the value,
+a simple key/value pair isn’t enough. Instead of a simple string reference as the value,
 we’ll use an object with a value property:
 
 ```javascript
