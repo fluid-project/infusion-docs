@@ -30,7 +30,8 @@ We recommend you download the Infusion library and load the example code into yo
 <figcaption>Figure 1: Folder hierarchy for the Preference Editor example</figcaption>
 </figure>
 
-The example code is a Preference Editor for the world’s first flying car.
+Your company, Awesome Cars, has created the world’s first flying car.
+The example code is a Preference Editor for the car.
 If you run a local webserver
 (for example using [this approach](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python),
 or using [MAMP](https://www.mamp.info/en/))
@@ -73,10 +74,10 @@ The Primary Schema for our example Editor is defined in the
 ```javascript
 /**
  * Primary Schema
- * This schema defines the preference(s) edited by this preference editor:
- * their names, types, default values, etc.
+ * This schema defines the "heated seats" preference edited by this preferences
+ * editor: its name, type, default value, etc.
  */
-fluid.defaults("minEditor.primarySchema", {
+fluid.defaults("awesomeCars.prefs.schemas.heatedSeats", {
 
     // the base grade for the schema;
     // using this grade tells the framework that this is a primary schema
@@ -84,7 +85,7 @@ fluid.defaults("minEditor.primarySchema", {
 
     schema: {
         // the actual specification of the preference
-        "minEditor.heatedSeats": {
+        "awesomeCars.prefs.heatedSeats": {
             "type": "boolean",
             "default": false
         }
@@ -104,7 +105,7 @@ Infusion Framework function `fluid.defaults().`
 1. a string name, and
 2. a JavaScript object containing [options for configuring](../ComponentConfigurationOptions.md) the component.
 
-In the code snippet above, the first argument – the name – is `“minEditor.primarySchema”`.
+In the code snippet above, the first argument – the name – is `“awesomeCars.prefs.schemas.heatedSeats”`.
 The second argument – the options – is an object containing (in this case) two properties:
 `gradeNames` and `schema`:
 
@@ -132,10 +133,10 @@ This property is the actual JSON definition of the preferences for this Preferen
 </dl>
 
 In this particular example, only a single preference is being defined; a boolean called
-“minEditor.heatedSeats”:
+`“awesomeCars.prefs.heatedSeats”`:
 
 ```javascript
-"minEditor.heatedSeats": {
+"awesomeCars.prefs.heatedSeats": {
     "type": "boolean",
     "default": false
 }
@@ -158,7 +159,7 @@ _Coming soon: More information about these two properties_
 A [Panel](../Panels.md) is a [component](../UnderstandingInfusionComponents.md)
 responsible for rendering the user interface controls for a
 preference and tying them to the internal model that represents the preference value.
-The Panel for the heated seats preference control is defined in the `minEditor.js` file:
+The Panel for the heated seats preference control is defined in the `prefsEditor.js` file:
 <aside class="infusion-docs-callout">
 [Components](../UnderstandingInfusionComponents.md) are the core building-blocks of
 any Infusion application.
@@ -171,13 +172,13 @@ relationship between other components.
 /**
  * Panel for the heated seats preference
  */
-fluid.defaults("minEditor.panels.heatedSeats", {
+fluid.defaults("awesomeCars.prefs.panels.heatedSeats", {
     gradeNames: ["fluid.prefs.panel"],
 
     // the Preference Map maps the information in the primary schema to this panel
     preferenceMap: {
         // the key must match the name of the pref in the primary schema
-        "minEditor.heatedSeats": {
+        "awesomeCars.prefs.heatedSeats": {
             // this key, "model.heatedSeats", is the path into the panel's model
             // where this preference is stored
             "model.heatedSeats": "default"
@@ -187,7 +188,7 @@ fluid.defaults("minEditor.panels.heatedSeats", {
     // selectors identify elements in the DOM that need to be accessed by the code;
     // in this case, the Renderer will render data into these particular elements
     selectors: {
-        heatedSeats: ".mec-heatedSeats"
+        heatedSeats: ".awec-heatedSeats"
     },
 
     // the ProtoTree is basically instructions to the Renderer
@@ -201,7 +202,7 @@ fluid.defaults("minEditor.panels.heatedSeats", {
 In this code snippet, the Panel is created using a call to the Infusion Framework function
 `fluid.defaults()`, just as the Primary Schema was. As with the Primary Schema, the call to
 `fluid.defaults()` is passed two arguments:
-1. a string name (`"minEditor.panels.heatedSeats"`), and
+1. a string name (`"awesomeCars.prefs.panels.heatedSeats"`), and
 2. a JavaScript object containing options for configuring the component – in this case, the Panel.
 
 The screenshot in [Figure 2 (above)](#figure2) shows what the Panel looks like to the user: A single checkbox
@@ -216,14 +217,13 @@ grades using the `gradeNames` property. Panels must use the `"fluid.prefs.panel"
 <dd>A Panel must have a _ Preference Map_, which maps the information in the Primary Schema
 into your Panel. Let’s look at this one more closely:
 <pre class="highlight">
-<code class="hljs javascript">{
-preferenceMap: {
-    "minEditor.heatedSeats": {
+<code class="hljs javascript">preferenceMap: {
+    "awesomeCars.prefs.heatedSeats": {
         "model.heatedSeats": "default"
     }
-},</code></pre>
+}</code></pre>
 
-The first line of the  Preference Map, `“minEditor.heatedSeats”`, is the name of the preference.
+The first line of the  Preference Map, `“awesomeCars.prefs.heatedSeats”`, is the name of the preference.
 This exactly matches the name we saw in the Primary Schema earlier. The value for this
 key is a JavaScript object that defines how this particular preference relates to the Panel’s
 internal data model.
@@ -245,7 +245,7 @@ Most Infusion components have an internal model, for maintaining the state of th
 </ul>
 This  Preference Map is saying two things:
 <ol>
-<li>The preference called `“minEditor.heatedSeats”` should be stored in the Panel’s model
+<li>The preference called `“awesomeCars.prefs.heatedSeats”` should be stored in the Panel’s model
 in a property called `heatedSeats`, and</li>
 <li>the initial value for the property should be taken from the `“default”` property
 of the Primary Schema.</li>
@@ -264,24 +264,24 @@ on the information in this `selectors` option.
 Let’s look at this more closely:
 <pre class="highlight">
 <code class="hljs javascript">selectors: {
-    heatedSeats: ".mec-heatedSeats"
+    heatedSeats: ".awec-heatedSeats"
 },</code></pre>
 
 The content of a `selectors` property is a set of key/value pairs. The key is the name of the
 selector and the value is the selector itself. This property has only one selector,
-named `heatedSeats`. The value is the CSS selector `".mec-heatedSeats"`.
+named `heatedSeats`. The value is the CSS selector `".awec-heatedSeats"`.
 This selector references the actual checkbox in the template for the Panel.
 This template is found in the `html/heatedSeats.html` file, which looks like this:
 
 <pre class="highlight">
-<code class="hljs html">&lt;section class="me-panel"&gt;
+<code class="hljs html">&lt;section class="awe-panel"&gt;
     &lt;h2&gt;Heated Seats&lt;/h2&gt;
 
-    &lt;label for="minEditor-heatedSeats"&gt;Enable the heated seats when the car starts&lt;/label&gt;
-    &lt;input type="checkbox" id="minEditor-heatedSeats" class="mec-heatedSeats"/&gt;
+    &lt;label for="prefsEd-heatedSeats"&gt;Enable the heated seats when the car starts&lt;/label&gt;
+    &lt;input type="checkbox" id="prefsEd-heatedSeats" class="awec-heatedSeats"/&gt;
 &lt;/section&gt;</code></pre>
 
-You can see the `“mec-heatedSeats”` class name on the `<input>` element.
+You can see the `“awec-heatedSeats”` class name on the `<input>` element.
 </dd>
 <dt>`protoTree`</dt>
 <dd>
@@ -314,7 +314,7 @@ The Auxiliary Schema for our example Editor
 is defined in the `schemas/auxiliary.js` file:
 
 ```javascript
-fluid.defaults("minEditor.auxSchema", {
+fluid.defaults("awesomeCars.prefs.auxSchema", {
     gradeNames: ["fluid.prefs.auxSchema"],
     auxiliarySchema: {
           // some code not shown
@@ -323,7 +323,7 @@ fluid.defaults("minEditor.auxSchema", {
 ```
 Again, we use `fluid.defaults()` to create the Schema.
 As with the Primary Schema and the Panel, `fluid.defaults()` is passed two arguments:
-1) a string name (`"minEditor.auxSchema"`), and 2) a JavaScript object literal
+1) a string name (`"awesomeCars.prefs.auxSchema"`), and 2) a JavaScript object literal
 containing configuration options.
 
 Let’s look at the Schema itself in detail:
@@ -338,17 +338,17 @@ auxiliarySchema: {
     },
 
     // the main template for the preference editor itself
-    template: "%templatePrefix/minEditor.html",
+    template: "%templatePrefix/prefsEditorTemplate.html",
 
     heatedSeats: {
         // this 'type' must match the name of the pref in the primary schema
-        type: "minEditor.heatedSeats",
+        type: "awesomeCars.prefs.heatedSeats",
         panel: {
             // this 'type' must match the name of the panel grade created for this pref
-            type: "minEditor.panels.heatedSeats",
+            type: "awesomeCars.prefs.panels.heatedSeats",
 
             // selector indicating where, in the main template, to place this panel
-            container: ".mec-heatedSeats",
+            container: ".awec-heatedSeats",
 
             // the template for this panel
             template: "%templatePrefix/heatedSeats.html"
@@ -393,19 +393,19 @@ schema. Here, it is being used to define, in a single place, the path to where t
 The template property specifies the main HTML template for the entire Preference Editor:
 
 ```javascript
-    template: "%templatePrefix/minEditor.html",
+    template: "%templatePrefix/prefsEditorTemplate.html",
 ```
-You can see the full text of this file, `minEditor.html`, in the github repo:
-https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/minEditor.html
+You can see the full text of this file, `prefsEditorTemplate.html`, in the github repo:
+https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html
 The main thing to note in the template is the placeholder for the Panel,
-in this example a `<div>` with the class `mec-heatedSeats`:
+in this example a `<div>` with the class `awec-heatedSeats`:
 
 ```html
 <!-- placeholder for the heated seats preference panel -->
-<div class="mec-heatedSeats"></div>
+<div class="awec-heatedSeats"></div>The Framework will insert the constructed Panel into this div
 ```
 
-The Framework will insert the constructed Panel into this div.
+The Framework will insert the constructed Panel into this `<div>`.
 
 ##### Preferences #####
 The next thing in the Auxiliary Schema is the configuration for the heated seats preference:
@@ -413,14 +413,14 @@ The next thing in the Auxiliary Schema is the configuration for the heated seats
 ```javascript
 heatedSeats: {
     // this 'type' must match the name of the pref in the primary schema
-    type: "minEditor.heatedSeats",
+    type: "awesomeCars.prefs.heatedSeats",
 
     panel: {
         // this 'type' must match the name of the panel grade created for this pref
-        type: "minEditor.panels.heatedSeats",
+        type: "awesomeCars.prefs.panels.heatedSeats",
 
         // selector indicating where, in the main template, to place this panel
-        container: ".mec-heatedSeats",
+        container: ".awec-heatedSeats",
 
         // the template for this panel
         template: "%templatePrefix/heatedSeats.html"
@@ -451,17 +451,17 @@ Notice, in this example, how the `templatePrefix` term is being used.</dd>
 </dl>
 
 #### Instantiation ####
-The last thing in the `js/minEditor.js` file is a call to the Preferences Framework
+The last thing in the `js/prefsEditor.js` file is a call to the Preferences Framework
 function [`fluid.prefs.create()`](../PreferencesEditor.md). This function actually creates the Preference Editor.
 It accepts two arguments:
 1. a CSS selector indicating the container element for the Preference Editor, and
 2. a JavaScript object containing configuration information for the Preference Editor.
 
 ```javascript
-minEditor.init = function (container) {
+awesomeCars.prefs.init = function (container) {
     return fluid.prefs.create(container, {
         build: {
-            gradeNames: ["minEditor.auxSchema"]
+            gradeNames: ["awesomeCars.prefs.auxSchema"]
         }
     });
 };
@@ -472,16 +472,16 @@ https://github.com/fluid-project/infusion/tree/master/examples/framework/prefere
 Let’s look at this invocation:
 
 ```
-<div id="myMinEditor"></div>
+<div id="preferencesEditor"></div>
 
 <script type="text/javascript">
-    minEditor.init("#myMinEditor");
+    awesomeCars.prefs.init("#preferencesEditor");
 </script>
 ```
 
 In the HTML snippet above, the `<div>` is the container that the Preference Editor will be
-rendered inside of. The call to `minEditor.init()` is passed the ID of the element,
-`“#myMinEditor”`, as the container argument.
+rendered inside of. The call to `awesomeCars.prefs.init()` is passed the ID of the element,
+`“#preferencesEditor”`, as the container argument.
 
 In the code snippet above, the first argument – `container` – is the CSS identifier passed to
 the function. The second argument – the options – is an object containing (in this case) one
@@ -494,7 +494,7 @@ The grade name of our Auxiliary Schema:
 
 ```javascript
     build: {
-        gradeNames: ["minEditor.auxSchema"]
+        gradeNames: ["awesomeCars.prefs.auxSchema"]
     }
 ```
 The Auxiliary Schema (plus the Primary Schema that was registered with the Framework automatically)
@@ -518,19 +518,18 @@ definition. It’s `type` is `“number”`, and in addition to the default, we�
 minimum and maximum, as well as the step value:
 
 ```javascript
-schema: {
-    "minEditor.heatedSeats": {
-        "type": "boolean",
-        "default": false
-    },
-    "minEditor.radioVolume": {
-        "type": "number",
-        "default": "2",
-        "minimum": "1",
-        "maximum": "5",
-        "divisibleBy": "0.5"
+ fluid.defaults("awesomeCars.prefs.schemas.radioVolume", {
+    gradeNames: ["fluid.prefs.schemas"],
+    schema: {
+       "awesomeCars.prefs.radioVolume": {
+            "type": "number",
+            "default": "2",
+            "minimum": "1",
+            "maximum": "5",
+            "divisibleBy": "0.5"
+        }
     }
-}
+});
 ```
 ### Creating the Panel ###
 #### Template and Adjuster ####
@@ -541,11 +540,11 @@ Create a new file in the `html` folder called `radioVolume.html` and use a struc
 to the one already used for the heated seats template:
 
 ```html
-<section class="me-panel">
+<section class="awe-panel">
     <h2>Radio Volume</h2>
 
-    <label for="minEditor-radioVolume">Set the desired volume for the radio</label>
-    <input type="range" id="minEditor-radioVolume" class="mec-radioVolume"/>
+    <label for="prefsEd-radioVolume">Set the desired volume for the radio</label>
+    <input type="range" id="prefsEd-radioVolume" class="awec-radioVolume"/>
 </section>
 ```
 We’ve used an `<input>` with type `“range”` for the Adjuster.
@@ -554,12 +553,12 @@ Primary Schema and will be added in by the Preference Editor.
 
 #### Panel component ####
 
-In the `minEditor.js` file, we'll create the Panel component for this preference.
+In the `prefsEditor.js` file, we'll create the Panel component for this preference.
 As with the heated seats Panel, we use a call to `fluid.defaults()`
 and set the grade to `“fluid.prefs.panel”`:
 
 ```javascript
-fluid.defaults("minEditor.panels.radioVolume", {
+fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
     // options will go here
 });
@@ -567,11 +566,11 @@ fluid.defaults("minEditor.panels.radioVolume", {
 As with the heated seats Panel, we need a  Preference Map:
 
 ```javascript
-fluid.defaults("minEditor.panels.radioVolume", {
+fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
 
     preferenceMap: {
-        "minEditor.radioVolume": {
+        "awesomeCars.prefs.radioVolume": {
             "model.radioVolume": "default"
         }
     },
@@ -585,11 +584,11 @@ so it’s not really appropriate to store them in the model. Instead, we create 
 as a component option:
 
 ```javascript
-fluid.defaults("minEditor.panels.radioVolume", {
+fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
 
     preferenceMap: {
-        "minEditor.radioVolume": {
+        "awesomeCars.prefs.radioVolume": {
             "model.radioVolume": "default"
         }
     },
@@ -606,11 +605,11 @@ Finally, the Preference Map needs to tell the component to map the Primary Schem
 the `range` property:
 
 ```javascript
-fluid.defaults("minEditor.panels.radioVolume", {
+fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
 
     preferenceMap: {
-        "minEditor.radioVolume": {
+        "awesomeCars.prefs.radioVolume": {
             "model.radioVolume": "default",
             "range.min": "minimum",
             "range.max": "maximum",
@@ -631,11 +630,11 @@ As we saw with the heated seats Panel, we need to define a selector to identify 
 element where the preference value will be bound:
 
 ```javascript
-fluid.defaults("minEditor.panels.radioVolume", {
+fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
 
     preferenceMap: {
-        "minEditor.radioVolume": {
+        "awesomeCars.prefs.radioVolume": {
             "model.radioVolume": "default",
             "range.min": "minimum",
             "range.max": "maximum",
@@ -650,7 +649,7 @@ fluid.defaults("minEditor.panels.radioVolume", {
     },
 
     selectors: {
-        radioVolume: ".mec-radioVolume"
+        radioVolume: ".awec-radioVolume"
     },
 
     // more will go here
@@ -703,11 +702,11 @@ such as functions, class names, etc., to the components at render time.
 So, this is what our final radio volume Panel component definition looks like:
 
 ```javascript
-fluid.defaults("minEditor.panels.radioVolume", {
+fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
 
     preferenceMap: {
-        "minEditor.radioVolume": {
+        "awesomeCars.prefs.radioVolume": {
             "model.radioVolume": "default",
             "range.min": "minimum",
             "range.max": "maximum",
@@ -722,7 +721,7 @@ fluid.defaults("minEditor.panels.radioVolume", {
     },
 
     selectors: {
-        radioVolume: ".mec-radioVolume"
+        radioVolume: ".awec-radioVolume"
     },
 
     protoTree: {
@@ -743,13 +742,13 @@ fluid.defaults("minEditor.panels.radioVolume", {
 
 ### Adding the Panel to the Editor ###
 
-We saw above that the main HTML template for the tool, `html/minEditor.html`,
+We saw above that the main HTML template for the tool, `html/prefsEditorTemplate.html`,
 has a placeholder in it for the heated seats Panel
  We will add another placeholder for the radio volume Panel:
 
 ```html
 <!-- placeholder for the heated seats preference panel -->
-<div class="mec-heatedSeats"></div>
+<div class="awec-heatedSeats"></div>
 
 <!-- placeholder for the radio volume preference panel -->
 <div class="radioVolume"></div>
@@ -759,10 +758,10 @@ configuration options specific to the new Panel:
 
 ```javascript
 radioVolume: {
-    type: "minEditor.radioVolume",
+    type: "awesomeCars.prefs.radioVolume",
     panel: {
-        type: "minEditor.panels.radioVolume",
-        container: ".mec-radioVolume",
+        type: "awesomeCars.prefs.panels.radioVolume",
+        container: ".awec-radioVolume",
         template: "%templatePrefix/radioVolume.html"
     }
 }
