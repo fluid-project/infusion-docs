@@ -743,7 +743,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
 ### Adding the Panel to the Editor ###
 
 We saw above that the main HTML template for the tool, `html/prefsEditorTemplate.html`,
-has a placeholder in it for the heated seats Panel
+has a placeholder in it for the heated seats Panel.
  We will add another placeholder for the radio volume Panel:
 
 ```html
