@@ -345,7 +345,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         </tr>
         <tr>
             <th>Default</th>
-            <td>"fluid.globalSettingsStore"</td>
+            <td>"fluid.prefs.globalSettingsStore"</td>
         </tr>
         <tr>
             <th>Example</th>
