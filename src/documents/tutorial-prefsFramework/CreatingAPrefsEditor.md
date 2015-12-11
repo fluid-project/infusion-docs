@@ -767,11 +767,33 @@ radioVolume: {
 }
 ```
 
+## Saving Preferences ##
+
+So right now, when you click on that "save" button, the preferences are saved.
+How does that happen? Where are they saved to? And how would you change that?
+
+By default, the Preferences Framework automatically saves the preferences to a browser cookie.
+[here's how it does that]
+class on button: flc-prefsEditor-save
+prefs framework automatically binds a click handler to anything with that class;
+the handler invokes the saveAndApply method on the prefsEditor
+saveandapply is an invoker, bound to fluid.prefs.prefsEditor.saveAndApply
+fluid.prefs.prefsEditor.saveAndApply calls save and applyChanges
+save is an invoker bound to fluid.prefs.prefsEditor.save
+fluid.prefs.prefsEditor.save calls that.setSettings (after some machinations)
+setSettings invoker: fluid.prefs.settingsSetter.setSettings
+fluid.prefs.settingsSetter.setSettings  invokes {fluid.prefs.store}.set
+fluid.prefs.store is, by default, fluid.prefs.cookieStore
+
+You can change that by sending different prefsEditor options to the fluid.prefs.create() function
+(see http://acheetham.github.io/infusion-docs/infusion/development/PreferencesEditor.html#prefseditor-options)
+
+
+Let's change the tool to write the prefs to the car's database...
 ## Coming Soon: ##
 Information about
 * Enactors
 * More complicated Panels
 * Localization
 * Design consideration
-* Persistence
 * Case studies
