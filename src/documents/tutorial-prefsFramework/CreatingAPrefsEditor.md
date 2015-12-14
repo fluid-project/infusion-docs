@@ -788,6 +788,21 @@ fluid.prefs.store is, by default, fluid.prefs.cookieStore
 You can change that by sending different prefsEditor options to the fluid.prefs.create() function
 (see http://acheetham.github.io/infusion-docs/infusion/development/PreferencesEditor.html#prefseditor-options)
 
+Is this how the prefs integration demo does it?
+NO: demo does it through the aux schema
+which adds two special loader grades
+    (one for general prefsServerIntegration, one for demo-specific serverConfig)
+why does demo aux schema re-specify the loader grade if it's deriving from the schema that already has it?
+    is it because that option is not "cumulative"?
+        NO: it's because content of the auxSchema option to builder will override content of grade when merged
+the prefsServerIntegration loader grade doesn't do anything with the setting store;
+fd tool seems to completely bypass the framework settings store mechanism completely.
+    NO: it still uses the cookie, it just ALSO saves to GPII separately, at the end
+    Look at how the tests swap in the temp store using contexts - that would be the model
+
+
+
+
 
 Let's change the tool to write the prefs to the car's database...
 ## Coming Soon: ##
