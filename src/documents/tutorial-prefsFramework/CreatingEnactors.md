@@ -4,13 +4,8 @@ layout: default
 category: Tutorials
 ---
 
----
-Part of the [Creating a Preferences Editor Using the Preferences Framework Tutorial](CreatingAPreferencesEditorUsingThePreferencesFramework.md)
-
 This article describes how to use the Infusion [Preferences Framework](../PreferencesFramework.md)
 to create Enactors, components that act in response to changes to a user's preferences.
-
----
 
 ## Overview ##
 
