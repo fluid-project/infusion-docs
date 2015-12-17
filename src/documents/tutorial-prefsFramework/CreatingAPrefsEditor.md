@@ -769,42 +769,89 @@ radioVolume: {
 
 ## Saving Preferences ##
 
-So right now, when you click on that "save" button, the preferences are saved.
+Right now, when you click the "save" button, the preferences are saved – if you reload the page,
+they're all there.
 How does that happen? Where are they saved to? And how would you change that?
 
 By default, the Preferences Framework automatically saves the preferences to a browser cookie.
-[here's how it does that]
-class on button: flc-prefsEditor-save
-prefs framework automatically binds a click handler to anything with that class;
-the handler invokes the saveAndApply method on the prefsEditor
-saveandapply is an invoker, bound to fluid.prefs.prefsEditor.saveAndApply
-fluid.prefs.prefsEditor.saveAndApply calls save and applyChanges
-save is an invoker bound to fluid.prefs.prefsEditor.save
-fluid.prefs.prefsEditor.save calls that.setSettings (after some machinations)
-setSettings invoker: fluid.prefs.settingsSetter.setSettings
-fluid.prefs.settingsSetter.setSettings  invokes {fluid.prefs.store}.set
-fluid.prefs.store is, by default, fluid.prefs.cookieStore
+How does that happen?
+* The template has a particular class on button: `flc-prefsEditor-save`.
+* The Preferences Framework automatically binds a click handler to anything with that class.
+* The handler invokes the preference editor's `saveAndApply` method.
+* This method ultimately invokes the `set` method on the default preferences Store,
+which is the Cookie Store.
 
-You can change that by sending different prefsEditor options to the fluid.prefs.create() function
-(see http://acheetham.github.io/infusion-docs/infusion/development/PreferencesEditor.html#prefseditor-options)
+Cookies are great for websites, but this is a car. The preferences need to be saved to the car's
+internal storage. We need to create a Settings Store that will save to the internal storage and
+tell the preferences editor to use that instead.
 
-Is this how the prefs integration demo does it?
-NO: demo does it through the aux schema
-which adds two special loader grades
-    (one for general prefsServerIntegration, one for demo-specific serverConfig)
-why does demo aux schema re-specify the loader grade if it's deriving from the schema that already has it?
-    is it because that option is not "cumulative"?
-        NO: it's because content of the auxSchema option to builder will override content of grade when merged
-the prefsServerIntegration loader grade doesn't do anything with the setting store;
-fd tool seems to completely bypass the framework settings store mechanism completely.
-    NO: it still uses the cookie, it just ALSO saves to GPII separately, at the end
-    Look at how the tests swap in the temp store using contexts - that would be the model
+The first step is to create a grade that uses the built-in `fluid.prefs.store`:
+```javascript
+fluid.defaults("awesomeCars.prefs.store", {
+    gradeNames: ["fluid.prefs.store"]
+});
+```
+
+We'll need to override the default `get()` and `set()` methods with our own versions. These methods
+are implemented as [invokers](../Invokers.md), which makes it easy to plug in our own functions:
+```javascript
+fluid.defaults("awesomeCars.prefs.store", {
+    gradeNames: ["fluid.prefs.store"],
+    invokers: {
+        get: {
+            funcName: "awesomeCars.prefs.store.get"
+        },
+        set: {
+            funcName: "awesomeCars.prefs.store.set",
+            args: ["{arguments}.0"]
+        }
+    }
+});
+```
+
+Our `get` and `set` functions will need to do whatever is necessary to save and retrieve the
+preferences to the car's internal data storage:
+```javascript
+fluid.defaults("awesomeCars.prefs.store", {
+    gradeNames: ["fluid.prefs.store"],
+    invokers: {
+        get: {
+            funcName: "awesomeCars.prefs.store.get"
+        },
+        set: {
+            funcName: "awesomeCars.prefs.store.set",
+            args: ["{arguments}.0"]
+        }
+    }
+});
+
+awesomeCars.prefs.store.get = function () {
+    // do whatever you need to do, to retrieve the settings
+    return settings;
+};
+awesomeCars.prefs.store.set = function (settings) {
+    // do whatever you need to do to store the settings
+};
+```
+
+Finally, we need to tell the preferences editor to use our new settings store instead of
+the default cookie store. We do this by using the `storeType` option when we create the editor:
+
+```javascript
+awesomeCars.prefs.init = function (container) {
+    return fluid.prefs.create(container, {
+        build: {
+            gradeNames: ["awesomeCars.prefs.auxSchema"]
+        },
+        prefsEditor: {
+            // specify the settings store to use
+            storeType: "awesomeCars.prefs.store"
+        }
+    });
+};
+```
 
 
-
-
-
-Let's change the tool to write the prefs to the car's database...
 ## Coming Soon: ##
 Information about
 * Enactors
