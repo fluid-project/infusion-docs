@@ -144,12 +144,12 @@ The builder object returned by a call to `fluid.prefs.builder()` has the followi
 <tr>
     <td><code>options.assembledPrefsEditorGrade</code></td>
     <td>String</td>
-    <td><a href="ComponentGrades.md">Grade name</a> of the constructed preferences editor; Can be used to instantiate the <a href="PreferencesEditor.md">preferences editor</a>, <a href="to-do/UIEnhancer.md">enhancer</a> and <a href="to-do/SettingsStore.md">settings store</a> using <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L930-L944">fluid.invokeGlobalFunction</a></code>.</td>
+    <td><a href="ComponentGrades.md">Grade name</a> of the constructed preferences editor; Can be used to instantiate the <a href="PreferencesEditor.md">preferences editor</a>, <a href="to-do/UIEnhancer.md">enhancer</a> and <a href="SettingsStore.md">settings store</a> using <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L930-L944">fluid.invokeGlobalFunction</a></code>.</td>
 </tr>
 <tr>
     <td><code>options.assembledUIEGrade</code></td>
     <td>String</td>
-    <td><a href="ComponentGrades.md">Grade name</a> of the constructed <a href="to-do/UIEnhancer.md">enhancer</a>; Can be used to instantiate the enhancer and <a href="to-do/SettingsStore.md">settings store</a> using <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L930-L944">fluid.invokeGlobalFunction</a></code>.</td>
+    <td><a href="ComponentGrades.md">Grade name</a> of the constructed <a href="to-do/UIEnhancer.md">enhancer</a>; Can be used to instantiate the enhancer and <a href="SettingsStore.md">settings store</a> using <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L930-L944">fluid.invokeGlobalFunction</a></code>.</td>
 </tr>
 </table>
 

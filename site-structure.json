@@ -96,6 +96,7 @@
                     { "pageName": "Builder", "href": "/Builder.html" },
                     { "pageName": "Primary Schema", "href": "/PrimarySchemaForPreferencesFramework.html" },
                     { "pageName": "Auxiliary Schema", "href": "/AuxiliarySchemaForPreferencesFramework.html" },
+                    { "pageName": "Settings Store", "href": "/SettingsStore.html" },
                     { "pageName": "Connecting the Parts of a Preferences Editor", "href": "/ConnectingThePartsOfAPreferencesEditor.html" },
                     { "pageName": "Enactors", "href": "/Enactors.html" },
                     { "pageName": "Panels", "href": "/Panels.html" },

@@ -775,11 +775,11 @@ How does that happen? Where are they saved to? And how would you change that?
 
 By default, the Preferences Framework automatically saves the preferences to a browser cookie.
 How does that happen?
-* The template has a particular class on button: `flc-prefsEditor-save`.
+* The template has a specific class on the "save" button: `flc-prefsEditor-save`.
 * The Preferences Framework automatically binds a click handler to anything with that class.
-* The handler invokes the preference editor's `saveAndApply` method.
-* This method ultimately invokes the `set` method on the default preferences Store,
-which is the Cookie Store.
+* The click handler ultimately invokes the `set` method on the default
+[settings store](../SettingsStore.md),
+which is a CookieStore.
 
 Cookies are great for websites, but this is a car. The preferences need to be saved to the car's
 internal storage. We need to create a Settings Store that will save to the internal storage and
