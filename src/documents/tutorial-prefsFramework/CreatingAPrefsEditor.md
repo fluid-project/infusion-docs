@@ -782,8 +782,8 @@ How does that happen?
 which is a CookieStore.
 
 Cookies are great for websites, but this is a car. The preferences need to be saved to the car's
-internal storage. We need to create a Settings Store that will save to the internal storage and
-tell the preferences editor to use that instead.
+internal storage. We need to a) create a Settings Store that will save to the internal storage and
+b) tell the preferences editor to use that instead.
 
 The first step is to create a grade that uses the built-in `fluid.prefs.store`:
 ```javascript
@@ -835,7 +835,8 @@ awesomeCars.prefs.store.set = function (settings) {
 ```
 
 Finally, we need to tell the preferences editor to use our new settings store instead of
-the default cookie store. We do this by using the `storeType` option when we create the editor:
+the default cookie store. We do this by using the `storeType` option when we create the editor
+(as we saw back in [Instantiation](#instantiation)):
 
 ```javascript
 awesomeCars.prefs.init = function (container) {

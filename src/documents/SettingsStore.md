@@ -4,10 +4,17 @@ layout: default
 category: Infusion
 ---
 
-_DRAFT; still in progress_
-
 The Infusion [Preferences Framework](PreferencesFramework.md) uses a _Settings Store_ to read and
 write preferences.
+
+## fluid.prefs.store ##
+
+A base grade to be used by any preference setting store.
+This component uses the following base [grades](ComponentGrades.md):
+
+* [`fluid.prefs.dataSource`](#fluid-prefs-datasource)
+* [`fluid.contextAware`](ContextAwareness.md)
+
 
 ## fluid.prefs.dataSource ##
 
@@ -18,10 +25,8 @@ Method Placeholder  | Description
 `get`  | For retrieving preferences. Should return the preferences
 `set`  | For saving preferences. Should accept the preferences as an argument.
 
-
-## fluid.prefs.store ##
-
-A base grade to be used by any preference setting store.
+Note that no particular parameters are prescribed for these methods. It is up to the developer
+to choose whatever is appropriate for the particular implementation.
 
 ## fluid.prefs.cookieStore ##
 
@@ -45,7 +50,7 @@ A settings store grade that uses a cookie for persistence.
 
 ## fluid.prefs.tempStore ##
 
-A settings store mock that doesn't do persistence.
+A settings store mock that doesn't do persistence. This grade is useful for tests.
 
 <table>
     <tbody>
