@@ -24,5 +24,5 @@ The Preferences Framework allows for the creation of a customized [Preferences E
 
 ## Tutorials ##
 
-* [Tutorial - Creating a Preferences Editor Using the Preferences Framework](tutorial-creatingAPreferencesEditorUsingThePreferencesFramework/CreatingAPreferencesEditorUsingThePreferencesFramework.md)
-* [Tutorial - Creating a New Adjuster UI](tutorial-creatingANewAdjusterUI/CreatingANewAdjusterUI.md)
+* [Tutorial - Creating a Preferences Editor](tutorial-prefsFramework/CreatingAPrefsEditor.md)
+* [Tutorial - Creating a New Adjuster UI](tutorial-prefsFramework/CreatingANewAdjusterUI.md)

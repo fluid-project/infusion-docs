@@ -106,6 +106,40 @@ a:focus {
 .infusion-docs dl {
     line-height: inherit;
 }
+.infusion-docs h1, .infusion-docs h2, .infusion-docs h3, .infusion-docs h4, .infusion-docs h5, .infusion-docs h6 {
+    font-family: "RobotoSlab";
+}
+.infusion-docs-container h1 {
+    font-size: 3.0rem;
+    margin-top: 5rem;
+    padding-bottom: 4rem;
+}
+
+.infusion-docs-container h2 {
+    font-size: 2.5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.infusion-docs-container h3 {
+    font-size: 2rem;
+    padding-top: 2rem;
+}
+.infusion-docs-container h4 {
+    font-size: 1.5rem;
+    padding-top: 2rem;
+}
+.infusion-docs-container h5 {
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.infusion-docs-container ul,
+.infusion-docs-container ol,
+.infusion-docs-container dl,
+.infusion-docs-container p {
+    font-size: 1.2rem;
+}
 
 /* Styling for the hover links on headings */
 
@@ -126,10 +160,6 @@ a:focus {
 
 .infusion-docs-anchor span {
     font-size: 1.7rem;
-}
-
-.infusion-docs-container p {
-    font-size: 1.2rem;
 }
 
 .infusion-docs-mainContent { /* Operates the main scrollbar for main content */
@@ -157,6 +187,12 @@ a:focus {
     margin-bottom: 1rem;
 }
 
+.infusion-docs dt {
+    margin-left: 2em;
+}
+.infusion-docs dd {
+    margin-left: 3em;
+}
 .infusion-docs-mainContent code {
     font-weight: normal;
     background-color: #FFF;
@@ -325,6 +361,27 @@ div.infusion-docs-note {
     margin-bottom: 2rem;
 }
 
+.infusion-docs-callout {
+    font-family: "RobotoSlab";
+    margin: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.2rem;
+    background: #ffffff;
+    padding: 0.4rem;
+    font-size: 1.1rem;
+    padding-left: 3rem;
+    position: relative;
+}
+.infusion-docs-callout:before {
+    font-family: "infusion-docs";
+    content: "\e600";
+    color: #5DB93C;
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0.4rem;
+}
+
 .infusion-docs-container .infusion-docs-githubLink a:before {
     display: inline-block;
     vertical-align: bottom;
@@ -336,26 +393,6 @@ div.infusion-docs-note {
 
 .infusion-docs-container .infusion-docs-githubLink {
     margin-bottom: 2rem;
-}
-
-.infusion-docs-container h1 {
-    font-size: 3.0rem;
-    font-family: "RobotoSlab";
-    margin-top: 5rem;
-    padding-bottom: 4rem;
-}
-
-.infusion-docs-container h2 {
-    font-size: 2.5rem;
-    font-family: "RobotoSlab";
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-.infusion-docs-container h3 {
-    font-size: 1.5rem;
-    font-family: "RobotoSlab-Bold";
-    padding-top: 2rem;
 }
 
 .infusion-docs-articleBody > p:first-child {
@@ -373,18 +410,17 @@ div.infusion-docs-note {
 .infusion-docs-container .infusion-docs-paragraphBullets li {
     padding-bottom: 0.25rem;
 }
-.infusion-docs-container .infusion-docs-figure {
+.infusion-docs-container .infusion-docs-figure,
+.infusion-docs-container figure {
     margin: 0 0 1.5rem 0;
     text-align: center;
-    background-color: #FFFFFF;
-    padding-top: 1.8rem;
     padding-bottom: 1.1rem;
 }
 
-.infusion-docs-container .infusion-docs-figureCaption {
+.infusion-docs-container .infusion-docs-figureCaption,
+.infusion-docs-container figcaption {
     font-family: "OpenSans", Arial, Helvetica;
     font-size: 1rem;
-    padding-top: 1rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     color: #4c4c4c;
@@ -455,17 +491,22 @@ div.infusion-docs-note {
 }
 
 /* Styles for high-contrast themes */
-.fl-theme-yb .infusion-docs-fluidLogoText::before {
+.fl-theme-yb .infusion-docs-fluidLogoText::before,
+.fl-theme-yb .infusion-docs-callout:before {
     color: #ffff00 !important;
 }
-.fl-theme-wb .infusion-docs-fluidLogoText::before {
+.fl-theme-wb .infusion-docs-fluidLogoText::before,
+.fl-theme-wb .infusion-docs-callout:before {
     color: #ffffff !important;
 }
 .fl-theme-by .infusion-docs-fluidLogoText::before,
-.fl-theme-bw .infusion-docs-fluidLogoText::before {
+.fl-theme-bw .infusion-docs-fluidLogoText::before,
+.fl-theme-by .infusion-docs-callout:before,
+.fl-theme-bw .infusion-docs-callout:before {
     color: #000000 !important;
 }
-.fl-theme-lgdg .infusion-docs-fluidLogoText::before {
+.fl-theme-lgdg .infusion-docs-fluidLogoText::before,
+.fl-theme-lgdg .infusion-docs-callout:before {
     color: #bdbdbb !important;
 }
 

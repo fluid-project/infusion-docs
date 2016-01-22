@@ -233,7 +233,8 @@ from the C++ STL, other names for this algorithm are "reduce" or "[fold](https:/
 
 ### fluid.remove_if(source, fn[, target])
 
-* `source {Array|Object}` The list or hash of objects to be scanned over. This structure *** will be modified in place ***.
+* `source {Array|Object}` The array or hash of objects to be scanned over. This structure *** will be modified in place ***. Note that in the case this is an array,
+iteration will run from the end of the array towards the front, so that the index of elements yet to be removed will remain stable.
 * `fn {Function: (object {Any}, index {Number|String}) → Booleanish }` A predicate function determining whether an element should be
 removed. This accepts the standard signature `(object, index)`. If the predicate returns a "truthy" value, the corresponding object
 will be removed from the source structure.
