@@ -50,7 +50,7 @@ layout: default
 ### Views
 * [DOM Binder](DOMBinder.md)
 * [DOM Binder API](DOMBinderAPI.md)
-  * [Class Name Conventions](ClassNameConventions.md)
+* [Class Name Conventions](ClassNameConventions.md)
 
 ### Renderer
 * [Renderer](Renderer.md)
@@ -98,8 +98,8 @@ layout: default
   * [Creating a New Adjuster UI](tutorial-prefsFramework/CreatingANewAdjusterUI.md)
 * [User Interface Options](tutorial-userInterfaceOptions/UserInterfaceOptions.md)
 * General
-* [How to Create and Use Font Icons](tutorial-iconFonts/HowToCreateAndUseFontIcons.md)
-* [Using String Templates](tutorial-usingStringTemplates/UsingStringTemplates.md)
+  * [How to Create and Use Font Icons](tutorial-iconFonts/HowToCreateAndUseFontIcons.md)
+  * [Using String Templates](tutorial-usingStringTemplates/UsingStringTemplates.md)
 
 ## Components
 * [Inline Edit](to-do/InlineEditAPI.md)

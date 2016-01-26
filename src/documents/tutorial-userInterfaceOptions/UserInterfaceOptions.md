@@ -9,7 +9,7 @@ The **User Interface Options (UI Options)** component allows users to transform 
 UI Options does three things:
 
 * places a preferences editor dialog with a set of six panels in a collapsible panel at the top of the page, accessible through a button in the upper right corner of the page;
-* instantiates a cookie-based Settings Store for storing the user's preferences; and
+* instantiates a cookie-based [Settings Store](../SettingsStore.md) for storing the user's preferences; and
 * acts upon the user's preferences.
 
 ![Screen shot of the UI Options Component](../images/uio-showcase.png "Screen shot of the UI Options Component")

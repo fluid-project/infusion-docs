@@ -779,7 +779,7 @@ How does that happen?
 * The Preferences Framework automatically binds a click handler to anything with that class.
 * The click handler ultimately invokes the `set` method on the default
 [settings store](../SettingsStore.md),
-which is a CookieStore.
+which is a [CookieStore](../SettingsStore.md#fluid-prefs-cookiestore).
 
 Cookies are great for websites, but this is a car. The preferences need to be saved to the car's
 internal storage. We need to a) create a Settings Store that will save to the internal storage and
