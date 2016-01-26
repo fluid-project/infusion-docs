@@ -59,7 +59,7 @@ A settings store mock that doesn't do persistence. This grade is useful for test
         </tr>
         <tr>
             <td><code>get</code></td>
-            <td><code>[fluid.identity](CoreAPI.md#fluid-identity-arg-)</code></td>
+            <td><code><a href="CoreAPI.md#fluid-identity-arg-">fluid.identity</a></code></td>
         </tr>
         <tr>
             <td><code>set</code></td>
