@@ -15,7 +15,6 @@ layout: default
 * [Component Lifecycle](ComponentLifecycle.md)
 * [Priorities](Priorities.md)
 * [Framework Concepts](FrameworkConcepts.md)
-* [Progressive Enhancement](ProgressiveEnhancement.md)
 
 ### API
 * [Core API](CoreAPI.md)
@@ -109,7 +108,7 @@ layout: default
     * [List Reorderer](to-do/ListReordererAPI.md)
     * [Grid Reorderer](to-do/GridReordererAPI.md)
     * [Layout Reorderer](to-do/LayoutReordererAPI.md)
-    * [Image Reorderer](to-do/ImageReordererAPI.md)
+    * [Image Reorderer](ImageReordererAPI.md)
 * [User Interface Options](UserInterfaceOptionsAPI.md)
 * [Uploader](UploaderAPI.md)
 * [Undo](to-do/UndoAPI.md)

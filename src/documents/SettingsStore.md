@@ -25,8 +25,8 @@ Method Placeholder  | Description
 `get`  | For retrieving preferences. Should return the preferences
 `set`  | For saving preferences. Should accept the preferences as an argument.
 
-Note that no particular parameters are prescribed for these methods. It is up to the developer
-to choose whatever is appropriate for the particular implementation.
+<div class="infusion-docs-note"><strong>Note</strong> that no particular parameters are prescribed for these methods. It is up to the developer
+to choose whatever is appropriate for the particular implementation.</div>
 
 ## fluid.prefs.cookieStore ##
 

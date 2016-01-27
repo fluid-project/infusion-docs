@@ -46,7 +46,7 @@ A top-level options block named **`events`** is supported on every component der
   </tr>
 </table>
 
-**NOTE**: _`preventable` events are very rarely used and will soon be deprecated in the framework_.
+<div class="infusion-docs-note"><strong>Note:</strong> `preventable` events are very rarely used and will soon be deprecated in the framework_.</div>
 
 For every such entry in the `events` section of a component's options, the framework will construct a corresponding ***event firer*** with the same name in the `events` section of the constructed component. The most common use of an event firer is to call its member named `fire` with some set of arguments. Here is a simple, self-contained example:
 
@@ -60,7 +60,7 @@ fluid.defaults("examples.eventedComponent", {
 
 var myComponent = examples.eventedComponent();
 
-myComponent.myEvent.fire(97, false); 
+myComponent.myEvent.fire(97, false);
 // firer of event can supply whatever arguments they like,
 // but these should conform to some agreed signature
 ```
@@ -91,14 +91,14 @@ In general you shouldn't fire any of a component's events unless invited to by i
 
 ## Registering a listener to an event
 
-Both as part of defaults, and also as supplied instantiation options, an Infusion component can accept a structure named `listeners`. 
-In the simplest form, the keys of the `listeners` structure are taken from the set of `events` present in the component's [Grade](ComponentGrades.md), and the values are either single listener specifications or arrays of listener specifications. 
+Both as part of defaults, and also as supplied instantiation options, an Infusion component can accept a structure named `listeners`.
+In the simplest form, the keys of the `listeners` structure are taken from the set of `events` present in the component's [Grade](ComponentGrades.md), and the values are either single listener specifications or arrays of listener specifications.
 A ***listener specification*** can take a number of forms - either being written as a simple String or Function, or as a full JSON object.
-The standard way of declaring a listener using Infusion's [IoC](to-do/IoCInversionOfControl.md) system is to supply the name of a global function using the member **`funcName`** or 
-to supply a [reference](IoCReferences.md) to a function handle (usually an [Invoker](Invokers.md)) somewhere in the component tree using the member **`func`**. 
-If your listener would like to receive different arguments than the ones that the event was fired with, you can supply references to these using the member **`args`**. 
-You can consult the page [Event injection and boiling](EventInjectionAndBoiling.md) for the use of these more complex listener specifications. 
-If you are happy with the existing arguments you can write a simple definition as a String or Function holding the value that would have been written in `func/funcName`. 
+The standard way of declaring a listener using Infusion's [IoC](to-do/IoCInversionOfControl.md) system is to supply the name of a global function using the member **`funcName`** or
+to supply a [reference](IoCReferences.md) to a function handle (usually an [Invoker](Invokers.md)) somewhere in the component tree using the member **`func`**.
+If your listener would like to receive different arguments than the ones that the event was fired with, you can supply references to these using the member **`args`**.
+You can consult the page [Event injection and boiling](EventInjectionAndBoiling.md) for the use of these more complex listener specifications.
+If you are happy with the existing arguments you can write a simple definition as a String or Function holding the value that would have been written in `func/funcName`.
 Here is a simple example of a listener definition, expanding our example from earlier:
 
 ```javascript
@@ -135,16 +135,16 @@ listeners: {
 }
 ```
 
-represents that the function with the global name `fluid.moduleLayout.defaultOnShowKeyboardDropWarning` should be attached as a listener to the event `onShowKeyboardDropWarning` under the namespace `setPosition`. 
-`setPosition` is a name which encodes the purpose of the listener for readers of the component - it is the one to be notified whenever the position of an item changes. 
+represents that the function with the global name `fluid.moduleLayout.defaultOnShowKeyboardDropWarning` should be attached as a listener to the event `onShowKeyboardDropWarning` under the namespace `setPosition`.
+`setPosition` is a name which encodes the purpose of the listener for readers of the component - it is the one to be notified whenever the position of an item changes.
 Any integrator of this component can override exactly this listener by supplying the same namespace in their own listener specification.
 
 
 ### Listeners to events held elsewhere
 
-Secondly, rather than a simple string, the key in a `listeners` structure can hold any [IoC Reference](IoCReferences.md) which resolves to an event anywhere in the component tree - 
-that is, even one belonging to a different component. In this case the listener on the right hand side will be attached to that event rather than one of this component's own events. 
-The framework will make sure to automatically deregister the listener when this component is destroyed. Many more complex cases are possible, including the wholesale injection of events from one component to another, 
+Secondly, rather than a simple string, the key in a `listeners` structure can hold any [IoC Reference](IoCReferences.md) which resolves to an event anywhere in the component tree -
+that is, even one belonging to a different component. In this case the listener on the right hand side will be attached to that event rather than one of this component's own events.
+The framework will make sure to automatically deregister the listener when this component is destroyed. Many more complex cases are possible, including the wholesale injection of events from one component to another,
 and the creation of new events derived from existing ones. You can consult the page [Event injection and boiling](EventInjectionAndBoiling.md) for more details.
 
 ### Full listener record form
@@ -163,8 +163,8 @@ In this case, you can use the long form record, where the listener record takes 
   <tr>
     <td><code>listener</code>, <code>func/funcName</code></td>
     <td><code>String</code></td>
-    <td>This holds the actual designation of the function which is to be the listener, which was the string that consisted of the entire "short form" for the listener definition above. This, as before, holds either 
-    the name of a global function or an IoC reference to a function. The `func`/`funcName` form is supported for consistency with the syntax for [Invokers](Invokers.md) and the name `listener` will be deprecated for the Infusion 2.0 release. 
+    <td>This holds the actual designation of the function which is to be the listener, which was the string that consisted of the entire "short form" for the listener definition above. This, as before, holds either
+    the name of a global function or an IoC reference to a function. The `func`/`funcName` form is supported for consistency with the syntax for [Invokers](Invokers.md) and the name `listener` will be deprecated for the Infusion 2.0 release.
     </td>
   </tr>
   <tr>
@@ -184,8 +184,8 @@ In this case, you can use the long form record, where the listener record takes 
     <td><code>String</code> or <code>Number</code></td>
     <td>This field allows the configurer to control the sequence in which several listeners to the same event are notified. The recommended form of this field is either `before:otherNamespace` or `after:otherNamespace` where `otherNamespace` represents the `namespace` of some other
     listener attached to this firer. The framework will sort all the listeners attached to a single firer so that such a listener is fired immediately before or after the other target listener, unless a further constraint positions a third listener in between them.
-    If a group of listeners express a cyclic set of constraints, the framework will signal an error. If there is no listener with the target namespace, the constraint is ignored. There are other possibilities for the `priority` field which are not - 
-    more details are present in the page on [Priorities](Priorities.md). 
+    If a group of listeners express a cyclic set of constraints, the framework will signal an error. If there is no listener with the target namespace, the constraint is ignored. There are other possibilities for the `priority` field which are not -
+    more details are present in the page on [Priorities](Priorities.md).
     </td>
   </tr>
 </table>
@@ -214,9 +214,9 @@ Once an event firer is constructed, it can be called with the following methods 
 listener specification
 </code></td>
     <td>
-      Registers the supplied listener with this firer. The listener represents a function of a particular signature which is determined between the firer and listener of an event. 
-      The <code>namespace</code> parameter is an optional <code>String</code> which defines a key representing a particular <em>function</em> of the listener. 
-      At most one listener may be registered with a firer with a particular namespace. This is a similar system to that operated by the JQuery namespaced events system. 
+      Registers the supplied listener with this firer. The listener represents a function of a particular signature which is determined between the firer and listener of an event.
+      The <code>namespace</code> parameter is an optional <code>String</code> which defines a key representing a particular <em>function</em> of the listener.
+      At most one listener may be registered with a firer with a particular namespace. This is a similar system to that operated by the JQuery namespaced events system.
     </td>
   </tr>
   <tr>
@@ -230,7 +230,7 @@ listener specification
     <td><code>fire</code></td>
     <td>(arbitrary)</td>
     <td>
-      Fires an event to all the registered listeners. They will each be invoked with the exact argument list which is supplied to <code>fire</code> itself. 
+      Fires an event to all the registered listeners. They will each be invoked with the exact argument list which is supplied to <code>fire</code> itself.
       If this is a <em>preventable</em> event, <code>fire</code> may return <code>true</code> indicating that a listener has requested to prevent the effect represented by this event.
     </td>
   </tr>
@@ -245,8 +245,8 @@ listener specification
 
 ### Constructing an event firer procedurally
 
-The Fluid event system is operated by instances of an *event firer* which are created by a call to `fluid.event.makeEventFirer()`. 
-It is recommended that users don't construct event firers by hand but instead rely on the framework's facilities for automatically constructing these given event 
+The Fluid event system is operated by instances of an *event firer* which are created by a call to `fluid.event.makeEventFirer()`.
+It is recommended that users don't construct event firers by hand but instead rely on the framework's facilities for automatically constructing these given event
 blocks in [component options](ComponentConfigurationOptions.md). The signature of `fluid.event.makeEventFirer` is not stable and will be revised in the 2.0 release of Infusion:
 
 ```javascript

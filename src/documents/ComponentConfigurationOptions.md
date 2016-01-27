@@ -4,11 +4,11 @@ layout: default
 category: Infusion
 ---
 
-Infusion components are configured using options that are defined by the component developer and customized by the integrator. 
+Infusion components are configured using options that are defined by the component developer and customized by the integrator.
 While component developers are free to define whatever options are appropriate for their component, the Infusion Framework supports a number of predefined options.
 
 The particular set of options interpreted by the framework is determined by the [Grades](ComponentGrades.md) that the component is derived from. Developers and integrators
-can define further grades which respond to yet further options, which they should document if they expect the options to be generally useful. 
+can define further grades which respond to yet further options, which they should document if they expect the options to be generally useful.
 This page briefly describes these predefined options and provides links to more information about the related framework functionality.
 
 ## Options Supported By All Components Grades ##
@@ -123,9 +123,9 @@ The following options are supported by all component grades, that is, those deri
   <tr>
     <th>Notes</th>
     <td>Both component developers and integrators can define listeners for events.
-<a href="Invokers.md">Invokers</a> and the `fire` method of other events can be used as listeners here, as well as any function handle resulting from an <a href="ExpansionOfComponentOptions.md">Expanders</a>. 
-Note that as well as being a simple string holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC Reference</a> 
-to any other event held in the component tree (for example <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, the value associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a> 
+<a href="Invokers.md">Invokers</a> and the `fire` method of other events can be used as listeners here, as well as any function handle resulting from an <a href="ExpansionOfComponentOptions.md">Expanders</a>.
+Note that as well as being a simple string holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC Reference</a>
+to any other event held in the component tree (for example <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, the value associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a>
 or else follow the syntax of an invoker indicating that the registered listener receives a different signature from the one that the event has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).</td>
   </tr>
   <tr>
@@ -239,7 +239,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Notes</th>
-    <td>It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy. 
+    <td>It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy.
     For example, some noxious circularly-liked structure such as a node.js HTTP `request` object should be protected in such a way. The 2.0 framework will automatically protect an object which fails the `fluid.isPlainObject` test, which will exclude
     any object with a nondefault constructor or native type such as DOM elements, `TypedArray`s, Infusion components themselves, etc.</td>
   </tr>
@@ -270,8 +270,8 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Notes</th>
-    <td>Some special context names will be available within the subcomponent's definition block, for example <code>{source}</code> and <code>{sourcePath}</code> or <code>{arguments}</code>, derived from the material responsible for constructing the component. 
-    <em>This framework facility will be replaced by a more declarative equivalent in time - ask on the <a href="http://lists.idrc.ocad.ca/mailman/listinfo/fluid-work">fluid-work mailing list</a> 
+    <td>Some special context names will be available within the subcomponent's definition block, for example <code>{source}</code> and <code>{sourcePath}</code> or <code>{arguments}</code>, derived from the material responsible for constructing the component.
+    <em>This framework facility will be replaced by a more declarative equivalent in time - ask on the <a href="http://lists.idrc.ocad.ca/mailman/listinfo/fluid-work">fluid-work mailing list</a>
     or <a href="https://wiki.fluidproject.org/display/fluid/IRC+Channel">#fluid-work IRC channel</a> if you seem to find yourself needing to use it.</em></td>
   </tr>
   <tr>
@@ -503,7 +503,7 @@ Components defined with a grade of `rendererComponent` are also view components 
 
 Component developers are free to define their own additional options.
 
-**NOTE**: The Infusion Renderer system will be rewritten completely before the final Infusion 2.0 release - the use of the current renderer and component hierarchy is not recommended.
+<div class="infusion-docs-note"><strong>Note:</strong> The Infusion Renderer system will be rewritten completely before the final Infusion 2.0 release - the use of the current renderer and component hierarchy is not recommended.</div>
 
 ### `selectorsToIgnore` ###
 <table>

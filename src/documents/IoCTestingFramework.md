@@ -11,7 +11,7 @@ As well as creating an idiomatic way of writing *integration tests* addressed at
 trees, the IoC testing framework also considerably eases the task of testing *complex event sequences* - that is, sequences of application state
 that are derived from an alternating conversation between user interaction and application response.
 
-**NOTE**: The IoC Testing framework is primarily for integration testing requiring asynchrony, i.e. testing that involves either
+<div class="infusion-docs-note"><strong>Note:</strong> The IoC Testing framework is primarily for integration testing requiring asynchrony, i.e. testing that involves either.</div>
 
 1. user interaction via the DOM, or
 2. AJAX requests.
@@ -21,7 +21,7 @@ If your tests don't involve a number of back-to-back asynchronous interactions, 
 ### Integration testing with component tree ###
 
 The concept of *context* in Infusion IoC is derived from the entire collection of components held in an IoC component tree.
-The behaviour of each component is potentially altered by all of the other components with which it is deployed 
+The behaviour of each component is potentially altered by all of the other components with which it is deployed
 - for a detailed guide to the operation of scope within Infusion IoC, please consult the page on [Contexts](Contexts.md).
 Therefore in order to test component behaviour in context, we need a testing system whose lifecycle (in particular, the lifecycle
 of setup and teardown common to all testing systems) is aligned with the lifecycle of component trees - as well as a testing system which enables testing directives to be referred to any components within the tree in an IoC-natural way.
@@ -126,10 +126,10 @@ fluid.tests.globalCatTest = function (catt) {
 
 The standard structure inside a `fluid.test.testCaseHolder` shows an outer layer of containment, `modules`, corresponding to a
 QUnit `module`, and then a entry named `tests`, holding an array of structures corresponding to a QUnit `testCase`. Here we define a single
-test case which holds a single *fixture record* which executes a global function, `fluid.tests.globalCatTest` which makes one jqUnit assertion. 
+test case which holds a single *fixture record* which executes a global function, `fluid.tests.globalCatTest` which makes one jqUnit assertion.
 This is not realistic for a normal use of the framework, which as we mentioned in the introduction only achieves its value when testing a sequence
 of fixtures back to back. Normally, the entry within `tests` will instead hold an entry named `sequence` which holds an array of fixture records
-representing sequence points to be attained by the test case. 
+representing sequence points to be attained by the test case.
 An example of the `sequence` entry appears below in the [asyncTester example](#testcaseholder-demonstrating-sequence-record).
 
 In order to run this test case, we can either simply construct an instance of the environment tree by calling `fluid.tests.myTestTree()`,
@@ -139,7 +139,7 @@ The latter method should be used when running multiple environments within the s
 ### Using `moduleSource` for dynamic test fixtures ###
 
 For highly dynamic tests, you may want to assemble your sequence elements dynamically for each test rather than list them statically. In this case,
-you can replace `modules` with the entry `moduleSource` which takes the same form as an [invoker](Invokers.md] record with entries `func`/`funcName` and `args`, 
+you can replace `modules` with the entry `moduleSource` which takes the same form as an [invoker](Invokers.md] record with entries `func`/`funcName` and `args`,
 and returns a list of fixtures in the same format as `modules`. Again, in a real example, this would use the `sequence` form of fixtures shown at the bottom of the page.
 
 ```javascript
@@ -156,8 +156,8 @@ fluid.tests.catTesterModules = [{
     }
 ];
 
-// A helper function which just returns the global - 
-// realistically, it would assemble a sequence using more complex logic 
+// A helper function which just returns the global -
+// realistically, it would assemble a sequence using more complex logic
 fluid.tests.getCatModules = function () {
     return fluid.tests.catTesterModules;
 };
@@ -165,7 +165,7 @@ fluid.tests.getCatModules = function () {
 fluid.defaults("fluid.tests.catTester", {
     gradeNames: ["fluid.test.testCaseHolder"],
     moduleSource: {
-        funcName: "fluid.tests.getCatModules" 
+        funcName: "fluid.tests.getCatModules"
     }
 });
 ```

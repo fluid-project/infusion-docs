@@ -4,8 +4,8 @@ layout: default
 category: Infusion
 ---
 
-A **grade** is a block of configuration (representable as JSON) with a global name. A new grade is typically registered into an Infusion runtime by a call to the function [fluid.defaults](CoreAPI.md#fluid-defaults-gradename-options-), 
-supplying both the global name (the **grade name**) and the configuration block. 
+A **grade** is a block of configuration (representable as JSON) with a global name. A new grade is typically registered into an Infusion runtime by a call to the function [fluid.defaults](CoreAPI.md#fluid-defaults-gradename-options-),
+supplying both the global name (the **grade name**) and the configuration block.
 
 Here's a simple example of defining a new grade, derived from the base framework grade `fluid.component`:
 
@@ -35,7 +35,7 @@ The Infusion Framework already contains several predefined component grades that
             <td><code>fluid.component</code></td>
             <td>
                 A plain <code>fluid.component</code> is the most basic component: it supports options merging with defaults (<a href="tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.md">Components</a>), as well as
-                instantiating event firers based on default framework events (<code>onCreate</code>, <code>onDestroy</code>, <code>afterDestroy</code>) 
+                instantiating event firers based on default framework events (<code>onCreate</code>, <code>onDestroy</code>, <code>afterDestroy</code>)
                 and events declared in the options (<a href="tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.md">Tutorial - Creating Components</a>). All Infusion components are derived from this grade, and in general all things not derived from this grade are non-components (e.g. plain functions, or model transformation transforms, etc.)
             </td>
         </tr>
@@ -104,11 +104,11 @@ var that = fluid.uploader.fileQueueView( ... );
 
 ## Combining Grades ##
 
-Since the `fluid.defaults` directive introduces a grade into the system, various components can be composed to create new ones. Options, fields and methods introduced by the ancestor grades will be merged. 
-The merging happens, firstly in hierarchical order (grades comprising the ancestor grade are resolved before the actual component grades resolution) and secondly in the left-to-right order 
-(defaults from the grade on the right taking precedence over the defaults from the grade on the left). Those interested in fine details should note that this is a very different scheme to the [C3 linearization algorithm](https://en.wikipedia.org/wiki/C3_linearization) 
+Since the `fluid.defaults` directive introduces a grade into the system, various components can be composed to create new ones. Options, fields and methods introduced by the ancestor grades will be merged.
+The merging happens, firstly in hierarchical order (grades comprising the ancestor grade are resolved before the actual component grades resolution) and secondly in the left-to-right order
+(defaults from the grade on the right taking precedence over the defaults from the grade on the left). Those interested in fine details should note that this is a very different scheme to the [C3 linearization algorithm](https://en.wikipedia.org/wiki/C3_linearization)
 that is commonly used for resolving multiple inheritance. Other than preventing infinite cycles of resolution, the framework will allow the same grade to appear any number of times in the list of grades,
-and each time it will be effective in overriding definitions occuring in grades to the left in the same `gradeNames` list. 
+and each time it will be effective in overriding definitions occuring in grades to the left in the same `gradeNames` list.
 
 
 Here is a simple example:
@@ -134,7 +134,7 @@ fluid.defaults("examples.componentTwo", {
 
 fluid.defaults("examples.combinedComponent", {
     gradeNames: ["examples.componentOne", "examples.componentTwo"]
-    // The resulting defaults for component examples.combinedComponent 
+    // The resulting defaults for component examples.combinedComponent
     // will behave as if the following had been written:
     // model: {
     //     field1: true,
@@ -144,10 +144,10 @@ fluid.defaults("examples.combinedComponent", {
 });
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>, 
+<div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>,
 <code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md">listener namespaces</a>.</div>
 
-**NOTE**: In the current framework, all grades derived from `fluid.viewComponent` (as well as `fluid.rendererComponent`, etc.) must be listed ***AFTER*** all those that are not. This problem will be resolved in a future framework release.
+<div class="infusion-docs-note"><strong>Note:</strong> In the current framework, all grades derived from `fluid.viewComponent` (as well as `fluid.rendererComponent`, etc.) must be listed ***AFTER*** all those that are not. This problem will be resolved in a future framework release.</div>
 
 ## Dynamic Grades ##
 
@@ -204,14 +204,14 @@ fluid.defaults("examples.distributingRootComponent", {
 });
 ```
 
-In the above example, every subcomponent of `examples.distributingRootComponent` which had a grade content of `examples.componentOne` would automatically have [mixed in](https://en.wikipedia.org/wiki/Mixin) a grade of `examples.componentTwo`, 
+In the above example, every subcomponent of `examples.distributingRootComponent` which had a grade content of `examples.componentOne` would automatically have [mixed in](https://en.wikipedia.org/wiki/Mixin) a grade of `examples.componentTwo`,
 causing them all to behave as if they were instances of `examples.combinedComponent`.
 
 ## Raw Dynamic Grades ##
 
-Another very powerful framework facility is the use of raw dynamic grades. In this scheme, the gradeNames list for any component may include any standard [IoC reference](IoCReferences.md) which may resolve to either a 
-`String` or `Array of String` directly holding one or more grade names, or else a zero-arg function which can be invoked to obtain such a value. 
-In this way, the developer can specify additional grade names based on dynamic material (potentially not known at the time of definition) such as a function (method or invoker) or a property in component options. 
+Another very powerful framework facility is the use of raw dynamic grades. In this scheme, the gradeNames list for any component may include any standard [IoC reference](IoCReferences.md) which may resolve to either a
+`String` or `Array of String` directly holding one or more grade names, or else a zero-arg function which can be invoked to obtain such a value.
+In this way, the developer can specify additional grade names based on dynamic material (potentially not known at the time of definition) such as a function (method or invoker) or a property in component options.
 Note that use of this facility should be discouraged in favour of any of the other techniques on this page - e.g. standard dynamic grades or context awareness - in future versions of the framework the use of raw dynamic grades may impose a big performance penalty.
 
 For example:

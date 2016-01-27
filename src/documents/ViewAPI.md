@@ -24,7 +24,7 @@ If the element already has an id allocated in the DOM, this existing id is retur
 * `dokkument {DomDocument}` [optional] The DOM Document in which the node is to be found. If omitted, defaults to the current global value of `document`.
 * Returns: `{jQuery}` A one or zero-element jQuery object holding the node to be found
 
-Returns a jQuery object given the id of a DOM node. In the case the element is not found, will return an empty list.  
+Returns a jQuery object given the id of a DOM node. In the case the element is not found, will return an empty list.
 
 ### fluid.byId(id[, dokkument])
 
@@ -42,7 +42,7 @@ indeed has the required id.
 
 Returns the `id` attribute from a jQuery or pure DOM element.
 
-### fluid.wrap(obj[, userJQuery]) 
+### fluid.wrap(obj[, userJQuery])
 
 * `obj {Any}` The object to wrap in a jQuery. Falsey and existing jQuery objects are returned unchanged.
 * `userJQuery {jQueryFramework}` [optional] The jQuery framework object to use for the wrapping - use Infusion's value of `$` if absent
@@ -51,7 +51,7 @@ Returns the `id` attribute from a jQuery or pure DOM element.
 Wraps an object in a jQuery if it isn't already one. This function is useful since
 it ensures to wrap a null or otherwise falsey argument to itself, rather than the
 often unhelpful jQuery default of returning the overall document node.
- 
+
 ### fluid.unwrap(obj)
 
 * `obj {jQuery|Any}` The jQuery instance to unwrap into a pure DOM element
@@ -66,8 +66,8 @@ If `obj` is a jQuery, this function will return the first DOM element within it.
 * Returns: `{String|Array of String}` The value read from the DOM, if required
 
 A generalisation of [`jQuery.val`](http://api.jquery.com/val/) to correctly handle the case of acquiring and
-setting the value of clustered radio button/checkbox sets, potentially, given a node corresponding to just one element. 
-If the supplied element is not an HTML radio button or checkbox, the 
+setting the value of clustered radio button/checkbox sets, potentially, given a node corresponding to just one element.
+If the supplied element is not an HTML radio button or checkbox, the
 implementation will defer to `jQuery.val`. If the supplied element is an HTML radio button or checkbox, the function
 will automatically acquire all other elements sharing the same HTML `name` within the same `form` element before performing
 the read or write.
@@ -84,10 +84,10 @@ holding a label associated with a particular DOM node in the document.
 * `text {String}` The string to be entered into the live region - this will be announced "soon" depending on the "politeness setting" attached to the `aria-live` attribute of the region (default: `"polite"`)
 * `options {AriaLabellerOptions}` [optional] A set of options for configuring the behaviour of the labeller. These options are described in the [table below](#structure-of-arialabelleroptions-).
 * Returns: `{Component}` An Infusion [view component](ComponentConfigurationOptions.md#view-components) managing the interaction with the label. ***Note:*** disposing of this component is the responsibility of the caller. If you have destroyed
-the markup to which this component is attached, you must destroy the component using its `destroy()` method or it will leak. Successive calls to `fluid.updateAriaLabel` for the same DOM node will return the same component. 
+the markup to which this component is attached, you must destroy the component using its `destroy()` method or it will leak. Successive calls to `fluid.updateAriaLabel` for the same DOM node will return the same component.
 
 #### Structure of `AriaLabellerOptions`
- 
+
 | Name | Type | Description | Default |
 |------|------|-------------|---------|
 |`dynamicLabel`| `Boolean`| Whether or not an ARIA  live region should be created and associated with the element, as well as the use of `aria-label`| `false` |
@@ -95,7 +95,7 @@ the markup to which this component is attached, you must destroy the component u
 |`liveRegionId`| `String` | The ID to assign to the live region (only used if `dynamicLabel` is true). |`"fluid-ariaLabeller-liveRegion"`|
 |text| `String` | The text to place in the live region (only used if `dynamicLabel` is true).|none|
 
-Note that as well as forming the 3rd argument to `fluid.updateAriaLabel`, these options also form the [component options](ComponentOptionsAndDefaults.md) to the associated component, which is 
+Note that as well as forming the 3rd argument to `fluid.updateAriaLabel`, these options also form the [component options](ComponentOptionsAndDefaults.md) to the associated component, which is
 an Infusion `fluid.viewComponent` of type `fluid.ariaLabeller`.
 
 ## Managing Focus and Blur
@@ -105,8 +105,8 @@ Infusion includes two "major utilities" for managing focus interactions, [`fluid
 ### fluid.globalDismissal(nodes[, dismissFunc])
 
 * `nodes {Object: String  → DomElement|jQuery}` A free hash of names onto nodes that a click ***outside*** of will trigger `dismissFunc`
-* `dismissFunc {Function: DomEvent  →  None}|Undefined` A function which will be executed when a "dismissal click" is received in the document. If this argument is not supplied, any existing dismissal function will be disarmed.   
-    
+* `dismissFunc {Function: DomEvent  →  None}|Undefined` A function which will be executed when a "dismissal click" is received in the document. If this argument is not supplied, any existing dismissal function will be disarmed.
+
 Used in the stereotypical situation where a click event (morally, one which shifts focus outside a dialog or other region of interaction - but only actual `click` events
 are supported by this function) should have the effect of "dismissing" the dialog or interaction region. This accepts a free hash of nodes designating the interaction
 region and an optional "dismissal function". If `dismissFunc` is set, this "arms" the dismissal system, such that when a click
@@ -122,7 +122,7 @@ to be armed again.
 
 This utility is designed to compensate for the fact that delivery of blur events in browsers has always been extremely unreliable. Sometimes blur events
 are delivered simply because focus has moved to another control within the same interaction region, they are not delivered at all, or in some even more
-perverse cases (especially on Internet Explorer) are delivered *after* the focus event which morally causes them. 
+perverse cases (especially on Internet Explorer) are delivered *after* the focus event which morally causes them.
 
 This utility uses the following strategy: on receiving a standard `blur` event on the `control`, a timer is started which waits for a short period of
 time (`options.delay`, defaults to 150ms) to discover whether the reason for the blur interaction is that either a focus or click is being serviced on a nominated
@@ -133,12 +133,12 @@ blur. If, further, a click is received *outside* the list of exclusions (as per 
 
 Unlike `fluid.globalDismissal`, this interaction is permanent and will persist as long as the nominated DOM elements are in the DOM.
 
-*** NOTE: *** The behaviour of this API has not been vetted for several years against the behaviour of our currently supported browsers, and it also has some deficits which
+<div class="infusion-docs-note"><strong>Note:</strong> The behaviour of this API has not been vetted for several years against the behaviour of our currently supported browsers, and it also has some deficits which
 require reimplementation (e.g. that its handlers can't be removed from the target elements). It should be considered as an unstable API - however it is still being found
-broadly useful.
+broadly useful.</div>
 
 #### Structure of `DeadMansBlurOptions`
- 
+
 | Name | Type | Description | Default |
 |------|------|-------------|---------|
 |`exclusions`|<code>Object: String  → DomElement&#124;jQuery</code>| A free hash of names onto nodes that a click ***outside*** of will trigger `handler`, *** OR *** that a focus event received within the time window of `delay` from a blur event on `control` will *** cancel *** notification of `handler`| none |
@@ -161,7 +161,7 @@ often patchy. This utility will, in the following order, trigger the following:
 
 * A synthetic jQuery event named `fluid-focus`
 * The jQuery event `focus`
-* The native DOM event `focus`  
+* The native DOM event `focus`
 
 ### fluid.blur(element)
 * `element {jQueryable}` An element which should lose focus as a result of receiving a `blur` event.
@@ -171,4 +171,4 @@ often patchy. This utility will, in the following order, trigger the following:
 
 * A synthetic jQuery event named `fluid-blur`
 * The jQuery event `blur`
-* The native DOM event `blur`  
+* The native DOM event `blur`
