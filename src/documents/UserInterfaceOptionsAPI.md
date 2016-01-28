@@ -1,14 +1,14 @@
 ---
 title: User Interface Options API
 layout: default
-category: API
+category: Components
 ---
 
 The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
 
 UI Options does three things:
 * places a preferences editor dialog with a set of six panels in a collapsible panel at the top of the page, accessible through a button in the upper right corner of the page;
-* instantiates a cookie-based Settings Store for storing the user's preferences; and
+* instantiates a cookie-based [Settings Store](SettingsStore.md) for storing the user's preferences; and
 * acts upon the user's preferences.
 
 UI Options is a convenient way to add a simple separated-panel preferences editor to any page. The interface will automatically support the set of "starter" preferences provided by the [Preferences Framework](PreferencesFramework.md), in their default configuration.
@@ -362,7 +362,7 @@ fluid.uiOptions.fullNoPreview("#myContainer", {
         <tr>
             <th>See also</th>
             <td>
-                <a href="to-do/CookieSettingsStore.md">Cookie Settings Store</a>
+                <a href="SettingsStore.md#fluid-prefs-cookiestore">Cookie Settings Store</a>
             </td>
         </tr>
     </tbody>

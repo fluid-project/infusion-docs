@@ -4,9 +4,9 @@ layout: default
 category: Infusion
 ---
 
-This section explains and documents the various Javascript API calls for instantiating and working with [ChangeApplier](ChangeApplier.md)s. 
-In practice, users will use the ChangeAppliers which are automatically constructed for every [Model Component](tutorial-gettingStartedWithInfusion/ModelComponents.md) as its top-level member applier and will not construct their own. 
-Furthermore, a good deal of the use made of ChangeAppliers will take the form of [Declarative Configuration](FrameworkConcepts.md#declarative-configuration) rather than 
+This section explains and documents the various Javascript API calls for instantiating and working with [ChangeApplier](ChangeApplier.md)s.
+In practice, users will use the ChangeAppliers which are automatically constructed for every [Model Component](tutorial-gettingStartedWithInfusion/ModelComponents.md) as its top-level member applier and will not construct their own.
+Furthermore, a good deal of the use made of ChangeAppliers will take the form of [Declarative Configuration](FrameworkConcepts.md#declarative-configuration) rather than
 literal JavaScript API calls - many declarative uses were supported in Infusion 1.5 and even more will be supported in Infusion 2.0. This page presents both programmatic calls and their declarative equivalents where they exist.
 
 ## Registering interest in model changes using a ChangeApplier ##
@@ -185,10 +185,10 @@ that.applier.change("things", "new value");
 
 This example will not log the transition from the initial model state of `undefined` to the console. It will, however, log the value `new value` triggered via the ChangeApplier API.
 
-**NOTE**: The current implementation of the ChangeApplier has a bug ([FLUID-5519](http://issues.fluidproject.org/browse/FLUID-5519)) which will often cause a model listener to be notified
+<div class="infusion-docs-note"><strong>Note:</strong> The current implementation of the ChangeApplier has a bug ([FLUID-5519](http://issues.fluidproject.org/browse/FLUID-5519)) which will often cause a model listener to be notified
 before much of the surrounding component has constructed. This can be annoying, since the model listener may want to rely on other infrastructure (e.g. invokers, etc.) that it cannot
 be sure have been constructed. For this reason, `excludeSource: "init"` is a useful way of stabilising this behaviour until the implementation is fixed (fix will be
-delivered as part of [FLUID-4925](http://issues.fluidproject.org/browse/FLUID-4925)).
+delivered as part of [FLUID-4925](http://issues.fluidproject.org/browse/FLUID-4925)).</div>
 
 #### Wildcards in model path references ####
 
@@ -242,8 +242,8 @@ applier.modelChanged.addListener(pathSpec, listener, namespace)
 applier.modelChanged.removeListener(listener)
 ```
 
-**NOTE**: _This style of listening to changes is **discouraged**, but may be the right choice in some applications_. For example - the listener to be attached may not be available
-at the time the component is constructed. Note that programmatically attached listeners will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where they are registered.
+<div class="infusion-docs-note"><strong>Note:</strong> This style of listening to changes is **discouraged**, but may be the right choice in some applications. For example - the listener to be attached may not be available
+at the time the component is constructed. Note that programmatically attached listeners will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where they are registered.</div>
 
 The listener is notified after the change (or set of coordinated changes) has already been applied to the model - it is too late to affect this process and so this event is not _preventable_. The signature for these listeners is
 
@@ -284,7 +284,7 @@ Users will in most cases only be interested in the first argument in this signat
 
 ### Declarative style for triggering a change###
 
-The declarative style for triggering model changes involve a kind of IoC record (a _change record_) that is supported in various places in component configuration, in particular as part of the definition of both [Invokers](Invokers.md) and [Listeners](InfusionEventSystem.md) of an IoC-configured component. 
+The declarative style for triggering model changes involve a kind of IoC record (a _change record_) that is supported in various places in component configuration, in particular as part of the definition of both [Invokers](Invokers.md) and [Listeners](InfusionEventSystem.md) of an IoC-configured component.
 This style of record is recognised by its use of the special member `changePath` which determines which path in which component model will receive the change.
 
 <table>
@@ -456,13 +456,13 @@ These are not recommended for typical users of the framework, and are not stable
 
 ### Instantiating a ChangeApplier ###
 
-Instantiating a ChangeApplier manually is not recommended in current versions of the framework. Its implementation is tightly bound into its location in 
+Instantiating a ChangeApplier manually is not recommended in current versions of the framework. Its implementation is tightly bound into its location in
 an IoC component tree and should be constructed by the IoC system itself.
 
 ### Operating transactions manually ###
 
 A user may be interested in economising on notifications to model updates; by batching these up into a single transaction, there will
-just be a single notification of each listener which is impacted around the model skeleton. This facility is unstable and will be 
+just be a single notification of each listener which is impacted around the model skeleton. This facility is unstable and will be
 rewritten prior to the final Infusion 2.0 release.
 
 A transaction can be opened using the `initiate()` method of the applier function which returns a transaction object:

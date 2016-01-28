@@ -87,8 +87,8 @@ tutorials.currencyConverter.updateAmount = function (that, amount) {
 ```
 ## Contents of the model and its relation to other models
 
-The `model` record can consist of any JSON material, as well as containing [IoC references](../IoCReferences.md) to the models and options of other components, as well as [expanders](../ExpansionOfComponentOptions.md). 
-Any IoC references to another component's model will set up a permanent [model relay](../ModelRelay.md) between the two models at the endpoints of the reference. 
+The `model` record can consist of any JSON material, as well as containing [IoC references](../IoCReferences.md) to the models and options of other components, as well as [expanders](../ExpansionOfComponentOptions.md).
+Any IoC references to another component's model will set up a permanent [model relay](../ModelRelay.md) between the two models at the endpoints of the reference.
 This relay will be bidirectional - any updates propagated into either of the models linked by the relay by their respective ChangeAppliers will be relayed into the model at the other end of the link.
 
 ## Using The Change Applier ##
@@ -97,7 +97,7 @@ The Framework will attach both your model and its ChangeApplier to the component
 
 ## Example: Dated Component ##
 
-As an example, let's consider a component that need to record a date. Your `model` will include a date field - if you wished to give it an initial default value of `null` 
+As an example, let's consider a component that need to record a date. Your `model` will include a date field - if you wished to give it an initial default value of `null`
 (actually this practice is not recommended - it is better to only supply default values which are actually useful in a particular context), it could be initialised as follows:
 
 ```javascript
@@ -110,8 +110,8 @@ fluid.defaults("tutorials.modelBearingComponent", {
 });
 ```
 
-Suppose that you want the `date` initialized to the current date at the time the component is instantiated, and you want this to happen before other component initialization happens. 
-You can specify an initial value for the `date` field by use of an IoC facility known as an [expander](../ExpansionOfComponentOptions.md#expanders). This allows you to schedule the action of any function during the initialization process and have the results entered into the component's configuration. 
+Suppose that you want the `date` initialized to the current date at the time the component is instantiated, and you want this to happen before other component initialization happens.
+You can specify an initial value for the `date` field by use of an IoC facility known as an [expander](../ExpansionOfComponentOptions.md#expanders). This allows you to schedule the action of any function during the initialization process and have the results entered into the component's configuration.
 Our work comes in two parts - firstly, writing a global helper function which returns the current date, named `tutorials.getCurrentDate`. The second part writes an expander within the model definition to invoke our helper function:
 
 ```javascript
@@ -132,7 +132,11 @@ fluid.defaults("tutorials.datedComponent", {
 });
 ```
 
-**NOTE** There is a [compact form](../ExpansionOfComponentOptions.md#compact-format-for-expanders) for writing an expander as a single string - we could have written the above definition instead with `date: "@expand:tutorials.getCurrentDate()"` in place of the small JSON block inside the model.
+<div class="infusion-docs-note"><strong>Note:</strong> There is a
+[compact form](../ExpansionOfComponentOptions.md#compact-format-for-expanders)
+for writing an expander as a single string - we could have written the above definition
+instead with `date: "@expand:tutorials.getCurrentDate()"` in place of the small JSON
+block inside the model.</div>
 
 ## Example: Currency Converter ##
 

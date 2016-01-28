@@ -24,7 +24,7 @@ These types of components build upon each other, a teeny little bit like inherit
 * **view components** support models, and also add support for views.
 * **renderer components** are **view components** with the [Renderer](../Renderer.md) added.
 
-**NOTE**: The following diagram needs to be updated for the Infusion 2.0 framework - the "evented" and "little" component grades have been folded into plain `fluid.component`.
+<div class="infusion-docs-note"><strong>Note:</strong> The following diagram needs to be updated for the Infusion 2.0 framework - the "evented" and "little" component grades have been folded into plain `fluid.component`.</div>
 
 ![A venn diagram showing the composition of grades](../images/component-grades-venn-diagram.svg)
 

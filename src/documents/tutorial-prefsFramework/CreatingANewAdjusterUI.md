@@ -207,7 +207,7 @@ For the radio buttons:
         .fl-preview-A {
             font-size: 2em;
         }
-        
+
         // Pseudo content to prevent AT from reading display 'a'
         .fl-preview-A:before {
             content: "a";
@@ -226,7 +226,7 @@ For the radio buttons:
 
 ![a checkbox styled table of contents panel](../images/checkbox-styled.png)
 
-**Note:** *Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708 JIRA](https://issues.fluidproject.org/browse/FLUID-5708)*
+<div class="infusion-docs-note"><strong>Note:</strong> Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708 JIRA](https://issues.fluidproject.org/browse/FLUID-5708)</div>
 
 ```html
 <h2>
@@ -268,7 +268,7 @@ For the switch:
         font-size: 1.2em;
         font-weight: 600;
     }
-  
+
     // Hide input while still being screen reader accessible
     input {
         border: 0 none;
@@ -280,11 +280,11 @@ For the switch:
         position: absolute;
         width: 1px;
     }
-  
+
     input:focus + label {
         outline: 2px solid black;
     }
-  
+
     input:checked + label .fl-prefsEditor-switch {
         padding-left: 3em;
         width: 2em;
@@ -295,7 +295,7 @@ For the switch:
             left: 0.46em;
         }
     }
-  
+
     // With data attributes defining the on/off text, localizing the templates is easier
     input + label {
         [data-checkboxStateOn]:before {
@@ -304,7 +304,7 @@ For the switch:
         [data-checkboxStateOff]:after {
             content: attr(data-checkboxStateOff);
         }
-      
+
         // The "on" portion of the toggle and the knob.
         .fl-prefsEditor-switch {
             &:before {
@@ -321,7 +321,7 @@ For the switch:
                 box-shadow: 0.2em 0.2em 0.5em #888;
                 background-image: linear-gradient(bottom, rgb(205, 204, 202) 0%, rgb(244, 244, 244) 100%);
             }
-          
+
             // The "off" portion of the toggle.
             &:after {
                 float: left;
@@ -331,7 +331,7 @@ For the switch:
             }
         }
     }
-  
+
     // The dark inner circle to the toggle knob.
     .fl-prefsEditor-switch-inner {
         border: 1px solid #493A30;

@@ -90,7 +90,7 @@ If you provide both, they will be merged (with the `auxiliarySchema` overriding 
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
 <tr>
     <td><code>storeType</code></td>
-    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a Settings Store.</td>
+    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a [Settings Store](SettingsStore.md).</td>
     <td>Integrators can define their own store grade by deriving from the built-in default grade <code>"fluid.prefs.store"</code> as a base grade and providing custom <code>get</code> and <code>set</code> methods.</td>
     <td><code>"fluid.prefs.cookieStore"</code></td>
 </tr>

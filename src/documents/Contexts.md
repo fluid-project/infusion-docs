@@ -15,7 +15,7 @@ at locations in the component tree. Each component in the tree exposes a collect
 __*context names*__, which are derived from the component's type and [grade names](ComponentGrades.md).
 
 All Infusion components are stored in a single-rooted **_component tree_** - this stores every component which
-has been instantiated in a particular **_Infusion context_**. This context is global to the JavaScript context 
+has been instantiated in a particular **_Infusion context_**. This context is global to the JavaScript context
 which has loaded Infusion - for example, a frame within a browser, or a node.js process.
 
 ## How context names are derived ##
@@ -71,7 +71,7 @@ current component tree.
 
 ## Global components: `fluid.resolveRoot` and `fluid.resolveRootSingle`
 
-All Infusion components are stored in a single-rooted, global **_component tree_**. Even when you 
+All Infusion components are stored in a single-rooted, global **_component tree_**. Even when you
 instantiate apparently "freely-floating" components with a line such as
 
 ```
@@ -81,13 +81,13 @@ var that = fluid.myComponent();
 these components are also assigned an address in the global tree - they are stored as immediate children
 of the global component root with a uniquely chosen name. Naturally the default visibility rules for
 these components in the component tree have to work differently for these components than they do for
-nested components described by the rules above. If every such component was in scope for every other, there 
+nested components described by the rules above. If every such component was in scope for every other, there
 would be "global chaos", to coin a phrase. So all such "free components" are hidden from each other
 through a special exception in the scoping rules.
 
 However, there exist several cases when genuinely global visibility is required for some components - often
-this is accompanied by what is termed a [Singleton Design Pattern](https://en.wikipedia.org/wiki/Singleton_pattern) 
-in prevalent "Design Patterns" dialogue. As commonly described, this pattern consists of two elements - 
+this is accompanied by what is termed a [Singleton Design Pattern](https://en.wikipedia.org/wiki/Singleton_pattern)
+in prevalent "Design Patterns" dialogue. As commonly described, this pattern consists of two elements -
 
 1. Arranging for global visibility of a component (object)
 2. Arrange for there to be a single instance of a component
@@ -95,11 +95,11 @@ in prevalent "Design Patterns" dialogue. As commonly described, this pattern con
 The Infusion framework supplies two special grades, which allow the designer to arrange for both of these
 points to be controlled separately. For a start, any component which is supplied the grade `fluid.resolveRoot`,
 wherever it is constructed in the component tree, will become **_globally visible_** throughout the component
-tree, as if it had been constructed at its root. Secondly, a component which uses the grade 
+tree, as if it had been constructed at its root. Secondly, a component which uses the grade
 `fluid.resolveRootSingle` will be able to arrange that a single instance of it is globally visible at any
 time. Constructing a further instance of such a component will displace the earlier instance from global
 visibility (although it will not destroy it at its original location in the tree). Using the grade `fluid.resolveRootSingle`
-requires an option named `singleRootType` to be defined in the defaults, holding the global type name with 
+requires an option named `singleRootType` to be defined in the defaults, holding the global type name with
 respect to which the instance is required to be unique. This needs to be listed explicitly since otherwise the
 framework would not be able to tell which of the component's `gradeNames` or `type` was intended to hold the name of the
 type whose instance was expected to be unique.
@@ -131,7 +131,7 @@ type whose instance was expected to be unique.
 </table>
 
 
-For example, the following code is an error, since `that2` cannot see the component `that` with context name `freeComponent1`. 
+For example, the following code is an error, since `that2` cannot see the component `that` with context name `freeComponent1`.
 
 ```javascript
 fluid.defaults("examples.freeComponent1", {
@@ -150,9 +150,9 @@ However, in the following example, since `rootComponent1` has the grade `fluid.r
 second component. In addition, since it has `fluid.resolveRootSingle` rather than just `fluid.resolveRoot`, when we
 create a second instance of it, this instance becomes the globally visible one.
 
-**NOTE**: In general, users must take care to destroy all such "free components" manually when they are no longer required. Since
+<div class="infusion-docs-note"><strong>Note:</strong> In general, users must take care to destroy all such "free components" manually when they are no longer required. Since
 JavaScript does not supply schemes for reference tracking, there is no way for the framework to determine when a component is no
-longer being used. The user must call `destroy()` on such instances themselves. 
+longer being used. The user must call `destroy()` on such instances themselves.</div>
 
 ```javascript
 fluid.defaults("examples.rootComponent1", {

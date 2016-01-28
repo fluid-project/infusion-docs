@@ -50,7 +50,7 @@ fluid.defaults("my.pref.panel2", {
 
 ## Preference Map (Schema Only) ##
 
-_**IMPORTANT NOTE:** Preference Maps are **only** required if you are working with [schemas](PrimarySchemaForPreferencesFramework.md)). If you are using grades instead (only necessary in rare cases), you do **not** need a preference map._
+<div class="infusion-docs-note"><strong>IMPORTANT NOTE:</strong> Preference Maps are **only** required if you are working with [schemas](PrimarySchemaForPreferencesFramework.md)). If you are using grades instead (only necessary in rare cases), you do **not** need a preference map.</div>
 
 A Preference Map is an option that allows you to map the information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md) into your Panel. For each relevant preference defined in the primary schema, the preference map specifies where in the current component's options the value should be store. This is used to pull the default preference value into the Panel's model, as well as any other relevant information.
 

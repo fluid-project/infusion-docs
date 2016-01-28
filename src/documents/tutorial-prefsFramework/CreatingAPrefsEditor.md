@@ -767,11 +767,96 @@ radioVolume: {
 }
 ```
 
+## Saving Preferences ##
+
+Right now, when you click the "save" button, the preferences are saved – if you reload the page,
+they're all there.
+How does that happen? Where are they saved to? And how would you change that?
+
+By default, the Preferences Framework automatically saves the preferences to a browser cookie.
+How does that happen?
+* The template has a specific class on the "save" button: `flc-prefsEditor-save`.
+* The Preferences Framework automatically binds a click handler to anything with that class.
+* The click handler ultimately invokes the `set` method on the default
+[settings store](../SettingsStore.md),
+which is a [CookieStore](../SettingsStore.md#fluid-prefs-cookiestore).
+
+Cookies are great for websites, but this is a car. The preferences need to be saved to the car's
+internal storage. We need to a) create a Settings Store that will save to the internal storage and
+b) tell the preferences editor to use that instead.
+
+The first step is to create a grade that uses the built-in `fluid.prefs.store`:
+```javascript
+fluid.defaults("awesomeCars.prefs.store", {
+    gradeNames: ["fluid.prefs.store"]
+});
+```
+
+We'll need to override the default `get()` and `set()` methods with our own versions. These methods
+are implemented as [invokers](../Invokers.md), which makes it easy to plug in our own functions:
+```javascript
+fluid.defaults("awesomeCars.prefs.store", {
+    gradeNames: ["fluid.prefs.store"],
+    invokers: {
+        get: {
+            funcName: "awesomeCars.prefs.store.get"
+        },
+        set: {
+            funcName: "awesomeCars.prefs.store.set",
+            args: ["{arguments}.0"]
+        }
+    }
+});
+```
+
+Our `get` and `set` functions will need to do whatever is necessary to save and retrieve the
+preferences to the car's internal data storage:
+```javascript
+fluid.defaults("awesomeCars.prefs.store", {
+    gradeNames: ["fluid.prefs.store"],
+    invokers: {
+        get: {
+            funcName: "awesomeCars.prefs.store.get"
+        },
+        set: {
+            funcName: "awesomeCars.prefs.store.set",
+            args: ["{arguments}.0"]
+        }
+    }
+});
+
+awesomeCars.prefs.store.get = function () {
+    // do whatever you need to do, to retrieve the settings
+    return settings;
+};
+awesomeCars.prefs.store.set = function (settings) {
+    // do whatever you need to do to store the settings
+};
+```
+
+Finally, we need to tell the preferences editor to use our new settings store instead of
+the default cookie store. We do this by using the `storeType` option when we create the editor
+(as we saw back in [Instantiation](#instantiation)):
+
+```javascript
+awesomeCars.prefs.init = function (container) {
+    return fluid.prefs.create(container, {
+        build: {
+            gradeNames: ["awesomeCars.prefs.auxSchema"]
+        },
+        prefsEditor: {
+            // specify the settings store to use
+            storeType: "awesomeCars.prefs.store"
+        }
+    });
+};
+```
+
+
 ## Coming Soon: ##
 Information about
 * Enactors
 * More complicated Panels
 * Localization
 * Design consideration
-* Persistence
 * Case studies
