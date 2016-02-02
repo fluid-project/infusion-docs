@@ -1,16 +1,9 @@
 Infusion Documentation
 ======================
 
-## What is infusion and how do I get it? ##
-
-See the infusion website at:
-
-<http://fluidproject.org/infusion.html>
-
-
 ## Browse the Infusion Documentation on GitHub
 
-You can [browse the Infusion Documentation as static user friendly pages](http://docs.fluidproject.org/infusion/development/index.html), or if you prefer, you can [browse the Infusion Documentation directly on GitHub](src/documents).
+You can [browse the Infusion Documentation as static user friendly pages](http://docs.fluidproject.org/infusion/), or if you prefer, you can [browse the Infusion Documentation directly on GitHub](src/documents).
 
 
 ## Build with DocPad
