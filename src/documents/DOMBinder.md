@@ -42,11 +42,9 @@ searches are do not have to be recomputed from the DOM on every query.
 ## How Infusion Components Use the DOM Binder ##
 
 The Infusion Framework automatically creates a DOM Binder for any [View Component](tutorial-gettingStartedWithInfusion/ViewComponents.md)
-as it constructs and attaches
-it to the component as a top-level member named `dom`.
+as it constructs and attaches it to the component as a top-level member named `dom`.
 
-View Components specify a set of names selectors in
-the component's defaults called `selectors`:
+View Components specify a set of named selectors in the component's defaults called `selectors`:
 
 ```javascript
 fluid.defaults("fluid.newComponent", {
@@ -58,7 +56,7 @@ fluid.defaults("fluid.newComponent", {
 });
 ```
 
-DOM elements related to this component can be resolved declaratively using the dom member. For example,
+DOM elements related to this component can be resolved declaratively using the `dom` member. For example,
 if `{newComponent}` is a [reference](IoCReferences.md) to an instance of the above component, a reference to one of its
 DOM binder elements as declared above could be written as `{newComponent}.dom.uiBit1`.
 
@@ -68,6 +66,11 @@ For convenience, the DOM Binder's `locate()` function is also added to the compo
 
 Unless they are otherwise qualified, all searches performed by the DOM binder attached to a particular
 component will be automatically scoped to the component's own container.
+
+### Edge cases for the DOM Binder
+
+If the value of the selector is the empty string `""`, the component's `container` will be returned.
+If the selector matches nothing within the container, an empty jQuery (one with 0 elements) will be returned.
 
 ## Using the DOM Binder Declaratively ##
 
