@@ -59,6 +59,11 @@ often unhelpful jQuery default of returning the overall document node.
 
 If `obj` is a jQuery, this function will return the first DOM element within it. Otherwise, the object will be returned unchanged.
 
+### fluid.getDocument(element)
+     
+* `element {jQuery||DomElement}` The element to return the document for
+* Returns: `{Document}` The document in which it is to be found
+
 ### fluid.value(nodeIn[, newValue])
 
 * `nodeIn {jQuery|DomElement}` The node whose value is to be read or written
