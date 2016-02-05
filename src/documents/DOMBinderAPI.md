@@ -85,7 +85,8 @@ Note that selector values may be specified using <a href="IoCReferences.md">IoC 
 locate(name[, localContainer]);
 ```
 
-Finds the named element within the specified container.
+Finds the named element within the specified container. If the value of the selector is the empty string `""`, the container itself
+will be returned. If the selector matches nothing within the container, an empty jQuery (one with 0 elements) will be returned.
 
 **Return:** a jQuery object.
 
