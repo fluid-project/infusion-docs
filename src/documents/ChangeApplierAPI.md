@@ -7,7 +7,7 @@ category: Infusion
 This section explains and documents the various Javascript API calls for instantiating and working with [ChangeApplier](ChangeApplier.md)s.
 In practice, users will use the ChangeAppliers which are automatically constructed for every [Model Component](tutorial-gettingStartedWithInfusion/ModelComponents.md) as its top-level member applier and will not construct their own.
 Furthermore, a good deal of the use made of ChangeAppliers will take the form of [Declarative Configuration](FrameworkConcepts.md#declarative-configuration) rather than
-literal JavaScript API calls - many declarative uses were supported in Infusion 1.5 and even more will be supported in Infusion 2.0. This page presents both programmatic calls and their declarative equivalents where they exist.
+literal JavaScript API calls. This page presents both programmatic calls and their declarative equivalents where they exist.
 
 ## Registering interest in model changes using a ChangeApplier ##
 
@@ -15,16 +15,16 @@ literal JavaScript API calls - many declarative uses were supported in Infusion 
 
 The declarative style for registering interest in change events uses an entry in the `modelListeners` options area of a `modelComponent`. These listeners are attached to the applier during the construction process of the entire component (and its surrounding tree) and so will therefore become notified as part of the [initial transaction](ModelRelay.md#the-initial-transaction) - they will therefore get to observe the model changing state from its primordial value of undefined to holding their initial resolved value. This is the **recommended** way of listening to model changes using the ChangeApplier system.
 
-Each record in the modelListeners block has the format `<modelPathReference>: <modelListener declaration>`. The left and right hand sides of this definition will be explained in the subsequent sections:
+Each record in the modelListeners block has the format `<shortModelPathReference|namespace>: <modelListener declaration>`. The left and right hand sides of this definition will be explained in the subsequent sections:
 
 #### Model Path References ####
 
-A `<modelPathReference>` has the form:
+A `<shortModelPathReference>` has the form:
 
 <table>
     <thead>
         <tr>
-            <th colspan="3">Syntax definition for <code>&lt;modelPathReference&gt;</code> - the key in <code>modelListeners</code> options block for a <code>modelComponent</code></th>
+            <th colspan="3">Syntax definition for <code>&lt;shortModelPathReference&gt;</code> - the key in <code>modelListeners</code> options block for a <code>modelComponent</code></th>
         </tr>
         <tr>
             <th>Syntax</th>
@@ -60,14 +60,90 @@ A `<modelPathReference>` has the form:
     </tbody>
 </table>
 
+The key for a modelListener will be interpreted as a `<shortModelPathReference>` if the modelListener declaration does not contain a member named `path`. If the modelListener declaration includes `path`, then the key will be interpreted as a
+_namespace_ instead. 
+
 The four examples presented in the _"Examples"_ column are parallel for the two cases - they respectively match changes occurring in the same parts of the target model, only in the first row they match into the model attached to this component (the same one in which the `modelListeners` record appears) and in the second row they match into the model attached to another component - one referenced by the [Context Expression](Contexts.md) `otherComponent`.
+
+Note that more complex path specifications may be provided in the `path` member of a model listener declaration.
 
 #### Model Listener Declaration ####
 
-A model listener declaration block has exactly the same form and meaning as any of the record types supported by [Invokers](Invokers.md) and [Listeners](EventInjectionAndBoiling.md#listener-boiling) -
-including the one-string compact syntax documented with [Invokers](Invokers.md#compact-format), and the use of [Priorities](Priorities.md). There are two extra features that are supported in
-model listener blocks that are not supported in standard listener declarations. These are the special context name `change`, and the ability to filter a change based on its _source_.
+A model listener declaration block has the same form and meaning as any of the record types supported by [Invokers](Invokers.md) and [Listeners](EventInjectionAndBoiling.md#listener-boiling) -
+including the one-string compact syntax documented with [Invokers](Invokers.md#compact-format), and the use of [Priorities](Priorities.md). Like standard event listener entries, model
+listeners can provide a `namespace` entry. Just one model listener with a particular namespace will be registered on a particular ChangeApplier. 
 
+A model listener declaration block includes three extra features beyond those found in ordinary event listeners. Firstly is the possibility of including a member [`path`](#the-path-entry-in-a-model-listener-declaration), which can hold
+a more complex path specification which the model listener can match on than can be encoded in the single string in a `<shortModelPathReference>`, the ability to filter a change based on its [_source_](#source-tracking-and-filtering-in-model-listener-blocks), using the members
+`includeSource` and `excludeSource`, and finally the possibility that any IoC-resolved material in the listener declaration may match the special context name [`change`](#the-special-context-change-) which corresponds to the model change
+that the listener is reacting to. These entries are described in the linked sections below:
+
+#### The `path` entry in a model listener declaration ####
+
+The `path` entry holds basically the same function as the `<shortModelPathReference>` which may be held in the key of the listener declaration, but allows a richer set of path specifications to be used in order to
+specify which changes this model listener is interested in responding to. Note that if the `path` entry is supplied, then the key of the listener will be interpreted as a _namespace_ for the listener rather than as
+a path specification.
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Possible values for the <code>path</code> member of a model listener declaration</th>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <th>Meaning</th>
+            <th>Examples</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>String</code></td>
+            <td>A <code>&lt;shortModelPathReference&gt;</code></td>
+            <td>
+                See examples in section [Model Path References](#model-path-references)
+            </td>
+        </tr>
+        <tr>
+            <td><code>Object</code></td>
+            <td>A `<modelPathRecord>`, including members <ul>
+                <li><code>segs</code> (<code>Array</code> - required) and</li> 
+                <li><code>context</code> (<code>String</code> - optional) which encodes the model path to be matched.</li>
+                </ul>
+                </td>
+            <td>These examples encode exactly the same path expressions, in the same order as in the section [Model Path References](#model-path-references) 
+                <ul>
+                    <li><code>{segs: ["modelPath"]}</code></li>
+                    <li><code>{segs: ["modelPath", "&#42"]}</code></li>
+                    <li><code>{segs: []}</code></li>
+                    <li><code>{segs: ["&#42"]}</code></li>
+                    <li><code>{segs: ["modelPath"], context: "otherComponent"}</code></li>
+                    <li><code>{segs: ["modelPath", "&#42"], context: "otherComponent"}</code></li>
+                    <li><code>{segs: [], context: "otherComponent"}</code></li>
+                    <li><code>{segs: ["&#42"], context: "otherComponent"}</code></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><code>Array</code></td>
+            <td>An array each of whose element may either be a String holding a <code>&lt;shortModelPathReference&gt;</code> or a <code>&lt;modelPathRecord&gt;</code>. The listener will be notified when <it>any</it> of these
+            paths receive changes. Below is further information on <a href="#matching-on-multiple-paths-in-a-single-model-listener-declaration"><code>matching on multiple paths</code></a></td>
+            <td><code>[
+                    "position", {
+                        segs: [["windowHolders"], "{that}.options.ourWindow"]
+                    }
+                ]</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+#### Matching on multiple paths in a single model listener declaration
+
+When the `path` member of a model listener declaration holds an `Array`, the listener will be notified when <it>any</it> of these paths receive changes. 
+
+Note that a listener which specifies references to multiple component targets in such a list will just receive one notification per component of its changes. A listener which supplies an
+array of more than one element in <code>path</code> will not be able to make use of either the special context [`change`](#the-special-context-change-) ***or*** the possibility of using the wildcard character
+`*` in the final path segment. Note that elements of <code>segs</code> may themselves consist of IoC references resolving to configuration in the tree (although they may not hold references to model material).
 
 #### The special context `change` ####
 An extra [context name](Contexts.md) is available in a model listener block by the name of `change`. This is bound to the particular change event which triggered this listener. This context behaves as an object with the following fields:
@@ -106,7 +182,8 @@ An extra [context name](Contexts.md) is available in a model listener block by t
 
 Each transaction holding one or more changes is associated with a particular _source_. Model listeners can use two special directives, `excludeSource` and `includeSource` in order to register their
 interest or disinterest in receiving changes from particular sources. The default behaviour is to receive all changes from all sources. The values of these fields are single strings representing sources,
-or arrays of these strings. The three currently supported sources are `init`, `relay` and `local` - custom user-defined sources may be supported in the future.
+or arrays of these strings. Three currently supported built-in sources are `init`, `relay` and `local` - in addition, arbitrary user-defined sources may be attached to a change by making use of the `source` element
+of a [`changeRecord`](#declarative-style-for-triggering-a-change) or call to [`applier.change`](#programmatic-style-for-triggering-a-change).
 
 <table>
     <thead>
@@ -133,12 +210,12 @@ or arrays of these strings. The three currently supported sources are `init`, `r
     </tbody>
 </table>
 
-The values of sources supported as values in `excludeSource` and `includeSource` are as follows:
+The values of built-in sources supported as values in `excludeSource` and `includeSource` are as follows:
 
 <table>
     <thead>
         <tr>
-            <th colspan="2">Values for sources supported as entries in <code>excludeSource</code> and <code>includeSource</code> as part of a model listener declaration</th>
+            <th colspan="2">Values for built-in sources supported as entries in <code>excludeSource</code> and <code>includeSource</code> as part of a model listener declaration</th>
         </tr>
         <tr>
             <th>Source</th>
@@ -284,13 +361,14 @@ Users will in most cases only be interested in the first argument in this signat
 
 ### Declarative style for triggering a change###
 
-The declarative style for triggering model changes involve a kind of IoC record (a _change record_) that is supported in various places in component configuration, in particular as part of the definition of both [Invokers](Invokers.md) and [Listeners](InfusionEventSystem.md) of an IoC-configured component.
-This style of record is recognised by its use of the special member `changePath` which determines which path in which component model will receive the change.
+The declarative style for triggering model changes involve a kind of IoC record (a _change record_) that is supported in various places in component configuration, 
+in particular as part of the definition of both [Invokers](Invokers.md) and [Listeners](InfusionEventSystem.md) of an IoC-configured component.
+This style of record is recognised by its use of the special member `changePath` (a "[duck typing](https://en.wikipedia.org/wiki/Duck_typing) field") which determines which path in which component model will receive the change.
 
 <table>
     <thead>
         <tr>
-            <th colspan="3">Change record for firing changes by declarative binding</th>
+            <th colspan="3"><code>changeRecord</code> for firing changes by declarative binding</th>
         </tr>
         <tr>
             <th>Member</th>
@@ -322,6 +400,13 @@ This style of record is recognised by its use of the special member `changePath`
             <td>String (optional)</td>
             <td>If this holds the value <code>DELETE</code>, this change will remove the value held at <code>changePath</code>. In this case, <code>value</code> should not be supplied. This is the recommended way of removing material from a model - it has the effect of the <code>delete</code> primitive of the JavaScript language. Sending changes holding a <code>value</code> of <code>null</code> or <code>undefined</code> does not have the same effect, as per the JavaScript language spec.</td>
         </tr>
+        <tr>
+            <td><code>source</code></td>
+            <td>String/Array of String/Object(optional)</td>
+            <td>Any string or strings supplied here will be marked to the change as it propagates. Model listeners and relay rules can then choose to opt in or opt out of responding to this change by means of the
+            <a href="#source-tracking-and-filtering-in-model-listener-blocks">source-related</a> <code>includeSource</code> and <code>excludeSource</code> members in their records. If an <code>Object</code> is supplied here,
+            it is assumed that the sources are encoded in its keys, and its values will be ignored.</td>
+        </tr>
     </tbody>
 </table>
 
@@ -351,7 +436,7 @@ console.log(that.model); // "finalValue"
 There are two calls which can be used to fire a change request - one informal, using immediate arguments, and a more formal method which constructs a concrete `changeRequest` object.
 
 ```javascript
-applier.change(path, value, type)
+applier.change(path, value, type, source)
 ```
 
 <table>
@@ -378,16 +463,25 @@ applier.change(path, value, type)
             <td>(optional) <code>"ADD"</code> or <code>"DELETE"</code></td>
             <td>A key string indicating whether this is an <code>ADD</code> request (the default) or a <code>DELETE</code> request (a request to unlink a part of the model)</td>
         </tr>
+        <tr>
+            <td><code>source</code></td>
+            <td>(optional) <code>String/Array of String/Object</code><code></td>
+            <td>One or more strings representing <code>source</code>s which should be marked to this change. See documentation on the <a href="#declarative-style-for-triggering-a-change"><code>source</code></a> member of a <code>changeRecord</code></td>
+        </tr>
     </tbody>
 </table>
 
 The semantics and values are exactly the same as described in the section on declarative triggering above - with the difference that IoC references may not be supplied for `path`.
 
 ```javascript
-applier.fireChangeRequest(changeRequest)
+applier.fireChangeRequest(<changeRequest>)
 ```
 
-where a **changeRequest** is an object holding the above named parameters in named fields - e.g. `{path: "modelPath", value: "newValue"}` `change` and `fireChangeRequest` reach exactly the same implementation - the only difference is in the packaging of the arguments. For `change` they are spread out as a sequence of 3 arguments, whereas for `fireChangeRequest`, they are packaged up as named fields (`path`, `value` and `type`) of a plain JavaScript object. Such an object is called a **"ChangeRequest"** and is a convenient package for these requests to pass around in in an event pipeline within the framework.
+where a `changeRequest` is an object holding the above named parameters in named fields - e.g. `{path: "modelPath", value: "newValue"}`. Note that a `changeRequest` is the same as a 
+[`changeRecord`](#declarative-style-for-triggering-a-change) only the path is encoded in a field named `path` rather than `changePath`.
+
+`change` and `fireChangeRequest` reach exactly the same implementation - the only difference is in the packaging of the arguments. For `change` they are spread out as a sequence of 4 arguments, whereas for `fireChangeRequest`, they are packaged up as named fields (`path`, `value` and `type`) of a plain JavaScript object. 
+Such an object is called a **changeRequest** and is a convenient package for these requests to pass around in in an event pipeline within the framework.
 
 The programmatic style for **firing** changes is less strongly discouraged than the programmatic style for **listening** to changes is - since it does not run into the same lifecycle issues that programmatic listeners do. However, the declarative style for triggering changes should be used wherever it can.
 
