@@ -146,6 +146,14 @@ globally unique with high probability (50% chance of collision after a million t
 `prefix` is the value of `fluid.fluidInstance` identifying this Infusion instance, and `id` is a increasing integer initialised at
 1 when this infusion instance starts up.
 
+### fluid.add(a, b)
+
+* `a {Number}` The first operand to be added
+* `b {Number}` The second operand to be added
+* Returns: `{Number}` The value of `a + b`
+
+Returns the result of adding its two arguments. This is a function convenient to supply, for 
+example, to [`fluid.accumulate`](#fluid-accumulate-list-fn-initial-) to sum a list of numbers.
 
 ## Creation, copying and destroying
 
@@ -229,7 +237,19 @@ Return a list or hash of objects, transformed by one or more functions. Similar 
 
 Scan through a list of objects, "accumulating" a value over them
 (may be a straightforward "sum" or some other chained computation). "accumulate" is the name derived
-from the C++ STL, other names for this algorithm are "reduce" or "[fold](https://en.wikipedia.org/wiki/Fold_%28higher-order_function%29)".
+from the C++ STL, other names for this algorithm are "reduce" or "[fold](https://en.wikipedia.org/wiki/Fold_%28higher-order_function%29)". Example:
+
+```javascript
+var numbers = fluid.iota(4, 1); // numbers now holds [1, 2, 3, 4]
+var sum = fluid.accumulate(numbers, fluid.add, 0); // sum now holds 10
+```
+
+Note that other common uses of `fluid.accumulate` (maximum and minimum) can be achieved through
+the multi-arg versions of `Math.max` and `Math.min`, e.g.
+
+```javascript
+var max = Math.max.apply(null, numbers);
+```
 
 ### fluid.remove_if(source, fn[, target])
 
@@ -284,7 +304,6 @@ the list are removed (the default), or all keys present in the list are removed 
 * Returns: `{Array|Object}` A shallow clone of `toFilter` with the supplied keys removed
 
 A convenience wrapper for `fluid.filterKeys` with the argument `exclude` set to `true`. Returns a shallow clone of the supplied object with listed keys removed.
-
 
 ### fluid.keys(object)
 
@@ -345,6 +364,29 @@ var CATTyears = fluid.hashToArray(hash, "species", function (newElement, oldElem
 Converts an array consisting of a mixture of arrays and non-arrays into the concatenation of any inner arrays 
 with the non-array elements. The original array *** will not be modified ***. See description of [mapcat](http://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
 
+### fluid.freezeRecursive(tofreeze)
+
+* `tofreeze {Array|Object}` The object to be frozen recursively
+* Returns: `{Array|Object}` The supplied argument, recursively frozen
+
+Calls [`Object.freeze`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) at each level of containment of the supplied object.
+This function is a no-op if a primitive value is supplied.
+
+### fluid.pushArray(holder, member, topush)
+
+* `holder {Array|Object}` The holding object whose member is to receive the pushed element(s).
+* `member {String}` The member of the `holder` onto which the element(s) are to be pushed
+* `topush {Array|Object}` If an array, these elements will be added to the end of the array using `Array.push.apply`. 
+If an object, it will be pushed to the end of the array using `Array.push`.
+ 
+Pushes an element or elements onto an array, initialising the array as a member of a holding object if it is
+not already allocated. Example:
+
+```javascript
+var holder = {};
+fluid.pushArray(holder, "array", 3); // holder.array now holds [3]
+fluid.pushArray(holder, "array", [4, 5]); // holder.array now holds [3, 4, 5]
+```
 
 ## Sorting and searching
 

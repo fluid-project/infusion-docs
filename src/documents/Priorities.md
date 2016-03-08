@@ -92,7 +92,12 @@ The following table lists all the locations in component options where prioritie
   
   <tr><td><a href="ChangeApplierAPI.md#model-listener-declaration"><code>modelListeners</code></a></td>
   <td>Ordering as for <code>listeners</code>. Model listeners will be sorted globally across the entire <a href="ModelRelay.md">model skeleton</a> by priority when a transaction concludes.</td>
-  <td>Full support for constraints, model listeners not uniquified based on <code>namespace</code> (currently)</td></tr>
+  <td>Full support for constraints, model listeners uniquified based on <code>namespace</code></td></tr>
+
+  <tr><td><a href="ModelRelay.md#explicit-model-relay-style"><code>modelRelay</code></a></td>
+  <td>Ordering as for <code>listeners</code>. Model relay rules will be sorted locally at the point of responding to a model change within a <a href="ModelRelay.md">transaction</a>. 
+      Note that the same model relay rule(s) may operate multiple times within a transaction.</td>
+  <td>Full support for constraints, model relay rules uniquified based on <code>namespace</code></td></tr>
   
   <tr><td><a href="IoCSS.md"><code>distributeOptions</code></a></td>
   <td>Lower numeric numbers, <code>last</code> and <code>after</code> will appear <strong>later</strong> in the merge order (with merging considering to occur from left to right &#8212; note that this is the opposite direction in which

@@ -15,7 +15,7 @@ literal JavaScript API calls. This page presents both programmatic calls and the
 
 The declarative style for registering interest in change events uses an entry in the `modelListeners` options area of a `modelComponent`. These listeners are attached to the applier during the construction process of the entire component (and its surrounding tree) and so will therefore become notified as part of the [initial transaction](ModelRelay.md#the-initial-transaction) - they will therefore get to observe the model changing state from its primordial value of undefined to holding their initial resolved value. This is the **recommended** way of listening to model changes using the ChangeApplier system.
 
-Each record in the modelListeners block has the format `<shortModelPathReference|namespace>: <modelListener declaration>`. The left and right hand sides of this definition will be explained in the subsequent sections:
+Each record in the modelListeners block has the format `<shortModelPathReference or namespace>: <modelListener declaration>`. The left and right hand sides of this definition will be explained in the subsequent sections:
 
 #### Model Path References ####
 
@@ -113,13 +113,13 @@ a path specification.
             <td>These examples encode exactly the same path expressions, in the same order as in the section [Model Path References](#model-path-references) 
                 <ul>
                     <li><code>{segs: ["modelPath"]}</code></li>
-                    <li><code>{segs: ["modelPath", "&#42"]}</code></li>
+                    <li><code>{segs: ["modelPath", "&#42;"]}</code></li>
                     <li><code>{segs: []}</code></li>
-                    <li><code>{segs: ["&#42"]}</code></li>
+                    <li><code>{segs: ["&#42;"]}</code></li>
                     <li><code>{segs: ["modelPath"], context: "otherComponent"}</code></li>
-                    <li><code>{segs: ["modelPath", "&#42"], context: "otherComponent"}</code></li>
+                    <li><code>{segs: ["modelPath", "&#42;"], context: "otherComponent"}</code></li>
                     <li><code>{segs: [], context: "otherComponent"}</code></li>
-                    <li><code>{segs: ["&#42"], context: "otherComponent"}</code></li>
+                    <li><code>{segs: ["&#42;"], context: "otherComponent"}</code></li>
                 </ul>
             </td>
         </tr>
@@ -143,7 +143,7 @@ When the `path` member of a model listener declaration holds an `Array`, the lis
 
 Note that a listener which specifies references to multiple component targets in such a list will just receive one notification per component of its changes. A listener which supplies an
 array of more than one element in <code>path</code> will not be able to make use of either the special context [`change`](#the-special-context-change-) ***or*** the possibility of using the wildcard character
-`*` in the final path segment. Note that elements of <code>segs</code> may themselves consist of IoC references resolving to configuration in the tree (although they may not hold references to model material).
+`*` in the final path segment. Note that elements of <code>segs</code> may themselves consist of IoC references resolving to configuration in the tree (although they may not hold references to model material - they are evaluated just once when the component constructs).
 
 #### The special context `change` ####
 An extra [context name](Contexts.md) is available in a model listener block by the name of `change`. This is bound to the particular change event which triggered this listener. This context behaves as an object with the following fields:
@@ -183,7 +183,7 @@ An extra [context name](Contexts.md) is available in a model listener block by t
 Each transaction holding one or more changes is associated with a particular _source_. Model listeners can use two special directives, `excludeSource` and `includeSource` in order to register their
 interest or disinterest in receiving changes from particular sources. The default behaviour is to receive all changes from all sources. The values of these fields are single strings representing sources,
 or arrays of these strings. Three currently supported built-in sources are `init`, `relay` and `local` - in addition, arbitrary user-defined sources may be attached to a change by making use of the `source` element
-of a [`changeRecord`](#declarative-style-for-triggering-a-change) or call to [`applier.change`](#programmatic-style-for-triggering-a-change).
+of a [`changeRecord`](#declarative-style-for-triggering-a-change) or argument in call to [`applier.change`](#programmatic-style-for-triggering-a-change).
 
 <table>
     <thead>
@@ -236,10 +236,14 @@ The values of built-in sources supported as values in `excludeSource` and `inclu
             <td><code>local</code></td>
             <td>A change directly triggered via the ChangeApplier on this component - either via a declarative record holding <code>changePath</code>, or programmatically using an <code>applier.change()</code> call</td>
         </tr>
+        <tr>
+            <td><code>*</code></td>
+            <td>Matches all sources</td>
+        </tr>
     </tbody>
 </table>
 
-Example featuring source filtering:
+##### Example featuring built-in change source filtering:
 
 ```javascript
 fluid.defaults("examples.sourceExample1", {
@@ -249,18 +253,56 @@ fluid.defaults("examples.sourceExample1", {
     },
     modelListeners: {
         things: {
-            funcName: "console.log",
+            funcName: "fluid.log",
             excludeSource: "init",
-            args: "{change}.value"
+            args: ["Value changed to ", "{change}.value"]
         }
     }
 });
 
-var that = examples.sourceExample1();
-that.applier.change("things", "new value");
+var that = examples.sourceExample1(); // no log from this line
+that.applier.change("things", "new value"); // logs "Value changed to new value"
 ```
 
-This example will not log the transition from the initial model state of `undefined` to the console. It will, however, log the value `new value` triggered via the ChangeApplier API.
+This example will not log the transition from the initial model state of `undefined` to the console. 
+It will, however, log the value `new value` triggered via the ChangeApplier API.
+
+##### Example featuring user-defined change source filtering
+
+```javascript
+fluid.defaults("examples.sourceExample2", {
+    gradeNames: ["fluid.modelComponent"],
+    model: {
+        position: 20
+    },
+    invokers: {
+       scrollTo: {
+           changePath: "position",
+           value: "{arguments}.0",
+           source: "scrollbar"
+       },
+    },
+    modelListeners: {
+        position: {
+            funcName: "fluid.log",
+            excludeSource: "scrollbar",
+            args: ["Value changed to ", "{change}.value"]
+        }
+    }
+});
+
+var that = examples.sourceExample2(); // This will log the initial change to value 20
+that.scrollTo(30); // This logs nothing - source "scrollbar" is excluded
+that.applier.change("position", 40); // This will log "Value changed to 40"
+```
+
+This example *will* log the transition from the initial model state of `undefined` to the console, since
+unlike `sourceExample1` it does not have `excludeSource: init`. However, changes caused to the model
+via the invoker `scrollTo` will not be logged since they have the source `scrollbar` marked
+to them. The third interactive line shows that changes to the model without any user source
+marking *will* be logged by the listener.
+
+##### Warning and workaround for issues involving initial transaction and `onCreate` race issues
 
 <div class="infusion-docs-note"><strong>Note:</strong> The current implementation of the ChangeApplier has a bug ([FLUID-5519](http://issues.fluidproject.org/browse/FLUID-5519)) which will often cause a model listener to be notified
 before much of the surrounding component has constructed. This can be annoying, since the model listener may want to rely on other infrastructure (e.g. invokers, etc.) that it cannot
@@ -269,7 +311,7 @@ delivered as part of [FLUID-4925](http://issues.fluidproject.org/browse/FLUID-49
 
 #### Wildcards in model path references ####
 
-The last path segment of a model path reference may or may not be `"*"`. Whether it is `"*"` or not, the reference matches exactly the same set of changes - the only difference is in how they are reported. A path reference of `"things"` will match all changes occurring below this path segment, and report all those occurring within a single transaction as a single change. A path reference of `"things.*"` will match the same changes, but will report one change for each immediately nested path segment touched by the changes. For example, the following definition will log just one
+The last path segment of a model path reference may be `"*"`. Whether the reference has this `"*"` suffix or not, the reference matches exactly the same set of changes - the only difference is in how they are reported. A path reference of `"things"` will match all changes occurring below this path segment, and report all those occurring within a single transaction as a single change. A path reference of `"things.*"` will match the same changes, but will report one change for each immediately nested path segment touched by the changes. For example, the following definition will log just one
 
 ```javascript
 fluid.defaults("examples.pathExample1", {
@@ -325,7 +367,7 @@ at the time the component is constructed. Note that programmatically attached li
 The listener is notified after the change (or set of coordinated changes) has already been applied to the model - it is too late to affect this process and so this event is not _preventable_. The signature for these listeners is
 
 ```javascript
-function listener(value, oldValue, pathSegs, changeRequests)
+function listener(value, oldValue, pathSegs, changeRequest, transaction)
 ```
 
 <table>
@@ -349,8 +391,13 @@ function listener(value, oldValue, pathSegs, changeRequests)
             <td>An array of <code>String</code> path segments holding the path at which <code>value</code> and <code>oldValue</code> are/were held</td>
         </tr>
         <tr>
-            <td><code>changeRequests</code></td>
-            <td>A single <code>ChangeRequest</code> object or an array of them (see below) which were responsible for this change (may be empty)</td>
+            <td><code>changeRequest</code></td>
+            <td>May contain a single <code>ChangeRequest</code> object which was responsible for this change, but will often be empty. This signature element is not a stable API</td>
+        </tr>
+        <tr>
+            <td><code>transaction</code></td>
+            <td>May contain a <code>Transaction</code> object which this change was bound to. Primarily useful for the <code>source</code> member which can be used to manually
+            check which change sources the transaction is marked to. This signature element is not a stable API</td>
         </tr>
     </tbody>
 </table>
@@ -487,11 +534,11 @@ The programmatic style for **firing** changes is less strongly discouraged than 
 
 ### Example of two styles of declarative model listener registration ###
 
-Users can freely define very fine or coarse-grained listeners for changes in a model using the ChangeApplier. Here are some examples using the new declarative model listener registration syntax in Infusion 1.5:
+Users can freely define very fine or coarse-grained listeners for changes in a model using the ChangeApplier. Here are some examples using the declarative model listener registration syntax:
 
 ```javascript
 fluid.defaults("my.component", {
-    gradeNames: ["fluid.modelComponent", "fluid.component"],
+    gradeNames: "fluid.modelComponent",
 
     invokers: {
         printChange: {
@@ -556,8 +603,7 @@ an IoC component tree and should be constructed by the IoC system itself.
 ### Operating transactions manually ###
 
 A user may be interested in economising on notifications to model updates; by batching these up into a single transaction, there will
-just be a single notification of each listener which is impacted around the model skeleton. This facility is unstable and will be
-rewritten prior to the final Infusion 2.0 release.
+just be a single notification of each listener which is impacted around the model skeleton. This facility is not a stable API (at the Infusion 2.0 version level and before).
 
 A transaction can be opened using the `initiate()` method of the applier function which returns a transaction object:
 
