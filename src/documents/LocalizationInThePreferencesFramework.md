@@ -69,13 +69,7 @@ The message bundle is attached to each panel component as the `messageBase` opti
 
 ## Adding Message Bundles
 
-
-Message bundles can be specified in one of two ways:
-
-1. through the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md) (if schemas are being used), or
-2. directly to the `messageLoader` (if grades are being used).
-
-The Preferences Framework will load all of the Message Bundles. When using an auxiliary schema the bundles are automatically distributed to the panels. If an auxiliary schema is not used, the `messageBase` options of each panel will need to be set manually using an IoC reference; `{messageLoader}.resources.<messageBundle>.resourceText`.
+Message bundles can be specified through the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md). The Preferences Framework will load all of the Message Bundles and automatically distribute them to the panels.
 
 ### Example Auxiliary Schema
 
@@ -122,25 +116,6 @@ The Preferences Framework will load all of the Message Bundles. When using an au
         }
     }
 }
-```
-
-### Example Message Loader Specification
-
-```javascript
-fluid.defaults("my.messageLoader", {
-    gradeNames: ["fluid.prefs.resourceLoader"],
-    resources: {
-        prefsEditor: "%messagePrefix/prefsEditor.json",
-        textSize: "%messagePrefix/textSize.json"
-    }
-});
-fluid.prefs.separatedPanel("#myPrefsEditor", {
-    ...
-    messageLoader: {
-        gradeNames: ["my.messageLoader"]
-    },
-    ...
-});
 ```
 
 ## Using Message Bundles
