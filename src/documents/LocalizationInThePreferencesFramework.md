@@ -216,6 +216,7 @@ The messageLoader takes `defaultLocale` and `locale` options for specifying whic
 If a requested localization cannot be found, the messageLoader will attempt to find another message bundle to satisfy the request. Language codes are expected in a form similar to BCP 47 tags but with a "\_" instead of a "-" separating the language code from the country code.
 
 Assuming the Canadian French message bundle is requested:
+
 1. look for a message bundle corresponding to the language code specified by the `locale` option (e.g. "fr_CA")
 2. look for a message bundle with the same language as the language code specified by the `locale` option (e.g. "fr")
 3. look for a message bundle corresponding to the language code specified by the `defaultLocale` option (e.g. "en_US")
