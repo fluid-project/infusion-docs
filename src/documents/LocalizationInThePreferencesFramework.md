@@ -77,8 +77,6 @@ Message bundles can be specified in one of two ways:
 
 The Preferences Framework will load all of the Message Bundles. When using an auxiliary schema the bundles are automatically distributed to the panels. If an auxiliary schema is not used, the `messageBase` options of each panel will need to be set manually using an IoC reference; `{messageLoader}.resources.<messageBundle>.resourceText`.
 
-Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the combined Message Bundle at its `parentBundle` option (as described above). When using the auxiliary schema, all panels are assigned the grade `fluid.prefs.defaultPanel` by the Framework.
-
 ### Example Auxiliary Schema
 
 ```javascript
@@ -99,7 +97,7 @@ Any panel that has the grade `fluid.prefs.defaultPanel` will have access to the 
             "type": "fluid.prefs.panels.textSize",
             "container": ".flc-prefs-text-size",
             "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
-            "message": "%messagePrefix/textSize.json"
+            "message": "%messagePrefix/textSize.json" // message bundle for the fluid.prefs.panels.textSize component
         }
     },
     "lineSpace": {
