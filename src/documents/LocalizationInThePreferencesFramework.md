@@ -11,7 +11,7 @@ Localization in the Preferences Framework makes use of message bundles: JSON fil
 
 Message bundles are JSON files containing key/value pairs representing the message key and the localized text associated with it. Each set of localized text should be contained in its own message bundle.
 
-```javascript
+```json
 {
     "slidingPanelShowText": "+ Show Display Preferences",
     "slidingPanelHideText": "- Hide"
@@ -22,7 +22,7 @@ Message bundles cannot contain arrays. Instead a namespace should be used to gro
 
 <div class="infusion-docs-note"><strong>Note:</strong> The namespace should <strong>not</strong> include ".", which is used for path parsing.</div>
 
-```javascript
+```json
 {
     "contrast-default": "Default",
     "contrast-bw": "Black on white",
@@ -178,6 +178,7 @@ It is accessed the same way that an individual string is referenced, except that
     fluid.defaults("fluid.prefs.panel.contrast", {
     ...
     stringArrayIndex: {
+        // the theme values correspond to message keys in the message bundle.
         theme: ["contrast-default", "contrast-bw", "contrast-wb", "contrast-by", "contrast-yb", "contrast-lgdg"]
     },
     protoTree: {
@@ -197,6 +198,19 @@ It is accessed the same way that an individual string is referenced, except that
     }
     ...
 });
+```
+
+The values in the `theme` array, within `stringArrayIndex`, directly correspond to namespaced message keys from the message bundle.
+
+```json
+{
+    "contrast-default": "Default",
+    "contrast-bw": "Black on white",
+    "contrast-wb": "White on black",
+    "contrast-by": "Black on yellow",
+    "contrast-yb": "Yellow on black",
+    "contrast-lgdg": "Low contrast"
+}
 ```
 
 ### Direct Access
