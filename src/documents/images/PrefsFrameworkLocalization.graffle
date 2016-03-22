@@ -6,8 +6,8 @@
 	<integer>0</integer>
 	<key>ApplicationVersion</key>
 	<array>
-		<string>com.omnigroup.OmniGrafflePro</string>
-		<string>139.18.0.187838</string>
+		<string>com.omnigroup.OmniGraffle6</string>
+		<string>169.10.0.256984</string>
 	</array>
 	<key>AutoAdjust</key>
 	<true/>
@@ -21,11 +21,6 @@
 		<integer>2</integer>
 		<key>Style</key>
 		<dict>
-			<key>shadow</key>
-			<dict>
-				<key>Draws</key>
-				<string>NO</string>
-			</dict>
 			<key>stroke</key>
 			<dict>
 				<key>Draws</key>
@@ -46,198 +41,11 @@
 	<key>Creator</key>
 	<string>Anastasia Cheetham</string>
 	<key>DisplayScale</key>
-	<string>1 0/72 in = 1.0000 in</string>
+	<string>1 in = 1.00000 in</string>
 	<key>GraphDocumentVersion</key>
-	<integer>8</integer>
+	<integer>12</integer>
 	<key>GraphicsList</key>
 	<array>
-		<dict>
-			<key>Class</key>
-			<string>LineGraphic</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Font</key>
-				<string>Helvetica</string>
-				<key>Size</key>
-				<real>14</real>
-			</dict>
-			<key>Head</key>
-			<dict>
-				<key>ID</key>
-				<integer>27</integer>
-			</dict>
-			<key>ID</key>
-			<integer>58</integer>
-			<key>Points</key>
-			<array>
-				<string>{325.75, 288}</string>
-				<string>{288.5, 288}</string>
-			</array>
-			<key>Style</key>
-			<dict>
-				<key>stroke</key>
-				<dict>
-					<key>Cap</key>
-					<integer>0</integer>
-					<key>GapRatio</key>
-					<real>0.5</real>
-					<key>HeadArrow</key>
-					<string>Arrow</string>
-					<key>Legacy</key>
-					<true/>
-					<key>TailArrow</key>
-					<string>0</string>
-					<key>Width</key>
-					<real>4</real>
-				</dict>
-			</dict>
-			<key>Tail</key>
-			<dict>
-				<key>ID</key>
-				<integer>56</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>Class</key>
-			<string>LineGraphic</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Font</key>
-				<string>Helvetica</string>
-				<key>Size</key>
-				<real>14</real>
-			</dict>
-			<key>Head</key>
-			<dict>
-				<key>ID</key>
-				<integer>8</integer>
-			</dict>
-			<key>ID</key>
-			<integer>57</integer>
-			<key>Points</key>
-			<array>
-				<string>{305.5, 153.00001702951232}</string>
-				<string>{279.5, 153.00001702951232}</string>
-			</array>
-			<key>Style</key>
-			<dict>
-				<key>stroke</key>
-				<dict>
-					<key>Cap</key>
-					<integer>0</integer>
-					<key>GapRatio</key>
-					<real>0.5</real>
-					<key>HeadArrow</key>
-					<string>Arrow</string>
-					<key>Legacy</key>
-					<true/>
-					<key>TailArrow</key>
-					<string>0</string>
-					<key>Width</key>
-					<real>4</real>
-				</dict>
-			</dict>
-			<key>Tail</key>
-			<dict>
-				<key>ID</key>
-				<integer>55</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{326.25, 270}, {168.75, 36}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Font</key>
-				<string>Helvetica</string>
-				<key>Size</key>
-				<real>14</real>
-			</dict>
-			<key>ID</key>
-			<integer>56</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0.998171</string>
-						<key>r</key>
-						<string>0.997866</string>
-					</dict>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-			</dict>
-			<key>Text</key>
-			<dict>
-				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
-{\fonttbl\f0\fmodern\fcharset0 Courier;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-
-\f0\fs28 \cf0 \{that\}.options\
-.parentBundle}</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{306, 135}, {171, 36}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Font</key>
-				<string>Helvetica</string>
-				<key>Size</key>
-				<real>14</real>
-			</dict>
-			<key>ID</key>
-			<integer>55</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0.998171</string>
-						<key>r</key>
-						<string>0.997866</string>
-					</dict>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-			</dict>
-			<key>Text</key>
-			<dict>
-				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
-{\fonttbl\f0\fmodern\fcharset0 Courier;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-
-\f0\fs28 \cf0 \{prefsEditorLoader\}.msgResolver}</string>
-			</dict>
-		</dict>
 		<dict>
 			<key>Class</key>
 			<string>LineGraphic</string>
@@ -257,11 +65,16 @@
 			<integer>46</integer>
 			<key>Points</key>
 			<array>
-				<string>{233.4238495551059, 234.45916766850931}</string>
-				<string>{248.54407687216855, 269.54083237858231}</string>
+				<string>{247.61501902885635, 234.35294381411825}</string>
+				<string>{301.09297346554882, 287.64696628601013}</string>
 			</array>
 			<key>Style</key>
 			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
 				<key>stroke</key>
 				<dict>
 					<key>HeadArrow</key>
@@ -297,11 +110,16 @@
 			<integer>45</integer>
 			<key>Points</key>
 			<array>
-				<string>{208.89098753761428, 234.37121624008245}</string>
-				<string>{177.07693935431942, 269.62878369900358}</string>
+				<string>{228.02936706912294, 234.49900403059124}</string>
+				<string>{224.67898070580426, 287.50101236454532}</string>
 			</array>
 			<key>Style</key>
 			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
 				<key>stroke</key>
 				<dict>
 					<key>HeadArrow</key>
@@ -337,11 +155,16 @@
 			<integer>44</integer>
 			<key>Points</key>
 			<array>
-				<string>{190.78337201593081, 234.23264953960492}</string>
-				<string>{120.44257677100013, 271.20872899977229}</string>
+				<string>{213.33414766652004, 234.3784904047356}</string>
+				<string>{167.37389798802232, 287.6216052813794}</string>
 			</array>
 			<key>Style</key>
 			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
 				<key>stroke</key>
 				<dict>
 					<key>HeadArrow</key>
@@ -377,11 +200,16 @@
 			<integer>43</integer>
 			<key>Points</key>
 			<array>
-				<string>{250.64132029114393, 171.23287926841078}</string>
-				<string>{301.05552839634117, 197.76755410381514}</string>
+				<string>{263.65507890172853, 171.2621830686013}</string>
+				<string>{306.64207238749486, 197.73442235035472}</string>
 			</array>
 			<key>Style</key>
 			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
 				<key>stroke</key>
 				<dict>
 					<key>HeadArrow</key>
@@ -417,11 +245,16 @@
 			<integer>42</integer>
 			<key>Points</key>
 			<array>
-				<string>{218.7533075514323, 171.49454975526746}</string>
-				<string>{222.62563636282599, 197.50580223369843}</string>
+				<string>{232.7529064195613, 171.49886767638057}</string>
+				<string>{230.99989207555296, 197.50235361622472}</string>
 			</array>
 			<key>Style</key>
 			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
 				<key>stroke</key>
 				<dict>
 					<key>HeadArrow</key>
@@ -457,11 +290,16 @@
 			<integer>41</integer>
 			<key>Points</key>
 			<array>
-				<string>{185.32447926653521, 171.25570539204719}</string>
-				<string>{140.81588641248374, 197.74378902127543}</string>
+				<string>{198.33800042333843, 171.22755864211337}</string>
+				<string>{146.39816214935567, 197.77504502087714}</string>
 			</array>
 			<key>Style</key>
 			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
 				<key>stroke</key>
 				<dict>
 					<key>HeadArrow</key>
@@ -497,12 +335,17 @@
 			<integer>40</integer>
 			<key>Points</key>
 			<array>
-				<string>{234.99509951250295, 108.40686669403679}</string>
-				<string>{216, 135}</string>
-				<string>{216, 135}</string>
+				<string>{232.62432899521463, 108.49964524420992}</string>
+				<string>{231.62553107786101, 135}</string>
+				<string>{231.62553107786101, 135}</string>
 			</array>
 			<key>Style</key>
 			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
 				<key>stroke</key>
 				<dict>
 					<key>HeadArrow</key>
@@ -526,7 +369,7 @@
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{202.5, 281}, {12, 17}}</string>
+					<string>{{265.5, 299}, {12, 17}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -542,8 +385,6 @@
 					</dict>
 					<key>ID</key>
 					<integer>26</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
 					<key>Style</key>
 					<dict>
 						<key>fill</key>
@@ -565,23 +406,23 @@
 					<key>Text</key>
 					<dict>
 						<key>Pad</key>
-						<integer>0</integer>
+						<real>0.0</real>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 ...}</string>
 						<key>VerticalPad</key>
-						<integer>0</integer>
+						<real>0.0</real>
 					</dict>
 					<key>Wrap</key>
 					<string>NO</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{225, 270}, {63, 36}}</string>
+					<string>{{288, 288}, {63, 36}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -593,8 +434,6 @@
 					</dict>
 					<key>ID</key>
 					<integer>27</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
 					<key>Style</key>
 					<dict>
 						<key>fill</key>
@@ -602,11 +441,11 @@
 							<key>Color</key>
 							<dict>
 								<key>b</key>
-								<string>0.565944</string>
+								<real>0.565944</real>
 								<key>g</key>
-								<string>0.753466</string>
+								<real>0.75346599999999997</real>
 								<key>r</key>
-								<string>0.980982</string>
+								<real>0.98098200000000002</real>
 							</dict>
 						</dict>
 						<key>shadow</key>
@@ -622,17 +461,17 @@
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 Panel n}</string>
 					</dict>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{129, 270}, {63, 36}}</string>
+					<string>{{192, 288}, {63, 36}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -644,8 +483,6 @@
 					</dict>
 					<key>ID</key>
 					<integer>28</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
 					<key>Style</key>
 					<dict>
 						<key>fill</key>
@@ -653,11 +490,11 @@
 							<key>Color</key>
 							<dict>
 								<key>b</key>
-								<string>0.565944</string>
+								<real>0.565944</real>
 								<key>g</key>
-								<string>0.753466</string>
+								<real>0.75346599999999997</real>
 								<key>r</key>
-								<string>0.980982</string>
+								<real>0.98098200000000002</real>
 							</dict>
 						</dict>
 						<key>shadow</key>
@@ -673,17 +510,17 @@
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 Panel 2}</string>
 					</dict>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{57, 270}, {63, 36}}</string>
+					<string>{{120, 288}, {63, 36}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -695,8 +532,6 @@
 					</dict>
 					<key>ID</key>
 					<integer>29</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
 					<key>Style</key>
 					<dict>
 						<key>fill</key>
@@ -704,11 +539,11 @@
 							<key>Color</key>
 							<dict>
 								<key>b</key>
-								<string>0.565944</string>
+								<real>0.565944</real>
 								<key>g</key>
-								<string>0.753466</string>
+								<real>0.75346599999999997</real>
 								<key>r</key>
-								<string>0.980982</string>
+								<real>0.98098200000000002</real>
 							</dict>
 						</dict>
 						<key>shadow</key>
@@ -724,17 +559,17 @@
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 Panel 1}</string>
 					</dict>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{45, 261}, {252, 54}}</string>
+					<string>{{108, 279}, {252, 54}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -750,8 +585,6 @@
 					</dict>
 					<key>ID</key>
 					<integer>30</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
 					<key>Style</key>
 					<dict>
 						<key>shadow</key>
@@ -788,8 +621,6 @@
 			</dict>
 			<key>ID</key>
 			<integer>37</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
 			<key>Style</key>
 			<dict>
 				<key>fill</key>
@@ -797,11 +628,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.855739</string>
+						<real>0.85573900000000003</real>
 						<key>g</key>
-						<string>0.917961</string>
+						<real>0.91796100000000003</real>
 						<key>r</key>
-						<string>0.99033</string>
+						<real>0.99033000000000004</real>
 					</dict>
 				</dict>
 				<key>shadow</key>
@@ -817,10 +648,10 @@
 			<key>Text</key>
 			<dict>
 				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 MessageLoader}</string>
 			</dict>
@@ -839,8 +670,6 @@
 			</dict>
 			<key>ID</key>
 			<integer>38</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
 			<key>Style</key>
 			<dict>
 				<key>fill</key>
@@ -848,11 +677,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.855739</string>
+						<real>0.85573900000000003</real>
 						<key>g</key>
-						<string>0.917961</string>
+						<real>0.91796100000000003</real>
 						<key>r</key>
-						<string>0.99033</string>
+						<real>0.99033000000000004</real>
 					</dict>
 				</dict>
 				<key>shadow</key>
@@ -868,17 +697,17 @@
 			<key>Text</key>
 			<dict>
 				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 TemplateLoader}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{185.26919831223643, 198}, {80.397468566894531, 36}}</string>
+			<string>{{189, 198}, {80.397468566894531, 36}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FontInfo</key>
@@ -890,8 +719,6 @@
 			</dict>
 			<key>ID</key>
 			<integer>39</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
 			<key>Style</key>
 			<dict>
 				<key>fill</key>
@@ -899,11 +726,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.855739</string>
+						<real>0.85573900000000003</real>
 						<key>g</key>
-						<string>0.917961</string>
+						<real>0.91796100000000003</real>
 						<key>r</key>
-						<string>0.99033</string>
+						<real>0.99033000000000004</real>
 					</dict>
 				</dict>
 				<key>shadow</key>
@@ -919,17 +746,17 @@
 			<key>Text</key>
 			<dict>
 				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 PrefsEditor}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{153, 135}, {126, 36}}</string>
+			<string>{{171, 135}, {126, 36}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FontInfo</key>
@@ -941,8 +768,6 @@
 			</dict>
 			<key>ID</key>
 			<integer>8</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
 			<key>Style</key>
 			<dict>
 				<key>fill</key>
@@ -950,11 +775,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.565944</string>
+						<real>0.565944</real>
 						<key>g</key>
-						<string>0.753466</string>
+						<real>0.75346599999999997</real>
 						<key>r</key>
-						<string>0.980982</string>
+						<real>0.98098200000000002</real>
 					</dict>
 				</dict>
 				<key>shadow</key>
@@ -970,10 +795,10 @@
 			<key>Text</key>
 			<dict>
 				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 PrefsEditorLoader}</string>
 			</dict>
@@ -985,7 +810,7 @@
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{321.31991189242774, 63}, {135.9268481762378, 36}}</string>
+					<string>{{294.31990171990157, 63}, {135.9268481762378, 36}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -997,8 +822,6 @@
 					</dict>
 					<key>ID</key>
 					<integer>60</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
 					<key>Style</key>
 					<dict>
 						<key>fill</key>
@@ -1006,11 +829,11 @@
 							<key>Color</key>
 							<dict>
 								<key>b</key>
-								<string>0.801413</string>
+								<real>0.80141300000000004</real>
 								<key>g</key>
-								<string>0.998489</string>
+								<real>0.99848899999999996</real>
 								<key>r</key>
-								<string>0.798338</string>
+								<real>0.79833799999999999</real>
 							</dict>
 						</dict>
 						<key>shadow</key>
@@ -1026,17 +849,17 @@
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 Prefs Editor: Full Without Preview}</string>
 					</dict>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{191.90313407564994, 63}, {114.56567216567221, 36}}</string>
+					<string>{{164.90312390312377, 63}, {114.56567216567221, 36}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1048,8 +871,6 @@
 					</dict>
 					<key>ID</key>
 					<integer>61</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
 					<key>Style</key>
 					<dict>
 						<key>fill</key>
@@ -1057,11 +878,11 @@
 							<key>Color</key>
 							<dict>
 								<key>b</key>
-								<string>0.801413</string>
+								<real>0.80141300000000004</real>
 								<key>g</key>
-								<string>0.998489</string>
+								<real>0.99848899999999996</real>
 								<key>r</key>
-								<string>0.798338</string>
+								<real>0.79833799999999999</real>
 							</dict>
 						</dict>
 						<key>shadow</key>
@@ -1077,10 +898,10 @@
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 Prefs Editor: Full\
 With Preview}</string>
@@ -1088,7 +909,7 @@ With Preview}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{64.6079427804587, 63}, {114.56567216567221, 36}}</string>
+					<string>{{37.607932607932526, 63}, {114.56567216567221, 36}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -1100,8 +921,6 @@ With Preview}</string>
 					</dict>
 					<key>ID</key>
 					<integer>62</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
 					<key>Style</key>
 					<dict>
 						<key>fill</key>
@@ -1109,11 +928,11 @@ With Preview}</string>
 							<key>Color</key>
 							<dict>
 								<key>b</key>
-								<string>0.801413</string>
+								<real>0.80141300000000004</real>
 								<key>g</key>
-								<string>0.998489</string>
+								<real>0.99848899999999996</real>
 								<key>r</key>
-								<string>0.798338</string>
+								<real>0.79833799999999999</real>
 							</dict>
 						</dict>
 						<key>shadow</key>
@@ -1129,17 +948,17 @@ With Preview}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs28 \cf0 Prefs Editor: Separated Panel}</string>
 					</dict>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{54.000010172526146, 36}, {413.99999999999983, 72}}</string>
+					<string>{{26.999999999999972, 36}, {413.99999999999983, 72}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -1155,8 +974,6 @@ With Preview}</string>
 					</dict>
 					<key>ID</key>
 					<integer>63</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
 					<key>Style</key>
 					<dict>
 						<key>shadow</key>
@@ -1173,10 +990,10 @@ With Preview}</string>
 					<key>Text</key>
 					<dict>
 						<key>Text</key>
-						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
 \f0\fs24 \cf0 Instances of Preferences Editors}</string>
 					</dict>
@@ -1228,6 +1045,8 @@ With Preview}</string>
 		<real>0.0</real>
 		<key>layoutEngine</key>
 		<string>dot</string>
+		<key>neatoLineLength</key>
+		<real>0.20000000298023224</real>
 		<key>neatoSeparation</key>
 		<real>0.0</real>
 		<key>twopiSeparation</key>
@@ -1240,9 +1059,9 @@ With Preview}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-06-02 19:41:50 +0000</string>
+	<string>2016-03-22 18:26:35 +0000</string>
 	<key>Modifier</key>
-	<string>Anastasia Cheetham</string>
+	<string>Justin Obara</string>
 	<key>NotesVisible</key>
 	<string>NO</string>
 	<key>Orientation</key>
@@ -1275,8 +1094,8 @@ With Preview}</string>
 		</array>
 		<key>NSPrintReverseOrientation</key>
 		<array>
-			<string>int</string>
-			<string>0</string>
+			<string>coded</string>
+			<string>BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU051bWJlcgCEhAdOU1ZhbHVlAISECE5TT2JqZWN0AIWEASqEhAFxlwCG</string>
 		</array>
 		<key>NSRightMargin</key>
 		<array>
@@ -1313,29 +1132,22 @@ With Preview}</string>
 	<dict>
 		<key>CurrentSheet</key>
 		<integer>0</integer>
-		<key>ExpandedCanvases</key>
-		<array>
-			<dict>
-				<key>name</key>
-				<string>Canvas 1</string>
-			</dict>
-		</array>
+		<key>Expanded_Canvases</key>
+		<array/>
 		<key>Frame</key>
-		<string>{{395, 237}, {947, 1043}}</string>
-		<key>ListView</key>
+		<string>{{2104, 682}, {1243, 817}}</string>
+		<key>ShowInfo</key>
 		<true/>
-		<key>OutlineWidth</key>
-		<integer>142</integer>
-		<key>RightSidebar</key>
-		<false/>
 		<key>ShowRuler</key>
 		<true/>
 		<key>Sidebar</key>
 		<true/>
 		<key>SidebarWidth</key>
-		<integer>120</integer>
+		<integer>200</integer>
+		<key>TopSlabHeight</key>
+		<real>250</real>
 		<key>VisibleRegion</key>
-		<string>{{0, 4.666666666666667}, {532, 592.66666666666674}}</string>
+		<string>{{0, 4.666666666666667}, {486, 439.33333333333331}}</string>
 		<key>Zoom</key>
 		<real>1.5</real>
 		<key>ZoomValues</key>

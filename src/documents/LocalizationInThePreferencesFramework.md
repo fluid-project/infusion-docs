@@ -36,8 +36,9 @@ Message bundles cannot contain arrays. Instead a namespace should be used to gro
 
 ## Preferences Editor Component Hierarchy
 
-Understanding how to access message bundles is helped by understanding the general structure of the components of a preferences editor. The rest of this page provides specific details about how to specify message bundles and how to retrieve strings.
+Understanding how to access message bundles is helped by understanding the general structure of the components of a preferences editor.
 
+ ![Figure 1: Structure of preferences editor components](images/PrefsFrameworkLocalization.svg)
 
 ### PrefsEditorLoader
 
