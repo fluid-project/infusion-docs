@@ -221,7 +221,7 @@ Assuming the Canadian French message bundle is requested:
 2. look for a message bundle with the same language as the language code specified by the `locale` option (e.g. "fr")
 3. look for a message bundle corresponding to the language code specified by the `defaultLocale` option (e.g. "en_US")
 4. look for a message bundle with the same language as the language code specified by the `defaultLocale` option (e.g. "en")
-5. look for a message bundle with the exact URL as specified through the auxiliary schema or directly to the messageLoader (e.g. "message/prefsEditor.json")
+5. look for a message bundle with the exact URL as specified through the auxiliary schema (e.g. "message/prefsEditor.json")
 
 ### Bundle Naming
 
