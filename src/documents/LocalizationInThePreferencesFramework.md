@@ -120,6 +120,8 @@ Message bundles can be specified through the [auxiliary schema](AuxiliarySchemaF
 
 ## Using Message Bundles
 
+The following descriptions for using message bundles assume that `fluid.prefs.msgLookup` is a grade of the component through which the messages are located. `fluid.prefs.msgLookup` are used as a grade for the `fluid.prefs.panel` components, and could be added to another component as a [parentGrade](ComponentGrades.md#specifying-parent-grades).
+
 ### In the ProtoTrees
 
 Strings from the Message Bundles are rendered into the templates through the protoTrees, using the `messagekey`, the name of the string in the bundle:
