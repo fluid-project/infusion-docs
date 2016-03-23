@@ -46,7 +46,7 @@ All versions of preferences editors (separated panel, full page with preview and
 
 ### MessageLoader
 
-The messageLoader is the fluid.prefs.resourceLoader responsible for retrieving all of the message bundles added to the Prefs Editor (See [Adding Message Bundles](#adding-message-bundles) below). Message bundles are automatically distributed to the Prefs Editor and Panels based on the configuration supplied in the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md). However, to access the message bundle from other components on the IoC tree, the IoC reference `{messageLoader}.resources.<messageBundle>.resourceText` can be used. Additionally the `defaultLocale` and `locale` options are used to specify which localization to fetch for each bundle. (See: [Specifying a localization](#specifying-a-localization) below)
+The messageLoader is an instance of a `fluid.prefs.resourceLoader` responsible for retrieving all of the message bundles added to the Prefs Editor (See [Adding Message Bundles](#adding-message-bundles) below). Message bundles are automatically distributed to the Prefs Editor and Panels based on the configuration supplied in the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md). However, to access the message bundle from other components on the IoC tree, the IoC reference `{messageLoader}.resources.<messageBundle>.resourceText` can be used. Additionally the `defaultLocale` and `locale` options are used to specify which localization to fetch for each bundle. (See: [Specifying a localization](#specifying-a-localization) below)
 
 ### PrefsEditor
 
