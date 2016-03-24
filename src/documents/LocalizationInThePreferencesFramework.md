@@ -63,7 +63,7 @@ fluid.defaults("my.component", {
         }
     },
     // should contain the strings loaded from a Message Bundle
-    // e.g. "{messageLoader}.resources.messageBundleName.resourceText"
+    // e.g. messageBase: "{messageLoader}.resources.messageBundleName.resourceText"
     messageBase: {},
     distributeOptions: {
         source: "{that}.options.messageBase",
@@ -86,7 +86,7 @@ fluid.defaults("my.renderer.component", {
         messageLocator: "{msgResolver}.resolve"
     },
     // should contain the strings loaded from a Message Bundle
-    // e.g. "{messageLoader}.resources.messageBundleName.resourceText"
+    // e.g. messageBase: "{messageLoader}.resources.messageBundleName.resourceText"
     messageBase: {},
     distributeOptions: {
         source: "{that}.options.messageBase",
