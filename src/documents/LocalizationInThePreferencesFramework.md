@@ -54,6 +54,8 @@ For a `fluid.prefs.panel` component, all of the `fluid.prefs.msgLookup` configur
 
 #### Adding MsgLookup to a Component
 
+<div class="infusion-docs-note"><strong>Note:</strong> Renderer components require additional configuration. (See: [Adding MsgLookup to a Renderer Component](#adding-msglookup-to-a-renderer-component))</div>
+
 ```javascript
 fluid.defaults("my.component", {
     gradeNames: ["fluid.prefs.msgLookup", "fluid.component"],
