@@ -4,12 +4,12 @@ layout: default
 category: Infusion
 ---
 
-Localization in the Preferences Framework makes use of message bundles: JSON files containing the strings that are to be used in the interface.
+Localization in the Preferences Framework makes use of Message Bundles: JSON files containing the strings that are to be used in the interface.
 
 ## Message Bundles
 
 
-Message bundles are JSON files containing key/value pairs representing the message key and the localized text associated with it. Each set of localized text should be contained in its own message bundle.
+Message Bundles are JSON files containing key/value pairs representing the message key and the localized text associated with it. Each set of localized text should be contained in its own Message Bundle.
 
 ```json
 {
@@ -18,7 +18,7 @@ Message bundles are JSON files containing key/value pairs representing the messa
 }
 ```
 
-Message bundles cannot contain arrays. Instead a namespace should be used to group message keys together. This will require extra processing when using the messages. (See [Using Message Bundles](#using-message-bundles) below)
+Message Bundles cannot contain arrays. Instead a namespace should be used to group message keys together. This will require extra processing when using the messages. (See [Using Message Bundles](#using-message-bundles) below)
 
 <div class="infusion-docs-note"><strong>Note:</strong> The namespace should <strong>not</strong> include ".", which is used for path parsing.</div>
 
@@ -34,42 +34,70 @@ Message bundles cannot contain arrays. Instead a namespace should be used to gro
 }
 ```
 
-## Preferences Editor Component Hierarchy
-
-Understanding how to access message bundles is helped by understanding the general structure of the components of a preferences editor.
-
- ![Figure 1: Structure of preferences editor components](images/PrefsFrameworkLocalization.svg)
-
-### PrefsEditorLoader
-
-All versions of preferences editors (separated panel, full page with preview and full page without preview) are instances of a "PrefsEditorLoader" component. The PrefsEditorLoader coordinates the work of its three subcomponents: MessageLoader, TemplateLoader and PrefsEditor.
+## Required Components
 
 ### MessageLoader
 
-The messageLoader is an instance of a `fluid.prefs.resourceLoader` responsible for retrieving all of the message bundles added to the Prefs Editor (See [Adding Message Bundles](#adding-message-bundles) below). Message bundles are automatically distributed to the Prefs Editor and Panels based on the configuration supplied in the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md). However, to access the message bundle from other components on the IoC tree, the IoC reference `{messageLoader}.resources.<messageBundle>.resourceText` can be used. Additionally the `defaultLocale` and `locale` options are used to specify which localization to fetch for each bundle. (See: [Specifying a localization](#specifying-a-localization) below)
+The messageLoader is an instance of a `fluid.prefs.resourceLoader` responsible for retrieving all of the Message Bundles added to the Prefs Editor (See [Adding Message Bundles](#adding-message-bundles) below). Message Bundles are automatically distributed to the Prefs Editor and Panels based on the configuration supplied in the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md). However, to access the Message Bundle from other components on the IoC tree, the IoC reference `{messageLoader}.resources.<messageBundle>.resourceText` can be used. Additionally the `defaultLocale` and `locale` options are used to specify which localization to fetch for each bundle. (See: [Specifying a localization](#specifying-a-localization) below)
 
-### PrefsEditor
+### MsgLookup
 
-PrefsEditor is the host component that holds all the actual panel (or adjuster) components as subcomponents. By default, the message bundle is **not** passed down to PrefsEditor. If your PrefsEditor component will need direct access to the message bundle, provide a 'fluid.messageResolver' subcomponent at instantiation, as shown in the following example:
+The `fluid.prefs.msgLookup` grade is required for any component through which a message lookup is performed. The msgLookup grade wires up the `msgLookup` IoC reference and the `lookup` method for retrieving messages from the Message Bundle (See: [Using Message Bundles](#using-message-bundles)). The msgLookup's message resolution is mediated by a `fluid.messageResolver` subcomponent and it is to this subcomponent that the `messageBase` option, containing the fetched Message Bundle, is set.
+
+For a `fluid.prefs.panel` component all of the `fluid.prefs.msgLookup` configuration is prewired. For other components to make use of this functionality the following configuration is needed:
+
+- add `fluid.prefs.msgLookup` as a [parent grade](ComponentGrades.md#specifying-parent-grades)
+- add an instance of `fluid.messageResolver` as a subcomponent with the member name `msgResolver`
+- link the messageBase to the fetched Message Bundle.
+    - e.g. using an IoC reference to the [messageLoader](#messageloader): `{messageLoader}.resources.<messageBundle>.resourceText`
+- for an instance of `fluid.rendererComponent` it is also necessary to use the messageResolver's `resolve` method as the `messageLocator`
+
+#### Adding MsgLookup to a Component
 
 ```javascript
-components: {
-    msgResolver: {
-        type: "fluid.messageResolver",
-        options: {
-            messageBase: "{messageLoader}.resources.prefsEditor.resourceText"
+fluid.defaults("my.component", {
+    gradeNames: ["fluid.prefs.msgLookup", "fluid.component"],
+    components: {
+        msgResolver: {
+            type: "fluid.messageResolver"
         }
+    },
+    // should contain the strings loaded from a Message Bundle
+    // e.g. "{messageLoader}.resources.messageBundleName.resourceText"
+    messageBase: {},
+    distributeOptions: {
+        source: "{that}.options.messageBase",
+        target: "{that > msgResolver}.options.messageBase"
     }
-}
+});
 ```
 
-### Panels
+#### Adding MsgLookup to a Renderer Component
 
-The message bundle is attached to each panel component as the `messageBase` option. The `messageBase` is passed to the panel's `msgResolver` subcomponent and used for message lookup operations.
+```javascript
+fluid.defaults("my.renderer.component", {
+    gradeNames: ["fluid.prefs.msgLookup", "fluid.rendererComponent"],
+    components: {
+        msgResolver: {
+            type: "fluid.messageResolver"
+        }
+    },
+    rendererOptions: {
+        messageLocator: "{msgResolver}.resolve"
+    },
+    // should contain the strings loaded from a Message Bundle
+    // e.g. "{messageLoader}.resources.messageBundleName.resourceText"
+    messageBase: {},
+    distributeOptions: {
+        source: "{that}.options.messageBase",
+        target: "{that > msgResolver}.options.messageBase"
+    }
+});
+```
 
 ## Adding Message Bundles
 
-Message bundles can be specified through the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md). The Preferences Framework will load all of the Message Bundles and automatically distribute them to the panels.
+Message Bundles can be specified through the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md). The Preferences Framework will load all of the Message Bundles and automatically distribute them to the panels.
 
 ### Example Auxiliary Schema
 
@@ -81,7 +109,7 @@ Message bundles can be specified through the [auxiliary schema](AuxiliarySchemaF
         "messagePrefix": "../../../framework/preferences/messages/"
     },
     "template": "%templatePrefix/SeparatedPanelPrefsEditor.html",
-    "message": "%messagePrefix/prefsEditor.json", // message bundle for the preference editor itself
+    "message": "%messagePrefix/prefsEditor.json", // Message Bundle for the preference editor itself
     "textSize": {
         "type": "fluid.prefs.textSize",
         "enactor": {
@@ -91,7 +119,7 @@ Message bundles can be specified through the [auxiliary schema](AuxiliarySchemaF
             "type": "fluid.prefs.panels.textSize",
             "container": ".flc-prefs-text-size",
             "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
-            "message": "%messagePrefix/textSize.json" // message bundle for the fluid.prefs.panels.textSize component
+            "message": "%messagePrefix/textSize.json" // Message Bundle for the fluid.prefs.panels.textSize component
         }
     },
     "lineSpace": {
@@ -112,7 +140,7 @@ Message bundles can be specified through the [auxiliary schema](AuxiliarySchemaF
             "type": "fluid.prefs.panels.lineSpace",
             "container": ".flc-prefs-line-space",
             "template": "%templatePrefix/PrefsEditorTemplate-lineSpace.html",
-            "message": "%messagePrefix/lineSpace.json" // message bundle for the fluid.prefs.panels.lineSpace component
+            "message": "%messagePrefix/lineSpace.json" // Message Bundle for the fluid.prefs.panels.lineSpace component
         }
     }
 }
@@ -120,17 +148,15 @@ Message bundles can be specified through the [auxiliary schema](AuxiliarySchemaF
 
 ## Using Message Bundles
 
-The following descriptions for using message bundles assume that `fluid.prefs.msgLookup` is a grade of the component through which the messages are located. `fluid.prefs.msgLookup` are used as a grade for the `fluid.prefs.panel` components, and could be added to another component as a [parentGrade](ComponentGrades.md#specifying-parent-grades).
-
 ### In the ProtoTrees
 
-Strings from the Message Bundles are rendered into the templates through the protoTrees, using the `messagekey`, the name of the string in the bundle:
+When using a `fluid.rendererComponent`, strings from the Message Bundles are rendered into the templates through a `protoTree`, using the `messagekey` with a message key from the Message Bundle:
 
 <table>
     <thead>
         <tr>
             <th>Example use in a ProtoTree</th>
-            <th>JSON message bundle</th>
+            <th>JSON Message Bundle</th>
         </tr>
     </thead>
     <tbody>
@@ -180,7 +206,7 @@ It is accessed the same way that an individual string is referenced, except that
     fluid.defaults("fluid.prefs.panel.contrast", {
     ...
     stringArrayIndex: {
-        // the theme values correspond to message keys in the message bundle.
+        // the theme values correspond to message keys in the Message Bundle.
         theme: ["contrast-default", "contrast-bw", "contrast-wb", "contrast-by", "contrast-yb", "contrast-lgdg"]
     },
     protoTree: {
@@ -202,7 +228,7 @@ It is accessed the same way that an individual string is referenced, except that
 });
 ```
 
-The values in the `theme` array, within `stringArrayIndex`, directly correspond to namespaced message keys from the message bundle.
+The values in the `theme` array, within `stringArrayIndex`, directly correspond to namespaced message keys from the Message Bundle.
 
 ```json
 {
@@ -225,26 +251,26 @@ that.msgLookup.lookup(value); // where value is either the string name or the ke
 
 ## Specifying a Localization
 
-The messageLoader takes `defaultLocale` and `locale` options for specifying which localized message bundle to fetch. The `locale` option specifies the localization desired. By default it is sourced from the prefsEditorLoader's settings object, `"{prefsEditorLoader}.settings.locale"`. The `defaultLocale` provides a fallback to use if the desired localization cannot be located. By default it is sourced from the prefsEditorLoader's `defaultLocale` option.
+The messageLoader takes `defaultLocale` and `locale` options for specifying which localized Message Bundle to fetch. The `locale` option specifies the localization desired. By default it is sourced from the prefsEditorLoader's settings object, `"{prefsEditorLoader}.settings.locale"`. The `defaultLocale` provides a fallback to use if the desired localization cannot be located. By default it is sourced from the prefsEditorLoader's `defaultLocale` option.
 
 ### Fallback Rules
 
-If a requested localization cannot be found, the messageLoader will attempt to find another message bundle to satisfy the request. Language codes are expected in a form similar to BCP 47 tags but with a "\_" instead of a "-" separating the language code from the country code.
+If a requested localization cannot be found, the messageLoader will attempt to find another Message Bundle to satisfy the request. Language codes are expected in a form similar to BCP 47 tags but with a "\_" instead of a "-" separating the language code from the country code.
 
-Assuming the Canadian French message bundle is requested:
+Assuming the Canadian French Message Bundle is requested:
 
-1. look for a message bundle corresponding to the language code specified by the `locale` option (e.g. "fr_CA")
-2. look for a message bundle with the same language as the language code specified by the `locale` option (e.g. "fr")
-3. look for a message bundle corresponding to the language code specified by the `defaultLocale` option (e.g. "en_US")
-4. look for a message bundle with the same language as the language code specified by the `defaultLocale` option (e.g. "en")
-5. look for a message bundle with the exact URL as specified through the auxiliary schema (e.g. "message/prefsEditor.json")
+1. look for a Message Bundle corresponding to the language code specified by the `locale` option (e.g. "fr_CA")
+2. look for a Message Bundle with the same language as the language code specified by the `locale` option (e.g. "fr")
+3. look for a Message Bundle corresponding to the language code specified by the `defaultLocale` option (e.g. "en_US")
+4. look for a Message Bundle with the same language as the language code specified by the `defaultLocale` option (e.g. "en")
+5. look for a Message Bundle with the exact URL as specified through the auxiliary schema (e.g. "message/prefsEditor.json")
 
 ### Bundle Naming
 
-The message bundles should conform to the following naming convention to facilitate discovery by the messageResolver:
+The Message Bundles should conform to the following naming convention to facilitate discovery by the messageResolver:
 `<bundle name>_<language code>_<country code>.json`
 
-The following are all valid message bundle names and will work with the above [Fallback Rules](#fallback-rules):
+The following are all valid Message Bundle names and will work with the above [Fallback Rules](#fallback-rules):
 
 - prefsEditor_fr_CA.json
 - prefsEditor_fr.json
