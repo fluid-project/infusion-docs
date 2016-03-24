@@ -195,9 +195,9 @@ fluid.defaults("fluid.slidingPanel", {
 });
 ```
 
-There are other, more complex cases where an array of strings is required (for example, for a set of radio buttons or a drop-down). In these cases, a `stringArrayIndex` in the components options needs to be specified. This defines both
+There are other, more complex cases where an array of strings is required (for example, for a set of radio buttons or a drop-down). In these cases, a `stringArrayIndex` in the components options needs to be specified. This defines the following:
 
-1. which strings to include and
+1. which strings to include
 2. the order in which they should be returned.
 
 It is accessed the same way that an individual string is referenced, except that reference should point to the key in the `stringArrayIndex` instead of a single string name. In the example below, the `stringArrayIndex` is used to define the `theme` string bundle, and the `theme` string bundle is referenced within the `protoTree.expander.tree` ('`optionnames: "${{that}.msgLookup.theme}"`'):
@@ -255,7 +255,7 @@ The messageLoader takes `defaultLocale` and `locale` options for specifying whic
 
 ### Fallback Rules
 
-If a requested localization cannot be found, the messageLoader will attempt to find another Message Bundle to satisfy the request. Language codes are expected in a form similar to BCP 47 tags but with a "\_" instead of a "-" separating the language code from the country code.
+If a requested localization cannot be found, the messageLoader will attempt to find another Message Bundle to satisfy the request. Language codes are expected in a form similar to [BCP 47](https://tools.ietf.org/html/bcp47) tags but with a "\_" instead of a "-" separating the language code from the country code.
 
 Assuming the Canadian French Message Bundle is requested:
 
