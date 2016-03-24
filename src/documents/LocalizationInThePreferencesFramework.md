@@ -44,7 +44,7 @@ The messageLoader is an instance of a `fluid.prefs.resourceLoader` responsible f
 
 The `fluid.prefs.msgLookup` grade is required for any component through which a message lookup is performed. The msgLookup grade wires up the `msgLookup` IoC reference and the `lookup` method for retrieving messages from the Message Bundle (See: [Using Message Bundles](#using-message-bundles)). The msgLookup's message resolution is mediated by a `fluid.messageResolver` subcomponent and it is to this subcomponent that the `messageBase` option, containing the fetched Message Bundle, is set.
 
-For a `fluid.prefs.panel` component all of the `fluid.prefs.msgLookup` configuration is prewired. For other components to make use of this functionality the following configuration is needed:
+For a `fluid.prefs.panel` component, all of the `fluid.prefs.msgLookup` configuration is prewired. For other components to make use of this functionality, the following configuration is needed:
 
 - add `fluid.prefs.msgLookup` as a [parent grade](ComponentGrades.md#specifying-parent-grades)
 - add an instance of `fluid.messageResolver` as a subcomponent with the member name `msgResolver`
