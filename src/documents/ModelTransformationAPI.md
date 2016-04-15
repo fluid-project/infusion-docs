@@ -67,7 +67,7 @@ A `{SingleTransform}` record is as follows:
 
 ```json
 {
-    type: <transform-type>
+    "type": <transform-type>
     ...
 }
 ```
@@ -121,11 +121,11 @@ An example of a multiInputTransformFunction declaration:
 
 ```
 fluid.defaults("fluid.transforms.scaleValue", {
-    gradeNames: [ "fluid.multiInputTransformFunction" ],
-    inputVariables: { 
-        input: null, 
-        factor: 1,
-        offset: 0
+    "gradeNames": [ "fluid.multiInputTransformFunction" ],
+    "inputVariables": { 
+        "input": null, 
+        "factor": 1,
+        "offset": 0
     }
 });
 ```
@@ -151,22 +151,22 @@ All keys at the top level of the transformation rules document are interpreted a
 <tr><td>
 <pre><code>
 {
-    my: {
-        number: 93.56
+    "my": {
+        "number": 93.56
     }
 }
 </code></pre>
 </td><td>
 <pre><code>
 {
-    Magnification: {
-        dataType: {
-            literalValue: "integer"
+    "Magnification": {
+        "dataType": {
+            "literalValue": "integer"
         },
-        value: {
-            transform: {
-                type: "fluid.transforms.round",
-                inputPath: "my.number"
+        "value": {
+            "transform": {
+                "type": "fluid.transforms.round",
+                "inputPath": "my.number"
             }
         }
     }
@@ -175,9 +175,9 @@ All keys at the top level of the transformation rules document are interpreted a
 </td><td>
 <pre><code>
 {
-    Magnification: {
-        dataType: "integer"
-        value: 94
+    "Magnification": {
+        "dataType": "integer"
+        "value": 94
     }
 }
 </code></pre>
@@ -203,52 +203,52 @@ Returning to the example in the previous section, this could be written as:
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        number: 93.56
+    "my": {
+        "number": 93.56
     }
 }
 </code></pre></td><td><pre><code>
 {
-    transform: [
+    "transform": [
         {
-            type: "fluid.transforms.literalValue",
-            input: "integer",
-            outputPath: "Magnification.dataType"
+            "type": "fluid.transforms.literalValue",
+            "input": "integer",
+            "outputPath": "Magnification.dataType"
         }, {
-            type: "fluid.transforms.round",
-            inputPath: "my.number",
-            outputPath: "Magnification.value"
+            "type": "fluid.transforms.round",
+            "inputPath": "my.number",
+            "outputPath": "Magnification.value"
         }
     ]
 }
 </code></pre></td><td>
 <pre><code>
 {
-    Magnification: {
-        dataType: "integer"
-        value: 94
+    "Magnification": {
+        "dataType": "integer"
+        "value": 94
     }
 }
 </code></pre></td>
 </tr>
 <tr><td><pre><code>
 {
-    my: {
-        number: 93.56
+    "my": {
+        "number": 93.56
     }
 }
 </code></pre></td><td><pre><code>
 {
-    Magnification: {
-        transform: [
+    "Magnification": {
+        "transform": [
             {
-                type: "fluid.transforms.literalValue",
-                input: "integer",
-                outputPath: "dataType"
+                "type": "fluid.transforms.literalValue",
+                "input": "integer",
+                "outputPath": "dataType"
             }, {
-                type: "fluid.transforms.round",
-                input: "my.number",
-                outputPath: "value"
+                "type": "fluid.transforms.round",
+                "input": "my.number",
+                "outputPath": "value"
             }
         ]
     }
@@ -256,9 +256,9 @@ Returning to the example in the previous section, this could be written as:
 </code></pre></td><td>
 <pre><code>
 {
-    Magnification: {
-        dataType: "integer"
-        value: 94
+    "Magnification": {
+        "dataType": "integer"
+        "value": 94
     }
 }
 </code></pre></td>
@@ -283,31 +283,31 @@ In general, transformations pass their result one level up, unless "outputPath" 
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    display: {
-        magnification: 1.5412
+    "display": {
+        "magnification": 1.5412
     }
 }
 </code></pre></td><td><pre><code>
 {
-    Magnification: {
-        transform: {
-            type: "fluid.transforms.round",
-            input: {
-                transform: {
-                    type: "fluid.transforms.linearScale",
-                    inputPath: "display.magnification",
-                    factor: 100
+    "Magnification": {
+        "transform": {
+            "type": "fluid.transforms.round",
+            "input": {
+                "transform": {
+                    "type": "fluid.transforms.linearScale",
+                    "inputPath": "display.magnification",
+                    "factor": 100
                 }
             },
-            outputPath: "Percent"
+            "outputPath": "Percent"
         }
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    Magnification: {
-        Percent: 154
+    "Magnification": {
+        "Percent": 154
     }
 }
 </code></pre></td>
@@ -327,28 +327,28 @@ Things get slightly more complicated when we introduce arrays of transforms. Whe
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    display: {
-        magnification: 1.5412
+    "display": {
+        "magnification": 1.5412
     }
 }
 </code></pre></td><td><pre><code>
 {
-    Magnification: {
-        transform: [
+    "Magnification": {
+        "transform": [
             {
-                type: "fluid.transforms.literalValue",
-                input: "percent",
-                outputPath: "dataType"
+                "type": "fluid.transforms.literalValue",
+                "input": "percent",
+                "outputPath": "dataType"
             }, {
-                type: "fluid.transforms.round",
-                input: {
-                    transform: {
-                        type: "fluid.transforms.linearScale",
-                        inputPath: "display.magnification",
-                        factor: 100
+                "type": "fluid.transforms.round",
+                "input": {
+                    "transform": {
+                        "type": "fluid.transforms.linearScale",
+                        "inputPath": "display.magnification",
+                        "factor": 100
                     }
                 },
-                outputPath: "value"
+                "outputPath": "value"
             }
         ]
     }
@@ -356,33 +356,33 @@ Things get slightly more complicated when we introduce arrays of transforms. Whe
 </code></pre></td><td>
 <pre><code>
 {
-    Magnification: {
-        dataType: "percent"
-        value: 154
+    "Magnification": {
+        "dataType": "percent"
+        "value": 154
     }
 }
 </code></pre></td>
 </tr>
 <tr><td><pre><code>
 {
-    display: {
-        magnification: 1.5412
+    "display": {
+        "magnification": 1.5412
     }
 }
 </code></pre></td><td><pre><code>
 {
-    Magnification: {
-        transform: [
+    "Magnification": {
+        "transform": [
             {
-                type: "fluid.transforms.literalValue",
-                input: "percent",
+                "type": "fluid.transforms.literalValue",
+                "input": "percent"
             }, {
-                type: "fluid.transforms.round",
-                input: {
-                    transform: {
-                        type: "fluid.transforms.linearScale",
-                        inputPath: "display.magnification",
-                        factor: 100
+                "type": "fluid.transforms.round",
+                "input": {
+                    "transform": {
+                        "type": "fluid.transforms.linearScale",
+                        "inputPath": "display.magnification",
+                        "factor": 100
                     }
                 }
             }
@@ -410,28 +410,28 @@ As an example, take the following transformation:
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    petlist: {
-        cat: "Kaspar the Titanic Cat",
-        frog: "Portuguese Steve"
+    "petlist": {
+        "cat": "Kaspar the Titanic Cat",
+        "frog": "Portuguese Steve"
     }
 }
 </code></pre></td><td><pre><code>
 {
-    my_pets: [
+    "my_pets": [
         {
-            transform: {
-                type: "fluid.transforms.value",
-                inputPath: "petlist.cat"
+            "transform": {
+                "type": "fluid.transforms.value",
+                "inputPath": "petlist.cat"
             }
         }, {
-            transform: {
-                type: "fluid.transforms.value",
-                inputPath: "petlist.goldfish"
+            "transform": {
+                "type": "fluid.transforms.value",
+                "inputPath": "petlist.goldfish"
             }
         }, {
-            transform: {
-                type: "fluid.transforms.value",
-                inputPath: "petlist.frog"
+            "transform": {
+                "type": "fluid.transforms.value",
+                "inputPath": "petlist.frog"
             }
         }
     ]
@@ -439,7 +439,7 @@ As an example, take the following transformation:
 </code></pre></td><td>
 <pre><code>
 {
-    my_pets: [
+    "my_pets": [
         "Kaspar the Titanic Cat",
         undefined,
         "Portuguese Steve"
@@ -475,60 +475,60 @@ Obviously, to make model transformations useful, one needs to be able to get a d
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    petlist: {
-        cat: "Kaspar the Titanic Cat"
+    "petlist": {
+        "cat": "Kaspar the Titanic Cat"
     }
 }
 </code></pre></td><td><pre><code>
 {
-    my_pet: {
-        transform: {
-            type: "fluid.transforms.literalValue",
-            inputPath: "petlist.cat"
+    "my_pet": {
+        "transform": {
+            "type": "fluid.transforms.value",
+            "inputPath": "petlist.cat"
         }
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    my_pet: "Kaspar the Titanic Cat"
+    "my_pet": "Kaspar the Titanic Cat"
 }
 </code></pre></td>
 </tr>
 <tr><td><pre><code>
 {
-    petlist: {
-        cat: "CATTOO"
+    "petlist": {
+        "cat": "CATTOO"
     }
 }
 </code></pre></td><td><pre><code>
 {
-    my_pet: {
-        transform: {
-            type: "fluid.transforms.literalValue",
-            inputPath: "petlist.cat"
+    "my_pet": {
+        "transform": {
+            "type": "fluid.transforms.value",
+            "inputPath": "petlist.cat"
         }
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    my_pet: "CATTOO"
+    "my_pet": "CATTOO"
 }
 </code></pre></td>
 </tr>
 <tr><td><pre><code>
 {
-    petlist: {
-        dog: "Spot"
+    "petlist": {
+        "dog": "Spot"
     }
 }
 </code></pre></td><td><pre><code>
 {
-    my_pet: {
-        transform: {
-            type: "fluid.transforms.literalValue",
-            inputPath: "petlist.cat"
+    "my_pet": {
+        "transform": {
+            "type": "fluid.transforms.value",
+            "inputPath": "petlist.cat"
         }
     }
 }
@@ -553,21 +553,21 @@ As mentioned, static values are written directly into the transformation rule do
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    dog: "Snoopy"
+    "dog": "Snoopy"
 }
 </code></pre></td><td><pre><code>
 {
-    my_pet: {
-        transform: {
-            type: "fluid.transforms.literalValue",
-            input: "Kaspar the Titanic Cat"
+    "my_pet": {
+        "transform": {
+            "type": "fluid.transforms.literalValue",
+            "input": "Kaspar the Titanic Cat"
         }
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    my_pet: "Kaspar the Titanic Cat"
+    "my_pet": "Kaspar the Titanic Cat"
 }
 </code></pre></td>
 </tr>
@@ -575,17 +575,17 @@ As mentioned, static values are written directly into the transformation rule do
 {}
 </code></pre></td><td><pre><code>
 {
-    my_pet: {
-        transform: {
-            type: "fluid.transforms.literalValue",
-            input: "Kaspar the Titanic Cat"
+    "my_pet": {
+        "transform": {
+            "type": "fluid.transforms.literalValue",
+            "input": "Kaspar the Titanic Cat"
         }
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    my_pet: "Kaspar the Titanic Cat"
+    "my_pet": "Kaspar the Titanic Cat"
 }
 </code></pre></td>
 </tr>
@@ -605,63 +605,63 @@ An `input` interprets the content as a nested transform if its value is an objec
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    display: {
-        magnification: 1.5412
+    "display": {
+        "magnification": 1.5412
     }
 }
 </code></pre></td><td><pre><code>
 {
-    Magnification: {
-        transform: {
-            type: "fluid.transforms.round",
-            input: {
-                transform: {
-                    type: "fluid.transforms.linearScale",
-                    inputPath: "display.magnification",
-                    factor: 100
+    "Magnification": {
+        "transform": {
+            "type": "fluid.transforms.round",
+            "input": {
+                "transform": {
+                    "type": "fluid.transforms.linearScale",
+                    "inputPath": "display.magnification",
+                    "factor": 100
                 }
             },
-            outputPath: "percent"
+            "outputPath": "percent"
         }
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    Magnification: {
-        percent: 154
+    "Magnification": {
+        "percent": 154
     }
 }
 </code></pre></td>
 </tr>
 <tr><td><pre><code>
 {
-    display: {
-        magnification: 1.5412
+    "display": {
+        "magnification": 1.5412
     }
 }
 </code></pre></td><td><pre><code>
 {
-    Magnification: {
-        transform: {
-            type: "fluid.transforms.round",
-            input: {
-                transform: {
-                    type: "fluid.transforms.linearScale",
-                    inputPath: "display.magnification",
-                    factor: 100
-                    outputPath: "sneakyPath"
+    "Magnification": {
+        "transform": {
+            "type": "fluid.transforms.round",
+            "input": {
+                "transform": {
+                    "type": "fluid.transforms.linearScale",
+                    "inputPath": "display.magnification",
+                    "factor": 100,
+                    "outputPath": "sneakyPath"
                 }
-            }
-            outputPath: "percent"
+            },
+            "outputPath": "percent"
         }
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    Magnification: {
-        sneakyPath: 154.12
+    "Magnification": {
+        "sneakyPath": 154.12
     }
 }
 </code></pre></td>
@@ -684,45 +684,45 @@ This can be used to provide a 'default' or fallback value. As mentioned, it is p
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    petlist: {
-        cat: "Kaspar the Titanic Cat"
+    "petlist": {
+        "cat": "Kaspar the Titanic Cat"
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    my_pet: {
-        transform: {
-            type: "fluid.transforms.literalValue",
-            inputPath: "petlist.cat",
-            input: "I have no cat"
+    "my_pet": {
+        "transform": {
+            "type": "fluid.transforms.value",
+            "inputPath": "petlist.cat",
+            "input": "I have no cat"
         }
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    my_pet: "Kaspar the Titanic Cat"
+    "my_pet": "Kaspar the Titanic Cat"
 }
 </code></pre></td>
 </tr>
 <tr><td><pre><code>
 {
-    petlist: { }
+    "petlist": { }
 }
 </code></pre></td><td><pre><code>
 {
-    my_pet: {
-        transform: {
-            type: "fluid.transforms.literalValue",
-            inputPath: "petlist.cat",
-            input: "I have no cat"
+    "my_pet": {
+        "transform": {
+            "type": "fluid.transforms.value",
+            "inputPath": "petlist.cat",
+            "input": "I have no cat"
         }
     }
 }
 </code></pre></td><td>
 <pre><code>
-    my_pet: "I have no cat"
+    "my_pet": "I have no cat"
 </code></pre></td>
 </tr>
 </tbody>
@@ -741,9 +741,9 @@ The transformation rule stays the same, but in the second example, there is no '
 **Syntax:**
 ```
 {
-    transform: {
-        type: "fluid.transforms.literalValue",
-        input: "some constant"
+    "transform": {
+        "type": "fluid.transforms.literalValue",
+        "input": "some constant"
     }
 }
 ```
@@ -759,16 +759,16 @@ The transformation rule stays the same, but in the second example, there is no '
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.literalValue",
-        input: "some constant",
-        outputPath: "foo"
+    "transform": {
+        "type": "fluid.transforms.literalValue",
+        "input": "some constant",
+        "outputPath": "foo"
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    foo: "some constant"
+    "foo": "some constant"
 }
 </code></pre></td>
 </tr>
@@ -784,23 +784,25 @@ The transformation rule stays the same, but in the second example, there is no '
 {}
 </code></pre></td>
 <td><pre><code>
-transform: {
-    type: "fluid.transforms.literalValue",
-    input: {
-       transform: {
-          type: "fluid.transforms.helloworld",
-          input: "I'm not interpreted"
-       }
-    },
-    outputPath: "foo"
+{
+    "transform": {
+        "type": "fluid.transforms.literalValue",
+        "input": {
+           "transform": {
+              "type": "fluid.transforms.helloworld",
+              "input": "I'm not interpreted"
+           }
+        },
+        "outputPath": "foo"
+    }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    foo: {
-        transform: {
-        type: "fluid.transforms.helloworld",
-        input: "I'm not interpreted"
+    "foo": {
+        "transform": {
+        "type": "fluid.transforms.helloworld",
+        "input": "I'm not interpreted"
     }
 }
 </code></pre></td>
@@ -824,22 +826,24 @@ transform: {
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        path: "balloon"
+    "my": {
+        "path": "balloon"
     }
 }
 </code></pre></td>
 <td><pre><code>
-myfavorite: {
-    transform: {
-        type: "fluid.transforms.value",
-        inputPath: "my.path"
+{
+    "myfavorite": {
+        "transform": {
+            "type": "fluid.transforms.value",
+            "inputPath": "my.path"
+        }
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    myfavorite: {
+    "myfavorite": {
         "balloon"
     }
 }
@@ -857,19 +861,19 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        path: "balloon"
+    "my": {
+        "path": "balloon"
     }
 }
 </code></pre></td>
 <td><pre><code>
 { 
-    myfavorite: "my.path"
+    "myfavorite": "my.path"
 }
 </code></pre></td><td>
 <pre><code>
 {
-    myfavorite: {
+    "myfavorite": {
         "balloon"
     }
 }</code></pre></td>
@@ -895,14 +899,17 @@ Note that this transform is implicit when using a string as a value to a key, wh
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayValue",
-        input: "some constant"
+    "transform": {
+        "type": "fluid.transforms.arrayValue",
+        "input": "some constant",
+        "outputPath": "arraygoeshere"
     }
 }
 </code></pre></td><td>
 <pre><code>
-[ "some constant" ]
+{
+    "arraygoeshere": [ "some constant" ]
+}
 </code></pre></td>
 </tr>
 </tbody>
@@ -915,15 +922,16 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        path: ["balloon"]
+    "my": {
+        "path": ["balloon"]
     }
 }</code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayValue",
-        inputPath: "my.path"
+    "transform": {
+        "type": "fluid.transforms.arrayValue",
+        "inputPath": "my.path",
+        "outputPath": "arraygoeshere"
     }
 }
 </code></pre></td><td>
@@ -949,22 +957,22 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        path: "100.91"
+    "my": {
+        "path": "100.91"
     }
 }</code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.stringToNumber",
-        inputPath: "my.path",
-        outputPath: "outie"
+    "transform": {
+        "type": "fluid.transforms.stringToNumber",
+        "inputPath": "my.path",
+        "outputPath": "outie"
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    outie: 100.91
+    "outie": 100.91
 }
 </code></pre></td>
 </tr>
@@ -978,16 +986,16 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        path: "i am no number"
+    "my": {
+        "path": "i am no number"
     }
 }</code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.stringToNumber",
-        inputPath: "my.path",
-        outputPath: "outie"
+    "transform": {
+        "type": "fluid.transforms.stringToNumber",
+        "inputPath": "my.path",
+        "outputPath": "outie"
     }
 }
 </code></pre></td><td>
@@ -1013,22 +1021,22 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        path: 100.91
+    "my": {
+        "path": 100.91
     }
 }</code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.numberToString",
-        inputPath: "my.path",
-        outputPath: "outie"
+    "transform": {
+        "type": "fluid.transforms.numberToString",
+        "inputPath": "my.path",
+        "outputPath": "outie"
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    outie: "100.91"
+    "outie": "100.91"
 }
 </code></pre></td>
 </tr>
@@ -1042,16 +1050,16 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        path: true
+    "my": {
+        "path": "I'm a string"
     }
 }</code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.stringToNumber",
-        inputPath: "my.path",
-        outputPath: "outie"
+    "transform": {
+        "type": "fluid.transforms.stringToNumber",
+        "inputPath": "my.path",
+        "outputPath": "outie"
     }
 }
 </code></pre></td><td>
@@ -1071,7 +1079,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 #### Examples:
 
-**Example 1: If the input is already an array, it will stay so**
+**Example 1: Counting the length of an array**
 
 <table><thead>
 </thead><tbody>
@@ -1081,14 +1089,17 @@ Note that this transform is implicit when using a string as a value to a key, wh
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayValue",
-        input: [ "foo", "bar" ]
+    "transform": {
+        "type": "fluid.transforms.count",
+        "input": [ "foo", "bar" ],
+        "outputPath": "howLong"
     }
 }
 </code></pre></td><td>
 <pre><code>
-2
+{
+    "howLong": 2
+}
 </code></pre></td>
 </tr>
 </tbody>
@@ -1101,21 +1112,24 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        path: [ "foo", "bar" ]
+    "my": {
+        "path": [ "foo", "bar" ]
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayValue",
-        inputPath: "my.path"
+    "transform": {
+        "type": "fluid.transforms.count",
+        "inputPath": "my.path",
+        "outputPath": "howLong"
     }
 }
 </code></pre></td><td>
 <pre><code>
-2
+{
+    "howLong": 2
+}
 </code></pre></td>
 </tr>
 </tbody>
@@ -1128,21 +1142,24 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        path: "i am a string"
+    "my": {
+        "path": "i am a string"
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayValue",
-        inputPath: "my.path"
+    "transform": {
+        "type": "fluid.transforms.count",
+        "inputPath": "my.path",
+        "outputPath": "howLong"
     }
 }
 </code></pre></td><td>
 <pre><code>
-1
+{
+    "howLong": 2
+}
 </code></pre></td>
 </tr>
 </tbody>
@@ -1163,21 +1180,21 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    myin: 123.41
+    "myin": 123.41
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.round",
-        inputPath: "myin",
-        outputPath: "outie"
+    "transform": {
+        "type": "fluid.transforms.round",
+        "inputPath": "myin",
+        "outputPath": "outie"
     }
 }
 </code></pre></td><td>
 <pre><code>
 {
-    outie: 123
+    "outie": 123
 }
 </code></pre></td>
 </tr>
@@ -1186,17 +1203,17 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 ### Get first value of array (fluid.transforms.firstValue)
 
-**Type:** fluid.transformFunction
+**Type:** fluid.standardOuputTransformFunction
 
-**Description:** Will return the first entry of the array that does not evaluate to undefined. The input is required to be of type array. Note that each entry of the array will be interpreted as a 'transform' and if a string is provided, this will be interpreted as a path.
+**Description:** Will return the first entry of the array that does not evaluate to undefined. The input is required to be of type array. It's very important to note that each entry of the array will be interpreted as a 'transform' and if a string is provided, this will be interpreted as a path
 
 **syntax:** 
 
 ```
 {
-    transform: {
-        type: "fluid.transforms.firstValue",
-        values: <array of input values interpreted as transforms>
+    "transform": {
+        "type": "fluid.transforms.firstValue",
+        "values": <array of input values interpreted as transforms>
     }
 }
 ```
@@ -1210,20 +1227,23 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    foo: "hello",
-    bar: "world"
+    "foo": "hello",
+    "bar": "world"
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.firstValue",
-        values: [ "foo", "bar" ]
+    "transform": {
+        "type": "fluid.transforms.firstValue",
+        "values": [ "foo", "bar" ],
+        "outputPath": "myfirst"
     }
 }
 </code></pre></td><td>
 <pre><code>
-"hello"
+{
+    "myfirst": hello"
+}
 </code></pre></td>
 </tr>
 </tbody>
@@ -1236,19 +1256,22 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    bar: "world"
+    "bar": "world"
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.firstValue",
-        values: [ "foo", "bar" ]
+    "transform": {
+        "type": "fluid.transforms.firstValue",
+        "values": [ "foo", "bar" ],
+        "outputPath": "myfirst"
     }
 }
 </code></pre></td><td>
 <pre><code>
-"world"
+{
+    "myfirst": world"
+}
 </code></pre></td>
 </tr>
 </tbody>
@@ -1266,8 +1289,8 @@ The only option that `delete` supports is `outputPath`, which points to the outp
 
 ```
 transform: {
-    type: "fluid.transforms.delete",
-    outputPath: <the output path to delete>
+    "type": "fluid.transforms.delete",
+    "outputPath": <the output path to delete>
 }
 ```
 
@@ -1282,22 +1305,22 @@ The `"": ""` in the transform would normally mean that the entire input model is
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 { 
-    hello: "world", 
-    foo: "bar" 
+    "hello": "world", 
+    "foo": "bar" 
 }
 </code></pre></td>
 <td><pre><code>
 {
-    "": ""
-    transform: {
-        type: "fluid.transforms.delete",
-        outputPath: foo
+    "": "",
+    "transform": {
+        "type": "fluid.transforms.delete",
+        "outputPath": "foo"
     }
 }
 </code></pre></td><td>
 <pre><code>
 { 
-     hello: "world"
+     "hello": "world"
 }
 </code></pre></td>
 </tr>
@@ -1313,10 +1336,10 @@ The `"": ""` in the transform would normally mean that the entire input model is
 
 ``` 
 transform: {
-    type: "fluid.transforms.binaryOp",
-    left: <constant of appropriate type>,
-    right: <constant of appropriate type>,
-    operator: <the operator to use>
+    "type": "fluid.transforms.binaryOp",
+    "left": <constant of appropriate type>,
+    "right": <constant of appropriate type>,
+    "operator": <the operator to use>
 }
 ```
 
@@ -1354,25 +1377,25 @@ Logical Operators: (both operands are required to be booleans, output will be bo
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 { 
-    some: {
-        path: 200
+    "some": {
+        "path": 200
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.binaryOp",
-        left: 100,
-        rightPath: "some.path",
-        operator: "+",
-        outputPath: "sum"
+    "transform": {
+        "type": "fluid.transforms.binaryOp",
+        "left": 100,
+        "rightPath": "some.path",
+        "operator": "+",
+        "outputPath": "sum"
     }
 }
 </code></pre></td><td>
 <pre><code>
 { 
-    sum: 300
+    "sum": 300
 }
 </code></pre></td>
 </tr>
@@ -1386,27 +1409,27 @@ Logical Operators: (both operands are required to be booleans, output will be bo
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 { 
-    some: {
-        path: 200
+    "some": {
+        "path": 200
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.binaryOp",
-        left: 100,
-        leftPath: "some.other.path",
-        right: 0,
-        rightPath: "some.path",
-        operator: "+",
-        outputPath: "sum"
+    "transform": {
+        "type": "fluid.transforms.binaryOp",
+        "left": 100,
+        "leftPath": "some.other.path",
+        "right": 0,
+        "rightPath": "some.path",
+        "operator": "+",
+        "outputPath": "sum"
     }
 }
 </code></pre></td><td>
 <pre><code>
 { 
-    sum: 300
+    "sum": 300
 }
 </code></pre></td>
 </tr>
@@ -1421,8 +1444,8 @@ Logical Operators: (both operands are required to be booleans, output will be bo
 
 ``` 
 transform: {
-    type: "fluid.transforms.condition",
-    condition: <boolean value>
+    "type": "fluid.transforms.condition",
+    "condition": <boolean value>
     "true": <can be declared in the transform as variable or path - optional>,
     "false": <can be declared in the transform as variable or path - optional>
 }
@@ -1440,16 +1463,16 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 { 
-    some: {
-        path: true
+    "some": {
+        "path": true
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.condition",
-        conditionPath: "some.path",
+    "transform": {
+        "type": "fluid.transforms.condition",
+        "conditionPath": "some.path",
         "true": "It was true",
         "false": "It was false",
         "outputPath": "result"
@@ -1458,7 +1481,7 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </code></pre></td><td>
 <pre><code>
 { 
-    result: "It was true"
+    "result": "It was true"
 }
 </code></pre></td>
 </tr>
@@ -1475,10 +1498,10 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.condition",
-        conditionPath: "some.path",
-        condition: true,
+    "transform": {
+        "type": "fluid.transforms.condition",
+        "conditionPath": "some.path",
+        "condition": true,
         "true": "It was true",
         "false": "It was false",
         "outputPath": "result"
@@ -1487,7 +1510,7 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </code></pre></td><td>
 <pre><code>
 { 
-    result: "It was true"
+    "result": "It was true"
 }
 </code></pre></td>
 </tr>
@@ -1501,24 +1524,23 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 { 
-    some: {
-        path: true
+    "some": {
+        "path": true
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.condition",
-        conditionPath: "some.path",
+    "transform": {
+        "type": "fluid.transforms.condition",
+        "conditionPath": "some.path",
         "true": {
-            transform: {
-                type: "fluid.transforms.binaryOp",
-                left: 100,
-                right: 200,
-                operator: "+",
+            "transform": {
+                "type": "fluid.transforms.binaryOp",
+                "left": 100,
+                "right": 200,
+                "operator": "+"
             }
-
         },
         "false": "It was false",
         "outputPath": "result"
@@ -1527,7 +1549,7 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </code></pre></td><td>
 <pre><code>
 { 
-    result: 300
+    "result": 300
 }
 </code></pre></td>
 </tr>
@@ -1543,17 +1565,17 @@ If either the `left` or `right` (or their path equivalents) evaluate to `undefin
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 { 
-    some: {
-        path: true
+    "some": {
+        "path": true
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.condition",
-        conditionPath: "some.path",
-        truePath: "nonexistent.path"
+    "transform": {
+        "type": "fluid.transforms.condition",
+        "conditionPath": "some.path",
+        "truePath": "nonexistent.path",
         "false": "It was false",
         "outputPath": "result"
     }
@@ -1576,10 +1598,10 @@ If either the `left` or `right` (or their path equivalents) evaluate to `undefin
 **Syntax:**
 ```
 transform: {
-    type: "fluid.transforms.linearScale",
-    input: <constant of array type>,
-    factor: <the scaling factor>,
-    offset: <the offset to use for the scaling>
+    "type": "fluid.transforms.linearScale",
+    "input": <constant of array type>,
+    "factor": <the scaling factor>,
+    "offset": <the offset to use for the scaling>
 }
 ```
 
@@ -1595,19 +1617,19 @@ transform: {
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.linearScale",
-        input: 12,
-        factor: 10,
-        offset: 100,
-        outputPath: "mypath"
+    "transform": {
+        "type": "fluid.transforms.linearScale",
+        "input": 12,
+        "factor": 10,
+        "offset": 100,
+        "outputPath": "mypath"
     }
 }
 </code></pre></td><td>
 <pre><code>
 </code></pre></td>
 {
-    mypath: 220
+    "mypath": 220
 }
 </tr>
 </tbody>
@@ -1617,7 +1639,7 @@ transform: {
 
 **Example 2: Only some variables specified**
 
-In this example, since no value is found at some.path, the factor will default to 1, outputting 12*1+0=12. If a value was instead found (say, 12) the output would've been 12*12+0=144 
+In this example, since no value is found at `some.path`, the factor will default to 1, outputting `12*1+0=12`. If a value was instead found (say, 12) the output would've been `12*12+0=144` 
 
 <table><thead>
 </thead><tbody>
@@ -1627,16 +1649,19 @@ In this example, since no value is found at some.path, the factor will default t
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.linearScale",
-        input: 12,
-        factorPath: "some.path"
+    "transform": {
+        "type": "fluid.transforms.linearScale",
+        "input": 12,
+        "factorPath": "some.path",
+        "outputPath": "mypath"
     }
 }
 </code></pre></td><td>
 <pre><code>
 </code></pre></td>
-12
+{
+    "mypath": 12
+}
 </tr>
 </tbody>
 </table>
@@ -1650,32 +1675,32 @@ This example uses the same transformation rule as above, but in this case a valu
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    some: {
-        path: 12
+    "some": {
+        "path": 12
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.linearScale",
-        input: 12,
-        factorPath: "some.path",
-        outputPath: "outie"
+    "transform": {
+        "type": "fluid.transforms.linearScale",
+        "input": 12,
+        "factorPath": "some.path",
+        "outputPath": "outie"
     }
 }
 </code></pre></td><td>
 <pre><code>
 </code></pre></td>
 {
-    outie: 144
+    "outie": 144
 }
 </tr>
 </tbody>
 </table>
 
 
-### Mapping a continuous range into discrete values (gpii.transformer.quantize)
+### Mapping a continuous range into discrete values (fluid.transforms.quantize)
 
 **type:** standardTransformFunction
 
@@ -1687,7 +1712,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 ```
 "transform": {
-    "type": "gpii.transformer.quantize",
+    "type": "fluid.transforms.quantize",
     "inputPath": <path to the value to check ranges from>,
     "ranges": [
         {
@@ -1714,17 +1739,17 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        input: 12
+    "my": {
+        "input": 12
     }
 }
 </code></pre></td>
 <td><pre><code>
 { 
-    transform: {
-        "type": "gpii.transformer.quantize",
+    "transform": {
+        "type": "gpii.transforms.quantize",
         "inputPath": "my.input",
-        outputPath: "mysize"
+        "outputPath": "mysize",
         "ranges": [
             {
                 "upperBound": 11,
@@ -1745,7 +1770,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <pre><code>
 </code></pre></td>
 {
-    mysize: "normal"
+    "mysize": "normal"
 }
 </tr>
 </tbody>
@@ -1758,17 +1783,17 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        input: 2
+    "my": {
+        "input": 2
     }
 }
 </code></pre></td>
 <td><pre><code>
 { 
-    transform: {
-        "type": "gpii.transformer.quantize",
+    "transform": {
+        "type": "fluid.transforms.quantize",
         "inputPath": "my.input",
-        outputPath: "mysize"
+        "outputPath": "mysize"
         "ranges": [
             {
                 "upperBound": 11,
@@ -1789,7 +1814,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <pre><code>
 </code></pre></td>
 {
-    mysize: "small"
+    "mysize": "small"
 }
 </tr>
 </tbody>
@@ -1802,17 +1827,17 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    my: {
-        input: 200
+    "my": {
+        "input": 200
     }
 }
 </code></pre></td>
 <td><pre><code>
 { 
-    transform: {
-        "type": "gpii.transformer.quantize",
+    "transform": {
+        "type": "fluid.transforms.quantize",
         "inputPath": "my.input",
-        outputPath: "mysize"
+        "outputPath": "mysize"
         "ranges": [
             {
                 "upperBound": 11,
@@ -1833,11 +1858,160 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <pre><code>
 </code></pre></td>
 {
-    mysize: "very big"
+    "mysize": "very big"
 }
 </tr>
 </tbody>
 </table>
+
+
+### Check whether a number is in a given range (fluid.transforms.inRange)
+
+**type:** standardTransformFunction
+
+**Description:** Checks whether an `input` or `inputPath` is in a given range, outputs `true` or `false` depending on whether it is in that range. The range is indicated by `min` and `max`, both of which are inclusive. The range can be open-ended by not specifying one of these.
+
+**Syntax:**
+
+```
+"transform": {
+    "type": "fluid.transforms.inRange",
+    "inputPath": <path to the value to check ranges from - input is valid as well>,
+    "min": <OPTIONAL: the minimum (inclusive) of the range to check>,
+    "max": <OPTIONAL: the maximum (inclusive) of the range to check>,
+    "outputPath": <OPTIONAL: path to output to>
+}
+```
+
+### Examples:
+
+**Example 1: Standard usage of inRange transformer**
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "my": {
+        "input": 12
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{ 
+    "transform": {
+        "type": "gpii.transforms.inRange",
+        "inputPath": "my.input",
+        "outputPath": "isInRange",
+        "min": 10,
+        "max": 100
+    }
+}
+</code></pre></td><td>
+<pre><code>
+</code></pre></td>
+{
+    "isInRange": true
+}
+</tr>
+</tbody>
+</table>
+
+**Example 2: Standard usage of inRange transformer (out of range)**
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "my": {
+        "input": 110
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{ 
+    "transform": {
+        "type": "gpii.transforms.inRange",
+        "inputPath": "my.input",
+        "outputPath": "isInRange",
+        "min": 10,
+        "max": 100
+    }
+}
+</code></pre></td><td>
+<pre><code>
+</code></pre></td>
+{
+    "isInRange": false
+}
+</tr>
+</tbody>
+</table>
+
+**Example 3: Open ended usage of inRange transformer**
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "my": {
+        "input": 110
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{ 
+    "transform": {
+        "type": "gpii.transforms.inRange",
+        "inputPath": "my.input",
+        "outputPath": "isInRange",
+        "min": 10
+    }
+}
+</code></pre></td><td>
+<pre><code>
+</code></pre></td>
+{
+    "isInRange": true
+}
+</tr>
+</tbody>
+</table>
+
+**Example 4: Range endpoints are inclusive**
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "my": {
+        "input": 100
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{ 
+    "transform": {
+        "type": "gpii.transforms.inRange",
+        "inputPath": "my.input",
+        "outputPath": "isInRange",
+        "min": 10,
+        "max": 100
+    }
+}
+</code></pre></td><td>
+<pre><code>
+</code></pre></td>
+{
+    "isInRange": true
+}
+</tr>
+</tbody>
+</table>
+
 
 ### Creates an object indexed with keys from array entries (fluid.transforms.arrayToObject)
 
@@ -1854,10 +2028,10 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 **Syntax:**
 
 ```transform: {
-    type: "fluid.transforms.arrayToObject",
-    inputPath: "some input path pointing to an array",
-    key: "the variable from array to use as key"
-    innerValue: [ (...inner transforms...) ]
+    "type": "fluid.transforms.arrayToObject",
+    "inputPath": "some input path pointing to an array",
+    "key": "the variable from array to use as key"
+    "innerValue": [ (...inner transforms...) ]
 }```
 
 #### Examples:
@@ -1870,27 +2044,32 @@ In this example, the `key` provided in our transform function is "product". This
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
-foo: {
-    bar: [ 
-        { product: "salad", price: 10, healthy: "yes" },
-        { product: "candy", price: 18, healthy: "no" }
-    ]
+{
+    "foo": {
+        "bar": [ 
+            { "product": "salad", "price": 10, "healthy": "yes" },
+            { "product": "candy", "price": 18, "healthy": "no" }
+        ]
+    }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayToObject",
-        inputPath: "foo.bar",
-        key: "product"
+    "transform": {
+        "type": "fluid.transforms.arrayToObject",
+        "inputPath": "foo.bar",
+        "key": "product",
+        "outputPath": "transformed"
     }
 }
 </code></pre></td><td>
 <pre><code>
 </code></pre></td>
 {
-    salad: { price: 10, healthy: "yes" },
-    candy: { price: 18, healthy: "no" }
+    "transformed": {
+        "salad": { price: 10, healthy: "yes" },
+        "candy": { price: 18, healthy: "no" }
+    }
 }
 </tr>
 </tbody>
@@ -1906,25 +2085,27 @@ For the below example, in the second (innermost) `inputPath`, we refer to `info.
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
-foo: {
-    bar: [ 
-        { product: "salad", info: { price: 10, healthy: "yes" }},
-        { product: "candy", info: { price: 18, healthy: "no", tasty: "yes" }}
-    ]
+{
+    "foo": {
+        "bar": [ 
+            { "product": "salad", "info": { "price": 10, "healthy": "yes" }},
+            { "product": "candy", "info": { "price": 18, "healthy": "no", "tasty": "yes" }}
+        ]
+    }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayToObject",
-        inputPath: "foo.bar",
-        key: "product",
-        innerValue: [{
-            transform: {
-                type: "fluid.transforms.value",
-                inputPath: "info.healthy",
+    "transform": {
+        "type": "fluid.transforms.arrayToObject",
+        "outputPath": "transformed",
+        "inputPath": "foo.bar",
+        "key": "product",
+        "innerValue": [{
+            "transform": {
+                "type": "fluid.transforms.value",
+                "inputPath": "info.healthy"
             }
-
         }]
     }
 }
@@ -1933,8 +2114,10 @@ foo: {
 <pre><code>
 </code></pre></td>
 {
-    salad: { price: 10, healthy: "yes" },
-    candy: { price: 18, healthy: "no" }
+    "transformed": {
+        "salad": "yes",
+        "candy": "no"
+    }
 }
 </tr>
 </tbody>
@@ -1950,8 +2133,8 @@ A brief illustration of this is given here:
 
 ```
 input: { 
-    cat: { name: "CATTOO" }, 
-    mouse: { name: "MAUS" }
+    "cat": { name: "CATTOO" }, 
+    "mouse": { name: "MAUS" }
 }
 output: [
     { name: "CATTOO", animal: "cat" }, 
@@ -1968,10 +2151,10 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 **Syntax:**
 
 ```transform: {
-    type: "fluid.transforms.objectToArray",
-    inputPath: "some input path pointing to an object of objects",
-    key: "the variable to use as key for newly added entries"
-    innerValue: [ (...inner transforms...) ]
+    "type": "fluid.transforms.objectToArray",
+    "inputPath": "some input path pointing to an object of objects",
+    "key": "the variable to use as key for newly added entries"
+    "innerValue": [ (...inner transforms...) ]
 }```
 
 #### Examples:
@@ -1985,19 +2168,19 @@ In this example, the `key` provided in our transform function is "product". This
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 { 
-    foo: {
-        salad: { price: 10, healthy: "yes" },
-        candy: { price: 18, healthy: "no" }
+    "foo": {
+        "salad": { "price": 10, "healthy": "yes" },
+        "candy": { "price": 18, "healthy": "no" }
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.objectToArray",
-        inputPath: "foo",
-        outputPath: "bar"
-        key: "product"
+    "transform": {
+        "type": "fluid.transforms.objectToArray",
+        "inputPath": "foo",
+        "outputPath": "bar",
+        "key": "product"
     }
 }
 </code></pre></td><td>
@@ -2022,24 +2205,24 @@ For the below example, in the second (innermost) `inputPath`, we refer to `info.
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    foo: {
-        salad: { price: 10, healthy: "yes" },
-        candy: { price: 18, healthy: "no" }
+    "foo": {
+        "salad": { "price": 10, "healthy": "yes" },
+        "candy": { "price": 18, "healthy": "no" }
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayToObject",
-        inputPath: "foo",
-        outputPath: "bar",
-        key: "product",
-        innerValue: [{
-            transform: {
-                type: "fluid.transforms.value",
-                inputPath: "",
-                outputPath: "info.healthy"
+    "transform": {
+        "type": "fluid.transforms.objectToArray",
+        "inputPath": "foo",
+        "outputPath": "bar",
+        "key": "product",
+        "innerValue": [{
+            "transform": {
+                "type": "fluid.transforms.value",
+                "inputPath": "",
+                "outputPath": "info.healthy"
             }
 
         }]
@@ -2050,7 +2233,7 @@ For the below example, in the second (innermost) `inputPath`, we refer to `info.
 <pre><code>
 </code></pre></td>
 {
-    bar: [ 
+    "bar": [ 
         { product: "salad", info: { price: 10, healthy: "yes" }},
         { product: "candy", info: { price: 18, healthy: "no" }}
     ]
@@ -2076,11 +2259,11 @@ Returns `undefined` if no array is provided.
 
 ```
 {
-    type: "fluid.transforms.indexOf",
-    array: <the array to look in>,
-    input: <the value to look for>,
-    notFound: <OPTIONAL: to be returned in case the element is not found>,
-    offset: <OPTIONAL: offset to the returned index>
+    "type": "fluid.transforms.indexOf",
+    "array": <the array to look in>,
+    "input": <the value to look for>,
+    "notFound": <OPTIONAL: to be returned in case the element is not found>,
+    "offset": <OPTIONAL: offset to the returned index>
 }
 ```
 
@@ -2094,16 +2277,16 @@ Returns `undefined` if no array is provided.
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    element: "dog"
+    "element": "dog"
 }
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.indexOf",
-            array: ["sheep", "dog"],
-            inputPath: "element"
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.indexOf",
+            "array": ["sheep", "dog"],
+            "inputPath": "element"
         }
     }
 }
@@ -2111,7 +2294,7 @@ Returns `undefined` if no array is provided.
 <pre><code>
 </code></pre></td>
 {
-    value: 1
+    "value": 1
 }
 </tr>
 </tbody>
@@ -2124,16 +2307,16 @@ Returns `undefined` if no array is provided.
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    element: "goat"
+    "element": "goat"
 }
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.indexOf",
-            array: ["sheep", "dog"],
-            inputPath: "element"
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.indexOf",
+            "array": ["sheep", "dog"],
+            "inputPath": "element"
         }
     }
 }
@@ -2141,7 +2324,7 @@ Returns `undefined` if no array is provided.
 <pre><code>
 </code></pre></td>
 {
-    value: -1
+    "value": -1
 }
 </tr>
 </tbody>
@@ -2154,17 +2337,17 @@ Returns `undefined` if no array is provided.
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    element: "goat"
+    "element": "goat"
 }
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.indexOf",
-            array: ["sheep", "dog"],
-            inputPath: "element",
-            notFound: "not there"
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.indexOf",
+            "array": ["sheep", "dog"],
+            "inputPath": "element",
+            "notFound": "not there"
         }
     }
 }
@@ -2172,7 +2355,7 @@ Returns `undefined` if no array is provided.
 <pre><code>
 </code></pre></td>
 {
-    value: "not there"
+    "value": "not there"
 }
 </tr>
 </tbody>
@@ -2185,17 +2368,17 @@ Returns `undefined` if no array is provided.
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    element: "dog"
+    "element": "dog"
 }
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.indexOf",
-            array: ["sheep", "dog"],
-            inputPath: "element",
-            offset: 2
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.indexOf",
+            "array": ["sheep", "dog"],
+            "inputPath": "element",
+            "offset": 2
         }
     }
 }
@@ -2203,7 +2386,7 @@ Returns `undefined` if no array is provided.
 <pre><code>
 </code></pre></td>
 {
-    value: 3
+    "value": 3
 }
 </tr>
 </tbody>
@@ -2216,17 +2399,17 @@ Returns `undefined` if no array is provided.
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    element: "goat"
+    "element": "goat"
 }
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.indexOf",
-            array: ["sheep", "dog"],
-            inputPath: "element",
-            offset: 2
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.indexOf",
+            "array": ["sheep", "dog"],
+            "inputPath": "element",
+            "offset": 2
         }
     }
 }
@@ -2234,7 +2417,7 @@ Returns `undefined` if no array is provided.
 <pre><code>
 </code></pre></td>
 {
-    value: 1
+    "value": 1
 }
 </tr>
 </tbody>
@@ -2246,17 +2429,17 @@ Returns `undefined` if no array is provided.
 
 **Description:** Returns the value of a given index in an array. This transform looks up the index given by `input`/`inputPath` in the array provided via `array`. It returns the value found at that index.
 
-It allows for an `offset` to be provided, which will be added to the index that is being looked up, and a `notFound` which will be returned in case no value was found at the given index.
+It allows for an `offset` to be provided, which will be added to the index that is being looked up. A `notFound` can be provided, which will be used _only_ in case the input/inputPath evaluates to `-1`.
 
 **Syntax:**
 
 ```
 {
-    type: "fluid.transforms.dereference",
-    array: <the array to look in>,
-    input: <the index to look for>,
-    notFound: <OPTIONAL: to be returned in case no element is found at index>,
-    offset: <OPTIONAL: offset to the index being looked up>
+    "type": "fluid.transforms.dereference",
+    "array": <the array to look in>,
+    "input": <the index to look for>,
+    "notFound": <OPTIONAL: to be returned in case no element is found at index>,
+    "offset": <OPTIONAL: offset to the index being looked up>
 }
 ```
 
@@ -2270,16 +2453,16 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    element: 1
+    "element": 1
 }
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.dereference",
-            array: ["sheep", "dog"],
-            inputPath: "element"
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.dereference",
+            "array": ["sheep", "dog"],
+            "inputPath": "element"
         }
     }
 }
@@ -2287,7 +2470,7 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <pre><code>
 </code></pre></td>
 {
-    value: "dog"
+    "value": "dog"
 }
 </tr>
 </tbody>
@@ -2300,17 +2483,17 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    element: 8
+    "element": -1
 }
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.dereference",
-            array: ["sheep", "dog"],
-            inputPath: "element",
-            notFound: "not there"
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.dereference",
+            "array": ["sheep", "dog"],
+            "inputPath": "element",
+            "notFound": "not there"
         }
     }
 }
@@ -2318,7 +2501,7 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <pre><code>
 </code></pre></td>
 {
-    value: "not there"
+    "value": "not there"
 }
 </tr>
 </tbody>
@@ -2331,17 +2514,17 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    element: 0
+    "element": 0
 }
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.indexOf",
-            array: ["sheep", "dog"],
-            inputPath: "element",
-            offset: 1
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.dereference",
+            "array": ["sheep", "dog"],
+            "inputPath": "element",
+            "offset": 1
         }
     }
 }
@@ -2349,7 +2532,7 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <pre><code>
 </code></pre></td>
 {
-    value: "dog"
+    "value": "dog"
 }
 </tr>
 </tbody>
@@ -2367,9 +2550,9 @@ Currently it does not support reading any of its values from the input model. Fu
 **Syntax:**
 
 {
-    type: "fluid.transforms.stringTemplate",
-    template: <string template>,
-    terms: <map or array of template values>
+    "type": "fluid.transforms.stringTemplate",
+    "template": <string template>,
+    "terms": <map or array of template values>
 }
 
 #### Examples:
@@ -2384,17 +2567,17 @@ Currently it does not support reading any of its values from the input model. Fu
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.stringTemplate",
-            template: "Paused at: %atFile of %totalFiles files (%atSize of %totalSize)",
-            terms: {
-                atFile: 12,
-                totalFiles: 14,
-                atSize: "100 Kb",
-                totalSize: "12000 Gb"
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.stringTemplate",
+            "template": "Paused at: %atFile of %totalFiles files (%atSize of %totalSize)",
+            "terms": {
+                "atFile": 12,
+                "totalFiles": 14,
+                "atSize": "100 Kb",
+                "totalSize": "12000 Gb"
             },
-            outputPath: "finalstring",
+            "outputPath": "finalstring"
         }
     }
 }
@@ -2402,7 +2585,7 @@ Currently it does not support reading any of its values from the input model. Fu
 <pre><code>
 </code></pre></td>
 {
-    finalstring: "Paused at: 12 of 14 files (100 Kb of 12000Gb)"
+    "finalstring": "Paused at: 12 of 14 files (100 Kb of 12000Gb)"
 }
 </tr>
 </tbody>
@@ -2418,12 +2601,12 @@ Currently it does not support reading any of its values from the input model. Fu
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.stringTemplate",
-            template: "Paused at: %0 of %1 files (%2 of %3)",
-            terms: [ 12, 14, "100 Kb", "12000 Gb" ],
-            outputPath: "finalstring",
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.stringTemplate",
+            "template": "Paused at: %0 of %1 files (%2 of %3)",
+            "terms": [ 12, 14, "100 Kb", "12000 Gb" ],
+            "outputPath": "finalstring"
         }
     }
 }
@@ -2431,7 +2614,7 @@ Currently it does not support reading any of its values from the input model. Fu
 <pre><code>
 </code></pre></td>
 {
-    finalstring: "Paused at: 12 of 14 files (100 Kb of 12000Gb)"
+    "finalstring": "Paused at: 12 of 14 files (100 Kb of 12000Gb)"
 }
 </tr>
 </tbody>
@@ -2447,9 +2630,9 @@ Does not support reading any of its values from the input model, and any value p
 
 **Syntax:**
 {
-    type: "fluid.transforms.free",
-    func: <function name>,
-    args: <arguments to the function>
+    "type": "fluid.transforms.free",
+    "func": <function name>,
+    "args": <arguments to the function>
 }
 
 #### Examples:
@@ -2471,12 +2654,12 @@ fluid.myfuncs.addThree = function (a, b, c) {
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.free",
-            func: "fluid.myfuncs.addThree",
-            args: [9, 2, 3]
-            outputPath: "result",
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.free",
+            "func": "fluid.myfuncs.addThree",
+            "args": [9, 2, 3]
+            "outputPath": "result",
         }
     }
 }
@@ -2484,7 +2667,7 @@ fluid.myfuncs.addThree = function (a, b, c) {
 <pre><code>
 </code></pre></td>
 {
-    result: 14
+    "result": 14
 }
 </tr>
 </tbody>
@@ -2512,12 +2695,12 @@ fluid.myfuncs.addNumbers = function (options) {
 </code></pre></td>
 <td><pre><code>
 {
-    value: {
-        transform: {
-            type: "fluid.transforms.free",
-            func: "fluid.myfuncs.addNumbers",
-            args: {numbers: [1, 2, 3]},
-            outputPath: "result"
+    "value": {
+        "transform": {
+            "type": "fluid.transforms.free",
+            "func": "fluid.myfuncs.addNumbers",
+            "args": {numbers: [1, 2, 3]},
+            "outputPath": "result"
         }
     }
 }
@@ -2525,7 +2708,7 @@ fluid.myfuncs.addNumbers = function (options) {
 <pre><code>
 </code></pre></td>
 {
-    result: 6
+    "result": 6
 }
 </tr>
 </tbody>
@@ -2544,11 +2727,11 @@ As an example, if one has an array listing of capabilities supported by a specif
 If `presentValue` and `missingValue` are not defined they will default to: `true` and `false`, respectively.
 ```
 transform: {
-    type: "fluid.transforms.arrayToSetMembership",
-    inputPath: <standard inputPath>,
-    presentValue: <Value for an entry in output set if expectedArrayEntryX is present in array>,
-    missingValue: <That value given to an entry if expectedArrayEntryX is present in array>,
-    options: {
+    "type": "fluid.transforms.arrayToSetMembership",
+    "inputPath": <standard inputPath>,
+    "presentValue": <Value for an entry in output set if expectedArrayEntryX is present in array>,
+    "missingValue": <That value given to an entry if expectedArrayEntryX is present in array>,
+    "options": {
         "expectedArrayEntry1": "Key of output set 1",
         (...)
         "expectedArrayEntryN": "Key of output set N",
@@ -2565,22 +2748,22 @@ transform: {
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    controls: [ "mouse", "keyboard" ]
+    "controls": [ "mouse", "keyboard" ]
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayToSetMembership",
-        outputPath: "detections",
-        inputPath: "controls",
-        presentValue: "supported",
-        missingValue: "not supported",
-        options: {
-            mouse: "hasMouse",
-            keyboard: "hasKeyboard",
-            trackpad: "hasTrackpad",
-            headtracker: "hasHeadtracker"
+    "transform": {
+        "type": "fluid.transforms.arrayToSetMembership",
+        "outputPath": "detections",
+        "inputPath": "controls",
+        "presentValue": "supported",
+        "missingValue": "not supported",
+        "options": {
+            "mouse": "hasMouse",
+            "keyboard": "hasKeyboard",
+            "trackpad": "hasTrackpad",
+            "headtracker": "hasHeadtracker"
         }
     }
 }
@@ -2588,11 +2771,11 @@ transform: {
 <pre><code>
 </code></pre></td>
 {
-    detections: {
-        hasMouse: "supported",
-        hasKeyboard: "supported",
-        hasTrackpad: "not supported",
-        hasHeadtracker: "not supported"
+    "detections": {
+        "hasMouse": "supported",
+        "hasKeyboard": "supported",
+        "hasTrackpad": "not supported",
+        "hasHeadtracker": "not supported"
     }
 }
 </tr>
@@ -2607,20 +2790,20 @@ transform: {
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    controls: [ "mouse", "keyboard" ]
+    "controls": [ "mouse", "keyboard" ]
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.arrayToSetMembership",
-        outputPath: "detections",
-        inputPath: "controls",
-        options: {
-            mouse: "hasMouse",
-            keyboard: "hasKeyboard",
-            trackpad: "hasTrackpad",
-            headtracker: "hasHeadtracker"
+    "transform": {
+        "type": "fluid.transforms.arrayToSetMembership",
+        "outputPath": "detections",
+        "inputPath": "controls",
+        "options": {
+            "mouse": "hasMouse",
+            "keyboard": "hasKeyboard",
+            "trackpad": "hasTrackpad",
+            "headtracker": "hasHeadtracker"
         }
     }
 }
@@ -2628,11 +2811,11 @@ transform: {
 <pre><code>
 </code></pre></td>
 {
-    detections: {
-        hasMouse: true,
-        hasKeyboard: true,
-        hasTrackpad: false,
-        hasHeadtracker: false
+    "detections": {
+        "hasMouse": true,
+        "hasKeyboard": true,
+        "hasTrackpad": false,
+        "hasHeadtracker": false
     }
 }
 </tr>
@@ -2652,12 +2835,12 @@ It takes an object with a set of keys and where the value space only consist of 
 If `presentValue` and `missingValue` are not defined they will default to: `true` and `false`, respectively.
 ```
 transform: {
-    type: "fluid.transforms.setMembershipToArray",
-    inputPath: <standard inputPath>,
-    outputPath: <standard outputPath>
-    presentValue: <Value indicating that an entry should be in output array>,
-    missingValue: <Value indicating that an entry should not be in output array>,
-    options: {
+    "type": "fluid.transforms.setMembershipToArray",
+    "inputPath": <standard inputPath>,
+    "outputPath": <standard outputPath>
+    "presentValue": <Value indicating that an entry should be in output array>,
+    "missingValue": <Value indicating that an entry should not be in output array>,
+    "options": {
         "inputObjectKey1": "outputArrayValue1",
         (...)
         "inputObjectKeyN": "outputArrayValueN",
@@ -2674,25 +2857,27 @@ transform: {
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    detections: {
-        hasMouse: "supported",
-        hasKeyboard: "supported",
-        hasTrackpad: "not supported",
-        hasHeadtracker: "not supported"
+    "detections": {
+        "hasMouse": "supported",
+        "hasKeyboard": "supported",
+        "hasTrackpad": "not supported",
+        "hasHeadtracker": "not supported"
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.setMembershipToArray",
-        inputPath: "detections",
-        outputPath: "controls",
-        options: {
-            hasMouse: "mouse",
-            hasKeyboard: "keyboard",
-            hasTrackpad: "trackpad",
-            hasHeadtracker: "headtracker"
+    "transform": {
+        "type": "fluid.transforms.setMembershipToArray",
+        "inputPath": "detections",
+        "outputPath": "controls",
+        "presentValue": "supported",
+        "missingValue": "not supported",
+        "options": {
+            "hasMouse": "mouse",
+            "hasKeyboard": "keyboard",
+            "hasTrackpad": "trackpad",
+            "hasHeadtracker": "headtracker"
         }
     }
 }
@@ -2700,7 +2885,7 @@ transform: {
 <pre><code>
 </code></pre></td>
 {
-    controls: [ "mouse", "keyboard" ]
+    "controls": [ "mouse", "keyboard" ]
 }
 </tr>
 </tbody>
@@ -2714,25 +2899,25 @@ transform: {
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
 <tr><td><pre><code>
 {
-    detections: {
-        hasMouse: true,
-        hasKeyboard: true,
-        hasTrackpad: false,
-        hasHeadtracker: false
+    "detections": {
+        "hasMouse": true,
+        "hasKeyboard": true,
+        "hasTrackpad": false,
+        "hasHeadtracker": false
     }
 }
 </code></pre></td>
 <td><pre><code>
 {
-    transform: {
-        type: "fluid.transforms.setMembershipToArray",
-        inputPath: "detections",
-        outputPath: "controls",
-        options: {
-            hasMouse: "mouse",
-            hasKeyboard: "keyboard",
-            hasTrackpad: "trackpad",
-            hasHeadtracker: "headtracker"
+    "transform": {
+        "type": "fluid.transforms.setMembershipToArray",
+        "inputPath": "detections",
+        "outputPath": "controls",
+        "options": {
+            "hasMouse": "mouse",
+            "hasKeyboard": "keyboard",
+            "hasTrackpad": "trackpad",
+            "hasHeadtracker": "headtracker"
         }
     }
 }
@@ -2740,7 +2925,7 @@ transform: {
 <pre><code>
 </code></pre></td>
 {
-    controls: [ "mouse", "keyboard" ]
+    "controls": [ "mouse", "keyboard" ]
 }
 </tr>
 </tbody>
