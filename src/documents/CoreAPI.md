@@ -37,13 +37,16 @@ approach taken from an earlier version of jQuery - detecting whether the `toStri
 of the object agrees with the textual form `[object Array]`, or else whether the object is a
 jQuery object (the most common source of "fake arrays").
 
-### fluid.isPlainObject(totest)
+### fluid.isPlainObject(totest[, strict])
 
 * `totest {Any}`
+* `strict {Boolean}` [optional] If `true`, only accepts plain Objects
 * Returns: `{Boolean}`
 
 Returns `true` if the supplied object is a plain JSON-forming container - that is, it is either a plain Object
-or a plain Array. 
+or a plain Array. If the `strict` argument holds `true`, only returns `true` if the supplied object is a plain Object.
+This method will accept as plain even objects coming from other contexts (e.g. iframes or V8 contexts) if they were
+plain in that context.
 
 ### fluid.typeCode(totest)
 
