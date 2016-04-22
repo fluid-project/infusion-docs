@@ -61,7 +61,7 @@ A `<shortModelPathReference>` has the form:
 </table>
 
 The key for a modelListener will be interpreted as a `<shortModelPathReference>` if the modelListener declaration does not contain a member named `path`. If the modelListener declaration includes `path`, then the key will be interpreted as a
-_namespace_ instead. 
+_namespace_ instead, unless the declaration includes a `namespace` member, which takes priority as defining the namespace.
 
 The four examples presented in the _"Examples"_ column are parallel for the two cases - they respectively match changes occurring in the same parts of the target model, only in the first row they match into the model attached to this component (the same one in which the `modelListeners` record appears) and in the second row they match into the model attached to another component - one referenced by the [Context Expression](Contexts.md) `otherComponent`.
 
