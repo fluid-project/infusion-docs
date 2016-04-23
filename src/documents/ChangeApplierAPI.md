@@ -73,21 +73,21 @@ A model listener declaration block has the same form and meaning as any of the r
 including the one-string compact syntax documented with [Invokers](Invokers.md#compact-format), and the use of [Priorities](Priorities.md). Like standard event listener entries, model
 listeners can provide a `namespace` entry. Just one model listener with a particular namespace will be registered on a particular ChangeApplier. 
 
-A model listener declaration block includes three extra features beyond those found in ordinary event listeners. Firstly is the possibility of including a member [`path`](#the-path-entry-in-a-model-listener-declaration), which can hold
-a more complex path specification which the model listener can match on than can be encoded in the single string in a `<shortModelPathReference>`, the ability to filter a change based on its [_source_](#source-tracking-and-filtering-in-model-listener-blocks), using the members
+A model listener declaration block includes three extra features beyond those found in ordinary event listeners. Firstly is the possibility of including a member [`path`](#the-path-entry-in-a-model-listener-declaration) of type `<modelPathReference>` (a `String` or `Object`), which can hold
+a more complex path specification for the the model listener match than can be encoded in the single string in a `<shortModelPathReference>`, secondly the ability to filter a change based on its [_source_](#source-tracking-and-filtering-in-model-listener-blocks), using the members
 `includeSource` and `excludeSource`, and finally the possibility that any IoC-resolved material in the listener declaration may match the special context name [`change`](#the-special-context-change-) which corresponds to the model change
 that the listener is reacting to. These entries are described in the linked sections below:
 
 #### The `path` entry in a model listener declaration ####
 
-The `path` entry holds basically the same function as the `<shortModelPathReference>` which may be held in the key of the listener declaration, but allows a richer set of path specifications to be used in order to
-specify which changes this model listener is interested in responding to. Note that if the `path` entry is supplied, then the key of the listener will be interpreted as a _namespace_ for the listener rather than as
+The `path` entry fulfils the same basic function as the `<shortModelPathReference>` which may form the key of the listener declaration, but allows a richer set of path specifications to be used for 
+specifying which changes this model listener will respond to. Note that if the `path` entry is supplied, then the key of the listener will be interpreted as a _namespace_ for the listener rather than as
 a path specification.
 
 <table>
     <thead>
         <tr>
-            <th colspan="3">Possible values for the <code>path</code> member of a model listener declaration</th>
+            <th colspan="3">Possible values for the <code>path</code> member of a model listener declaration (first two rows define <code>&lt;modelPathReference&gt;</code>)</th>
         </tr>
         <tr>
             <th>Type</th>
@@ -105,7 +105,7 @@ a path specification.
         </tr>
         <tr>
             <td><code>Object</code></td>
-            <td>A `<modelPathRecord>`, including members <ul>
+            <td>A <code>&lt;modelPathRecord&gt;</code>, including members <ul>
                 <li><code>segs</code> (<code>Array</code> - required) and</li> 
                 <li><code>context</code> (<code>String</code> - optional) which encodes the model path to be matched.</li>
                 </ul>
@@ -125,11 +125,11 @@ a path specification.
         </tr>
         <tr>
             <td><code>Array</code></td>
-            <td>An array each of whose element may either be a String holding a <code>&lt;shortModelPathReference&gt;</code> or a <code>&lt;modelPathRecord&gt;</code>. The listener will be notified when <it>any</it> of these
+            <td>An array of <code>&lt;modelPathReference&gt;</code>: members are either a String holding a <code>&lt;shortModelPathReference&gt;</code> or an Object <code>&lt;modelPathRecord&gt;</code>. The listener will be notified when <it>any</it> of these
             paths receive changes. Below is further information on <a href="#matching-on-multiple-paths-in-a-single-model-listener-declaration"><code>matching on multiple paths</code></a></td>
             <td><code>[
                     "position", {
-                        segs: [["windowHolders"], "{that}.options.ourWindow"]
+                        segs: ["windowHolders", "{that}.options.ourWindow"]
                     }
                 ]</code>
             </td>
@@ -141,7 +141,8 @@ a path specification.
 
 When the `path` member of a model listener declaration holds an `Array`, the listener will be notified when <it>any</it> of these paths receive changes. 
 
-Note that a listener which specifies references to multiple component targets in such a list will just receive one notification per component of its changes. A listener which supplies an
+Note that a listener which specifies references to multiple component targets in such a list will only receive one notification per component at the end of a transaction where a change matches. For example, if the listener list
+contains `{otherComponent}.model.x.y` and `{otherComponent}.model.x`, the listener will only be notified once for `{otherComponent}` for a matching change. A listener which supplies an
 array of more than one element in <code>path</code> will not be able to make use of either the special context [`change`](#the-special-context-change-) ***or*** the possibility of using the wildcard character
 `*` in the final path segment. Note that elements of <code>segs</code> may themselves consist of IoC references resolving to configuration in the tree (although they may not hold references to model material - they are evaluated just once when the component constructs).
 
@@ -354,17 +355,20 @@ It is not currently possible to supply more than one wildcard segment per path r
 
 ### Programmatic style for listening to changes###
 
-The programmatic style for registering interest in model changes uses an API exposed by the ChangeApplier on its member `modelChanged` that is very similar to that exposed by a standard [Infusion Event](InfusionEventSystem.md) - the difference is that the `addListener` method accepts an extra 1st argument, `pathSpec` - this holds the same model path reference documented in the previous section on declarative binding:
+The programmatic style for registering interest in model changes uses an API exposed by the ChangeApplier on its member `modelChanged` that is very similar to that exposed by a standard [Infusion Event](InfusionEventSystem.md) - 
+the difference is that the `addListener` method accepts an extra 1st argument, `spec` - an `Object` which holds the same model path reference in `path` or `segs` documented in the previous section on declarative binding:
 
 ```javascript
-applier.modelChanged.addListener(pathSpec, listener, namespace)
+applier.modelChanged.addListener(spec, listener, namespace)
 applier.modelChanged.removeListener(listener)
 ```
+
+`spec` may also include the standard members `namespace` and `priority` seen in the declarative record.
 
 <div class="infusion-docs-note"><strong>Note:</strong> This style of listening to changes is **discouraged**, but may be the right choice in some applications. For example - the listener to be attached may not be available
 at the time the component is constructed. Note that programmatically attached listeners will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where they are registered.</div>
 
-The listener is notified after the change (or set of coordinated changes) has already been applied to the model - it is too late to affect this process and so this event is not _preventable_. The signature for these listeners is
+The listener is notified after the change (or set of coordinated changes forming a transaction) has already been applied to the model. The signature for these listeners is
 
 ```javascript
 function listener(value, oldValue, pathSegs, changeRequest, transaction)
@@ -426,7 +430,7 @@ This style of record is recognised by its use of the special member `changePath`
     <tbody>
         <tr>
             <td><code>changePath</code></td>
-            <td><code>&lt;modelPathReference&gt;</code> (String)</td>
+            <td><code>&lt;modelPathReference&gt; {String|Object}</code></td>
             <td>
                 The reference to the model path in a model somewhere in the component tree where the change is to be triggered. This has the same syntax as the model path references documented above for declarative listening, only wildcard forms are not supported. Four examples:
                 <ul>
@@ -444,12 +448,12 @@ This style of record is recognised by its use of the special member `changePath`
         </tr>
         <tr>
             <td><code>type</code></td>
-            <td>String (optional)</td>
+            <td><code>String</code> (optional)</td>
             <td>If this holds the value <code>DELETE</code>, this change will remove the value held at <code>changePath</code>. In this case, <code>value</code> should not be supplied. This is the recommended way of removing material from a model - it has the effect of the <code>delete</code> primitive of the JavaScript language. Sending changes holding a <code>value</code> of <code>null</code> or <code>undefined</code> does not have the same effect, as per the JavaScript language spec.</td>
         </tr>
         <tr>
             <td><code>source</code></td>
-            <td>String/Array of String/Object(optional)</td>
+            <td><code>String/Array of String/Object</code>(optional)</td>
             <td>Any string or strings supplied here will be marked to the change as it propagates. Model listeners and relay rules can then choose to opt in or opt out of responding to this change by means of the
             <a href="#source-tracking-and-filtering-in-model-listener-blocks">source-related</a> <code>includeSource</code> and <code>excludeSource</code> members in their records. If an <code>Object</code> is supplied here,
             it is assumed that the sources are encoded in its keys, and its values will be ignored.</td>
@@ -497,8 +501,8 @@ applier.change(path, value, type, source)
     <tbody>
         <tr>
             <td><code>path</code></td>
-            <td><code>String</code></td>
-            <td>An EL path into the model where the change is to occur.</td>
+            <td><code>String|Array of String</code></td>
+            <td>An EL path into the model where the change is to occur, expressed either as a single string or an array of path segments</td>
         </tr>
         <tr>
             <td><code>value</code></td>
@@ -512,7 +516,7 @@ applier.change(path, value, type, source)
         </tr>
         <tr>
             <td><code>source</code></td>
-            <td>(optional) <code>String/Array of String/Object</code><code></td>
+            <td>(optional) <code>String|Array of String|Object</code><code></td>
             <td>One or more strings representing <code>source</code>s which should be marked to this change. See documentation on the <a href="#declarative-style-for-triggering-a-change"><code>source</code></a> member of a <code>changeRecord</code></td>
         </tr>
     </tbody>
@@ -603,7 +607,8 @@ an IoC component tree and should be constructed by the IoC system itself.
 ### Operating transactions manually ###
 
 A user may be interested in economising on notifications to model updates; by batching these up into a single transaction, there will
-just be a single notification of each listener which is impacted around the model skeleton. This facility is not a stable API (at the Infusion 2.0 version level and before).
+just be a single notification of each listener which is impacted around the model skeleton. This facility is not a stable API (at the Infusion 2.0 version level and before); however, its
+use can't be strongly discouraged since it is the only way of avoiding certain unwanted model notifications, especially for sequences of changes which include a `DELETE`.
 
 A transaction can be opened using the `initiate()` method of the applier function which returns a transaction object:
 
