@@ -74,7 +74,7 @@ including the one-string compact syntax documented with [Invokers](Invokers.md#c
 listeners can provide a `namespace` entry. Just one model listener with a particular namespace will be registered on a particular ChangeApplier. 
 
 A model listener declaration block includes three extra features beyond those found in ordinary event listeners. Firstly is the possibility of including a member [`path`](#the-path-entry-in-a-model-listener-declaration) of type `<modelPathReference>` (a `String` or `Object`), which can hold
-a more complex path specification for the the model listener match than can be encoded in the single string in a `<shortModelPathReference>`, secondly the ability to filter a change based on its [_source_](#source-tracking-and-filtering-in-model-listener-blocks), using the members
+a more complex path specification for the model listener match than can be encoded in the single string in a `<shortModelPathReference>`, secondly the ability to filter a change based on its [_source_](#source-tracking-and-filtering-in-model-listener-blocks), using the members
 `includeSource` and `excludeSource`, and finally the possibility that any IoC-resolved material in the listener declaration may match the special context name [`change`](#the-special-context-change-) which corresponds to the model change
 that the listener is reacting to. These entries are described in the linked sections below:
 
@@ -100,7 +100,7 @@ a path specification.
             <td><code>String</code></td>
             <td>A <code>&lt;shortModelPathReference&gt;</code></td>
             <td>
-                See examples in section [Model Path References](#model-path-references)
+                See examples in section <a href="#model-path-references">Model Path References</a>
             </td>
         </tr>
         <tr>
@@ -110,7 +110,7 @@ a path specification.
                 <li><code>context</code> (<code>String</code> - optional) which encodes the model path to be matched.</li>
                 </ul>
                 </td>
-            <td>These examples encode exactly the same path expressions, in the same order as in the section [Model Path References](#model-path-references) 
+            <td>These examples encode exactly the same path expressions, in the same order as in the section <a href="#model-path-references">Model Path References</a>
                 <ul>
                     <li><code>{segs: ["modelPath"]}</code></li>
                     <li><code>{segs: ["modelPath", "&#42;"]}</code></li>
@@ -363,7 +363,7 @@ applier.modelChanged.addListener(spec, listener, namespace)
 applier.modelChanged.removeListener(listener)
 ```
 
-`spec` may also include the standard members `namespace` and `priority` seen in the declarative record.
+`spec` may also include the standard member `priority` seen in the declarative record.
 
 <div class="infusion-docs-note"><strong>Note:</strong> This style of listening to changes is **discouraged**, but may be the right choice in some applications. For example - the listener to be attached may not be available
 at the time the component is constructed. Note that programmatically attached listeners will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where they are registered.</div>
@@ -396,11 +396,11 @@ function listener(value, oldValue, pathSegs, changeRequest, transaction)
         </tr>
         <tr>
             <td><code>changeRequest</code></td>
-            <td>May contain a single <code>ChangeRequest</code> object which was responsible for this change, but will often be empty. This signature element is not a stable API</td>
+            <td>May contain a single <a href="#programmatic-style-for-triggering-a-change"><code>ChangeRequest</code></a> object which was responsible for this change, but will often be empty. This signature element is not a stable API</td>
         </tr>
         <tr>
             <td><code>transaction</code></td>
-            <td>May contain a <code>Transaction</code> object which this change was bound to. Primarily useful for the <code>source</code> member which can be used to manually
+            <td>May contain a <a href="#operating-transactions-manually"><code>Transaction</code></a> object which this change was bound to. Primarily useful for the <code>source</code> member which can be used to manually
             check which change sources the transaction is marked to. This signature element is not a stable API</td>
         </tr>
     </tbody>
@@ -492,6 +492,9 @@ applier.change(path, value, type, source)
 
 <table>
     <thead>
+        <tr>
+            <th colspan="3">Fields in a <code>changeRequest</code> object, or (in order) arguments to <code>applier.change</code></th>
+        </tr>
         <tr>
             <th>Path</th>
             <th>Type</th>
