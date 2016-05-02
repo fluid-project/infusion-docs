@@ -24,7 +24,13 @@ npm install
 To generate the HTML and run the DocPad server locally:
 
 ```
-docpad run --env static
+npm run docpad
+```
+
+This runs the command:
+
+```
+docpad run -c docpad-config.js --env static
 ```
 
 Point your browser to:
@@ -36,9 +42,15 @@ http://localhost:9778/
 ## Deploy to GitHub Pages
 
 ```
-docpad deploy-ghpages --env static
+npm run deploy
 ```
 
-*WARNING* `deploy-ghpages` will upload the site to the repository's source. If you have cloned
+This runs the command:
+
+```
+docpad deploy-ghpages -c docpad-config.js --env static
+```
+
+*WARNING* `deploy` will upload the site to the repository's `origin`. If you have cloned
 from the production repository and you have push access, you will actually run the docs publication
 workflow against the live production branch, whichever branch you happen to be working on.
