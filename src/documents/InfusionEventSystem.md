@@ -46,7 +46,7 @@ A top-level options block named **`events`** is supported on every component der
   </tr>
 </table>
 
-<div class="infusion-docs-note"><strong>Note:</strong> `preventable` events are very rarely used and will soon be deprecated in the framework_.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> `preventable` events are very rarely used and will soon be deprecated in the framework.</div>
 
 For every such entry in the `events` section of a component's options, the framework will construct a corresponding ***event firer*** with the same name in the `events` section of the constructed component. The most common use of an event firer is to call its member named `fire` with some set of arguments. Here is a simple, self-contained example:
 
@@ -224,7 +224,7 @@ Once an event firer is constructed, it can be called with the following methods 
     <td><code>removeListener</code></td>
     <td><code>(listener {String|Function})</code></td>
     <td>
-      Supplies either the same listener object which was previously supplied to <code>addListener</code>, or else the String representing its namespace key. The designated listener will be removed from the list of registered listeners for this fierer.
+      Supplies either the same listener object which was previously supplied to <code>addListener</code>, or else the String representing its namespace key. The designated listener will be removed from the list of registered listeners for this firer.
     </td>
   </tr>
   <tr>
@@ -248,7 +248,7 @@ Once an event firer is constructed, it can be called with the following methods 
 
 The Fluid event system is operated by instances of an *event firer* which are created by a call to `fluid.event.makeEventFirer()`.
 It is recommended that users don't construct event firers by hand but instead rely on the framework's facilities for automatically constructing these given event
-blocks in [component options](ComponentConfigurationOptions.md). The signature of `fluid.event.makeEventFirer` is not stable and will be revised in the 2.0 release of Infusion:
+blocks in [component options](ComponentConfigurationOptions.md). The signature of `fluid.event.makeEventFirer` is not a stable API:
 
 ```javascript
 var myFirer = fluid.makeEventFirer(options);
@@ -256,6 +256,9 @@ var myFirer = fluid.makeEventFirer(options);
 
 <table>
   <thead>
+    <tr>
+        <th colspan="3">Members of the <code>options</code> structure supplied to <code>fluid.event.makeEventFirer</code>(unstable API)</th>
+    </tr>
     <tr>
       <td>Option</td>
       <td>Type</td>

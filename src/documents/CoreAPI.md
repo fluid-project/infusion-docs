@@ -45,7 +45,7 @@ jQuery object (the most common source of "fake arrays").
 
 Returns `true` if the supplied object is a plain JSON-forming container - that is, it is either a plain Object
 or a plain Array. If the `strict` argument holds `true`, only returns `true` if the supplied object is a plain Object.
-This method will accept as plain even objects coming from other contexts (e.g. iframes or V8 contexts) if they were
+This method will accept as plain objects coming from other contexts (e.g. iframes or V8 contexts) if they were
 plain in that context.
 
 ### fluid.typeCode(totest)
@@ -155,7 +155,7 @@ globally unique with high probability (50% chance of collision after a million t
 * `b {Number}` The second operand to be added
 * Returns: `{Number}` The value of `a + b`
 
-Returns the result of adding its two arguments. This is a function convenient to supply, for 
+Returns the result of invoking the JavaScript operator `+` on its two arguments. This is a function convenient to supply, for 
 example, to [`fluid.accumulate`](#fluid-accumulate-list-fn-initial-) to sum a list of numbers.
 
 ## Creation, copying and destroying
@@ -383,7 +383,7 @@ This function is a no-op if a primitive value is supplied.
 If an object, it will be pushed to the end of the array using `Array.push`.
  
 Pushes an element or elements onto an array, initialising the array as a member of a holding object if it is
-not already allocated. Example:
+not already allocated. The member of the holding object should either be `undefined` or hold an array at the time of the call. Example:
 
 ```javascript
 var holder = {};

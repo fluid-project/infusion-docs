@@ -6,8 +6,8 @@ category: Infusion
 
 Using the Infusion Model Relay system, you can supply declarative configuration which specifies rules for keeping multiple pieces of model state around the component tree automatically up to date with each other's changes. 
 
-We sometimes use the term _**model skeleton**_ to refer to a connected set of models around the component tree which are related together by relay rules. This illustrates the idea that these models form an inner core which
-arrive at a set of mutually consistent model values, before they start to notify listeners out in the periphery of each component (generally, in its view layer). The system might make several passes over the model skeleton in
+We sometimes use the term _**model skeleton**_ to refer to a connected set of models around the component tree which are related together by relay rules. This term illustrates that these models form an inner core which
+arrive at a set of mutually consistent model values, before they start to notify listeners out in the periphery of each component (generally, in its view layer). The system might make several passes over a model skeleton in
 order to satisfy all the relay rules, and then update all [`modelListeners`](ChangeApplierAPI.md#model-listener-declaration) as a single operation &#8212; presenting them with a consistent snapshot of the state of the entire
 skeleton all at once. This guarantees that no model listener ever sees a model value which is inconsistent with the relay rules which are meant to be keeping them in step, which greatly enhances the reliability and clarity of the
 application design.
@@ -16,9 +16,9 @@ Every Infusion component descended from the grade `fluid.modelComponent` (a mode
 
 ### Two styles for configuring model relay ###
 
-There are two styles of configuration for setting up model relay &#8212; firstly, using the _implicit syntax_ which just consists of [IoC References](IoCReferences.md) from the model configuration for one model-bearing component to another &#8212;
-that is, in the component's configuration under the top-level `model` entry. Secondly, the _explicit syntax_ involves an entry in the component's top-level `modelRelay` block expressing a more complex rule, 
-most likely involving some form of [Model Transformation](to-do/ModelTransformation.md) to apply during the relay process. Both of these styles will set up a permanent and bidirectional relationship between the two models at the ends of the relay &#8212; 
+There are two styles of configuration for setting up model relay &#8212; firstly, using the _[implicit syntax](#implicit-model-relay-style)_ which just consists of [IoC References](IoCReferences.md) from the model configuration for one model-bearing component to another &#8212;
+that is, in the component's configuration under the top-level `model` entry. Secondly, the _[explicit syntax](#explicit-model-relay-style)_ which involves an entry in the component's top-level `modelRelay` block expressing a more complex rule, 
+most likely involving some form of [Model Transformation](ModelTransformationAPI.md) to apply during the relay process. Both of these styles will set up a permanent and bidirectional relationship between the two models at the ends of the relay &#8212; 
 the relationship will be established as the components construct (during the _[initial transaction](#the-initial-transaction)_), and will persist until one of the components at the endpoints is destroyed.
 
 ### How model relay updates propagate ###
@@ -161,7 +161,7 @@ The first and third cases are disambiguated by looking for a member of the block
             <td>Identifies this model relay rule uniquely within its parent component. This namespace may be used to override the relay rule from a derived <a href="ComponentGrades.md">grade</a>, or to control the priority of
             one relay rule with respect to another by using the <code>priority</code> field. 
             Compare with the similar uses of namespaces within Infusion <a href="InfusionEventSystem.md#full-listener-record-form">events</a>, <a href="InfusionEventSystem.md#full-listener-record-form">model listeners</a>, etc. As with `modelListener`, this
-            value will be taken from the key of the <code>modelRelayBlock</code> if it is in the long form.</td>
+            value will be taken from the key of the <code>modelRelayBlock</code> if it is in the "map of keys" form and the `namespace` member is absent.</td>
             <td><code>"resolveCentre"</code></td>
         </tr>
         <tr>
@@ -203,7 +203,7 @@ fluid.defaults("examples.explicitModelRelay", {
                     source: "{examples.explicitModelRelay}.model.volume",
                     target: "volume",
                     singleTransform: {
-                        type: "fluid.linearScale",
+                        type: "fluid.transforms.linearScale",
                         factor: 0.01
                     }
                 }
@@ -249,6 +249,43 @@ A rule leg marked `includeSource: "init"` is less often useful, but can be helpf
 contributing special initial values to certain kinds of "integrated models".
 
 Compare these directives with the similar ones used for source guarding in [model listeners](ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks).
+
+#### Example showing propagation directive in explict relay
+
+Here the same example that we saw illustrating explicit relay [above](#example-showing-explicit-relay-rule) showing the use of a propagation directive, in this case `backward: {excludeSource: "init"}`. In this
+case the directive is useful because we have added a default initial value `0.5` to the `volume` field at the forward end of the relay which conflicts with the value that the relay would establish as it
+synchronises the value `95` from the backward end. In this case, we want the backward value to take precedence during the initial transaction, but the relay to operate normally in both directions once both
+components are fully constructed. This component behaves identially as in the transcript in the [above example](#example-showing-explicit-relay-rule).
+
+```javascript
+fluid.defaults("examples.modelRelayPropagation", {
+    gradeNames: "fluid.modelComponent",
+    model: {
+        volume: 95
+    },
+    components: {
+        child: {
+            type: "fluid.modelComponent",
+            options: {
+                model: {
+                    volume: 0.5 // conflicting default initial value
+                },
+                modelRelay: {
+                    source: "{examples.modelRelayPropagation}.model.volume",
+                    target: "volume",
+                    backward: {
+                        excludeSource: "init"
+                    },
+                    singleTransform: {
+                        type: "fluid.transforms.linearScale",
+                        factor: 0.01
+                    }
+                }
+            }
+        }
+    }
+});
+```
 
 #### Applying priorities to model relay rules ####
 
