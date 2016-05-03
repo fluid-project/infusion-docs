@@ -30,7 +30,7 @@ npm run docpad
 This runs the command:
 
 ```
-docpad run -c docpad-config.js --env static
+docpad run --env static
 ```
 
 Point your browser to:
@@ -48,7 +48,7 @@ npm run deploy
 This runs the command:
 
 ```
-docpad deploy-ghpages -c docpad-config.js --env static
+docpad deploy-ghpages --env static
 ```
 
 *WARNING* `deploy` will upload the site to the repository's `origin`. If you have cloned
