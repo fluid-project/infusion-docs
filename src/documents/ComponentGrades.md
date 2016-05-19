@@ -56,7 +56,7 @@ The Infusion Framework already contains several predefined component grades that
         <tr>
             <td><code>fluid.rendererComponent</code></td>
             <td>
-                A _renderer_ component is a view component that also bears a renderer. There are additional features provided by this component grade specified on the <a href="RendererComponents.md#useful-functions-and-events">Useful functions and events</a> section of the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a> page
+                A _renderer_ component is a view component that also bears a renderer. There are additional features provided by this component grade specified on the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md#useful-functions-and-events">Useful functions and events</a> section of the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a> page
             </td>
         </tr>
     </tbody>
@@ -145,7 +145,7 @@ fluid.defaults("examples.combinedComponent", {
 ```
 
 <div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>,
-<code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md">listener namespaces</a>.</div>
+<code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md#namespaced-listeners">listener namespaces</a>.</div>
 
 <div class="infusion-docs-note"><strong>Note:</strong> In the current framework, all grades derived from `fluid.viewComponent` (as well as `fluid.rendererComponent`, etc.) must be listed ***AFTER*** all those that are not. This problem will be resolved in a future framework release.</div>
 
