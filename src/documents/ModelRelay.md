@@ -120,8 +120,9 @@ This is done using the `modelRelay` section of a component's top-level options. 
             <td>A short form which can be used where the transformation consists of just a single Model Transformation transform rule. Use either this or <code>transform</code></td>
             <td><code>
 {
-    type: "fluid.linearScale",
-    factor: 100
+    type: "fluid.transforms.linearScale",
+    factor: 100,
+    inputPath: ""
 }
 </code>
             </td>
@@ -164,8 +165,9 @@ fluid.defaults("examples.explicitModelRelay", {
                     source: "{examples.explicitModelRelay}.model.volume",
                     target: "volume",
                     singleTransform: {
-                        type: "fluid.linearScale",
-                        factor: 0.01
+                        type: "fluid.transforms.linearScale",
+                        factor: 0.01,
+                        inputPath: ""
                     }
                 }
             }

@@ -382,8 +382,9 @@ See also: [Component Grades](ComponentGrades.md)
         source: "volumeAsPercent",
         target: "volumeAsFraction",
         singleTransform: {
-            type: "fluid.linearScale",
-            factor: 0.01
+            type: "fluid.transforms.linearScale",
+            factor: 0.01,
+            inputPath: ""
         }
     }
 });</code>
