@@ -9,9 +9,6 @@ You may obtain a copy of the ECL 2.0 License and BSD License at
 https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 */
 
-// Note that this file has been renamed from the standard docpad.js to allow use as an npm
-// script under Windows - see https://github.com/docpad/docpad/issues/561
-
 var URI = require("URIjs");
 var path = require("path");
 var fs = require("fs-extra");
@@ -96,7 +93,7 @@ module.exports = {
         writeAfter: function () {
             // Copy the images
             fs.copySync(imagesSrcDir, imagesDestDir);
-            
+
             // Copy the contents of the out directory to
             // out/infusion/<version>. We need to do this to prepare the
             // structure for the ghpages plugin as it does not support
@@ -118,7 +115,7 @@ module.exports = {
             if (fs.existsSync("tmp-out/infusion")) {
                 fs.renameSync("tmp-out/infusion", "out/infusion");
             }
-            
+
             // Anything that was generated on this round gets copied into infusion
             fs.copySync("tmp-out", "out/infusion/" + docsVersion);
             fs.removeSync("tmp-out");
