@@ -55,7 +55,7 @@ depth in the material will be expanded to hold their resolved contents. The sour
 ### fluid.getForComponent(component, path)
 
 This is a fairly interesting method. During the instantiation of an IoC component tree, the framework's "focus of attention" moves around the tree
-in a data-driven way. If an [IoC reference](#IoCReferences.md) is seen to a particular path, this will direct attention to instantiate the
+in a data-driven way. If an [IoC reference](IoCReferences.md) is seen to a particular path, this will direct attention to instantiate the
 material referenced by the path. `fluid.getForComponent` is the method used internally by the framework in order to ensure that any referenced
 material has actually been instantiated before the results from any IoC reference are filled in in the [expanded](ExpansionOfComponentOptions.md)
 options material. You can use this method too, in order to make sure that any member of a component has been instantiated before you look at it. This
