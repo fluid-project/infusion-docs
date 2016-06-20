@@ -63,9 +63,9 @@ var resourceLoader = fluid.resourceLoader([options]);
 </tr>
 </table>
 
-#### Fallback Rules with ```locale``` and ```defaultLocale```
+#### Fallback Rules with ```locale``` and ```defaultLocale``` ####
 
-Example:
+```locale``` and ```defaultLocale``` options can be used to load localized resources, for example, to load messages in different languages.
 
 ```javascript
 fluid.defaults("fluid.messageLoader", {
@@ -98,7 +98,8 @@ This example requests to load a JSON file that contains translations. The ```flu
 
 ## Using ```fluid.resourceLoader``` ##
 
-Example:
+The example below demonstrates when and how to use the fetched resource text in an IoC component tree. Generally speaking, the part that requires the fetched resources needs to postpone the instantiation via ```createOnEvent``` until resources are ready.
+
 ```javascript
 fluid.defaults("fluid.UI", {
     gradeNames: ["fluid.viewComponent"],
@@ -139,5 +140,3 @@ fluid.defaults("fluid.UI", {
 
 var UI = fluid.UI(".flc-UI");
 ```
-
-This example demonstrates when and how to use the fetched resource text in an IoC component tree. General speaking, the part that requires the fetched resources needs to postpone the instantiation via ```createOnEvent``` until resources are ready.
