@@ -88,6 +88,13 @@
                 ]
             },
             {
+                "sectionName": "Resource Loader",
+                "pages":
+                [
+                    { "pageName": "Resource Loader", "href": "/ResourceLoader.html" }
+                ]
+            },
+            {
                 "sectionName": "Preferences Framework",
                 "pages":
                 [

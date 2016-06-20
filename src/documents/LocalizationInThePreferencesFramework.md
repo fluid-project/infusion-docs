@@ -253,19 +253,10 @@ that.msgLookup.lookup(value); // where value is either the string name or the ke
 
 ## Specifying a Localization
 
-The messageLoader takes `defaultLocale` and `locale` options for specifying which localized Message Bundle to fetch. The `locale` option specifies the localization desired. By default it is sourced from the prefsEditorLoader's settings object, `"{prefsEditorLoader}.settings.locale"`. The `defaultLocale` provides a fallback to use if the desired localization cannot be located. By default it is sourced from the prefsEditorLoader's `defaultLocale` option.
+The messageLoader is implemented using [fluid.resourceLoader](ResourceLoader.md). It takes `defaultLocale` and `locale` options for specifying which localized Message Bundle to fetch. The `locale` option specifies the localization desired. By default it is sourced from the prefsEditorLoader's settings object, `"{prefsEditorLoader}.settings.locale"`. The `defaultLocale` provides a fallback to use if the desired localization cannot be located. By default it is sourced from the prefsEditorLoader's `defaultLocale` option.
 
-### Fallback Rules
-
-If a requested localization cannot be found, the messageLoader will attempt to find another Message Bundle to satisfy the request. Language codes are expected in a form similar to [BCP 47](https://tools.ietf.org/html/bcp47) tags but with a "\_" instead of a "-" separating the language code from the country code.
-
-Assuming the Canadian French Message Bundle is requested:
-
-1. look for a Message Bundle corresponding to the language code specified by the `locale` option (e.g. "fr_CA")
-2. look for a Message Bundle with the same language as the language code specified by the `locale` option (e.g. "fr")
-3. look for a Message Bundle corresponding to the language code specified by the `defaultLocale` option (e.g. "en_US")
-4. look for a Message Bundle with the same language as the language code specified by the `defaultLocale` option (e.g. "en")
-5. look for a Message Bundle with the exact URL as specified through the auxiliary schema (e.g. "message/prefsEditor.json")
+See [fluid.resourceLoader options](ResourceLoader.html#options) for the accepted form of ```locale``` and ```defaultLocale```.
+See [fluid.resourceLoader fallback rules](ResourceLoader.html#fallback-rules-with-locale-and-defaultlocale) for fallback rules when attempting to locate a localization.
 
 ### Bundle Naming
 
