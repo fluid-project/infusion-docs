@@ -4,7 +4,16 @@ layout: default
 category: Infusion
 ---
 
-The Infusion Resource Loader ```fluid.resourceLoader``` offers a mechanism to load multiple physical files in one shot. These resources can be html templates, JSON objects or any other resources. Due to the nature of asynchronous file loading with jQuery.ajax() that ```fluid.resourceLoader``` is implemented with, on completion, the resource loader fires an ```onResourcesLoaded``` event with an argument of the populated structure with fetched resource text in the field "resourceText" for each entry. This populated structure can also be retrieved directly on the resource loader instance via the path ```resources```.
+The Infusion Resource Loader ```fluid.resourceLoader``` is an [Infusion component](UnderstandingInfusionComponents.md) which offers a mechanism to load multiple physical files in one shot. 
+These resources can be HTML templates, JSON objects or any other resources. 
+On completion, the resource loader fires an ```onResourcesLoaded``` event with an argument of the populated structure with fetched resource text in the field "resourceText" for each entry. 
+This populated structure can also be retrieved directly on the resource loader instance via the path ```resources```. 
+
+The underlying implementation of ``fluid.resourceLoader`` is the 
+low-level [``fluid.fetchResources``](FetchResources.md) API which in turn defers to [jQuery.ajax](http://api.jquery.com/jquery.ajax/).
+
+Although we show an example here of constructing the resource loader as a free-standing component, a more typical usage would be as a [subcomponent](SubcomponentDeclaration.md) in a wider
+component tree:
 
 ```javascript
 var resourceLoader = fluid.resourceLoader([options]);
@@ -14,7 +23,7 @@ var resourceLoader = fluid.resourceLoader([options]);
 <table>
 <tr>
     <td><code>options</code></td>
-    <td>(optional) (Object) Configuration options. See <a href="#options">Options</a> below for more information.</td>
+    <td>(Object) Configuration options. See <a href="#options">Options</a> below for more information.</td>
 </tr>
 </table>
 
