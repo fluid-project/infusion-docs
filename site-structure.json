@@ -88,6 +88,14 @@
                 ]
             },
             {
+                "sectionName": "Loading Resources",
+                "pages":
+                [
+                    { "pageName": "Resource Loader", "href": "/ResourceLoader.html" },
+                    { "pageName": "fluid.fetchResources", "href": "/FetchResources.html" }
+                ]
+            },
+            {
                 "sectionName": "Preferences Framework",
                 "pages":
                 [
