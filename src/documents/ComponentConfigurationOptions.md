@@ -383,8 +383,7 @@ See also: [Component Grades](ComponentGrades.md)
         target: "volumeAsFraction",
         singleTransform: {
             type: "fluid.transforms.linearScale",
-            factor: 0.01,
-            inputPath: ""
+            factor: 0.01
         }
     }
 });</code>

@@ -122,7 +122,6 @@ This is done using the `modelRelay` section of a component's top-level options. 
 {
     type: "fluid.transforms.linearScale",
     factor: 100,
-    inputPath: ""
 }
 </code>
             </td>
@@ -166,8 +165,7 @@ fluid.defaults("examples.explicitModelRelay", {
                     target: "volume",
                     singleTransform: {
                         type: "fluid.transforms.linearScale",
-                        factor: 0.01,
-                        inputPath: ""
+                        factor: 0.01
                     }
                 }
             }
