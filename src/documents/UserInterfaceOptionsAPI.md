@@ -275,35 +275,6 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### prefsEditorType ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                The <code>prefsEditorType</code> option allows you to specify a custom <code>prefsEditorLoader</code> <a href="ComponentGrades.md">grade</a> component.
-            </td>
-        </tr>
-        <tr>
-            <th>Default</th>
-            <td>"fluid.pageEnhancer"</td>
-        </tr>
-        <tr>
-            <th>Example</th>
-            <td>
-<pre>
-<code>
-fluid.uiOptions.prefsEditor("#myContainer", {
-    prefsEditorType: "myNamespace.myPrefsEditor"
-});
-</code>
-</pre>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
 ### enhancerType ###
 
 <table>
@@ -363,6 +334,40 @@ fluid.uiOptions.fullNoPreview("#myContainer", {
             <th>See also</th>
             <td>
                 <a href="SettingsStore.md#fluid-prefs-cookiestore">Cookie Settings Store</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+### lazyLoad ###
+
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>lazyLoad</code> option allows you to specify if the
+                prefsEditor should be lazily loaded. When `lazyLoad` is enabled,
+                the contents of panel, including templates and message bundles
+                are not loaded until the panel is opened. This feature is useful
+                for improving initial page load times, but will cause a brief delay
+                the first time the panel is opened.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>false</td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+<pre>
+<code>
+fluid.uiOptions.prefsEditor("#myContainer", {
+    lazyLoad: true
+});
+</code>
+</pre>
             </td>
         </tr>
     </tbody>
