@@ -103,6 +103,36 @@ var myBuilder = fluid.prefs.builder({
 ```
 It is not necessary to specify the primary schema; The builder will automatically find the preference specifications provided by the Framework and build a primary schema (see [Processing the Schemas](#processing-the-schemas) below for more information).
 
+### Switching Between Native HTML and jQuery UI Widgets ###
+
+It is possible when using the Preferences Framework to configure the use of either HTML or jQuery UI-based adjustment widgets. The default behaviour is to use HTML widgets for components that have this option available.
+
+The [Context Awareness](ContextAwareness.md) features of Infusion is used to allow components to make the choice at creation time based on a registered check:
+
+```javascript
+// Prefer the use of native HTML widgets when available (default)
+fluid.contextAware.makeChecks({
+    "fluid.prefsWidgetType": {
+        value: "nativeHTML"
+    }
+});
+```
+
+```javascript
+// Prefer the use of jQueryUI widgets when available
+fluid.contextAware.makeChecks({
+    "fluid.prefsWidgetType": {
+        value: "jQueryUI"
+    }
+});
+```
+
+The most basic use is shown above, but more complex ones based on browser feature detection or other means can be envisioned.
+
+At the moment, only the TextFieldSlider widget used for text size and line spacing preferences is context-aware, and can use either the
+[native HTML range input](https://www.w3.org/wiki/HTML/Elements/input/range) (rendered as a horizontal slider in modern browsers) or
+the [jQuery UI Slider component](https://jqueryui.com/slider/) to create its slider. Other context-aware widgets may be added in the future.
+
 ## Auxiliary Schema Grade ##
 
 If a grade name is used to provide the auxiliary schema, the grade must meet certain criteria:
