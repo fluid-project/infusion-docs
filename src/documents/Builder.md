@@ -103,7 +103,7 @@ var myBuilder = fluid.prefs.builder({
 ```
 It is not necessary to specify the primary schema; The builder will automatically find the preference specifications provided by the Framework and build a primary schema (see [Processing the Schemas](#processing-the-schemas) below for more information).
 
-#### Switching Between Native HTML and jQuery UI Widgets
+### Switching Between Native HTML and jQuery UI Widgets ###
 
 It is possible when using the Preferences Framework to configure the use of either HTML or jQuery UI-based adjustment widgets. The default behaviour is to use HTML widgets for components that have this option available.
 
