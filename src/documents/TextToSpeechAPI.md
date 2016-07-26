@@ -457,15 +457,14 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### voiceURI ###
-
+### voice ###
+<!-- See the errata at https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi-errata.html - SpeechSynthesisUtterance must be passed a SpeechSynthesisVoice object to configure the voice under the latest API -->
 <table>
     <tbody>
         <tr>
             <th>Description</th>
             <td>
-                The <code>voiceURI</code> attribute is a string that specifies the speech synthesis voice and the location of the speech synthesis service that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can get the value of the <code>voiceURI</code> attribute.<br />
-                <strong>Note</strong>: In Chrome and Safari, the <code>voiceURI</code> attribute is named <code>voice</code> instead.
+                The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechsynthesisvoice">`SpeechSynthesisVoice`</a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid `SpeechSynthesisVoice`.               
             </td>
         </tr>
         <tr>
@@ -479,10 +478,15 @@ fluid.textToSpeech({
             <td>
 <pre>
 <code>
+
+// Assuming an existing textToSpeech component
+var availableVoices = textToSpeech.getVoices();
+var voiceToUse = availableVoices[0];
+
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
-            voiceURI: "Google UK English Male"
+            voice: voiceToUse
         }
     }
 });
