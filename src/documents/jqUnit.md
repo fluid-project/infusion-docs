@@ -12,7 +12,7 @@ test suites without reference to QUnit. jqUnit is based on the 1.x API of QUnit,
 As well as the use of jqUnit in the browser, there is also a node.js module, [node-jqunit](https://github.com/fluid-project/node-jqunit) which allows the use of the same
 testing API for writing node.js tests.
 
-A more advanced piece of infrastructure is the [IoC Testing Framework](#IoCTestingFramework.md) which is useful for writing asynchronous test fixtures targetting Infusion's IoC
+A more advanced piece of infrastructure is the [IoC Testing Framework](IoCTestingFramework.md) which is useful for writing asynchronous test fixtures targetting Infusion's IoC
 [component trees](UnderstandingInfusionComponent.md). This is not a replacement for jqUnit but a library layered on top of it which is good for certain specialised purposes. If you are
 writing plain unit tests, as well as integration tests which don't have a highly asynchronous, conversational style, you should continue to write jqUnit fixtures. If you find you are
 writing large-scale integration or acceptance tests against significantly-sized parts of an application, that require sequences of asynchronous conversation, for example simulating user

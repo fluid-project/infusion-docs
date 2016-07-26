@@ -398,7 +398,7 @@ fluid.pushArray(holder, "array", [4, 5]); // holder.array now holds [3, 4, 5]
 * `source {Arrayable|Object}` The list or hash of objects to be searched.
 * `func {Function: (element {Any}, index {Number|String}) → Any}` A predicate function, acting on a member. A predicate which
 returns any value which is not `undefined` will terminate the search.
-* `deflt {Object|Undefined}` [optional] A value to be returned in the case the predicate is not satisfied on any element
+* `deflt {Any}` [optional] A value to be returned in the case the predicate is not satisfied on any element
 a member. The default will be the natural value of `undefined`
 * Returns: The first return value from the predicate function which is not `undefined`
 
@@ -408,9 +408,9 @@ satisfies a predicate function. The return is the return value from the predicat
 ### fluid.find_if(source, func[, deflt])
 
 * `source {Arrayable|Object}` The list or hash of objects to be searched.
-* `func {Function: (element {Any}, index {Number}) → Boolean}` A predicate function, acting on a member. A predicate which
+* `func {Function: (element {Any}, index {Number|String}) → Boolean}` A predicate function, acting on a member. A predicate which
 returns any value which is not `false` will terminate the search.
-* `deflt {Object}` [optional] A value to be returned in the case no predicate function matches a
+* `deflt {Any}` [optional] A value to be returned in the case no predicate function matches a
 member. The default will be the natural value of `undefined`
 * Returns: The first element for which the value of the predicate function is not `false`
 

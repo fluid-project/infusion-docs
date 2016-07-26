@@ -5,8 +5,8 @@
     "license" : "CC-BY-3.0",
     "repository": "https://github.com/fluid-project/infusion-docs",
     "scripts": {
-        "docpad": "docpad run -c docpad-config.js --env static",
-        "deploy": "docpad deploy-ghpages -c docpad-config.js --env static"
+        "docpad": "docpad run --env static",
+        "deploy": "docpad deploy-ghpages --env static"
     },
     "dependencies": {
         "URIjs": "^1.14.1",
