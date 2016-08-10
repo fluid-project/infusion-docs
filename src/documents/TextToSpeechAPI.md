@@ -15,7 +15,8 @@ The Text To Speech component can be used in browsers that support [Web Speech Sy
 * MS Edge 14 (in Preview Release)
 * Firefox 48+ (using the `media.webspeech.synth.enabled` about:config option)
 
-<div class="infusion-docs-note"><strong>Note:</strong> Find the latest browser support data for Web Speech Synthesis API from [caniuse.com](http://caniuse.com/#feat=web-speech).</div>
+<div class="infusion-docs-note"><strong>Note:</strong> Find the latest browser support data for Web Speech Synthesis API from
+<a href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.</div>
 
 ## Creator ##
 
@@ -41,7 +42,7 @@ Use the following function to create a Text To Speech component:
                 <dl>
                     <dt>model.utteranceOpts</dt>
                     <dd>
-                        An optional data structure supplied to the component model that configures the Text To Speech component behaviour, as described below. As part of the component model, can be managed through the [ChangeApplier API](ChangeApplierAPI.md) to assist in coordination with other components.
+                        An optional data structure supplied to the component model that configures the Text To Speech component behaviour, as described below. As part of the component model, can be managed through the <a href="ChangeApplierAPI.md">ChangeApplier API</a> to assist in coordination with other components.
                     </dd>
                 </dl>
             </td>
