@@ -378,7 +378,7 @@ The events fired by the Text To Speech component are described below.
 
 ## <a name="utteranceopts-option"></a>`model.utteranceOpts` Configuration ##
 
-<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the [Component Configuration Options](ComponentConfigurationOptions.md) document for a full description of infusion component options.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration Options</a> document for a full description of infusion component options.</div>
 
 Configuration of the Text To Speech component can be done through `model.utteranceOpts`. This model path is a Javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with).
 
@@ -458,13 +458,13 @@ fluid.textToSpeech({
 </table>
 
 ### voice ###
-<!-- See the errata at https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi-errata.html - SpeechSynthesisUtterance must be passed a SpeechSynthesisVoice object to configure the voice under the latest API -->
+
 <table>
     <tbody>
         <tr>
             <th>Description</th>
             <td>
-                The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechsynthesisvoice">`SpeechSynthesisVoice`</a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid `SpeechSynthesisVoice`.               
+                The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid `SpeechSynthesisVoice`, or you can call the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.             
             </td>
         </tr>
         <tr>
@@ -479,8 +479,7 @@ fluid.textToSpeech({
 <pre>
 <code>
 
-// Assuming an existing textToSpeech component
-var availableVoices = textToSpeech.getVoices();
+var availableVoices = SpeechSynthesis.getVoices();
 var voiceToUse = availableVoices[0];
 
 fluid.textToSpeech({
