@@ -69,7 +69,7 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>See also</th>
             <td>
-                <a href="#utteranceopts-option">`model.utteranceOpts` Options</a>
+                <a href="#utteranceopts-option"><code>model.utteranceOpts</code> Options</a>
             </td>
         </tr>
     </tbody>
