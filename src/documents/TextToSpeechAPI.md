@@ -108,7 +108,7 @@ var tts = fluid.textToSpeech({
                     </dd>
                     <dt>options</dt>
                     <dd>
-                        An optional javascript object. Allows for the configuration of the specific <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration passed in here takes the same form as <a href="#utteranceopts-option">`model.utteranceOpts`</a> and will override them for this instance only.
+                        An optional javascript object. Allows for the configuration of the specific <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration passed in here takes the same form as <a href="#utteranceopts-option"><code>model.utteranceOpts</code></a> and will override them for this instance only.
                     </dd>
                 </dl>
             </td>
@@ -230,7 +230,7 @@ fluid.queueSpeech("Hello world", false, {
 
 ## Supported Events ##
 
-<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the [Infusion Event System](InfusionEventSystem.md) document for a full description of infusion events.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the <a href="InfusionEventSystem.md">Infusion Event System</a> document for a full description of infusion events.</div>
 
 The events fired by the Text To Speech component are described below.
 
@@ -465,7 +465,8 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid `SpeechSynthesisVoice`, or you can call the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.             
+                <p>The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.</p>     
+                <div class="infusion-docs-note">Note that in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/onvoiceschanged">onvoiceschanged</a> event to get a full list.</div>        
             </td>
         </tr>
         <tr>
