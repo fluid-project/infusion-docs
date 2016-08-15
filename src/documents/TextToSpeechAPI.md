@@ -465,8 +465,8 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                <p>The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.</p>     
-                <div class="infusion-docs-note">Note that in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/onvoiceschanged">onvoiceschanged</a> event to get a full list.</div>        
+                <p>The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.</p>     
+                <div class="infusion-docs-note">Note that in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">onvoiceschanged</a> event to get a full list.</div>        
             </td>
         </tr>
         <tr>
