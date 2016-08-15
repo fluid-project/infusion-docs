@@ -323,7 +323,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
             <td>
 <pre>
 <code>
-fluid.uiOptions.fullNoPreview("#myContainer", {
+fluid.uiOptions.prefsEditor("#myContainer", {
     storeType: "myNamespace.mySettingsStore"
 });
 </code>
