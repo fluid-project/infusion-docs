@@ -4,10 +4,10 @@ layout: default
 category: Components
 ---
 
-The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) to queue up and read texts.
+The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section) to queue up and read texts.
 
 ## Browser Support ##
-The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section). At the time of writing, July 26 2016, these browsers include:
+The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section). At the time of writing, July 26 2016, these browsers include:
 * Chrome 31+
 * Chrome for Android 40+
 * Safari 7.1+
@@ -381,7 +381,7 @@ The events fired by the Text To Speech component are described below.
 
 <div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration Options</a> document for a full description of infusion component options.</div>
 
-Configuration of the Text To Speech component can be done through `model.utteranceOpts`. This model path is a Javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with).
+Configuration of the Text To Speech component can be done through `model.utteranceOpts`. This model path is a Javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with).
 
 <div class="infusion-docs-note"><strong>Note:</strong> Not all speech synthesizers support all these attributes and some may take different ranges.</div>
 
@@ -465,7 +465,7 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                <p>The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.</p>     
+                <p>The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.</p>     
                 <div class="infusion-docs-note">Note that in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/onvoiceschanged">onvoiceschanged</a> event to get a full list.</div>        
             </td>
         </tr>
