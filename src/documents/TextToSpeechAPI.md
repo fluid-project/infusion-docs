@@ -395,7 +395,7 @@ These attributes include:
             <th>Description</th>
             <td>
                 The <code>text</code> attribute allows you to set the text that you wish to be spoken.
-                <div class="infusion-docs-note"><strong>Note:</strong> Be careful with this attribute as it will override any text that was previously passed.</div>                
+                <div class="infusion-docs-note"><strong>Note:</strong>Be careful with this attribute as it will override any text that was previously passed.</div>                
             </td>
         </tr>
         <tr>
@@ -465,7 +465,7 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                <p>The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.</p>     
+                The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.
                 <div class="infusion-docs-note"><strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a> event to get a full list.</div>        
             </td>
         </tr>
