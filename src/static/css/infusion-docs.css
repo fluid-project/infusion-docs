@@ -361,6 +361,12 @@ div.infusion-docs-note {
     margin-bottom: 2rem;
 }
 
+/* Note style for use inside table cells */
+table div.infusion-docs-note {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
 .infusion-docs-callout {
     font-family: "RobotoSlab";
     margin: 1rem;
