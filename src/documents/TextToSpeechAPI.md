@@ -15,7 +15,7 @@ The Text To Speech component can be used in browsers that support [Web Speech Sy
 * MS Edge 14 (in Preview Release)
 * Firefox 48+ (using the `media.webspeech.synth.enabled` about:config option)
 
-<div class="infusion-docs-note"><strong>Note:</strong> Find the latest browser support data for Web Speech Synthesis API from
+<div class="infusion-docs-note"><strong>Note:</strong> find the latest browser support data for Web Speech Synthesis API from
 <a href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.</div>
 
 ## Creator ##
@@ -230,7 +230,7 @@ fluid.queueSpeech("Hello world", false, {
 
 ## Supported Events ##
 
-<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the <a href="InfusionEventSystem.md">Infusion Event System</a> document for a full description of infusion events.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="InfusionEventSystem.md">Infusion Event System</a> document for a full description of infusion events.</div>
 
 The events fired by the Text To Speech component are described below.
 
@@ -379,11 +379,11 @@ The events fired by the Text To Speech component are described below.
 
 ## <a name="utteranceopts-option"></a>`model.utteranceOpts` Configuration ##
 
-<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration Options</a> document for a full description of infusion component options.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration Options</a> document for a full description of infusion component options.</div>
 
 Configuration of the Text To Speech component can be done through `model.utteranceOpts`. This model path is a Javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with).
 
-<div class="infusion-docs-note"><strong>Note:</strong> Not all speech synthesizers support all these attributes and some may take different ranges.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> not all speech synthesizers support all these attributes and some may take different ranges.</div>
 
 These attributes include:
 
@@ -395,7 +395,7 @@ These attributes include:
             <th>Description</th>
             <td>
                 The <code>text</code> attribute allows you to set the text that you wish to be spoken.
-                <div class="infusion-docs-note"><strong>Note:</strong>Be careful with this attribute as it will override any text that was previously passed.</div>                
+                <div class="infusion-docs-note"><strong>Note:</strong> be careful with this attribute as it will override any text that was previously passed.</div>                
             </td>
         </tr>
         <tr>
