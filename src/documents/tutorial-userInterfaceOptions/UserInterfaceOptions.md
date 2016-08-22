@@ -133,8 +133,8 @@ Add the script block as shown below:
         fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
             tocTemplate: "lib/infusion/components/tableOfContents/html/TableOfContents.html",
             terms: {
-                templatePrefix: "lib/infusion/framework/preferences/html/",
-                messagePrefix: "lib/infusion/framework/preferences/messages/"
+                templatePrefix: "lib/infusion/framework/preferences/html",
+                messagePrefix: "lib/infusion/framework/preferences/messages"
             }
         });
     })
