@@ -216,8 +216,8 @@ fluid.uiOptions.prefsEditor("#myContainer", {
 <pre>
 <code>
 {
-    templatePrefix: "../../framework/preferences/html/",
-    messagePrefix: "../../framework/preferences/messages/"
+    templatePrefix: "../../framework/preferences/html",
+    messagePrefix: "../../framework/preferences/messages"
 }
 </code>
 </pre>
@@ -230,8 +230,8 @@ fluid.uiOptions.prefsEditor("#myContainer", {
 <code>
 fluid.uiOptions.prefsEditor("#myContainer", {
     terms: {
-        templatePrefix: "../infusion/framework/preferences/html/",
-        messagePrefix: "../infusion/framework/preferences/messages/"
+        templatePrefix: "../infusion/framework/preferences/html",
+        messagePrefix: "../infusion/framework/preferences/messages"
     }
 });
 </code>

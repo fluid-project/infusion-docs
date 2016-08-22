@@ -107,8 +107,8 @@ Message Bundles can be specified through the [auxiliary schema](AuxiliarySchemaF
 {
     "namespace": "fluid.prefs.constructed",
     "terms": {
-        "templatePrefix": "../../../framework/preferences/html/",
-        "messagePrefix": "../../../framework/preferences/messages/"
+        "templatePrefix": "../../../framework/preferences/html",
+        "messagePrefix": "../../../framework/preferences/messages"
     },
     "template": "%templatePrefix/SeparatedPanelPrefsEditor.html",
     "message": "%messagePrefix/prefsEditor.json", // Message Bundle for the preference editor itself

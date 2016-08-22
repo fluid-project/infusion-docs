@@ -205,8 +205,8 @@ var myBuilder = fluid.prefs.builder({
     // override the paths in the starter grade
     auxiliarySchema: {
         "terms": {
-            "templatePrefix": "../../../framework/preferences/html/",
-            "messagePrefix": "../../../framework/preferences/messages/"
+            "templatePrefix": "../../../framework/preferences/html",
+            "messagePrefix": "../../../framework/preferences/messages"
         }
     }
 
@@ -241,8 +241,8 @@ fluid.defaults("my.prefs.editor.aux", {
     auxiliarySchema: {
         namespace: "my.prefs.editor",
         terms: {
-            templatePrefix: "templates/",
-            messagePrefix: "messages/"
+            templatePrefix: "templates",
+            messagePrefix: "messages"
         },
         template: "%templatePrefix/MyEditorTemplate.html",
         message: "%messagePrefix/MyEditorStrings.html",

@@ -28,7 +28,7 @@ An auxiliary schema must contain some required properties, described below. In a
 * `template`
   * the path to the template for the prefs editor itself
   * provided the term name defined in the `terms` block for the path to the directory containing the html templates is `templatePrefix`, use `%templatePrefix` to reference the prefix specified by `templatePrefix` as part of the path
-        
+
 ### Preference block properties ###
 
 Preference blocks can be given any property name, so long as the name is unique within the schema. Preference blocks will have the following properties:
@@ -76,18 +76,18 @@ For detailed information about how to work with composite panels, see [Composite
     // The author of the auxiliary schema will provide the namespace, which will be used
     //for the component to call to initialize the constructed grades.
     "namespace": "fluid.prefs.constructed",
- 
+
     // The common terms to use in "template" and "message" properties in "panels" elements
     "terms": {
         // The template defined in "panels" element will take precedence over this definition.
-        "templatePrefix": "../../../framework/preferences/html/",
+        "templatePrefix": "../../../framework/preferences/html",
         // The message defined in "panels" element will take precedence over this definition.
-        "messagePrefix": "../../../framework/preferences/messages/",
+        "messagePrefix": "../../../framework/preferences/messages",
     },
- 
+
     // The path to the preferences editor own template (e.g. the separated panel prefs editor template)
     "template": "%templatePrefix/SeparatedPanelPrefsEditor.html",
- 
+
      // The path to the preferences editor own message file (e.g. the separated panel prefs editor message file)
     "message": "%messagePrefix/prefsEditor.json",
 
