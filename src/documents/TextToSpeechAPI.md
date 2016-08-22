@@ -4,16 +4,19 @@ layout: default
 category: Components
 ---
 
-The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section) to queue up and read texts.
+The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section) to queue up and read texts.
 
 ## Browser Support ##
-The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section). At the time of writing, Mar 4 2015, these browsers include:
+The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section). At the time of writing, July 26 2016, these browsers include:
 * Chrome 31+
 * Chrome for Android 40+
 * Safari 7.1+
 * iOS Safari 7.1+
+* MS Edge 14 (in Preview Release)
+* Firefox 48+ (using the `media.webspeech.synth.enabled` about:config option)
 
-<div class="infusion-docs-note"><strong>Note:</strong> Find the latest browser support data for Web Speech Synthesis API from [caniuse.com](http://caniuse.com/#feat=web-speech).</div>
+<div class="infusion-docs-note"><strong>Note:</strong> find the latest browser support data for Web Speech Synthesis API from
+<a href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.</div>
 
 ## Creator ##
 
@@ -37,9 +40,9 @@ Use the following function to create a Text To Speech component:
             <th>Parameters</th>
             <td>
                 <dl>
-                    <dt>options</dt>
+                    <dt>model.utteranceOpts</dt>
                     <dd>
-                        An optional data structure that configures the Text To Speech component, as described below.
+                        An optional data structure supplied to the component model that configures the Text To Speech component behaviour, as described below. As part of the component model, can be managed through the <a href="ChangeApplierAPI.md">ChangeApplier API</a> to assist in coordination with other components.
                     </dd>
                 </dl>
             </td>
@@ -54,9 +57,11 @@ Use the following function to create a Text To Speech component:
 <pre>
 <code>
 var tts = fluid.textToSpeech({
-    utteranceOpts: {
-        volume: 1
-    }
+    model: {
+        utteranceOpts: {
+            volume: 1
+        }
+    },
 });
 </code>
 </pre>
@@ -65,7 +70,7 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>See also</th>
             <td>
-                <a href="#utteranceopts-option">Utteranceopts Option</a>
+                <a href="#utteranceopts-option"><code>model.utteranceOpts</code> Options</a>
             </td>
         </tr>
     </tbody>
@@ -103,7 +108,7 @@ var tts = fluid.textToSpeech({
                     </dd>
                     <dt>options</dt>
                     <dd>
-                        An optional javascript object. Allows for the configuration of the specific <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration passed in here takes the same form as <a href="#utteranceopts-option">utteranceOpts</a> and will override them for this instance only.
+                        An optional javascript object. Allows for the configuration of the specific <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration passed in here takes the same form as <a href="#utteranceopts-option"><code>model.utteranceOpts</code></a> and will override them for this instance only.
                     </dd>
                 </dl>
             </td>
@@ -225,7 +230,7 @@ fluid.queueSpeech("Hello world", false, {
 
 ## Supported Events ##
 
-<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the [Infusion Event System](InfusionEventSystem.md) document for a full description of infusion events.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="InfusionEventSystem.md">Infusion Event System</a> document for a full description of infusion events.</div>
 
 The events fired by the Text To Speech component are described below.
 
@@ -372,13 +377,13 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-## utteranceOpts` Option ##
+## <a name="utteranceopts-option"></a>`model.utteranceOpts` Configuration ##
 
-<div class="infusion-docs-note"><strong>Note:</strong> If needed, please read the [Component Configuration Options](ComponentConfigurationOptions.md) document for a full description of infusion component options.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration Options</a> document for a full description of infusion component options.</div>
 
-The only option supported by the Text To Speech component is `utteranceOpts`. This option is a javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with).
+Configuration of the Text To Speech component can be done through `model.utteranceOpts`. This model path is a Javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with).
 
-<div class="infusion-docs-note"><strong>Note:</strong> Not all speech synthesizers support all these attributes and some may take different ranges.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> not all speech synthesizers support all these attributes and some may take different ranges.</div>
 
 These attributes include:
 
@@ -390,7 +395,7 @@ These attributes include:
             <th>Description</th>
             <td>
                 The <code>text</code> attribute allows you to set the text that you wish to be spoken.
-                <strong>Note</strong>: Be careful with this attribute as it will override any text that was previously passed.
+                <div class="infusion-docs-note"><strong>Note:</strong> be careful with this attribute as it will override any text that was previously passed.</div>                
             </td>
         </tr>
         <tr>
@@ -405,8 +410,10 @@ These attributes include:
 <pre>
 <code>
 fluid.textToSpeech({
-    utteranceOpts: {
-        text: "Override other texts"
+    model: {
+        utteranceOpts: {
+            text: "Override other texts"
+        }
     }
 });
 </code>
@@ -438,8 +445,10 @@ fluid.textToSpeech({
 <pre>
 <code>
 fluid.textToSpeech({
-    utteranceOpts: {
-        lang: "en-US"
+    model: {
+        utteranceOpts: {
+            lang: "en-US"
+        }
     }
 });
 </code>
@@ -449,15 +458,15 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### voiceURI ###
+### voice ###
 
 <table>
     <tbody>
         <tr>
             <th>Description</th>
             <td>
-                The <code>voiceURI</code> attribute is a string that specifies the speech synthesis voice and the location of the speech synthesis service that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can get the value of the <code>voiceURI</code> attribute.<br />
-                <strong>Note</strong>: In Chrome and Safari, the <code>voiceURI</code> attribute is named <code>voice</code> instead.
+                The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.
+                <div class="infusion-docs-note"><strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a> event to get a full list.</div>        
             </td>
         </tr>
         <tr>
@@ -471,9 +480,15 @@ fluid.textToSpeech({
             <td>
 <pre>
 <code>
+
+var availableVoices = SpeechSynthesis.getVoices();
+var voiceToUse = availableVoices[0];
+
 fluid.textToSpeech({
-    utteranceOpts: {
-        voiceURI: "Google UK English Male"
+    model: {
+        utteranceOpts: {
+            voice: voiceToUse
+        }
     }
 });
 </code>
@@ -511,8 +526,10 @@ fluid.textToSpeech({
 <pre>
 <code>
 fluid.textToSpeech({
-    utteranceOpts: {
-        volume: 0.5
+    model: {
+        utteranceOpts: {
+            volume: 0.5
+        }
     }
 });
 </code>
@@ -544,8 +561,10 @@ fluid.textToSpeech({
 <pre>
 <code>
 fluid.textToSpeech({
-    utteranceOpts: {
-        rate: 2.5
+    model: {
+        utteranceOpts: {
+            rate: 2.5
+        }
     }
 });
 </code>
@@ -577,8 +596,10 @@ fluid.textToSpeech({
 <pre>
 <code>
 fluid.textToSpeech({
-    utteranceOpts: {
-        pitch: 1.2
+    model: {
+        utteranceOpts: {
+            pitch: 1.2
+        }
     }
 });
 </code>
