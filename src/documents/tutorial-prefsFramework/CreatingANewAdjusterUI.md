@@ -143,7 +143,7 @@ The CSS required will, of course, be dependent on the design. Some examples from
 ```html
 <h2>
     <span class="fl-icon-contrast"></span>
-    <span class="flc-prefsEditor-contrast-label heading-text"></span>
+    <span class="flc-prefsEditor-contrast-label fl-heading-text"></span>
 </h2>
 <p class="flc-prefsEditor-contrast-descr"></p>
 
@@ -231,7 +231,7 @@ For the radio buttons:
 ```html
 <h2>
     <span class="fl-icon-toc"></span>
-    <span class="flc-prefsEditor-toc-label heading-text"></span>
+    <span class="flc-prefsEditor-toc-label fl-heading-text"></span>
 </h2>
 <div class="fl-prefsEditor-onoff">
     <input type="checkbox" id="toc-choice" class="flc-prefsEditor-toc" />

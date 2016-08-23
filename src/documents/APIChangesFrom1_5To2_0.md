@@ -145,7 +145,7 @@ this model reference may change at any time and therefore must not be closed ove
 
 ###### Changes ######
 <table>
-<tr><th> 1.5</th><th>2.0</th></tr>
+<tr><th>1.5</th><th>2.0</th></tr>
 <tr>
     <td><code>choiceLabel: ".flc-prefsEditor-toc-choice-label"</code></td>
     <td><code>tocDescr: ".flc-prefsEditor-toc-descr"</code></td>
@@ -160,7 +160,7 @@ this model reference may change at any time and therefore must not be closed ove
 
 ###### Changes ######
 <table>
-<tr><th> 1.5</th><th>2.0</th></tr>
+<tr><th>1.5</th><th>2.0</th></tr>
 <tr>
     <td><code>.heading-text</code></td>
     <td><code>.fl-heading-text</code></td>
