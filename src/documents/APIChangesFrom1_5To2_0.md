@@ -156,13 +156,41 @@ this model reference may change at any time and therefore must not be closed ove
 </tr>
 </table>
 
+##### Styles #####
+
+###### Changes ######
+<table>
+<tr><th> 1.5</th><th>2.0</th></tr>
+<tr>
+    <td><code>.heading-text</code></td>
+    <td><code>.fl-heading-text</code></td>
+</tr>
+</table>
+
 #### Namespace Changes ####
 
 Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
-#### Enactor Listener Changes ####
+#### Enactor Changes ####
 
-##### In 1.5 #####
+##### Styles #####
+
+###### Removals ######
+
+* `.fl-font-serif`
+* `.fl-font-sans`
+* `.fl-font-monospace`
+* `.fl-font-courier`
+* `.fl-toggleButton`
+* `.fl-theme-prefsEditor-bw`
+* `.fl-theme-prefsEditor-wb`
+* `.fl-theme-prefsEditor-by`
+* `.fl-theme-prefsEditor-yb`
+* `.fl-theme-prefsEditor-lgdg`
+
+##### Listeners #####
+
+###### In 1.5 ######
 
 In Infusion 1.5, enactors use non-relay components where the declaration of model listeners had not been implemented. Enactors use:
 * The `finalInit()` function to register model listeners
@@ -201,7 +229,7 @@ fluid.prefs.enactor.textSize.finalInit = function (that) {
 };
 ```
 
-##### In 2.0 #####
+###### In 2.0 ######
 
 In Infusion 2.0 enactors use model relay components and the `finalInit()` and the `onCreate` listener are replaced by declaring a model listener:
 
@@ -345,7 +373,31 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
 });
 ```
 
-#### PrefsEditor Model Structure Changes ####
+#### PrefsEditor Changes ####
+
+##### Selectors #####
+
+###### Removals ######
+
+* `.flc-prefsEditor-separatedPanel-tabs`
+* `.flc-prefsEditor-controls`
+
+##### Styles #####
+
+###### Removals ######
+
+* `.fl-prefsEditor-option-description`
+* `.fl-prefsEditor-separatedPanel-toc`
+* `.fl-prefsEditor-text-icon`
+* `.fl-prefsEditor-layout-icon`
+* `.fl-prefsEditor-links-icon`
+* `.fl-prefsEditor-save`
+* `.fl-prefsEditor-cancel`
+* `.fl-icon-lines`
+* `.fl-icon-preferences`
+* `.fl-icon-next`
+* `.fl-icon-prev`
+* `.fl-icon-speak`
 
 ##### A new model path "preferences" #####
 
