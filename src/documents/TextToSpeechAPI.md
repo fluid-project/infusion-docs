@@ -227,7 +227,6 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-
 ## Supported Events ##
 
 <div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="InfusionEventSystem.md">Infusion Event System</a> document for a full description of infusion events.</div>
@@ -265,52 +264,6 @@ The events fired by the Text To Speech component are described below.
             <th>Description</th>
             <td>
                 This event fires when the speaking stops, which occurs when all the texts in the queue have been spoken or the speaking is manually stopped.
-            </td>
-        </tr>
-        <tr>
-            <th>Type</th>
-            <td>default</td>
-        </tr>
-        <tr>
-            <th>Parameters</th>
-            <td>
-                none
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### onPause ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                This event fires when the text is paused whilst being spoken.
-            </td>
-        </tr>
-        <tr>
-            <th>Type</th>
-            <td>default</td>
-        </tr>
-        <tr>
-            <th>Parameters</th>
-            <td>
-                none
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-### onResume ###
-
-<table>
-    <tbody>
-        <tr>
-            <th>Description</th>
-            <td>
-                This event fires when a paused text resumes being spoken.
             </td>
         </tr>
         <tr>
@@ -376,6 +329,15 @@ The events fired by the Text To Speech component are described below.
         </tr>
     </tbody>
 </table>
+
+## Model Paths
+
+The following model paths can be used with [model listeners](ChangeApplierAPI.md) based on the current state of the speech:
+
+* `model.paused`: `true` if a spoken text is currently paused, `false` otherwise
+* `model.speaking`: `true` if text is being spoken (including in a paused state), `false` otherwise
+* `model.pending`: `true` if there are text items remaining to be spoken, `false` otherwise
+
 
 ## <a name="utteranceopts-option"></a>`model.utteranceOpts` Configuration ##
 
