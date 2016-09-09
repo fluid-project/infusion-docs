@@ -138,3 +138,10 @@ component member name.
 * `typeName {String}` The "principal type name" of the component which should be used to compute its global name for the purposes of a `fluid.constructSingle` adaptation
 honoured through `fluid.construct`.
 * Returns: `{String}` The required member name of the global root component
+
+### fluid.componentForPath(path)
+
+Retrieves a component by global path.
+
+* `path {String|Array of String}` The global path of the component to look up
+* Returns: The component at the specified path, or undefined if none is found
