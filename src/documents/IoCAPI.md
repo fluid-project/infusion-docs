@@ -23,6 +23,13 @@ details can be looked up. This utility method accepts a currently instantiated (
 component and returns its path as a set of parsed array segments. This information can be very useful for making calculations about
 the _geometry_ of component trees - that is, which components are descended from which others and which are siblings, etc.
 
+### fluid.componentForPath(path)
+
+Retrieves a component by global path.
+
+* `path {String|Array of String}` The global path of the component to look up
+* Returns: The component at the specified path, or undefined if none is found
+
 ### fluid.queryIoCSelector(root, selector[, flat])
 
 Query for all components matching a selector in a particular tree.
@@ -138,10 +145,3 @@ component member name.
 * `typeName {String}` The "principal type name" of the component which should be used to compute its global name for the purposes of a `fluid.constructSingle` adaptation
 honoured through `fluid.construct`.
 * Returns: `{String}` The required member name of the global root component
-
-### fluid.componentForPath(path)
-
-Retrieves a component by global path.
-
-* `path {String|Array of String}` The global path of the component to look up
-* Returns: The component at the specified path, or undefined if none is found
