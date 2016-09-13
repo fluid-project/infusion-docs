@@ -1489,7 +1489,7 @@ ValueMapper support the shorthand syntax shown below. Here, the `<inputX>` entri
 </code></pre></td><td>
 <pre><code>
 {
-    "myPath2": "negativeCATT"
+    "myPath1": "negativeCATT"
 }
 </code></pre></td>
 </tr>
@@ -1511,7 +1511,7 @@ ValueMapper support the shorthand syntax shown below. Here, the `<inputX>` entri
 {
     "transform": {
         type: "fluid.transforms.valueMapper",
-        defaultInputPath: "condition",
+        defaultInputPath: "whichAnimal",
         defaultOutputValue: "selected",
         match: [
             {
