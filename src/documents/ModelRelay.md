@@ -121,10 +121,9 @@ This is done using the `modelRelay` section of a component's top-level options. 
             <td><code>
 {
     type: "fluid.transforms.linearScale",
-    factor: 100,
+    factor: 100
 }
-</code>
-            </td>
+            </code> </td>
         </tr>
         <tr>
             <td><code>transform</code></td>
