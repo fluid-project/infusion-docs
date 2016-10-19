@@ -100,14 +100,14 @@ In general, the reserved words of the model transformation system are:
 <tr><td>`input`</td><td>inside all `standardInputTransformFunctions`, `fluid.transforms.linearScale`</td></tr>
 <tr><td>`outputPath`</td><td>inside all `standardOutputTransformFunctions`, `fluid.transforms.delete`, `fluid.transforms.valueMapper` (match and nomatch directives)</td></tr>
 <tr><td>`values`</td><td>`fluid.transforms.firstValue`</td></tr>
-<tr><td>`defaultInputPath`</td><td>`fluid.transforms.valuemapper` (top level)</td></tr>
-<tr><td>`defaultOutputPath`</td><td>`fluid.transforms.valuemapper` (top level)</td></tr>
-<tr><td>`defaultOutputValue`</td><td>`fluid.transforms.valuemapper` (top level)</td></tr>
-<tr><td>`match`</td><td>`fluid.transforms.valuemapper` (top level)</td></tr>
-<tr><td>`partialMatches`</td><td>"`fluid.transforms.valuemapper` (inside `match`)</td></tr>
-<tr><td>`inputValue`</td><td>`fluid.transforms.valuemapper` (inside `match`)</td></tr>
-<tr><td>`outputValue`</td><td>`fluid.transforms.valuemapper` (inside `match`/`noMatch`)</td></tr>
-<tr><td>`outputUndefinedValue`</td><td>"`fluid.transforms.valuemapper` (inside `match`/`noMatch`)</td></tr>
+<tr><td>`defaultInputPath`</td><td>`fluid.transforms.valueMapper` (top level)</td></tr>
+<tr><td>`defaultOutputPath`</td><td>`fluid.transforms.valueMapper` (top level)</td></tr>
+<tr><td>`defaultOutputValue`</td><td>`fluid.transforms.valueMapper` (top level)</td></tr>
+<tr><td>`match`</td><td>`fluid.transforms.valueMapper` (top level)</td></tr>
+<tr><td>`partialMatches`</td><td>"`fluid.transforms.valueMapper` (inside `match`)</td></tr>
+<tr><td>`inputValue`</td><td>`fluid.transforms.valueMapper` (inside `match`)</td></tr>
+<tr><td>`outputValue`</td><td>`fluid.transforms.valueMapper` (inside `match`/`noMatch`)</td></tr>
+<tr><td>`outputUndefinedValue`</td><td>"`fluid.transforms.valueMapper` (inside `match`/`noMatch`)</td></tr>
 <tr><td>`left`</td><td>`fluid.transforms.binaryOp`</td></tr>
 <tr><td>`right`</td><td>`fluid.transforms.binaryOp`</td></tr>
 <tr><td>`operator`</td><td>`fluid.transforms.binaryOp`</td></tr>
