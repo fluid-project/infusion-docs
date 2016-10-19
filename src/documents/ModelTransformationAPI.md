@@ -20,7 +20,7 @@ The user may also operate model transformation rules manually by use of the
 
 Below is a list of all the available transformations in the framework. For details on each, see the individual description in the [Transformation Functions](#Transformation Functions) section.
 
-* [fluid.transforms.value](ModelTransformationAPI.html#output-a-value-given-as-input-fluid-transforms-value-)
+* [fluid.transforms.value](ModelTransformationAPI.html#output-a-value-given-as-input-fluid-transforms-value-and-fluid-transforms-identity-)
 * [fluid.transforms.identity](ModelTransformationAPI.html#literal-value-fluid-transforms-literalvalue-and-fluid-transforms-identity-)
 * [fluid.transforms.literalValue](ModelTransformationAPI.html#literal-value-fluid-transforms-literalvalue-and-fluid-transforms-identity-)
 * [fluid.transforms.stringToNumber](ModelTransformationAPI.html#fluid-transforms-stringtonumber)
@@ -90,10 +90,53 @@ see the names and interpretations of its options. Many transforms will themselve
 The model transformation system contains some reserved words - words which have a special meaning when used as JSON keys.
 In general, the reserved words of the model transformation system are:
 
-    "transform"
-    "literalValue"
+<table><thead>
+</thead><tbody>
+<tr><th>key</td><th>Reserved in</th></tr>
+<tr><td>`transform`</td><td>___everywhere___</td></tr>
+<tr><td>`literalValue`</td><td>___everywhere___</td></tr>
+<tr><td>`type`</td><td>inside all `transform` blocks</td></tr>
+<tr><td>`inputPath`</td><td>inside all `standardInputTransformFunctions`</td></tr>
+<tr><td>`input`</td><td>inside all `standardInputTransformFunctions`, `fluid.transforms.linearScale`</td></tr>
+<tr><td>`outputPath`</td><td>inside all `standardOutputTransformFunctions`, `fluid.transforms.delete`, `fluid.transforms.valueMapper` (match and nomatch directives)</td></tr>
+<tr><td>`values`</td><td>`fluid.transforms.firstValue`</td></tr>
+<tr><td>`defaultInputPath`</td><td>`fluid.transforms.valuemapper` (top level)</td></tr>
+<tr><td>`defaultOutputPath`</td><td>`fluid.transforms.valuemapper` (top level)</td></tr>
+<tr><td>`defaultOutputValue`</td><td>`fluid.transforms.valuemapper` (top level)</td></tr>
+<tr><td>`match`</td><td>`fluid.transforms.valuemapper` (top level)</td></tr>
+<tr><td>`partialMatches`</td><td>"`fluid.transforms.valuemapper` (inside `match`)</td></tr>
+<tr><td>`inputValue`</td><td>`fluid.transforms.valuemapper` (inside `match`)</td></tr>
+<tr><td>`outputValue`</td><td>`fluid.transforms.valuemapper` (inside `match`/`noMatch`)</td></tr>
+<tr><td>`outputUndefinedValue`</td><td>"`fluid.transforms.valuemapper` (inside `match`/`noMatch`)</td></tr>
+<tr><td>`left`</td><td>`fluid.transforms.binaryOp`</td></tr>
+<tr><td>`right`</td><td>`fluid.transforms.binaryOp`</td></tr>
+<tr><td>`operator`</td><td>`fluid.transforms.binaryOp`</td></tr>
+<tr><td>`condition`</td><td>`fluid.transforms.condition`</td></tr>
+<tr><td>`true`</td><td>`fluid.transforms.condition`</td></tr>
+<tr><td>`false`</td><td>`fluid.transforms.condition`</td></tr>
+<tr><td>`factor`</td><td>`fluid.transforms.linearScale`</td></tr>
+<tr><td>`offset`</td><td>`fluid.transforms.linearScale`</td></tr>
+<tr><td>`ranges`</td><td>`fluid.transforms.quantize`</td></tr>
+<tr><td>`upperBound`</td><td>(inside entries of) `fluid.transforms.quantize`</td></tr>
+<tr><td>`output`</td><td>(inside entries of) `fluid.transforms.quantize`</td></tr>
+<tr><td>`min`</td><td>`fluid.transforms.inRange`</td></tr>
+<tr><td>`max`</td><td>`fluid.transforms.inRange`</td></tr>
+<tr><td>`key`</td><td>`fluid.transforms.indexArrayByKey`, `fluid.transforms.deindexIntoArrayByKey`</td></tr>
+<tr><td>`innerValue`</td><td>`fluid.transforms.indexArrayByKey`, `fluid.transforms.deindexIntoArrayByKey`</td></tr>
+<tr><td>`array`</td><td>`fluid.transforms.indexOf`, `fluid.transforms.dereference`</td></tr>
+<tr><td>`notFound`</td><td>`fluid.transforms.indexOf`, `fluid.transforms.dereference`</td></tr>
+<tr><td>`offset`</td><td>`fluid.transforms.indexOf`, `fluid.transforms.dereference`</td></tr>
+<tr><td>`template`</td><td>`fluid.transforms.stringTemplate`</td></tr>
+<tr><td>`terms`</td><td>`fluid.transforms.stringTemplate`</td></tr>
+<tr><td>`func`</td><td>`fluid.transforms.free`</td></tr>
+<tr><td>`args`</td><td>`fluid.transforms.free`</td></tr>
+<tr><td>`presentValue`</td><td>`fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray`</td></tr>
+<tr><td>`missingValue`</td><td>`fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray`</td></tr>
+<tr><td>`options`</td><td>`fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray`</td></tr>
+</tbody>
+</table>
 
-Besides these, most transformations have further reserved words. These will be described for each relevant transformation.
+Besides these, most transformations have further reserved words. These are briefly listed here, with the transformation(s) they belong too. They will be more fully described for each relevant transformation.
 
 ## Grades of transformations
 
@@ -1367,7 +1410,7 @@ ___Top level:___
  * The meaning of `defaultOutputValue` is NOT "the output in case no case matches" but "the `outputValue` that should be used in a case where it has not been explicitly written".
 * `defaultOutputPath`
  * The output path used by default.
- * Used if no outputPath is provided for a given case.
+ * Used if no `outputPath` is provided for a given case.
  * Optional if `outputPath` is provided for all matches.
 
 ___Within `match`/`noMatch`:___
@@ -1393,6 +1436,14 @@ ___Only within `match`:___
  * Boolean flag, signifying whether this directive is allowed to match partly.
  * If any exact match can be made (even if it contains a partialMatches flag), this beats a partial match. Else the best partial match (ie. deepest matching) will be selected. Else the value from `noMatch` will be used.
  * If the two best partial matches are equally good, the first one listed will be returned.
+
+**Priority of keys at parsing**:
+
+Some of the keys used in the ValueMapper conflict, in that they reference the same part of the transformation mechanisms. Below is a summary of which term takes priority when the valueMapper parses the keys:
+
+* `inputPath` before `defaultInputPath`  - If an `inputPath` is provided, that value will be used, else `defaultInputPath` will be used.
+* `outputPath` before `defaultOutputValue`  - The `outputPath` will be used used if provded, else `defaultOutputPath` will.
+* `outputUndefinedValue` over `outputValue` over `defaultOutputValue` - If `outputUndefinedValue` is provided, it will always be used. If it is not provided, but `outputValue` is, this will be used. Finally, if neither are provided, `defaultOutputValue` is used.
 
 **Shorthand syntax**:
 
