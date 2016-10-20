@@ -90,51 +90,49 @@ see the names and interpretations of its options. Many transforms will themselve
 The model transformation system contains some reserved words - words which have a special meaning when used as JSON keys.
 In general, the reserved words of the model transformation system are:
 
-<table><thead>
-</thead><tbody>
-<tr><th>key</td><th>Reserved in</th></tr>
-<tr><td>`transform`</td><td>___everywhere___</td></tr>
-<tr><td>`literalValue`</td><td>___everywhere___</td></tr>
-<tr><td>`type`</td><td>inside all `transform` blocks</td></tr>
-<tr><td>`inputPath`</td><td>inside all `standardInputTransformFunctions`</td></tr>
-<tr><td>`input`</td><td>inside all `standardInputTransformFunctions`, `fluid.transforms.linearScale`</td></tr>
-<tr><td>`outputPath`</td><td>inside all `standardOutputTransformFunctions`, `fluid.transforms.delete`, `fluid.transforms.valueMapper` (match and nomatch directives)</td></tr>
-<tr><td>`values`</td><td>`fluid.transforms.firstValue`</td></tr>
-<tr><td>`defaultInputPath`</td><td>`fluid.transforms.valueMapper` (top level)</td></tr>
-<tr><td>`defaultOutputPath`</td><td>`fluid.transforms.valueMapper` (top level)</td></tr>
-<tr><td>`defaultOutputValue`</td><td>`fluid.transforms.valueMapper` (top level)</td></tr>
-<tr><td>`match`</td><td>`fluid.transforms.valueMapper` (top level)</td></tr>
-<tr><td>`partialMatches`</td><td>"`fluid.transforms.valueMapper` (inside `match`)</td></tr>
-<tr><td>`inputValue`</td><td>`fluid.transforms.valueMapper` (inside `match`)</td></tr>
-<tr><td>`outputValue`</td><td>`fluid.transforms.valueMapper` (inside `match`/`noMatch`)</td></tr>
-<tr><td>`outputUndefinedValue`</td><td>"`fluid.transforms.valueMapper` (inside `match`/`noMatch`)</td></tr>
-<tr><td>`left`</td><td>`fluid.transforms.binaryOp`</td></tr>
-<tr><td>`right`</td><td>`fluid.transforms.binaryOp`</td></tr>
-<tr><td>`operator`</td><td>`fluid.transforms.binaryOp`</td></tr>
-<tr><td>`condition`</td><td>`fluid.transforms.condition`</td></tr>
-<tr><td>`true`</td><td>`fluid.transforms.condition`</td></tr>
-<tr><td>`false`</td><td>`fluid.transforms.condition`</td></tr>
-<tr><td>`factor`</td><td>`fluid.transforms.linearScale`</td></tr>
-<tr><td>`offset`</td><td>`fluid.transforms.linearScale`</td></tr>
-<tr><td>`ranges`</td><td>`fluid.transforms.quantize`</td></tr>
-<tr><td>`upperBound`</td><td>(inside entries of) `fluid.transforms.quantize`</td></tr>
-<tr><td>`output`</td><td>(inside entries of) `fluid.transforms.quantize`</td></tr>
-<tr><td>`min`</td><td>`fluid.transforms.inRange`</td></tr>
-<tr><td>`max`</td><td>`fluid.transforms.inRange`</td></tr>
-<tr><td>`key`</td><td>`fluid.transforms.indexArrayByKey`, `fluid.transforms.deindexIntoArrayByKey`</td></tr>
-<tr><td>`innerValue`</td><td>`fluid.transforms.indexArrayByKey`, `fluid.transforms.deindexIntoArrayByKey`</td></tr>
-<tr><td>`array`</td><td>`fluid.transforms.indexOf`, `fluid.transforms.dereference`</td></tr>
-<tr><td>`notFound`</td><td>`fluid.transforms.indexOf`, `fluid.transforms.dereference`</td></tr>
-<tr><td>`offset`</td><td>`fluid.transforms.indexOf`, `fluid.transforms.dereference`</td></tr>
-<tr><td>`template`</td><td>`fluid.transforms.stringTemplate`</td></tr>
-<tr><td>`terms`</td><td>`fluid.transforms.stringTemplate`</td></tr>
-<tr><td>`func`</td><td>`fluid.transforms.free`</td></tr>
-<tr><td>`args`</td><td>`fluid.transforms.free`</td></tr>
-<tr><td>`presentValue`</td><td>`fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray`</td></tr>
-<tr><td>`missingValue`</td><td>`fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray`</td></tr>
-<tr><td>`options`</td><td>`fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray`</td></tr>
-</tbody>
-</table>
+| key | Reserved in |
+|:----|:------------|
+| `transform` | ___everywhere___ |
+| `literalValue` | ___everywhere___ |
+| `type` | inside all `transform` blocks |
+| `inputPath` | inside all `standardInputTransformFunctions` |
+| `input` | inside all `standardInputTransformFunctions`, `fluid.transforms.linearScale` |
+| `outputPath` | inside all `standardOutputTransformFunctions`, `fluid.transforms.delete`, `fluid.transforms.valueMapper` (match and nomatch directives) |
+| `values` | `fluid.transforms.firstValue` |
+| `defaultInputPath` | `fluid.transforms.valueMapper` (top level) |
+| `defaultOutputPath` | `fluid.transforms.valueMapper` (top level) |
+| `defaultOutputValue` | `fluid.transforms.valueMapper` (top level) |
+| `match` | `fluid.transforms.valueMapper` (top level) |
+| `partialMatches` | "`fluid.transforms.valueMapper` (inside `match`) |
+| `inputValue` | `fluid.transforms.valueMapper` (inside `match`) |
+| `outputValue` | `fluid.transforms.valueMapper` (inside `match`/`noMatch`) |
+| `outputUndefinedValue` | "`fluid.transforms.valueMapper` (inside `match`/`noMatch`) |
+| `left` | `fluid.transforms.binaryOp` |
+| `right` | `fluid.transforms.binaryOp` |
+| `operator` | `fluid.transforms.binaryOp` |
+| `condition` | `fluid.transforms.condition` |
+| `true` | `fluid.transforms.condition` |
+| `false` | `fluid.transforms.condition` |
+| `factor` | `fluid.transforms.linearScale` |
+| `offset` | `fluid.transforms.linearScale` |
+| `ranges` | `fluid.transforms.quantize` |
+| `upperBound` | (inside entries of) `fluid.transforms.quantize` |
+| `output` | (inside entries of) `fluid.transforms.quantize` |
+| `min` | `fluid.transforms.inRange` |
+| `max` | `fluid.transforms.inRange` |
+| `key` | `fluid.transforms.indexArrayByKey`, `fluid.transforms.deindexIntoArrayByKey` |
+| `innerValue` | `fluid.transforms.indexArrayByKey`, `fluid.transforms.deindexIntoArrayByKey` |
+| `array` | `fluid.transforms.indexOf`, `fluid.transforms.dereference` |
+| `notFound` | `fluid.transforms.indexOf`, `fluid.transforms.dereference` |
+| `offset` | `fluid.transforms.indexOf`, `fluid.transforms.dereference` |
+| `template` | `fluid.transforms.stringTemplate` |
+| `terms` | `fluid.transforms.stringTemplate` |
+| `func` | `fluid.transforms.free` |
+| `args` | `fluid.transforms.free` |
+| `presentValue` | `fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray` |
+| `missingValue` | `fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray` |
+| `options` | `fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray` |
+
 
 Besides these, most transformations have further reserved words. These are briefly listed here, with the transformation(s) they belong too. They will be more fully described for each relevant transformation.
 
