@@ -2914,11 +2914,13 @@ Does not support reading any of its values from the input model, and any value p
 **Invertibility:** Not invertible.
 
 **Syntax:**
-```{
+```
+{
     "type": "fluid.transforms.free",
     "func": <function name>,
     "args": <arguments to the function>
-}```
+}
+```
 
 #### Examples:
 
