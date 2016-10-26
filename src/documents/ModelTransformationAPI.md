@@ -20,9 +20,9 @@ The user may also operate model transformation rules manually by use of the
 
 Below is a list of all the available transformations in the framework. For details on each, see the individual description in the [Transformation Functions](ModelTransformationAPI.md#transformation-functions) section.
 
-* [fluid.transforms.value](ModelTransformationAPI.md#output-a-value-given-as-input-fluidtransformsvalue-and-fluidtransformsidentity)
-* [fluid.transforms.identity](ModelTransformationAPI.md#output-a-value-given-as-input-fluidtransformsvalue-and-fluidtransformsidentity)
-* [fluid.transforms.literalValue](ModelTransformationAPI.md#literal-value-fluidtransformsliteralvalue)
+* [fluid.transforms.value](ModelTransformationAPI.md#output-a-value-given-as-input-fluid-transforms-value-and-fluid-transforms-identity-)
+* [fluid.transforms.identity](ModelTransformationAPI.md#output-a-value-given-as-input-fluid-transforms-value-and-fluid-transforms-identity-)
+* [fluid.transforms.literalValue](ModelTransformationAPI.md#literal-value-fluid-transforms-literalvalue-)
 * [fluid.transforms.stringToNumber](ModelTransformationAPI.html#fluid-transforms-stringtonumber)
 * [fluid.transforms.numberToString](ModelTransformationAPI.html#fluid-transforms-numbertostring)
 * [fluid.transforms.count](ModelTransformationAPI.html#count-length-of-array-fluid-transforms-count-)
@@ -38,7 +38,7 @@ Below is a list of all the available transformations in the framework. For detai
 * [fluid.transforms.arrayToSetMembership](ModelTransformationAPI.html#fluid-transforms-arraytosetmembership)
 * [fluid.transforms.setMembershipToArray](ModelTransformationAPI.html#fluid-transforms-setmembershiptoarray)
 * [fluid.transforms.indexArrayByKey](ModelTransformationAPI.html#creates-an-object-indexed-with-keys-from-array-entries-fluid-transforms-indexarraybykey-)
-* [fluid.transforms.deindexIntoArrayByKey](ModelTransformationAPI.md#create-an-object-indexed-with-keys-from-array-entries-fluidtransformsdeindexintoarraybykey)
+* [fluid.transforms.deindexIntoArrayByKey](ModelTransformationAPI.md#create-an-object-indexed-with-keys-from-array-entries-fluid-transforms-deindexintoarraybykey-)
 * [fluid.transforms.indexOf](ModelTransformationAPI.html#get-the-index-of-an-element-in-an-array-fluid-transforms-indexof-)
 * [fluid.transforms.dereference](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluid-transforms-dereference-)
 * [fluid.transforms.stringTemplate](ModelTransformationAPI.html#create-string-from-template-fluid-transforms-stringtemplate-)
