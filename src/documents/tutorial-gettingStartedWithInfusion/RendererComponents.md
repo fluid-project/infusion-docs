@@ -173,7 +173,7 @@ modelRelay: {
     target: "result",
     singleTransform: {
         type: "fluid.transforms.linearScale",
-            value: "{that}.model.amount",
+            input: "{that}.model.amount",
             factor: "{that}.model.currentSelection"
         }
     }
@@ -221,11 +221,10 @@ fluid.defaults("tutorials.currencyConverter", {
         target: "result",
         singleTransform: {
             type: "fluid.transforms.linearScale",
-                value: "{that}.model.amount",
-                factor: "{that}.model.currentSelection"
-            }
+            input: "{that}.model.amount",
+            factor: "{that}.model.currentSelection"
         }
-    }
+    },
     renderOnInit: true
 });
 ```
