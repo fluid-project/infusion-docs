@@ -37,21 +37,21 @@ The rest of this tutorial will explain each of these steps in detail.
 
 ## Download and install the Infusion library ##
 
-1. Get the current source code from github as a [ZIP file]( https://github.com/fluid-project/infusion/archive/master.zip).
-2. Unpack the zip file you just downloaded and cd into the `infusion-master` folder that results.
+1. Download the current source code from Github as a [ZIP file]( https://github.com/fluid-project/infusion/archive/master.zip).
+2. Unzip the downloaded ZIP file and change your directory into the `infusion-master` folder that results.
 3. Install [Node.js](http://nodejs.org/download/), if it hasn't been installed.
-4. Install [Grunt](http://gruntjs.com/getting-started) globally by running `npm install -g grunt-cli`, if it hasn't been installed.
-5. Make your own custom build by running the `grunt` command in the Terminal. See the [README.md](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package) file for instructions on how to make a custom build of Infusion.
-6. The grunt command will create a zip file in the `infusion-master/products` folder. Unzip the file and move the resulting `infusion` folder to a convenient location for your development purposes, likely in a `lib` folder in your site hierarchy.
-7. This `infusion` file will include a single file containing all of the JavaScript you need: `infusion-all.js` or if you made a custom build: `infusion-custom.js`. You will later link to this file in the headers of your HTML files.
+4. Install [Grunt](http://gruntjs.com/getting-started) globally, if it hasn't been installed. For Windows, you can run `npm install -g grunt-cli` as Administrator. For Mac OSX, you can run `sudo npm install -g grunt-cli`.
+5. Create your build by running the `grunt` command in the Terminal. If you would like to customize your build, you can create a custom build by running the `grunt custom` command in the Terminal. See the [README.md](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package) file for instructions on how to make a custom build of Infusion.
+6. A ZIP file will be created in the `infusion-master/products` folder. Change directory to your preferred location for your development purposes and unzip the ZIP file in that directory, resulting in the folder: `infusion`. Once the resulting ZIP file is relocated, the other files in the `infusion-master` folder can be safely deleted. 
+7. This `infusion` folder will include a single file containing all of the JavaScript you need: `infusion-all.js`. If you made a custom build, the file is named `infusion-custom.js`. You will later link to this file in the headers of your HTML files.
 
 ## Prepare your page ##
 
 ### The Sliding Panel ###
 
-The UI Options component includes HTML templates for all the controls, so you don't need to create any HTML for them. You only need to add a small amount of markup to the top of your page to tell UI Options where to render itself.
+The UI Options component includes HTML templates for all the controls, so you don't need to create any HTML for them. You only need to add a small amount of markup to the top of your webpage to tell UI Options where to render itself.
 
-Add the following markup as the first thing within your `<body>` tag:
+Add the following markup at the very beginning within your `<body>` tag to your page html:
 
 ```html
 <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
@@ -77,7 +77,7 @@ The elements in this snippet all have particular class names attached to them, a
 * the class names starting with `flc-` are used to identify the elements to UI Options;
 * the class names starting with `fl-` are used for visual styling.
 
-If you open this page in your browser now, you'll only see the button in the upper left corner, since we haven't set up the CSS, and UI Options isn't present on the page yet:
+If you open this page in your browser now, you'll only see the button in the upper left corner, since we haven't set up the CSS and UI Options isn't present on the page yet:
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
@@ -96,7 +96,7 @@ Where exactly on your page you put this <div> is up to you, but it will depend o
 ## Add dependencies to the page ##
 
 * the CSS files, and
-* the main Infusion JavaScript file, `infusion_custom.js`.
+* the main Infusion JavaScript file: `infusion_all.js` or if you made a custom build, `infusion_custom.js`.
 
 In the header of your file, link to the CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package).
 
@@ -125,7 +125,7 @@ If you open this page in your browser now, you'll only see that the button has b
 
 The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1](#download and-install-the-infusion-library).
 
-Add the script block as shown below:
+Change the directory of `infusion` to be `lib/infusion` and add the script block as shown below:
 
 ```html
 <body>
