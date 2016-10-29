@@ -6,10 +6,13 @@ category: Infusion
 
 The Infusion IoC Framework uses a basic syntax for referencing objects in the current [context](Contexts.md).
 
-References always take the syntactic form `{context-name}.some.path.segments` - the meaning and form of the context name can vary and have a different meaning in different contexts:
+References always take the syntactic form `{context-name}.some.path.segments`, which we name as the type `<reference>` - the meaning and form of the context name can vary and have a different meaning in different contexts:
 
 <table>
     <thead>
+        <tr>
+            <th colspan="2">Different permitted forms for a &lt;reference&gt; string</th>
+        </tr>
         <tr>
             <th>Syntax</th>
             <th>Description</th>
@@ -21,12 +24,14 @@ References always take the syntactic form `{context-name}.some.path.segments` - 
             <td>
                 <ul>
                     <li>
-                        <code>&lt;componentRef&gt;</code>is a reference to a component via one of its context names. It may be:
+                        <code>&lt;componentRef&gt;</code> is a reference to a component via one of its context names. It may be:
                         <ul>
-                            <li><code>that</code> to reference the current component e.g. <code>{that}</code></li>
+                            <li><code>that</code>, to reference the current component e.g. <code>{that}</code></li>
                             <li>the fully qualified name of the component's type or one of its <a href="ComponentGrades.md">grade names</a> e.g. <code>{fluid.pagedTable}</code></li>
                             <li>the <strong>short name</strong> of the component's type or one of its <strong>gradeNames</strong>, i.e. the last segment of the fully namespaced name, e.g. <code>{pagedTable}</code></li>
                             <li>the component's <strong>member name</strong>, i.e. the name used when defining a subcomponent in a components block</li>
+                            <li>an entire <code>&lt;reference&gt;</code> string in itself. This is useful in highly dynamic cases where the context name should be determined from some other options material, e.g. <code>{{that}.options.targetContext}</code>. This
+                            feature is new in Infusion 2.0.
                         </ul>
                     </li>
                     <li>
@@ -73,7 +78,7 @@ References always take the syntactic form `{context-name}.some.path.segments` - 
                     <li>
                         <code>&lt;path to member&gt;</code> is an EL path into the referenced component's members.
                         <p>
-                            <em>Note that full IoCSS expressions are not valid in all contexts. They can primarily be used in the <code>target</code> field of the <code>distributeOptions</code> record.</em>
+                            <em>Note that full IoCSS expressions are not valid in all contexts. They can primarily be used in the <code>target</code> field of the <a href="IoCSS.md#distributeoptions-format"><code>distributeOptions</code></a> record.</em>
                         </p>
                     </li>
                 </ul>
@@ -98,7 +103,7 @@ IoC references may be used almost anywhere within a component's options, for exa
 For a conventional IoC reference (of the style `<componentRef>` rather than the style `<iocss expression>`), a search is begun upwards from the site of the reference in the component tree to find the first component which matches the context name. 
 The following diagram shows a possible such reference site in green:
 
-**NOTE**: The following diagram needs to be updated to reflect the Infusion 2.0 visibility rules
+**NOTE**: The following diagram needs to be updated to reflect the Infusion 2.0 visibility rules - the "static environment" and "dynamic environment` no longer exist.
 
 ![IoC Reference Diagram](images/IoC-scope.svg "IoC Reference Diagram")
 
