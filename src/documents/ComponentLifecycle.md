@@ -4,7 +4,8 @@ layout: default
 category: Infusion
 ---
 
-Every Fluid component has a standard lifecycle, various points of which are signalled by firing of standard framework events. Every component which has a grade of [fluid.component](ComponentGrades.md) is able to receive and react to these events. The events, in the expected order of firing for a component, are as follows:
+Every Fluid component has a standard lifecycle, various points of which are signalled by firing of standard framework [events](InfusionEventSystem.md). 
+Every component which has a grade of [fluid.component](ComponentGrades.md) is able to receive and react to these events. The events, in the expected order of firing for a component, are as follows:
 
 <table>
     <thead>
@@ -61,6 +62,6 @@ Note that since JavaScript is a garbage-collected language, the component object
 although it will as noted above be detached from its parent (via a call to `delete`) and similarly all subcomponent references will be recursively detached from their parents. 
 The component author may schedule various actions to clean up any external resources (perhaps a jQuery widget, or a network connection) during the destruction process by adding listeners to the `onDestroy` event.
 
-Every Fluid component is supplied with a standard method named `destroy` which is available after `onCreate` has fired. destroy takes no arguments and will initiate the destruction process for the component - `onDestroy` followed by `afterDestroy`.
+Every Fluid component is supplied with a standard method named `destroy` which is available after `onCreate` has fired. `destroy` takes no arguments and will initiate the destruction process for the component - `onDestroy` followed by `afterDestroy`.
 
 Note that you can detect the lifecycle status of a component by means of the standard utility [`fluid.isDestroyed(component)`](CoreAPI.md#fluid-isdestroyed-component-) - this will return `true` if the object reference represents a component which has been destroyed.

@@ -13,15 +13,12 @@ component tree is coordinated globally by the [Model Relay](ModelRelay.md) syste
 *[model skeleton](ModelRelay.md#how-model-relay-updates-propagate)* which
 consists of those models which are linked together by relay specifications.
 
-The [ChangeApplier API](ChangeApplierAPI.md) and semantic has stabilised in the Infusion 1.5 release
-and differs substantially from that in previous releases.
-
 As well as being based on Fluid's model-directed thinking, the ChangeApplier is also implemented in
 terms of Fluid's [Event System](InfusionEventSystem.md), which you should be familiar with before using the ChangeApplier.
 
 ### Thinking behind the ChangeApplier ###
 
-The ChangeApplier is a natural outgrowth of Fluid's focus on (transparent) model-directed programming- see
+The ChangeApplier is a natural outgrowth of Fluid's focus on (transparent) model-directed programming - see
 the Framework Concepts discussion on [Model Objects](FrameworkConcepts.md#model-objects).
 "Morally", a model should be "fully transparent" - meaning, that it consists of standard POJOs and
 is available for inspection by reading, using standard language constructs, at all times. For example,

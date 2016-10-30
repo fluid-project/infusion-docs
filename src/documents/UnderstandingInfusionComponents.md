@@ -39,12 +39,16 @@ Conceptually, these two modes are rather different, and so they're implemented a
 The Uploader allows users to add several files to a queue and then upload them all at once. It is actually
 made up of several [subcomponents](SubcomponentDeclaration.md): It has the file queue view, which displays the files currently in the queue; it has a total progress bar at the bottom. In turn, the file queue view component has its own subcomponents.
 
-## What Does A Component Look Like? ##
+### These Examples Are View Components
+
+All of these components are _view components_ which produce a visible UI in the browser. Other Infusion components expose no UI, and may run on the server in environments like node.js.
+
+## What Does a Component Look Like? ##
 
 A component is a regular JavaScript object that has certain characteristics. The simplest varieties of Infusion Components, derived from [`fluid.component`](ComponentConfigurationOptions.md#options-supported-by-all-components-grades), will have:
 
 * a **creator function**
-  * the function that implementors invoke, which returns a fresh component object
+  * the function that users of the component invoke, which returns a fresh component object
   * this function is constructed automatically by the framework, given the options in the component's configuration
 * configuration options
   * various values that control the operation of the component, which can be overridden by implementors to customize the component
@@ -52,21 +56,57 @@ A component is a regular JavaScript object that has certain characteristics. The
   * registered as `invokers` in the component's configuration, these can be invoked by users to trigger component functionality
 * events
   * registered as `events` in the component's configuration, these can be fired and listened to by users and the implementation
-
-Depending on what the component is for, some will include infrastructure to support
+  
+In addition, a component derived from [`fluid.modelComponent`](ComponentConfigurationOptions.md#model-components) will support:
 
 * a model
-* a view
-* a renderer
+  * a free-form area where the component stores mutable state which is of interest to its end user
+  * changes in this area are managed by an automatically generated implementation attached to the component, a [ChangeApplier](ChangeApplier.md), which allows interested parties to register and deregister their interest in particular changes, 
+as well as allowing changes to one component's model to be automatically coordinates with changes in another.
+
+Components which manage a _view_ on behalf of their user, which is rooted at a particular node in the DOM, will derive from [`fluid.viewComponent`](ComponentConfigurationOptions.md#view-components) which then supports:
+
+* a container
+  * a root element in the DOM to which the component's activity is scoped
+* a [DOM binder](DOMBinder.md)
+  * associating names with scoped selectors and the DOM nodes that they match
 
 New kinds of components are created by passing configuration information to the '[fluid.defaults](ComponentGrades.md)' function.
-This function will create the **creator function** that will be used to instantiate the component.
-The Framework provides support for instantiating components of various [types, or 'grades'](ComponentGrades.md);
+This function will generate the **creator function** that will be used to instantiate the component.
+The framework provides support for instantiating components of various [types, or 'grades'](ComponentGrades.md);
 as well, developers can create their own grades.
 
-## Instantiating A View Component ##
-*Example:*
+## Simple example of defining and using a plain `fluid.component`
+
+In this example, we will define a simple component which logs a message on startup, and create an instance of it:
+
+```javascript
+// Define a new component by registering the JSON representing its options with fluid.defaults
+fluid.defaults("examples.tinyComponent", {
+    gradeNames: "fluid.component",
+    listeners: {
+        "onCreate.logMessage": {
+            func: "fluid.log",
+            args: "My tiny component has started up"
+        }
+    }
+});
+
+// Enable visible log messages in the console
+fluid.setLogging(true);
+// Create an instance of the component
+var myComponent = examples.tinyComponent();
+// Logs "My tiny component has started up" to the console
 ```
+
+You can understand this example better by reading documentation for [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-), [`fluid.log`](CoreAPI.md#fluid-log-loglevel-arg1-argn-) and the [Component Lifecycle](ComponentLifecycle.md).
+
+## Instantiating A View Component ##
+
+In this section we instantiate a view component which is already defined in the framework, and configure it with some options of our own: 
+
+*Example:*
+```javascript
 var myInlineEdit = fluid.inlineEdit(".title-container", {
     styles: {
         edit: "demo-title-edit demo-edit"
