@@ -81,7 +81,7 @@ If you open this page in your browser now, you'll only see the button in the upp
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
-<div class="infusion-docs-note"><strong>Note:</strong> that it doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. (After you've finished the tutorial, check out the instructional demo Fat Panel UI Options - Custom Show-Hide Button for an example of configuring the button text.)</div>
+<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. </div>
 
 ### The Table of Contents ###
 
@@ -115,7 +115,7 @@ We'll use the `<script>` tag to link to the Infusion library:
 <script type="text/javascript" src="lib/infusion/infusion-custom.js"></script>
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> that the <code>infusion-custom.js</code> file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> The <code>infusion-custom.js</code> file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
 
 If you open this page in your browser now, you'll only see that the button has been styled differently: it is in the upper right corner and the font has been changed. You can also see the bar of the sliding panel. The button still doesn't do anything, since we still haven't added the UI Options component to the page.
 
@@ -123,7 +123,7 @@ If you open this page in your browser now, you'll only see that the button has b
 
 ## Add the UI Options component ##
 
-The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1](#download and-install-the-infusion-library).
+The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1](#download-and-install-the-infusion-library).
 
 Change the directory of `infusion` to be `lib/infusion` and add the script block as shown below:
 
@@ -154,10 +154,11 @@ This script calls the `fluid.uiOptions.prefsEditor()` function to create the com
 1. the selector of the container for the component, and
 2. an options object for configuring the component.
 
-The selector for our UI Options will be the classname of the `<div>` we created in [Step 1](#download and-install-the-infusion-library). In this markup, the selector is `".flc-prefsEditor-separatedPanel"`.
+The selector for our UI Options will be the classname of the `<div>` we created in [Step 1](#download-and-install-the-infusion-library). In this markup, the selector is `".flc-prefsEditor-separatedPanel"`.
 
 The options tell the component about two things:
 
+* where to find the Table of Contents template: the `tocTemplate` option,
 * where to find the UI Options HTML templates included in Infusion: the `terms.templatePrefix` option, and
 * where to find the message bundles, the strings that will be used in the interface: the `terms.messagePrefix` option.
 
@@ -165,6 +166,6 @@ In the code above, the `terms.messagePrefix` option is referencing the default s
 
 ## Congratulations! ##
 
-UI Options is now fully functional on your page. Now, when you load your page in your browser and click on the "Show Display Preferences" button, you will see the UI Options controls, as shon in the image below. If you adjust the controls, you will see your changes being applied to the page.
+UI Options is now fully functional on your page. Now, when you load your page in your browser and click on the "Show Display Preferences" button, you will see the UI Options controls, as shown in the image below. If you adjust the controls, you will see your changes being applied to the page.
 
 ![Screen shot of UI Options](../images/uio.png "Screen shot of UI Options.")
