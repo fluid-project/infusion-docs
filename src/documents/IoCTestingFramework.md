@@ -13,10 +13,10 @@ that are derived from an alternating conversation between user interaction and a
 
 ## When to use the IoC Testing Framework ##
 
-<div class="infusion-docs-note"><strong>Note:</strong> The IoC Testing framework is primarily for integration testing requiring asynchrony, i.e. testing that involves either:
-
-1. user interaction via the DOM, or
-2. AJAX requests.
+<div class="infusion-docs-note"><strong>Note:</strong> The IoC Testing framework is primarily for integration testing requiring asynchrony, i.e. testing that involves either:<ol>
+<li>user interaction via the DOM, or</li>
+<li>AJAX requests.</li>
+</ol>
 
 If your tests don't involve a number of back-to-back asynchronous interactions, it is better to express them as plain jqUnit tests.
 </div>
@@ -50,7 +50,7 @@ Writing fixtures using the IoC Testing framework requires the test implementor t
 file `IoCTestUtils.js`. The tester must derive their own component types from these grades, and assemble
 them into various component trees corresponding to the desired integration scenarios.
 
-The first type of component corresponds to the overall root of the component tree under test - the test *environment*, defined in the grade
+The first type of component corresponds to the overall root of the component tree under test - the *test environment*, defined in the grade
 `fluid.test.testEnvironment`. The children of this component correspond to the entire "application segment" (the context) under test -
 this may be as large (as an entire application) or as small (as a single component) as required in order to comprise the desired fixture.
 These children are intermixed with components of the second type, the *test fixtures*, derived from the grade `fluid.test.testCaseHolder`.
@@ -117,7 +117,7 @@ fluid.tests.globalCatTest = function (catt) {
 ```
 
 <div class="infusion-docs-note"><strong>Note:</strong> In straightforward cases, the test environment component
-(e.g. `fluid.tests.myTestTree`), and the test fixture component (e.g. `fluid.tests.catTester`) can be written
+(e.g. <code>fluid.tests.myTestTree</code>), and the test fixture component (e.g. <code>fluid.tests.catTester</code>) can be written
 as the same component.</div>
 
 ### `modules`, `tests` and `sequence` ###
@@ -339,7 +339,7 @@ used without it.
 
 The element `sequenceGrade` holds a string value, designating a component [grade name](ComponentGrades.md) which has been implemented by the
 test case author, descended from the standard framework grade `fluid.test.sequence`. The framework will instantiate a component with this grade as a child component of the
-`testCaseHolder, and then resolve its options path `elements`, whose keys represent namespaces and whose values are of a type `testSequenceElement`, the members of which are described in the following table:
+`testCaseHolder`, and then resolve its options path `elements`, whose keys represent namespaces and whose values are of a type `testSequenceElement`, the members of which are described in the following table:
 
 <table>
     <thead>
@@ -380,7 +380,7 @@ test case author, descended from the standard framework grade `fluid.test.sequen
 
 The members `gradeNames` and `options` in the above table collectively designate an Infusion component derived from `fluid.test.sequenceElement` &mdash; this component will be 
 instantiated as a child component of the `fluid.test.testCaseHolder` and its options member `sequence` will be evaluated. This member `sequence` holds one or more 
-[`fixture elements'](#supported-fixture-records) just as seen in the top-level [`sequence`](#-modules-tests-and-sequence-) element.
+[`fixture elements`](#supported-fixture-records) just as seen in the top-level [`sequence`](#-modules-tests-and-sequence-) element.
 
 Any fixture elements listed at the traditional top-level `sequence` member will be grandfathered in to this system with a namespace of `sequence` &mdash; for example, a `testSequenceElement` with
 a priority of `"before:sequence"` will be sorted before these elements.
@@ -612,12 +612,38 @@ The `markupFixture` property holds any jQueryable value, designating the overall
 the `testEnvironment` has been torn down, the framework will reset the markup within this root to the contents it
 enjoyed before setup of the environment.
 
+### Sequence progress feedback in the browser
+
 When run in the browser, the framework will show feedback in the
 QUnit UI relating to the sequence point reached by the system. This can be used to diagnose the last successfully
 reached sequence point in the case of a "hang" caused by an unexpectedly missing event in the sequence.
 
+### Sequence hang test detection
+
+If the next expected "binder" type fixture in a test sequence is not reached within a configurable interval, the console will
+log a message of the following form to help the user to diagnose how far the system has progressed through the sequence:
+
+```
+21:26:33.262: Test case listener has not responded after 5000ms - at sequence pos 4 of 7 sequence element {
+"event": "{testEnvironment}.browser.events.onLoaded",
+"listener": "{testEnvironment}.browser.evaluate",
+"args": [
+{ Function
+
+    },
+    "md",
+    "[unified listing](http://ul.gpii.net/)"
+]
+} of fixture Confirm that the client-side renderer can render markdown...
+```
+
+The default value of the interval is 5000ms, which can be altered by supplying a value in ms to the option `hangWait` of the `testEnvironment`.
+
+### Running tests in the node.js server environment
+
 The IoC Testing Framework can also be used to run test sequences in the node.js server environment - in this case
-the above features are not provided.
+the above browser-related features (`markupFixture`, live sequence progress) are not provided. However, the sequence hang detection message
+appears in all environments.
 
 ### Walkthrough of the example sequence
 

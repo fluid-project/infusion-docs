@@ -103,7 +103,7 @@ IoC references may be used almost anywhere within a component's options, for exa
 For a conventional IoC reference (of the style `<componentRef>` rather than the style `<iocss expression>`), a search is begun upwards from the site of the reference in the component tree to find the first component which matches the context name. 
 The following diagram shows a possible such reference site in green:
 
-**NOTE**: The following diagram needs to be updated to reflect the Infusion 2.0 visibility rules - the "static environment" and "dynamic environment` no longer exist.
+<div class="infusion-docs-note"><strong>Note:</strong> The following diagram needs to be updated to reflect the Infusion 2.0 visibility rules - the "static environment" and "dynamic environment" no longer exist.</div>
 
 ![IoC Reference Diagram](images/IoC-scope.svg "IoC Reference Diagram")
 
