@@ -16,6 +16,8 @@ coordinates interactions between other components that handle the different part
 To help understand how a widget or application might be designed using components, consider some of
 the components in the Infusion Component Library:
 
+<div class="infusion-docs-note"><strong>Note:</strong> All of the example components presented here are <strong>view components</strong> which produce a visible UI in the browser. Other Infusion components expose no UI, and may run on the server in environments like node.js.</div>
+
 ### Progress ###
 
 ![a horizontal progress bar](images/progress-example.png)
@@ -38,10 +40,6 @@ Conceptually, these two modes are rather different, and so they're implemented a
 
 The Uploader allows users to add several files to a queue and then upload them all at once. It is actually
 made up of several [subcomponents](SubcomponentDeclaration.md): It has the file queue view, which displays the files currently in the queue; it has a total progress bar at the bottom. In turn, the file queue view component has its own subcomponents.
-
-### These Examples Are View Components
-
-All of these components are _view components_ which produce a visible UI in the browser. Other Infusion components expose no UI, and may run on the server in environments like node.js.
 
 ## What Does a Component Look Like? ##
 

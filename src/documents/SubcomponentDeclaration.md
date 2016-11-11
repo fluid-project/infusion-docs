@@ -101,7 +101,7 @@ The properties allowed at top level in the subcomponent record are as follows:
             <td><p>Specifies an event that will trigger the creation of the subcomponent. 
             This option is used when the subcomponent should not be created immediately as part of the construction process of its parent, but rather at a later time signalled by the firing of the specified event. 
             If this value is a simple string, it represents an event held on the parent component - it may also take the form of an <a href="IoCReferences.md">IoC reference</a> to an event elsewhere in the component tree.</p>
-            <p>Note that if the specified event fires multiple times, the corresponding component will be destroyed and then recreated on every firing of the event after the first time.</p></td>
+            <div class="infusion-docs-note"><strong>Note:</strong> If the specified event fires multiple times, the corresponding component will be destroyed and then recreated on every firing of the event after the first time.</div></td>
             <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     createOnEvent: "someEvent"
@@ -111,7 +111,7 @@ The properties allowed at top level in the subcomponent record are as follows:
             <td><code>priority</code> [optional]</td>
             <td><code>Number</code> or "first"/"last"</td>
             <td>Specifies the order <a href="Priorities.md">priority</a> of the creation of the particular subcomponent. During component tree instantiation, the framework will sort the collection of subcomponents based on the priority specified. 
-                <strong><em>Note that use of this option should be discouraged as it leads to fragile configuration. If you find yourself using it, please report the instance to the development team to see if a better solution can be found.</em></strong></td>
+                <div class="infusion-docs-note"><strong>Note:</strong> The use of this option should be discouraged as it leads to fragile configuration. If you find yourself using it, please report the instance to the development team to see if a better solution can be found.</div></td>
             <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     priority: "first"
@@ -211,7 +211,7 @@ fluid.defaults("gpii.explorationTool.modelTransformer", {
         highContrast: { // complex subcomponent declaration with createOnEvent
             type: "gpii.explorationTool.panels.highContrast",
             container: "{uiOptions}.dom.highContrast",
-            createOnEvent: onUIOptionsMarkupReady"
+            createOnEvent: "onUIOptionsMarkupReady"
         }
     }
 });
