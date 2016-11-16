@@ -131,11 +131,10 @@ The first and third cases are disambiguated by looking for a member of the block
             <td>A short form which can be used where the transformation consists of just a single Model Transformation transform rule. Use either this or <code>transform</code></td>
             <td><code>
 {
-    type: "fluid.linearScale",
+    type: "fluid.transforms.linearScale",
     factor: 100
 }
-</code>
-            </td>
+            </code> </td>
         </tr>
         <tr>
             <td><code>transform</code></td>

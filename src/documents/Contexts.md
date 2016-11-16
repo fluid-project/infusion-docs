@@ -62,7 +62,7 @@ in two kinds of "scopes" or "environments".
 components, searching __upwards__ through the tree from the parent of the component where the context
 name is held.
 * Following this, a search is made in the *resolver root*, which is notionally a separate tree
-of components which holds all components which has been instantiated with the grade [`fluid.resolveRoot`](#global-components-fluidresolveroot-and-fluidresolverootsingle) (see below) anywhere in the
+of components which holds all components which has been instantiated with the grade [`fluid.resolveRoot`](#global-components-fluid-resolveroot-and-fluid-resolverootsingle-) (see below) anywhere in the
 current component tree.
 
 **NOTE**: The following diagram needs to be updated to reflect the Infusion 2.0 visibility rules
@@ -121,7 +121,7 @@ type whose instance was expected to be unique.
             </td>
         </tr>
         <tr>
-            <td><code>fluid.resolveRootSIngle</code></td>
+            <td><code>fluid.resolveRootSingle</code></td>
             <td>Yes</td>
             <td>
                 A fresh instance that holds the same value of the option <code>singleRootType</code> displaces the previous one from global visibility (but does not destroy it)
