@@ -49,10 +49,10 @@ References always take the syntactic form `{context-name}.some.path.segments`, w
                     </li>
                     <li>
                         &lt;index&gt; is the 0-based numeric index of the desired argument
-                        <p>
-                            <em>Note that the <code>arguments</code> context name can only be used in contexts where arguments are in scope - for example, as part of the arguments 
-                            to an <a href="InfusionEventSystem.md#registering-a-listener-to-an-event">event listener</a> or <a href="Invokers.md">invoker</a></em>
-                        </p>
+                        <div class="infusion-docs-note"><strong>Note:</strong>
+                            The <code>arguments</code> context name can only be used in contexts where arguments are in scope - for example, as part of the arguments 
+                            to an <a href="InfusionEventSystem.md#registering-a-listener-to-an-event">event listener</a> or <a href="Invokers.md">invoker</a>
+                        </div>
                     </li>
                 </ul>
             </td>
@@ -77,9 +77,9 @@ References always take the syntactic form `{context-name}.some.path.segments`, w
                     </li>
                     <li>
                         <code>&lt;path to member&gt;</code> is an EL path into the referenced component's members.
-                        <p>
-                            <em>Note that full IoCSS expressions are not valid in all contexts. They can primarily be used in the <code>target</code> field of the <a href="IoCSS.md#distributeoptions-format"><code>distributeOptions</code></a> record.</em>
-                        </p>
+                        <div class="infusion-docs-note"><strong>Note:</strong>
+                            Full IoCSS expressions are not valid in all contexts. They can primarily be used in the <code>target</code> field of the <a href="IoCSS.md#distributeoptions-format"><code>distributeOptions</code></a> record.
+                        </div>
                     </li>
                 </ul>
             </td>

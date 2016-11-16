@@ -150,107 +150,83 @@ the tree under test. These are recognised using a "duck typing system" similar t
 either form the complete payload for a test held in the `tests` section of a `TestCaseHolder`, or may appear as elements of an array held
 in its `sequence` member, representing a sequence of actions (either executors or binders) to be performed by the test case.
 
-
-<style>
-<!-- This block is stripped out by the github markdown processor, but retained by docpad -->
-/* copied from Confluence main-actions.css */
-.mytable, .mytable td, .mytable th {
-  border:1px solid #CCCCCC;
-  padding:3px 4px;
-  vertical-align:top;
-  border-collapse: collapse;
-  }
-/** Beat foundation's built-in row shading by doubling specificity **/
-.alt-a-row.alt-a-row, .alt-a-row code {
-  background-color: #fee;
-}
-.alt-b-row.alt-b-row, .alt-b-row code {
-  background-color: #efe;
-}
-.duckrow.duckrow, .duckrow code {
-  background-color: #eee;
-  }
-.blockcell {
-  background-color: #fff;
-}
-</style>
-
-<table class="mytable">
+<table class="infusion-docs-complextable">
     <tr>
         <th>Fixture name</th><th>Field name</th><th>Field type</th><th>Field description</th><th>Fixture category</th>
     </tr>
-    <tr class="duckrow">
-        <td rowspan="2" class="blockcell">Function executor</td>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="2" class="infusion-docs-blockcell">Function executor</td>
         <td><code>func</code>/<code>funcName</code><a href="#ducktype"><sup>[&#42;]</sup></a></td>
         <td><code>{Function|String}</td><td>The function to be executed, represented either literally (not recommended) or as an IoC reference to a function or the global name of one. It is also possible to use the
         <a href="Invokers.md#compact-format-for-invokers">compact format for invokers</a> to encode the contents of <code>args</code> within the IoC reference <code>func</code> in simple cases.</td>
-        <td rowspan="2" class="blockcell">executor</td>
+        <td rowspan="2" class="infusion-docs-blockcell">executor</td>
     </tr>
     <tr>
         <td><code>args</code> [optional]</td>
         <td><code>{Object|Array}</td>
         <td>The argument or arguments to be supplied to <code>function</code></td>
     </tr>
-    <tr class="duckrow">
-        <td rowspan="5" class="blockcell">Event listener</td>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="5" class="infusion-docs-blockcell">Event listener</td>
         <td><code>event</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
         <td><code>{String}</code></td><td>Reference to the <a href="InfusionEventSystem.md">event</a> to which the listener will be bound</td>
-        <td rowspan="5" class="blockcell">binder</td>
+        <td rowspan="5" class="infusion-docs-blockcell">binder</td>
     </tr>
-    <tr class="alt-a-row">
+    <tr class="infusion-docs-alt-a-row">
         <td><code>listener</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td>
         <td><code>{Function|String}</code></td><td>Reference to the listener to be bound to the event</td>
     </tr>
-    <tr class="alt-a-row">
+    <tr class="infusion-docs-alt-a-row">
         <td><code>args</code><a href="#alternatives"><sup>[&dagger;]</sup></a> [optional]</td>
         <td><code>{Object|Array}</code></td><td>arguments to be supplied to the listener function when it is called - these may contain IoC references including
         references to the context `{arguments}` as described in [Listener Boiling](EventInjectionAndBoiling.md#listener-boiling)</td>
     </tr>
-    <tr class="alt-b-row">
+    <tr class="infusion-docs-alt-b-row">
         <td><code>listenerMaker</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>
         <td><code>{Function|String}</code></td><td>A function which will produce a listener to be bound</td>
     </tr>
-    <tr class="alt-b-row">
+    <tr class="infusion-docs-alt-b-row">
         <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td>
         <td>The arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
-    <tr class="duckrow">
-        <td rowspan="6" class="blockcell">Task</td>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="6" class="infusion-docs-blockcell">Task</td>
         <td><code>task</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
         <td><code>{String}</code></td><td>Reference to a function returning a <a href="PromisesAPI.md">Promise</a> - such a function is known as a <a href="https://github.com/cujojs/when/blob/master/docs/api.md#task-execution">task</a>.</td>
-        <td rowspan="6" class="blockcell">executor</td>
+        <td rowspan="6" class="infusion-docs-blockcell">executor</td>
     </tr>
     <tr>
         <td><code>args</code> [optional]</td>
         <td><code>{Object|Array}</td>
         <td>The argument or arguments to be supplied to the function <code>task</code></td>
     </tr>
-    <tr class="alt-a-row">
+    <tr class="infusion-docs-alt-a-row">
         <td><code>resolve</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td>
         <td><code>{Function|String}</code></td><td>A function to be registered as an <a href="PromisesAPI.md#promise-then-onresolve-onreject-"><code>onResolve</code></a> callback to the promise.
         Exactly one out of the fields <code>resolve</code>, <code>reject</code> must be set.</td>
     </tr>
-    <tr class="alt-a-row">
+    <tr class="infusion-docs-alt-a-row">
         <td><code>resolveArgs</code><a href="#alternatives"><sup>[&dagger;]</sup></a> [optional]</td>
         <td><code>{Object|Array}</code></td>
         <td>Arguments to be supplied to the <code>resolve</code> function when it is called - these may contain IoC references including
         references to the context `{arguments}` as described in [Listener Boiling](EventInjectionAndBoiling.md#listener-boiling). </td>
     </tr>
-    <tr class="alt-b-row">
+    <tr class="infusion-docs-alt-b-row">
         <td><code>reject</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>
         <td><code>{Function|String}</code></td><td>A function to be registered as an <a href="PromisesAPI.md#promise-then-onresolve-onreject-"><code>onReject</code></a> callback to the promise.
         Exactly one out of the fields <code>resolve</code>, <code>reject</code> must be set.</td>
     </tr>
-    <tr class="alt-b-row">
+    <tr class="infusion-docs-alt-b-row">
         <td><code>rejectArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td>
         <td><code>{Object|Array}</code></td>
         <td>Arguments to be supplied to the <code>reject</code> function when it is called - these may contain IoC references including
         references to the context `{arguments}` as described in [Listener Boiling](EventInjectionAndBoiling.md#listener-boiling). </td>
     </tr>
-    <tr class="duckrow">
-        <td rowspan="7" class="blockcell">Change event listener</td><td><code>changeEvent</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="7" class="infusion-docs-blockcell">Change event listener</td><td><code>changeEvent</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
         <td><code>{String}</code>
-            </td><td>Reference to the change event to be listened to. Must be the <code>modelChanged</code> event attached to the <a href="ChangeApplierAPI.md">ChangeApplier</a> of a component - e.g. a reference of the form <code>{component}.applier.modelChanged</code></td><td rowspan="6" class="blockcell">binder</td>
+            </td><td>Reference to the change event to be listened to. Must be the <code>modelChanged</code> event attached to the <a href="ChangeApplierAPI.md">ChangeApplier</a> of a component - e.g. a reference of the form <code>{component}.applier.modelChanged</code></td>
+            <td rowspan="7" class="infusion-docs-blockcell">binder</td>
     </tr>
     <tr>
         <td><code>path</code></td><td><code>{String}</code></td>
@@ -259,26 +235,26 @@ in its `sequence` member, representing a sequence of actions (either executors o
     <tr>
         <td><code>spec</code></td><td><code>{Object}<code></td><td>A record holding a structured description of the required listener properties, as per the ChangeApplier API. Just one of <code>path</code> or <code>spec</code> should be used.</td>
     </tr>
-    <tr class="alt-a-row">
+    <tr class="infusion-docs-alt-a-row">
         <td><code>listener</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td>
         <td><code>{Function|String}</code></td><td>The listener to be bound to the event</td>
     </tr>
-    <tr class="alt-a-row">
+    <tr class="infusion-docs-alt-a-row">
         <td><code>args</code><a href="#alternatives"><sup>[&dagger;]</sup></a> [optional]</td>
         <td><code>{Object|Array}</code></td><td>arguments to be supplied to the listener function when it is called - these may contain IoC references including
         references to the context `{arguments}` as described in [Listener Boiling](EventInjectionAndBoiling.md#listener-boiling). `{change}` is not currently supported.</td>
     </tr>
-    <tr class="alt-b-row">
+    <tr class="infusion-docs-alt-b-row">
         <td><code>listenerMaker</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>
         <td><code>{Function|String}</code></td><td>A function which will produce a listener to be bound</td>
     </tr>
-    <tr class="alt-b-row">
+    <tr class="infusion-docs-alt-b-row">
         <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td>
         <td><code>{Object|Array}</code></td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
-    <tr class="duckrow">
-        <td rowspan="3" class="blockcell">jQuery event trigger</td><td><code>jQueryTrigger</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
-        <td><code>{String}</code></td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered via a call to <a href="http://api.jquery.com/trigger/"><code>jquery.trigger</code></a></td><td rowspan="3" class="blockcell">executor</td>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="3" class="infusion-docs-blockcell">jQuery event trigger</td><td><code>jQueryTrigger</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
+        <td><code>{String}</code></td><td>The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered via a call to <a href="http://api.jquery.com/trigger/"><code>jquery.trigger</code></a></td><td rowspan="3" class="infusion-docs-blockcell">executor</td>
     </tr>
     <tr>
         <td><code>args</code> [optional]</td>
@@ -289,10 +265,10 @@ in its `sequence` member, representing a sequence of actions (either executors o
         <td><code>element</code></td>
         <td><code>{jQueryable}</code> (DOM element, jQuery, or selector)</td><td>The jQuery object on which the event is to be triggered</td>
     </tr>
-    <tr class="duckrow">
-        <td rowspan="6" class="blockcell">jQuery event binder</td>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="6" class="infusion-docs-blockcell">jQuery event binder</td>
         <td><code>jQueryBind</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
-        <td><code>{String}</code></td><td>The name of a jQuery event for which a listener is to be registered via a call to <a href="http://api.jquery.com/one/"><code>jquery.one</code></a></td><td rowspan="6" class="blockcell">binder</td>
+        <td><code>{String}</code></td><td>The name of a jQuery event for which a listener is to be registered via a call to <a href="http://api.jquery.com/one/"><code>jquery.one</code></a></td><td rowspan="6" class="infusion-docs-blockcell">binder</td>
     </tr>
     <tr>
         <td><code>element</code></td><td><code>{jQueryable}</code> (DOM element, jQuery, or selector)</td><td>The jQuery object on which a listener is to be bound</td>
@@ -301,15 +277,15 @@ in its `sequence` member, representing a sequence of actions (either executors o
         <td><code>args</code> [optional]</td>
         <td><code>{Object|Array}</code></td><td>additional arguments to be supplied to <code>jQuery.one</code></td>
     </tr>
-    <tr class="alt-a-row">
+    <tr class="infusion-docs-alt-a-row">
         <td><code>listener</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td>
         <td><code>{Function|String}</code></td><td>The listener to be bound to the event</td>
     </tr>
-    <tr class="alt-b-row">
+    <tr class="infusion-docs-alt-b-row">
         <td><code>listenerMaker</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>
         <td><code>{Function|String}</code></td><td>A function which will produce a listener to be bound</td>
     </tr>
-    <tr class="alt-b-row">
+    <tr class="infusion-docs-alt-b-row">
         <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td>
         <td><code>{Object|Array}</code></td><td>arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
@@ -344,7 +320,7 @@ test case author, descended from the standard framework grade `fluid.test.sequen
 <table>
     <thead>
         <tr>
-            <th colspan="3">Members of an <code>testSequenceElement</code> entry within the <code>elements</code> block of a <code>fluid.test.sequence</code> component</th>
+            <th colspan="3">Members of a <code>testSequenceElement</code> entry within the <code>elements</code> block of a <code>fluid.test.sequence</code> component</th>
         </tr>
         <tr>
             <th>Member</th>
@@ -763,4 +739,4 @@ including a summary of work in progress on [December 5th](http://lists.idrc.ocad
 
 The framework was given a substantial spring-cleaning in October 2016, implementing significant new features such as promise-based fixtures, and priority-driven
 sequence grade assembly, and some support for compact invokers. A few significant bugs remain, especially when listing multiple "listener"-type fixtures
-adjacent in the sequence - see [FLUID-5502](https://issues.fluidproject.org/browse/FLUID-5502). The support for model change event fixtures is also very old-fashioned and needs to be reformed.
+adjacent in the sequence - see [FLUID-5502](https://issues.fluidproject.org/browse/FLUID-5502). The support for model change event fixtures is also very old-fashioned and needs to be reformed - see [FLUID-6077](https://issues.fluidproject.org/browse/FLUID-6077).
