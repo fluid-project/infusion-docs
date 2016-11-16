@@ -24,8 +24,8 @@ the Framework Concepts discussion on [Model Objects](FrameworkConcepts.md#model-
 is available for inspection by reading, using standard language constructs, at all times. For example,
 if model is a JavaScript variable holding the overall model, accessing a field within the model is as
 simple as writing a standard Javascript expression `model.field1.subfield2` etc. In practice, we don't
-advise that users in practice write JavaScript code that inspects models manually - instead, they
-should use the declarative features supplied by ChangeApplier both to trigger changes and react to them.
+advise that users write JavaScript code that inspects models manually - instead, they
+should use the [declarative features](ChangeApplierAPI.md#declarative-style-for-listening-to-changes) supplied by ChangeApplier both to trigger changes and react to them.
 
 This is in contrast to many other frameworks, which generally take one of two routes - either
 insisting that a model is composed of some form of more or less "magic" objects - these might be

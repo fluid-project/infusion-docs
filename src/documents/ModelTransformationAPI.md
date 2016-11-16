@@ -805,10 +805,10 @@ In practice, perfect inversion of a rule is not always possible. Unless extra in
 
 If we call our original transformation function `F`, input document `x` and output document `y`, a general transformation is described as follows: `F(x)=y`. If we say the inverse of `F` is called `G`, we use the following vocabulary to describe different levels of inversion:
 
-* **Lossless Invertible:** `G(y)=G(F(x))=x`
-  * This is in practice almost never possible, since the generated `x` will almost always be missing some entries, or have extra entries, depending on how well all the paths in the original `x` match the ones used by the transformation function `F` (which in turn will affect both `y` and `G`).
+* **Losslessly Invertible:** `G(y)=G(F(x))=x`
+  * This is in practice not always, since the generated `x` may be missing some entries, or have extra entries, depending on how well all the paths in the original `x` match the ones used by the transformation function `F`.
 * **Partly Invertible:** `F(x)=F(G(F(x)))`
-  * In this case, there is no promise on the output of `G` alone, but it is guaranteed that one can pipe an original input model through an `F->G` sequence an unlimited amount of times and always get the same model `y` as output.
+  * In this case, there is no condition on the output of `G` alone, but it is guaranteed that one can pipe an original input model through an `F->G` sequence an unlimited number of times and always get the same model `y` as output (we say that `F(G)` is _[idempotent](https://en.wikipedia.org/wiki/Idempotence) on the image of `F`_)
 * **Not Invertible:** `G` **does not exist (or has not been defined in the framework)**
   * For non-inverable functions, there is either no logical way of deciding what an inverse would mean for that function, or there is no way to reproduce the original input document from an output document.
 

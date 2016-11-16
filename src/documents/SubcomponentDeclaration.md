@@ -85,8 +85,9 @@ The properties allowed at top level in the subcomponent record are as follows:
         <tr>
             <td><code>options</code> [optional]</td>
             <td><code>Object</code></td>
-            <td>These are options to be passed to the subcomponent as "user options." Note that these are not the default options for the subcomponent, rather these options override the defaults. 
-            The defaults for the component will have already been registered by the <a href="CoreAPI.md#fluid-defaults-gradename-options-"><code>fluid.defaults</code></a> call(s) appropriate for its type and <a href="ComponentGrades.md">grade names</a>.</td>
+            <td>These are options to be passed to the subcomponent as "user options." 
+            <div class="infusion-docs-note"><strong>Note:</strong> These are not the default options for the subcomponent, rather these options override the defaults. 
+            The defaults for the component will have already been registered by the <a href="CoreAPI.md#fluid-defaults-gradename-options-"><code>fluid.defaults</code></a> call(s) appropriate for its type and <a href="ComponentGrades.md">grade names</a>.</div></td>
             <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     options: {
@@ -129,7 +130,7 @@ The properties allowed at top level in the subcomponent record are as follows:
 
 ## Injected Subcomponent Declaration ##
 
-Note that the entire subcomponent record may be replaced by a simple IoC reference to a component held elsewhere in the component tree. 
+The entire subcomponent record may be replaced by a simple IoC reference to a component held elsewhere in the component tree. 
 In this case the subcomponent is known as an _**injected component**_ - the already existing component reference is simply copied into the parent component's member field. 
 In many cases, you will not need to inject components elsewhere in the tree since they can be effectively used in 
 their original position by means of [IoC references](IoCReferences.md) (for reading) or [options distributions](IoCSS.md) (for modifying)
@@ -193,7 +194,7 @@ that.concreteChild.destroy();
 
 ### Subcomponent with `createOnEvent`
 
-This example a subcomponent defined with the `createOnEvent` annotation. Unlike an ordinary concrete subcomponent, this
+This example shows a subcomponent defined with the `createOnEvent` annotation. Unlike an ordinary concrete subcomponent, this
 subcomponent will not be constructed at the same time as its parent. Instead, it will only be constructed once the
 `onUIOptionsMarkupReady` event fires. However, it will still be destroyed along with its parent component at the standard time.
 
@@ -265,7 +266,7 @@ The other is named **`{sourcePath}`** and holds a reference to the array index w
 
 The use of this scheme for dynamic components is announced by using the standard `createOnEvent` top-level member that we met earlier when writing standard `components` subcomponent blocks. 
 The syntax is the same, but the semantic is different. For a standard subcomponent, `createOnEvent` will destroy and then recreate a component _**at the same path**_ on each firing of the specified event. 
-In contrast, for a dynamic subcomponent, createOnEvent will construct a _**fresh subcomponent**_ at successive different paths on each firing of the event. The naming of these paths is described in the previous section but in practice should not be a concern for the user.
+In contrast, for a dynamic subcomponent, `createOnEvent` will construct a _**fresh subcomponent**_ at successive different paths on each firing of the event. The naming of these paths is described in the previous section but in practice should not be a concern for the user.
 
 ```javascript
 fluid.defaults("examples.dynamicEventRoot", {
@@ -292,9 +293,10 @@ var secondValue = that["dynamic-1"].options.argument; // 3
 ```
 
 In this case, the configuration for the dynamic components block exposes just the extra context name **`{arguments}`** which we have seen used both with [invokers](Invokers.md) and [event listeners](InfusionEventSystem.md) (
-`{source}` and `{sourcePath}` as with array-sourced dynamic components are not visible). In this case, the context name `{arguments}` is bound onto the argument list that was used to fire the event which triggered the creation of the particular dynamic subcomponent. 
+the `{source}` and `{sourcePath}` contexts used with array-sourced dynamic components are not visible). In this case, the context name `{arguments}` is bound onto the argument list that was used to fire the event which triggered the creation of the particular dynamic subcomponent. 
 The example shows the argument list successively holding the value `[2]` and then the value `[3]`.
 
-Note that with this scheme, it is quite likely that the user will want to arrange for the destruction of the dynamic subcomponents at some time earlier than the natural destruction time of their parent and all its children. 
-Using this scheme, they must arrange to do so using procedural code which manually invokes the `destroy()` method of the dynamic subcomponent they want destroyed. 
-As we observe above, this awkwardness will be removed when the dynamicComponents facility is replaced in a future revision of the framework that makes more powerful use of the lensing capabilities of the [Model Transformations](to-do/ModelTransformation.md) system.
+<div class="infusion-docs-note"><strong>Note:</strong> With this scheme, it is quite likely that the user will want to arrange for the destruction of the dynamic subcomponents at some time earlier than the natural destruction time of their parent and all its children. 
+Using this scheme, they must arrange to do so using procedural code which manually invokes the <code>destroy()</code> method of the dynamic subcomponent they want destroyed. 
+As we observe above, this awkwardness will be removed when the dynamicComponents facility is replaced in a future revision of the framework that makes more powerful use of the lensing capabilities of the <a href="ModelTransformationAPI.md">Model Transformations</a> system.
+</div>
