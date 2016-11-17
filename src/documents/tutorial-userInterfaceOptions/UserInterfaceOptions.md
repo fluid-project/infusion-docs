@@ -38,12 +38,18 @@ The rest of this tutorial will explain each of these steps in detail.
 ## Download and install the Infusion library ##
 
 1. Download the current source code from Github as a [ZIP file]( https://github.com/fluid-project/infusion/archive/master.zip).
-2. Unzip the downloaded ZIP file and change your directory into the `infusion-master` folder that results.
-3. Install [Node.js](http://nodejs.org/download/), if it hasn't been installed.
-4. Install [Grunt](http://gruntjs.com/getting-started) globally, if it hasn't been installed. For Windows, you can run `npm install -g grunt-cli` as Administrator. For Mac OSX, you can run `sudo npm install -g grunt-cli`.
-5. Create your build by running the `grunt` command in the Terminal. If you would like to customize your build, you can create a custom build by running the `grunt custom` command in the Terminal. See the [README.md](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package) file for instructions on how to make a custom build of Infusion.
-6. A ZIP file will be created in the `infusion-master/products` folder. Change directory to your preferred location for your development purposes and unzip the ZIP file in that directory, resulting in the folder: `infusion`. Once the resulting ZIP file is relocated, the other files in the `infusion-master` folder can be safely deleted. 
-7. This `infusion` folder will include a single file containing all of the JavaScript you need: `infusion-all.js`. If you made a custom build, the file is named `infusion-custom.js`. You will later link to this file in the headers of your HTML files.
+2. Unzip the downloaded ZIP file. This will result in a new directory `infusion-master`. 
+3. Using a command line terminal, change to the `infusion-master` directory.
+4. Install [Node.js](http://nodejs.org/download/), if it hasn't been installed.
+5. Install [Grunt](http://gruntjs.com/getting-started) globally, if it hasn't been installed. For Windows, you can run `npm install -g grunt-cli` as Administrator. For Mac OSX, you can run `sudo npm install -g grunt-cli` from the command line terminal.
+6. Create your build by running the `grunt` command in the command line terminal. If you would like to customize your build, you can create a custom build by running the `grunt custom` command in the command line terminal. See the [README.md](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package) file for instructions on how to make a custom build of Infusion.
+7. A ZIP file, such as infusion-2.0.0.zip, will be created in the infusion-master/products directory. Copy this Infusion ZIP file into your project directory. 
+8. Now unzip the Infusion ZIP file in your project directory. This will create a new directory called infusion which contains all the Javascript and files you will need to use UI Options.
+9. Now that infusion is in your project directory, you can go ahead and clean up the files and directories we created so far. You can safely delete: 
+* The ZIP file downloaded in Step 1.
+* The infusion-master directory created in Step 2.
+* The infusion-2.0.0.zip (or similar name) from your project directory.
+10. Your `infusion` folder will include a single file containing all of the JavaScript you need: `infusion-all.js`. If you made a custom build, the file is named `infusion-custom.js`. You will later link to this file in the headers of your HTML files.
 
 ## Prepare your page ##
 
@@ -67,7 +73,10 @@ Add the following markup at the very beginning within your `<body>` tag to your 
 </div>
 ```
 
-The main `<div>` in this snippet contains two things:
+The main `<div>` in this snippet contains 
+
+
+things:
 
 1. a `<div>` where an iframe will be inserted, containing the Fat Panel UI Options controls, and
 2. a `<div>` where the sliding panel and button will be created.
@@ -112,7 +121,7 @@ We'll use the `<script>` tag to link to the Infusion library:
 
 ```html
 <!-- The Infusion Library -->
-<script type="text/javascript" src="lib/infusion/infusion-custom.js"></script>
+<script type="text/javascript" src="lib/infusion/infusion-all.js"></script>
 ```
 
 <div class="infusion-docs-note"><strong>Note:</strong> The <code>infusion-custom.js</code> file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
@@ -156,7 +165,7 @@ This script calls the `fluid.uiOptions.prefsEditor()` function to create the com
 
 The selector for our UI Options will be the classname of the `<div>` we created in [Step 1](#download-and-install-the-infusion-library). In this markup, the selector is `".flc-prefsEditor-separatedPanel"`.
 
-The options tell the component about two things:
+The options tell the component about three things:
 
 * where to find the Table of Contents template: the `tocTemplate` option,
 * where to find the UI Options HTML templates included in Infusion: the `terms.templatePrefix` option, and
