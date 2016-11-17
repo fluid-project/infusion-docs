@@ -165,7 +165,7 @@ Arranging declaratively to perform the currency conversion requires a more inter
 Any transformation that can be expressed as part of Infusion's [Model Transformation](../to-do/ModelTransformation.md) system can be used to construct a [Model Relay](../ModelRelay.md)
 rule which can keep two component models (or two parts of the same component model) synchronised with each other's changes, where the synchronisation automatically takes account of a transformation rule.
 In this case we can recognise that the transformation performed by this component is one of the standard rules supplied with the framework,
-[`fluid.transforms.linearScale`](ModelTransformationAPI.md#scale-value-with-optional-offset-fluid-transforms-linearscale-) 
+[`fluid.transforms.linearScale`](ModelTransformationAPI.md#scale-value-with-optional-offset-fluid-transforms-linearscale-)
 (if it weren't part of the standard set, it would be easy to use any suitable free function as the transforming rule).
 
 ```javascript
@@ -181,8 +181,9 @@ modelRelay: {
 ```
 
 This rule states that the value held in the model field `amount` will be multiplied by the value held in `currentSelection` and the result placed in `result`.
-Note that within the model transformation document itself we need to use fully-qualified IoC expressions of the form `{that}.model.amount` etc. in order to avoid ambiguity with referring directly to strings.
-Outside the transformation rule we can use short-form references to the current component's model fields such as `result` - although note that we would have had to have used the long forms here too if we had wanted to refer to a model held by a different component.
+
+<div class="infusion-docs-note"><strong>Note:</strong> that within the model transformation document itself we need to use fully-qualified IoC expressions of the form <code>{that}.model.amount</code> etc. in order to avoid ambiguity with referring directly to strings.
+Outside the transformation rule we can use short-form references to the current component's model fields such as <code>result</code> - although the long forms are required here too, if we want to refer to a model held by a different component.</div>
 
 Putting it all together, you have the following:
 
