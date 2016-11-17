@@ -4,7 +4,7 @@ layout: default
 category: Tutorials
 ---
 
-Website performance can be split into several buckets: backend, over the wire, and front end. It is important to pay attention to all of these areas when devising your optimization strategy. This document will focus on using the [Preferences Framework](../PreferencesFramework.md) in a situation where optimization is critically important; however, it will not go into detail to cover all of the potential optimizations that can be employed on your site.
+Website performance optimization can be split into several categories: backend, over the wire, and front end. When constructing your optimization strategy, you should examine the effect that each category has on your site's performance. This document will focus on optimizing "over the wire" and "front end" performance when employing the [Preferences Framework](../PreferencesFramework.md) on a site; however, it does not examine potential backend optimizations.
 
 Below are some resources which discuss general website optimization strategies:
 
@@ -20,7 +20,7 @@ Below are some resources which discuss general website optimization strategies:
 
 * Use a minified custom build of Infusion
 * Use the grade version of a full page [Preferences Editor](../PreferencesEditor.md)
-* Lazy load
+* [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading)
 
 ### Minified Custom Build ###
 
