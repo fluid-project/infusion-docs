@@ -11,7 +11,7 @@ how to call the function and its purpose.
 
 ## Registering a global function
 
-A global function is registered within infusion at a stable place in its global namespace by working with the core API functions [fluid.registerNamespace](CoreAPI.md#fluid-registernamespace-path-) and 
+A global function is registered within infusion at a stable place in its global namespace by working with the core API functions [fluid.registerNamespace](CoreAPI.md#fluid-registernamespace-path-) and
 [fluid.setGlobalValue](CoreAPI.md#fluid-setglobalvalue-path-value-) - in practice the latter is rarely used, in favour of directly setting members on namespace objects.
 
 If you are working in the browser, the global object (traditionally named `window`) coincides with Fluid's global object (which can be retrieved from `fluid.global` - assuming that you have already managed to resolve the `fluid` object itself).
@@ -27,7 +27,7 @@ examples.linearMap = function (m, x, c) {
 }
 ```
 
-This registers a global function named `examples.linearMap` into the global namespace. 
+This registers a global function named `examples.linearMap` into the global namespace.
 
 ## Registering defaults for a global function
 
@@ -61,6 +61,5 @@ This is a small but occasionally useful courtesy - especially when invoking func
 
 ## Framework function grades
 
-All of the pure function grades (that is, noncomponent grades) defined in the framework represent [*model transformation functions*](ModelTransformationAPI.md) derived from `fluid.transformFunction`. 
-These grades are `fluid.standardInputTransformFunction`, `fluid.standardOutputTransformFunction`, `fluid.multiInputTransformFunction`, `fluid.standardTransformFunction` and `fluid.lens`. Some documentation for
-these grades can be found on the [GPII wiki](https://wiki.gpii.net/index.php/Architecture_-_Available_transformation_functions#Grades_of_transformations). 
+All of the pure function grades (that is, non-component grades) defined in the framework represent [*model transformation functions*](ModelTransformationAPI.md#grades-of-transformations) derived from `fluid.transformFunction`.
+These grades are `fluid.standardInputTransformFunction`, `fluid.standardOutputTransformFunction`, `fluid.multiInputTransformFunction`, `fluid.standardTransformFunction` and `fluid.lens`.
