@@ -49,6 +49,10 @@ The following example instantiates a Full Page Preferences Editor with a preview
 
     /**
      * Initialize PrefsEditor global settings store.
+     * The globalSettingsStore handles the storage and retrieval of preferences,
+     * by default it is configured to use the
+     * [fluid.prefs.cookiStore](SettingsStore.md#fluid-prefs-cookiestore);
+     * which stores preferences in a browser cookie.
      */
     fluid.prefs.globalSettingsStore();
 
@@ -65,7 +69,7 @@ The following example instantiates a Full Page Preferences Editor with a preview
     /**
      * Initialize Full Page preferences editor
      */
-    fluid.prefs.fullPreview(".container", {
+    fluid.prefs.fullPreview(".flc-prefsEditor-fullPreview", {
         gradeNames: ["fluid.prefs.initialModel.starter"],
         // Tell PrefsEditor where to find all the templates, relative to this
         // file
