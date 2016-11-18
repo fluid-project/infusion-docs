@@ -5,7 +5,8 @@ category: Infusion
 ---
 
 Every Fluid component has a standard lifecycle, various points of which are signalled by firing of standard framework [events](InfusionEventSystem.md). 
-Every component which has a grade of [fluid.component](ComponentGrades.md) is able to receive and react to these events. The events, in the expected order of firing for a component, are as follows:
+Every component which has a grade of [fluid.component](ComponentGrades.md) has these events attached, and the framework will fire them as the component reaches the appropriate 
+lifecycle points. The events, in the expected order of firing for a component, are as follows:
 
 <table>
     <thead>
@@ -20,7 +21,7 @@ Every component which has a grade of [fluid.component](ComponentGrades.md) is ab
             <td>onCreate</td>
             <td>
                 <dl>
-                    <dt><dfn><code>that {Object}</code></dfn></dt>
+                    <dt><dfn><code>that {Component}</code></dfn></dt>
                     <dd>the component being constructed</dd>
                 </dl>
             </td>
@@ -32,7 +33,7 @@ Every component which has a grade of [fluid.component](ComponentGrades.md) is ab
             <td>onDestroy</td>
             <td>
                 <dl>
-                    <dt><dfn><code>that {Object}</code></dfn></dt>
+                    <dt><dfn><code>that {Component}</code></dfn></dt>
                     <dd>the component being destroyed</dd>
                 </dl>
             </td>
@@ -44,15 +45,14 @@ Every component which has a grade of [fluid.component](ComponentGrades.md) is ab
             <td>afterDestroy</td>
             <td>
             <dl>
-                <dt><dfn><code>that {Object}</code></dfn></dt>
+                <dt><dfn><code>that {Component}</code></dfn></dt>
                 <dd>the component which has been destroyed</dd>
             </dl>
             </td>
             <td>
                 Fired after the component and its children have been completely destroyed, and detached from any parent component.
-                <p>
-                    <em><strong>NOTE:</strong> at this point you may only safely access plain data members of the component such as id and typeName. Do not attempt to invoke any methods, fire any events, or resolve any IoC references from listeners to this event.</em>
-                </p>
+                <div class="infusion-docs-note"><strong>Note:</strong> At this point you may only safely access plain data members of the component such as id and typeName. Do not attempt to invoke any methods, fire any events, or resolve any IoC references from listeners to this event.
+                </div>
             </td>
         </tr>
     </tbody>

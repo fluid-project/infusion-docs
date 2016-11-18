@@ -60,7 +60,7 @@ In addition, a component derived from [`fluid.modelComponent`](ComponentConfigur
 * a model
   * a free-form area where the component stores mutable state which is of interest to its end user
   * changes in this area are managed by an automatically generated implementation attached to the component, a [ChangeApplier](ChangeApplier.md), which allows interested parties to register and deregister their interest in particular changes, 
-as well as allowing changes to one component's model to be automatically coordinates with changes in another.
+as well as allowing changes to one component's model to be automatically coordinated with changes in another.
 
 Components which manage a _view_ on behalf of their user, which is rooted at a particular node in the DOM, will derive from [`fluid.viewComponent`](ComponentConfigurationOptions.md#view-components) which then supports:
 
@@ -69,7 +69,7 @@ Components which manage a _view_ on behalf of their user, which is rooted at a p
 * a [DOM binder](DOMBinder.md)
   * associating names with scoped selectors and the DOM nodes that they match
 
-New kinds of components are created by passing configuration information to the '[fluid.defaults](ComponentGrades.md)' function.
+New kinds of components are created by passing configuration information to the [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-) function.
 This function will generate the **creator function** that will be used to instantiate the component.
 The framework provides support for instantiating components of various [types, or 'grades'](ComponentGrades.md);
 as well, developers can create their own grades.
@@ -103,7 +103,8 @@ You can understand this example better by reading documentation for [`fluid.defa
 
 In this section we instantiate a view component which is already defined in the framework, and configure it with some options of our own: 
 
-*Example:*
+### Example ###
+
 ```javascript
 var myInlineEdit = fluid.inlineEdit(".title-container", {
     styles: {

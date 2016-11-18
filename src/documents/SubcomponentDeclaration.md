@@ -138,7 +138,8 @@ their original position by means of [IoC references](IoCReferences.md) (for read
 ## Examples ##
 
 ### Standard Subcomponent Declaration
-This first example shows a straightforward subcomponent declaration. `adminRecordEditor` (a view component) is a standard subcomponent of `cspace.admin`:
+This first example shows a straightforward subcomponent declaration. `adminRecordEditor`, a component of grade `cspace.recordEditor`
+(which would be a [view component](tutorial-gettingStartedWithInfusion/ViewComponents.md) grade since we make use of the `container` top-level option) is a standard subcomponent of `cspace.admin`:
 
 ```javascript
 fluid.defaults("cspace.admin", {
@@ -163,9 +164,16 @@ to which it is injected has a path `child2.injectedComponent` in the final insta
 called an _injected subcomponent_ because it appears at a path other than the one where it was constructed. In memory, the
 JavaScript object references at path `concreteChild` and `child2.injectedComponent` will be identical.
 
+Injecting subcomponents can be useful in order to capture (or parameterise) variability in the relationship between two components, in
+order to expose it more cleanly to a third component. For example, a component `A` may be managed by a component `B` elsewhere in the tree,
+where the configurer of `A` wishes to have the freedom for `B` to be located at a variety of places - expressing this variety by binding to `B`
+as an injected subcomponent referenced by an IoC reference held at member path, say, named `b`. A third component `C` can then cleanly refer to
+the respective `B` simply as `A.b` without having to deal with the indirection by the IoC reference themselves.  
+
 <div class="infusion-docs-note"><strong>Note:</strong> You should use <strong>only</strong> this facility for
 shipping Infusion component references around within the tree, and not copy raw component references around by hand, otherwise you will
-confuse the framework's book-keeping for reference resolution.</div>
+confuse the framework's book-keeping for reference resolution.
+</div>
 
 ```javascript
 fluid.defaults("examples.injection.root", {
@@ -200,7 +208,8 @@ subcomponent will not be constructed at the same time as its parent. Instead, it
 
 <div class="infusion-docs-note"><strong>Note:</strong> There is an important distinction between standard subcomponents defined with <code>createOnEvent</code>, and
 <a href="#dynamic-components">dynamic subcomponents</a> which also may be written with <code>createOnEvent</code>. For the former, if the event fires a 2nd and subsequent time, the existing
-subcomponent will be destroyed, and a fresh one created. For the latter, a fresh subcomponent is created on each event firing, and these will all accumulate until they are manually destroyed (or until the parent is destroyed)</div> 
+subcomponent will be destroyed, and a fresh one created. For the latter, a fresh subcomponent is created on each event firing, and these will all accumulate until they are manually destroyed (or until the parent is destroyed)
+</div> 
 
 ```javascript
 fluid.defaults("gpii.explorationTool.modelTransformer", {

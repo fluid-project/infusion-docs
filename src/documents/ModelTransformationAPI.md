@@ -134,7 +134,7 @@ In general, the reserved words of the model transformation system are:
 | `options` | `fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray` |
 
 
-Besides these, most transformations have further reserved words. These are briefly listed here, with the transformation(s) they belong too. They will be more fully described for each relevant transformation.
+Besides these, most transformations have further reserved words. These are briefly listed here, with the transformation(s) they belong to. They will be more fully described for each relevant transformation.
 
 ## Grades of transformations
 
@@ -801,7 +801,8 @@ The framework can generate the inverse of a document where it does not use neste
 
 The function used for inverting rules is: `fluid.model.transform.invertConfiguration(transformDocument)`, which takes a single input: the transformation rules that should be inverted. It outputs the inverted rules (inverted transformation rules).
 
-In practice, perfect inversion of a rule is not always possible. Unless extra information is kept, or extra information added about defaulting values, etc., the inversion/lensing will be lossy (see [https://issues.fluidproject.org/browse/FLUID-5133](FLUID-5337) ).
+In practice, perfect inversion of a rule is not always possible. Unless extra information is kept, or extra information added about defaulting values, etc., 
+the inversion/lensing will be lossy (see [FLUID-5133](https://issues.fluidproject.org/browse/FLUID-5133) ).
 
 If we call our original transformation function `F`, input document `x` and output document `y`, a general transformation is described as follows: `F(x)=y`. If we say the inverse of `F` is called `G`, we use the following vocabulary to describe different levels of inversion:
 
