@@ -18,9 +18,15 @@ Below are some resources which discuss general website optimization strategies:
 
 ## Optimization of the Preferences Framework ##
 
-* Use a minified custom build of Infusion
+* Use a minified [custom build of Infusion](https://github.com/fluid-project/infusion#how-do-i-create-an-infusion-package)
 * Use the grade version of a full page [Preferences Editor](../PreferencesEditor.md)
 * [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading)
+
+To see a live version of the example outlined below, open the [Minimal Footprint - Preferences Framework](http://build.fluidproject.org/infusion/examples/framework/preferences/minimalFootprint/) example.
+
+<div class="infusion-docs-note">
+<strong>Note:</strong> The example outlined below uses individual JS files. However, these can be substituted by using an Infusion build.
+</div>
 
 ### Minified Custom Build ###
 
@@ -37,66 +43,92 @@ Most website integrations of a [Preferences Editor](../PreferencesEditor.md) mak
 #### Instantiating a Full Page Preferences Editor ####
 
 The following example instantiates a Full Page Preferences Editor with a preview window.
+The code consists of the following three parts:
+
+1. `fluid.prefs.globalSettingsStore` - Responsible for storing/retrieving preferences. By default it uses the `fluid.prefs.cookieStore` which uses a browser cookie for storage.
+2. `fluid.pageEnhancer` - Initializes the UI Enhancer for the page. The UI Enhancer is responsible for applying the preferences to the page.
+3. `fluid.prefs.fullPreview` - The Full Page prefs editor, including a preview.
+
+(see: [fullPage.html](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/fullPage.html))
+
+<div class="infusion-docs-note"><strong>Note:</strong> The code snipped below can be loaded in through a JavaScript file or added directly to the HTML in a <code>&lt;script&gt;</code> tag.</div>
 
 ```javascript
+    /*
     /*
      * The various starter gradeNames mentioned below indicate that the
      * "starter" adjusters and enactors should be used. These correspond to the
      * same set of adjusters and enactors used in a typical UI Options
      * configuration. However, a custom set of adjusters and enactors could be
-     * configured here.
+     * configured instead.
      */
 
     /**
      * Initialize the PrefsEditor global settings store.
      * The globalSettingsStore handles the storage and retrieval of preferences,
-     * by default it is configured to use the
-     * [fluid.prefs.cookieStore](SettingsStore.md#fluid-prefs-cookiestore);
+     * by default it is configured to use the fluid.prefs.cookieStore
      * which stores preferences in a browser cookie.
      */
     fluid.prefs.globalSettingsStore();
 
     /**
-     * Initialize UI Enhancer for the page.
+     * Initialize the UI Enhancer for the page.
      */
     fluid.pageEnhancer({
         uiEnhancer: {
             gradeNames: ["fluid.uiEnhancer.starterEnactors"],
-            tocTemplate: "path/to/TocTemplate"
+            // The UI Enhancer's Table of Contents uses an HTML template. This tells the component
+            // where to find that template.
+            tocTemplate: "../../../../src/components/tableOfContents/html/TableOfContents.html"
         }
     });
 
-    /**
-     * Initialize Full Page preferences editor
-     */
-    fluid.prefs.fullPreview(".flc-prefsEditor-fullPreview", {
-        gradeNames: ["fluid.prefs.initialModel.starter"],
-        // Tell PrefsEditor where to find all the templates, relative to this
-        // file
+    fluid.prefs.fullPreview(".demo-prefsEditor-fullWithPreview", {
+        gradeNames: ["fluid.prefs.transformDefaultPanelsOptions", "fluid.prefs.initialModel.starter"],
+        // Tell PrefsEditor where to find all the resources, relative to this file
         terms: {
-            templatePrefix: "path/to/templates",
-            messagePrefix: "path/to/messages"
+            // The Preferences Editor interface is defined by several HTML templates. The component
+            // needs to know where those templates are.
+            templatePrefix: "../../../../src/framework/preferences/html",
+            //  The strings used on Preferences Editor interface are defined in several JSON files. The component
+            //  needs to know where those files are.
+            messagePrefix: "../../../../src/framework/preferences/messages"
         },
         messageLoader: {
             gradeNames: ["fluid.prefs.starterMessageLoader"]
         },
-        prefsEditor: {
-            gradeNames: [
-                "fluid.prefs.starterPanels",
-                "fluid.prefs.uiEnhancerRelay"
-            ]
-        },
         templateLoader: {
             gradeNames: ["fluid.prefs.starterFullPreviewTemplateLoader"]
+        },
+        prefsEditor: {
+            gradeNames: ["fluid.prefs.starterPanels", "fluid.prefs.uiEnhancerRelay"],
+            listeners: {
+                // Tells the PrefsEditor where to redirect to if the user cancels the operation.
+                // In this case, it goes back one step in the browser's history.
+                onCancel: {
+                    "this": window.history,
+                    method: "back"
+                }
+            }
+        },
+        preview: {
+            templateUrl: "html/prefsEditorPreview.html"
         }
     });
 ```
 
 ### Lazy Loading ###
 
-With a Full Page Preferences Editor we've moved editing preferences off each of the content pages; however, these pages are still required to enact/apply the preferences set by the user. Therefore, we still need to instantiate the [Settings Store](../SettingsStore.md) and [Page Enhancer](../Enactors.md) on each page. However, we only need these if a user has actually adjusted their preferences. In a default implementation of the Preferences Framework, preferences are stored in a browser cookie. The simple solution is to check for the presence of this cookie, and only load and instantiate the Settings Store and Page Enhancer if it's found.
+With a Full Page Preferences Editor we've moved editing preferences off of the content pages; however, these pages are still required to enact/apply the preferences set by the user. Therefore, we still need to instantiate the [Settings Store](../SettingsStore.md) and [Page Enhancer](../Enactors.md) on each page. However, we only need these if a user has actually adjusted their preferences. In a default implementation of the Preferences Framework, preferences are stored in a browser cookie. The simple solution is to check for the presence of this cookie, and only load and instantiate the Settings Store and Page Enhancer if it's found.
 
 The following example makes use the functions provided by [loadScripts.js](../examples/loadScripts.js) to check the cookie and lazy load the required scripts:
+
+The first step is to check if a cookie for user preferences was set. If it is found, the necessary JavaScript files should be loaded. By lazy loading the scripts we save on the download and processing time for the scripts when they are not in use.
+
+(see: [loadScripts.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/loadScripts.js))
+
+<div class="infusion-docs-note"><strong>Note:</strong> The example below makes use of a build of Infusion, "infusion-custom.js", which is a concatenated JavaScript file. However, the linked
+code above uses the individual JavaScript files. Using the single "infusion-custom.js" file will save on server requests and is the prefered method, but will require a [custom build](#minified-custom-build) to be generated.</div>
 
 ```html
 <!-- Add the following script tag to the HTML of each page -->
@@ -106,21 +138,38 @@ The following example makes use the functions provided by [loadScripts.js](../ex
         // need to load the custom build of infusion first
         "../infusion/infusion-custom.js",
         // should point at a JavaScript file containing the instantiation of the
-        // setings store and page enhancer. You'll need to write this yourself
+        // settings store and page enhancer. You'll need to write this yourself,
         // but an example has been provided below.
-        "../path/to/instantiationScript.js"
+        "js/lazyLoad.js"
     ]);
 </script>
 ```
 
-The following is an example of an instantiation script:
+The following is an example of an instantiation script.
+(see: [lazyLoad.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/lazyLoad.js))
 
 ```javascript
+/**
+ * Initialize the PrefsEditor global settings store.
+ * The globalSettingsStore handles the storage and retrieval of preferences,
+ * by default it is configured to use the fluid.prefs.cookieStore
+ * which stores preferences in a browser cookie.
+ */
 fluid.prefs.globalSettingsStore();
+
+/**
+ * Initialize the UI Enhancer for the page.
+ */
 fluid.pageEnhancer({
     uiEnhancer: {
+        //  The "fluid.uiEnhancer.starterEnactors" grade mentioned below indicate that the
+        //  "starter" enactors should be used. These correspond to the
+        //  same set of enactors used in a typical UI Options configuration. However, a
+        //  custom set of enactors could be configured instead.
         gradeNames: ["fluid.uiEnhancer.starterEnactors"],
-        tocTemplate: "path/to/TocTemplate"
+        // The UI Enhancer's Table of Contents uses an HTML template. This tells the component
+        // where to find that template.
+        tocTemplate: "../../../../src/components/tableOfContents/html/TableOfContents.html"
     }
 });
 ```
