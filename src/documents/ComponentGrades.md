@@ -5,7 +5,7 @@ category: Infusion
 ---
 
 A **grade** is a block of configuration (representable as JSON) with a global name. A new grade is typically registered into an Infusion runtime by a call to the function
-`[fluid.defaults](CoreAPI.md#fluid-defaults-gradename-options-)`, supplying both the global name (the **grade name**) and the configuration block.
+[`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-), supplying both the global name (the **grade name**) and the configuration block.
 
 Here's a simple example of defining a new grade, derived from the base framework grade `fluid.component`:
 
