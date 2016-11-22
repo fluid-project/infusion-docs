@@ -129,12 +129,12 @@ same payloads in each case.
 
 ### fluid.promise.map(source, func)
 
-* `source {Object|Promise}` An object or promise whose value is to be mapped by a function (if an object, will be converted first to a promise via `fluid.toPromise()`)
-* `func {Function: ({Any})  →  Any}` A function which will map the resolved promise value
+* `source {Object|Promise}` An object or promise whose value is to be mapped by a function (if an object, will be converted first to a promise via `fluid.toPromise()`).
+* `func {Function: ({Any})  →  Any}` A function which will map the resolved promise value. This function can return either an actual mapped value or a promise whose resolved value is the mapped value.
 * Returns: `{Promise}` A promise for the resolved mapped value.
 
 Returns a promise whose resolved value is mapped from the source promise or value by the supplied function. If the input value is not a promise, it will
-be converted first to a promise via `fluid.toPromise()`. If the input promise rejects, its rejection reason will be propagated unmapped. Example:
+be converted first to a promise via `fluid.toPromise()`. If the input promise rejects, its rejection reason will be propagated unmapped. Examples:
 
 ```javascript
 var promiseTwo = fluid.toPromise(2);
@@ -142,7 +142,15 @@ var double = function (value) {
     return value * 2;
 };
 var promiseFour = fluid.promise.map(promiseTwo, double);
-``` 
+```
+
+```javascript
+var promiseTwo = fluid.toPromise(2);
+var double = function (value) {
+    return fluid.promise().resolve(value * 2);
+};
+var promiseFour = fluid.promise.map(promiseTwo, double);
+```
 
 ## Promise algorithms
 
