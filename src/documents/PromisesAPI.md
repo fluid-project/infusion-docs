@@ -46,8 +46,8 @@ object comprises the following four members:
 Adds handlers to either or both of the `resolve` or `reject` actions of the promise. Note that if the promise has already been
 rejected or resolved, the appropriate handler will be notified immediately on this registration.
 
-* `onResolve: {Function ({Any}) →  None}` A callback to receive the successfully resolved value of the promise
-* `onReject: {Function ({Error}) →  None}` A callback to receive a rejection of the promise, in the case its resolution fails.
+* `onResolve: {Function ({Any}) →  {None}}` A callback to receive the successfully resolved value of the promise
+* `onReject: {Function ({Error}) →  {None}}` A callback to receive a rejection of the promise, in the case its resolution fails.
 
 ### promise.resolve(value)
 
@@ -129,12 +129,12 @@ same payloads in each case.
 
 ### fluid.promise.map(source, func)
 
-* `source {Object|Promise}` An object or promise whose value is to be mapped by a function (if an object, will be converted first to a promise via `fluid.toPromise()`)
-* `func {Function: ({Any})  →  Any}` A function which will map the resolved promise value
+* `source {Object|Promise}` An object or promise whose value is to be mapped by a function (if an object, will be converted first to a promise via `fluid.toPromise()`).
+* `func {Function: ({Any})  →  {Any|Promise}}` A function which will map the resolved promise value. This function can return either an actual mapped value or a promise whose resolved value is the mapped value.
 * Returns: `{Promise}` A promise for the resolved mapped value.
 
 Returns a promise whose resolved value is mapped from the source promise or value by the supplied function. If the input value is not a promise, it will
-be converted first to a promise via `fluid.toPromise()`. If the input promise rejects, its rejection reason will be propagated unmapped. Example:
+be converted first to a promise via `fluid.toPromise()`. If the input promise rejects, its rejection reason will be propagated unmapped. Examples:
 
 ```javascript
 var promiseTwo = fluid.toPromise(2);
@@ -142,7 +142,15 @@ var double = function (value) {
     return value * 2;
 };
 var promiseFour = fluid.promise.map(promiseTwo, double);
-``` 
+```
+
+```javascript
+var promiseTwo = fluid.toPromise(2);
+var double = function (value) {
+    return fluid.promise().resolve(value * 2);
+};
+var promiseFour = fluid.promise.map(promiseTwo, double);
+```
 
 ## Promise algorithms
 
@@ -151,7 +159,7 @@ are responsive to an additional element of our promises API, the  [`promise.accu
 
 ### fluid.promise.sequence(sources[, options])
 
-* `sources {Array of {Any|Promise|Function:(options {Object}) →  Any|Promise}}` An array of sources of values or promises which will be evaluated in sequence.
+* `sources {Array of {Any|Promise|Function:(options {Object}) →  {Any|Promise}}}` An array of sources of values or promises which will be evaluated in sequence.
 * `options {Object}` [optional] A structure of options which will be supplied to function members of `sources`.  
 
 Accepts an array of values, promises, functions returning values or functions returning promises and evaluates them in sequence. Evaluating a value is a no-op which returns the value itself.
@@ -184,7 +192,7 @@ in the chain.
 Each listener to the "transform event" (we call this a "pseudoevent" precisely because each listener does not receive the *same* argument list
 as with traditional events, but instead receives the returned and resolved value of its precessor) has the following signature:
 
-* `listener {Function:(previousValue {Any}, options {Object}) →  Any|Promise}` where `previousValue` is the resolved return from the previous listener notified in the chain,
+* `listener {Function:(previousValue {Any}, options {Object}) →  {Any|Promise}}` where `previousValue` is the resolved return from the previous listener notified in the chain,
 or the initial `payload` value supplied to `fluid.promise.fireTransformEvent` if it is the first in the chain, and `options` is the last argument to `fluid.promise.fireTransformEvent`.
 
 ## Inverse API recognised by promises consumed by sequential algorithms
