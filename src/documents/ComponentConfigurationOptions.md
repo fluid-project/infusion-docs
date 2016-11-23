@@ -300,7 +300,7 @@ fluid.defaults("examples.eventedComponent", {
 
 ## Model Components ##
 
-Components defined with a grade of `modelComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
+Components defined with a grade of `fluid.modelComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
 
 See also: [Component Grades](ComponentGrades.md)
 
@@ -411,7 +411,7 @@ See also: [Component Grades](ComponentGrades.md)
 
 ## View Components ##
 
-Components defined with a grade of `viewComponent` are also model components, so they support
+Components defined with a grade of `fluid.viewComponent` are also model components, so they support
 * all of the [common options](#options-supported-by-all-components-grades) described above,
 * [`modelComponent` options](#model-components) described above
 * and those defined below.
@@ -503,7 +503,7 @@ Components defined with a grade of `rendererComponent` are also view components 
 
 Component developers are free to define their own additional options.
 
-<div class="infusion-docs-note"><strong>Note:</strong> The Infusion Renderer system will be rewritten completely before the final Infusion 2.0 release - the use of the current renderer and component hierarchy is not recommended.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> The Infusion Renderer system will be rewritten completely before the Infusion 3.0 release - the use of the current renderer and component hierarchy is not recommended.</div>
 
 ### `selectorsToIgnore` ###
 <table>
