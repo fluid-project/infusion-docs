@@ -51,7 +51,7 @@ The code consists of the following three parts:
 
 (see: [fullPage.html](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/fullPage.html))
 
-<div class="infusion-docs-note"><strong>Note:</strong> The code snipped below can be loaded in through a JavaScript file or added directly to the HTML in a <code>&lt;script&gt;</code> tag.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> The code snippet below can be loaded in through a JavaScript file or added directly to the HTML in a <code>&lt;script&gt;</code> tag.</div>
 
 ```javascript
     /*
@@ -119,7 +119,7 @@ The code consists of the following three parts:
 
 ### Lazy Loading ###
 
-With a Full Page Preferences Editor we've moved editing preferences off of the content pages; however, these pages are still required to enact/apply the preferences set by the user. Therefore, we still need to instantiate the [Settings Store](../SettingsStore.md) and [Page Enhancer](../Enactors.md) on each page. However, we only need these if a user has actually adjusted their preferences. In a default implementation of the Preferences Framework, preferences are stored in a browser cookie. The simple solution is to check for the presence of this cookie, and only load and instantiate the Settings Store and Page Enhancer if it's found.
+With a Full Page Preferences Editor we've moved editing preferences off the content pages; however, these pages are still required to enact/apply the preferences set by the user. Therefore, we still need to instantiate the [Settings Store](../SettingsStore.md) and [Page Enhancer](../Enactors.md) on each page. However, we only need these if a user has actually adjusted their preferences. In a default implementation of the Preferences Framework, preferences are stored in a browser cookie. The simple solution is to check for the presence of this cookie, and only load and instantiate the Settings Store and Page Enhancer if it's found.
 
 The following example makes use the functions provided by [loadScripts.js](../examples/loadScripts.js) to check the cookie and lazy load the required scripts:
 
@@ -128,7 +128,7 @@ The first step is to check if a cookie for user preferences was set. If it is fo
 (see: [loadScripts.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/loadScripts.js))
 
 <div class="infusion-docs-note"><strong>Note:</strong> The example below makes use of a build of Infusion, "infusion-custom.js", which is a concatenated JavaScript file. However, the linked
-code above uses the individual JavaScript files. Using the single "infusion-custom.js" file will save on server requests and is the prefered method, but will require a [custom build](#minified-custom-build) to be generated.</div>
+code above uses the individual JavaScript files. Using the single "infusion-custom.js" file will save on server requests and is the preferred method, but will require a [custom build](#minified-custom-build) to be generated.</div>
 
 ```html
 <!-- Add the following script tag to the HTML of each page -->
@@ -176,7 +176,7 @@ fluid.pageEnhancer({
 
 ## Caveats ##
 
-While the strategy outlined above will improve page load performance, it is not without its draw backs.
+While the strategy outlined above will improve page load performance, it is not without its drawbacks.
 
 * Prefs Editor
     * Users will have to navigate away from the current content to adjust settings
