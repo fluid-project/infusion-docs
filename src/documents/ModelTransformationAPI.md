@@ -3330,7 +3330,7 @@ transform: {
 
 **Description:** Transform stringified JSON to an object using `JSON.parse`.  Returns `undefined` if the JSON string is invalid.
 
-**Invertibility:** Partly invertible via `fluid.transforms.objectToString`.
+**Invertibility:** Partly invertible via `fluid.transforms.objectToJSONString`.
 
 **Syntax:**
 ```
@@ -3375,7 +3375,7 @@ transform: {
 </tbody>
 </table>
 
-### fluid.transforms.objectToString
+### fluid.transforms.objectToJSONString
 
 **Type:** standardTransformFunction
 
@@ -3387,7 +3387,7 @@ transform: {
 ```
 {
     "transform": {
-        "type": "fluid.transforms.objectToString",
+        "type": "fluid.transforms.objectToJSONString",
         "inputPath": "",
         "outputPath": "string"
     }
@@ -3411,7 +3411,7 @@ transform: {
 <td><pre><code>
 {
     "transform": {
-        "type": "fluid.transforms.objectToString",
+        "type": "fluid.transforms.objectToJSONString",
         "inputPath": "object",
         "outputPath": "string"
     }
@@ -3445,7 +3445,7 @@ disables spacing and line breaks.
 <td><pre><code>
 {
     "transform": {
-        "type": "fluid.transforms.objectToString",
+        "type": "fluid.transforms.objectToJSONString",
         "inputPath": "object",
         "outputPath": "string",
         "space": 2
