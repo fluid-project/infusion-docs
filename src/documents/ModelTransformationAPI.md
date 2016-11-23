@@ -134,7 +134,7 @@ In general, the reserved words of the model transformation system are:
 | `options` | `fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray` |
 
 
-Besides these, most transformations have further reserved words. These are briefly listed here, with the transformation(s) they belong too. They will be more fully described for each relevant transformation.
+Besides these, most transformations have further reserved words. These are briefly listed here, with the transformation(s) they belong to. They will be more fully described for each relevant transformation.
 
 ## Grades of transformations
 
@@ -801,14 +801,15 @@ The framework can generate the inverse of a document where it does not use neste
 
 The function used for inverting rules is: `fluid.model.transform.invertConfiguration(transformDocument)`, which takes a single input: the transformation rules that should be inverted. It outputs the inverted rules (inverted transformation rules).
 
-In practice, perfect inversion of a rule is not always possible. Unless extra information is kept, or extra information added about defaulting values, etc., the inversion/lensing will be lossy (see [https://issues.fluidproject.org/browse/FLUID-5133](FLUID-5337) ).
+In practice, perfect inversion of a rule is not always possible. Unless extra information is kept, or extra information added about defaulting values, etc., 
+the inversion/lensing will be lossy (see [FLUID-5133](https://issues.fluidproject.org/browse/FLUID-5133) ).
 
 If we call our original transformation function `F`, input document `x` and output document `y`, a general transformation is described as follows: `F(x)=y`. If we say the inverse of `F` is called `G`, we use the following vocabulary to describe different levels of inversion:
 
-* **Lossless Invertible:** `G(y)=G(F(x))=x`
-  * This is in practice almost never possible, since the generated `x` will almost always be missing some entries, or have extra entries, depending on how well all the paths in the original `x` match the ones used by the transformation function `F` (which in turn will affect both `y` and `G`).
+* **Losslessly Invertible:** `G(y)=G(F(x))=x`
+  * This is in practice not always, since the generated `x` may be missing some entries, or have extra entries, depending on how well all the paths in the original `x` match the ones used by the transformation function `F`.
 * **Partly Invertible:** `F(x)=F(G(F(x)))`
-  * In this case, there is no promise on the output of `G` alone, but it is guaranteed that one can pipe an original input model through an `F->G` sequence an unlimited amount of times and always get the same model `y` as output.
+  * In this case, there is no condition on the output of `G` alone, but it is guaranteed that one can pipe an original input model through an `F->G` sequence an unlimited number of times and always get the same model `y` as output (we say that `F(G)` is _[idempotent](https://en.wikipedia.org/wiki/Idempotence) on the image of `F`_)
 * **Not Invertible:** `G` **does not exist (or has not been defined in the framework)**
   * For non-inverable functions, there is either no logical way of deciding what an inverse would mean for that function, or there is no way to reproduce the original input document from an output document.
 
