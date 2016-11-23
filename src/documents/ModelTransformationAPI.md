@@ -43,6 +43,13 @@ Below is a list of all the available transformations in the framework. For detai
 * [fluid.transforms.dereference](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluid-transforms-dereference-)
 * [fluid.transforms.stringTemplate](ModelTransformationAPI.html#create-string-from-template-fluid-transforms-stringtemplate-)
 * [fluid.transforms.free](ModelTransformationAPI.html#use-any-globally-available-function-as-transform-fluid-transforms-free-)
+* [fluid.transforms.stringToBoolean](ModelTransformationAPI.html#fluid-transforms-stringtoboolean)
+* [fluid.transforms.booleanToString](ModelTransformationAPI.html#fluid-transforms-booleantostring)
+* [fluid.transforms.JSONstringToObject](ModelTransformationAPI.html#fluid-transforms-jsonstringtoobject)
+* [fluid.transforms.objectToJSONString](ModelTransformationAPI.html#fluid-transforms-objecttojsonstring)
+* [fluid.transforms.stringToDate](ModelTransformationAPI.html#fluid-transforms-stringtodate)
+* [fluid.transforms.dateToString](ModelTransformationAPI.html#fluid-transforms-datetostring)
+* [fluid.transforms.dateTimeToString](ModelTransformationAPI.html#fluid-transforms-datetimetostring)
 
 ## fluid.model.transformWithRules(source, rules[, options])
 
@@ -3216,3 +3223,399 @@ transform: {
 </tbody>
 </table>
 
+
+### fluid.transforms.stringToBoolean
+
+**Type:** standardTransformFunction
+
+**Description:** Convert a String to a Boolean, for example, when working with HTML checkbox form element values.  The following are all false: undefined, null, "", "0", "false", false, 0.  Everything else is true.
+
+**Invertibility:** Partly invertible via `fluid.transforms.booleanToString`.
+
+**Syntax:**
+```
+{
+    "transform": {
+        "type": "fluid.transforms.stringToBoolean",
+        "inputPath": "checkboxElement",
+        "outputPath": "isChecked"
+    }
+}
+```
+
+#### Examples:
+
+**Example 1: Convert the string "true" to a boolean.
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "checkboxElement": "true"
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.stringToBoolean",
+        "inputPath": "checkboxElement",
+        "outputPath": "isChecked"
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "isChecked": true
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+### fluid.transforms.booleanToString
+
+**Type:** standardTransformFunction
+
+**Description:** Convert any value into a stringified boolean, i. e. either "true" or "false".  Anything that evaluates to true (1, true, "non empty string", {}, et. cetera) returns "true".  Anything else (0, false, null, et. cetera) returns "false".
+
+**Invertibility:** Partly invertible via `fluid.transforms.stringToBoolean`.
+
+**Syntax:**
+```
+{
+    "transform": {
+        "type": "fluid.transforms.booleanToString",
+        "inputPath": "isChecked",
+        "outputPath": "checkboxElement"
+    }
+}
+```
+
+#### Examples:
+
+**Example 1: Convert a boolean false into the string "false".
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "isChecked": false
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.booleanToString",
+        "inputPath": "isChecked",
+        "outputPath": "checkboxElement"
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "checkboxElement": "false"
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+
+### fluid.transforms.JSONstringToObject
+
+**Type:** standardTransformFunction
+
+**Description:** Transform stringified JSON to an object using `JSON.parse`.  Returns `undefined` if the JSON string is invalid.
+
+**Invertibility:** Partly invertible via `fluid.transforms.objectToString`.
+
+**Syntax:**
+```
+{
+    "transform": {
+        "type": "fluid.transforms.JSONstringToObject",
+        "inputPath": "",
+        "outputPath": "string"
+    }
+}
+```
+
+#### Examples:
+
+**Example 1: Convert a stringified JSON payload into an object.
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "string": "{ \"foo\": \"bar\" }"
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.JSONstringToObject",
+        "inputPath": "string",
+        "outputPath": "object"
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "object": {
+        "foo": "bar"
+    }
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+### fluid.transforms.objectToString
+
+**Type:** standardTransformFunction
+
+**Description:** Transform an object to a string using `JSON.stringify`.
+
+**Invertibility:** Partly invertible via `fluid.transforms.JSONstringToObject`.
+
+**Syntax:**
+```
+{
+    "transform": {
+        "type": "fluid.transforms.objectToString",
+        "inputPath": "",
+        "outputPath": "string"
+    }
+}
+```
+
+#### Examples:
+
+**Example 1: Convert an object payload into a string payload.
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "object": {
+        "foo": "bar"
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.objectToString",
+        "inputPath": "object",
+        "outputPath": "string"
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "string": "{\"foo\":\"bar\"}"
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+**Example 2: Add spaces and carriage returns to the stringified output.
+
+You can pass the `space` option to control whether spaces are included between keys and values in the string output.  A
+positive value also results in carriage returns between key/value pairs.  The default value for `space` is 0, which
+disables spacing and line breaks.
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "object": {
+        "foo": "bar"
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.objectToString",
+        "inputPath": "object",
+        "outputPath": "string",
+        "space": 2
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "string": "{\n  \"foo\":  \"bar\"\n}"
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+
+
+    /**
+     *
+     *
+     *
+     * A string that cannot be parsed will be treated as `undefined`.
+     *
+     * @param value - The String value to be transformed into a Date object.
+     * @returns {Date} - A date object, or `undefined`.
+     */
+    fluid.transforms.stringToDate = function (value) {
+
+### fluid.transforms.stringToDate
+
+**Type:** standardTransformFunction
+
+**Description:** Transform a string to a date using the Date constructor.  Accepts (among other things) the date and dateTime values returned by HTML5 date and dateTime inputs.
+
+**Invertibility:** Partly invertible using either `fluid.transforms.dateTimeToString` or fluid.transforms.dateToString.
+
+**Syntax:**
+```
+{
+    "transform": {
+        "type": "fluid.transforms.stringToDate",
+        "inputPath": "",
+        "outputPath": "string"
+    }
+}
+```
+
+#### Examples:
+
+**Example 1: Convert an date string into a date.
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "string": "2016-11-23T15:28:19.052Z"
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.stringToDate",
+        "inputPath": "string",
+        "outputPath": "date"
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "date": // A javascript Date object
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+### fluid.transforms.dateToString
+
+**Type:** standardTransformFunction
+
+**Description:** Transform a Date object into a date string using its toISOString method.  Strips the "time" portion away to produce date strings that are suitable for use with both HTML5 "date" inputs and JSON Schema "date" format string validation, for example: `2016-11-23`.  If you wish to preserve the time, use `fluid.transforms.dateTimeToString` instead.  A non-date object will be treated as `undefined`.
+
+**Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
+
+**Syntax:**
+```
+{
+    "transform": {
+        "type": "fluid.transforms.dateToString",
+        "inputPath": "date",
+        "outputPath": "string"
+    }
+}
+```
+
+#### Examples:
+
+**Example 1: Convert a Date object into a string.
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "date": // A javascript Date object
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.dateToString",
+        "inputPath": "object",
+        "outputPath": "string"
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "string": "2016-11-23"
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+### fluid.transforms.dateTimeToString
+
+**Type:** standardTransformFunction
+
+**Description:** Transform a Date object into a date/time string using its toISOString method.  Results in date strings that are suitable for use with both HTML5 "dateTime" inputs and JSON Schema "date-time" format string validation, for example: `2016-11-23T13:05:24.079Z`.  A non-date object will be treated as `undefined`.
+
+**Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
+
+**Syntax:**
+```
+{
+    "transform": {
+        "type": "fluid.transforms.dateTimeToString",
+        "inputPath": "dateTime",
+        "outputPath": "string"
+    }
+}
+```
+
+#### Examples:
+
+**Example 1: Convert a Date object into a string.
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "date": // A javascript Date object
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.dateTimeToString",
+        "inputPath": "object",
+        "outputPath": "string"
+    }
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "string": "2016-11-23T15:28:19.052Z"
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
