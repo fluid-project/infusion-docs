@@ -178,7 +178,8 @@
                     { "pageName": "Styling the Preferences Editor", "href": "/tutorial-prefsFramework/StylingThePreferencesEditor.html" },
                     { "pageName": "Adding a Basic Preferences Editor to a Site", "href": "/to-do/AddingPrefsEditorToSite.html" },
                     { "pageName": "Working With A Preferences Editor On Your Site", "href": "/to-do/WorkingWithPrefsEditorOnSite.html" },
-                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-prefsFramework/CreatingANewAdjusterUI.html" }
+                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-prefsFramework/CreatingANewAdjusterUI.html" },
+                    { "pageName": "Minimal Footprint", "href": "/tutorial-prefsFrameworkMinimalFootprint/MinimalFootprint.html" }
                 ]
             },
             {
