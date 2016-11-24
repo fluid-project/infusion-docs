@@ -46,9 +46,9 @@ The rest of this tutorial will explain each of these steps in detail.
 7. A ZIP file, such as infusion-2.0.0.zip, will be created in the infusion-master/products directory. Copy this Infusion ZIP file into your project directory. 
 8. Now unzip the Infusion ZIP file in your project directory. This will create a new directory called infusion which contains all the Javascript and files you will need to use UI Options.
 9. Now that infusion is in your project directory, you can go ahead and clean up the files and directories we created so far. You can safely delete: 
-* The ZIP file downloaded in Step 1.
-* The infusion-master directory created in Step 2.
-* The infusion-2.0.0.zip (or similar name) from your project directory.
+   * The ZIP file downloaded in Step 1.
+   * The infusion-master directory created in Step 2.
+   * The infusion-2.0.0.zip (or similar name) from your project directory.
 10. Your `infusion` folder will include a single file containing all of the JavaScript you need: `infusion-all.js`. If you made a custom build, the file is named `infusion-custom.js`. You will later link to this file in the headers of your HTML files.
 
 ## Prepare your page ##
@@ -73,12 +73,9 @@ Add the following markup at the very beginning within your `<body>` tag to your 
 </div>
 ```
 
-The main `<div>` in this snippet contains 
+The main `<div>` in this snippet contains two things:
 
-
-things:
-
-1. a `<div>` where an iframe will be inserted, containing the Fat Panel UI Options controls, and
+1. a `<div>` where an iframe will be inserted, containing the UI Options adjusters, and
 2. a `<div>` where the sliding panel and button will be created.
 
 The elements in this snippet all have particular class names attached to them, and it's important to keep them:
