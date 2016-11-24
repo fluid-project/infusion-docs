@@ -100,7 +100,7 @@ _(We'll get into what these arguments are soon.)_
 
 #### Automatic creator function generation ####
 
-The [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md) system will automatically generate a component creator function for you. This is accomplished simply by deriving from the framework component grade `fluid.component`:
+The [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md) system will automatically generate a component creator function for you. This is accomplished by registering default options deriving from the framework component grade `fluid.component`:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {

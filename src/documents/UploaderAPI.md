@@ -40,7 +40,7 @@ The default strategy for Uploader is `fluid.uploader.progressiveStrategy`.
 #### Upgrading from Infusion 1.2 ####
 
 The Uploader was substantially refactored for the Infusion 1.3 in order to support the new HTML 5 version. However, most users should be unaffected. All events, selectors, and classes remain compatible with previous versions. Since the Uploader's underlying structure has changed significantly, and support for Infusion's IoC System was introduced, several other configuration options have changed.
-In order to ease the transition, we've provided a compatibility file that will automatically transform your options from the old format to the new when you invoke `fluid.uploader()`. This can be enabled simply by including the `UploaderCompatibility-Infusion1.2.js` file your page. If you're not using a custom build of Infusion, you will also need to include the framework's `ModelTransformations.js` file.
+In order to ease the transition, we've provided a compatibility file that will automatically transform your options from the old format to the new when you invoke `fluid.uploader()`. This can be enabled by including the `UploaderCompatibility-Infusion1.2.js` file your page. If you're not using a custom build of Infusion, you will also need to include the framework's `ModelTransformations.js` file.
 
 ## Creating an Uploader ##
 

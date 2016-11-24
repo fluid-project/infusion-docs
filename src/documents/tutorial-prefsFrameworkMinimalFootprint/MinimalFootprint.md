@@ -30,7 +30,7 @@ To see a live version of the example outlined below, open the [Minimal Footprint
 
 ### Minified Custom Build ###
 
-Infusion provides a build tool for creating minified custom packages. This is essential for creating the smallest package which requires the fewest requests. From the Infusion root directory simply run `grunt custom --include="preferences"`, which will create a zip file containing all of the bundled code.
+Infusion provides a build tool for creating minified custom packages. This is essential for creating the smallest package which requires the fewest requests. From the Infusion root directory run `grunt custom --include="preferences"`, which will create a zip file containing all of the bundled code.
 
 See: "[How Do I Create an Infusion Package](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package)" documentation for the full list of steps.
 
