@@ -67,7 +67,7 @@ Issues node's `require` against a possibly symbolic path, and possibly also inst
 * `moduleName {String}` A string to be supplied to node's `require`, possibly starting with a module reference of the form `%module-name` to indicate a base reference into an already
  loaded module that was previously registered using `fluid.module.register`.
 * `foreignRequire {Require}` The instance of `require` to be operated after the module name has been interpolated. If omitted, defaults to Infusion's own `require` (which may not be able to
-see everything you can — since it will very likely be lower down in the module tree than you are)
+see everything you can, as a result of its different position in the module tree)
 * `namespace {String}` If this is supplied, the returned value from `require` will be written into Infusion's global namespace by using the [fluid.setGlobalValue](CoreAPI.md#fluid-setglobalvalue-path-value-) API.
 
 ### fluid.module.modules
