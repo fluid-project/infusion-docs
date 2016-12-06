@@ -315,12 +315,12 @@ used without it.
 
 The element `sequenceGrade` holds a string value, designating a component [grade name](ComponentGrades.md) which has been implemented by the
 test case author, descended from the standard framework grade `fluid.test.sequence`. The framework will instantiate a component with this grade as a child component of the
-`testCaseHolder`, and then resolve its options path `elements`, whose keys represent namespaces and whose values are of a type `testSequenceElement`, the members of which are described in the following table:
+`testCaseHolder`, and then resolve its options path `sequenceElements`, whose keys represent namespaces and whose values are of a type `testSequenceElement`, the members of which are described in the following table:
 
 <table>
     <thead>
         <tr>
-            <th colspan="3">Members of a <code>testSequenceElement</code> entry within the <code>elements</code> block of a <code>fluid.test.sequence</code> component</th>
+            <th colspan="3">Members of a <code>testSequenceElement</code> entry within the <code>sequenceElements</code> block of a <code>fluid.test.sequence</code> component</th>
         </tr>
         <tr>
             <th>Member</th>
@@ -391,7 +391,7 @@ fluid.defaults("fluid.tests.elementPriority.check", {
 
 fluid.defaults("fluid.tests.elementPrioritySequence", {
     gradeNames: "fluid.test.sequence",
-    elements: {
+    sequenceElements: {
         check: {
             gradeNames: "fluid.tests.elementPriority.check",
             priority: "after:end"
@@ -445,7 +445,7 @@ an extra step before the `end` step:
 
 fluid.defaults("fluid.tests.derivedElementPrioritySequence", {
     gradeNames: "fluid.tests.elementPrioritySequence",
-    elements: {
+    sequenceElements: {
         beforeEnd: {
             gradeNames: "fluid.tests.elementPriority.log",
             options: {
