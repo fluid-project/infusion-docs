@@ -17,7 +17,6 @@ UI Options does three things:
 This tutorial assumes that:
 
 * you are already familiar with HTML, Javascript and CSS,
-* you are comfortable with using your system's command line,
 * you are familiar with what the UI Options preferences editor is and does, and
 * now you just want to know how to add it to your website.
 
@@ -38,11 +37,10 @@ The rest of this tutorial will explain each of these steps in detail.
 
 ## Download and install the UI Options library ##
 
-1. [Download the UI Options library](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-all-2.0.0-source.zip). There is also a [minified version UI Options](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-uiOptions-2.0.0-minified.zip) for deployment purposes.
-2. Unzip the contents of the downloaded ZIP file to a location within your project. In this guide we will use the directory `my-project/lib/`.
-3. This will result in a new directory `infusion`.
-4. Your `infusion` folder will include a single file containing all of the JavaScript you need: `infusion-all.js`. You will later link to this file in the headers of your HTML files.
-5. Now that infusion is in your project directory, you can delete the `infusion-uiOptions-2.0.0.zip` (or similar name) from your download directory.
+1. [Download the UI Options library](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-uiOptions-2.0.0-source.zip) (there is also a [minified version UI Options](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-uiOptions-2.0.0-minified.zip) for deployment purposes).
+2. Unzip the contents of the downloaded ZIP file to a location within your project. This will result in a new directory `infusion`. Note: In this guide we will use the directory `my-project/lib/`.
+3. Your `infusion` folder will include a single file containing all of the JavaScript you need (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later link to these files in your HTML files.
+4. Now that `infusion` is in your project directory, you can delete the `infusion-uiOptions-2.0.0.zip` (or similar name) from your download directory.
 
 ## Prepare your page ##
 
@@ -53,17 +51,19 @@ The UI Options component includes HTML templates for all the controls, so you do
 Add the following markup at the very beginning within your `<body>` tag to your page html:
 
 ```html
-<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
-    <!-- This is the div that will contain the Preference Editor component -->
-    <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
-    <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
-    <div class="fl-panelBar">
-        <span class="fl-prefsEditor-buttons">
-            <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
-            <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-        </span>
+<body>
+    <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+        <!-- This is the div that will contain the Preference Editor component -->
+        <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+        <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+        <div class="fl-panelBar">
+            <span class="fl-prefsEditor-buttons">
+                <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+            </span>
+        </div>
     </div>
-</div>
+</body>
 ```
 
 The main `<div>` in this snippet contains two things:
@@ -76,7 +76,7 @@ The elements in this snippet all have particular class names attached to them, a
 * the class names starting with `flc-` are used to identify the elements to UI Options;
 * the class names starting with `fl-` are used for visual styling.
 
-Save this file to the root of your project directory (i.e. `my-project/`). If you open this page in your browser now, you'll only see the button in the upper left corner, since we haven't set up the CSS and UI Options isn't present on the page yet:
+Save this file to the top directory of your project. If you open this page in your browser now, you'll only see the button in the upper left corner, since we haven't set up the CSS and UI Options isn't present on the page yet:
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
@@ -87,7 +87,11 @@ Save this file to the root of your project directory (i.e. `my-project/`). If yo
 One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a placeholder `<div>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` like this:
 
 ```html
-<div class="flc-toc-tocContainer"> </div>
+<body>
+    ...
+    <div class="flc-toc-tocContainer"> </div>
+    ...
+</body>
 ```
 
 Where exactly on your page you put this <div> is up to you, but it will depend on the exact layout of your page. It should be pretty close to the top, so that it's easily visible and accessible quickly for keyboard-only users. You can, of course, add additional classes of your own to style the Table Of Contents to fit in with the look of your site.
@@ -95,9 +99,9 @@ Where exactly on your page you put this <div> is up to you, but it will depend o
 ## Add dependencies to the page ##
 
 * the CSS files, and
-* the main Infusion JavaScript file: `infusion-all.js`.
+* the main Infusion JavaScript file: `infusion-uiOptions.js`.
 
-In the `<head>` of your file, link to the CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package).
+In the `<head>` of your file, link to the CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package). We'll also add a `<script>` tag to link to the UI Options JavaScript.
 
 ```html
 <head>
@@ -107,22 +111,13 @@ In the `<head>` of your file, link to the CSS files with `<link>` tags (you may 
     <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
     <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
     <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
-</head>
-```
-
-We'll use the `<script>` tag to link to the Infusion library:
-
-```html
-<head>
-    <!-- CSS files for UI Options-->
-    ...
 
     <!-- The Infusion Library for UI Options -->
-    <script type="text/javascript" src="lib/infusion/infusion-all.js"></script>
+    <script type="text/javascript" src="lib/infusion/infusion-uiOptions.js"></script>
 </head>
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> The <code>infusion-custom.js</code> file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> The `infusion-uiOptions.js` file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
 
 If you open this page in your browser now, you'll only see that the button has been styled differently: it is in the upper right corner and the font has been changed. You can also see the bar of the sliding panel. The button still doesn't do anything, since we still haven't added the UI Options component to the page.
 
@@ -130,7 +125,7 @@ If you open this page in your browser now, you'll only see that the button has b
 
 ## Add the UI Options component ##
 
-The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1 of Download and install the UI Options library](#download-and-install-the-ui-options-library).
+The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options `<div class="flc-prefsEditor-separatedPanel...> </div>` block.
 
 Add the script block as shown below into the `<body>` element of your HTML file:
 
@@ -140,10 +135,10 @@ Add the script block as shown below into the `<body>` element of your HTML file:
     <script type="text/javascript">
     $(document).ready(function () {
         fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-            tocTemplate: "lib/infusion/components/tableOfContents/html/TableOfContents.html",
+            tocTemplate: "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
             terms: {
-                templatePrefix: "lib/infusion/framework/preferences/html",
-                messagePrefix: "lib/infusion/framework/preferences/messages"
+                templatePrefix: "lib/infusion/src/framework/preferences/html",
+                messagePrefix: "lib/infusion/src/framework/preferences/messages"
             }
         });
     })
@@ -163,7 +158,7 @@ This script calls the `fluid.uiOptions.prefsEditor()` function to create the com
 1. the selector of the container for the component, and
 2. an options object for configuring the component.
 
-The selector for our UI Options will be the classname of the `<div>` we created in [Step 1](#download-and-install-the-infusion-library). In this markup, the selector is `".flc-prefsEditor-separatedPanel"`.
+The selector for our UI Options will be the classname `flc-prefsEditor-separatedPanel` of the `<div>` we created earlier.
 
 The options tell the component about three things:
 
@@ -174,6 +169,8 @@ The options tell the component about three things:
 In the code above, the `terms.messagePrefix` option is referencing the default strings provided by the component.
 
 ## Complete Example ##
+
+Here's the complete example from start to finish. This example assumes the Infusion UI Options library is located in the `lib/infusion/` directory.
 
 ```HTML
 <!DOCTYPE html>
@@ -187,7 +184,7 @@ In the code above, the `terms.messagePrefix` option is referencing the default s
         <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
 
         <!-- The Infusion Library for UI Options -->
-        <script type="text/javascript" src="lib/infusion/infusion-all.js"></script>
+        <script type="text/javascript" src="lib/infusion/infusion-uiOptions.js"></script>
     </head>
 
     <body>
@@ -195,10 +192,10 @@ In the code above, the `terms.messagePrefix` option is referencing the default s
         <script type="text/javascript">
         $(document).ready(function () {
             fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-                tocTemplate: "lib/infusion/components/tableOfContents/html/TableOfContents.html",
+                tocTemplate: "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
                 terms: {
-                    templatePrefix: "lib/infusion/framework/preferences/html",
-                    messagePrefix: "lib/infusion/framework/preferences/messages"
+                    templatePrefix: "lib/infusion/src/framework/preferences/html",
+                    messagePrefix: "lib/infusion/src/framework/preferences/messages"
                 }
             });
         })
