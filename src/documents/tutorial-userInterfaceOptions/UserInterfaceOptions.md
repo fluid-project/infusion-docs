@@ -17,16 +17,17 @@ UI Options does three things:
 This tutorial assumes that:
 
 * you are already familiar with HTML, Javascript and CSS,
+* you are comfortable with using your system's command line,
 * you are familiar with what the UI Options preferences editor is and does, and
 * now you just want to know how to add it to your website.
 
 ## Scenario ##
 
-You're putting together a website that you know will have a diverse audience. You'd like to allow your visitors to customize the presentation of the site to their individual needs, by enlarging the text or increasing the visual contrast, for example. This tutorial will show you how to add the Infusion [UI Options](http://wiki.fluidproject.org/pages/viewpage.action?pageId=3907847) component to your site.
+You're putting together a website that you know will have a diverse audience. You'd like to allow your visitors to customize the presentation of the site to their individual needs, by enlarging the text or increasing the visual contrast, for example. This tutorial will show you how to add the Infusion [UI Options](http://build.fluidproject.org/infusion/demos/uiOptions/) component to your site.
 
 These are the basic steps to add UI Options to your website:
 
-1. [Download and install the Infusion library](#download-and-install-the-infusion-library)
+1. [Download and install the Infusion library](#download-and-install-the-ui-options-library)
 2. [Prepare your page](#prepare-your-page)
     * [The Sliding Panel](#the-sliding-panel)
     * [The Table of Contents](#the-table-of-contents)
@@ -35,21 +36,13 @@ These are the basic steps to add UI Options to your website:
 
 The rest of this tutorial will explain each of these steps in detail.
 
-## Download and install the Infusion library ##
+## Download and install the UI Options library ##
 
-1. Download the current source code from Github as a [ZIP file]( https://github.com/fluid-project/infusion/archive/master.zip).
-2. Unzip the downloaded ZIP file. This will result in a new directory `infusion-master`. 
-3. Using a command line terminal, change to the `infusion-master` directory.
-4. Install [Node.js](http://nodejs.org/download/), if it hasn't been installed.
-5. Install [Grunt](http://gruntjs.com/getting-started) globally, if it hasn't been installed. For Windows, you can run `npm install -g grunt-cli` as Administrator. For Mac OSX, you can run `sudo npm install -g grunt-cli` from the command line terminal.
-6. Create your build by running the `grunt` command in the command line terminal. If you would like to customize your build, you can create a custom build by running the `grunt custom` command in the command line terminal. See the [README.md](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package) file for instructions on how to make a custom build of Infusion.
-7. A ZIP file, such as infusion-2.0.0.zip, will be created in the infusion-master/products directory. Copy this Infusion ZIP file into your project directory. 
-8. Now unzip the Infusion ZIP file in your project directory. This will create a new directory called infusion which contains all the Javascript and files you will need to use UI Options.
-9. Now that infusion is in your project directory, you can go ahead and clean up the files and directories we created so far. You can safely delete: 
-   * The ZIP file downloaded in Step 1.
-   * The infusion-master directory created in Step 2.
-   * The infusion-2.0.0.zip (or similar name) from your project directory.
-10. Your `infusion` folder will include a single file containing all of the JavaScript you need: `infusion-all.js`. If you made a custom build, the file is named `infusion-custom.js`. You will later link to this file in the headers of your HTML files.
+1. [Download the UI Options library](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-all-2.0.0-source.zip). There is also a [minified version UI Options](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-uiOptions-2.0.0-minified.zip) for deployment purposes.
+2. Unzip the contents of the downloaded ZIP file to a location within your project. In this guide we will use the directory `my-project/lib/`.
+3. This will result in a new directory `infusion`.
+4. Your `infusion` folder will include a single file containing all of the JavaScript you need: `infusion-all.js`. You will later link to this file in the headers of your HTML files.
+5. Now that infusion is in your project directory, you can delete the `infusion-uiOptions-2.0.0.zip` (or similar name) from your download directory.
 
 ## Prepare your page ##
 
@@ -83,7 +76,7 @@ The elements in this snippet all have particular class names attached to them, a
 * the class names starting with `flc-` are used to identify the elements to UI Options;
 * the class names starting with `fl-` are used for visual styling.
 
-If you open this page in your browser now, you'll only see the button in the upper left corner, since we haven't set up the CSS and UI Options isn't present on the page yet:
+Save this file to the root of your project directory (i.e. `my-project/`). If you open this page in your browser now, you'll only see the button in the upper left corner, since we haven't set up the CSS and UI Options isn't present on the page yet:
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
@@ -102,23 +95,31 @@ Where exactly on your page you put this <div> is up to you, but it will depend o
 ## Add dependencies to the page ##
 
 * the CSS files, and
-* the main Infusion JavaScript file: `infusion_all.js` or if you made a custom build, `infusion_custom.js`.
+* the main Infusion JavaScript file: `infusion-all.js`.
 
-In the header of your file, link to the CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package).
+In the `<head>` of your file, link to the CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package).
 
 ```html
-<link rel="stylesheet" type="text/css" href="lib/infusion/src/lib/normalize/css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/core/css/fluid.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
-<link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+<head>
+    <!-- CSS files for UI Options-->
+    <link rel="stylesheet" type="text/css" href="lib/infusion/src/lib/normalize/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/core/css/fluid.css" />
+    <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+    <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+    <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+</head>
 ```
 
 We'll use the `<script>` tag to link to the Infusion library:
 
 ```html
-<!-- The Infusion Library -->
-<script type="text/javascript" src="lib/infusion/infusion-all.js"></script>
+<head>
+    <!-- CSS files for UI Options-->
+    ...
+
+    <!-- The Infusion Library for UI Options -->
+    <script type="text/javascript" src="lib/infusion/infusion-all.js"></script>
+</head>
 ```
 
 <div class="infusion-docs-note"><strong>Note:</strong> The <code>infusion-custom.js</code> file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
@@ -129,12 +130,13 @@ If you open this page in your browser now, you'll only see that the button has b
 
 ## Add the UI Options component ##
 
-The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1](#download-and-install-the-infusion-library).
+The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1 of Download and install the UI Options library](#download-and-install-the-ui-options-library).
 
-Change the directory of `infusion` to be `lib/infusion` and add the script block as shown below:
+Add the script block as shown below into the `<body>` element of your HTML file:
 
 ```html
 <body>
+    <!-- Initialize the UI Options Javascript -->
     <script type="text/javascript">
     $(document).ready(function () {
         fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
@@ -152,6 +154,7 @@ Change the directory of `infusion` to be `lib/infusion` and add the script block
     </div>
 
     <!-- the rest of your page here -->
+    ...
 </body>
 ```
 
@@ -169,6 +172,60 @@ The options tell the component about three things:
 * where to find the message bundles, the strings that will be used in the interface: the `terms.messagePrefix` option.
 
 In the code above, the `terms.messagePrefix` option is referencing the default strings provided by the component.
+
+## Complete Example ##
+
+```HTML
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- CSS files for UI Options-->
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/lib/normalize/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/core/css/fluid.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+
+        <!-- The Infusion Library for UI Options -->
+        <script type="text/javascript" src="lib/infusion/infusion-all.js"></script>
+    </head>
+
+    <body>
+        <!-- Initialize the UI Options Javascript -->
+        <script type="text/javascript">
+        $(document).ready(function () {
+            fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                tocTemplate: "lib/infusion/components/tableOfContents/html/TableOfContents.html",
+                terms: {
+                    templatePrefix: "lib/infusion/framework/preferences/html",
+                    messagePrefix: "lib/infusion/framework/preferences/messages"
+                }
+            });
+        })
+        </script>
+
+        <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+            <!-- This is the div that will contain the Preference Editor component -->
+            <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+            <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+            <div class="fl-panelBar">
+                <span class="fl-prefsEditor-buttons">
+                    <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                    <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                </span>
+            </div>
+        </div>
+
+        <div class="flc-toc-tocContainer"> </div>
+
+        <!-- the rest of your page here -->
+        <h1>UI Options Example</h1>
+        <p>
+            Hello world!
+        </p>
+    </body>
+</html>
+```
 
 ## Congratulations! ##
 
