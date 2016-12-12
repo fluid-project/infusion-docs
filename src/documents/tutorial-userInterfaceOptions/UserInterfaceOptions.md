@@ -38,7 +38,7 @@ The rest of this tutorial will explain each of these steps in detail.
 ## Download and install the UI Options library ##
 
 1. [Download the UI Options library](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-uiOptions-2.0.0-source.zip) (there is also a [minified version UI Options](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-uiOptions-2.0.0-minified.zip) for deployment purposes).
-2. Unzip the contents of the downloaded ZIP file to a location within your project. This will result in a new directory `infusion`. Note: In this guide we will use the directory `my-project/lib/`.
+2. Unzip the contents of the downloaded ZIP file to a location within your project. This will result in a new directory `infusion`. <div class="infusion-docs-note"><strong>Note:</strong></div> In this guide we will use the directory `my-project/lib/`.
 3. Your `infusion` folder will include a single file containing all of the JavaScript you need (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later link to these files in your HTML files.
 4. Now that `infusion` is in your project directory, you can delete the `infusion-uiOptions-2.0.0.zip` (or similar name) from your download directory.
 
@@ -68,8 +68,8 @@ Add the following markup at the very beginning within your `<body>` tag to your 
 
 The main `<div>` in this snippet contains two things:
 
-1. a `<div>` where an iframe will be inserted, containing the UI Options adjusters, and
-2. a `<div>` where the sliding panel and button will be created.
+1. a `<div class="flc-slidingPanel-panel ...">` where an iframe will be inserted, containing the UI Options adjusters, and
+2. a `<div class="flc-prefsEditor-separatedPanel ...">` where the sliding panel and button will be created.
 
 The elements in this snippet all have particular class names attached to them, and it's important to keep them:
 
@@ -80,7 +80,7 @@ Save this file to the top directory of your project. If you open this page in yo
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
-<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. </div>
+<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit [Localization in the Preferences Framework](../LocalizationInThePreferencesFramework.html)</div>
 
 ### The Table of Contents ###
 
@@ -94,7 +94,7 @@ One of the UI Options controls allows users to add a Table Of Contents to the to
 </body>
 ```
 
-Where exactly on your page you put this <div> is up to you, but it will depend on the exact layout of your page. It should be pretty close to the top, so that it's easily visible and accessible quickly for keyboard-only users. You can, of course, add additional classes of your own to style the Table Of Contents to fit in with the look of your site.
+We recommend placing `<div class="flc-toc-tocContainer">` near the top of your page so it's visible and easily accessible to keyboard users. You can add additional classes of your own to style the Table Of Contents to fit in with the look of your site.
 
 ## Add dependencies to the page ##
 
@@ -117,7 +117,7 @@ In the `<head>` of your file, link to the CSS files with `<link>` tags (you may 
 </head>
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> The `infusion-uiOptions.js` file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> If you are using the minified version of `infusion-uiOptions.js` (i.e. all of the whitespace removed), you can still debug the code using the provided source maps. For more information, visit [the Infusion Release Readme](https://github.com/fluid-project/infusion/blob/master/README.md#source-maps).</div>
 
 If you open this page in your browser now, you'll only see that the button has been styled differently: it is in the upper right corner and the font has been changed. You can also see the bar of the sliding panel. The button still doesn't do anything, since we still haven't added the UI Options component to the page.
 
