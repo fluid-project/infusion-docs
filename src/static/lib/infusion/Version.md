@@ -1,8 +1,7 @@
-Uses the infusion-uiOptions-2.0.0-minified.zip custom Infusion 2.0 custom build provided on
+Uses the infusion-uiOptions-2.0.0-minified.zip custom Infusion 2.0 build provided on
 the [Infusion 2.0 release page](https://github.com/fluid-project/infusion/releases/tag/infusion-2.0).
 
-The following directories and files were stripped out of the build, because they contain
-code that is included in the infusion-uiOptions.js file or is not required:
+The following directories and files were removed from the build, because they are already included in infusion-uiOptions.js file, or are no longer needed:
 
 * src/components/slidingPanel/
 * src/components/tableOfContents/js/
