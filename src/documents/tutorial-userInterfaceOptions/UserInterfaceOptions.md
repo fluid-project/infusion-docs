@@ -37,20 +37,27 @@ The rest of this tutorial will explain each of these steps in detail.
 
 ## Download and install the Infusion library ##
 
-1. Get the current source code from github as a [ZIP file]( https://github.com/fluid-project/infusion/archive/master.zip)
-2. Unpack the zip file you just downloaded and cd into the "infusion-master" folder that results.
-3. If necessary install [Node.js](http://nodejs.org/download/) and [Grunt](http://gruntjs.com/) `npm install -g grunt-cli`.
-4. Make your own custom build by running the `grunt` command in the Terminal. See the [README.md](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package) file for instructions on how to make a custom build of Infusion.
-5. The grunt command will create a zip file in the products folder. Unzip that file and move the resulting `infusion` folder somewhere convenient for your development purposes, likely in a `lib` folder in your site hierarchy.
-6. This `infusion` will include a single file containing all of the JavaScript you need: `infusion-custom.js`. You will link to this file in the headers of your HTML files.
+1. Download the current source code from Github as a [ZIP file]( https://github.com/fluid-project/infusion/archive/master.zip).
+2. Unzip the downloaded ZIP file. This will result in a new directory `infusion-master`. 
+3. Using a command line terminal, change to the `infusion-master` directory.
+4. Install [Node.js](http://nodejs.org/download/), if it hasn't been installed.
+5. Install [Grunt](http://gruntjs.com/getting-started) globally, if it hasn't been installed. For Windows, you can run `npm install -g grunt-cli` as Administrator. For Mac OSX, you can run `sudo npm install -g grunt-cli` from the command line terminal.
+6. Create your build by running the `grunt` command in the command line terminal. If you would like to customize your build, you can create a custom build by running the `grunt custom` command in the command line terminal. See the [README.md](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package) file for instructions on how to make a custom build of Infusion.
+7. A ZIP file, such as infusion-2.0.0.zip, will be created in the infusion-master/products directory. Copy this Infusion ZIP file into your project directory. 
+8. Now unzip the Infusion ZIP file in your project directory. This will create a new directory called infusion which contains all the Javascript and files you will need to use UI Options.
+9. Now that infusion is in your project directory, you can go ahead and clean up the files and directories we created so far. You can safely delete: 
+   * The ZIP file downloaded in Step 1.
+   * The infusion-master directory created in Step 2.
+   * The infusion-2.0.0.zip (or similar name) from your project directory.
+10. Your `infusion` folder will include a single file containing all of the JavaScript you need: `infusion-all.js`. If you made a custom build, the file is named `infusion-custom.js`. You will later link to this file in the headers of your HTML files.
 
 ## Prepare your page ##
 
 ### The Sliding Panel ###
 
-The UI Options component includes HTML templates for all the controls, so you don't need to create any HTML for them. You only need to add a small amount of markup to the top of your page to tell UI Options where to render itself.
+The UI Options component includes HTML templates for all the controls, so you don't need to create any HTML for them. You only need to add a small amount of markup to the top of your webpage to tell UI Options where to render itself.
 
-Add the following markup as the first thing within your `<body>` tag:
+Add the following markup at the very beginning within your `<body>` tag to your page html:
 
 ```html
 <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
@@ -68,7 +75,7 @@ Add the following markup as the first thing within your `<body>` tag:
 
 The main `<div>` in this snippet contains two things:
 
-1. a `<div>` where an iframe will be inserted, containing the Fat Panel UI Options controls, and
+1. a `<div>` where an iframe will be inserted, containing the UI Options adjusters, and
 2. a `<div>` where the sliding panel and button will be created.
 
 The elements in this snippet all have particular class names attached to them, and it's important to keep them:
@@ -76,11 +83,11 @@ The elements in this snippet all have particular class names attached to them, a
 * the class names starting with `flc-` are used to identify the elements to UI Options;
 * the class names starting with `fl-` are used for visual styling.
 
-If you open this page in your browser now, you'll only see the button in the upper left corner, since we haven't set up the CSS, and UI Options isn't present on the page yet:
+If you open this page in your browser now, you'll only see the button in the upper left corner, since we haven't set up the CSS and UI Options isn't present on the page yet:
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
-<div class="infusion-docs-note"><strong>Note:</strong> that it doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. (After you've finished the tutorial, check out the instructional demo Fat Panel UI Options - Custom Show-Hide Button for an example of configuring the button text.)</div>
+<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. </div>
 
 ### The Table of Contents ###
 
@@ -95,7 +102,7 @@ Where exactly on your page you put this <div> is up to you, but it will depend o
 ## Add dependencies to the page ##
 
 * the CSS files, and
-* the main Infusion JavaScript file, `infusion_custom.js`.
+* the main Infusion JavaScript file: `infusion_all.js` or if you made a custom build, `infusion_custom.js`.
 
 In the header of your file, link to the CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package).
 
@@ -111,10 +118,10 @@ We'll use the `<script>` tag to link to the Infusion library:
 
 ```html
 <!-- The Infusion Library -->
-<script type="text/javascript" src="lib/infusion/infusion-custom.js"></script>
+<script type="text/javascript" src="lib/infusion/infusion-all.js"></script>
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> that the <code>infusion-custom.js</code> file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> The <code>infusion-custom.js</code> file is a concatenation of all of the required JavaScript files and will be minified (i.e. all of the whitespace removed) if you've built the minified version. If so, it might be difficult to debug with. If you want to be able to debug the code, you might want to choose the "source" version when you create your Infusion bundle.</div>
 
 If you open this page in your browser now, you'll only see that the button has been styled differently: it is in the upper right corner and the font has been changed. You can also see the bar of the sliding panel. The button still doesn't do anything, since we still haven't added the UI Options component to the page.
 
@@ -122,9 +129,9 @@ If you open this page in your browser now, you'll only see that the button has b
 
 ## Add the UI Options component ##
 
-The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1](#download and-install-the-infusion-library).
+The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options markup created in [Step 1](#download-and-install-the-infusion-library).
 
-Add the script block as shown below:
+Change the directory of `infusion` to be `lib/infusion` and add the script block as shown below:
 
 ```html
 <body>
@@ -153,10 +160,11 @@ This script calls the `fluid.uiOptions.prefsEditor()` function to create the com
 1. the selector of the container for the component, and
 2. an options object for configuring the component.
 
-The selector for our UI Options will be the classname of the `<div>` we created in [Step 1](#download and-install-the-infusion-library). In this markup, the selector is `".flc-prefsEditor-separatedPanel"`.
+The selector for our UI Options will be the classname of the `<div>` we created in [Step 1](#download-and-install-the-infusion-library). In this markup, the selector is `".flc-prefsEditor-separatedPanel"`.
 
-The options tell the component about two things:
+The options tell the component about three things:
 
+* where to find the Table of Contents template: the `tocTemplate` option,
 * where to find the UI Options HTML templates included in Infusion: the `terms.templatePrefix` option, and
 * where to find the message bundles, the strings that will be used in the interface: the `terms.messagePrefix` option.
 
@@ -164,6 +172,6 @@ In the code above, the `terms.messagePrefix` option is referencing the default s
 
 ## Congratulations! ##
 
-UI Options is now fully functional on your page. Now, when you load your page in your browser and click on the "Show Display Preferences" button, you will see the UI Options controls, as shon in the image below. If you adjust the controls, you will see your changes being applied to the page.
+UI Options is now fully functional on your page. Now, when you load your page in your browser and click on the "Show Display Preferences" button, you will see the UI Options controls, as shown in the image below. If you adjust the controls, you will see your changes being applied to the page.
 
 ![Screen shot of UI Options](../images/uio.png "Screen shot of UI Options.")
