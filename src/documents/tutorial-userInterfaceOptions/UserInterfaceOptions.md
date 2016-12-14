@@ -37,12 +37,13 @@ The rest of this tutorial will explain each of these steps in detail.
 
 ## Download and install the Infusion library ##
 
-1. Get the current source code from github as a [ZIP file]( https://github.com/fluid-project/infusion/archive/master.zip)
-2. Unpack the zip file you just downloaded and cd into the "infusion-master" folder that results.
-3. If necessary install [Node.js](http://nodejs.org/download/) and [Grunt](http://gruntjs.com/) `npm install -g grunt-cli`.
-4. Make your own custom build by running the `grunt` command in the Terminal. See the [README.md](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package) file for instructions on how to make a custom build of Infusion.
-5. The grunt command will create a zip file in the products folder. Unzip that file and move the resulting `infusion` folder somewhere convenient for your development purposes, likely in a `lib` folder in your site hierarchy.
-6. This `infusion` will include a single file containing all of the JavaScript you need: `infusion-custom.js`. You will link to this file in the headers of your HTML files.
+1. Get the current source code from github as a [ZIP file]( https://github.com/fluid-project/infusion/archive/master.zip).
+2. Unpack the zip file you just downloaded and cd into the `infusion-master` folder that results.
+3. Install [Node.js](http://nodejs.org/download/), if it hasn't been installed.
+4. Install [Grunt](http://gruntjs.com/getting-started) globally by running `npm install -g grunt-cli`, if it hasn't been installed.
+5. Make your own custom build by running the `grunt` command in the Terminal. See the [README.md](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package) file for instructions on how to make a custom build of Infusion.
+6. The grunt command will create a zip file in the `infusion-master/products` folder. Unzip the file and move the resulting `infusion` folder to a convenient location for your development purposes, likely in a `lib` folder in your site hierarchy.
+7. This `infusion` file will include a single file containing all of the JavaScript you need: `infusion-all.js` or if you made a custom build: `infusion-custom.js`. You will later link to this file in the headers of your HTML files.
 
 ## Prepare your page ##
 
