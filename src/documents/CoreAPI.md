@@ -320,7 +320,7 @@ Return the keys in the supplied object as an array. Note that this will return k
 * `object {Object}` The object to have its values listed
 * Returns: `{Array}` An array holding the values of this object.
 
-Return the keys in the supplied object as an array. This will return values found in the prototype chain as well as those attached to "own properties".
+Return the values in the supplied object as an array. This will return values found in the prototype chain as well as those attached to "own properties".
 
 
 ### fluid.arrayToHash(array)
