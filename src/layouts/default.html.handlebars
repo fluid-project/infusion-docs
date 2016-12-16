@@ -15,7 +15,7 @@
 
         <link rel="icon" type="image/png" href="{{{relativeUrl '/images/favico.png' document.url}}}">
 
-        <script type="text/javascript" src="{{{relativeUrl '/lib/infusion/infusion-uio.js' document.url}}}"></script>
+        <script type="text/javascript" src="{{{relativeUrl '/lib/infusion/infusion-uiOptions.js' document.url}}}"></script>
         <script type="text/javascript" src="{{{relativeUrl '/js/infusion-docs.js' document.url}}}"></script>
 
     </head>
@@ -46,8 +46,10 @@
 
             <script type="text/javascript">
                 fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-                    "templatePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/html/' document.url}}}",
-                    "messagePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/messages/' document.url}}}",
+                    terms: {
+                        "templatePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/html' document.url}}}",
+                        "messagePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/messages' document.url}}}"
+                    },
                     "tocTemplate": "{{{relativeUrl '/lib/infusion/src/components/tableOfContents/html/TableOfContents.html' document.url}}}"
                 });
             </script>
