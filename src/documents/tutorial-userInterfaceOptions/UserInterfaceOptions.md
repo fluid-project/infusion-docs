@@ -63,6 +63,9 @@ Insert the following markup at the beginning of your `<body>` tag:
             </span>
         </div>
     </div>
+
+    <!-- the rest of your page here -->
+    <h1>My Website</h1>
 </body>
 ```
 
@@ -80,28 +83,31 @@ Save this file to the top directory of your project. If you open this page in yo
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
-<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit [Localization in the Preferences Framework](../LocalizationInThePreferencesFramework.html)</div>
+<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit <a href="../LocalizationInThePreferencesFramework.html">Localization in the Preferences Framework</a></div>
 
 ### The Table of Contents ###
 
-One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a placeholder `<div>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` like this:
+One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a placeholder `<nav>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` like this:
 
 ```html
 <body>
     ...
-    <div class="flc-toc-tocContainer"> </div>
+    <nav class="flc-toc-tocContainer"> </nav>
     ...
+
+    <!-- the rest of your page here -->
+    <h1>My Website</h1>
 </body>
 ```
 
-We recommend placing `<div class="flc-toc-tocContainer">` near the top of your page so it's visible and easily accessible to keyboard users. You can add additional classes of your own to style the Table Of Contents to fit in with the look of your site.
+We recommend placing `<nav class="flc-toc-tocContainer">` near the top of your page so it's visible and easily accessible to keyboard users. You can add additional classes of your own to style the Table Of Contents to fit in with the look of your site.
 
 ## Add dependencies to the page ##
 
 * the CSS files, and
 * the main Infusion JavaScript file: `infusion-uiOptions.js`.
 
-In the `<head>` of your file, link to the CSS files with `<link>` tags (you may have to adjust the paths to reflect where you've saved the Infusion package). We'll also add a `<script>` tag to link to the UI Options JavaScript.
+In the `<head>` of your file, link to the CSS and Javascript files `<link>` and `<script>` tags. Make sure to adjust the paths to reflect where you've saved the Infusion package.
 
 ```html
 <head>
@@ -117,7 +123,7 @@ In the `<head>` of your file, link to the CSS files with `<link>` tags (you may 
 </head>
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> If you are using the minified version of `infusion-uiOptions.js` (i.e. all of the whitespace removed), you can still debug the code using the provided source map. For more information, visit [the Infusion Release Readme](https://github.com/fluid-project/infusion/blob/master/README.md#source-maps).</div>
+<div class="infusion-docs-note"><strong>Note:</strong> If you are using the minified version of `infusion-uiOptions.js` (i.e. all of the whitespace removed), you can still debug the code using the provided source map. For more information, visit <a href="https://github.com/fluid-project/infusion/blob/master/README.md#source-maps">the Infusion Release Readme</a>.</div>
 
 If you open this page in your browser now, you'll only see that the button has been styled differently: it is in the upper right corner and the font has been changed. You can also see the bar of the sliding panel. The button still doesn't do anything, since we still haven't added the UI Options component to the page.
 
@@ -125,12 +131,11 @@ If you open this page in your browser now, you'll only see that the button has b
 
 ## Add the UI Options component ##
 
-The simplest way to add the UI Options component to your page is using a `<script>` tag near the top of the page. We suggest placing it right before the UI Options `<div class="flc-prefsEditor-separatedPanel...> </div>` block.
-
-Add the script block as shown below into the `<body>` element of your HTML file:
+Add the UI Options component to your page is using the `<script>` tag as seen in the following example:
 
 ```html
 <body>
+
     <!-- Initialize the UI Options Javascript -->
     <script type="text/javascript">
     $(document).ready(function () {
@@ -144,12 +149,8 @@ Add the script block as shown below into the `<body>` element of your HTML file:
     })
     </script>
 
-    <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
-        ...
-    </div>
-
     <!-- the rest of your page here -->
-    ...
+    <h1>My Website</h1>
 </body>
 ```
 
@@ -164,9 +165,7 @@ The options tell the component about three things:
 
 * where to find the Table of Contents template: the `tocTemplate` option,
 * where to find the UI Options HTML templates included in Infusion: the `terms.templatePrefix` option, and
-* where to find the message bundles, the strings that will be used in the interface: the `terms.messagePrefix` option.
-
-In the code above, the `terms.messagePrefix` option is referencing the default strings provided by the component.
+* where to find the message bundles, the strings that will be used in the interface: the `terms.messagePrefix` option. In the example, the `terms.messagePrefix` option is referencing the default strings provided by the component.
 
 ## Complete Example ##
 
@@ -213,13 +212,10 @@ Here's the complete example from start to finish. This example assumes the Infus
             </div>
         </div>
 
-        <div class="flc-toc-tocContainer"> </div>
+        <nav class="flc-toc-tocContainer"> </nav>
 
         <!-- the rest of your page here -->
-        <h1>UI Options Example</h1>
-        <p>
-            Hello world!
-        </p>
+        <h1>My Website</h1>
     </body>
 </html>
 ```
