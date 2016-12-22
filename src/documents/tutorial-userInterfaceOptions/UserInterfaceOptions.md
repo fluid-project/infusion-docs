@@ -107,7 +107,7 @@ We recommend placing `<nav class="flc-toc-tocContainer">` near the top of your p
 * the CSS files, and
 * the main Infusion JavaScript file: `infusion-uiOptions.js`.
 
-In the `<head>` of your file, link to the CSS and Javascript files `<link>` and `<script>` tags. Make sure to adjust the paths to reflect where you've saved the Infusion package.
+In the `<head>` of your file, link to the CSS and Javascript files using `<link>` and `<script>` tags. Make sure to adjust the paths to reflect where you've saved the Infusion package.
 
 ```html
 <head>
