@@ -3246,7 +3246,7 @@ transform: {
 
 #### Examples:
 
-**Example 1: Convert the string "true" to a boolean.
+**Example 1: Convert the string "true" to a boolean.**
 
 <table><thead>
 </thead><tbody>
@@ -3295,7 +3295,7 @@ transform: {
 
 #### Examples:
 
-**Example 1: Convert a boolean false into the string "false".
+**Example 1: Convert a boolean false into the string "false".**
 
 <table><thead>
 </thead><tbody>
@@ -3345,7 +3345,7 @@ transform: {
 
 #### Examples:
 
-**Example 1: Convert a stringified JSON payload into an object.
+**Example 1: Convert a stringified JSON payload into an object.**
 
 <table><thead>
 </thead><tbody>
@@ -3396,7 +3396,7 @@ transform: {
 
 #### Examples:
 
-**Example 1: Convert an object payload into a string payload.
+**Example 1: Convert an object payload into a string payload.**
 
 <table><thead>
 </thead><tbody>
@@ -3426,7 +3426,7 @@ transform: {
 </tbody>
 </table>
 
-**Example 2: Add spaces and carriage returns to the stringified output.
+**Example 2: Add spaces and carriage returns to the stringified output.**
 
 You can pass the `space` option to control whether spaces are included between keys and values in the string output.  A
 positive value also results in carriage returns between key/value pairs.  The default value for `space` is 0, which
@@ -3461,26 +3461,13 @@ disables spacing and line breaks.
 </tbody>
 </table>
 
-
-
-    /**
-     *
-     *
-     *
-     * A string that cannot be parsed will be treated as `undefined`.
-     *
-     * @param value - The String value to be transformed into a Date object.
-     * @returns {Date} - A date object, or `undefined`.
-     */
-    fluid.transforms.stringToDate = function (value) {
-
 ### fluid.transforms.stringToDate
 
 **Type:** standardTransformFunction
 
-**Description:** Transform a string to a date using the Date constructor.  Accepts (among other things) the date and dateTime values returned by HTML5 date and dateTime inputs.
+**Description:** Transform a string to a date using the Date constructor.  Accepts (among other things) the date and dateTime values returned by HTML5 date and dateTime inputs.  You are not advised to store non-serializable objects like Date objects as part of your model, as the framework does not guarantee they will be handled correctly.  See [the Infusion Model API documentation](http://docs.fluidproject.org/infusion/development/FrameworkConcepts.html#model-objects) for details.
 
-**Invertibility:** Partly invertible using either `fluid.transforms.dateTimeToString` or fluid.transforms.dateToString.
+**Invertibility:** Partly invertible using either `fluid.transforms.dateTimeToString` or `fluid.transforms.dateToString`.
 
 **Syntax:**
 ```
@@ -3495,7 +3482,7 @@ disables spacing and line breaks.
 
 #### Examples:
 
-**Example 1: Convert an date string into a date.
+**Example 1: Convert an date string into a date.**
 
 <table><thead>
 </thead><tbody>
@@ -3527,7 +3514,7 @@ disables spacing and line breaks.
 
 **Type:** standardTransformFunction
 
-**Description:** Transform a Date object into a date string using its toISOString method.  Strips the "time" portion away to produce date strings that are suitable for use with both HTML5 "date" inputs and JSON Schema "date" format string validation, for example: `2016-11-23`.  If you wish to preserve the time, use `fluid.transforms.dateTimeToString` instead.  A non-date object will be treated as `undefined`.
+**Description:** Transform a Date object into a date string using its toISOString method.  Strips the "time" portion away to produce date strings that are suitable for use with both HTML5 "date" inputs and JSON Schema "date" format string validation, for example: `2016-11-23`.  If you wish to preserve the time, use `fluid.transforms.dateTimeToString` instead.  A non-date object will be treated as `undefined`.   Note: This function is intended to be used to serialize dates (not including time) before storing them in the model.  You are not advised to store non-serializable objects like Date objects as part of your model, as the framework does not guarantee they will be handled correctly.  See [the Infusion Model API documentation](http://docs.fluidproject.org/infusion/development/FrameworkConcepts.html#model-objects) for details.
 
 **Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
 
@@ -3544,7 +3531,7 @@ disables spacing and line breaks.
 
 #### Examples:
 
-**Example 1: Convert a Date object into a string.
+**Example 1: Convert a Date object into a string.**
 
 <table><thead>
 </thead><tbody>
@@ -3576,7 +3563,7 @@ disables spacing and line breaks.
 
 **Type:** standardTransformFunction
 
-**Description:** Transform a Date object into a date/time string using its toISOString method.  Results in date strings that are suitable for use with both HTML5 "dateTime" inputs and JSON Schema "date-time" format string validation, for example: `2016-11-23T13:05:24.079Z`.  A non-date object will be treated as `undefined`.
+**Description:** Transform a Date object into a date/time string using its toISOString method.  Results in date strings that are suitable for use with both HTML5 "dateTime" inputs and JSON Schema "date-time" format string validation, for example: `2016-11-23T13:05:24.079Z`.  A non-date object will be treated as `undefined`.  Note: This function is intended to be used to serialize dates (including time) before storing them in the model.  You are not advised to store non-serializable objects like Date objects as part of your model, as the framework does not guarantee they will be handled correctly.  See [the Infusion Model API documentation](http://docs.fluidproject.org/infusion/development/FrameworkConcepts.html#model-objects) for details.
 
 **Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
 
@@ -3593,7 +3580,7 @@ disables spacing and line breaks.
 
 #### Examples:
 
-**Example 1: Convert a Date object into a string.
+**Example 1: Convert a Date object into a string.**
 
 <table><thead>
 </thead><tbody>
