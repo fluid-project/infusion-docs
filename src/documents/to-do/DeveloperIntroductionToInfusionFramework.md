@@ -222,7 +222,7 @@ fluid.defaults("fluid.helloWorld", {
 });
 ```
 
-Then, from the console, we'll use the ChangeApplier functionality to change the model; notice how the modelListener we defined responds to the change and updates the message again:
+Then, from the console, we'll use the ChangeApplier to change the model; notice how the modelListener we defined responds to the change and updates the message again:
 
 `helloWorld.applier.change("message", "Goodbye, World!");`
 
@@ -230,7 +230,7 @@ Then, from the console, we'll use the ChangeApplier functionality to change the 
 
 A component can include other components within its configuration; these are referred to in Infusion as subcomponents. It's common to want related components to share state through their models; we can handle this through the [model relay](/infusion/development/ModelRelay.md) features.
 
-The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate subcomponents, and synchronizes the message to be logged through a model relay:
+The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate subcomponents, and synchronizes the "hello" message through model relay.
 
 ```
 fluid.defaults("fluid.helloWorld", {
@@ -241,16 +241,9 @@ fluid.defaults("fluid.helloWorld", {
     selectors: {
         messageArea: ".flc-messageArea"
     },
-    listeners: {
-        "onCreate.announceSelf": {
-            "this": "console",
-            "method": "log",
-            "args": ["The helloWorld Component is ready"]
-        }
-    },
     // Subcomponents are defined here
     components: {
-        consoleLogger: {
+        consoleHello: {
             // The type must be an existing grade
             type: "fluid.modelComponent",
             // Configuration options for a subcomponent go under the
@@ -265,31 +258,37 @@ fluid.defaults("fluid.helloWorld", {
                     // many other forms are possible, including
                     // ones that transform a value before it is
                     // relayed
-                    logMessage: "{helloWorld}.model.message"
+                    message: "{helloWorld}.model.message"
                 },
                 modelListeners: {
-                    "logMessage": {
+                    "message": "{that}.sayHello"
+                },
+                invokers: {
+                    sayHello: {
                         "this": "console",
                         "method": "log",
                         // Here, "{that}" means the context of the current
-                        // component configuration (consoleLogger)
-                        "args": ["consoleLogger:", "{that}.model.logMessage"]
-                    }
+                        // component configuration (consoleHello)
+                        "args": ["{that}.model.message"]
+                    },
                 }
             }
         },
-        viewLogger: {
+        displayHello: {
             type: "fluid.modelComponent",
             options: {
                 model: {
-                    logMessage: "{helloWorld}.model.message"
+                    message: "{helloWorld}.model.message"
                 },
                 modelListeners: {
-                    "logMessage": {
+                    "message": "{that}.displayHello"
+                },
+                invokers: {
+                    displayHello: {
                         "this": "{helloWorld}.dom.messageArea",
                         "method": "html",
-                        "args": ["{that}.model.logMessage"]
-                    }
+                        "args": ["{that}.model.message"]
+                }
                 }
             }
         }
@@ -299,37 +298,45 @@ fluid.defaults("fluid.helloWorld", {
 
 ### Restructuring Infusion Components
 
-Infusion's configuration-oriented components make it easier to restructure code, especially as component configuration becomes unwieldy. In the example below, we extract the two logger components into separate component definitions from the main component that includes them as subcomponents.
+Infusion's configuration-oriented components make it easier to restructure code, especially as component configuration becomes unwieldy. In the example below, we extract the two "say hello" components into separate component definitions from the main component, then include them as subcomponents of the main component. We've also added a listener to the main component to announce (once) when it is finished creation.
 
 ```
-// The console logging functionality is now defined as a separate
+// The console hello functionality is now defined as a separate
 // component
-fluid.defaults("fluid.helloWorld.consoleLogger", {
+fluid.defaults("fluid.helloWorld.consoleHello", {
     gradeNames: ["fluid.modelComponent"],
     model: {
-        logMessage: "{helloWorld}.model.message"
+        message: "{helloWorld}.model.message"
     },
     modelListeners: {
-        "logMessage": {
+        "message": "{that}.sayHello"
+    },
+    invokers: {
+        sayHello: {
             "this": "console",
             "method": "log",
-            "args": ["consoleLogger:", "{that}.model.logMessage"]
-        }
+            // Here, "{that}" means the context of the current
+            // component configuration (consoleHello)
+            "args": ["{that}.model.message"]
+        },
     }
 });
 
-// The web page logging functionality is now defined as a separate
+// The web page hello functionality is now defined as a separate
 // component
-fluid.defaults("fluid.helloWorld.viewLogger", {
+fluid.defaults("fluid.helloWorld.displayHello", {
     gradeNames: ["fluid.modelComponent"],
     model: {
-        logMessage: "{helloWorld}.model.message"
+        message: "{helloWorld}.model.message"
     },
     modelListeners: {
-        "logMessage": {
+        "message": "{that}.displayHello"
+    },
+    invokers: {
+        displayHello: {
             "this": "{helloWorld}.dom.messageArea",
             "method": "html",
-            "args": ["{that}.model.logMessage"]
+            "args": ["{that}.model.message"]
         }
     }
 });
@@ -350,49 +357,57 @@ fluid.defaults("fluid.helloWorld", {
         }
     },
     components: {
-        consoleLogger: {
-            type: "fluid.helloWorld.consoleLogger"
+        consoleHello: {
+            type: "fluid.helloWorld.consoleHello"
         },
-        viewLogger: {
-            type: "fluid.helloWorld.viewLogger",
+        consoleLogger: {
+            type: "fluid.helloWorld.displayHello",
         }
     }
 });
 ```
 
-### Using Invokers for Polymorphic Behaviour
+### Using Invokers for Polymorphic Behaviour and Refactoring to Reuse Configuration
 
+With the console and display functionality extracted as a separate components, it's easier to see that large blocks of their configuration are similar:
 
+* they have the same model characteristics
+* they both have a model listener that calls a "say hello" function
+* while their invokers have different names, this isn't necessary now that they've been split out into separate component definitions
+
+Let's refactor to avoid duplication and create a base "say hello" component that other types of "say hello" components can derive from:
 
 ```
-fluid.defaults("fluid.helloWorld.consoleLogger", {
+fluid.defaults("fluid.helloWorld.consoleHello", {
     gradeNames: ["fluid.modelComponent"],
     model: {
-        logMessage: "{helloWorld}.model.message"
+        message: "{helloWorld}.model.message"
     },
     modelListeners: {
-        "logMessage": "{that}.logFunction"
+        "message": "{that}.sayHello"
     },
     invokers: {
-        "logFunction": {
+        sayHello: {
             "this": "console",
             "method": "log",
-            "args": ["consoleLogger:", "{that}.model.logMessage"]
-        }
+            // Here, "{that}" means the context of the current
+            // component configuration (consoleHello)
+            "args": ["{that}.model.message"]
+        },
     }
 });
 
-fluid.defaults("fluid.helloWorld.viewLogger", {
-    // This component needs all of the characteristics of the consoleLogger,
-    // but a different implementation of logFunction; so we
+fluid.defaults("fluid.helloWorld.displayHello", {
+    // This component has all of the characteristics of the consoleLogger,
+    // except for a different implementation of logFunction; so we
     // override the invoker, but can otherwise use the consoleLogger's
     // configuration by using it as the base grade
-    gradeNames: ["fluid.helloWorld.consoleLogger"],
+    gradeNames: ["fluid.helloWorld.consoleHello"],
     invokers: {
-        "logFunction": {
+        sayHello: {
             "this": "{helloWorld}.dom.messageArea",
             "method": "html",
-            "args": ["{that}.model.logMessage"]
+            "args": ["{that}.model.message"]
         }
     }
 });
@@ -413,13 +428,12 @@ fluid.defaults("fluid.helloWorld", {
         }
     },
     components: {
-        consoleLogger: {
-            type: "fluid.helloWorld.consoleLogger"
+        consoleHello: {
+            type: "fluid.helloWorld.consoleHello"
         },
-        viewLogger: {
-            type: "fluid.helloWorld.viewLogger",
+        displayHello: {
+            type: "fluid.helloWorld.displayHello",
         }
     }
 });
-
 ```
