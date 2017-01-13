@@ -8,7 +8,7 @@ The **User Interface Options (UI Options)** component allows users to transform 
 
 UI Options does three things:
 
-* places a preferences editor dialog with a set of six panels in a collapsible panel at the top of the page, accessible through a button in the upper right corner of the page;
+* places a preferences editor dialog with a set of adjusters in a collapsible panel at the top of the page, accessible through a button in the upper right corner of the page;
 * instantiates a cookie-based [Settings Store](../SettingsStore.md) for storing the user's preferences; and
 * acts upon the user's preferences.
 
@@ -83,16 +83,19 @@ Save this file to the top directory of your project. If you open this page in yo
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
-<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit <a href="../LocalizationInThePreferencesFramework.html">Localization in the Preferences Framework</a></div>
+<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit [Localization in the Preferences Framework](../LocalizationInThePreferencesFramework.md).</div>
 
 ### The Table of Contents ###
 
-One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a placeholder `<nav>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` like this:
+One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a placeholder `<nav>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` like this and should appear after the `<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">` block:
 
 ```html
 <body>
     ...
+
+    <!-- the TOC container should appear after the flc-prefsEditor-separatedPanel div -->
     <nav class="flc-toc-tocContainer"> </nav>
+
     ...
 
     <!-- the rest of your page here -->
@@ -131,22 +134,24 @@ If you open this page in your browser now, you'll only see that the button has b
 
 ## Add the UI Options component ##
 
-Add the UI Options component to your page is using the `<script>` tag as seen in the following example:
+Add the UI Options component to your page using the `<script>` tag as seen in the following example. This `<script>` block should appear after the `flc-prefsEditor-separatedPanel` `<div>` and after the  `<nav class="flc-toc-tocContainer">`.
 
 ```html
 <body>
+    ...
 
+    <!-- This script tag should appear after the TOC container nav element. -->
     <!-- Initialize the UI Options Javascript -->
     <script type="text/javascript">
-    $(document).ready(function () {
-        fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-            tocTemplate: "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
-            terms: {
-                templatePrefix: "lib/infusion/src/framework/preferences/html",
-                messagePrefix: "lib/infusion/src/framework/preferences/messages"
-            }
-        });
-    })
+        $(document).ready(function () {
+            fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                tocTemplate: "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+                terms: {
+                    templatePrefix: "lib/infusion/src/framework/preferences/html",
+                    messagePrefix: "lib/infusion/src/framework/preferences/messages"
+                }
+            });
+        })
     </script>
 
     <!-- the rest of your page here -->
@@ -187,19 +192,6 @@ Here's the complete example from start to finish. This example assumes the Infus
     </head>
 
     <body>
-        <!-- Initialize the UI Options Javascript -->
-        <script type="text/javascript">
-        $(document).ready(function () {
-            fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-                tocTemplate: "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
-                terms: {
-                    templatePrefix: "lib/infusion/src/framework/preferences/html",
-                    messagePrefix: "lib/infusion/src/framework/preferences/messages"
-                }
-            });
-        })
-        </script>
-
         <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
             <!-- This is the div that will contain the Preference Editor component -->
             <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
@@ -213,6 +205,19 @@ Here's the complete example from start to finish. This example assumes the Infus
         </div>
 
         <nav class="flc-toc-tocContainer"> </nav>
+
+        <!-- Initialize the UI Options Javascript -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    tocTemplate: "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+                    terms: {
+                        templatePrefix: "lib/infusion/src/framework/preferences/html",
+                        messagePrefix: "lib/infusion/src/framework/preferences/messages"
+                    }
+                });
+            })
+        </script>
 
         <!-- the rest of your page here -->
         <h1>My Website</h1>
