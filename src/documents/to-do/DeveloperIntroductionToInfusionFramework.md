@@ -163,20 +163,20 @@ fluid.defaults("fluid.helloWorld", {
         messageArea: ".flc-messageArea"
     },
     listeners: {
-        "onCreate.sayHello": "{that}.sayHello"
-        },
-        "onCreate.writeMessage": {
-            // Gets us the DOM node as a jQuery object
-            "this": "{that}.dom.message",
-            // This calls the 'html' function to replace the HTML at the node
-            "method": "html",
-            "args": ["{that}.model.message"]
-        }
+        "onCreate.sayHello": "{that}.sayHello",
+        "onCreate.displayHello": "{that}.displayHello"
     },
     invokers: {
         sayHello: {
             "this": "console",
             "method": "log",
+            "args": ["{that}.model.message"]
+        },
+        displayHello: {
+            // DOM node as a jQuery object
+            "this": "{that}.dom.messageArea",
+            // Calls the 'html' function to replace the HTML at the node
+            "method": "html",
             "args": ["{that}.model.message"]
         }
     }
@@ -199,20 +199,23 @@ fluid.defaults("fluid.helloWorld", {
     listeners: {
         "onCreate.sayHello": "{that}.sayHello"
     },
+    // Listen to the model.message path
+    // this includes the initial setting of the model when the
+    // component is created
     modelListeners: {
-        // Listen to the model.message path
-        // this includes the initial setting of the model when the
-        // component is created
-        "message": {
-            "this": "{that}.dom.messageArea",
-            "method": "html",
-            "args": ["{that}.model.message"]
-        }
+        "message": "{that}.displayHello"
     },
     invokers: {
         sayHello: {
             "this": "console",
             "method": "log",
+            "args": ["{that}.model.message"]
+        },
+        displayHello: {
+            // DOM node as a jQuery object
+            "this": "{that}.dom.messageArea",
+            // Calls the 'html' function to replace the HTML at the node
+            "method": "html",
             "args": ["{that}.model.message"]
         }
     }
@@ -227,7 +230,7 @@ Then, from the console, we'll use the ChangeApplier functionality to change the 
 
 A component can include other components within its configuration; these are referred to in Infusion as subcomponents. It's common to want related components to share state through their models; we can handle this through the [model relay](/infusion/development/ModelRelay.md) features.
 
-The evolving "Hello, World!" component below splits out the two logging functions (console and web page) into separate subcomponents, and synchronizes the message to be logged through a model relay:
+The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate subcomponents, and synchronizes the message to be logged through a model relay:
 
 ```
 fluid.defaults("fluid.helloWorld", {
