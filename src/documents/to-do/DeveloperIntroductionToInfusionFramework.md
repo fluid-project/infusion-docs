@@ -163,18 +163,20 @@ fluid.defaults("fluid.helloWorld", {
         messageArea: ".flc-messageArea"
     },
     listeners: {
-        "onCreate.announceSelf": {
-            "this": "console",
-            "method": "log",
-            // The string will be replaced by the value held at
-            // the model.message path of the current component
-            "args": ["{that}.model.message"]
+        "onCreate.sayHello": "{that}.sayHello"
         },
         "onCreate.writeMessage": {
             // Gets us the DOM node as a jQuery object
             "this": "{that}.dom.message",
             // This calls the 'html' function to replace the HTML at the node
             "method": "html",
+            "args": ["{that}.model.message"]
+        }
+    },
+    invokers: {
+        sayHello: {
+            "this": "console",
+            "method": "log",
             "args": ["{that}.model.message"]
         }
     }
@@ -195,19 +197,22 @@ fluid.defaults("fluid.helloWorld", {
         messageArea: ".flc-messageArea"
     },
     listeners: {
-        "onCreate.announceSelf": {
-            "this": "console",
-            "method": "log",
-            "args": ["helloWorld Component is ready, initial message is:", "{that}.model.message"]
-        }
+        "onCreate.sayHello": "{that}.sayHello"
     },
     modelListeners: {
         // Listen to the model.message path
         // this includes the initial setting of the model when the
         // component is created
         "message": {
-            "this": "{that}.dom.message",
+            "this": "{that}.dom.messageArea",
             "method": "html",
+            "args": ["{that}.model.message"]
+        }
+    },
+    invokers: {
+        sayHello: {
+            "this": "console",
+            "method": "log",
             "args": ["{that}.model.message"]
         }
     }
