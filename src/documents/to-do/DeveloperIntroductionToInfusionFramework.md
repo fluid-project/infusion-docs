@@ -16,6 +16,8 @@ This introduction summarizes some topics (and leaves out others) that are gone i
 
 The introduction assumes you are familiar with the basics of [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript) development, and with using a browser's [developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools). You should also have some experience of the [jQuery](https://jquery.com/) JavaScript library that Infusion is built on top of.
 
+We will present an increasingly complicated "Hello, World!" implementation to demonstrate the core concepts, with live examples throughout using the [CodePen](http://codepen.io/) service.
+
 ## Infusion's Core Concepts
 
 ### Components
@@ -34,6 +36,9 @@ Component-based development emphasizes declarative configuration, loose coupling
 
 A new Infusion component is defined using the `fluid.default` function and a very basic "Hello, World!" component might look like this:
 
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/oBYvwx?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+
+
 ```
 // The first argument is the name of the new component, the second is the
 // new component's default configuration
@@ -46,7 +51,9 @@ fluid.defaults("fluid.helloWorld", {
 
 After definition, instances of the component can be created by calling the component's name as a function, with the option to pass in further configuration options as an argument:
 
-`var helloWorld = fluid.helloWorld({});`
+```
+var helloWorld = fluid.helloWorld({});
+```
 
 Right now this component doesn't do anything new, but we will evolve its definition throughout this introduction to demonstrate further core concepts of the framework.
 
@@ -58,6 +65,8 @@ All Infusion components support the definition of public functions using [invoke
 * By displaying a message on a web page
 
 We'll define the first approach as an invoker on the "Hello, World!" component. Other styles of invokers are possible, but we'll use one here that lets us refer to functions of existing Javascript objects:
+
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/MJbgEx?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
 ```
 fluid.defaults("fluid.helloWorld", {
@@ -93,6 +102,8 @@ IoC references allow us to refer to other parts of a component object (or anothe
 
 We can use a listener definition, the `onCreate` lifecycle event and IoC `{that]` to have a component say hello when it's ready, rather than needing to be manually called:
 
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/LxbPQZ?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+
 ```
 fluid.defaults("fluid.helloWorld", {
     gradeNames: ["fluid.component"],
@@ -120,6 +131,8 @@ Mutable data is expected to be stored on a component's [model](/infusion/develop
 
 Let's store the "Hello, World!" message on a model version of the component, and refer to it from the `sayHello` invoker using IoC:
 
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/XpNrEr?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+
 ```
 fluid.defaults("fluid.helloWorld", {
     gradeNames: ["fluid.modelComponent"],
@@ -145,9 +158,11 @@ View components are used to establish a binding between a specific DOM node on a
 
 View components require the specification of a page container for the component when creating them, as the first argument to the creator function:
 
-`var helloWorld = fluid.helloWorld(".helloWorld", {});`
+`var helloWorld = fluid.helloWorld(".flc-helloWorld", {});`
 
 Let's turn the "Hello, World!" component into a view component that writes its message to the screen as well, assuming we have this HTML on the page:
+
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/MJbgVR?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
 ```
 <div class="helloWorld">
@@ -188,6 +203,8 @@ fluid.defaults("fluid.helloWorld", {
 ### Listening to Model Changes
 
 A common pattern in Infusion is to listen to changes to a component's model and then take further action to change the state of the DOM or another component. Let's implement this for the message displayed on the web page by our "Hello, World!" component, so that it will update its message whenever the model is changed:
+
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/oBYvPB?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
 ```
 fluid.defaults("fluid.helloWorld", {
@@ -233,6 +250,8 @@ Then, from the console, we'll use the ChangeApplier to change the model; notice 
 A component can include other components within its configuration; these are referred to in Infusion as subcomponents. It's common to want related components to share state through their models; we can handle this through the [model relay](/infusion/development/ModelRelay.md) features.
 
 The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate subcomponents, and synchronizes the "hello" message through model relay.
+
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/rjWBQN?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
 ```
 fluid.defaults("fluid.helloWorld", {
@@ -301,6 +320,8 @@ fluid.defaults("fluid.helloWorld", {
 ### Restructuring Infusion Components
 
 Infusion's configuration-oriented components make it easier to restructure code, especially as component configuration becomes unwieldy. In the example below, we extract the two "say hello" components into separate component definitions from the main component, then include them as subcomponents of the main component. We've also added a listener to the main component to announce (once) when it is finished creation.
+
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/egBObY?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
 ```
 // The console hello functionality is now defined as a separate
@@ -378,6 +399,8 @@ With the console and display functionality extracted as a separate components, i
 * while their invokers have different names, this isn't necessary now that they've been split out into separate component definitions
 
 Let's refactor to avoid duplication and create a base "say hello" component that other types of "say hello" components can derive from:
+
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/bgBbOm?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
 ```
 fluid.defaults("fluid.helloWorld.sayHello", {
@@ -463,6 +486,8 @@ Our community often refers to this as *multimodal design* (in this context, a "m
 We currently have a "Hello, World!" component that can say "hello!"" by printing to a web page and logging to the console. What if we wanted it to talk as well?
 
 We'll extend the code further using an existing Infusion [text to speech](/infusion/development/TextToSpeechAPI.html) component, which should work in a modern text-to-speech supporting browser:
+
+<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/vgyBbe?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
 ```
 fluid.defaults("fluid.helloWorld.sayHello", {
@@ -556,3 +581,18 @@ fluid.defaults("fluid.helloWorld", {
     }
 });
 ```
+
+### Summing Up
+
+This elaborate "Hello, World!" implementation has slowly introduced some of Infusion's core features. To summarize:
+
+* We implement our programs by designing [components](#components) that work together to provide the needed functionality. Components are Javascript objects adhering to certain syntax conventions that are created using the `fluid.defaults` function. While components have defaults, any of these defaults can be overriden at the time a specific instance of the component is created.
+* Components use [invokers](#invokers) to expose functionality "publicly", provide a consistent API for collaboration with other components or use by other code, and enable polymorphic behaviour when deriving new components from existing ones.
+* All components support [events and inversion of control](#events-and-inversion-of-control); these allow our programs to be built up of loosely coupled parts, and to manage sequencing through components observing and responding to their own events or the events of other components.
+* Components that need to track mutable data, state or content should be [model components](#models-and-model-components); model components can share and synchronize their data with other model components, fire events when their models are changed, and take other actions to store and respond to state changes.
+* Components that need to interact with the web page DOM to display content or interact with users are [view components](##views-and-view-components); view components are bound to specific DOM nodes when created and support the DOM Binder convention to avoid tying an implementation too tightly to specific markup.
+* Model components can use [model listeners](#listening-to-model-changes) to respond to changes in model state.
+* Components can include [subcomponents](#subcomponents-and-model-relaying), and use [model relaying](#subcomponents-and-model-relaying) to keep state synchronized between different components in larger designs. Many kinds of model relays are possible aside from two-way synchronization.
+* As program designs evolve, Infusion's configuration-oriented components make it easier to [restructure a design](#restructuring-infusion-components) by splitting out functionality into multiple components and wiring them together through IoC references.
+* When it becomes clear two components have similar behaviour, Infusion's design helps in [refactoring to share functionality](##using-invokers-for-polymorphic-behaviour-and-refactoring-to-reuse-configuration) through the use of invokers and base grades.
+* Infusion has strong supports for [multimodal implementations](#adding-further-ways-of-saying-hello) that allow programs to adapt themselves to new contexts for input and presentation.
