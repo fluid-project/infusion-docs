@@ -35,9 +35,11 @@ Component-based development emphasizes declarative configuration, loose coupling
 A new Infusion component is defined using the `fluid.default` function and a very basic "Hello, World!" component might look like this:
 
 ```
+// The first argument is the name of the new component, the second is the
+// new component's default configuration
 fluid.defaults("fluid.helloWorld", {
     // gradeNames supplies an array of strings that name previously
-    // defined components
+    // defined Infusion components
     gradeNames: ["fluid.component"]
 });
 ```
@@ -46,7 +48,7 @@ After definition, instances of the component can be created by calling the compo
 
 `var helloWorld = fluid.helloWorld({});`
 
-We will evolve this component definition throughout this introduction to demonstrate further core concepts of the framework.
+Right now this component doesn't do anything new, but we will evolve its definition throughout this introduction to demonstrate further core concepts of the framework.
 
 ### Invokers
 
@@ -83,7 +85,7 @@ helloWorld.sayHello();
 
 ### Events and Inversion of Control
 
-All Infusion components also support highly flexible event-driven programming. All components have basic [lifecycle events](/infusion/development/ComponentLifecycle.md) such as creation and destruction, and others may be [declared](/infusion/development/InfusionEventSystem.md#declaring-an-event-on-a-component), [fired](/infusion/development/InfusionEventSystem.md#using-events-and-listeners-procedurally) and [listened](/infusion/development/InfusionEventSystem.md#registering-a-listener-to-an-event) for by the originating component or another component.
+All Infusion components support highly flexible event-driven programming. All components have basic [lifecycle events](/infusion/development/ComponentLifecycle.md) such as creation and destruction, and others may be [declared](/infusion/development/InfusionEventSystem.md#declaring-an-event-on-a-component), [fired](/infusion/development/InfusionEventSystem.md#using-events-and-listeners-procedurally) and [listened](/infusion/development/InfusionEventSystem.md#registering-a-listener-to-an-event) for by the originating component or another component.
 
 Infusion also makes extensive use of the programming concept of [Inversion of Control](/infusion/development/FrameworkConcepts.md#ioc) (IoC), a technique for organizing component dependencies and references in a distributed, flexible manner. IoC is used in many ways throughout Infusion, but an important initial concept to grasp is the use of [IoC References](/infusion/development/IoCReferences.md) when configuring components, and the concept of `{that}`.
 
@@ -185,7 +187,7 @@ fluid.defaults("fluid.helloWorld", {
 
 ### Listening to Model Changes
 
-A common pattern in Infusion is to listen to changes to a component's model and then take further action to change the state of the DOM or another component. Let's implement this for the message displayed on the web page by our "Hello, World!" component:
+A common pattern in Infusion is to listen to changes to a component's model and then take further action to change the state of the DOM or another component. Let's implement this for the message displayed on the web page by our "Hello, World!" component, so that it will update its message whenever the model is changed:
 
 ```
 fluid.defaults("fluid.helloWorld", {
@@ -378,7 +380,7 @@ With the console and display functionality extracted as a separate components, i
 Let's refactor to avoid duplication and create a base "say hello" component that other types of "say hello" components can derive from:
 
 ```
-fluid.defaults("fluid.helloWorld.consoleHello", {
+fluid.defaults("fluid.helloWorld.sayHello", {
     gradeNames: ["fluid.modelComponent"],
     model: {
         message: "{helloWorld}.model.message"
@@ -386,6 +388,19 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
     modelListeners: {
         "message": "{that}.sayHello"
     },
+    invokers: {
+        // fluid.notImplemented is a function that specifically represents
+        // an unimplemented function that components deriving from this
+        // grade are intended to implement; this is called an "abstract
+        // method" in Java
+        sayHello: "fluid.notImplemented"
+    }
+});
+
+fluid.defaults("fluid.helloWorld.consoleHello", {
+    // This component has all of the characteristics of sayHello,
+    // except for its implementation in the invoker
+    gradeNames: ["fluid.helloWorld.sayHello"],
     invokers: {
         sayHello: {
             "this": "console",
@@ -398,11 +413,9 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
 });
 
 fluid.defaults("fluid.helloWorld.displayHello", {
-    // This component has all of the characteristics of the consoleLogger,
-    // except for a different implementation of logFunction; so we
-    // override the invoker, but can otherwise use the consoleLogger's
-    // configuration by using it as the base grade
-    gradeNames: ["fluid.helloWorld.consoleHello"],
+    // This component has all of the characteristics of sayHello,
+    // except for its implementation in the invoker
+    gradeNames: ["fluid.helloWorld.sayHello"],
     invokers: {
         sayHello: {
             "this": "{helloWorld}.dom.messageArea",
@@ -433,6 +446,112 @@ fluid.defaults("fluid.helloWorld", {
         },
         displayHello: {
             type: "fluid.helloWorld.displayHello",
+        }
+    }
+});
+```
+
+### Adding Further Ways of Saying Hello
+
+Infusion's origins are in research about how to better implement accessible, inclusive systems. Many features are designed to support the easier transformation of data into other forms of representation, so it can be experienced by audiences with diverse needs.
+
+Our community often refers to this as *multimodal design* (in this context, a "modality" is "a particular mode in which something exists or is experienced or expressed"), and many characteristics of Infusion are about:
+
+* increasing the capacity of a system to have different representations of the same content, or to transform content into a form preferable to the end user
+* increasing the capacity of a system to have new forms of representation developed and added as needs arise for them
+
+We currently have a "Hello, World!" component that can say "hello!"" by printing to a web page and logging to the console. What if we wanted it to talk as well?
+
+We'll extend the code further using an existing Infusion [text to speech](/infusion/development/TextToSpeechAPI.html) component, which should work in a modern text-to-speech supporting browser:
+
+```
+fluid.defaults("fluid.helloWorld.sayHello", {
+    gradeNames: ["fluid.modelComponent"],
+    model: {
+        message: "{helloWorld}.model.message"
+    },
+    modelListeners: {
+        "message": "{that}.sayHello"
+    },
+    invokers: {
+        // fluid.notImplemented is a function that specifically represents
+        // an unimplemented function that components deriving from this
+        // grade are intended to implement; this is called an "abstract
+        // method" in Java
+        sayHello: "fluid.notImplemented"
+    }
+});
+
+fluid.defaults("fluid.helloWorld.consoleHello", {
+    // This component has all of the characteristics of sayHello,
+    // except for its implementation in the invoker
+    gradeNames: ["fluid.helloWorld.sayHello"],
+    invokers: {
+        sayHello: {
+            "this": "console",
+            "method": "log",
+            // Here, "{that}" means the context of the current
+            // component configuration (consoleHello)
+            "args": ["{that}.model.message"]
+        },
+    }
+});
+
+fluid.defaults("fluid.helloWorld.displayHello", {
+    // This component has all of the characteristics of sayHello,
+    // except for its implementation in the invoker
+    gradeNames: ["fluid.helloWorld.sayHello"],
+    invokers: {
+        sayHello: {
+            "this": "{helloWorld}.dom.messageArea",
+            "method": "html",
+            "args": ["{that}.model.message"]
+        }
+    }
+});
+
+fluid.defaults("fluid.helloWorld.speakHello", {
+    // This component has all of the characteristics of sayHello,
+    // except for its implementation in the invoker
+    // We also "mix in" the fluid.textToSpeech component to give it
+    // the capability to access the browser's text to speech interface
+    gradeNames: ["fluid.textToSpeech", "fluid.helloWorld.sayHello"],
+    invokers: {
+        sayHello: {
+            // This style of Invoker allows us to refer to another
+            // existing invoker using IoC references - in this case the
+            // "queueSpeech" invoker that we have access to from mixing
+            // in the fluid.textToSpeech grade
+            "func": "{that}.queueSpeech",
+            "args": ["{that}.model.message"]
+        }
+    }
+});
+
+fluid.defaults("fluid.helloWorld", {
+    gradeNames: ["fluid.viewComponent"],
+    model: {
+        message: "Hello, World!"
+    },
+    selectors: {
+        messageArea: ".flc-messageArea"
+    },
+    listeners: {
+        "onCreate.announceSelf": {
+            "this": "console",
+            "method": "log",
+            "args": ["The helloWorld Component is ready"]
+        }
+    },
+    components: {
+        consoleHello: {
+            type: "fluid.helloWorld.consoleHello"
+        },
+        displayHello: {
+            type: "fluid.helloWorld.displayHello",
+        },
+        speakHello: {
+            type: "fluid.helloWorld.speakHello",
         }
     }
 });
