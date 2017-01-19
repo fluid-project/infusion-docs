@@ -8,7 +8,7 @@ The Infusion IoC Framework uses a basic syntax for referencing objects in the cu
 
 References always take the syntactic form `{context-name}.some.path.segments`, which we name as the type `<reference>` - the meaning and form of the context name can vary and have a different meaning in different contexts:
 
-<table>
+<table id="reference-table">
     <thead>
         <tr>
             <th colspan="2">Different permitted forms for a &lt;reference&gt; string</th>
@@ -51,7 +51,8 @@ References always take the syntactic form `{context-name}.some.path.segments`, w
                         &lt;index&gt; is the 0-based numeric index of the desired argument
                         <div class="infusion-docs-note"><strong>Note:</strong>
                             The <code>arguments</code> context name can only be used in contexts where arguments are in scope - for example, as part of the arguments 
-                            to an <a href="InfusionEventSystem.md#registering-a-listener-to-an-event">event listener</a> or <a href="Invokers.md">invoker</a>
+                            to an <a href="InfusionEventSystem.md#registering-a-listener-to-an-event">event listener</a> or <a href="Invokers.md">invoker</a>, or within component configuration that is
+                            being instantiated as part of a <a href="SubcomponentDeclaration.md#dynamic-subcomponents-with-a-source-event">dynamic component with a source event </a>.
                         </div>
                     </li>
                 </ul>
@@ -103,19 +104,23 @@ IoC references may be used almost anywhere within a component's options, for exa
 For a conventional IoC reference (of the style `<componentRef>` rather than the style `<iocss expression>`), a search is begun upwards from the site of the reference in the component tree to find the first component which matches the context name. 
 The following diagram shows a possible such reference site in green:
 
-<div class="infusion-docs-note"><strong>Note:</strong> The following diagram needs to be updated to reflect the Infusion 2.0 visibility rules - the "static environment" and "dynamic environment" no longer exist.</div>
+<!-- Diagram source within Google Drawings at https://docs.google.com/drawings/d/14ESiMe0q8_lzVsAE-CkUvZdU42A_rs0_IfYg54pNFjA/edit -->
 
-![IoC Reference Diagram](images/IoC-scope.svg "IoC Reference Diagram")
+![IoC Context Resolution](images/IoC-scope.svg "IoC Context Resolution")
 
-The set of components which are in scope for resolution from this site are shown in yellow in this diagram. These are components which are either 
+The set of components which are in scope for resolution from this site are shown in yellow (circles) and orange (diamonds) in this diagram. These are components which are either 
 
-i) an ancestor of the component holding the reference site, or  
+i) an ancestor of the component holding the reference site, or
 
-ii) a sibling of such a component. 
+ii) a sibling of such a component.
 
-The context reference matches a component if it matches via one of the 3 rules in the first row of above table - **either** 
+iii) a component anywhere in the tree which has been marked with the grade [fluid.resolveRoot](Contexts.md#global-components-fluid-resolveroot-and-fluid-resolverootsingle-) - these are the ones shown in orange diamonds
+
+The context reference matches a component if it matches via the 2nd, 3rd or 4th rules in the first row of the [above table](#reference-table) - **either** 
 it agrees with a fully-qualified grade or type name of a component, **or** it agrees with the last path segment of such a name, **or** it agrees with the component's member name. 
 If no context name matches anywhere in the tree, the reference expression resolves to `undefined`. In this case, if the path segments following the context name in the reference expression are not empty, the framework will throw an error.
+
+Components which are not in scope for resolution from the reference site (shown as a green pentagon) are shown as blue squares.
 
 ## Examples of {&lt;componentRef&gt;} ##
 
@@ -344,7 +349,7 @@ The above example uses IoC references in the `distributeOptions` block:
 
 ## Reserved IoC Names ##
 
-The following names are reserved within the IoC system:
+The following context names are reserved within the IoC system:
 
 * that
 * arguments
