@@ -83,11 +83,11 @@ Save this file to the top directory of your project. If you open this page in yo
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
-<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit [Localization in the Preferences Framework](../LocalizationInThePreferencesFramework.md).</div>
+<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit <a href="../LocalizationInThePreferencesFramework.html">Localization in the Preferences Framework</a>.</div>
 
 ### The Table of Contents ###
 
-One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a placeholder `<nav>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` like this and should appear after the `<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">` block:
+One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a placeholder `<nav>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` and should appear after the `<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">` block:
 
 ```html
 <body>
@@ -134,13 +134,15 @@ If you open this page in your browser now, you'll only see that the button has b
 
 ## Add the UI Options component ##
 
-Add the UI Options component to your page using the `<script>` tag as seen in the following example. This `<script>` block should appear after the `flc-prefsEditor-separatedPanel` `<div>` and after the  `<nav class="flc-toc-tocContainer">`.
+Add the UI Options component to your page using the `<script>` tag as seen in the following example. This `<script>` block should appear after the `flc-prefsEditor-separatedPanel` `<div>` and after the `<nav class="flc-toc-tocContainer">`. In this example, we place the `<script>` at the end of the webpage before the closing `</body>` tag.
 
 ```html
 <body>
     ...
+    <!-- the rest of your page here -->
+    <h1>My Website</h1>
+    ...
 
-    <!-- This script tag should appear after the TOC container nav element. -->
     <!-- Initialize the UI Options Javascript -->
     <script type="text/javascript">
         $(document).ready(function () {
@@ -153,9 +155,6 @@ Add the UI Options component to your page using the `<script>` tag as seen in th
             });
         })
     </script>
-
-    <!-- the rest of your page here -->
-    <h1>My Website</h1>
 </body>
 ```
 
@@ -206,6 +205,9 @@ Here's the complete example from start to finish. This example assumes the Infus
 
         <nav class="flc-toc-tocContainer"> </nav>
 
+        <!-- the rest of your page here -->
+        <h1>My Website</h1>
+
         <!-- Initialize the UI Options Javascript -->
         <script type="text/javascript">
             $(document).ready(function () {
@@ -218,9 +220,6 @@ Here's the complete example from start to finish. This example assumes the Infus
                 });
             })
         </script>
-
-        <!-- the rest of your page here -->
-        <h1>My Website</h1>
     </body>
 </html>
 ```
