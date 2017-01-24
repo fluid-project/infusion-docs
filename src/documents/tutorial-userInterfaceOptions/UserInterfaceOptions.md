@@ -83,7 +83,7 @@ Save this file to the top directory of your project. If you open this page in yo
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
-<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit <a href="../LocalizationInThePreferencesFramework.html">Localization in the Preferences Framework</a>.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit <a href="../LocalizationInThePreferencesFramework.md">Localization in the Preferences Framework</a>.</div>
 
 ### The Table of Contents ###
 
