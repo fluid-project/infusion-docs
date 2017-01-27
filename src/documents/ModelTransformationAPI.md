@@ -3466,6 +3466,7 @@ disables spacing and line breaks.
 **Type:** standardTransformFunction
 
 **Description:** Transform a string to a date using the Date constructor.  Accepts (among other things) the date and dateTime values returned by HTML5 date and dateTime inputs. Note: This function allows you to create Date objects from an ISO 8601 string such as `2017-01-23T08:51:25.891Z`.  It is intended to provide a consistent mechanism for recreating Date objects stored as strings.  Although the framework currently works as expected with Date objects stored in the model, this is very likely to change.  If you are working with Date objects in your model, your best option for ensuring your code continues to work in the future is to handle serialisation and deserialisation yourself, for example, by using this transform and one of its inverse transforms, `fluid.transforms.dateToString` or `fluid.transforms.dateTimeToString`.  See [the Infusion documentation](http://docs.fluidproject.org/infusion/development/FrameworkConcepts.html#model-objects) for details about supported model values.
+
 **Invertibility:** Partly invertible using either `fluid.transforms.dateTimeToString` or `fluid.transforms.dateToString`.
 
 **Syntax:**
