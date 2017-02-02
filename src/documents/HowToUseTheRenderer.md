@@ -23,7 +23,7 @@ fluid.defaults("my.component", {
 var that = my.component();
 ```
 
-This new function automates the work of constructing a component creator function, applying the Renderer, fetching templates, configuring cutpoints based on the DOM binder, as well as localisation via the string bundle.
+This function automates the work of constructing a component creator function, applying the Renderer, fetching templates, configuring cutpoints based on the DOM binder, as well as localisation via the string bundle.
 
 This function will:
 

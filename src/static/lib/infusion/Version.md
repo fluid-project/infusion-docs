@@ -1,19 +1,7 @@
-This version of Infusion was created using a custom build from the master branch:
+Uses the infusion-uiOptions-2.0.0-minified.zip custom Infusion 2.0 build provided on
+the [Infusion 2.0 release page](https://github.com/fluid-project/infusion/releases/tag/infusion-2.0).
 
-https://github.com/fluid-project/infusion/
-
-commit 809231c7525798ead15f214497721b6ea9e619f7
-
-using the command line:
-```
-    grunt custom --source=true --include="uiOptions" --name="uio"
-```
-
-The file src/framework/preferences/html/SeparatedPanelPrefsEditorFrame.html was modified to
-reference infusion-uio.js instead of individual js files.
-
-The following directories and files were stripped out of the build, since they contain
-code that is included in the infusion-uio.js file or is not required by this plugin:
+The following directories and files were removed from the build, because they are already included in infusion-uiOptions.js file, or are no longer needed:
 
 * src/components/slidingPanel/
 * src/components/tableOfContents/js/
@@ -29,12 +17,9 @@ code that is included in the infusion-uio.js file or is not required by this plu
 * src/framework/renderer/
 * src/lib/fastXmlPull/
 * src/lib/fonts/fontsDependencies.json
-* src/lib/jquery/core/
-* src/lib/jquery/plugins/
-* src/lib/jquery/ui/jQueryUICoreDependencies.json
-* src/lib/jquery/ui/jQueryUIWidgetsDependencies.json
-* src/lib/jquery/ui/js/
-* src/lib/json/
+* src/lib/jquery/core/jQueryDependencies.json
+* src/lib/jquery/plugins/touchPunch/jQueryTouchPunchPluginDependencies.json
+* src/lib/jquery/ui/jQueryUIDependencies.json
 * src/lib/normamlize/normalizeDependencies.json
 * README.md
 * ReleaseNotes.md

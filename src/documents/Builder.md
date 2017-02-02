@@ -81,7 +81,7 @@ The Preferences Framework includes primary and auxiliary schema for a set of pre
 * inputs larger
 * emphasize links
 
-To use these preferences and the panels that come with them, simply use the Framework-provided starter auxiliary schema grade name, `fluid.prefs.auxSchema.starter`, as shown below:
+To use these preferences and the panels that come with them, use the Framework-provided starter auxiliary schema grade name, `fluid.prefs.auxSchema.starter`, as shown below:
 
 ```javascript
 var myBuilder = fluid.prefs.builder({

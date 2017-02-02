@@ -31,7 +31,7 @@ The Infusion Uploader, like many Fluid components, is really one interface to a 
 The Uploader provides a facade object, called a `strategy`, which represents the entire subsystem for a particular implementation of Uploader. There are currently two different strategies available to choose from:
 
 1. `fluid.uploader.html5Strategy`, which provides the modern HTML 5 implementation of Uploader
-2. `fluid.uploader.progressiveStrategy`, which uses the new Infusion IoC - Inversion of Control System to deliver the best possible version of Uploader based on the capabilities of the user's browser.
+2. `fluid.uploader.progressiveStrategy`, which uses the Infusion IoC - Inversion of Control System to deliver the best possible version of Uploader based on the capabilities of the user's browser.
 
 The default strategy for Uploader is `fluid.uploader.progressiveStrategy`.
 
@@ -40,7 +40,7 @@ The default strategy for Uploader is `fluid.uploader.progressiveStrategy`.
 #### Upgrading from Infusion 1.2 ####
 
 The Uploader was substantially refactored for the Infusion 1.3 in order to support the new HTML 5 version. However, most users should be unaffected. All events, selectors, and classes remain compatible with previous versions. Since the Uploader's underlying structure has changed significantly, and support for Infusion's IoC System was introduced, several other configuration options have changed.
-In order to ease the transition, we've provided a compatibility file that will automatically transform your options from the old format to the new when you invoke `fluid.uploader()`. This can be enabled simply by including the `UploaderCompatibility-Infusion1.2.js` file your page. If you're not using a custom build of Infusion, you will also need to include the framework's `ModelTransformations.js` file.
+In order to ease the transition, we've provided a compatibility file that will automatically transform your options from the old format to the new when you invoke `fluid.uploader()`. This can be enabled by including the `UploaderCompatibility-Infusion1.2.js` file your page. If you're not using a custom build of Infusion, you will also need to include the framework's `ModelTransformations.js` file.
 
 ## Creating an Uploader ##
 
@@ -960,9 +960,9 @@ Alternatively, the individual file requirements are:
 <script type="text/javascript" src="../../../framework/core/js/jquery.keyboard-a11y.js"></script>
 <script type="text/javascript" src="../../../framework/core/js/Fluid.js"></script>
 <script type="text/javascript" src="../../../framework/core/js/FluidDocument.js"></script>
-<script type="text/javascript" src="../../../framework/core/js/FluidView.js"></script>   <!-- New in Infusion 1.3 -->
-<script type="text/javascript" src="../../../framework/core/js/DataBinding.js"></script> <!-- New in Infusion 1.3 -->
-<script type="text/javascript" src="../../../framework/core/js/FluidIoC.js"></script>    <!-- New in Infusion 1.3 -->
+<script type="text/javascript" src="../../../framework/core/js/FluidView.js"></script>
+<script type="text/javascript" src="../../../framework/core/js/DataBinding.js"></script>
+<script type="text/javascript" src="../../../framework/core/js/FluidIoC.js"></script>
 <script type="text/javascript" src="../../../framework/enhancement/js/ProgressiveEnhancement.js"></script>
 
 <!-- Uploader dependencies -->
@@ -971,7 +971,7 @@ Alternatively, the individual file requirements are:
 <script type="text/javascript" src="../js/Scroller.js"></script>
 <script type="text/javascript" src="../../progress/js/Progress.js"></script>
 <script type="text/javascript" src="../js/FileQueueView.js"></script>
-<script type="text/javascript" src="../js/HTML5UploaderSupport.js"></script>             <!-- New in Infusion 1.3 -->
+<script type="text/javascript" src="../js/HTML5UploaderSupport.js"></script>
 <script type="text/javascript" src="../js/DemoUploadManager.js"></script>
 ```
 
