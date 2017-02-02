@@ -137,6 +137,13 @@
                 [
                     { "pageName": "API Changes from 1.5 to 2.0", "href": "/APIChangesFrom1_5To2_0.html" }
                 ]
+            },
+            {
+                "sectionName": "Deprecations",
+                "pages":
+                [
+                    { "pageName": "Deprecated in 2.0", "href": "/DeprecatedIn2_0.html" }
+                ]
             }
         ]
     },
