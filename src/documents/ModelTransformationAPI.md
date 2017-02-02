@@ -5,15 +5,21 @@ category: Infusion
 ---
 
 
-The ***model transformation*** framework is a core part of Infusion and allows you to transform an input [model](FrameworkConcepts.md#model-objects) (JSON structure) based on a set of rules.
-The result will be a new model, built according to the rules specified and the input model. Many kinds of transformation can also have their *inverses* computed
+The ***model transformation*** framework is a core part of Infusion and allows you to transform an input
+[model](FrameworkConcepts.md#model-objects) (JSON structure) based on a set of rules.
+The result will be a new model, built according to the rules specified and the input model. Many kinds of
+transformation can also have their *inverses* computed
 and operated automatically.
 
-Any model transformation can be supplied as part of a [model relay](ModelRelay.md#explicit-model-relay-style) rule registered in a [fluid.modelComponent](ComponentConfigurationOptions.md#model-components)'s `modelRelay`
-block - the system will then constantly operate the transformation rule whenever there is a model change to keep the linked model in sync. Note that the modelRelay system does ***not*** support `xxxPath` style inputs, and steer towards the use of SingleTransform rather than full transforms. For more information, see the documentation on [model relay](ModelRelay.md).
+Any model transformation can be supplied as part of a [model relay](ModelRelay.md#explicit-model-relay-style) rule
+registered in a [fluid.modelComponent](ComponentConfigurationOptions.md#model-components)'s `modelRelay`
+block - the system will then constantly operate the transformation rule whenever there is a model change to keep the
+linked model in sync. Note that the modelRelay system does ***not*** support `xxxPath` style inputs, and steer towards
+the use of SingleTransform rather than full transforms. For more information, see the documentation on
+[model relay](ModelRelay.md).
 
 The user may also operate model transformation rules manually by use of the
-`fluid.model.transformWithRules` API (see [below](ModelTransformationAPI.md#fluidmodeltransformwithrulessource-rules-options)).
+[`fluid.model.transformWithRules` API](#fluid-model-transformwithrules-source-rules-options-).
 
 
 ## List of available transformations
@@ -209,11 +215,16 @@ fluid.defaults("fluid.transforms.scaleValue", {
 
 ## Building the output document structure
 
-The ultimate goal when using the model transformation is to create an output document with some desired structure and values (based on information in some input document). Therefore it is important to know how to build the output structure of the document. There are different ways of achieving this, and these will be explained below.
+The ultimate goal when using the model transformation is to create an output document with some desired structure and
+values (based on information in some input document). Therefore it is important to know how to build the output
+structure of the document. There are different ways of achieving this, and these will be explained below.
 
 ### Keys in the top-level of your document are output el-paths
 
-All keys at the top level of the transformation rules document are interpreted as output paths. Each subsequent key will also be interpreted as so; until a `transform` or `literalValue` keyword is encountered. Anything inside a `transform` directive is interpreted according to the general transformation rules (see below), and the `literalValue` keyword results in its content being output to the current output path.
+All keys at the top level of the transformation rules document are interpreted as output paths. Each subsequent key
+will also be interpreted as so; until a `transform` or `literalValue` keyword is encountered. Anything inside a
+`transform` directive is interpreted according to the general transformation rules (see below), and the `literalValue`
+keyword results in its content being output to the current output path.
 
 ***Example***
 
@@ -258,15 +269,32 @@ All keys at the top level of the transformation rules document are interpreted a
 </tbody>
 </table>
 
-In the above example, the output structure is defined via the top-level keys: `Magnification`, `dataType` and `value`. Whenever the transformation system encounters a key, that is a non-reserved word, and that is not inside a `transform` block, it will consider that a change in the output path / output structure.
+In the above example, the output structure is defined via the top-level keys: `Magnification`, `dataType` and `value`.
+Whenever the transformation system encounters a key, that is a non-reserved word, and that is not inside a `transform`
+block, it will consider that a change in the output path / output structure.
 
-So walking through the above rules, the first thing we encounter is `Magnification`. Since this is not a reserved word, the system will ensure that everything within that block is output relative to the path `Magnification`. The same goes for `dataType` - everything inside here will be output relative to the path `dataType` (which in turn is relative to "Magnification", giving us the output path: `magnification.dataType`). `literalValue` inside dataType is a reserved word, so instead of interpreting this as a change to the output structure, it will be resolved by the model transformation system . The `literalValue` key, is a way to tell the system to literally print the value to the current output path, which as described above is at this location `Magnification.dataType`. More information about the `literalValue` keyword can be found in the below.
+So walking through the above rules, the first thing we encounter is `Magnification`. Since this is not a reserved word,
+the system will ensure that everything within that block is output relative to the path `Magnification`. The same goes
+for `dataType` - everything inside here will be output relative to the path `dataType` (which in turn is relative to
+"Magnification", giving us the output path: `magnification.dataType`). `literalValue` inside `dataType` is a reserved
+word, so instead of interpreting this as a change to the output structure, it will be resolved by the model
+transformation system . The `literalValue` key, is a way to tell the system to literally print the value to the
+current output path, which as described above is at this location `Magnification.dataType`. More information about
+the `literalValue` keyword can be found in the below.
 
-Like with `dataType`, the `value` key under `Magnification` means that we change the output path for anything in that block. `transform` is a keyword, so this does not affect the output path. As previously mentioned, once inside a `transform` block, keys will no longer be interpreted as output paths. As a result, the `type` and `input` will not affect the output path. This means that whatever the result of the rules inside the `transform` block of the `value` key block is, they will get output to `Magnification.value` path. In this case, the value 94.
+As with `dataType`, the `value` key under `Magnification` means that we change the output path for anything in that
+block. `transform` is a keyword, so this does not affect the output path. As previously mentioned, once inside a
+`transform` block, keys will no longer be interpreted as output paths. As a result, the `type` and `input` will not
+affect the output path. This means that whatever the result of the rules inside the `transform` block of the `value`
+key block is, they will get output to `Magnification.value` path. In this case, the value 94.
 
 ### Explicitly outputting to a (relative) path
 
-An alternative way to specifying where you want to output values is by using the `outputPath` key. The value of `outputPath` defines the relative location where you want to output the result of the transform. `outputPath` can only be specified in a transform block(i.e. at the same level as the `type` specification for the transform). `outputPath` works for most transformations (namely any transform of the grade `standardOutputTransformFunction` or `standardTransformFunction`).
+An alternative way to specifying where you want to output values is by using the `outputPath` key. The value of
+`outputPath` defines the relative location where you want to output the result of the transform. `outputPath` can
+only be specified in a transform block(i.e. at the same level as the `type` specification for the transform).
+`outputPath` works for most transformations (namely any transform of the grade `standardOutputTransformFunction`
+or `standardTransformFunction`).
 
 Returning to the example in the previous section, this could be written as:
 
@@ -339,16 +367,21 @@ Returning to the example in the previous section, this could be written as:
 </table>
 
 
-Looking at the first example, the `literalValue` transformation specifies that the result should be output to the path `Magnification.dataType`. Same for the `fluid.transforms.round` transform, where the output will be sent to the path `Magnification.value`.
+Looking at the first example, the `literalValue` transformation specifies that the result should be output to the path
+`Magnification.dataType`. Same for the `fluid.transforms.round` transform, where the output will be sent to the path
+`Magnification.value`.
 
-The second example above, shows how the `outputPath` will be relative to the current output path. Since the entire block is keyed by `Magnification`, this becomes the current output path. When we encounter `outputPath: dataType`, this is interpreted as being relative to the `Magnification` path, and hence result in the full output path `Magnification.dataType`.
+The second example above, shows how the `outputPath` will be relative to the current output path. Since the entire block
+is keyed by `Magnification`, this becomes the current output path. When we encounter `outputPath: dataType`, this is
+interpreted as being relative to the `Magnification` path, and hence result in the full output path `Magnification.dataType`.
 
 
 ## Return values, Arrays of transforms and outputting arrays
 
 ### Return values
 
-In general, transformations pass their result one level up, unless `outputPath` is explicitly given. This is the reason that something like the below works:
+In general, transformations pass their result one level up, unless `outputPath` is explicitly given.
+This is the reason that something like the below works:
 
 <table><thead>
 </thead><tbody>
@@ -387,12 +420,18 @@ In general, transformations pass their result one level up, unless `outputPath` 
 </tbody>
 </table>
 
-Here the result of the inner `fluid.transforms.linearScale` transform is passed to the `fluid.transforms.round` transform, which in turn outputs it to the `outputPath`. Whenever an `outputPath` is specified, the result is output to the output document instead, and hence not returned to the parent transform function (if any). Instead what is returned to the parent function is `undefined`. Generally, this behavior should be rather intuitive.
+Here the result of the inner `fluid.transforms.linearScale` transform is passed to the `fluid.transforms.round`
+transform, which in turn outputs it to the `outputPath`. Whenever an `outputPath` is specified, the result is output
+to the output document instead, and hence not returned to the parent transform function (if any). Instead what is
+returned to the parent function is `undefined`. Generally, this behavior should be rather intuitive.
 
 
 ### Arrays of transforms
 
-Things get slightly more complicated when we introduce arrays of transforms. Whenever you specify an array of transforms (i.e. `transform: [ (...) ]`), nothing will get returned to the outer transform. The consequence of this is that if you have arrays of transforms, you are required to explicitly output values via `outputPath` if you want anything output. Some examples to clarify this rule:
+Things get slightly more complicated when we introduce arrays of transforms. Whenever you specify an array of
+transforms (i.e. `transform: [ (...) ]`), nothing will get returned to the outer transform. The consequence of this is
+that if you have arrays of transforms, you are required to explicitly output values via `outputPath` if you want
+anything output. Some examples to clarify this rule:
 
 <table><thead>
 </thead><tbody>
@@ -469,11 +508,18 @@ Things get slightly more complicated when we introduce arrays of transforms. Whe
 </tbody>
 </table>
 
-This first example works because we have specified the `outputPath` for both transforms. If we omit these, as in the second example, nothing is output to the document. Note that the `fluid.transforms.linearScale` function does not have an `outputPath`. Instead its output is used as a return value passed to `fluid.transforms.round` - this is because the `linearScale` is not part of an array of transforms, but rather a regular entry in a transform.
+This first example works because we have specified the `outputPath` for both transforms. If we omit these, as in the
+second example, nothing is output to the document. Note that the `fluid.transforms.linearScale` function does not
+have an `outputPath`. Instead its output is used as a return value passed to `fluid.transforms.round` - this is
+because the `linearScale` is not part of an array of transforms, but rather a regular entry in a transform.
 
 ### Outputting Arrays
 
-Outputting an array in the document is very straightforward. One simply specifies it, as one would normally in javascript/json - using []. The array will be populated with the results of the content as one would expect as well. If one of the array entries has a result of undefined (e.g. due to an inputPath referencing something non-existent in input model -- see below), this would also populate a spot in the array - to ensure that indexes of results are consistent.
+Outputting an array in the document is very straightforward. One simply specifies it, as one would normally in
+JavaScript/JSON - using `[]`. The array will be populated with the results of the content as one would expect as well.
+If one of the array entries has a result of `undefined` (e.g. due to an `inputPath` referencing something non-existent
+in the input model -- see below), this would also populate a spot in the array - to ensure that indexes of results are
+consistent.
 
 As an example, take the following transformation:
 
@@ -522,16 +568,23 @@ As an example, take the following transformation:
 </tbody>
 </table>
 
-Notice the `undefined` value. This is the result of the second transform (since no value was found at the `petlist.goldfish` input path, `undefined` is returned.
+Notice the `undefined` value. This is the result of the second transform (since no value was found at the
+`petlist.goldfish` input path, `undefined` is returned.
 
-The difference between this and the use of arrays in the previous sections is that in the previous section the array was used as _the value for a `transform` key_. When this is not the case, an array will be interpreted as a regular array as shown in the above example.
+The difference between this and the use of arrays in the previous sections is that in the previous section the array
+was used as _the value for a `transform` key_. When this is not the case, an array will be interpreted as a regular
+array as shown in the above example.
 
 
 ## Static inputs and nested transforms vs. reading from input model
 
-For any `standardInputTransformFunction`, `standardTransformFunction`, `multiInputTransformFunction` and most other transformations, there are three ways of providing inputs to be used by the transformation.
-* **Using values from the input model:** This is done by referencing the path where the value to be used can be found. When doing this, the result of the transformation will vary depending on the input document provided to the transformation.
-* **Passing a static value, given directly in the rules document:** In other words, one or more of the input values for the transformation is hardcoded into the transformation rule you set up. This means that the result of the transformation in question will be the same every time.
+For any `standardInputTransformFunction`, `standardTransformFunction`, `multiInputTransformFunction` and most other
+transformations, there are three ways of providing inputs to be used by the transformation.
+* **Using values from the input model:** This is done by referencing the path where the value to be used can be found.
+When doing this, the result of the transformation will vary depending on the input document provided to the transformation.
+* **Passing a static value, given directly in the rules document:** In other words, one or more of the input values for
+the transformation is hardcoded into the transformation rule you set up. This means that the result of the transformation
+in question will be the same every time.
 * **Nested Transformation:** One can use the output of a transformation as an input value to its parent transformation
 
 The three types will be explained in detail in the below:
@@ -539,7 +592,12 @@ The three types will be explained in detail in the below:
 
 ### Using values from the source model:
 
-Obviously, to make model transformations useful, one needs to be able to get a different output document depending on the source model supplied to the transformations. One can read from the source model by use of the `inputPath` key in any `standardTransformFunction` or `standardInputTransformFunction`. In general, any transformation that is not of these types allow to reference the source model, usually denoted by having `Path` as part of the key name - we defer to the documentation on the individual transformations below for more details on these kinds of transforms. In this section, we will only show examples of using `inputPath`.
+Obviously, to make model transformations useful, one needs to be able to get a different output document depending on
+the source model supplied to the transformations. One can read from the source model by use of the `inputPath` key in
+any `standardTransformFunction` or `standardInputTransformFunction`. In general, any transformation that is not of
+these types allow to reference the source model, usually denoted by having `Path` as part of the key name - we defer
+to the documentation on the individual transformations below for more details on these kinds of transforms.
+In this section, we will only show examples of using `inputPath`.
 
 
 <table><thead>
@@ -612,13 +670,21 @@ Obviously, to make model transformations useful, one needs to be able to get a d
 </tbody>
 </table>
 
-In the first two examples, you can see how, using the same transformation rules document, the output will vary based on the source model. The `inputPath` describes the el-path from where to fetch the input to the function. If no value is found in the given path, undefined will be the input to the transformation, and undefined returned. So if we have an input model without the path `petlist.cat`, like in the third example, the result of the `literalValue` transformation would be undefined, and one would receive an empty output document.
+In the first two examples, you can see how, using the same transformation rules document, the output will vary based
+on the source model. The `inputPath` describes the el-path from where to fetch the input to the function. If no value
+is found in the given path, undefined will be the input to the transformation, and undefined returned. So if we have
+an input model without the path `petlist.cat`, like in the third example, the result of the `literalValue`
+transformation would be undefined, and one would receive an empty output document.
 
 
 ### Static Values
-Any `standardTransformFunction` or `standardInputTransformFunction` supports an `input` key, which can be used for passing either static values or nest transforms ([see next section](ModelTransformationAPI.html#nested-transforms)). Most other transforms support the same types of input - we defer to their individual documentation for more details.
+Any `standardTransformFunction` or `standardInputTransformFunction` supports an `input` key, which can be used for
+passing either static values or nest transforms ([see next section](ModelTransformationAPI.html#nested-transforms)).
+Most other transforms support the same types of input - we defer to their individual documentation for more details.
 
-As mentioned, static values are written directly into the transformation rule document, resulting in the same input to the transform each time the model transformation is run. Defining static values to transformations is very straight forward:
+As mentioned, static values are written directly into the transformation rule document, resulting in the same input to
+the transform each time the model transformation is run. Defining static values to transformations is
+straightforward:
 
 <table><thead>
 </thead><tbody>
@@ -664,13 +730,17 @@ As mentioned, static values are written directly into the transformation rule do
 </tbody>
 </table>
 
-As can be seen, regardless of the input model supplied to the transformation. Every time the transformation is run, the result will be the same.
+As can be seen, regardless of the input model supplied to the transformation. Every time the transformation is run,
+the result will be the same.
 
 
 ### Nested Transforms
-Besides static values, the `input`  key for `standardTransformFunction`s and `standardInputTransformFunction`s supports nested transforms (the same is the case for most other transforms, see their individual documentation). Nested transforms are transformations whose output value will be used as `input` value for its parent transformation.
+Besides static values, the `input`  key for `standardTransformFunction`s and `standardInputTransformFunction`s supports
+nested transforms (the same is the case for most other transforms, see their individual documentation). Nested
+transforms are transformations whose output value will be used as `input` value for its parent transformation.
 
-An `input` interprets the content as a nested transform if its value is an object containing the `transform` or `literalValue` keywords, else the value is interpreted as a static value as described above.
+An `input` interprets the content as a nested transform if its value is an object containing the `transform` or
+`literalValue` keywords, else the value is interpreted as a static value as described above.
 
 <table><thead>
 </thead><tbody>
@@ -741,15 +811,25 @@ An `input` interprets the content as a nested transform if its value is an objec
 </tbody>
 </table>
 
-The first example above, shows the correct usage of nested transforms when one wants to use the return value. The output here from the inner transform (i.e. `fluid.transforms.linearScale`) which is 154.12 is used as `input` for the outer `fluid.transforms.round` function.
+The first example above shows the correct usage of nested transforms when one wants to use the return value. The
+output here from the inner transform (i.e. `fluid.transforms.linearScale`) which is 154.12 is used as `input` for the
+outer `fluid.transforms.round` function.
 
-The second example shows a case where `outputPath` has been specified in the inner transform. As described in a previous section, the consequence of this is that the transform result is output to the given path and `undefined` is returned. In the example, this means that the output of  `fluid.transforms.linearScale` is output to the specified path `sneakyPath`. The `fluid.transforms.round` will get `undefined` as `input`, which result in outputting nothing to its outputPath.
+The second example shows a case where `outputPath` has been specified in the inner transform. As described in a
+previous section, the consequence of this is that the transform result is output to the given path and `undefined` is
+returned. In the example, this means that the output of  `fluid.transforms.linearScale` is output to the specified
+path `sneakyPath`. The `fluid.transforms.round` will get `undefined` as `input`, which result in outputting nothing
+to its outputPath.
 
 ### Using static values as default fallback value
 
-Generally, `inputPath` takes precedence over `input`. This means that if both `input` and `inputPath` are provided for a transformation, the value found in the model at `inputPath` will be used.
+Generally, `inputPath` takes precedence over `input`. This means that if both `input` and `inputPath` are provided
+for a transformation, the value found in the model at `inputPath` will be used.
 
-This can be used to provide a 'default' or fallback value. As mentioned, it is possible to use both types of inputs in your rule set in the different transforms, but it is also possible to specify both for a given transformation. The effect of this, is that the input from the model (via path) will be used if it is found, else the static value (or result of transform) will be used. The usefulness should be made clear by the below examples:
+This can be used to provide a 'default' or fallback value. As mentioned, it is possible to use both types of inputs in
+your rule set in the different transforms, but it is also possible to specify both for a given transformation.
+The effect of this is that the input from the model (via path) will be used if it is found, else the static value
+(or result of transform) will be used. The usefulness should be made clear by the below examples:
 
 <table><thead>
 </thead><tbody>
@@ -800,36 +880,66 @@ This can be used to provide a 'default' or fallback value. As mentioned, it is p
 </tbody>
 </table>
 
-The transformation rule stays the same, but in the second example, there is no `cat` entry in the input model. This means that the model transformation framework will default to the value found at `input` instead. Note that the value at `input` could also be an object containing transforms.
+The transformation rule stays the same, but in the second example, there is no `cat` entry in the input model.
+This means that the model transformation framework will default to the value found at `input` instead. Note that
+the value at `input` could also be an object containing transforms.
 
 ## Inversion
 
-The framework can generate the inverse of a document where it does not use nested transforms, and to the extent that individual transforms are invertible (and have their invertible function defined in the framework). One can then use the results of a transform as input to this inverse transformation and should get the original document as output.
+The framework can generate the inverse of a document where it does not use nested transforms, and to the extent
+that individual transforms are invertible (and have their invertible function defined in the framework). One can
+then use the results of a transform as input to this inverse transformation and should get the original document as
+output.
 
-The function used for inverting rules is: `fluid.model.transform.invertConfiguration(transformDocument)`, which takes a single input: the transformation rules that should be inverted. It outputs the inverted rules (inverted transformation rules).
+The function used for inverting rules is: `fluid.model.transform.invertConfiguration(transformDocument)`, which
+takes a single input: the transformation rules that should be inverted. It outputs the inverted rules (inverted
+transformation rules).
 
-In practice, perfect inversion of a rule is not always possible. Unless extra information is kept, or extra information added about defaulting values, etc., 
+In practice, perfect inversion of a rule is not always possible. Unless extra information is kept, or extra
+information added about defaulting values, etc.,
 the inversion/lensing will be lossy (see [FLUID-5133](https://issues.fluidproject.org/browse/FLUID-5133) ).
 
-If we call our original transformation function `F`, input document `x` and output document `y`, a general transformation is described as follows: `F(x)=y`. If we say the inverse of `F` is called `G`, we use the following vocabulary to describe different levels of inversion:
+If we call our original transformation function `F`, input document `x` and output document `y`, a general
+transformation is described as follows: `F(x)=y`. If we say the inverse of `F` is called `G`, we use the following
+vocabulary to describe different levels of invertibility:
 
 * **Losslessly Invertible:** `G(y)=G(F(x))=x`
-  * This is in practice not always, since the generated `x` may be missing some entries, or have extra entries, depending on how well all the paths in the original `x` match the ones used by the transformation function `F`.
+  * This is in practice not always possible, since the generated `x` may be missing some entries, or have extra entries,
+depending on how well all the paths in the original `x` match the ones used by the transformation function `F`.
 * **Partly Invertible:** `F(x)=F(G(F(x)))`
-  * In this case, there is no condition on the output of `G` alone, but it is guaranteed that one can pipe an original input model through an `F->G` sequence an unlimited number of times and always get the same model `y` as output (we say that `F(G)` is _[idempotent](https://en.wikipedia.org/wiki/Idempotence) on the image of `F`_)
+  * In this case, there is no condition on the output of `G` alone, but it is guaranteed that one can pipe an original
+input model through an `F->G` sequence an unlimited number of times and always get the same model `y` as output
+(we say that `F(G)` is _[idempotent](https://en.wikipedia.org/wiki/Idempotence) on the image of `F`_)
 * **Not Invertible:** `G` **does not exist (or has not been defined in the framework)**
-  * For non-inverable functions, there is either no logical way of deciding what an inverse would mean for that function, or there is no way to reproduce the original input document from an output document.
+  * For non-invertible functions, there is either no logical way of deciding what an inverse would mean for that
+function, or there is no way to reproduce the original input document from an output document.
 
-The invertibility of each transform function will be described in conection to the individual transform function below.
+The invertibility of each transform function will be described in connection to the individual transform function below.
+
+## Working with non-serialisable models
+
+The framework currently permits the use of model values which cannot be serialised directly to JSON (e.g. objects of
+type Date, Regexp, DOM nodes or other native types) - however, this is done at the user's own risk, understanding the limitations
+of this usage, and bearing in mind that in future the framework may forbid such models in some contexts. When the
+framework encounters any such object (strictly, any object which fails the
+[`fluid.isPlainObject`](CoreAPI.md#fluid-isplainobject-totest-strict-) test), it will treat such an object as immutable,
+and if it appears in a relay or transform context, its object reference will simply be copied from the source to target
+document/model. This implies that with respect to these objects, if they are not immutable, the source and target documents
+will be aliased together, and any changes made to the native object will be reflected in both documents.
+
+See the entry on [model objects](FrameworkConcepts.md#model-objects)
+on the [Framework Concepts](FrameworkConcepts.md) for further discussion on this topic.
 
 
 ## Transformation Functions:
 
-### Output a value given as input (fluid.transforms.value and fluid.transforms.identity)
+### Output a value given as input (`fluid.transforms.value` and `fluid.transforms.identity`)
 
 **Type:** standardTransformFunction
 
-**Description:** This transform takes an input value and outputs it. When an `inputPath` is present, the value is taken from that path. Else the value found at `input` will be output (unless it is a `transform`, in which case it will be interpreted). It is primarily used by the framework in its shorthand notation (see examples). It is a synonym to `fluid.transforms.identity`.
+**Description:** This transform takes an input value and outputs it. When an `inputPath` is present, the value is taken from that path.
+Else the value found at `input` will be output (unless it is a `transform`, in which case it will be interpreted).
+It is primarily used by the framework in its shorthand notation (see examples). It is a synonym to `fluid.transforms.identity`.
 
 **Invertibility:** Partly invertible. The `input` default values are always ignored.
 
@@ -3011,9 +3121,13 @@ fluid.myfuncs.addNumbers = function (options) {
 
 **Type:** standardTransformFunction
 
-**Description:** This transform can be used when one wants to create a set based on values available in an array. This is yet another specialized and complex transformation. Based on which values are present in the input array, an output object will be produced with predefined keys and values indicating whether a specific value was present in the array.
+**Description:** This transform can be used when one wants to create a set based on values available in an array.
+This is yet another specialized and complex transformation. Based on which values are present in the input array,
+an output object will be produced with predefined keys and values indicating whether a specific value was present
+in the array.
 
-As an example, if one has an array listing of capabilities supported by a specific system and need an object listing all possible system capabilities with a true/false value indicating whether the specific system supports it.
+As an example, if one has an array listing of capabilities supported by a specific system and need an object listing
+all possible system capabilities with a true/false value indicating whether the specific system supports it.
 
 **Invertibility:** Partly invertible (into [`setMembershipToArray`](ModelTransformationAPI.html#fluid-transforms-arraytosetmembership))
 
@@ -3119,9 +3233,13 @@ transform: {
 
 **Type:** standardTransformFunction
 
-**Description:** This is inverse of `fluid.transforms.arrayToSetMembership`. This transformation was developed to accommodate a use case where a boolean list of system capabilities needed to be translated to an array containing only capabilities that were true.
+**Description:** This is inverse of `fluid.transforms.arrayToSetMembership`. This transformation was developed to
+accommodate a use case where a boolean list of system capabilities needed to be translated to an array containing only
+capabilities that were true.
 
-It takes an object with a set of keys and where the value space only consist of two values (`presentValue`, `missingValue`). This is mapped to an array that only contains entries for which the input object has a `presentValue`. The actual entries output to the array are based on a map passed as `options` to the transformation.
+It takes an object with a set of keys and where the value space only consist of two values (`presentValue`,
+`missingValue`). This is mapped to an array that only contains entries for which the input object has a `presentValue`.
+The actual entries output to the array are based on a map passed as `options` to the transformation.
 
 **Invertibility:** Partly invertible (into `arrayToSetMembership`)
 
@@ -3229,7 +3347,8 @@ transform: {
 
 **Type:** standardTransformFunction
 
-**Description:** Convert a String to a Boolean, for example, when working with HTML checkbox form element values.  The following are all false: undefined, null, "", "0", "false", false, 0.  Everything else is true.
+**Description:** Convert a String to a Boolean, for example, when working with HTML checkbox form element values.
+The following are all false: undefined, null, "", "0", "false", false, 0.  Everything else is true.
 
 **Invertibility:** Partly invertible via `fluid.transforms.booleanToString`.
 
@@ -3278,7 +3397,9 @@ transform: {
 
 **Type:** standardTransformFunction
 
-**Description:** Convert any value into a stringified boolean, i. e. either "true" or "false".  Anything that evaluates to true (1, true, "non empty string", {}, et. cetera) returns "true".  Anything else (0, false, null, et. cetera) returns "false".
+**Description:** Convert any value into a stringified boolean, i.e. either "true" or "false".
+Anything that evaluates to true (1, true, "non empty string", {}, etc.) returns "true".
+Anything else (0, false, null, etc.) returns "false".
 
 **Invertibility:** Partly invertible via `fluid.transforms.stringToBoolean`.
 
@@ -3428,7 +3549,7 @@ transform: {
 
 **Example 2: Add spaces and carriage returns to the stringified output.**
 
-You can pass the `space` option to control whether spaces are included between keys and values in the string output.  A
+You can pass the `space` option to control whether spaces are included between keys and values in the string output. A
 positive value also results in carriage returns between key/value pairs.  The default value for `space` is 0, which
 disables spacing and line breaks.
 
@@ -3465,7 +3586,14 @@ disables spacing and line breaks.
 
 **Type:** standardTransformFunction
 
-**Description:** Transform a string to a date using the Date constructor.  Accepts (among other things) the date and dateTime values returned by HTML5 date and dateTime inputs. Note: This function allows you to create Date objects from an ISO 8601 string such as `2017-01-23T08:51:25.891Z`.  It is intended to provide a consistent mechanism for recreating Date objects stored as strings.  Although the framework currently works as expected with Date objects stored in the model, this is very likely to change.  If you are working with Date objects in your model, your best option for ensuring your code continues to work in the future is to handle serialisation and deserialisation yourself, for example, by using this transform and one of its inverse transforms, `fluid.transforms.dateToString` or `fluid.transforms.dateTimeToString`.  See [the Infusion documentation](http://docs.fluidproject.org/infusion/development/FrameworkConcepts.html#model-objects) for details about supported model values.
+**Description:** Transform a string to a date using the Date constructor. Accepts (among other things) the date and
+dateTime values returned by HTML5 date and dateTime inputs. This function allows you to create Date objects from an
+ISO-8601 string such as `2017-01-23T08:51:25.891Z`.
+It is intended to provide a consistent mechanism for recreating Date objects stored as strings.
+
+Note that framework does not generally recommend that non-serialisable values such as Date objects are stored in models,
+although this can be done at your own risk. See the section on
+[working with non-serialisable models](#working-with-non-serialisable-models) for more information.
 
 **Invertibility:** Partly invertible using either `fluid.transforms.dateTimeToString` or `fluid.transforms.dateToString`.
 
@@ -3514,7 +3642,15 @@ disables spacing and line breaks.
 
 **Type:** standardTransformFunction
 
-**Description:** Transform a Date object into a date string using its toISOString method.  Strips the "time" portion away to produce date strings that are suitable for use with both HTML5 "date" inputs and JSON Schema "date" format string validation, for example: `2016-11-23`.  If you wish to preserve the time, use `fluid.transforms.dateTimeToString` instead.  A non-date object will be treated as `undefined`.  Note: This function allows you to seralise Date objects (not including time information) as ISO 8601 strings such as `2017-01-23`.  It is intended to provide a consistent mechanism for storing Date objects in a model.  Although the framework currently works as expected with Date objects stored in the model, this is very likely to change.  If you are working with Date objects in your model, your best option for ensuring your code continues to work in the future is to handle serialisation and deserialisation yourself, for example, by using this transform and its inverse, `fluid.transforms.stringToDate`.  See [the Infusion documentation](http://docs.fluidproject.org/infusion/development/FrameworkConcepts.html#model-objects) for details about supported model values.
+**Description:** Transform a Date object into a date string using its toISOString method.
+Strips the "time" portion away to produce date strings that are suitable for use with both HTML5 "date" inputs and
+JSON Schema "date" format string validation, for example: `2016-11-23`.
+If you wish to preserve the time, use `fluid.transforms.dateTimeToString` instead.
+A non-date object will be treated as `undefined`.
+
+Note that framework does not generally recommend that non-serialisable values such as Date objects are stored in models,
+although this can be done at your own risk. See the section on
+[working with non-serialisable models](#working-with-non-serialisable-models) for more information.
 
 **Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
 
@@ -3563,7 +3699,13 @@ disables spacing and line breaks.
 
 **Type:** standardTransformFunction
 
-**Description:** Transform a Date object into a date/time string using its toISOString method.  Results in date strings that are suitable for use with both HTML5 "dateTime" inputs and JSON Schema "date-time" format string validation, for example: `2016-11-23T13:05:24.079Z`.  A non-date object will be treated as `undefined`.  Note: This function allows you to seralise Date objects (including time information) as ISO 8601 strings such as `2017-01-23T08:51:25.891Z`. It is intended to provide a consistent mechanism for storing Date objects in a model.  Although the framework currently works as expected with Date objects stored in the model, this is very likely to change.  If you are working with Date objects in your model, your best option for ensuring your code continues to work in the future is to handle serialisation and deserialisation yourself, for example, by using this function and its inverse, `fluid.transforms.stringToDate`.  See [the Infusion documentation](http://docs.fluidproject.org/infusion/development/FrameworkConcepts.html#model-objects) for details about supported model values.
+**Description:** Transform a Date object into a date/time string using its toISOString method.
+Results in date strings that are suitable for use with both HTML5 "dateTime" inputs and JSON Schema "date-time" format
+string validation, for example: `2016-11-23T13:05:24.079Z`. A non-date object will be treated as `undefined`.
+
+Note that framework does not generally recommend that non-serialisable values such as Date objects are stored in models,
+although this can be done at your own risk. See the section on
+[working with non-serialisable models](#working-with-non-serialisable-models) for more information.
 
 **Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
 
