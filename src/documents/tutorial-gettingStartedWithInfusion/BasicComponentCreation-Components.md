@@ -18,7 +18,8 @@ The definition of a component involves two things:
 
 ## Grade and Default Options ##
 
-A component's grade and any default options are registered with the framework using a call to [`fluid.defaults`](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539), which has two parameters: 
+A component's grade and any default options are registered with the framework using a call to 
+[`fluid.defaults`](../CoreAPI.md#fluid-defaults-gradename-options-), which has two parameters: 
 the component name and an object containing the defaults. The parent grades for the component are specified in an array or single string in the defaults called `gradeNames`. For a plain component, specify the grade as `fluid.component`:
 
 ```javascript

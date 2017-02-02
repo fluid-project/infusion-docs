@@ -13,22 +13,19 @@ component tree is coordinated globally by the [Model Relay](ModelRelay.md) syste
 *[model skeleton](ModelRelay.md#how-model-relay-updates-propagate)* which
 consists of those models which are linked together by relay specifications.
 
-The [ChangeApplier API](ChangeApplierAPI.md) and semantic has stabilised in the Infusion 1.5 release
-and differs substantially from that in previous releases.
-
 As well as being based on Fluid's model-directed thinking, the ChangeApplier is also implemented in
 terms of Fluid's [Event System](InfusionEventSystem.md), which you should be familiar with before using the ChangeApplier.
 
 ### Thinking behind the ChangeApplier ###
 
-The ChangeApplier is a natural outgrowth of Fluid's focus on (transparent) model-directed programming- see
+The ChangeApplier is a natural outgrowth of Fluid's focus on (transparent) model-directed programming - see
 the Framework Concepts discussion on [Model Objects](FrameworkConcepts.md#model-objects).
-"Morally", a model should be "fully transparent" - meaning, that it consists of standard POJOs and
+"Morally", a model should be "fully transparent" - meaning that it consists of standard POJOs and
 is available for inspection by reading, using standard language constructs, at all times. For example,
 if model is a JavaScript variable holding the overall model, accessing a field within the model is as
 simple as writing a standard Javascript expression `model.field1.subfield2` etc. In practice, we don't
-advise that users in practice write JavaScript code that inspects models manually - instead, they
-should use the declarative features supplied by ChangeApplier both to trigger changes and react to them.
+advise that users write JavaScript code that inspects models manually - instead, they
+should use the [declarative features](ChangeApplierAPI.md#declarative-style-for-listening-to-changes) supplied by ChangeApplier both to trigger changes and react to them.
 
 This is in contrast to many other frameworks, which generally take one of two routes - either
 insisting that a model is composed of some form of more or less "magic" objects - these might be
