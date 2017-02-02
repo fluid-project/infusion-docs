@@ -6,7 +6,7 @@ category: Infusion
 
 This page contains a list of the features, APIs, and etc. that are deprecated as of Infusion 2.0.
 
-<div class="infusion-docs-note"><strong>Note:</strong> While the intention is to provide advanced notice of future changes, the contents of this page may not be exhaustive.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> While the intention is to provide advance notice of future changes, the contents of this page may not be exhaustive.</div>
 
 ## Components ##
 
@@ -41,7 +41,7 @@ This page contains a list of the features, APIs, and etc. that are deprecated as
         </tr>
         <tr>
             <td>no JavaScript version of <code>fluid.uploader</code></td>
-            <td>See [Infusion 2.0](https://github.com/fluid-project/infusion/blob/infusion-2.0/src/components/uploader/html/Uploader.html#L37-L41) as an example for creating a custom fallback.</td>
+            <td>See <a href="https://github.com/fluid-project/infusion/blob/infusion-2.0/src/components/uploader/html/Uploader.html#L37-L41">Infusion 2.0</a> as an example for creating a custom fallback.</td>
         </tr>
     </tbody>
 </table>
