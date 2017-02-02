@@ -65,8 +65,6 @@ name is held.
 of components which holds all components which has been instantiated with the grade [`fluid.resolveRoot`](#global-components-fluid-resolveroot-and-fluid-resolverootsingle-) (see below) anywhere in the
 current component tree.
 
-**NOTE**: The following diagram needs to be updated to reflect the Infusion 2.0 visibility rules
-
 ![Diagram showing coloured squared representing components in a component tree](images/IoC-scope.svg)
 
 ## Global components: `fluid.resolveRoot` and `fluid.resolveRootSingle`
