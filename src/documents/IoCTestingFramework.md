@@ -66,7 +66,7 @@ ordinary use, each element `tests` then contains a member named `sequence` holdi
 As well as containing a flat list of fixture records, `sequence` may also contain nested arrays of such records. These nested arrays will be
 flattened into a single array by use of the utility [`fluid.flatten`](CoreAPI.md#fluid-flatten-array-) before being processed. This helps in
 assembling complex sequences out of previously canned sequence segments. However, building up complex, reusable test sequences is best done by
-use of the [`sequenceGrade`](/IoCTestingFramework.md#using-sequencegrade-to-build-up-complex-reusable-test-sequences) element, instead of the `sequence` element.
+use of the [`sequenceGrade`](IoCTestingFramework.md#using-sequencegrade-to-build-up-complex-reusable-test-sequences) element, instead of the `sequence` element.
 
 ### Simple Example ###
 

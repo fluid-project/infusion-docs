@@ -30,8 +30,7 @@ References always take the syntactic form `{context-name}.some.path.segments`, w
                             <li>the fully qualified name of the component's type or one of its <a href="ComponentGrades.md">grade names</a> e.g. <code>{fluid.pagedTable}</code></li>
                             <li>the <strong>short name</strong> of the component's type or one of its <strong>gradeNames</strong>, i.e. the last segment of the fully namespaced name, e.g. <code>{pagedTable}</code></li>
                             <li>the component's <strong>member name</strong>, i.e. the name used when defining a subcomponent in a components block</li>
-                            <li>an entire <code>&lt;reference&gt;</code> string in itself. This is useful in highly dynamic cases where the context name should be determined from some other options material, e.g. <code>{{that}.options.targetContext}</code>. This
-                            feature is new in Infusion 2.0.
+                            <li>an entire <code>&lt;reference&gt;</code> string in itself. This is useful in highly dynamic cases where the context name should be determined from some other options material, e.g. <code>{{that}.options.targetContext}</code>
                         </ul>
                     </li>
                     <li>
