@@ -1155,6 +1155,8 @@ Note that this transform is implicit when using a string as a value to a key, wh
 **Type:** standardTransformFunction
 
 **Description:** Parses a number into a string. If the input is not a number, `undefined` will be returned.
+Can optionally provide a `scale` which denotes the maximum number of decimal places to round the number to. Trailing 0s are omitted.
+If the `scale` value is not numerical or is `NaN`, it is treated as though it were not specified at all.
 
 **Invertibility:** Partly invertible. It is invertible when its domain is restricted to numbers.
 
@@ -1211,6 +1213,66 @@ Note that this transform is implicit when using a string as a value to a key, wh
 </code></pre></td><td>
 <pre><code>
 {}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+**Example 3: Number conversion with scale**
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "my": {
+        "path": 100.91
+    }
+}</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.numberToString",
+        "inputPath": "my.path",
+        "outputPath": "outie",
+        "scale": 1
+    }
+}
+</code></pre></td><td>
+<pre><code>
+{
+    "outie": "100.9"
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+**Example 4: Number conversion with invalid scale**
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "my": {
+        "path": 100.91
+    }
+}</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.numberToString",
+        "inputPath": "my.path",
+        "outputPath": "outie",
+        "scale": "one"
+    }
+}
+</code></pre></td><td>
+<pre><code>
+{
+    "outie": "100.91"
+}
 </code></pre></td>
 </tr>
 </tbody>
