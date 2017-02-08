@@ -7,7 +7,7 @@ category: Infusion
 This file documents some low-level APIs which are provided by Infusion at the JavaScript level. Note that since
 Infusion's more overarching aim is to enable declarative programming based on JSON structures, by means
 of its [IoC](FrameworkConcepts.md#ioc) system, the documentation in this file doesn't cover very much
-of Infusion's real function. Please consult pages on [Component Grades](ComponentGrades.md), 
+of Infusion's real function. Please consult pages on [Component Grades](ComponentGrades.md),
 [Component Configuration Options](ComponentConfigurationOptions.md), the [Infusion Event System](InfusionEventSystem.md),
 etc. for coverage of these wider topics.
 
@@ -126,13 +126,13 @@ namespaced [Listener](InfusionEventSystem.md) to create abstract (noninstantiabl
 
 * `source {Array|Object}` A container to be iterated over (may be null)
 * `func {Function} (element {Any}, index {Number|String}) → Any`. This function will be invoked once on each member of `source` and will receive the member and its key (either an integer for an array source,
-or a string for an object source) 
+or a string for an object source)
 * Returns: none
 
 Iterates over a supplied array or hash, invoking a function once for each member. Similar to [`jQuery.each`](http://api.jquery.com/jquery.each/) only the
 arguments to `func` are the right way round and the function does not explode on nonvalues. `fluid.each` on `null` or `undefined` is a no-op.
 
-### fluid.invokeLater(func) 
+### fluid.invokeLater(func)
 
 * `func {Function}` A function accepting zero arguments which is to be invoked later
 * Returns: none
@@ -155,7 +155,7 @@ globally unique with high probability (50% chance of collision after a million t
 * `b {Number}` The second operand to be added
 * Returns: `{Number}` The value of `a + b`
 
-Returns the result of invoking the JavaScript operator `+` on its two arguments. This is a function convenient to supply, for 
+Returns the result of invoking the JavaScript operator `+` on its two arguments. This is a function convenient to supply, for
 example, to [`fluid.accumulate`](#fluid-accumulate-list-fn-initial-) to sum a list of numbers.
 
 ## Creation, copying and destroying
@@ -165,7 +165,7 @@ example, to [`fluid.accumulate`](#fluid-accumulate-list-fn-initial-) to sum a li
 * `tocopy {Object|Array}`
 * Returns: `{Object|Array}`
 
-Return an empty container as the same type as the argument (either an array or hash). To be wise, the supplied argument should 
+Return an empty container as the same type as the argument (either an array or hash). To be wise, the supplied argument should
 pass the `fluid.isPlainObject` test.
 
 ### fluid.copy(tocopy)
@@ -202,7 +202,7 @@ Fills an array of given size with copies of a value or result of a function invo
 * `first {Number}` [optional, defaults to 0] First element to appear in the array
 * Returns: `{Array}` An array of length `n` holding the generated elements
 
-Returns an array of size `n`, filled with increasing integers, starting at 0 or at the value specified by `first`. The name `iota` originally stems from the 
+Returns an array of size `n`, filled with increasing integers, starting at 0 or at the value specified by `first`. The name `iota` originally stems from the
 [APL](http://stackoverflow.com/questions/9244879/what-does-iota-of-stdiota-stand-for) programming language.
 
 
@@ -226,7 +226,7 @@ applied in turn to each member, which will be replaced by the return value from 
 * Returns: `{Array|Object}` The finally transformed structure, where each member has been replaced by the original member acted on by the function or functions.
 
 Return a list or hash of objects, transformed by one or more functions. Similar to
-[`jQuery.map`](http://api.jquery.com/jquery.map/), but accepts an arbitrary list of transformation functions and does not explode on null sources. 
+[`jQuery.map`](http://api.jquery.com/jquery.map/), but accepts an arbitrary list of transformation functions and does not explode on null sources.
 `fluid.transform` on a non-array and non-object (e.g. `null`) is a no-op.
 
 ### fluid.accumulate(list, fn, initial)
@@ -253,6 +253,18 @@ the multi-arg versions of `Math.max` and `Math.min`, e.g.
 ```javascript
 var max = Math.max.apply(null, numbers);
 ```
+
+### fluid.roundToDecimal(num, scale)
+
+* `num {Number}` The number to be rounded
+* `scale {Number}` The maximum number of decimal places to round to. If the scale is invalid (i.e falsey, not a number, negative value), it is treated as 0. If the scale is a floating point number, it is rounded to an integer.
+
+Derived from [AGK's stack overflow](http://stackoverflow.com/a/12830454) answer, it rounds the supplied number to at most the number of decimal places indicated by the scale, omiting any trailing 0s
+
+```javascript
+var rounded = fluid.roundToDecimal(1.555, 2) // rounded now holds 1.56
+```
+
 
 ### fluid.remove_if(source, fn[, target])
 
@@ -286,7 +298,7 @@ var cattes = [{
     }
 ];
 var names = fluid.getMembers(cattes, "name");
-// names now holds ["Huggoe", "Arthur", "THER CATTE"]; 
+// names now holds ["Huggoe", "Arthur", "THER CATTE"];
 ```
 
 
@@ -299,7 +311,7 @@ var names = fluid.getMembers(cattes, "name");
 
 Accepts an object to be filtered, and a list of keys. Either all keys not present in
 the list are removed (the default), or all keys present in the list are removed (`exclude: true`). The suppled object *** is not modified *** but will be shallow cloned by this operation.
- 
+
 ### fluid.censorKeys(toCensor, keys)
 
 * `toFilter {Array|Object}` The object to be filtered - this will be NOT modified by the operation
@@ -327,14 +339,14 @@ Return the values in the supplied object as an array. This will return values fo
 
 * `array {Array of String}` The array to be converted to a hash
 * Returns: `{Object}` An object with value `true` for each key taken from a member of `array`
-    
+
 Converts an array into an object whose keys are the elements of the array, each with the value `true`
 
 ### fluid.hashToArray(hash, keyName[, func])
 
 * `hash {Array}` The hash to be transformed into an array
 * `keyName {String}` The name within the resulting array elements which will receive the string which used to form the element's key in `hash`
-* `func {Function (newElement {Object), oldElement {Object}, key {String}) →  Object }` [optional] receives `(newElement, oldElement, key)` where `newElement` is the freshly cloned element (a fresh `Object obj` which just has `obj[keyName] = key`), 
+* `func {Function (newElement {Object), oldElement {Object}, key {String}) →  Object }` [optional] receives `(newElement, oldElement, key)` where `newElement` is the freshly cloned element (a fresh `Object obj` which just has `obj[keyName] = key`),
 `oldElement` is the original hash's element, and `key` is the key of the element in the hash. The function returns the final element that will be added to the array - it may ignore `newElement` if it pleases and make an unrelated
 return. If the function makes no return, `newElement` will be used. If the function is not supplied, the old element is simply deep-cloned onto the new element (same effect as transform `fluid.transforms.objectToArray`).
 
@@ -364,7 +376,7 @@ var CATTyears = fluid.hashToArray(hash, "species", function (newElement, oldElem
 * `array {Array}` The array to be flattened
 * Returns: `{Array}` The flattened array.
 
-Converts an array consisting of a mixture of arrays and non-arrays into the concatenation of any inner arrays 
+Converts an array consisting of a mixture of arrays and non-arrays into the concatenation of any inner arrays
 with the non-array elements. The original array *** will not be modified ***. See description of [mapcat](http://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
 
 ### fluid.freezeRecursive(tofreeze)
@@ -379,9 +391,9 @@ This function is a no-op if a primitive value is supplied.
 
 * `holder {Array|Object}` The holding object whose member is to receive the pushed element(s).
 * `member {String}` The member of the `holder` onto which the element(s) are to be pushed
-* `topush {Array|Object}` If an array, these elements will be added to the end of the array using `Array.push.apply`. 
+* `topush {Array|Object}` If an array, these elements will be added to the end of the array using `Array.push.apply`.
 If an object, it will be pushed to the end of the array using `Array.push`.
- 
+
 Pushes an element or elements onto an array, initialising the array as a member of a holding object if it is
 not already allocated. The member of the holding object should either be `undefined` or hold an array at the time of the call. Example:
 
@@ -433,7 +445,7 @@ Searches through the supplied structure, and returns `true` if the supplied valu
 
 Searches through the supplied object for the first value which matches the one supplied.
 
-### fluid.stableSort(array, func) 
+### fluid.stableSort(array, func)
 
 * `array {Array of Any-Element}` The array to be sorted. *** This input array will be modified in place. ***
 * `func {Function: (a {Any-Element}, b {Any-Element}) → Number}` A comparator returning >0, 0, or <0 on pairs of elements representing their sort order (same contract as [Array.sort comparator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort))
@@ -455,7 +467,7 @@ Produces a comparator function suitable for use with [Array.sort](https://develo
 ### fluid.parseInteger(string)
 
 * `string {String}` A string to be converted to an integer
-* Returns: `{Integer|NaN}` The integer value, or `NaN` if the string does not represent an integer 
+* Returns: `{Integer|NaN}` The integer value, or `NaN` if the string does not represent an integer
 
 Returns the converted integer if the input string can be converted to an integer. Otherwise, returns `NaN`.
 
@@ -484,37 +496,37 @@ hand resolution of the next path segment to that function if there is no corresp
 model material, this will not trigger an error - all successive indirections will simply return `undefined`. `fluid.get` accepts various esoteric piece of configuration
 allowing it to operate indirection rules encoded in arbitrary JSON material - these are imperfectly supported, contact us if you are interested.
 
-### fluid.getImmediate(model, path) 
+### fluid.getImmediate(model, path)
 
 * `model {Any}` The model object to be indirected into. This may be `undefined`, etc. without triggering an error.
 * `path {Array of String}` An array of path segments representing representing a chain of properties to be navigated
 * Returns: `{Any}` The result of the indirection of the path into the supplied model
 
 An extremely simplistic, high-performance variant of `fluid.get` that supports none of the same bells and whistles - it is only capable of navigating over concrete
-object properties that are actually present in the model, and the path must have already been parsed out into an array of segments. 
+object properties that are actually present in the model, and the path must have already been parsed out into an array of segments.
 It still, however, operates the same semantic as `fluid.get` for navigating over undefined values.
 
 ### fluid.set(model, path, newValue)
 
-Writes a new value into a model at a specified path. This is performed by directly modifying the penultimately referenced model object (the one referenced by the first `n-1` 
-path segments in `path`) by writing the value `newValue` to its property named after the final path segment. Other approaches to this task are possible 
+Writes a new value into a model at a specified path. This is performed by directly modifying the penultimately referenced model object (the one referenced by the first `n-1`
+path segments in `path`) by writing the value `newValue` to its property named after the final path segment. Other approaches to this task are possible
 (see [New New Notes on the ChangeApplier](https://wiki.fluidproject.org/display/fluid/New+New+Notes+on+the+ChangeApplier#NewNewNotesontheChangeApplier-Theseveralwaysofactuallyapplyingachange)) but the
-fundamental invariant to be respected is that 
+fundamental invariant to be respected is that
 
 ```
     fluid.get(model, fluid.set(model, path, value), path) === value
 ```
-Even a functional programmer could admit that. A slight wrinkle, however, is the behaviour of the special path `""` or `[]`, attempting to write a value at the model 
+Even a functional programmer could admit that. A slight wrinkle, however, is the behaviour of the special path `""` or `[]`, attempting to write a value at the model
 root. This API is not capable of this and will fail in this case - since it is hampered at the language level by being unable to rewrite the object reference `model` which exists
 in the scope of its caller. The `ADD` message of the [ChangeApplier](ChangeApplierAPI.md#programmatic-style-for-triggering-a-change) can be used to handle this case. Under its new semantics, the reference `model` is at a known
 address in its parent component which can be rebound.
 
-If the path `path` indirects beyond the range of concrete properties in `model`, the implementation will fill in any intermediate path levels with fresh instances of `{}` 
+If the path `path` indirects beyond the range of concrete properties in `model`, the implementation will fill in any intermediate path levels with fresh instances of `{}`
 (in the manner of [`mkdirs`](http://stackoverflow.com/questions/9820088/difference-between-mkdir-and-mkdirs-in-java-for-java-io-file)). There are some esoteric extra arguments
 for `fluid.set` which will allow this to be done in a schema-aware way, for example filling in path levels with `[]` instead - [contact us](https://wiki.fluidproject.org/display/fluid/Mailing+Lists)
 if you are interested.
 
-* `model {Object}` The model object to be indirected into. This must be an `Object`. 
+* `model {Object}` The model object to be indirected into. This must be an `Object`.
 * `path {String|Array of String}` Either a period-separated [EL path](FrameworkConcepts.md#el-paths) representing a chain of properties to be navigated, or else an array of
 path segments representing this
 * `newValue: {Any}` The value to be written into `model` at the path `path`
@@ -540,8 +552,8 @@ Compose any number of path segments, none of which may be empty. The inverse to 
 * Returns: `{Array of String}` The EL path parsed as an array of path segments
 
 Parses a EL path expression by splitting it on the period character "`.`". This is an analog of `fluid.model.parseEL` that will escape the characters `.` as `\.` and `\` as `\\`, allowing
-all possible paths to be expressed. In modern JavaScript VMs, it is not much slower than `fluid.model.parseEL` and should be used in all applications where paths will be 
-accepted from external users. 
+all possible paths to be expressed. In modern JavaScript VMs, it is not much slower than `fluid.model.parseEL` and should be used in all applications where paths will be
+accepted from external users.
 
 ### fluid.pathUtil.composeSegments([seg1, seg2, ...])
 
@@ -549,8 +561,8 @@ accepted from external users.
 * Returns: `{String}` The EL path composed by concatenating the path segments.
 
 Compose any number of path segments, none of which may be empty. This is an analog of `fluid.pathUtil.parseEL` that will escape the characters `.` as `\.` and `\` as `\\`, allowing
-all possible paths to be expressed. In modern JavaScript VMs, it is not much slower than `fluid.pathUtil.composeSegments` and should be used in all applications where paths will be 
-accepted from external users. 
+all possible paths to be expressed. In modern JavaScript VMs, it is not much slower than `fluid.pathUtil.composeSegments` and should be used in all applications where paths will be
+accepted from external users.
 
 
 
@@ -563,7 +575,7 @@ accepted from external users.
 to `String` yourself (e.g. by `JSON.stringify`) if i) this is safe, and ii) you would not be satisfied by the environment's rendering.
 
 Log a message to a suitable environmental console (in current implementations, `console.log`). If the first argument to `fluid.log` is
-one of the members of the [`fluid.logLevel`](#fluid-loglevel) structure, this will be taken as the priority of the logged message - else it 
+one of the members of the [`fluid.logLevel`](#fluid-loglevel) structure, this will be taken as the priority of the logged message - else it
 will default to [`fluid.logLevel.INFO`](#fluid-loglevel). If the logged message priority does not exceed that set by the most recent call to the [`fluid.setLogging`](#fluid-setlogging-loglevel-) function,
 the logging action will be suppressed.
 
@@ -593,7 +605,7 @@ in general. The stack is initialised with a single element of `fluid.logLevel.IM
 ### fluid.popLogging()
 
 Pops one `LogLevel` value that was pushed onto the logging level stack by a previous call to `fluid.setLogging`. This will expose the previous element on top of the stack and restore the logging level that had previously been in effect.
-If the stack has only its one original element, this call is a no-op. 
+If the stack has only its one original element, this call is a no-op.
 
 ### fluid.passLogLevel(testLogLevel)
 
@@ -606,7 +618,7 @@ issue particularly expensive log payload arguments are recommended to guard thei
 
 ### fluid.doLog([arg1, ... argn])
 
-The actual implementation to which `fluid.log` messages and other logging generated by the system are dispatched. Implemented to forward to `console.debug` and `console.log` but may be monkey-patched by 
+The actual implementation to which `fluid.log` messages and other logging generated by the system are dispatched. Implemented to forward to `console.debug` and `console.log` but may be monkey-patched by
 clients who require an alternative implementation.
 
 ### fluid.fail([arg1, ... argn])
@@ -627,7 +639,7 @@ using `fluid.logActivity`
 in an HTTP server by aborting the handling of any current request with a suitable HTTP status code and message.
 
 Every call to `fluid.fail` triggers a firing of this global event. This is a standard [Infusion Event](InfusionEventSystem.md) with several handlers installed on startup to take on various functions.
-Extra handlers are registered, and the builtin handlers overriden, to customise error handling behaviour in various contexts - for example, when Infusion is running in node.js, is running a 
+Extra handlers are registered, and the builtin handlers overriden, to customise error handling behaviour in various contexts - for example, when Infusion is running in node.js, is running a
 [jqUnit test](jqUnit.md) or is running in [Kettle](https://github.com/fluid-project/kettle) etc.
 There are two currently standard namespaces for listeners to this event:
 
@@ -639,7 +651,7 @@ A positive integer (default value 50) above which depth the framework's processi
 
 ## The global namespace
 
-Infusion is unusual amongst modern JavaScript systems in that it maintains a single, global namespace of fully qualified implementation names. 
+Infusion is unusual amongst modern JavaScript systems in that it maintains a single, global namespace of fully qualified implementation names.
 For example, builtin Infusion grades are stored in this namespace at paths `fluid.*` and each
 project will in general allocate its own top-level name. Users are assisted to operate on this global namespace with some utility functions. Any user of Infusion who has successfully resolved the
 `fluid` object can access the root object for this namespace as `fluid.global`. In the browser, the root of this namespace coincides directly
@@ -660,24 +672,24 @@ implementations to others.
 ### fluid.getGlobalValue(path)
 
 * `path {String|Array of String}` The global path from which the value is to be fetched
-* Returns: `{Any}` The value that was stored at the path, or `undefined` if there is none. 
+* Returns: `{Any}` The value that was stored at the path, or `undefined` if there is none.
 
-Returns any value held at a particular global path. This may be an object or a function, depending on what has been stored there. 
+Returns any value held at a particular global path. This may be an object or a function, depending on what has been stored there.
 
 ### fluid.setGlobalValue(path, value)
 
-* `path {String|Array of String}` The global path at which the value is to be set. 
+* `path {String|Array of String}` The global path at which the value is to be set.
 * `value {Any}` The value to be written to the global path. This should in general be a function or other immutable value, and an existing value should not be overwritten. This rule can be overlooked in a genuine architectural emergency.
 
-Write a value to a particular global path. Users are strongly discouraged from storing any mutable information at these paths, but it is accepted that in certain integration scenarios there can be little alternative. 
+Write a value to a particular global path. Users are strongly discouraged from storing any mutable information at these paths, but it is accepted that in certain integration scenarios there can be little alternative.
 Please choose a properly qualified global path name that identifies your project (perhaps, derived from a [domain name](https://en.wikipedia.org/wiki/Domain_name) or [npm package name](https://docs.npmjs.com/misc/faq#why-no-namespaces))
-that you have control over. The [Java package naming conventions](https://en.wikipedia.org/wiki/Java_package#Package_naming_conventions) have proved effective at heading off such problems in the past and 
-we intend that Infusion global names should be handled in an analogous way. 
+that you have control over. The [Java package naming conventions](https://en.wikipedia.org/wiki/Java_package#Package_naming_conventions) have proved effective at heading off such problems in the past and
+we intend that Infusion global names should be handled in an analogous way.
 
 ### fluid.invokeGlobalFunction(functionPath, args)
 
 * `functionPath {String|Array of String}` The global path holding the function which is to be invoked
-* `args {Array|Any}` The array of arguments to be supplied to the function. If `args` is not an array, `fluid.makeArray` will be called on it first. 
+* `args {Array|Any}` The array of arguments to be supplied to the function. If `args` is not an array, `fluid.makeArray` will be called on it first.
 * Returns: {Any} Any return value from the function which was invoked
 
 Invokes a function held at a particular global path with the supplied arguments. Equivalent to `fluid.getGlobalValue` followed by `Function.apply(null, args)`.
@@ -696,7 +708,7 @@ to use named arguments, with names encoded in the defaults for a [`fluid.functio
 
 ## Storing and retrieving defaults
 
-Infusion's component system is organised around blocks of JSON which define [grades](ComponentGrades.md) - another way of describing a grade is as a component's *** default options ***, which 
+Infusion's component system is organised around blocks of JSON which define [grades](ComponentGrades.md) - another way of describing a grade is as a component's *** default options ***, which
 appeals to a slightly more old-fashioned notion of what a component is. These options are registered into the system and read back from it by using the API `fluid.defaults`. If the options supplied to `fluid.defaults`
 represent a [component grade](ComponentOptionsAndDefaults.md), the framework will automatically construct and register a **component creator function** in the [global namespace](#the-global-namespace) at a path
 which matches the component's grade name. Note that not all defaults correspond to a component - some of them are descended from `fluid.function` in which case they represent a ***function grade*** and hold metadata
