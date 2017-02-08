@@ -1317,7 +1317,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 **Type:** standardTransformFunction
 
-**Description:** Rounds the input to the nearest decimal.
+**Description:** Rounds the input to the nearest integer.
 
 **Invertibility:** Partly invertible. The `input` default values are always ignored.
 
@@ -2180,7 +2180,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <td><pre><code>
 {
     "transform": {
-        "type": "gpii.transforms.quantize",
+        "type": "fluid.transforms.quantize",
         "inputPath": "my.input",
         "outputPath": "mysize",
         "ranges": [
@@ -2332,7 +2332,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <td><pre><code>
 {
     "transform": {
-        "type": "gpii.transforms.inRange",
+        "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
         "outputPath": "isInRange",
         "min": 10,
@@ -2363,7 +2363,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <td><pre><code>
 {
     "transform": {
-        "type": "gpii.transforms.inRange",
+        "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
         "outputPath": "isInRange",
         "min": 10,
@@ -2394,7 +2394,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <td><pre><code>
 {
     "transform": {
-        "type": "gpii.transforms.inRange",
+        "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
         "outputPath": "isInRange",
         "min": 10
@@ -2424,7 +2424,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 <td><pre><code>
 {
     "transform": {
-        "type": "gpii.transforms.inRange",
+        "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
         "outputPath": "isInRange",
         "min": 10,
