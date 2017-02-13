@@ -259,7 +259,7 @@ var max = Math.max.apply(null, numbers);
 * `num {Number}` The number to be rounded
 * `scale {Number}` The maximum number of decimal places to round to. If the scale is invalid (i.e falsey, not a number, negative value), it is treated as 0. If the scale is a floating point number, it is rounded to an integer.
 
-Derived from [AGK's stack overflow](http://stackoverflow.com/a/12830454) answer, it rounds the supplied number to at most the number of decimal places indicated by the scale, omiting any trailing 0s
+Derived from [AGK's stack overflow](http://stackoverflow.com/a/12830454) answer, it rounds the supplied number to at most the number of decimal places indicated by the scale, omiting any trailing 0s. Similar to [`Math.round`](https://www.ecma-international.org/ecma-262/5.1/#sec-15.8.2.15), numbers are rounded towards +∞ (i.e 0.5 -> 1, -0.5 -> 0).
 
 ```javascript
 var rounded = fluid.roundToDecimal(1.555, 2) // rounded now holds 1.56
