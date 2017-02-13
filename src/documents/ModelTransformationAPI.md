@@ -1155,7 +1155,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 **Type:** standardTransformFunction
 
 **Description:** Parses a number into a string. If the input is not a number, `undefined` will be returned.
-Can optionally provide a `scale` which denotes the maximum number of decimal places to round the number to. Trailing 0s are omitted and numbers are rounded towards +∞ (i.e 0.5 -> 1, -0.5 -> 0).
+Can optionally provide a `scale` which denotes the maximum number of decimal places to round the number to. Trailing 0s are omitted and numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
 If the `scale` value is not numerical or is `NaN`, it is treated as though it were not specified at all.
 
 **Invertibility:** Partly invertible. It is invertible when its domain is restricted to numbers.
