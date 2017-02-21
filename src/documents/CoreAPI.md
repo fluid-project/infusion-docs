@@ -254,15 +254,23 @@ the multi-arg versions of `Math.max` and `Math.min`, e.g.
 var max = Math.max.apply(null, numbers);
 ```
 
-### fluid.roundToDecimal(num, scale)
+### fluid.roundToDecimal(num, scale, method)
 
 * `num {Number}` The number to be rounded
 * `scale {Number}` The maximum number of decimal places to round to. If the scale is invalid (i.e falsey, not a number, negative value), it is treated as 0. If the scale is a floating point number, it is rounded to an integer.
+* `method {String}` _(optional)_ Request a rounding method to use ("round", "ceil", "floor"). If nothing or an invalid method is provided, it will default to "round".
 
-Derived from [AGK's stack overflow](http://stackoverflow.com/a/12830454) answer, it rounds the supplied number to at most the number of decimal places indicated by the scale, omiting any trailing 0s. Similar to [`Math.round`](https://www.ecma-international.org/ecma-262/5.1/#sec-15.8.2.15), numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
+Derived from Sindre Sorhus's [round-to node]( https://github.com/sindresorhus/round-to) module. (License: MIT)
+
+Rounds the supplied number to at most the number of decimal places indicated by the scale, omiting any trailing 0s. There are three possible rounding methods described below: "round", "ceil", "floor".
+* `"round"`: Numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
+* `"ceil"`: Numbers are rounded up
+* `"floor"`: Numbers are rounded down
 
 ```javascript
 var rounded = fluid.roundToDecimal(1.555, 2) // rounded now holds 1.56
+var ceil = fluid.roundToDecimal(1.555, 2, "ceil") // rounded now holds 1.56
+var floor = fluid.roundToDecimal(1.555, 2, "floor") // rounded now holds 1.55
 ```
 
 
