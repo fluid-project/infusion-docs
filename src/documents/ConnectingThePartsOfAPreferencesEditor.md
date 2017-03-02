@@ -24,7 +24,7 @@ to avoid possible conflicts. The name is also used to tie together all the vario
 {
     "type": "object",
     "properties": {
-        "fluid.prefs.textSize": {   <<<=== This is the name of the preference
+        "fluid.prefs.textSize": {   // <<<=== This is the name of the preference
             "type": "number",
             "default": 1,
             "min": 1,
@@ -49,7 +49,7 @@ The Auxiliary Schema links to the preferences specified in the Primary Schema us
 {
     ....
     "textSize": {
-        "type": "fluid.prefs.textSize",  <<<=== This type must match the name specified in the primary schema
+        "type": "fluid.prefs.textSize",  // <<<=== This type must match the name specified in the primary schema
         "panel": {...},
         "enactor": {...}
     }
@@ -64,11 +64,11 @@ The Auxiliary Schema also specifies which components should be used for the pane
     "textSize": {
         "type": "fluid.prefs.textSize",
         "panel": {
-            "type": "fluid.prefs.panel.textSize",  <<<=== This type is the name of the panel component
+            "type": "fluid.prefs.panel.textSize",  // <<<=== This type is the name of the panel component
             ...
         },
         "enactor": {
-            "type": "fluid.prefs.enactor.textSize",  <<<=== This type is the name of the enactor component
+            "type": "fluid.prefs.enactor.textSize",  // <<<=== This type is the name of the enactor component
             ...
         }
     }
@@ -77,7 +77,7 @@ The Auxiliary Schema also specifies which components should be used for the pane
 
 ## Panel Component ##
 
-Each [panel component](Panels.md) must include a preference map option in its defaults, called `preferenceMap`. The Preferences Framework uses the preference map to populate some of the panel's defaults using information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md).
+Each [panel component](Panels.md) must include a preference map option in its defaults, called `preferenceMap`. The Preferences Framework uses the preference map to populate some of the panel's defaults using information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md). If a property in the map starts with `"model."` and has a value of `"default"`, a model relay between the preference and the model value will be generated. All other values are assumed to be keys into the preference's primary schema and will return a value sourced from there.
 
 ### Example: ###
 
@@ -85,7 +85,7 @@ Each [panel component](Panels.md) must include a preference map option in its de
 fluid.defaults("fluid.prefs.panel.textSize", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
-        "fluid.prefs.textSize": {  <<<=== This property name must match the name specified in the primary schema
+        "fluid.prefs.textSize": {  // <<<=== This property name must match the name specified in the primary schema
             "model.value": "default",
             "range.min": "minimum",
             "range.max": "maximum"
@@ -105,7 +105,7 @@ Each enactor component must include a preference map option in its defaults, cal
 fluid.defaults("fluid.prefs.enactor.textSize", {
    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
    preferenceMap: {
-       "fluid.prefs.textSize": {  <<<=== This property name must match the name specified in the primary schema
+       "fluid.prefs.textSize": {  // <<<=== This property name must match the name specified in the primary schema
            "model.value": "default"
        }
    },
