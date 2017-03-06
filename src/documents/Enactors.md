@@ -91,7 +91,7 @@ fluid.defaults("fluid.prefs.enactor.textFont", {
     gradeNames: ["fluid.prefs.enactor.classSwapper"],
     preferenceMap: {
         "fluid.prefs.textFont": {
-            "model.value": "default"
+            "model.value": "value"
         }
     }
 });
@@ -109,7 +109,7 @@ fluid.defaults("gpii.enactor.fontSize", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     preferenceMap: {
         "gpii.primarySchema.fontSize": {
-            "model.value": "default"
+            "model.value": "value"
         }
     },
     selectors: {
