@@ -77,7 +77,7 @@ The Auxiliary Schema also specifies which components should be used for the pane
 
 ## Panel Component ##
 
-Each [panel component](Panels.md) must include a preference map option in its defaults, called `preferenceMap`. The Preferences Framework uses the preference map to populate some of the panel's defaults using information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md). If a property in the map starts with `"model."` and has a value of `"default"`, a model relay between the preference and the model value will be generated. All other values are assumed to be keys into the preference's primary schema and will return a value sourced from there.
+Each [panel component](Panels.md) must include a preference map option in its defaults, called `preferenceMap`. The Preferences Framework uses the preference map to populate some of the panel's defaults using information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md). If a property in the map starts with `"model."` and has a value of `"value"`, a model relay between the preference and the model value will be generated. All other values are assumed to be keys into the preference's primary schema and will return a value sourced from there.
 
 ### Example: ###
 
@@ -86,7 +86,7 @@ fluid.defaults("fluid.prefs.panel.textSize", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "fluid.prefs.textSize": {  // <<<=== This property name must match the name specified in the primary schema
-            "model.value": "default",
+            "model.value": "value",
             "range.min": "minimum",
             "range.max": "maximum"
         }
@@ -106,7 +106,7 @@ fluid.defaults("fluid.prefs.enactor.textSize", {
    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
    preferenceMap: {
        "fluid.prefs.textSize": {  // <<<=== This property name must match the name specified in the primary schema
-           "model.value": "default"
+           "model.value": "value"
        }
    },
    ...
