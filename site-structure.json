@@ -146,6 +146,13 @@
         "sections":
         [
             {
+                "sectionName":"Introduction",
+                "pages":
+                [
+                    { "pageName": "Developer Introduction to the Infusion Framework", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework.html" }
+                ]
+            },
+            {
                 "sectionName":"Getting Started",
                 "pages":
                 [

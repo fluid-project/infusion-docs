@@ -241,7 +241,7 @@ fluid.defaults("fluid.helloWorld", {
 });
 ```
 
-Then, from the console, we'll use the ChangeApplier to change the model; notice how the modelListener we defined responds to the change and updates the message again:
+Then, from the console, we'll use the `ChangeApplier` to change the model; notice how the modelListener we defined responds to the change and updates the message again:
 
 `helloWorld.applier.change("message", "Goodbye, World!");`
 
