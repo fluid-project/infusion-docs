@@ -1,5 +1,5 @@
 ---
-title: Developer Introduction to the Infusion Framework
+title: Developer Introduction to the Infusion Framework - Opening Remarks
 layout: default
 category: Tutorials
 ---
@@ -34,7 +34,7 @@ Components are [JavaScript objects that have certain characteristics](/infusion/
 
 Component-based development emphasizes declarative configuration, loose coupling and flexible hierarchies. The framework manages component lifecycle and scoping and provides many supports to allow components to work in collaboration with one another.
 
-A new Infusion component is defined using the `fluid.default` function and a very basic "Hello, World!" component might look like this:
+A new Infusion component is defined using the `fluid.defaults` function and a very basic "Hello, World!" component might look like this:
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/oBYvwx?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
@@ -317,7 +317,7 @@ fluid.defaults("fluid.helloWorld", {
 });
 ```
 
-### Restructuring Infusion Components
+### Restructuring Components
 
 Infusion's configuration-oriented components make it easier to restructure code, especially as component configuration becomes unwieldy. In the example below, we extract the two "say hello" components into separate component definitions from the main component, then include them as subcomponents of the main component. We've also added a listener to the main component to announce (once) when it is finished creation.
 

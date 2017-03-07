@@ -146,10 +146,23 @@
         "sections":
         [
             {
-                "sectionName":"Introduction",
+                "sectionName":"Developer Introduction to the Infusion Framework",
                 "pages":
                 [
-                    { "pageName": "Developer Introduction to the Infusion Framework", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework.html" }
+                    { "pageName": "Opening Remarks", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.html" },
+                    { "pageName": "Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html" },
+                    { "pageName": "Invokers", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html" },
+                    { "pageName": "Events and Inversion of Control", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html" },
+                    { "pageName": "Models and Model Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html" },
+                    { "pageName": "Views and View Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html" },
+                    { "pageName": "Listening to Model Changes", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html" },
+                    { "pageName": "Subcomponents and Model Relaying", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html" },
+                    { "pageName": "Polymorphic InVokers and Refactoring", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-PolymorphicInVokersAndRefactoring.html" },
+                    { "pageName": "Extending Designs with Existing Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md" }
+
+
+
+
                 ]
             },
             {
