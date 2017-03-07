@@ -100,7 +100,7 @@ Infusion also makes extensive use of the programming concept of [Inversion of Co
 
 IoC references allow us to refer to other parts of a component object (or another component entirely) in a declarative, context-specific manner, with `{that}` standing in for the current component configuration.
 
-We can use a listener definition, the `onCreate` lifecycle event and IoC `{that]` to have a component say hello when it's ready, rather than needing to be manually called:
+We can use a listener definition, the `onCreate` lifecycle event and IoC `{that}` to have a component say hello when it's ready, rather than needing to be manually called:
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/LxbPQZ?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
