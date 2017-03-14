@@ -18,7 +18,7 @@ Infusion's approach to component-based development emphasizes declarative config
 
 A new Infusion component grade ("grade" is the term used in Infusion for a sort of blueprint, in this case one that holds a component's default configuration) is defined using the `fluid.defaults` function and a very basic "Hello, World!" component might look like this:
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/oBYvwx?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/oBYvwx?editors=1111)</div>
 
 
 ```
@@ -38,3 +38,5 @@ var helloWorld = fluid.helloWorld();
 ```
 
 Right now this component doesn't do anything, but we will evolve its definition throughout this introduction to demonstrate further core concepts of the framework.
+
+Next: [ Invokers](tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html)
