@@ -18,6 +18,10 @@ The introduction assumes you are familiar with the basics of [JavaScript](https:
 
 We will build and evolve a ["Hello, World!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) implementation to demonstrate the core concepts, with live examples throughout using the [CodePen](http://codepen.io/) service.
 
+<!-- Todo
+## Why Infusion
+-->
+
 ## Infusion's Core Concepts
 
 * We implement our programs by designing [components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html) that work together to provide the needed functionality. Components are Javascript objects adhering to certain syntax conventions that are created using the `fluid.defaults` function. While components have defaults, any of these defaults can be overriden at the time a specific instance of the component is created.
