@@ -157,6 +157,7 @@
                     { "pageName": "Views and View Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html" },
                     { "pageName": "Listening to Model Changes", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html" },
                     { "pageName": "Subcomponents and Model Relaying", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html" },
+                    { "pageName": "Restructuring Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.md" },
                     { "pageName": "Polymorphic InVokers and Refactoring", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-PolymorphicInVokersAndRefactoring.html" },
                     { "pageName": "Extending Designs with Existing Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md" }
 
