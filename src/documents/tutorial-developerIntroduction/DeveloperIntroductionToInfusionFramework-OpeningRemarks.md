@@ -24,15 +24,26 @@ We will build and evolve a ["Hello, World!"](https://en.wikipedia.org/wiki/%22He
 
 ## Infusion's Core Concepts
 
-* We implement our programs by designing [components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html) that work together to provide the needed functionality. Components are Javascript objects adhering to certain syntax conventions that are created using the `fluid.defaults` function. While components have defaults, any of these defaults can be overriden at the time a specific instance of the component is created.
-* Components use [invokers](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html) to expose functionality "publicly", provide a consistent API for collaboration with other components or use by other code, and enable polymorphic behaviour when deriving new components from existing ones.
-* All components support [events and inversion of control](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html); these allow our programs to be built up of loosely coupled parts, and to manage sequencing through components observing and responding to their own events or the events of other components.
-* Components that need to track mutable data, state or content should be [model components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html); model components can share and synchronize their data with other model components, fire events when their models are changed, and take other actions to store and respond to state changes.
-* Components that need to interact with the web page DOM to display content or interact with users are [view components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html); view components are bound to specific DOM nodes when created and support the DOM Binder convention to avoid tying an implementation too tightly to specific markup.
-* Model components can use [model listeners](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html) to respond to changes in model state.
-* Components can include [subcomponents, and use model relaying](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html) to keep state synchronized between different components in larger designs. Many kinds of model relays are possible aside from two-way synchronization.
-* As program designs evolve, Infusion's configuration-oriented components make it easier to [restructure a design](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.md) by splitting out functionality into multiple components and wiring them together through IoC references.
-* When it becomes clear two components have similar behaviour, Infusion's design helps in [refactoring to share functionality](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-PolymorphicInvokersAndRefactoring.html) through the use of invokers and base grades.
-* Infusion has strong supports for [multimodal implementations](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md) that allow programs to adapt themselves to new contexts for input and presentation.
+The list below summarizes each section of the tutorial and the core concept covered in it.
+
+1. [Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html) for organizing programs out of related pieces of data, functionality and interaction.
+
+2. [Invokers](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html) to allow components to provide a consistent structure for collaboration with other components and enable polymorphic function behaviour.
+
+3. [Events and Inversion of Control](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html) to allow our programs to be built out of loosely coupled parts, and to manage sequencing and lifecycle throughout that loosely coupled structure.
+
+4. [Model Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html) that can not only track mutable data, state or content, but share and synchronize their data with other model components and fire events when their state changes.
+
+5. [View Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html) for building connections between web elements and Infusion components.
+
+6. [Model Listeners](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html) to respond to changes in model state.
+
+7. [Subcomponents and Model Relaying](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html) to organize larger program designs and keep state synchronized between different pieces of a design.
+
+8. [Restructuring Designs](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.md) more easily because components are defined as blocks of configuration rather than code.
+
+9. [Refactoring Shared Functionality](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-PolymorphicInvokersAndRefactoring.html) in designs through the use of invokers and base component grades.
+
+10. [Extending Designs](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md) to allow programs to adapt themselves to new contexts for input and presentation.
 
 Next: [Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html)

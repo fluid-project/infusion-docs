@@ -115,3 +115,5 @@ fluid.defaults("fluid.helloWorld", {
 ## Where Next?
 
 -->
+
+Next: [Concluding Remarks](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html)
