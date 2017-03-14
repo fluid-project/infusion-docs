@@ -39,4 +39,4 @@ var helloWorld = fluid.helloWorld();
 
 Right now this component doesn't do anything, but we will evolve its definition throughout this introduction to demonstrate further core concepts of the framework.
 
-Next: [ Invokers](tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html)
+Next: [ Invokers](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html)

@@ -36,3 +36,5 @@ Now we can create an instance of the component and call the invoker as a functio
 var helloWorld = fluid.helloWorld({});
 helloWorld.sayHello();
 ```
+
+Next: [Events and Inversion of Control](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html)
