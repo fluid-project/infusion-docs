@@ -49,3 +49,5 @@ fluid.defaults("fluid.helloWorld", {
     }
 });
 ```
+
+Next: [Listening to Model Changes](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html) 

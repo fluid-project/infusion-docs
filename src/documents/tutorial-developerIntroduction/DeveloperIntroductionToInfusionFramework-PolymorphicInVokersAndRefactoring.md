@@ -1,5 +1,5 @@
 ---
-title: Developer Introduction to the Infusion Framework - Polymorphic InVokers and Refactoring
+title: Developer Introduction to the Infusion Framework - Polymorphic Invokers and Refactoring
 layout: default
 category: Tutorials
 ---
@@ -85,3 +85,5 @@ fluid.defaults("fluid.helloWorld", {
     }
 });
 ```
+
+Next: [Extending Designs with Existing Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md)

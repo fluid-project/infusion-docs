@@ -73,3 +73,5 @@ fluid.defaults("fluid.helloWorld", {
     }
 });
 ```
+
+Next: [Restructuring Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.md)

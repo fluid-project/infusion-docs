@@ -31,3 +31,4 @@ fluid.defaults("fluid.helloWorld", {
     }
 });
 ```
+Next: [Views and View Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html)

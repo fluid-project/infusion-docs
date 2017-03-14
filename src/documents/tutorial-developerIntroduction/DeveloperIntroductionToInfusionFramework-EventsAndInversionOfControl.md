@@ -31,3 +31,5 @@ fluid.defaults("fluid.helloWorld", {
     }
 });
 ```
+
+Next: [Model Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html)
