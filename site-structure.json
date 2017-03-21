@@ -135,14 +135,15 @@
                 "sectionName": "Migrating to Infusion 2.0",
                 "pages":
                 [
-                    { "pageName": "API Changes from 1.5 to 2.0", "href": "/APIChangesFrom1_5To2_0.html" }
+                    { "pageName": "API Changes from 1.5 to 2.0", "href": "/APIChangesFrom1_5To2_0.html" },
+                    { "pageName": "Deprecated in 2.0", "href": "/DeprecatedIn2_0.html" }
                 ]
             },
             {
-                "sectionName": "Deprecations",
+                "sectionName": "Migrating to Infusion 3.0",
                 "pages":
                 [
-                    { "pageName": "Deprecated in 2.0", "href": "/DeprecatedIn2_0.html" }
+                    { "pageName": "API Changes from 2.0 to 3.0", "href": "/APIChangesFrom2_0To3_0.html" }
                 ]
             }
         ]
