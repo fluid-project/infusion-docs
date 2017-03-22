@@ -30,11 +30,11 @@ fluid.defaults("fluid.helloWorld", {
 });
 ```
 
-Now we can create an instance of the component and call the invoker as a function to say hello:
+Now at the console we can create an instance of the component and call the invoker as a function to say hello:
 
 ```
-var helloWorld = fluid.helloWorld({});
-helloWorld.sayHello();
+> var helloWorld = fluid.helloWorld({});
+> helloWorld.sayHello();
 ```
 
 Next: [Events and Inversion of Control](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html)
