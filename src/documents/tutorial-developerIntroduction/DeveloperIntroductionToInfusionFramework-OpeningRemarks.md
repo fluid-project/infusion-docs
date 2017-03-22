@@ -12,13 +12,17 @@ page of the [Infusion Documentation wiki](http://wiki.fluidproject.org/display/d
 
 Here we will boil down some of the basic concepts of Infusion for developers who may be interested in it, but uncertain of where to start. There's a lot going on in the framework, but grasping some core ideas helps a great deal in moving forward and learning.
 
-This introduction summarizes some topics (and leaves out many others) that are gone into at length in the longer [Framework Concepts](/infusion/development/FrameworkConcepts.md) document; developers interested in greater detail about the guiding philosophy behind Infusion should consult that document as well.
+This introduction summarizes some topics (and leaves out many others) that are gone into at length in the [full framework documentation](/), and is focused on developers trying to orient themselves to the framework for the first time.
 
-The introduction assumes you are familiar with the basics of [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript) development, and with using a browser's [developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools). You should also have some experience of the [jQuery](https://jquery.com/) JavaScript library that Infusion is built on top of.
+The introduction assumes:
+
+* You are familiar with the basics of [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript).
+* With using a browser's [developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools) to access a console.
+* Ideally, you should also have some experience of the [jQuery](https://jquery.com/) JavaScript library that Infusion is built on top of.
 
 We will build and evolve a ["Hello, World!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) implementation to demonstrate the core concepts, with live examples throughout using the [CodePen](http://codepen.io/) service.
 
-<!-- Todo
+<!-- TODO:
 ## Why Infusion
 -->
 
