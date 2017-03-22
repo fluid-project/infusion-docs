@@ -77,4 +77,4 @@ fluid.defaults("fluid.helloWorld", {
 });
 ```
 
-Next: [Polymorphic Invokers and Refactoring](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-PolymorphicInvokersAndRefactoring.html)
+Next: [Polymorphic Invokers and Refactoring](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.md)
