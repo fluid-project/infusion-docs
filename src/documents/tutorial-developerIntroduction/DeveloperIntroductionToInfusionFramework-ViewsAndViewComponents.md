@@ -10,9 +10,9 @@ View components require the specification of a page container for the component 
 
 `var helloWorld = fluid.helloWorld(".flc-helloWorld", {});`
 
-Let's turn the "Hello, World!" component into a view component that writes its message to the screen as well, assuming we have this HTML on the page:
-
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/MJbgVR?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+
+Let's turn the "Hello, World!" component into a view component that writes its initial message to the screen as well, assuming we have this HTML on the page:
 
 ```
 <div class="helloWorld">
@@ -30,8 +30,10 @@ fluid.defaults("fluid.helloWorld", {
         messageArea: ".flc-messageArea"
     },
     listeners: {
-        "onCreate.sayHello": "{that}.sayHello",
         "onCreate.displayHello": "{that}.displayHello"
+    },
+    modelListeners: {
+        "message": "{that}.sayHello"
     },
     invokers: {
         sayHello: {
@@ -50,4 +52,6 @@ fluid.defaults("fluid.helloWorld", {
 });
 ```
 
-Next: [Listening to Model Changes](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html) 
+You'll notice if you use the `changeApplier` from the console again like you did previously, the console message will update, but the screen displayed message won't. You may be able to guess this is because the screen displayed message isn't using a model listener. We'll address this in the next section.
+
+Next: [Subcomponents and Model Relaying](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html)

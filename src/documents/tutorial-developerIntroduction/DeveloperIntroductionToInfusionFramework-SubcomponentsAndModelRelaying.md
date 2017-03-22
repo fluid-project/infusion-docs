@@ -1,12 +1,14 @@
 ---
-title: Developer Introduction to the Infusion Framework - Subcomponents and ModelRelaying
+title: Developer Introduction to the Infusion Framework - Subcomponents and Model Relaying
 layout: default
 category: Tutorials
 ---
 
-A component can include other components within its configuration; these are referred to in Infusion as subcomponents. It's common to want related components to share state through their models; we can handle this through the [model relay](/infusion/development/ModelRelay.md) features.
+A component can include other components within its configuration; these are referred to in Infusion as subcomponents.
 
-The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate subcomponents, and synchronizes the "hello" message through model relay.
+It's also common to want related components to share state through their models; we can handle this through the [model relay](/infusion/development/ModelRelay.md) features.
+
+The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate subcomponents, and synchronizes the "hello" message through model relay. We'll also update the web page display to use a model listener as to respond to model changes.
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/rjWBQN?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
@@ -46,7 +48,7 @@ fluid.defaults("fluid.helloWorld", {
                         "this": "console",
                         "method": "log",
                         // Here, "{that}" means the context of the current
-                        // component configuration (consoleHello)
+                        // component configuration of this block (consoleHello)
                         "args": ["{that}.model.message"]
                     },
                 }
