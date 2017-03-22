@@ -16,7 +16,7 @@ We'll define the first approach as an invoker on the "Hello, World!" component. 
 ```
 fluid.defaults("fluid.helloWorld", {
     gradeNames: ["fluid.component"],
-    invokers: {
+    invokers: {        
         sayHello: {
             // Configures this invoker to use the console object
             "this": "console",

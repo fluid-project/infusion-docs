@@ -26,7 +26,8 @@ A new Infusion component grade ("grade" is the term used in Infusion for a sort 
 // new component's default configuration
 fluid.defaults("fluid.helloWorld", {
     // gradeNames supplies an array of strings that name previously
-    // defined Infusion components
+    // defined Infusion components; their configurations will be
+    // merged together for the final "blueprint"
     gradeNames: ["fluid.component"]
 });
 ```
