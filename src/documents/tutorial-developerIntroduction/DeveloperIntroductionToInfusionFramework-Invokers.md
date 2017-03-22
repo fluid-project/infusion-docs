@@ -9,7 +9,7 @@ All Infusion components support the definition of public functions using [invoke
 * By printing to the web developer console via `console.log`
 * By displaying a message on a web page
 
-We'll define the first approach as an invoker on the "Hello, World!" component. Other styles of invokers are possible, but we'll use one here that lets us refer to functions of existing Javascript objects, such as `console`.
+We'll define the first approach as an invoker on the "Hello, World!" component. Other styles of invokers are possible (such as ones referring to a function by name), but we'll use one here that lets us refer to a function of  an existing Javascript object, such as `console`.
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/MJbgEx?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
