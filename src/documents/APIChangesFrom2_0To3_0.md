@@ -23,11 +23,46 @@ This section describes major APIs that were in common use. For information about
 
 ###### Additions ######
 
-* tableOfContents.json
-  * `toggleOn`
-  * `toggleOff`
 * enhanceInputs.json
-  * `label`
-  * `descr`
-  * `toggleOn`
-  * `toggleOff`
+  * `"label"`
+  * `"description"`
+  * `"switchOn"`
+  * `"switchOff"`
+* speak.json
+  * `"switchOn"`
+  * `"switchOff"`
+* tableOfContents.json
+  * `"switchOn"`
+  * `"switchOff"`
+
+###### Changes ######
+
+<table>
+    <thead>
+        <tr>
+            <th>Message Bundle</th>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2">speak.json</td>
+            <td><code>"label"</code></td>
+            <td><code>"speakLabel"</code></td>
+        </tr>
+        <tr>
+            <td><code>"description"</code></td>
+            <td><code>"speakDescr"</code></td>
+        </tr>
+        <tr>
+            <td rowspan="2">tableOfContents.json</td>
+            <td><code>"label"</code></td>
+            <td><code>"tocLabel"</code></td>
+        </tr>
+        <tr>
+            <td><code>"description"</code></td>
+            <td><code>"tocDescr"</code></td>
+        </tr>
+    </tbody>
+</table>

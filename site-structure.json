@@ -216,6 +216,7 @@
                     { "pageName": "Grid Reorderer", "href": "/to-do/GridReordererAPI.html" },
                     { "pageName": "Layout Reorderer", "href": "/to-do/LayoutReordererAPI.html" },
                     { "pageName": "Image Reorderer", "href": "/ImageReordererAPI.html" },
+                    { "pageName": "Switch", "href": "/SwitchAPI.html" },
                     { "pageName": "Text to Speech", "href": "/TextToSpeechAPI.html" },
                     { "pageName": "User Interface Options", "href": "/UserInterfaceOptionsAPI.html" },
                     { "pageName": "Uploader", "href": "/UploaderAPI.html" },
