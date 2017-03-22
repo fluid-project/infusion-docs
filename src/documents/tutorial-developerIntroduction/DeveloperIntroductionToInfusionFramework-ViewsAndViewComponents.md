@@ -26,6 +26,9 @@ fluid.defaults("fluid.helloWorld", {
     model: {
         message: "Hello, World!"
     },
+    // Creates a binding between the
+    // selector named 'messageArea'
+    // and the jQuery selector '.flc-messageArea'
     selectors: {
         messageArea: ".flc-messageArea"
     },
@@ -41,8 +44,13 @@ fluid.defaults("fluid.helloWorld", {
             "method": "log",
             "args": ["{that}.model.message"]
         },
+        // Another invoker to call a jQuery
+        // method on a DOM node returned
+        // using the DOM binder functionality
         displayHello: {
-            // DOM node as a jQuery object
+            // Uses the DOM node bound to the
+            // `messageArea` key by the selector
+            // definition above
             "this": "{that}.dom.messageArea",
             // Calls the 'html' function to replace the HTML at the node
             "method": "html",

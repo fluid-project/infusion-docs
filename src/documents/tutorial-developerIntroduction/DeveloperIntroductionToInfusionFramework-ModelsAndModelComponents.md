@@ -21,13 +21,15 @@ If there is a need to store a non-mutable variable, a non-component object or si
 
 ## Creating Model Components
 
-First, let's store the "Hello, World!" message on the component model rather than having it directly in the invoker's arguments, and refer to it from the `sayHello` invoker using IoC. In the process, we'll change it from a basic `fluid.component` to a `fluid.modelComponent`.
+First, let's store the "Hello, World!" message on the component model rather than having it directly in the invoker's arguments, and refer to it from the `sayHello` invoker using IoC syntax. In the process, we'll change it from a basic `fluid.component` to a `fluid.modelComponent`.
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/XpNrEr?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
 ```
 fluid.defaults("fluid.helloWorld", {
     gradeNames: ["fluid.modelComponent"],
+    // Stores a string value with the key 'message'
+    // on the component model
     model: {
         message: "Hello, World!"
     },
@@ -38,6 +40,8 @@ fluid.defaults("fluid.helloWorld", {
         sayHello: {
             "this": "console",
             "method": "log",
+            // Refers to the model.message value of
+            // the component in the invoker argument
             "args": ["{that}.model.message"]
         }
     }
@@ -59,6 +63,14 @@ fluid.defaults("fluid.helloWorld", {
         message: "Hello, World!"
     },
     modelListeners: {
+        // On the left side, configures a
+        // model listener listening to the
+        // 'message' value
+        //
+        // On the right side, configures the
+        // listener to call the component's
+        // 'sayHello' invoker whenever the
+        // value changes
         "message": "{that}.sayHello"
     },
     invokers: {
