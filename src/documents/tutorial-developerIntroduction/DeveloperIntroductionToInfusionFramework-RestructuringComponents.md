@@ -4,7 +4,9 @@ layout: default
 category: Tutorials
 ---
 
-Infusion's configuration-oriented components make it easier to restructure code, especially as component configuration becomes unwieldy. In the example below, we extract the two "say hello" components into separate component definitions from the main component, then include them as subcomponents of the main component. We've also added a listener to the main component to announce (once) when it is finished creation.
+Infusion's configuration-oriented components make it easier to restructure code, especially as a single component configuration becomes unwieldy and long. It's a common and expected pattern in Infusion to refactor components as a design evolves.
+
+In the example below, we extract the two "say hello" components into separate component definitions from the main component, then include them as subcomponents of the main component. We've also added a listener to the main component to announce (once) when its creation is complete.
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/egBObY?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
