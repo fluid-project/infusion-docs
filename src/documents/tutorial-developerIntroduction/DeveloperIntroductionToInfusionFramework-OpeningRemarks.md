@@ -28,7 +28,7 @@ The list below summarizes each section of the tutorial and the core concept cove
 
 1. [Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html) for organizing programs out of related pieces of data, functionality and interaction.
 
-2. [Invokers](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html) to allow components to provide a consistent structure for collaboration with other components and enable polymorphic function behaviour.
+2. [Invokers](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html) to allow components to provide a consistent structure for collaboration with other components and enable overriding function behavior.
 
 3. [Events and Inversion of Control](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html) to allow our programs to be built out of loosely coupled parts, and to manage sequencing and lifecycle throughout that loosely coupled structure.
 
@@ -42,7 +42,7 @@ The list below summarizes each section of the tutorial and the core concept cove
 
 8. [Restructuring Designs](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.md) more easily because components are defined as blocks of configuration rather than code.
 
-9. [Refactoring Shared Functionality](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-PolymorphicInvokersAndRefactoring.html) in designs through the use of invokers and base component grades.
+9. [Refactoring Shared Functionality](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html) in designs through the use of invokers and base component grades.
 
 10. [Extending Designs](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md) to allow programs to adapt themselves to new contexts for input and presentation.
 
