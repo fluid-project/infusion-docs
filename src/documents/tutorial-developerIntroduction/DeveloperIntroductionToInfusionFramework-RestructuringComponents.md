@@ -6,9 +6,13 @@ category: Tutorials
 
 Infusion's configuration-oriented components make it easier to restructure code, especially as a single component configuration becomes unwieldy and long. It's a common and expected pattern in Infusion to refactor components as a design evolves.
 
-In the example below, we extract the two "say hello" components into separate component definitions from the main component, then include them as subcomponents of the main component. We've also added a listener to the main component to announce (once) when its creation is complete.
+In the example below, we extract the two "say hello" components into separate component definitions from the main component, then include them as subcomponents of the main component with their options appropriately configured.
+
+We've also added a listener to the main component to announce (once) when its creation is complete.
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/egBObY?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+
+<!-- TODO: this is a bit of a mess right now, and the console and web page components actually aren't freestanding - they should be made freestanding components -->
 
 ```
 // The console hello functionality is now defined as a separate
@@ -16,7 +20,7 @@ In the example below, we extract the two "say hello" components into separate co
 fluid.defaults("fluid.helloWorld.consoleHello", {
     gradeNames: ["fluid.modelComponent"],
     model: {
-        message: "{helloWorld}.model.message"
+        message: "Hello, Console World!"
     },
     modelListeners: {
         "message": "{that}.sayHello"
@@ -35,16 +39,19 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
 // The web page hello functionality is now defined as a separate
 // component
 fluid.defaults("fluid.helloWorld.displayHello", {
-    gradeNames: ["fluid.modelComponent"],
+    gradeNames: ["fluid.viewComponent"],
     model: {
-        message: "{helloWorld}.model.message"
+        message: "Hello, Web Page World!"
+    },
+    selectors: {
+        messageArea: ".flc-messageArea"
     },
     modelListeners: {
         "message": "{that}.displayHello"
     },
     invokers: {
         displayHello: {
-            "this": "{helloWorld}.dom.messageArea",
+            "this": "{that}.container",
             "method": "html",
             "args": ["{that}.model.message"]
         }
@@ -52,12 +59,9 @@ fluid.defaults("fluid.helloWorld.displayHello", {
 });
 
 fluid.defaults("fluid.helloWorld", {
-    gradeNames: ["fluid.viewComponent"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         message: "Hello, World!"
-    },
-    selectors: {
-        messageArea: ".flc-messageArea"
     },
     listeners: {
         "onCreate.announceSelf": {
@@ -70,8 +74,9 @@ fluid.defaults("fluid.helloWorld", {
         consoleHello: {
             type: "fluid.helloWorld.consoleHello"
         },
-        consoleLogger: {
+        dispayHello: {
             type: "fluid.helloWorld.displayHello",
+            container: ".flc-messageArea"
         }
     }
 });
