@@ -24,7 +24,7 @@ We will build and evolve a ["Hello, World!"](https://en.wikipedia.org/wiki/%22He
 
 ## Infusion's Core Concepts
 
-The list below summarizes each section of the tutorial and the core concept covered in it.
+The list below summarizes each section of the tutorial and the core concept covered in it. Each section introduces a new concept and connects it with previous ones.
 
 1. [Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html) for organizing programs out of related pieces of data, functionality and interaction.
 
