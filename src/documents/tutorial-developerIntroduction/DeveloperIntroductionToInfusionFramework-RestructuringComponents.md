@@ -84,11 +84,6 @@ fluid.defaults("fluid.helloWorld", {
         consoleHello: {
             type: "fluid.helloWorld.consoleHello",
             options: {
-                // We reconfigure the consoleHello
-                // subcomponent used here to share
-                // its message value with the
-                // helloWorld component it's
-                // contained within
                 model: {
                     message: "{helloWorld}.model.message"
                 }
@@ -96,16 +91,8 @@ fluid.defaults("fluid.helloWorld", {
         },
         dispayHello: {
             type: "fluid.helloWorld.displayHello",
-            // When using a viewComponent as a
-            // subcomponent, we can specify the
-            // selector for its container here
             container: ".helloWorld",
             options: {
-                // We reconfigure the displayHello
-                // subcomponent used here to share
-                // its message value with the
-                // helloWorld component it's
-                // contained within
                 model: {
                     message: "{helloWorld}.model.message"
                 }
