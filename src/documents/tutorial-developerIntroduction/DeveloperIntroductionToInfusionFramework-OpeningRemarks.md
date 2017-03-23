@@ -30,22 +30,22 @@ We will build and evolve a ["Hello, World!"](https://en.wikipedia.org/wiki/%22He
 
 The list below summarizes each section of the tutorial and the core concept covered in it. Each section introduces a new concept and connects it with previous ones.
 
-1. [Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html) for organizing programs out of related pieces of data, functionality and interaction.
+1. [Components](DeveloperIntroductionToInfusionFramework-Components.html) for organizing programs out of related pieces of data, functionality and interaction.
 
-2. [Invokers](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html) to allow components to provide a consistent structure for collaboration with other components and enable overriding function behavior.
+2. [Invokers](DeveloperIntroductionToInfusionFramework-Invokers.html) to allow components to provide a consistent structure for collaboration with other components and enable overriding function behavior.
 
-3. [Events and Inversion of Control](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html) to allow our programs to be built out of loosely coupled parts, and to manage sequencing and lifecycle throughout that loosely coupled structure.
+3. [Events and Inversion of Control](DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html) to allow our programs to be built out of loosely coupled parts, and to manage sequencing and lifecycle throughout that loosely coupled structure.
 
-4. [Model Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html) that can not only track mutable data, state or content, but share and synchronize their data with other model components and fire events when their state changes. [Model Listeners](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html) are used to respond to changes in model state.
+4. [Model Components](DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html) that can not only track mutable data, state or content, but share and synchronize their data with other model components and fire events when their state changes. [Model Listeners](DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html) are used to respond to changes in model state.
 
-5. [View Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html) for building connections between web elements and Infusion components.
+5. [View Components](DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html) for building connections between web elements and Infusion components.
 
-6. [Subcomponents and Model Relaying](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html) to organize larger program designs and keep state synchronized between different pieces of a design.
+6. [Subcomponents and Model Relaying](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html) to organize larger program designs and keep state synchronized between different pieces of a design.
 
-7. [Restructuring Designs](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.md) more easily because components are defined as blocks of configuration rather than code.
+7. [Restructuring Designs](DeveloperIntroductionToInfusionFramework-RestructuringComponents.md) more easily because components are defined as blocks of configuration rather than code.
 
-8. [Refactoring Shared Functionality](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html) in designs through the use of invokers and base component grades.
+8. [Refactoring Shared Functionality](DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html) in designs through the use of invokers and base component grades.
 
-9. [Extending Designs](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md) to allow programs to adapt themselves to new contexts for input and presentation.
+9. [Extending Designs](DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md) to allow programs to adapt themselves to new contexts for input and presentation.
 
-Next: [Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html)
+Next: [Components](DeveloperIntroductionToInfusionFramework-Components.md)

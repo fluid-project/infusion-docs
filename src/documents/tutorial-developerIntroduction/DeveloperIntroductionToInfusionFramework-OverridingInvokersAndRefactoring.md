@@ -98,4 +98,4 @@ fluid.defaults("fluid.helloWorld", {
 });
 ```
 
-Next: [Extending Designs with Existing Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md)
+Next: [Extending Designs with Existing Components](DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md)

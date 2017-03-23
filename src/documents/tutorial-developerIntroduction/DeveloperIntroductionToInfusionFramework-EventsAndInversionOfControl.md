@@ -42,4 +42,4 @@ fluid.defaults("fluid.helloWorld", {
 });
 ```
 
-Next: [Model Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html)
+Next: [Model Components](DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html)

@@ -114,4 +114,4 @@ helloWorld = fluid.helloWorld({
 
 Notice that the initial message is changed - an Infusion grade definition created by `fluid.defaults` is exactly that, a default definition, and is fully extensible and reconfigurable even at runtime by passing in another block of configuration.
 
-Next: [Overriding Invokers and Refactoring](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.md)
+Next: [Overriding Invokers and Refactoring](DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.md)

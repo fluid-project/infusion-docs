@@ -39,4 +39,4 @@ Now at the console we can create an instance of the component and call the invok
 > helloWorld.sayHello();
 ```
 
-Next: [Events and Inversion of Control](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html)
+Next: [Events and Inversion of Control](DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html)

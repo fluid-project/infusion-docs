@@ -117,4 +117,4 @@ fluid.defaults("fluid.helloWorld", {
 });
 ```
 
-Next: [Concluding Remarks](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html)
+Next: [Concluding Remarks](DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html)

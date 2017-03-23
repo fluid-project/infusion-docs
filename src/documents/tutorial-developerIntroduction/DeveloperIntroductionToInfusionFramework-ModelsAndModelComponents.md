@@ -95,4 +95,4 @@ From the console we can now use the `changeApplier` functionality available to a
 > "Goodbye! See you again soon."
 ```
 
-Next: [Views and View Components](/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html)
+Next: [Views and View Components](DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html)
