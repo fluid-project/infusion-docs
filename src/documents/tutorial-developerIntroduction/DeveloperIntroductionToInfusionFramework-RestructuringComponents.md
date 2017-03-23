@@ -10,8 +10,9 @@ In the example below, we extract the two "say hello" components into separate co
 
 In the process, we'll be looking at some other important characteristics of Infusion component design:
 
-1) Building freestanding components, then wiring them together for more complex behaviours.
-2) Overriding default component configuration when building up applications from separate components.
+1. Building freestanding components, then wiring them together for more complex behaviours.
+
+2. Overriding default component configuration when building up applications from separate components.
 
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/egBObY?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
