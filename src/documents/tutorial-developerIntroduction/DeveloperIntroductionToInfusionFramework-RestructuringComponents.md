@@ -16,8 +16,6 @@ In the process, we'll be looking at some other important characteristics of Infu
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/egBObY?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
-<!-- TODO: this is a bit of a mess right now, and the console and web page components actually aren't freestanding - they should be made freestanding components -->
-
 ```
 // The console hello functionality is now defined as a separate
 // component
