@@ -9,7 +9,7 @@ All Infusion components support the definition of public functions using [invoke
 * By printing to the web developer console via `console.log`
 * By displaying a message on a web page
 
-We'll define the first approach as an invoker on the "Hello, World!" component. Other styles of invokers are possible (such as ones referring to a function by name), but we'll use one here that lets us refer to a function of  an existing Javascript object, such as `console`.
+We'll define the first approach as an invoker on the "Hello, World!" component. Other styles of invokers are possible (such as ones referring to a function by name), but we'll use one here that lets us refer to a function of an existing Javascript object, such as `console`.
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/MJbgEx?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
@@ -21,6 +21,16 @@ fluid.defaults("fluid.helloWorld", {
         // referred to by name 'sayHello'
         sayHello: {
             // Configures this invoker to use the console object
+            // The value of "this" should be a variable name
+            // referring to an existing object
+            //
+            // On the framework implentation side, the invoker uses
+            // Function.prototype.apply(), hence the use of "this"
+            // to refer to the object the function is intended to
+            // be called on (the "console" object in this case)
+            //
+            // see  [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply] for more about the "this" concept
+            // in Javascript
             "this": "console",
             // Configures this invoker to use the log function of the console
             // object
