@@ -18,7 +18,7 @@ Let's refactor to avoid duplication and create a base "say hello" component that
 fluid.defaults("fluid.helloWorld.sayHello", {
     gradeNames: ["fluid.modelComponent"],
     model: {
-        message: "{helloWorld}.model.message"
+        message: "Hello, world!"
     },
     modelListeners: {
         "message": "{that}.sayHello"
@@ -35,7 +35,7 @@ fluid.defaults("fluid.helloWorld.sayHello", {
 fluid.defaults("fluid.helloWorld.consoleHello", {
     // This component has all of the characteristics of sayHello,
     // except for its implementation in the invoker
-    gradeNames: ["fluid.helloWorld.sayHello"],
+    gradeNames: ["fluid.helloWorld.sayHello"],    
     invokers: {
         sayHello: {
             "this": "console",
@@ -49,11 +49,15 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
 
 fluid.defaults("fluid.helloWorld.displayHello", {
     // This component has all of the characteristics of sayHello,
-    // except for its implementation in the invoker
-    gradeNames: ["fluid.helloWorld.sayHello"],
+    // except for its implementation in the invoker; additionally,
+    // it adds the fluid.viewComponent grade and a selector
+    gradeNames: ["fluid.helloWorld.sayHello", "fluid.viewComponent"],
+    selectors: {
+        messageArea: ".flc-messageArea"
+    },
     invokers: {
         sayHello: {
-            "this": "{helloWorld}.dom.messageArea",
+            "this": "{that}.dom.messageArea",
             "method": "html",
             "args": ["{that}.model.message"]
         }
@@ -61,12 +65,9 @@ fluid.defaults("fluid.helloWorld.displayHello", {
 });
 
 fluid.defaults("fluid.helloWorld", {
-    gradeNames: ["fluid.viewComponent"],
+    gradeNames: ["fluid.modelComponent"],
     model: {
         message: "Hello, World!"
-    },
-    selectors: {
-        messageArea: ".flc-messageArea"
     },
     listeners: {
         "onCreate.announceSelf": {
@@ -77,10 +78,21 @@ fluid.defaults("fluid.helloWorld", {
     },
     components: {
         consoleHello: {
-            type: "fluid.helloWorld.consoleHello"
+            type: "fluid.helloWorld.consoleHello",
+            options: {
+                model: {
+                    message: "{helloWorld}.model.message"
+                }
+            }
         },
-        displayHello: {
+        dispayHello: {
             type: "fluid.helloWorld.displayHello",
+            container: ".helloWorld",
+            options: {
+                model: {
+                    message: "{helloWorld}.model.message"
+                }
+            }
         }
     }
 });
