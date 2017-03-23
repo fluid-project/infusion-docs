@@ -17,8 +17,8 @@ This introduction summarizes some topics (and leaves out many others) that are g
 The introduction assumes:
 
 * You are familiar with the basics of [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript).
-* With using a browser's [developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools) to access a console.
-* Ideally, you should also have some experience of the [jQuery](https://jquery.com/) JavaScript library that Infusion is built on top of.
+* You know how to use a browser's [developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools) to access a console.
+* Ideally, you should also have some experience with the [jQuery](https://jquery.com/) JavaScript library that Infusion is built atop.
 
 We will build and evolve a ["Hello, World!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) implementation to demonstrate the core concepts, with live examples throughout using the [CodePen](http://codepen.io/) service.
 
