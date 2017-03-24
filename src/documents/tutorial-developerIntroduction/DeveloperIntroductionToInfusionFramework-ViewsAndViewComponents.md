@@ -36,13 +36,13 @@ fluid.defaults("fluid.helloWorld", {
         "onCreate.displayHello": "{that}.displayHello"
     },
     modelListeners: {
-        "message": "{that}.sayHello"
+        message: "{that}.sayHello"
     },
     invokers: {
         sayHello: {
             "this": "console",
-            "method": "log",
-            "args": ["{that}.model.message"]
+            method: "log",
+            args: ["{that}.model.message"]
         },
         // Another invoker to call a jQuery
         // method on a DOM node returned
@@ -53,8 +53,8 @@ fluid.defaults("fluid.helloWorld", {
             // definition above
             "this": "{that}.dom.messageArea",
             // Calls the 'html' function to replace the HTML at the node
-            "method": "html",
-            "args": ["{that}.model.message"]
+            method: "html",
+            args: ["{that}.model.message"]
         }
     }
 });
