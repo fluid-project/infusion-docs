@@ -4,7 +4,7 @@ layout: default
 category: Tutorials
 ---
 
-All Infusion components support the definition of public functions using [invokers](/infusion/development/Invokers.md); among other things, invokers allow related components to have different internal implementations of a function but present a common function to be called by other code. If we imagine a "Hello, World!" component, there are a variety of ways it might say "hello". Two of them are:
+All Infusion components support the definition of public functions using [invokers](../Invokers.md); among other uses, invokers allow related components to have different internal implementations of a function but present a common function to be called by other code. If we imagine a "Hello, World!" component, there are a variety of ways it might say "hello". Two of them are:
 
 * By printing to the web developer console via `console.log`
 * By displaying a message on a web page
