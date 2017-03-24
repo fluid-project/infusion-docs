@@ -13,7 +13,7 @@ Our community often refers to this as *multimodal design* (in this context, a "m
 
 We currently have a "Hello, World!" component that can say "hello!"" by printing to a web page and logging to the console. What if we wanted it to talk as well?
 
-We'll extend the code further using an existing Infusion [text to speech](/infusion/development/TextToSpeechAPI.html) component, which should work in a modern text-to-speech supporting browser:
+We'll extend the code further using an existing Infusion [text to speech](../TextToSpeechAPI.md) component, which should work in a modern text to speech supporting browser:
 
 <div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/vgyBbe?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
 
