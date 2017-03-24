@@ -21,7 +21,7 @@ fluid.defaults("fluid.helloWorld.sayHello", {
         message: "Hello, world!"
     },
     modelListeners: {
-        "message": "{that}.sayHello"
+        message: "{that}.sayHello"
     },
     invokers: {
         // fluid.notImplemented is a function that specifically represents
@@ -39,10 +39,10 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
     invokers: {
         sayHello: {
             "this": "console",
-            "method": "log",
+            method: "log",
             // Here, "{that}" means the context of the current
             // component configuration (consoleHello)
-            "args": ["{that}.model.message"]
+            args: ["{that}.model.message"]
         },
     }
 });
@@ -58,8 +58,8 @@ fluid.defaults("fluid.helloWorld.displayHello", {
     invokers: {
         sayHello: {
             "this": "{that}.dom.messageArea",
-            "method": "html",
-            "args": ["{that}.model.message"]
+            method: "html",
+            args: ["{that}.model.message"]
         }
     }
 });
@@ -72,8 +72,8 @@ fluid.defaults("fluid.helloWorld", {
     listeners: {
         "onCreate.announceSelf": {
             "this": "console",
-            "method": "log",
-            "args": ["The helloWorld Component is ready"]
+            method: "log",
+            args: ["The helloWorld Component is ready"]
         }
     },
     components: {
