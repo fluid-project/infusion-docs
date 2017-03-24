@@ -6,13 +6,13 @@ category: Tutorials
 
 Programs using Infusion structure their data, functionality and interaction as various components defined using a common syntax.
 
-Components are [JavaScript objects that have certain characteristics](/infusion/development/UnderstandingInfusionComponents.md). Components can be freely combined together to form new components using the [grades system](/infusion/development/ComponentGrades.md), or organized into relationships with one another via [subcomponents](/infusion/development/SubcomponentDeclaration.md).
+Components are [JavaScript objects that have certain characteristics](../UnderstandingInfusionComponents.md). Components can be freely combined together to form new components using the [grades system](../ComponentGrades.md), or organized into relationships with one another via [subcomponents](../SubcomponentDeclaration.md).
 
  There are three base components to be aware of that any new components you create with Infusion will likely have at their root:
 
- * [`fluid.component`](/infusion/development/ComponentConfigurationOptions.md#options-supported-by-all-components-grades), the simplest type with support for events and public function definition (called [invokers](/infusion/development/Invokers.md) in Infusion).
- * [`fluid.modelComponent`](/infusion/development/ComponentConfigurationOptions.md#model-components), which adds support for mutable models, model events, and model state coordination and relay between different components.
- * [`fluid.viewComponent`](/infusion/development/ComponentConfigurationOptions.md#view-components), which supplement model components with functionality to bind to the DOM of a web page.
+ * [`fluid.component`](../ComponentConfigurationOptions.md#options-supported-by-all-components-grades), the simplest type with support for events and public function definition (called [invokers](../Invokers.md) in Infusion).
+ * [`fluid.modelComponent`](../ComponentConfigurationOptions.md#model-components), which adds support for mutable models, model events, and model state coordination and relay between different components.
+ * [`fluid.viewComponent`](../ComponentConfigurationOptions.md#view-components), which supplement model components with functionality to bind to the DOM of a web page.
 
 Infusion's approach to component-based development emphasizes declarative configuration, loose coupling and flexible hierarchies. The framework manages component lifecycle and scoping and provides many supports to allow components to work in collaboration with one another.
 
