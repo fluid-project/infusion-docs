@@ -49,8 +49,16 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
 
 fluid.defaults("fluid.helloWorld.displayHello", {
     // This component has all of the characteristics of sayHello,
-    // except for its implementation in the invoker; additionally,
-    // it adds the fluid.viewComponent grade and a selector
+    // except for its implementation in the invoker; additionally:
+    //
+    // 1) It adds the fluid.viewComponent grade to the gradeNames
+    // array to give it the DOM binding capabilities of a viewComponent;
+    // when multiple grade name are supplied in the array, their
+    // configurations are combined in left to right order, with the
+    // rightmost configuration taking precedence if there is a
+    // duplication of keys at the same place in the configuration
+    //
+    // 2) It adds a selector for the messageArea
     gradeNames: ["fluid.helloWorld.sayHello", "fluid.viewComponent"],
     selectors: {
         messageArea: ".flc-messageArea"

@@ -28,6 +28,12 @@ fluid.defaults("fluid.helloWorld", {
     // gradeNames supplies an array of strings that name previously
     // defined Infusion components; their configurations will be
     // merged together for the final "blueprint"
+    //
+    // In this case, we are supplying only a single grade name, but
+    // if multiples were supplied, they would be combined into one
+    // configuration in left to right order, with the rightmost
+    // configuration taking precedence in cases where different
+    // grades have the same key in the same position
     gradeNames: ["fluid.component"]
 });
 ```
