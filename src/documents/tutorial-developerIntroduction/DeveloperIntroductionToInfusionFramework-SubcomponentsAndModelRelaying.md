@@ -41,15 +41,15 @@ fluid.defaults("fluid.helloWorld", {
                     message: "{helloWorld}.model.message"
                 },
                 modelListeners: {
-                    "message": "{that}.sayHello"
+                    message: "{that}.sayHello"
                 },
                 invokers: {
                     sayHello: {
                         "this": "console",
-                        "method": "log",
+                        method: "log",
                         // Here, "{that}" means the context of the current
                         // component configuration of this block (consoleHello)
-                        "args": ["{that}.model.message"]
+                        args: ["{that}.model.message"]
                     },
                 }
             }
@@ -61,13 +61,13 @@ fluid.defaults("fluid.helloWorld", {
                     message: "{helloWorld}.model.message"
                 },
                 modelListeners: {
-                    "message": "{that}.displayHello"
+                    message: "{that}.displayHello"
                 },
                 invokers: {
                     displayHello: {
                         "this": "{helloWorld}.dom.messageArea",
-                        "method": "html",
-                        "args": ["{that}.model.message"]
+                        method: "html",
+                        args: ["{that}.model.message"]
                     }
                 }
             }
