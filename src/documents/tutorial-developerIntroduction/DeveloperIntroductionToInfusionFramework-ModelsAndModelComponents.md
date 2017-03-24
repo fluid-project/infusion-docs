@@ -39,10 +39,10 @@ fluid.defaults("fluid.helloWorld", {
     invokers: {
         sayHello: {
             "this": "console",
-            "method": "log",
+            method: "log",
             // Refers to the model.message value of
             // the component in the invoker argument
-            "args": ["{that}.model.message"]
+            args: ["{that}.model.message"]
         }
     }
 });
@@ -71,13 +71,13 @@ fluid.defaults("fluid.helloWorld", {
         // listener to call the component's
         // 'sayHello' invoker whenever the
         // value changes
-        "message": "{that}.sayHello"
+        message: "{that}.sayHello"
     },
     invokers: {
         sayHello: {
             "this": "console",
-            "method": "log",
-            "args": ["{that}.model.message"]
+            method: "log",
+            args: ["{that}.model.message"]
         }
     }
 });
