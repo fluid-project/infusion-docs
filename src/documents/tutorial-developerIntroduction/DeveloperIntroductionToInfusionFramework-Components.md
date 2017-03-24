@@ -6,9 +6,9 @@ category: Tutorials
 
 Programs using Infusion structure their data, functionality and interaction as various components defined using a common syntax.
 
-Components are [JavaScript objects that have certain characteristics](../UnderstandingInfusionComponents.md). Components can be freely combined together to form new components using the [grades system](../ComponentGrades.md), or organized into relationships with one another via [subcomponents](../SubcomponentDeclaration.md).
+Components are [JavaScript objects that have certain characteristics](../UnderstandingInfusionComponents.md). Components can be freely combined together to form new components using the [grades system](../ComponentGrades.md) ("grade" is the term used in Infusion for a sort of blueprint, in this case one that holds a component's default configuration), or organized into relationships with one another via [subcomponents](../SubcomponentDeclaration.md).
 
- There are three base components to be aware of that any new components you create with Infusion will likely have at their root:
+ There are three base component grades to be aware of that any new components you create with Infusion will likely have at their root:
 
  * [`fluid.component`](../ComponentConfigurationOptions.md#options-supported-by-all-components-grades), the simplest type with support for events and public function definition (called [invokers](../Invokers.md) in Infusion).
  * [`fluid.modelComponent`](../ComponentConfigurationOptions.md#model-components), which adds support for mutable models, model events, and model state coordination and relay between different components.
@@ -16,7 +16,7 @@ Components are [JavaScript objects that have certain characteristics](../Underst
 
 Infusion's approach to component-based development emphasizes declarative configuration, loose coupling and flexible hierarchies. The framework manages component lifecycle and scoping and provides many supports to allow components to work in collaboration with one another.
 
-A new Infusion component grade ("grade" is the term used in Infusion for a sort of blueprint, in this case one that holds a component's default configuration) is defined using the `fluid.defaults` function and a very basic "Hello, World!" component might look like this:
+A new Infusion component grade is defined using the `fluid.defaults` function and a very basic "Hello, World!" component might look like this:
 
 <div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/oBYvwx?editors=1111)</div>
 
@@ -45,5 +45,15 @@ var helloWorld = fluid.helloWorld();
 ```
 
 Right now this component doesn't do anything, but we will evolve its definition throughout this introduction to demonstrate further core concepts of the framework.
+
+
+<div class="infusion-docs-note">While we won't get into grade inheritance until later (combining existing grade definitions by supplying multiple items in the `gradeNames` array), we'll quickly note two important rules:
+
+<ol>
+<li>The order of precedence when grades configurations have keys with the same name in the same place is that the rightmost grade will take precedence.</li>
+<li>Any combination including `fluid.viewComponent` or grades derived from it should be placed to the right of any non-`viewComponent` grade.</li>
+</ol>
+
+</div>
 
 Next: [ Invokers](DeveloperIntroductionToInfusionFramework-Invokers.html)
