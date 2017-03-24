@@ -24,7 +24,7 @@ fluid.defaults("fluid.helloWorld.sayHello", {
         message: "Hello, world!"
     },
     modelListeners: {
-        "message": "{that}.sayHello"
+        message: "{that}.sayHello"
     },
     invokers: {
         sayHello: "fluid.notImplemented"
@@ -36,8 +36,8 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
     invokers: {
         sayHello: {
             "this": "console",
-            "method": "log",
-            "args": ["{that}.model.message"]
+            method: "log",
+            args: ["{that}.model.message"]
         },
     }
 });
@@ -50,8 +50,8 @@ fluid.defaults("fluid.helloWorld.displayHello", {
     invokers: {
         sayHello: {
             "this": "{that}.dom.messageArea",
-            "method": "html",
-            "args": ["{that}.model.message"]
+            method: "html",
+            args: ["{that}.model.message"]
         }
     }
 });
@@ -70,7 +70,7 @@ fluid.defaults("fluid.helloWorld.speakHello", {
             // "queueSpeech" invoker that we have access to from mixing
             // in the fluid.textToSpeech grade
             "func": "{that}.queueSpeech",
-            "args": ["{that}.model.message"]
+            args: ["{that}.model.message"]
         }
     }
 });
@@ -83,8 +83,8 @@ fluid.defaults("fluid.helloWorld", {
     listeners: {
         "onCreate.announceSelf": {
             "this": "console",
-            "method": "log",
-            "args": ["The helloWorld Component is ready"]
+            method: "log",
+            args: ["The helloWorld Component is ready"]
         }
     },
     components: {
