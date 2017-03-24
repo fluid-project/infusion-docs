@@ -68,7 +68,7 @@ fluid.defaults("fluid.helloWorld", {
                         "this": "{helloWorld}.dom.messageArea",
                         "method": "html",
                         "args": ["{that}.model.message"]
-                }
+                    }
                 }
             }
         }
