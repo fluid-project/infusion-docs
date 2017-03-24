@@ -29,15 +29,15 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
         message: "Hello, Console World!"
     },
     modelListeners: {
-        "message": "{that}.sayHello"
+        message: "{that}.sayHello"
     },
     invokers: {
         sayHello: {
             "this": "console",
-            "method": "log",
+            method: "log",
             // Here, "{that}" means the context of the current
             // component configuration (consoleHello)
-            "args": ["{that}.model.message"]
+            args: ["{that}.model.message"]
         },
     }
 });
@@ -56,13 +56,13 @@ fluid.defaults("fluid.helloWorld.displayHello", {
         messageArea: ".flc-messageArea"
     },
     modelListeners: {
-        "message": "{that}.displayHello"
+        message: "{that}.displayHello"
     },
     invokers: {
         displayHello: {
             "this": "{that}.dom.messageArea",
-            "method": "html",
-            "args": ["{that}.model.message"]
+            method: "html",
+            args: ["{that}.model.message"]
         }
     }
 });
@@ -75,8 +75,8 @@ fluid.defaults("fluid.helloWorld", {
     listeners: {
         "onCreate.announceSelf": {
             "this": "console",
-            "method": "log",
-            "args": ["The helloWorld Component is ready"]
+            method: "log",
+            args: ["The helloWorld Component is ready"]
         }
     },
     components: {
