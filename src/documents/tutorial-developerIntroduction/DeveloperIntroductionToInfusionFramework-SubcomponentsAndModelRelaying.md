@@ -6,7 +6,7 @@ category: Tutorials
 
 A component can include other components within its configuration; these are referred to in Infusion as subcomponents.
 
-It's also common to want related components to share state through their models; we can handle this through the [model relay](/infusion/development/ModelRelay.md) features.
+It's also common to want related components to share state through their models; we can handle this through the [model relay](../ModelRelay.md) features.
 
 The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate subcomponents, and synchronizes the "hello" message through model relay. We'll also update the web page display to use a model listener as to respond to model changes.
 
