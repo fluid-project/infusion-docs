@@ -18,6 +18,8 @@ Infusion's approach to component-based development emphasizes declarative config
 
 A new Infusion component grade is defined using the `fluid.defaults` function and a very basic "Hello, World!" component might look like this:
 
+<!-- TODO: revise this to use the 'fluidTutorial' namespace; discuss namespaces generally - discussion at https://github.com/fluid-project/infusion-docs/pull/114#discussion_r107987948 -->
+
 <div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/oBYvwx?editors=1111)</div>
 
 
