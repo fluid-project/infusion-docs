@@ -4,9 +4,9 @@ layout: default
 category: Tutorials
 ---
 
-All Infusion components support highly flexible event-driven programming. All components have basic [lifecycle events](/infusion/development/ComponentLifecycle.md) such as creation and destruction, and others may be [declared](/infusion/development/InfusionEventSystem.md#declaring-an-event-on-a-component), [fired](/infusion/development/InfusionEventSystem.md#using-events-and-listeners-procedurally) and [listened](/infusion/development/InfusionEventSystem.md#registering-a-listener-to-an-event) for by the originating component or another component.
+All Infusion components support highly flexible event-driven programming. All components have basic [lifecycle events](../ComponentLifecycle.md) such as creation and destruction, and others may be [declared](../InfusionEventSystem.md#declaring-an-event-on-a-component), [fired](../InfusionEventSystem.md#using-events-and-listeners-procedurally) and [listened](../InfusionEventSystem.md#registering-a-listener-to-an-event) for by the originating component or another component.
 
-Infusion also makes extensive use of the programming concept of [Inversion of Control](/infusion/development/FrameworkConcepts.md#ioc) (IoC), a technique for organizing component dependencies and references in a distributed, flexible manner. IoC is used in many ways throughout Infusion, but an important initial concept to grasp is the use of [IoC References](/infusion/development/IoCReferences.md) when configuring components, and the concept of `{that}`.
+Infusion also makes extensive use of the programming concept of [Inversion of Control](../FrameworkConcepts.md#ioc) (IoC), a technique for organizing component dependencies and references in a distributed, flexible manner. IoC is used in many ways throughout Infusion, but an important initial concept to grasp is the use of [IoC References](../IoCReferences.md) when configuring components, and the concept of `{that}`.
 
 IoC references allow us to refer to other parts of a component object (or another component entirely) in a declarative, context-specific manner, with `{that}` standing in for the current component configuration.
 
@@ -29,7 +29,7 @@ fluid.defaults("fluid.helloWorld", {
         // same event without collision
         //
         // On the right side, this configures the listener
-        // to use the sayHello invoker 
+        // to use the sayHello invoker
         "onCreate.sayHello": "{that}.sayHello"
     },
     invokers: {
