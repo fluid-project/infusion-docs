@@ -35,8 +35,8 @@ fluid.defaults("fluid.helloWorld", {
     invokers: {
         sayHello: {
             "this": "console",
-            "method": "log",
-            "args": ["Hello, World!"]
+            method: "log",
+            args: ["Hello, World!"]
         }
     }
 });
