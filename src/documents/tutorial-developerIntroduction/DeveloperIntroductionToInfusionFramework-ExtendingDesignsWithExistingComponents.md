@@ -96,7 +96,7 @@ fluid.defaults("fluid.helloWorld", {
                 }
             }
         },
-        dispayHello: {
+        displayHello: {
             type: "fluid.helloWorld.displayHello",
             container: ".helloWorld",
             options: {
