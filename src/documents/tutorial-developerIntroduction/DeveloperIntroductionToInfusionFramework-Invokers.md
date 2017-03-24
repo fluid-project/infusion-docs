@@ -22,7 +22,9 @@ fluid.defaults("fluid.helloWorld", {
         sayHello: {
             // Configures this invoker to use the console object
             // The value of "this" should be a variable name
-            // referring to an existing object
+            // referring to an existing object ("this" must be a
+            // quoted string when used as a key, since it is a
+            // reserved keyword in Javascript)
             //
             // On the framework implentation side, the invoker uses
             // Function.prototype.apply(), hence the use of "this"
@@ -34,9 +36,9 @@ fluid.defaults("fluid.helloWorld", {
             "this": "console",
             // Configures this invoker to use the log function of the console
             // object
-            "method": "log",
+            method: "log",
             // Configures the arguments to pass to the method
-            "args": ["Hello, World!"]
+            args: ["Hello, World!"]
         }
     }
 });
