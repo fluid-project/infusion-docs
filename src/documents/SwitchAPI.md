@@ -89,6 +89,7 @@ strings: {
             <td>An object containing any HTML attributes to be added to the switch <code>control</code>.</td>
             <td>
                 An object containing any key/value pairs representing valid HTML attributes and their respective values. In particular, an integrator should define a key/value pairing for <code>"aria-label"</code> or <code>"aria-labelledby"</code>.
+                <div class="infusion-docs-note"><strong>Note:</strong> If the switch controls another element on the page, <code>"aria-controls"</code> should be added to indicate the relationship.</div>
             </td>
             <td>
                 <pre>
