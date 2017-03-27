@@ -22,10 +22,6 @@ The introduction assumes:
 
 We will build and evolve a ["Hello, World!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) implementation to demonstrate the core concepts, with live examples throughout using the [CodePen](http://codepen.io/) service.
 
-<!-- TODO:
-## Why Infusion
--->
-
 ## Infusion's Core Concepts
 
 The list below summarizes each section of the tutorial and the core concept covered in it. Each section introduces a new concept and connects it with previous ones.

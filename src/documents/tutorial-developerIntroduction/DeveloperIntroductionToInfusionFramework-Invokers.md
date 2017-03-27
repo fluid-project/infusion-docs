@@ -11,8 +11,6 @@ All Infusion components support the definition of public functions using [invoke
 
 While there are [other styles of invokers possible](../Invokers.html#types-of-invokers), here we will use a style that allows us to refer to a free function (one not attached to a specific object).
 
-<!-- TODO: expand discussion and examples of invokers per exchange at https://github.com/fluid-project/infusion-docs/pull/114#discussion_r107857678 -->
-
 <div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/MJbgEx?editors=1111)</div>
 
 ```
