@@ -13,10 +13,10 @@ We'll define the first approach as an invoker on the "Hello, World!" component. 
 
 <!-- TODO: expand discussion and examples of invokers per exchange at https://github.com/fluid-project/infusion-docs/pull/114#discussion_r107857678 -->
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/MJbgEx?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/MJbgEx?editors=1111)</div>
 
 ```
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.component"],
     invokers: {
         // Creates a function on the component         
@@ -49,7 +49,7 @@ fluid.defaults("fluid.helloWorld", {
 Now at the console we can create an instance of the component and call the invoker as a function to say hello:
 
 ```
-> var helloWorld = fluid.helloWorld({});
+> var helloWorld = fluidTutorial.helloWorld({});
 > helloWorld.sayHello();
 ```
 

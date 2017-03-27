@@ -12,10 +12,10 @@ With the console and display functionality extracted as a separate components, i
 
 Let's refactor to avoid duplication and create a base "say hello" component that other types of "say hello" component can derive from:
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/bgBbOm?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/bgBbOm?editors=1111)</div>
 
 ```
-fluid.defaults("fluid.helloWorld.sayHello", {
+fluid.defaults("fluidTutorial.helloWorld.sayHello", {
     gradeNames: ["fluid.modelComponent"],
     model: {
         message: "Hello, world!"
@@ -32,10 +32,10 @@ fluid.defaults("fluid.helloWorld.sayHello", {
     }
 });
 
-fluid.defaults("fluid.helloWorld.consoleHello", {
+fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
     // This component has all of the characteristics of sayHello,
     // except for its implementation in the invoker
-    gradeNames: ["fluid.helloWorld.sayHello"],    
+    gradeNames: ["fluidTutorial.helloWorld.sayHello"],    
     invokers: {
         sayHello: {
             "this": "console",
@@ -47,7 +47,7 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
     }
 });
 
-fluid.defaults("fluid.helloWorld.displayHello", {
+fluid.defaults("fluidTutorial.helloWorld.displayHello", {
     // This component has all of the characteristics of sayHello,
     // except for its implementation in the invoker; additionally:
     //
@@ -59,7 +59,7 @@ fluid.defaults("fluid.helloWorld.displayHello", {
     // duplication of keys at the same place in the configuration
     //
     // 2) It adds a selector for the messageArea
-    gradeNames: ["fluid.helloWorld.sayHello", "fluid.viewComponent"],
+    gradeNames: ["fluidTutorial.helloWorld.sayHello", "fluid.viewComponent"],
     selectors: {
         messageArea: ".flc-messageArea"
     },
@@ -72,7 +72,7 @@ fluid.defaults("fluid.helloWorld.displayHello", {
     }
 });
 
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.modelComponent"],
     model: {
         message: "Hello, World!"
@@ -86,7 +86,7 @@ fluid.defaults("fluid.helloWorld", {
     },
     components: {
         consoleHello: {
-            type: "fluid.helloWorld.consoleHello",
+            type: "fluidTutorial.helloWorld.consoleHello",
             options: {
                 model: {
                     message: "{helloWorld}.model.message"
@@ -94,7 +94,7 @@ fluid.defaults("fluid.helloWorld", {
             }
         },
         displayHello: {
-            type: "fluid.helloWorld.displayHello",
+            type: "fluidTutorial.helloWorld.displayHello",
             container: ".helloWorld",
             options: {
                 model: {

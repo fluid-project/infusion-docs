@@ -12,10 +12,10 @@ IoC references allow us to refer to other parts of a component object (or anothe
 
 We can use a listener definition, the `onCreate` lifecycle event and IoC `{that}` to have a component say hello when it's ready, rather than needing to be manually called:
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/LxbPQZ?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/LxbPQZ?editors=1111) </div>
 
 ```
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.component"],
     listeners: {
         // Configures the component to call its own 'sayHello' function

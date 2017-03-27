@@ -8,9 +8,9 @@ View components are used to establish a binding between a specific DOM node on a
 
 View components require the specification of a page container for the component when creating them, as the first argument to the creator function:
 
-`var helloWorld = fluid.helloWorld(".flc-helloWorld", {});`
+`var helloWorld = fluidTutorial.helloWorld(".helloWorld", {});`
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/MJbgVR?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/MJbgVR?editors=1111)</div>
 
 Let's turn the "Hello, World!" component into a view component that writes its initial message to the screen as well, assuming we have this HTML on the page:
 
@@ -21,7 +21,7 @@ Let's turn the "Hello, World!" component into a view component that writes its i
 ```
 
 ```
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.viewComponent"],
     model: {
         message: "Hello, World!"

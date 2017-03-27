@@ -23,10 +23,10 @@ If there is a need to store a non-mutable variable, a non-component object or si
 
 First, let's store the "Hello, World!" message on the component model rather than having it directly in the invoker's arguments, and refer to it from the `sayHello` invoker using IoC syntax. In the process, we'll change it from a basic `fluid.component` to a `fluid.modelComponent`.
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/XpNrEr?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/XpNrEr?editors=1111) </div>
 
 ```
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.modelComponent"],
     // Stores a string value with the key 'message'
     // on the component model
@@ -54,10 +54,10 @@ Second, let's move from using an event listener to say "Hello, World!" to using 
 
 A common pattern in Infusion is to listen to changes to a component's model and then take some further action, such as invoking a function involving the changed model state. We'll implement this below so that the component invokes its `sayHello` function with the message content each time it changes.
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/oBYvPB?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/oBYvPB?editors=1111) </div>
 
 ```
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.modelComponent"],
     model: {
         message: "Hello, World!"

@@ -15,12 +15,12 @@ In the process, we'll be looking at some other important characteristics of Infu
 2. Overriding default component configuration when building up applications from separate components.
 
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/egBObY?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/egBObY?editors=1111)</div>
 
 ```
 // The console hello functionality is now defined as a separate
 // component
-fluid.defaults("fluid.helloWorld.consoleHello", {
+fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
     gradeNames: ["fluid.modelComponent"],    
     // We define a default message here so that
     // this component is fully independent and
@@ -44,7 +44,7 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
 
 // The web page hello functionality is now defined as a separate
 // component
-fluid.defaults("fluid.helloWorld.displayHello", {
+fluid.defaults("fluidTutorial.helloWorld.displayHello", {
     gradeNames: ["fluid.viewComponent"],
     // We define a default message here so that
     // this component is fully independent and
@@ -67,7 +67,7 @@ fluid.defaults("fluid.helloWorld.displayHello", {
     }
 });
 
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.modelComponent"],
     model: {
         message: "Hello, World!"
@@ -81,7 +81,7 @@ fluid.defaults("fluid.helloWorld", {
     },
     components: {
         consoleHello: {
-            type: "fluid.helloWorld.consoleHello",
+            type: "fluidTutorial.helloWorld.consoleHello",
             options: {
                 model: {
                     message: "{helloWorld}.model.message"
@@ -89,7 +89,7 @@ fluid.defaults("fluid.helloWorld", {
             }
         },
         displayHello: {
-            type: "fluid.helloWorld.displayHello",
+            type: "fluidTutorial.helloWorld.displayHello",
             container: ".helloWorld",
             options: {
                 model: {
@@ -104,7 +104,7 @@ fluid.defaults("fluid.helloWorld", {
 We'll also create an instance of this component in a way that shows how any Infusion component defaults can be overridden:
 
 ```
-helloWorld = fluid.helloWorld({
+helloWorld = fluidTutorial.helloWorld({
   model: {
       message: "Hello, restructured component world!"
     }

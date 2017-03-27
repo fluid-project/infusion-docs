@@ -10,10 +10,10 @@ It's also common to want related components to share state through their models;
 
 The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate subcomponents, and synchronizes the "hello" message through model relay. We'll also update the web page display to use a model listener as to respond to model changes.
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/rjWBQN?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/rjWBQN?editors=1111)</div>
 
 ```
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.viewComponent"],
     model: {
         message: "Hello, World!"
@@ -31,7 +31,7 @@ fluid.defaults("fluid.helloWorld", {
             options: {
                 model: {
                     // "{helloWorld}.model.message" is an IoC
-                    // reference to the parent fluid.helloWorld
+                    // reference to the parent fluidTutorial.helloWorld
                     // component's message value
                     // The framework handles two-way synchronization
                     // between the models automatically in this form;

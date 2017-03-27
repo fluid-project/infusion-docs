@@ -15,10 +15,10 @@ We currently have a "Hello, World!" component that can say "hello!"" by printing
 
 We'll extend the code further using an existing Infusion [text to speech](../TextToSpeechAPI.md) component, which should work in a modern text to speech supporting browser:
 
-<div class="infusion-docs-note">You can check out the [Live Example](http://codepen.io/waharnum/pen/vgyBbe?editors=1111) of the code below on [CodePen](http://codepen.io/)</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/vgyBbe?editors=1111)</div>
 
 ```
-fluid.defaults("fluid.helloWorld.sayHello", {
+fluid.defaults("fluidTutorial.helloWorld.sayHello", {
     gradeNames: ["fluid.modelComponent"],
     model: {
         message: "Hello, world!"
@@ -31,8 +31,8 @@ fluid.defaults("fluid.helloWorld.sayHello", {
     }
 });
 
-fluid.defaults("fluid.helloWorld.consoleHello", {
-    gradeNames: ["fluid.helloWorld.sayHello"],    
+fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
+    gradeNames: ["fluidTutorial.helloWorld.sayHello"],    
     invokers: {
         sayHello: {
             "this": "console",
@@ -42,8 +42,8 @@ fluid.defaults("fluid.helloWorld.consoleHello", {
     }
 });
 
-fluid.defaults("fluid.helloWorld.displayHello", {
-    gradeNames: ["fluid.helloWorld.sayHello", "fluid.viewComponent"],
+fluid.defaults("fluidTutorial.helloWorld.displayHello", {
+    gradeNames: ["fluidTutorial.helloWorld.sayHello", "fluid.viewComponent"],
     selectors: {
         messageArea: ".flc-messageArea"
     },
@@ -57,12 +57,12 @@ fluid.defaults("fluid.helloWorld.displayHello", {
 });
 
 
-fluid.defaults("fluid.helloWorld.speakHello", {
+fluid.defaults("fluidTutorial.helloWorld.speakHello", {
     // This component has all of the characteristics of sayHello,
     // except for its implementation in the invoker
     // We also "mix in" the fluid.textToSpeech component to give it
     // the capability to access the browser's text to speech interface
-    gradeNames: ["fluid.textToSpeech", "fluid.helloWorld.sayHello"],
+    gradeNames: ["fluid.textToSpeech", "fluidTutorial.helloWorld.sayHello"],
     invokers: {
         sayHello: {
             // This style of Invoker allows us to refer to another
@@ -75,7 +75,7 @@ fluid.defaults("fluid.helloWorld.speakHello", {
     }
 });
 
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.modelComponent"],
     model: {
         message: "Hello, World!"
@@ -89,7 +89,7 @@ fluid.defaults("fluid.helloWorld", {
     },
     components: {
         consoleHello: {
-            type: "fluid.helloWorld.consoleHello",
+            type: "fluidTutorial.helloWorld.consoleHello",
             options: {
                 model: {
                     message: "{helloWorld}.model.message"
@@ -97,7 +97,7 @@ fluid.defaults("fluid.helloWorld", {
             }
         },
         displayHello: {
-            type: "fluid.helloWorld.displayHello",
+            type: "fluidTutorial.helloWorld.displayHello",
             container: ".helloWorld",
             options: {
                 model: {
@@ -106,7 +106,7 @@ fluid.defaults("fluid.helloWorld", {
             }
         },
         speakHello: {
-            type: "fluid.helloWorld.speakHello",
+            type: "fluidTutorial.helloWorld.speakHello",
             options: {
                 model: {
                     message: "{helloWorld}.model.message"

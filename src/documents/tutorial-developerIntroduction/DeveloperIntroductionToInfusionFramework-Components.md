@@ -26,7 +26,7 @@ A new Infusion component grade is defined using the `fluid.defaults` function an
 ```
 // The first argument is the name of the new component, the second is the
 // new component's default configuration
-fluid.defaults("fluid.helloWorld", {
+fluid.defaults("fluidTutorial.helloWorld", {
     // gradeNames supplies an array of strings that name previously
     // defined Infusion components; their configurations will be
     // merged together for the final "blueprint"
@@ -43,7 +43,7 @@ fluid.defaults("fluid.helloWorld", {
 After definition, instances of the component can be created by calling the component's name as a function, with the option to pass in further configuration options as an argument:
 
 ```
-var helloWorld = fluid.helloWorld();
+var helloWorld = fluidTutorial.helloWorld();
 ```
 
 Right now this component doesn't do anything, but we will evolve its definition throughout this introduction to demonstrate further core concepts of the framework.
