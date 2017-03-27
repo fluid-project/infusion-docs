@@ -20,6 +20,8 @@ Let's turn the "Hello, World!" component into a view component that writes its i
 </div>
 ```
 
+We introduce another style of invoker here, the ["this"-ist style](../Invokers.html#-this-ist-invoker-binding-to-a-oo-style-javascript-function-referencing-this-) that allows us to invoke functions whose implementation references the special Javascript `this` value. This style of invoker is important for integrating with non-Infusion code such as jQuery, as standard Javascript functions attached to objects expect a `this` value referring to the calling object.
+
 ```
 fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.viewComponent"],
@@ -40,24 +42,31 @@ fluid.defaults("fluidTutorial.helloWorld", {
     },
     invokers: {
         sayHello: {
-            "this": "console",
-            method: "log",
+            "funcName": "fluidTutorial.helloWorld.consoleHello",
             args: ["{that}.model.message"]
         },
         // Another invoker to call a jQuery
         // method on a DOM node returned
         // using the DOM binder functionality
         displayHello: {
-            // Uses the DOM node bound to the
+            // This IoC reference lets us refer  
+            // to the DOM node bound to the
             // `messageArea` key by the selector
-            // definition above
+            // definition above; it returns a
+            // standard jQuery object
             "this": "{that}.dom.messageArea",
-            // Calls the 'html' function to replace the HTML at the node
+            // Calls the 'html' function of a jQuery
+            // object to replace the HTML at the node
             method: "html",
             args: ["{that}.model.message"]
         }
     }
 });
+
+fluidTutorial.helloWorld.consoleHello = function (message) {
+    console.log(message);
+};
+
 ```
 
 You'll notice if you use the `changeApplier` from the console again like you did previously, the console message will update, but the screen displayed message won't. You may be able to guess this is because the screen displayed message isn't using a model listener. We'll address this in the next section.

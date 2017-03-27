@@ -35,12 +35,15 @@ fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
     gradeNames: ["fluidTutorial.helloWorld.sayHello"],    
     invokers: {
         sayHello: {
-            "this": "console",
-            method: "log",
+            "funcName": "fluidTutorial.helloWorld.consoleHello.sayHello",
             args: ["{that}.model.message"]
         },
     }
 });
+
+fluidTutorial.helloWorld.consoleHello.sayHello = function (message) {
+    console.log(message);
+};
 
 fluid.defaults("fluidTutorial.helloWorld.displayHello", {
     gradeNames: ["fluidTutorial.helloWorld.sayHello", "fluid.viewComponent"],

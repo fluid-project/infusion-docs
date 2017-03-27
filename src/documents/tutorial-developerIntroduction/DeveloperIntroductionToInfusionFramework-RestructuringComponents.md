@@ -14,7 +14,6 @@ In the process, we'll be looking at some other important characteristics of Infu
 
 2. Overriding default component configuration when building up applications from separate components.
 
-
 <div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/egBObY?editors=1111)</div>
 
 ```
@@ -33,14 +32,19 @@ fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
     },
     invokers: {
         sayHello: {
-            "this": "console",
-            method: "log",
+            funcName: "fluidTutorial.helloWorld.consoleHello.sayHello",
             // Here, "{that}" means the context of the current
             // component configuration (consoleHello)
             args: ["{that}.model.message"]
         },
     }
 });
+
+// We'll update the name of the associated function at the same
+// time
+fluidTutorial.helloWorld.consoleHello.sayHello = function (message) {
+    console.log(message);
+};
 
 // The web page hello functionality is now defined as a separate
 // component

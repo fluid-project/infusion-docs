@@ -38,14 +38,18 @@ fluid.defaults("fluidTutorial.helloWorld", {
     },
     invokers: {
         sayHello: {
-            "this": "console",
-            method: "log",
+            funcName: "fluidTutorial.helloWorld.consoleHello",
             // Refers to the model.message value of
             // the component in the invoker argument
             args: ["{that}.model.message"]
         }
     }
 });
+
+fluidTutorial.helloWorld.consoleHello = function (message) {
+    console.log(message);
+};
+
 ```
 
 ## Listening to Model Changes
@@ -75,12 +79,16 @@ fluid.defaults("fluidTutorial.helloWorld", {
     },
     invokers: {
         sayHello: {
-            "this": "console",
-            method: "log",
+            funcName: "fluidTutorial.helloWorld.consoleHello",
             args: ["{that}.model.message"]
         }
     }
 });
+
+fluidTutorial.helloWorld.consoleHello = function (message) {
+    console.log(message);
+};
+
 ```
 
 ## Using the Change Applier

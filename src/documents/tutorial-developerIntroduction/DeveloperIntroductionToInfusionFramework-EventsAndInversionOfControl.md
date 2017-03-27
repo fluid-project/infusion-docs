@@ -34,8 +34,7 @@ fluid.defaults("fluidTutorial.helloWorld", {
     },
     invokers: {
         sayHello: {
-            "this": "console",
-            method: "log",
+            funcName: "fluidTutorial.helloWorld.consoleHello",
             args: ["Hello, World!"]
         }
     }

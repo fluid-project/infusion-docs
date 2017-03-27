@@ -44,9 +44,8 @@ fluid.defaults("fluidTutorial.helloWorld", {
                     message: "{that}.sayHello"
                 },
                 invokers: {
-                    sayHello: {
-                        "this": "console",
-                        method: "log",
+                    sayHello: {                        
+                        funcName: "fluidTutorial.helloWorld.consoleHello",
                         // Here, "{that}" means the context of the current
                         // component configuration of this block (consoleHello)
                         args: ["{that}.model.message"]
@@ -74,6 +73,11 @@ fluid.defaults("fluidTutorial.helloWorld", {
         }
     }
 });
+
+fluidTutorial.helloWorld.consoleHello = function (message) {
+    console.log(message);
+};
+
 ```
 
 Next: [Restructuring Components](DeveloperIntroductionToInfusionFramework-RestructuringComponents.md)

@@ -9,7 +9,7 @@ All Infusion components support the definition of public functions using [invoke
 * By printing to the web developer console via `console.log`
 * By displaying a message on a web page
 
-We'll define the first approach as an invoker on the "Hello, World!" component. Other styles of invokers are possible (such as ones referring to a function by name), but we'll use one here that lets us refer to a function of an existing Javascript object, such as `console`.
+While there are [other styles of invokers possible](../Invokers.html#types-of-invokers), here we will use a style that allows us to refer to a free function (one not attached to a specific object).
 
 <!-- TODO: expand discussion and examples of invokers per exchange at https://github.com/fluid-project/infusion-docs/pull/114#discussion_r107857678 -->
 
@@ -21,29 +21,23 @@ fluid.defaults("fluidTutorial.helloWorld", {
     invokers: {
         // Creates a function on the component         
         // referred to by name 'sayHello'
-        sayHello: {
-            // Configures this invoker to use the console object
-            // The value of "this" should be a variable name
-            // referring to an existing object ("this" must be a
-            // quoted string when used as a key, since it is a
-            // reserved keyword in Javascript)
-            //
-            // On the framework implentation side, the invoker uses
-            // Function.prototype.apply(), hence the use of "this"
-            // to refer to the object the function is intended to
-            // be called on (the "console" object in this case)
-            //
-            // see  [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply] for more about the "this" concept
-            // in Javascript
-            "this": "console",
-            // Configures this invoker to use the log function of the console
-            // object
-            method: "log",
-            // Configures the arguments to pass to the method
+        sayHello: {                        
+            // The value of "funcName" is the full name of
+            // a free function
+            funcName: "fluidTutorial.helloWorld.consoleHello",
+            // Configures the arguments to pass to the function
             args: ["Hello, World!"]
         }
     }
 });
+
+// Now we define the function to be called by the invoker;
+// notice how it shares the same namespace (this is not a
+// requirement, but it is recommended practice).
+fluidTutorial.helloWorld.consoleHello = function (message) {
+    console.log(message);
+};
+
 ```
 
 Now at the console we can create an instance of the component and call the invoker as a function to say hello:
@@ -52,5 +46,7 @@ Now at the console we can create an instance of the component and call the invok
 > var helloWorld = fluidTutorial.helloWorld({});
 > helloWorld.sayHello();
 ```
+
+You will notice that the function we defined expects one argument, but we call the invoker without any arguments; this is because we've specified the argument to be supplied as part of the invoker.
 
 Next: [Events and Inversion of Control](DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html)
