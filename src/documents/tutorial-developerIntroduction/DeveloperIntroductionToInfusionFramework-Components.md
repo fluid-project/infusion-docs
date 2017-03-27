@@ -18,10 +18,7 @@ Infusion's approach to component-based development emphasizes declarative config
 
 A new Infusion component grade is defined using the `fluid.defaults` function and a very basic "Hello, World!" component might look like this:
 
-<!-- TODO: revise this to use the 'fluidTutorial' namespace; discuss namespaces generally - discussion at https://github.com/fluid-project/infusion-docs/pull/114#discussion_r107987948 -->
-
 <div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/oBYvwx?editors=1111)</div>
-
 
 ```
 // The first argument is the name of the new component, the second is the
@@ -46,9 +43,24 @@ After definition, instances of the component can be created by calling the compo
 var helloWorld = fluidTutorial.helloWorld();
 ```
 
+
 Right now this component doesn't do anything, but we will evolve its definition throughout this introduction to demonstrate further core concepts of the framework.
 
+## Namespaces in Infusion
+<div class="infusion-docs-note">
+The standard pattern in developing Infusion components is to
+gather related components and functions under a namespace, a single
+global variable to contain the code; Infusion has a [number of
+utility functions to work with namespaces](../CoreAPI.md#the-global-namespace).
 
+In this case, our namespace is `fluidTutorial`, and the `helloWorld`
+grade we are defining has a fully qualified name of
+`fluidTutorial.helloWorld`; using namespaces helps us avoid
+potential collision of component or function names when integrating with
+other code.
+</div>
+
+## Grade Inheritance in Infusion
 <div class="infusion-docs-note">While we won't get into grade inheritance until later (combining existing grade definitions by supplying multiple items in the `gradeNames` array), we'll quickly note two important rules:
 
 <ol>
