@@ -89,6 +89,7 @@ strings: {
             <td>An object containing any HTML attributes to be added to the switch <code>control</code>.</td>
             <td>
                 An object containing any key/value pairs representing valid HTML attributes and their respective values. In particular, an integrator should define a key/value pairing for <code>"aria-label"</code> or <code>"aria-labelledby"</code>.
+                <div class="infusion-docs-note"><strong>Note:</strong> If the switch controls another element on the page, <code>"aria-controls"</code> should be added to indicate the relationship.</div>
             </td>
             <td>
                 <pre>
@@ -183,7 +184,7 @@ The Switch includes default CSS styles that it applies to its elements. The appl
 <link href="components/switch/css/Switch.css" type="text/css" rel="stylesheet" media="all">;
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> Switch.css is generated from the Switch.styl Stylus file.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> Switch.css is generated from the Switch.styl Stylus file. See the <a href="https://github.com/fluid-project/infusion/blob/master/README.md#developing-with-the-preferences-framework">Developing with the Preferences Framework</a> section of the <a href="https://github.com/fluid-project/infusion/blob/master/README.md">Infusion README</a> for how to build Stylus files.</div>
 
 These styling classes should be added to the markup used by the Switch. To modify the appearance, one can modify the markup and/or override the style declarations applied to the classes.
 
@@ -196,7 +197,7 @@ These styling classes should be added to the markup used by the Switch. To modif
 
 ## Dependencies
 
-The Image Reorderer dependencies can be met by including the `infusion-all.js` file in the header of the HTML file:
+The Switch dependencies can be met by including the `infusion-all.js` file in the header of the HTML file:
 
 ```html
 <script type="text/javascript" src="infusion-all.js"></script>
@@ -216,7 +217,7 @@ Alternatively, the individual file requirements are:
 <script type="text/javascript" src="components/switch/js/Switch.js"></script>
 ```
 
-The Image Reorderer also requires the following stylesheet:
+The Switch also requires the following stylesheet:
 
 ```html
 <link rel="stylesheet" type="text/css" href="components/switch/css/Switch.css" />
