@@ -184,7 +184,7 @@ The Switch includes default CSS styles that it applies to its elements. The appl
 <link href="components/switch/css/Switch.css" type="text/css" rel="stylesheet" media="all">;
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> Switch.css is generated from the Switch.styl Stylus file.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> Switch.css is generated from the Switch.styl Stylus file. See the <a href="https://github.com/fluid-project/infusion/blob/master/README.md#developing-with-the-preferences-framework">Developing with the Preferences Framework</a> section of the <a href="https://github.com/fluid-project/infusion/blob/master/README.md">Infusion README</a> for how to build Stylus files.</div>
 
 These styling classes should be added to the markup used by the Switch. To modify the appearance, one can modify the markup and/or override the style declarations applied to the classes.
 
