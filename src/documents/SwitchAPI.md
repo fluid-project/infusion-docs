@@ -197,7 +197,7 @@ These styling classes should be added to the markup used by the Switch. To modif
 
 ## Dependencies
 
-The Image Reorderer dependencies can be met by including the `infusion-all.js` file in the header of the HTML file:
+The Switch dependencies can be met by including the `infusion-all.js` file in the header of the HTML file:
 
 ```html
 <script type="text/javascript" src="infusion-all.js"></script>
@@ -217,7 +217,7 @@ Alternatively, the individual file requirements are:
 <script type="text/javascript" src="components/switch/js/Switch.js"></script>
 ```
 
-The Image Reorderer also requires the following stylesheet:
+The Switch also requires the following stylesheet:
 
 ```html
 <link rel="stylesheet" type="text/css" href="components/switch/css/Switch.css" />
