@@ -52,7 +52,7 @@ Use the following function to create a Textfield Slider component:
 <code>
 var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     strings: {
-        "aria-label": "Textfield Slider"
+        "label": "Textfield Slider"
     },
     model: {
         value: 7,
@@ -103,7 +103,7 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
 <code>
 var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     strings: {
-        "aria-label": "Text Size"
+        "label": "Text Size"
     }
 });
 </code>
@@ -113,14 +113,14 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     </tbody>
 </table>
 
-### ariaOptions ###
+### attrs ###
 
 <table>
     <tbody>
         <tr>
             <th>Description</th>
             <td>
-                The <code>ariaOptions</code> option allows you to specify aria attributes to be used by the component. In particular this is used to set an <code>"aria-labelledby"</code>.
+                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>.
             </td>
         </tr>
         <tr>
@@ -133,7 +133,7 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
 <pre>
 <code>
 var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
-    ariaOptions: {
+    attrs: {
         "aria-labelledby": "elementID"
     }
 });

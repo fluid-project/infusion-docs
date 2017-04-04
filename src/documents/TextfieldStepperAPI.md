@@ -52,7 +52,7 @@ Use the following function to create a Textfield Stepper component:
 <code>
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     strings: {
-        "aria-label": "Textfield Stepper"
+        "label": "Textfield Stepper"
     },
     model: {
         value: 1,
@@ -210,7 +210,7 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
 <code>
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     strings: {
-        "aria-label": "Text Size",
+        "label": "Text Size",
         increaseLabel: "increase",
         decreaseLabel: "decrease"
     }
@@ -222,14 +222,14 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     </tbody>
 </table>
 
-### ariaOptions ###
+### attrs ###
 
 <table>
     <tbody>
         <tr>
             <th>Description</th>
             <td>
-                The <code>ariaOptions</code> option allows you to specify aria attributes to be used by the component. In particular this is used to set an <code>"aria-labelledby"</code>.
+                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>.
             </td>
         </tr>
         <tr>
@@ -242,7 +242,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
 <pre>
 <code>
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
-    ariaOptions: {
+    attrs: {
         "aria-labelledby": "elementID"
     }
 });
