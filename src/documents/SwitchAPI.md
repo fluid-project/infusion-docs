@@ -106,7 +106,7 @@ attrs: {
         <tr>
             <td><code>model</code></td>
             <td>The state of the switch.</td>
-            <td><code>true</code> is "on", <code>false</code> is off</td>
+            <td><code>true</code> is "on", <code>false</code> is "off"</td>
             <td>
                 <pre>
                     <code>
@@ -178,7 +178,7 @@ selectors: {
 
 ## Styling the Switch
 
-The Switch includes default CSS styles that it applies to its elements. The application of styles is based on known class names. The _default_ class names are described below, and can be used by including the Switch stylesheet:
+The Switch includes default CSS styles that are applied to its elements. The application of styles is based on known class names. The _default_ class names are described below, and can be used by including the Switch stylesheet:
 
 ```html
 <link href="components/switch/css/Switch.css" type="text/css" rel="stylesheet" media="all">;
