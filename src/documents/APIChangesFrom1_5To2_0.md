@@ -457,3 +457,40 @@ fluid.defaults("fluid.prefs.initialModel.starter", {
     }
 });
 ```
+
+## Component Changes ##
+
+### Uploader Changes ###
+
+Removed deprecated string tokens.
+
+<table>
+    <tr><th>String</th><th>Tokens</th></tr>
+    <tr>
+        <td><code>toUploadLabel</code></td>
+        <td>
+            <code>fileCount</code>,
+            <code>fileLabel</code>,
+            <code>totalBytes</code>
+        </td>
+    </tr>
+    <tr>
+        <td><code>totalProgressLabel</code></td>
+        <td>
+            <code>curFileN</code>,
+            <code>totalFilesN</code>,
+            <code>fileLabel</code>,
+            <code>currBytes</code>,
+            <code>totalBytes</code>
+        </td>
+    </tr>
+    <tr>
+        <td><code>completedLabel</code></td>
+        <td>
+            <code>curFileN</code>,
+            <code>totalFilesN</code>,
+            <code>fileLabel</code>,
+            <code>totalCurrBytes</code>
+        </td>
+    </tr>
+</table>
