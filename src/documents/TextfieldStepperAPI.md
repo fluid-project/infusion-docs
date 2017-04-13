@@ -136,7 +136,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>addFocus</code> method adds the focus style classes to the <code>focusContainer</code>.
+                The <code>addFocus</code> method adds the <code>focus</code> style classes to the element specified by the <code>focusContainer</code> selector.
             </td>
         </tr>
         <tr>
@@ -159,7 +159,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>removeFocus</code> method removes the focus style classes from the <code>focusContainer</code>.
+                The <code>removeFocus</code> method removes the <code>focus</code> style classes from the element specified by the <code>focusContainer</code> selector.
             </td>
         </tr>
         <tr>
