@@ -21,7 +21,7 @@ Use the following function to create a Textfield component:
         <tr>
             <th>Description</th>
             <td>
-                Instantiates the textfield component. Provides data binding between the HTML `<input>` and the components model. Also provides options for setting an `"aria-label"` and/or `"aria-labelledby"` attribute.
+                Instantiates the textfield component. Provides data binding between the HTML `<input>` and the component's model. Also provides options for setting an `"aria-label"` and/or `"aria-labelledby"` attribute.
             </td>
         </tr>
         <tr>
