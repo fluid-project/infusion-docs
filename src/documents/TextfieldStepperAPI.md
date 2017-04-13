@@ -4,7 +4,7 @@ layout: default
 category: Components
 ---
 
-The **Textfield Stepper** is a user interface component for adjusting a number value using a [Textfield](Textfield.md) for direct entry of the value, along buttons for incrementing and decrementing the value. A user can also increment/decrement the values using the up/down arrow keys.
+The **Textfield Stepper** is a user interface component for adjusting a number value using a [Textfield](TextfieldAPI.md) for direct entry of the value, along buttons for incrementing and decrementing the value. A user can also increment/decrement the values using the up/down arrow keys.
 
 ## Creator ##
 
@@ -280,7 +280,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>. By default this option is passed along to and applied by the <a href="Textfield.md">textfield</a> subcomponent.
+                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>. By default this option is passed along to and applied by the <a href="TextfieldAPI.md">textfield</a> subcomponent.
             </td>
         </tr>
         <tr>

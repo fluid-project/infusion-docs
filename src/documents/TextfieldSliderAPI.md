@@ -4,7 +4,7 @@ layout: default
 category: Components
 ---
 
-The **Textfield Slider** is a user interface component for adjusting a number value using a range input. It is paired with a [Textfield](Textfield.md) for direct entry of the value.
+The **Textfield Slider** is a user interface component for adjusting a number value using a range input. It is paired with a [Textfield](TextfieldAPI.md) for direct entry of the value.
 
 ## Creator ##
 
@@ -171,7 +171,7 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>. By default this option is passed along to and applied by both the <a href="Textfield.md">textfield</a> and Slider subcomponents.
+                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>. By default this option is passed along to and applied by both the <a href="TextfieldAPI.md">textfield</a> and Slider subcomponents.
             </td>
         </tr>
         <tr>

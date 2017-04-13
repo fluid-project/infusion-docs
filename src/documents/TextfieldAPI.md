@@ -4,7 +4,7 @@ layout: default
 category: Components
 ---
 
-The **Textfield** is a small component for adding aria attributes and data binding to a HTML textfield. Typically this will be used in conjunction with a controller (e.g. [**Textfield Slider**](TextfieldSlider.md), [**Textfield Stepper**](TextfieldStepper.md)) to restrict the values and pair with additional input methods.
+The **Textfield** is a small component for adding aria attributes and data binding to a HTML textfield. Typically this will be used in conjunction with a controller (e.g. [**Textfield Slider**](TextfieldSliderAPI.md), [**Textfield Stepper**](TextfieldStepperAPI.md)) to restrict the values and pair with additional input methods.
 
 ## Creator ##
 
