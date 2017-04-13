@@ -238,7 +238,7 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
         <tr>
             <th>Description</th>
             <td>
-                The <code>strings</code> option allows you to specify strings to be used by the component and is the main location for localization. Amongst other strings, this is used to set an <code>"aria-label"</code>.
+                The <code>strings</code> option allows you to specify strings to be used by the component and is the main location for localization. Amongst other strings, this is used to set an <code>"aria-label"</code> to the textfield element, via the <code>attrs</code> option.
             </td>
         </tr>
         <tr>
@@ -280,7 +280,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>.
+                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>. By default this option is passed along to and applied by the <a href="Textfield.md">textfield</a> subcomponent.
             </td>
         </tr>
         <tr>
