@@ -21,7 +21,7 @@ Use the following function to create a Textfield Stepper component:
         <tr>
             <th>Description</th>
             <td>
-                Instantiates the Textfield Stepper component. Connects a a textfield and a pair of increment/decrement buttons to set a value. Entries are restricted to numbers within a given range.
+                Instantiates the Textfield Stepper component. Connects a textfield and a pair of increment/decrement buttons to set a value. Entries are restricted to numbers within a given range.
             </td>
         </tr>
         <tr>
