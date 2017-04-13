@@ -75,10 +75,61 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
 
 The following model paths can be used with [model listeners](ChangeApplierAPI.md).
 
-* `model.value`: `null` by default but can contain any numerical value provided it is within the range (inclusive).
-* `model.step`: `1.0` the amount to increment/decrement the model value by. Primarily this is used by the slider.
-* `model.range.min`: `0` the minimum value the model value can be.
-* `model.range.max`: `100` the maximum value the model value can be.
+<table>
+    <thead>
+        <tr>
+            <td>Model Path</td>
+            <td>Default</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <code>"value"</code>
+            </td>
+            <td>
+                <code>null</code>
+            </td>
+            <td>
+                May be any numerical value provided it is within the range (inclusive).
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>"step"</code>
+            </td>
+            <td>
+                <code>1.0</code>
+            </td>
+            <td>
+                The amount to increment/decrement the model value by. Primarily this is used by the slider.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>"range.min"</code>
+            </td>
+            <td>
+                <code>0</code>
+            </td>
+            <td>
+                The minimum the model value can be.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>"range.max"</code>
+            </td>
+            <td>
+                <code>100</code>
+            </td>
+            <td>
+                The maximum the model value can be.
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ## Options ##
 
