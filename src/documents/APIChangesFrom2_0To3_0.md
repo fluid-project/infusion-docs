@@ -17,7 +17,7 @@ This section describes major APIs that were in common use. For information about
 
 #### Panel Changes ####
 
-"Links and Buttons" adjuster and enactors collapsed to a single preference, "Enhance Links"
+The "Links and Buttons" adjusters and enactors are collapsed to a single preference called "Enhance Links".
 
 ##### Message Bundle Keys #####
 
@@ -34,6 +34,12 @@ This section describes major APIs that were in common use. For information about
 * tableOfContents.json
   * `"switchOn"`
   * `"switchOff"`
+
+###### Removals ######
+
+* inputsLarger.json
+* emphasizeLinks.json
+* linksControls.json
 
 ###### Changes ######
 
