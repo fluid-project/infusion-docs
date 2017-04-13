@@ -4,7 +4,7 @@ layout: default
 category: Components
 ---
 
-The **Textfield Slider** is user interface component for adjusting a number value using a range input. It is paired with a [Textfield](Textfield.md) for direct entry of the value.
+The **Textfield Slider** is a user interface component for adjusting a number value using a range input. It is paired with a [Textfield](Textfield.md) for direct entry of the value.
 
 ## Creator ##
 

@@ -4,7 +4,7 @@ layout: default
 category: Components
 ---
 
-The **Textfield Stepper** is user interface component for adjusting a number value using a [Textfield](Textfield.md) for direct entry of the value, along buttons for incrementing and decrementing the value. A user can also increment/decrement the values using the up/down arrow keys.
+The **Textfield Stepper** is a user interface component for adjusting a number value using a [Textfield](Textfield.md) for direct entry of the value, along buttons for incrementing and decrementing the value. A user can also increment/decrement the values using the up/down arrow keys.
 
 ## Creator ##
 

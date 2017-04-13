@@ -4,7 +4,7 @@ layout: default
 category: Components
 ---
 
-The **Textfield** is small component for adding aria attributes and data binding to a HTML textfield. Typically this will be used in conjunction with a controller (e.g. [**Textfield Slider**](TextfieldSlider.md), [**Textfield Stepper**](TextfieldStepper.md)) to restrict the values and pair with additional input methods.
+The **Textfield** is a small component for adding aria attributes and data binding to a HTML textfield. Typically this will be used in conjunction with a controller (e.g. [**Textfield Slider**](TextfieldSlider.md), [**Textfield Stepper**](TextfieldStepper.md)) to restrict the values and pair with additional input methods.
 
 ## Creator ##
 
@@ -21,7 +21,7 @@ Use the following function to create a Textfield component:
         <tr>
             <th>Description</th>
             <td>
-                Instantiates the textfield component. Provides databinding between the HTML `<input>` and the components model. Also provides options for setting an `"aria-label"` and/or `"aria-labelledby"` attribute.
+                Instantiates the textfield component. Provides data binding between the HTML `<input>` and the components model. Also provides options for setting an `"aria-label"` and/or `"aria-labelledby"` attribute.
             </td>
         </tr>
         <tr>
