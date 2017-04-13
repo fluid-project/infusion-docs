@@ -79,8 +79,8 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
     <thead>
         <tr>
             <td>Model Path</td>
-            <td>Default</td>
             <td>Description</td>
+            <td>Default</td>
         </tr>
     </thead>
     <tbody>
@@ -89,10 +89,10 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
                 <code>"value"</code>
             </td>
             <td>
-                <code>null</code>
+                May be any numerical value provided it is within the range (inclusive).
             </td>
             <td>
-                May be any numerical value provided it is within the range (inclusive).
+                <code>null</code>
             </td>
         </tr>
         <tr>
@@ -100,10 +100,10 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
                 <code>"step"</code>
             </td>
             <td>
-                <code>1.0</code>
+                The amount to increment/decrement the model value by. Primarily this is used by the slider.
             </td>
             <td>
-                The amount to increment/decrement the model value by. Primarily this is used by the slider.
+                <code>1.0</code>
             </td>
         </tr>
         <tr>
@@ -111,10 +111,10 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
                 <code>"range.min"</code>
             </td>
             <td>
-                <code>0</code>
+                The minimum the model value can be.
             </td>
             <td>
-                The minimum the model value can be.
+                <code>0</code>
             </td>
         </tr>
         <tr>
@@ -122,10 +122,10 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
                 <code>"range.max"</code>
             </td>
             <td>
-                <code>100</code>
+                The maximum the model value can be.
             </td>
             <td>
-                The maximum the model value can be.
+                <code>100</code>
             </td>
         </tr>
     </tbody>
