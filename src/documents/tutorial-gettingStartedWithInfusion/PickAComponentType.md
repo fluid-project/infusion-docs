@@ -24,10 +24,8 @@ These types of components build upon each other, a teeny little bit like inherit
 * **view components** support models, and also add support for views.
 * **renderer components** are **view components** with the [Renderer](../Renderer.md) added.
 
-<div class="infusion-docs-note"><strong>Note:</strong> The following diagram needs to be updated for the Infusion 2.0 framework - the "evented" and "little" component grades have been folded into plain `fluid.component`.</div>
-
 ![A venn diagram showing the composition of grades](../images/component-grades-venn-diagram.svg)
 
-For this tutorial, we suggest you work through all of the examples in order, to understand what each type of component offers. That way, you'll be in a better position to decide which grade you'll need for your components. Regardless of grade, the basic process for creating a component is the same. The next page in this tutorial will explain this basic process using the **little component**, but you will see the same process for each of the component types.
+For this tutorial, we suggest you work through all of the examples in order, to understand what each type of component offers. That way, you'll be in a better position to decide which grade you'll need for your components. Regardless of grade, the basic process for creating a component is the same. The next page in this tutorial will explain this basic process using the **plain component**, but you will see the same process for each of the component types.
 
 Next: [Basic Component Creation](BasicComponentCreation-Components.md)
