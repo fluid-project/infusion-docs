@@ -6,7 +6,7 @@ category: Tutorials
 
 Mutable data is typically expected to be stored on a component's [model](../FrameworkConcepts.md#model-objects). Component models in Infusion are altered through the [ChangeApplier](../ChangeApplier.md) functionality, which works to:
 
-* coordinate shared model state between different components
+* coordinate model state between different components
 * allow changes to a component's model to be listened for and responded to as though they are events
 
 What kinds of data is suitable for storing on a component model? The advice from the framework explanation of [model objects](../FrameworkConcepts.md#model-objects) is:
