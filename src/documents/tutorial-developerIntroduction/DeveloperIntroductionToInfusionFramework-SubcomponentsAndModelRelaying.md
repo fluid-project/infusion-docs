@@ -80,7 +80,7 @@ fluidTutorial.helloWorld.consoleHello = function (message) {
 
 ```
 
-Now, when we use the [ChangeApplier's](../ChangeApplier.md) `change` function to update the `message`, we'll see both the console and the web page display update:
+Now, when we use the [ChangeApplier's](../ChangeApplier.md) `change` function to update the `message` on the parent component model, we'll see both the console and the web page display update, as the change to the parent component model's `message` value is propagated to the `message` value of each subcomponent's model, which triggers to the model listeners of each to invoke the "hello!" functions.
 
 ```
 helloWorld.applier.change("message", "Hello, again, world.")
