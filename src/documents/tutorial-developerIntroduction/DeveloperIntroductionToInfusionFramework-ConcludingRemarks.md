@@ -21,6 +21,7 @@ We'll summarize what we've done below, then suggest some next steps.
 * As program designs evolve, Infusion's configuration-oriented components make it easier to [restructure a design](DeveloperIntroductionToInfusionFramework-RestructuringComponents.md) by splitting out functionality into multiple components and wiring them together through IoC references.
 * When it becomes clear two components have similar behaviour, Infusion's design helps in [refactoring to share functionality](DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html) by overriding invokers and creating base grades.
 * Infusion has strong supports for [multimodal implementations](DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md) that allow programs to adapt themselves to new contexts for input and presentation.
+* We can use [transformations as part of model relays](DeveloperIntroductionToInfusionFramework-TransformingModelRelays.md) to express more complex coordination of data between different parts of a program.
 
 ## Where to Go Next?
 

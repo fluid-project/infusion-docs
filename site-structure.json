@@ -159,6 +159,7 @@
                     { "pageName": "Restructuring Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.html" },
                     { "pageName": "Overriding Invokers and Refactoring", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html" },
                     { "pageName": "Extending Designs with Existing Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.html" },
+                    { "pageName": "Transforming Model Relays", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html" },
                     { "pageName": "Concluding Remarks", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html" }
 
 

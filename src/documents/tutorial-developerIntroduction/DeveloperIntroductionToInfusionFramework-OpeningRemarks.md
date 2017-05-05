@@ -44,4 +44,6 @@ The list below summarizes each section of the tutorial and the core concept cove
 
 9. [Extending Designs](DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.md) to allow programs to adapt themselves to new contexts for input and presentation.
 
+9. [Transforming Model Relays](DeveloperIntroductionToInfusionFramework-TransformingModelRelays.md) to express more complex coordination of data between different parts of a program.
+
 Next: [Components](DeveloperIntroductionToInfusionFramework-Components.md)
