@@ -80,4 +80,10 @@ fluidTutorial.helloWorld.consoleHello = function (message) {
 
 ```
 
+Now, when we use the [ChangeApplier's](../ChangeApplier.md) `change` function to update the `message`, we'll see both the console and the web page display update:
+
+```
+helloWorld.applier.change("message", "Hello, again, world.")
+```
+
 Next: [Restructuring Components](DeveloperIntroductionToInfusionFramework-RestructuringComponents.md)
