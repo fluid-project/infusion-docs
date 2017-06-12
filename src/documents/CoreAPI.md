@@ -539,6 +539,22 @@ if you are interested.
 path segments representing this
 * `newValue: {Any}` The value to be written into `model` at the path `path`
 
+### fluid.modelPairToChanges(value, oldValue, changePathPrefix)
+
+* `value {Any}` Model value to compare
+* `oldValue {Any}` Model value to compare
+* `changePathPrefix {String|Array of String}` [optional] Path prefix to prepend to change record paths
+* Returns: `{Array of Object}` An array of change records
+
+Calculates the changes between the model values `value` and `oldValue`
+and returns an array of change records. The optional argument
+`changePathPrefix` is prepended to the change path of each record (this
+is useful for generating change records to be applied at a non-root path
+in a model).
+
+The returned array of change records may be used with
+`fluid.fireChanges()`.
+
 ### fluid.model.parseEL(EL)
 
 * `EL {String}` The EL path to be parsed
