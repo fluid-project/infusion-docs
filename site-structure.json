@@ -135,7 +135,15 @@
                 "sectionName": "Migrating to Infusion 2.0",
                 "pages":
                 [
-                    { "pageName": "API Changes from 1.5 to 2.0", "href": "/APIChangesFrom1_5To2_0.html" }
+                    { "pageName": "API Changes from 1.5 to 2.0", "href": "/APIChangesFrom1_5To2_0.html" },
+                    { "pageName": "Deprecated in 2.0", "href": "/DeprecatedIn2_0.html" }
+                ]
+            },
+            {
+                "sectionName": "Migrating to Infusion 3.0",
+                "pages":
+                [
+                    { "pageName": "API Changes from 2.0 to 3.0", "href": "/APIChangesFrom2_0To3_0.html" }
                 ]
             }
         ]
@@ -212,7 +220,11 @@
                     { "pageName": "Grid Reorderer", "href": "/to-do/GridReordererAPI.html" },
                     { "pageName": "Layout Reorderer", "href": "/to-do/LayoutReordererAPI.html" },
                     { "pageName": "Image Reorderer", "href": "/ImageReordererAPI.html" },
+                    { "pageName": "Switch", "href": "/SwitchAPI.html" },
                     { "pageName": "Text to Speech", "href": "/TextToSpeechAPI.html" },
+                    { "pageName": "Textfield", "href": "/TextfieldAPI.html" },
+                    { "pageName": "TextfieldSlider", "href": "/TextfieldSliderAPI.html" },
+                    { "pageName": "TextfieldStepper", "href": "/TextfieldStepperAPI.html" },
                     { "pageName": "User Interface Options", "href": "/UserInterfaceOptionsAPI.html" },
                     { "pageName": "Uploader", "href": "/UploaderAPI.html" },
                     { "pageName": "Undo", "href": "/to-do/UndoAPI.html" },

@@ -9,7 +9,7 @@ Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.
 
 ---
 
-Regardless of which grade of component you use, the basic structure will be the same. We'll use the simplest grade, a plain **component**, to illustrate what this structure is. In future pages explaining other grades, you'll see the same principles.
+Regardless of which grade of component you use, the basic structure will be the same. We'll use the simplest grade, a **plain component**, to illustrate what this structure is. In future pages explaining other grades, you'll see the same principles.
 
 The definition of a component involves two things:
 
