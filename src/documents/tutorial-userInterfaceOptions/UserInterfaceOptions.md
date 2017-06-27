@@ -229,3 +229,5 @@ Here's the complete example from start to finish. This example assumes the Infus
 UI Options is now fully functional on your page. Now, when you load your page in your browser and click on the "Show Display Preferences" button, you will see the UI Options controls, as shown in the image below. If you adjust the controls, you will see your changes being applied to the page.
 
 ![Screen shot of UI Options](../images/uio.png "Screen shot of UI Options.")
+
+You may have to adjust your site's styles to work properly with UI Options. The ["Working With User Interface Options"](./WorkingWithUserInterfaceOptions.html) can help you get started.

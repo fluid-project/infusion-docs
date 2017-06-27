@@ -4,51 +4,89 @@ layout: default
 category: Tutorials
 ---
 
-Once [User Interface Options](../UserInterfaceOptionsAPI.md) or a [Preferences Editor](../PreferencesEditor.md) is incorporated into your website (also see the [User Interface Options tutorial](./UserInterfaceOptions.md)), it's important to ensure that the site transforms and responds correctly.
+Once User Interface Options or a Preferences Editor is incorporated into your website (see the [User Interface Options tutorial](./UserInterfaceOptions.md) for installation procedure), it's important to ensure that the site transforms and responds correctly.
+
+This documentation assumes you are somewhat comfortable with writing and editing `CSS`.
 
 ## Contrast Themes
 
-UI Options adds support for high contrast themes by transforming the colours on your website. Since contrast themes transform almost all aspects of the website, it's probable there will be some styling issues. This section aims to help you with this.
+UI Options adds support for high contrast themes by transforming the colours on your website. Since contrast themes transform almost all aspects of the webpage, it's probable there will be some styling issues initially. This section aims to help you fix some common issues.
 
-UI Options transforms the user interface into one of four high-contrast or one low contrast colour combinations:
 
-* high-contrast
-    * black-on-white,
-    * white-on-black,
-    * black-on-yellow and
-    * yellow-on-black.
-* low-contrast
+UI Options transforms the user interface into one of four high contrast or one low contrast colour combinations:
+
+* high contrast
+    * black on white
+    * white on black
+    * black on yellow
+    * yellow on black
+* low contrast
     * light grey on dark grey
 
-The themes attempt to remove any other colours from the interface, along with gradients, shadows, background images, etc. This type of contrast interface can be extremely helpful for users with different forms of low vision.
+The themes attempt to remove any other colours from the interface, along with gradients, shadows, background images, and other styling that may reduce legibility. This type of contrast interface can be extremely helpful for users with different forms vision needs.
 
-UIO applies contrast themes by adding a special class to the body of the document and providing styles that are scoped to that class. You will likely need to create a few more special classes, scoped to the themes, for some areas of your site.
+UI Options applies contrast themes by adding a special class to the `<body>` element of the document and providing styles that are scoped to that class. You will likely need to create a few more special classes, scoped to the theme, for some areas of your site.
 
-Support for these contrast themes can be ensured by following a few basic guidelines:
+To help you in creating a website that works well with UI Options, here are a few basic guidelines:
 
-* [Implement logos, banners icons, etc. as background image; Create high-contrast versions of them and use CSS to swap in the high-contrast versions when the themes are activated.](./HighContrastBackgroundImages.md)
-* [In other places where background images are used, either create high-contrast versions, or switch to a solid colour in high-contrast](./HighContrastButtons.md)
-* [Get rid of shadows.](./ShadowsInHighContrast.md)
+* [Make cosmetic graphics background images in CSS; create contrast versions; and use CSS to swap in the contrast versions when the themes are activated.](./UsingImagesInContrastModes.md)
+* [Improve clarity and legibility by removing gradients, shadows, and other styling effects.](./StyleEffectsAndLegibilityInContrastModes.md)
 * [Double-check use of CSS "content" property](./ContentPropertyHighContrast.md)
 
 ## How to define special styles for contrast themes
 
-UIO will do a pretty good job of transforming your site into the selected contrast, but some parts might need special attention to ensure that they look. If you do need to define styles for something that doesn't transform automatically, here's how:
+If something doesn't transform into contrast mode automatically when using the contrast adjustment, here's how you define styles to address those cases:
 
 ### Scope your styles to the theme name
 
-UIO add the theme name as a class to the body element. Scope your selector using the class name as shown in the following example. This example is for the yellow-on-black theme, which uses the class name `fl-theme-uio-yb`:
+UI Options will add the theme name as a class to the `<body>` element.
+
+* yellow on black: `<body class="fl-theme-uio-yb">`
+* white on black: `<body class="fl-theme-uio-wb">`
+* black on yellow: `<body class="fl-theme-uio-by">`
+* black on white: `<body class="fl-theme-uio-bw">`
+* light grey on dark grey: `<body class="fl-theme-uio-lgdg">`
+
+Scope your styles using the class name as shown in the following example. This example is for the yellow on black theme, which uses the class name `fl-theme-uio-yb`:
+
+```html
+<body class="fl-theme-uio-yb">
+    <div class="toolbar">
+        <a class="helpLink">Help</a>
+    </div>
+</body>
+```
 
 ```css
-/* high-contrast background icon for button */
-.fl-theme-uio-yb .toolbar .saveButton {
-    background-image: url('images/save-yellow.png');
+/* default style for button */
+.toolbar .helpLink {
+    outline: solid 0.2rem #008cba;
+    color: #008cba;
+    background: #efefef;
+    text-shadow: 1px 1px 0 #FFFFFF;
+}
+
+/* high contrast for button */
+.fl-theme-uio-yb .toolbar .helpLink {
+    outline: solid 0.2rem #ff0;
+    color: #ff0;
+    background: #000;
+    text-shadow: none;
 }
 ```
+<div class="infusion-docs-note"><strong>Note:</strong>
+    <p>
+        In some cases you may have to use the `!important` rule with your contrast styles to make them work. For example: <pre>color: #ff0 !important;</pre>.
+    </p>
+
+    <p>
+        Using `!important` should be used carefully as documented in [this article on CSS-tricks.com](https://css-tricks.com/when-using-important-is-the-right-choice/).
+    </p>
+</div>
 
 ### Make sure you have styles for all the themes
 
-UIO defines five contrast themes:
+UI Options defines five contrast themes:
 
 * yellow on black (class name `fl-theme-uio-yb`),
 * white on black (class name `fl-theme-uio-wb`),
@@ -56,7 +94,7 @@ UIO defines five contrast themes:
 * black on white (class name `fl-theme-uio-bw`), and
 * light grey on dark grey (class name `fl-theme-uio-lgdg`)
 
-If you need to define a style for a contrast theme, you'll most likely need to define if for all the themes. The styles will likely look very similar to each other, with differences only related to the colours:
+If you need to define a style for a contrast theme, you'll most likely need to define styles all the themes. The styles will likely look very similar to each other, with differences only related to the colours:
 
 ```css
 /* contrast background icon for button. these images have a transparent background */
@@ -64,41 +102,49 @@ If you need to define a style for a contrast theme, you'll most likely need to d
 .fl-theme-uio-wb .toolbar .saveButton { background-image: url('images/save-white.png'); }
 .fl-theme-uio-by .toolbar .saveButton,
 .fl-theme-uio-bw .toolbar .saveButton { background-image: url('images/save-black.png'); }
-
-.fl-theme-uio-lgdg .toolbar .saveButton { background-image: url('images/save-darkGrey.png'); }
+.fl-theme-uio-lgdg .toolbar .saveButton { background-image: url('images/save-grey.png'); }
 ```
 
-### Avoid image tags if background images can be used
+Creating contrast styles can be simplified by mix-ins if you are using a CSS stylesheet language like Sass, Stylus, or LESS.
+
+### Use background images when possible
 
 If you're using images to give your buttons or menu items a unique look, follow these guidelines:
 
-* don't use `<img>` tags; use semantically appropriate tags with background images. Background images can easily be replaced with contrast versions using CSS only.
+* use semantically appropriate tags for your graphics. For example, images important to your content should use `<img>`, and cosmetic images can be implemented as background images in CSS. UI Options can replace background images using CSS only.
+    * See [Using Images in Contrast Modes](./UsingImagesInContrastModes.md).
 * ensure background images are sized to scale to fit their container (for more info, see [Background Size on Mozilla Developer](https://developer.mozilla.org/en-US/docs/CSS/background-size))
     * contain and cover preserve proportions of image
     * a percentage will stretch image
         use background-size: 100%;
-* don't build the label text into the image; put it in the tag
-* if the 'image' is a gradient, consider using CSS gradients
+* don't build the label text into the image, instead consider using `<figure>` elements with a corresponding `<figcaption>` tag. See [`<figure>` on Mozilla Developer](https://developer.mozilla.org/en/docs/Web/HTML/Element/figure).
+* if the 'image' is a gradient, consider using CSS gradients. See [Style Effects and Legibility in Contrast Modes](./StyleEffectsAndLegibilityInContrastModes.md) for more information.
 
-## Testing Your Changes With UIO
+## Testing Your Changes With UI Options
 
 ### Enlarge the font
 
-Open the UI Options interface (be it the Separated Panel or the Full Page version) and use the "Text Size" control (in the "Text and Display" tab) to enlarge the font. Check the site:
+Open the UI Options interface and use the "Text Size" control to enlarge the font. Check the site:
 
-* [does the text enlarge correctly?](https://wiki.fluidproject.org/display/fluid/How+to+make+your+page+more+responsive#Howtomakeyourpagemoreresponsive-Useemsfortextsize)
-* [is the layout of the entire page still reasonable?](https://wiki.fluidproject.org/display/fluid/How+to+make+your+page+more+responsive#Howtomakeyourpagemoreresponsive-Useemsforcontainersizes)
+* does the text enlarge correctly?
+* is the layout of the entire page still reasonable?
+
+To help make your webpage respond better with UI Options, see the suggestions in this article: ["How to make your page more responsive"](https://wiki.fluidproject.org/display/fluid/How+to+make+your+page+more+responsive).
 
 ### Increase the line spacing
 
-Open the UI Options interface (be it the Separated Panel or the Full Page version) and use the "Line Spacing" control (in the "Text and Display" tab) to increase the line spacing. Check the site:
+Open the UI Options interface and use the "Line Spacing" control to increase the line spacing.
 
-* [is there increased space between all of the lines of text?](https://wiki.fluidproject.org/display/docs/Setting+line+spacing)
-* [is the layout of the entire page still reasonable?](https://wiki.fluidproject.org/display/fluid/How+to+make+your+page+more+responsive#Howtomakeyourpagemoreresponsive-Useemsforcontainersizes)
+* If you use a pixel value, it will not scale when User Interface Options is used to increase line height.
+* If you use em or percentages, the value not be inherited correctly by elements inside your element.
+
+The safest way to use line-height is as a unitless number, which will multiply the element's font size. This will also allow line heights to be adjusted by User Interface Options correctly. For more information, see the [MDN documentation on line-height](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height).
+
+If you find that the layout of your website does not lay out properly, or does not scale according to the text size, you may need to [switch to using `rem` or `em` values instead](https://wiki.fluidproject.org/display/fluid/How+to+make+your+page+more+responsive#Howtomakeyourpagemoreresponsive-Useremoremforcontainersizes).
 
 ### Try each of the themes
 
-Open the UI Options interface (be it the Separated Panel or the Full Page version) and use the "Colour & Contrast" control to select each of the contrast themes. Check the site:
+Open the UI Options interface and use the "Colour & Contrast" control to select each of the contrast themes. Check the site:
 
 * is all of the text in the correct colours?
 * do buttons and links appear in the selected contrast?
@@ -106,17 +152,31 @@ Open the UI Options interface (be it the Separated Panel or the Full Page versio
 * does anything still have shadows or gradients in the wrong colours?
 * are hover and focus styles reasonable?
 
+In the cases where the contrast isn't being applied, you will need to create specific CSS rules to fix them. [Style Effects and Legibility in Contrast Modes](./StyleEffectsAndLegibilityInContrastModes.md) describes the general approach of using CSS to fix contrast styling issues.
+
 ### Try each of the fonts
 
-Open the UI Options interface (be it the Separated Panel or the Full Page version) and use the "Text Style" control (in the "Text and Display" tab) to select each of the different font families. Check the site:
+Open the UI Options interface and use the "Text Style" control and select each of the different font styles. Check the site:
 
 * is all of the text in the correct font?
 * is the layout of the page still reasonable?
 * some fonts take up more room than others, and sometimes selecting a different font might affect the overall layout of the page.
 
-Enhance links and enlarge inputs
+To fix font related issues, you may have to fix styling issues related to overflow, text wrapping / breaking, margins, and padding.
 
-Open the UI Options interface (be it the Separated Panel or the Full Page version) and use the controls in the "Links and Buttons" tab to enhance links and buttons. Check the site:
+### Enhance links and enlarge inputs
+
+Open the UI Options interface and use the controls under "Links and Buttons" to enhance links and buttons. Check the site:
 
 * are links underlined, bolded and enlarged?
 * are inputs (such as text fields and buttons) enlarged?
+
+A common issue occurs when links are styled to appear like buttons. UI Options will treat them as links despite them looking like buttons. Consider using the appropriate semantic markup for links and buttons instead. Links "take you somewhere", whereas buttons "do something". For an explanation of buttons vs. links, see "[When to Use the Button Element](https://css-tricks.com/use-button-element/)" on CSS-Tricks.com.
+
+### Check Table of Contents
+
+Open the UI Options interface and use the control under "Table of Contents" to show the table of contents. Check the site:
+
+* are all Headers appearing in the table of contents?
+* do all links in the table of contents go to the proper place?
+* are Headers marked as "ignored" correctly omitted from the table of contents?
