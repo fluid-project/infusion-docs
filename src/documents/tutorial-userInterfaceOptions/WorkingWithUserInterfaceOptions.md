@@ -6,7 +6,7 @@ category: Tutorials
 
 Once User Interface Options or a Preferences Editor is incorporated into your website (see the [User Interface Options tutorial](./UserInterfaceOptions.md) for installation procedure), it's important to ensure that the site transforms and responds correctly.
 
-This documentation assumes you are somewhat comfortable with writing and editing `CSS`.
+This documentation assumes you are somewhat comfortable with writing and editing CSS.
 
 ## Contrast Themes
 
@@ -41,16 +41,16 @@ If something doesn't transform into contrast mode automatically when using the c
 
 UI Options will add the theme name as a class to the `<body>` element.
 
-* yellow on black: `<body class="fl-theme-uio-yb">`
-* white on black: `<body class="fl-theme-uio-wb">`
-* black on yellow: `<body class="fl-theme-uio-by">`
-* black on white: `<body class="fl-theme-uio-bw">`
-* light grey on dark grey: `<body class="fl-theme-uio-lgdg">`
+* yellow (`#FFFF00`) on black (`#000000`): `<body class="fl-theme-yb">`
+* white (`#FFFFFF`) on black (`#000000`): `<body class="fl-theme-wb">`
+* black (`#000000`) on yellow (`#FFFF00`): `<body class="fl-theme-by">`
+* black (`#000000`) on white (`#FFFFFF`): `<body class="fl-theme-bw">`
+* light grey (`#BDBDBB`) on dark grey (`#555555`): `<body class="fl-theme-lgdg">`
 
-Scope your styles using the class name as shown in the following example. This example is for the yellow on black theme, which uses the class name `fl-theme-uio-yb`:
+Scope your styles using the class name as shown in the following example. This example is for the yellow on black theme, which uses the class name `fl-theme-yb`:
 
 ```html
-<body class="fl-theme-uio-yb">
+<body class="fl-theme-yb">
     <div class="toolbar">
         <a class="helpLink">Help</a>
     </div>
@@ -67,7 +67,7 @@ Scope your styles using the class name as shown in the following example. This e
 }
 
 /* high contrast for button */
-.fl-theme-uio-yb .toolbar .helpLink {
+.fl-theme-yb .toolbar .helpLink {
     outline: solid 0.2rem #ff0;
     color: #ff0;
     background: #000;
@@ -76,11 +76,11 @@ Scope your styles using the class name as shown in the following example. This e
 ```
 <div class="infusion-docs-note"><strong>Note:</strong>
     <p>
-        In some cases you may have to use the `!important` rule with your contrast styles to make them work. For example: <pre>color: #ff0 !important;</pre>.
+        In some cases you may have to use the <code>!important</code> rule with your contrast styles to make them work. For example: <code>color: #ff0 !important;</code>.
     </p>
 
     <p>
-        Using `!important` should be used carefully as documented in [this article on CSS-tricks.com](https://css-tricks.com/when-using-important-is-the-right-choice/).
+        Using <code>!important</code> should be used carefully as documented in <a href="https://css-tricks.com/when-using-important-is-the-right-choice/">this article on CSS-tricks.com</a>.
     </p>
 </div>
 
@@ -88,21 +88,21 @@ Scope your styles using the class name as shown in the following example. This e
 
 UI Options defines five contrast themes:
 
-* yellow on black (class name `fl-theme-uio-yb`),
-* white on black (class name `fl-theme-uio-wb`),
-* black on yellow (class name `fl-theme-uio-by`),
-* black on white (class name `fl-theme-uio-bw`), and
-* light grey on dark grey (class name `fl-theme-uio-lgdg`)
+* yellow (`#FFFF00`) on black (`#000000`): theme class name `fl-theme-yb`
+* white (`#FFFFFF`) on black (`#000000`): theme class name `fl-theme-wb`
+* black (`#000000`) on yellow (`#FFFF00`): theme class name `fl-theme-by`
+* black (`#000000`) on white (`#FFFFFF`): theme class name `fl-theme-bw`
+* light grey (`#BDBDBB`) on dark grey (`#555555`): theme class name `fl-theme-lgdg`
 
 If you need to define a style for a contrast theme, you'll most likely need to define styles all the themes. The styles will likely look very similar to each other, with differences only related to the colours:
 
 ```css
 /* contrast background icon for button. these images have a transparent background */
-.fl-theme-uio-yb .toolbar .saveButton { background-image: url('images/save-yellow.png'); }
-.fl-theme-uio-wb .toolbar .saveButton { background-image: url('images/save-white.png'); }
-.fl-theme-uio-by .toolbar .saveButton,
-.fl-theme-uio-bw .toolbar .saveButton { background-image: url('images/save-black.png'); }
-.fl-theme-uio-lgdg .toolbar .saveButton { background-image: url('images/save-grey.png'); }
+.fl-theme-yb .toolbar .saveButton { background-image: url('images/save-yellow.png'); }
+.fl-theme-wb .toolbar .saveButton { background-image: url('images/save-white.png'); }
+.fl-theme-by .toolbar .saveButton,
+.fl-theme-bw .toolbar .saveButton { background-image: url('images/save-black.png'); }
+.fl-theme-lgdg .toolbar .saveButton { background-image: url('images/save-grey.png'); }
 ```
 
 Creating contrast styles can be simplified by mix-ins if you are using a CSS stylesheet language like Sass, Stylus, or LESS.
@@ -116,7 +116,7 @@ If you're using images to give your buttons or menu items a unique look, follow 
 * ensure background images are sized to scale to fit their container (for more info, see [Background Size on Mozilla Developer](https://developer.mozilla.org/en-US/docs/CSS/background-size))
     * contain and cover preserve proportions of image
     * a percentage will stretch image
-        use background-size: 100%;
+        use `background-size: 100%;`
 * don't build the label text into the image, instead consider using `<figure>` elements with a corresponding `<figcaption>` tag. See [`<figure>` on Mozilla Developer](https://developer.mozilla.org/en/docs/Web/HTML/Element/figure).
 * if the 'image' is a gradient, consider using CSS gradients. See [Style Effects and Legibility in Contrast Modes](./StyleEffectsAndLegibilityInContrastModes.md) for more information.
 
@@ -166,7 +166,7 @@ To fix font related issues, you may have to fix styling issues related to overfl
 
 ### Enhance links and enlarge inputs
 
-Open the UI Options interface and use the controls under "Links and Buttons" to enhance links and buttons. Check the site:
+Open the UI Options interface and use the controls under "Enhance Inputs" to enhance links and buttons. Check the site:
 
 * are links underlined, bolded and enlarged?
 * are inputs (such as text fields and buttons) enlarged?

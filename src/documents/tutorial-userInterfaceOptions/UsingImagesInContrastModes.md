@@ -17,41 +17,43 @@ If you are integrating UI Options into your site, we highly recommend you create
 
 UI Options provides four high contrast themes:
 
-* black on white
-* white on black
-* black on yellow
-* yellow on black
-* light grey on dark grey
+* yellow (`#FFFF00`) on black (`#000000`)
+* white (`#FFFFFF`) on black (`#000000`)
+* black (`#000000`) on yellow (`#FFFF00`)
+* black (`#000000`) on white (`#FFFFFF`)
+* light grey (`#BDBDBB`) on dark grey (`#555555`)
 
 These themes would require different versions of images and graphics to match. To do this you will need to use image editing software like Photoshop to change the colours of the images to match the different contrast themes.
 
 The simplest images to convert are ones that already have a transparent background. Creating contrast versions involves 'locking' the transparent pixels so they stay transparent and then painting over everything not-transparent with the desired colour.
 
+## Creating Contrast Images in Photoshop
+
 ### Step 1 - Lock the transparent pixels
 
 In Photoshop, you can lock the transparent pixels in one of at least two ways:
 
-1. Type the '/' key, or
+1. Type the '`/`' key, or
 2. In the "Layers" panel, click the 'lock pixels button (see image below).
 
-![Image of the Photoshop Layers panel with the mouse cursor hovering over the Lock transparent pixels button]
+![Image of the Photoshop Layers panel with the mouse cursor hovering over the Lock transparent pixels button](../images/tutorial-uio-lock-pixels.png)
 
 ### Step 2 - Fill the rest of the image with the desired colour
 
 In Photoshop, there are several ways to fill the image with a single colour:
 
-1. Type Alt + Delete on Mac, or Alt + Backspace on Windows to fill the image with the current foreground colour, or
-2. Type Command + Delete on Mac, or Command + Backspace on Windows to fill the image with the current background colour, or
+1. Type `Alt + Delete` on Mac, or `Alt + Backspace` on Windows to fill the image with the current foreground colour, or
+2. Type `Command + Delete` on Mac, or `Command + Backspace` on Windows to fill the image with the current background colour, or
 3. Choose a paintbrush and a foreground colour, and drag the cursor over the image.
 
 ### Step 3 - Save the image for the web
 
-* On Mac: Type Shift + Alt + Command + S
-* On Windows: Type Shift + Alt + Ctrl + S
+* On Mac: Type `Shift + Alt + Command + S`
+* On Windows: Type `Shift + Alt + Ctrl + S`
 
 ### Inverting Colours for Quick Black-White and White-Black Images
 
-If you've created a black (or white) image, you can invert the colour to convert it to white (or black) by typing Command + I on Mac, or Ctrl + I on Windows.
+If you've created a black (or white) image, you can invert the colour to convert it to white (or black) by typing `Command + I` on Mac, or `Ctrl + I` on Windows.
 
 ## Using CSS to Switch Web Graphics for Contrast Modes
 
@@ -67,10 +69,10 @@ To help decide whether to use an `<img>` element or a background image, a good r
 
 The advantage of using `background` is that assistive technologies (like screen readers) will ignore them since it is considered as cosmetic. This allows you to declutter and simplify the user experience by not having extraneous content.
 
-<div class="infusion-docs-note"><strong>Note:</strong> UI Options changes the presentation of content by using CSS. Therefore images implemented with &lt;img&gt; HTML elements are not easily modified using CSS. It is possible to achieve a similar contrast effect by using <a href="https://developer.mozilla.org/en/docs/Web/CSS/filter">CSS filters</a>, but the results may not match the contrast mode.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> UI Options changes the presentation of content by using CSS. Therefore images implemented with <code>&lt;img&gt;</code> HTML elements are not easily modified using CSS. It is possible to achieve a similar contrast effect by using <a href="https://developer.mozilla.org/en/docs/Web/CSS/filter">CSS filters</a>, but the results may not match the contrast mode.</div>
 
 ### Example Contrast Image Switching
-The following example shows how to CSS can be used to switch background images with contrast versions.
+The following example shows how CSS can be used to switch background images with contrast versions.
 
 HTML:
 ```html
@@ -86,25 +88,29 @@ CSS
     background-repeat: no-repeat;
 }
 /* white logo for white-on-black theme */
-.fl-theme-uio-wb .site-logo {
+.fl-theme-wb .site-logo {
+    color: #fff;
     background-image: url("images/logo-white.png");
 }
 /* yellow logo for yellow-on-black theme */
-.fl-theme-uio-yb .site-logo {
+.fl-theme-yb .site-logo {
+    color: #ff0;
     background-image: url("images/logo-yellow.png");
 }
 /* black logo for black-on-white and black-on-yellow themes */
-.fl-theme-uio-bw .site-logo,
-.fl-theme-uio-by .site-logo {
+.fl-theme-bw .site-logo,
+.fl-theme-by .site-logo {
+    color: #000;
     background-image: url("images/logo-black.png");
 }
 /* light grey logo for light grey and dark grey theme */
-.fl-theme-uio-lgdg .site-logo {
+.fl-theme-lgdg .site-logo {
+    color: #bdbdbb;
     background-image: url("images/logo-grey.png");
 }
 ```
 
-The logo in the above example is implemented as a background image on a link to the site's home page. The contrast images are substituted by using the same selector (i.e. `.site-logo`) prefaced with the theme class (i.e. `.fl-theme-uio-wb`), and specifying only the new image file. All other styles remain the same.
+The logo in the above example is implemented as a background image on a link to the site's home page. The contrast images are substituted by using the same selector (i.e. `.site-logo`) prefaced with the theme class (i.e. `.fl-theme-wb`), and specifying only the new image file. All other styles remain the same.
 
 When a user selects a contrast theme using UI Options, the theme class will be added to the `<body>` of the document and the high contrast logo will automatically be loaded.
 
@@ -136,20 +142,20 @@ The following example shows how icons on navigation links can be changed to cont
   background-color: #0076B0;
   color: #FFFFFF;
 }
-.fl-theme-uio-by .people.currentPage {
+.fl-theme-by .people.currentPage {
     background-image: url("images/people-yellow.png");
 }
-.fl-theme-uio-yb .idi-people.currentPage,
-.fl-theme-uio-wb .idi-people.currentPage {
+.fl-theme-yb .idi-people.currentPage,
+.fl-theme-wb .idi-people.currentPage {
     background-image: url("images/people-black.png");
 }
-.fl-theme-uio-lgdg .idi-people.currentPage {
+.fl-theme-lgdg .idi-people.currentPage {
     background-image: url("images/people-grey.png");
 }
 ```
 
 In this example, the 'current page' tab has an inverted colour scheme. The default colour would appear as shown in the following image:
-![A graphical icon in its default colour of blue on white.](/images/tutorial-uio-icon-regular.png)
+![A graphical icon in its default colour of blue on white.](../images/tutorial-uio-icon-regular.png)
 
 The high contrast version of the theme inverts the colour, so in the "black-on-white" theme, for example, the graphic itself should appear white-on-black to keep with the original inverted style:
-![A graphical icon in black on white contrast theme.](/images/tutorial-uio-icon-hc.png)
+![A graphical icon in black on white contrast theme.](../images/tutorial-uio-icon-hc.png)

@@ -230,4 +230,4 @@ UI Options is now fully functional on your page. Now, when you load your page in
 
 ![Screen shot of UI Options](../images/uio.png "Screen shot of UI Options.")
 
-You may have to adjust your site's styles to work properly with UI Options. The ["Working With User Interface Options"](./WorkingWithUserInterfaceOptions.html) can help you get started.
+You may have to adjust your site's styles to work properly with UI Options. The ["Working With User Interface Options"](./WorkingWithUserInterfaceOptions.md) can help you get started.
