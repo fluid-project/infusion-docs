@@ -154,6 +154,6 @@ A main goal of Infusion is to enable us where possible to express our applicatio
 
 Transforming model relays reduce the amount of custom code we need to write to fulfill a common need: responding to data changing in one part of the program in another part of the program.
 
-We have seen previously how [model relaying](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html) can be used for value synchronization between parts of a program; when we add intermediary transformations to the relay syntax, we can achieve coordination of program state where much of the complexity is embodied in the declarative configuration syntax.
+We have seen previously how [model relaying](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html) can be used for value synchronization between parts of a program; when we add transformations to the relay syntax, we can achieve advanced coordination of program state where much of the complexity is embodied in the declarative configuration syntax.
 
 Next: [Concluding Remarks](DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html)
