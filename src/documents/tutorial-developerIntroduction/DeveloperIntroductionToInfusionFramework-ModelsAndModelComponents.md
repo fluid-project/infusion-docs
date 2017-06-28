@@ -9,7 +9,7 @@ Mutable data is typically expected to be stored on a component's [model](../Fram
 * coordinate model state between different components
 * allow changes to a component's model to be listened for and responded to as though they are events
 
-What kinds of data is suitable for storing on a component model? The advice from the framework explanation of [model objects](../FrameworkConcepts.md#model-objects) is:
+What kinds of data are suitable for storing on a component model? The advice from the framework explanation of [model objects](../FrameworkConcepts.md#model-objects) is:
 
 <div class="infusion-docs-note">
 We recommend that all objects stored in the `model` area of a component conform to an even stricter definition - that they are equivalent to their form serialised as JSON. This implies that they

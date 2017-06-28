@@ -27,6 +27,6 @@ We'll summarize what we've done below, then suggest some next steps.
 
 * Get [your own copy of Infusion from our GitHub repository](https://github.com/fluid-project/infusion).
 * Read about the [framework concepts](/FrameworkConcepts.md) to learn more about Infusion's design goals and overall philosophy.
-* Read [further documentation on Infusion](/), including many advanced topics not covered here such as [using Infusion in node.js](/NodeAPI.md), [model transformation](/ModelTransformationAPI.md) and [unit testing](/jqUnit.html).
+* Read [further documentation on Infusion](/), including many advanced topics not covered here such as [using Infusion in node.js](/NodeAPI.md), [advanced features of model transformation](/ModelTransformationAPI.md) and [unit testing](/jqUnit.html).
 * [Get involved](https://wiki.fluidproject.org/display/fluid/Get+Involved) in the [Fluid Project](https://wiki.fluidproject.org/pages/viewpage.action?pageId=3900010), the open-source software community that supports, works with and evolves the Infusion framework.
 * See examples of software built with Infusion at projects like [FLOE](http://floeproject.org/) and the [GPII](http://gpii.net/).

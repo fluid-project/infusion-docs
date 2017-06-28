@@ -32,7 +32,7 @@ The list below summarizes each section of the tutorial and the core concept cove
 
 3. [Events and Inversion of Control](DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html) to allow our programs to be built out of loosely coupled parts, and to manage sequencing and lifecycle throughout that loosely coupled structure.
 
-4. [Model Components](DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html) that can not only track mutable data, state or content, but coordinate and synchronize their data with other model components and fire events when their state changes. [Model Listeners](DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html) are used to respond to changes in model state.
+4. [Model Components](DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html) that can track mutable data, state or content, and coordinate and synchronize their data with other model components and fire events when their state changes. [Model Listeners](DeveloperIntroductionToInfusionFramework-ListeningToModelChanges.html) are used to respond to changes in model state.
 
 5. [View Components](DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html) for building connections between web elements and Infusion components.
 

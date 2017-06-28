@@ -152,6 +152,8 @@ helloWorld = fluidTutorial.helloWorld({
 
 A main goal of Infusion is to enable us where possible to express our applications as [declarative configurations](../FrameworkConcepts.html#declarative-configuration), reducing the overhead for other developers (or ourselves, after we have stepped away from the code for some time...) to understand the flow of program data.
 
-In this case, transforming model relays reduce the amount of code we need to write to express a common need in applications: responding to a data change in one part of the program in another part in a way more complex than simple synchronization of data.
+Transforming model relays reduce the amount of custom code we need to write to fulfill a common need: responding to data changing in one part of the program in another part of the program.
+
+We have seen previously how [model relaying](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html) can be used for value synchronization between parts of a program; when we add intermediary transformations to the relay syntax, we can achieve complex coordination of program state where much of the complexity is embodied in the declarative configuration syntax.
 
 Next: [Concluding Remarks](DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html)

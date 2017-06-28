@@ -4,7 +4,7 @@ layout: default
 category: Tutorials
 ---
 
-With the console and display functionality extracted as a separate components, it's easier to see that large blocks of their configuration are similar:
+With the console and display functionality extracted as separate components, it's easier to see that large blocks of their configuration are similar:
 
 * they have the same model characteristics
 * they both have a model listener that calls a "say hello" function
