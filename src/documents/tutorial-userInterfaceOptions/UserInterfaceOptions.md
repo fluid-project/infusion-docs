@@ -37,7 +37,7 @@ The rest of this tutorial will explain each of these steps in detail.
 
 ## Download and install the UI Options library ##
 
-1. [Download the UI Options library](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-uiOptions-2.0.0-source.zip) (there is also a [minified version UI Options](https://github.com/fluid-project/infusion/releases/download/infusion-2.0/infusion-uiOptions-2.0.0-minified.zip) for deployment purposes).
+1. [Download the UI Options library](https://github.com/fluid-project/infusion/releases/download/v2.0.0/infusion-uiOptions-2.0.0-source.zip) (there is also a [minified version UI Options](https://github.com/fluid-project/infusion/releases/download/v2.0.0/infusion-all-2.0.0-minified.zip) for deployment purposes).
 2. Unzip the contents of the downloaded ZIP file to a location within your project. This will result in a new directory `infusion`. <div class="infusion-docs-note"><strong>Note:</strong> In this guide we will use the directory `my-project/lib/`.</div>
 3. Your `infusion` folder will include a single file containing all of the JavaScript you need (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later link to these files in your HTML files.
 4. Now that `infusion` is in your project directory, you can delete the `infusion-uiOptions-2.0.0.zip` (or similar name) from your download directory.
