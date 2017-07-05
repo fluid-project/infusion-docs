@@ -78,7 +78,6 @@ Scope your styles using the class name as shown in the following example. This e
     <p>
         In some cases you may have to use the <code>!important</code> rule with your contrast styles to make them work. For example: <code>color: #ff0 !important;</code>.
     </p>
-
     <p>
         Using <code>!important</code> should be used carefully as documented in <a href="https://css-tricks.com/when-using-important-is-the-right-choice/">this article on CSS-tricks.com</a>.
     </p>
