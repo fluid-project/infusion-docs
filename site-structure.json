@@ -194,7 +194,11 @@
                 "sectionName": "User Interface Options",
                 "pages":
                 [
-                    { "pageName": "User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" }
+                    { "pageName": "Setting Up User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" },
+                    { "pageName": "Working with User Interface Options", "href": "/tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.html"},
+                    { "pageName": "Using Images in Contrast Modes", "href": "/tutorial-userInterfaceOptions/UsingImagesInContrastModes.html"},
+                    { "pageName": "Style Effects and Legibility in Contrast Modes", "href": "/tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes.html"},
+                    { "pageName": "CSS 'Content' Property in Contrast Modes", "href": "/tutorial-userInterfaceOptions/ContentPropertyHighContrast.html"}
                 ]
             }
         ]
