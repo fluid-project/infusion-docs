@@ -180,7 +180,8 @@ in its `sequence` member, representing a sequence of actions (either executors o
     <tr class="infusion-docs-duckrow">
         <td rowspan="5" class="infusion-docs-blockcell">Event listener</td>
         <td><code>event</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
-        <td><code>{String}</code></td><td>Reference to the <a href="InfusionEventSystem.md">event</a> to which the listener will be bound</td>
+        <td><code>{String}</code></td><td>Reference to the <a href="InfusionEventSystem.md">event</a> to which the listener will be bound. This may be either a standard <a href="">IoC Reference</a> to an event above the testCaseHolder,
+        or else a full <a href="IoCSS.html#iocss-selectors">IoCSS reference</a> to an event anywhere in the tree.</td>
         <td rowspan="5" class="infusion-docs-blockcell">binder</td>
     </tr>
     <tr class="infusion-docs-alt-a-row">
@@ -197,8 +198,8 @@ in its `sequence` member, representing a sequence of actions (either executors o
         <td><code>{Function|String}</code></td><td>A function which will produce a listener to be bound</td>
     </tr>
     <tr class="infusion-docs-alt-b-row">
-        <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td><td>Object/Array</td>
-        <td>The arguments to be supplied to the listener maker function in order to produce a listener</td>
+        <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td>
+        <td><code>Object/Array</code></td><td>The arguments to be supplied to the listener maker function in order to produce a listener</td>
     </tr>
     <tr class="infusion-docs-duckrow">
         <td rowspan="6" class="infusion-docs-blockcell">Task</td>
