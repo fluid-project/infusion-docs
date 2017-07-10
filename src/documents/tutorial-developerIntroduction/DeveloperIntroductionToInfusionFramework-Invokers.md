@@ -9,7 +9,7 @@ All Infusion components support the definition of public functions using [invoke
 * By printing to the web developer console via `console.log`
 * By displaying a message on a web page
 
-While there are [other styles of invokers possible](../Invokers.html#types-of-invokers), here we will use a style that allows us to refer to a free function (one not attached to a specific object).
+While there are [other styles of invokers possible](../Invokers.md#types-of-invokers), here we will use a style that allows us to refer to a free function (one not attached to a specific object).
 
 <div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/MJbgEx?editors=1111)</div>
 
