@@ -120,4 +120,4 @@ fluid.defaults("fluidTutorial.helloWorld", {
 });
 ```
 
-Next: [Transforming Model Relays](DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html)
+Next: [Transforming Model Relays](DeveloperIntroductionToInfusionFramework-TransformingModelRelays.md)

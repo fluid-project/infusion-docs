@@ -99,4 +99,4 @@ helloWorld.applier.change("message", "Goodbye! See you again soon.");
 // "Goodbye! See you again soon."
 ```
 
-Next: [Views and View Components](DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html)
+Next: [Views and View Components](DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.md)

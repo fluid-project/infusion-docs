@@ -156,4 +156,4 @@ Transforming model relays reduce the amount of custom code we need to write to f
 
 We have seen previously how [model relaying](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html) can be used for value synchronization between parts of a program; when we add transformations to the relay syntax, we can achieve advanced coordination of program state where much of the complexity is embodied in the declarative configuration syntax.
 
-Next: [Concluding Remarks](DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html)
+Next: [Concluding Remarks](DeveloperIntroductionToInfusionFramework-ConcludingRemarks.md)

@@ -47,4 +47,4 @@ helloWorld.sayHello();
 
 You will notice that the function we defined expects one argument, but we call the invoker without any arguments; this is because we've specified the argument to be supplied as part of the invoker.
 
-Next: [Events and Inversion of Control](DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html)
+Next: [Events and Inversion of Control](DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.md)

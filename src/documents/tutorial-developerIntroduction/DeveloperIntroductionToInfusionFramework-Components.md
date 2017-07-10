@@ -65,4 +65,4 @@ While we won't get into grade inheritance until later (combining existing grade 
 1. The order of precedence when grade configurations have keys with the same name in the same place is that the rightmost grade will take precedence.
 2. Any combination including `fluid.viewComponent` or grades derived from it should be placed to the right of any non-`viewComponent` grade.
 
-Next: [ Invokers](DeveloperIntroductionToInfusionFramework-Invokers.html)
+Next: [ Invokers](DeveloperIntroductionToInfusionFramework-Invokers.md)
