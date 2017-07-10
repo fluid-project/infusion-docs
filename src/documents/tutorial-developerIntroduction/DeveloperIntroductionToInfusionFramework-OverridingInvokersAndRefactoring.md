@@ -12,9 +12,9 @@ With the console and display functionality extracted as separate components, it'
 
 Let's refactor to avoid duplication and create a base "say hello" component that other types of "say hello" component can derive from:
 
-<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/bgBbOm?editors=1111)</div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/bgBbOm?editors=1111">Live Example of the code below on CodePen</a></div>
 
-```
+``` javascript
 fluid.defaults("fluidTutorial.helloWorld.sayHello", {
     gradeNames: ["fluid.modelComponent"],
     model: {

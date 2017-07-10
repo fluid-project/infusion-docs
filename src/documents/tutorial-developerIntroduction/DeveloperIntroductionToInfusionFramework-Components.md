@@ -18,9 +18,9 @@ Infusion's approach to component-based development emphasizes declarative config
 
 A new Infusion component grade is defined using the `fluid.defaults` function and a very basic "Hello, World!" component might look like this:
 
-<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/oBYvwx?editors=1111)</div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/oBYvwx?editors=1111">Live Example of the code below on CodePen</a></div>
 
-```
+``` javascript
 // The first argument is the name of the new component, the second is the
 // new component's default configuration
 fluid.defaults("fluidTutorial.helloWorld", {
@@ -39,15 +39,14 @@ fluid.defaults("fluidTutorial.helloWorld", {
 
 After definition, instances of the component can be created by calling the component's name as a function, with the option to pass in further configuration options as an argument:
 
-```
+``` javascript
 var helloWorld = fluidTutorial.helloWorld();
 ```
-
 
 Right now this component doesn't do anything, but we will evolve its definition throughout this introduction to demonstrate further core concepts of the framework.
 
 ## Namespaces in Infusion
-<div class="infusion-docs-note">
+
 The standard pattern in developing Infusion components is to
 gather related components and functions under a namespace, a single
 global variable to contain the code; Infusion has a [number of
@@ -58,16 +57,12 @@ grade we are defining has a fully qualified name of
 `fluidTutorial.helloWorld`; using namespaces helps us avoid
 potential collision of component or function names when integrating with
 other code.
-</div>
 
 ## Grade Inheritance in Infusion
-<div class="infusion-docs-note">While we won't get into grade inheritance until later (combining existing grade definitions by supplying multiple items in the `gradeNames` array), we'll quickly note two important rules:
 
-<ol>
-<li>The order of precedence when grade configurations have keys with the same name in the same place is that the rightmost grade will take precedence.</li>
-<li>Any combination including `fluid.viewComponent` or grades derived from it should be placed to the right of any non-`viewComponent` grade.</li>
-</ol>
+While we won't get into grade inheritance until later (combining existing grade definitions by supplying multiple items in the `gradeNames` array), we'll quickly note two important rules:
 
-</div>
+1. The order of precedence when grade configurations have keys with the same name in the same place is that the rightmost grade will take precedence.
+2. Any combination including `fluid.viewComponent` or grades derived from it should be placed to the right of any non-`viewComponent` grade.
 
 Next: [ Invokers](DeveloperIntroductionToInfusionFramework-Invokers.html)

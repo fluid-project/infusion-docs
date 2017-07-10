@@ -13,7 +13,7 @@ While there are [other styles of invokers possible](../Invokers.html#types-of-in
 
 <div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/MJbgEx?editors=1111)</div>
 
-```
+``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.component"],
     invokers: {
@@ -40,9 +40,9 @@ fluidTutorial.helloWorld.consoleHello = function (message) {
 
 Now at the console we can create an instance of the component and call the invoker as a function to say hello:
 
-```
-> var helloWorld = fluidTutorial.helloWorld({});
-> helloWorld.sayHello();
+``` javascript
+var helloWorld = fluidTutorial.helloWorld({});
+helloWorld.sayHello();
 ```
 
 You will notice that the function we defined expects one argument, but we call the invoker without any arguments; this is because we've specified the argument to be supplied as part of the invoker.

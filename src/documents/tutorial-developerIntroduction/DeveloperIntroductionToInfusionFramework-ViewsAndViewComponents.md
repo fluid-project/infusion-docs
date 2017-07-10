@@ -10,11 +10,11 @@ View components require the specification of a page container for the component 
 
 `var helloWorld = fluidTutorial.helloWorld(".helloWorld", {});`
 
-<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/MJbgVR?editors=1111)</div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/MJbgVR?editors=1111">Live Example of the code below on CodePen</a></div>
 
 Let's turn the "Hello, World!" component into a view component that writes its initial message to the screen as well, assuming we have this HTML on the page:
 
-```
+``` html
 <div class="helloWorld">
     <div class="flc-messageArea"></div>
 </div>
@@ -22,7 +22,7 @@ Let's turn the "Hello, World!" component into a view component that writes its i
 
 We introduce another style of invoker here, the ["this"-ist style](../Invokers.html#-this-ist-invoker-binding-to-a-oo-style-javascript-function-referencing-this-) that allows us to invoke functions whose implementation references the special Javascript `this` value. This style of invoker is important for integrating with non-Infusion code such as jQuery, as standard Javascript functions attached to objects expect a `this` value referring to the calling object.
 
-```
+``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.viewComponent"],
     model: {

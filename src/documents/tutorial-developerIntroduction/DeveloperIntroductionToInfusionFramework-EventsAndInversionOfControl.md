@@ -12,9 +12,9 @@ IoC references allow us to refer to other parts of a component object (or anothe
 
 We can use a listener definition, the `onCreate` lifecycle event and IoC `{that}` to have a component say hello when it's ready, rather than needing to be manually called:
 
-<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/LxbPQZ?editors=1111) </div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/LxbPQZ?editors=1111">Live Example of the code below on CodePen</a></div>
 
-```
+``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.component"],
     listeners: {

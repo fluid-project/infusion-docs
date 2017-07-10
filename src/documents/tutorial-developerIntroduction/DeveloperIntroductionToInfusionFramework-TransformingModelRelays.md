@@ -10,9 +10,9 @@ Infusion's answer to this is the [explicit model relay](../ModelRelay.html#expli
 
 In the code below, we add a second `fluidTutorial.helloWorld.speakHello` subcomponent, but use a style of explicit model relay that allows us to pass a value through an intermediary function when coordinating changes. In this case, we define a function that reverses a string, and our `reverseSpeakHello` subcomponent will speak the message backwards after the `speakHello` subcomponent has spoken it.
 
-<div class="infusion-docs-note">You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/gWGQyN?editors=1111)</div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/gWGQyN?editors=1111">Live Example of the code below on CodePen</a></div>
 
-```
+``` javascript
 var helloWorld;
 
 fluid.defaults("fluidTutorial.helloWorld.sayHello", {

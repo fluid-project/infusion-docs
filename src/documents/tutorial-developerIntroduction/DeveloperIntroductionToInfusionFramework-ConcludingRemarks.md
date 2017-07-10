@@ -8,7 +8,7 @@ We've come to the end of our introduction to the core concepts of the Infusion f
 
 We'll summarize what we've done below, then suggest some next steps.
 
-<div class="infusion-docs-note">If you have feedback about this tutorial, we'd be glad to hear it via our [IRC channels](https://wiki.fluidproject.org/display/fluid/IRC+Channel), [mailing lists](https://wiki.fluidproject.org/display/fluid/Mailing+Lists) or a [GitHub issue on the documentation repo](https://github.com/fluid-project/infusion-docs/issues)</div>
+<div class="infusion-docs-note"><strong>Note:</strong> If you have feedback about this tutorial, we'd be glad to hear it via our <a href="https://wiki.fluidproject.org/display/fluid/IRC+Channel">IRC channels</a>, <a href="https://wiki.fluidproject.org/display/fluid/Mailing+Lists">mailing lists</a> or a <a href="https://github.com/fluid-project/infusion-docs/issues">GitHub issue on the documentation repo</a></div>
 
 ## Summing Up
 
