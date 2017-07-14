@@ -9,10 +9,6 @@ Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.
 
 ---
 
-## Background ##
-
-If you haven't already, it might be helpful to read our [Developer Introduction to the Infusion Framework](../to-do/DeveloperIntroductionToInfusionFramework.md) before starting this tutorial.
-
 ## Set Up Directory Structure ##
 
 For this tutorial we'll assume this component is being created for your own use, not as a contribution to Infusion. If you do want to contribute your component to Infusion, the directory set-up and requirements will be a little different and is explained in [Contributing Code](http://wiki.fluidproject.org/display/fluid/Contributing+Code).
