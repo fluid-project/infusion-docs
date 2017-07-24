@@ -157,7 +157,7 @@ fluid.defaults("tutorials.currencyConverter", {
 
 // The conversion function
 tutorials.currencyConverterAuto.convert = function (exchangeRate, amount) {
-    return amount * that.options.exchangeRate;
+    return amount * exchangeRate;
 };
 ```
 
