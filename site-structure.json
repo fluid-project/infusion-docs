@@ -154,10 +154,28 @@
         "sections":
         [
             {
-                "sectionName":"Getting Started",
+                "sectionName":"Developer Introduction to the Infusion Framework",
                 "pages":
                 [
-                    { "pageName": "Getting started with Infusion", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
+                    { "pageName": "Opening Remarks", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.html" },
+                    { "pageName": "Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html" },
+                    { "pageName": "Invokers", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html" },
+                    { "pageName": "Events and Inversion of Control", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html" },
+                    { "pageName": "Models and Model Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html" },
+                    { "pageName": "Views and View Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html" },
+                    { "pageName": "Subcomponents and Model Relaying", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html" },
+                    { "pageName": "Restructuring Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.html" },
+                    { "pageName": "Overriding Invokers and Refactoring", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html" },
+                    { "pageName": "Extending Designs with Existing Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.html" },
+                    { "pageName": "Transforming Model Relays", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html" },
+                    { "pageName": "Concluding Remarks", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html" }
+                ]
+            },
+            {
+                "sectionName":"Getting Started with Infusion Component Design",
+                "pages":
+                [
+                    { "pageName": "Getting Started with Infusion Component Design", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
                     { "pageName": "Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
                     { "pageName": "Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
                     { "pageName": "Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},

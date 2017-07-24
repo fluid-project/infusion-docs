@@ -5,13 +5,9 @@ category: Tutorials
 ---
 
 ---
-Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
+Part of the [Getting Started with Infusion Component Design Tutorial](GettingStartedWithInfusion.md)
 
 ---
-
-## Background ##
-
-If you haven't already, it might be helpful to read our [Developer Introduction to the Infusion Framework](../to-do/DeveloperIntroductionToInfusionFramework.md) before starting this tutorial.
 
 ## Set Up Directory Structure ##
 
