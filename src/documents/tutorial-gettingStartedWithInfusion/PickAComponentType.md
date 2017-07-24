@@ -5,7 +5,7 @@ category: Tutorials
 ---
 
 ---
-Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
+Part of the [Getting Started with Infusion Component Design Tutorial](GettingStartedWithInfusion.md)
 
 ---
 
