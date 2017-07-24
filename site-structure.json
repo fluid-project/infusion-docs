@@ -164,10 +164,10 @@
                 ]
             },
             {
-                "sectionName":"Getting Started",
+                "sectionName":"Getting Started with Infusion Component Design",
                 "pages":
                 [
-                    { "pageName": "Getting started with Infusion", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
+                    { "pageName": "Getting Started with Infusion Component Design", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
                     { "pageName": "Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
                     { "pageName": "Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
                     { "pageName": "Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
