@@ -12,6 +12,9 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 This section describes major APIs that were in common use. For information about less widely-used features removed in 3.0, consult [Deprecations in 2.0](DeprecatedIn2_0.md).
 
+#### Model Transformations ####
+
+`fluid.transforms.round` can now take in `scale` and `method` options for rounding numbers to a decimal value.
 
 ### Preferences Framework ###
 

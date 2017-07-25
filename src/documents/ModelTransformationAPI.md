@@ -1414,13 +1414,18 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 **Type:** standardTransformFunction
 
-**Description:** Rounds the input to the nearest integer.
+**Description:** Rounds the input to the nearest integer, or to a decimal value if a `scale` value is provided. The `scale` option denotes the maximum number of decimal places to round the number to and the `method` option denotes the rounding method to use. Trailing 0s are omitted and numbers are rounded as follows:
+* `"round"`: Numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
+* `"ceil"`: Numbers are rounded up
+* `"floor"`: Numbers are rounded down
+
+If the `scale` value is not numerical or is `NaN`, it is treated as though it were not specified at all. The `method` is only used when a valid `scale` is provided, and defaults to `"round"`.
 
 **Invertibility:** Partly invertible. The `input` default values are always ignored.
 
 #### Examples:
 
-**Example 1: If the input is already an array, it will stay so**
+**Example 1: Round to the nearest whole number**
 
 <table><thead>
 </thead><tbody>
@@ -1442,6 +1447,65 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <pre><code>
 {
     "outie": 123
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+**Example 2: Round to the single decimal**
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "myin": 123.41
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.round",
+        "inputPath": "myin",
+        "outputPath": "outie",
+        "scale": 1
+    }
+}
+</code></pre></td><td>
+<pre><code>
+{
+    "outie": 123.4
+}
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+**Example 3: Round to the decimal with a method**
+
+<table><thead>
+</thead><tbody>
+<tr><th>source</th><th>rule</th><th>Output</th></tr>
+<tr><td><pre><code>
+{
+    "myin": 123.41
+}
+</code></pre></td>
+<td><pre><code>
+{
+    "transform": {
+        "type": "fluid.transforms.round",
+        "inputPath": "myin",
+        "outputPath": "outie",
+        "scale": 1,
+        "method": "ceil"
+    }
+}
+</code></pre></td><td>
+<pre><code>
+{
+    "outie": 123.5
 }
 </code></pre></td>
 </tr>
