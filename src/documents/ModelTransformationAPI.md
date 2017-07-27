@@ -1414,12 +1414,10 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 **Type:** standardTransformFunction
 
-**Description:** Rounds the input to the nearest integer, or to a decimal value if a `scale` value is provided. The `scale` option denotes the maximum number of decimal places to round the number to and the `method` option denotes the rounding method to use. Trailing 0s are omitted and numbers are rounded as follows:
+**Description:** Rounds the input to the nearest integer, or to a decimal value if a `scale` value is provided. The `scale` option denotes the maximum number of decimal places to round the number to and defaults to `0`. The `method` option denotes the rounding method to use and defaults to `"round"`. Trailing 0s are omitted and numbers are rounded as follows:
 * `"round"`: Numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
 * `"ceil"`: Numbers are rounded up
 * `"floor"`: Numbers are rounded down
-
-If the `scale` value is not numerical or is `NaN`, it is treated as though it were not specified at all. The `method` is only used when a valid `scale` is provided, and defaults to `"round"`.
 
 **Invertibility:** Partly invertible. The `input` default values are always ignored.
 
