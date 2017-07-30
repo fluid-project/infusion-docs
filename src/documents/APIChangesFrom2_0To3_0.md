@@ -14,7 +14,7 @@ This section describes major APIs that were in common use. For information about
 
 #### Model Transformations ####
 
-`fluid.transforms.round` can take in `scale` and `method` options for rounding numbers to a decimal value. Additionally, numbers round away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
+`fluid.transforms.round` can take in `scale` and `method` options for rounding numbers to a decimal value. By default, numbers now round away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
 
 ### Preferences Framework ###
 
