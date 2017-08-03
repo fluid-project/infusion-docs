@@ -1673,7 +1673,7 @@ This is a very powerful and flexible transformation function, which maps a defin
 ```
 
 ___Top level:___
-* `input`
+* `defaultInput`
  * The direct input data to use.
  * Will take precedence over any input path directive.
 * `defaultInputPath`
@@ -1718,7 +1718,7 @@ ___Only within `match`:___
 
 Some of the keys used in the ValueMapper conflict, in that they reference the same part of the transformation mechanisms. Below is a summary of which term takes priority when the valueMapper parses the keys:
 
-* if `input` is provided, `inputPath` and `defaultInputPath` values ae ignored.
+* if `defaultInput` is provided, `inputPath` and `defaultInputPath` values ae ignored.
 * `inputPath` before `defaultInputPath`  - If an `inputPath` is provided, that value will be used, else `defaultInputPath` will be used.
 * `outputPath` before `defaultOutputValue`  - The `outputPath` will be used used if provded, else `defaultOutputPath` will.
 * `outputUndefinedValue` over `outputValue` over `defaultOutputValue` - If `outputUndefinedValue` is provided, it will always be used. If it is not provided, but `outputValue` is, this will be used. Finally, if neither are provided, `defaultOutputValue` is used.
@@ -1914,7 +1914,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-**Example 5: Input provided**
+**Example 5: defaultInput provided**
 
 <table><thead>
 </thead><tbody>
@@ -1925,7 +1925,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultOutputPath: "creature",
-        input: {
+        defaultInput: {
             "arms": 2,
             "ears": 2
         },
@@ -1959,7 +1959,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultOutputPath: "creature",
-        input: {
+        defaultInput: {
             transform: {
                 type: "fluid.transforms.identity",
                 input: {
