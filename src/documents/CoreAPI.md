@@ -543,17 +543,41 @@ path segments representing this
 
 * `value {Any}` Model value to compare
 * `oldValue {Any}` Model value to compare
-* `changePathPrefix {String|Array of String}` [optional] Path prefix to prepend to change record paths
-* Returns: `{Array of Object}` An array of change records
+* `changePathPrefix {String|Array of String}` [optional] Path prefix to prepend to change request paths
+* Returns: `{Array of changeRequest}` An array of `changeRequest` objects
 
-Calculates the changes between the model values `value` and `oldValue`
-and returns an array of change records. The optional argument
-`changePathPrefix` is prepended to the change path of each record (this
-is useful for generating change records to be applied at a non-root path
-in a model).
+Calculates the changes between the model values `value` and `oldValue` and
+returns an array of
+[`changeRequest`](ChangeApplierAPI.html#programmatic-style-for-triggering-a-change)
+objects. The optional argument `changePathPrefix` is prepended to the change
+path of each request (this is useful for generating change requests to be
+applied at a non-root path in a model).
 
-The returned array of change records may be used with
+The returned array of change request objects may be used with
 `fluid.fireChanges()`.
+
+For example, if we call `fluid.modelPairToChanges` with `value` of `{b: 2}`
+and `oldValue` of `{a: 1}`:
+
+    fluid.modelPairToChanges({b: 2}, {a:1});
+
+we will receive this result:
+
+    [
+        {
+            path: [ "b" ],
+            value: 2,
+            type: "ADD"
+        },
+        {
+            path: [ "a" ],
+            value: null,
+            type: "DELETE"
+        }
+    ]
+
+Indicating that the property "b" was added with value 2 and that the property
+"a" was removed.
 
 ### fluid.model.parseEL(EL)
 
