@@ -62,7 +62,7 @@ In terms of a standard discussion on [Design Patterns](https://en.wikipedia.org/
 
 However, facade formation isn't the only possible function of an options distribution. They are also sufficiently powerful to encompass most uses of the so-called [Aspect-oriented programming](https://en.wikipedia.org/wiki/Aspect-oriented_programming) (AOP) by the
 use of the target root context `/` to match (and "advise", in AOP terminology) all components in a design matching a particular specification. Unlike traditional AOP techniques, however, these options distributions do not put ultimate and final power in the hands of the wielder - since the component holding
-the distribution itself can be either advised itself, or destroyed completely - thus "withdrawing" the "advice" from the system. 
+the distribution itself can be either advised itself, or destroyed completely - thus withdrawing the "advice" from the system. 
 
 
 ## distributeOptions format ##
@@ -80,9 +80,19 @@ The `distributeOptions` option is a top-level block supported by every Infusion 
 |`namespace`|(Optional, recommended) A `namespace` to identify this options distribution amongst others in an extended design. This can be used by the `priority` field of other distributions in order to defer to it or be deferred to by it. (The framework should also ensure to uniquify distributions with respect to namespace at the target - not currently implemented)|
 
 In the case that a hash of these records is provided, the keys of the structure will be interpreted as the `namespace` of the distribution.
+
 ## IoCSS Selectors ##
 
-Component matching rules:
+An IoCSS selector appears in some special kinds of references in the framework, most notably in the `target` element of a `distributeOptions` block.
+Informally, it can be distinguished from a standard [IoC reference](IoCReferences.md) since it contains some whitespace between its various matching segments, and a standard
+IoC reference just consists of a single context name without whitespace. Some representative examples of IoCSS selectors are:
+
+* `{that sessionManager}` - matches any component which matches the context `sessionManager` below the current component
+* `{that > ownSub}` - matches any component directly a child of the current one matching a context `ownSub` (perhaps by being a member with that name)
+* `{testEnvironment flowManager preferencesServer}` - firstly looks upward to find a `testEnvironment` component somewhere above the current one, and then matches a `preferencesServer` that is nested within a `flowManager`
+* `{/ fluid.viewComponent}` - matches any `fluid.viewComponent` anywhere in the component tree 
+
+Each block separated by whitespace matches a component by one of the following component selector rules:
 
 | Form | Description |
 |------|-------------|
@@ -91,14 +101,17 @@ Component matching rules:
 |`E` or `&E`|matches any component holding a context name of `E` - the `&` character may be omitted for the first context in a group. There is special support for the context `that` as with standard IoC context matching|
 |`#myid`|matches the component with id equal to myid (of no use to developers since component ids cannot be predicted)|
 
-Descendant rules
+Mediating each neighbouring pair of component rules is a descendent rule, of which we currently support 2:
 
 | Form | Description |
 |------|-------------|
-|`E F`|Matches any F component that is a descendant of an `E` component|
-|`E > F`|Matches any F component that is a direct child of an `E` component|
+|`E F`|Matches any `F` component that is a descendant of an `E` component|
+|`E > F`|Matches any `F` component that is a direct child of an `E` component|
 
-## Simple Example: `record` for grade distribution ##
+If you are familiar with [CSS selectors](https://en.wikipedia.org/wiki/Cascading_Style_Sheets#Selector) you can compare this set of 6 simple syntax rules with the wide
+range of CSS selector rules listed in the article's [table](https://www.w3.org/TR/selectors/#selectors).
+
+## Simple Example of distributeOptions: `record` for grade distribution ##
 
 This is the form taken by the most commonly seen and straightforward use of `distributeOptions` - the contribution of an additional grade to
 one or more subcomponents of the current component:

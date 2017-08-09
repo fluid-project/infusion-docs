@@ -5,13 +5,13 @@ category: Tutorials
 ---
 
 ---
-Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
+Part of the [Getting Started with Infusion Component Design Tutorial](GettingStartedWithInfusion.md)
 
 ---
 
 In most cases, you will likely be creating a component that will actually want to do something with your HTML page: process form input, update displays, etc. plain and `model` components don't provide any support for this: you'll need a **view component**.
 
-A view component provides support for a model and events (i.e. it is a model component as well as a view component). It also provides supports for interaction with the DOM. The most useful of these is the [DOM Binder](../DOMBinder.md). 
+A view component provides support for a model and events (i.e. it is a model component as well as a view component). It also provides supports for interaction with the DOM. The most useful of these is the [DOM Binder](../DOMBinder.md).
 If your application has a user interface, you likely have a list of DOM elements you're interested in working with. A DOM Binder provides very easy, configurable access to these elements.
 
 ## Declaring a View Component ##
