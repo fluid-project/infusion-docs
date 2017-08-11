@@ -484,7 +484,7 @@ console.log(that.model); // "finalValue"
 
 ### Programmatic style for triggering a change ###
 
-There are two calls which can be used to fire a change request - one informal, using immediate arguments, and a more formal method which constructs a concrete `changeRequest` object.
+There are three calls which can be used to fire change requests - one informal, using immediate arguments, a more formal method which constructs a concrete `changeRequest` object, and one which processes an array of `changeRequest` objects.
 
 ```javascript
 applier.change(path, value, type, source)
@@ -537,6 +537,12 @@ where a `changeRequest` is an object holding the above named parameters in named
 `change` and `fireChangeRequest` reach exactly the same implementation - the only difference is in the packaging of the arguments. For `change` they are spread out as a sequence of 4 arguments, 
 whereas for `fireChangeRequest`, they are packaged up as named fields (`path`, `value` and `type`) of a plain JavaScript object. 
 Such an object is called a **changeRequest** and is a convenient package for these requests to pass around in an event pipeline within the framework.
+
+```javascript
+fluid.fireChanges(applier, <Array of changeRequest>)
+```
+
+iterates through the provided array of `changeRequest` objects and fires a change request on the supplied `applier` for each one.
 
 The programmatic style for **firing** changes is less strongly discouraged than the programmatic style for **listening** to changes is - since it does not run into the same lifecycle issues that programmatic listeners do. However, the declarative style for triggering changes should be used wherever it can.
 

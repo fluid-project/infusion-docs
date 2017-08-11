@@ -554,27 +554,31 @@ path of each request (this is useful for generating change requests to be
 applied at a non-root path in a model).
 
 The returned array of change request objects may be used with
-`fluid.fireChanges()`.
+[`fluid.fireChanges()`](ChangeApplierAPI.html#programmatic-style-for-triggering-a-change).
 
 For example, if we call `fluid.modelPairToChanges` with `value` of `{b: 2}`
 and `oldValue` of `{a: 1}`:
 
-    fluid.modelPairToChanges({b: 2}, {a:1});
+```javascript
+fluid.modelPairToChanges({b: 2}, {a:1});
+```
 
 we will receive this result:
 
-    [
-        {
-            path: [ "b" ],
-            value: 2,
-            type: "ADD"
-        },
-        {
-            path: [ "a" ],
-            value: null,
-            type: "DELETE"
-        }
-    ]
+```javascript
+[
+    {
+        path: [ "b" ],
+        value: 2,
+        type: "ADD"
+    },
+    {
+        path: [ "a" ],
+        value: null,
+        type: "DELETE"
+    }
+]
+```
 
 Indicating that the property "b" was added with value 2 and that the property
 "a" was removed.
