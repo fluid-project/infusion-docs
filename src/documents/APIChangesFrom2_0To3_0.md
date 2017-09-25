@@ -19,9 +19,55 @@ This section describes major APIs that were in common use. For information about
 
 ### Preferences Framework ###
 
+#### Model Changes ####
+
+##### Reset ######
+By default, reset will only reset the `preferences` model path. Other model values will remain unchanged. If you'd like to also have these paths changed, add a listener to the `beforeReset` event to execute a fireChangeRequest for the model paths you need to reset. (See: ArrowScrolling.js)
+
+```javascript
+...
+listeners: {
+    "beforeReset.resetPanelIndex": {
+        listener: "{that}.applier.fireChangeRequest",
+        args: {path: "panelIndex", value: 0, type: "ADD", source: "reset"}
+    }
+}
+...
+```
+
+##### Model Paths ######
+
+Any prefsEditor using the `fluid.prefs.arrowScrolling` grade, such as the one contained in `fluid.prefs.separatedPanel`, will contain the following new model paths.
+
+<table>
+    <thead>
+        <tr>
+            <th>Model Path</th>
+            <th>Default</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>panelIndex</code></td>
+            <td>0</td>
+            <td>The index of the panel to scroll to in the small screen view.</td>
+        </tr>
+        <tr>
+            <td><code>panelMaxIndex</code></td>
+            <td>A number</td>
+            <td>The maximum index that panelIndex can take. It is calculated from the total number of panels present.</td>
+        </tr>
+    </tbody>
+</table>
+
 #### Panel Changes ####
 
 The "Links and Buttons" adjusters and enactors are collapsed to a single preference called "Enhance Links".
+
+##### Selectors ######
+
+All panels must supply a `header` selector, which will be used by the `fluid.prefs.arrowScrolling` grade to provide the clickable arrows for navigating between adjusters in the small screen responsive view.
 
 ##### Message Bundle Keys #####
 
