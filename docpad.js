@@ -83,6 +83,9 @@ module.exports = {
             aliases: {
                 stylus: "css"
             }
+        },
+        markit: {
+            html: true
         }
     },
     events: {
