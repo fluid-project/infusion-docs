@@ -19,15 +19,13 @@ gpii.express.loadTestingSupport();
 
 require("./lib/link-checker");
 
-// TODO: Test the link checker with the static content as well.
-
-fluid.registerNamespace("fluid.test.docs.links");
-fluid.test.docs.links.checkResults = function (results) {
-    jqUnit.assertEquals("There should be no broken internal links (page#id)...", 0, results.brokenInternalLinks.length);
-    jqUnit.assertEquals("There should be no broken links between pages...", 0, results.brokenPageLinks.length);
+fluid.registerNamespace("fluid.test.docs.docpadLinks");
+fluid.test.docs.docpadLinks.checkResults = function (results) {
+    jqUnit.assertDeepEq("There should be no broken internal links (page#id)...", [], results.brokenInternalLinks);
+    jqUnit.assertDeepEq("There should be no broken links between pages...", [], results.brokenPageLinks);
 };
 
-fluid.defaults("fluid.test.docs.links.caseHolder", {
+fluid.defaults("fluid.test.docs.docpadLinks.caseHolder", {
     gradeNames: ["gpii.test.express.caseHolder"],
     rawModules: [{
         name: "Checking links within docpad-generated site...",
@@ -41,7 +39,7 @@ fluid.defaults("fluid.test.docs.links.caseHolder", {
                     },
                     {
                         event:    "{testEnvironment}.linkChecker.events.onResultsAvailable",
-                        listener: "fluid.test.docs.links.checkResults",
+                        listener: "fluid.test.docs.docpadLinks.checkResults",
                         args:     ["{arguments}.0"] // results
                     }
                 ]
@@ -50,7 +48,7 @@ fluid.defaults("fluid.test.docs.links.caseHolder", {
     }]
 });
 
-fluid.defaults("fluid.test.docs.links.environment", {
+fluid.defaults("fluid.test.docs.docpadLinks.environment", {
     gradeNames: ["gpii.test.express.testEnvironment"],
     components: {
         linkChecker: {
@@ -74,9 +72,9 @@ fluid.defaults("fluid.test.docs.links.environment", {
             }
         },
         testCaseHolder: {
-            type: "fluid.test.docs.links.caseHolder"
+            type: "fluid.test.docs.docpadLinks.caseHolder"
         }
     }
 });
 
-fluid.test.runTests("fluid.test.docs.links.environment");
+fluid.test.runTests("fluid.test.docs.docpadLinks.environment");

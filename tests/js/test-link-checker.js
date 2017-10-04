@@ -1,15 +1,14 @@
 /*
 
- Trawl our generated content and ensure that all links within and between pages on our site are valid.
-
- NOTE:  This script will only display accurate results if the content is regenerated before it's run.
-
- Running this script using `npm test` will take care of that, as the `pretest` script regenerates the content.
+    Test the link checker to confirm that it correctly identifies a range of broken links, and that it does not
+    incorrectly flag a range of valid links.
 
  */
 "use strict";
 var fluid = require("infusion");
 var gpii = fluid.registerNamespace("gpii");
+
+var url = require("url");
 
 var jqUnit = require("node-jqunit");
 fluid.require("%infusion-docs");
@@ -19,21 +18,24 @@ gpii.express.loadTestingSupport();
 
 require("./lib/link-checker");
 
-// TODO: Test the link checker with the static content as well.
-
-fluid.registerNamespace("fluid.test.docs.docpadLinks");
-fluid.test.docs.docpadLinks.checkResults = function (results) {
-    jqUnit.assertEquals("There should be no broken internal links (page#id)...", 0, results.brokenInternalLinks.length);
-    jqUnit.assertEquals("There should be no broken links between pages...", 0, results.brokenPageLinks.length);
+fluid.registerNamespace("fluid.test.docs.linkChecker");
+fluid.test.docs.linkChecker.checkResults = function (results) {
+    jqUnit.assertEquals("There should be 6 broken internal links (page#id)...", 6, results.brokenInternalLinks.length);
+    jqUnit.assertEquals("There should be 1 broken link between pages...", 1, results.brokenPageLinks.length);
 };
 
-fluid.defaults("fluid.test.docs.docpadLinks.caseHolder", {
+fluid.test.docs.linkChecker.generateBaseUrl = function (basePath) {
+    var resolvedPath = fluid.module.resolvePath(basePath);
+    return url.resolve("file://", resolvedPath + "/");
+};
+
+fluid.defaults("fluid.test.docs.linkChecker.caseHolder", {
     gradeNames: ["gpii.test.express.caseHolder"],
     rawModules: [{
-        name: "Checking links within docpad-generated site...",
+        name: "Testing the link checker against a small site with variations on good and bad links...",
         tests: [
             {
-                name: "Checking links...",
+                name: "Checking link checker...",
                 type: "test",
                 sequence: [
                     {
@@ -41,7 +43,7 @@ fluid.defaults("fluid.test.docs.docpadLinks.caseHolder", {
                     },
                     {
                         event:    "{testEnvironment}.linkChecker.events.onResultsAvailable",
-                        listener: "fluid.test.docs.docpadLinks.checkResults",
+                        listener: "fluid.test.docs.linkChecker.checkResults",
                         args:     ["{arguments}.0"] // results
                     }
                 ]
@@ -50,14 +52,14 @@ fluid.defaults("fluid.test.docs.docpadLinks.caseHolder", {
     }]
 });
 
-fluid.defaults("fluid.test.docs.docpadLinks.environment", {
+fluid.defaults("fluid.test.docs.linkChecker.environment", {
     gradeNames: ["gpii.test.express.testEnvironment"],
     components: {
         linkChecker: {
             type: "fluid.tests.docs.linkChecker",
             options: {
                 baseUrl:  "{testEnvironment}.options.baseUrl",
-                startPage: "/infusion/development/index.html"
+                startPage: "/test-link-checker.html"
             }
         },
         express: {
@@ -67,16 +69,16 @@ fluid.defaults("fluid.test.docs.docpadLinks.environment", {
                         type: "gpii.express.router.static",
                         options: {
                             path:    "/",
-                            content: "%infusion-docs/out"
+                            content: "%infusion-docs/tests/html"
                         }
                     }
                 }
             }
         },
         testCaseHolder: {
-            type: "fluid.test.docs.docpadLinks.caseHolder"
+            type: "fluid.test.docs.linkChecker.caseHolder"
         }
     }
 });
 
-fluid.test.runTests("fluid.test.docs.docpadLinks.environment");
+fluid.test.runTests("fluid.test.docs.linkChecker.environment");

@@ -43,6 +43,7 @@ fluid.tests.docs.linkChecker.scanSinglePageOrFinish = function (that) {
     }
     else {
         fluid.tests.docs.linkChecker.checkInternalLinks(that);
+        fluid.tests.docs.linkChecker.checkPageLinks(that);
 
         var report = fluid.model.transformWithRules(that, that.options.rules.report);
         that.events.onResultsAvailable.fire(report)
@@ -70,13 +71,21 @@ fluid.tests.docs.linkChecker.checkInternalLinks = function (that) {
     });
 };
 
+fluid.tests.docs.linkChecker.checkPageLinks = function (that) {
+    fluid.each(that.scannedPages, function (results, page) {
+        if (results.error || results.statusCode !== 200) {
+            that.brokenPageLinks.push(page);
+        }
+    });
+};
+
 fluid.tests.docs.linkChecker.resolveSafely = function (baseUrl, path) {
     var cleanPath = path.replace(/^about:blank/i, "");
     return url.resolve(baseUrl, cleanPath);
 };
 
 fluid.tests.docs.linkChecker.processSingleResponse = function (that, pageToScan, error, response, body) {
-    var pageResults = {};
+    var pageResults = { statusCode: response.statusCode};
     if (error) {
         pageResults.error = error;
     }
@@ -109,14 +118,13 @@ fluid.tests.docs.linkChecker.processSingleResponse = function (that, pageToScan,
 
                 // Links to other pages within the site, including subdirectories.  Add new links to the queue.
                 if (linkBeforeHash !== pageToScan && resolvedHref.indexOf(that.options.baseUrl) === 0) {
-                    // TODO:  This doesn't seem to be guarding against looping back onto ourselves.
                     if (that.pagesToScan.indexOf(linkBeforeHash) === -1) {
                         that.pagesToScan.push(linkBeforeHash);
                     }
                 }
-                // External links (outside of the site)
+                // External and loopback links are ignored.
                 else {
-                    // fluid.log("Ignoring external link '", resolvedHref, "'...");
+                    // fluid.log("Ignoring link '", resolvedHref, "'...");
                 }
             }
         }

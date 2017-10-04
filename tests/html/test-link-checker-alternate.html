@@ -13,14 +13,16 @@
 <a href="test-link-checker-alternate.html">Link to myself with no hashtag.</a>
 <a href="test-link-checker.html">Link to an alternate page.</a>
 
-<a href="../html/test-link-checker-alternate.html">Relative link to myself with no hashtag.</a>
-<a href="../html/test-link-checker.html">Relative link to another page.</a>
+<a href="/test-link-checker-alternate.html">Relative link to myself with no hashtag.</a>
+<a href="/test-link-checker.html">Relative link to another page.</a>
 
 <a href="test-link-checker.html#anchor-with-dashes">Link to an id within an alternate page.</a>
 
 <h3>Bad Links</h3>
 
 <a href="test-link-checker.html#not-found">Missing header in another page.</a>
+<a href="missing-page.html">Link to a non-existent page.</a>
+<a href="missing-page.html#missing-header">Link to a header inside a non-existent page.</a>
 
 
 <h2>In-page links</h2>
@@ -28,6 +30,7 @@
 <h3>Good Links</h3>
 
 <a href="#anchor-with-dashes">In-page link with no filename.</a>
+<a href="about:blank#anchor-with-dashes">In-page link with about:blank leader.</a>
 <a href="test-link-checker-alternate.html#anchor-with-dashes">In-page link that includes the current filename.</a>
 
 <h3>Bad Links</h3>
