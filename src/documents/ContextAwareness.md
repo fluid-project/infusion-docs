@@ -23,10 +23,10 @@ Any component derived from `fluid.contextAware` will advertise an area of its op
 
 This page describes how various features of the framework and the ContextAwareness API cooperate together. These consist of:
 
-* The [`fluid.contextAware`](#-adaptationrecord-members-in-a-contextawareness-record) grade and the `contextAwareness` area of options that it responds to to produce adaptations
-* The [`fluid.contextAware.makeChecks`](#making-contexts-visible-and-removing-them-with-fluid-contextaware-makechecks-and-fluid-contextaware-forgetchecks-) API for converting aspects of the actual context or environment (e.g. capabilities of the browser, user's requirements or purpose of the application) into context names which `contextAwareness` can respond to
-* The [`fluid.contextAware.forgetChecks`](#making-contexts-visible-and-removing-them-with-fluid-contextaware-makechecks-and-fluid-contextaware-forgetchecks-) API for eliminating checks created by `fluid.contextAware.makeChecks`
-* The [`fluid.contextAware.makeAdaptation`](#defining-and-broadcasting-a-fresh-adaptation-in-one-operation-with-fluid-contextaware-makeadaptation-) API which can be used by 3rd parties to broadcast `contextAwareness` records into implementation components that they which to make (more) adaptible
+* The [`fluid.contextAware`](#adaptationrecord-members-in-a-contextawareness-record) grade and the `contextAwareness` area of options that it responds to to produce adaptations
+* The [`fluid.contextAware.makeChecks`](#making-contexts-visible-and-removing-them-with-fluidcontextawaremakechecks-and-fluidcontextawareforgetchecks) API for converting aspects of the actual context or environment (e.g. capabilities of the browser, user's requirements or purpose of the application) into context names which `contextAwareness` can respond to
+* The [`fluid.contextAware.forgetChecks`](#making-contexts-visible-and-removing-them-with-fluidcontextawaremakechecks-and-fluidcontextawareforgetchecks) API for eliminating checks created by `fluid.contextAware.makeChecks`
+* The [`fluid.contextAware.makeAdaptation`](#defining-and-broadcasting-a-fresh-adaptation-in-one-operation-with-fluidcontextawaremakeadaptation) API which can be used by 3rd parties to broadcast `contextAwareness` records into implementation components that they which to make (more) adaptible
 
 ## Simple example - speech API-aware component
 
@@ -223,13 +223,13 @@ The defaults block `fluid.uploader.compatibility.distributor.1_3` contains an op
 `apiCompatibility` &#8212; this can be done simply by arranging to broadcast the appropriate options into it. Once we have defined this options distribution, we actually need to construct
 a component instance which holds and operates them &#8212; this is done via the `fluid.constructSingle` line. This utility automatically arranges for a singleton instance, uniquified at the 
 component tree's top level by the type `singleRootType` which has a very similar function to the option of the same name consumed by the `fluid.resolveRootSingle` grade described in
-the documentation on [Contexts](Contexts.md#global-components-fluid.resolveRoot-and-fluid.resolveRootSingle).
+the documentation on [Contexts](Contexts.md#global-components-fluidresolveroot-and-fluidresolverootsingle).
 
 Having shown the basic operation of the _receiver_ of contextual information, we'll now describe the group of utilities, including `fluid.constructSingle` that we just met, which can be
 used by integrators and implementors to coordinate the visibility of context names and distributions from them.
 
 Note that the combined effect of the first two defaults blocks shown in this example can be achieved "all-in-one" by a single call to the dedicated utility 
-[`fluid.contextAware.makeAdaptation`](#defining-and-broadcasting-a-fresh-adaptation-in-one-operation-with-fluid-contextaware-makeadaptation-). 
+[`fluid.contextAware.makeAdaptation`](#defining-and-broadcasting-a-fresh-adaptation-in-one-operation-with-fluidcontextawaremakeadaptation). 
 
 ## Making contexts visible and removing them with `fluid.contextAware.makeChecks` and `fluid.contextAware.forgetChecks`
 

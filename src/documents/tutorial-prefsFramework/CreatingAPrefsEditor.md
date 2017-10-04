@@ -257,7 +257,7 @@ We'll see an example of this when we add antoher panel, later in this tutorial.
 <dd>A Panel is a _[view component](../tutorial-gettingStartedWithInfusion/ViewComponents.md)_
 – a type of Infusion component that has a _view_, that is,
 a user interface. In order to maintain a separation between the code and the HTML for the view,
-the code interacts with the HTML through named [selectors](../ComponentConfigurationOptions.md#-selectors-): The code only references the name, and
+the code interacts with the HTML through named [selectors](../ComponentConfigurationOptions.md#selectors): The code only references the name, and
 a Framework feature called the DOM Binder looks up the relevant DOM node for the name based
 on the information in this `selectors` option.
 
@@ -779,7 +779,7 @@ How does that happen?
 * The Preferences Framework automatically binds a click handler to anything with that class.
 * The click handler ultimately invokes the `set` method on the default
 [settings store](../SettingsStore.md),
-which is a [CookieStore](../SettingsStore.md#fluid-prefs-cookiestore).
+which is a [CookieStore](../SettingsStore.md#fluidprefscookiestore).
 
 Cookies are great for websites, but this is a car. The preferences need to be saved to the car's
 internal storage. We need to a) create a Settings Store that will save to the internal storage and

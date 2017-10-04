@@ -69,7 +69,7 @@ Components which manage a _view_ on behalf of their user, which is rooted at a p
 * a [DOM binder](DOMBinder.md)
   * associating names with scoped selectors and the DOM nodes that they match
 
-New kinds of components are created by passing configuration information to the [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-) function.
+New kinds of components are created by passing configuration information to the [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options) function.
 This function will generate the **creator function** that will be used to instantiate the component.
 The framework provides support for instantiating components of various [types, or 'grades'](ComponentGrades.md);
 as well, developers can create their own grades.
@@ -97,7 +97,7 @@ var myComponent = examples.tinyComponent();
 // Logs "My tiny component has started up" to the console
 ```
 
-You can understand this example better by reading documentation for [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-), [`fluid.log`](CoreAPI.md#fluid-log-loglevel-arg1-argn-) and the [Component Lifecycle](ComponentLifecycle.md).
+You can understand this example better by reading documentation for [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), [`fluid.log`](CoreAPI.md#fluidlogloglevel-arg1--argn) and the [Component Lifecycle](ComponentLifecycle.md).
 
 ## Instantiating A View Component ##
 

@@ -113,7 +113,7 @@ i) an ancestor of the component holding the reference site, or
 
 ii) a sibling of such a component.
 
-iii) a component anywhere in the tree which has been marked with the grade [fluid.resolveRoot](Contexts.md#global-components-fluid-resolveroot-and-fluid-resolverootsingle-) - these are the ones shown in orange diamonds
+iii) a component anywhere in the tree which has been marked with the grade [fluid.resolveRoot](Contexts.md#global-components-fluidresolveroot-and-fluidresolverootsingle) - these are the ones shown in orange diamonds
 
 The context reference matches a component if it matches via the 2nd, 3rd or 4th rules in the first row of the [above table](#reference-table) - **either** 
 it agrees with a fully-qualified grade or type name of a component, **or** it agrees with the last path segment of such a name, **or** it agrees with the component's member name. 

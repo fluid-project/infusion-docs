@@ -13,7 +13,7 @@ What kinds of data are suitable for storing on a component model? The advice fro
 
 > We recommend that all objects stored in the `model` area of a component conform to an even stricter definition - that they are equivalent to their form serialised as JSON. This implies that they consist of only the following types: `Array`, `Object`, `String`, `Number` and `Boolean`. In addition, the following values for `Number` should not be used - `Infinity`, `-Infinity` and `NaN`. The value `undefined` also can not be safely stored within a model.
 
-If there is a need to store a non-mutable variable, a non-component object or similar on a component, a typical convention is to place it within the [`members`](../ComponentConfigurationOptions.md#-members-) option block. We will not discuss this topic in the context of this tutorial.
+If there is a need to store a non-mutable variable, a non-component object or similar on a component, a typical convention is to place it within the [`members`](../ComponentConfigurationOptions.md#members) option block. We will not discuss this topic in the context of this tutorial.
 
 ## Creating Model Components
 

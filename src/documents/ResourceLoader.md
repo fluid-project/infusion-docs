@@ -42,13 +42,13 @@ var resourceLoader = fluid.resourceLoader([options]);
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
 <tr>
     <td><code>terms</code></td>
-    <td>Contains a map of variable names and replacement values to compose the path to each physical file. The map structure complies with the format of the second <code>terms</code> argument of <a href="CoreAPI.html#fluid-stringtemplate-template-terms-">fluid.stringTemplate()</a> API. Also see <a href="./tutorial-usingStringTemplates/UsingStringTemplates.html">Using String Templates</a> for more information.</td>
+    <td>Contains a map of variable names and replacement values to compose the path to each physical file. The map structure complies with the format of the second <code>terms</code> argument of <a href="CoreAPI.html#fluidstringtemplatetemplate-terms">fluid.stringTemplate()</a> API. Also see <a href="./tutorial-usingStringTemplates/UsingStringTemplates.html">Using String Templates</a> for more information.</td>
     <td>Object</td>
     <td><code>{}</code></td>
 </tr>
 <tr>
     <td><code>resources</code></td>
-    <td>Contains a map of resource names and paths to these resources. These paths can be actual path strings, for example, ```../data/template.html```, or templating strings with embedded variables that have mapped replacement values defined in the <code>term</code> option, for example, ```%prefix/template.html```. The format of templating paths complies with the format of the <code>template</code> argument of <a href="CoreAPI.html#fluid-stringtemplate-template-terms-">fluid.stringTemplate()</a> API.</td>
+    <td>Contains a map of resource names and paths to these resources. These paths can be actual path strings, for example, ```../data/template.html```, or templating strings with embedded variables that have mapped replacement values defined in the <code>term</code> option, for example, ```%prefix/template.html```. The format of templating paths complies with the format of the <code>template</code> argument of <a href="CoreAPI.html#fluidstringtemplatetemplate-terms">fluid.stringTemplate()</a> API.</td>
     <td>Object</td>
     <td><code>{}</code></td>
 </tr>

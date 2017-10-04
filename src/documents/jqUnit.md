@@ -179,7 +179,7 @@ that a payload is as expected but may be missing arbitrarily many top-level keys
 ### jqUnit.expectFrameworkDiagnostic(message, toInvoke, errorTexts)
 
 Assert that the supplied callback will produce a framework diagnostic (that is, an exception descended from `fluid.FluidError`), containing the supplied text(s)
-somewhere in its error message - that is, the callback has invoked [`fluid.fail`](CoreAPI.md#fluid-fail-arg1-argn-) with a message containing
+somewhere in its error message - that is, the callback has invoked [`fluid.fail`](CoreAPI.md#fluidfailarg1-argn) with a message containing
 the entries in `errorTexts`.
 
 * `message {String}` The message prefix to be supplied for all the assertions this function issues
@@ -191,7 +191,7 @@ of the thrown exception will be tested against - each string must appear as a su
 
 ### jqUnit.canonicaliseFunctions(value)
 
-A canonicalisation function, helpful for use with [jqUnit.assertCanoniseEqual](jqUnit.md#jqunit-assertcanoniseequal-message-expected-value-canonfunc-) - this will
+A canonicalisation function, helpful for use with [jqUnit.assertCanoniseEqual](jqUnit.md#jqunitassertcanoniseequalmessage-expected-value-canonfunc) - this will
 take any Functions within the supplied tree and replace them with the same Function reference (`fluid.identity`)
 
 * `value {Object}` Value to be canonicalised
@@ -199,7 +199,7 @@ take any Functions within the supplied tree and replace them with the same Funct
 
 ### jqUnit.sortTree(value)
 
-A canonicalisation function, helpful if supplying a [renderer component tree](RendererComponentTrees.md) to [jqUnit.assertCanoniseEqual](jqUnit.md#jqunit-assertcanoniseequal-message-expected-value-canonfunc-) - 
+A canonicalisation function, helpful if supplying a [renderer component tree](RendererComponentTrees.md) to [jqUnit.assertCanoniseEqual](jqUnit.md#jqunitassertcanoniseequalmessage-expected-value-canonfunc) - 
 this will sort each set of `children` in the tree recursively into a canonical order, where this order would not disturb the rendered result. 
 
 ## Testing in the browser
@@ -271,7 +271,7 @@ will compare equal to
 Canonicalise a list of DOM elements (or a jQuery) by converting elements to their ids (allocated if necessary).
 
 * `list {Array of DOM|jQuery}` An array of DOM nodes or a jQuery
-* Returns: {Array of String} An array of ids for the supplied nodes, allocated via [fluid.allocateSimpleId](ViewAPI.md##fluid-allocatesimpleid-element-).
+* Returns: {Array of String} An array of ids for the supplied nodes, allocated via [fluid.allocateSimpleId](ViewAPI.md#fluidallocatesimpleidelement).
 
 ### jqUnit.assertDomEquals(message, expected, actual)
 

@@ -64,7 +64,7 @@ QUnit [modules](https://api.qunitjs.com/QUnit.module/), and within that an entry
 ordinary use, each element `tests` then contains a member named `sequence` holding a list of [*fixture records*](#supported-fixture-records).
 
 As well as containing a flat list of fixture records, `sequence` may also contain nested arrays of such records. These nested arrays will be
-flattened into a single array by use of the utility [`fluid.flatten`](CoreAPI.md#fluid-flatten-array-) before being processed. This helps in
+flattened into a single array by use of the utility [`fluid.flatten`](CoreAPI.md#fluidflattenarray) before being processed. This helps in
 assembling complex sequences out of previously canned sequence segments. However, building up complex, reusable test sequences is best done by
 use of the [`sequenceGrade`](IoCTestingFramework.md#using-sequencegrade-to-build-up-complex-reusable-test-sequences) element, instead of the `sequence` element.
 
@@ -147,7 +147,7 @@ fluid.tests.testCatSound = function (sound) {
 (e.g. <code>fluid.tests.catTestTree</code>), and the test fixture component (e.g. <code>fluid.tests.catTester</code>) can be written
 as the same component.</div>
 
-A more complex example of the `sequence` element appears below in the [asyncTester example](#-testcaseholder-demonstrating-sequence-record) below.
+A more complex example of the `sequence` element appears below in the [asyncTester example](#testcaseholder-demonstrating-sequence-record) below.
 
 In order to run this test case, we can either simply construct an instance of the environment tree by calling `fluid.tests.catTestTree()`,
 or submit its name to the global driver function `fluid.test.runTests` as `fluid.test.runTests("fluid.tests.catTestTree")`.
@@ -214,7 +214,7 @@ in its `sequence` member, representing a sequence of actions (either executors o
     </tr>
     <tr class="infusion-docs-alt-a-row">
         <td><code>resolve</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td>
-        <td><code>{Function|String}</code></td><td>A function to be registered as an <a href="PromisesAPI.md#promise-then-onresolve-onreject-"><code>onResolve</code></a> callback to the promise.
+        <td><code>{Function|String}</code></td><td>A function to be registered as an <a href="PromisesAPI.md#promisethenonresolve-onreject"><code>onResolve</code></a> callback to the promise.
         Exactly one out of the fields <code>resolve</code>, <code>reject</code> must be set.</td>
     </tr>
     <tr class="infusion-docs-alt-a-row">
@@ -225,7 +225,7 @@ in its `sequence` member, representing a sequence of actions (either executors o
     </tr>
     <tr class="infusion-docs-alt-b-row">
         <td><code>reject</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>
-        <td><code>{Function|String}</code></td><td>A function to be registered as an <a href="PromisesAPI.md#promise-then-onresolve-onreject-"><code>onReject</code></a> callback to the promise.
+        <td><code>{Function|String}</code></td><td>A function to be registered as an <a href="PromisesAPI.md#promisethenonresolve-onreject"><code>onReject</code></a> callback to the promise.
         Exactly one out of the fields <code>resolve</code>, <code>reject</code> must be set.</td>
     </tr>
     <tr class="infusion-docs-alt-b-row">
@@ -306,8 +306,8 @@ in its `sequence` member, representing a sequence of actions (either executors o
 In each case in this table,
 
 * In cases where "Field type" accepts a `String` and the description reads "reference to", the field holds an [IoC reference](IoCReferences.md) to the value in question.
-* <a name="ducktype"></a>Fields marked with \[*\] (grey rows) are the essential "duck typing fields" which define the type of the fixture records and are mandatory.
-* <a name="alternatives"></a>Fields marked with \[&dagger;\] (red rows) and \[&Dagger;\] (green rows) are alternatives to each other - they may not be used simultaneously within the same fixture. 
+* <a id="ducktype"></a>Fields marked with \[*\] (grey rows) are the essential "duck typing fields" which define the type of the fixture records and are mandatory.
+* <a id="alternatives"></a>Fields marked with \[&dagger;\] (red rows) and \[&Dagger;\] (green rows) are alternatives to each other - they may not be used simultaneously within the same fixture. 
 For example, you must use just one of the styles `listener` or `listenerMaker` to specify an event listener, or specify just one of 
 `resolve` or `reject` to a task fixture.
 
@@ -368,7 +368,7 @@ test case author, descended from the standard framework grade `fluid.test.sequen
 
 The members `gradeNames` and `options` in the above table collectively designate an Infusion component derived from `fluid.test.sequenceElement` &mdash; this component will be 
 instantiated as a child component of the `fluid.test.testCaseHolder` and its options member `sequence` will be evaluated. This member `sequence` holds one or more 
-[`fixture elements`](#supported-fixture-records) just as seen in the top-level [`sequence`](#-modules-tests-and-sequence-) element.
+[`fixture elements`](#supported-fixture-records) just as seen in the top-level [`sequence`](#modules-tests-and-sequence) element.
 
 Any fixture elements listed at the traditional top-level `sequence` member will be grandfathered in to this system with a namespace of `sequence` &mdash; for example, a `testSequenceElement` with
 a priority of `"before:sequence"` will be sorted before these elements.
@@ -489,7 +489,7 @@ entry `moduleSource` which takes the same form as an [invoker](Invokers.md) reco
 and returns a list of fixtures in the same format as `modules`. Again, in a real example, this would use the `sequence` form of fixtures shown at the bottom of the page.
 
 Before choosing this option, you are encouraged to see how far you can go with the completely declarative approach involving 
-[`sequenceGrade`](/IoCTestingFramework.md#using-sequencegrade-to-build-up-complex-reusable-test-sequences).
+[`sequenceGrade`](IoCTestingFramework.md#using-sequencegrade-to-build-up-complex-reusable-test-sequences).
 
 ```javascript
 // Example of the above fixture written with "moduleSource"
@@ -692,7 +692,7 @@ fluid.tests.startRendering = function (asyncTest, instantiator) {
 ```
 
 Such repetitive sequences of standardised fixtures are best factored into reusable grades of type `fluid.test.sequenceElement` as seen
-in the [sequenceGrade example](#example-of-sequence-building-using-sequencegrade-) above. 
+in the [sequenceGrade example](#example-of-sequence-building-using-sequencegrade) above. 
 
 ### `markupFixture` property supporting fixtures written against markup in the host document
 

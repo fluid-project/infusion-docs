@@ -339,7 +339,7 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
 * `model.pending`: `true` if there are text items remaining to be spoken, `false` otherwise
 
 
-## <a name="utteranceopts-option"></a>`model.utteranceOpts` Configuration ##
+## <a id="utteranceopts-option"></a>`model.utteranceOpts` Configuration ##
 
 <div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration Options</a> document for a full description of infusion component options.</div>
 

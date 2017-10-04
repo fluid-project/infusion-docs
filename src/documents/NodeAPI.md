@@ -6,15 +6,15 @@ category: Infusion
 
 Infusion's [core API](CoreAPI.md) and [IoC system](HowToUseInfusionIoC.md) are fully supported in node.js. Infusion is supplied with a 
 standard [package.json](https://github.com/fluid-project/infusion/blob/master/package.json) file and registered as a module in [npm's registry](https://www.npmjs.com/package/infusion).
-Infusion's global namespace model, as operated through functions such as [`fluid.registerNamespace`](CoreAPI.md#fluid-registernamespace-path-)
-and [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-), requires some care in the node.js environment which makes significant efforts to balkanise
+Infusion's global namespace model, as operated through functions such as [`fluid.registerNamespace`](CoreAPI.md#fluidregisternamespacepath)
+and [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), requires some care in the node.js environment which makes significant efforts to balkanise
 modules one from another, and to ensure that precisely this kind of thing never occurs — reference to artifacts held
 in a single, shared global namespace.
 
 ## Accessing and exporting global names
 
 Given that node.js ensures that each module's global object is scrubbed clean of any potentially contaminating references, you will need to make liberal use of
-Infusion's [fluid.registerNamespace](CoreAPI.md#fluid-registernamespace-path-) API in order to import such references back into your scope. Statements like
+Infusion's [fluid.registerNamespace](CoreAPI.md#fluidregisternamespacepath) API in order to import such references back into your scope. Statements like
 
 ```javascript
 var colin = fluid.registerNamespace("colin");
@@ -68,7 +68,7 @@ Issues node's `require` against a possibly symbolic path, and possibly also inst
  loaded module that was previously registered using `fluid.module.register`.
 * `foreignRequire {Require}` The instance of `require` to be operated after the module name has been interpolated. If omitted, defaults to Infusion's own `require` (which may not be able to
 see everything you can, as a result of its different position in the module tree)
-* `namespace {String}` If this is supplied, the returned value from `require` will be written into Infusion's global namespace by using the [fluid.setGlobalValue](CoreAPI.md#fluid-setglobalvalue-path-value-) API.
+* `namespace {String}` If this is supplied, the returned value from `require` will be written into Infusion's global namespace by using the [fluid.setGlobalValue](CoreAPI.md#fluidsetglobalvaluepath-value) API.
 
 ### fluid.module.modules
 

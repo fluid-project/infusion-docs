@@ -4,7 +4,7 @@ layout: default
 category: Infusion
 ---
 
-In the Infusion IoC system, a component declares its subcomponents through the `components` property of its [options](ComponentConfigurationOptions.md#-components-). 
+In the Infusion IoC system, a component declares its subcomponents through the `components` property of its [options](ComponentConfigurationOptions.md#components). 
 Subcomponent declaration in a defaults block takes the following form:
 
 ```javascript
@@ -87,7 +87,7 @@ The properties allowed at top level in the subcomponent record are as follows:
             <td><code>Object</code></td>
             <td>These are options to be passed to the subcomponent as "user options." 
             <div class="infusion-docs-note"><strong>Note:</strong> These are not the default options for the subcomponent, rather these options override the defaults. 
-            The defaults for the component will have already been registered by the <a href="CoreAPI.md#fluid-defaults-gradename-options-"><code>fluid.defaults</code></a> call(s) appropriate for its type and <a href="ComponentGrades.md">grade names</a>.</div></td>
+            The defaults for the component will have already been registered by the <a href="CoreAPI.md#fluiddefaultsgradename-options"><code>fluid.defaults</code></a> call(s) appropriate for its type and <a href="ComponentGrades.md">grade names</a>.</div></td>
             <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     options: {

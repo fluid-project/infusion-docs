@@ -263,7 +263,7 @@ See [fluid.resourceLoader fallback rules](ResourceLoader.html#fallback-rules-wit
 The Message Bundles should conform to the following naming convention to facilitate discovery by the messageResolver:
 `<bundle name>_<language code>_<country code>.json`
 
-The following are all valid Message Bundle names and will work with the above [Fallback Rules](#fallback-rules):
+The following are all valid Message Bundle names and will work with the above [Fallback Rules](ResourceLoader.html#fallback-rules-with-locale-and-defaultlocale):
 
 - prefsEditor_fr_CA.json
 - prefsEditor_fr.json

@@ -84,7 +84,7 @@ account for the cause of the promise resolution.
 Plenty of arguments exist against these choices - in fact, these choices place us firmly in the category of people who "don't really understand
 promises and think of them as glorified ... callback aggregators". In the meantime, we have work to do. Infusion is about the elimination of
 code, and so we only have limited time to spend thinking about how to make the code we do have conform to a faulty ideal of what we dreamed
-that the virtues of conventional, synchronous code might once have been. However, it's worth noting that there is at least [one virtue](#promise-accumulaterejectionreason-error-) of 
+that the virtues of conventional, synchronous code might once have been. However, it's worth noting that there is at least [one virtue](#promiseaccumulaterejectionreasonerror) of 
 conventional, synchronous code that is recaptured by no other promise system but ours. Also, this [github issue](https://github.com/promises-aplus/promises-spec/issues/4) attached to the 
 A+ promises specification is a useful source of convincing argumentation that the decision in favour of universally asynchronous resolution is flawed.
 
@@ -155,7 +155,7 @@ var promiseFour = fluid.promise.map(promiseTwo, double);
 ## Promise algorithms
 
 The only currently implemented promise algorithms are based around a core skeleton operating an array of promises in a linear sequence. These 
-are responsive to an additional element of our promises API, the  [`promise.accumulateRejectionReason`](#promise-accumulaterejectionreason-error-) "inverse API" described below.
+are responsive to an additional element of our promises API, the  [`promise.accumulateRejectionReason`](#promiseaccumulaterejectionreasonerror) "inverse API" described below.
 
 ### fluid.promise.sequence(sources[, options])
 

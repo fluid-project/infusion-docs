@@ -19,43 +19,43 @@ the use of SingleTransform rather than full transforms. For more information, se
 [model relay](ModelRelay.md).
 
 The user may also operate model transformation rules manually by use of the
-[`fluid.model.transformWithRules` API](#fluid-model-transformwithrules-source-rules-options-).
+[`fluid.model.transformWithRules` API](#fluidmodeltransformwithrulessource-rules-options).
 
 
 ## List of available transformations
 
 Below is a list of all the available transformations in the framework. For details on each, see the individual description in the [Transformation Functions](ModelTransformationAPI.md#transformation-functions) section.
 
-* [fluid.transforms.value](ModelTransformationAPI.md#output-a-value-given-as-input-fluid-transforms-value-and-fluid-transforms-identity-)
-* [fluid.transforms.identity](ModelTransformationAPI.md#output-a-value-given-as-input-fluid-transforms-value-and-fluid-transforms-identity-)
-* [fluid.transforms.literalValue](ModelTransformationAPI.md#literal-value-fluid-transforms-literalvalue-)
-* [fluid.transforms.stringToNumber](ModelTransformationAPI.html#fluid-transforms-stringtonumber)
-* [fluid.transforms.numberToString](ModelTransformationAPI.html#fluid-transforms-numbertostring)
-* [fluid.transforms.count](ModelTransformationAPI.html#count-length-of-array-fluid-transforms-count-)
-* [fluid.transforms.round](ModelTransformationAPI.html#round-a-floating-point-number-fluid-transforms-round-)
-* [fluid.transforms.delete](ModelTransformationAPI.html#delete-path-from-the-output-fluid-transforms-delete-)
-* [fluid.transforms.firstValue](ModelTransformationAPI.html#get-first-value-of-array-fluid-transforms-firstvalue-)
-* [fluid.transforms.linearScale](ModelTransformationAPI.html#scale-value-with-optional-offset-fluid-transforms-linearscale-)
-* [fluid.transforms.binaryOp](ModelTransformationAPI.html#binary-operation-fluid-transforms-binaryop-)
-* [fluid.transforms.condition](ModelTransformationAPI.html#conditional-transform-fluid-transforms-condition-)
-* [fluid.transforms.valueMapper](ModelTransformationAPI.html#mapping-based-on-input-value-fluid-transforms-valuemapper-)
-* [fluid.transforms.quantize](ModelTransformationAPI.html#mapping-a-continuous-range-into-discrete-values-fluid-transforms-quantize-)
-* [fluid.transforms.inRange](ModelTransformationAPI.html#check-whether-a-number-is-in-a-given-range-fluid-transforms-inrange-)
-* [fluid.transforms.arrayToSetMembership](ModelTransformationAPI.html#fluid-transforms-arraytosetmembership)
-* [fluid.transforms.setMembershipToArray](ModelTransformationAPI.html#fluid-transforms-setmembershiptoarray)
-* [fluid.transforms.indexArrayByKey](ModelTransformationAPI.html#creates-an-object-indexed-with-keys-from-array-entries-fluid-transforms-indexarraybykey-)
-* [fluid.transforms.deindexIntoArrayByKey](ModelTransformationAPI.md#create-an-object-indexed-with-keys-from-array-entries-fluid-transforms-deindexintoarraybykey-)
-* [fluid.transforms.indexOf](ModelTransformationAPI.html#get-the-index-of-an-element-in-an-array-fluid-transforms-indexof-)
-* [fluid.transforms.dereference](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluid-transforms-dereference-)
-* [fluid.transforms.stringTemplate](ModelTransformationAPI.html#create-string-from-template-fluid-transforms-stringtemplate-)
-* [fluid.transforms.free](ModelTransformationAPI.html#use-any-globally-available-function-as-transform-fluid-transforms-free-)
-* [fluid.transforms.stringToBoolean](ModelTransformationAPI.html#fluid-transforms-stringtoboolean)
-* [fluid.transforms.booleanToString](ModelTransformationAPI.html#fluid-transforms-booleantostring)
-* [fluid.transforms.JSONstringToObject](ModelTransformationAPI.html#fluid-transforms-jsonstringtoobject)
-* [fluid.transforms.objectToJSONString](ModelTransformationAPI.html#fluid-transforms-objecttojsonstring)
-* [fluid.transforms.stringToDate](ModelTransformationAPI.html#fluid-transforms-stringtodate)
-* [fluid.transforms.dateToString](ModelTransformationAPI.html#fluid-transforms-datetostring)
-* [fluid.transforms.dateTimeToString](ModelTransformationAPI.html#fluid-transforms-datetimetostring)
+* [fluid.transforms.value](ModelTransformationAPI.md#output-a-value-given-as-input-fluidtransformsvalue-and-fluidtransformsidentity)
+* [fluid.transforms.identity](ModelTransformationAPI.md#output-a-value-given-as-input-fluidtransformsvalue-and-fluidtransformsidentity)
+* [fluid.transforms.literalValue](ModelTransformationAPI.md#literal-value-fluidtransformsliteralvalue)
+* [fluid.transforms.stringToNumber](ModelTransformationAPI.html#fluidtransformsstringtonumber)
+* [fluid.transforms.numberToString](ModelTransformationAPI.html#fluidtransformsnumbertostring)
+* [fluid.transforms.count](ModelTransformationAPI.html#count-length-of-array-fluidtransformscount)
+* [fluid.transforms.round](ModelTransformationAPI.html#round-a-floating-point-number-fluidtransformsround)
+* [fluid.transforms.delete](ModelTransformationAPI.html#delete-path-from-the-output-fluidtransformsdelete)
+* [fluid.transforms.firstValue](ModelTransformationAPI.html#get-first-value-of-array-fluidtransformsfirstvalue)
+* [fluid.transforms.linearScale](ModelTransformationAPI.html#scale-value-with-optional-offset-fluidtransformslinearscale)
+* [fluid.transforms.binaryOp](ModelTransformationAPI.html#binary-operation-fluidtransformsbinaryop)
+* [fluid.transforms.condition](ModelTransformationAPI.html#conditional-transform-fluidtransformscondition)
+* [fluid.transforms.valueMapper](ModelTransformationAPI.html#mapping-based-on-input-value-fluidtransformsvaluemapper)
+* [fluid.transforms.quantize](ModelTransformationAPI.html#mapping-a-continuous-range-into-discrete-values-fluidtransformsquantize)
+* [fluid.transforms.inRange](ModelTransformationAPI.html#check-whether-a-number-is-in-a-given-range-fluidtransformsinrange)
+* [fluid.transforms.arrayToSetMembership](ModelTransformationAPI.html#fluidtransformsarraytosetmembership)
+* [fluid.transforms.setMembershipToArray](ModelTransformationAPI.html#fluidtransformssetmembershiptoarray)
+* [fluid.transforms.indexArrayByKey](ModelTransformationAPI.html#creates-an-object-indexed-with-keys-from-array-entries-fluidtransformsindexarraybykey)
+* [fluid.transforms.deindexIntoArrayByKey](ModelTransformationAPI.md#create-an-object-indexed-with-keys-from-array-entries-fluidtransformsdeindexintoarraybykey)
+* [fluid.transforms.indexOf](ModelTransformationAPI.html#get-the-index-of-an-element-in-an-array-fluidtransformsindexof)
+* [fluid.transforms.dereference](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluidtransformsdereference)
+* [fluid.transforms.stringTemplate](ModelTransformationAPI.html#create-string-from-template-fluidtransformsstringtemplate)
+* [fluid.transforms.free](ModelTransformationAPI.html#use-any-globally-available-function-as-transform-fluidtransformsfree)
+* [fluid.transforms.stringToBoolean](ModelTransformationAPI.html#fluidtransformsstringtoboolean)
+* [fluid.transforms.booleanToString](ModelTransformationAPI.html#fluidtransformsbooleantostring)
+* [fluid.transforms.JSONstringToObject](ModelTransformationAPI.html#fluidtransformsjsonstringtoobject)
+* [fluid.transforms.objectToJSONString](ModelTransformationAPI.html#fluidtransformsobjecttojsonstring)
+* [fluid.transforms.stringToDate](ModelTransformationAPI.html#fluidtransformsstringtodate)
+* [fluid.transforms.dateToString](ModelTransformationAPI.html#fluidtransformsdatetostring)
+* [fluid.transforms.dateTimeToString](ModelTransformationAPI.html#fluidtransformsdatetimetostring)
 
 ## fluid.model.transformWithRules(source, rules[, options])
 
@@ -200,7 +200,7 @@ The inputVariables will be available to fluid.transforms.weirdScale as the first
 
 A transformation can have both the grades `standardInputTransformFunction` and `multiInputTransformFunction`. This is useful if one has a variable named `input` (or `inputPath`) and want to take advantage of the frameworks built in support for `standardInputTransformations`, but also has other inputs that need supporting. The behavior will be a combination of the `standardInputTransformFunction` and `multiInputTransformFunction`. In the below example, the transform function will have three inputs available to resolve, namely `factor`, `offset` and `input` (and their `*Path` equivalents), with the `input` not requiring to be expressed in the `inputVariables` declaration of the defaults block.
 
-The input variables will be available to the `fluid.transforms.scaleValue` function in the following way: the first argument is the `input` (as for the `standardInputTransformFunction`). The remaining variables will be passed as the second argument in the form of an object keyed by variable names with the values as described in the [multiInputTransformFunction section](ModelTransformationAPI.html#multiinputtransformfunction-) above.
+The input variables will be available to the `fluid.transforms.scaleValue` function in the following way: the first argument is the `input` (as for the `standardInputTransformFunction`). The remaining variables will be passed as the second argument in the form of an object keyed by variable names with the values as described in the [multiInputTransformFunction section](ModelTransformationAPI.html#multiinputtransformfunction) above.
 
 ```
 fluid.defaults("fluid.transforms.scaleValue", {
@@ -922,7 +922,7 @@ The framework currently permits the use of model values which cannot be serialis
 type Date, Regexp, DOM nodes or other native types) - however, this is done at the user's own risk, understanding the limitations
 of this usage, and bearing in mind that in future the framework may forbid such models in some contexts. When the
 framework encounters any such object (strictly, any object which fails the
-[`fluid.isPlainObject`](CoreAPI.md#fluid-isplainobject-totest-strict-) test), it will treat such an object as immutable,
+[`fluid.isPlainObject`](CoreAPI.md#fluidisplainobjecttotest-strict) test), it will treat such an object as immutable,
 and if it appears in a relay or transform context, its object reference will simply be copied from the source to target
 document/model. This implies that with respect to these objects, if they are not immutable, the source and target documents
 will be aliased together, and any changes made to the native object will be reflected in both documents.
@@ -2692,7 +2692,7 @@ Besides the `key` and standard `input`/`inputPath` options, the indexArrayByKey 
 
 Note: this transform was developed in relation to the XMLSettingsHandler used by the GPII auto-personalization. This translates data from XML files (which often represents "morally indexed" data in repeating array-like constructs where the indexing key is held, for example, in an attribute) to JSON format. This transform makes it easier (possible) to reference the specific elements within one of these XML arrays that are otherwise only uniquely identifiable via their content (and not their order).
 
-**Invertibility:** Partly invertible (into [`fluid.transforms.deindexIntoArrayByKey`](ModelTransformationAPI.html#creates-an-object-indexed-with-keys-from-array-entries-fluid-transforms-deindexintoarraybykey-)).
+**Invertibility:** Partly invertible (into [`fluid.transforms.deindexIntoArrayByKey`](ModelTransformationAPI.html#create-an-object-indexed-with-keys-from-array-entries-fluidtransformsdeindexintoarraybykey)).
 
 **Syntax:**
 
@@ -2817,7 +2817,7 @@ Besides the `key` and standard `input`/`inputPath` options, the `deindexIntoArra
 
 Note: this transform was developed in relation to the XMLSettingsHandler used by the GPII auto-personalization. This translates data from XML files (which often represents "morally indexed" data in repeating array-like constructs where the indexing key is held, for example, in an attribute) to JSON format. This transform makes it easier (possible) to reference the specific elements within one of these XML arrays that are otherwise only uniquely identifiable via their content (and not their order).
 
-**Invertibility:** Partly invertible. (into is [`fluid.transforms.indexArrayByKey`](ModelTransformationAPI.html#creates-an-object-indexed-with-keys-from-array-entries-fluid-transforms-indexarraybykey-))
+**Invertibility:** Partly invertible. (into is [`fluid.transforms.indexArrayByKey`](ModelTransformationAPI.html#creates-an-object-indexed-with-keys-from-array-entries-fluidtransformsindexarraybykey))
 
 **Syntax:**
 
@@ -2926,7 +2926,7 @@ The `offset` will be added to the output index, even if the element is not found
 
 Returns `undefined` if no array is provided.
 
-**Invertibility:** Fully invertible (into [`fluid.transforms.dereference`](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluid-transforms-dereference-)) with the domain of values that are present in the array.
+**Invertibility:** Fully invertible (into [`fluid.transforms.dereference`](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluidtransformsdereference)) with the domain of values that are present in the array.
 
 
 **Syntax:**
@@ -3100,7 +3100,7 @@ Returns `undefined` if no array is provided.
 
 It allows for an `offset` to be provided, which will be added to the index that is being looked up.
 
-**Invertibility:** Partly invertible (into [`fluid.transforms.indexOf`](ModelTransformationAPI.html#get-the-index-of-an-element-in-an-array-fluid-transforms-indexof-)).
+**Invertibility:** Partly invertible (into [`fluid.transforms.indexOf`](ModelTransformationAPI.html#get-the-index-of-an-element-in-an-array-fluidtransformsindexof)).
 
 **Syntax:**
 
@@ -3367,7 +3367,7 @@ in the array.
 As an example, if one has an array listing of capabilities supported by a specific system and need an object listing
 all possible system capabilities with a true/false value indicating whether the specific system supports it.
 
-**Invertibility:** Partly invertible (into [`setMembershipToArray`](ModelTransformationAPI.html#fluid-transforms-arraytosetmembership))
+**Invertibility:** Partly invertible (into [`setMembershipToArray`](ModelTransformationAPI.html#fluidtransformsarraytosetmembership))
 
 **Syntax:**
 

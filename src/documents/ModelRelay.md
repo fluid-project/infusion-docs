@@ -98,7 +98,7 @@ This is done using the `modelRelay` section of a component's top-level options. 
 
 The `modelRelay` options block may take one of the following three forms -
 
-* A single [`modelRelayBlock`](#-modelrelayblock-layout) holding a single model relay rule - _OR_
+* A single [`modelRelayBlock`](#modelrelayblock-layout) holding a single model relay rule - _OR_
 * An array of `modelRelayBlock` sections - _OR_
 * A map of keys (namespaces) to `modelRelayBlock` sections
 
@@ -144,13 +144,13 @@ The first and third cases are disambiguated by looking for a member of the block
         </tr>
         <tr>
             <td><code>forward</code> (optional)</td>
-            <td><code><a href="#-sourcefilterrecord-in-an-explicit-model-relay-block">sourceFilterRecord</a></code></td>
+            <td><code><a href="#sourcefilterrecord-in-an-explicit-model-relay-block">sourceFilterRecord</a></code></td>
             <td>Control the situations in which the <a href="#controlling-propagation-through-a-relay-rule">forward leg</a> of the transform operates - by listing one or more <a href="ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks">change sources</a> which must match (<code>includeSource</code>) or not match (<code>excludeSource</code>) in the current transaction.</td>
             <td><code>{excludeSource: "init"}</code></td>
         </tr>
         <tr>
             <td><code>backward</code> (optional)</td>
-            <td><code><a href="#-sourcefilterrecord-in-an-explicit-model-relay-block">sourceFilterRecord</a></code></td>
+            <td><code><a href="#sourcefilterrecord-in-an-explicit-model-relay-block">sourceFilterRecord</a></code></td>
             <td>Control the situations in which the <a href="#controlling-propagation-through-a-relay-rule">backward leg</a> of the transform operates - by listing one or more <a href="ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks">change sources</a> which must match (<code>includeSource</code>) or not match (<code>excludeSource</code>) in the current transaction.</td>
             <td><code>{excludeSource: "init"}</code></td>
         </tr>

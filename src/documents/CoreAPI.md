@@ -98,7 +98,7 @@ Returns `true` if the supplied Infusion component has been [destroyed](Component
 * `gradeName {String}`
 * Returns: `{Boolean}`
 
-Returns `true` if the supplied options ([defaults](#fluid-defaults-gradename-options-)) are the top-level options of a component which has the supplied grade. These must be options which
+Returns `true` if the supplied options ([defaults](#fluiddefaultsgradename-options)) are the top-level options of a component which has the supplied grade. These must be options which
 have already been through options merging, since the test is a simpleminded one that simply checks whether the `gradeNames` entry in the options contains the supplied `gradeName`.
 
 ### fluid.componentHasGrade(component, gradeName)
@@ -156,7 +156,7 @@ globally unique with high probability (50% chance of collision after a million t
 * Returns: `{Number}` The value of `a + b`
 
 Returns the result of invoking the JavaScript operator `+` on its two arguments. This is a function convenient to supply, for
-example, to [`fluid.accumulate`](#fluid-accumulate-list-fn-initial-) to sum a list of numbers.
+example, to [`fluid.accumulate`](#fluidaccumulatelist-fn-initial) to sum a list of numbers.
 
 ## Creation, copying and destroying
 
@@ -174,7 +174,7 @@ pass the `fluid.isPlainObject` test.
 * Returns: `{Any}`
 
 Performs a deep copy (clone) of its argument. This will guard against cloning a circular object by terminating if it reaches a path depth
-greater than [`fluid.strategyRecursionBailout`](#fluid-strategyrecursionbailout). `fluid.copy` will not copy an object which passes `fluid.isUncopyable`.
+greater than [`fluid.strategyRecursionBailout`](#fluidstrategyrecursionbailout). `fluid.copy` will not copy an object which passes `fluid.isUncopyable`.
 
 ### fluid.makeArray(arg)
 
@@ -467,7 +467,7 @@ on small array sizes.
 * `ascending {Booleanish}` `true` if a comparator is to be returned which sorts strings in ascending order of length
 * Returns: `{Function: (a {String}, b {String}) → Number}` The comparator function to be used for sorting
 
-Produces a comparator function suitable for use with [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) or [fluid.stableSort](#fluid-stablesort-array-func-) to sort an array of strings by length
+Produces a comparator function suitable for use with [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) or [fluid.stableSort](#fluidstablesortarray-func) to sort an array of strings by length
 
 
 ## Parsing and rendering
@@ -498,7 +498,7 @@ can be sourced from `terms`.
 path segments representing this
 * Returns: `{Any}` The result of the indirection of the path into the supplied model
 
-Accesses an element nested within a [model object](FrameworkConcepts.md#model-object) at the supplied (EL) path. `fluid.get` can
+Accesses an element nested within a [model object](FrameworkConcepts.md#model-objects) at the supplied (EL) path. `fluid.get` can
 operate various special behaviour in encountering particular kinds of material - for example, any object with a function member named `resolvePathSegment` will
 hand resolution of the next path segment to that function if there is no corresponding concrete member. If `fluid.get` navigates off the end of the available
 model material, this will not trigger an error - all successive indirections will simply return `undefined`. `fluid.get` accepts various esoteric piece of configuration
@@ -583,8 +583,8 @@ accepted from external users.
 to `String` yourself (e.g. by `JSON.stringify`) if i) this is safe, and ii) you would not be satisfied by the environment's rendering.
 
 Log a message to a suitable environmental console (in current implementations, `console.log`). If the first argument to `fluid.log` is
-one of the members of the [`fluid.logLevel`](#fluid-loglevel) structure, this will be taken as the priority of the logged message - else it
-will default to [`fluid.logLevel.INFO`](#fluid-loglevel). If the logged message priority does not exceed that set by the most recent call to the [`fluid.setLogging`](#fluid-setlogging-loglevel-) function,
+one of the members of the [`fluid.logLevel`](#fluidloglevel) structure, this will be taken as the priority of the logged message - else it
+will default to [`fluid.logLevel.INFO`](#fluidloglevel). If the logged message priority does not exceed that set by the most recent call to the [`fluid.setLogging`](#fluidsetloggingloglevel) function,
 the logging action will be suppressed.
 
 ### fluid.logLevel
@@ -654,7 +654,7 @@ There are two currently standard namespaces for listeners to this event:
 ### fluid.strategyRecursionBailout
 
 A positive integer (default value 50) above which depth the framework's processing of configuration will bail out, assuming that it has become circularly linked. This can be customised by the user
-(although this is an unlikely requirement), and is read by algorithms such as [`fluid.copy`](#fluid-isdestroyed-component-) and during [options expansion](ExpansionOfComponentOptions.md).
+(although this is an unlikely requirement), and is read by algorithms such as [`fluid.copy`](#fluidisdestroyedcomponent) and during [options expansion](ExpansionOfComponentOptions.md).
 
 
 ## The global namespace
@@ -665,7 +665,7 @@ project will in general allocate its own top-level name. Users are assisted to o
 `fluid` object can access the root object for this namespace as `fluid.global`. In the browser, the root of this namespace coincides directly
 with the real global namespace, which conventionally is addressed as `window`. In a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) this object
 is conventionally known as `self`. In environments like node.js where a global namespace is discouraged (but not, thankfully, actively prohibited) the global object is not directly accessible and users
-will need to use these utilities or the helping reference `fluid.global`. See [`fluid.setGlobalValue`](#fluid-setglobalvalue-path-value-) for some guidelines on the use of global names.
+will need to use these utilities or the helping reference `fluid.global`. See [`fluid.setGlobalValue`](#fluidsetglobalvaluepath-value) for some guidelines on the use of global names.
 
 ### fluid.registerNamespace(path)
 
@@ -727,7 +727,7 @@ about it. Some defaults are not descended from a framework grade at all, and are
 * `gradeName {String}` The fully-qualified name of the grade whose defaults are to be read or written.
 * `options {Object}` [optional] The defaults which are to be registered for the grade. If this argument is omitted, the existing defaults are read and returned.
 * Returns: {Object}  If the function was called with 1 argument, any defaults already registered for the component. These read defaults will already have gone through [options merging](OptionsMerging.md) and have the contents
-of any parent grades resolved in them. If you want to read exactly the raw defaults information that was registered for this grade, instead use [`fluid.rawDefaults`](#fluid-rawdefaults-gradename-options-)
+of any parent grades resolved in them. If you want to read exactly the raw defaults information that was registered for this grade, instead use [`fluid.rawDefaults`](#fluidrawdefaultsgradename-options)
 
 ### fluid.rawDefaults(gradeName[, options])
 

@@ -60,7 +60,7 @@ The `container` is a CSS-based [selector](http://docs.jquery.com/Selectors), sin
 
 #### options ####
 
-The `options` object is an optional data structure that configures the Uploader, as described in the [Options](#options-1) section below.
+The `options` object is an optional data structure that configures the Uploader, as described in the [Options](#options) section below.
 
 ## Supported Events ##
 

@@ -12,7 +12,7 @@ write preferences.
 A base grade to be used by any preference setting store.
 This component uses the following base [grades](ComponentGrades.md):
 
-* [`fluid.prefs.dataSource`](#fluid-prefs-datasource)
+* [`fluid.prefs.dataSource`](#fluidprefsdatasource)
 * [`fluid.contextAware`](ContextAwareness.md)
 
 
@@ -59,7 +59,7 @@ A settings store mock that doesn't do persistence. This grade is useful for test
         </tr>
         <tr>
             <td><code>get</code></td>
-            <td><code><a href="CoreAPI.md#fluid-identity-arg-">fluid.identity</a></code></td>
+            <td><code><a href="CoreAPI.md#fluididentityarg">fluid.identity</a></code></td>
         </tr>
         <tr>
             <td><code>set</code></td>

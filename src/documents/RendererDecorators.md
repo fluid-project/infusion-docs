@@ -122,7 +122,7 @@ decorators: [{
         </tr>
         <tr>
             <td><code>container</code></td>
-            <td>jQuery-able</td>
+            <td>jQueryable</td>
             <td>
                 Designator for the container node at which to base the component
             </td>

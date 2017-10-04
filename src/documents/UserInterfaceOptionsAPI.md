@@ -333,7 +333,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>See also</th>
             <td>
-                <a href="SettingsStore.md#fluid-prefs-cookiestore">Cookie Settings Store</a>
+                <a href="SettingsStore.md#fluidprefscookiestore">Cookie Settings Store</a>
             </td>
         </tr>
     </tbody>

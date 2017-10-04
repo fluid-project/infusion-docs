@@ -75,7 +75,7 @@ listeners can provide a `namespace` entry. Just one model listener with a partic
 
 A model listener declaration block includes three extra features beyond those found in ordinary event listeners. Firstly is the possibility of including a member [`path`](#the-path-entry-in-a-model-listener-declaration) of type `<modelPathReference>` (a `String` or `Object`), which can hold
 a more complex path specification for the model listener match than can be encoded in the single string in a `<shortModelPathReference>`, secondly the ability to filter a change based on its [_source_](#source-tracking-and-filtering-in-model-listener-blocks), using the members
-`includeSource` and `excludeSource`, and finally the possibility that any IoC-resolved material in the listener declaration may match the special context name [`change`](#the-special-context-change-) which corresponds to the model change
+`includeSource` and `excludeSource`, and finally the possibility that any IoC-resolved material in the listener declaration may match the special context name [`change`](#the-special-context-change) which corresponds to the model change
 that the listener is reacting to. These entries are described in the linked sections below:
 
 #### The `path` entry in a model listener declaration ####
@@ -143,7 +143,7 @@ When the `path` member of a model listener declaration holds an `Array`, the lis
 
 Note that a listener which specifies references to multiple component targets in such a list will only receive one notification per component at the end of a transaction where a change matches. For example, if the listener list
 contains `{otherComponent}.model.x.y` and `{otherComponent}.model.x`, the listener will only be notified once for `{otherComponent}` for a matching change. A listener which supplies an
-array of more than one element in <code>path</code> will not be able to make use of either the special context [`change`](#the-special-context-change-) ***or*** the possibility of using the wildcard character
+array of more than one element in <code>path</code> will not be able to make use of either the special context [`change`](#the-special-context-change) ***or*** the possibility of using the wildcard character
 `*` in the final path segment. Note that elements of <code>segs</code> may themselves consist of IoC references resolving to configuration in the tree (although they may not hold references to model material - they are evaluated just once when the component constructs).
 
 #### The special context `change` ####

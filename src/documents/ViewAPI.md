@@ -15,7 +15,7 @@ dependent on running in a browser. See also the [DOM Binder API](DOMBinderAPI.md
 * Returns: `{String}` The unique id for the element - at the point of return, agrees with the node's `id` attribute.
 
 Allocate an id to the supplied element if it has none already, by a simple
-scheme resulting in ids "fluid-id-nnnn" where nnnn is a string returned from [fluid.allocateGuid](CoreAPI.md##fluid-allocateguid-).
+scheme resulting in ids "fluid-id-nnnn" where nnnn is a string returned from [fluid.allocateGuid](CoreAPI.md#fluidallocateguid).
 If the element already has an id allocated in the DOM, this existing id is returned unchanged.
 
 ### fluid.jById(id[, dokkument])
@@ -87,7 +87,7 @@ holding a label associated with a particular DOM node in the document.
 
 * `element {jQueryable}` A selector, DOM element or jQuery representing the DOM node on whose behalf a live region label is required
 * `text {String}` The string to be entered into the live region - this will be announced "soon" depending on the "politeness setting" attached to the `aria-live` attribute of the region (default: `"polite"`)
-* `options {AriaLabellerOptions}` [optional] A set of options for configuring the behaviour of the labeller. These options are described in the [table below](#structure-of-arialabelleroptions-).
+* `options {AriaLabellerOptions}` [optional] A set of options for configuring the behaviour of the labeller. These options are described in the [table below](#structure-of-arialabelleroptions).
 * Returns: `{Component}` An Infusion [view component](ComponentConfigurationOptions.md#view-components) managing the interaction with the label. ***Note:*** disposing of this component is the responsibility of the caller. If you have destroyed
 the markup to which this component is attached, you must destroy the component using its `destroy()` method or it will leak. Successive calls to `fluid.updateAriaLabel` for the same DOM node will return the same component.
 
@@ -105,7 +105,7 @@ an Infusion `fluid.viewComponent` of type `fluid.ariaLabeller`.
 
 ## Managing Focus and Blur
 
-Infusion includes two "major utilities" for managing focus interactions, [`fluid.globalDismissal`](#fluid-globaldismissal-nodes-dismissfunc-) and [`fluid.deadMansBlur`](#fluid-deadmansblur-control-options-), as well as a few minor utilities.
+Infusion includes two "major utilities" for managing focus interactions, [`fluid.globalDismissal`](#fluidglobaldismissalnodes-dismissfunc) and [`fluid.deadMansBlur`](#fluiddeadmansblurcontrol-options), as well as a few minor utilities.
 
 ### fluid.globalDismissal(nodes[, dismissFunc])
 
@@ -122,7 +122,7 @@ to be armed again.
 ### fluid.deadMansBlur(control, options)
 
 * `control {jQueryable}` The control for which a blur interaction is to be managed.
-* `options {DeadMansBlurOptions}` A set of options managing the interaction, described in [table below](#structure-of-deadmansbluroptions-).
+* `options {DeadMansBlurOptions}` A set of options managing the interaction, described in [table below](#structure-of-deadmansbluroptions).
 * Returns: `{Component}` A component managing the interaction
 
 This utility is designed to compensate for the fact that delivery of blur events in browsers has always been extremely unreliable. Sometimes blur events

@@ -19,7 +19,7 @@ The definition of a component involves two things:
 ## Grade and Default Options ##
 
 A component's grade and any default options are registered with the framework using a call to
-[`fluid.defaults`](../CoreAPI.md#fluid-defaults-gradename-options-), which has two parameters:
+[`fluid.defaults`](../CoreAPI.md#fluiddefaultsgradename-options), which has two parameters:
 the component name and an object containing the defaults. The parent grades for the component are specified in an array or single string in the defaults called `gradeNames`. For a plain component, specify the grade as `fluid.component`:
 
 ```javascript
