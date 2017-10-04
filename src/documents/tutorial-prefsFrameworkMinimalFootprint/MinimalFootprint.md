@@ -121,7 +121,7 @@ The code consists of the following three parts:
 
 With a Full Page Preferences Editor we've moved editing preferences off the content pages; however, these pages are still required to enact/apply the preferences set by the user. Therefore, we still need to instantiate the [Settings Store](../SettingsStore.md) and [Page Enhancer](../Enactors.md) on each page. However, we only need these if a user has actually adjusted their preferences. In a default implementation of the Preferences Framework, preferences are stored in a browser cookie. The simple solution is to check for the presence of this cookie, and only load and instantiate the Settings Store and Page Enhancer if it's found.
 
-The following example makes use the functions provided by [loadScripts.js](../examples/loadScripts.js) to check the cookie and lazy load the required scripts:
+The following example makes use the functions provided by [loadScripts.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/loadScripts.js) to check the cookie and lazy load the required scripts:
 
 The first step is to check if a cookie for user preferences was set. If it is found, the necessary JavaScript files should be loaded. By lazy loading the scripts we save on the download and processing time for the scripts when they are not in use.
 

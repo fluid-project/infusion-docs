@@ -162,7 +162,7 @@ This directs the framework to automatically refresh the rendered view whenever t
 renderer's automatically generated `refreshView` method to trigger from any changes received to the model's `result` field.
 
 Arranging declaratively to perform the currency conversion requires a more interesting kind of definition.
-Any transformation that can be expressed as part of Infusion's [Model Transformation](../to-do/ModelTransformation.md) system can be used to construct a [Model Relay](../ModelRelay.md)
+Any transformation that can be expressed as part of Infusion's [Model Transformation](../ModelTransformationAPI.md) system can be used to construct a [Model Relay](../ModelRelay.md)
 rule which can keep two component models (or two parts of the same component model) synchronised with each other's changes, where the synchronisation automatically takes account of a transformation rule.
 In this case we can recognise that the transformation performed by this component is one of the standard rules supplied with the framework,
 [`fluid.transforms.linearScale`](../ModelTransformationAPI.md#scale-value-with-optional-offset-fluidtransformslinearscale)

@@ -138,7 +138,7 @@ The first and third cases are disambiguated by looking for a member of the block
         </tr>
         <tr>
             <td><code>transform</code></td>
-            <td>JSON (full <a href="to-do/ModelTransformation.md">Model Transformation</a> document)</td>
+            <td>JSON (full <a href="ModelTransformationAPI.md">Model Transformation</a> document)</td>
             <td>A long form of <code>singleTransform</code> which allows any valid Model Transformation document to be used to mediate the relay. This is an infrequently used form.</td>
             <td>See the <a href="ModelTransformationAPI.md#list-of-available-transformations">list of available transformation functions</a> for more information.</td>
         </tr>

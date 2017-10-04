@@ -94,7 +94,7 @@ In general you shouldn't fire any of a component's events unless invited to by i
 Both as part of defaults, and also as supplied instantiation options, an Infusion component can accept a structure named `listeners`.
 In the simplest form, the keys of the `listeners` structure are taken from the set of `events` present in the component's [Grade](ComponentGrades.md), and the values are either single listener specifications or arrays of listener specifications.
 A ***listener specification*** can take a number of forms - either being written as a simple String or Function, or as a full JSON object.
-The standard way of declaring a listener using Infusion's [IoC](to-do/IoCInversionOfControl.md) system is to supply the name of a global function using the member **`funcName`** or
+The standard way of declaring a listener using Infusion's [IoC](IoCAPI.md) system is to supply the name of a global function using the member **`funcName`** or
 to supply a [reference](IoCReferences.md) to a function handle (usually an [Invoker](Invokers.md)) somewhere in the component tree using the member **`func`**.
 If your listener would like to receive different arguments than the ones that the event was fired with, you can supply references to these using the member **`args`**.
 You can consult the page [Event injection and boiling](EventInjectionAndBoiling.md) for the use of these more complex listener specifications.

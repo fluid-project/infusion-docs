@@ -155,7 +155,7 @@ The `checkRecord` structure which is used in the first row of the table above is
 
 ### Example `contextAwareness` record
 
-The most adaptible component in the framework is currently the [Uploader](togo/Uploader.md) which currently can respond to three "dimensions" of adaptation. Two of these,
+The most adaptible component in the framework is currently the [Uploader](UploaderAPI.md) which currently can respond to three "dimensions" of adaptation. Two of these,
 `technology` and `liveness`,  are advertised in its own `contextAwareness` record:
 
 ```javascript
