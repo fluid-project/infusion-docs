@@ -6,7 +6,9 @@
   "repository": "https://github.com/fluid-project/infusion-docs",
   "scripts": {
     "docpad": "docpad run --env static",
-    "deploy": "docpad deploy-ghpages --env static"
+    "deploy": "docpad deploy-ghpages --env static",
+    "pretest": "docpad generate --env static",
+    "test": "node tests/all-tests.js"
   },
   "dependencies": {
     "URIjs": "^1.14.1",
@@ -14,6 +16,15 @@
     "docpad-plugin-handlebars": "~2.3.0",
     "docpad-plugin-highlightjs": "~2.2.2",
     "docpad-plugin-markit": "2.4.0",
-    "fs-extra": "^0.18.0"
+    "fs-extra": "^0.18.0",
+    "markdown-it-anchor": "4.0.0"
+  },
+  "devDependencies": {
+    "gpii-express": "1.0.10",
+    "infusion": "3.0.0-dev.20170724T165035Z.eee50c1",
+    "jsdom": "11.3.0",
+    "kettle": "1.7.0",
+    "node-jqunit": "1.1.7",
+    "request": "2.83.0"
   }
 }

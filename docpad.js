@@ -85,7 +85,9 @@ module.exports = {
             }
         },
         markit: {
-            html: true
+            html: true,
+            plugins: ["markdown-it-anchor"],
+            "markdown-it-anchor": {}
         }
     },
     events: {
