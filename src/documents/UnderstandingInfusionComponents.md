@@ -97,7 +97,7 @@ var myComponent = examples.tinyComponent();
 // Logs "My tiny component has started up" to the console
 ```
 
-You can understand this example better by reading documentation for [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), [`fluid.log`](CoreAPI.md#fluidlogloglevel-arg1--argn) and the [Component Lifecycle](ComponentLifecycle.md).
+You can understand this example better by reading documentation for [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), [`fluid.log`](CoreAPI.md#fluidlogloglevel-arg1-argn) and the [Component Lifecycle](ComponentLifecycle.md).
 
 ## Instantiating A View Component ##
 
