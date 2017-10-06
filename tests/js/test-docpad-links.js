@@ -12,9 +12,7 @@ var fluid = require("infusion");
 var gpii = fluid.registerNamespace("gpii");
 
 var jqUnit = require("node-jqunit");
-// TODO: Figure out why this didn't work for jhung.  See: https://github.com/fluid-project/infusion-docs/pull/129#issuecomment-334400233
-// fluid.require("%infusion-docs");
-require("../../");
+fluid.require("%infusion-docs");
 fluid.require("%gpii-express");
 
 gpii.express.loadTestingSupport();
