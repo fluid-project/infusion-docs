@@ -3,8 +3,6 @@ title: Model Transformation API
 layout: default
 category: Infusion
 ---
-
-
 The ***model transformation*** framework is a core part of Infusion and allows you to transform an input
 [model](FrameworkConcepts.md#model-objects) (JSON structure) based on a set of rules.
 The result will be a new model, built according to the rules specified and the input model. Many kinds of
@@ -20,7 +18,6 @@ the use of SingleTransform rather than full transforms. For more information, se
 
 The user may also operate model transformation rules manually by use of the
 [`fluid.model.transformWithRules` API](#fluidmodeltransformwithrulessource-rules-options).
-
 
 ## List of available transformations
 
@@ -64,15 +61,15 @@ Function to manually apply transformation rules to a source model. It will retur
 * `source {Object}` The input model to transform - this will not be modified
 * `rules {Transform}` A transformation rules object containing instructions on how to transform the model (see [below](#structure-of-a-transformation-document) for more information)
 * `options {Object}` A set of options governing the kind of transformation to be operated. At present this may contain the values:
-    * `isomorphic {Boolean}` If `true` indicating that the output model is to be governed by the same schema found in the input model, or
-    * `flatSchema {Object: String -> String}` Holding a flat schema object which consists of a hash of EL path specifications with wildcards, to the string values "array"/"object" defining the schema to be used to construct missing trunk values. This option is not part of the official API and might be subject to change.
+  * `isomorphic {Boolean}` If `true` indicating that the output model is to be governed by the same schema found in the input model, or
+  * `flatSchema {Object: String -> String}` Holding a flat schema object which consists of a hash of EL path specifications with wildcards, to the string values "array"/"object" defining the schema to be used to construct missing trunk values. This option is not part of the official API and might be subject to change.
 * Returns: `{Object}` The transformed model
 
 ## Structure of a transformation document
 
 The top-level structure of a full transformation document `{Transform}` is keyed by output [EL paths](FrameworkConcepts.md#el-paths) and looks like this:
 
-```
+```javascript
 {
     <output-el-path1>: <input-el-path1> OR {SingleTransform},
     <output-el-path2>: <input-el-path2> OR {SingleTransform}
@@ -82,7 +79,7 @@ The top-level structure of a full transformation document `{Transform}` is keyed
 
 A `{SingleTransform}` record is as follows:
 
-```
+```javascript
 {
     transform: {
         "type": <transform-type>
@@ -146,7 +143,6 @@ In general, the reserved words of the model transformation system are:
 | `missingValue` | `fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray` |
 | `options` | `fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray` |
 
-
 Besides these, most transformations have further reserved words. These are briefly listed here, with the transformation(s) they belong to. They will be more fully described for each relevant transformation.
 
 ## Grades of transformations
@@ -182,7 +178,7 @@ These transformations allow for multiple inputs. In their default blocks, beside
 
 An example of a multiInputTransformFunction declaration:
 
-```
+```javascript
 fluid.defaults("fluid.transforms.weirdScale", {
     "gradeNames": [ "fluid.multiInputTransformFunction" ],
     "inputVariables": {
@@ -202,7 +198,7 @@ A transformation can have both the grades `standardInputTransformFunction` and `
 
 The input variables will be available to the `fluid.transforms.scaleValue` function in the following way: the first argument is the `input` (as for the `standardInputTransformFunction`). The remaining variables will be passed as the second argument in the form of an object keyed by variable names with the values as described in the [multiInputTransformFunction section](ModelTransformationAPI.html#multiinputtransformfunction) above.
 
-```
+```javascript
 fluid.defaults("fluid.transforms.scaleValue", {
     "gradeNames": [ "fluid.standardTransformFunction", "fluid.multiInputTransformFunction" ],
     "inputVariables": {
@@ -211,7 +207,6 @@ fluid.defaults("fluid.transforms.scaleValue", {
     }
 });
 ```
-
 
 ## Building the output document structure
 
@@ -366,7 +361,6 @@ Returning to the example in the previous section, this could be written as:
 </tbody>
 </table>
 
-
 Looking at the first example, the `literalValue` transformation specifies that the result should be output to the path
 `Magnification.dataType`. Same for the `fluid.transforms.round` transform, where the output will be sent to the path
 `Magnification.value`.
@@ -374,7 +368,6 @@ Looking at the first example, the `literalValue` transformation specifies that t
 The second example above, shows how the `outputPath` will be relative to the current output path. Since the entire block
 is keyed by `Magnification`, this becomes the current output path. When we encounter `outputPath: dataType`, this is
 interpreted as being relative to the `Magnification` path, and hence result in the full output path `Magnification.dataType`.
-
 
 ## Return values, Arrays of transforms and outputting arrays
 
@@ -424,7 +417,6 @@ Here the result of the inner `fluid.transforms.linearScale` transform is passed 
 transform, which in turn outputs it to the `outputPath`. Whenever an `outputPath` is specified, the result is output
 to the output document instead, and hence not returned to the parent transform function (if any). Instead what is
 returned to the parent function is `undefined`. Generally, this behavior should be rather intuitive.
-
 
 ### Arrays of transforms
 
@@ -575,20 +567,19 @@ The difference between this and the use of arrays in the previous sections is th
 was used as _the value for a `transform` key_. When this is not the case, an array will be interpreted as a regular
 array as shown in the above example.
 
-
 ## Static inputs and nested transforms vs. reading from input model
 
 For any `standardInputTransformFunction`, `standardTransformFunction`, `multiInputTransformFunction` and most other
 transformations, there are three ways of providing inputs to be used by the transformation.
+
 * **Using values from the input model:** This is done by referencing the path where the value to be used can be found.
-When doing this, the result of the transformation will vary depending on the input document provided to the transformation.
+  When doing this, the result of the transformation will vary depending on the input document provided to the transformation.
 * **Passing a static value, given directly in the rules document:** In other words, one or more of the input values for
-the transformation is hardcoded into the transformation rule you set up. This means that the result of the transformation
-in question will be the same every time.
+  the transformation is hardcoded into the transformation rule you set up. This means that the result of the transformation
+  in question will be the same every time.
 * **Nested Transformation:** One can use the output of a transformation as an input value to its parent transformation
 
 The three types will be explained in detail in the below:
-
 
 ### Using values from the source model:
 
@@ -598,7 +589,6 @@ any `standardTransformFunction` or `standardInputTransformFunction`. In general,
 these types allow to reference the source model, usually denoted by having `Path` as part of the key name - we defer
 to the documentation on the individual transformations below for more details on these kinds of transforms.
 In this section, we will only show examples of using `inputPath`.
-
 
 <table><thead>
 </thead><tbody>
@@ -676,8 +666,8 @@ is found in the given path, undefined will be the input to the transformation, a
 an input model without the path `petlist.cat`, like in the third example, the result of the `literalValue`
 transformation would be undefined, and one would receive an empty output document.
 
-
 ### Static Values
+
 Any `standardTransformFunction` or `standardInputTransformFunction` supports an `input` key, which can be used for
 passing either static values or nest transforms ([see next section](ModelTransformationAPI.html#nested-transforms)).
 Most other transforms support the same types of input - we defer to their individual documentation for more details.
@@ -733,8 +723,8 @@ straightforward:
 As can be seen, regardless of the input model supplied to the transformation. Every time the transformation is run,
 the result will be the same.
 
-
 ### Nested Transforms
+
 Besides static values, the `input`  key for `standardTransformFunction`s and `standardInputTransformFunction`s supports
 nested transforms (the same is the case for most other transforms, see their individual documentation). Nested
 transforms are transformations whose output value will be used as `input` value for its parent transformation.
@@ -905,14 +895,14 @@ vocabulary to describe different levels of invertibility:
 
 * **Losslessly Invertible:** `G(y)=G(F(x))=x`
   * This is in practice not always possible, since the generated `x` may be missing some entries, or have extra entries,
-depending on how well all the paths in the original `x` match the ones used by the transformation function `F`.
+    depending on how well all the paths in the original `x` match the ones used by the transformation function `F`.
 * **Partly Invertible:** `F(x)=F(G(F(x)))`
   * In this case, there is no condition on the output of `G` alone, but it is guaranteed that one can pipe an original
-input model through an `F->G` sequence an unlimited number of times and always get the same model `y` as output
-(we say that `F(G)` is _[idempotent](https://en.wikipedia.org/wiki/Idempotence) on the image of `F`_)
+    input model through an `F->G` sequence an unlimited number of times and always get the same model `y` as output
+    (we say that `F(G)` is _[idempotent](https://en.wikipedia.org/wiki/Idempotence) on the image of `F`_)
 * **Not Invertible:** `G` **does not exist (or has not been defined in the framework)**
   * For non-invertible functions, there is either no logical way of deciding what an inverse would mean for that
-function, or there is no way to reproduce the original input document from an output document.
+    function, or there is no way to reproduce the original input document from an output document.
 
 The invertibility of each transform function will be described in connection to the individual transform function below.
 
@@ -929,7 +919,6 @@ will be aliased together, and any changes made to the native object will be refl
 
 See the entry on [model objects](FrameworkConcepts.md#model-objects)
 on the [Framework Concepts](FrameworkConcepts.md) for further discussion on this topic.
-
 
 ## Transformation Functions:
 
@@ -1012,7 +1001,8 @@ Note that this transform is implicit when using a string as a value to a key, wh
 **Invertibility:** Partly invertible.
 
 **Syntax:**
-```
+
+```javascript
 {
     "transform": {
         "type": "fluid.transforms.literalValue",
@@ -1047,7 +1037,6 @@ Note that this transform is implicit when using a string as a value to a key, wh
 </tr>
 </tbody>
 </table>
-
 
 **Example 2: The content of literal value will not be transformed further**
 <table><thead>
@@ -1156,6 +1145,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 **Description:** Parses a number into a string. If the input is not a number, `undefined` will be returned.
 Can optionally provide a `scale` which denotes the maximum number of decimal places to round the number to and a rounding `method`. Trailing 0s are omitted and numbers are rounded as follows:
+
 * `"round"`: Numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
 * `"ceil"`: Numbers are rounded up
 * `"floor"`: Numbers are rounded down
@@ -1313,7 +1303,6 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-
 ### Count length of array (fluid.transforms.count)
 
 **Type:** standardTransformFunction
@@ -1415,6 +1404,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 **Type:** standardTransformFunction
 
 **Description:** Rounds the input to the nearest integer, or to a decimal value if a `scale` value is provided. The `scale` option denotes the number of decimal places to round the number to and defaults to `0`. The `method` option denotes the rounding method to use and defaults to `"round"`. Numbers are rounded as follows:
+
 * `"round"`: Numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
 * `"ceil"`: Numbers are rounded up
 * `"floor"`: Numbers are rounded down
@@ -1520,7 +1510,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 **syntax:**
 
-```
+```javascript
 {
     "transform": {
         "type": "fluid.transforms.firstValue",
@@ -1600,7 +1590,7 @@ The only option that `delete` supports is `outputPath`, which points to the outp
 
 **Syntax:**
 
-```
+```javascript
 transform: {
     "type": "fluid.transforms.delete",
     "outputPath": <the output path to delete>
@@ -1648,7 +1638,8 @@ This is a very powerful and flexible transformation function, which maps a defin
 **Invertibility:** Partly invertible.
 
 **Syntax:**
-```
+
+```javascript
 {
     type: "fluid.transforms.valueMapper",
     defaultInputPath: <default input path>,
@@ -1673,46 +1664,49 @@ This is a very powerful and flexible transformation function, which maps a defin
 ```
 
 ___Top level:___
+
 * `defaultInput`
- * The direct input data to use.
- * Will take precedence over any input path directive.
+  * The direct input data to use.
+  * Will take precedence over any input path directive.
 * `defaultInputPath`
- * The input path to use.
- * Any value provided here will be overwritten by any `inputPath` given in the `match` directives.
- * This is optional if `inputPath` directives are given in each of the match directives.
+  * The input path to use.
+  * Any value provided here will be overwritten by any `inputPath` given in the `match` directives.
+  * This is optional if `inputPath` directives are given in each of the match directives.
 * `defaultOutputValue`
- * The value to output by default.
- * Used if no `outputValue` is provided for a given match.
- * Optional if `outputValue` is provided for all matches
- * The meaning of `defaultOutputValue` is NOT "the output in case no case matches" but "the `outputValue` that should be used in a case where it has not been explicitly written".
+  * The value to output by default.
+  * Used if no `outputValue` is provided for a given match.
+  * Optional if `outputValue` is provided for all matches
+  * The meaning of `defaultOutputValue` is NOT "the output in case no case matches" but "the `outputValue` that should be used in a case where it has not been explicitly written".
 * `defaultOutputPath`
- * The output path used by default.
- * Used if no `outputPath` is provided for a given case.
- * Optional if `outputPath` is provided for all matches.
+  * The output path used by default.
+  * Used if no `outputPath` is provided for a given case.
+  * Optional if `outputPath` is provided for all matches.
 
 ___Within `match`/`noMatch`:___
+
 * `outputPath`
- * Path to output to if this case matches.
- * If not provided, the `defaultOutputPath` will be used.
+  * Path to output to if this case matches.
+  * If not provided, the `defaultOutputPath` will be used.
 * `outputValue`
- * Value to output to the `outputPath` if this case matches.
- * Value is interpreted as literal value unless it contains a `transforms` key.
- * If not provided, the `defaultOutputValue` will be used.
+  * Value to output to the `outputPath` if this case matches.
+  * Value is interpreted as literal value unless it contains a `transforms` key.
+  * If not provided, the `defaultOutputValue` will be used.
 * `inputPath`
- * The input path to match against.
- * Overwrites `defaultInputPath` for the given directive.
+  * The input path to match against.
+  * Overwrites `defaultInputPath` for the given directive.
 * `outputUndefinedValue`
- * This will cause the match directive to return `undefined` as an output value, even if `outputValue` and `defaultOutputValue` are specified.
+  * This will cause the match directive to return `undefined` as an output value, even if `outputValue` and `defaultOutputValue` are specified.
 
 ___Only within `match`:___
+
 * `inputValue`
- * The value to check the input against.
- * This can also be implicitly provided as a key in the top-level of options block.
- * Will always be interpreted literally (ie. no transforms allowed here)
+  * The value to check the input against.
+  * This can also be implicitly provided as a key in the top-level of options block.
+  * Will always be interpreted literally (ie. no transforms allowed here)
 * `partialMatches`
- * Boolean flag, signifying whether this directive is allowed to match partly.
- * If any exact match can be made (even if it contains a partialMatches flag), this beats a partial match. Else the best partial match (ie. deepest matching) will be selected. Else the value from `noMatch` will be used.
- * If the two best partial matches are equally good, the first one listed will be returned.
+  * Boolean flag, signifying whether this directive is allowed to match partly.
+  * If any exact match can be made (even if it contains a partialMatches flag), this beats a partial match. Else the best partial match (ie. deepest matching) will be selected. Else the value from `noMatch` will be used.
+  * If the two best partial matches are equally good, the first one listed will be returned.
 
 **Priority of keys at parsing**:
 
@@ -1727,7 +1721,7 @@ Some of the keys used in the ValueMapper conflict, in that they reference the sa
 
 ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entries are interpreted as `inputValue` by the system. If `<outputX>` are primitive datatypes (string, number or boolean), they will be used directly as output. Else they should be objects with the same format in the longhand syntax described above - excluding support the `inputValue` option.
 
-```
+```javascript
 {
     type: "fluid.transforms.valueMapper",
     input: <direct input data, or nested transformation>,
@@ -1819,7 +1813,6 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-
 **Example 3: Longhand syntax with noMatch**
 
 <table><thead>
@@ -1859,7 +1852,6 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tr>
 </tbody>
 </table>
-
 
 **Example 4: Longhand syntax with partial Matches**
 
@@ -1987,9 +1979,6 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-
-
-
 ### Binary operation (fluid.transforms.binaryOp)
 
 **type:** multiInputTransformFunction, standardOutputTransformFunction
@@ -2023,7 +2012,7 @@ Logical Operators: (both operands are required to be booleans, output will be bo
 
 **Syntax:**
 
-```
+```javascript
 transform: {
     "type": "fluid.transforms.binaryOp",
     "left": <constant of appropriate type>,
@@ -2100,14 +2089,13 @@ transform: {
 </tbody>
 </table>
 
-
 ### Conditional transform (fluid.transforms.condition)
 
 **type:** multiInputTransformFunction , standardOutputTransformFunction
 
 **Syntax:**
 
-```
+```javascript
 transform: {
     "type": "fluid.transforms.condition",
     "condition": <boolean value>
@@ -2255,7 +2243,6 @@ If either the `left` or `right` (or their path equivalents) evaluate to `undefin
 </tbody>
 </table>
 
-
 ### Scale value with optional offset (fluid.transforms.linearScale)
 
 **type:** multiInputTransformFunction, standardInputTransformFunction and standardOutputTransformFunction.
@@ -2265,7 +2252,8 @@ If either the `left` or `right` (or their path equivalents) evaluate to `undefin
 **Invertibility:** Partly invertible.
 
 **Syntax:**
-```
+
+```javascript
 transform: {
     "type": "fluid.transforms.linearScale",
     "input": <constant of array type>,
@@ -2304,8 +2292,6 @@ transform: {
 </tr>
 </tbody>
 </table>
-
-
 
 **Example 2: Only some variables specified**
 
@@ -2368,7 +2354,6 @@ This example uses the same transformation rule as above, but in this case a valu
 </tbody>
 </table>
 
-
 ### Mapping a continuous range into discrete values (fluid.transforms.quantize)
 
 **type:** standardTransformFunction
@@ -2379,7 +2364,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **Syntax:**
 
-```
+```javascript
 "transform": {
     "type": "fluid.transforms.quantize",
     "inputPath": <path to the value to check ranges from>,
@@ -2532,7 +2517,6 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-
 ### Check whether a number is in a given range (fluid.transforms.inRange)
 
 **type:** standardTransformFunction
@@ -2541,7 +2525,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **Syntax:**
 
-```
+```javascript
 "transform": {
     "type": "fluid.transforms.inRange",
     "inputPath": <path to the value to check ranges from - input is valid as well>,
@@ -2679,7 +2663,6 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-
 ### Creates an object indexed with keys from array entries (fluid.transforms.indexArrayByKey)
 
 **type:** standardTransformFunction
@@ -2696,7 +2679,7 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 **Syntax:**
 
-```
+```javascript
 transform: {
     "type": "fluid.transforms.indexArrayByKey",
     "inputPath": "some input path pointing to an array",
@@ -2800,7 +2783,7 @@ For the below example, in the second (innermost) `inputPath`, we refer to `info.
 
 A brief illustration of this is given here:
 
-```
+```javascript
 input: {
     "cat": { name: "CATTOO" },
     "mouse": { name: "MAUS" }
@@ -2821,7 +2804,7 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 **Syntax:**
 
-```
+```javascript
 transform: {
     "type": "fluid.transforms.deindexIntoArrayByKey",
     "inputPath": "some input path pointing to an object of objects",
@@ -2928,10 +2911,9 @@ Returns `undefined` if no array is provided.
 
 **Invertibility:** Fully invertible (into [`fluid.transforms.dereference`](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluidtransformsdereference)) with the domain of values that are present in the array.
 
-
 **Syntax:**
 
-```
+```javascript
 {
     "type": "fluid.transforms.indexOf",
     "array": <the array to look in>,
@@ -2942,7 +2924,6 @@ Returns `undefined` if no array is provided.
 ```
 
 #### Examples:
-
 
 ** Example 1: standard usage**
 
@@ -3104,7 +3085,7 @@ It allows for an `offset` to be provided, which will be added to the index that 
 
 **Syntax:**
 
-```
+```javascript
 {
     "type": "fluid.transforms.dereference",
     "array": <the array to look in>,
@@ -3114,7 +3095,6 @@ It allows for an `offset` to be provided, which will be added to the index that 
 ```
 
 #### Examples:
-
 
 ** Example 1: standard usage**
 
@@ -3175,7 +3155,6 @@ It allows for an `offset` to be provided, which will be added to the index that 
 </tbody>
 </table>
 
-
 ### Create string from template (fluid.transforms.stringTemplate)
 
 **Type:** standardOutputTransformFunction.
@@ -3188,7 +3167,7 @@ Currently it does not support reading any of its values from the input model. Fu
 
 **Syntax:**
 
-```
+```javascript
 {
     "type": "fluid.transforms.stringTemplate",
     "template": <string template>,
@@ -3270,7 +3249,8 @@ Does not support reading any of its values from the input model, and any value p
 **Invertibility:** Not invertible.
 
 **Syntax:**
-```
+
+```javascript
 {
     "type": "fluid.transforms.free",
     "func": <function name>,
@@ -3284,7 +3264,7 @@ Does not support reading any of its values from the input model, and any value p
 
 For the below example, imagine that the following function is globally available:
 
-```
+```javascript
 fluid.myfuncs.addThree = function (a, b, c) {
     return a + b + c;
 };
@@ -3319,7 +3299,7 @@ fluid.myfuncs.addThree = function (a, b, c) {
 
 In the following example, imagine you have the following two functions globally available:
 
-```
+```javascript
 fluid.myfuncs.addThree = function (a, b, c) {
     return a + b + c;
 };
@@ -3372,7 +3352,8 @@ all possible system capabilities with a true/false value indicating whether the 
 **Syntax:**
 
 If `presentValue` and `missingValue` are not defined they will default to: `true` and `false`, respectively.
-```
+
+```javascript
 transform: {
     "type": "fluid.transforms.arrayToSetMembership",
     "inputPath": <standard inputPath>,
@@ -3427,7 +3408,6 @@ transform: {
 </code></pre></td></tr>
 </tbody>
 </table>
-
 
 **Example 2: Not defining presentValue and missingValue**
 
@@ -3484,7 +3464,8 @@ The actual entries output to the array are based on a map passed as `options` to
 **Syntax:**
 
 If `presentValue` and `missingValue` are not defined they will default to: `true` and `false`, respectively.
-```
+
+```javascript
 transform: {
     "type": "fluid.transforms.setMembershipToArray",
     "inputPath": <standard inputPath>,
@@ -3541,7 +3522,6 @@ transform: {
 </tbody>
 </table>
 
-
 **Example 2: Not defining presentValue and missingValue**
 
 <table><thead>
@@ -3580,7 +3560,6 @@ transform: {
 </tbody>
 </table>
 
-
 ### fluid.transforms.stringToBoolean
 
 **Type:** standardTransformFunction
@@ -3591,7 +3570,8 @@ The following are all false: undefined, null, "", "0", "false", false, 0.  Every
 **Invertibility:** Partly invertible via `fluid.transforms.booleanToString`.
 
 **Syntax:**
-```
+
+```javascript
 {
     "transform": {
         "type": "fluid.transforms.stringToBoolean",
@@ -3642,7 +3622,8 @@ Anything else (0, false, null, etc.) returns "false".
 **Invertibility:** Partly invertible via `fluid.transforms.stringToBoolean`.
 
 **Syntax:**
-```
+
+```javascript
 {
     "transform": {
         "type": "fluid.transforms.booleanToString",
@@ -3682,7 +3663,6 @@ Anything else (0, false, null, etc.) returns "false".
 </tbody>
 </table>
 
-
 ### fluid.transforms.JSONstringToObject
 
 **Type:** standardTransformFunction
@@ -3692,7 +3672,8 @@ Anything else (0, false, null, etc.) returns "false".
 **Invertibility:** Partly invertible via `fluid.transforms.objectToJSONString`.
 
 **Syntax:**
-```
+
+```javascript
 {
     "transform": {
         "type": "fluid.transforms.JSONstringToObject",
@@ -3743,7 +3724,8 @@ Anything else (0, false, null, etc.) returns "false".
 **Invertibility:** Partly invertible via `fluid.transforms.JSONstringToObject`.
 
 **Syntax:**
-```
+
+```javascript
 {
     "transform": {
         "type": "fluid.transforms.objectToJSONString",
@@ -3836,7 +3818,8 @@ although this can be done at your own risk. See the section on
 **Invertibility:** Partly invertible using either `fluid.transforms.dateTimeToString` or `fluid.transforms.dateToString`.
 
 **Syntax:**
-```
+
+```javascript
 {
     "transform": {
         "type": "fluid.transforms.stringToDate",
@@ -3893,7 +3876,8 @@ although this can be done at your own risk. See the section on
 **Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
 
 **Syntax:**
-```
+
+```javascript
 {
     "transform": {
         "type": "fluid.transforms.dateToString",
@@ -3948,7 +3932,8 @@ although this can be done at your own risk. See the section on
 **Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
 
 **Syntax:**
-```
+
+```javascript
 {
     "transform": {
         "type": "fluid.transforms.dateTimeToString",

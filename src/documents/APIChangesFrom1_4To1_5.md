@@ -17,12 +17,12 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 * RSF IDs no longer required
 * Components have been renamed
 * Components have been restructured
-** See migration guide
+  * See migration guide
 
 ### UI Options ###
 
 * Major refactoring into a preferences framework
-    * See [migration guide](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
+  * See [migration guide](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
 
 ### Uploader ###
 

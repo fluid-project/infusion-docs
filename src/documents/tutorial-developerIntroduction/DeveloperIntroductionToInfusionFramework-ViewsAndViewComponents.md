@@ -49,7 +49,7 @@ fluid.defaults("fluidTutorial.helloWorld", {
         // method on a DOM node returned
         // using the DOM binder functionality
         displayHello: {
-            // This IoC reference lets us refer  
+            // This IoC reference lets us refer
             // to the DOM node bound to the
             // `messageArea` key by the selector
             // definition above; it returns a

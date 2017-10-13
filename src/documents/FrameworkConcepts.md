@@ -38,7 +38,7 @@ framework (if slightly more work for the writer) as well as heading off escaping
 
 ## Events
 
-[Events](InfusionEventSystem.md) have a very plain implementation in Infusion &#8212; an event here is really just another kind of function call. Events in Infusion aren't specific to the DOM.  
+[Events](InfusionEventSystem.md) have a very plain implementation in Infusion &#8212; an event here is really just another kind of function call. Events in Infusion aren't specific to the DOM.
 Any function signature can be an event signature, any function can be an event listener, and an event's `fire` method is a plain function handle that can be handed around just like any other function.
 There is no special kind of "Event Object" that is fired to event listeners, and anyone can easily define a new event by adding an entry in the `events` section of the options of their component.
 Events are created automatically by the framework as part of the initialisation of every [Component](tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.md). No code required.

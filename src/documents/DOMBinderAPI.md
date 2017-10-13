@@ -52,7 +52,6 @@ Note that selector values may be specified using <a href="IoCReferences.md">IoC 
     </tr>
 </table>
 
-
 ### Selector Examples ###
 
 ```javascript
@@ -139,6 +138,7 @@ Finds the named element within the specified container, using the value in the D
 </table>
 
 ### clear ###
+
 ```javascript
 clear()
 ```

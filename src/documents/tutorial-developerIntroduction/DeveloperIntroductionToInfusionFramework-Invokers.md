@@ -17,9 +17,9 @@ While there are [other styles of invokers possible](../Invokers.md#types-of-invo
 fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.component"],
     invokers: {
-        // Creates a function on the component         
+        // Creates a function on the component
         // referred to by name 'sayHello'
-        sayHello: {                        
+        sayHello: {
             // The value of "funcName" is the full name of
             // a free function
             funcName: "fluidTutorial.helloWorld.consoleHello",

@@ -30,10 +30,10 @@ To use the Renderer with your component, you need to use the **rendererComponent
 
 * specify a grade of fluid.rendererComponent, and
 * provide the following:
-    * a data model
-    * an HTML template
-    * a component tree
-    * selectors
+  * a data model
+  * an HTML template
+  * a component tree
+  * selectors
 
 Each of these is discussed below.
 

@@ -27,7 +27,8 @@ The relationship between the controlling boolean preference and its dependent su
 
 ## Examples ##
 
-__Auxiliary schema for one controlling preference with two conditional preferences__
+### Auxiliary schema for one controlling preference with two conditional preferences ###
+
 ```javascript
 auxiliarySchema: {
     template: "%prefix/prefsEditor.html",

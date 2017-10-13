@@ -60,7 +60,7 @@ often unhelpful jQuery default of returning the overall document node.
 If `obj` is a jQuery, this function will return the first DOM element within it. Otherwise, the object will be returned unchanged.
 
 ### fluid.getDocument(element)
-     
+
 * `element {jQuery||DomElement}` The element to return the document for
 * Returns: `{Document}` The document in which it is to be found
 
@@ -77,7 +77,6 @@ implementation will defer to `jQuery.val`. If the supplied element is an HTML ra
 will automatically acquire all other elements sharing the same HTML `name` within the same `form` element before performing
 the read or write.
 
-
 ## ARIA Labeller
 
 A standalone utility and associated component for easily managing an [ARIA live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) and/or the [`aria-label`](http://www.w3.org/TR/wai-aria/complete#aria-label)
@@ -88,8 +87,7 @@ holding a label associated with a particular DOM node in the document.
 * `element {jQueryable}` A selector, DOM element or jQuery representing the DOM node on whose behalf a live region label is required
 * `text {String}` The string to be entered into the live region - this will be announced "soon" depending on the "politeness setting" attached to the `aria-live` attribute of the region (default: `"polite"`)
 * `options {AriaLabellerOptions}` [optional] A set of options for configuring the behaviour of the labeller. These options are described in the [table below](#structure-of-arialabelleroptions).
-* Returns: `{Component}` An Infusion [view component](ComponentConfigurationOptions.md#view-components) managing the interaction with the label. ***Note:*** disposing of this component is the responsibility of the caller. If you have destroyed
-the markup to which this component is attached, you must destroy the component using its `destroy()` method or it will leak. Successive calls to `fluid.updateAriaLabel` for the same DOM node will return the same component.
+* Returns: `{Component}` An Infusion [view component](ComponentConfigurationOptions.md#view-components) managing the interaction with the label. ***Note:*** disposing of this component is the responsibility of the caller. If you have destroyed the markup to which this component is attached, you must destroy the component using its `destroy()` method or it will leak. Successive calls to `fluid.updateAriaLabel` for the same DOM node will return the same component.
 
 #### Structure of `AriaLabellerOptions`
 
@@ -159,6 +157,7 @@ broadly useful.</div>
 By means of registering a global listener to the synthetic jQuery [`focusin`](https://api.jquery.com/focusin/) event, allows the user to retrieve the last DOM element which was focused.
 
 ### fluid.focus(element)
+
 * `element {jQueryable}` An element onto which focus should be transferred
 
 This utility and `fluid.blur` should be used in test cases which are trying to test focus interactions, since the browser's fidelity in allowing focus to be moved programmatically is
@@ -169,6 +168,7 @@ often patchy. This utility will, in the following order, trigger the following:
 * The native DOM event `focus`
 
 ### fluid.blur(element)
+
 * `element {jQueryable}` An element which should lose focus as a result of receiving a `blur` event.
 
 This utility and `fluid.focus` should be used in test cases which are trying to test focus interactions, since the browser's fidelity in allowing focus to be moved programmatically is

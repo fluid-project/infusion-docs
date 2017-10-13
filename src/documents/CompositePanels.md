@@ -30,7 +30,7 @@ fluid.defaults("my.panels.subanel", {
 });
 ```
 
-##Composite Panel Definition ##
+## Composite Panel Definition ##
 
 A composite panel is defined in the auxiliary schema, in a special block called `groups`, which has the following general format:
 
@@ -65,6 +65,7 @@ A composite panel and its subpanels can each have their own JSON message file.
 ## Examples ##
 
 Composite panel HTML template:
+
 ```html
 <div class="my-composite-panel">
     <div class="subpanel-1-container"></div>
@@ -73,6 +74,7 @@ Composite panel HTML template:
 ```
 
 Auxiliary schema section defining panels:
+
 ```javascript
 preference1: {
     "type": "fluid.prefs.preference1",

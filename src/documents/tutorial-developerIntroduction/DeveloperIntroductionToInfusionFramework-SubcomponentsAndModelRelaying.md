@@ -44,7 +44,7 @@ fluid.defaults("fluidTutorial.helloWorld", {
                     message: "{that}.sayHello"
                 },
                 invokers: {
-                    sayHello: {                        
+                    sayHello: {
                         funcName: "fluidTutorial.helloWorld.consoleHello",
                         // Here, "{that}" means the context of the current
                         // component configuration of this block (consoleHello)

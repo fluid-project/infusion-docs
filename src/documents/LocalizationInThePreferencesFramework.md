@@ -8,7 +8,6 @@ Localization in the Preferences Framework makes use of Message Bundles: JSON fil
 
 ## Message Bundles
 
-
 Message Bundles are JSON files containing key/value pairs representing the message key and the localized text associated with it. Each set of localized text should be contained in its own Message Bundle.
 
 ```json
@@ -49,7 +48,7 @@ For a `fluid.prefs.panel` component, all of the `fluid.prefs.msgLookup` configur
 - add `fluid.prefs.msgLookup` as a [parent grade](ComponentGrades.md#specifying-parent-grades)
 - add an instance of `fluid.messageResolver` as a subcomponent with the member name `msgResolver`
 - link the messageBase to the fetched Message Bundle.
-    - e.g. using an IoC reference to the [messageLoader](#messageloader): `{messageLoader}.resources.<messageBundle>.resourceText`
+  - e.g. using an IoC reference to the [messageLoader](#messageloader): `{messageLoader}.resources.<messageBundle>.resourceText`
 - for an instance of `fluid.rendererComponent` it is also necessary to use the messageResolver's `resolve` method as the `messageLocator`
 
 #### Adding MsgLookup to a Component

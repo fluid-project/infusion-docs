@@ -32,6 +32,7 @@ An auxiliary schema must contain some required properties, described below. In a
 ### Preference block properties ###
 
 Preference blocks can be given any property name, so long as the name is unique within the schema. Preference blocks will have the following properties:
+
 * `type`
   * used to define the preference setting type
   * must match the string defined by the [Primary Schema](PrimarySchemaForPreferencesFramework.md)

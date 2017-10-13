@@ -60,9 +60,9 @@ The Infusion [UI Options](../to-do/UserInterfaceOptions.md) component presents a
 The UI Options component has a component tree as shown below. Essentially:
 
 * UI Options comes in three different versions, each of which have a UI Options subcomponent:
-    * Separated Panel,
-    * Full, without Preview, and
-    * Full page, with Preview.
+  * Separated Panel,
+  * Full, without Preview, and
+  * Full page, with Preview.
 * The 'separated panel' version is presented as a sliding panel at the top of a page, and so has a Sliding Panel subcomponent.
 * The 'separated panel' version applies changes directly to the page as they are being adjusted, so it has a Live Preview subcomponent.
 * The 'full, with preview' version has a Preview subcomponent

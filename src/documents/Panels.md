@@ -26,6 +26,7 @@ fluid.defaults("my.pref.panel", {
     ...
 });
 ```
+
 Panels are, by default, [renderer components](RendererComponents.md), which automatically provide support for DOM binding, for a model and for events. Other grades can be combined with the Panel grade, if necessary. For example, if you are defining several panels which share common functionality, you can create a single grade that includes that functionality and uses the `fluid.prefs.panel` grade, then use your common grade for your panels, as illustrated in the following code sample:
 
 ```javascript
@@ -112,7 +113,8 @@ For detailed information about the Infusion Renderer, see [Renderer](Renderer.md
 
 The `selectors` options is a list of names CSS-style selectors. They identify the elements in the HTML template that the Renderer will bind to the Panel's model values.
 
-__Example: A checkbox adjuster__
+#### Example: A checkbox adjuster ####
+
 ```javascript
 fluid.defaults("fluid.prefs.panel.layoutControls", {
     gradeNames: ["fluid.prefs.panel"],
@@ -133,7 +135,8 @@ fluid.defaults("fluid.prefs.panel.layoutControls", {
 
 The `protoTree` option defines the Renderer component tree – the instructions to the Renderer for how to render the data. In general, it consists of one property per selector, defining how that particular element in the template should be used. The property will define which element in the data model to use, or a message key in a message bundle if the element is a label. See the [Renderer](Renderer.md) documentation for information on how to define Renderer protoTrees.
 
-__Example: A checkbox adjuster__
+#### Example: A checkbox adjuster ####
+
 ```javascript
 fluid.defaults("fluid.prefs.panel.layoutControls", {
     gradeNames: ["fluid.prefs.panel"],
@@ -158,7 +161,8 @@ Panels are, by default, Infusion [model components](tutorial-gettingStartedWithI
 
 ## Examples ##
 
-__Example: A checkbox adjuster__
+### Example: A checkbox adjuster ###
+
 ```javascript
 fluid.defaults("demo.panels.speak", {
     gradeNames: ["fluid.prefs.panel"],
@@ -178,7 +182,8 @@ fluid.defaults("demo.panels.speak", {
 });
 ```
 
-__Example: A drop-down adjuster__
+### Example: A drop-down adjuster ###
+
 ```javascript
 fluid.defaults("demo.panels.language", {
     gradeNames: ["fluid.prefs.panel"],
@@ -206,7 +211,8 @@ fluid.defaults("demo.panels.language", {
 });
 ```
 
-__Example: Two adjusters: a textfieldSlider and a set of radio buttons__
+### Example: Two adjusters: a textfieldSlider and a set of radio buttons ###
+
 ```javascript
 fluid.defaults("demo.panels.vol", {
     gradeNames: ["fluid.prefs.panel"],

@@ -176,7 +176,7 @@ selectors: {
     </tbody>
 </table>
 
-## Styling the Switch
+## Styling the Switch ##
 
 The Switch includes default CSS styles that are applied to its elements. The application of styles is based on known class names. The _default_ class names are described below, and can be used by including the Switch stylesheet:
 
@@ -188,14 +188,14 @@ The Switch includes default CSS styles that are applied to its elements. The app
 
 These styling classes should be added to the markup used by the Switch. To modify the appearance, one can modify the markup and/or override the style declarations applied to the classes.
 
-### Default Classes
+### Default Classes ###
 
 * `fl-switchUI` - Should be added to the switch container.
-* `fl-switchUI-text ` - Should be applied to the "on" and "off" indicators.
+* `fl-switchUI-text` - Should be applied to the "on" and "off" indicators.
 * `fl-switchUI-control` - Should be applied to the actual switch control.
 * `fl-switchUI-controlKnob` - Should be applied to the knob of the switch control.
 
-## Dependencies
+## Dependencies ##
 
 The Switch dependencies can be met by including the `infusion-all.js` file in the header of the HTML file:
 

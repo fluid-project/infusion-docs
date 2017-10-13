@@ -38,9 +38,9 @@ Registers (queues) an asynchronous test fixture by providing a callback which wi
 ### jqUnit.start()
 
 Restarts QUnit's progress through its fixtures, which were previously suspended by a call to `jqUnit.stop()`. The idiom is that whilst the system is suspended by `stop`, the
-test currently in progress is waiting for I/O and the test run will not proceed until it resumes. Note that 
+test currently in progress is waiting for I/O and the test run will not proceed until it resumes. Note that
 QUnit's suspension has the semantics of a [Counting Semaphore](https://en.wikipedia.org/wiki/Semaphore_%28programming%29#Semantics_and_implementation) in that repeated calls to
-`jqUnit.stop` are possible and must be matched by an equal number of calls to `jqUnit.start` before the system will resume. Direct passthrough for [QUnit.start](http://api.qunitjs.com/QUnit.start/). 
+`jqUnit.stop` are possible and must be matched by an equal number of calls to `jqUnit.start` before the system will resume. Direct passthrough for [QUnit.start](http://api.qunitjs.com/QUnit.start/).
 
 ### jqUnit.stop()
 
@@ -71,87 +71,87 @@ An assertion which unconditionally fails, and then aborts the current fixture. E
 
 ### jqUnit.assertTrue(message, value)
 
-* `value {Any}` The value to be tested 
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is `true`. Equivalent to [`QUnit.ok(value, message)`](http://api.qunitjs.com/ok/).
 
 ### jqUnit.assertFalse(message, value)
 
-* `value {Any}` The value to be tested 
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is `false`. Equivalent to [`QUnit.ok(!value, message)`](http://api.qunitjs.com/ok/).
 
 ### jqUnit.assertUndefined(message, value)
 
-* `value {Any}` The value to be tested 
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is `undefined`.
 
 ### jqUnit.assertNotUndefined(message, value)
 
-* `value {Any}` The value to be tested 
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is not `undefined`.
 
 ### jqUnit.assertNull(message, value)
 
-* `value {Any}` The value to be tested 
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is `null`.
 
 ### jqUnit.assertNotNull(message, value)
 
-* `value {Any}` The value to be tested 
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is not `null`.
 
 ### jqUnit.assertValue(message, value)
 
-* `value {Any}` The value to be tested 
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is not `null` or `undefined`.
 
 ### jqUnit.assertNoValue(message, value)
 
-* `value {Any}` The value to be tested 
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is either `null` or `undefined`.
 
 ### jqUnit.assertEquals(message, expected, value)
 
-* `expected {Any}` The expected value of `value` 
-* `value {Any}` The value to be tested 
+* `expected {Any}` The expected value of `value`
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is equal to the one supplied as `expected`. This will be performed by a strict equality check (`===`) - equivalent to [`QUnit.strictEqual(actual, expected, message)`](http://api.qunitjs.com/strictEqual/)
 
 ### jqUnit.assertNotEquals(message, unexpected value)
 
-* `unexpected {Any}` The value that `value` is expected to differ from 
-* `value {Any}` The value to be tested 
+* `unexpected {Any}` The value that `value` is expected to differ from
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is not equal to the one supplied as `unexpected`. This will be performed by a strict inequality check (`!==`) - equivalent to [`QUnit.notStrictEqual(actual, expected, message)`](http://api.qunitjs.com/notStrictEqual/)
 
 ### jqUnit.assertDeepEq(message, expected, value)
 
-* `expected {Any}` The expected value of `value` 
-* `value {Any}` The value to be tested 
+* `expected {Any}` The expected value of `value`
+* `value {Any}` The value to be tested
 
 Asserts that the supplied value is equal to the one supplied as `expected`. This will be performed by a deep equality check on the basis of properties only (ignoring constructors and prototypes) - equivalent to [`QUnit.propEqual(actual, expected, message)`](http://api.qunitjs.com/propEqual/)
 
 ### jqUnit.assertDeepNeq(message, unexpected, value)
 
-* `unexpected {Any}` The value that `value` is expected to differ from 
-* `value {Any}` The value to be tested 
+* `unexpected {Any}` The value that `value` is expected to differ from
+* `value {Any}` The value to be tested
 
-Asserts that the supplied value is not equal to the one supplied as `unexpected`. This will be performed by a deep equality check on the basis of properties only (ignoring constructors and prototypes) - 
+Asserts that the supplied value is not equal to the one supplied as `unexpected`. This will be performed by a deep equality check on the basis of properties only (ignoring constructors and prototypes) -
 equivalent to [`QUnit.notPropEqual(actual, expected, message)`](http://api.qunitjs.com/notPropEqual/)
 
 ### jqUnit.assertCanoniseEqual(message, expected, value, canonFunc)
 
-* `expected {Any}` The expected value of `value` 
-* `value {Any}` The value to be tested 
+* `expected {Any}` The expected value of `value`
+* `value {Any}` The value to be tested
 * `canonFunc {Function: (value {Any}) → Any}` A [canonicalisation](https://en.wikipedia.org/wiki/Canonicalization) function which will be applied to both `expected` and `value` to reduce them
-to a common form in which they can then be compared by standard deep equality. 
+  to a common form in which they can then be compared by standard deep equality.
 
 Asserts that the supplied value is equal to the one supplied as `expected`, by deep equality and after applying a "canonicalisation function" to remove irrelevant differences
 between the two values. Useful canonicalisation functions could act i) to allow all Functions to compare equal, ii) to remove irrelevant differences in array order by sorting,
@@ -159,22 +159,22 @@ or iii) other means. Functions supplied by jqUnit include `jqUnit.canonicaliseFu
 
 ### jqUnit.assertLeftHand(message, expected, value)
 
-* `expected {Any}` An expected subset of `value` 
-* `value {Any}` The value to be tested 
+* `expected {Any}` An expected subset of `value`
+* `value {Any}` The value to be tested
 
 Assert that the actual value object is a superset (considered in terms of shallow key coincidence) of the
-expected value object. The coincidence between `value` and `expected` is only in terms of top-level keys, but the comparison will 
+expected value object. The coincidence between `value` and `expected` is only in terms of top-level keys, but the comparison will
 use deep equality. That is, if `value` has any top-level keys in common with `expected`, they must compare equal by deep equality - but it may
 have extra top-level keys whose contents will be iignored. "Left hand" (expected) is a subset of actual.
 
 ### jqUnit.assertRightHand(message, expected, value)
 
-* `expected {Any}` An expected superset of `value` 
-* `value {Any}` The value to be tested 
+* `expected {Any}` An expected superset of `value`
+* `value {Any}` The value to be tested
 
 Assert that the actual value object is a subset (considered in terms of shallow key coincidence) of the
 expected value object. This is the natural converse of `jqUnit.assertLeftHand` but this assertion is rarely used - it is less useful to assert
-that a payload is as expected but may be missing arbitrarily many top-level keys. 
+that a payload is as expected but may be missing arbitrarily many top-level keys.
 
 ### jqUnit.expectFrameworkDiagnostic(message, toInvoke, errorTexts)
 
@@ -184,8 +184,8 @@ the entries in `errorTexts`.
 
 * `message {String}` The message prefix to be supplied for all the assertions this function issues
 * `toInvoke {Function}` A no-arg function holding the code to be tested for emission of the diagnostic
-`errorTexts {String|Array of String}` Either a single string or array of strings which the `message`> field
-of the thrown exception will be tested against - each string must appear as a substring in the text
+  `errorTexts {String|Array of String}` Either a single string or array of strings which the `message`> field
+  of the thrown exception will be tested against - each string must appear as a substring in the text
 
 ## Utilities for testing
 
@@ -199,8 +199,8 @@ take any Functions within the supplied tree and replace them with the same Funct
 
 ### jqUnit.sortTree(value)
 
-A canonicalisation function, helpful if supplying a [renderer component tree](RendererComponentTrees.md) to [jqUnit.assertCanoniseEqual](jqUnit.md#jqunitassertcanoniseequalmessage-expected-value-canonfunc) - 
-this will sort each set of `children` in the tree recursively into a canonical order, where this order would not disturb the rendered result. 
+A canonicalisation function, helpful if supplying a [renderer component tree](RendererComponentTrees.md) to [jqUnit.assertCanoniseEqual](jqUnit.md#jqunitassertcanoniseequalmessage-expected-value-canonfunc) -
+this will sort each set of `children` in the tree recursively into a canonical order, where this order would not disturb the rendered result.
 
 ## Testing in the browser
 
@@ -252,17 +252,18 @@ As an example, the following markup:
 will compare equal to
 
 ```json
-   {
-       nodeName: "a",
-       href: "a-link",
-       children: [
-           {
-           nodeName: "img",
-           src: "a-source"
-           }
-       ]
-   }
+{
+   nodeName: "a",
+   href: "a-link",
+   children: [
+       {
+       nodeName: "img",
+       src: "a-source"
+       }
+   ]
+}
 ```
+
 * `expected {Object|Array}` A condensed JSON respresentation of a set of assertions to make about a subtree of DOM nodes, or an array of these
 * `node {DOM|Array of DOM|jQuery}` The DOM node to be checked against `expected` - this may also be an array of DOM nodes or a jQuery object.
 
@@ -306,6 +307,6 @@ Asserts that there are no nodes matching the provided selector (or other jQuerya
 * `selector {jQueryable}` The selector or other jQueryable identifying the DOM nodes to be checked for nonexistence
 
 ### jqUnit.subvertAnimations()
- 
+
 Overrides jQuery's animation routines to be synchronous. This can simplify tests which would otherwise have to wait for an unknown timeout for the DOM to come into
-an expected state after, say, a `jQuery.hide` or `jQuery.show`.  
+an expected state after, say, a `jQuery.hide` or `jQuery.show`.

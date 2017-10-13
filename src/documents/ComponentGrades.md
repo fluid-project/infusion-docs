@@ -19,7 +19,7 @@ Each such grade can be built on to derive further grades/components. This deriva
 
 Most grades you will deal with are *** component grades *** derived from `fluid.component`. However, for some purposes you may also deal with [*** function grades ***](FunctionGrades.md) which are derived from `fluid.function`.
 
-## The framework's built-in component grades
+## The framework's built-in component grades ##
 
 The Infusion Framework already contains several predefined component grades that normally form the initial building blocks for external components and grades. The following table describes these grades and how they relate to each other.
 
@@ -109,7 +109,6 @@ The merging happens, firstly in hierarchical order (grades comprising the ancest
 (defaults from the grade on the right taking precedence over the defaults from the grade on the left). Those interested in fine details should note that this is a very different scheme to the [C3 linearization algorithm](https://en.wikipedia.org/wiki/C3_linearization)
 that is commonly used for resolving multiple inheritance. Other than preventing infinite cycles of resolution, the framework will allow the same grade to appear any number of times in the list of grades,
 and each time it will be effective in overriding definitions occuring in grades to the left in the same `gradeNames` list.
-
 
 Here is a simple example:
 
@@ -231,4 +230,3 @@ fluid.componentWithDynamicGrade.getDynamicGradeName = function () {
     return "fluid.modelComponent";
 };
 ```
-

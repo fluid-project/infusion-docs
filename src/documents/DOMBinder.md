@@ -67,7 +67,7 @@ For convenience, the DOM Binder's `locate()` function is also added to the compo
 Unless they are otherwise qualified, all searches performed by the DOM binder attached to a particular
 component will be automatically scoped to the component's own container.
 
-### Edge cases for the DOM Binder
+### Edge cases for the DOM Binder ###
 
 If the value of the selector is the empty string `""`, the component's `container` will be returned.
 If the selector matches nothing within the container, an empty jQuery (one with 0 elements) will be returned.

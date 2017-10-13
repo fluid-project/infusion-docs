@@ -31,7 +31,7 @@ pretty simple purpose and function, one that doesn't make much sense to try to c
 ![The Inline Edit component with a hover tooltip showing](images/viewMode.png)
 
 The Inline Edit component allows the user to edit text in place, without switching to a new screen, by
-simply switching into an in-place edit mode. The view mode is implemented one way, with certain functionality (i.e. a tooltip, an affordance to edit), and the edit mode is implemented differently: it's an edit field. 
+simply switching into an in-place edit mode. The view mode is implemented one way, with certain functionality (i.e. a tooltip, an affordance to edit), and the edit mode is implemented differently: it's an edit field.
 Conceptually, these two modes are rather different, and so they're implemented as two separate subcomponents of the main Inline Edit component.
 
 ### Uploader ###
@@ -54,13 +54,12 @@ A component is a regular JavaScript object that has certain characteristics. The
   * registered as `invokers` in the component's configuration, these can be invoked by users to trigger component functionality
 * events
   * registered as `events` in the component's configuration, these can be fired and listened to by users and the implementation
-  
+
 In addition, a component derived from [`fluid.modelComponent`](ComponentConfigurationOptions.md#model-components) will support:
 
 * a model
   * a free-form area where the component stores mutable state which is of interest to its end user
-  * changes in this area are managed by an automatically generated implementation attached to the component, a [ChangeApplier](ChangeApplier.md), which allows interested parties to register and deregister their interest in particular changes, 
-as well as allowing changes to one component's model to be automatically coordinated with changes in another.
+  * changes in this area are managed by an automatically generated implementation attached to the component, a [ChangeApplier](ChangeApplier.md), which allows interested parties to register and deregister their interest in particular changes, as well as allowing changes to one component's model to be automatically coordinated with changes in another.
 
 Components which manage a _view_ on behalf of their user, which is rooted at a particular node in the DOM, will derive from [`fluid.viewComponent`](ComponentConfigurationOptions.md#view-components) which then supports:
 
@@ -74,7 +73,7 @@ This function will generate the **creator function** that will be used to instan
 The framework provides support for instantiating components of various [types, or 'grades'](ComponentGrades.md);
 as well, developers can create their own grades.
 
-## Simple example of defining and using a plain `fluid.component`
+## Simple example of defining and using a plain `fluid.component` ##
 
 In this example, we will define a simple component which logs a message on startup, and create an instance of it:
 
@@ -101,7 +100,7 @@ You can understand this example better by reading documentation for [`fluid.defa
 
 ## Instantiating A View Component ##
 
-In this section we instantiate a view component which is already defined in the framework, and configure it with some options of our own: 
+In this section we instantiate a view component which is already defined in the framework, and configure it with some options of our own:
 
 ### Example ###
 

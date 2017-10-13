@@ -79,6 +79,7 @@ fluid.defaults("cspace.search.searchView", {
 ```
 
 ### Compact format for expanders ####
+
 The framework provides a compact syntax for expressing expanders as a single string - the above expander could have been written in its context as `modelFilter: "@expand:cspace.search.makeModelFilter({searchView})"`.
 This is analogous to the similar [Compact Format for Invokers](Invokers.md#compact-format-for-invokers).
 

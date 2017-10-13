@@ -138,6 +138,7 @@ _The Unicode (or "PUA code") for the custom font can be found in the HTML and CS
 **However, there is a problem** - the new icon font will replace the existing font of its container and all child elements and therefore removing any font styling you may have wanted to preserve. The next section will outline common issues and how to fix them and some best practices.
 
 ## Common Issues ##
+
 ### Preserving Existing Fonts ###
 
 In the example above, the new custom icon font was added to an element that has existing text which causes a problem - any other existing custom font will be overwritten within that container.
@@ -226,7 +227,7 @@ a {
     font-family: 'CustomIcons';
 }
 a:before {
-    content: "\e001";  
+    content: "\e001";
 }
 ```
 
@@ -267,7 +268,7 @@ Reference: [http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax]
 
 Ico Moon conveniently generates an HTML and CSS file for custom fonts which contain the Unicode to be used in your markup. However, in the scenario the original CSS or HTML files are unavailable, here are two ways to obtain the Unicode on Windows and Mac OS X 10.6+.
 
-**Obtaining Unicode in Windows**
+#### Obtaining Unicode in Windows ####
 
 1. Install the custom TTF font to the OS (usually a right-click then select "Install" from the context menu).
 2. Run Character Map (done by searching the Start menu, or by typing Win+R then "charmap").
@@ -276,7 +277,7 @@ Ico Moon conveniently generates an HTML and CSS file for custom fonts which cont
 
 ![Unicode character map](../images/Unicode-charmap.png)
 
-**Obtaining Unicode in Mac OS X 10.6 or Later**
+#### Obtaining Unicode in Mac OS X 10.6 or Later ####
 
 1. Enable Special Characters support as documented in this Apple Knowledge Base article: [OS X Lion: Enter special characters and symbols](http://support.apple.com/kb/ph3871)
 2. Install the custom TTF font to the OS (usually double-click, then "Install").

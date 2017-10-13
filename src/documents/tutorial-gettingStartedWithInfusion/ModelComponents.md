@@ -85,7 +85,8 @@ tutorials.currencyConverter.updateAmount = function (that, amount) {
     that.applier.change("convertedAmount", convertedAmount);
 };
 ```
-## Contents of the model and its relation to other models
+
+## Contents of the Model and Its Relation to Other Models ##
 
 The `model` record can consist of any JSON material, as well as containing [IoC references](../IoCReferences.md) to the models and options of other components, as well as [expanders](../ExpansionOfComponentOptions.md).
 Any IoC references to another component's model will set up a permanent [model relay](../ModelRelay.md) between the two models at the endpoints of the reference.

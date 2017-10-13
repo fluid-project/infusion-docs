@@ -13,6 +13,7 @@ var prefsEditor = fluid.prefs.create(container[, options]);
 ```
 
 ### Parameters ###
+
 <table>
 <tr>
     <td><code>container</code></td>
@@ -137,6 +138,7 @@ If you provide both, they will be merged (with the `auxiliarySchema` overriding 
 ## Usage ##
 
 The simplest way to create a separated panel preferences editor is to provide the primary and auxiliary schema using the options:
+
 ```javascript
 var prefsEditor = fluid.prefs.create("#myPrefsEditor", {
     build: {

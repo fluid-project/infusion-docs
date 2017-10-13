@@ -31,7 +31,7 @@ This registers a global function named `examples.linearMap` into the global name
 
 ## Registering defaults for a global function
 
-This function can be used as-is - however, one piece of metadata we could supply it might be an * argument map * allowing it to
+This function can be used as-is - however, one piece of metadata we could supply it might be an *argument map* allowing it to
 be invoked with named rather than positional arguments. We could do this as follows:
 
 ```javascript

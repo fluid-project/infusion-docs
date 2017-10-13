@@ -4,12 +4,12 @@ layout: default
 category: Infusion
 ---
 
-The Infusion Resource Loader ```fluid.resourceLoader``` is an [Infusion component](UnderstandingInfusionComponents.md) which offers a mechanism to load multiple physical files in one shot. 
-These resources can be HTML templates, JSON objects or any other resources. 
-On completion, the resource loader fires an ```onResourcesLoaded``` event with an argument of the populated structure with fetched resource text in the field "resourceText" for each entry. 
-This populated structure can also be retrieved directly on the resource loader instance via the path ```resources```. 
+The Infusion Resource Loader ```fluid.resourceLoader``` is an [Infusion component](UnderstandingInfusionComponents.md) which offers a mechanism to load multiple physical files in one shot.
+These resources can be HTML templates, JSON objects or any other resources.
+On completion, the resource loader fires an ```onResourcesLoaded``` event with an argument of the populated structure with fetched resource text in the field "resourceText" for each entry.
+This populated structure can also be retrieved directly on the resource loader instance via the path ```resources```.
 
-The underlying implementation of ``fluid.resourceLoader`` is the 
+The underlying implementation of ``fluid.resourceLoader`` is the
 low-level [``fluid.fetchResources``](FetchResources.md) API which in turn defers to [jQuery.ajax](http://api.jquery.com/jquery.ajax/).
 
 Although we show an example here of constructing the resource loader as a free-standing component, a more typical usage would be as a [subcomponent](SubcomponentDeclaration.md) in a wider
@@ -20,6 +20,7 @@ var resourceLoader = fluid.resourceLoader([options]);
 ```
 
 ### Parameters ###
+
 <table>
 <tr>
     <td><code>options</code></td>
@@ -72,9 +73,9 @@ var resourceLoader = fluid.resourceLoader([options]);
 </tr>
 </table>
 
-#### Fallback Rules with ```locale``` and ```defaultLocale``` ####
+#### Fallback Rules with `locale` and `defaultLocale` ####
 
-```locale``` and ```defaultLocale``` options can be used to load localized resources, for example, to load messages in different languages.
+`locale` and `defaultLocale` options can be used to load localized resources, for example, to load messages in different languages.
 
 ```javascript
 fluid.defaults("fluid.messageLoader", {
@@ -87,25 +88,26 @@ fluid.defaults("fluid.messageLoader", {
 });
 ```
 
-This example requests to load a JSON file that contains translations. The ```fluid.messageLoader``` follows fallback rules below to satisfy the request:
+This example requests to load a JSON file that contains translations. The `fluid.messageLoader` follows fallback rules below to satisfy the request:
 
-1. look for a suffixed resource corresponding to the language code specified by the `locale` option: ```../data/translation-fr_CA.json```
-2. look for a suffixed resource with the same language as the language code specified by the `locale` option: ```../data/translation-fr.json```
-3. look for a suffixed resource corresponding to the language code specified by the `defaultLocale` option: ```../data/translation-en_US.json```
-4. look for a suffixed resource with the same language as the language code specified by the `defaultLocale` option: ```../data/translation-en.json```
-5. look for a resource with the exact URL as specified through the ```resources``` option: ```../data/translation.json```
+1. look for a suffixed resource corresponding to the language code specified by the `locale` option: `../data/translation-fr_CA.json`
+2. look for a suffixed resource with the same language as the language code specified by the `locale` option: `../data/translation-fr.json`
+3. look for a suffixed resource corresponding to the language code specified by the `defaultLocale` option: `../data/translation-en_US.json`
+4. look for a suffixed resource with the same language as the language code specified by the `defaultLocale` option: `../data/translation-en.json`
+5. look for a resource with the exact URL as specified through the `resources` option: `../data/translation.json`
 
 ### Events ###
+
 <table>
 <tr><th>Name</th><th>Description</th><th>Arguments</th></tr>
 <tr>
     <td><code>onResourcesLoaded</code></td>
     <td>Fired when all resources are finished loading.</td>
-    <td>A populated object with fetched resource text in the field "resourceText" for each entry. If an error occurs during a fetch, the <code>fetchError</code> field will be populated for that entry. This object can also be retrieved directly on the resource loader instance via the path <code>resources</code>.</td>
+    <td>A populated object with fetched resource text in the field `resourceText` for each entry. If an error occurs during a fetch, the <code>fetchError</code> field will be populated for that entry. This object can also be retrieved directly on the resource loader instance via the path <code>resources</code>.</td>
 </tr>
 </table>
 
-## Using ```fluid.resourceLoader``` ##
+## Using `fluid.resourceLoader` ##
 
 The example below demonstrates when and how to use the fetched resource text in an IoC component tree. Generally speaking, the part that requires the fetched resources needs to postpone the instantiation via ```createOnEvent``` until resources are ready.
 

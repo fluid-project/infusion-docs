@@ -2,10 +2,10 @@
 title: Infusion Documentation
 layout: default
 ---
+# Infusion
 
-## Infusion
+## Writing Configuration
 
-### Writing Configuration
 * [Understanding Infusion Components](UnderstandingInfusionComponents.md)
 * [Understanding Component Options And Their Defaults](ComponentOptionsAndDefaults.md)
 * [Component Configuration Options](ComponentConfigurationOptions.md)
@@ -16,7 +16,8 @@ layout: default
 * [Priorities](Priorities.md)
 * [Framework Concepts](FrameworkConcepts.md)
 
-### API
+## API
+
 * [Core API](CoreAPI.md)
 * [Promises API](PromisesAPI.md)
 * [IoC API](IoCAPI.md)
@@ -26,7 +27,8 @@ layout: default
 * [DOM Binder API](DOMBinderAPI.md)
 * [node.js Support and API](NodeAPI.md)
 
-### Inversion of Control
+## Inversion of Control
+
 * [How To Use Infusion IoC](HowToUseInfusionIoC.md)
 * [Subcomponent Declaration](SubcomponentDeclaration.md)
 * [Contexts](Contexts.md)
@@ -37,21 +39,25 @@ layout: default
 * [IoCSS](IoCSS.md)
 * [Declarative this-ism In IoC](DeclarativeThisismInIoC.md)
 
-### Events
+## Events
+
 * [Infusion Event System](InfusionEventSystem.md)
 * [Event injection and boiling](EventInjectionAndBoiling.md)
 
-### Models
+## Models
+
 * [ChangeApplier](ChangeApplier.md)
 * [ChangeApplier API](ChangeApplierAPI.md)
 * [Model Relay](ModelRelay.md)
 
-### Views
+## Views
+
 * [DOM Binder](DOMBinder.md)
 * [DOM Binder API](DOMBinderAPI.md)
 * [Class Name Conventions](ClassNameConventions.md)
 
-### Renderer
+## Renderer
+
 * [Renderer](Renderer.md)
 * [How To Use the Renderer](HowToUseTheRenderer.md)
 * [Renderer Component Trees](RendererComponentTrees.md)
@@ -61,7 +67,8 @@ layout: default
 * [Renderer Components](RendererComponents.md)
 * [Renderer Decorators](RendererDecorators.md)
 
-### Preferences Framework
+## Preferences Framework
+
 * [Preferences Framework](PreferencesFramework.md)
 * [Preferences Editor](PreferencesEditor.md)
 * [Builder](Builder.md)
@@ -75,23 +82,26 @@ layout: default
 * [Conditional Subpanels](ConditionalSubpanels.md)
 * [Localization in the Preferences Framework](LocalizationInThePreferencesFramework.md)
 
-### Testing
+## Testing
+
 * [Unit Testing with jqUnit](jqUnit.md)
 * [IoC Testing Framework](IoCTestingFramework.md)
 
-### Migrating from earlier versions
+## Migrating from earlier versions
+
 * Migrating to Infusion 2.0
-    * [API Changes from 1.5 to 2.0](APIChangesFrom1_5To2_0.md)
+  * [API Changes from 1.5 to 2.0](APIChangesFrom1_5To2_0.md)
 * Migrating to Infusion 1.5
-    * [API Changes from 1.4 to 1.5](APIChangesFrom1_4To1_5.md)
-    * [Deprecations In 1.5](DeprecationsIn1_5.md)
-    * [UI Options Migration](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
-    * [Pager Migration](tutorial-migratingToInfusion1.5/PagerMigration.md)
+  * [API Changes from 1.4 to 1.5](APIChangesFrom1_4To1_5.md)
+  * [Deprecations In 1.5](DeprecationsIn1_5.md)
+  * [UI Options Migration](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
+  * [Pager Migration](tutorial-migratingToInfusion1.5/PagerMigration.md)
 
 ## Tutorials
+
 * [Getting started with Infusion](tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.md)
 * Preferences Framework
-  * [Creating a Preferences Editor ](tutorial-prefsFramework/CreatingAPrefsEditor.md)
+  * [Creating a Preferences Editor](tutorial-prefsFramework/CreatingAPrefsEditor.md)
   * [Adding a Basic Preferences Editor to a Site](to-do/AddingPrefsEditorToSite.md)
   * [Working With A Preferences Editor On Your Site](to-do/WorkingWithPrefsEditorOnSite.md)
   * [Creating a New Adjuster UI](tutorial-prefsFramework/CreatingANewAdjusterUI.md)
@@ -101,18 +111,17 @@ layout: default
   * [Using String Templates](tutorial-usingStringTemplates/UsingStringTemplates.md)
 
 ## Components
+
 * [Inline Edit](to-do/InlineEditAPI.md)
 * [Pager](to-do/PagerAPI.md)
 * [Progress](to-do/ProgressAPI.md)
 * [Reorderer](to-do/ReordererAPI.md)
-    * [List Reorderer](to-do/ListReordererAPI.md)
-    * [Grid Reorderer](to-do/GridReordererAPI.md)
-    * [Layout Reorderer](to-do/LayoutReordererAPI.md)
-    * [Image Reorderer](ImageReordererAPI.md)
+  * [List Reorderer](to-do/ListReordererAPI.md)
+  * [Grid Reorderer](to-do/GridReordererAPI.md)
+  * [Layout Reorderer](to-do/LayoutReordererAPI.md)
+  * [Image Reorderer](ImageReordererAPI.md)
 * [User Interface Options](UserInterfaceOptionsAPI.md)
 * [Uploader](UploaderAPI.md)
 * [Undo](to-do/UndoAPI.md)
 * [Table of Contents](to-do/TableOfContentsAPI.md)
 * [Text to Speech](TextToSpeechAPI.md)
-
-

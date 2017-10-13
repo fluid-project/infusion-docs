@@ -35,7 +35,7 @@ fluid.defaults("fluidTutorial.helloWorld.sayHello", {
 fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
     // This component has all of the characteristics of sayHello,
     // except for its implementation in the invoker
-    gradeNames: ["fluidTutorial.helloWorld.sayHello"],    
+    gradeNames: ["fluidTutorial.helloWorld.sayHello"],
     invokers: {
         sayHello: {
             "funcName": "fluidTutorial.helloWorld.consoleHello.sayHello",

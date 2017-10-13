@@ -23,6 +23,7 @@ Each of these is explained below.
 ### Grade ###
 
 Enactors must be defined using the `fluid.prefs.enactor` [grade](ComponentGrades.md), as shown in the following code block:
+
 ```javascript
 fluid.defaults("my.pref.enactor", {
     gradeNames: ["fluid.prefs.enactor"],
@@ -31,6 +32,7 @@ fluid.defaults("my.pref.enactor", {
 ```
 
 Enactors are, by default, [model components](ComponentGrades.md), so they automatically provide support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewComponent`](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L40-L42) grade should be used, and the `selectors` option should be provided, as shown in the following example:
+
 ```javascript
 fluid.defaults("my.pref.enactor", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
@@ -42,6 +44,7 @@ fluid.defaults("my.pref.enactor", {
 ```
 
 If you are defining several enactors which share common functionality, you can create a single grade that includes that functionality and uses the `fluid.prefs.enactor` grade, then use your common grade for your enactors, as illustrated in the following code sample:
+
 ```javascript
 // shared grade, defining common functionality
 fluid.defaults("my.pref.enactorGrade", {
@@ -104,6 +107,7 @@ Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/Mod
 ## Examples ##
 
 **Example: Enactor that calls a setter function when the model changes**
+
 ```javascript
 fluid.defaults("gpii.enactor.fontSize", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
@@ -135,6 +139,7 @@ gpii.enactor.fontSize.set = function (times, cursorDiv) {
 ```
 
 **Example: Enactor that uses a speak enactor to self-voice a page**
+
 ```javascript
 fluid.defaults("fluid.prefs.enactor.selfVoicing", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor.speak"],

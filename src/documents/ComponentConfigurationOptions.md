@@ -16,6 +16,7 @@ This page briefly describes these predefined options and provides links to more 
 The following options are supported by all component grades, that is, those derived from `fluid.component`:
 
 ### `gradeNames` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -37,6 +38,7 @@ The following options are supported by all component grades, that is, those deri
 </table>
 
 ### `invokers` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -61,6 +63,7 @@ The following options are supported by all component grades, that is, those deri
 </table>
 
 ### `members` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -86,6 +89,7 @@ The following options are supported by all component grades, that is, those deri
 </table>
 
 ### `events` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -115,6 +119,7 @@ The following options are supported by all component grades, that is, those deri
 </table>
 
 ### `listeners` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -163,6 +168,7 @@ fluid.defaults("examples.eventedComponent", {
 </table>
 
 ### `components` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -205,6 +211,7 @@ fluid.defaults("examples.eventedComponent", {
 </table>
 
 ### `distributeOptions` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -232,6 +239,7 @@ fluid.defaults("examples.eventedComponent", {
 </table>
 
 ### `mergePolicy` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -263,6 +271,7 @@ fluid.defaults("examples.eventedComponent", {
 </table>
 
 ### `dynamicComponents` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -305,6 +314,7 @@ Components defined with a grade of `fluid.modelComponent` support all of the [co
 See also: [Component Grades](ComponentGrades.md)
 
 ### `model` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -342,6 +352,7 @@ See also: [Component Grades](ComponentGrades.md)
 </table>
 
 ### `modelListeners` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -365,6 +376,7 @@ See also: [Component Grades](ComponentGrades.md)
 </table>
 
 ### `modelRelay` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -396,6 +408,7 @@ See also: [Component Grades](ComponentGrades.md)
 </table>
 
 ### `changeApplierOptions` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -412,6 +425,7 @@ See also: [Component Grades](ComponentGrades.md)
 ## View Components ##
 
 Components defined with a grade of `fluid.viewComponent` are also model components, so they support
+
 * all of the [common options](#options-supported-by-all-components-grades) described above,
 * [`modelComponent` options](#model-components) described above
 * and those defined below.
@@ -419,6 +433,7 @@ Components defined with a grade of `fluid.viewComponent` are also model componen
 Component developers are free to define their own additional options.
 
 ### `selectors` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -462,6 +477,7 @@ Component developers are free to define their own additional options.
 </table>
 
 ### `styles` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -496,6 +512,7 @@ or else at top level in its [Subcomponent Record](SubcomponentDeclaration.md). I
 ## Renderer Components ##
 
 Components defined with a grade of `rendererComponent` are also view components (and hence model components), so they support
+
 * all of the [common options](#options-supported-by-all-components-grades) described above,
 * [`modelComponent` options](#model-components) described above,
 * [`viewComponent` options](#view-components) described above,
@@ -506,6 +523,7 @@ Component developers are free to define their own additional options.
 <div class="infusion-docs-note"><strong>Note:</strong> The Infusion Renderer system will be rewritten completely before the Infusion 3.0 release - the use of the current renderer and component hierarchy is not recommended.</div>
 
 ### `selectorsToIgnore` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -531,6 +549,7 @@ Component developers are free to define their own additional options.
 </table>
 
 ### `repeatingSelectors` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -556,6 +575,7 @@ Component developers are free to define their own additional options.
 </table>
 
 ### `produceTree` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -590,6 +610,7 @@ fluid.defaults("cspace.confirmationDialog", {
 </table>
 
 ### `protoTree` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -658,6 +679,7 @@ fluid.defaults("cspace.confirmationDialog", {
 </table>
 
 ### `resources` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -703,6 +725,7 @@ fluid.defaults("cspace.confirmationDialog", {
 </table>
 
 ### `strings` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -749,6 +772,7 @@ fluid.defaults("cspace.confirmationDialog", {
 </table>
 
 ### `rendererFnOptions` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -784,6 +808,7 @@ fluid.defaults("cspace.confirmationDialog", {
 </table>
 
 ### `rendererOptions` ###
+
 <table>
   <tr>
     <th>Description</th>
@@ -819,6 +844,7 @@ fluid.defaults("cspace.confirmationDialog", {
 </table>
 
 ### `renderOnInit` ###
+
 <table>
   <tr>
     <th>Description</th>

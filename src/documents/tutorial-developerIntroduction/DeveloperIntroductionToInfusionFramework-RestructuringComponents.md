@@ -20,7 +20,7 @@ In the process, we'll be looking at some other important characteristics of Infu
 // The console hello functionality is now defined as a separate
 // component
 fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
-    gradeNames: ["fluid.modelComponent"],    
+    gradeNames: ["fluid.modelComponent"],
     // We define a default message here so that
     // this component is fully independent and
     // could be used on its own

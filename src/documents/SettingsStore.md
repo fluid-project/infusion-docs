@@ -15,7 +15,6 @@ This component uses the following base [grades](ComponentGrades.md):
 * [`fluid.prefs.dataSource`](#fluidprefsdatasource)
 * [`fluid.contextAware`](ContextAwareness.md)
 
-
 ## fluid.prefs.dataSource ##
 
 A grade used by `fluid.prefs.store`; defines placeholders for `get` and `set` methods.
@@ -67,4 +66,3 @@ A settings store mock that doesn't do persistence. This grade is useful for test
         </tr>
     </tbody>
 </table>
-

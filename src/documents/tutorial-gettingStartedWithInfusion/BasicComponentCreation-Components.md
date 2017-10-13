@@ -165,7 +165,7 @@ You'll notice that in this case we have been able to avoid binding to the entire
 is of more general utility than just for building a component method.
 This has happened because its responsibilities are particularly well-defined - you should always take the opportunity to restrict the binding behaviour of your public functions in this way whenever it is appropriate.
 
-## Defining and firing [events](../InfusionEventSystem.md)
+## Defining and firing [events](../InfusionEventSystem.md) ##
 
 Many times, you will be creating a component that works in an environment where other things are operating, and it will probably need to notify those other things of key **events** in its lifecycle.
 Events can be used to trigger changes in the visual appearance of a component, or actions by other components. For example:
@@ -199,7 +199,7 @@ The contents of the `events` object is a set of key-value pairs where the key is
 
 * **Event naming conventions**: You can call your events anything you like, but Infusion has adopted the convention of prefacing events with on or after to indicate whether or not the event is being fired before some action is taken, or after the action has completed.
 * **Event types**: If the event is a standard event defined on this component, you will write `null` here. Event types supported by the framework are described at the [Infusion Event System](../InfusionEventSystem.md).
-Another possibility is to inject an event appearing elsewhere in the component tree by use of an [IoC reference](../IoCReferences.md) such as `{myOtherComponent}.events.myEvent`.
+  Another possibility is to inject an event appearing elsewhere in the component tree by use of an [IoC reference](../IoCReferences.md) such as `{myOtherComponent}.events.myEvent`.
 
 ### Example: Saving and Deleting ###
 

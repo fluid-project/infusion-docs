@@ -313,7 +313,7 @@ Regardless of the strategy, the following properties will be available:
 * name - (string) The file name. The path is not provided.
 * size - (number) The file size in bytes
 * filestatus - (number) The file's current status.
-    * Use `fluid.uploader.fileStatusConstants` to interpret the value.
+  * Use `fluid.uploader.fileStatusConstants` to interpret the value.
 
 #### File Status Constants ####
 

@@ -32,7 +32,7 @@ notify them.
 
 ### The initial transaction ###
 
-Whenever a new model-bearing component (or an entire tree of model-bearing components) constructs, there will be a particular, large style of update transaction known as an __initial transaction__.  
+Whenever a new model-bearing component (or an entire tree of model-bearing components) constructs, there will be a particular, large style of update transaction known as an __initial transaction__.
 This is very similar to any other synchronisation transaction caused by a [model relay update](#how-model-relay-updates-propagate), although it will typically involve more data since all of the initial values of all the involved models must be taken into account &#8212;
 these result from any of the normal sources for component configuration, including [defaults](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539), user-supplied values,
 [distributed](IoCSS.md) options, etc. At the end of the initial transaction, any [declaratively registered listeners](ChangeApplierAPI.md#model-listener-declaration) will observe all of the new models go through the transition from holding their primordial value of `undefined`
@@ -94,7 +94,7 @@ one component might represent a sound volume level on a scale of 0-100, whereas 
 The framework is capable of accommodating this kind of difference in viewpoint by allowing the user to explicitly list a transformation rule relating one model's instance of a value with another.
 This is done using the `modelRelay` section of a component's top-level options. Here is the layout of this options section:
 
-### Layout of top-level `modelRelay` section of `fluid.modelComponent` options
+### Layout of top-level `modelRelay` section of `fluid.modelComponent` options ###
 
 The `modelRelay` options block may take one of the following three forms -
 
@@ -174,7 +174,7 @@ The first and third cases are disambiguated by looking for a member of the block
     </tbody>
 </table>
 
-#### `sourceFilterRecord` in an explicit model relay block
+#### `sourceFilterRecord` in an explicit model relay block ####
 
 A `sourceFilterRecord` holds members with one or both of the names
 `excludeSource` and `includeSource`. These members hold one or more strings representing
@@ -184,7 +184,7 @@ prevent the relay being triggered (for `excludeSource` or allow it
 (for `includeSource`). These rules are exactly the same as the source matching
 rules for the members of the same names in a [`modelListener`](ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks) record.
 
-#### Example showing explicit relay rule
+#### Example showing explicit relay rule ####
 
 Here is an example of two components linked by explicit model relay representing the situation we described earlier:
 
@@ -249,7 +249,7 @@ contributing special initial values to certain kinds of "integrated models".
 
 Compare these directives with the similar ones used for source guarding in [model listeners](ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks).
 
-#### Example showing propagation directive in explict relay
+#### Example showing propagation directive in explict relay ####
 
 Here the same example that we saw illustrating explicit relay [above](#example-showing-explicit-relay-rule) showing the use of a propagation directive, in this case `backward: {excludeSource: "init"}`. In this
 case the directive is useful because we have added a default initial value `0.5` to the `volume` field at the forward end of the relay which conflicts with the value that the relay would establish as it

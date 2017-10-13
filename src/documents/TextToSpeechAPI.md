@@ -7,7 +7,9 @@ category: Components
 The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section) to queue up and read texts.
 
 ## Browser Support ##
+
 The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section). At the time of writing, July 26 2016, these browsers include:
+
 * Chrome 31+
 * Chrome for Android 40+
 * Safari 7.1+
@@ -330,14 +332,13 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-## Model Paths
+## Model Paths ##
 
 The following model paths can be used with [model listeners](ChangeApplierAPI.md) based on the current state of the speech:
 
 * `model.paused`: `true` if a spoken text is currently paused, `false` otherwise
 * `model.speaking`: `true` if text is being spoken (including in a paused state), `false` otherwise
 * `model.pending`: `true` if there are text items remaining to be spoken, `false` otherwise
-
 
 ## <a id="utteranceopts-option"></a>`model.utteranceOpts` Configuration ##
 
@@ -357,7 +358,7 @@ These attributes include:
             <th>Description</th>
             <td>
                 The <code>text</code> attribute allows you to set the text that you wish to be spoken.
-                <div class="infusion-docs-note"><strong>Note:</strong> be careful with this attribute as it will override any text that was previously passed.</div>                
+                <div class="infusion-docs-note"><strong>Note:</strong> be careful with this attribute as it will override any text that was previously passed.</div>
             </td>
         </tr>
         <tr>
@@ -428,7 +429,7 @@ fluid.textToSpeech({
             <th>Description</th>
             <td>
                 The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.
-                <div class="infusion-docs-note"><strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a> event to get a full list.</div>        
+                <div class="infusion-docs-note"><strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a> event to get a full list.</div>
             </td>
         </tr>
         <tr>

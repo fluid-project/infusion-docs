@@ -86,7 +86,6 @@ var myCallback = myComponent.myEvent.fire;
 myCallback(42, true);
 ```
 
-
 In general you shouldn't fire any of a component's events unless invited to by its documentation - you may disrupt its state. However, registering listeners to a component's events is always safe.
 
 ## Registering a listener to an event
@@ -191,7 +190,6 @@ In this case, you can use the long form record, where the listener record takes 
     </td>
   </tr>
 </table>
-
 
 ## Using events and listeners procedurally
 

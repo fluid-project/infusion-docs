@@ -8,13 +8,12 @@ Website performance optimization can be split into several categories: backend, 
 
 Below are some resources which discuss general website optimization strategies:
 
-* https://developers.google.com/speed/
-* https://developers.google.com/speed/docs/insights/rules
-* https://developers.google.com/web/fundamentals/performance
-* https://www.maxcdn.com/blog/frontend-optimizations/
-* https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/
-* https://hpbn.co
-
+* [https://developers.google.com/speed/](https://developers.google.com/speed/)
+* [https://developers.google.com/speed/docs/insights/rules](https://developers.google.com/speed/docs/insights/rules)
+* [https://developers.google.com/web/fundamentals/performance](https://developers.google.com/web/fundamentals/performance)
+* [https://www.maxcdn.com/blog/frontend-optimizations/](https://www.maxcdn.com/blog/frontend-optimizations/)
+* [https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/](https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/)
+* [https://hpbn.co](https://hpbn.co)
 
 ## Optimization of the Preferences Framework ##
 
@@ -179,8 +178,8 @@ fluid.pageEnhancer({
 While the strategy outlined above will improve page load performance, it is not without its drawbacks.
 
 * Prefs Editor
-    * Users will have to navigate away from the current content to adjust settings
-    * The preview of changes is not a live preview of the content
+  * Users will have to navigate away from the current content to adjust settings
+  * The preview of changes is not a live preview of the content
 * Lazy Loading
-    * For users that have set preferences, page load will be slightly slower because of the lazy loading overhead
-    * For users that have set preferences, there is a higher chance that the user will see the adjustments applied to the page (e.g. screen flicker, page layout shifting, and etc.)
+  * For users that have set preferences, page load will be slightly slower because of the lazy loading overhead
+  * For users that have set preferences, there is a higher chance that the user will see the adjustments applied to the page (e.g. screen flicker, page layout shifting, and etc.)

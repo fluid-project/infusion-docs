@@ -37,6 +37,7 @@ and [priority](Priorities.md) declaration if necessary.
 The component events `onAttach` and `onClear` have also been removed.
 
 #### Dynamic invokers ####
+
 In Infusion 1.5, standard invokers cached all of their arguments that were not part of `{arguments}` or `{that}.model` on their first use, unless they
 had the annotation `dynamic: true`. In 2.0, all invoker arguments are evaluated freshly on each invokation, and the `dynamic: true` annotation is no
 longer used.
@@ -105,7 +106,6 @@ fluid.default("fluid.parent", {
 In Infusion 1.5, the base model reference `that.model` could be relied upon to be i) an Object, and ii) constant for the lifetime of a component. In Infusion 2.0,
 this model reference may change at any time and therefore must not be closed over. In addition, `that.model` may hold any JS type including primitives, `null` and `undefined`.
 
-
 ### Preferences Framework ###
 
 #### Panel Changes ####
@@ -113,12 +113,14 @@ this model reference may change at any time and therefore must not be closed ove
 ##### Message Bundle Keys #####
 
 ###### Additions ######
+
 * `textSizeDescr`
 * `textFontDescr`
 * `lineSpaceDescr`
 * `contrastDescr`
 
 ###### Changes ######
+
 <table>
 <tr><th> 1.5</th><th>2.0</th></tr>
 <tr>
@@ -138,12 +140,14 @@ this model reference may change at any time and therefore must not be closed ove
 ##### Selectors #####
 
 ###### Additions ######
+
 * `contrastDescr: .flc-prefsEditor-contrast-descr`
 * `lineSpaceDescr: .flc-prefsEditor-line-space-descr`
 * `textSizeDescr: .flc-prefsEditor-text-size-descr`
 * `textFontDescr: .flc-prefsEditor-text-font-descr`
 
 ###### Changes ######
+
 <table>
 <tr><th>1.5</th><th>2.0</th></tr>
 <tr>
@@ -159,6 +163,7 @@ this model reference may change at any time and therefore must not be closed ove
 ##### Styles #####
 
 ###### Changes ######
+
 <table>
 <tr><th>1.5</th><th>2.0</th></tr>
 <tr>
@@ -193,6 +198,7 @@ Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 ###### In 1.5 ######
 
 In Infusion 1.5, enactors use non-relay components where the declaration of model listeners had not been implemented. Enactors use:
+
 * The `finalInit()` function to register model listeners
 * An `onCreate` listener to apply the initial preference value that the model receives:
 

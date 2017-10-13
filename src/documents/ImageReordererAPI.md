@@ -304,7 +304,7 @@ mergePolicy: {
     </tbody>
 </table>
 
-### Image Reorderer Options
+### Image Reorderer Options ###
 
 <table>
     <thead>
@@ -447,17 +447,17 @@ selectors: {
     </tbody>
 </table>
 
-## Styling the Image Reorderer
+## Styling the Image Reorderer ##
 
 The Image Reorderer includes default CSS styles that it applies to the thumbnails. The application of styles is based on known class names. The _default_ class names are described below, and can be used by including the Image Reorderer stylesheet:
 
-```
+```html
 <link href="components/reorderer/css/imageReorderer.css" type="text/css" rel="stylesheet" media="all">;
 ```
 
 NOTE that the default class names can be overridden with your own classes using the `styles` option: refer to the [Options](#options) section above.
 
-### Default Classes
+### Default Classes ###
 
 * `fl-reorderer-movable-default` - This class is applied to thumbnail elements in their default state.
 * `fl-reorderer-movable-selected` - This class is applied to the thumbnail that has been selected. The selected thumbnail item can be moved using keystrokes.
@@ -466,15 +466,17 @@ NOTE that the default class names can be overridden with your own classes using 
 * `fl-reorderer-avatar` - This class is applied to the avatar, the image of the thumbnail as it is being dragged about by the mouse.
 * `fl-reorderer-dropMarker` - This class is applied to the drop target indicator when the mouse is used to drag a thumbnail.
 
-## Dependencies
+## Dependencies ##
 
 The Image Reorderer dependencies can be met by including the `infusion-custom.js` file in the header of the HTML file:
-```
+
+```html
 <script type="text/javascript" src="infusion-custom.js"></script>
 ```
 
 Alternatively, the individual file requirements are:
-```
+
+```html
 <script type="text/javascript" src="lib/jquery/core/js/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery/ui/js/jquery.ui.core.js"></script>
 <script type="text/javascript" src="lib/jquery/ui/js/jquery.ui.widget.js"></script>
@@ -495,7 +497,7 @@ Alternatively, the individual file requirements are:
 
 The Image Reorderer also requires the following stylesheets:
 
-```
+```html
 <link rel="stylesheet" type="text/css" href="framework/core/css/fluid.css" />
 <link rel="stylesheet" type="text/css" href="components/reorderer/css/Reorderer.css" />
 <link rel="stylesheet" type="text/css" href="components/reorderer/css/ImageReorderer.css" />

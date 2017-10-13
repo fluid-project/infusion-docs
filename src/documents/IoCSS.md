@@ -4,7 +4,7 @@ layout: default
 category: Infusion
 ---
 
-The Infusion Inversion of Control (IoC) system includes a simple method for distributing options from any components to any others in the component tree. This system uses 
+The Infusion Inversion of Control (IoC) system includes a simple method for distributing options from any components to any others in the component tree. This system uses
 a special block named `distributeOptions` which is supported in the options of every Infusion component. The key addressing scheme needed to make this system work &#8212; the
 means for determining where the target of the distribution is &#8212; is dubbed "IoCSS" because it uses a syntax and idiom very similar to that used in [CSS selectors](https://en.wikipedia.org/wiki/Cascading_Style_Sheets#Selector).
 
@@ -15,7 +15,7 @@ usage would have a component distribute only *downwards* to its own subcomponent
 anywhere* in the (global) component tree - naturally such power should be used with extreme discretion since it could very easily reduce a design to chaos. However, in many situations, for example
 when writing powerful authoring tools, this kind of power is completely indispensible.
 
-## Background for `distributeOptions`##
+## Background for `distributeOptions` ##
 
 As component trees become larger, it will often happen that a high-level component will need to specify options for a component further down the component tree. Without `distributeOptions`, component configuration can become very, what we might call, "pointy":
 
@@ -54,16 +54,15 @@ fluid.uiOptions(".my-uio-container", {
 
 In the `distributeOptions` block above, the context `{that templateLoader}` is an IoCSS expression which designates one or more of the child components of UI Options that are to receive the user's option. The syntax and meaning of these expressions is defined below.
 
-As well as converting the exposed options structure of a component into a more compact form, `distributeOptions` is also a powerful tool for maintaining API stability for a component or family of components. 
-Since the binding of IoCSS selectors such as `that templateLoader` onto child components is flexible, the component tree could be refactored in quite an aggressive way without requiring changes in either the user's configuration, or even the `distributeOptions` block itself. 
-If the refactoring was even more thorough (involving wholesale removal of the target component, or a change in its important grades), the developer could still maintain stability of the external user API just by changing the `distributeOptions` block. 
+As well as converting the exposed options structure of a component into a more compact form, `distributeOptions` is also a powerful tool for maintaining API stability for a component or family of components.
+Since the binding of IoCSS selectors such as `that templateLoader` onto child components is flexible, the component tree could be refactored in quite an aggressive way without requiring changes in either the user's configuration, or even the `distributeOptions` block itself.
+If the refactoring was even more thorough (involving wholesale removal of the target component, or a change in its important grades), the developer could still maintain stability of the external user API just by changing the `distributeOptions` block.
 
 In terms of a standard discussion on [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern "Design Patterns"), this use of `distributeOptions` could be seen as an automated and declarative scheme for achieving the ends of the [Facade Design Pattern](https://en.wikipedia.org/wiki/Facade_pattern "Facade Design Pattern"), without the need for either user or developer code.
 
 However, facade formation isn't the only possible function of an options distribution. They are also sufficiently powerful to encompass most uses of the so-called [Aspect-oriented programming](https://en.wikipedia.org/wiki/Aspect-oriented_programming) (AOP) by the
 use of the target root context `/` to match (and "advise", in AOP terminology) all components in a design matching a particular specification. Unlike traditional AOP techniques, however, these options distributions do not put ultimate and final power in the hands of the wielder - since the component holding
-the distribution itself can be either advised itself, or destroyed completely - thus withdrawing the "advice" from the system. 
-
+the distribution itself can be either advised itself, or destroyed completely - thus withdrawing the "advice" from the system.
 
 ## distributeOptions format ##
 
@@ -90,7 +89,7 @@ IoC reference just consists of a single context name without whitespace. Some re
 * `{that sessionManager}` - matches any component which matches the context `sessionManager` below the current component
 * `{that > ownSub}` - matches any component directly a child of the current one matching a context `ownSub` (perhaps by being a member with that name)
 * `{testEnvironment flowManager preferencesServer}` - firstly looks upward to find a `testEnvironment` component somewhere above the current one, and then matches a `preferencesServer` that is nested within a `flowManager`
-* `{/ fluid.viewComponent}` - matches any `fluid.viewComponent` anywhere in the component tree 
+* `{/ fluid.viewComponent}` - matches any `fluid.viewComponent` anywhere in the component tree
 
 Each block separated by whitespace matches a component by one of the following component selector rules:
 
@@ -164,6 +163,7 @@ fluid.defaults("fluid.moduleLayoutHandler", {
 ```
 
 ## Example: `source` ##
+
 ```javascript
 fluid.defaults("fluid.tests.uploader", {
     gradeNames: ["fluid.component"],
@@ -193,7 +193,7 @@ fluid.defaults("fluid.tests.uploader", {
 
 ## Example: broadcast via root to all components ##
 
-([All Husnock, everywhere](http://en.memory-alpha.org/wiki/Husnock)) 
+([All Husnock, everywhere](http://en.memory-alpha.org/wiki/Husnock))
 
 ```javascript
 

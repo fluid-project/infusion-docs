@@ -5,6 +5,7 @@ category: Infusion
 ---
 
 The Infusion [Preferences Framework](PreferencesFramework.md) includes a tool called the Builder, which automatically creates all the components you need given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary schemas](AuxiliarySchemaForPreferencesFramework.md). The builder constructs all the components necessary to render the preferences editor, store preferences, and respond to changes in preferences. However, you'll generally want to use the simpler method "fluid.prefs.create" for creating and instantiating a [Preferences Editor](PreferencesEditor.md).
+
 ```javascript
 var builder = fluid.prefs.builder(<options>);
 ```
@@ -88,6 +89,7 @@ var myBuilder = fluid.prefs.builder({
     gradeNames: ["fluid.prefs.auxSchema.starter"]
 });
 ```
+
 You may need to override the template and message bundle path prefixes, if your relative paths are different than the defaults:
 
 ```javascript
@@ -101,6 +103,7 @@ var myBuilder = fluid.prefs.builder({
     }
 });
 ```
+
 It is not necessary to specify the primary schema; The builder will automatically find the preference specifications provided by the Framework and build a primary schema (see [Processing the Schemas](#processing-the-schemas) below for more information).
 
 ### Switching Between Native HTML and jQuery UI Widgets ###
@@ -193,7 +196,6 @@ The functions created include:
 * `uie()` which can be used to instantiate the enhancer and settings store
 
 ## Examples ##
-
 
 ### Starter schemas, default namespace ###
 

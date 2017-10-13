@@ -33,7 +33,6 @@ This function will:
 
 For detailed information on how to use this method, see [Renderer Components](RendererComponents.md).
 
-
 ### fluid.render ###
 
 If you are not using `fluid.rendererComponent`, you can use the primary renderer function, [fluid.render](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1551-L1570):

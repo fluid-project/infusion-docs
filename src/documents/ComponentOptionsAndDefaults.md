@@ -40,6 +40,7 @@ contains a list of named selectors that identify the DOM elements a component wi
 Considering again the example of the Inline Edit component, the component has a button that users
 can activate to switch from view mode into edit mode, so the "selectors" option contains a selector
 named `textEditButton`:
+
 ```javascript
 fluid.defaults("inlineEdit", {
     selectors: {

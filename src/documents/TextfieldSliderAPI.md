@@ -234,7 +234,6 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     </tbody>
 </table>
 
-
 ### selectors ###
 
 <table>

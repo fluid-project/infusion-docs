@@ -5,7 +5,7 @@ category: Infusion
 ---
 
 The public and implementation functions on your component ("methods",
-in OO terminology) are defined by configuration representing ***invokers***. 
+in OO terminology) are defined by configuration representing ***invokers***.
 
 Invokers can bind free functions, IoC resolved functions, and
 `this` based functions to the component, and to the context of the component. Invokers allow the
@@ -79,6 +79,7 @@ fluid.defaults("component.name", {
     ...
 });
 ```
+
 __Example:__
 
 The following example defines a component of type `xyz.widget`, with two invokers named `addTwo`
@@ -216,7 +217,6 @@ invokers.
         </tr>
     </tbody>
 </table>
-
 
 #### Format ####
 
