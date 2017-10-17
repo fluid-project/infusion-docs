@@ -58,18 +58,18 @@ The Auxiliary Schema links to the preferences specified in the Primary Schema us
 
 The Auxiliary Schema also specifies which components should be used for the panel and enactor for a given preference, through the `type` properties:
 
-```javascript
+```json5
 {
-    ....
+    // ...
     "textSize": {
         "type": "fluid.prefs.textSize",
         "panel": {
-            "type": "fluid.prefs.panel.textSize",  <<<=== This type is the name of the panel component
-            ...
+            "type": "fluid.prefs.panel.textSize"  // <<<=== This type is the name of the panel component
+            // ...
         },
         "enactor": {
-            "type": "fluid.prefs.enactor.textSize",  <<<=== This type is the name of the enactor component
-            ...
+            "type": "fluid.prefs.enactor.textSize"  // <<<=== This type is the name of the enactor component
+            // ...
         }
     }
 }
@@ -85,14 +85,14 @@ Each [panel component](Panels.md) must include a preference map option in its de
 fluid.defaults("fluid.prefs.panel.textSize", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
-        "fluid.prefs.textSize": {  <<<=== This property name must match the name specified in the primary schema
+        "fluid.prefs.textSize": {  // <<<=== This property name must match the name specified in the primary schema
             "model.value": "default",
             "range.min": "minimum",
             "range.max": "maximum"
         }
-    },
-   ...
-}
+    }
+    // ...
+});
 ```
 
 ## Enactor Component ##
@@ -105,10 +105,10 @@ Each enactor component must include a preference map option in its defaults, cal
 fluid.defaults("fluid.prefs.enactor.textSize", {
    gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
    preferenceMap: {
-       "fluid.prefs.textSize": {  <<<=== This property name must match the name specified in the primary schema
+       "fluid.prefs.textSize": {  // <<<=== This property name must match the name specified in the primary schema
            "model.value": "default"
        }
-   },
-   ...
+   }
+   // ...
 }
 ```

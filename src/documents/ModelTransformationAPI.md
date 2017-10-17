@@ -1002,7 +1002,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 **Syntax:**
 
-```javascript
+```json5
 {
     "transform": {
         "type": "fluid.transforms.literalValue",
@@ -1510,7 +1510,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 **syntax:**
 
-```javascript
+```json5
 {
     "transform": {
         "type": "fluid.transforms.firstValue",
@@ -1591,9 +1591,11 @@ The only option that `delete` supports is `outputPath`, which points to the outp
 **Syntax:**
 
 ```javascript
-transform: {
-    "type": "fluid.transforms.delete",
-    "outputPath": <the output path to delete>
+{
+    transform: {
+        "type": "fluid.transforms.delete",
+        "outputPath": <the output path to delete>
+    }
 }
 ```
 

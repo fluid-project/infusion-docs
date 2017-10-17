@@ -67,15 +67,17 @@ myComponent.myEvent.fire(97, false);
 
 As a real-world example, here is a block of configuration taken from Infusion's [Reorderer](to-do/Reorderer.md) component:
 
-```javascript
-events: {
-    onShowKeyboardDropWarning: null,
-    onSelect: null,
-    onBeginMove: "preventable",
-    onMove: null,
-    afterMove: null,
-    onHover: null, // item, state
-    onRefresh: null
+```json5
+{
+    events: {
+        onShowKeyboardDropWarning: null,
+        onSelect: null,
+        onBeginMove: "preventable",
+        onMove: null,
+        afterMove: null,
+        onHover: null, // item, state
+        onRefresh: null
+    }
 }
 ```
 
@@ -128,9 +130,11 @@ There are two more complex options for the keys held by listeners - firstly, the
 
 Here is an example again from Infusion's Reorderer component:
 
-```javascript
-listeners: {
-    "onShowKeyboardDropWarning.setPosition": "fluid.moduleLayout.defaultOnShowKeyboardDropWarning"
+```json5
+{
+    listeners: {
+        "onShowKeyboardDropWarning.setPosition": "fluid.moduleLayout.defaultOnShowKeyboardDropWarning"
+    }
 }
 ```
 

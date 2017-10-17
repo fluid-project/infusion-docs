@@ -68,15 +68,15 @@ attached to the instance, callable under the name `invokerName` - e.g. as
 
 ```javascript
 fluid.defaults("component.name", {
-    ...
+    // ...
     invokers: {
         invokerName: {
             funcName: <fully namespaced string name of function>,
             args: <array of arguments>
-        },
-        ...
+        }
+        // ...
     }
-    ...
+    // ...
 });
 ```
 
@@ -92,7 +92,7 @@ function may be bound via its global name to any component.
 
 ```javascript
 fluid.defaults("xyz.widget", {
-    ...
+    // ...
     invokers: {
         addTwo: {
             funcName: "xyz.widget.add",
@@ -100,10 +100,10 @@ fluid.defaults("xyz.widget", {
         },
         subtractTwo: {
             func: "{parent}.subtract",
-            args: ["{arguments}.0", 2],
+            args: ["{arguments}.0", 2]
         }
     }
-    ...
+    // ...
 });
 
 xyz.widget.add = function (a, b) {return a + b;};
@@ -117,13 +117,12 @@ into Numbers or Booleans will be so converted before being interpreted.
 
 ```javascript
 fluid.defaults("component.name", {
-    ...
+    // ...
     invokers: {
         invokerName: "<fully namespaced string name of function>(<comma-separated ioc references>)"
-        },
-        ...
+        // ...
     }
-    ...
+    // ...
 });
 ```
 
@@ -131,12 +130,12 @@ __Example:__
 
 ```javascript
 fluid.defaults("xyz.widget", {
-    ...
+    // ...
     invokers: {
         addVal: "xyz.widget.add({that}.staticVal, {arguments}.0)",
         subtractVal: "{parent}.subtract({arguments}.0, {that}.staticVal)"
     }
-    ...
+    // ...
 });
 
 xyz.widget.add = function (a, b) {return a + b;};
@@ -146,7 +145,7 @@ __Example:__
 
 ```javascript
 fluid.defaults("fluid.uploader.fileQueue", {
-    ...
+    // ...
     invokers: {
         start: {
             funcName: "fluid.uploader.fileQueue.start",
@@ -155,11 +154,11 @@ fluid.defaults("fluid.uploader.fileQueue", {
         startFile: {
             funcName: "fluid.uploader.fileQueue.startFile",
             args: "{that}.currentBatch"
-        },
-        ...
-    },
-    ...
-}
+        }
+        //...
+    }
+    //...
+});
 ```
 
 ### Invoker triggering a model change to some component's model ###
@@ -222,7 +221,7 @@ invokers.
 
 ```javascript
 fluid.defaults("component.name", {
-    ...
+    // ...
     invokers: {
         invokerName: {
             "this": <reference to an object>,
@@ -230,7 +229,7 @@ fluid.defaults("component.name", {
             args: <array of arguments>
         }
     }
-    ...
+    // ...
 });
 ```
 
@@ -238,7 +237,7 @@ __Example:__
 
 ```javascript
 fluid.defaults("xyz.widget", {
-    ...
+    // ...
     invokers: {
         setAriaLabel: {
             "this": "{that}.dom.elm",
@@ -246,7 +245,7 @@ fluid.defaults("xyz.widget", {
             args: ["aria-label", "{arguments}.0"]
         }
     }
-    ...
+    // ...
 });
 ```
 
@@ -254,18 +253,18 @@ __Example:__
 
 ```javascript
 fluid.defaults("fluid.uploader.html5Strategy.browseButtonView", {
-    ...
+    // ...
     invokers: {
-        ...
+        // ...
         disable: {
             "this": "{that}.dom.fileInputs",
             method: "prop",
             args: ["disabled", true]
         }
-        ...
-    },
-    ...
-}
+        // ...
+    }
+    // ...
+});
 ```
 
 #### Compact format ####

@@ -15,16 +15,16 @@ In this example, the type of the subcomponent `mySubComponent1` of `myComponentN
 ```javascript
 fluid.defaults("examples.myComponentName", {
     gradeNames: "fluid.component",
-    ...
+    // ...
     components: {
         mySubComponent1: {
             type: "examples.subComponent1Name"
         },
         mySubComponent2: {
             type: "examples.subComponent2Name"
-        },
-    },
-    ...
+        }
+    }
+    // ...
 });
 ```
 

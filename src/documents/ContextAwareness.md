@@ -39,7 +39,7 @@ fluid.contextAware.makeChecks({
     "fluid.supportsTTS": "fluid.textToSpeech.isSupported"
 });
 
-fluid.defaults("examples.myComponent",
+fluid.defaults("examples.myComponent", {
     gradeNames: ["fluid.component", "fluid.contextAware"],
     contextAwareness: {
         speechAware: {
@@ -48,7 +48,7 @@ fluid.defaults("examples.myComponent",
                     contextValue: "{fluid.supportsTTS}",
                     gradeNames: "examples.myComponent.speechAware"
                 }
-            }
+            },
             defaultGradeNames: "examples.myComponent.nonSpeechAware"
         }
     }
