@@ -26,8 +26,8 @@ Enactors must be defined using the `fluid.prefs.enactor` [grade](ComponentGrades
 
 ```javascript
 fluid.defaults("my.pref.enactor", {
-    gradeNames: ["fluid.prefs.enactor"],
-    ...
+    gradeNames: ["fluid.prefs.enactor"]
+    // ...
 });
 ```
 
@@ -38,8 +38,8 @@ fluid.defaults("my.pref.enactor", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     selectors: {
         <selectors as required>
-    },
-    ...
+    }
+    // ...
  });
 ```
 
@@ -77,13 +77,13 @@ The format of a preference map is shown in the follow code sample:
 preferenceMap: {
     <key from primary schema>: {
         <path in enactor's defaults where value should be held>: <key in primary schema where value held>,
-        <path in enactor's defaults where value should be held>: <key in primary schema where value held>,
-        ...
+        <path in enactor's defaults where value should be held>: <key in primary schema where value held>
+        // ...
     },
     <key from primary schema>: {
         <path in enactor's defaults where value should be held>: <key in primary schema where value held>
-    },
-    ...
+    }
+    // ...
 }
 ```
 

@@ -45,13 +45,17 @@ The [Auxiliary Schema](AuxiliarySchemaForPreferencesFramework.md) defines all th
 
 The Auxiliary Schema links to the preferences specified in the Primary Schema using the preference name, which is used as the `type` in a preferences block:
 
-```javascript
+```json5
 {
-    ....
+    // ..
     "textSize": {
-        "type": "fluid.prefs.textSize",  <<<=== This type must match the name specified in the primary schema
-        "panel": {...},
-        "enactor": {...}
+        "type": "fluid.prefs.textSize",  // <<<=== This type must match the name specified in the primary schema
+        "panel": {
+            // ..
+        },
+        "enactor": {
+            // ..
+        }
     }
 }
 ```

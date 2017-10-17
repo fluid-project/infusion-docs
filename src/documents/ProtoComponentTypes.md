@@ -49,8 +49,8 @@ var protoTree = {
 componentID: {
     fieldName: [
         valueOrBinding1,
-        valueOrBinding2,
-        ...
+        valueOrBinding2
+        // ...
     ]
 }
                 </code></pre>

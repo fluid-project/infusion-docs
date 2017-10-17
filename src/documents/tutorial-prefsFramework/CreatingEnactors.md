@@ -27,15 +27,14 @@ Each enactor defines a "preference map," which map the information in the [Prima
 
 ### Format ###
 
-```json
-
+```json5
 {
     "preferenceMap": {
         "<key of preference from primary schema>": {
-            "<path in enactor's options where value should be held>": "<key in primary schema where value held>",
-            ...
-        },
-        ...
+            "<path in enactor's options where value should be held>": "<key in primary schema where value held>"
+            // ...
+        }
+        // ...
     }
 }
 ```

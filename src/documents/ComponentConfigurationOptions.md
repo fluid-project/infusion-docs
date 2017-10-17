@@ -27,7 +27,7 @@ The following options are supported by all component grades, that is, those deri
     <td><pre>
 <code>fluid.defaults("component.name", {
     gradeNames: "fluid.modelComponent",
-    ...
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -49,10 +49,14 @@ The following options are supported by all component grades, that is, those deri
     <td><pre>
 <code>fluid.defaults("component.name", {
     invokers: {
-        inv1: {...},
-        inv2: {...},
-    },
-    ...
+        inv1: {
+            // ...
+        },
+        inv2: {
+            // ...
+        }
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -82,7 +86,7 @@ The following options are supported by all component grades, that is, those deri
         member1: "{that}.options.optionsValue",
         member2: "{theOther}.dom.otherSelector",
     },
-    ...
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -107,8 +111,8 @@ The following options are supported by all component grades, that is, those deri
     events: {
         onSave: "preventable",
         onReady: null
-    },
-    ...
+    }
+    //...
 });</code>
 </pre></td>
   </tr>
@@ -193,10 +197,10 @@ fluid.defaults("examples.eventedComponent", {
         subcomponent1: {
             type: "component.subcomp1",
             options: {...}
-        },
-        ...
-    },
-    ...
+        }
+        // ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -228,7 +232,7 @@ fluid.defaults("examples.eventedComponent", {
         record: "another.grade.name",
         target: "{that target.grade.name}.options.gradeNames"
     }
-    ...
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -257,10 +261,10 @@ fluid.defaults("examples.eventedComponent", {
 <code>fluid.defaults("component.name", {
     mergePolicy: {
         option1: "noexpand",
-        option2: "nomerge",
-        ....
-    },
-    ...
+        option2: "nomerge"
+        // ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -291,11 +295,13 @@ fluid.defaults("examples.eventedComponent", {
         dynamic1: {
             type: "component.subcomp1",
             source: "{context}.someArray",
-            options: {...}
-        },
-        ...
-    },
-    ...
+            options: {
+                // ...
+            }
+        }
+        // ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -328,8 +334,8 @@ See also: [Component Grades](ComponentGrades.md)
         pageIndex: undefined,
         pageSize: 10,
         totalRange: undefined
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -339,8 +345,8 @@ See also: [Component Grades](ComponentGrades.md)
 <code>var myPager = fluid.pager(container, {
     model: {
         pageIndex: 1
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -453,8 +459,8 @@ Component developers are free to define their own additional options.
         indicator: ".flc-progress-indicator",
         label: ".flc-progress-label",
         ariaElement: ".flc-progress-bar"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -465,8 +471,8 @@ Component developers are free to define their own additional options.
     selectors: {
         indicator: "div.progress-indicator",
         label: "span.progress-label"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -541,8 +547,8 @@ Component developers are free to define their own additional options.
         user: ".csc-header-user",
         userName: ".csc-header-userName"
     },
-    selectorsToIgnore: ["searchBox", "logout"],
-    ...
+    selectorsToIgnore: ["searchBox", "logout"]
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -567,8 +573,8 @@ Component developers are free to define their own additional options.
         user: ".csc-header-user",
         userName: ".csc-header-userName"
     },
-    repeatingSelectors: ["menuItem"],
-    ...
+    repeatingSelectors: ["menuItem"]
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -592,13 +598,13 @@ Component developers are free to define their own additional options.
     <td><pre>
 <code>cspace.confirmationDialog.produceTree = function (that) {
     var tree = {
-        ...
+        // ...
     };
     return tree;
 };
 fluid.defaults("cspace.confirmationDialog", {
-    produceTree: cspace.confirmationDialog.produceTree,
-    ...
+    produceTree: cspace.confirmationDialog.produceTree
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -641,8 +647,8 @@ fluid.defaults("cspace.confirmationDialog", {
                 messagekey: "${{row}}"
             }
         }
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -666,7 +672,7 @@ fluid.defaults("cspace.confirmationDialog", {
             }
         }
     },
-    ...
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -700,8 +706,8 @@ fluid.defaults("cspace.confirmationDialog", {
         footerTemplate: {
             href: "../templates/Footer.html"
         }
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -713,8 +719,8 @@ fluid.defaults("cspace.confirmationDialog", {
         footerTemplate: {
             href: "../templates/FrontPageFooter.html"
         }
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -747,8 +753,8 @@ fluid.defaults("cspace.confirmationDialog", {
         relationshipType: "Select relationship type:",
         createNew: "Create new record:",
         addButton: "Add to current record"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -760,8 +766,8 @@ fluid.defaults("cspace.confirmationDialog", {
         relationshipType: "Select a relationship type from the list below:",
         createNew: "Create a new record:",
         addButton: "Add this record to the current record"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -784,8 +790,8 @@ fluid.defaults("cspace.confirmationDialog", {
 <code>fluid.defaults("fluid.tableOfContents.levels", {
     rendererFnOptions: {
         noexpand: true
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -795,8 +801,8 @@ fluid.defaults("cspace.confirmationDialog", {
 <code>var recEditor = cspace.recordEditor(container, {
     rendererFnOptions: {
         rendererTargetSelector: "dialog"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -820,8 +826,8 @@ fluid.defaults("cspace.confirmationDialog", {
 <code>fluid.defaults("cspace.searchBox", {
     rendererOptions: {
         autoBind: false
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -831,8 +837,8 @@ fluid.defaults("cspace.confirmationDialog", {
 <code>var search = cspace.searchBox(container, {
     rendererOptions: {
         autoBind: true
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -855,8 +861,8 @@ fluid.defaults("cspace.confirmationDialog", {
     <td><pre>
 <code>fluid.defaults("cspace.login", {
     gradeNames: ["fluid.rendererComponent"],
-    renderOnInit: true,
-    ...
+    renderOnInit: true
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -864,8 +870,8 @@ fluid.defaults("cspace.confirmationDialog", {
     <th>Example Override</th>
     <td><pre>
 <code>var login = cspace.login(container, {
-    renderOnInit: false,
-    ...
+    renderOnInit: false
+    // ...
 });</code>
 </pre></td>
   </tr>

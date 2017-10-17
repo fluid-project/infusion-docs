@@ -228,7 +228,7 @@ In some cases, panels and enactors may need to share data, such as a list of cla
     "prefBlockName": {
         "type": "typename",
         "dataToBeShared": {
-            ...
+            // ...
         },
         "enactor": {
             "type": "enactor.component.name",
@@ -237,7 +237,7 @@ In some cases, panels and enactors may need to share data, such as a list of cla
         "panel": {
             "type": "panel.component.name",
             "sharedData": "@prefBlockName.dataToBeShared",
-            ...
+            // ...
         }
 }
 ```

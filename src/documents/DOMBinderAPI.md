@@ -42,8 +42,8 @@ The DOM Binder object is attached to the component as a member called `dom`.
 <code>
 {
     name1: &lt;selector1&gt;,
-    name2: &lt;selector2&gt;,
-    ....
+    name2: &lt;selector2&gt;
+    // ..
 }
 </code>
 </pre>
@@ -54,7 +54,7 @@ Note that selector values may be specified using <a href="IoCReferences.md">IoC 
 
 ### Selector Examples ###
 
-```javascript
+```json5
 {
     displayElement: ".flc-progress",
     progressBar: ".flc-progress-bar",
@@ -64,7 +64,7 @@ Note that selector values may be specified using <a href="IoCReferences.md">IoC 
 }
 ```
 
-```javascript
+```json5
 {
     labelSource: ".flc-reorderer-imageTitle",
     movables: {

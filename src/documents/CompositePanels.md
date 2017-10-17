@@ -14,8 +14,8 @@ Composite panels must be defined with the `fluid.prefs.compositePanel` [grade](C
 
 ```javascript
 fluid.defaults("my.panels.composite", {
-    gradeNames: ["fluid.prefs.compositePanel"],
-    ...
+    gradeNames: ["fluid.prefs.compositePanel"]
+    // ...
 });
 ```
 
@@ -25,8 +25,8 @@ Subpanels are defined with the `fluid.prefs.panel` grade, the same grade used fo
 
 ```javascript
 fluid.defaults("my.panels.subanel", {
-    gradeNames: ["fluid.prefs.panel"],
-    ...
+    gradeNames: ["fluid.prefs.panel"]
+    // ...
 });
 ```
 
@@ -44,7 +44,7 @@ groups: {
         "panels": [<list of subpanels to include in this composite panel>]
     },
     <composite panel name>: {...},
-    ...
+    // ...
 }
 ```
 
@@ -75,34 +75,36 @@ Composite panel HTML template:
 
 Auxiliary schema section defining panels:
 
-```javascript
-preference1: {
-    "type": "fluid.prefs.preference1",
-    "panel": {
-        "type": "fluid.prefs.panel.subpanel1",
-        // Reference to the selector defined in the composite panel template for subpanel1
-        "container": ".subpanel-1-container",
-        "template": "%prefix/subpanel1.html",
-        "message": "%prefix/subpanel1.json"
-    }
-},
-preference2: {
-    "type": "fluid.prefs.preference2",
-    "panel": {
-        "type": "fluid.prefs.panel.subpanel2",
-        // Reference to the selector defined in the composite panel template for this subpanel2
-        "container": ".subpanel-2-container",
-        "template": "%prefix/subpanel2.html",
-        "message": "%prefix/subpanel2.json"
-    }
-},
-groups: {
-    composite1: {
-        "container": ".my-composite-1",
-        "template": "%prefix/composite1.html",
-        "message": "%prefix/composite1.json",
-        "type": "fluid.prefs.panel.composite1",
-        "panels": ["preference1", "preference2"]
+```json5
+{
+    preference1: {
+        "type": "fluid.prefs.preference1",
+        "panel": {
+            "type": "fluid.prefs.panel.subpanel1",
+            // Reference to the selector defined in the composite panel template for subpanel1
+            "container": ".subpanel-1-container",
+            "template": "%prefix/subpanel1.html",
+            "message": "%prefix/subpanel1.json"
+        }
+    },
+    preference2: {
+        "type": "fluid.prefs.preference2",
+        "panel": {
+            "type": "fluid.prefs.panel.subpanel2",
+            // Reference to the selector defined in the composite panel template for this subpanel2
+            "container": ".subpanel-2-container",
+            "template": "%prefix/subpanel2.html",
+            "message": "%prefix/subpanel2.json"
+        }
+    },
+    groups: {
+        composite1: {
+            "container": ".my-composite-1",
+            "template": "%prefix/composite1.html",
+            "message": "%prefix/composite1.json",
+            "type": "fluid.prefs.panel.composite1",
+            "panels": ["preference1", "preference2"]
+        }
     }
 }
 ```

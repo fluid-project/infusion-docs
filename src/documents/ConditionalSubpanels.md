@@ -12,8 +12,8 @@ The relationship between the controlling boolean preference and its dependent su
 "panels": {
     always: [<list of subpanels to always include in this composite panel; must contain at least one>], // required
     <pref.name>: [<list of subpanels to display only when this pref is on>], // optional
-    <pref.name>: [<list of subpanels to display only when this pref is on>],
-    ...,
+    <pref.name>: [<list of subpanels to display only when this pref is on>]
+    // ...,
 }
 ```
 

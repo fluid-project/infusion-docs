@@ -163,7 +163,7 @@ When using a `fluid.rendererComponent`, strings from the Message Bundles are ren
     <tbody>
         <tr>
             <td valign="baseline"><pre><code>fluid.defaults("fluid.prefs.panels.linksControls", {
-    ...
+    // ...
     protoTree: {
         label: {messagekey: "linksLabel"},
         linksChoiceLabel: {messagekey: "linksChoiceLabel"},

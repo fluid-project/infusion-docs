@@ -91,12 +91,12 @@ One of the UI Options controls allows users to add a Table Of Contents to the to
 
 ```html
 <body>
-    ...
+    <!-- ... -->
 
     <!-- the TOC container should appear after the flc-prefsEditor-separatedPanel div -->
     <nav class="flc-toc-tocContainer"> </nav>
 
-    ...
+    <!-- ... -->
 
     <!-- the rest of your page here -->
     <h1>My Website</h1>
@@ -138,10 +138,10 @@ Add the UI Options component to your page using the `<script>` tag as seen in th
 
 ```html
 <body>
-    ...
+    <!-- ... -->
     <!-- the rest of your page here -->
     <h1>My Website</h1>
-    ...
+    <!-- ... -->
 
     <!-- Initialize the UI Options Javascript -->
     <script type="text/javascript">

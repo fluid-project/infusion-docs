@@ -93,8 +93,8 @@ The properties allowed at top level in the subcomponent record are as follows:
             <td><pre><code>subcomponent1: {
     type: "fluid.mySubcomponent",
     options: {
-        myOptions: "{name}.options.someOption",
-        ...
+        myOptions: "{name}.options.someOption"
+        // ...
     }
 }</code></pre></td>
         </tr>

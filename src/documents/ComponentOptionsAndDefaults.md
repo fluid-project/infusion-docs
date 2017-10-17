@@ -44,10 +44,10 @@ named `textEditButton`:
 ```javascript
 fluid.defaults("inlineEdit", {
     selectors: {
-        textEditButton: ".flc-inlineEdit-textEditButton",
-        ...
-    },
-    ...
+        textEditButton: ".flc-inlineEdit-textEditButton"
+        // ...
+    }
+    // ...
 });
 ```
 

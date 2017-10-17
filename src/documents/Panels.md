@@ -61,13 +61,13 @@ The format of a preference map is shown in the following code sample:
 preferenceMap: {
     <key from primary schema>: {
         <path in panel's model where value should be held>: <key in primary schema where value held>
-        <path in panel's model where value should be held>: <key in primary schema where value held>,
-        ...
+        <path in panel's model where value should be held>: <key in primary schema where value held>
+        // ...
     },
     <key from primary schema>: {
         <path in panel's model where value should be held>: <key in primary schema where value held>
-    },
-    ...
+    }
+    // ...
 }
 ```
 

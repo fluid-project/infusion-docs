@@ -1733,7 +1733,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
     match: {
         "<input1>": <output1>,
         "<input2>": <output2>,
-        ...,
+        // ...,
         "<inputN>": <output3>
     },
     noMatch: {

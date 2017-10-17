@@ -11,8 +11,8 @@ The format of a preference definition in the Primary Schema is as shown below:
 ```javascript
 {
     <namespaced.preference.name>: {
-        <propertyName>: <propertyValue>,
-        ...
+        <propertyName>: <propertyValue>
+        // ...
     }
 }
 ```
