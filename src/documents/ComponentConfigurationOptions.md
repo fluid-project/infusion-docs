@@ -281,7 +281,7 @@ fluid.defaults("examples.eventedComponent", {
     <th>Notes</th>
     <td>Some special context names will be available within the subcomponent's definition block, for example <code>{source}</code> and <code>{sourcePath}</code> or <code>{arguments}</code>, derived from the material responsible for constructing the component.
     <em>This framework facility will be replaced by a more declarative equivalent in time - ask on the <a href="http://lists.idrc.ocad.ca/mailman/listinfo/fluid-work">fluid-work mailing list</a>
-    or <a href="https://wiki.fluidproject.org/display/fluid/IRC+Channel">#fluidwork IRC channel</a> if you seem to find yourself needing to use it.</em></td>
+    or <a href="https://wiki.fluidproject.org/display/fluid/IRC+Channel">#fluid-work IRC channel</a> if you seem to find yourself needing to use it.</em></td>
   </tr>
   <tr>
     <th>Example Definition</th>
