@@ -9,13 +9,13 @@ Subcomponent declaration in a defaults block takes the following form:
 
 ```javascript
 fluid.defaults("my.component.name", {
-    ...
+    // ...
     components: {
         subcomponent1: <subcomponent declaration>,
         subcomponent2: <subcomponent declaration>,
         subcomponent3: <subcomponent declaration>,
-    },
-    ....
+    }
+    // ...
 });
 ```
 
@@ -51,14 +51,16 @@ The subcomponent declaration has the following form, holding the _**subcomponent
 
 ```javascript
 fluid.defaults("my.component.name", {
-    ...
+    // ...
     components: {
         subcomponent1: {
-            type: "type.name"
-            options: {...},
+            type: "type.name",
+            options: {
+                // ...
+            }
         }
-    },
-    ....
+    }
+    // ...
 });
 ```
 

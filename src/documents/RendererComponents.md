@@ -9,9 +9,8 @@ If you are creating a component that requires the use of the Renderer, you shoul
 
 ```javascript
 fluid.defaults("my.component", {
-    gradeNames: ["fluid.rendererComponent"],
-    .. // put your options here
-
+    gradeNames: ["fluid.rendererComponent"]
+    // put your options here
 });
 
 var that = my.component();
@@ -300,7 +299,7 @@ fluid.defaults("fluid.examples.renderer", {
         textFontValue: ""
     },
     rendererOptions: {
-        autoBind: true,
+        autoBind: true
     },
     renderOnInit: true,
     protoTree: {
@@ -313,7 +312,7 @@ fluid.defaults("fluid.examples.renderer", {
             optionlist: "${textFontList}",
             selection: "${textFontValue}"
         }
-    }
+    },
     resources: {
         template: {
             forceCache: true,

@@ -132,10 +132,12 @@ This property is the actual JSON definition of the preferences for this Preferen
 In this particular example, only a single preference is being defined; a boolean called
 `“awesomeCars.prefs.heatedSeats”`:
 
-```javascript
-"awesomeCars.prefs.heatedSeats": {
-    "type": "boolean",
-    "default": false
+```json5
+{
+    "awesomeCars.prefs.heatedSeats": {
+        "type": "boolean",
+        "default": false
+    }
 }
 ```
 
@@ -329,31 +331,33 @@ containing configuration options.
 
 Let’s look at the Schema itself in detail:
 
-```javascript
-auxiliarySchema: {
-    // the loaderGrade identifies the "base" form of preference editor desired
-    loaderGrades: ["fluid.prefs.fullNoPreview"],
-
-    // 'terms' are strings that can be re-used elsewhere in this schema;
-    terms: {
-        templatePrefix: "html"
-    },
-
-    // the main template for the preference editor itself
-    template: "%templatePrefix/prefsEditorTemplate.html",
-
-    heatedSeats: {
-        // this 'type' must match the name of the pref in the primary schema
-        type: "awesomeCars.prefs.heatedSeats",
-        panel: {
-            // this 'type' must match the name of the panel grade created for this pref
-            type: "awesomeCars.prefs.panels.heatedSeats",
-
-            // selector indicating where, in the main template, to place this panel
-            container: ".awec-heatedSeats",
-
-            // the template for this panel
-            template: "%templatePrefix/heatedSeats.html"
+```json5
+{
+    auxiliarySchema: {
+        // the loaderGrade identifies the "base" form of preference editor desired
+        loaderGrades: ["fluid.prefs.fullNoPreview"],
+    
+        // 'terms' are strings that can be re-used elsewhere in this schema;
+        terms: {
+            templatePrefix: "html"
+        },
+    
+        // the main template for the preference editor itself
+        template: "%templatePrefix/prefsEditorTemplate.html",
+    
+        heatedSeats: {
+            // this 'type' must match the name of the pref in the primary schema
+            type: "awesomeCars.prefs.heatedSeats",
+            panel: {
+                // this 'type' must match the name of the panel grade created for this pref
+                type: "awesomeCars.prefs.panels.heatedSeats",
+    
+                // selector indicating where, in the main template, to place this panel
+                container: ".awec-heatedSeats",
+    
+                // the template for this panel
+                template: "%templatePrefix/heatedSeats.html"
+            }
         }
     }
 }
@@ -368,8 +372,10 @@ An auxiliary schema can be generally divided into two kinds of properties:
 
 The _loader grade_ specifies the _type_ of Preference Editor:
 
-```javascript
-    loaderGrades: ["fluid.prefs.fullNoPreview"],
+```json5
+{
+    loaderGrades: ["fluid.prefs.fullNoPreview"]
+}
 ```
 
 The Preference Framework provides three pre-defined types of Editor:
@@ -387,16 +393,20 @@ In our example, this template is located in the same folder as other HTML templa
 The Auxiliary Schema allows you to define `terms` – strings that can be re-used elsewhere in the
 schema. Here, it is being used to define, in a single place, the path to where the HTML templates are:
 
-```javascript
+```json5
+{
     terms: {
         templatePrefix: "html"
-    },
+    }
+}
 ```
 
 The template property specifies the main HTML template for the entire Preference Editor:
 
-```javascript
-    template: "%templatePrefix/prefsEditorTemplate.html",
+```json5
+{
+    template: "%templatePrefix/prefsEditorTemplate.html"
+}
 ```
 
 You can see the full text of this file, `prefsEditorTemplate.html`, in the github repo:
@@ -415,20 +425,22 @@ The Framework will insert the constructed Panel into this `<div>`.
 
 The next thing in the Auxiliary Schema is the configuration for the heated seats preference:
 
-```javascript
-heatedSeats: {
-    // this 'type' must match the name of the pref in the primary schema
-    type: "awesomeCars.prefs.heatedSeats",
-
-    panel: {
-        // this 'type' must match the name of the panel grade created for this pref
-        type: "awesomeCars.prefs.panels.heatedSeats",
-
-        // selector indicating where, in the main template, to place this panel
-        container: ".awec-heatedSeats",
-
-        // the template for this panel
-        template: "%templatePrefix/heatedSeats.html"
+```json5
+{
+    heatedSeats: {
+        // this 'type' must match the name of the pref in the primary schema
+        type: "awesomeCars.prefs.heatedSeats",
+    
+        panel: {
+            // this 'type' must match the name of the panel grade created for this pref
+            type: "awesomeCars.prefs.panels.heatedSeats",
+    
+            // selector indicating where, in the main template, to place this panel
+            container: ".awec-heatedSeats",
+    
+            // the template for this panel
+            template: "%templatePrefix/heatedSeats.html"
+        }
     }
 }
 ```
@@ -501,10 +513,12 @@ on all of the configuration information for the preferences, the Panels, etc.
 For our simple Preference Editor, the build options contains only one property:
 The grade name of our Auxiliary Schema:
 
-```javascript
+```json5
+{
     build: {
         gradeNames: ["awesomeCars.prefs.auxSchema"]
     }
+}
 ```
 
 The Auxiliary Schema (plus the Primary Schema that was registered with the Framework automatically)
@@ -529,10 +543,10 @@ definition. It’s `type` is `“number”`, and in addition to the default, we�
 minimum and maximum, as well as the step value:
 
 ```javascript
- fluid.defaults("awesomeCars.prefs.schemas.radioVolume", {
+fluid.defaults("awesomeCars.prefs.schemas.radioVolume", {
     gradeNames: ["fluid.prefs.schemas"],
     schema: {
-       "awesomeCars.prefs.radioVolume": {
+        "awesomeCars.prefs.radioVolume": {
             "type": "number",
             "default": "2",
             "minimum": "1",
@@ -574,8 +588,8 @@ and set the grade to `“fluid.prefs.panel”`:
 
 ```javascript
 fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
-    gradeNames: ["fluid.prefs.panel"],
-    // options will go here
+    gradeNames: ["fluid.prefs.panel"]
+    // options will go here...
 });
 ```
 
@@ -584,14 +598,12 @@ As with the heated seats Panel, we need a  Preference Map:
 ```javascript
 fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
-
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
             "model.radioVolume": "default"
         }
-    },
-
-    // more will go here
+    }
+    // ...
 });
 ```
 
@@ -613,9 +625,8 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
         min: 1,
         max: 10,
         step: 1
-    },
-
-    // more will go here
+    }
+    // ...
 });
 ```
 
@@ -625,7 +636,6 @@ the `range` property:
 ```javascript
 fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
-
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
             "model.radioVolume": "default",
@@ -638,9 +648,8 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
         min: 1,
         max: 10,
         step: 1
-    },
-
-    // more will go here
+    }
+    // ...
 });
 ```
 
@@ -650,7 +659,6 @@ element where the preference value will be bound:
 ```javascript
 fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
-
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
             "model.radioVolume": "default",
@@ -659,19 +667,15 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
             "range.step": "divisibleBy"
         }
     },
-
     range: {
         min: 1,
         max: 10,
         step: 1
     },
-
     selectors: {
         radioVolume: ".awec-radioVolume"
-    },
-
-    // more will go here
-
+    }
+    // ...
 });
 ```
 
@@ -683,13 +687,14 @@ value, but we _also_ need to set the `min`, `max` and `step` attributes of the e
 a simple key/value pair isn’t enough. Instead of a simple string reference as the value,
 we’ll use an object with a value property:
 
-```javascript
+```json5
+{
     protoTree: {
         radioVolume: {
           value: "${radioVolume}"
         }
     }
-});
+}
 ```
 
 To this, we will add a _[Renderer Decorator](../RendererDecorators.md)_
@@ -699,7 +704,8 @@ to set the attributes using the contents of the `range` property:
 such as functions, class names, etc., to the components at render time.
 </aside>
 
-```javascript
+```json5
+{
     protoTree: {
         radioVolume: {
           value: "${radioVolume}",
@@ -713,7 +719,7 @@ such as functions, class names, etc., to the components at render time.
           }]
         }
     }
-});
+}
 ```
 
 So, this is what our final radio volume Panel component definition looks like:
@@ -743,15 +749,15 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
 
     protoTree: {
         radioVolume: {
-          value: "${radioVolume}",
-          decorators: [{
-              type: "attrs",
-              attributes: {
-                  min: "{that}.options.range.min",
-                  max: "{that}.options.range.max",
-                  step: "{that}.options.range.step"
-              }
-          }]
+            value: "${radioVolume}",
+            decorators: [{
+                type: "attrs",
+                attributes: {
+                    min: "{that}.options.range.min",
+                    max: "{that}.options.range.max",
+                    step: "{that}.options.range.step"
+                }
+            }]
         }
     }
 });
@@ -774,13 +780,15 @@ has a placeholder in it for the heated seats Panel.
 We’ll also need a property in the Auxiliary Schema, in `schemas/auxiliary.js`,  to provide the
 configuration options specific to the new Panel:
 
-```javascript
-radioVolume: {
-    type: "awesomeCars.prefs.radioVolume",
-    panel: {
-        type: "awesomeCars.prefs.panels.radioVolume",
-        container: ".awec-radioVolume",
-        template: "%templatePrefix/radioVolume.html"
+```json5
+{
+    radioVolume: {
+        type: "awesomeCars.prefs.radioVolume",
+        panel: {
+            type: "awesomeCars.prefs.panels.radioVolume",
+            container: ".awec-radioVolume",
+            template: "%templatePrefix/radioVolume.html"
+        }
     }
 }
 ```

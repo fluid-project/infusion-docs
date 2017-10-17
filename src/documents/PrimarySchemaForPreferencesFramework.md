@@ -21,7 +21,7 @@ The `"namespaced.preference.name"` is the string that will be used throughout th
 
 ## Example: Schema for Preferences Framework Starter Preferences ##
 
-```javascript
+```json5
 {
     "fluid.prefs.textSize": {
         "type": "number",

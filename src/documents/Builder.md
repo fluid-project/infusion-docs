@@ -65,8 +65,12 @@ The simplest usage of the builder is through the two schema options:
 
 ```javascript
 var myBuilder = fluid.prefs.builder({
-    primarySchema: {...},
-    auxiliarySchema: {...}
+    primarySchema: {
+        // ...
+    },
+    auxiliarySchema: {
+        // ...
+    }
 });
 ```
 

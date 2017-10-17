@@ -499,8 +499,8 @@ fluid.tests.catTesterModules = [{
         type: "test",
         func: "fluid.tests.globalCatTest",
         args: "{cat}"
-    }
-];
+    }]
+}];
 
 // A helper function which just returns the global -
 // realistically, it would assemble a sequence using more complex logic
@@ -561,7 +561,7 @@ fluid.defaults("fluid.tests.buttonChild", {
 });
 
 fluid.tests.buttonChild.bindClick = function (that) {
-    that.container.click(function() {
+    that.container.click(function () {
         setTimeout(that.events.buttonClicked.fire, 1);
     });
 };
@@ -677,7 +677,7 @@ fluid.tests.makeChangeChecker = function (toCheck, path) {
         var newval = fluid.get(newModel, path);
         jqUnit.assertEquals("Expected model value " + toCheck + " at path " + path, toCheck , newval);
     };
-}
+};
 
 fluid.tests.startRendering = function (asyncTest, instantiator) {
     asyncTest.refreshView();

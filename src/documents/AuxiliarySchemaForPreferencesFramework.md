@@ -72,7 +72,7 @@ For detailed information about how to work with composite panels, see [Composite
 
 ## Example Auxiliary Schema ##
 
-```javascript
+```json5
 {
     // The author of the auxiliary schema will provide the namespace, which will be used
     //for the component to call to initialize the constructed grades.
@@ -223,7 +223,7 @@ For detailed information about how to work with composite panels, see [Composite
 
 In some cases, panels and enactors may need to share data, such as a list of class names. In these cases, define the data at the root of the relevant preference block and reference it within the panel and enactor blocks, as seen in the example above (in the `contrast` and `textFont` preference blocks). The general structure and syntax is highlighted below:
 
-```javascript
+```json5
 {
     "prefBlockName": {
         "type": "typename",
@@ -246,9 +246,9 @@ In some cases, panels and enactors may need to share data, such as a list of cla
 
 Each preference block can contain configuration for _at most_ one enactor and one panel. If more than one enactor and/or panel needs to be configured for a given preference, you can create another preference block with a new namespace.
 
-```javascript
+```json5
 {
-    ...
+    // ...
     // Standard preference block configuration
     "textSize": {
         "type": "fluid.prefs.textSize",
@@ -276,7 +276,7 @@ Each preference block can contain configuration for _at most_ one enactor and on
             "message": "%messagePrefix/foo.json"
         }
     }
-    ...
+    // ...
 }
 ```
 

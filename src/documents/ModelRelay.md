@@ -51,14 +51,14 @@ Here is a component which has a child component which sets up a model relay rela
 fluid.defaults("examples.implicitModelRelay", {
     gradeNames: "fluid.modelComponent",
     model: {
-         parentValue: 3
+        parentValue: 3
     },
     components: {
         child: {
             type: "fluid.modelComponent",
             options: {
                 model: {
-    // implicit relay rule setting up synchronisation with one field in parent's model
+                    // implicit relay rule setting up synchronisation with one field in parent's model
                     childValue: "{examples.implicitModelRelay}.model.parentValue"
                 }
             }

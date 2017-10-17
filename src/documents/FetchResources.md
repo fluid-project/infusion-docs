@@ -151,7 +151,7 @@ var myCallback = function (returnedResourceSpecs) {
                     ", errorThrown: " + returnedResourceSpecs[key].fetchError.errorThrown);
         } else {
             // process successfully loaded resource
-            ...
+            // ...
         }
     }
 };

@@ -150,10 +150,12 @@ While it is not necessary to create event handlers to update the model when user
 
 The display update can be handled by a `modelListeners` entry of the kind we have seen before:
 
-```javascript
-modelListeners: {
-    "result": {
-        func: "{that}.refreshView"
+```json5
+{
+    modelListeners: {
+        "result": {
+            func: "{that}.refreshView"
+        }
     }
 }
 ```
@@ -168,11 +170,12 @@ In this case we can recognise that the transformation performed by this componen
 [`fluid.transforms.linearScale`](../ModelTransformationAPI.md#scale-value-with-optional-offset-fluidtransformslinearscale)
 (if it weren't part of the standard set, it would be easy to use any suitable free function as the transforming rule).
 
-```javascript
-modelRelay: {
-    target: "result",
-    singleTransform: {
-        type: "fluid.transforms.linearScale",
+```json5
+{
+    modelRelay: {
+        target: "result",
+        singleTransform: {
+            type: "fluid.transforms.linearScale",
             input: "{that}.model.amount",
             factor: "{that}.model.currentSelection"
         }

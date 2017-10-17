@@ -163,7 +163,9 @@ fluid.defaults("fluid.prefs.enactor.tableOfContents", {
         tableOfContents: {
             type: "fluid.tableOfContents",
             container: "{fluid.prefs.enactor.tableOfContents}.container",
-            options: {...}
+            options: {
+                // ...
+            }
         }
     }
 });
@@ -202,12 +204,12 @@ The example below includes several IoC references. All of them are inside a subc
 fluid.defaults("fluid.videoPlayer.controllers", {
     gradeNames: ["fluid.viewComponent"],
     selectors: {
-        scrubberContainer: ".flc-videoPlayer-scrubberContainer",
+        scrubberContainer: ".flc-videoPlayer-scrubberContainer"
     },
     events: {
         onScrub: null,
         onStartScrub: null,
-        afterScrub: null,
+        afterScrub: null
     },
     components: {
         scrubber: {
@@ -254,7 +256,7 @@ fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     selectors: {
         images: "img, [role~='img']"
-    },
+    }
 });
 fluid.defaults("gpii.explorationTool.enactorSet", {
     gradeNames: ["fluid.uiEnhancer.starterEnactors"],
@@ -293,8 +295,8 @@ fluid.defaults("fluid.pagedTable", {
         rangeAnnotator : {
             type : "fluid.pagedTable.rangeAnnotator"
         }
-    },
-    ...
+    }
+    // ...
 });
 ```
 

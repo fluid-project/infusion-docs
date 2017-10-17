@@ -116,14 +116,18 @@ These configuration blocks show how a minimal configuration of the Pager has cha
 other configuration options are of course supported as listed in the API documentation.
 
 ```javascript
-fluid.pagedTable("container",
-    dataModel: ...,
-    columnDefs: ...,
+fluid.pagedTable("container", {
+    dataModel: {
+        // ...
+    },
+    columnDefs: {
+        // ...
+    },
     components: {
         bodyRenderer: {
             options: {
                 selectors: {
-                    ....
+                    // ...
                 }
             }
         }
@@ -135,13 +139,17 @@ fluid.pagedTable("container",
 ### In 1.4 ###
 
 ```javascript
-fluid.pager("container",
-    dataModel: ...,
-    columnDefs: ...,
+fluid.pager("container", {
+    dataModel: {
+        // ...
+    },
+    columnDefs: {
+        // ...
+    },
     bodyRenderer: {
         options: {
             selectors: {
-                ....
+                // ...
             }
         }
     }

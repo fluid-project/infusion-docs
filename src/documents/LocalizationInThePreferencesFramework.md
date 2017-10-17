@@ -102,7 +102,7 @@ Message Bundles can be specified through the [auxiliary schema](AuxiliarySchemaF
 
 ### Example Auxiliary Schema
 
-```javascript
+```json5
 {
     "namespace": "fluid.prefs.constructed",
     "terms": {
@@ -187,12 +187,12 @@ Message Bundles can also be resolved directly through an [IoC reference](IoCRefe
 
 ```javascript
 fluid.defaults("fluid.slidingPanel", {
-    ...
+    // ...
     strings: {
         showText: "{that}.msgLookup.slidingPanelShowText",
         hideText: "{that}.msgLookup.slidingPanelHideText"
     }
-    ...
+    // ...
 });
 ```
 
@@ -204,8 +204,8 @@ There are other, more complex cases where an array of strings is required (for e
 It is accessed the same way that an individual string is referenced, except that reference should point to the key in the `stringArrayIndex` instead of a single string name. In the example below, the `stringArrayIndex` is used to define the `theme` string bundle, and the `theme` string bundle is referenced within the `protoTree.expander.tree` ('`optionnames: "${{that}.msgLookup.theme}"`'):
 
 ```javascript
-    fluid.defaults("fluid.prefs.panel.contrast", {
-    ...
+fluid.defaults("fluid.prefs.panel.contrast", {
+    // ...
     stringArrayIndex: {
         // the theme values correspond to message keys in the Message Bundle.
         theme: ["contrast-default", "contrast-bw", "contrast-wb", "contrast-by", "contrast-yb", "contrast-lgdg"]
@@ -225,7 +225,7 @@ It is accessed the same way that an individual string is referenced, except that
             }
         }
     }
-    ...
+    // ...
 });
 ```
 

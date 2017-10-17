@@ -42,7 +42,7 @@ fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
             // Here, "{that}" means the context of the current
             // component configuration (consoleHello)
             args: ["{that}.model.message"]
-        },
+        }
     }
 });
 

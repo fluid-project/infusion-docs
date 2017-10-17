@@ -22,8 +22,8 @@ Panels must be defined using the `fluid.prefs.panel` [grade](ComponentGrades.md)
 
 ```javascript
 fluid.defaults("my.pref.panel", {
-    gradeNames: ["fluid.prefs.panel"],
-    ...
+    gradeNames: ["fluid.prefs.panel"]
+    // ...
 });
 ```
 
@@ -84,8 +84,8 @@ fluid.defaults("fluid.prefs.panel.textFont", {
             "model.value": "default",
             "controlValues.textFont": "enum"
         }
-    },
-    ...
+    }
+    // ...
 });
 ```
 
@@ -100,8 +100,8 @@ fluid.defaults("fluid.prefs.panel.textSize", {
             "range.min": "minimum",
             "range.max": "maximum"
         }
-    },
-    ...
+    }
+    // ...
 });
 ```
 

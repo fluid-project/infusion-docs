@@ -37,7 +37,7 @@ fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
         sayHello: {
             "funcName": "fluidTutorial.helloWorld.consoleHello.sayHello",
             args: ["{that}.model.message"]
-        },
+        }
     }
 });
 

@@ -129,21 +129,21 @@ fluid.defaults("fluid.uiOptions", {
             options: {
                 textSize: "{uiOptions}.options.textSize",
                 lineSpacing: "{uiOptions}.options.lineSpacing",
-                model: "{uiOptions}.model",
+                model: "{uiOptions}.model"
             }
         },
         layoutControls: {
             type: "fluid.uiOptions.layoutControls",
             container: "{uiOptions}.dom.layoutControls",
             options: {
-                model: "{uiOptions}.model",
+                model: "{uiOptions}.model"
             }
         },
         linksControls: {
             type: "fluid.uiOptions.linksControls",
             container: "{uiOptions}.dom.linksControls",
             options: {
-                model: "{uiOptions}.model",
+                model: "{uiOptions}.model"
             }
         }
     }

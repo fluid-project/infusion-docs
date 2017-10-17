@@ -12,7 +12,7 @@ The evolving "Hello, World!" component below splits out the two "hello" function
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/rjWBQN?editors=1111">Live Example of the code below on CodePen</a></div>
 
-``` javascript
+```javascript
 fluid.defaults("fluidTutorial.helloWorld", {
     gradeNames: ["fluid.viewComponent"],
     model: {
@@ -49,7 +49,7 @@ fluid.defaults("fluidTutorial.helloWorld", {
                         // Here, "{that}" means the context of the current
                         // component configuration of this block (consoleHello)
                         args: ["{that}.model.message"]
-                    },
+                    }
                 }
             }
         },
@@ -82,8 +82,8 @@ fluidTutorial.helloWorld.consoleHello = function (message) {
 
 Now, when we use the [ChangeApplier's](../ChangeApplier.md) `change` function to update the `message` on the parent component model, we'll see both the console and the web page display update, as the change to the parent component model's `message` value is propagated to the `message` value of each subcomponent's model, which triggers to the model listeners of each to invoke the "hello!" functions.
 
-``` javascript
-helloWorld.applier.change("message", "Hello, again, world.")
+```javascript
+helloWorld.applier.change("message", "Hello, again, world.");
 ```
 
 Next: [Restructuring Components](DeveloperIntroductionToInfusionFramework-RestructuringComponents.md)

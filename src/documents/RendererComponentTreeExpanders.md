@@ -28,8 +28,8 @@ var protoTree = {
             { "recordType:": "${recordlist.name.0}" },
             { "recordType:": "${recordlist.name.1}" },
             { "recordType:": "${recordlist.name.2}" },
-            { "recordType:": "${recordlist.name.3}" },
-            ...
+            { "recordType:": "${recordlist.name.3}" }
+            // ...
         ]
     }
 };
@@ -43,8 +43,8 @@ Expanders are specified as wrappers around a component specification in the comp
 var tree = {
     expander: {
         type: "fluid.renderer.repeat",
-        repeatID: "tab:",
-        ....
+        repeatID: "tab:"
+        // ...
     }
 };
 ```
@@ -56,15 +56,15 @@ var tree = {
     expander: [
         {
             type: "fluid.renderer.repeat",
-            repeatID: "tab:",
-            ....
+            repeatID: "tab:"
+            // ...
         },
         {
             type: "fluid.renderer.selection.inputs",
-            selectID: "language",
-            ....
-        },
-        ....
+            selectID: "language"
+            // ...
+        }
+        // ...
     ]
 };
 ```
@@ -291,24 +291,26 @@ The following fields are supported by the `fluid.renderer.condition` expander:
 
 In the following example, the `condition` is `that.options.showDeleteButton`. The renderer will evaluate the component's `showDeleteButton` option and if it is `true` will use the component tree specified by `trueTree`. Note that no `falseTree` is provided. If the option is `false` or not present, nothing will be rendered.
 
-```javascript
-expander: {
-    type: "fluid.renderer.condition",
-    condition: that.options.showDeleteButton,
-    trueTree: {
-        deleteButton: {
-            decorators: [{
-                type: "attrs",
-                attributes: {
-                    value: that.options.strings.deleteButton
-                }
-            }, {
-                type: "jQuery",
-                func: "prop",
-                args: {
-                    disabled: that.checkDeleteDisabling
-                }
-            }]
+```json5
+{
+    expander: {
+        type: "fluid.renderer.condition",
+        condition: that.options.showDeleteButton,
+        trueTree: {
+            deleteButton: {
+                decorators: [{
+                    type: "attrs",
+                    attributes: {
+                        value: that.options.strings.deleteButton
+                    }
+                }, {
+                    type: "jQuery",
+                    func: "prop",
+                    args: {
+                        disabled: that.checkDeleteDisabling
+                    }
+                }]
+            }
         }
     }
 }
@@ -316,53 +318,57 @@ expander: {
 
 In the following example, the `condition` is the return value of a call to `that.showMediumImage()`. If the function returns `true`, the image should be shown, and the `trueTree` component subtree will be used to render it. If the return value is `false`, the image should not be shown, and the `falseTree` subtree will be used to properly render the **empty space** instead of an image.
 
-```javascript
-expander: {
-    type: "fluid.renderer.condition",
-    condition: that.showMediumImage(),
-    trueTree: {
-        mediumImage: {
-            decorators: [{
-                type: "addClass",
-                classes: that.options.styles.mediumImage
-            }, {
-                type: "attrs",
-                attributes: {
-                    alt: that.options.strings.mediumImage,
-                    src: that.options.recordModel.fields
-                           && that.options.recordModel.fields.blobs
-                             && that.options.recordModel.fields.blobs.length > 0 ?
-                        that.options.recordModel.fields.blobs[0].imgMedium : ""
-                }
-            }]
+```json5
+{
+    expander: {
+        type: "fluid.renderer.condition",
+        condition: that.showMediumImage(),
+        trueTree: {
+            mediumImage: {
+                decorators: [{
+                    type: "addClass",
+                    classes: that.options.styles.mediumImage
+                }, {
+                    type: "attrs",
+                    attributes: {
+                        alt: that.options.strings.mediumImage,
+                        src: that.options.recordModel.fields
+                               && that.options.recordModel.fields.blobs
+                                 && that.options.recordModel.fields.blobs.length > 0 ?
+                            that.options.recordModel.fields.blobs[0].imgMedium : ""
+                    }
+                }]
+            },
+            mediaSnapshot: {
+                decorators: [{
+                    type: "addClass",
+                    classes: that.options.styles.mediaSnapshot
+                }]
+            }
         },
-        mediaSnapshot: {
-            decorators: [{
-                type: "addClass",
-                classes: that.options.styles.mediaSnapshot
-            }]
+        falseTree: {
+            mediaSnapshot: {}
         }
-    },
-    falseTree: {
-        mediaSnapshot: {}
     }
 }
 ```
 
 In the following example, the `condition` is a call to the function `cspace.header.assertMenuItemDisplay()` with a particular argument taken from the `itemName` subcomponent. If the function call returns `true`, the renderer component subtree specified by `trueTree` will be used.
 
-```javascript
-expander: {
-    type: "fluid.renderer.condition",
-    condition: {
-        funcName: "cspace.header.assertMenuItemDisplay",
-        args: "${{itemName}.hide}"
-    },
-    trueTree: {
-        label: {
-            target: "${{item}.href}",
-            linktext: {
-                messagekey: "${{item}.name}"
+```json5
+{
+    expander: {
+        type: "fluid.renderer.condition",
+        condition: {
+            funcName: "cspace.header.assertMenuItemDisplay",
+            args: "${{itemName}.hide}"
+        },
+        trueTree: {
+            label: {
+                target: "${{item}.href}",
+                linktext: {
+                    messagekey: "${{item}.name}"
+                }
             }
         }
     }

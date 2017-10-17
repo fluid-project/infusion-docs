@@ -72,7 +72,7 @@ fluid.defaults("fluid.tests.parentComponent", {
                     parentEvent: "{parentComponent}.events.parentEvent"
                 }
             }
-       }
+        }
     }
 });
 

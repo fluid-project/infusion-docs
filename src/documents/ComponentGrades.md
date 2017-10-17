@@ -69,22 +69,22 @@ but the grade may still function as a "mixin" grade when mentioned as the parent
 
 ```javascript
 fluid.defaults("fluid.uploader.demoRemote", {
-    gradeNames: ["fluid.component"],
-    ...
+    gradeNames: ["fluid.component"]
+    // ...
 });
 ```
 
 ```javascript
 fluid.defaults("cspace.messageBarImpl", {
-    gradeNames: ["fluid.rendererComponent"],
-    ...
+    gradeNames: ["fluid.rendererComponent"]
+    // ...
 });
 ```
 
 ```javascript
 fluid.defaults("cspace.util.relationResolver", {
-    gradeNames: ["fluid.modelComponent"],
-    ...
+    gradeNames: ["fluid.modelComponent"]
+    // ...
 });
 ```
 
@@ -94,12 +94,14 @@ The framework will automatically construct a creator function for any component 
 
 ```javascript
 fluid.defaults("fluid.uploader.fileQueueView", {
-    gradeNames: ["fluid.viewComponent"],
-    ...
+    gradeNames: ["fluid.viewComponent"]
+    // ...
 });
 
 // The framework has automatically generated this function since the grade is a component grade
-var that = fluid.uploader.fileQueueView( ... );
+var that = fluid.uploader.fileQueueView({
+    // ...
+});
 ```
 
 ## Combining Grades ##
@@ -128,7 +130,6 @@ fluid.defaults("examples.componentTwo", {
         field1: true
     },
     option: "TEST2"
-
 });
 
 fluid.defaults("examples.combinedComponent", {
@@ -194,10 +195,10 @@ fluid.defaults("examples.distributingRootComponent", {
     },
     components: {
         myCombinedComponent1: {
-            type: "examples.componentOne",
+            type: "examples.componentOne"
         },
         myCombinedComponent2: {
-            type: "examples.componentOne",
+            type: "examples.componentOne"
         }
     }
 });

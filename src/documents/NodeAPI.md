@@ -28,7 +28,7 @@ export of the same value that will be assigned to the global namespace `colin` i
 
 var colin = fluid.registerNamespace("colin");
 
-... add definitions to namespace colin, either directly or via fluid.defaults
+// Add definitions to namespace colin, either directly or via fluid.defaults
 
 module.exports = colin;
 ```

@@ -140,7 +140,7 @@ Finds the named element within the specified container, using the value in the D
 ### clear ###
 
 ```javascript
-clear()
+clear();
 ```
 
 Completely clears the cache for the DOM binder for all queries. It should be used whenever, for example, the container's markup is replaced completely, or otherwise is known to change in a wholesale way.

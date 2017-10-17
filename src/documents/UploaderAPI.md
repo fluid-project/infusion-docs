@@ -755,11 +755,13 @@ strings: {
 
 One of the options that can be provided to the Uploader is a set of CSS-based selectors identifying where in the DOM different elements can be found. The value for the option is itself a Javascript object containing name/value pairs:
 
-```javascript
-selectors: {
-    selector1Name: "selector 1 string",
-    selector2Name: "selector 2 string",
-    ...
+```json5
+{
+    selectors: {
+        selector1Name: "selector 1 string",
+        selector2Name: "selector 2 string"
+        // ...
+    }
 }
 ```
 
@@ -909,13 +911,15 @@ The different parts of the Uploader interface each have their own set of selecto
 
 Uploader uses the following selector options for Progress:
 
-```javascript
-selectors: {
-    progressBar: ".flc-uploader-queue-footer",
-    displayElement: ".flc-uploader-total-progress",
-    label: ".flc-uploader-total-progress-text",
-    indicator: ".flc-uploader-total-progress",
-    ariaElement: ".flc-uploader-total-progress"
+```json5
+{
+    selectors: {
+        progressBar: ".flc-uploader-queue-footer",
+        displayElement: ".flc-uploader-total-progress",
+        label: ".flc-uploader-total-progress-text",
+        indicator: ".flc-uploader-total-progress",
+        ariaElement: ".flc-uploader-total-progress"
+    }
 }
 ```
 
@@ -923,10 +927,12 @@ Any selectors not provided as an option will revert to the default. Implementers
 
 For example, if your markup uses all of the default selectors, except for the file queue selector and the remove button selector, you would provide the following selectors option:
 
-```javascript
-selectors: {
-    fileQueue: "#my-file-queue",
-    removeButton: "#my-remove-button"
+```json5
+{
+    selectors: {
+        fileQueue: "#my-file-queue",
+        removeButton: "#my-remove-button"
+    }
 }
 ```
 

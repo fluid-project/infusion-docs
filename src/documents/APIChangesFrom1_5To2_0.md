@@ -66,7 +66,7 @@ The utility `fluid.event.makeEventFirer` has been moved to `fluid.makeEventFirer
 In Infusion 1.5, sharing models between non-relay components requires the change applier to be shared as a member option along with the model:
 
 ```javascript
-fluid.default("fluid.parent", {
+fluid.defaults("fluid.parent", {
     gradeNames: ["fluid.modelComponent"],
     components: {
         child: {
@@ -88,7 +88,7 @@ In Infusion 2.0 where relay components are introduced, the [change applier](Chan
 just happens automatically:
 
 ```javascript
-fluid.default("fluid.parent", {
+fluid.defaults("fluid.parent", {
     gradeNames: ["fluid.modelComponent"],
     components: {
         child: {
@@ -340,7 +340,7 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
                 "message": "%prefix/textSize.json"
             }
         }
-        ...
+        // ...
     }
 });
 ```
@@ -373,8 +373,8 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
                 "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
                 "message": "%messagePrefix/textSize.json"
             }
-        },
-        ...
+        }
+        // ...
     }
 });
 ```

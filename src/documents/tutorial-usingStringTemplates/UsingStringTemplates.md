@@ -73,7 +73,7 @@ In this example, we've used an `expander` to provide "convenience" variables wit
 
 That code produces output like the following:
 
-```javascript
+```shell
   transformed options:
   {
     "one": "The term named 'one' is set to 'base one'.",
@@ -83,17 +83,19 @@ That code produces output like the following:
 
 What makes this all work is our `invokers` block:
 
-```javascript
-  invokers: {
-      parseTemplates: {
-          funcName: "fluid.transform",
-          args: ["{that}.options.templates", "{that}.transformTemplate"]
-      },
-      transformTemplate: {
-          funcName: "fluid.stringTemplate",
-          args: ["{arguments}.0", "{that}.options.terms"]
-      }
-  }
+```json5
+{
+    invokers: {
+        parseTemplates: {
+            funcName: "fluid.transform",
+            args: ["{that}.options.templates", "{that}.transformTemplate"]
+        },
+        transformTemplate: {
+            funcName: "fluid.stringTemplate",
+            args: ["{arguments}.0", "{that}.options.terms"]
+        }
+    }
+}
 ```
 
 The `parseTemplates` invoker calls `fluid.transform`, which runs a single function against every item in a map and returns an map containing the transformed results.
@@ -107,12 +109,14 @@ Since `fluid.transform` will call our invoker with a single argument, we can use
 
 The final piece is handled by an [`expander` block](../ExpansionOfComponentOptions.md#expanders).
 
-```javascript
-  transformed: {
-      expander: {
-          func: "{that}.parseTemplates"
-      }
-  },
+```json5
+{
+    transformed: {
+        expander: {
+            func: "{that}.parseTemplates"
+        }
+    }
+}
 ```
 
 The `expander` block will be replaced with the value returned by our `parseTemplates` invoker, and we will then have sensible output that we can work with in our own functions and IoC references.
@@ -182,15 +186,15 @@ In the next example, we will look at creating a child component that overrides s
 For this example, we're using our own invoker (`logState`) to display a range of variables.
 The `logState` function is called when our component is created, as configured in our `listeners` block:
 
-```javascript
-  listeners: {
-      "onCreate.log": [
-          {
-              funcName: "gpii.sandbox.variables.base.logState",
-              args:     ["{that}", {expander: {func: "{that}.parseTemplates"}}]
-          }
-      ]
-  },
+```json5
+{
+    listeners: {
+        "onCreate.log": {
+            funcName: "gpii.sandbox.variables.base.logState",
+            args:     ["{that}", {expander: {func: "{that}.parseTemplates"}}]
+        }
+    }
+}
 ```
 
 We are calling our `logState` function directly, with a full list of arguments (we could also have defined an invoker). Again, we used an `expander` to call `parseTemplates`, but `logState` doesn't know about or care about that part of the process.
@@ -211,14 +215,14 @@ We also added a child component, `gpii.sandbox.variables.child`.  We have overri
 We could also have created an instance of the parent variable using code like:
 
 ```javascript
-  gpii.sandbox.variables.base({
+gpii.sandbox.variables.base({
     templates: {
         one: "The term named one is set to '%one', also, I am a custom template."
     },
     terms: {
         two: "configured two"
     }
-  });
+});
 ```
 
 This would product output like:

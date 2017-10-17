@@ -25,20 +25,21 @@ Many renderer-related functions require a list of cutpoints, but it is rare that
 If you are using the rendererComponent grade, you can let the initialization function generate the cutpoints from your selectors. If the default selectors are defined in your component's options, the framework will automatically retrieve the selectors, generate the cutpoints, and provide them to the Renderer wherever necessary. The selector names will be used as the component IDs. This is the simplest option.
 
 ```javascript
-fluid.default("cspace.autocomplete.popup", {
+fluid.defaults("cspace.autocomplete.popup", {
     selectors: {
         noMatches: ".csc-autocomplete-noMatches",
         matches: ".csc-autocomplete-matches",
         matchItem: ".csc-autocomplete-matchItem",
         longestMatch: ".csc-autocomplete-longestMatch"
-    },
-    ...
-};
+    }
+    // ...
+});
+
 cspace.autocomplete.popup = function (container, options) {
     var that = fluid.initRendererComponent("cspace.autocomplete.popup", container, options);
-    ...
+    // ...
     return that;
-}
+};
 ```
 
 ### Generated ###
@@ -58,7 +59,7 @@ fluid.defaults("fluid.myRendererComponent", {
     }
 });
 
-var fluid.myRendererComponent.personalizeSelectorsToCutpoints = function (selectors, options) {
+fluid.myRendererComponent.personalizeSelectorsToCutpoints = function (selectors, options) {
     // Override functionality here
 };
 ```

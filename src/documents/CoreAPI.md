@@ -266,9 +266,9 @@ Rounds the supplied number to at most the number of decimal places indicated by 
 * `"floor"`: Numbers are rounded down
 
 ```javascript
-var rounded = fluid.roundToDecimal(1.555, 2) // rounded now holds 1.56
-var ceil = fluid.roundToDecimal(1.555, 2, "ceil") // rounded now holds 1.56
-var floor = fluid.roundToDecimal(1.555, 2, "floor") // rounded now holds 1.55
+var rounded = fluid.roundToDecimal(1.555, 2); // rounded now holds 1.56
+var ceil = fluid.roundToDecimal(1.555, 2, "ceil"); // rounded now holds 1.56
+var floor = fluid.roundToDecimal(1.555, 2, "floor"); // rounded now holds 1.55
 ```
 
 ### fluid.remove_if(source, fn[, target])
@@ -294,13 +294,10 @@ Scan through a list or hash of objects, removing those which match a predicate. 
 Extracts a particular member from each top-level member of a container, returning a new container of the same type. Example:
 
 ```javascript
-var cattes = [{
-    name: "Huggoe"
-    }, {
-    name: "Arthur"
-    }, {
-    name: "THER CATTE"
-    }
+var cattes = [
+    { name: "Huggoe" },
+    { name: "Arthur" },
+    { name: "THER CATTE" }
 ];
 var names = fluid.getMembers(cattes, "name");
 // names now holds ["Huggoe", "Arthur", "THER CATTE"];
@@ -367,11 +364,11 @@ var hash = {
 var CATTyears = fluid.hashToArray(hash, "species", function (newElement, oldElement) {
     newElement.yearsAgo = oldElement;
 });
-// CATTyears now contains [ {
-    species: "Proailurus",
-    yearsAgo: 25000000
-}, { // etc.
 
+// CATTyears now contains [ {
+//    species: "Proailurus",
+//    yearsAgo: 25000000
+//}, { // etc.
 ```
 
 ### fluid.flatten(array)
@@ -515,7 +512,7 @@ path segments in `path`) by writing the value `newValue` to its property named a
 fundamental invariant to be respected is that
 
 ```javascript
-fluid.get(model, fluid.set(model, path, value), path) === value
+fluid.get(model, fluid.set(model, path, value), path); // === value
 ```
 
 Even a functional programmer could admit that. A slight wrinkle, however, is the behaviour of the special path `""` or `[]`, attempting to write a value at the model

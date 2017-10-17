@@ -278,11 +278,11 @@ fluid.defaults("examples.sourceExample2", {
         position: 20
     },
     invokers: {
-       scrollTo: {
-           changePath: "position",
-           value: "{arguments}.0",
-           source: "scrollbar"
-       },
+        scrollTo: {
+            changePath: "position",
+            value: "{arguments}.0",
+            source: "scrollbar"
+        }
     },
     modelListeners: {
         position: {
@@ -360,8 +360,8 @@ The programmatic style for registering interest in model changes uses an API exp
 the difference is that the `addListener` method accepts an extra 1st argument, `spec` - an `Object` which holds the same model path reference in `path` or `segs` documented in the previous section on declarative binding:
 
 ```javascript
-applier.modelChanged.addListener(spec, listener, namespace)
-applier.modelChanged.removeListener(listener)
+applier.modelChanged.addListener(spec, listener, namespace);
+applier.modelChanged.removeListener(listener);
 ```
 
 `spec` may also include the standard member `priority` seen in the declarative record.
@@ -372,7 +372,9 @@ at the time the component is constructed. Note that programmatically attached li
 The listener is notified after the change (or set of coordinated changes forming a transaction) has already been applied to the model. The signature for these listeners is
 
 ```javascript
-function listener(value, oldValue, pathSegs, changeRequest, transaction)
+function listener(value, oldValue, pathSegs, changeRequest, transaction) {
+    // ...
+}
 ```
 
 <table>
@@ -488,7 +490,7 @@ console.log(that.model); // "finalValue"
 There are two calls which can be used to fire a change request - one informal, using immediate arguments, and a more formal method which constructs a concrete `changeRequest` object.
 
 ```javascript
-applier.change(path, value, type, source)
+applier.change(path, value, type, source);
 ```
 
 <table>
@@ -573,16 +575,16 @@ fluid.defaults("my.component", {
     modelListeners: {
         // Will fire individual change events whenever any part of "cats.hugo" changes.
         // {change}.value will correspond to each changed path within "hugo".
-        "cats.hugo.*" {
+        "cats.hugo.*": {
             funcName: "{that}.printChange",
-            args: [{change}.value]
+            args: ["{change}.value"]
         },
 
         // Will fire a single composite change event whenever any part of "cats.clovis" changes.
         // {change}.value will contain the new state of the "clovis" object.
         "cats.clovis": {
             funcName: "{that}.printChange",
-            args: [{change}.value]
+            args: ["{change}.value"]
         }
     }
 });
@@ -593,11 +595,11 @@ c.applier.change("cats.hugo", {
     name: "Hugonaut",
     colours: ["hard to tell"]
 });
-> "Hugonaut"
-> ["hard to tell"]
+// "Hugonaut"
+// ["hard to tell"]
 
 c.applier.change("cats.clovis.name", "THER CATTT!");
-> {name: "THER CATTT!", colours: ["white", "black spots", "black moustache"]}
+// {name: "THER CATTT!", colours: ["white", "black spots", "black moustache"]}
 ```
 
 ## Low-level ChangeApplier APIs ##

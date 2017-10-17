@@ -26,9 +26,9 @@ To use a model with your component, you need to use the `fluid.modelComponent` g
 ```javascript
 fluid.defaults("tutorials.modelBearingComponent", {
     gradeNames: ["fluid.modelComponent"],
-    ...
+    // ...
     model: {
-        ...
+        // ...
     }
 });
 ```
@@ -67,6 +67,7 @@ fluid.defaults("tutorials.currencyConverter", {
         updateAmount: {
             funcName: "tutorials.currencyConverter.updateAmount",
             args: ["{that}", "{arguments}.0"] // amount
+        }
     },
     modelListeners: {
         convertedAmount: {
@@ -104,7 +105,7 @@ As an example, let's consider a component that need to record a date. Your `mode
 ```javascript
 fluid.defaults("tutorials.modelBearingComponent", {
     gradeNames: ["fluid.modelComponent"],
-    ...
+    // ...
     model: {
         date: null
     }
@@ -118,7 +119,7 @@ Our work comes in two parts - firstly, writing a global helper function which re
 ```javascript
 tutorials.getCurrentDate = function () {
     return new Date();
- };
+};
 
 fluid.defaults("tutorials.datedComponent", {
     gradeNames: ["fluid.modelComponent"],
@@ -126,9 +127,8 @@ fluid.defaults("tutorials.datedComponent", {
         date: {
             expander: {
                 funcName: "tutorials.getCurrentDate"
-                }
-             }
-          }
+            }
+        }
     }
 });
 ```

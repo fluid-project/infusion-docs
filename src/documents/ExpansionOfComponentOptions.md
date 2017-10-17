@@ -21,7 +21,7 @@ Expanders are specified using the keyword `expander` in the component defaults:
 fluid.defaults("component.name", {
     optionName: {
         expander: {
-            ...
+            // ...
         }
     }
 });
@@ -74,7 +74,7 @@ fluid.defaults("cspace.search.searchView", {
                 }
             }
         }
-   }
+    }
 });
 ```
 

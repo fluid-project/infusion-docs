@@ -16,7 +16,7 @@ In the process, we'll be looking at some other important characteristics of Infu
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/egBObY?editors=1111">Live Example of the code below on CodePen</a></div>
 
-``` javascript
+```javascript
 // The console hello functionality is now defined as a separate
 // component
 fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
@@ -36,18 +36,16 @@ fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
             // Here, "{that}" means the context of the current
             // component configuration (consoleHello)
             args: ["{that}.model.message"]
-        },
+        }
     }
 });
 
-// We'll update the name of the associated function at the same
-// time
+// We'll update the name of the associated function at the same time.
 fluidTutorial.helloWorld.consoleHello.sayHello = function (message) {
     console.log(message);
 };
 
-// The web page hello functionality is now defined as a separate
-// component
+// The web page hello functionality is now defined as a separate component.
 fluid.defaults("fluidTutorial.helloWorld.displayHello", {
     gradeNames: ["fluid.viewComponent"],
     // We define a default message here so that
@@ -107,12 +105,12 @@ fluid.defaults("fluidTutorial.helloWorld", {
 
 We'll also create an instance of this component in a way that shows how any Infusion component defaults can be overridden:
 
-``` javascript
-helloWorld = fluidTutorial.helloWorld({
-  model: {
-      message: "Hello, restructured component world!"
+```javascript
+var helloWorld = fluidTutorial.helloWorld({
+    model: {
+        message: "Hello, restructured component world!"
     }
-  });
+});
 ```
 
 Notice that the initial message is changed - an Infusion grade definition created by `fluid.defaults` is exactly that, a default definition, and is fully extensible and reconfigurable even at runtime by passing in another block of configuration.

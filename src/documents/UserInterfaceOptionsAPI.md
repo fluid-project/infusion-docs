@@ -85,7 +85,7 @@ var myComponent = component.name("#myContainerID", {
     listeners: {
         eventName1: functionName,
         eventName2: function (params) {
-            ...
+            // ...
         }
     }
 });
@@ -157,7 +157,7 @@ The second argument to the creator function is the options argument. This is a J
 var uio = fluid.uiOptions.prefsEditor(".myContainer", {
     <option1Name>: <option1value>,
     <option2Name>: <option2value>
-    ...
+    // ...
 });
 ```
 

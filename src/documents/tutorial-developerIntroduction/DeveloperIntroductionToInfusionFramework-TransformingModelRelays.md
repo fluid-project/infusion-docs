@@ -12,7 +12,7 @@ In the code below, we add a second `fluidTutorial.helloWorld.speakHello` subcomp
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/gWGQyN?editors=1111">Live Example of the code below on CodePen</a></div>
 
-``` javascript
+```javascript
 var helloWorld;
 
 fluid.defaults("fluidTutorial.helloWorld.sayHello", {
@@ -34,7 +34,7 @@ fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
         sayHello: {
             "funcName": "fluidTutorial.helloWorld.consoleHello.sayHello",
             args: ["{that}.model.message"]
-        },
+        }
     }
 });
 
@@ -125,13 +125,13 @@ fluid.defaults("fluidTutorial.helloWorld", {
                             input: "{helloWorld}.model.message",
                             // The function to call to transform
                             // the input
-                            type: "fluidTutorial.helloWorld.reverseString",
+                            type: "fluidTutorial.helloWorld.reverseString"
                         },
                         // The target point on the component model
                         // where the transformed value will be relayed
                         target: "message"
                     }
-                },
+                }
             }
         }
 
@@ -141,11 +141,11 @@ fluid.defaults("fluidTutorial.helloWorld", {
 // This new function reverses and returns a string
 fluidTutorial.helloWorld.reverseString = function (str) {
     return str.split("").reverse().join("");
-}
+};
 
 helloWorld = fluidTutorial.helloWorld({
-  model: {
-      message: "Hello, world!"
+    model: {
+        message: "Hello, world!"
     }
 });
 ```

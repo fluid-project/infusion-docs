@@ -13,7 +13,7 @@ To use a decorator, include it in the component tree for the component in questi
 
 Decorators are specified using a notation similar to that of [Subcomponents](tutorial-gettingStartedWithInfusion/Subcomponents.md) in an `options` structure. They include a `type` field and whatever other fields are necessary, based on the type:
 
-```javascript
+```json5
 {
     ID: "my-id",
     value: aValue,
@@ -206,7 +206,7 @@ decorators: [{
 
 Perhaps the most frequently used decorator is the jQuery decorator. This will accept any jQuery function and its arguments, and invoke that function, as the rendered markup is placed into the document. Here is an example of specifying a UILink component together with a jQuery-bound `click()` handler:
 
-```javascript
+```json5
 decorators: [{
     type: "jQuery",
     func: "click",
@@ -224,7 +224,7 @@ The `addClass` decorator allows a CSS class to be attached to the rendered node.
 
 Here is a simple component which has been decorated with two CSS classes:
 
-```javascript
+```json5
 {
     ID: "my-menu",
     value: "Cheeses",
@@ -241,7 +241,7 @@ The `removeClass` decorator allows a CSS class to be removed from the rendered n
 
 Here is a simple component for which we will remove a CSS class:
 
-```javascript
+```json5
 {
     ID: "my-menu",
     value: "Cheeses",
@@ -262,9 +262,9 @@ Here is a short sequence showing a possible use of `identify`:
 var tree = {
     ID: "data-row:",
     decorators: {
-        identify: "this-catt",
-        }
-    };
+        identify: "this-catt"
+    }
+};
 var idMap = {};
 fluid.selfRender($(".paged-content-2"), tree, {idMap: idMap});
 fluid.jById(idMap["this-catt"]).show();
@@ -279,12 +279,14 @@ This is a highly powerful decorator, that completes the **active** functionality
 The full form of the decorator takes three members, `func`, `container` and `args`, mirroring the instantiation syntax of a standard Fluid Component - as described in [Understanding Infusion Components](UnderstandingInfusionComponents.md), this takes the form:
 
 ```javascript
-fluid.componentName = function(container, options);
+fluid.componentName = function (container, options) {
+    // ...
+};
 ```
 
 In this case, the equivalent decorator instantiation takes the form:
 
-```javascript
+```json5
 {
     decorators: {
         type: "fluid",
@@ -303,7 +305,7 @@ There is no specially dehydrated form for the `fluid` decorator – however, lik
 
 The `attrs` director is simple and crude - it allows freeform access to all of the attributes of the rendered node. Since this is not likely to result in a very markup-agnostic relationship, its use is only recommended in special situations. The decorator takes a value named `attributes` which is a free hash of keys to values, which will be applied _"on top of"_ the target node as it is rendered, overwriting any values which were inherited from the original markup template.
 
-```javascript
+```json5
 {
     ID: "component-names",
     value: "Reorderer",
@@ -321,12 +323,14 @@ The final implemented decorator, `event`, allows direct access to the functional
 
 For example, this decorator:
 
-```javascript
-decorators: {
-    type: "event",
-    event: "onClick",
-    handler: function() {
-        alert("You are using some grubby browser-level functionality");
+```json5
+{
+    decorators: {
+        type: "event",
+        event: "onClick",
+        handler: function() {
+            alert("You are using some grubby browser-level functionality");
+        }
     }
 }
 ```

@@ -30,7 +30,7 @@ fluid.uiOptions(".my-uio-container", {
             }
         }
     }
-);
+});
 ```
 
 The example above shows a simplified version of a situation with Infusion's "[UI Options](UserInterfaceOptionsAPI.md)" component. In practice, the user of the component would have to write an even more deeply nested piece of configuration than this, if the developer had not made use of the `distributeOptions` directive in the component's options block, together with the use of "IoCSS" expressions to distribute the user's options to the right place in the component tree, as shown in the following example:
@@ -132,7 +132,7 @@ The `sessionManager`, wherever it is in the set of child components, will be gra
 ```javascript
 fluid.defaults("fluid.moduleLayoutHandler", {
     gradeNames: ["fluid.layoutHandler"],
-    ...
+    // ...
     distributeOptions: {
     // unusual: not an IoCSS selector - upward-matching selector distributes options back to parent before instantiation ends
         target: "{reorderer}.options",
@@ -141,19 +141,19 @@ fluid.defaults("fluid.moduleLayoutHandler", {
                 movables: {
                     expander: {
                         func: "{that}.makeComputeModules",
-                        args: [false],
+                        args: [false]
                     }
                 },
                 dropTargets: {
                     expander: {
                         func: "{that}.makeComputeModules",
-                        args: [false],
+                        args: [false]
                     }
                 },
                 selectables: {
                     expander: {
                         func: "{that}.makeComputeModules",
-                        args: [true],
+                        args: [true]
                     }
                 }
             }
@@ -177,9 +177,9 @@ fluid.defaults("fluid.tests.uploader", {
         }
     },
     distributeOptions: [{
-        target: "{that > uploaderImpl}.options" // Target a directly nested component matching the context "uploaderImpl"
-        source: "{that}.options",               // Distribute ALL of our options there, except exclusions:
-        exclusions: ["components.uploaderContext", "components.uploaderImpl"], // options targetted directly at these subcomponents are left undisturbed in place
+        target: "{that > uploaderImpl}.options", // Target a directly nested component matching the context "uploaderImpl"
+        source: "{that}.options", // Distribute ALL of our options there, except exclusions:
+        exclusions: ["components.uploaderContext", "components.uploaderImpl"] // options targetted directly at these subcomponents are left undisturbed in place
 
     }],
     progressiveCheckerOptions: {

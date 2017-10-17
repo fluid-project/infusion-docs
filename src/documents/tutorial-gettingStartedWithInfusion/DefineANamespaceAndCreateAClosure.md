@@ -33,12 +33,12 @@ So what does this look like in general?
     // a private function, only accessible to other things
     // inside this closure - this is discouraged
     var privateFunc = function () {
-        ...
+        // ...
     };
 
     // a public function, attached to the namespace - this is recommended
     mynamespace.publicFunc = function () {
-        ...
+        // ...
     };
 
 })(jQuery, fluid_2_0);
@@ -60,11 +60,11 @@ So what might this look like in your currency converter application? Well, you m
 
     // EITHER: the converter creation function - this is discouraged
     currency.converter = function () {
-        ...
+        // ...
     };
     // OR: a creator function automatically managed by Infusion - this is recommended
     fluid.defaults("currency.converter", {
-        ...
+        // ...
     });
 
 })(jQuery, fluid_2_0);

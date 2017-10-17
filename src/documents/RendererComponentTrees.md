@@ -7,10 +7,10 @@ category: Infusion
 
 A renderer **component tree** describes the UI in terms of **renderer components** (not to be confused with [Infusion Components](UnderstandingInfusionComponents.md)). A renderer component is a data structure that represent the contents and data binding function of a view, separate from any particular rendering of it. For example, the component representing a 'selection' would include information regarding the available choices, the display strings associated with the choices, and the current selection:
 
-```javascript
+```json5
 {
     optionlist: ["kitchen", "livingRoom", "bedroom", "diningRoom"],
-    optionnames: ["Kitchen", "Living Room", "Bedroom", "Dining Room"]
+    optionnames: ["Kitchen", "Living Room", "Bedroom", "Dining Room"],
     selection: "${myModel.roomChoice}"
 }
 ```

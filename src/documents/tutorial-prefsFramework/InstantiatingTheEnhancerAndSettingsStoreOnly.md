@@ -26,9 +26,9 @@ Build the settings store and enhancer with a call to the Preferences Framework B
 ### Example: Using the Builder with the `auxiliarySchema` Property ###
 
 ```javascript
-vary myAuxiliarySchema = {
-    namespace: "my.prefs",
-    ...
+var myAuxiliarySchema = {
+    namespace: "my.prefs"
+    // ...
 };
 
 fluid.prefs.builder({
@@ -43,8 +43,8 @@ fluid.prefs.builder({
 fluid.defaults("my.auxSchemaGrade", {
     gradeNames: ["fluid.prefs.auxSchema"],
     auxiliarySchema: {
-        namespace: "my.prefs",
-        ....
+        namespace: "my.prefs"
+        // ...
     }
 });
 

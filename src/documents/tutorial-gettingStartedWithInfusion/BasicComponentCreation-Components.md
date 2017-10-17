@@ -25,8 +25,8 @@ the component name and an object containing the defaults. The parent grades for 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
     gradeNames: "fluid.component",
-    option1: "default value 1",
-    ...
+    option1: "default value 1"
+    // ...
 });
 ```
 
@@ -53,11 +53,11 @@ The Infusion [Inline Edit](../to-do/InlineEdit.md) component uses a tooltip and 
 
 ```javascript
 fluid.defaults("fluid.inlineEdit", {
-    ...
+    // ...
     useTooltip: true,
     tooltipText: "Select or press Enter to edit",
-    tooltipDelay: 1000, // in milliseconds
-    ...
+    tooltipDelay: 1000 // in milliseconds
+    // ...
 });
 ```
 
@@ -67,7 +67,7 @@ The Infusion [Progress](../to-do/Progress.md) component uses jQuery animations t
 
 ```javascript
 fluid.defaults("fluid.progress", {
-    ...
+    // ...
     showAnimation: {
         params: {
             opacity: "show"
@@ -80,8 +80,8 @@ fluid.defaults("fluid.progress", {
             opacity: "hide"
         },
         duration: "slow"
-    }, // forwarded to $().fadeOut("slow")
-    ...
+    } // forwarded to $().fadeOut("slow")
+    // ...
 });
 ```
 
@@ -105,8 +105,8 @@ The [IoC - Inversion of Control](../IoCAPI.md) system will automatically generat
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
     gradeNames: "fluid.component",
-    option1: "default value 1",
-    ...
+    option1: "default value 1"
+    // ...
 });
 ```
 
@@ -120,7 +120,7 @@ as well as details of where the arguments that the function accepts should be so
 fluid.defaults("tutorials.simpleComponent", {
     gradeNames: "fluid.component",
     option1: "default value 1",
-    ...
+    // ...
     invokers: {
         publicFunction: {
             funcName: "tutorials.simpleComponent.publicFunction",
@@ -131,7 +131,7 @@ fluid.defaults("tutorials.simpleComponent", {
 
 // implementation of the public function registered as an invoker above
 tutorials.simpleComponent.publicFunction = function (that) {
-    ...
+   // ...
 };
 ```
 
@@ -150,7 +150,6 @@ fluid.defaults("tutorials.currencyConverter", {
         convert: {
             funcName: "tutorials.currencyConverterAuto.convert",
             args: ["{that}.options.exchangeRate", "{arguments}.0"] // amount
-            }
         }
     }
 });
@@ -185,7 +184,7 @@ All standard Fluid components descended from `fluid.component` support events. T
 ```javascript
 fluid.defaults("tutorials.eventedComponent", {
     gradeNames: "fluid.component",
-    ...
+    // ...
     events: {
         onAnAction: null,
         afterAnAction: null,
@@ -209,7 +208,7 @@ Suppose you're creating a component that is responsible for managing records of 
 // Declare the events in the defaults
 fluid.defaults("tutorials.recordEditor", {
     gradeNames: "fluid.component",
-    ...
+    // ...
     events: {
         afterSave: null,
         onRemove: "preventable",

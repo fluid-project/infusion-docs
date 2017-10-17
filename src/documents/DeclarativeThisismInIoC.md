@@ -12,7 +12,7 @@ For more details on the differences between **that-ist** and **this-ist** approa
 
 A **this-ist** function can be declaratively bound to [invokers](Invokers.md) and listeners in an IoC tree and takes the following structure:
 
-```javascript
+```json5
 {
     "this": "{that}.dom.elm",
     "method": "click",
@@ -68,14 +68,14 @@ fluid.defaults("demo.hw", {
     gradeNames: ["fluid.viewComponent"],
     selectors: {
         button: "demo-hw-button",
-    title: "demo-hw-title"
+        title: "demo-hw-title"
     },
     strings: {
         title: "Hello World!"
     },
     invokers: {
         // writes the supplied string to the title element
-    writeText: {
+        writeText: {
             "this": "{that}.dom.title",
             "method": "text",
             "args": ["{that}.options.strings.title"]
@@ -97,9 +97,9 @@ In the following example, taken from the Infusion Table of Contente component, *
 ```javascript
 fluid.defaults("fluid.tableOfContents", {
     gradeNames: ["fluid.viewComponent"],
-    ...
+    // ...
     invokers: {
-        ...
+        // ...
         hide: {
             "this": "{that}.dom.tocContainer",
             "method": "hide"
@@ -109,8 +109,8 @@ fluid.defaults("fluid.tableOfContents", {
             "method": "show"
         }
     }
-    ...
-}
+    //...
+});
 ```
 
 In the following example, taken from the Infusion Inline Edit component, a **this-ist** function is used to invoke the `init` function on the tinyMCE object associated with the component as a listener on the `onCreate` event.
@@ -125,8 +125,8 @@ fluid.defaults("fluid.inlineEdit.tinyMCE", {
             namespace: "initTinyMCE",
             args: "{that}.options.tinyMCE"
         }
-    },
-    ...
+    }
+    // ...
 });
 ```
 
@@ -135,13 +135,14 @@ In the following example, taken from the Infusion Pager component, a **this-ist*
 ```javascript
 fluid.defaults("fluid.pager", {
     gradeNames: ["fluid.viewComponent"],
-    ...
+    // ...
     listeners: {
         onCreate: {
             "this": "{that}.container",
             method: "attr",
             args: ["role", "application"]
-        },
-    ...
+        }
+        // ...
+    }
 });
 ```

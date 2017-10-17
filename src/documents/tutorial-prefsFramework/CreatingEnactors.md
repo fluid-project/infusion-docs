@@ -49,9 +49,9 @@ fluid.defaults("fluid.prefs.enactor.textSize", {
         "fluid.prefs.textSize": {
             "model.value": "default"
         }
-    },
-    ....
-}
+    }
+    // ...
+});
 ```
 
 ```javascript
@@ -61,9 +61,9 @@ fluid.defaults("fluid.prefs.enactor.emphasizeLinks", {
         "fluid.prefs.emphasizeLinks": {
             "model.value": "default"
         }
-    },
-    ....
-}
+    }
+    // ...
+});
 ```
 
 ```javascript
@@ -76,9 +76,9 @@ fluid.defaults("fluid.videoPlayer.panels.captionsSettings", {
         "fluid.videoPlayer.captionLanguage": {
             "model.language": "default"
         }
-    },
-    ....
-}
+    }
+    // ...
+});
 ```
 
 ## Binding to Model Changes ##
@@ -114,7 +114,7 @@ gpii.pmt.enactors.magnification.magnify = function (that, newModel) {
 };
 
 fluid.defaults("gpii.pmt.enactors.magnification", {
-    ....
+    // ...
     modelListeners: {
         "magnificationFactor": {
             funcName: "gpii.pmt.enactors.magnification.magnify",

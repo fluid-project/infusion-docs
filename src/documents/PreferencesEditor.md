@@ -142,8 +142,12 @@ The simplest way to create a separated panel preferences editor is to provide th
 ```javascript
 var prefsEditor = fluid.prefs.create("#myPrefsEditor", {
     build: {
-        primarySchema: {...},
-        auxiliarySchema: {...}
+        primarySchema: {
+            // ...
+        },
+        auxiliarySchema: {
+            // ...
+        }
     }
 });
 ```
@@ -153,7 +157,7 @@ The preferences editor will be instantiated and rendered into the container spec
 ## Examples ##
 
 ```javascript
- fluid.prefs.create("#myPrefsEditor", {
+fluid.prefs.create("#myPrefsEditor", {
     build: {
         gradeNames: ["fluid.prefs.auxSchema.starter"],
         auxiliarySchema: {

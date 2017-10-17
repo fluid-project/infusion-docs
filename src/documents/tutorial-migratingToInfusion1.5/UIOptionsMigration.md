@@ -150,7 +150,7 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 fluid.uiOptions.prefsEditor("container", {
     terms: {
         templatePrefix: "pathToTemplates",
-        messagePrefix: "pathToMessages",
+        messagePrefix: "pathToMessages"
     },
     tocTemplate: "pathToTemplate"
 });

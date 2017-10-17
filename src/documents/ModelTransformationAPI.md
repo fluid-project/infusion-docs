@@ -73,7 +73,7 @@ The top-level structure of a full transformation document `{Transform}` is keyed
 {
     <output-el-path1>: <input-el-path1> OR {SingleTransform},
     <output-el-path2>: <input-el-path2> OR {SingleTransform}
-    ...
+    // ...
 }
 ```
 
@@ -83,7 +83,7 @@ A `{SingleTransform}` record is as follows:
 {
     transform: {
         "type": <transform-type>
-        ...
+        // ...
     }
 }
 ```
@@ -1652,8 +1652,8 @@ This is a very powerful and flexible transformation function, which maps a defin
         inputValue: <the value to match>,
         outputValue: <output value>,
         outputPath: <output path>
-    }, {
-        ...
+    },{
+        // ...
     }],
     noMatch: {
         outputUndefinedValue: <output `undefined` flag>,

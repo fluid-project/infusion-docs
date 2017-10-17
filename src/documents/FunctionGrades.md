@@ -24,7 +24,7 @@ var examples = fluid.registerNamespace("examples");
 
 examples.linearMap = function (m, x, c) {
     return m * x + c;
-}
+};
 ```
 
 This registers a global function named `examples.linearMap` into the global namespace.

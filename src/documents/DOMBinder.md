@@ -21,7 +21,7 @@ the selector is given a name and the DOM Binder's `locate()` method is used, lik
 selectors: {
     button: ".button-classname"
 }
-...
+// ...
 var button = that.locate("button");
 ```
 
@@ -149,7 +149,7 @@ but runs the risk of returning stale results. The DOM binder's cache is populate
 whenever a query is submitted via `locate()`.
 
 ```javascript
-that.dom.clear()
+that.dom.clear();
 ```
 
 The `clear()` method completely clears the cache for the DOM binder for all queries.
@@ -182,8 +182,8 @@ fluid.defaults("fluid.inlineEdit", {
         text: ".text",
         editContainer: ".editContainer",
         edit: ".edit"
-    },
-    ....
+    }
+    // ...
 });
 ```
 

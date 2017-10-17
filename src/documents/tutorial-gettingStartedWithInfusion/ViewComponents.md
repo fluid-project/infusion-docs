@@ -24,7 +24,7 @@ To create a view component, you need to use the **viewComponent** grade. To do t
 ```javascript
 fluid.defaults("tutorials.viewBearingComponent", {
     gradeNames: "fluid.viewComponent",
-    ...
+    // ...
     selectors: {
         selector1: ".class1",
         selector2: ".class2"
