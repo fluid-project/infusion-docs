@@ -18,6 +18,9 @@ module.exports = function (grunt) {
                 src: [ "./src/**/*.js", "./tests/**/*.js","./*.js" ]
             },
             md: {
+                options: {
+                    configFile: ".eslintrc-md.json"
+                },
                 src: [ "./*.md","./src/documents/**/*.md" ]
             }
         },
