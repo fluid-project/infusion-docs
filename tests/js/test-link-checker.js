@@ -1,3 +1,4 @@
+/* eslint-env node */
 /*
 
     Test the link checker to confirm that it correctly identifies a range of broken links, and that it does not

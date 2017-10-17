@@ -1,3 +1,4 @@
+/* eslint-env node */
 /*
 
  Trawl our generated content and ensure that all links within and between pages on our site are valid.

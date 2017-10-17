@@ -193,7 +193,7 @@ fluid.defaults("examples.boiledListenerComponent", {
         simpleEvent: { // In practice it's unlikely that this listener would be written in the same grade as the event,
                        // since this case there would be little reason for the signature to mismatch. It's more likely
                        // this configuration would appear in another grade, or supplied as direct options,
- // subcomponent options, or distributeOptions
+                       // subcomponent options, or distributeOptions
             funcName: "examples.externalListener",
             args: ["{that}", "{arguments.0"]
         }
@@ -216,7 +216,7 @@ using a standard upward-matching [IoC Context Selector](Contexts.md). If you nee
 fluid.defaults("examples.injectedListenerParent", {
     gradeNames: "fluid.component",
     events: {
-        parentEvent: null,
+        parentEvent: null
     },
     components: {
         child: {

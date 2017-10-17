@@ -1,3 +1,4 @@
+/* eslint-env node */
 /*
 
     A stub to allow others to `fluid.require` this package and reuse its content, as in:

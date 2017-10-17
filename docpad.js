@@ -1,17 +1,19 @@
+/* eslint-env node */
 /*
-Copyright 2014 OCAD University
+    Copyright 2014 OCAD University
+    Copyright 2017 Raising the Floor, International
 
-Licensed under the Educational Community License (ECL), Version 2.0 or the New
-BSD license. You may not use this file except in compliance with one these
-Licenses.
+    Licensed under the Educational Community License (ECL), Version 2.0 or the New
+    BSD license. You may not use this file except in compliance with one these
+    Licenses.
 
-You may obtain a copy of the ECL 2.0 License and BSD License at
-https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
+    You may obtain a copy of the ECL 2.0 License and BSD License at
+    https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 */
-
-var URI = require("URIjs");
+"use strict";
+var uri  = require("urijs");
 var path = require("path");
-var fs = require("fs-extra");
+var fs   = require("fs-extra");
 
 var docsVersion = "development";
 
@@ -38,14 +40,14 @@ var githubLocation = function () {
 // Used for links to static resources such as CSS files. So that the generated
 // DocPad output is independent of the URL that it is hosted at.
 var relativeUrl = function (forUrl, relativeToUrl) {
-    return URI(forUrl).relativeTo(relativeToUrl);
+    return uri(forUrl).relativeTo(relativeToUrl);
 };
 
 // Helper function to determine if two values are equal
 // Used to determine which table of contents category to display on a particular
 // page.
 var ifEqual = function (a, b, options) {
-    if (a == b) {
+    if (a === b) {
         return options.fn(this);
     } else {
         return options.inverse(this);
@@ -91,7 +93,7 @@ module.exports = {
         }
     },
     events: {
-        generateBefore: function (options) {
+        generateBefore: function () {
             // Remove the previous incarnation of index.html since it causes a faulty redirect
             fs.removeSync("out/index.html");
         },

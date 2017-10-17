@@ -46,7 +46,7 @@ fluid.tests.docs.linkChecker.scanSinglePageOrFinish = function (that) {
         fluid.tests.docs.linkChecker.checkPageLinks(that);
 
         var report = fluid.model.transformWithRules(that, that.options.rules.report);
-        that.events.onResultsAvailable.fire(report)
+        that.events.onResultsAvailable.fire(report);
     }
 };
 
