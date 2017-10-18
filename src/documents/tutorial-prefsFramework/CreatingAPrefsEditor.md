@@ -336,25 +336,25 @@ Let’s look at the Schema itself in detail:
     auxiliarySchema: {
         // the loaderGrade identifies the "base" form of preference editor desired
         loaderGrades: ["fluid.prefs.fullNoPreview"],
-    
+
         // 'terms' are strings that can be re-used elsewhere in this schema;
         terms: {
             templatePrefix: "html"
         },
-    
+
         // the main template for the preference editor itself
         template: "%templatePrefix/prefsEditorTemplate.html",
-    
+
         heatedSeats: {
             // this 'type' must match the name of the pref in the primary schema
             type: "awesomeCars.prefs.heatedSeats",
             panel: {
                 // this 'type' must match the name of the panel grade created for this pref
                 type: "awesomeCars.prefs.panels.heatedSeats",
-    
+
                 // selector indicating where, in the main template, to place this panel
                 container: ".awec-heatedSeats",
-    
+
                 // the template for this panel
                 template: "%templatePrefix/heatedSeats.html"
             }
@@ -430,14 +430,14 @@ The next thing in the Auxiliary Schema is the configuration for the heated seats
     heatedSeats: {
         // this 'type' must match the name of the pref in the primary schema
         type: "awesomeCars.prefs.heatedSeats",
-    
+
         panel: {
             // this 'type' must match the name of the panel grade created for this pref
             type: "awesomeCars.prefs.panels.heatedSeats",
-    
+
             // selector indicating where, in the main template, to place this panel
             container: ".awec-heatedSeats",
-    
+
             // the template for this panel
             template: "%templatePrefix/heatedSeats.html"
         }
