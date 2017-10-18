@@ -245,7 +245,7 @@ The values of built-in sources supported as values in `excludeSource` and `inclu
     </tbody>
 </table>
 
-##### Example featuring built-in change source filtering: ####
+##### Example featuring built-in change source filtering: #####
 
 ```javascript
 fluid.defaults("examples.sourceExample1", {
