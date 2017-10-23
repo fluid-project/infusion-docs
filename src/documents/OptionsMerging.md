@@ -12,12 +12,12 @@ and where manual merging code might still be required.
 
 The Fluid component API therefore contains a specialised merging routine, `fluid.merge`, which allows the user to specify an (optional) more fine-grained **merge policy** object, which allows detailed behaviour during options merging to still be specified by a declarative strategy.
 
-## Use of fluid.merge ##
+## Use of fluid.merge
 
 `fluid.merge` is invoked automatically by the framework as part of standard component initialisation. However, the component author does have the capability of directing the operation of `fluid.merge` by means of specifying the `policy` object.
 Every standard Fluid component accepts a top-level option named `mergePolicy`  which will be supplied as the policy argument to `fluid.merge`. This option itself also undergoes merging, **although the user may not specify policy for the merging of the mergePolicy**, and users may contribute material into the mergePolicy from any parent grades of the component, arguments, etc.
 
-## Structure of the Merge Policy Object ##
+## Structure of the Merge Policy Object
 
 The merge policy object is a hash of keys, which represent EL paths into the target object, onto values which represent a policy.
 
@@ -67,14 +67,15 @@ The following are the policy types that are supported, determined by the key's v
     </tbody>
 </table>
 
-## fluid.merge signature ##
+## fluid.merge signature
 
 <div class="infusion-docs-note"><strong>Note:</strong> The use of <code>fluid.merge</code> directly is deprecated. The framework user should never need to invoke <code>fluid.merge</code> directly - it is invoked automatically by the framework as part of standard component initialisation.</div>
 
 The signature to `fluid.merge` is
 
 ```javascript
-fluid.merge(policy, target, source-1, ... source-n);
+/* you can have as many sources as you like, one per argument from the third argument on. */
+fluid.merge(policy, target, source1, /* ... */ sourceN);
 ```
 
 where `policy` is the _merge policy object_ (may be empty), `target` is the object to (destructively) be the target of the merge operation, and `source-1` through `source-n` are a list of a number of "source" options structure from which the merge is to be performed.

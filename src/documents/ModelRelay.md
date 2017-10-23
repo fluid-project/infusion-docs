@@ -14,14 +14,14 @@ application design.
 
 Every Infusion component descended from the grade `fluid.modelComponent` (a model-bearing component) supports a configuration area named `modelRelay` in which these rules can be defined, as well as allowing a short-form _implicit syntax_ in the `model` area which can be used where the model values to be synchronised are identical at each end of the relationship.
 
-### Two styles for configuring model relay ###
+### Two styles for configuring model relay
 
 There are two styles of configuration for setting up model relay &#8212; firstly, using the _[implicit syntax](#implicit-model-relay-style)_ which just consists of [IoC References](IoCReferences.md) from the model configuration for one model-bearing component to another &#8212;
 that is, in the component's configuration under the top-level `model` entry. Secondly, the _[explicit syntax](#explicit-model-relay-style)_ which involves an entry in the component's top-level `modelRelay` block expressing a more complex rule,
 most likely involving some form of [Model Transformation](ModelTransformationAPI.md) to apply during the relay process. Both of these styles will set up a permanent and bidirectional relationship between the two models at the ends of the relay &#8212;
 the relationship will be established as the components construct (during the _[initial transaction](#the-initial-transaction)_), and will persist until one of the components at the endpoints is destroyed.
 
-### How model relay updates propagate ###
+### How model relay updates propagate
 
 A set of models which are linked by relay rules are called a _**model skeleton**_. Whenever an update (via its [ChangeApplier](ChangeApplier.md)) is received to any model which is part of the skeleton, a _**transaction**_
 begins in order to propagate it to all the related models with which it should be synchronised. The framework will keep propagating the change to all the models in the skeleton until they have all been brought up to date &#8212;
@@ -30,7 +30,7 @@ however, these updates will initially occur privately within the transaction and
 If any of these listeners have a [`priority`](Priorities.md) field attached to the listener declaration, the framework will sort all of these listeners globally across the entire model skeleton impacted by the change, before starting to
 notify them.
 
-### The initial transaction ###
+### The initial transaction
 
 Whenever a new model-bearing component (or an entire tree of model-bearing components) constructs, there will be a particular, large style of update transaction known as an __initial transaction__.
 This is very similar to any other synchronisation transaction caused by a [model relay update](#how-model-relay-updates-propagate), although it will typically involve more data since all of the initial values of all the involved models must be taken into account &#8212;
@@ -42,7 +42,7 @@ complex process involving many passes through the components.
 You can control which components have the default values for their models honoured and which ignored during the initial transaction, by using the directives `forward` and `backward` in the `modelRelay` block - these are discussed in the section
 [Controlling Propagation Through a Relay Rule](#controlling-propagation-through-a-relay-rule).
 
-## Implicit model relay style ##
+## Implicit model relay style
 
 This is the most straightforward style for setting up model relay. This takes the form of a simple [IoC Reference](IoCReferences.md) between one component's model and other.
 Here is a component which has a child component which sets up a model relay relationship with it:
@@ -85,7 +85,7 @@ that.child.applier.change("childValue", 5); // update the child's model to hold 
 console.log(that.model.parentValue);        // 5 - The parent's model value has been updated
 ```
 
-## Explicit model relay style ##
+## Explicit model relay style
 
 This style is used when we require a [Model Transformation](ModelTransformationAPI.md) rule to mediate between the updates synchronising one model value with another, or more control over the occasions
 when the updates occur.
@@ -94,7 +94,7 @@ one component might represent a sound volume level on a scale of 0-100, whereas 
 The framework is capable of accommodating this kind of difference in viewpoint by allowing the user to explicitly list a transformation rule relating one model's instance of a value with another.
 This is done using the `modelRelay` section of a component's top-level options. Here is the layout of this options section:
 
-### Layout of top-level `modelRelay` section of `fluid.modelComponent` options ###
+### Layout of top-level `modelRelay` section of `fluid.modelComponent` options
 
 The `modelRelay` options block may take one of the following three forms -
 
@@ -104,7 +104,7 @@ The `modelRelay` options block may take one of the following three forms -
 
 The first and third cases are disambiguated by looking for a member of the block named `target` which holds a `String` value - required for a single `modelRelayBlock`.
 
-### `modelRelayBlock` layout ###
+### `modelRelayBlock` layout
 
 <table>
     <thead>
@@ -174,7 +174,7 @@ The first and third cases are disambiguated by looking for a member of the block
     </tbody>
 </table>
 
-#### `sourceFilterRecord` in an explicit model relay block ####
+#### `sourceFilterRecord` in an explicit model relay block
 
 A `sourceFilterRecord` holds members with one or both of the names
 `excludeSource` and `includeSource`. These members hold one or more strings representing
@@ -184,7 +184,7 @@ prevent the relay being triggered (for `excludeSource` or allow it
 (for `includeSource`). These rules are exactly the same as the source matching
 rules for the members of the same names in a [`modelListener`](ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks) record.
 
-#### Example showing explicit relay rule ####
+#### Example showing explicit relay rule
 
 Here is an example of two components linked by explicit model relay representing the situation we described earlier:
 
@@ -223,7 +223,7 @@ In general those transformations which are _**invertible**_ are the best choice 
 the updates will propagate only in one direction. This can still be highly useful. In addition to its invertibility, the propagation of updates through a relay rule can be fine-tuned by the options
 `forward` and `backward`, as described in the following section.
 
-#### Controlling propagation through a relay rule ####
+#### Controlling propagation through a relay rule
 
 Each explicit relay rule can accept options `forward` and `backward` which allows the configurer to
 control the occasions on which the relay is operated in those directions &#8212; that is, `forward`
@@ -249,7 +249,7 @@ contributing special initial values to certain kinds of "integrated models".
 
 Compare these directives with the similar ones used for source guarding in [model listeners](ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks).
 
-#### Example showing propagation directive in explict relay ####
+#### Example showing propagation directive in explict relay
 
 Here the same example that we saw illustrating explicit relay [above](#example-showing-explicit-relay-rule) showing the use of a propagation directive, in this case `backward: {excludeSource: "init"}`. In this
 case the directive is useful because we have added a default initial value `0.5` to the `volume` field at the forward end of the relay which conflicts with the value that the relay would establish as it
@@ -286,7 +286,7 @@ fluid.defaults("examples.modelRelayPropagation", {
 });
 ```
 
-#### Applying priorities to model relay rules ####
+#### Applying priorities to model relay rules
 
 Just as with many other directives in the framework (e.g. listeners, model listeners, options distributions, etc.) a model
 relay rule can be supplied with a [priority](Priorities.md) annotation. In many cases, the exact order
@@ -295,7 +295,7 @@ final synchronised model state. However, in some cases where several transform-b
 might react to the same model change, it might be important to ensure that one of them is always chosen
 first.
 
-#### General notes on model relay rules ####
+#### General notes on model relay rules
 
 **NOTE**: Any plain function which accepts one argument and returns one argument is suitable to appear in the `type` field of a `transform` or `singleTransform` rule &#8212; e.g. `fluid.identity`. This is a quick and easy way
 of setting up "ad hoc" transforms. If the function accepts multiple arguments, or an argument which holds a complex structure derived from several values around the model, you should instead use the transform with type
@@ -305,7 +305,7 @@ of setting up "ad hoc" transforms. If the function accepts multiple arguments, o
 a parallel option whose name ends in `Path` - e.g. `inputPath`, `outputPath`, `leftPath`, `rightPath`, etc. - **_these forms with `Path` are not used in relay documents_** &#8212; the relay system automatically takes up
 the role of gearing values to the arguments of transforms when you write an IoC reference in any of those slots. Relay documents are just written with the simple option names, e.g. `input`, `output`, `left`, `right` etc.
 
-## Note on future evolution and some technicalities ##
+## Note on future evolution and some technicalities
 
 The use of the term "transactions" to describe the process by which the model skeleton updates is not entirely consistent with its use elsewhere in the industry.
 Those interested in more semantic and detailed discussion can consult [New Notes on the ChangeApplier](http://wiki.fluidproject.org/display/fluid/New+Notes+on+the+ChangeApplier)

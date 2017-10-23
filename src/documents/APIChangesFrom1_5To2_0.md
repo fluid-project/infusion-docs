@@ -6,13 +6,13 @@ category: Infusion
 
 This page contains a list of the features, APIs, and etc. that have changed in Infusion 2.0.
 
-## Framework Changes ##
+## Framework Changes
 
-### Core Framework Changes ###
+### Core Framework Changes
 
 This section describes major APIs that were in common use. For information about less widely-used features removed in 2.0, consult [Deprecations in 1.5](DeprecationsIn1_5.md).
 
-#### Component Grade Changes ####
+#### Component Grade Changes
 
 * Replace "fluid.eventedComponent" and "fluid.littleComponent" with "fluid.component"
 * Replace "fluid.standardComponent", "fluid.modelRelayComponent" and "fluid.standardRelayComponent" with "fluid.modelComponent"
@@ -21,7 +21,7 @@ This section describes major APIs that were in common use. For information about
 * Remove "autoInit" - it is now the default for every component
 * Order of merging component grades has reversed - grades at the right-hand end of the `gradeNames` list now take priority over those at the left
 
-#### fluid.demands ####
+#### fluid.demands
 
 `fluid.demands` has been removed from the framework. Depending on your use case, these uses can be replaced by one or more of:
 
@@ -29,39 +29,39 @@ This section describes major APIs that were in common use. For information about
 * [options distributions](IoCSS.md)
 * [context awareness directives](ContextAwareness.md)
 
-#### Manual lifecycle points ####
+#### Manual lifecycle points
 
 The component events `preInit`, `postInit` and `finalInit` have been removed. Instead use listeners to `onCreate` together with a suitable namespace
 and [priority](Priorities.md) declaration if necessary.
 
 The component events `onAttach` and `onClear` have also been removed.
 
-#### Dynamic invokers ####
+#### Dynamic invokers
 
 In Infusion 1.5, standard invokers cached all of their arguments that were not part of `{arguments}` or `{that}.model` on their first use, unless they
 had the annotation `dynamic: true`. In 2.0, all invoker arguments are evaluated freshly on each invokation, and the `dynamic: true` annotation is no
 longer used.
 
-#### Options distributions ####
+#### Options distributions
 
 Every component now supports a top-level options area named `distributeOptions`, which contains records which include `priority` and `namespace` entries - consult the page on [options distributions](IoCSS.md) for more details.
 
-#### Progressive Enhancement becomes Context Awareness ####
+#### Progressive Enhancement becomes Context Awareness
 
 The old "progressive enhancement" API has been removed and replaced with a new API [ContextAwareness](ContextAwareness.md).
 
-#### Constraint-based priorities ####
+#### Constraint-based priorities
 
 In addition to the old-style numeric and `first`/`last` priorities, constraint-based priorities of the form `before:namespace` and `after:namespace` are supported
 on event listeners as well as in numerous other areas of configuration - consult [Priorities](Priorities.md).
 
-#### `fluid.makeEventFirer` ####
+#### `fluid.makeEventFirer`
 
 The utility `fluid.event.makeEventFirer` has been moved to `fluid.makeEventFirer` and accepts an options structure rather than an argument list.
 
-#### Model Sharing Changes ####
+#### Model Sharing Changes
 
-##### In 1.5 #####
+##### In 1.5
 
 In Infusion 1.5, sharing models between non-relay components requires the change applier to be shared as a member option along with the model:
 
@@ -82,7 +82,7 @@ fluid.defaults("fluid.parent", {
 });
 ```
 
-##### In 2.0 #####
+##### In 2.0
 
 In Infusion 2.0 where relay components are introduced, the [change applier](ChangeApplierAPI.md) must not be configured separately - model sharing
 just happens automatically:
@@ -101,25 +101,25 @@ fluid.defaults("fluid.parent", {
 });
 ```
 
-#### Model Reference Changes ####
+#### Model Reference Changes
 
 In Infusion 1.5, the base model reference `that.model` could be relied upon to be i) an Object, and ii) constant for the lifetime of a component. In Infusion 2.0,
 this model reference may change at any time and therefore must not be closed over. In addition, `that.model` may hold any JS type including primitives, `null` and `undefined`.
 
-### Preferences Framework ###
+### Preferences Framework
 
-#### Panel Changes ####
+#### Panel Changes
 
-##### Message Bundle Keys #####
+##### Message Bundle Keys
 
-###### Additions ######
+###### Additions
 
 * `textSizeDescr`
 * `textFontDescr`
 * `lineSpaceDescr`
 * `contrastDescr`
 
-###### Changes ######
+###### Changes
 
 <table>
 <tr><th> 1.5</th><th>2.0</th></tr>
@@ -137,16 +137,16 @@ this model reference may change at any time and therefore must not be closed ove
 </tr>
 </table>
 
-##### Selectors #####
+##### Selectors
 
-###### Additions ######
+###### Additions
 
 * `contrastDescr: .flc-prefsEditor-contrast-descr`
 * `lineSpaceDescr: .flc-prefsEditor-line-space-descr`
 * `textSizeDescr: .flc-prefsEditor-text-size-descr`
 * `textFontDescr: .flc-prefsEditor-text-font-descr`
 
-###### Changes ######
+###### Changes
 
 <table>
 <tr><th>1.5</th><th>2.0</th></tr>
@@ -160,9 +160,9 @@ this model reference may change at any time and therefore must not be closed ove
 </tr>
 </table>
 
-##### Styles #####
+##### Styles
 
-###### Changes ######
+###### Changes
 
 <table>
 <tr><th>1.5</th><th>2.0</th></tr>
@@ -172,15 +172,15 @@ this model reference may change at any time and therefore must not be closed ove
 </tr>
 </table>
 
-#### Namespace Changes ####
+#### Namespace Changes
 
 Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 
-#### Enactor Changes ####
+#### Enactor Changes
 
-##### Styles #####
+##### Styles
 
-###### Removals ######
+###### Removals
 
 * `.fl-font-serif`
 * `.fl-font-sans`
@@ -193,9 +193,9 @@ Rename "fluid.prefs.enactors" to "fluid.prefs.enactor"
 * `.fl-theme-prefsEditor-yb`
 * `.fl-theme-prefsEditor-lgdg`
 
-##### Listeners #####
+##### Listeners
 
-###### In 1.5 ######
+###### In 1.5
 
 In Infusion 1.5, enactors use non-relay components where the declaration of model listeners had not been implemented. Enactors use:
 
@@ -235,7 +235,7 @@ fluid.prefs.enactor.textSize.finalInit = function (that) {
 };
 ```
 
-###### In 2.0 ######
+###### In 2.0
 
 In Infusion 2.0 enactors use model relay components and the `finalInit()` and the `onCreate` listener are replaced by declaring a model listener:
 
@@ -266,11 +266,11 @@ fluid.prefs.enactor.textSize.set = function (value, that) {
 };
 ```
 
-#### Schema Changes ####
+#### Schema Changes
 
-##### Specifying a prefsEditor type #####
+##### Specifying a prefsEditor type
 
-###### In 1.5 ######
+###### In 1.5
 
 In Infusion 1.5, a `prefsEditorType` option was used to specify the type. The default was `"fluid.prefs.separatedPanel"`.
 
@@ -301,7 +301,7 @@ fluid.prefs.create(container, {
 });
 ```
 
-###### In 2.0 ######
+###### In 2.0
 
 In Infusion 2.0, the prefsEditor type is specified in a grade passed into the prefsEditorLoader via the `loaderGrades` property in the auxiliarySchema.
 By default the `"fluid.prefs.separatedPanel"` grade is applied. Any grade to be applied to the prefsEditorLoader can be passed in; however, you must also supply the type grade as the default will be replaced by any modification.
@@ -312,9 +312,9 @@ var auxiliarySchema = {
 };
 ```
 
-##### A new "terms" block #####
+##### A new "terms" block
 
-###### In 1.5 ######
+###### In 1.5
 
 In Infusion 1.5, `messagePrefix` and `templatePrefix` are root level data defined in the auxiliary schema. When referring to them for locations of message bundles or html templates, a common `%prefix` is used, which causes confusion.
 
@@ -345,7 +345,7 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
 });
 ```
 
-###### In 2.0 ######
+###### In 2.0
 
 In Infusion 2.0, both `templatePrefix` and `messagePrefix` become sub-elements of a `terms` block. The `terms` block is used to define all string templates used by `fluid.prefs.resourceLoader`.
 To refer to these terms, rather than using an ambiguous `%prefix`, use the specific term names such as `%templatePrefix` or `%messagePrefix`.
@@ -379,18 +379,18 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
 });
 ```
 
-#### PrefsEditor Changes ####
+#### PrefsEditor Changes
 
-##### Selectors #####
+##### Selectors
 
-###### Removals ######
+###### Removals
 
 * `.flc-prefsEditor-separatedPanel-tabs`
 * `.flc-prefsEditor-controls`
 
-##### Styles #####
+##### Styles
 
-###### Removals ######
+###### Removals
 
 * `.fl-prefsEditor-option-description`
 * `.fl-prefsEditor-separatedPanel-toc`
@@ -405,9 +405,9 @@ fluid.defaults("fluid.prefs.auxSchema.starter", {
 * `.fl-icon-prev`
 * `.fl-icon-speak`
 
-##### A new model path "preferences" #####
+##### A new model path "preferences"
 
-###### In 1.5 ######
+###### In 1.5
 
 In Infusion 1.5, all preferences reside at the root of the `prefsEditor` component's model.
 
@@ -434,7 +434,7 @@ fluid.defaults("fluid.prefs.initialModel.starter", {
 });
 ```
 
-###### In 2.0 ######
+###### In 2.0
 
 In Infusion 2.0, preferences are moved to a model path named `preferences` so the prefsEditor model can be used to save other user data as well.
 This means that the enhancer model no longer receives the entire prefsEditor model. It only receives the value held at the path `preferences`.

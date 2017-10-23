@@ -11,11 +11,11 @@ The particular set of options interpreted by the framework is determined by the 
 can define further grades which respond to yet further options, which they should document if they expect the options to be generally useful.
 This page briefly describes these predefined options and provides links to more information about the related framework functionality.
 
-## Options Supported By All Components Grades ##
+## Options Supported By All Components Grades
 
 The following options are supported by all component grades, that is, those derived from `fluid.component`:
 
-### `gradeNames` ###
+### `gradeNames`
 
 <table>
   <tr>
@@ -37,7 +37,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
 </table>
 
-### `invokers` ###
+### `invokers`
 
 <table>
   <tr>
@@ -66,7 +66,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
 </table>
 
-### `members` ###
+### `members`
 
 <table>
   <tr>
@@ -92,7 +92,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
 </table>
 
-### `events` ###
+### `events`
 
 <table>
   <tr>
@@ -122,7 +122,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
 </table>
 
-### `listeners` ###
+### `listeners`
 
 <table>
   <tr>
@@ -171,7 +171,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-### `components` ###
+### `components`
 
 <table>
   <tr>
@@ -214,7 +214,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-### `distributeOptions` ###
+### `distributeOptions`
 
 <table>
   <tr>
@@ -242,7 +242,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-### `mergePolicy` ###
+### `mergePolicy`
 
 <table>
   <tr>
@@ -274,7 +274,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-### `dynamicComponents` ###
+### `dynamicComponents`
 
 <table>
   <tr>
@@ -313,13 +313,13 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-## Model Components ##
+## Model Components
 
 Components defined with a grade of `fluid.modelComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
 
 See also: [Component Grades](ComponentGrades.md)
 
-### `model` ###
+### `model`
 
 <table>
   <tr>
@@ -357,7 +357,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `modelListeners` ###
+### `modelListeners`
 
 <table>
   <tr>
@@ -381,7 +381,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `modelRelay` ###
+### `modelRelay`
 
 <table>
   <tr>
@@ -413,7 +413,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `changeApplierOptions` ###
+### `changeApplierOptions`
 
 <table>
   <tr>
@@ -428,7 +428,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-## View Components ##
+## View Components
 
 Components defined with a grade of `fluid.viewComponent` are also model components, so they support
 
@@ -438,7 +438,7 @@ Components defined with a grade of `fluid.viewComponent` are also model componen
 
 Component developers are free to define their own additional options.
 
-### `selectors` ###
+### `selectors`
 
 <table>
   <tr>
@@ -482,7 +482,7 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### `styles` ###
+### `styles`
 
 <table>
   <tr>
@@ -515,7 +515,7 @@ Component developers are free to define their own additional options.
 In addition to the options above, a View Component also accepts an additional argument named `container` which may be supplied either as the first argument to its [Creator Function](UnderstandingInfusionComponents.md)
 or else at top level in its [Subcomponent Record](SubcomponentDeclaration.md). It is not currently supported to supply this value as a standard option in the options record.
 
-## Renderer Components ##
+## Renderer Components
 
 Components defined with a grade of `rendererComponent` are also view components (and hence model components), so they support
 
@@ -528,7 +528,7 @@ Component developers are free to define their own additional options.
 
 <div class="infusion-docs-note"><strong>Note:</strong> The Infusion Renderer system will be rewritten completely before the Infusion 3.0 release - the use of the current renderer and component hierarchy is not recommended.</div>
 
-### `selectorsToIgnore` ###
+### `selectorsToIgnore`
 
 <table>
   <tr>
@@ -554,7 +554,7 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### `repeatingSelectors` ###
+### `repeatingSelectors`
 
 <table>
   <tr>
@@ -580,7 +580,7 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### `produceTree` ###
+### `produceTree`
 
 <table>
   <tr>
@@ -615,7 +615,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `protoTree` ###
+### `protoTree`
 
 <table>
   <tr>
@@ -684,7 +684,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `resources` ###
+### `resources`
 
 <table>
   <tr>
@@ -730,7 +730,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `strings` ###
+### `strings`
 
 <table>
   <tr>
@@ -777,7 +777,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `rendererFnOptions` ###
+### `rendererFnOptions`
 
 <table>
   <tr>
@@ -813,7 +813,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `rendererOptions` ###
+### `rendererOptions`
 
 <table>
   <tr>
@@ -849,7 +849,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `renderOnInit` ###
+### `renderOnInit`
 
 <table>
   <tr>

@@ -18,7 +18,7 @@ UI Options is a convenient way to add a simple separated-panel preferences edito
 
 ![Screen shot of the UI Options Component](images/uio-showcase.png "Screen shot of the UI Options Component")
 
-## Creator ##
+## Creator
 
 Use the following function to create a UI Options component:
 
@@ -76,7 +76,7 @@ var myUIO = fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-## Supported Events ##
+## Supported Events
 
 Listeners can be attached to any supported events through a component's `listeners` option. Values can be a function reference (not a string function name) or an anonymous function definition, as illustrated below:
 
@@ -93,7 +93,7 @@ var myComponent = component.name("#myContainerID", {
 
 For information on the different types of events, see [Infusion Event System](InfusionEventSystem.md).
 
-### onReady ###
+### onReady
 
 <table>
     <tbody>
@@ -119,7 +119,7 @@ For information on the different types of events, see [Infusion Event System](In
     </tbody>
 </table>
 
-### onPrefsEditorReady ###
+### onPrefsEditorReady
 
 <table>
     <tbody>
@@ -149,21 +149,21 @@ For information on the different types of events, see [Infusion Event System](In
     </tbody>
 </table>
 
-## Options ##
+## Options
 
 The second argument to the creator function is the options argument. This is a JavaScript object containing name/value pairs: The name is the name of the option and the value is the desired setting. Components define their own default values for options, but integrators can override these defaults by providing new values using the options argument. For technical information about how options are merged with defaults, see [Options Merging](OptionsMerging.md).
 
 ```javascript
 var uio = fluid.uiOptions.prefsEditor(".myContainer", {
-    <option1Name>: <option1value>,
-    <option2Name>: <option2value>
+    option1Name: option1value,
+    option2Name: option2value
     // ...
 });
 ```
 
 The options supported by UI Options are described below.
 
-### tocTemplate ###
+### tocTemplate
 
 <table>
     <tbody>
@@ -200,7 +200,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### terms ###
+### terms
 
 <table>
     <tbody>
@@ -241,7 +241,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### prefsEditor ###
+### prefsEditor
 
 <table>
     <tbody>
@@ -275,7 +275,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### enhancerType ###
+### enhancerType
 
 <table>
     <tbody>
@@ -304,7 +304,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### storeType ###
+### storeType
 
 <table>
     <tbody>
@@ -339,7 +339,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
     </tbody>
 </table>
 
-### lazyLoad ###
+### lazyLoad
 
 <table>
     <tbody>

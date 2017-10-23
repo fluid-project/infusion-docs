@@ -8,7 +8,7 @@ A Primary Schema is a JSON document that contains the information necessary to d
 
 The format of a preference definition in the Primary Schema is as shown below:
 
-```javascript
+```snippet
 {
     <namespaced.preference.name>: {
         <propertyName>: <propertyValue>
@@ -19,7 +19,7 @@ The format of a preference definition in the Primary Schema is as shown below:
 
 The `"namespaced.preference.name"` is the string that will be used throughout the Preferences Framework to identify the particular preference. It will be used to associate panels and enactors with the preference.
 
-## Example: Schema for Preferences Framework Starter Preferences ##
+## Example: Schema for Preferences Framework Starter Preferences
 
 ```json5
 {

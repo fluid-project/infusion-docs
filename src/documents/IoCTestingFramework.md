@@ -11,7 +11,7 @@ As well as creating an idiomatic way of writing *integration tests* addressed at
 trees, the IoC testing framework also considerably eases the task of testing *complex event sequences* - that is, sequences of application state
 that are derived from an alternating conversation between user interaction and application response.
 
-## When to use the IoC Testing Framework ##
+## When to use the IoC Testing Framework
 
 <div class="infusion-docs-note"><strong>Note:</strong> The IoC Testing framework is primarily for integration testing requiring asynchrony, e.g. on the client, testing that involves user interaction via the DOM, or
 AJAX requests; or alternatively on the server, involving asynchronous I/O such as HTTP requests.
@@ -19,7 +19,7 @@ AJAX requests; or alternatively on the server, involving asynchronous I/O such a
 If your tests don't involve a number of back-to-back asynchronous interactions, it is better to express them as plain jqUnit tests.
 </div>
 
-### Integration testing within a component tree ###
+### Integration testing within a component tree
 
 The concept of *context* in Infusion IoC is derived from the entire collection of components held in an IoC component tree.
 The behaviour of each component is potentially altered by all of the other components with which it is deployed.
@@ -30,7 +30,7 @@ Therefore in order to test component behaviour in context, we need a testing sys
 of setup and teardown common to all testing systems) is aligned with the lifecycle of component trees - as well as a testing system which enables testing directives to be referred to the components
 under test, wherever they may be in the tree.
 
-### Event sequence testing ###
+### Event sequence testing
 
 The idiom to be used when binding event listeners which are responsible for *implementing* application behaviour is very different from that to be
 used when *testing* the application behaviour. Implementation listeners are typically bound permanently - that is, for the entire
@@ -42,7 +42,7 @@ This requirement often makes test fixture code convoluted and brittle, holding d
 and unbinding operations held within listeners to other events. We need a system which allows such assertions to be expressed declaratively,
  with this sequence flattened out into a linear list of JSON elements corresponding to each successive state in the event chain.
 
-## How to Use the IoC Testing Framework ##
+## How to Use the IoC Testing Framework
 
 Writing fixtures using the IoC Testing framework requires the test implementor to derive from two special [grades](ComponentGrades.md), `fluid.test.testEnvironment` and `fluid.test.testCaseHolder`,
 which are packaged within the testing framework implementation in the
@@ -56,7 +56,7 @@ These children are intermixed with components of the second type, the *test fixt
 These fixture components are holders for declarative JSON configuration defining the
 sequence and structure of a group of test cases which are to be run.
 
-### `modules`, `tests` and `sequence` ###
+### `modules`, `tests` and `sequence`
 
 The standard structure inside a `fluid.test.testCaseHolder` has an outer layer of containment, `modules`, with members corresponding to
 QUnit [modules](https://api.qunitjs.com/QUnit.module/), and within that an entry named `tests`, holding an array of structures corresponding to QUnit [test](https://api.qunitjs.com/QUnit.test/). In
@@ -67,7 +67,7 @@ flattened into a single array by use of the utility [`fluid.flatten`](CoreAPI.md
 assembling complex sequences out of previously canned sequence segments. However, building up complex, reusable test sequences is best done by
 use of the [`sequenceGrade`](IoCTestingFramework.md#using-sequencegrade-to-build-up-complex-reusable-test-sequences) element, instead of the `sequence` element.
 
-### Simple Example ###
+### Simple Example
 
 This simple example shows the testing of a simple component, `fluid.tests.cat` which defines one [event](InfusionEventSystem.md), `onMakeSound`, and an
 [invoker](Invokers.md) `makeSoundLater` which fires the event asynchronously with the supplied argument. Firstly, we define the component under test:
@@ -152,7 +152,7 @@ In order to run this test case, we can either simply construct an instance of th
 or submit its name to the global driver function `fluid.test.runTests` as `fluid.test.runTests("fluid.tests.catTestTree")`.
 The latter method should be used when running multiple environments within the same file to ensure that their execution is properly serialised.
 
-### Supported fixture records ###
+### Supported fixture records
 
 The IoC testing system currently supports the following 6 types of fixture record, which can be assigned to two categories -
 "executors", which actively trigger an action, and "binders" which register some form of listener in order to receive an event from
@@ -310,12 +310,12 @@ In each case in this table,
   For example, you must use just one of the styles `listener` or `listenerMaker` to specify an event listener, or specify just one of
   `resolve` or `reject` to a task fixture.
 
-## More Advanced Use of the IoC Testing Framework ##
+## More Advanced Use of the IoC Testing Framework
 
 This section covers topics of interest to more advanced users of the IoC Testing Framework. These topics relate to more flexible and dynamic ways of building up test
 sequence fixtures, beyond simply listing them in the fixed array named `sequence`.
 
-### Using `sequenceGrade` to build up complex, reusable test sequences ###
+### Using `sequenceGrade` to build up complex, reusable test sequences
 
 A common patten is for groups of related tests to form an _ecology_, sharing some test sequence elements but with others interleaved between them
 and/or some others removed or reconfigured. Working with the raw `sequence` array directly will lead to this testing code becoming fragile as the sequence array
@@ -372,7 +372,7 @@ instantiated as a child component of the `fluid.test.testCaseHolder` and its opt
 Any fixture elements listed at the traditional top-level `sequence` member will be grandfathered in to this system with a namespace of `sequence` &mdash; for example, a `testSequenceElement` with
 a priority of `"before:sequence"` will be sorted before these elements.
 
-#### Example of sequence building using `sequenceGrade` ####
+#### Example of sequence building using `sequenceGrade`
 
 Here is a simple example of building up a sequence of elements piece by piece, using [priority](Priorities.md) constraints of the type `after:<namespace>` and `before:<namespace>`. At the top
 level, we define a compound `testEnvironment` and `testCaseHolder` that defines a single module holding a single test, referencing the grade `fluid.tests.elementPrioritySequence` as
@@ -479,7 +479,7 @@ fluid.defaults("fluid.tests.derivedElementPriority", {
 });
 ```
 
-### Using `moduleSource` for dynamic test fixtures ###
+### Using `moduleSource` for dynamic test fixtures
 
 To take complete control of the fixture building process, you can write arbitrary code returning the entire set of `modules` by replacing it with the
 entry `moduleSource` which takes the same form as an [invoker](Invokers.md) record with entries `func`/`funcName` and `args`,
@@ -516,7 +516,7 @@ fluid.defaults("fluid.tests.catTester", {
 });
 ```
 
-## A More Complex Example using `sequence` ###
+## A More Complex Example using `sequence`
 
 This example shows sequence testing of a view component `fluid.tests.asyncTest` with genuine asynchronous behaviour (as well as synchronous
 event-driven behaviour). The component under the test is an Infusion [Renderer component](tutorial-gettingStartedWithInfusion/RendererComponents.md)
@@ -586,7 +586,7 @@ fluid.defaults("fluid.tests.asyncTestTree", {
 });
 ```
 
-### Walkthrough of the example sequence ###
+### Walkthrough of the example sequence
 
 Finally, we show the contents of the associated `TestCaseHolder`. In this case, the 1 test it defines holds a sequence
 member prescribing a sequence of 11 states for the component, which run a total of 7 jqUnit assertions. These show
@@ -604,7 +604,7 @@ a click event using the `jQueryTrigger` fixture type, and listening to that even
 
 The TestCaseHolder makes reference to a few global utility functions which are reproduced below.
 
-### `testCaseHolder` demonstrating `sequence` record ####
+### `testCaseHolder` demonstrating `sequence` record
 
 ```javascript
 fluid.defaults("fluid.tests.asyncTester", {
@@ -691,7 +691,7 @@ fluid.tests.startRendering = function (asyncTest, instantiator) {
 Such repetitive sequences of standardised fixtures are best factored into reusable grades of type `fluid.test.sequenceElement` as seen
 in the [sequenceGrade example](#example-of-sequence-building-using-sequencegrade) above.
 
-### `markupFixture` property supporting fixtures written against markup in the host document ###
+### `markupFixture` property supporting fixtures written against markup in the host document
 
 This environment shows use of the optional `markupFixture` property on the `testEnvironment`. Since the IoC testing framework
 operates setup/teardown on the unit of overall `testEnvironment`s, we cannot (should not) make use of QUnit's standard
@@ -702,13 +702,13 @@ The `markupFixture` property holds any jQueryable value, designating the overall
 the `testEnvironment` has been torn down, the framework will reset the markup within this root to the contents it
 enjoyed before setup of the environment.
 
-### Sequence progress feedback in the browser ###
+### Sequence progress feedback in the browser
 
 When run in the browser, the framework will show feedback in the
 QUnit UI relating to the sequence point reached by the system. This can be used to diagnose the last successfully
 reached sequence point in the case of a "hang" caused by an unexpectedly missing event in the sequence.
 
-### Sequence hang test detection ###
+### Sequence hang test detection
 
 If the next expected "binder" type fixture in a test sequence is not reached within a configurable interval, the console will
 log a message of the following form to help the user to diagnose how far the system has progressed through the sequence:
@@ -729,13 +729,13 @@ log a message of the following form to help the user to diagnose how far the sys
 
 The default value of the interval is 5000ms, which can be altered by supplying a value in ms to the option `hangWait` of the `testEnvironment`.
 
-### Running tests in the node.js server environment ###
+### Running tests in the node.js server environment
 
 The IoC Testing Framework can also be used to run test sequences in the node.js server environment - in this case
 the above browser-related features (`markupFixture`, live sequence progress) are not provided. However, the sequence hang detection message
 appears in all environments.
 
-## Design Discussion about the Testing Framework ###
+## Design Discussion about the Testing Framework
 
 The framework was designed over October-December 2012, with initial call for implementation on the fluid-work mailing list at
 [October 31st](http://lists.idrc.ocad.ca/pipermail/fluid-work/2012-October/008615.html), continuing over a sequence of community meetings, and

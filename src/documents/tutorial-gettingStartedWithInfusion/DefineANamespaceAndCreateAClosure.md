@@ -14,15 +14,15 @@ Infusion code generally follows a few conventions that we recommend, and that we
 1. namespacing, and
 2. closures
 
-### Namespacing ###
+### Namespacing
 
 We define a namespace for our code: a single global variable that becomes the container for the code. This means there's less chance of bad interactions with other code: Anything we want to be public will be attached to this object, so all of our code will be qualified by the namespace.
 
-### Closures ###
+### Closures
 
 By wrapping the code inside an anonymous function, we can separate private and public functions. Only objects or functions that are attached to the global namespace object will be publicly available. Anything else inside the anonymous function will be invisible to the rest of the world. In general, we recommend against the use of private definitions since they inhibit other developers from getting value from your code. Write every function and piece of data as a public member of your namespace, with a suitable comment if you don't intend them to form a stable part of your API. Of course, make sure not to write any mutable shared state in public - in general, you should make sure any mutable state is packaged as part of a [Model-bearing Component](ModelComponents.md).
 
-## General Structure ##
+## General Structure
 
 So what does this look like in general?
 
@@ -48,7 +48,7 @@ You might like to think of the [`fluid.registerNamespace`](https://github.com/fl
 
 The parameters to the anonymous function, `$` and `fluid`, will be used as shorthand for the arguments that were passed in: `jQuery` and `fluid_2_0` respectively. This allow us, for example, to upgrade to the next version of Infusion (e.g. `fluid_2_1`) simply by changing the one argument, instead of having to change every single use of the word `fluid`. It also allows us to have multiple versions of Infusion running at the same time, but acting independently.
 
-### Example ###
+### Example
 
 So what might this look like in your currency converter application? Well, you might call the global namespace `currency` and create a public function called `converter` that can be used by anyone to instantiate a converter component:
 

@@ -2,7 +2,6 @@
 title: Infusion Documentation
 layout: default
 ---
-# Infusion
 
 ## Writing Configuration
 

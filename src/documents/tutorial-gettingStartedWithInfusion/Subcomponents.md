@@ -11,7 +11,7 @@ Part of the [Getting Started with Infusion Component Design Tutorial](GettingSta
 
 If you've done any object-oriented programming, you're probably familiar with the idea of packaging up functionality into small, reusable, modular bundles. The Infusion Framework provides many supports for designing your application as a collection of components that work together. Components can be combined with parent-child relationships, creating a **component** tree.
 
-## Declaring subcomponents ##
+## Declaring subcomponents
 
 Using the Inversion of Control system, subcomponents are declared in a special property of the parent's defaults called `components`. The `components` object is collection of key/value pairs:
 
@@ -45,7 +45,7 @@ fluid.defaults("tutorials.parentComponent", {
 });
 ```
 
-## Configuring Subcomponents ##
+## Configuring Subcomponents
 
 In addition to the `type` of subcomponent, other configuration information can be given. These include:
 
@@ -53,7 +53,7 @@ In addition to the `type` of subcomponent, other configuration information can b
 * a list of subcomponent `options`, for overriding the defaults of the subcomponent
 * properties for controlling the timing of subcomponents, such as `priority` and `createOnEvent`
 
-## Example: User Interface Options ##
+## Example: User Interface Options
 
 The Infusion [UI Options](../to-do/UserInterfaceOptions.md) component presents a collection of controls that allow a user to specify their preferences for customizing the presentation of the user interface and content resources. It works with the User Interface Enhancer (UI Enhancer), which carries out the transformations based on the recorded preferences.
 

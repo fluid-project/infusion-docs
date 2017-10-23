@@ -64,11 +64,11 @@ Each component implementing `fluid.contextAware` accepts a top-level record in i
 
 The top level structure of the `contextAwareness` record consists of a free hash of `adaptationName` strings to `adaptationRecord` structures:
 
-```javascript
+```snippet
 {
-<adaptationName> : <adaptationRecord>,
-<adaptationName> : <adaptationRecord>,
-...
+    <adaptationName> : <adaptationRecord>,
+    <adaptationName> : <adaptationRecord>,
+    ...
 }
 ```
 
@@ -239,12 +239,12 @@ removing them when they are no longer required.
 These contexts can be issued with a call of the form:
 
 ```javascript
-fluid.contextAware.makeChecks(<checkStructure>);
+fluid.contextAware.makeChecks(checkStructure);
 ```
 
 The `checkStructure` argument holds a hash of `contextName` strings to `checkEntry` records, of the form
 
-```javascript
+```snippet
 {
 <contextName> : <checkEntry>,
 <contextName> : <checkEntry>,
@@ -298,10 +298,10 @@ fluid.contextAware.makeChecks({
 In the above example, the two global functions `fluid.enhance.supportsBinaryXHR` and `fluid.enhance.supportsFormData` will be executed, and their
 return values added into contexts with the names `fluid.browser.supportsBinaryXHR` and `fluid.browser.supportsFormData`.
 
-The contexts registered by ``fluid.contextAware.makeChecks`` can be erased from the system by the use of the call
+The contexts registered by `fluid.contextAware.makeChecks` can be erased from the system by the use of the call
 
-```javascript
-fluid.contextAware.forgetChecks(`contextNames`);
+```snippet
+fluid.contextAware.forgetChecks(<contextNames>);
 ```
 
 Here, `contextNames` is can hold either a `String` or `Array of String` holding the keys from the structures previously supplied to `fluid.contextAware.makeChecks`
@@ -323,7 +323,7 @@ what we did in two steps (`fluid.defaults` plus `fluid.constructSingle`) in the 
 
 * this can be done in a single step using the `fluid.contextAware.makeAdaptation` API.
 
-```javascript
+```snippet
 fluid.contextAware.makeAdaptation(<adaptationRecord>);
 ```
 

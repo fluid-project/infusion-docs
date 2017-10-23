@@ -35,7 +35,7 @@ var protoTree = {
 };
 ```
 
-## Using Expanders ##
+## Using Expanders
 
 Expanders are specified as wrappers around a component specification in the component tree: Instead of the usual `componentID: {specification}` form, the keyword `expander` is used, as shown below:
 
@@ -69,9 +69,9 @@ var tree = {
 };
 ```
 
-## Available Expanders ##
+## Available Expanders
 
-### Repetition Expander ###
+### Repetition Expander
 
 The repetition expander takes care of replicating part of the prototree as many times as are required based on the data in the the model.
 
@@ -134,7 +134,7 @@ The following fields are supported by the `fluid.renderer.repeat` expander:
     </tbody>
 </table>
 
-#### Example ####
+#### Example
 
 In this example, the `fluid.renderer.repeat` expander is being used to declare a tree for a set of tabs. The `controlledBy` property indicates that the data model field of tabs contains the data to be used.
 
@@ -160,7 +160,7 @@ cspace.tabsList.modelToTree = function (model, options) {
 };
 ```
 
-### Selection To Inputs Expander ###
+### Selection To Inputs Expander
 
 The simple **Select** protocomponent format shown on the [ProtoComponent Types](ProtoComponentTypes.md) page is sufficient for a `<select>` element, but radio buttons and check boxes must _also_ have entries for each button or box. The **selection to inputs** expander will automatically generate these entries based on the options available in the select.
 
@@ -219,7 +219,7 @@ The following fields are supported by the `fluid.renderer.selection.inputs` expa
     </tbody>
 </table>
 
-#### Example ####
+#### Example
 
 ```javascript
 var tree = {
@@ -238,7 +238,7 @@ var tree = {
 };
 ```
 
-### Condition Expander ###
+### Condition Expander
 
 The condition expander provides a mechanism for selecting between two alternative renderer component sub-trees based on the outcome of a condition e.g. the boolean evaluation of a value, or the return value of a function call.
 
@@ -287,7 +287,7 @@ The following fields are supported by the `fluid.renderer.condition` expander:
     </tbody>
 </table>
 
-#### Examples ####
+#### Examples
 
 In the following example, the `condition` is `that.options.showDeleteButton`. The renderer will evaluate the component's `showDeleteButton` option and if it is `true` will use the component tree specified by `trueTree`. Note that no `falseTree` is provided. If the option is `false` or not present, nothing will be rendered.
 

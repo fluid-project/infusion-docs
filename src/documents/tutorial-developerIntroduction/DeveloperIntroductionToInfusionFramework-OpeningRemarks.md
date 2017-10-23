@@ -3,8 +3,6 @@ title: Developer Introduction to the Infusion Framework - Opening Remarks
 layout: default
 category: Tutorials
 ---
-# Introduction
-
 Here we will boil down some of the basic concepts of Infusion for developers who may be interested in it, but uncertain of where to start. There's a lot going on in the framework, but grasping some core ideas helps a great deal in moving forward and learning.
 
 This introduction summarizes some topics (and leaves out many others) that are gone into at length in the [full framework documentation](../), and is focused on developers trying to orient themselves to the framework for the first time.

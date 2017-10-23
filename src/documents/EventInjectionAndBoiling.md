@@ -11,13 +11,13 @@ The [Infusion Event System](InfusionEventSystem.md) explains how to declare even
 
 Both of these capabilities rely on the [IoC - Inversion of Control](IoCAPI.md) system.
 
-## Event Injection ##
+## Event Injection
 
 Event injection is the wholesale injection of an event belonging to one component, to appear as an event belonging to another.
 These events will share a single set of listeners which will be fired when any sharing component fires the event, and any sharing component may add and remove listeners.
 This is achieved by referencing the source event to be injected on the right hand side of the standard `events` block on the component. For example:
 
-### Example 1 ###
+### Example 1
 
 The first defaults block in this example defines a plain [component](ComponentGrades.md) which defines one concrete event, named `parentEvent`, and one child component, with options unspecified.
 
@@ -45,7 +45,7 @@ fluid.defaults("fluid.tests.childComponent", {
 });
 ```
 
-### Alternative Choice of Scoping For Event Binding ###
+### Alternative Choice of Scoping For Event Binding
 
 Note that the defaults we have written in the examples above for `childComponent` prevent it from being used in contexts where the reference `{parentComponent}` cannot be resolved.
 This may or may not be desirable depending on the purpose for `childComponent`. Its purpose may only comprise being reused together with `{parentComponent}`,
@@ -53,7 +53,7 @@ or it may be intended to be more generally reusable - since this is only test/ex
 For completeness, we present another style of writing this configuration which expresses the other intention, that `childComponent` should be generally reusable:
 this moves the reference to `parentComponent` into the tree for `parentComponent` itself, ensuring that `childComponent` can be constructed without the parent if required.
 
-#### Example 2 ####
+#### Example 2
 
 Here, the base component `childComponent` contains a standard local definition of an event named `parentEvent` which satisfies the component's own requirements to fire this event when in isolation.
 The event binding on `parentEvent` is defined in the defaults block of `parentComponent`. At the instantiation of `parentComponent`, the bound event overwrites the definition of the local event `parentEvent`.
@@ -84,7 +84,7 @@ fluid.defaults("fluid.tests.childComponent", {
 });
 ```
 
-## Event Boiling ##
+## Event Boiling
 
 A **boiled** event is derived from another event (a **base event**) but allows the signature of the event to be adjusted.
 A listener to a boiled event receives a call at the same point in time as a standard listener, but can receive a different set of arguments than the ones which were supplied in the original call to `fire()` which triggered the event.
@@ -96,7 +96,7 @@ but has been written with a poorly planned API which does not expose crucial inf
 
 Suggestions are still welcomed for more a suitable name than **boiled events**.
 
-### Boiling One Single Event ###
+### Boiling One Single Event
 
 A boiled event is defined in just the same place as a standard event - in the `events` block of a component's defaults.
 The configuration ("right-hand side") value is more complex than that for a simple event - it needs to specify not only the base event, but also the transformation performed on the argument list.
@@ -104,7 +104,7 @@ The configured value must contain two elements, the event property, which refere
 This uses the standard `{context}.pathName` format for contextualised EL values which is used in IoC,
 with the addition that one extra context object is in scope - the context `{arguments}` allows the argument list to refer to the original argument list that was presented when the base event was fired. For example:
 
-#### Example 3 ####
+#### Example 3
 
 In this code block, the component defines two events - one **basic event** named `localEvent`, and one **boiled event** named `boiledLocal` which uses `localEvent` as a base.
 In this case, a listener registered to `boiledLocal` will receive the first two arguments which were supplied when `localEvent` was fired, but swapped to appear in the opposite order.
@@ -123,11 +123,11 @@ fluid.defaults("fluid.tests.eventBoiled", {
 });
 ```
 
-### Boiling Multiple Events ###
+### Boiling Multiple Events
 
 The event boiling can be used to boil multiple events that are either from the same or a different component.
 
-#### Example 4 ####
+#### Example 4
 
 The example below shows boiling from a different component, the boiled event `boiledDouble` in the example will be fired once both `parentEvent1` and `parentEvent2` from `parentComponent` are fired.
 The arguments supplied to `boiledDouble` would be the first argument provided by `parentEvent1` and the second argument provided by `parentEvent2`.
@@ -168,9 +168,9 @@ fluid.defaults("fluid.tests.eventChild3", {
 The same syntax can be used to boil events from the same component, where the references to source events can be simplified by specifying the events directly without IoC references,
 as shown in [Example 3](#example-3), since both source events and boiled event are residing on the same component.
 
-## Listener Boiling ##
+## Listener Boiling
 
-### Receiving a Different Signature in the Listener ###
+### Receiving a Different Signature in the Listener
 
 A more lightweight alternative to injecting or fabricating new events wholesale through boiling is to apply the process to just a single listener.
 This most often the appropriate approach, especially when the listener enjoys a signature that is not held in common with particularly many other functions around the architecture.
@@ -204,7 +204,7 @@ var that = examples.boiledListenerComponent();
 that.fire(5, true); // listener above will log 5, that
 ```
 
-### Injecting a Listener to an Event Elsewhere in the Tree ###
+### Injecting a Listener to an Event Elsewhere in the Tree
 
 Similarly to the previous section, rather than transmitting an entire event around the component tree just so that one listener can be attached to it,
 it is often more efficient (although it can be more confusing for the reader) to simply inject the listener itself.

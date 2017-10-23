@@ -11,7 +11,7 @@ Two kinds of expansion happen during this process:
 * Expansion of IoC references, written as strings in the form `{context}.path` as a result of the Value Resolution process, and
 * Expansion of **expanders**, which are blocks of JSON occurring in the options with the key `expander`
 
-## Expanders ##
+## Expanders
 
 The standard use of an expander is to designate a function to be called when instantiating the component options, which produces a value based on processing the expander arguments. This can be useful when static definition of a default option is not possible.
 
@@ -54,7 +54,7 @@ The basic form of an expander record is very similar to that of an [Invoker](Inv
 
 Note that unlike an invoker which evaluates its arguments every time it is used by its caller, an expander evaluates only once - when the component whose options hold it is constructing.
 
-### Examples ###
+### Examples
 
 This example locates the global function named `cspace.search.modelFilter` and calls it with the arguments given by resolving the context `{searchView}` - in this case, most likely the top-level component defined in defaults itself. The return value from this function is then placed in the options of the instantiated component (the `fluid.pager`) at the path `modelFilter`:
 
@@ -78,12 +78,12 @@ fluid.defaults("cspace.search.searchView", {
 });
 ```
 
-### Compact format for expanders ####
+### Compact format for expanders
 
 The framework provides a compact syntax for expressing expanders as a single string - the above expander could have been written in its context as `modelFilter: "@expand:cspace.search.makeModelFilter({searchView})"`.
 This is analogous to the similar [Compact Format for Invokers](Invokers.md#compact-format-for-invokers).
 
-### The `fluid.noexpand` expander ###
+### The `fluid.noexpand` expander
 
 The `fluid.noexpand` expander is a very specialised expander that normal users of the framework should not require to use. It has been retained in the framework for completeness, but its effects should normally be obtained using a mergePolicy of `noexpand`. This expander simply dumps its literal argument (held at a path named `value` or `tree`) into the component's options without expansion.
 
@@ -110,7 +110,7 @@ The `fluid.noexpand` expander is a very specialised expander that normal users o
     </tbody>
 </table>
 
-#### Example #####
+#### Example
 
 In this example, the function name `{specBuilder}.urlExpander` will NOT be resolved as an IoC reference. The value `{specBuilder}.urlExpander` will be assigned to the option named `unexpanded`.
 

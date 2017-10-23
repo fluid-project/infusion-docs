@@ -10,7 +10,7 @@ Infusion [Preferences Framework](../PreferencesFramework.md).
 <div class="infusion-docs-note"><strong>Note:</strong> This tutorial is not yet complete.
 Where more information is still to come, this will be clearly noted.</div>
 
-## Introduction ##
+## Introduction
 
 A Preferences Editor is a web application that supports the creation and modification
 of a user's preferred settings for a device or application. In this tutorial, we'll look at a functional – but very simple – Preference Editor and explain how it
@@ -20,7 +20,7 @@ Throughout this tutorial, you’ll find links into the documentation for various
 Infusion and the Preferences Framework. You shouldn’t need to visit these links to
 follow the tutorial; they’re there in case you’re interested in reading more about something.
 
-### Example code ###
+### Example code
 
 The source code used in this tutorial is one of the examples provided in the Infusion code base,
 which you can download from github: [https://github.com/fluid-project/infusion](https://github.com/fluid-project/infusion). You’ll find the code
@@ -60,7 +60,7 @@ Let’s talk about what we’re seeing in this interface:
 
 Let’s take a close look at the code.
 
-#### Primary Schema ####
+#### Primary Schema
 
 The [Primary Schema](../PrimarySchemaForPreferencesFramework.md) is a document that defines the preferences for the Editor.
 The Primary Schema for our example Editor is defined in the
@@ -152,7 +152,7 @@ The value is an object containing the properties of the preference.
 Every preference in a Primary Schema must have at least two properties: `“type”` and `“default”`.  _Coming soon: More
 information about these two properties._
 
-#### Panel ####
+#### Panel
 
 A [Panel](../Panels.md) is a [component](../UnderstandingInfusionComponents.md)
 responsible for rendering the user interface controls for a
@@ -308,7 +308,7 @@ _Coming soon: More information about IoC references._
 </dd>
 </dl>
 
-#### Auxiliary Schema ####
+#### Auxiliary Schema
 
 The [Auxiliary Schema](../AuxiliarySchemaForPreferencesFramework.md) is a document that specifies
 all the things needed to actually build the Preference Editor.
@@ -368,7 +368,7 @@ An auxiliary schema can be generally divided into two kinds of properties:
 1. top-level members, defining globally-used values, and
 2. per-preference members (one per preference), defining the specific requirements for each preference.
 
-##### Loader Grade #####
+##### Loader Grade
 
 The _loader grade_ specifies the _type_ of Preference Editor:
 
@@ -386,7 +386,7 @@ The Preference Framework provides three pre-defined types of Editor:
 
 In the code snippet above, the `loaderGrades` option is used to specify the “full page, no preview” form.
 
-##### Templates #####
+##### Templates
 
 The Auxiliary Schema must declare where to find the main HTML template for the Preference Editor.
 In our example, this template is located in the same folder as other HTML templates.
@@ -421,7 +421,7 @@ in this example a `<div>` with the class `awec-heatedSeats`:
 
 The Framework will insert the constructed Panel into this `<div>`.
 
-##### Preferences #####
+##### Preferences
 
 The next thing in the Auxiliary Schema is the configuration for the heated seats preference:
 
@@ -468,7 +468,7 @@ template – the one referenced by the `template` property above.</dd>
 Notice, in this example, how the `templatePrefix` term is being used.</dd>
 </dl>
 
-#### Instantiation ####
+#### Instantiation
 
 The last thing in the `js/prefsEditor.js` file is a call to the Preferences Framework
 function [`fluid.prefs.create()`](../PreferencesEditor.md). This function actually creates the Preference Editor.
@@ -524,7 +524,7 @@ The grade name of our Auxiliary Schema:
 The Auxiliary Schema (plus the Primary Schema that was registered with the Framework automatically)
 contains all the information the Builder needs to construct the Preference Editor.
 
-## Adding another preference ##
+## Adding another preference
 
 Let’s use what we’ve learned so far to add another simple preference to the Editor:
 Preferred volume for the radio. This preference will be a number, and it will have a
@@ -536,7 +536,7 @@ To add this preference, we’ll need to
 2. create the Panel, and
 3. add the Panel to the Editor.
 
-### Defining the preference ###
+### Defining the preference
 
 We’ll edit the Primary Schema definition in `schemas/primary.js` to add the new preference
 definition. It’s `type` is `“number”`, and in addition to the default, we’ll have to define a
@@ -557,9 +557,9 @@ fluid.defaults("awesomeCars.prefs.schemas.radioVolume", {
 });
 ```
 
-### Creating the Panel ###
+### Creating the Panel
 
-#### Template and Adjuster ####
+#### Template and Adjuster
 
 We will need an HTML template for the Panel. Since the preference is a range,
 we’ll use a slider for the Adjuster.
@@ -580,7 +580,7 @@ We’ve used an `<input>` with type `“range”` for the Adjuster.
 The template doesn’t need to set the min, max or value attributes; those are dependent on the
 Primary Schema and will be added in by the Preference Editor.
 
-#### Panel component ####
+#### Panel component
 
 In the `prefsEditor.js` file, we'll create the Panel component for this preference.
 As with the heated seats Panel, we use a call to `fluid.defaults()`
@@ -763,7 +763,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
 });
 ```
 
-### Adding the Panel to the Editor ###
+### Adding the Panel to the Editor
 
 We saw above that the main HTML template for the tool, `html/prefsEditorTemplate.html`,
 has a placeholder in it for the heated seats Panel.
@@ -793,7 +793,7 @@ configuration options specific to the new Panel:
 }
 ```
 
-## Saving Preferences ##
+## Saving Preferences
 
 Right now, when you click the "save" button, the preferences are saved – if you reload the page,
 they're all there.
@@ -880,7 +880,7 @@ awesomeCars.prefs.init = function (container) {
 };
 ```
 
-## Coming Soon: ##
+## Coming Soon:
 
 Information about:
 

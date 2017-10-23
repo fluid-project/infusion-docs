@@ -9,18 +9,18 @@ A **cutpoint** is a mapping between a component in the renderer component tree a
 
 Cutpoints consist of two fields: The `ID` of the component in the tree and a `selector` for the element in the template:
 
-```javascript
+```snippet
 {
     id: <string ID of component in tree>,
     selector: <string selector referencing an element in the template>
 }
 ```
 
-## Working with Cutpoints ##
+## Working with Cutpoints
 
 Many renderer-related functions require a list of cutpoints, but it is rare that developers will have to create cutpoints manually. There are three ways to work with cutpoints:
 
-### Automatically From Selectors ###
+### Automatically From Selectors
 
 If you are using the rendererComponent grade, you can let the initialization function generate the cutpoints from your selectors. If the default selectors are defined in your component's options, the framework will automatically retrieve the selectors, generate the cutpoints, and provide them to the Renderer wherever necessary. The selector names will be used as the component IDs. This is the simplest option.
 
@@ -42,7 +42,7 @@ cspace.autocomplete.popup = function (container, options) {
 };
 ```
 
-### Generated ###
+### Generated
 
 If you are using [fluid.rendererComponent](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/RendererUtilities.js#L139-L141), you can provide a function of your own that will be used to generate cutpoints. The function must accept an object containing a set of named selectors, and will also accept options (see [fluid.renderer.selectorsToCutpoints](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/RendererUtilities.js#L268-L285) for a description of the options).
 
@@ -64,7 +64,7 @@ fluid.myRendererComponent.personalizeSelectorsToCutpoints = function (selectors,
 };
 ```
 
-### Manually ###
+### Manually
 
 Finally, cutpoints can be provided directly to the renderer.
 

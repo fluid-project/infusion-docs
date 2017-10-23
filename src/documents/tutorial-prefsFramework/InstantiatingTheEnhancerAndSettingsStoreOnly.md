@@ -17,13 +17,13 @@ Adding the settings store and enhancer requires a two-step process:
 1. Use the Builder to build the tools, then
 2. Instantiate the tools built by the builder.
 
-## Build the Settings Store and Enhancer ##
+## Build the Settings Store and Enhancer
 
 Build the settings store and enhancer with a call to the Preferences Framework Builder (this call also builds a preferences editor, but you aren't required to instantiate it). The Builder can be used with either the `auxiliarySchema` property or with an auxiliary schema grade.
 
 <div class="infusion-docs-note"><strong>Note:</strong> Your auxiliary schema <strong>MUST</strong> specify a namespace. You'll need this namespace to access the components created by the builder.</div>
 
-### Example: Using the Builder with the `auxiliarySchema` Property ###
+### Example: Using the Builder with the `auxiliarySchema` Property
 
 ```javascript
 var myAuxiliarySchema = {
@@ -37,7 +37,7 @@ fluid.prefs.builder({
 });
 ```
 
-### Example: Using the Builder with an Auxiliary Schema Grade ###
+### Example: Using the Builder with an Auxiliary Schema Grade
 
 ```javascript
 fluid.defaults("my.auxSchemaGrade", {
@@ -54,11 +54,11 @@ fluid.prefs.builder({
 });
 ```
 
-## Instantiate the Enhancer ##
+## Instantiate the Enhancer
 
 Once you've run the builder, you can access the enhancer through the namespace you specified in your auxiliary schema
 
-### Instantiating the Default Separated Panel Editor ###
+### Instantiating the Default Separated Panel Editor
 
 ```javascript
 var enhancer = my.prefs.uie("body");

@@ -8,7 +8,7 @@ Composite panels allow you to combine several small panels – subpanels – int
 
 <div class="infusion-docs-note"><strong>Note:</strong> Subpanels <strong>must</strong> contain only one preference.</div>
 
-## Grades ##
+## Grades
 
 Composite panels must be defined with the `fluid.prefs.compositePanel` [grade](ComponentGrades.md), as shown in the following code block:
 
@@ -30,14 +30,14 @@ fluid.defaults("my.panels.subanel", {
 });
 ```
 
-## Composite Panel Definition ##
+## Composite Panel Definition
 
 A composite panel is defined in the auxiliary schema, in a special block called `groups`, which has the following general format:
 
-```javascript
+```snippet
 groups: {
     <composite panel name>: {
-        "container": <selector of element in preferences editor where panel should be rendered>,
+        "container": containerSelector // <selector of element in preferences editor where panel should be rendered>,
         "template": <path and filename of composite panel template>,
         "message": <path and filename of composite panel message file>,
         "type": <grade name of composite panel>,
@@ -50,19 +50,19 @@ groups: {
 
 In the code block above, the `panels` list is an array of names. These are derived from the keys in the auxiliary schema that associate panels with preferences.
 
-## Templates ##
+## Templates
 
 A composite panel and its subpanels each have their own HTML template. The composite panel template must contain elements that will serve as containers for the subpanels.
 
-## Auxiliary Schema Declarations ##
+## Auxiliary Schema Declarations
 
 The subpanel declarations in the auxiliary schema will reference the selectors for these elements.
 
-## Message Bundles ##
+## Message Bundles
 
 A composite panel and its subpanels can each have their own JSON message file.
 
-## Examples ##
+## Examples
 
 Composite panel HTML template:
 

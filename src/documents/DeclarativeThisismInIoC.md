@@ -8,7 +8,7 @@ Typically in Infusion, all functions and components adhere to a **that-ist** app
 
 For more details on the differences between **that-ist** and **this-ist** approaches, as well as the reasoning behind why Infusion employs the former, see the [About this and that](http://fluidproject.org/blog/2008/07/21/about-this-and-that/) blog post.
 
-## Structure ##
+## Structure
 
 A **this-ist** function can be declaratively bound to [invokers](Invokers.md) and listeners in an IoC tree and takes the following structure:
 
@@ -59,7 +59,7 @@ A **this-ist** function can be declaratively bound to [invokers](Invokers.md) an
     </tbody>
 </table>
 
-## Examples ##
+## Examples
 
 In the following example, a **this-ist** function is used to attach a listener to the `onCreate` events: The jQuery `click()` function of the button identified by the `button` selector is used to bind the component's `writeText()` method to the click event.
 

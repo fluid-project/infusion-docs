@@ -15,7 +15,7 @@ Below are some resources which discuss general website optimization strategies:
 * [https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/](https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/)
 * [https://hpbn.co](https://hpbn.co)
 
-## Optimization of the Preferences Framework ##
+## Optimization of the Preferences Framework
 
 * Use a minified [custom build of Infusion](https://github.com/fluid-project/infusion#how-do-i-create-an-infusion-package)
 * Use the grade version of a full page [Preferences Editor](../PreferencesEditor.md)
@@ -27,19 +27,19 @@ To see a live version of the example outlined below, open the [Minimal Footprint
 <strong>Note:</strong> The example outlined below uses individual JS files. However, these can be substituted by using an Infusion build.
 </div>
 
-### Minified Custom Build ###
+### Minified Custom Build
 
 Infusion provides a build tool for creating minified custom packages. This is essential for creating the smallest package which requires the fewest requests. From the Infusion root directory run `grunt custom --include="preferences"`, which will create a zip file containing all of the bundled code.
 
 See: "[How Do I Create an Infusion Package](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package)" documentation for the full list of steps.
 
-### Full Page Preferences Editor ###
+### Full Page Preferences Editor
 
 Most website integrations of a [Preferences Editor](../PreferencesEditor.md) make use of [UI Options](../tutorial-userInterfaceOptions/UserInterfaceOptions.md). UI Options provides a convenient interaction for users to quickly review and modify their preferences without having to leave the page, and presents a live preview of their adjustments. However, this also adds additional overhead to instantiate the preferences editor and load in all of the required resources. A Full Page preference editor, on the other hand, is designed to run as a stand alone page and can be configured with a preview window. Be sure to provide the user with a link to the full page preferences editor, for example a link on each content page or in the site's user settings.
 
 <div class="infusion-docs-note"><strong>Note:</strong> Preferences Editors can be configured either through an <a href="../AuxiliarySchemaForPreferencesFramework.md">Auxiliary Schema</a> or directly through grades. The grade version is slightly more complicated to configure, but removes computation time for processing the schema.</div>
 
-#### Instantiating a Full Page Preferences Editor ####
+#### Instantiating a Full Page Preferences Editor
 
 The following example instantiates a Full Page Preferences Editor with a preview window.
 The code consists of the following three parts:
@@ -116,7 +116,7 @@ The code consists of the following three parts:
     });
 ```
 
-### Lazy Loading ###
+### Lazy Loading
 
 With a Full Page Preferences Editor we've moved editing preferences off the content pages; however, these pages are still required to enact/apply the preferences set by the user. Therefore, we still need to instantiate the [Settings Store](../SettingsStore.md) and [Page Enhancer](../Enactors.md) on each page. However, we only need these if a user has actually adjusted their preferences. In a default implementation of the Preferences Framework, preferences are stored in a browser cookie. The simple solution is to check for the presence of this cookie, and only load and instantiate the Settings Store and Page Enhancer if it's found.
 
@@ -173,7 +173,7 @@ fluid.pageEnhancer({
 });
 ```
 
-## Caveats ##
+## Caveats
 
 While the strategy outlined above will improve page load performance, it is not without its drawbacks.
 

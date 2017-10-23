@@ -6,7 +6,7 @@ category: Components
 
 The **Textfield Slider** is a user interface component for adjusting a number value using a range input. It is paired with a [Textfield](TextfieldAPI.md) for direct entry of the value.
 
-## Creator ##
+## Creator
 
 Use the following function to create a Textfield Slider component:
 
@@ -71,7 +71,7 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     </tbody>
 </table>
 
-## Model Paths ##
+## Model Paths
 
 The following model paths can be used with [model listeners](ChangeApplierAPI.md).
 
@@ -131,9 +131,9 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
     </tbody>
 </table>
 
-## Options ##
+## Options
 
-### strings ###
+### strings
 
 <table>
     <tbody>
@@ -164,7 +164,7 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     </tbody>
 </table>
 
-### attrs ###
+### attrs
 
 <table>
     <tbody>
@@ -195,7 +195,7 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     </tbody>
 </table>
 
-### styles ###
+### styles
 
 <table>
     <tbody>
@@ -234,7 +234,7 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     </tbody>
 </table>
 
-### selectors ###
+### selectors
 
 <table>
     <tbody>

@@ -69,7 +69,7 @@ Function to manually apply transformation rules to a source model. It will retur
 
 The top-level structure of a full transformation document `{Transform}` is keyed by output [EL paths](FrameworkConcepts.md#el-paths) and looks like this:
 
-```javascript
+```snippet
 {
     <output-el-path1>: <input-el-path1> OR {SingleTransform},
     <output-el-path2>: <input-el-path2> OR {SingleTransform}
@@ -79,7 +79,7 @@ The top-level structure of a full transformation document `{Transform}` is keyed
 
 A `{SingleTransform}` record is as follows:
 
-```javascript
+```snippet
 {
     transform: {
         "type": <transform-type>
@@ -1590,11 +1590,11 @@ The only option that `delete` supports is `outputPath`, which points to the outp
 
 **Syntax:**
 
-```javascript
+```json
 {
-    transform: {
+    "transform": {
         "type": "fluid.transforms.delete",
-        "outputPath": <the output path to delete>
+        "outputPath": "path.to.delete"
     }
 }
 ```
@@ -1641,7 +1641,7 @@ This is a very powerful and flexible transformation function, which maps a defin
 
 **Syntax:**
 
-```javascript
+```snippet
 {
     type: "fluid.transforms.valueMapper",
     defaultInputPath: <default input path>,
@@ -1723,7 +1723,7 @@ Some of the keys used in the ValueMapper conflict, in that they reference the sa
 
 ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entries are interpreted as `inputValue` by the system. If `<outputX>` are primitive datatypes (string, number or boolean), they will be used directly as output. Else they should be objects with the same format in the longhand syntax described above - excluding support the `inputValue` option.
 
-```javascript
+```snippet
 {
     type: "fluid.transforms.valueMapper",
     input: <direct input data, or nested transformation>,
@@ -2014,7 +2014,7 @@ Logical Operators: (both operands are required to be booleans, output will be bo
 
 **Syntax:**
 
-```javascript
+```snippet
 transform: {
     "type": "fluid.transforms.binaryOp",
     "left": <constant of appropriate type>,
@@ -2097,7 +2097,7 @@ transform: {
 
 **Syntax:**
 
-```javascript
+```snippet
 transform: {
     "type": "fluid.transforms.condition",
     "condition": <boolean value>
@@ -2255,7 +2255,7 @@ If either the `left` or `right` (or their path equivalents) evaluate to `undefin
 
 **Syntax:**
 
-```javascript
+```snippet
 transform: {
     "type": "fluid.transforms.linearScale",
     "input": <constant of array type>,
@@ -2366,7 +2366,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **Syntax:**
 
-```javascript
+```snippet
 "transform": {
     "type": "fluid.transforms.quantize",
     "inputPath": <path to the value to check ranges from>,
@@ -2527,7 +2527,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **Syntax:**
 
-```javascript
+```snippet
 "transform": {
     "type": "fluid.transforms.inRange",
     "inputPath": <path to the value to check ranges from - input is valid as well>,
@@ -2681,12 +2681,14 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 **Syntax:**
 
-```javascript
-transform: {
-    "type": "fluid.transforms.indexArrayByKey",
-    "inputPath": "some input path pointing to an array",
-    "key": "the variable from array to use as key"
-    "innerValue": [ (...inner transforms...) ]
+```json
+{
+    "transform": {
+        "type": "fluid.transforms.indexArrayByKey",
+        "inputPath": "some input path pointing to an array",
+        "key": "the variable from array to use as key",
+        "innerValue": [ /* ...inner transforms... */ ]
+    }
 }
 ```
 
@@ -2785,15 +2787,17 @@ For the below example, in the second (innermost) `inputPath`, we refer to `info.
 
 A brief illustration of this is given here:
 
-```javascript
-input: {
-    "cat": { name: "CATTOO" },
-    "mouse": { name: "MAUS" }
+```json
+{
+    "input": {
+        "cat": { "name": "CATTOO" },
+        "mouse": { "name": "MAUS" }
+    },
+    "output": [
+        { "name": "CATTOO", "animal": "cat" },
+        { "name": "MAUS", "animal": "mouse" }
+    ]
 }
-output: [
-    { name: "CATTOO", animal: "cat" },
-    { name: "MAUS", animal: "mouse" }
-]
 ```
 
 In the above case, the `key` option would be `animal`. The outer key-names are added to their respective object as an entry with a key `animal`.
@@ -2806,12 +2810,14 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 **Syntax:**
 
-```javascript
-transform: {
-    "type": "fluid.transforms.deindexIntoArrayByKey",
-    "inputPath": "some input path pointing to an object of objects",
-    "key": "the variable to use as key for newly added entries"
-    "innerValue": [ (...inner transforms...) ]
+```json5
+{
+    transform: {
+        "type": "fluid.transforms.deindexIntoArrayByKey",
+        "inputPath": "some input path pointing to an object of objects",
+        "key": "the variable to use as key for newly added entries"
+        "innerValue": [ /* inner transforms */ ]
+    }
 }
 ```
 
@@ -2915,7 +2921,7 @@ Returns `undefined` if no array is provided.
 
 **Syntax:**
 
-```javascript
+```snippet
 {
     "type": "fluid.transforms.indexOf",
     "array": <the array to look in>,
@@ -3087,7 +3093,7 @@ It allows for an `offset` to be provided, which will be added to the index that 
 
 **Syntax:**
 
-```javascript
+```snippet
 {
     "type": "fluid.transforms.dereference",
     "array": <the array to look in>,
@@ -3169,7 +3175,7 @@ Currently it does not support reading any of its values from the input model. Fu
 
 **Syntax:**
 
-```javascript
+```snippet
 {
     "type": "fluid.transforms.stringTemplate",
     "template": <string template>,
@@ -3252,7 +3258,7 @@ Does not support reading any of its values from the input model, and any value p
 
 **Syntax:**
 
-```javascript
+```snippet
 {
     "type": "fluid.transforms.free",
     "func": <function name>,
@@ -3355,7 +3361,7 @@ all possible system capabilities with a true/false value indicating whether the 
 
 If `presentValue` and `missingValue` are not defined they will default to: `true` and `false`, respectively.
 
-```javascript
+```snippet
 transform: {
     "type": "fluid.transforms.arrayToSetMembership",
     "inputPath": <standard inputPath>,
@@ -3363,7 +3369,7 @@ transform: {
     "missingValue": <That value given to an entry if expectedArrayEntryX is present in array>,
     "options": {
         "expectedArrayEntry1": "Key of output set 1",
-        (...)
+        // ...
         "expectedArrayEntryN": "Key of output set N",
     }
 }
@@ -3467,17 +3473,19 @@ The actual entries output to the array are based on a map passed as `options` to
 
 If `presentValue` and `missingValue` are not defined they will default to: `true` and `false`, respectively.
 
-```javascript
-transform: {
-    "type": "fluid.transforms.setMembershipToArray",
-    "inputPath": <standard inputPath>,
-    "outputPath": <standard outputPath>
-    "presentValue": <Value indicating that an entry should be in output array>,
-    "missingValue": <Value indicating that an entry should not be in output array>,
-    "options": {
-        "inputObjectKey1": "outputArrayValue1",
-        (...)
-        "inputObjectKeyN": "outputArrayValueN",
+```snippet
+{
+    transform: {
+        "type": "fluid.transforms.setMembershipToArray",
+        "inputPath": <standard inputPath>,
+        "outputPath": <standard outputPath>
+        "presentValue": <Value indicating that an entry should be in output array>,
+        "missingValue": <Value indicating that an entry should not be in output array>,
+        "options": {
+            "inputObjectKey1": "outputArrayValue1",
+            // ...
+            "inputObjectKeyN": "outputArrayValueN",
+        }
     }
 }
 ```
@@ -3573,7 +3581,7 @@ The following are all false: undefined, null, "", "0", "false", false, 0.  Every
 
 **Syntax:**
 
-```javascript
+```json
 {
     "transform": {
         "type": "fluid.transforms.stringToBoolean",
@@ -3625,7 +3633,7 @@ Anything else (0, false, null, etc.) returns "false".
 
 **Syntax:**
 
-```javascript
+```json
 {
     "transform": {
         "type": "fluid.transforms.booleanToString",
@@ -3675,7 +3683,7 @@ Anything else (0, false, null, etc.) returns "false".
 
 **Syntax:**
 
-```javascript
+```json
 {
     "transform": {
         "type": "fluid.transforms.JSONstringToObject",
@@ -3727,7 +3735,7 @@ Anything else (0, false, null, etc.) returns "false".
 
 **Syntax:**
 
-```javascript
+```json
 {
     "transform": {
         "type": "fluid.transforms.objectToJSONString",
@@ -3821,7 +3829,7 @@ although this can be done at your own risk. See the section on
 
 **Syntax:**
 
-```javascript
+```json
 {
     "transform": {
         "type": "fluid.transforms.stringToDate",
@@ -3879,7 +3887,7 @@ although this can be done at your own risk. See the section on
 
 **Syntax:**
 
-```javascript
+```json
 {
     "transform": {
         "type": "fluid.transforms.dateToString",
@@ -3935,7 +3943,7 @@ although this can be done at your own risk. See the section on
 
 **Syntax:**
 
-```javascript
+```json
 {
     "transform": {
         "type": "fluid.transforms.dateTimeToString",

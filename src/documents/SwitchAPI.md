@@ -6,25 +6,29 @@ category: Components
 
 The Switch component is a user interface widget for switching/toggling a setting, preference, option, etc.
 
-## Creating a Switch ##
+## Creating a Switch
 
 ```javascript
-var switchUI = fluid.switchUI (container[, options]);
+var switchUI = fluid.switchUI(container);
+
+// or
+
+var switchUIWithOptions = fluid.switchUI(container, options);
 ```
 
-### Parameters ###
+### Parameters
 
-#### container ####
+#### container
 
 The `container` parameter is a CSS-based [selector](http://api.jquery.com/category/selectors/), single-element jQuery object, or DOM element specifying the containing element for the Switch.
 
-#### options parameter ####
+#### options parameter
 
 The `options` parameter is an optional collection of name-value pairs that configure the Switch, as described in the [Options](#options) section below.
 
-## Options ##
+## Options
 
-### General options ###
+### General options
 
 <table>
     <thead>
@@ -120,7 +124,7 @@ model: {
     </tbody>
 </table>
 
-### Selectors ###
+### Selectors
 
 The `selectors` option is an object containing CSS-based selectors for the various parts of the Switch. Supported selectors are:
 
@@ -176,7 +180,7 @@ selectors: {
     </tbody>
 </table>
 
-## Styling the Switch ##
+## Styling the Switch
 
 The Switch includes default CSS styles that are applied to its elements. The application of styles is based on known class names. The _default_ class names are described below, and can be used by including the Switch stylesheet:
 
@@ -188,14 +192,14 @@ The Switch includes default CSS styles that are applied to its elements. The app
 
 These styling classes should be added to the markup used by the Switch. To modify the appearance, one can modify the markup and/or override the style declarations applied to the classes.
 
-### Default Classes ###
+### Default Classes
 
 * `fl-switchUI` - Should be added to the switch container.
 * `fl-switchUI-text` - Should be applied to the "on" and "off" indicators.
 * `fl-switchUI-control` - Should be applied to the actual switch control.
 * `fl-switchUI-controlKnob` - Should be applied to the knob of the switch control.
 
-## Dependencies ##
+## Dependencies
 
 The Switch dependencies can be met by including the `infusion-all.js` file in the header of the HTML file:
 

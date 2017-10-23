@@ -6,7 +6,7 @@ category: Components
 
 The **Textfield** is a small component for adding aria attributes and data binding to a HTML textfield. Typically this will be used in conjunction with a controller (e.g. [**Textfield Slider**](TextfieldSliderAPI.md), [**Textfield Stepper**](TextfieldStepperAPI.md)) to restrict the values and pair with additional input methods.
 
-## Creator ##
+## Creator
 
 Use the following function to create a Textfield component:
 
@@ -65,9 +65,9 @@ var textfield = fluid.textfield(".flc-textfield", {
     </tbody>
 </table>
 
-## Methods ##
+## Methods
 
-### setModel ###
+### setModel
 
 <table>
     <tbody>
@@ -97,15 +97,15 @@ var textfield = fluid.textfield(".flc-textfield", {
     </tbody>
 </table>
 
-## Model Paths ##
+## Model Paths
 
 The following model paths can be used with [model listeners](ChangeApplierAPI.md).
 
 * `model.value`: `undefined` by default but can contain any value that is valid for the input.
 
-## Options ##
+## Options
 
-### strings ###
+### strings
 
 <table>
     <tbody>
@@ -136,7 +136,7 @@ var textfield = fluid.textfield(".flc-textfield", {
     </tbody>
 </table>
 
-### attrs ###
+### attrs
 
 <table>
     <tbody>

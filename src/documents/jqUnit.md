@@ -18,8 +18,6 @@ writing plain unit tests, as well as integration tests which don't have a highly
 writing large-scale integration or acceptance tests against significantly-sized parts of an application, that require sequences of asynchronous conversation, for example simulating user
 GUI interaction or HTTP requests, you should use the IoC Testing Framework.
 
-# jqUnit API
-
 ## Organising and controlling fixtures
 
 ### jqUnit.module(name, hooks)

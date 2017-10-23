@@ -6,26 +6,26 @@ category: Infusion
 
 This page contains a list of the features, APIs, and etc. that have changed in Infusion 3.0.
 
-## Framework Changes ##
+## Framework Changes
 
-### Core Framework Changes ###
+### Core Framework Changes
 
 This section describes major APIs that were in common use. For information about less widely-used features removed in 3.0, consult [Deprecations in 2.0](DeprecatedIn2_0.md).
 
-#### Model Transformations ####
+#### Model Transformations
 
 * `fluid.transforms.round` can take in `scale` and `method` options for rounding numbers to a decimal value. Additionally, numbers round away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
 * `fluid.transforms.valueMapper` takes an `defaultInput` option to provide the model data directly. This also provides a location for adding nested transformations.
 
-### Preferences Framework ###
+### Preferences Framework
 
-#### Panel Changes ####
+#### Panel Changes
 
 The "Links and Buttons" adjusters and enactors are collapsed to a single preference called "Enhance Links".
 
-##### Message Bundle Keys #####
+##### Message Bundle Keys
 
-###### Additions ######
+###### Additions
 
 * enhanceInputs.json
   * `"label"`
@@ -39,13 +39,13 @@ The "Links and Buttons" adjusters and enactors are collapsed to a single prefere
   * `"switchOn"`
   * `"switchOff"`
 
-###### Removals ######
+###### Removals
 
 * inputsLarger.json
 * emphasizeLinks.json
 * linksControls.json
 
-###### Changes ######
+###### Changes
 
 <table>
     <thead>

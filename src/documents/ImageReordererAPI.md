@@ -6,23 +6,27 @@ category: Components
 
 The Image Reorderer is a convenience function for applying the Reorderer to images within a collection. This page provides technical details of the API.
 
-## Creating an Image Reorderer ##
+## Creating an Image Reorderer
 
 ```javascript
-var myImageReorderer = fluid.reorderImages (container[, options]);
+var myImageReorderer = fluid.reorderImages(container);
+
+// or
+
+var myImageReordererWithOptions = fluid.reorderImages(container, options);
 ```
 
-### Parameters ###
+### Parameters
 
-#### container ####
+#### container
 
 The `container` parameter is a CSS-based [selector](http://api.jquery.com/category/selectors/), single-element jQuery object, or DOM element specifying the root node of the Reorderer.
 
-#### options parameter ####
+#### options parameter
 
 The `options` parameter is an optional collection of name-value pairs that configure the Image Reorderer, as described in the [Options](#options) section below.
 
-## Supported Events ##
+## Supported Events
 
 The Image Reorderer fires the following events.
 
@@ -145,9 +149,9 @@ requestedPosition = {
     </tbody>
 </table>
 
-## Options ##
+## Options
 
-### General options ###
+### General options
 
 <table>
     <thead>
@@ -304,7 +308,7 @@ mergePolicy: {
     </tbody>
 </table>
 
-### Image Reorderer Options ###
+### Image Reorderer Options
 
 <table>
     <thead>
@@ -327,7 +331,7 @@ mergePolicy: {
     </tbody>
 </table>
 
-### Selectors ###
+### Selectors
 
 The `selectors` option is an object containing CSS-based selectors for various parts of the Image Reorderer. Supported selectors are:
 
@@ -416,7 +420,7 @@ selectors: {
     </tbody>
 </table>
 
-### Image Reorderer-specific Selector ###
+### Image Reorderer-specific Selector
 
 The Image Reorderer supports one additional selector:
 
@@ -447,7 +451,7 @@ selectors: {
     </tbody>
 </table>
 
-## Styling the Image Reorderer ##
+## Styling the Image Reorderer
 
 The Image Reorderer includes default CSS styles that it applies to the thumbnails. The application of styles is based on known class names. The _default_ class names are described below, and can be used by including the Image Reorderer stylesheet:
 
@@ -457,7 +461,7 @@ The Image Reorderer includes default CSS styles that it applies to the thumbnail
 
 NOTE that the default class names can be overridden with your own classes using the `styles` option: refer to the [Options](#options) section above.
 
-### Default Classes ###
+### Default Classes
 
 * `fl-reorderer-movable-default` - This class is applied to thumbnail elements in their default state.
 * `fl-reorderer-movable-selected` - This class is applied to the thumbnail that has been selected. The selected thumbnail item can be moved using keystrokes.
@@ -466,7 +470,7 @@ NOTE that the default class names can be overridden with your own classes using 
 * `fl-reorderer-avatar` - This class is applied to the avatar, the image of the thumbnail as it is being dragged about by the mouse.
 * `fl-reorderer-dropMarker` - This class is applied to the drop target indicator when the mouse is used to drag a thumbnail.
 
-## Dependencies ##
+## Dependencies
 
 The Image Reorderer dependencies can be met by including the `infusion-custom.js` file in the header of the HTML file:
 

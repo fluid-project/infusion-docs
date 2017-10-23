@@ -7,12 +7,12 @@ category: Infusion
 The Infusion [Preferences Framework](PreferencesFramework.md) includes a tool called the Builder, which automatically creates all the components you need given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary schemas](AuxiliarySchemaForPreferencesFramework.md). The builder constructs all the components necessary to render the preferences editor, store preferences, and respond to changes in preferences. However, you'll generally want to use the simpler method "fluid.prefs.create" for creating and instantiating a [Preferences Editor](PreferencesEditor.md).
 
 ```javascript
-var builder = fluid.prefs.builder(<options>);
+var builder = fluid.prefs.builder(options);
 ```
 
 <div class="infusion-docs-note"><strong>Note:</strong> In this form, the namespace property of the [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md) is required.</div>
 
-### Parameters ###
+### Parameters
 
 <table>
 <tr><td><code>options</code></td><td>(Object) The configuration options for the builder. See <a href="#options">Options</a> below for more information.</td></tr>
@@ -20,13 +20,13 @@ var builder = fluid.prefs.builder(<options>);
 
 where `options` is a JavaScript object containing information configuring your builder.
 
-### Return Value ###
+### Return Value
 
 <table>
 <tr><td>Object</td><td>The builder object. See <a href="#builder-object">Builder Object</a> below for more information.</td></tr>
 </table>
 
-### Options ###
+### Options
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
@@ -59,7 +59,7 @@ This option can be used to specify the names of grades that define schemas, as a
 
 If you provide both, they will be merged (with the `auxiliarySchema` overriding anything in the grade schema), but you must provide at least one.
 
-## Usage ##
+## Usage
 
 The simplest usage of the builder is through the two schema options:
 
@@ -74,7 +74,7 @@ var myBuilder = fluid.prefs.builder({
 });
 ```
 
-### Using the Starter Preferences ###
+### Using the Starter Preferences
 
 The Preferences Framework includes primary and auxiliary schema for a set of preferences, referred to to as the "starter set." This set includes the following preferences:
 
@@ -110,7 +110,7 @@ var myBuilder = fluid.prefs.builder({
 
 It is not necessary to specify the primary schema; The builder will automatically find the preference specifications provided by the Framework and build a primary schema (see [Processing the Schemas](#processing-the-schemas) below for more information).
 
-### Switching Between Native HTML and jQuery UI Widgets ###
+### Switching Between Native HTML and jQuery UI Widgets
 
 It is possible when using the Preferences Framework to configure the use of either HTML or jQuery UI-based adjustment widgets. The default behaviour is to use HTML widgets for components that have this option available.
 
@@ -140,7 +140,7 @@ At the moment, only the TextFieldSlider widget used for text size and line spaci
 [native HTML range input](https://www.w3.org/wiki/HTML/Elements/input/range) (rendered as a horizontal slider in modern browsers) or
 the [jQuery UI Slider component](https://jqueryui.com/slider/) to create its slider. Other context-aware widgets may be added in the future.
 
-## Auxiliary Schema Grade ##
+## Auxiliary Schema Grade
 
 If a grade name is used to provide the auxiliary schema, the grade must meet certain criteria:
 
@@ -159,7 +159,7 @@ var myBuilder = fluid.prefs.builder({
 });
 ```
 
-## Processing the Schemas ##
+## Processing the Schemas
 
 The Preferences Framework builds an internal, preliminary primary schema as follows:
 
@@ -170,9 +170,9 @@ This preliminary schema is then filtered based on the preferences found in the a
 
 <div class="infusion-docs-note"><strong>Note:</strong> All panels and enactors defined in the auxiliary schema will be created and rendered, but only those that have corresponding preferences in the primary schema will actually work.</div>
 
-## Output of Builder ##
+## Output of Builder
 
-### Builder Object ###
+### Builder Object
 
 The builder object returned by a call to `fluid.prefs.builder()` has the following properties that can be used to instantiate the constructed preferences editor:
 
@@ -190,7 +190,7 @@ The builder object returned by a call to `fluid.prefs.builder()` has the followi
 </tr>
 </table>
 
-### Functions ###
+### Functions
 
 The builder also creates free functions that can be used to instantiate the preferences editor and enhancer. These functions are created within the namespace specified in the auxiliary schema, if specified, or in a unique namespace, `"fluid.prefs.created_UNIQUE_ID"`.
 
@@ -199,9 +199,9 @@ The functions created include:
 * `prefsEditor()` which can be used to instantiate the preferences editor, enhancer and settings store
 * `uie()` which can be used to instantiate the enhancer and settings store
 
-## Examples ##
+## Examples
 
-### Starter schemas, default namespace ###
+### Starter schemas, default namespace
 
 ```javascript
 var myBuilder = fluid.prefs.builder({
@@ -227,7 +227,7 @@ fluid.invokeGlobalFunction(builder.options.assembledPrefsEditorGrade, [".fat-pan
 fluid.prefs.constructed.prefsEditor(".fat-panel-container");
 ```
 
-### Custom schemas, custom namespace ###
+### Custom schemas, custom namespace
 
 ```javascript
 // define a primary schema, with a single preference

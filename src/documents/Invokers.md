@@ -15,9 +15,9 @@ representing the component itself in and out of the argument list, this also all
 more powerful reuse of existing functions where signature elements can be sourced freely from
 around the component tree and within the original argument list.
 
-## Types of Invokers ##
+## Types of Invokers
 
-### Standard invoker binding to a function using funcName, func ###
+### Standard invoker binding to a function using funcName, func
 
 An invoker can specified with either the **`funcName`** property to reference a free function by its
 global name (e.g. `fluid.copy`, `fluid.log`, etc.) or the **`func`** property to reference an existing
@@ -58,7 +58,7 @@ function unchanged.
     </tbody>
 </table>
 
-#### An invoker record in context ####
+#### An invoker record in context
 
 The following skeleton example defines an invoker named invokerName attached to a component of
 type component.name. When a component of the type is instantiated, for example with a line such
@@ -71,8 +71,8 @@ fluid.defaults("component.name", {
     // ...
     invokers: {
         invokerName: {
-            funcName: <fully namespaced string name of function>,
-            args: <array of arguments>
+            funcName: "my.namespaced.function",
+            args: [] // Array of arguments
         }
         // ...
     }
@@ -109,7 +109,7 @@ fluid.defaults("xyz.widget", {
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
-#### Compact format for invokers ####
+#### Compact format for invokers
 
 Alternatively, invokers can be specified in a compact single line format. However, arguments
 specified in the invoker can only be strings or [IoC References](IoCReferences.md). Strings which can be converted
@@ -161,7 +161,7 @@ fluid.defaults("fluid.uploader.fileQueue", {
 });
 ```
 
-### Invoker triggering a model change to some component's model ###
+### Invoker triggering a model change to some component's model
 
 If the invoker's record contains the field changePath (rather than the standard `func`/`funcName`)
 this is recognised as a special type of invoker triggering a change to a particular component's
@@ -169,7 +169,7 @@ model via its [ChangeApplier](ChangeApplier.md). This type of record is document
 section with the [ChangeApplier API](ChangeApplierAPI.md). The compact syntax may not be used with
 this variety of record.
 
-### "this"-ist invoker binding to a OO-style JavaScript function referencing "this" ###
+### "this"-ist invoker binding to a OO-style JavaScript function referencing "this"
 
 Specifying an invoker with a __`"this"`__ property allows the invocation of functions whose body
 makes a reference to the special JavaScript value `"this"`. These are generally functions external
@@ -217,16 +217,16 @@ invokers.
     </tbody>
 </table>
 
-#### Format ####
+#### Format
 
 ```javascript
 fluid.defaults("component.name", {
     // ...
     invokers: {
         invokerName: {
-            "this": <reference to an object>,
-            method: <string name of method on the object>,
-            args: <array of arguments>
+            "this": "console", // reference to an object
+            method: "log", // string name of method on the this-ist object
+            args: ["Hello, world."] // array of arguments
         }
     }
     // ...
@@ -267,6 +267,6 @@ fluid.defaults("fluid.uploader.html5Strategy.browseButtonView", {
 });
 ```
 
-#### Compact format ####
+#### Compact format
 
 "this"-ist invokers have no equivalent compact syntax.

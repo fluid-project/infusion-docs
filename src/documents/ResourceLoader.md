@@ -19,7 +19,7 @@ component tree:
 var resourceLoader = fluid.resourceLoader([options]);
 ```
 
-### Parameters ###
+### Parameters
 
 <table>
 <tr>
@@ -28,7 +28,7 @@ var resourceLoader = fluid.resourceLoader([options]);
 </tr>
 </table>
 
-### Return Value ###
+### Return Value
 
 <table>
 <tr>
@@ -37,7 +37,7 @@ var resourceLoader = fluid.resourceLoader([options]);
 </tr>
 </table>
 
-### Options ###
+### Options
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
@@ -73,7 +73,7 @@ var resourceLoader = fluid.resourceLoader([options]);
 </tr>
 </table>
 
-#### Fallback Rules with `locale` and `defaultLocale` ####
+#### Fallback Rules with `locale` and `defaultLocale`
 
 `locale` and `defaultLocale` options can be used to load localized resources, for example, to load messages in different languages.
 
@@ -96,7 +96,7 @@ This example requests to load a JSON file that contains translations. The `fluid
 4. look for a suffixed resource with the same language as the language code specified by the `defaultLocale` option: `../data/translation-en.json`
 5. look for a resource with the exact URL as specified through the `resources` option: `../data/translation.json`
 
-### Events ###
+### Events
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Arguments</th></tr>
@@ -107,7 +107,7 @@ This example requests to load a JSON file that contains translations. The `fluid
 </tr>
 </table>
 
-## Using `fluid.resourceLoader` ##
+## Using `fluid.resourceLoader`
 
 The example below demonstrates when and how to use the fetched resource text in an IoC component tree. Generally speaking, the part that requires the fetched resources needs to postpone the instantiation via ```createOnEvent``` until resources are ready.
 

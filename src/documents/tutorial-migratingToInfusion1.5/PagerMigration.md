@@ -10,13 +10,13 @@ This page will walk you through the process of upgrading your existing 1.4 Pager
 * you are familiar with what the Pager component is and does
 * you have an existing implementation that makes use of the Pager and worked with the 1.4 Infusion release.
 
-## Dependency Changes ##
+## Dependency Changes
 
 <div class="infusion-docs-note"><strong>Note:</strong> actual paths may vary, as they are dependent on the location of infusion.</div>
 
-### In 1.5 ###
+### In 1.5
 
-#### CSS Files ####
+#### CSS Files
 
 ```html
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-reset-global.css" />
@@ -27,15 +27,15 @@ This page will walk you through the process of upgrading your existing 1.4 Pager
 <link rel="stylesheet" type="text/css" href="infusion/components/pager/css/Pager.css" />
 ```
 
-#### JS Files ####
+#### JS Files
 
-##### Using the infusion-all bundle #####
+##### Using the infusion-all bundle
 
 ```html
 <script type="text/javascript" src="infusion/infusion-all.js"></script>
 ```
 
-##### Using the individual files ######
+##### Using the individual files
 
 ```html
 <script type="text/javascript" src="infusion/lib/jquery/core/js/jquery.js"></script>
@@ -66,9 +66,9 @@ This page will walk you through the process of upgrading your existing 1.4 Pager
 <script type="text/javascript" src="infusion/components/pager/js/PagedTable.js"></script>
 ```
 
-### In 1.4 ###
+### In 1.4
 
-#### CSS Files ####
+#### CSS Files
 
 ```html
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-reset-global.css" />
@@ -80,7 +80,7 @@ This page will walk you through the process of upgrading your existing 1.4 Pager
 <link rel="stylesheet" type="text/css" href="infusion/components/pager/css/Pager.css" />
 ```
 
-#### JS Files ####
+#### JS Files
 
 (For 1.4, the Pager was not IoC-enabled and had a single unfactored implementation file)
 
@@ -108,9 +108,9 @@ This page will walk you through the process of upgrading your existing 1.4 Pager
 <script type="text/javascript" src="infusion/components/pager/js/Pager.js"></script>
 ```
 
-## Instantiation Changes ##
+## Instantiation Changes
 
-### In 1.5 ###
+### In 1.5
 
 These configuration blocks show how a minimal configuration of the Pager has changed between the versions. Numerous
 other configuration options are of course supported as listed in the API documentation.
@@ -136,7 +136,7 @@ fluid.pagedTable("container", {
 
 ```
 
-### In 1.4 ###
+### In 1.4
 
 ```javascript
 fluid.pager("container", {
@@ -156,14 +156,14 @@ fluid.pager("container", {
 });
 ```
 
-### General configuration changes ###
+### General configuration changes
 
 * Every "pseudocomponent" attached to the Pager (e.g. pagerBar, summary, pageSize) etc. is now a genuine IoC-configured component, and should have its options entered in the `components` area rather than at top level as before
 * The single monolithic component `Pager` has been factored into 3 components, plain `Pager` which now just has responsibility for paging, `Table` which renders tabular data, and a new top-level grade `pagedTable` which orchestrates the two factored grades `Pager` and `Table` into an integrated solution. As a result of this, many type names have moved into a new namespace, either `fluid.table` or `fluid.pagedTable` depending on their functionality.
 * The user is recommended to configure the rendering components (`fluid.table.selfRender`, `fluid.pager.renderedPageList`) using selectors to bind onto markup rather than use the old-fashioned markup pollution based on the special attribute `rsf:id`).
 * The duplicate component `pagerBarSecondary` has been removed and `pagerBar` is instead initialised as a standard IoC-driven *dynamic component* which will create as many pager bars as there are matching elements in the markup
 
-### Change in type names ###
+### Change in type names
 
 The following table shows the changes in the type names of 1.4 components moving to 1.5 (remember that when used, these must also be housed in the `components` block
 of the parent component, rather than appearing at top level as before):

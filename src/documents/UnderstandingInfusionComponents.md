@@ -11,14 +11,14 @@ or simply a unit of work or relationship between other components. This page pro
 If you're creating an entire web application, your application would be implemented as a component that
 coordinates interactions between other components that handle the different parts of your application.
 
-## Examples ##
+## Examples
 
 To help understand how a widget or application might be designed using components, consider some of
 the components in the Infusion Component Library:
 
 <div class="infusion-docs-note"><strong>Note:</strong> All of the example components presented here are <strong>view components</strong> which produce a visible UI in the browser. Other Infusion components expose no UI, and may run on the server in environments like node.js.</div>
 
-### Progress ###
+### Progress
 
 ![a horizontal progress bar](images/progress-example.png)
 
@@ -26,7 +26,7 @@ The Infusion Progress component is a single [view component](ComponentConfigurat
 that work together and are updated programmatically to show the progress of some activity. It has a
 pretty simple purpose and function, one that doesn't make much sense to try to chunk up into multiple components.
 
-### Inline Edit ###
+### Inline Edit
 
 ![The Inline Edit component with a hover tooltip showing](images/viewMode.png)
 
@@ -34,14 +34,14 @@ The Inline Edit component allows the user to edit text in place, without switchi
 simply switching into an in-place edit mode. The view mode is implemented one way, with certain functionality (i.e. a tooltip, an affordance to edit), and the edit mode is implemented differently: it's an edit field.
 Conceptually, these two modes are rather different, and so they're implemented as two separate subcomponents of the main Inline Edit component.
 
-### Uploader ###
+### Uploader
 
 ![The Uploader interface, showing a list of files queued for uploading.](images/uploader.png)
 
 The Uploader allows users to add several files to a queue and then upload them all at once. It is actually
 made up of several [subcomponents](SubcomponentDeclaration.md): It has the file queue view, which displays the files currently in the queue; it has a total progress bar at the bottom. In turn, the file queue view component has its own subcomponents.
 
-## What Does a Component Look Like? ##
+## What Does a Component Look Like?
 
 A component is a regular JavaScript object that has certain characteristics. The simplest varieties of Infusion Components, derived from [`fluid.component`](ComponentConfigurationOptions.md#options-supported-by-all-components-grades), will have:
 
@@ -73,7 +73,7 @@ This function will generate the **creator function** that will be used to instan
 The framework provides support for instantiating components of various [types, or 'grades'](ComponentGrades.md);
 as well, developers can create their own grades.
 
-## Simple example of defining and using a plain `fluid.component` ##
+## Simple example of defining and using a plain `fluid.component`
 
 In this example, we will define a simple component which logs a message on startup, and create an instance of it:
 
@@ -98,11 +98,11 @@ var myComponent = examples.tinyComponent();
 
 You can understand this example better by reading documentation for [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), [`fluid.log`](CoreAPI.md#fluidlogloglevel-arg1-argn) and the [Component Lifecycle](ComponentLifecycle.md).
 
-## Instantiating A View Component ##
+## Instantiating A View Component
 
 In this section we instantiate a view component which is already defined in the framework, and configure it with some options of our own:
 
-### Example ###
+### Example
 
 ```javascript
 var myInlineEdit = fluid.inlineEdit(".title-container", {

@@ -6,7 +6,7 @@ category: Infusion
 
 An Enactor is an [Infusion component](UnderstandingInfusionComponents.md) that "acts upon" a preference setting, making whatever adjustments that are necessary to enact the preference.
 
-## Requirements ##
+## Requirements
 
 There are only a few requirements for an Enactor, since its nature is determined by the preference it acts upon. For example:
 
@@ -20,7 +20,7 @@ Enactors defaults must include certain things:
 
 Each of these is explained below.
 
-### Grade ###
+### Grade
 
 Enactors must be defined using the `fluid.prefs.enactor` [grade](ComponentGrades.md), as shown in the following code block:
 
@@ -37,10 +37,10 @@ Enactors are, by default, [model components](ComponentGrades.md), so they automa
 fluid.defaults("my.pref.enactor", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     selectors: {
-        <selectors as required>
+        // selectors as required
     }
     // ...
- });
+});
 ```
 
 If you are defining several enactors which share common functionality, you can create a single grade that includes that functionality and uses the `fluid.prefs.enactor` grade, then use your common grade for your enactors, as illustrated in the following code sample:
@@ -48,24 +48,24 @@ If you are defining several enactors which share common functionality, you can c
 ```javascript
 // shared grade, defining common functionality
 fluid.defaults("my.pref.enactorGrade", {
-    gradeNames: ["fluid.prefs.enactor"],
-    <common defaults>
+    gradeNames: ["fluid.prefs.enactor"]
+    // common defaults
 });
 
 // one specific enactor, which uses the shared grade
 fluid.defaults("my.pref.enactor1", {
-    gradeNames: ["my.pref.enactorGrade"],
-    <defaults specific to enactor 1>
+    gradeNames: ["my.pref.enactorGrade"]
+    // defaults specific to enactor 1
 });
 
 // another specific enactor, which uses the shared grade
 fluid.defaults("my.pref.enactor2", {
-    gradeNames: ["my.pref.enactorGrade"],
-    <defaults specific to enactor 2>
+    gradeNames: ["my.pref.enactorGrade"]
+    // defaults specific to enactor 2
 });
 ```
 
-### Preference Map (Schema Only) ###
+### Preference Map (Schema Only)
 
 <div class="infusion-docs-note"><strong>IMPORTANT NOTE:</strong> Preference Maps are only required if you are working with [schemas](PrimarySchemaForPreferencesFramework.md). If you are using grades instead (only necessary in rare cases), you do not need a preference map.</div>
 
@@ -73,7 +73,7 @@ A Preference Map is an option that allows you to map the information in the [Pri
 
 The format of a preference map is shown in the follow code sample:
 
-```javascript
+```snippet
 preferenceMap: {
     <key from primary schema>: {
         <path in enactor's defaults where value should be held>: <key in primary schema where value held>,
@@ -100,11 +100,11 @@ fluid.defaults("fluid.prefs.enactor.textFont", {
 });
 ```
 
-## Models and Model Changes ##
+## Models and Model Changes
 
 Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md): They automatically have a top-level property called `model` which holds the Enactor's internal model representing the preference it acts upon. It is not necessary for you to define this property directly; its structure will be inferred from the preferences map. If you are working with grades instead of with schemas, the model will be inferred from the rules supplied for the Panel.
 
-## Examples ##
+## Examples
 
 **Example: Enactor that calls a setter function when the model changes**
 

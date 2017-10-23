@@ -18,7 +18,7 @@ All Infusion components are stored in a single-rooted **_component tree_** - thi
 has been instantiated in a particular **_Infusion context_**. This context is global to the JavaScript context
 which has loaded Infusion - for example, a frame within a browser, or a node.js process.
 
-## How context names are derived ##
+## How context names are derived
 
 Configuration material makes use of context names, when it is [expanding](ExpansionOfComponentOptions.md).
 [IoC References](IoCReferences.md) are strings formatted in a particular way, starting with a context
@@ -42,7 +42,7 @@ three strategies:
    reorganised. However, it is the only route for matching a particular instance of a component rather
    than matching components by their type or name in general.
 
-## How context names are matched ##
+## How context names are matched
 
 The rules for matching a context expression onto one or more components in the tree differ according
 to the kind of expression it is. Expressions which just consist of a single context name will match
@@ -53,7 +53,7 @@ complex expressions may only appear in a component's configuration in the top-le
 distributeOptions. Regardless of the direction of search, the rules for matching context names
 at a particular component location in the tree are the same, as described in the previous section.
 
-## Where context names are looked for ##
+## Where context names are looked for
 
 Context names listed in a configuration are searched for at instantiation time, sequentially,
 in two kinds of "scopes" or "environments".
@@ -67,7 +67,7 @@ in two kinds of "scopes" or "environments".
 
 ![Diagram showing coloured squared representing components in a component tree](images/IoC-scope.svg)
 
-## Global components: `fluid.resolveRoot` and `fluid.resolveRootSingle` ##
+## Global components: `fluid.resolveRoot` and `fluid.resolveRootSingle`
 
 All Infusion components are stored in a single-rooted, global **_component tree_**. Even when you
 instantiate apparently "freely-floating" components with a line such as
@@ -186,7 +186,7 @@ root2.destroy();
 that2.destroy();
 ```
 
-## Allowing a component to adapt to its context ##
+## Allowing a component to adapt to its context
 
 There are three principal routes that a component can be influenced by its context, listed from the most straightforward to the most heavyweight:
 

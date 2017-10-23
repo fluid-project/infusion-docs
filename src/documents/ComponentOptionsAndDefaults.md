@@ -25,7 +25,7 @@ component proceeds. The Framework follows specific procedures for this merging p
 procedures can be specified by the component creator, if they have a need for a different merging
 process than the default ones. (Further reading: [Options Merging](OptionsMerging.md))
 
-## Specialized Options ##
+## Specialized Options
 
 Naturally, each component will have its own custom options, such as the tooltip text for the
 Inline Edit. However, the Framework supports certain fixed options that are expected for certain
@@ -53,7 +53,7 @@ fluid.defaults("inlineEdit", {
 
 (Further reading on special options: [Component Configuration Options](ComponentConfigurationOptions.md))
 
-## Subcomponents ##
+## Subcomponents
 
 In addition to simple configurations, a components defaults are used to identify its subcomponents,
 as described in [Understanding Infusion Components](UnderstandingInfusionComponents.md).

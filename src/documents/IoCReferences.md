@@ -87,7 +87,7 @@ References always take the syntactic form `{context-name}.some.path.segments`, w
     </tbody>
 </table>
 
-## Where To Use IoC References ##
+## Where To Use IoC References
 
 IoC references may be used almost anywhere within a component's options, for example:
 
@@ -98,7 +98,7 @@ IoC references may be used almost anywhere within a component's options, for exa
 * in [events specifications](InfusionEventSystem.md#declaring-an-event-on-a-component), including as the left hand side key specifying an event in an events block
 * or indeed almost anywhere else
 
-## How IoC References are resolved ##
+## How IoC References are resolved
 
 For a conventional IoC reference (of the style `<componentRef>` rather than the style `<iocss expression>`), a search is begun upwards from the site of the reference in the component tree to find the first component which matches the context name.
 The following diagram shows a possible such reference site in green:
@@ -121,7 +121,7 @@ If no context name matches anywhere in the tree, the reference expression resolv
 
 Components which are not in scope for resolution from the reference site (shown as a green pentagon) are shown as blue squares.
 
-## Examples of {&lt;componentRef&gt;} ##
+## Examples of {&lt;componentRef&gt;}
 
 In the example below, the IoC reference `{that}` refers to the component in which it is being used.
 
@@ -192,7 +192,7 @@ fluid.defaults("fluid.prefs.enactor.tableOfContents", {
 });
 ```
 
-## Examples of {&lt;componentRef&gt;}.&lt;path to member&gt; ##
+## Examples of {&lt;componentRef&gt;}.&lt;path to member&gt;
 
 The example below includes several IoC references. All of them are inside a subcomponent declaration and all include `{controllers}`, which in this case is a reference to the parent component. Specifically:
 
@@ -228,7 +228,7 @@ fluid.defaults("fluid.videoPlayer.controllers", {
 });
 ```
 
-## Examples of `{arguments}.n` ##
+## Examples of `{arguments}.n`
 
 The example below uses the `{arguments}.n` syntax to deliver the first and second arguments passed to listeners to the `onMove` event to the `fluid.moduleLayout.onMoveListener` function.
 
@@ -247,7 +247,7 @@ fluid.defaults("fluid.moduleLayoutHandler", {
 });
 ```
 
-## Examples of {&lt;iocss expression&gt;} ##
+## Examples of {&lt;iocss expression&gt;}
 
 The example below uses an [IoCSS](IoCSS.md) expression `{that > moreText}.options.selectors.images`. The expression refers to the `images` selector in the `moreText` subcomponent that is a direct descendent of the current component.
 
@@ -273,9 +273,9 @@ fluid.defaults("gpii.explorationTool.enactorSet", {
 });
 ```
 
-## More Examples ##
+## More Examples
 
-### Example 1 ###
+### Example 1
 
 ```javascript
 // Range Annotator
@@ -307,7 +307,7 @@ The above example defines a `rangeAnnotator`, which is used as a subcomponent of
   * `{pagedTable}.events.onRenderPageLinks` refers to the `pagedTable` component
   * `{arguments}.0` and `{arguments}.1` refer to the first and second arguments supplied when the source event is fired `onRenderPageLinks`
 
-### Example 2 ###
+### Example 2
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.languageControls.eventBinder", {
@@ -323,7 +323,7 @@ The above example uses two IoC references:
 * `{button}.events.onPress` refers to the `onPress` even of the `button` component
 * `{menu}.toggleView` refers to the `toggleView` method of the `menu` component
 
-### Example 3 ###
+### Example 3
 
 ```javascript
 fluid.defaults("fluid.uploader", {
@@ -347,7 +347,7 @@ The above example uses IoC references in the `distributeOptions` block:
 * `{that}.options` identifies the `options` block of the current `that` (i.e. `fluid.uploader`)
 * `{that > uploaderImpl}.options` identifies the `uploaderImpl` subcomponent of the current `that` (`fluid.uploader`) (see [IoCSS](IoCSS.md) for more information about this notation)
 
-## Reserved IoC Names ##
+## Reserved IoC Names
 
 The following context names are reserved within the IoC system:
 

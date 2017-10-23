@@ -20,11 +20,11 @@ The HTML 5 version of the Uploader will be delivered to modern, standards-compli
 
 <div class="infusion-docs-note"><strong>Note:</strong> As of Infusion 1.5, the Flash version of the Uploader has been removed due to a <a href="https://nealpoole.com/blog/2012/05/xss-and-csrf-via-swf-applets-swfupload-plupload/">cross-site scripting vulnerability</a>.</div>
 
-### Progressive Enhancement ###
+### Progressive Enhancement
 
 The Uploader utilizes the concept of progressive enhancement. The goal is to ensure that the page is usable by the widest possible audience, even with old browsers or when JavaScript is turned off. This is done by specifying a regular file input element in the markup. When the Uploader is initialized, the Upload code will replace that element with the Fluid Uploader. As of Infusion 1.3, progressive enhancement will occur automatically by default. It can be overridden by choosing a specific upload strategy instead of using the `fluid.uploader.progressiveStrategy`.
 
-### Upload Strategy ###
+### Upload Strategy
 
 The Infusion Uploader, like many Fluid components, is really one interface to a collection of components that work together to provide a unified user experience.
 
@@ -35,14 +35,14 @@ The Uploader provides a facade object, called a `strategy`, which represents the
 
 The default strategy for Uploader is `fluid.uploader.progressiveStrategy`.
 
-### Upgrading ###
+### Upgrading
 
-#### Upgrading from Infusion 1.2 ####
+#### Upgrading from Infusion 1.2
 
 The Uploader was substantially refactored for the Infusion 1.3 in order to support the new HTML 5 version. However, most users should be unaffected. All events, selectors, and classes remain compatible with previous versions. Since the Uploader's underlying structure has changed significantly, and support for Infusion's IoC System was introduced, several other configuration options have changed.
 In order to ease the transition, we've provided a compatibility file that will automatically transform your options from the old format to the new when you invoke `fluid.uploader()`. This can be enabled by including the `UploaderCompatibility-Infusion1.2.js` file your page. If you're not using a custom build of Infusion, you will also need to include the framework's `ModelTransformations.js` file.
 
-## Creating an Uploader ##
+## Creating an Uploader
 
 To instantiate a new Uploader on your page using the recommended progressive enhancement feature:
 
@@ -52,17 +52,17 @@ var myUploader = fluid.uploader(container, options);
 
 Returns: An Uploader component object. The resulting type may be either `fluid.uploader.multiFileUploader` or `fluid.uploader.singleFileUploader` depending on the capabilities of your user's browser. If you're programmatically calling methods on the Uploader, be sure to check its `typeName` or use duck typing first.
 
-### Parameters ###
+### Parameters
 
-#### container ####
+#### container
 
 The `container` is a CSS-based [selector](http://docs.jquery.com/Selectors), single-element jQuery object, or DOM element that identifies the root DOM node of the Uploader markup.
 
-#### options ####
+#### options
 
 The `options` object is an optional data structure that configures the Uploader, as described in the [Options](#options) section below.
 
-## Supported Events ##
+## Supported Events
 
 The Uploader fires the following events
 
@@ -301,7 +301,7 @@ The Uploader fires the following events
     </tbody>
 </table>
 
-### File Objects ###
+### File Objects
 
 Many of the Uploader's events pass a `File` object as a parameter to the event listener. These objects provide useful information about the file, including its name, size in bytes, and its current status in the queue.
 
@@ -315,7 +315,7 @@ Regardless of the strategy, the following properties will be available:
 * filestatus - (number) The file's current status.
   * Use `fluid.uploader.fileStatusConstants` to interpret the value.
 
-#### File Status Constants ####
+#### File Status Constants
 
 The Uploader offers a set of constants used to denote the status of a particular file in the queue. These can be used when querying the filestatus property of a [File object](#file-objects).
 
@@ -418,7 +418,7 @@ The Uploader offers a set of constants used to denote the status of a particular
     </tbody>
 </table>
 
-## Options ##
+## Options
 
 The Uploader supports a "plug-and-play" architecture that allows for many of the sub-components of the Uploader to be swapped out for other components or your own custom components. The best example of this is the `strategy` component, which allows you to choose between the `fluid.uploader.html5Strategy` and the `fluid.uploader.progressiveStrategy`. However you can also replace the Progress subcomponent and the FileQueueView subcomponent, with a customized version you have implemented yourself.
 
@@ -426,7 +426,7 @@ The Uploader and its sub-components are also highly configurable; you can make m
 
 In addition to the Uploader options, there are also options specifically for the FileQueueView, Progress, and `strategy` subcomponents.
 
-### Uploader Subcomponents ###
+### Uploader Subcomponents
 
 <table>
     <thead>
@@ -506,7 +506,7 @@ totalProgressBar: {
     </tbody>
 </table>
 
-### Uploader Options ###
+### Uploader Options
 
 <table>
     <thead>
@@ -656,7 +656,7 @@ strings: {
     </tbody>
 </table>
 
-### queueSettings Options ###
+### queueSettings Options
 
 <table>
     <thead>
@@ -728,7 +728,7 @@ strings: {
     </tbody>
 </table>
 
-### htmlStrategy Options ###
+### htmlStrategy Options
 
 <table>
     <thead>
@@ -751,7 +751,7 @@ strings: {
     </tbody>
 </table>
 
-### Selectors ###
+### Selectors
 
 One of the options that can be provided to the Uploader is a set of CSS-based selectors identifying where in the DOM different elements can be found. The value for the option is itself a Javascript object containing name/value pairs:
 
@@ -767,7 +767,7 @@ One of the options that can be provided to the Uploader is a set of CSS-based se
 
 The different parts of the Uploader interface each have their own set of selectors (though all selectors must be provided together in a single object). Each also has a default, as defined below:
 
-#### General ####
+#### General
 
 <table>
     <thead>
@@ -818,7 +818,7 @@ The different parts of the Uploader interface each have their own set of selecto
     </tbody>
 </table>
 
-#### File Queue ####
+#### File Queue
 
 <table>
     <thead>
@@ -886,7 +886,7 @@ The different parts of the Uploader interface each have their own set of selecto
     </tbody>
 </table>
 
-#### Scroller ####
+#### Scroller
 
 <table>
     <thead>
@@ -905,7 +905,7 @@ The different parts of the Uploader interface each have their own set of selecto
     </tbody>
 </table>
 
-#### Progress ####
+#### Progress
 
 <div class="infusion-docs-note"><strong>Note:</strong> Please see the <a href="to-do/ProgressAPI.md">Progress API</a> document for a full description of Fluid Progress.</div>
 
@@ -936,9 +936,9 @@ For example, if your markup uses all of the default selectors, except for the fi
 }
 ```
 
-## Dependencies ##
+## Dependencies
 
-### Required ###
+### Required
 
 The Uploader dependencies can be met by including in the header of the HTML file
 
@@ -981,9 +981,9 @@ Alternatively, the individual file requirements are:
 <script type="text/javascript" src="../js/DemoUploadManager.js"></script>
 ```
 
-## Important Notes for Developers ##
+## Important Notes for Developers
 
-### Running locally: "demo" mode ###
+### Running locally: "demo" mode
 
 The Upload component requires a server component to accept the uploaded files.
 

@@ -16,7 +16,7 @@ an element defines its priority only with respect to another element which is id
 [event listeners](InfusionEventSystem.md#registering-a-listener-to-an-event). These constraint-based priorities are
 much less brittle than the use of fixed priorities, and are recommended whenever a priority directive seems to be required.
 
-## Supported values for priorities ##
+## Supported values for priorities
 
 <table>
   <thead>
@@ -51,7 +51,7 @@ In the case of event listeners, this will be significant since it will respect a
 resulting from grade merging. For options distributions, the natural ordering will be derived instead from the tree's topology (distributions which travelled a longer distance will
 be weaker than those which travelled a shorter distance), and numeric priorities should not be used.
 
-## Example of priority resolution for listeners ##
+## Example of priority resolution for listeners
 
 Here is part of a grade definition from the framework's Uploader component implementation, showing a recommended use of a constraint-based priority:
 
@@ -71,7 +71,7 @@ fluid.defaults("fluid.uploader.errorPanel.section", {
 
 Amongst the two `onCreate` listeners, the framework guarantees that the `bindHandlers` listener will always be invoked before `refreshView`.
 
-## Table of supported sites for priorities and namespaces ##
+## Table of supported sites for priorities and namespaces
 
 The following table lists all the locations in component options where priorities are supported, together with some notes about their limitations and interpretation.
 

@@ -6,7 +6,7 @@ category: Components
 
 The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section) to queue up and read texts.
 
-## Browser Support ##
+## Browser Support
 
 The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section). At the time of writing, July 26 2016, these browsers include:
 
@@ -20,7 +20,7 @@ The Text To Speech component can be used in browsers that support [Web Speech Sy
 <div class="infusion-docs-note"><strong>Note:</strong> find the latest browser support data for Web Speech Synthesis API from
 <a href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.</div>
 
-## Creator ##
+## Creator
 
 Use the following function to create a Text To Speech component:
 
@@ -78,9 +78,9 @@ var tts = fluid.textToSpeech({
     </tbody>
 </table>
 
-## Supported Methods ##
+## Supported Methods
 
-### queueSpeech ###
+### queueSpeech
 
 <table>
     <tbody>
@@ -130,7 +130,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### cancel ###
+### cancel
 
 <table>
     <tbody>
@@ -153,7 +153,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### pause ###
+### pause
 
 <table>
     <tbody>
@@ -176,7 +176,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### resume ###
+### resume
 
 <table>
     <tbody>
@@ -199,7 +199,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### getVoices ###
+### getVoices
 
 <table>
     <tbody>
@@ -229,13 +229,13 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-## Supported Events ##
+## Supported Events
 
 <div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="InfusionEventSystem.md">Infusion Event System</a> document for a full description of infusion events.</div>
 
 The events fired by the Text To Speech component are described below.
 
-### onStart ###
+### onStart
 
 <table>
     <tbody>
@@ -258,7 +258,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### onStop ###
+### onStop
 
 <table>
     <tbody>
@@ -281,7 +281,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### onError ###
+### onError
 
 <table>
     <tbody>
@@ -304,7 +304,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### onSpeechQueued ###
+### onSpeechQueued
 
 <table>
     <tbody>
@@ -332,7 +332,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-## Model Paths ##
+## Model Paths
 
 The following model paths can be used with [model listeners](ChangeApplierAPI.md) based on the current state of the speech:
 
@@ -340,7 +340,7 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
 * `model.speaking`: `true` if text is being spoken (including in a paused state), `false` otherwise
 * `model.pending`: `true` if there are text items remaining to be spoken, `false` otherwise
 
-## <a id="utteranceopts-option"></a>`model.utteranceOpts` Configuration ##
+## <a id="utteranceopts-option"></a>`model.utteranceOpts` Configuration
 
 <div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration Options</a> document for a full description of infusion component options.</div>
 
@@ -350,7 +350,7 @@ Configuration of the Text To Speech component can be done through `model.utteran
 
 These attributes include:
 
-### text ###
+### text
 
 <table>
     <tbody>
@@ -386,7 +386,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### lang ###
+### lang
 
 <table>
     <tbody>
@@ -421,7 +421,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### voice ###
+### voice
 
 <table>
     <tbody>
@@ -467,7 +467,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### volume ###
+### volume
 
 <table>
     <tbody>
@@ -502,7 +502,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### rate ###
+### rate
 
 <table>
     <tbody>
@@ -537,7 +537,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### pitch ###
+### pitch
 
 <table>
     <tbody>

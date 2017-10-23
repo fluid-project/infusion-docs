@@ -9,15 +9,15 @@ In practice, users will use the ChangeAppliers which are automatically construct
 Furthermore, a good deal of the use made of ChangeAppliers will take the form of [Declarative Configuration](FrameworkConcepts.md#declarative-configuration) rather than
 literal JavaScript API calls. This page presents both programmatic calls and their declarative equivalents where they exist.
 
-## Registering interest in model changes using a ChangeApplier ##
+## Registering interest in model changes using a ChangeApplier
 
-### Declarative style for listening to changes ###
+### Declarative style for listening to changes
 
 The declarative style for registering interest in change events uses an entry in the `modelListeners` options area of a `modelComponent`. These listeners are attached to the applier during the construction process of the entire component (and its surrounding tree) and so will therefore become notified as part of the [initial transaction](ModelRelay.md#the-initial-transaction) - they will therefore get to observe the model changing state from its primordial value of undefined to holding their initial resolved value. This is the **recommended** way of listening to model changes using the ChangeApplier system.
 
 Each record in the modelListeners block has the format `<shortModelPathReference or namespace>: <modelListener declaration>`. The left and right hand sides of this definition will be explained in the subsequent sections:
 
-#### Model Path References ####
+#### Model Path References
 
 A `<shortModelPathReference>` has the form:
 
@@ -67,7 +67,7 @@ The four examples presented in the _"Examples"_ column are parallel for the two 
 
 Note that more complex path specifications may be provided in the `path` member of a model listener declaration.
 
-#### Model Listener Declaration ####
+#### Model Listener Declaration
 
 A model listener declaration block has the same form and meaning as any of the record types supported by [Invokers](Invokers.md) and [Listeners](EventInjectionAndBoiling.md#listener-boiling) -
 including the one-string compact syntax documented with [Invokers](Invokers.md#compact-format), and the use of [Priorities](Priorities.md). Like standard event listener entries, model
@@ -78,7 +78,7 @@ a more complex path specification for the model listener match than can be encod
 `includeSource` and `excludeSource`, and finally the possibility that any IoC-resolved material in the listener declaration may match the special context name [`change`](#the-special-context-change) which corresponds to the model change
 that the listener is reacting to. These entries are described in the linked sections below:
 
-#### The `path` entry in a model listener declaration ####
+#### The `path` entry in a model listener declaration
 
 The `path` entry fulfils the same basic function as the `<shortModelPathReference>` which may form the key of the listener declaration, but allows a richer set of path specifications to be used for
 specifying which changes this model listener will respond to. Note that if the `path` entry is supplied, then the key of the listener will be interpreted as a _namespace_ for the listener rather than as
@@ -137,7 +137,7 @@ a path specification.
     </tbody>
 </table>
 
-#### Matching on multiple paths in a single model listener declaration ####
+#### Matching on multiple paths in a single model listener declaration
 
 When the `path` member of a model listener declaration holds an `Array`, the listener will be notified when <it>any</it> of these paths receive changes.
 
@@ -146,7 +146,7 @@ contains `{otherComponent}.model.x.y` and `{otherComponent}.model.x`, the listen
 array of more than one element in <code>path</code> will not be able to make use of either the special context [`change`](#the-special-context-change) ***or*** the possibility of using the wildcard character
 `*` in the final path segment. Note that elements of <code>segs</code> may themselves consist of IoC references resolving to configuration in the tree (although they may not hold references to model material - they are evaluated just once when the component constructs).
 
-#### The special context `change` ####
+#### The special context `change`
 
 An extra [context name](Contexts.md) is available in a model listener block by the name of `change`. This is bound to the particular change event which triggered this listener. This context behaves as an object with the following fields:
 
@@ -180,7 +180,7 @@ An extra [context name](Contexts.md) is available in a model listener block by t
     </tbody>
 </table>
 
-#### Source tracking and filtering in model listener blocks ####
+#### Source tracking and filtering in model listener blocks
 
 Each transaction holding one or more changes is associated with a particular _source_. Model listeners can use two special directives, `excludeSource` and `includeSource` in order to register their
 interest or disinterest in receiving changes from particular sources. The default behaviour is to receive all changes from all sources. The values of these fields are single strings representing sources,
@@ -245,7 +245,7 @@ The values of built-in sources supported as values in `excludeSource` and `inclu
     </tbody>
 </table>
 
-##### Example featuring built-in change source filtering: #####
+##### Example featuring built-in change source filtering:
 
 ```javascript
 fluid.defaults("examples.sourceExample1", {
@@ -269,7 +269,7 @@ that.applier.change("things", "new value"); // logs "Value changed to new value"
 This example will not log the transition from the initial model state of `undefined` to the console.
 It will, however, log the value `new value` triggered via the ChangeApplier API.
 
-##### Example featuring user-defined change source filtering ####
+##### Example featuring user-defined change source filtering
 
 ```javascript
 fluid.defaults("examples.sourceExample2", {
@@ -304,14 +304,14 @@ via the invoker `scrollTo` will not be logged since they have the source `scroll
 to them. The third interactive line shows that changes to the model without any user source
 marking *will* be logged by the listener.
 
-##### Warning and workaround for issues involving initial transaction and `onCreate` race issues #####
+##### Warning and workaround for issues involving initial transaction and `onCreate` race issues
 
 <div class="infusion-docs-note"><strong>Note:</strong> The current implementation of the ChangeApplier has a bug ([FLUID-5519](http://issues.fluidproject.org/browse/FLUID-5519)) which will often cause a model listener to be notified
 before much of the surrounding component has constructed. This can be annoying, since the model listener may want to rely on other infrastructure (e.g. invokers, etc.) that it cannot
 be sure have been constructed. For this reason, `excludeSource: "init"` is a useful way of stabilising this behaviour until the implementation is fixed (fix will be
 delivered as part of [FLUID-4925](http://issues.fluidproject.org/browse/FLUID-4925)).</div>
 
-#### Wildcards in model path references ####
+#### Wildcards in model path references
 
 The last path segment of a model path reference may be `"*"`. Whether the reference has this `"*"` suffix or not, the reference matches exactly the same set of changes - the only difference is in how they are reported. A path reference of `"things"` will match all changes occurring below this path segment, and report all those occurring within a single transaction as a single change. A path reference of `"things.*"` will match the same changes, but will report one change for each immediately nested path segment touched by the changes. For example, the following definition will log just one
 
@@ -354,7 +354,7 @@ The standard way to be notified of any changes to the model in a single notifica
 
 It is not currently possible to supply more than one wildcard segment per path reference, or to supply the wildcard at any position in the string other than as the last path segment.
 
-### Programmatic style for listening to changes ###
+### Programmatic style for listening to changes
 
 The programmatic style for registering interest in model changes uses an API exposed by the ChangeApplier on its member `modelChanged` that is very similar to that exposed by a standard [Infusion Event](InfusionEventSystem.md) -
 the difference is that the `addListener` method accepts an extra 1st argument, `spec` - an `Object` which holds the same model path reference in `path` or `segs` documented in the previous section on declarative binding:
@@ -411,9 +411,9 @@ function listener(value, oldValue, pathSegs, changeRequest, transaction) {
 
 Users will in most cases only be interested in the first argument in this signature.
 
-## Triggering a change using a ChangeApplier ##
+## Triggering a change using a ChangeApplier
 
-### Declarative style for triggering a change ###
+### Declarative style for triggering a change
 
 The declarative style for triggering model changes involves an IoC record (a _change record_) that is supported in various places in component configuration,
 in particular as part of the definition of both [Invokers](Invokers.md) and [Listeners](InfusionEventSystem.md) of an IoC-configured component.
@@ -464,7 +464,7 @@ This style of record is recognised by its use of the special member `changePath`
     </tbody>
 </table>
 
-#### Example of declarative triggering of changes ####
+#### Example of declarative triggering of changes
 
 In the below example, we construct an invoker that will set the entire model of the current component to whatever value is supplied as its first argument - this is achieved by giving its record a `changePath` of `""` and binding its `value` to `{arguments}.0`:
 
@@ -485,7 +485,7 @@ that.changer("finalValue");
 console.log(that.model); // "finalValue"
 ```
 
-### Programmatic style for triggering a change ###
+### Programmatic style for triggering a change
 
 There are two calls which can be used to fire a change request - one informal, using immediate arguments, and a more formal method which constructs a concrete `changeRequest` object.
 
@@ -531,7 +531,7 @@ applier.change(path, value, type, source);
 The semantics and values are exactly the same as described in the section on declarative triggering above - with the difference that IoC references may not be supplied for `path`.
 
 ```javascript
-applier.fireChangeRequest(<changeRequest>)
+applier.fireChangeRequest(changeRequest);
 ```
 
 where a `changeRequest` is an object holding the above named parameters in named fields - e.g. `{path: "modelPath", value: "newValue"}`. Note that a `changeRequest` is the same as a
@@ -543,7 +543,7 @@ Such an object is called a **changeRequest** and is a convenient package for the
 
 The programmatic style for **firing** changes is less strongly discouraged than the programmatic style for **listening** to changes is - since it does not run into the same lifecycle issues that programmatic listeners do. However, the declarative style for triggering changes should be used wherever it can.
 
-### Example of two styles of declarative model listener registration ###
+### Example of two styles of declarative model listener registration
 
 Users can freely define very fine or coarse-grained listeners for changes in a model using the ChangeApplier. Here are some examples using the declarative model listener registration syntax:
 
@@ -602,16 +602,16 @@ c.applier.change("cats.clovis.name", "THER CATTT!");
 // {name: "THER CATTT!", colours: ["white", "black spots", "black moustache"]}
 ```
 
-## Low-level ChangeApplier APIs ##
+## Low-level ChangeApplier APIs
 
 These are not recommended for typical users of the framework, and are not stable.
 
-### Instantiating a ChangeApplier ###
+### Instantiating a ChangeApplier
 
 Instantiating a ChangeApplier manually is not recommended in current versions of the framework. Its implementation is tightly bound into its location in
 an IoC component tree and should be constructed by the IoC system itself.
 
-### Operating transactions manually ###
+### Operating transactions manually
 
 A user may be interested in economising on notifications to model updates; by batching these up into a single transaction, there will
 just be a single notification of each listener which is impacted around the model skeleton. This facility is not a stable API (at the Infusion 2.0 version level and before); however, its
@@ -629,7 +629,7 @@ The transaction object exposes an API which agrees with the ChangeApplier's own 
 ```javascript
 myTransaction.fireChangeRequest(requestSpec1);
 myTransaction.fireChangeRequest(requestSpec2);
-...
+// ...
 ```
 
 The transaction can be completed using the `commit()` function of the transaction object:

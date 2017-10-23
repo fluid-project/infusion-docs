@@ -9,7 +9,7 @@ Part of the [Getting Started with Infusion Component Design Tutorial](GettingSta
 
 ---
 
-## Set Up Directory Structure ##
+## Set Up Directory Structure
 
 For this tutorial we'll assume this component is being created for your own use, not as a contribution to Infusion. If you do want to contribute your component to Infusion, the directory set-up and requirements will be a little different and is explained in [Contributing Code](http://wiki.fluidproject.org/display/fluid/Contributing+Code).
 

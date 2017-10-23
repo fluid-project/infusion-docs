@@ -7,7 +7,7 @@ category: Infusion
 In the Infusion IoC system, a component declares its subcomponents through the `components` property of its [options](ComponentConfigurationOptions.md#components).
 Subcomponent declaration in a defaults block takes the following form:
 
-```javascript
+```snippet
 fluid.defaults("my.component.name", {
     // ...
     components: {
@@ -22,7 +22,7 @@ fluid.defaults("my.component.name", {
 When the parent component is constructed, one subcomponent will be constructed for each entry in the finally elaborated form of its `components` options, and attached to the parent at the paths held as keys in the `components` structure.
 In this case, executing `var component = my.component.name()` would construct three subcomponents as members of `component` named `subcomponent1`, `subcomponent2` and `subcomponent3`.
 
-## Minimal working example ##
+## Minimal working example
 
 Here's a minimal working example:
 
@@ -45,7 +45,7 @@ For example, with [dynamic grades](ComponentGrades.md#dynamic-grades), further s
 Other routes for options are direct arguments to its creator function, options distributed by [distributeOptions](IoCSS.md), or by 2nd-level nested `components` entries in the subcomponent record of the defaults of a component grandparent.
 Later on in this section we will see direct framework facilities for other kinds of dynamic subcomponents, those driven by dynamic data or event firing.
 
-## Basic Subcomponent Declaration ##
+## Basic Subcomponent Declaration
 
 The subcomponent declaration has the following form, holding the _**subcomponent record**_ as the value corresponding to the key holding the subcomponent's _**member name**_ (in this case `subcomponent1`):
 
@@ -130,16 +130,16 @@ The properties allowed at top level in the subcomponent record are as follows:
     </tbody>
 </table>
 
-## Injected Subcomponent Declaration ##
+## Injected Subcomponent Declaration
 
 The entire subcomponent record may be replaced by a simple IoC reference to a component held elsewhere in the component tree.
 In this case the subcomponent is known as an _**injected component**_ - the already existing component reference is simply copied into the parent component's member field.
 In many cases, you will not need to inject components elsewhere in the tree since they can be effectively used in
 their original position by means of [IoC references](IoCReferences.md) (for reading) or [options distributions](IoCSS.md) (for modifying)
 
-## Examples ##
+## Examples
 
-### Standard Subcomponent Declaration ###
+### Standard Subcomponent Declaration
 
 This first example shows a straightforward subcomponent declaration. `adminRecordEditor`, a component of grade `cspace.recordEditor`
 (which would be a [view component](tutorial-gettingStartedWithInfusion/ViewComponents.md) grade since we make use of the `container` top-level option) is a standard subcomponent of `cspace.admin`:
@@ -159,7 +159,7 @@ fluid.defaults("cspace.admin", {
 });
 ```
 
-### Injected Subcomponent Declaration ###
+### Injected Subcomponent Declaration
 
 Our second example shows a component being injected from one site in the tree to another. We call the standard, original
 component `concreteChild` a _concrete subcomponent_ because it is constructed in-place where it is defined. The site
@@ -203,7 +203,7 @@ that.concreteChild.destroy();
 // destroying the concrete child clears it from that.child2.injectedComponent too
 ```
 
-### Subcomponent with `createOnEvent` ###
+### Subcomponent with `createOnEvent`
 
 This example shows a subcomponent defined with the `createOnEvent` annotation. Unlike an ordinary concrete subcomponent, this
 subcomponent will not be constructed at the same time as its parent. Instead, it will only be constructed once the
@@ -230,22 +230,22 @@ fluid.defaults("gpii.explorationTool.modelTransformer", {
 });
 ```
 
-## Dynamic components ##
+## Dynamic components
 
 A powerful facility known as _**dynamic (sub)components**_ allows you to direct the framework to construct a number of subcomponents whose number is not known in advance from a template subcomponent record. There are two principal varieties of dynamic components. The first requires the existence of a _**source array**_ for the construction - at run-time, the framework will inspect the array you refer to and construct one component from your template for each element of the array. The components which get constructed in this way can each be contextualised by both the contents of the corresponding array element as well as its index.
 The second requires the existence of a _**source event**_ for the construction. The framework will construct one subcomponent for each firing of the [event](InfusionEventSystem.md) - the constructed component can be contextualised by the arguments that the event was fired with.
 
 Both of these schemes make use of a special top-level area in a component's options, entitled `dynamicComponents`. The structure of this area is almost identical to the standard `components` area described above, with a few differences described in the dedicated subsections below.
 
-### Naming of dynamic components ###
+### Naming of dynamic components
 
 The actual member names given to dynamic components follows a very straightforward scheme. The very first such component created will have the same name as the `dynamicComponents` record entry. Subsequent such components will have the name `<key>-<n>` where `<key>` represents the record entry name and `<n>` holds an integer, initially with value 1, which will increment for each further dynamic component constructed using the record. In practice you should not use this information to "go looking" for dynamic components, but instead should expect to observe their effects by some scheme such as injecting events down into them to which they register listeners, or broadcasting listeners down into them by use of [distributeOptions](IoCSS.md) or [dynamic grades](ComponentGrades.md).
 
-### Future evolution of dynamic components ###
+### Future evolution of dynamic components
 
 Although this facility is powerful, the reader will note the peculiar asymmetry in the construction process - the framework may be directed to construct these components in a declarative way, but they may only be destroyed procedurally through a call to the component's `destroy()` function. An improved and properly symmetric version of this facility will be delivered as part of work on the new Fluid Renderer as described by [FLUID-5047](http://issues.fluidproject.org/browse/FLUID-5047) and related JIRAs, and the system described here will be withdrawn, as with previous "bridging technologies" such as the initFunction system.
 
-### Dynamic subcomponents with a source array ###
+### Dynamic subcomponents with a source array
 
 This scheme for declaring a dynamic component is announced by making use of the `sources` entry at top-level in the dynamic component's component record. The following defaults block defines a component which in practice will instantiate two subcomponents, one for each element in the array `values` that it declares in its own options:
 
@@ -274,7 +274,7 @@ Within the configuration for the dynamic component, two special IoC [context nam
 One is named **`{source}`** and holds a reference to the particular array element which was used to expand the record into a component - in the above example, successively the values 2, and 3.
 The other is named **`{sourcePath}`** and holds a reference to the array index which was used - in the above example, successively the values 0 and 1.
 
-### Dynamic subcomponents with a source event ###
+### Dynamic subcomponents with a source event
 
 The use of this scheme for dynamic components is announced by using the standard `createOnEvent` top-level member that we met earlier when writing standard `components` subcomponent blocks.
 The syntax is the same, but the semantic is different. For a standard subcomponent, `createOnEvent` will destroy and then recreate a component _**at the same path**_ on each firing of the specified event.

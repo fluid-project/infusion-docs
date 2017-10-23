@@ -8,14 +8,14 @@ The Infusion Inversion of Control (IoC) system includes a simple method for dist
 a special block named `distributeOptions` which is supported in the options of every Infusion component. The key addressing scheme needed to make this system work &#8212; the
 means for determining where the target of the distribution is &#8212; is dubbed "IoCSS" because it uses a syntax and idiom very similar to that used in [CSS selectors](https://en.wikipedia.org/wiki/Cascading_Style_Sheets#Selector).
 
-## `distributeOptions` and IoCSS: Downward-matching CSS-like context selectors for options forwarding ##
+## `distributeOptions` and IoCSS: Downward-matching CSS-like context selectors for options forwarding
 
 The `distributeOptions` option is a top-level block supported by every Infusion component. It specifies how options should be distributed to components elsewhere in the tree. A typical, conservative
 usage would have a component distribute only *downwards* to its own subcomponents, but it is also possible to use the considerable power of `distributeOptions` to distribute to *any component
 anywhere* in the (global) component tree - naturally such power should be used with extreme discretion since it could very easily reduce a design to chaos. However, in many situations, for example
 when writing powerful authoring tools, this kind of power is completely indispensible.
 
-## Background for `distributeOptions` ##
+## Background for `distributeOptions`
 
 As component trees become larger, it will often happen that a high-level component will need to specify options for a component further down the component tree. Without `distributeOptions`, component configuration can become very, what we might call, "pointy":
 
@@ -64,7 +64,7 @@ However, facade formation isn't the only possible function of an options distrib
 use of the target root context `/` to match (and "advise", in AOP terminology) all components in a design matching a particular specification. Unlike traditional AOP techniques, however, these options distributions do not put ultimate and final power in the hands of the wielder - since the component holding
 the distribution itself can be either advised itself, or destroyed completely - thus withdrawing the "advice" from the system.
 
-## distributeOptions format ##
+## distributeOptions format
 
 The `distributeOptions` option is a top-level block supported by every Infusion component, holding an array of records, hash of records, or single record containing the following properties:
 
@@ -80,7 +80,7 @@ The `distributeOptions` option is a top-level block supported by every Infusion 
 
 In the case that a hash of these records is provided, the keys of the structure will be interpreted as the `namespace` of the distribution.
 
-## IoCSS Selectors ##
+## IoCSS Selectors
 
 An IoCSS selector appears in some special kinds of references in the framework, most notably in the `target` element of a `distributeOptions` block.
 Informally, it can be distinguished from a standard [IoC reference](IoCReferences.md) since it contains some whitespace between its various matching segments, and a standard
@@ -110,7 +110,7 @@ Mediating each neighbouring pair of component rules is a descendent rule, of whi
 If you are familiar with [CSS selectors](https://en.wikipedia.org/wiki/Cascading_Style_Sheets#Selector) you can compare this set of 6 simple syntax rules with the wide
 range of CSS selector rules listed in the article's [table](https://www.w3.org/TR/selectors/#selectors).
 
-## Simple Example of distributeOptions: `record` for grade distribution ##
+## Simple Example of distributeOptions: `record` for grade distribution
 
 This is the form taken by the most commonly seen and straightforward use of `distributeOptions` - the contribution of an additional grade to
 one or more subcomponents of the current component:
@@ -127,7 +127,7 @@ fluid.defaults("kettle.use.session.io", {
 
 The `sessionManager`, wherever it is in the set of child components, will be granted the additional grade `kettle.sessionManager.io`.
 
-## Complex Example: `record` ##
+## Complex Example: `record`
 
 ```javascript
 fluid.defaults("fluid.moduleLayoutHandler", {
@@ -162,7 +162,7 @@ fluid.defaults("fluid.moduleLayoutHandler", {
 });
 ```
 
-## Example: `source` ##
+## Example: `source`
 
 ```javascript
 fluid.defaults("fluid.tests.uploader", {
@@ -191,7 +191,7 @@ fluid.defaults("fluid.tests.uploader", {
 });
 ```
 
-## Example: broadcast via root to all components ##
+## Example: broadcast via root to all components
 
 ([All Husnock, everywhere](http://en.memory-alpha.org/wiki/Husnock))
 
