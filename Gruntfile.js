@@ -56,5 +56,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("fluid-grunt-eslint");
     grunt.loadNpmTasks("grunt-markdownlint");
 
-    grunt.registerTask("lint", "Apply eslint, jsonlint, json5lint, and markdownlint", ["eslint:js", "jsonlint", "json5lint", "markdownlint"]);
+    grunt.registerTask("lint", "Apply eslint, jsonlint, json5lint, and markdownlint", ["eslint:js", "jsonlint", "json5lint", "markdownlint", "eslint:md"]);
 };
