@@ -323,7 +323,7 @@ The final implemented decorator, `event`, allows direct access to the functional
 
 For example, this decorator:
 
-```json5
+```snippet
 {
     decorators: {
         type: "event",

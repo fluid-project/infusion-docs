@@ -29,6 +29,9 @@ module.exports = function (grunt) {
         json5lint: {
             src: ["./src/**/*.json5", "tests/**/*.json5", "./*.json5"]
         },
+        mdjsonlint: {
+            src: ["./*.md", "./**/*.md", "!./node_modules/**"]
+        },
         markdownlint: {
             full: {
                 options: {
@@ -55,6 +58,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("fluid-grunt-json5lint");
     grunt.loadNpmTasks("fluid-grunt-eslint");
     grunt.loadNpmTasks("grunt-markdownlint");
+    grunt.loadNpmTasks("gpii-grunt-mdjson-lint");
 
-    grunt.registerTask("lint", "Apply eslint, jsonlint, json5lint, and markdownlint", ["eslint:js", "jsonlint", "json5lint", "markdownlint", "eslint:md"]);
+    grunt.registerTask("lint", "Apply eslint, jsonlint, json5lint, and markdownlint", ["eslint:js", "jsonlint", "index.js", "markdownlint", "eslint:md"]);
 };

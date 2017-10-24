@@ -239,6 +239,7 @@ In some cases, panels and enactors may need to share data, such as a list of cla
             "sharedData": "@prefBlockName.dataToBeShared",
             // ...
         }
+    }
 }
 ```
 

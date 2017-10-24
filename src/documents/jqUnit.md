@@ -249,7 +249,7 @@ As an example, the following markup:
 
 will compare equal to
 
-```json
+```json5
 {
    nodeName: "a",
    href: "a-link",

@@ -1510,7 +1510,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 **syntax:**
 
-```json5
+```snippet
 {
     "transform": {
         "type": "fluid.transforms.firstValue",
@@ -2681,7 +2681,7 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 **Syntax:**
 
-```json
+```json5
 {
     "transform": {
         "type": "fluid.transforms.indexArrayByKey",
@@ -2815,7 +2815,7 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
     transform: {
         "type": "fluid.transforms.deindexIntoArrayByKey",
         "inputPath": "some input path pointing to an object of objects",
-        "key": "the variable to use as key for newly added entries"
+        "key": "the variable to use as key for newly added entries",
         "innerValue": [ /* inner transforms */ ]
     }
 }

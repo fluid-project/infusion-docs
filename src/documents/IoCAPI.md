@@ -89,7 +89,7 @@ of view of component `that`.
 
 Parse an [IoC reference](IoCReferences.md) of the form `"{myContext}.myPath1.myPath2"` into an object form. In this case, for example, the output would be
 
-```json
+```json5
 {
     context: "myContext",
     path: "myPath1.myPath2"
