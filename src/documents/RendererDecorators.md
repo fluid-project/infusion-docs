@@ -13,14 +13,14 @@ To use a decorator, include it in the component tree for the component in questi
 
 Decorators are specified using a notation similar to that of [Subcomponents](tutorial-gettingStartedWithInfusion/Subcomponents.md) in an `options` structure. They include a `type` field and whatever other fields are necessary, based on the type:
 
-```json5
+```snippet
 {
     ID: "my-id",
-    value: aValue,
+    value: <value>,
     decorators: [{
         type: "typeName",
-        field: value,
-        field: value
+        field: <value>,
+        field: <value>
     }]
 }
 ```
@@ -206,11 +206,11 @@ decorators: [{
 
 Perhaps the most frequently used decorator is the jQuery decorator. This will accept any jQuery function and its arguments, and invoke that function, as the rendered markup is placed into the document. Here is an example of specifying a UILink component together with a jQuery-bound `click()` handler:
 
-```json5
+```snippet
 decorators: [{
     type: "jQuery",
     func: "click",
-    args: function() { $(this).hide(); }
+    args: "${that}.hide"
 }]
 ```
 
@@ -286,13 +286,13 @@ fluid.componentName = function (container, options) {
 
 In this case, the equivalent decorator instantiation takes the form:
 
-```json5
+```snippet
 {
     decorators: {
         type: "fluid",
         func: "fluid.componentName",
-        container: container,
-        options: options
+        container: <container>,
+        options: <options>
     }
 }
 ```

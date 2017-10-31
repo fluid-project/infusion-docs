@@ -5,6 +5,8 @@ noteRendererChangesPost15: true
 category: Infusion
 ---
 
+<div class="infusion-docs-note"><strong>Note:</strong>The Renderer Component Tree Expanders described on this page have been deprecated and will likely  be removed in a future release.  If you are using this already or want to use something like it, please get in touch with the infusion maintainers using the <a href="https://fluidproject.org/">IRC channel or mailing list links on our website</a>.</div>
+
 The Renderer offers some utility functions for simplifying the tree-creation process. These functions are called **expanders** because they expand information you provide into a full component tree. These expanders are specified in the prototree itself by name and and are provided options to control the expansion process. For example:
 
 ```javascript
@@ -291,86 +293,54 @@ The following fields are supported by the `fluid.renderer.condition` expander:
 
 In the following example, the `condition` is `that.options.showDeleteButton`. The renderer will evaluate the component's `showDeleteButton` option and if it is `true` will use the component tree specified by `trueTree`. Note that no `falseTree` is provided. If the option is `false` or not present, nothing will be rendered.
 
-```json5
-{
-    expander: {
-        type: "fluid.renderer.condition",
-        condition: that.options.showDeleteButton,
-        trueTree: {
-            deleteButton: {
-                decorators: [{
-                    type: "attrs",
-                    attributes: {
-                        value: that.options.strings.deleteButton
-                    }
-                }, {
-                    type: "jQuery",
-                    func: "prop",
-                    args: {
-                        disabled: that.checkDeleteDisabling
-                    }
-                }]
+```javascript
+my.conditional.modelToTree = function (model, options) {
+    var tree = {
+        expander: {
+            type: "fluid.renderer.condition",
+            condition: options.showDeleteButton,
+            trueTree: {
+                deleteButton: {
+                    decorators: [{
+                        type: "attrs",
+                        attributes: {
+                            value: options.strings.deleteButton
+                        }
+                    }, {
+                        type: "jQuery",
+                        func: "prop",
+                        args: {
+                            disabled: options.checkDeleteDisabling
+                        }
+                    }]
+                }
             }
         }
-    }
-}
-```
-
-In the following example, the `condition` is the return value of a call to `that.showMediumImage()`. If the function returns `true`, the image should be shown, and the `trueTree` component subtree will be used to render it. If the return value is `false`, the image should not be shown, and the `falseTree` subtree will be used to properly render the **empty space** instead of an image.
-
-```json5
-{
-    expander: {
-        type: "fluid.renderer.condition",
-        condition: that.showMediumImage(),
-        trueTree: {
-            mediumImage: {
-                decorators: [{
-                    type: "addClass",
-                    classes: that.options.styles.mediumImage
-                }, {
-                    type: "attrs",
-                    attributes: {
-                        alt: that.options.strings.mediumImage,
-                        src: that.options.recordModel.fields
-                               && that.options.recordModel.fields.blobs
-                                 && that.options.recordModel.fields.blobs.length > 0 ?
-                            that.options.recordModel.fields.blobs[0].imgMedium : ""
-                    }
-                }]
-            },
-            mediaSnapshot: {
-                decorators: [{
-                    type: "addClass",
-                    classes: that.options.styles.mediaSnapshot
-                }]
-            }
-        },
-        falseTree: {
-            mediaSnapshot: {}
-        }
-    }
-}
+    };
+    return tree;
+};
 ```
 
 In the following example, the `condition` is a call to the function `cspace.header.assertMenuItemDisplay()` with a particular argument taken from the `itemName` subcomponent. If the function call returns `true`, the renderer component subtree specified by `trueTree` will be used.
 
-```json5
-{
-    expander: {
-        type: "fluid.renderer.condition",
-        condition: {
-            funcName: "cspace.header.assertMenuItemDisplay",
-            args: "${{itemName}.hide}"
-        },
-        trueTree: {
-            label: {
-                target: "${{item}.href}",
-                linktext: {
-                    messagekey: "${{item}.name}"
+```javascript
+my.conditional.modelToTree = function (model, options) {
+    var tree = {
+        expander: {
+            type: "fluid.renderer.condition",
+            condition: {
+                funcName: "cspace.header.assertMenuItemDisplay",
+                args: "${{itemName}.hide}"
+            },
+            trueTree: {
+                label: {
+                    target: "${{item}.href}",
+                    linktext: {
+                        messagekey: "${{item}.name}"
+                    }
                 }
             }
         }
-    }
-}
+    };
+};
 ```
