@@ -60,5 +60,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-markdownlint");
     grunt.loadNpmTasks("gpii-grunt-mdjson-lint");
 
-    grunt.registerTask("lint", "Apply eslint, jsonlint, json5lint, and markdownlint", ["eslint:js", "jsonlint", "index.js", "markdownlint", "eslint:md"]);
+    grunt.registerTask("lint", "Apply eslint, jsonlint, json5lint, and markdownlint", ["eslint:js", "jsonlint", "markdownlint", "eslint:md", "mdjsonlint"]);
 };
