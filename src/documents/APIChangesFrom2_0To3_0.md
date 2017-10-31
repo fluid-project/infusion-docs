@@ -22,17 +22,17 @@ This section describes major APIs that were in common use. For information about
 #### Model Changes ####
 
 ##### Reset ######
-By default, reset will only reset the `preferences` model path. Other model values will remain unchanged. If you'd like to also have these paths changed, add a listener to the `beforeReset` event to execute a fireChangeRequest for the model paths you need to reset. (See: ArrowScrolling.js)
+By default, reset will only reset the `preferences` model path. Other model values will remain unchanged. If you'd like to also have these paths changed, add a listener to the `beforeReset` event to execute a fireChangeRequest for the model paths you need to reset. (See: [ArrowScrolling.js](https://github.com/fluid-project/infusion/blob/master/src/framework/preferences/js/ArrowScrolling.js))
 
 ```javascript
-...
+\\...
 listeners: {
     "beforeReset.resetPanelIndex": {
         listener: "{that}.applier.fireChangeRequest",
         args: {path: "panelIndex", value: 0, type: "ADD", source: "reset"}
     }
 }
-...
+\\...
 ```
 
 ##### Model Paths ######
