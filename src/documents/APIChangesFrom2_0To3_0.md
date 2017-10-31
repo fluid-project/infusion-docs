@@ -51,11 +51,11 @@ Any prefsEditor using the `fluid.prefs.arrowScrolling` grade, such as the one co
         <tr>
             <td><code>panelIndex</code></td>
             <td>0</td>
-            <td>The index of the panel to scroll to in the small screen view.</td>
+            <td>The index of the panel to scroll to in the small screen responsive view.</td>
         </tr>
         <tr>
             <td><code>panelMaxIndex</code></td>
-            <td>A number</td>
+            <td>A number representing the index of the last panel</td>
             <td>The maximum index that panelIndex can take. It is calculated from the total number of panels present.</td>
         </tr>
     </tbody>
