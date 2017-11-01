@@ -83,7 +83,9 @@ module.exports = {
         },
         highlightjs: {
             aliases: {
-                stylus: "css"
+                json5:   "json",
+                snippet: "shell",
+                stylus:  "css"
             }
         },
         markit: {
