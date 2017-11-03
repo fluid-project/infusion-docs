@@ -192,9 +192,9 @@ in its `sequence` member, representing a sequence of actions (either executors o
         <td><code>{Object|Array}</code></td>
         <td>
 
-arguments to be supplied to the listener function when it is called - these may contain IoC references including
+Arguments to be supplied to the listener function when it is called - these may contain IoC references including
 references to the context `{arguments}` as described in [Listener Boiling](EventInjectionAndBoiling.md#listener-boiling)
-    </td>
+</td>
     </tr>
     <tr class="infusion-docs-alt-b-row">
         <td><code>listenerMaker</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>

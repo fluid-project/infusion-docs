@@ -141,6 +141,11 @@ a:focus {
     font-size: 1.2rem;
 }
 
+/* override the above to avoid paragraphs in tables being resized inappropriately */
+.infusion-docs-container tr.infusion-docs-alt-a-row td p, .infusion-docs-container tr.infusion-docs-alt-b-row td p {
+    font-size: inherit;
+}
+
 /* Styling for the hover links on headings */
 
 .infusion-docs .infusion-docs-anchor {
