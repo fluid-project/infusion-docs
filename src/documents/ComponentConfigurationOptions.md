@@ -102,7 +102,7 @@ The following options are supported by all component grades, that is, those deri
   <tr>
     <th>Notes</th>
     <td>
-    
+
 The Framework will create event firers for the listed events. The builtin events `onCreate`, `onDestroy` and `afterDestroy` will be fired automatically by the framework.
 It is the responsibility of the component to fire user-defined events at the appropriate times.
 </td>
@@ -135,7 +135,7 @@ It is the responsibility of the component to fire user-defined events at the app
   <tr>
     <th>Notes</th>
     <td>
-    
+
 Both component developers and integrators can define listeners for events.
 <a href="Invokers.md">Invokers</a> and the `fire` method of other events can be used as listeners here, as well as any function handle resulting from an <a href="ExpansionOfComponentOptions.md">Expanders</a>.
 Note that as well as being a simple string holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC Reference</a>
@@ -258,7 +258,7 @@ fluid.defaults("examples.eventedComponent", {
   <tr>
     <th>Notes</th>
     <td>
-    
+
 It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy.
 For example, some noxious circularly-liked structure such as a node.js HTTP `request` object should be protected in such a way. The 2.0 framework will automatically protect an object which fails the `fluid.isPlainObject` test, which will exclude
 any object with a nondefault constructor or native type such as DOM elements, `TypedArray`s, Infusion components themselves, etc.
@@ -372,7 +372,7 @@ See also: [Component Grades](ComponentGrades.md)
   <tr>
     <th>Description</th>
     <td>
-    
+
 A record defining a set of functions wishing to be notified of changes to the `model`
 </td>
   </tr>

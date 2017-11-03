@@ -161,7 +161,7 @@ The source model path to be linked by this relay rule. This option can be omitte
             <td><code>namespace</code> (optional)</td>
             <td><code>String</code></td>
             <td>
-            
+
 Identifies this model relay rule uniquely within its parent component. This namespace may be used to override the relay rule from a derived <a href="ComponentGrades.md">grade</a>, or to control the priority of
 one relay rule with respect to another by using the <code>priority</code> field.
 Compare with the similar uses of namespaces within Infusion <a href="InfusionEventSystem.md#full-listener-record-form">events</a>, <a href="InfusionEventSystem.md#full-listener-record-form">model listeners</a>, etc. As with `modelListener`, this
