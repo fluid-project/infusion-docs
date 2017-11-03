@@ -306,10 +306,13 @@ marking *will* be logged by the listener.
 
 ##### Warning and workaround for issues involving initial transaction and `onCreate` race issues
 
-<div class="infusion-docs-note"><strong>Note:</strong> The current implementation of the ChangeApplier has a bug ([FLUID-5519](http://issues.fluidproject.org/browse/FLUID-5519)) which will often cause a model listener to be notified
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> The current implementation of the ChangeApplier has a bug ([FLUID-5519](http://issues.fluidproject.org/browse/FLUID-5519)) which will often cause a model listener to be notified
 before much of the surrounding component has constructed. This can be annoying, since the model listener may want to rely on other infrastructure (e.g. invokers, etc.) that it cannot
 be sure have been constructed. For this reason, `excludeSource: "init"` is a useful way of stabilising this behaviour until the implementation is fixed (fix will be
-delivered as part of [FLUID-4925](http://issues.fluidproject.org/browse/FLUID-4925)).</div>
+delivered as part of [FLUID-4925](http://issues.fluidproject.org/browse/FLUID-4925)).
+</div>
 
 #### Wildcards in model path references
 
@@ -366,8 +369,11 @@ applier.modelChanged.removeListener(listener);
 
 `spec` may also include the standard member `priority` seen in the declarative record.
 
-<div class="infusion-docs-note"><strong>Note:</strong> This style of listening to changes is **discouraged**, but may be the right choice in some applications. For example - the listener to be attached may not be available
-at the time the component is constructed. Note that programmatically attached listeners will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where they are registered.</div>
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> This style of listening to changes is **discouraged**, but may be the right choice in some applications. For example - the listener to be attached may not be available
+at the time the component is constructed. Note that programmatically attached listeners will miss observation of the initial transaction as well as any other model changes that have occurred up to the point where they are registered.
+</div>
 
 The listener is notified after the change (or set of coordinated changes forming a transaction) has already been applied to the model. The signature for these listeners is
 

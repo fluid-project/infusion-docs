@@ -64,4 +64,5 @@ The component author may schedule various actions to clean up any external resou
 
 Every Fluid component is supplied with a standard method named `destroy` which is available after `onCreate` has fired. `destroy` takes no arguments and will initiate the destruction process for the component - `onDestroy` followed by `afterDestroy`.
 
-<div class="infusion-docs-note"><strong>Note:</strong> You can detect the lifecycle status of a component by means of the standard utility <a href="CoreAPI.md#fluidisdestroyedcomponent"><code>fluid.isDestroyed(component)</code></a> - this will return <code>true</code> if the object reference represents a component which has been destroyed.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can detect the lifecycle status of a component by means of the standard utility <a href="CoreAPI.md#fluidisdestroyedcomponent"><code>fluid.isDestroyed(component)</code></a> - this will return <code>true</code> if the object reference represents a component which has been destroyed.
+</div>

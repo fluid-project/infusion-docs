@@ -28,6 +28,7 @@ for the simple Preference Editor in the examples folder:
 [https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor).
 We recommend you download the Infusion library and load the example code into your favourite editor.
 <figure>
+
 ![the folder hierarchy of the sample code](../images/prefsEditorFolders.png)
 <figcaption>Figure 1: Folder hierarchy for the Preference Editor example</figcaption>
 </figure>
@@ -38,7 +39,9 @@ If you run a local webserver
 (for example using [this approach](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python),
 or using [MAMP](https://www.mamp.info/en/))
 and navigate to the `index.html` file in a browser, you should see this interface:
+
 <figure id="figure2">
+
 ![The screen of the example Preference Editor](../images/simplePrefsEditor.png)
 <figcaption>Figure 2: The screen of the example Preference Editor</figcaption>
 </figure>
@@ -49,7 +52,9 @@ the preference will be stored in a cookie, and when you reload the page, the che
 to the saved value. Go ahead, try it.
 
 Let’s talk about what we’re seeing in this interface:
+
 <figure>
+
 ![The parts of a Preference Editor screen](../images/prefsEditorParts.png)
 <figcaption>Figure 3: The parts of a Preference Editor screen</figcaption>
 </figure>
@@ -93,6 +98,7 @@ In this code snippet, the Primary Schema is created using a call to the
 Infusion Framework function `fluid.defaults().`
 
 <aside class="infusion-docs-callout">
+
 `fluid.defaults()` is one of the core functions in Infusion: It is used to create [components](../UnderstandingInfusionComponents.md)
 (the building blocks of any Infusion application) and register them with the Framework.
 </aside>
@@ -107,11 +113,17 @@ The second argument – the options – is an object containing (in this case) t
 `gradeNames` and `schema`:
 
 <dl>
-<dt>`gradeNames`</dt>
+<dt>
+
+`gradeNames`
+</dt>
 <dd>
+
 Almost every call to `fluid.defaults()` includes the `gradeNames` property in the options argument.
 This property defines the base _[grade](../ComponentGrades.md)_ for the component.
+
 <aside class="infusion-docs-callout">
+
 A **grade** is _very loosely_ analogous to a class, in that the properties of the component are
 derived from the elements in the grade document. It’s actually a bit more complex
 than that; later, you’ll probably want to read the documentation about [Component Grades](../ComponentGrades.md).
@@ -123,7 +135,10 @@ which is defined by the Preferences Framework. **Using this particular grade is 
 this component as a Primary Schema with the Framework.** The Framework will automatically record
 this fact and use this Primary Schema with your Preference Editor.
 </dd>
-<dt>`schema`</dt>
+<dt>
+
+`schema`
+</dt>
 <dd>
 This property is the actual JSON definition of the preferences for this Preference Editor.
 </dd>
@@ -158,7 +173,9 @@ A [Panel](../Panels.md) is a [component](../UnderstandingInfusionComponents.md)
 responsible for rendering the user interface controls for a
 preference and tying them to the internal model that represents the preference value.
 The Panel for the heated seats preference control is defined in the `prefsEditor.js` file:
+
 <aside class="infusion-docs-callout">
+
 [Components](../UnderstandingInfusionComponents.md) are the core building-blocks of
 any Infusion application.
 An Infusion component can represent a visible component on screen, a collection of related
@@ -208,12 +225,21 @@ In this code snippet, the Panel is created using a call to the Infusion Framewor
 The screenshot in [Figure 2 (above)](#figure2) shows what the Panel looks like to the user: A single checkbox
 and label, with a header above. The options for configuring this Panel
 include four properties: `gradeNames`, `preferenceMap`, `selectors` and `protoTree`:
+
 <dl>
-<dt>`gradeNames`</dt>
-<dd>As we saw with the Primary Schema, any call to `fluid.defaults()` must refer to any parent
+<dt>
+
+`gradeNames`
+</dt>
+<dd>
+
+As we saw with the Primary Schema, any call to `fluid.defaults()` must refer to any parent
 grades using the `gradeNames` property. Panels must use the `"fluid.prefs.panel"` grade.
 </dd>
-<dt>`preferenceMap`</dt>
+<dt>
+
+`preferenceMap`
+</dt>
 <dd>A Panel must have a _ Preference Map_, which maps the information in the Primary Schema
 into your Panel. Let’s look at this one more closely:
 <pre class="highlight">
@@ -230,31 +256,52 @@ internal data model.
 
 The content of this  Preference Map is a key/value pair:
 <ul>
-<li> The key, `“model.heatedSeats”`, is an [EL path](../FrameworkConcepts.md#el-paths) into the
+<li>
+
+The key, `“model.heatedSeats”`, is an [EL path](../FrameworkConcepts.md#el-paths) into the
 Panel’s data model. An “EL path” is just a
 dot-separated path built from names. In this case, it means “the `heatedSeats`
 property of the [`model`](../FrameworkConcepts.md#model-objects) property” of the Panel.
+
 <aside class="infusion-docs-callout">
+
 [Models](../FrameworkConcepts.md#model-objects) are central to Infusion, which,
 while not formally a [Model-View-Controller framework](../FrameworkConcepts.md#mvc),
 embodies the the separation of concerns that is central to MVC.
 Most Infusion components have an internal model, for maintaining the state of the component.
 </aside>
 </li>
-<li> The value, `“default”`, is an EL path referencing the `“default”` property in the Primary Schema.</li>
+<li>
+
+The value, `“default”`, is an EL path referencing the `“default”` property in the Primary Schema.
+</li>
 </ul>
+
 This  Preference Map is saying two things:
+
 <ol>
-<li>The preference called `“awesomeCars.prefs.heatedSeats”` should be stored in the Panel’s model
-in a property called `heatedSeats`, and</li>
-<li>the initial value for the property should be taken from the `“default”` property
-of the Primary Schema.</li>
+<li>
+
+The preference called `“awesomeCars.prefs.heatedSeats”` should be stored in the Panel’s model
+in a property called `heatedSeats`, and
+</li>
+<li>
+
+the initial value for the property should be taken from the `“default”` property of the Primary Schema.
+</li>
 </ul>
+
 A Preference Map can specify other destinations for Primary Schema information, besides the model.
 We'll see an example of this when we add antoher panel, later in this tutorial.
 </dd>
-<dt>`selectors`</dt>
-<dd>A Panel is a _[view component](../tutorial-gettingStartedWithInfusion/ViewComponents.md)_
+
+<dt>
+
+`selectors`
+</dt>
+<dd>
+
+A Panel is a _[view component](../tutorial-gettingStartedWithInfusion/ViewComponents.md)_
 – a type of Infusion component that has a _view_, that is,
 a user interface. In order to maintain a separation between the code and the HTML for the view,
 the code interacts with the HTML through named [selectors](../ComponentConfigurationOptions.md#selectors): The code only references the name, and
@@ -262,6 +309,7 @@ a Framework feature called the DOM Binder looks up the relevant DOM node for the
 on the information in this `selectors` option.
 
 Let’s look at this more closely:
+
 <pre class="highlight">
 <code class="hljs javascript">selectors: {
     heatedSeats: ".awec-heatedSeats"
@@ -283,16 +331,22 @@ This template is found in the `html/heatedSeats.html` file, which looks like thi
 
 You can see the `“awec-heatedSeats”` class name on the `<input>` element.
 </dd>
-<dt>`protoTree`</dt>
+<dt>
+
+`protoTree`
+</dt>
 <dd>
+
 A Panel is also a _[Renderer component](../RendererComponents.md)_ – a type of Infusion component that uses the
 Infusion [Renderer](../Renderer.md) to render the view based on data in the component’s model.
 The _[protoTree](../RendererComponentTrees.md)_ is the instructions for how the data in the component’s model maps to the template.
 Let’s look at this more closely:
+
 <pre class="highlight">
 <code class="hljs javascript">protoTree: {
     heatedSeats: "${heatedSeats}"
-}</code></pre>
+}</code>
+</pre>
 
 A protoTree contains key/value pairs, where
 
@@ -458,7 +512,10 @@ The value of the `type` property is the name of the preference as defined in the
 The value of the `panel` property is a JavaScript object containing configuration information
 for the Panel. Let’s look at each of the properties:
 <dl>
-<dt>`type`</dt>
+<dt>
+
+`type`
+</dt>
 <dd>This is the name of the Panel that was defined in the call to `fluid.defaults()` above.</dd>
 <dt>`container`</dt>
 <dd>This is a CSS-based selector referencing the Panel’s placeholder element in the main HTML
@@ -699,7 +756,9 @@ we’ll use an object with a value property:
 
 To this, we will add a _[Renderer Decorator](../RendererDecorators.md)_
 to set the attributes using the contents of the `range` property:
+
 <aside class="infusion-docs-callout">
+
 [Renderer Decorators](../RendererDecorators.md) allow users of the Renderer to attach various things,
 such as functions, class names, etc., to the components at render time.
 </aside>

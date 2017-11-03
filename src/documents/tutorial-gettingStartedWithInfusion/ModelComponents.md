@@ -133,11 +133,13 @@ fluid.defaults("tutorials.datedComponent", {
 });
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> There is a
-[compact form](../ExpansionOfComponentOptions.md#compact-format-for-expanders)
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> There is a [compact form](../ExpansionOfComponentOptions.md#compact-format-for-expanders)
 for writing an expander as a single string - we could have written the above definition
 instead with `date: "@expand:tutorials.getCurrentDate()"` in place of the small JSON
-block inside the model.</div>
+block inside the model.
+</div>
 
 ## Example: Currency Converter
 

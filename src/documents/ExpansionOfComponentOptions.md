@@ -132,7 +132,10 @@ fluid.defaults("cspace.specBuilder", {
 });
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> The use of the `fluid.noexpand` expander is _not recommended_ - it is less fragile to use a ``mergePolicy`` instead (see [Merge Policies](OptionsMerging.md#structure-of-the-merge-policy-object)) - for example, the same effect as the above definition could be had with the following:</div>
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> The use of the `fluid.noexpand` expander is _not recommended_ - it is less fragile to use a ``mergePolicy`` instead (see [Merge Policies](OptionsMerging.md#structure-of-the-merge-policy-object)) - for example, the same effect as the above definition could be had with the following:
+</div>
 
 ```javascript
 fluid.defaults("cspace.specBuilder", {

@@ -315,7 +315,10 @@ The `attrs` director is simple and crude - it allows freeform access to all of t
 }
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> Specifying a value of `null` will remove the attribute.</div>
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> Specifying a value of `null` will remove the attribute.
+</div>
 
 ### event Decorator
 

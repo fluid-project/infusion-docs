@@ -39,11 +39,13 @@ The `options` parameter is an optional collection of name-value pairs that confi
             <th>Default</th>
         </tr>
     </thead>
-
     <tbody>
         <tr>
             <td><code>selectors</code></td>
-            <td>JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more information.</td>
+            <td>
+
+JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more information.
+</td>
             <td>The object may contain the following keys:
                 <ul>
                     <li><code>on</code></li>
@@ -87,7 +89,6 @@ strings: {
                 </pre>
             </td>
         </tr>
-
         <tr>
             <td><code>attrs</code></td>
             <td>An object containing any HTML attributes to be added to the switch <code>control</code>.</td>
@@ -106,7 +107,6 @@ attrs: {
                 </pre>
             </td>
         </tr>
-
         <tr>
             <td><code>model</code></td>
             <td>The state of the switch.</td>
@@ -150,7 +150,6 @@ selectors: {
                 </pre>
             </td>
         </tr>
-
         <tr>
             <td><code>off</code></td>
             <td>Identifies the element for the "off" identifier</td>

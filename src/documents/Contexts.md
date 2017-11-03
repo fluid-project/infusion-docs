@@ -147,9 +147,12 @@ However, in the following example, since `rootComponent1` has the grade `fluid.r
 second component. In addition, since it has `fluid.resolveRootSingle` rather than just `fluid.resolveRoot`, when we
 create a second instance of it, this instance becomes the globally visible one.
 
-<div class="infusion-docs-note"><strong>Note:</strong> In general, users must take care to destroy all such "free components" manually when they are no longer required. Since
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> In general, users must take care to destroy all such "free components" manually when they are no longer required. Since
 JavaScript does not supply schemes for reference tracking, there is no way for the framework to determine when a component is no
-longer being used. The user must call `destroy()` on such instances themselves.</div>
+longer being used. The user must call `destroy()` on such instances themselves.
+</div>
 
 ```javascript
 fluid.defaults("examples.rootComponent1", {

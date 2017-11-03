@@ -144,10 +144,16 @@ fluid.defaults("examples.combinedComponent", {
 });
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>,
-<code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md#namespaced-listeners">listener namespaces</a>.</div>
+<div class="infusion-docs-note">
 
-<div class="infusion-docs-note"><strong>Note:</strong> In the current framework, all grades derived from `fluid.viewComponent` (as well as `fluid.rendererComponent`, etc.) must be listed ***AFTER*** all those that are not. This problem will be resolved in a future framework release.</div>
+<strong>Note:</strong> All the material from the component defaults will be merged by the framework, including records such as <code>events</code>, <code>listeners</code>, <code>members</code>, <code>components</code>,
+<code>invokers</code> and <code>model</code>. Some of these, e.g. <code>listeners</code> will receive custom merging algorithms sensitive to their context - for example showing awareness of <a href="InfusionEventSystem.md#namespaced-listeners">listener namespaces</a>.
+</div>
+
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> In the current framework, all grades derived from `fluid.viewComponent` (as well as `fluid.rendererComponent`, etc.) must be listed ***AFTER*** all those that are not. This problem will be resolved in a future framework release.
+</div>
 
 ## Dynamic Grades
 

@@ -42,43 +42,70 @@ The Image Reorderer fires the following events.
     </thead>
     <tbody>
         <tr>
-            <td>`onShowKeyboardDropWarning1`</td>
+            <td>
+
+`onShowKeyboardDropWarning1`
+</td>
             <td>default</td>
             <td>
                 This event fires before a drop warning is displayed.
             </td>
-            <td>`item`, `kbDropWarning`</td>
-            <td>`item`: The item being moved.
-                `kbDropWarning`: The DOM element that contains the drop warning, and that will be displayed.</td>
-        </tr>
+            <td>
 
+`item`, `kbDropWarning`
+</td>
+            <td>
+
+`item`: The item being moved.
+`kbDropWarning`: The DOM element that contains the drop warning, and that will be displayed.</td>
+        </tr>
         <tr>
-            <td>`onSelect`</td>
+            <td>
+
+`onSelect`
+</td>
             <td>default</td>
             <td>
                 This event fires when an item is selected by the user.
             </td>
-            <td>`item`</td>
-            <td>`item`: The item being selected.</td>
-        </tr>
+            <td>
 
+`item`
+</td>
+            <td>
+
+`item`: The item being selected.</td>
+        </tr>
         <tr>
-            <td>`onBeginMove`</td>
+            <td>
+
+`onBeginMove`
+</td>
             <td>"preventable"</td>
             <td>
                 This event fires just before a request to move is processed. Because the event is preventable, listeners may prevent the move from happening.
             </td>
-            <td>`item`</td>
-            <td>`item`: The item being moved.</td>
-        </tr>
+            <td>
 
+`item`
+</td>
+            <td>
+
+`item`: The item being moved.</td>
+        </tr>
         <tr>
-            <td>`onMove`</td>
+            <td>
+
+`onMove`
+</td>
             <td>default</td>
             <td>
                 This event fires just before an item is actually moved.
             </td>
-            <td>`item`, `requestedPosition`</td>
+            <td>
+
+`item`, `requestedPosition`
+</td>
             <td>
                 `item`: The item being moved.
                 `requestedPosition`: An object describing the position that the user is trying to move the item into:
@@ -95,16 +122,22 @@ requestedPosition = {
                 </pre>
             </td>
         </tr>
-
         <tr>
-            <td>`afterMove`</td>
+            <td>
+
+`afterMove`
+</td>
             <td>default</td>
             <td>
-            This event fires after an item has successfully been moved. For more information, see [Talking to the Server Using The afterMove Event](to-do/TalkingToTheServerUsingTheAfterMoveEvent.md).
 
-            This event replaces the `afterMoveCallbackUrl` option, which was deprecated at version 1.1.2.
-            </td>
-            <td>`item`, `requestedPosition`, `movables`</td>
+This event fires after an item has successfully been moved. For more information, see [Talking to the Server Using The afterMove Event](to-do/TalkingToTheServerUsingTheAfterMoveEvent.md).
+
+This event replaces the `afterMoveCallbackUrl` option, which was deprecated at version 1.1.2.
+</td>
+            <td>
+
+`item`, `requestedPosition`, `movables`
+</td>
             <td>
             `item`: The item being moved.
             `requestedPosition`: An object describing the position that the user is trying to move the item into:
@@ -122,22 +155,29 @@ requestedPosition = {
                 `movables`: A list of all of the movable elements.
             </td>
         </tr>
-
         <tr>
-            <td>`onHover`</td>
+            <td>
+
+`onHover`
+</td>
             <td>default</td>
             <td>
             This event fires when the cursor moves over top of an item, and when the cursor moves away from an item. The default listener either adds or removes the hover class (`styles.hover`) to/from the item.
             </td>
-            <td>`item`, `state`</td>
+            <td>
+
+`item`, `state`
+</td>
             <td>
             `item`: The item being moved.
             `state`: A boolean indicating whether the cursor is moving to (`true`) or away from (`false`) the item.
             </td>
         </tr>
-
         <tr>
-            <td>`onRefresh`</td>
+            <td>
+
+`onRefresh`
+</td>
             <td>default</td>
             <td>
             This event fires any time the order of the items changes, or when the `refresh()` function is called.
@@ -162,18 +202,26 @@ requestedPosition = {
             <th>Default</th>
         </tr>
     </thead>
-
     <tbody>
         <tr>
-            <td>`selectors`</td>
-            <td>JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more information.</td>
-            <td>The object must be a list of objects containing any subset of the following keys:
-                * `dropWarning`
-                * `movables`
-                * `selectables`
-                * `dropTargets`
-                * `grabHandle`
-                * `stylisticOffset`
+            <td>
+
+`selectors`
+</td>
+            <td>
+
+JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more information.
+</td>
+            <td>
+
+The object must be a list of objects containing any subset of the following keys:
+
+* `dropWarning`
+* `movables`
+* `selectables`
+* `dropTargets`
+* `grabHandle`
+* `stylisticOffset`
             </td>
             <td>
                 <pre>
@@ -190,16 +238,23 @@ selectors: {
                 </pre>
             </td>
         </tr>
-
         <tr>
-            <td>`listeners`</td>
+            <td>
+
+`listeners`
+</td>
             <td>JavaScript object containing listeners to be attached to the supported events.</td>
             <td>Keys in the object are event names, values are functions or arrays of functions.</td>
-            <td>See [Supported Events](#supported-events)</td>
-        </tr>
+            <td>
 
+See [Supported Events](#supported-events)
+</td>
+        </tr>
         <tr>
-            <td>`styles`</td>
+            <td>
+
+`styles`
+</td>
             <td>an object containing CSS class names for styling the Reorderer.</td>
             <td>The object may contain any of the keys defined in the default class names (shown to the right). Any class names not provided will revert to the default.</td>
             <td>
@@ -218,18 +273,19 @@ styles: {
                 </pre>
             </td>
         </tr>
-
         <tr>
-            <td>`keysets`</td>
+            <td>
+`keysets`
+</td>
             <td>an object containing sets of keycodes to use for directional navigation, and for the modifier key used for moving a movable item.</td>
             <td>
-                The object must be a list of objects containing the following keys:
+The object must be a list of objects containing the following keys:
 
-                * `modifier` : a function that returns true or false, indicating whether or not the required modifier(s) are activated
-                * `up`
-                * `down`
-                * `right`
-                * `left`
+* `modifier` : a function that returns true or false, indicating whether or not the required modifier(s) are activated
+* `up`
+* `down`
+* `right`
+* `left`
             </td>
             <td>
                 <pre>
@@ -256,11 +312,15 @@ fluid.reorderer.defaultKeysets = [{
                 </pre>
             </td>
         </tr>
-
         <tr>
-            <td>`selectablesTabindex`</td>
+            <td>
+
+`selectablesTabindex`
+</td>
             <td>Normally injected automatically from the layoutHandler</td>
-            <td>String [IoC expression](IoCReferences.md)</td>
+            <td>
+
+String [IoC expression](IoCReferences.md)</td>
             <td>
                 <pre>
                     <code>
@@ -269,27 +329,34 @@ selectablesTabindex: "{that}.layoutHandler.options.selectablesTabindex"
                 </pre>
             </td>
         </tr>
-
         <tr>
-            <td>`avatarCreator`</td>
-            <td>a function that returns a valid DOM node to be used as the dragging avatar</td>
-            <td></td>
             <td>
 
-The item being dragged will be cloned</td>
+`avatarCreator`
+</td>
+            <td>a function that returns a valid DOM node to be used as the dragging avatar</td>
+            <td></td>
+            <td>The item being dragged will be cloned</td>
         </tr>
-
         <tr>
-            <td>`disableWrap`</td>
+            <td>
+
+`disableWrap`
+</td>
             <td>This option is used to disable wrapping of elements within the container.</td>
             <td>boolean</td>
             <td>false</td>
         </tr>
-
         <tr>
-            <td>`mergePolicy`</td>
-            <td>an object describing how user options should be merged in with defaults
-For information on options merging, see [Options Merging](OptionsMerging.md)</td>
+            <td>
+
+`mergePolicy`
+</td>
+            <td>
+
+an object describing how user options should be merged in with defaults
+For information on options merging, see [Options Merging](OptionsMerging.md)
+</td>
             <td></td>
             <td>
                 <pre>
@@ -319,11 +386,12 @@ mergePolicy: {
             <th>Default</th>
         </tr>
     </thead>
-
     <tbody>
         <tr>
-            <td><strong>Deprecated as of 1.1.2:</strong>
-`afterMoveCallbackUrl`</span></td>
+            <td>
+
+<strong>Deprecated as of 1.1.2:</strong> `afterMoveCallbackUrl`
+</td>
             <td>If an URL is provided with this option, the current state of the component model will be sent to that URL after a move is carried out using a default afterMove event handler.</td>
             <td>an URL</td>
             <td>none</td>
@@ -346,7 +414,10 @@ The `selectors` option is an object containing CSS-based selectors for various p
     </thead>
     <tbody>
         <tr>
-            <td>`grabHandle`</td>
+            <td>
+
+`grabHandle`
+</td>
             <td>If present, identifies a single element within a movable item that the user must click on to drag the movable item. (If not specified, the entire movable item can be clicked on.)</td>
             <td>""
 (empty string) </td>
@@ -360,9 +431,11 @@ selectors: {
                 </pre>
             </td>
         </tr>
-
         <tr>
-            <td>`dropTargets`</td>
+            <td>
+
+`dropTargets`
+</td>
             <td>Identifies the DOM elements contained within the Reorderer container that can have movable elements dropped relative to them. Note that not all elements within the container need to be drop targets.</td>
             <td>same as movables</td>
             <td>
@@ -376,7 +449,10 @@ selectors: {
             </td>
         </tr>
         <tr>
-            <td>`selectables`</td>
+            <td>
+
+`selectables`
+</td>
             <td>Identifies the DOM elements contained within the Reorderer container that can be selected using keyboard. Note that selectable elements do not have to be movable. </td>
             <td>same as movables</td>
             <td>
@@ -390,7 +466,10 @@ selectors: {
             </td>
         </tr>
         <tr>
-            <td>`movables`</td>
+            <td>
+
+`movables`
+</td>
             <td>Identifies the DOM elements contained within the Reorderer container that can be moved using the Reorderer.</td>
             <td>".flc-reorderer-movable"</td>
             <td>
@@ -404,7 +483,10 @@ selectors: {
             </td>
         </tr>
         <tr>
-            <td>`dropWarning`</td>
+            <td>
+
+`dropWarning`
+</td>
             <td>Identifies a single element within the DOM that can be shown to display a warning when the user tries to move an item where it can't be moved. It is assumed that this element contains whatever drop warning text and mark-up the implementor desires.</td>
             <td>".flc-reorderer-dropWarning"</td>
             <td>
@@ -435,9 +517,15 @@ The Image Reorderer supports one additional selector:
     </thead>
     <tbody>
         <tr>
-            <td>`imageTitle`</td>
+            <td>
+
+`imageTitle`
+</td>
             <td>Identifies a DOM element that contains a title for the image</td>
-            <td>`".flc-reorderer-imageTitle"`</td>
+            <td>
+
+`".flc-reorderer-imageTitle"`
+</td>
             <td>
                 <pre>
                     <code>

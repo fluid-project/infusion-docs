@@ -24,6 +24,7 @@ Below are some resources which discuss general website optimization strategies:
 To see a live version of the example outlined below, open the [Minimal Footprint - Preferences Framework](http://build.fluidproject.org/infusion/examples/framework/preferences/minimalFootprint/) example.
 
 <div class="infusion-docs-note">
+
 <strong>Note:</strong> The example outlined below uses individual JS files. However, these can be substituted by using an Infusion build.
 </div>
 
@@ -126,8 +127,11 @@ The first step is to check if a cookie for user preferences was set. If it is fo
 
 (see: [loadScripts.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/loadScripts.js))
 
-<div class="infusion-docs-note"><strong>Note:</strong> The example below makes use of a build of Infusion, "infusion-custom.js", which is a concatenated JavaScript file. However, the linked
-code above uses the individual JavaScript files. Using the single "infusion-custom.js" file will save on server requests and is the preferred method, but will require a [custom build](#minified-custom-build) to be generated.</div>
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> The example below makes use of a build of Infusion, "infusion-custom.js", which is a concatenated JavaScript file. However, the linked
+code above uses the individual JavaScript files. Using the single "infusion-custom.js" file will save on server requests and is the preferred method, but will require a [custom build](#minified-custom-build) to be generated.
+</div>
 
 ```html
 <!-- Add the following script tag to the HTML of each page -->

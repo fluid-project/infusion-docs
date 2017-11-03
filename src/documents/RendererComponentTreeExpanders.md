@@ -5,7 +5,7 @@ noteRendererChangesPost15: true
 category: Infusion
 ---
 
-<div class="infusion-docs-note"><strong>Note:</strong>The Renderer Component Tree Expanders described on this page have been deprecated and will likely  be removed in a future release.  If you are using this already or want to use something like it, please get in touch with the infusion maintainers using the <a href="https://fluidproject.org/">IRC channel or mailing list links on our website</a>.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> The Renderer Component Tree Expanders described on this page have been deprecated and will likely  be removed in a future release.  If you are using this already or want to use something like it, please get in touch with the infusion maintainers using the <a href="https://fluidproject.org/">IRC channel or mailing list links on our website</a>.</div>
 
 The Renderer offers some utility functions for simplifying the tree-creation process. These functions are called **expanders** because they expand information you provide into a full component tree. These expanders are specified in the prototree itself by name and and are provided options to control the expansion process. For example:
 

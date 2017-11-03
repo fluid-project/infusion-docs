@@ -362,7 +362,8 @@ See also: [Component Grades](ComponentGrades.md)
 <table>
   <tr>
     <th>Description</th>
-    <td>A record defining a set of functions wishing to be notified of changes to the `model`</td>
+    <td>A record defining a set of functions wishing to be notified of changes to the `model`
+</td>
   </tr>
   <tr>
     <th>Example Definition</th>

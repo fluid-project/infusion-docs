@@ -46,7 +46,10 @@ A top-level options block named **`events`** is supported on every component der
   </tr>
 </table>
 
-<div class="infusion-docs-note"><strong>Note:</strong> `preventable` events are very rarely used and will soon be deprecated in the framework.</div>
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> `preventable` events are very rarely used and will soon be deprecated in the framework.
+</div>
 
 For every such entry in the `events` section of a component's options, the framework will construct a corresponding ***event firer*** with the same name in the `events` section of the constructed component. The most common use of an event firer is to call its member named `fire` with some set of arguments. Here is a simple, self-contained example:
 
@@ -168,30 +171,39 @@ In this case, you can use the long form record, where the listener record takes 
   <tr>
     <td><code>listener</code>, <code>func/funcName</code></td>
     <td><code>{String}</code></td>
-    <td>This holds the actual designation of the function which is to be the listener, which was the string that consisted of the entire "short form" for the listener definition above. This, as before, holds either
-    the name of a global function or an IoC reference to a function. The `func`/`funcName` form is supported for consistency with the syntax for [Invokers](Invokers.md) and the name `listener` will be deprecated for the Infusion 2.0 release.
-    </td>
+    <td>
+
+This holds the actual designation of the function which is to be the listener, which was the string that consisted of the entire "short form" for the listener definition above. This, as before, holds either
+the name of a global function or an IoC reference to a function. The `func`/`funcName` form is supported for consistency with the syntax for [Invokers](Invokers.md) and the name `listener` will be deprecated for the Infusion 2.0 release.
+</td>
   </tr>
   <tr>
     <td><code>args</code> (optional)</td>
     <td><code>{Any}</code></td>
-    <td>If supplied, this structure will be used to replace the actual arguments received by the listener, rather than necessarily receiving the exact signature fired by the firer. Any [IoC references](IoCReferences.md) or [expanders](ExpansionOfComponentOptions.md) will be expanded
-    at the time of invoking the listeners, with the additional possibility of referring to the original argument list by using the special context `{arguments}`. Consult [Event Injection and Boiling](EventInjectionAndBoiling.md) for more details of this process.</td>
+    <td>
+
+If supplied, this structure will be used to replace the actual arguments received by the listener, rather than necessarily receiving the exact signature fired by the firer. Any [IoC references](IoCReferences.md) or [expanders](ExpansionOfComponentOptions.md) will be expanded
+at the time of invoking the listeners, with the additional possibility of referring to the original argument list by using the special context `{arguments}`. Consult [Event Injection and Boiling](EventInjectionAndBoiling.md) for more details of this process.
+</td>
   </tr>
   <tr>
     <td><code>namespace</code> (optional)</td>
     <td><code>{String}</code></td>
-    <td>This holds the same string that would have followed the listener name after a period in the "short form" described above. The namespace can serve three functions - i) to ensure that exactly one listener per namespace is registered with this event firer,
-    ii) to serve as a convenient value by which the listener can be identified for later removal by a procedural call to `removeListener`, and iii) to allow the listener to be targetted by a _priority rule_ (see the next option for details).
-    </td></tr>
+    <td>
+
+This holds the same string that would have followed the listener name after a period in the "short form" described above. The namespace can serve three functions - i) to ensure that exactly one listener per namespace is registered with this event firer,
+ii) to serve as a convenient value by which the listener can be identified for later removal by a procedural call to `removeListener`, and iii) to allow the listener to be targetted by a _priority rule_ (see the next option for details).
+</td></tr>
   <tr>
     <td><code>priority</code> (optional)</td>
     <td><code>{String|Number}</td>
-    <td>This field allows the configurer to control the sequence in which several listeners to the same event are notified. The recommended form of this field is either `before:otherNamespace` or `after:otherNamespace` where `otherNamespace` represents the `namespace` of some other
-    listener attached to this firer. The framework will sort all the listeners attached to a single firer so that such a listener is fired immediately before or after the other target listener, unless a further constraint positions a third listener in between them.
-    If a group of listeners express a cyclic set of constraints, the framework will signal an error. If there is no listener with the target namespace, the constraint is ignored. There are other possibilities for the `priority` field which are not -
-    more details are present in the page on [Priorities](Priorities.md).
-    </td>
+    <td>
+
+This field allows the configurer to control the sequence in which several listeners to the same event are notified. The recommended form of this field is either `before:otherNamespace` or `after:otherNamespace` where `otherNamespace` represents the `namespace` of some other
+listener attached to this firer. The framework will sort all the listeners attached to a single firer so that such a listener is fired immediately before or after the other target listener, unless a further constraint positions a third listener in between them.
+If a group of listeners express a cyclic set of constraints, the framework will signal an error. If there is no listener with the target namespace, the constraint is ignored. There are other possibilities for the `priority` field which are not -
+more details are present in the page on [Priorities](Priorities.md).
+</td>
   </tr>
 </table>
 
@@ -216,12 +228,13 @@ Once an event firer is constructed, it can be called with the following methods 
     <td><code>addListener</code></td>
     <td><code>(listener {Function|String}[, namespace {String}, <br/> priority {String|Number}])</code></td>
     <td>
-      Registers the supplied listener with this firer. The listener represents a function of a particular signature which is determined between the firer and listener of an event.
-      The <code>namespace</code> parameter is an optional <code>String</code> which defines a key representing a particular <em>function</em> of the listener.
-      At most one listener may be actively registered with a firer with a particular namespace. If a further listener B is registered with the same namespace as a previous one A, A will be
-      pushed onto a hidden stack, from the top of which it will be recovered by a call to <code>removeListener</code> removing B. Priorities are discussed in more detail on their own page [Priorities](Priorities.md).
-    </td>
-  </tr>
+
+Registers the supplied listener with this firer. The listener represents a function of a particular signature which is determined between the firer and listener of an event.
+The <code>namespace</code> parameter is an optional <code>String</code> which defines a key representing a particular <em>function</em> of the listener.
+At most one listener may be actively registered with a firer with a particular namespace. If a further listener B is registered with the same namespace as a previous one A, A will be
+pushed onto a hidden stack, from the top of which it will be recovered by a call to <code>removeListener</code> removing B. Priorities are discussed in more detail on their own page [Priorities](Priorities.md).
+</td>
+</tr>
   <tr>
     <td><code>removeListener</code></td>
     <td><code>(listener {String|Function})</code></td>
