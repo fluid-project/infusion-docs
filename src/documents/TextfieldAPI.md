@@ -21,8 +21,9 @@ Use the following function to create a Textfield component:
         <tr>
             <th>Description</th>
             <td>
-                Instantiates the textfield component. Provides data binding between the HTML `<input>` and the component's model. Also provides options for setting an `"aria-label"` and/or `"aria-labelledby"` attribute.
-            </td>
+
+Instantiates the textfield component. Provides data binding between the HTML `<input>` and the component's model. Also provides options for setting an `"aria-label"` and/or `"aria-labelledby"` attribute.
+</td>
         </tr>
         <tr>
             <th>Parameters</th>
@@ -30,8 +31,9 @@ Use the following function to create a Textfield component:
                 <dl>
                     <dt>container</dt>
                     <dd>
-                        A CSS-based selectors, single-element jQuery object, or DOM element that identifies HTML `<input>` to bind the Textfield component to.
-                    </dd>
+
+A CSS-based selectors, single-element jQuery object, or DOM element that identifies HTML `<input>` to bind the Textfield component to.
+</dd>
                 </dl>
                 <dl>
                     <dt>options</dt>

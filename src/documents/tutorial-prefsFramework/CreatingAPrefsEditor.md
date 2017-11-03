@@ -516,13 +516,28 @@ for the Panel. Let’s look at each of the properties:
 
 `type`
 </dt>
-<dd>This is the name of the Panel that was defined in the call to `fluid.defaults()` above.</dd>
-<dt>`container`</dt>
-<dd>This is a CSS-based selector referencing the Panel’s placeholder element in the main HTML
-template – the one referenced by the `template` property above.</dd>
-<dt>`template`</dt>
-<dd>This is the path and filename of the HTML template for this Panel.
-Notice, in this example, how the `templatePrefix` term is being used.</dd>
+<dd>
+
+This is the name of the Panel that was defined in the call to `fluid.defaults()` above.
+</dd>
+<dt>
+
+`container`
+</dt>
+<dd>
+
+This is a CSS-based selector referencing the Panel’s placeholder element in the main HTML
+template – the one referenced by the `template` property above.
+</dd>
+<dt>
+
+`template`
+</dt>
+<dd>
+
+This is the path and filename of the HTML template for this Panel.
+Notice, in this example, how the `templatePrefix` term is being used.
+</dd>
 </dl>
 
 #### Instantiation

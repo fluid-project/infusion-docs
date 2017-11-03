@@ -107,20 +107,21 @@ The Image Reorderer fires the following events.
 `item`, `requestedPosition`
 </td>
             <td>
-                `item`: The item being moved.
-                `requestedPosition`: An object describing the position that the user is trying to move the item into:
-                <pre>
-                    <code>
-requestedPosition = {
-    element,
-    // the drop target
 
-    position
-    // the position, relative to the drop target, that a dragged item should be dropped. One of BEFORE, AFTER, INSIDE, or REPLACE
+`item`: The item being moved.
+`requestedPosition`: An object describing the position that the user is trying to move the item into:
+<pre>
+    <code>
+requestedPosition = {
+element,
+// the drop target
+
+position
+// the position, relative to the drop target, that a dragged item should be dropped. One of BEFORE, AFTER, INSIDE, or REPLACE
 }
-                    </code>
-                </pre>
-            </td>
+    </code>
+</pre>
+</td>
         </tr>
         <tr>
             <td>
@@ -139,21 +140,22 @@ This event replaces the `afterMoveCallbackUrl` option, which was deprecated at v
 `item`, `requestedPosition`, `movables`
 </td>
             <td>
-            `item`: The item being moved.
-            `requestedPosition`: An object describing the position that the user is trying to move the item into:
-                <pre>
-                    <code>
-requestedPosition = {
-    element,
-    // the drop target
 
-    position
-    // the position, relative to the drop target, that a dragged item should be dropped. One of BEFORE, AFTER, INSIDE, or REPLACE
+`item`: The item being moved.
+`requestedPosition`: An object describing the position that the user is trying to move the item into:
+<pre>
+    <code>
+requestedPosition = {
+element,
+// the drop target
+
+position
+// the position, relative to the drop target, that a dragged item should be dropped. One of BEFORE, AFTER, INSIDE, or REPLACE
 }
-                    </code>
-                </pre>
-                `movables`: A list of all of the movable elements.
-            </td>
+    </code>
+</pre>
+`movables`: A list of all of the movable elements.
+</td>
         </tr>
         <tr>
             <td>
@@ -162,16 +164,18 @@ requestedPosition = {
 </td>
             <td>default</td>
             <td>
-            This event fires when the cursor moves over top of an item, and when the cursor moves away from an item. The default listener either adds or removes the hover class (`styles.hover`) to/from the item.
-            </td>
+
+This event fires when the cursor moves over top of an item, and when the cursor moves away from an item. The default listener either adds or removes the hover class (`styles.hover`) to/from the item.
+</td>
             <td>
 
 `item`, `state`
 </td>
             <td>
-            `item`: The item being moved.
-            `state`: A boolean indicating whether the cursor is moving to (`true`) or away from (`false`) the item.
-            </td>
+
+`item`: The item being moved.
+`state`: A boolean indicating whether the cursor is moving to (`true`) or away from (`false`) the item.
+</td>
         </tr>
         <tr>
             <td>
@@ -180,8 +184,9 @@ requestedPosition = {
 </td>
             <td>default</td>
             <td>
-            This event fires any time the order of the items changes, or when the `refresh()` function is called.
-            </td>
+
+This event fires any time the order of the items changes, or when the `refresh()` function is called.
+</td>
             <td>none</td>
             <td>
             </td>
@@ -275,6 +280,7 @@ styles: {
         </tr>
         <tr>
             <td>
+
 `keysets`
 </td>
             <td>an object containing sets of keycodes to use for directional navigation, and for the modifier key used for moving a movable item.</td>

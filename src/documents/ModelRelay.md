@@ -116,7 +116,10 @@ The first and third cases are disambiguated by looking for a member of the block
         <tr>
             <td><code>source</code> (usual, but not required)</td>
             <td>String (EL Reference or short local path)</td>
-            <td>The source model path to be linked by this relay rule. This option can be omitted if all arguments to the transform are presented as IoC references in its definition &#8212; as, for example, with `fluid.transforms.free`.</td>
+            <td>
+
+The source model path to be linked by this relay rule. This option can be omitted if all arguments to the transform are presented as IoC references in its definition &#8212; as, for example, with `fluid.transforms.free`.
+</td>
             <td><code>"volume"</code> / <code>"{someComponent}.model.volume"</code></td>
         </tr>
         <tr>
@@ -157,10 +160,13 @@ The first and third cases are disambiguated by looking for a member of the block
         <tr>
             <td><code>namespace</code> (optional)</td>
             <td><code>String</code></td>
-            <td>Identifies this model relay rule uniquely within its parent component. This namespace may be used to override the relay rule from a derived <a href="ComponentGrades.md">grade</a>, or to control the priority of
-            one relay rule with respect to another by using the <code>priority</code> field.
-            Compare with the similar uses of namespaces within Infusion <a href="InfusionEventSystem.md#full-listener-record-form">events</a>, <a href="InfusionEventSystem.md#full-listener-record-form">model listeners</a>, etc. As with `modelListener`, this
-            value will be taken from the key of the <code>modelRelayBlock</code> if it is in the "map of keys" form and the `namespace` member is absent.</td>
+            <td>
+            
+Identifies this model relay rule uniquely within its parent component. This namespace may be used to override the relay rule from a derived <a href="ComponentGrades.md">grade</a>, or to control the priority of
+one relay rule with respect to another by using the <code>priority</code> field.
+Compare with the similar uses of namespaces within Infusion <a href="InfusionEventSystem.md#full-listener-record-form">events</a>, <a href="InfusionEventSystem.md#full-listener-record-form">model listeners</a>, etc. As with `modelListener`, this
+value will be taken from the key of the <code>modelRelayBlock</code> if it is in the "map of keys" form and the `namespace` member is absent.
+</td>
             <td><code>"resolveCentre"</code></td>
         </tr>
         <tr>

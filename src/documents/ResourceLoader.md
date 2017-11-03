@@ -49,7 +49,10 @@ var resourceLoader = fluid.resourceLoader([options]);
 </tr>
 <tr>
     <td><code>resources</code></td>
-    <td>Contains a map of resource names and paths to these resources. These paths can be actual path strings, for example, ```../data/template.html```, or templating strings with embedded variables that have mapped replacement values defined in the <code>term</code> option, for example, ```%prefix/template.html```. The format of templating paths complies with the format of the <code>template</code> argument of <a href="CoreAPI.html#fluidstringtemplatetemplate-terms">fluid.stringTemplate()</a> API.</td>
+    <td>
+
+Contains a map of resource names and paths to these resources. These paths can be actual path strings, for example, ```../data/template.html```, or templating strings with embedded variables that have mapped replacement values defined in the <code>term</code> option, for example, ```%prefix/template.html```. The format of templating paths complies with the format of the <code>template</code> argument of <a href="CoreAPI.html#fluidstringtemplatetemplate-terms">fluid.stringTemplate()</a> API.
+</td>
     <td>Object</td>
     <td><code>{}</code></td>
 </tr>
@@ -103,7 +106,10 @@ This example requests to load a JSON file that contains translations. The `fluid
 <tr>
     <td><code>onResourcesLoaded</code></td>
     <td>Fired when all resources are finished loading.</td>
-    <td>A populated object with fetched resource text in the field `resourceText` for each entry. If an error occurs during a fetch, the <code>fetchError</code> field will be populated for that entry. This object can also be retrieved directly on the resource loader instance via the path <code>resources</code>.</td>
+    <td>
+
+A populated object with fetched resource text in the field `resourceText` for each entry. If an error occurs during a fetch, the <code>fetchError</code> field will be populated for that entry. This object can also be retrieved directly on the resource loader instance via the path <code>resources</code>.
+</td>
 </tr>
 </table>
 

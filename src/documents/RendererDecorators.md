@@ -297,7 +297,10 @@ In this case, the equivalent decorator instantiation takes the form:
 }
 ```
 
-<div class="infusion-docs-note"><strong>Note</strong> that rather than specifying `container` and `options` separately, one can instead set the member `args` to consist of the entire argument list - this might be useful for instantiating a non-Fluid component that does not conform to the general syntax. For example, the decorator above could be given a member `args: [container, options]`. The `args` member takes precendence if specified.</div>
+<div class="infusion-docs-note">
+
+<strong>Note</strong> that rather than specifying `container` and `options` separately, one can instead set the member `args` to consist of the entire argument list - this might be useful for instantiating a non-Fluid component that does not conform to the general syntax. For example, the decorator above could be given a member `args: [container, options]`. The `args` member takes precendence if specified.
+</div>
 
 There is no specially dehydrated form for the `fluid` decorator – however, like all renderer decorators it may be dehydrated to the extent of having its `type` field folded onto a key field on `decorators` if there is just one decorator of a particular type.
 

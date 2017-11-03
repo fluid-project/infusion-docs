@@ -101,8 +101,11 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Notes</th>
-    <td>The Framework will create event firers for the listed events. The builtin events `onCreate`, `onDestroy` and `afterDestroy` will be fired automatically by the framework.
-    It is the responsibility of the component to fire user-defined events at the appropriate times.</td>
+    <td>
+    
+The Framework will create event firers for the listed events. The builtin events `onCreate`, `onDestroy` and `afterDestroy` will be fired automatically by the framework.
+It is the responsibility of the component to fire user-defined events at the appropriate times.
+</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -131,11 +134,14 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Notes</th>
-    <td>Both component developers and integrators can define listeners for events.
+    <td>
+    
+Both component developers and integrators can define listeners for events.
 <a href="Invokers.md">Invokers</a> and the `fire` method of other events can be used as listeners here, as well as any function handle resulting from an <a href="ExpansionOfComponentOptions.md">Expanders</a>.
 Note that as well as being a simple string holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC Reference</a>
 to any other event held in the component tree (for example <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, the value associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a>
-or else follow the syntax of an invoker indicating that the registered listener receives a different signature from the one that the event has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).</td>
+or else follow the syntax of an invoker indicating that the registered listener receives a different signature from the one that the event has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).
+</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -251,9 +257,12 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Notes</th>
-    <td>It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy.
-    For example, some noxious circularly-liked structure such as a node.js HTTP `request` object should be protected in such a way. The 2.0 framework will automatically protect an object which fails the `fluid.isPlainObject` test, which will exclude
-    any object with a nondefault constructor or native type such as DOM elements, `TypedArray`s, Infusion components themselves, etc.</td>
+    <td>
+    
+It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy.
+For example, some noxious circularly-liked structure such as a node.js HTTP `request` object should be protected in such a way. The 2.0 framework will automatically protect an object which fails the `fluid.isPlainObject` test, which will exclude
+any object with a nondefault constructor or native type such as DOM elements, `TypedArray`s, Infusion components themselves, etc.
+</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -362,7 +371,9 @@ See also: [Component Grades](ComponentGrades.md)
 <table>
   <tr>
     <th>Description</th>
-    <td>A record defining a set of functions wishing to be notified of changes to the `model`
+    <td>
+    
+A record defining a set of functions wishing to be notified of changes to the `model`
 </td>
   </tr>
   <tr>
@@ -444,7 +455,10 @@ Component developers are free to define their own additional options.
 <table>
   <tr>
     <th>Description</th>
-    <td>A record containing named CSS-based selectors identifying where in the DOM relative to the component's `container` different elements can be found.</td>
+    <td>
+
+A record containing named CSS-based selectors identifying where in the DOM relative to the component's `container` different elements can be found.
+</td>
   </tr>
   <tr>
     <th>Notes</th>

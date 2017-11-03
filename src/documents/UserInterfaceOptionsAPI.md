@@ -346,12 +346,13 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>lazyLoad</code> option allows you to specify if the
-                prefsEditor should be lazily loaded. When `lazyLoad` is enabled,
-                the contents of panel, including templates and message bundles
-                are not loaded until the panel is opened. This feature is useful
-                for improving initial page load times, but will cause a brief delay
-                the first time the panel is opened.
+
+The `lazyLoad` option allows you to specify if the
+prefsEditor should be lazily loaded. When `lazyLoad` is enabled,
+the contents of panel, including templates and message bundles
+are not loaded until the panel is opened. This feature is useful
+for improving initial page load times, but will cause a brief delay
+the first time the panel is opened.
             </td>
         </tr>
         <tr>
