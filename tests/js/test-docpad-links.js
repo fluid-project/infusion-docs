@@ -10,6 +10,8 @@
  */
 "use strict";
 var fluid = require("infusion");
+fluid.setLogging(true);
+
 var gpii = fluid.registerNamespace("gpii");
 
 var jqUnit = require("node-jqunit");
@@ -22,8 +24,10 @@ require("./lib/link-checker");
 
 fluid.registerNamespace("fluid.test.docs.docpadLinks");
 fluid.test.docs.docpadLinks.checkResults = function (results) {
-    jqUnit.assertDeepEq("There should be no broken internal links (page#id)...", [], results.brokenInternalLinks);
-    jqUnit.assertDeepEq("There should be no broken links between pages...", [], results.brokenPageLinks);
+    jqUnit.assertEquals("There should be no broken links...", 0, results.errors.length);
+    fluid.each(results.errors, function (error) {
+        fluid.log("File '" + error.page + "' has a broken link to '" + error.link + "'.");
+    });
 };
 
 fluid.defaults("fluid.test.docs.docpadLinks.caseHolder", {

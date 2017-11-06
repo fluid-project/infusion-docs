@@ -21,8 +21,7 @@ require("./lib/link-checker");
 
 fluid.registerNamespace("fluid.test.docs.linkChecker");
 fluid.test.docs.linkChecker.checkResults = function (results) {
-    jqUnit.assertEquals("There should be 6 broken internal links (page#id)...", 6, results.brokenInternalLinks.length);
-    jqUnit.assertEquals("There should be 1 broken link between pages...", 1, results.brokenPageLinks.length);
+    jqUnit.assertEquals("There should be 8 errors...", 8, results.errors.length);
 };
 
 fluid.test.docs.linkChecker.generateBaseUrl = function (basePath) {
