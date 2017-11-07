@@ -272,7 +272,7 @@ var myFirer = fluid.makeEventFirer(options);
 <table>
   <thead>
     <tr>
-        <th colspan="3">Members of the <code>options</code> structure supplied to <code>fluid.event.makeEventFirer</code>(unstable API)</th>
+        <th colspan="3">Members of the <code>options</code> structure supplied to <code>fluid.event.makeEventFirer</code> (unstable API)</th>
     </tr>
     <tr>
       <td>Option</td>
