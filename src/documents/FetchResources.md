@@ -13,10 +13,9 @@ still depend on it. This API is deprecated and will be removed in an upcoming re
 
 The API accepts three arguments - `resourceSpecs`, `callback` and `options`. The first contains a free hash of keys to resource specification objects describing the
 resources to be fetched. The second is a function which will receive this structure with the field `resourceText` filled in if the resources could be fetched. The
-last argument contains optional options guiding the fetch process. 
+last argument contains optional options guiding the fetch process.
 
     fluid.fetchResources(resourceSpecs, callback[, options]);
-    
 
 <table>
     <thead>
@@ -47,7 +46,6 @@ last argument contains optional options guiding the fetch process.
         </tr>
     </tbody>
 </table>
-
 
 ## Resource Specification
 
@@ -110,7 +108,7 @@ On conclusion of the `fluid.fetchResources` call, the following additional field
 
 This shows a simple usage of fetchResources which fetches some templates and injects their contents into the DOM without error checking:
 
-```
+```javascript
 var myResourceSpecs = {
     bodyTemplate: {
         href: "templates/Body.html"
@@ -129,7 +127,7 @@ fluid.fetchResources(myResourceSpecs, myCallback);
 
 This shows a more complex example which checks for errors from the fetch process and logs them:
 
-```
+```javascript
 var myResourceSpecs = {
     template1: {
         href: "html/template1.html"
@@ -141,7 +139,7 @@ var myResourceSpecs = {
         href: "data/clientData.json"
     }
 };
-    
+
 var myCallback = function (returnedResourceSpecs) {
     for (var key in returnedResourceSpecs) {
         // check for errors before proceeding
@@ -153,11 +151,9 @@ var myCallback = function (returnedResourceSpecs) {
                     ", errorThrown: " + returnedResourceSpecs[key].fetchError.errorThrown);
         } else {
             // process successfully loaded resource
-            ...
+            // ...
         }
     }
 };
 fluid.fetchResources(myResourceSpecs, myCallback);
 ```
-
-

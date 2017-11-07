@@ -9,9 +9,8 @@ If you are creating a component that requires the use of the Renderer, you shoul
 
 ```javascript
 fluid.defaults("my.component", {
-    gradeNames: ["fluid.rendererComponent"],
-    .. // put your options here
-
+    gradeNames: ["fluid.rendererComponent"]
+    // put your options here
 });
 
 var that = my.component();
@@ -25,7 +24,7 @@ This function will:
 * fetch any resources (such as HTML templates, etc.) specified in `options.resources`
 * create a renderer function and attach it to your `that` object as `that.render(tree);`
 
-## Options for Renderer Components ##
+## Options for Renderer Components
 
 While developers are free to define whatever options they like for their component, a component descended from `fluid.rendererComponent`  will also understand certain options specific to the Renderer:
 
@@ -140,11 +139,11 @@ While developers are free to define whatever options they like for their compone
     </tbody>
 </table>
 
-## Events for Renderer-bearing Components ##
+## Events for Renderer-bearing Components
 
 _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTree, afterRender. They are only intended for use by experts._
 
-### prepareModelForRender ###
+### prepareModelForRender
 
 <table>
     <tbody>
@@ -184,7 +183,7 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
     </tbody>
 </table>
 
-### onRenderTree ###
+### onRenderTree
 
 <table>
     <tbody>
@@ -222,7 +221,7 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
     </tbody>
 </table>
 
-### afterRender ###
+### afterRender
 
 <table>
     <tbody>
@@ -254,9 +253,9 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
     </tbody>
 </table>
 
-## Functions on "that" ##
+## Functions on "that"
 
-### render(tree) ##
+### render(tree)
 
 ```javascript
 that.render(tree);
@@ -264,7 +263,7 @@ that.render(tree);
 
 Expands the provided `tree`, generates cutpoints, and renders the `tree`.
 
-### produceTree() ###
+### produceTree()
 
 ```javascript
 that.produceTree();
@@ -272,7 +271,7 @@ that.produceTree();
 
 This function is only present if a `protoTree` has been provided in the options. This function can be overridden by providing a `produceTree` in the options.
 
-### refreshView() ###
+### refreshView()
 
 ```javascript
 that.refreshView();
@@ -280,7 +279,7 @@ that.refreshView();
 
 This function calls `that.render(that.produceTree());` This function is only present if a `protoTree` has been provided in the options.
 
-## Example: Rendering a select box ##
+## Example: Rendering a select box
 
 ```javascript
 fluid.defaults("fluid.examples.renderer", {
@@ -300,7 +299,7 @@ fluid.defaults("fluid.examples.renderer", {
         textFontValue: ""
     },
     rendererOptions: {
-        autoBind: true,
+        autoBind: true
     },
     renderOnInit: true,
     protoTree: {
@@ -313,7 +312,7 @@ fluid.defaults("fluid.examples.renderer", {
             optionlist: "${textFontList}",
             selection: "${textFontValue}"
         }
-    }
+    },
     resources: {
         template: {
             forceCache: true,

@@ -32,12 +32,12 @@ fluid.defaults("fluidTutorial.helloWorld.sayHello", {
 });
 
 fluid.defaults("fluidTutorial.helloWorld.consoleHello", {
-    gradeNames: ["fluidTutorial.helloWorld.sayHello"],    
+    gradeNames: ["fluidTutorial.helloWorld.sayHello"],
     invokers: {
         sayHello: {
             "funcName": "fluidTutorial.helloWorld.consoleHello.sayHello",
             args: ["{that}.model.message"]
-        },
+        }
     }
 });
 

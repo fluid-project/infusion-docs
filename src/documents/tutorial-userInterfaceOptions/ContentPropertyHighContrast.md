@@ -6,7 +6,6 @@ category: Tutorials
 
 The CSS `content` property can be used to add additional content to your webpage using CSS. Often it is used to add a character, symbol, or font icon before or after some content on webpage. For example, it can be used to add vertical bars to separate items on a horizontal navigation list as depicted by the following HTML and CSS snippets.
 
-
 ```html
 <nav>
   <ul class="topnav">

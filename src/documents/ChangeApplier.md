@@ -16,7 +16,7 @@ consists of those models which are linked together by relay specifications.
 As well as being based on Fluid's model-directed thinking, the ChangeApplier is also implemented in
 terms of Fluid's [Event System](InfusionEventSystem.md), which you should be familiar with before using the ChangeApplier.
 
-### Thinking behind the ChangeApplier ###
+### Thinking behind the ChangeApplier
 
 The ChangeApplier is a natural outgrowth of Fluid's focus on (transparent) model-directed programming - see
 the Framework Concepts discussion on [Model Objects](FrameworkConcepts.md#model-objects).

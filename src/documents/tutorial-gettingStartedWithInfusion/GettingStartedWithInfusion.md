@@ -8,7 +8,7 @@ Ok, you're convinced: The Infusion Framework looks like it has some cool stuff, 
 
 <div class="infusion-docs-note"><strong>Note:</strong> We recommend starting with the <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.md">Developer Introduction to the Infusion Framework</a> if you are looking at Infusion for the first time.</div>
 
-## Building Components ##
+## Building Components
 
 The building blocks of Infusion applications are components. If you haven't already, you might want read [Understanding Infusion Components](../UnderstandingInfusionComponents.md) to learn what we mean when we say components, and why we use them.
 

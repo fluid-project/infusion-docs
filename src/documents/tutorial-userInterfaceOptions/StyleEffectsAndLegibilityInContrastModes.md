@@ -46,7 +46,7 @@ Gradients are often used for visual effects, as well as giving buttons a 3D effe
 ```
 
 ```css
-.search-btn {    
+.search-btn {
   background: rgba(70,140,170,1);
   background: -moz-linear-gradient(top, rgba(70,140,170,1) 0%, rgba(19,88,118,1) 100%);
   background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(70,140,170,1)), color-stop(100%, rgba(19,88,118,1)));

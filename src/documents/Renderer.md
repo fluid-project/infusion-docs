@@ -11,9 +11,9 @@ This page provides resources to help you learn about the Renderer and how to use
 
 * [How To Use The Renderer](HowToUseTheRenderer.md)
 * Component Trees
-    - [Renderer Component Trees](RendererComponentTrees.md)
-    - [ProtoComponent Types](ProtoComponentTypes.md)
-    - [Renderer Component Tree Expanders](RendererComponentTreeExpanders.md)
+  * [Renderer Component Trees](RendererComponentTrees.md)
+  * [ProtoComponent Types](ProtoComponentTypes.md)
+  * [Renderer Component Tree Expanders](RendererComponentTreeExpanders.md)
 * [Cutpoints](Cutpoints.md)
 * [Renderer Components](RendererComponents.md)
 * [Renderer Decorators](RendererDecorators.md)

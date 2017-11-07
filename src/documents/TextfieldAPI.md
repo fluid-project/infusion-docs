@@ -6,7 +6,7 @@ category: Components
 
 The **Textfield** is a small component for adding aria attributes and data binding to a HTML textfield. Typically this will be used in conjunction with a controller (e.g. [**Textfield Slider**](TextfieldSliderAPI.md), [**Textfield Stepper**](TextfieldStepperAPI.md)) to restrict the values and pair with additional input methods.
 
-## Creator ##
+## Creator
 
 Use the following function to create a Textfield component:
 
@@ -21,8 +21,9 @@ Use the following function to create a Textfield component:
         <tr>
             <th>Description</th>
             <td>
-                Instantiates the textfield component. Provides data binding between the HTML `<input>` and the component's model. Also provides options for setting an `"aria-label"` and/or `"aria-labelledby"` attribute.
-            </td>
+
+Instantiates the textfield component. Provides data binding between the HTML `<input>` and the component's model. Also provides options for setting an `"aria-label"` and/or `"aria-labelledby"` attribute.
+</td>
         </tr>
         <tr>
             <th>Parameters</th>
@@ -30,8 +31,9 @@ Use the following function to create a Textfield component:
                 <dl>
                     <dt>container</dt>
                     <dd>
-                        A CSS-based selectors, single-element jQuery object, or DOM element that identifies HTML `<input>` to bind the Textfield component to.
-                    </dd>
+
+A CSS-based selectors, single-element jQuery object, or DOM element that identifies HTML `<input>` to bind the Textfield component to.
+</dd>
                 </dl>
                 <dl>
                     <dt>options</dt>
@@ -65,9 +67,9 @@ var textfield = fluid.textfield(".flc-textfield", {
     </tbody>
 </table>
 
-## Methods ##
+## Methods
 
-### setModel ###
+### setModel
 
 <table>
     <tbody>
@@ -97,15 +99,15 @@ var textfield = fluid.textfield(".flc-textfield", {
     </tbody>
 </table>
 
-## Model Paths ##
+## Model Paths
 
 The following model paths can be used with [model listeners](ChangeApplierAPI.md).
 
 * `model.value`: `undefined` by default but can contain any value that is valid for the input.
 
-## Options ##
+## Options
 
-### strings ###
+### strings
 
 <table>
     <tbody>
@@ -136,7 +138,7 @@ var textfield = fluid.textfield(".flc-textfield", {
     </tbody>
 </table>
 
-### attrs ###
+### attrs
 
 <table>
     <tbody>

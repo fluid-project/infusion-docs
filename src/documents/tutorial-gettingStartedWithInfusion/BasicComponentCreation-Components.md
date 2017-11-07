@@ -16,27 +16,27 @@ The definition of a component involves two things:
 1. declare the component **grade** and any default values for the component's **options**. Options are used by users and integrators to customize the behaviour of a component.
 2. define any public **functions** (invokers) and other members that the component requires to do its work.
 
-## Grade and Default Options ##
+## Grade and Default Options
 
 A component's grade and any default options are registered with the framework using a call to
-[`fluid.defaults`](../CoreAPI.md#fluid-defaults-gradename-options-), which has two parameters:
+[`fluid.defaults`](../CoreAPI.md#fluiddefaultsgradename-options), which has two parameters:
 the component name and an object containing the defaults. The parent grades for the component are specified in an array or single string in the defaults called `gradeNames`. For a plain component, specify the grade as `fluid.component`:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
     gradeNames: "fluid.component",
-    option1: "default value 1",
-    ...
+    option1: "default value 1"
+    // ...
 });
 ```
 
-### Options ###
+### Options
 
 Integrators can override your defaults when they instantiate the component, to customize its appearance or behaviour. The framework will take care of [merging the integrator's values](../OptionsMerging.md) with your defaults.
 
 We'll go through some examples of options, to give you an idea of what they're all about.
 
-#### Example: Currency Converter Options ####
+#### Example: Currency Converter Options
 
 Suppose you're creating a currency converter. You might wish to specify a default conversion rate:
 
@@ -47,27 +47,27 @@ fluid.defaults("tutorials.currencyConverter", {
 });
 ```
 
-#### Example: Inline Edit ####
+#### Example: Inline Edit
 
 The Infusion [Inline Edit](../to-do/InlineEdit.md) component uses a tooltip and defines (among other things) defaults for the delay before the tooltip appears, the text to display - even whether or not to enable it at all:
 
 ```javascript
 fluid.defaults("fluid.inlineEdit", {
-    ...
+    // ...
     useTooltip: true,
     tooltipText: "Select or press Enter to edit",
-    tooltipDelay: 1000, // in milliseconds
-    ...
+    tooltipDelay: 1000 // in milliseconds
+    // ...
 });
 ```
 
-#### Example: Progress ####
+#### Example: Progress
 
 The Infusion [Progress](../to-do/Progress.md) component uses jQuery animations to show and hide a progress bar. The defaults include objects that are passed to jQuery to configure the animations:
 
 ```javascript
 fluid.defaults("fluid.progress", {
-    ...
+    // ...
     showAnimation: {
         params: {
             opacity: "show"
@@ -80,12 +80,12 @@ fluid.defaults("fluid.progress", {
             opacity: "hide"
         },
         duration: "slow"
-    }, // forwarded to $().fadeOut("slow")
-    ...
+    } // forwarded to $().fadeOut("slow")
+    // ...
 });
 ```
 
-## The Creator Function ##
+## The Creator Function
 
 All components have a **creator function**: a public function that is invoked to instantiate the component. The framework will instantiate the creator function for you automatically, given the component's default options.
 When your component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another component, the framework will also take responsibility for calling the creator function for you automatically.
@@ -96,21 +96,21 @@ In the rare case you need to construct a component directly using a JavaScript f
 
 _(We'll get into what these arguments are soon.)_
 
-### Using IoC ###
+### Using IoC
 
-#### Automatic creator function generation ####
+#### Automatic creator function generation
 
-The [IoC - Inversion of Control](../to-do/IoCInversionOfControl.md) system will automatically generate a component creator function for you. This is accomplished by registering default options deriving from the framework component grade `fluid.component`:
+The [IoC - Inversion of Control](../IoCAPI.md) system will automatically generate a component creator function for you. This is accomplished by registering default options deriving from the framework component grade `fluid.component`:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
     gradeNames: "fluid.component",
-    option1: "default value 1",
-    ...
+    option1: "default value 1"
+    // ...
 });
 ```
 
-#### Public API methods ####
+#### Public API methods
 
 The standard means of adding public API functions to a component is to express them as [invokers](../Invokers.md). An invoker is a declarative record added into a components defaults, under the section `invokers`:
 the name of the record becomes the name of the public function which will be added. The invoker record defines the name of the public JavaScript function which should be executed when the method is called,
@@ -120,7 +120,7 @@ as well as details of where the arguments that the function accepts should be so
 fluid.defaults("tutorials.simpleComponent", {
     gradeNames: "fluid.component",
     option1: "default value 1",
-    ...
+    // ...
     invokers: {
         publicFunction: {
             funcName: "tutorials.simpleComponent.publicFunction",
@@ -131,14 +131,14 @@ fluid.defaults("tutorials.simpleComponent", {
 
 // implementation of the public function registered as an invoker above
 tutorials.simpleComponent.publicFunction = function (that) {
-    ...
+   // ...
 };
 ```
 
 You will note that the function `tutorials.simpleComponent.publicFunction` is a standard JavaScript function that could even be invoked directly from code if this were found relevant -
 it need not be necessarily bound as a component method (although most component methods that accept `{that}` as an argument tend not to make sense without being provided an instance of the relevant component).
 
-#### Example: Currency Converter ####
+#### Example: Currency Converter
 
 Here is the next stage of evolution of our currency converter sample, with a conversion function defined using an invoker:
 
@@ -150,7 +150,6 @@ fluid.defaults("tutorials.currencyConverter", {
         convert: {
             funcName: "tutorials.currencyConverterAuto.convert",
             args: ["{that}.options.exchangeRate", "{arguments}.0"] // amount
-            }
         }
     }
 });
@@ -175,7 +174,7 @@ Events can be used to trigger changes in the visual appearance of a component, o
 
 The Infusion Framework defines its own event system. Infusion events differ from browser events in that they are not bound to the DOM or its infrastructure. Infusion events can be used for anything, not only user-interface related events.
 
-## Declaring events on a component ##
+## Declaring events on a component
 
 All standard Fluid components descended from `fluid.component` support events. To take advantage of this,
 
@@ -185,7 +184,7 @@ All standard Fluid components descended from `fluid.component` support events. T
 ```javascript
 fluid.defaults("tutorials.eventedComponent", {
     gradeNames: "fluid.component",
-    ...
+    // ...
     events: {
         onAnAction: null,
         afterAnAction: null,
@@ -199,9 +198,9 @@ The contents of the `events` object is a set of key-value pairs where the key is
 
 * **Event naming conventions**: You can call your events anything you like, but Infusion has adopted the convention of prefacing events with on or after to indicate whether or not the event is being fired before some action is taken, or after the action has completed.
 * **Event types**: If the event is a standard event defined on this component, you will write `null` here. Event types supported by the framework are described at the [Infusion Event System](../InfusionEventSystem.md).
-Another possibility is to inject an event appearing elsewhere in the component tree by use of an [IoC reference](../IoCReferences.md) such as `{myOtherComponent}.events.myEvent`.
+  Another possibility is to inject an event appearing elsewhere in the component tree by use of an [IoC reference](../IoCReferences.md) such as `{myOtherComponent}.events.myEvent`.
 
-### Example: Saving and Deleting ###
+### Example: Saving and Deleting
 
 Suppose you're creating a component that is responsible for managing records of some kind, or editing documents. An application like that is going to allow users to save their edits or remove the record altogether. You might create the following events for these actions:
 
@@ -209,7 +208,7 @@ Suppose you're creating a component that is responsible for managing records of 
 // Declare the events in the defaults
 fluid.defaults("tutorials.recordEditor", {
     gradeNames: "fluid.component",
-    ...
+    // ...
     events: {
         afterSave: null,
         onRemove: "preventable",
@@ -218,11 +217,11 @@ fluid.defaults("tutorials.recordEditor", {
 });
 ```
 
-## Firing Events ##
+## Firing Events
 
 The framework will automatically set up event firers for all of your listed events. These will be attached to an object on your component called `events` and provide an API (and reference target) for you to fire events and add or remove listeners.
 
-### Example: Saving and Deleting ###
+### Example: Saving and Deleting
 
 Our record editor component will likely have public methods for the saving and removing of records. We will define these methods using the framework facility for [invokers](../Invokers.md). These methods will be responsible for firing the events.
 
