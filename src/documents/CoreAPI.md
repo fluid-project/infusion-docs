@@ -556,7 +556,7 @@ fluid.modelPairToChanges({b: 2}, {a:1});
 
 we will receive this result:
 
-```javascript
+```json5
 [
     {
         path: [ "b" ],

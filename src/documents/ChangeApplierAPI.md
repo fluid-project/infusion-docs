@@ -548,7 +548,8 @@ whereas for `fireChangeRequest`, they are packaged up as named fields (`path`, `
 Such an object is called a **changeRequest** and is a convenient package for these requests to pass around in an event pipeline within the framework.
 
 ```javascript
-fluid.fireChanges(applier, <Array of changeRequest>)
+var arrayOfChanges = [{path: "a", value: 1}, {path: "b.nested", value: 2}];
+fluid.fireChanges(applier, arrayOfChanges);
 ```
 
 iterates through the provided array of `changeRequest` objects and fires a change request on the supplied `applier` for each one.
