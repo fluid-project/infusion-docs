@@ -530,6 +530,50 @@ if you are interested.
   path segments representing this
 * `newValue: {Any}` The value to be written into `model` at the path `path`
 
+### fluid.modelPairToChanges(value, oldValue, changePathPrefix)
+
+* `value {Any}` Model value to compare
+* `oldValue {Any}` Model value to compare
+* `changePathPrefix {String|Array of String}` [optional] Path prefix to prepend to change request paths
+* Returns: `{Array of changeRequest}` An array of `changeRequest` objects
+
+Calculates the changes between the model values `value` and `oldValue` and
+returns an array of
+[`changeRequest`](ChangeApplierAPI.html#programmatic-style-for-triggering-a-change)
+objects. The optional argument `changePathPrefix` is prepended to the change
+path of each request (this is useful for generating change requests to be
+applied at a non-root path in a model).
+
+The returned array of change request objects may be used with
+[`fluid.fireChanges()`](ChangeApplierAPI.html#programmatic-style-for-triggering-a-change).
+
+For example, if we call `fluid.modelPairToChanges` with `value` of `{b: 2}`
+and `oldValue` of `{a: 1}`:
+
+```javascript
+fluid.modelPairToChanges({b: 2}, {a:1});
+```
+
+we will receive this result:
+
+```json5
+[
+    {
+        path: [ "b" ],
+        value: 2,
+        type: "ADD"
+    },
+    {
+        path: [ "a" ],
+        value: null,
+        type: "DELETE"
+    }
+]
+```
+
+Indicating that the property "b" was added with value 2 and that the property
+"a" was removed.
+
 ### fluid.model.parseEL(EL)
 
 * `EL {String}` The EL path to be parsed
