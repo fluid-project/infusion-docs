@@ -6,7 +6,7 @@ category: Components
 
 The **Textfield Stepper** is a user interface component for adjusting a number value using a [Textfield](TextfieldAPI.md) for direct entry of the value, along buttons for incrementing and decrementing the value. A user can also increment/decrement the values using the up/down arrow keys.
 
-## Creator ##
+## Creator
 
 Use the following function to create a Textfield Stepper component:
 
@@ -71,9 +71,9 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     </tbody>
 </table>
 
-## Methods ##
+## Methods
 
-### increase ###
+### increase
 
 <table>
     <tbody>
@@ -98,7 +98,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     </tbody>
 </table>
 
-### decrease ###
+### decrease
 
 <table>
     <tbody>
@@ -123,7 +123,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     </tbody>
 </table>
 
-### addFocus ###
+### addFocus
 
 <table>
     <tbody>
@@ -146,7 +146,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     </tbody>
 </table>
 
-### removeFocus ###
+### removeFocus
 
 <table>
     <tbody>
@@ -169,7 +169,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     </tbody>
 </table>
 
-## Model Paths ##
+## Model Paths
 
 The following model paths can be used with [model listeners](ChangeApplierAPI.md).
 
@@ -229,9 +229,9 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
     </tbody>
 </table>
 
-## Options ##
+## Options
 
-### strings ###
+### strings
 
 <table>
     <tbody>
@@ -273,7 +273,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     </tbody>
 </table>
 
-### attrs ###
+### attrs
 
 <table>
     <tbody>
@@ -304,7 +304,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     </tbody>
 </table>
 
-### styles ###
+### styles
 
 <table>
     <tbody>
@@ -345,7 +345,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     </tbody>
 </table>
 
-### selectors ###
+### selectors
 
 <table>
     <tbody>

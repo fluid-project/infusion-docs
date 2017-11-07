@@ -10,9 +10,9 @@ Components are [JavaScript objects that have certain characteristics](../Underst
 
  There are three base component grades to be aware of that any new components you create with Infusion will likely have at their root:
 
- * [`fluid.component`](../ComponentConfigurationOptions.md#options-supported-by-all-components-grades), the simplest type with support for events and public function definition (called [invokers](../Invokers.md) in Infusion).
- * [`fluid.modelComponent`](../ComponentConfigurationOptions.md#model-components), which adds support for mutable models, model events, and model state coordination and relay between different components.
- * [`fluid.viewComponent`](../ComponentConfigurationOptions.md#view-components), which supplement model components with functionality to bind to the DOM of a web page.
+* [`fluid.component`](../ComponentConfigurationOptions.md#options-supported-by-all-components-grades), the simplest type with support for events and public function definition (called [invokers](../Invokers.md) in Infusion).
+* [`fluid.modelComponent`](../ComponentConfigurationOptions.md#model-components), which adds support for mutable models, model events, and model state coordination and relay between different components.
+* [`fluid.viewComponent`](../ComponentConfigurationOptions.md#view-components), which supplement model components with functionality to bind to the DOM of a web page.
 
 Infusion's approach to component-based development emphasizes declarative configuration, loose coupling and flexible hierarchies. The framework manages component lifecycle and scoping and provides many supports to allow components to work in collaboration with one another.
 
@@ -65,4 +65,4 @@ While we won't get into grade inheritance until later (combining existing grade 
 1. The order of precedence when grade configurations have keys with the same name in the same place is that the rightmost grade will take precedence.
 2. Any combination including `fluid.viewComponent` or grades derived from it should be placed to the right of any non-`viewComponent` grade.
 
-Next: [ Invokers](DeveloperIntroductionToInfusionFramework-Invokers.md)
+Next: [Invokers](DeveloperIntroductionToInfusionFramework-Invokers.md)

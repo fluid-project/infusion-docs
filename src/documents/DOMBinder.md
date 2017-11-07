@@ -17,11 +17,11 @@ var button = jQuery(".button-classname");
 
 the selector is given a name and the DOM Binder's `locate()` method is used, like this:
 
-```javascript
+```snippet
 selectors: {
     button: ".button-classname"
 }
-...
+// ...
 var button = that.locate("button");
 ```
 
@@ -39,7 +39,7 @@ The DOM Binder also caches information, allowing efficient access for searches t
 frequently on material that is not changing - for example within mouse event loops. Caching means these
 searches are do not have to be recomputed from the DOM on every query.
 
-## How Infusion Components Use the DOM Binder ##
+## How Infusion Components Use the DOM Binder
 
 The Infusion Framework automatically creates a DOM Binder for any [View Component](tutorial-gettingStartedWithInfusion/ViewComponents.md)
 as it constructs and attaches it to the component as a top-level member named `dom`.
@@ -72,7 +72,7 @@ component will be automatically scoped to the component's own container.
 If the value of the selector is the empty string `""`, the component's `container` will be returned.
 If the selector matches nothing within the container, an empty jQuery (one with 0 elements) will be returned.
 
-## Using the DOM Binder Declaratively ##
+## Using the DOM Binder Declaratively
 
 The preferred way of using the DOM binder to access a component's DOM elements is through declarative configuration,
 using the form `"{<componentRef>}.dom.<selectorName>"`. These references typically occur in the component's
@@ -121,7 +121,7 @@ fluid.defaults("fluid.tutorials.buttonHolder", {
 });
 ```
 
-## Using the DOM Binder Programmatically ##
+## Using the DOM Binder Programmatically
 
 Standard programmatic access to the DOM binder is available using the `locate()` function:
 
@@ -133,7 +133,7 @@ The `locate()` method retrieves the specified DOM node by querying the DOM.
 
 (For information about parameters for this and other DOM Binder functions, see [DOM Binder API](DOMBinderAPI.md).)
 
-### Other methods on the DOM Binder - caching ###
+### Other methods on the DOM Binder - caching
 
 The other methods on the DOM Binder are less frequently used, and are not attached to the top-level component
 in the way that `locate()` is. They need to be accessed through the DOM Binder's own object available as `that.dom`.
@@ -149,7 +149,7 @@ but runs the risk of returning stale results. The DOM binder's cache is populate
 whenever a query is submitted via `locate()`.
 
 ```javascript
-that.dom.clear()
+that.dom.clear();
 ```
 
 The `clear()` method completely clears the cache for the DOM binder for all queries.
@@ -166,7 +166,7 @@ The `refresh()` method refreshes the cache for one or more selector names, ready
 * The queried results are not returned to the user, but simply populated into the cache, and
 * More than one selector name (as an array) may be sent to `refresh` rather than just a single one.
 
-## Example: Inline Edit ##
+## Example: Inline Edit
 
 The [Inline Edit](to-do/InlineEdit.md) component requires three parts in its user interface:
 
@@ -182,8 +182,8 @@ fluid.defaults("fluid.inlineEdit", {
         text: ".text",
         editContainer: ".editContainer",
         edit: ".edit"
-    },
-    ....
+    }
+    // ...
 });
 ```
 

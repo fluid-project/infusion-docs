@@ -8,7 +8,7 @@ In the Infusion [Preference Framework](../PreferencesFramework.md), an "adjuster
 
 This tutorial describes how to create the user interface for an adjuster.
 
-## Decide what type of control it is ##
+## Decide what type of control it is
 
 Based on the nature of the setting, different types of controls will be appropriate:
 
@@ -26,7 +26,7 @@ Some examples:
 |show captions|checkbox |
 |language|select (drop-down)|
 
-## Create HTML to display the adjusters ##
+## Create HTML to display the adjusters
 
 Once you know which type of HTML element you will be rendering, create an HTML template that will be used to render it. This will include the actual control as well as any labels, etc.
 
@@ -74,7 +74,7 @@ Some Examples
     </tbody>
 </table>
 
-## Add selector classes to any element that will be rendered ##
+## Add selector classes to any element that will be rendered
 
 Each element that will have to be rendered based on the data will need a 'selector class' to allow the code to identify and manipulate it. This includes the control elements themselves as well as any labels, any elements that will have unique style classes added by the code, etc.
 
@@ -124,7 +124,7 @@ Some Examples
     </tbody>
 </table>
 
-## Custom Styling ##
+## Custom Styling
 
 If the adjuster will be styled to look different than a traditional HTML form element, you will have to create special HTML and CSS to achieve the look you desire.
 
@@ -134,9 +134,9 @@ If the control or its label(s) will include graphics, we recommend using an icon
 
 The CSS required will, of course, be dependent on the design. Some examples from existing interfaces are provided below, as inspiration.
 
-### Example 1: A radio button styled colour and contrast panel ###
+### Example 1: A radio button styled colour and contrast panel
 
-#### UI and MARKUP ####
+#### UI and MARKUP
 
 ![a radio button styled colour and contrast panel](../images/radio-styled.png)
 
@@ -158,7 +158,7 @@ The CSS required will, of course, be dependent on the design. Some examples from
 </div>
 ```
 
-#### Stylus ####
+#### Stylus
 
 For the header:
 
@@ -220,13 +220,17 @@ For the radio buttons:
 }
 ```
 
-### Example 2: A checkbox styled table of contents panel ###
+### Example 2: A checkbox styled table of contents panel
 
-#### UI and MARKUP ####
+#### UI and MARKUP
 
 ![a checkbox styled table of contents panel](../images/checkbox-styled.png)
 
-<div class="infusion-docs-note"><strong>Note:</strong> Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708 JIRA](https://issues.fluidproject.org/browse/FLUID-5708)</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong>
+
+Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708 JIRA](https://issues.fluidproject.org/browse/FLUID-5708)
+</div>
 
 ```html
 <h2>
@@ -244,7 +248,7 @@ For the radio buttons:
 </div>
 ```
 
-#### Stylus ####
+#### Stylus
 
 For the switch:
 
