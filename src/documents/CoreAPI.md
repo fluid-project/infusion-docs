@@ -567,13 +567,13 @@ accepted from external users.
 
 ### fluid.log([logLevel, arg1, ... argn])
 
-* `logLevel {LogLevel}` [optional] One of the members of the `evel` structure or in general some `fluid.marker` with a numeric value holding a priority
+* `logLevel {LogLevel}` [optional] One of the members of the `fluid.logLevel` structure or in general some `fluid.marker` with a numeric value holding a priority
 * `arg1 ... argn {Stringable}` A sequence of arguments to be logged. By default these will be handed unchanged to the multiple arguments of `console.log`. It is wise to convert these
   to `String` yourself (e.g. by `JSON.stringify`) if i) this is safe, and ii) you would not be satisfied by the environment's rendering.
 
 Log a message to a suitable environmental console (in current implementations, `console.log`). If the first argument to `fluid.log` is
-one of the members of the [`evel`](#fluidloglevel) structure, this will be taken as the priority of the logged message - else it
-will default to [`evel.INFO`](#fluidloglevel). If the logged message priority does not exceed that set by the most recent call to the [`fluid.setLogging`](#fluidsetloggingloglevel) function,
+one of the members of the [`fluid.logLevel`](#fluidloglevel) structure, this will be taken as the priority of the logged message - else it
+will default to [`fluid.logLevel.INFO`](#fluidloglevel). If the logged message priority does not exceed that set by the most recent call to the [`fluid.setLogging`](#fluidsetloggingloglevel) function,
 the logging action will be suppressed.
 
 ### fluid.logLevel
@@ -596,8 +596,8 @@ of higher priority than higher numbers. The system maintains a current "logging 
 * `logLevel {Boolean|LogLevel}` The system logging level to be made current and to be pushed onto the top of the system's stack of logging levels.
 
 Push a value onto the stack of the system's current logging levels. This will become the system's current logging level until there is a corresponding call to `fluid.popLogging`. The argument may either be a boolean,
-in which case one of the standard logging levels (`true: evel.INFO` / `false: evel.IMPORTANT`) will be selected, or else one of the members of the `evel` structure or a `LogLevel` marker
-in general. The stack is initialised with a single element of `evel.IMPORTANT`.
+in which case one of the standard logging levels (`true: fluid.logLevel.INFO` / `false: fluid.logLevel.IMPORTANT`) will be selected, or else one of the members of the `fluid.logLevel` structure or a `LogLevel` marker
+in general. The stack is initialised with a single element of `fluid.logLevel.IMPORTANT`.
 
 ### fluid.popLogging()
 
@@ -609,7 +609,7 @@ If the stack has only its one original element, this call is a no-op.
 * `testLogLevel {LogLevel}` The log level against which the system's current logging level is to be checked.
 * Returns: `{Boolean}` - `true` if a message supplied at that log priority would be logged at the current logging level.
 
-Accepts one of the members of the `evel` structure or a `LogLevel` object in general. Returns `true` if
+Accepts one of the members of the `fluid.logLevel` structure or a `LogLevel` object in general. Returns `true` if
 a message supplied at that log priority would be logged at the current logging level. Clients who
 issue particularly expensive log payload arguments are recommended to guard their logging statements with this
 
@@ -631,7 +631,7 @@ the standard event `fluid.failureEvent`
 ### fluid.failureEvent
 
 * `log` - the namespace for the listener which logs the failure to a suitable environment. By default this fires to `fluid.logFailure` which forwards to `fluid.log` before also logging the state of the IoC system by
-  using `ctivity`
+  using  `fluid.logActivity`
 * `fail` - the namespace for the listener which enacts any failure behaviour. By default this calls `fluid.fail` but in a testing environment, for example, will react by failing any current test, or
   in an HTTP server by aborting the handling of any current request with a suitable HTTP status code and message.
 
