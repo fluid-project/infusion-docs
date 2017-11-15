@@ -144,10 +144,10 @@ broadly useful.</div>
 
 | Name | Type | Description | Default |
 |------|------|-------------|---------|
-|`exclusions`|<code>Object: String  → DomElement&#124;jQuery</code>| A free hash of names onto nodes that a click ***outside*** of will trigger `handler`, *** OR *** that a focus event received within the time window of `delay` from a blur event on `control` will *** cancel *** notification of `handler`| none |
+|`exclusions`|<code>Object: String  → DomElement&#124;jQuery</code>| A free hash of names onto nodes that a click ***outside*** of will trigger `handler`, ***OR*** that a focus event received within the time window of `delay` from a blur event on `control` will *** cancel *** notification of `handler`| none |
 |`handler`|`Function: (jQueryable)  →  None`| A function which will be invoked when the component has determined that a meaningful blur has been triggered on `control`. It will be invoked with `control` as the argument.| none |
 |`delay`|`Number`| The interval of time (in ms) that the component will wait after receiving a `blur` event on `control` in order to determine that the reason is that another element within `exclusions` is being focused.|150|
-|`backDelay`|`Number`| The interval of time *** before *** a `blur` event in which the component will be sensitive to an anomalous `pre-focusing` of an element within `exclusions` (primarily useful on Internet Explorer)|100|
+|`backDelay`|`Number`| The interval of time ***before*** a `blur` event in which the component will be sensitive to an anomalous `pre-focusing` of an element within `exclusions` (primarily useful on Internet Explorer)|100|
 |`cancelByDefault`|`Boolean`| If `true`, the focus timer logic of `deadMansBlur` is disabled and it the user is expected to operate the component manually (unsupported API)|`false`|
 
 ### fluid.getLastFocusedElement()

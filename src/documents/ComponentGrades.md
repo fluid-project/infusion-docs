@@ -17,7 +17,7 @@ fluid.defaults("examples.myGrade", {
 
 Each such grade can be built on to derive further grades/components. This derivation occurs by mentioning the name of the original grade (e.g. `examples.myGrade`) within the **gradeNames** section of the derived component.
 
-Most grades you will deal with are *** component grades *** derived from `fluid.component`. However, for some purposes you may also deal with [*** function grades ***](FunctionGrades.md) which are derived from `fluid.function`.
+Most grades you will deal with are ***component grades*** derived from `fluid.component`. However, for some purposes you may also deal with [*** function grades ***](FunctionGrades.md) which are derived from `fluid.function`.
 
 ## The framework's built-in component grades
 

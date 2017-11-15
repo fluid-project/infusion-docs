@@ -212,13 +212,13 @@ relevant when consuming a sequence of promises using one of Infusion's sequentia
 Let us imagine the promises in a sequence (array) laid out from left to right, in order of sequential execution.
 This method is called by a sequential promise algorithm when a promise somewhere in the sequence has rejected. Ordinarily, execution would
 pass directly to the overall rejection handler for the sequence. However, before this happens, the sequence algorithm will pass from
-*** right to left *** from the point of rejection and inspect each of the promises in that section for an `accumulateRejectionReason` implementation.
+***right to left*** from the point of rejection and inspect each of the promises in that section for an `accumulateRejectionReason` implementation.
 
 If an implementation is found, it will be called with the current rejection reason as an argument, and the return value will be used as the new
 rejection reason. The resolution algorithm then continues to the left with this new rejection reason in place, etc. Finally the fully accumulated
 rejection reason will be dispatched to the overall rejection handler.
 
-What familiar exception-handling pattern from synchronous code does this reproduce? It is the *** rethrowing pattern ***, described in the Java context by
+What familiar exception-handling pattern from synchronous code does this reproduce? It is the ***rethrowing pattern***, described in the Java context by
 [Bruce Eckel](http://www.mindview.net/Etc/Discussions/CheckedExceptions/). Some more general commentary is on the "original wiki" at [Nested Exception](http://c2.com/cgi/wiki?NestedException).
 Thankfully, JavaScript is free of "checked exception specifications" but both the bathwater and baby have been thrown out in that it is also free of exception wrapping.
 The promises community is still so immature that the lack of this facility has not yet even been characterised. Here is some old-fashioned sequential code illustrating what is going on here:
