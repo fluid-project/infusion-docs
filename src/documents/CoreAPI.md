@@ -686,7 +686,7 @@ we intend that Infusion global names should be handled in an analogous way.
 
 * `functionPath {String|Array of String}` The global path holding the function which is to be invoked
 * `args {Array|Any}` The array of arguments to be supplied to the function. If `args` is not an array, `fluid.makeArray` will be called on it first.
-* Returns: {Any} Any return value from the function which was invoked
+* Returns: `{Any}` Any return value from the function which was invoked
 
 Invokes a function held at a particular global path with the supplied arguments. Equivalent to `fluid.getGlobalValue` followed by `Function.apply(null, args)`.
 
@@ -714,11 +714,11 @@ about it. Some defaults are not descended from a framework grade at all, and are
 
 * `gradeName {String}` The fully-qualified name of the grade whose defaults are to be read or written.
 * `options {Object}` [optional] The defaults which are to be registered for the grade. If this argument is omitted, the existing defaults are read and returned.
-* Returns: {Object}  If the function was called with 1 argument, any defaults already registered for the component. These read defaults will already have gone through [options merging](OptionsMerging.md) and have the contents
+* Returns: `{Object}`  If the function was called with 1 argument, any defaults already registered for the component. These read defaults will already have gone through [options merging](OptionsMerging.md) and have the contents
   of any parent grades resolved in them. If you want to read exactly the raw defaults information that was registered for this grade, instead use [`fluid.rawDefaults`](#fluidrawdefaultsgradename-options)
 
 ### fluid.rawDefaults(gradeName[, options])
 
 * `gradeName {String}` The fully-qualified name of the grade whose defaults are to be read or written.
 * `options {Object}` [optional] The defaults which are to be registered for the grade. If this argument is omitted, the existing defaults are read and returned.
-* Returns: {Object} The raw defaults registered for this grade, without being resolved against parent grades by [options merging](OptionsMerging.md).
+* Returns: `{Object}` The raw defaults registered for this grade, without being resolved against parent grades by [options merging](OptionsMerging.md).
