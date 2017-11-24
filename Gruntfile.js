@@ -43,7 +43,11 @@ module.exports = function (grunt) {
                         "first-line-h1": false, // Docpad also takes care of this for us.
                         "header-style": { style: "atx" }, // Although we use a mix, in discussion with various team members, we agreed to try this for now.
                         "no-inline-html": false, // Obviously we need HTML
-                        "line-length": false,
+                        "line-length": {
+                            line_length: 120,
+                            tables:      false,
+                            code_blocks: false
+                        },
                         "ol-prefix": {style: "ordered"} // 1. 2. 3. etc
                     }
                 },

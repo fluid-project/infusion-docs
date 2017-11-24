@@ -4,7 +4,9 @@ layout: default
 category: Tutorials
 ---
 
-The CSS `content` property can be used to add additional content to your webpage using CSS. Often it is used to add a character, symbol, or font icon before or after some content on webpage. For example, it can be used to add vertical bars to separate items on a horizontal navigation list as depicted by the following HTML and CSS snippets.
+The CSS `content` property can be used to add additional content to your webpage using CSS. Often it is used to add a
+character, symbol, or font icon before or after some content on webpage. For example, it can be used to add vertical
+bars to separate items on a horizontal navigation list as depicted by the following HTML and CSS snippets.
 
 ```html
 <nav>
@@ -36,7 +38,8 @@ The CSS `content` property can be used to add additional content to your webpage
 The above example would look like this:
 ![A horizontal navigation list with blue text on grey background.](../images/tutorial-uio-content-default.png)
 
-To style this example, a new colour for `content` should be specified for each contrast. The updated CSS could look like this:
+To style this example, a new colour for `content` should be specified for each contrast. The updated CSS could look like
+this:
 
 ```css
 .fl-theme-yb .topnav li:after {
@@ -54,7 +57,8 @@ To style this example, a new colour for `content` should be specified for each c
 }
 ```
 
-When properly styled, the `content` value will change according to the contrast theme. Our example would now look like this:
+When properly styled, the `content` value will change according to the contrast theme. Our example would now look like
+this:
 
 * ![A horizontal navigation list with yellow text on black background.](../images/tutorial-uio-content-yb.png)
 * ![A horizontal navigation list with white text on black background.](../images/tutorial-uio-content-wb.png)

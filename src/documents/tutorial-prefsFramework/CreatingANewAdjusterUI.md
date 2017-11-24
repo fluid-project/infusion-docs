@@ -4,7 +4,8 @@ layout: default
 category: Tutorials
 ---
 
-In the Infusion [Preference Framework](../PreferencesFramework.md), an "adjuster" is a single control for adjusting a particular preference. Common types of adjusters include checkboxes, radio buttons and sliders.
+In the Infusion [Preference Framework](../PreferencesFramework.md), an "adjuster" is a single control for adjusting a
+particular preference. Common types of adjusters include checkboxes, radio buttons and sliders.
 
 This tutorial describes how to create the user interface for an adjuster.
 
@@ -28,11 +29,14 @@ Some examples:
 
 ## Create HTML to display the adjusters
 
-Once you know which type of HTML element you will be rendering, create an HTML template that will be used to render it. This will include the actual control as well as any labels, etc.
+Once you know which type of HTML element you will be rendering, create an HTML template that will be used to render it.
+This will include the actual control as well as any labels, etc.
 
-For a control involving repeated data (e.g. a drop-down or radio buttons), your HTML template should include only one of the elements, along with its label, etc. The markup that is to be repeated multiple times should be enclosed in a single containing element such as a `<div>` or `<span>`.
+For a control involving repeated data (e.g. a drop-down or radio buttons), your HTML template should include only one of
+the elements, along with its label, etc. The markup that is to be repeated multiple times should be enclosed in a single
+containing element such as a `<div>` or `<span>`.
 
-Some Examples
+### Some Examples
 
 <table>
     <thead>
@@ -76,9 +80,13 @@ Some Examples
 
 ## Add selector classes to any element that will be rendered
 
-Each element that will have to be rendered based on the data will need a 'selector class' to allow the code to identify and manipulate it. This includes the control elements themselves as well as any labels, any elements that will have unique style classes added by the code, etc.
+Each element that will have to be rendered based on the data will need a 'selector class' to allow the code to identify
+and manipulate it. This includes the control elements themselves as well as any labels, any elements that will have
+unique style classes added by the code, etc.
 
-We recommend using different class names for selector classes and styling classes. This results in markup that may look a but redundent, but it ensures that there are no accidental errors resulting in changes to the way styling happens, etc.
+We recommend using different class names for selector classes and styling classes. This results in markup that may look
+a but redundent, but it ensures that there are no accidental errors resulting in changes to the way styling happens,
+etc.
 
 [Class Name Conventions](../ClassNameConventions.md)
 
@@ -126,13 +134,17 @@ Some Examples
 
 ## Custom Styling
 
-If the adjuster will be styled to look different than a traditional HTML form element, you will have to create special HTML and CSS to achieve the look you desire.
+If the adjuster will be styled to look different than a traditional HTML form element, you will have to create special
+HTML and CSS to achieve the look you desire.
 
-If the control or its label(s) will include graphics, we recommend using an icon font for the graphics. Icon fonts will automatically adjust to the size and colours specified by the page or by a user's personal settings, without the need for additional CSS.
+If the control or its label(s) will include graphics, we recommend using an icon font for the graphics. Icon fonts will
+automatically adjust to the size and colours specified by the page or by a user's personal settings, without the need
+for additional CSS.
 
 [How to Create and Use Font Icons](../tutorial-iconFonts/HowToCreateAndUseFontIcons.md)
 
-The CSS required will, of course, be dependent on the design. Some examples from existing interfaces are provided below, as inspiration.
+The CSS required will, of course, be dependent on the design. Some examples from existing interfaces are provided below,
+as inspiration.
 
 ### Example 1: A radio button styled colour and contrast panel
 
@@ -229,7 +241,9 @@ For the radio buttons:
 <div class="infusion-docs-note">
     <strong>Note:</strong>
 
-Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708 JIRA](https://issues.fluidproject.org/browse/FLUID-5708)
+Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This
+will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708
+JIRA](https://issues.fluidproject.org/browse/FLUID-5708)
 </div>
 
 ```html

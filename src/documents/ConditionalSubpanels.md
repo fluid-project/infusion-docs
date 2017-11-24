@@ -4,9 +4,14 @@ layout: default
 category: Infusion
 ---
 
-Conditional subpanels are subpanels that are only displayed if the value of a specified boolean preference is true. This functionality allows adjusters to be displayed or hidden based on the setting of another on/off adjuster.
+Conditional subpanels are subpanels that are only displayed if the value of a specified boolean preference is true. This
+functionality allows adjusters to be displayed or hidden based on the setting of another on/off adjuster.
 
-The relationship between the controlling boolean preference and its dependent subpanels is defined in the panels property of the groups block. The panels property has one required property: always, which is an array of keys defining panels which should always be displayed. Other properties use a preference name as a key; the preference must be a boolean preference that is in a subpanel in the 'always' list. The value is an array of panel keys that should be displayed only if the specified preference is true.
+The relationship between the controlling boolean preference and its dependent subpanels is defined in the panels
+property of the groups block. The panels property has one required property: always, which is an array of keys defining
+panels which should always be displayed. Other properties use a preference name as a key; the preference must be a
+boolean preference that is in a subpanel in the 'always' list. The value is an array of panel keys that should be
+displayed only if the specified preference is true.
 
 ```snippet
 "panels": {
@@ -23,7 +28,8 @@ The relationship between the controlling boolean preference and its dependent su
 * A controlling preference **MUST** be a boolean.
 * The `pref.name` keys **MUST** refer to a preference referenced in the `always` property.
 * Not _every_ `always` panel must control a conditional subpanel.
-* Panel definitions are the same for controlling subpanels, conditional subpanels and regular subpanels; there is no difference.
+* Panel definitions are the same for controlling subpanels, conditional subpanels and regular subpanels; there is no
+  difference.
 
 ## Examples
 

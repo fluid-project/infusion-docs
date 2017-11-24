@@ -9,7 +9,8 @@ to create Enactors, components that act in response to changes to a user's prefe
 
 ## Overview
 
-In the [Preferences Framework](../PreferencesFramework.md), "Enactors" are Infusion [components](../UnderstandingInfusionComponents.md) that act upon changes to user preferences.
+In the [Preferences Framework](../PreferencesFramework.md), "Enactors" are Infusion
+[components](../UnderstandingInfusionComponents.md) that act upon changes to user preferences.
 
 The configuration information used to define an enactor must include certain required information:
 
@@ -19,11 +20,16 @@ The configuration information used to define an enactor must include certain req
 * selectors for rendering the controls, labels, etc
 * any other information required by the enactor
 
-If the enactor will be modifying the view of the interface, you will also want to add the `fluid.viewComponent` grade as well as selectors.
+If the enactor will be modifying the view of the interface, you will also want to add the `fluid.viewComponent` grade as
+well as selectors.
 
 ## PreferenceMap
 
-Each enactor defines a "preference map," which map the information in the [Primary Schema](../PrimarySchemaForPreferencesFramework.md) into your enactor. The preference map is used to copy the default preference value from the primary schema into the enactor's model. It can also be used to copy any other necessary information from the primary schema into the enactor, if relevant. The values can be mapped to any path in the Panels options, and then they can be accessed through those paths.
+Each enactor defines a "preference map," which map the information in the [Primary
+Schema](../PrimarySchemaForPreferencesFramework.md) into your enactor. The preference map is used to copy the default
+preference value from the primary schema into the enactor's model. It can also be used to copy any other necessary
+information from the primary schema into the enactor, if relevant. The values can be mapped to any path in the Panels
+options, and then they can be accessed through those paths.
 
 ### Format
 
@@ -82,9 +88,16 @@ fluid.defaults("fluid.videoPlayer.panels.captionsSettings", {
 
 ## Binding to Model Changes
 
-The most important thing that an enactor does is listen for changes to its model and act when changes occur. The [Preferences Framework](../PreferencesFramework.md) automatically binds the enactor's model to the user's preferences through the Preferences Map (described above). This means that if the user's preference changes (for example, through the preferences editor), the enactor's model will automatically be updated and a `modelChanged` event will be fired. All the enactor has to do is listen for that `modelChanged` event and carry out whatever adjustments are necessary. (For more information about model changes, see [ChangeApplier API](../ChangeApplierAPI.md); for more information about the events and listeners in general, see [Infusion Event System](../InfusionEventSystem.md)).
+The most important thing that an enactor does is listen for changes to its model and act when changes occur. The
+[Preferences Framework](../PreferencesFramework.md) automatically binds the enactor's model to the user's preferences
+through the Preferences Map (described above). This means that if the user's preference changes (for example, through
+the preferences editor), the enactor's model will automatically be updated and a `modelChanged` event will be fired. All
+the enactor has to do is listen for that `modelChanged` event and carry out whatever adjustments are necessary. (For
+more information about model changes, see [ChangeApplier API](../ChangeApplierAPI.md); for more information about the
+events and listeners in general, see [Infusion Event System](../InfusionEventSystem.md)).
 
-`modelChanged` event listeners are bound in a special block of a component's defaults called `modelListeners`. The general format is shown below:
+`modelChanged` event listeners are bound in a special block of a component's defaults called `modelListeners`. The
+general format is shown below:
 
 ```snippet
 modelListeners: {
@@ -95,7 +108,8 @@ modelListeners: {
 }
 ```
 
-In the argument list of a model listener, the `change` object is the original change request, which can be used to access the new model value:
+In the argument list of a model listener, the `change` object is the original change request, which can be used to
+access the new model value:
 
 ```snippet
 {
@@ -125,7 +139,8 @@ fluid.defaults("gpii.pmt.enactors.magnification", {
 
 ## Acting on model changes
 
-The actions that an enactor will take will be entirely dependent on what the enactor is for. It is up to the developer to create the necessary functions, etc. required.
+The actions that an enactor will take will be entirely dependent on what the enactor is for. It is up to the developer
+to create the necessary functions, etc. required.
 
 ## Example: Line Spacing Enactor
 

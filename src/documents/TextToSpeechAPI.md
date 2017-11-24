@@ -4,11 +4,14 @@ layout: default
 category: Components
 ---
 
-The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section) to queue up and read texts.
+The **Text To Speech** component uses [Web Speech Synthesis
+API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section) to queue up and read texts.
 
 ## Browser Support
 
-The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section). At the time of writing, July 26 2016, these browsers include:
+The Text To Speech component can be used in browsers that support [Web Speech Synthesis
+API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section). At the time of writing, July 26
+2016, these browsers include:
 
 * Chrome 31+
 * Chrome for Android 40+
@@ -17,8 +20,10 @@ The Text To Speech component can be used in browsers that support [Web Speech Sy
 * MS Edge 14 (in Preview Release)
 * Firefox 48+ (using the `media.webspeech.synth.enabled` about:config option)
 
-<div class="infusion-docs-note"><strong>Note:</strong> find the latest browser support data for Web Speech Synthesis API from
-<a href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> find the latest browser support data for Web Speech Synthesis API from <a
+    href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.
+</div>
 
 ## Creator
 
@@ -35,7 +40,8 @@ Use the following function to create a Text To Speech component:
         <tr>
             <th>Description</th>
             <td>
-                Instantiate the text to speech component. The methods of the instantiated component can be called to queue up and read texts.
+                Instantiate the text to speech component. The methods of the instantiated component can be called to
+                queue up and read texts.
             </td>
         </tr>
         <tr>
@@ -44,7 +50,10 @@ Use the following function to create a Text To Speech component:
                 <dl>
                     <dt>model.utteranceOpts</dt>
                     <dd>
-                        An optional data structure supplied to the component model that configures the Text To Speech component behaviour, as described below. As part of the component model, can be managed through the <a href="ChangeApplierAPI.md">ChangeApplier API</a> to assist in coordination with other components.
+                        An optional data structure supplied to the component model that configures the Text To Speech
+                        component behaviour, as described below. As part of the component model, can be managed through
+                        the <a href="ChangeApplierAPI.md">ChangeApplier API</a> to assist in coordination with other
+                        components.
                     </dd>
                 </dl>
             </td>
@@ -93,7 +102,9 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>queueSpeech</code> method allows you to append <code>text</code> to the end of the queue to begin speaking after the other texts in the queue have been spoken. Setting the <code>interrupt</code> argument to true will remove all texts from the queue before adding <code>text</code> to the queue.
+                The <code>queueSpeech</code> method allows you to append <code>text</code> to the end of the queue to
+                begin speaking after the other texts in the queue have been spoken. Setting the <code>interrupt</code>
+                argument to true will remove all texts from the queue before adding <code>text</code> to the queue.
             </td>
         </tr>
         <tr>
@@ -106,11 +117,17 @@ var tts = fluid.textToSpeech({
                     </dd>
                     <dt>interrupt</dt>
                     <dd>
-                        An optional boolean value. The default value is false. Setting it to true will remove all texts from the queue before adding the text. Setting it to false will not affect previously queued texts.
+                        An optional boolean value. The default value is false. Setting it to true will remove all texts
+                        from the queue before adding the text. Setting it to false will not affect previously queued
+                        texts.
                     </dd>
                     <dt>options</dt>
                     <dd>
-                        An optional javascript object. Allows for the configuration of the specific <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration passed in here takes the same form as <a href="#utteranceopts-option"><code>model.utteranceOpts</code></a> and will override them for this instance only.
+                        An optional javascript object. Allows for the configuration of the specific
+                        <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration
+                        passed in here takes the same form as <a
+                        href="#utteranceopts-option"><code>model.utteranceOpts</code></a> and will override them for
+                        this instance only.
                     </dd>
                 </dl>
             </td>
@@ -143,7 +160,8 @@ fluid.queueSpeech("Hello world", false, {
         <tr>
             <th>Description</th>
             <td>
-                The <code>cancel</code> method allows you to remove all texts from the queue. If a text is being spoken, speaking ceases immediately.
+                The <code>cancel</code> method allows you to remove all texts from the queue. If a text is being spoken,
+                speaking ceases immediately.
             </td>
         </tr>
         <tr>
@@ -212,13 +230,21 @@ fluid.queueSpeech("Hello world", false, {
         <tr>
             <th>Description</th>
             <td>
-                The <code>getVoices</code> method allows you to get a list of all the voices that are supported by the browser. This list is an array of <code>SpeechSynthesisVoice</code> objects. Each of these <code>SpeechSynthesisVoice</code> objects has a number of attributes:
+                The <code>getVoices</code> method allows you to get a list of all the voices that are supported by the
+                browser. This list is an array of <code>SpeechSynthesisVoice</code> objects. Each of these
+                <code>SpeechSynthesisVoice</code> objects has a number of attributes:
                 <ul>
-                <li>name: A human-readable name that describes the voice.</li>
-                <li>voiceURI: A URI specifying the location of the speech synthesis service for this voice.</li>
-                <li>lang: The language code for this voice.</li>
-                <li>default: Set to true if this is the default voice used by the browser.</li>
-                <li>localService: The API can use both local and remote services to handle speech synthesis. If this attribute is set to true the speech synthesis for this voice is handled by a local service. If it’s false a remote service is being used. This attribute can be useful if you’re building an app that needs to work offline. You could use a remote service when an internet connection is present, and fallback to a local service if a connection is not available.</li>
+                    <li>name: A human-readable name that describes the voice.</li>
+                    <li>voiceURI: A URI specifying the location of the speech synthesis service for this voice.</li>
+                    <li>lang: The language code for this voice.</li>
+                    <li>default: Set to true if this is the default voice used by the browser.</li>
+                    <li>
+                        localService: The API can use both local and remote services to handle speech synthesis. If this
+                        attribute is set to true the speech synthesis for this voice is handled by a local service. If
+                        it’s false a remote service is being used. This attribute can be useful if you’re building an
+                        app that needs to work offline. You could use a remote service when an internet connection is
+                        present, and fallback to a local service if a connection is not available.
+                    </li>
                 </ul>
             </td>
         </tr>
@@ -231,7 +257,10 @@ fluid.queueSpeech("Hello world", false, {
 
 ## Supported Events
 
-<div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="InfusionEventSystem.md">Infusion Event System</a> document for a full description of infusion events.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> if needed, please read the <a href="InfusionEventSystem.md">Infusion Event System</a>
+    document for a full description of infusion events.
+</div>
 
 The events fired by the Text To Speech component are described below.
 
@@ -265,7 +294,8 @@ The events fired by the Text To Speech component are described below.
         <tr>
             <th>Description</th>
             <td>
-                This event fires when the speaking stops, which occurs when all the texts in the queue have been spoken or the speaking is manually stopped.
+                This event fires when the speaking stops, which occurs when all the texts in the queue have been spoken
+                or the speaking is manually stopped.
             </td>
         </tr>
         <tr>
@@ -334,7 +364,8 @@ The events fired by the Text To Speech component are described below.
 
 ## Model Paths
 
-The following model paths can be used with [model listeners](ChangeApplierAPI.md) based on the current state of the speech:
+The following model paths can be used with [model listeners](ChangeApplierAPI.md) based on the current state of the
+speech:
 
 * `model.paused`: `true` if a spoken text is currently paused, `false` otherwise
 * `model.speaking`: `true` if text is being spoken (including in a paused state), `false` otherwise
@@ -342,11 +373,19 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
 
 ## <a id="utteranceopts-option"></a>`model.utteranceOpts` Configuration
 
-<div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration Options</a> document for a full description of infusion component options.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration
+    Options</a> document for a full description of infusion component options.
+</div>
 
-Configuration of the Text To Speech component can be done through `model.utteranceOpts`. This model path is a Javascript object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#utterance-attributes) (a part of the web speech API that the Text To Speech component interacts with).
+Configuration of the Text To Speech component can be done through `model.utteranceOpts`. This model path is a Javascript
+object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance
+instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#utterance-attributes) (a part of the web
+speech API that the Text To Speech component interacts with).
 
-<div class="infusion-docs-note"><strong>Note:</strong> not all speech synthesizers support all these attributes and some may take different ranges.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> not all speech synthesizers support all these attributes and some may take different ranges.
+</div>
 
 These attributes include:
 
@@ -358,7 +397,10 @@ These attributes include:
             <th>Description</th>
             <td>
                 The <code>text</code> attribute allows you to set the text that you wish to be spoken.
-                <div class="infusion-docs-note"><strong>Note:</strong> be careful with this attribute as it will override any text that was previously passed.</div>
+                <div class="infusion-docs-note">
+                    <strong>Note:</strong> be careful with this attribute as it will override any text that was
+                    previously passed.
+                </div>
             </td>
         </tr>
         <tr>
@@ -393,7 +435,9 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>lang</code> attribute gives you ability to specify a <a href="http://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the voice.
+                The <code>lang</code> attribute gives you ability to specify a <a
+                href="http://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the
+                voice.
             </td>
         </tr>
         <tr>
@@ -428,8 +472,19 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.
-                <div class="infusion-docs-note"><strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a> event to get a full list.</div>
+                The <code>voice</code> attribute must be a <a
+                href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a>
+                object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a
+                href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can
+                select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a
+                href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code>
+                function of the browser directly.
+                <div class="infusion-docs-note">
+                    <strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page
+                    is loaded, and you may need to wait for the <a
+                    href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a>
+                    event to get a full list.
+                </div>
             </td>
         </tr>
         <tr>
@@ -474,7 +529,8 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>volume</code> attribute allows you to adjust the volume of the speech. This is a float value between 0 and 1.
+                The <code>volume</code> attribute allows you to adjust the volume of the speech. This is a float value
+                between 0 and 1.
             </td>
         </tr>
         <tr>
@@ -509,7 +565,8 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>rate</code> attribute allows you to define the speed at which the text should be spoken. This is a float value between 0 and 10.
+                The <code>rate</code> attribute allows you to define the speed at which the text should be spoken. This
+                is a float value between 0 and 10.
             </td>
         </tr>
         <tr>
@@ -544,7 +601,8 @@ fluid.textToSpeech({
         <tr>
             <th>Description</th>
             <td>
-                The <code>pitch</code> attribute allows you to control how high or low the text is spoken. This is a float value between 0 and 2.
+                The <code>pitch</code> attribute allows you to control how high or low the text is spoken. This is a
+                float value between 0 and 2.
             </td>
         </tr>
         <tr>
