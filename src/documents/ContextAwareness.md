@@ -361,12 +361,14 @@ This accepts a single structure `adaptationRecord` with a number of required fie
             <td><code>String</code></td>
             <td>The name of the <code>checkRecord</code> record (<strong>within</strong> the <code>adaptationRecord</code>) to receive the broadcast record &#8212; this will be a simple string</td>
         </tr>
-
         <tr>
             <td><code>record</code></td>
             <td><code>Object</code> (<code>checkRecord</code>)</td>
-            <td>The <a href="#structure-of-members-in-a-checkRecord"><code>checkRecord</code></a> which is to be broadcast &#8212; containing fields <code>contextValue</code>, <code>gradeNames</code> etc.
-            <a href="#structure-of-members-in-a-checkRecord">as described above</a></td>
+            <td>
+                The <a href="#checkrecord-members-in-an-adaptationrecord"><code>checkRecord</code></a> which is to be
+                broadcast &#8212; containing fields <code>contextValue</code>, <code>gradeNames</code> etc.
+                <a href="#checkrecord-members-in-an-adaptationrecord">as described above</a>
+            </td>
         </tr>
     </tbody>
 </table>
