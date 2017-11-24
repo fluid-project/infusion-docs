@@ -2393,9 +2393,9 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **Invertibility:** Not invertible.
 
-### Examples:
+#### Examples:
 
-#### Example 1: Standard usage of quantize transformer
+##### Example 1: Standard usage of quantize transformer
 
 <table><thead>
 </thead><tbody>
@@ -2438,7 +2438,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-#### Example 2: Standard usage of quantize transformer - hitting lower bound
+##### Example 2: Standard usage of quantize transformer - hitting lower bound
 
 <table><thead>
 </thead><tbody>
@@ -2481,7 +2481,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-#### Example 3: Standard usage of quantize transformer - hitting upper bound
+##### Example 3: Standard usage of quantize transformer - hitting upper bound
 
 <table><thead>
 </thead><tbody>
@@ -2544,9 +2544,9 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **Invertibility:** Not invertible.
 
-### Examples:
+#### Examples:
 
-#### Example 1: Standard usage of inRange transformer
+##### Example 1: Standard usage of inRange transformer
 
 <table><thead>
 </thead><tbody>
@@ -2577,7 +2577,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-#### Example 2: Standard usage of inRange transformer (out of range)
+##### Example 2: Standard usage of inRange transformer (out of range)
 
 <table><thead>
 </thead><tbody>
@@ -2608,7 +2608,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-#### Example 3: Open ended usage of inRange transformer
+##### Example 3: Open ended usage of inRange transformer
 
 <table><thead>
 </thead><tbody>
@@ -2638,7 +2638,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-#### Example 4: Range endpoints are inclusive
+##### Example 4: Range endpoints are inclusive
 
 <table><thead>
 </thead><tbody>
