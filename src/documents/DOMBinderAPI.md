@@ -10,8 +10,9 @@ See the [DOM Binder documentation](DOMBinder.md) for more information about how 
 
 <div class="infusion-docs-note">
 
-<strong>Note:</strong> A DOM Binder is automatically created by the Framework for any [view component](tutorial-gettingStartedWithInfusion/ViewComponents.md).
-**_Component developers are not expected to ever create a DOM Binder themselves._**
+<strong>Note:</strong> A DOM Binder is automatically created by the Framework for any
+[view component](tutorial-gettingStartedWithInfusion/ViewComponents.md).  **_Component developers are not expected to
+ever create a DOM Binder themselves._**
 </div>
 
 ## Creation

@@ -17,7 +17,7 @@ The relationship between the controlling boolean preference and its dependent su
 }
 ```
 
-**Notes:**
+## Notes:
 
 * A conditional subpanel must contain **ONLY ONE** adjuster.
 * A controlling preference **MUST** be a boolean.

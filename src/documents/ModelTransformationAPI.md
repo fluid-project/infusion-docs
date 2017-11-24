@@ -221,7 +221,7 @@ will also be interpreted as so; until a `transform` or `literalValue` keyword is
 `transform` directive is interpreted according to the general transformation rules (see below), and the `literalValue`
 keyword results in its content being output to the current output path.
 
-***Example***
+#### Example
 
 <table><thead>
 </thead><tbody>
@@ -934,7 +934,7 @@ It is primarily used by the framework in its shorthand notation (see examples). 
 
 #### Examples:
 
-**Example 1: Standard usage**
+##### Example 1: Standard usage
 
 <table><thead>
 </thead><tbody>
@@ -965,7 +965,7 @@ It is primarily used by the framework in its shorthand notation (see examples). 
 </tbody>
 </table>
 
-**Example 2: Short notation**
+###### Example 2: Short notation
 
 Note that this transform is implicit when using a string as a value to a key, where a `transform` directive would usually be expected.
 
@@ -1000,7 +1000,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 **Invertibility:** Partly invertible.
 
-**Syntax:**
+#### Syntax:
 
 ```json5
 {
@@ -1013,7 +1013,8 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 #### Examples:
 
-**Example 1: You can use literalValue if you have some constant that you want to output to the document**
+##### Example 1: You can use literalValue if you have some constant that you want to output to the document
+
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
@@ -1038,7 +1039,8 @@ Note that this transform is implicit when using a string as a value to a key, wh
 </tbody>
 </table>
 
-**Example 2: The content of literal value will not be transformed further**
+###### Example 2: The content of literal value will not be transformed further
+
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
@@ -1083,7 +1085,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 #### Examples:
 
-**Example 1: Number conversion**
+##### Example 1: Number conversion
 
 <table><thead>
 </thead><tbody>
@@ -1112,7 +1114,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 </tbody>
 </table>
 
-**Example 2: Non-number string**
+###### Example 2: Non-number string
 
 <table><thead>
 </thead><tbody>
@@ -1156,7 +1158,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 #### Examples:
 
-**Example 1: Number conversion**
+##### Example 1: Number conversion
 
 <table><thead>
 </thead><tbody>
@@ -1185,7 +1187,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-**Example 2: Non-number string**
+###### Example 2: Non-number string
 
 <table><thead>
 </thead><tbody>
@@ -1212,7 +1214,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-**Example 3: Number conversion with scale**
+###### Example 3: Number conversion with scale
 
 <table><thead>
 </thead><tbody>
@@ -1242,7 +1244,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-**Example 4: Number conversion with scale and method**
+###### Example 4: Number conversion with scale and method
 
 <table><thead>
 </thead><tbody>
@@ -1273,7 +1275,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-**Example 5: Number conversion with invalid scale**
+###### Example 5: Number conversion with invalid scale
 
 <table><thead>
 </thead><tbody>
@@ -1313,7 +1315,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 #### Examples:
 
-**Example 1: Counting the length of an array**
+##### Example 1: Counting the length of an array
 
 <table><thead>
 </thead><tbody>
@@ -1339,7 +1341,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-**Example 2: Using path as input**
+###### Example 2: Using path as input
 
 <table><thead>
 </thead><tbody>
@@ -1369,7 +1371,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-**Example 3: Primitive value as input**
+###### Example 3: Primitive value as input
 
 <table><thead>
 </thead><tbody>
@@ -1413,7 +1415,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 #### Examples:
 
-**Example 1: Round to the nearest whole number**
+##### Example 1: Round to the nearest whole number
 
 <table><thead>
 </thead><tbody>
@@ -1441,7 +1443,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-**Example 2: Round to one decimal place**
+###### Example 2: Round to one decimal place
 
 <table><thead>
 </thead><tbody>
@@ -1470,7 +1472,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-**Example 3: Round to one decimal place using a specified rounding method**
+###### Example 3: Round to one decimal place using a specified rounding method
 
 <table><thead>
 </thead><tbody>
@@ -1508,7 +1510,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 **Invertibility:** Not invertible
 
-**syntax:**
+#### Syntax:
 
 ```snippet
 {
@@ -1521,7 +1523,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 #### Examples:
 
-**Example 1: Takes first entry of an array**
+##### Example 1: Takes first entry of an array
 
 <table><thead>
 </thead><tbody>
@@ -1550,7 +1552,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-**Example 2: Ignores undefined values**
+###### Example 2: Ignores undefined values
 
 <table><thead>
 </thead><tbody>
@@ -1588,7 +1590,7 @@ The only option that `delete` supports is `outputPath`, which points to the outp
 
 **Invertibility:** Not invertible
 
-**Syntax:**
+#### Syntax:
 
 ```json
 {
@@ -1634,12 +1636,13 @@ The `"": ""` in the transform would normally mean that the entire input model is
 
 **type:** transformFunction
 
-**Description:**
+#### Description:
+
 This is a very powerful and flexible transformation function, which maps a defined collection of input values to corresponding output values by applying a matching algorithm. The input can be partly or fully matched, the result of the mapping can be customized on a per match basis. For further explanation, see the syntax and examples sections below.
 
 **Invertibility:** Partly invertible.
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 {
@@ -1710,7 +1713,7 @@ ___Only within `match`:___
   * If any exact match can be made (even if it contains a partialMatches flag), this beats a partial match. Else the best partial match (ie. deepest matching) will be selected. Else the value from `noMatch` will be used.
   * If the two best partial matches are equally good, the first one listed will be returned.
 
-**Priority of keys at parsing**:
+##### Priority of keys at parsing:
 
 Some of the keys used in the ValueMapper conflict, in that they reference the same part of the transformation mechanisms. Below is a summary of which term takes priority when the valueMapper parses the keys:
 
@@ -1719,7 +1722,7 @@ Some of the keys used in the ValueMapper conflict, in that they reference the sa
 * `outputPath` before `defaultOutputValue`  - The `outputPath` will be used used if provded, else `defaultOutputPath` will.
 * `outputUndefinedValue` over `outputValue` over `defaultOutputValue` - If `outputUndefinedValue` is provided, it will always be used. If it is not provided, but `outputValue` is, this will be used. Finally, if neither are provided, `defaultOutputValue` is used.
 
-**Shorthand syntax**:
+##### Shorthand syntax:
 
 ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entries are interpreted as `inputValue` by the system. If `<outputX>` are primitive datatypes (string, number or boolean), they will be used directly as output. Else they should be objects with the same format in the longhand syntax described above - excluding support the `inputValue` option.
 
@@ -1746,7 +1749,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 
 #### Examples
 
-**Example 1: Shorthand with primitive output values**
+##### Example 1: Shorthand with primitive output values
 
 <table><thead>
 </thead><tbody>
@@ -1778,7 +1781,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-**Example 2: Shorthand with non-primitive output values**
+###### Example 2: Shorthand with non-primitive output values
 
 <table><thead>
 </thead><tbody>
@@ -1815,7 +1818,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-**Example 3: Longhand syntax with noMatch**
+###### Example 3: Longhand syntax with noMatch
 
 <table><thead>
 </thead><tbody>
@@ -1855,7 +1858,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-**Example 4: Longhand syntax with partial Matches**
+###### Example 4: Longhand syntax with partial Matches
 
 <table><thead>
 </thead><tbody>
@@ -1908,7 +1911,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-**Example 5: defaultInput provided**
+###### Example 5: defaultInput provided
 
 <table><thead>
 </thead><tbody>
@@ -1942,7 +1945,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-**Example 6: Nested transformation**
+###### Example 6: Nested transformation
 
 <table><thead>
 </thead><tbody>
@@ -1985,7 +1988,8 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 
 **type:** multiInputTransformFunction, standardOutputTransformFunction
 
-**Description:**
+#### Description:
+
 This will do a binary operation given the two operands (`left` and `right`) and the operator. You can reference to the input model for both left and right by using `leftPath` and `rightPath`. If both `rightPath` and `right` is given, a lookup will be done of `rightPath` first, and if nothing is found the constant from `right` will be used. Same goes for `left` and `leftPath`. Both the `left` and `right` operands are required (either in their path or constant form). The operator is also required. The result of the expansion will be the result of the binary operation, and this will be returned or output to the outputPath as any other `standardOutputTransformFunction`. Valid operands are:
 
 Arithmetic Operators (operands are required to be numbers, output will be a number):
@@ -2012,7 +2016,7 @@ Logical Operators: (both operands are required to be booleans, output will be bo
 
 **Invertibility:** Not invertible.
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 transform: {
@@ -2025,7 +2029,7 @@ transform: {
 
 #### Examples
 
-**Example 1: Standard addition**
+##### Example 1: Standard addition
 
 <table><thead>
 </thead><tbody>
@@ -2057,7 +2061,7 @@ transform: {
 </tbody>
 </table>
 
-**Example 2: Fallback from path**
+##### Example 2: Fallback from path
 
 <table><thead>
 </thead><tbody>
@@ -2095,7 +2099,7 @@ transform: {
 
 **type:** multiInputTransformFunction , standardOutputTransformFunction
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 transform: {
@@ -2106,14 +2110,15 @@ transform: {
 }
 ```
 
-**Description:**
+#### Description:
+
 Based on the boolean `condition` constant (or the path to the inputModel `conditionPath`) either the value or `true` or `false` (`truePath`/`falsePath`, respectively) will be the result of the transform. The `condition` is required and either `true` or `false` (or both) - or their path equivalents - should be defined. As usual, the `*Path` equivalents of the input variables can be used as fallbacks.
 
 **Invertibility:** Not invertible
 
 #### Example:
 
-**Example 1: Standard usage**
+##### Example 1: Standard usage
 
 <table><thead>
 </thead><tbody>
@@ -2145,7 +2150,7 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </tbody>
 </table>
 
-**Example 2: Fallback from path**
+###### Example 2: Fallback from path
 
 <table><thead>
 </thead><tbody>
@@ -2174,7 +2179,7 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </tbody>
 </table>
 
-**Example 3: Nested transform**
+###### Example 3: Nested transform
 
 <table><thead>
 </thead><tbody>
@@ -2213,7 +2218,7 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </tbody>
 </table>
 
-**Example 4: Using an undefined input**
+###### Example 4: Using an undefined input
 
 If either the `left` or `right` (or their path equivalents) evaluate to `undefined` and there is no default in case of using path, the result of the transform will be `undefined`.
 
@@ -2253,7 +2258,7 @@ If either the `left` or `right` (or their path equivalents) evaluate to `undefin
 
 **Invertibility:** Partly invertible.
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 transform: {
@@ -2266,7 +2271,7 @@ transform: {
 
 #### Examples:
 
-**Example 1: all variables specified**
+##### Example 1: all variables specified
 
 <table><thead>
 </thead><tbody>
@@ -2295,7 +2300,7 @@ transform: {
 </tbody>
 </table>
 
-**Example 2: Only some variables specified**
+###### Example 2: Only some variables specified
 
 In this example, since no value is found at `some.path`, the factor will default to 1, outputting `12*1+0=12`. If a value was instead found (say, 12) the output would have been `12*12+0=144`
 
@@ -2324,7 +2329,7 @@ In this example, since no value is found at `some.path`, the factor will default
 </tbody>
 </table>
 
-**Example 3: Only some variables specified**
+###### Example 3: Only some variables specified
 
 This example uses the same transformation rule as above, but in this case a value is found at factorPath, so this will be used as factor. Since `offset` is not specified, the value 0 will be used for this.
 
@@ -2364,7 +2369,7 @@ This example uses the same transformation rule as above, but in this case a valu
 
 The transform allows you to specify some ranges, defined by an `upperBound`. The first entry, the range will be the `upperBound` value to negative infinite. For the second entry, the range will be the range from the `upperBound` to (but excluding) the previous entry's `upperBound`. For the final entry no upper bound can be given, indicating that this range is from the previous `upperBound` to infinity.
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 "transform": {
@@ -2390,7 +2395,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 ### Examples:
 
-**Example 1: Standard usage of quantize transformer**
+#### Example 1: Standard usage of quantize transformer
 
 <table><thead>
 </thead><tbody>
@@ -2433,7 +2438,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-**Example 2: Standard usage of quantize transformer - hitting lower bound**
+##### Example 2: Standard usage of quantize transformer - hitting lower bound
 
 <table><thead>
 </thead><tbody>
@@ -2476,7 +2481,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-**Example 3: Standard usage of quantize transformer - hitting upper bound**
+###### Example 3: Standard usage of quantize transformer - hitting upper bound
 
 <table><thead>
 </thead><tbody>
@@ -2525,7 +2530,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **Description:** Checks whether an `input` or `inputPath` is in a given range, outputs `true` or `false` depending on whether it is in that range. The range is indicated by `min` and `max`, both of which are inclusive. The range can be open-ended by not specifying one of these.
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 "transform": {
@@ -2541,7 +2546,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 ### Examples:
 
-**Example 1: Standard usage of inRange transformer**
+#### Example 1: Standard usage of inRange transformer
 
 <table><thead>
 </thead><tbody>
@@ -2572,7 +2577,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-**Example 2: Standard usage of inRange transformer (out of range)**
+##### Example 2: Standard usage of inRange transformer (out of range)
 
 <table><thead>
 </thead><tbody>
@@ -2603,7 +2608,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-**Example 3: Open ended usage of inRange transformer**
+###### Example 3: Open ended usage of inRange transformer
 
 <table><thead>
 </thead><tbody>
@@ -2633,7 +2638,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-**Example 4: Range endpoints are inclusive**
+###### Example 4: Range endpoints are inclusive
 
 <table><thead>
 </thead><tbody>
@@ -2679,7 +2684,7 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 **Invertibility:** Partly invertible (into [`fluid.transforms.deindexIntoArrayByKey`](ModelTransformationAPI.html#create-an-object-indexed-with-keys-from-array-entries-fluidtransformsdeindexintoarraybykey)).
 
-**Syntax:**
+#### Syntax:
 
 ```json5
 {
@@ -2694,7 +2699,7 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 #### Examples:
 
-**Example 1: Simple Example**
+##### Example 1: Simple Example
 
 In this example, the `key` provided in our transform function is `product`. This means that for each entry in our input array, we will use the value found by the `product` key (i.e. "salad" and "candy", respectively) and use that as the key in our output object. The output object will contain, for each key, the remaining entries from the array entry's object.
 
@@ -2732,7 +2737,7 @@ In this example, the `key` provided in our transform function is `product`. This
 </tbody>
 </table>
 
-**Example 2: Using InnerValue for transforms**
+###### Example 2: Using InnerValue for transforms
 
 An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of the array should be declared here. The input paths within the innerValue block will be relative to the original array entry.
 
@@ -2808,7 +2813,7 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 **Invertibility:** Partly invertible. (into is [`fluid.transforms.indexArrayByKey`](ModelTransformationAPI.html#creates-an-object-indexed-with-keys-from-array-entries-fluidtransformsindexarraybykey))
 
-**Syntax:**
+#### Syntax:
 
 ```json5
 {
@@ -2823,7 +2828,7 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 #### Examples:
 
-**Example 1: Simple Example**
+##### Example 1: Simple Example
 
 In this example, the `key` provided in our transform function is `product`. This means that each of the keys within the object given as input, will be added as a value to the corresponding object with `product` as key.
 
@@ -2858,7 +2863,7 @@ bar: [
 </tbody>
 </table>
 
-**Example 2: Using InnerValue for transforms**
+###### Example 2: Using InnerValue for transforms
 
 An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of the array should be declared here. The input paths within the innerValue block will be relative to the original array entry.
 
@@ -2919,7 +2924,7 @@ Returns `undefined` if no array is provided.
 
 **Invertibility:** Fully invertible (into [`fluid.transforms.dereference`](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluidtransformsdereference)) with the domain of values that are present in the array.
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 {
@@ -2933,7 +2938,7 @@ Returns `undefined` if no array is provided.
 
 #### Examples:
 
-** Example 1: standard usage**
+##### Example 1: standard usage
 
 <table><thead>
 </thead><tbody>
@@ -2962,7 +2967,7 @@ Returns `undefined` if no array is provided.
 </tbody>
 </table>
 
-** Example 2: -1 is returned if element is not found**
+##### Example 2: -1 is returned if element is not found
 
 <table><thead>
 </thead><tbody>
@@ -2991,7 +2996,7 @@ Returns `undefined` if no array is provided.
 </tbody>
 </table>
 
-** Example 3: Usage with notFound**
+##### Example 3: Usage with notFound
 
 <table><thead>
 </thead><tbody>
@@ -3021,7 +3026,7 @@ Returns `undefined` if no array is provided.
 </tbody>
 </table>
 
-** Example 4: Usage with offset**
+##### Example 4: Usage with offset
 
 <table><thead>
 </thead><tbody>
@@ -3051,7 +3056,7 @@ Returns `undefined` if no array is provided.
 </tbody>
 </table>
 
-** Example 5: Offset added even if element is not found**
+##### Example 5: Offset added even if element is not found
 
 <table><thead>
 </thead><tbody>
@@ -3085,13 +3090,15 @@ Returns `undefined` if no array is provided.
 
 **Type:** standardTransformFunction
 
-**Description:** Returns the value of a given index in an array. This transform looks up the index given by `input`/`inputPath` in the array provided via `array`. It returns the value found at that index.
+#### Description:
+
+Returns the value of a given index in an array. This transform looks up the index given by `input`/`inputPath` in the array provided via `array`. It returns the value found at that index.
 
 It allows for an `offset` to be provided, which will be added to the index that is being looked up.
 
 **Invertibility:** Partly invertible (into [`fluid.transforms.indexOf`](ModelTransformationAPI.html#get-the-index-of-an-element-in-an-array-fluidtransformsindexof)).
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 {
@@ -3104,7 +3111,7 @@ It allows for an `offset` to be provided, which will be added to the index that 
 
 #### Examples:
 
-** Example 1: standard usage**
+##### Example 1: standard usage
 
 <table><thead>
 </thead><tbody>
@@ -3133,7 +3140,7 @@ It allows for an `offset` to be provided, which will be added to the index that 
 </tbody>
 </table>
 
-** Example 2: Usage with offset**
+##### Example 2: Usage with offset
 
 <table><thead>
 </thead><tbody>
@@ -3167,13 +3174,15 @@ It allows for an `offset` to be provided, which will be added to the index that 
 
 **Type:** standardOutputTransformFunction.
 
-**Description:** Simple string template system. Takes a template string (via the `template` parameter) containing tokens in the form of "%value". Returns a new string with the tokens replaced by values specified in the `terms` parameter. Keys and values can be of any data type that can be coerced into a string. Arrays will work here as well.
+#### Description:
+
+Simple string template system. Takes a template string (via the `template` parameter) containing tokens in the form of "%value". Returns a new string with the tokens replaced by values specified in the `terms` parameter. Keys and values can be of any data type that can be coerced into a string. Arrays will work here as well.
 
 Currently it does not support reading any of its values from the input model. Furthermore, both `template` and `terms` are read as literal values, and hence not further interpreted by the model transformation system.
 
 **Invertibility:** Not invertible.
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 {
@@ -3185,7 +3194,7 @@ Currently it does not support reading any of its values from the input model. Fu
 
 #### Examples:
 
-** Example 1: Usage with map of terms**
+##### Example 1: Usage with map of terms
 
 <table><thead>
 </thead><tbody>
@@ -3218,7 +3227,7 @@ Currently it does not support reading any of its values from the input model. Fu
 </tbody>
 </table>
 
-** Example 2: Usage with array of terms**
+##### Example 2: Usage with array of terms
 
 <table><thead>
 </thead><tbody>
@@ -3250,13 +3259,15 @@ Currently it does not support reading any of its values from the input model. Fu
 
 **Type:** transformFunction
 
-**Description:** Proxy transform to call any globally available function. The function to be called is passed via the `func` key, and the arguments passed are to the function are passed via the `args` key. If `args` is an array, each entry will be passed as individual arguments to the function. If `args` is an object, it will be passed to the function as a single argument which is the object - this is also true for any primitive datatype.
+#### Description:
+
+Proxy transform to call any globally available function. The function to be called is passed via the `func` key, and the arguments passed are to the function are passed via the `args` key. If `args` is an array, each entry will be passed as individual arguments to the function. If `args` is an object, it will be passed to the function as a single argument which is the object - this is also true for any primitive datatype.
 
 Does not support reading any of its values from the input model, and any value passed to this transform via the `func` and `args` keys are passed into the transform as literal values (i.e. further transforms will not be parsed).
 
 **Invertibility:** Not invertible.
 
-**Syntax:**
+#### Syntax:
 
 ```snippet
 {
@@ -3268,7 +3279,7 @@ Does not support reading any of its values from the input model, and any value p
 
 #### Examples:
 
-** Example 1: Usage with array**
+##### Example 1: Usage with array
 
 For the below example, imagine that the following function is globally available:
 
@@ -3303,7 +3314,7 @@ fluid.myfuncs.addThree = function (a, b, c) {
 </tbody>
 </table>
 
-** Example 2: Usage with object as args**
+##### Example 2: Usage with object as args
 
 In the following example, imagine you have the following two functions globally available:
 
@@ -3347,7 +3358,9 @@ fluid.myfuncs.addNumbers = function (options) {
 
 **Type:** standardTransformFunction
 
-**Description:** This transform can be used when one wants to create a set based on values available in an array.
+#### Description:
+
+This transform can be used when one wants to create a set based on values available in an array.
 This is yet another specialized and complex transformation. Based on which values are present in the input array,
 an output object will be produced with predefined keys and values indicating whether a specific value was present
 in the array.
@@ -3357,7 +3370,7 @@ all possible system capabilities with a true/false value indicating whether the 
 
 **Invertibility:** Partly invertible (into [`setMembershipToArray`](ModelTransformationAPI.html#fluidtransformsarraytosetmembership))
 
-**Syntax:**
+#### Syntax:
 
 If `presentValue` and `missingValue` are not defined they will default to: `true` and `false`, respectively.
 
@@ -3375,9 +3388,9 @@ transform: {
 }
 ```
 
-**Examples:**
+#### Examples:
 
-**Example 1: Standard Usage**
+##### Example 1: Standard Usage
 
 <table><thead>
 </thead><tbody>
@@ -3417,7 +3430,7 @@ transform: {
 </tbody>
 </table>
 
-**Example 2: Not defining presentValue and missingValue**
+###### Example 2: Not defining presentValue and missingValue
 
 <table><thead>
 </thead><tbody>
@@ -3469,7 +3482,7 @@ The actual entries output to the array are based on a map passed as `options` to
 
 **Invertibility:** Partly invertible (into `arrayToSetMembership`)
 
-**Syntax:**
+#### Syntax:
 
 If `presentValue` and `missingValue` are not defined they will default to: `true` and `false`, respectively.
 
@@ -3490,9 +3503,9 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
 }
 ```
 
-**Examples:**
+#### Examples:
 
-**Example 1: Standard Usage**
+##### Example 1: Standard Usage
 
 <table><thead>
 </thead><tbody>
@@ -3532,7 +3545,7 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
 </tbody>
 </table>
 
-**Example 2: Not defining presentValue and missingValue**
+##### Example 2: Not defining presentValue and missingValue
 
 <table><thead>
 </thead><tbody>
@@ -3579,7 +3592,7 @@ The following are all false: undefined, null, "", "0", "false", false, 0.  Every
 
 **Invertibility:** Partly invertible via `fluid.transforms.booleanToString`.
 
-**Syntax:**
+#### Syntax:
 
 ```json
 {
@@ -3593,7 +3606,7 @@ The following are all false: undefined, null, "", "0", "false", false, 0.  Every
 
 #### Examples:
 
-**Example 1: Convert the string "true" to a boolean.**
+##### Example 1: Convert the string "true" to a boolean.
 
 <table><thead>
 </thead><tbody>
@@ -3631,7 +3644,7 @@ Anything else (0, false, null, etc.) returns "false".
 
 **Invertibility:** Partly invertible via `fluid.transforms.stringToBoolean`.
 
-**Syntax:**
+#### Syntax:
 
 ```json
 {
@@ -3645,7 +3658,7 @@ Anything else (0, false, null, etc.) returns "false".
 
 #### Examples:
 
-**Example 1: Convert a boolean false into the string "false".**
+##### Example 1: Convert a boolean false into the string "false".
 
 <table><thead>
 </thead><tbody>
@@ -3681,7 +3694,7 @@ Anything else (0, false, null, etc.) returns "false".
 
 **Invertibility:** Partly invertible via `fluid.transforms.objectToJSONString`.
 
-**Syntax:**
+#### Syntax:
 
 ```json
 {
@@ -3695,7 +3708,7 @@ Anything else (0, false, null, etc.) returns "false".
 
 #### Examples:
 
-**Example 1: Convert a stringified JSON payload into an object.**
+##### Example 1: Convert a stringified JSON payload into an object.
 
 <table><thead>
 </thead><tbody>
@@ -3733,7 +3746,7 @@ Anything else (0, false, null, etc.) returns "false".
 
 **Invertibility:** Partly invertible via `fluid.transforms.JSONstringToObject`.
 
-**Syntax:**
+#### Syntax:
 
 ```json
 {
@@ -3747,7 +3760,7 @@ Anything else (0, false, null, etc.) returns "false".
 
 #### Examples:
 
-**Example 1: Convert an object payload into a string payload.**
+##### Example 1: Convert an object payload into a string payload.
 
 <table><thead>
 </thead><tbody>
@@ -3777,7 +3790,7 @@ Anything else (0, false, null, etc.) returns "false".
 </tbody>
 </table>
 
-**Example 2: Add spaces and carriage returns to the stringified output.**
+###### Example 2: Add spaces and carriage returns to the stringified output.
 
 You can pass the `space` option to control whether spaces are included between keys and values in the string output. A
 positive value also results in carriage returns between key/value pairs.  The default value for `space` is 0, which
@@ -3827,7 +3840,7 @@ although this can be done at your own risk. See the section on
 
 **Invertibility:** Partly invertible using either `fluid.transforms.dateTimeToString` or `fluid.transforms.dateToString`.
 
-**Syntax:**
+#### Syntax:
 
 ```json
 {
@@ -3841,7 +3854,7 @@ although this can be done at your own risk. See the section on
 
 #### Examples:
 
-**Example 1: Convert an date string into a date.**
+##### Example 1: Convert an date string into a date.
 
 <table><thead>
 </thead><tbody>
@@ -3885,7 +3898,7 @@ although this can be done at your own risk. See the section on
 
 **Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
 
-**Syntax:**
+#### Syntax:
 
 ```json
 {
@@ -3899,7 +3912,7 @@ although this can be done at your own risk. See the section on
 
 #### Examples:
 
-**Example 1: Convert a Date object into a string.**
+##### Example 1: Convert a Date object into a string.
 
 <table><thead>
 </thead><tbody>
@@ -3941,7 +3954,7 @@ although this can be done at your own risk. See the section on
 
 **Invertibility:** Partly invertible via `fluid.transforms.stringToDate`.
 
-**Syntax:**
+#### Syntax:
 
 ```json
 {
@@ -3955,7 +3968,7 @@ although this can be done at your own risk. See the section on
 
 #### Examples:
 
-**Example 1: Convert a Date object into a string.**
+##### Example 1: Convert a Date object into a string.
 
 <table><thead>
 </thead><tbody>
