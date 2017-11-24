@@ -113,10 +113,10 @@ In general, the reserved words of the model transformation system are:
 | `defaultOutputPath` | `fluid.transforms.valueMapper` (top level) |
 | `defaultOutputValue` | `fluid.transforms.valueMapper` (top level) |
 | `match` | `fluid.transforms.valueMapper` (top level) |
-| `partialMatches` | "`fluid.transforms.valueMapper` (inside `match`) |
+| `partialMatches` | `fluid.transforms.valueMapper` (inside `match`) |
 | `inputValue` | `fluid.transforms.valueMapper` (inside `match`) |
 | `outputValue` | `fluid.transforms.valueMapper` (inside `match`/`noMatch`) |
-| `outputUndefinedValue` | "`fluid.transforms.valueMapper` (inside `match`/`noMatch`) |
+| `outputUndefinedValue` | `fluid.transforms.valueMapper` (inside `match`/`noMatch`) |
 | `left` | `fluid.transforms.binaryOp` |
 | `right` | `fluid.transforms.binaryOp` |
 | `operator` | `fluid.transforms.binaryOp` |
