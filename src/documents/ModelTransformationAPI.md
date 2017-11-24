@@ -3,7 +3,7 @@ title: Model Transformation API
 layout: default
 category: Infusion
 ---
-The ***model transformation*** framework is a core part of Infusion and allows you to transform an input
+The **model transformation** framework is a core part of Infusion and allows you to transform an input
 [model](FrameworkConcepts.md#model-objects) (JSON structure) based on a set of rules.
 The result will be a new model, built according to the rules specified and the input model. Many kinds of
 transformation can also have their *inverses* computed
@@ -12,7 +12,7 @@ and operated automatically.
 Any model transformation can be supplied as part of a [model relay](ModelRelay.md#explicit-model-relay-style) rule
 registered in a [fluid.modelComponent](ComponentConfigurationOptions.md#model-components)'s `modelRelay`
 block - the system will then constantly operate the transformation rule whenever there is a model change to keep the
-linked model in sync. Note that the modelRelay system does ***not*** support `xxxPath` style inputs, and steer towards
+linked model in sync. Note that the modelRelay system does **not** support `xxxPath` style inputs, and steer towards
 the use of SingleTransform rather than full transforms. For more information, see the documentation on
 [model relay](ModelRelay.md).
 

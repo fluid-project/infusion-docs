@@ -4,7 +4,7 @@ layout: default
 category: Infusion
 ---
 
-Infusion ***events*** are one of the most basic and widely used facilities in the framework. Almost every Infusion component exposes one or more events and/or listeners to events fired by itself or other components. A component opts in to the event system by mentioning `fluid.component` or some other grade derived from it such as `fluid.viewComponent` in its list of parent [Component Grades](ComponentGrades.md).
+Infusion **events** are one of the most basic and widely used facilities in the framework. Almost every Infusion component exposes one or more events and/or listeners to events fired by itself or other components. A component opts in to the event system by mentioning `fluid.component` or some other grade derived from it such as `fluid.viewComponent` in its list of parent [Component Grades](ComponentGrades.md).
 
 An Infusion event (or more precisely, a particular firing of an Infusion event) represents
 
@@ -51,7 +51,7 @@ A top-level options block named **`events`** is supported on every component der
 <strong>Note:</strong> `preventable` events are very rarely used and will soon be deprecated in the framework.
 </div>
 
-For every such entry in the `events` section of a component's options, the framework will construct a corresponding ***event firer*** with the same name in the `events` section of the constructed component. The most common use of an event firer is to call its member named `fire` with some set of arguments. Here is a simple, self-contained example:
+For every such entry in the `events` section of a component's options, the framework will construct a corresponding **event firer** with the same name in the `events` section of the constructed component. The most common use of an event firer is to call its member named `fire` with some set of arguments. Here is a simple, self-contained example:
 
 ```javascript
 fluid.defaults("examples.eventedComponent", {
@@ -97,7 +97,7 @@ In general you shouldn't fire any of a component's events unless invited to by i
 
 Both as part of defaults, and also as supplied instantiation options, an Infusion component can accept a structure named `listeners`.
 In the simplest form, the keys of the `listeners` structure are taken from the set of `events` present in the component's [Grade](ComponentGrades.md), and the values are either single listener specifications or arrays of listener specifications.
-A ***listener specification*** can take a number of forms - either being written as a simple String or Function, or as a full JSON object.
+A **listener specification** can take a number of forms - either being written as a simple String or Function, or as a full JSON object.
 The standard way of declaring a listener using Infusion's [IoC](IoCAPI.md) system is to supply the name of a global function using the member **`funcName`** or
 to supply a [reference](IoCReferences.md) to a function handle (usually an [Invoker](Invokers.md)) somewhere in the component tree using the member **`func`**.
 If your listener would like to receive different arguments than the ones that the event was fired with, you can supply references to these using the member **`args`**.
@@ -129,7 +129,7 @@ You should use the `String` forms for listener specifications rather than raw `F
 
 ### Namespaced listeners
 
-There are two more complex options for the keys held by listeners - firstly, the listener name may be qualified with a ***namespace*** following a period character `.` - this follows the jQuery convention for namespaced events. For example, the key `myEvent.myNamespace` could be used above - this still attaches the listener to exactly the same event, the one named `myEvent`, but in this case the framework will make sure that only *one* listener will ever be attached to `myEvent` which mentions the same namespace `myNamespace`. Event namespaces are useful in order to specify functional roles for listeners, and to insist that only one listener can ever fill this role at the same time. It is a good idea to namespace your listeners whenever you can.
+There are two more complex options for the keys held by listeners - firstly, the listener name may be qualified with a **namespace** following a period character `.` - this follows the jQuery convention for namespaced events. For example, the key `myEvent.myNamespace` could be used above - this still attaches the listener to exactly the same event, the one named `myEvent`, but in this case the framework will make sure that only *one* listener will ever be attached to `myEvent` which mentions the same namespace `myNamespace`. Event namespaces are useful in order to specify functional roles for listeners, and to insist that only one listener can ever fill this role at the same time. It is a good idea to namespace your listeners whenever you can.
 
 Here is an example again from Infusion's Reorderer component:
 

@@ -105,10 +105,10 @@ From here it is a simple matter to resolve them in a DIY fashion with reference 
 
 ### fluid.globalInstantiator
 
-This path holds the global ***instantiator*** which holds all the records for Infusion's IoC system. Whilst any methods
+This path holds the global **instantiator** which holds all the records for Infusion's IoC system. Whilst any methods
 on this object should not be called by applications, there are many entries in here that can aid debugging, especially
 the members `instantiator.pathToComponent` which holds a mapping for every instantiated component from its global path
-in the component tree, and `instantiator.idToShadow` which holds a mapping from every component's `id` to its ***shadow record***
+in the component tree, and `instantiator.idToShadow` which holds a mapping from every component's `id` to its **shadow record**
 which holds many useful pieces of bookkeeping, including the `mergeOptions` structure which can be used to inspect the details
 of the options merging process resulting in the component's final options.
 

@@ -74,7 +74,7 @@ promise has received `reject`, `disposition` will hold the string `"reject"`.
 ## Commentary on requirements
 
 As well as evolvability and enormous simplicity, we had a couple of other somewhat soft requirements - readability, and debuggability.
-Modern promise specifications actually ***require*** that fresh promises are constructed at every chaining point, and that every
+Modern promise specifications actually **require** that fresh promises are constructed at every chaining point, and that every
 promise resolves asynchronously even if its resolving value is available synchronously. Our implementation guarantees that no promise is
 constructed unless there is an explicit call to the constructor `fluid.promise()`. Thus it is easy to see at a glance exactly how many
 promises are in play in a given piece of code. Secondly, our implementation will synchronously relay a value which is available
@@ -89,7 +89,7 @@ conventional, synchronous code that is recaptured by no other promise system but
 A+ promises specification is a useful source of convincing argumentation that the decision in favour of universally asynchronous resolution is flawed.
 
 As a further landmark for discussion, note that in terms of the following very illuminating [category theoretic](http://brianmckenna.org/blog/category_theory_promisesaplus) treatment of
-promises (itself rejected by mainstream promises proponents), our `then` method is very definitely ***not*** "the name for `flatMap`".
+promises (itself rejected by mainstream promises proponents), our `then` method is very definitely **not** "the name for `flatMap`".
 Our `then` method is simply a "glorified callback aggregator".
 
 The implementation skeleton for Infusion's promises was taken from a code sample by John Hann (unscriptable) in this [gist](https://gist.github.com/unscriptable/814052) - full credit and thanks,
@@ -200,7 +200,7 @@ returned by one of the sources in the sequence:
 
 * `error: {Object|Error}` A rejection which has been received from a promise "to the right" of this one in a promise sequence.
 * Returns: `{Object|Error}` A rejection reason which has been "wrapped" or "decorated" in some way in order to add information about the
-  function of ***this*** promise. For example, if this promise was intended to resolve by reading a file from the filesystem, the rejection reason
+  function of **this** promise. For example, if this promise was intended to resolve by reading a file from the filesystem, the rejection reason
   could be decorated with a string like "while reading file Xxxxx". It's important that the user's implementation preserves all the information in
   the original rejection reason - if it contains a string `message`, it should be prefixed or suffixed with the additional information, or if it
   contains an error stack, it should be left untouched.
@@ -212,13 +212,13 @@ relevant when consuming a sequence of promises using one of Infusion's sequentia
 Let us imagine the promises in a sequence (array) laid out from left to right, in order of sequential execution.
 This method is called by a sequential promise algorithm when a promise somewhere in the sequence has rejected. Ordinarily, execution would
 pass directly to the overall rejection handler for the sequence. However, before this happens, the sequence algorithm will pass from
-***right to left*** from the point of rejection and inspect each of the promises in that section for an `accumulateRejectionReason` implementation.
+**right to left** from the point of rejection and inspect each of the promises in that section for an `accumulateRejectionReason` implementation.
 
 If an implementation is found, it will be called with the current rejection reason as an argument, and the return value will be used as the new
 rejection reason. The resolution algorithm then continues to the left with this new rejection reason in place, etc. Finally the fully accumulated
 rejection reason will be dispatched to the overall rejection handler.
 
-What familiar exception-handling pattern from synchronous code does this reproduce? It is the ***rethrowing pattern***, described in the Java context by
+What familiar exception-handling pattern from synchronous code does this reproduce? It is the **rethrowing pattern**, described in the Java context by
 [Bruce Eckel](http://www.mindview.net/Etc/Discussions/CheckedExceptions/). Some more general commentary is on the "original wiki" at [Nested Exception](http://c2.com/cgi/wiki?NestedException).
 Thankfully, JavaScript is free of "checked exception specifications" but both the bathwater and baby have been thrown out in that it is also free of exception wrapping.
 The promises community is still so immature that the lack of this facility has not yet even been characterised. Here is some old-fashioned sequential code illustrating what is going on here:

@@ -209,7 +209,7 @@ Returns an array of size `n`, filled with increasing integers, starting at 0 or 
 * `target {Object|Array}` The target to be cleared
 * Returns: `{Undefined}`
 
-Clears an object or array of its contents. For objects, each property is deleted. ***The input argument will be destructively modified.***
+Clears an object or array of its contents. For objects, each property is deleted. **The input argument will be destructively modified.**
 
 ## Transforming and filtering
 
@@ -273,7 +273,7 @@ var floor = fluid.roundToDecimal(1.555, 2, "floor"); // rounded now holds 1.55
 
 ### fluid.remove_if(source, fn[, target])
 
-* `source {Array|Object}` The array or hash of objects to be scanned over. This structure ***will be modified in place***. Note that in the case this is an array,
+* `source {Array|Object}` The array or hash of objects to be scanned over. This structure **will be modified in place**. Note that in the case this is an array,
   iteration will run from the end of the array towards the front, so that the index of elements yet to be removed will remain stable.
 * `fn {Function: (object {Any}, index {Number|String}) → Booleanish }` A predicate function determining whether an element should be
   removed. This accepts the standard signature `(object, index)`. If the predicate returns a "truthy" value, the corresponding object
@@ -283,7 +283,7 @@ var floor = fluid.roundToDecimal(1.555, 2, "floor"); // rounded now holds 1.55
 * Returns: `{Array|Object}` Either `target`, containing the removed elements, if it was supplied, or else `source`
   modified by the operation of removing the matched elements.
 
-Scan through a list or hash of objects, removing those which match a predicate. The source structure ***will be modified in place***.
+Scan through a list or hash of objects, removing those which match a predicate. The source structure **will be modified in place**.
 
 ### fluid.getMembers(holder, path)
 
@@ -311,7 +311,7 @@ var names = fluid.getMembers(cattes, "name");
 * Returns: `{Array|Object}` the filtered object
 
 Accepts an object to be filtered, and a list of keys. Either all keys not present in
-the list are removed (the default), or all keys present in the list are removed (`exclude: true`). The suppled object ***is not modified*** but will be shallow cloned by this operation.
+the list are removed (the default), or all keys present in the list are removed (`exclude: true`). The suppled object **is not modified** but will be shallow cloned by this operation.
 
 ### fluid.censorKeys(toCensor, keys)
 
@@ -377,7 +377,7 @@ var CATTyears = fluid.hashToArray(hash, "species", function (newElement, oldElem
 * Returns: `{Array}` The flattened array.
 
 Converts an array consisting of a mixture of arrays and non-arrays into the concatenation of any inner arrays
-with the non-array elements. The original array ***will not be modified***. See description of [mapcat](http://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
+with the non-array elements. The original array **will not be modified**. See description of [mapcat](http://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
 
 ### fluid.freezeRecursive(tofreeze)
 
@@ -447,7 +447,7 @@ Searches through the supplied object for the first value which matches the one s
 
 ### fluid.stableSort(array, func)
 
-* `array {Array of Any-Element}` The array to be sorted. ***This input array will be modified in place.***
+* `array {Array of Any-Element}` The array to be sorted. **This input array will be modified in place.**
 * `func {Function: (a {Any-Element}, b {Any-Element}) → Number}` A comparator returning >0, 0, or <0 on pairs of elements representing their sort order (same contract as [Array.sort comparator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort))
 
 Applies a stable sorting algorithm to the supplied array and comparator (note that [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) in JavaScript is not specified
@@ -704,10 +704,10 @@ to use named arguments, with names encoded in the defaults for a [`fluid.functio
 
 ## Storing and retrieving defaults
 
-Infusion's component system is organised around blocks of JSON which define [grades](ComponentGrades.md) - another way of describing a grade is as a component's ***default options***, which
+Infusion's component system is organised around blocks of JSON which define [grades](ComponentGrades.md) - another way of describing a grade is as a component's **default options**, which
 appeals to a slightly more old-fashioned notion of what a component is. These options are registered into the system and read back from it by using the API `fluid.defaults`. If the options supplied to `fluid.defaults`
 represent a [component grade](ComponentOptionsAndDefaults.md), the framework will automatically construct and register a **component creator function** in the [global namespace](#the-global-namespace) at a path
-which matches the component's grade name. Note that not all defaults correspond to a component - some of them are descended from `fluid.function` in which case they represent a ***function grade*** and hold metadata
+which matches the component's grade name. Note that not all defaults correspond to a component - some of them are descended from `fluid.function` in which case they represent a **function grade** and hold metadata
 about it. Some defaults are not descended from a framework grade at all, and are designed to be used as mixins to other grades.
 
 ### fluid.defaults(gradeName[, options])

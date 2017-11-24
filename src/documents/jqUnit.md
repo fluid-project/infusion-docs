@@ -4,7 +4,7 @@ layout: default
 category: Infusion
 ---
 
-Bundled with infusion is ***jqUnit***, a library modelled on the [xUnit](https://en.wikipedia.org/wiki/XUnit) API style. jqUnit wraps base functionality provided by the
+Bundled with infusion is **jqUnit**, a library modelled on the [xUnit](https://en.wikipedia.org/wiki/XUnit) API style. jqUnit wraps base functionality provided by the
 popular [QUnit](https://qunitjs.com/). All of the QUnit base functionality remains available in a jqUnit fixture at the `QUnit` namespace, and you should consult the QUnit documentation
 for details of packaging markup-based fixtures and its own API semantic. However, jqUnit is a complete wrapper and it is possible and recommended to write complete
 test suites without reference to QUnit. jqUnit is based on the 1.x API of QUnit, and not the (currently unreleased) 2.x version of QUnit which is API incompatible with QUnit 1.x.
@@ -47,7 +47,7 @@ Suspends QUnit's progression through its fixtures. QUnit will not continue to th
 ### jqUnit.expect(count)
 
 Informs QUnit that it must receive a certain number of successful assertions in the current fixture, or else the fixture will fail. Note that multiple successive calls to `jqUnit.expect` within the same fixture
-will be ***cumulative*** - this is different to QUnit's base behaviour for [`QUnit.expect`](http://api.qunitjs.com/expect/) where successive calls to `QUnit.expect` will overwrite the framework's expected count.
+will be **cumulative** - this is different to QUnit's base behaviour for [`QUnit.expect`](http://api.qunitjs.com/expect/) where successive calls to `QUnit.expect` will overwrite the framework's expected count.
 
 * `count: {Integer}` The number of (additional) successful assertions to be expected
 
