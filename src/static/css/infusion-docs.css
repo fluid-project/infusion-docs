@@ -141,6 +141,11 @@ a:focus {
     font-size: 1.2rem;
 }
 
+/* override the above to avoid paragraphs in tables being resized inappropriately */
+.infusion-docs-container tr td p {
+    font-size: inherit;
+}
+
 /* Styling for the hover links on headings */
 
 .infusion-docs .infusion-docs-anchor {
@@ -585,4 +590,27 @@ Instead have it appear around the enclosed
 .fl-theme-lgdg .infusion-docs-header a:hover:before {
     color: #555555 !important;
     background: #bdbdbb !important;
+}
+
+/* These definitions deal with complex formatted tables with alternating rows as seen in IoCTestingFramework.md
+ * They originally appeared in the Confluence wiki formatted verion of the table */
+/* copied from Confluence main-actions.css */
+.infusion-docs-complextable, .infusion-docs-complextable td, .infusion-docs-complextable th {
+  border:1px solid #CCCCCC;
+  padding:3px 4px;
+  vertical-align:top;
+  border-collapse: collapse;
+  }
+/** Beat foundation's built-in row shading by doubling specificity **/
+.infusion-docs-alt-a-row.infusion-docs-alt-a-row, .infusion-docs-alt-a-row code {
+  background-color: #fee;
+}
+.infusion-docs-alt-b-row.infusion-docs-alt-b-row, .infusion-docs-alt-b-row code {
+  background-color: #efe;
+}
+.infusion-docs-duckrow.infusion-docs-duckrow, .infusion-docs-duckrow code {
+  background-color: #eee;
+  }
+.infusion-docs-blockcell {
+  background-color: #fff;
 }

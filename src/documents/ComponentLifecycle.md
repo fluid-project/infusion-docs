@@ -4,8 +4,8 @@ layout: default
 category: Infusion
 ---
 
-Every Fluid component has a standard lifecycle, various points of which are signalled by firing of standard framework [events](InfusionEventSystem.md). 
-Every component which has a grade of [fluid.component](ComponentGrades.md) has these events attached, and the framework will fire them as the component reaches the appropriate 
+Every Fluid component has a standard lifecycle, various points of which are signalled by firing of standard framework [events](InfusionEventSystem.md).
+Every component which has a grade of [fluid.component](ComponentGrades.md) has these events attached, and the framework will fire them as the component reaches the appropriate
 lifecycle points. The events, in the expected order of firing for a component, are as follows:
 
 <table>
@@ -58,11 +58,11 @@ lifecycle points. The events, in the expected order of firing for a component, a
     </tbody>
 </table>
 
-Note that since JavaScript is a garbage-collected language, the component object reference and many of its members will hang around in memory during and after the destruction process, 
-although it will as noted above be detached from its parent (via a call to `delete`) and similarly all subcomponent references will be recursively detached from their parents. 
+Note that since JavaScript is a garbage-collected language, the component object reference and many of its members will hang around in memory during and after the destruction process,
+although it will as noted above be detached from its parent (via a call to `delete`) and similarly all subcomponent references will be recursively detached from their parents.
 The component author may schedule various actions to clean up any external resources (perhaps a jQuery widget, or a network connection) during the destruction process by adding listeners to the `onDestroy` event.
 
 Every Fluid component is supplied with a standard method named `destroy` which is available after `onCreate` has fired. `destroy` takes no arguments and will initiate the destruction process for the component - `onDestroy` followed by `afterDestroy`.
 
-<div class="infusion-docs-note"><strong>Note:</strong> You can detect the lifecycle status of a component by means of the standard utility <a href="CoreAPI.md#fluid-isdestroyed-component-"><code>fluid.isDestroyed(component)</code></a>
-- this will return <code>true</code> if the object reference represents a component which has been destroyed.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can detect the lifecycle status of a component by means of the standard utility <a href="CoreAPI.md#fluidisdestroyedcomponent"><code>fluid.isDestroyed(component)</code></a> - this will return <code>true</code> if the object reference represents a component which has been destroyed.
+</div>

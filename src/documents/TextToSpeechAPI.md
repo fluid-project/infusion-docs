@@ -6,8 +6,10 @@ category: Components
 
 The **Text To Speech** component uses [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section) to queue up and read texts.
 
-## Browser Support ##
+## Browser Support
+
 The Text To Speech component can be used in browsers that support [Web Speech Synthesis API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section). At the time of writing, July 26 2016, these browsers include:
+
 * Chrome 31+
 * Chrome for Android 40+
 * Safari 7.1+
@@ -18,7 +20,7 @@ The Text To Speech component can be used in browsers that support [Web Speech Sy
 <div class="infusion-docs-note"><strong>Note:</strong> find the latest browser support data for Web Speech Synthesis API from
 <a href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.</div>
 
-## Creator ##
+## Creator
 
 Use the following function to create a Text To Speech component:
 
@@ -76,9 +78,9 @@ var tts = fluid.textToSpeech({
     </tbody>
 </table>
 
-## Supported Methods ##
+## Supported Methods
 
-### queueSpeech ###
+### queueSpeech
 
 <table>
     <tbody>
@@ -128,7 +130,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### cancel ###
+### cancel
 
 <table>
     <tbody>
@@ -151,7 +153,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### pause ###
+### pause
 
 <table>
     <tbody>
@@ -174,7 +176,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### resume ###
+### resume
 
 <table>
     <tbody>
@@ -197,7 +199,7 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-### getVoices ###
+### getVoices
 
 <table>
     <tbody>
@@ -227,13 +229,13 @@ fluid.queueSpeech("Hello world", false, {
     </tbody>
 </table>
 
-## Supported Events ##
+## Supported Events
 
 <div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="InfusionEventSystem.md">Infusion Event System</a> document for a full description of infusion events.</div>
 
 The events fired by the Text To Speech component are described below.
 
-### onStart ###
+### onStart
 
 <table>
     <tbody>
@@ -256,7 +258,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### onStop ###
+### onStop
 
 <table>
     <tbody>
@@ -279,7 +281,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### onError ###
+### onError
 
 <table>
     <tbody>
@@ -302,7 +304,7 @@ The events fired by the Text To Speech component are described below.
     </tbody>
 </table>
 
-### onSpeechQueued ###
+### onSpeechQueued
 
 <table>
     <tbody>
@@ -338,8 +340,7 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
 * `model.speaking`: `true` if text is being spoken (including in a paused state), `false` otherwise
 * `model.pending`: `true` if there are text items remaining to be spoken, `false` otherwise
 
-
-## <a name="utteranceopts-option"></a>`model.utteranceOpts` Configuration ##
+## <a id="utteranceopts-option"></a>`model.utteranceOpts` Configuration
 
 <div class="infusion-docs-note"><strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration Options</a> document for a full description of infusion component options.</div>
 
@@ -349,7 +350,7 @@ Configuration of the Text To Speech component can be done through `model.utteran
 
 These attributes include:
 
-### text ###
+### text
 
 <table>
     <tbody>
@@ -357,7 +358,7 @@ These attributes include:
             <th>Description</th>
             <td>
                 The <code>text</code> attribute allows you to set the text that you wish to be spoken.
-                <div class="infusion-docs-note"><strong>Note:</strong> be careful with this attribute as it will override any text that was previously passed.</div>                
+                <div class="infusion-docs-note"><strong>Note:</strong> be careful with this attribute as it will override any text that was previously passed.</div>
             </td>
         </tr>
         <tr>
@@ -385,7 +386,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### lang ###
+### lang
 
 <table>
     <tbody>
@@ -420,7 +421,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### voice ###
+### voice
 
 <table>
     <tbody>
@@ -428,7 +429,7 @@ fluid.textToSpeech({
             <th>Description</th>
             <td>
                 The <code>voice</code> attribute must be a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a> object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code> function of the browser directly.
-                <div class="infusion-docs-note"><strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a> event to get a full list.</div>        
+                <div class="infusion-docs-note"><strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page is loaded, and you may need to wait for the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a> event to get a full list.</div>
             </td>
         </tr>
         <tr>
@@ -466,7 +467,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### volume ###
+### volume
 
 <table>
     <tbody>
@@ -501,7 +502,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### rate ###
+### rate
 
 <table>
     <tbody>
@@ -536,7 +537,7 @@ fluid.textToSpeech({
     </tbody>
 </table>
 
-### pitch ###
+### pitch
 
 <table>
     <tbody>

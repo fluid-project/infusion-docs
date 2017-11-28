@@ -135,7 +135,15 @@
                 "sectionName": "Migrating to Infusion 2.0",
                 "pages":
                 [
-                    { "pageName": "API Changes from 1.5 to 2.0", "href": "/APIChangesFrom1_5To2_0.html" }
+                    { "pageName": "API Changes from 1.5 to 2.0", "href": "/APIChangesFrom1_5To2_0.html" },
+                    { "pageName": "Deprecated in 2.0", "href": "/DeprecatedIn2_0.html" }
+                ]
+            },
+            {
+                "sectionName": "Migrating to Infusion 3.0",
+                "pages":
+                [
+                    { "pageName": "API Changes from 2.0 to 3.0", "href": "/APIChangesFrom2_0To3_0.html" }
                 ]
             }
         ]
@@ -146,10 +154,28 @@
         "sections":
         [
             {
-                "sectionName":"Getting Started",
+                "sectionName":"Developer Introduction to the Infusion Framework",
                 "pages":
                 [
-                    { "pageName": "Getting started with Infusion", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
+                    { "pageName": "Opening Remarks", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.html" },
+                    { "pageName": "Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html" },
+                    { "pageName": "Invokers", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html" },
+                    { "pageName": "Events and Inversion of Control", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html" },
+                    { "pageName": "Models and Model Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html" },
+                    { "pageName": "Views and View Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html" },
+                    { "pageName": "Subcomponents and Model Relaying", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html" },
+                    { "pageName": "Restructuring Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.html" },
+                    { "pageName": "Overriding Invokers and Refactoring", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html" },
+                    { "pageName": "Extending Designs with Existing Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.html" },
+                    { "pageName": "Transforming Model Relays", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html" },
+                    { "pageName": "Concluding Remarks", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html" }
+                ]
+            },
+            {
+                "sectionName":"Getting Started with Infusion Component Design",
+                "pages":
+                [
+                    { "pageName": "Getting Started with Infusion Component Design", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
                     { "pageName": "Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
                     { "pageName": "Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
                     { "pageName": "Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
@@ -186,7 +212,11 @@
                 "sectionName": "User Interface Options",
                 "pages":
                 [
-                    { "pageName": "User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" }
+                    { "pageName": "Setting Up User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" },
+                    { "pageName": "Working with User Interface Options", "href": "/tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.html"},
+                    { "pageName": "Using Images in Contrast Modes", "href": "/tutorial-userInterfaceOptions/UsingImagesInContrastModes.html"},
+                    { "pageName": "Style Effects and Legibility in Contrast Modes", "href": "/tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes.html"},
+                    { "pageName": "CSS 'Content' Property in Contrast Modes", "href": "/tutorial-userInterfaceOptions/ContentPropertyHighContrast.html"}
                 ]
             }
         ]
@@ -208,7 +238,11 @@
                     { "pageName": "Grid Reorderer", "href": "/to-do/GridReordererAPI.html" },
                     { "pageName": "Layout Reorderer", "href": "/to-do/LayoutReordererAPI.html" },
                     { "pageName": "Image Reorderer", "href": "/ImageReordererAPI.html" },
+                    { "pageName": "Switch", "href": "/SwitchAPI.html" },
                     { "pageName": "Text to Speech", "href": "/TextToSpeechAPI.html" },
+                    { "pageName": "Textfield", "href": "/TextfieldAPI.html" },
+                    { "pageName": "TextfieldSlider", "href": "/TextfieldSliderAPI.html" },
+                    { "pageName": "TextfieldStepper", "href": "/TextfieldStepperAPI.html" },
                     { "pageName": "User Interface Options", "href": "/UserInterfaceOptionsAPI.html" },
                     { "pageName": "Uploader", "href": "/UploaderAPI.html" },
                     { "pageName": "Undo", "href": "/to-do/UndoAPI.html" },

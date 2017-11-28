@@ -5,7 +5,7 @@ category: Tutorials
 ---
 
 ---
-Part of the [Getting Started with Infusion Tutorial](GettingStartedWithInfusion.md)
+Part of the [Getting Started with Infusion Component Design Tutorial](GettingStartedWithInfusion.md)
 
 ---
 
@@ -24,31 +24,31 @@ and an empty HTML `<select>` element will be populated with the data from the mo
 
 The Renderer can also bind the HTML to the data model, so that when users of the currency converter select a different currency or enter a different amount, the content of the data model will **automatically** be updated without any effort on your part.
 
-## Renderer Component Grade ##
+## Renderer Component Grade
 
 To use the Renderer with your component, you need to use the **rendererComponent** grade. To do this:
 
 * specify a grade of fluid.rendererComponent, and
 * provide the following:
-    * a data model
-    * an HTML template
-    * a component tree
-    * selectors
+  * a data model
+  * an HTML template
+  * a component tree
+  * selectors
 
 Each of these is discussed below.
 
-### Data Model ###
+### Data Model
 
 A renderer component supports a model (just as [Model Components](ModelComponents.md) and [View Components](ViewComponents.md) do). The model of a renderer component contains any data that is to be rendered by the component.
 
-### Templates ###
+### Templates
 
 A Renderer Template is an HTML file or snippet that provides guidance to the Renderer regarding how to render the data. The template can be provided in one of two ways:
 
 * it can simply be found in the HTML document itself, or
 * it can be loaded from a separate file.
 
-### Component Trees ###
+### Component Trees
 
 A renderer component tree is an abstract representation of how the data is to be rendered. A **renderer component** (not to be confused with [Infusion Components](../UnderstandingInfusionComponents.md))
 is a JavaScript object that represent the contents and data binding function of a view, separate from any particular rendering of it.
@@ -57,7 +57,7 @@ The simplest way to specify a component tree is to create a function that return
 
 For more detailed information, see [Renderer Component Trees](../RendererComponentTrees.md)
 
-### Selectors and Cutpoints ###
+### Selectors and Cutpoints
 
 The Infusion Renderer provides a clean separation between model and view; the HTML template and the component tree are relatively independent.
 For example, if your UI is going to allow users to select from a number of choices, your component tree will define the choices, but will be independent of whether the selection is rendered using checkboxes, a pull-down list, or some other method.
@@ -67,19 +67,19 @@ When you use the renderer component grade, the Framework automatically generates
 
 For more detailed information, see [Cutpoints](../Cutpoints.md).
 
-### Useful functions and events ###
+### Useful functions and events
 
 In addition to the standard view component features, the renderComponent automatically synthesizes and attaches a refreshView function and an afterRender event.
 
-#### refreshView: ####
+#### refreshView:
 
 The refreshView function is used to trigger/re-trigger the rendering of a component. If the "renderOnInit" option is set to "true", the component will automatically render without having to specifically call refreshView.
 
-#### afterRender: ####
+#### afterRender:
 
 The afterRender event will be fired as soon as the rendering process has finished. This is useful to know when a render component is ready or to attach new events and functions to pieces of the rendered DOM.
 
-## Example: Currency Converter ##
+## Example: Currency Converter
 
 The currency converter example we've been evolving over the course of this tutorial can be implemented as a rendererComponent.
 As in the view component version, you need to specify selectors and a model, and can define events. In this case, however, declare the grade to be `fluid.rendererComponent`:
@@ -150,10 +150,12 @@ While it is not necessary to create event handlers to update the model when user
 
 The display update can be handled by a `modelListeners` entry of the kind we have seen before:
 
-```javascript
-modelListeners: {
-    "result": {
-        func: "{that}.refreshView"
+```json5
+{
+    modelListeners: {
+        "result": {
+            func: "{that}.refreshView"
+        }
     }
 }
 ```
@@ -162,17 +164,18 @@ This directs the framework to automatically refresh the rendered view whenever t
 renderer's automatically generated `refreshView` method to trigger from any changes received to the model's `result` field.
 
 Arranging declaratively to perform the currency conversion requires a more interesting kind of definition.
-Any transformation that can be expressed as part of Infusion's [Model Transformation](../to-do/ModelTransformation.md) system can be used to construct a [Model Relay](../ModelRelay.md)
+Any transformation that can be expressed as part of Infusion's [Model Transformation](../ModelTransformationAPI.md) system can be used to construct a [Model Relay](../ModelRelay.md)
 rule which can keep two component models (or two parts of the same component model) synchronised with each other's changes, where the synchronisation automatically takes account of a transformation rule.
 In this case we can recognise that the transformation performed by this component is one of the standard rules supplied with the framework,
-[`fluid.transforms.linearScale`](ModelTransformationAPI.md#scale-value-with-optional-offset-fluid-transforms-linearscale-)
+[`fluid.transforms.linearScale`](../ModelTransformationAPI.md#scale-value-with-optional-offset-fluidtransformslinearscale)
 (if it weren't part of the standard set, it would be easy to use any suitable free function as the transforming rule).
 
-```javascript
-modelRelay: {
-    target: "result",
-    singleTransform: {
-        type: "fluid.transforms.linearScale",
+```json5
+{
+    modelRelay: {
+        target: "result",
+        singleTransform: {
+            type: "fluid.transforms.linearScale",
             input: "{that}.model.amount",
             factor: "{that}.model.currentSelection"
         }

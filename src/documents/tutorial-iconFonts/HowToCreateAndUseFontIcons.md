@@ -24,7 +24,7 @@ However, there are some shortcomings to keep in mind:
 * In situations where there is existing text accompanying an icon, specific markup containers need to be created for the icon.
 * Modifying icon fonts is as involved as generated a new icon graphic in the "traditional" way - there is no real time saved in that regard.
 
-## Procedure Summary ##
+## Procedure Summary
 
 * Create the icon and save it as an SVG graphic.
 * Use [IcoMoon](http://icomoon.io/) to generate a font from an SVG graphic.
@@ -47,7 +47,7 @@ a.myLink-icon:before {
 }
 ```
 
-## Step 1. Creating an SVG Symbol ##
+## Step 1. Creating an SVG Symbol
 
 Use illustration software to create an SVG version of the icon you want to use as a font.
 
@@ -60,7 +60,7 @@ Tips:
 
 Download Example SVG file: [pencil-icon-01.svg](../images/pencil-icon-01.svg)
 
-## Step 2. Using IcoMoon to Generate Font ##
+## Step 2. Using IcoMoon to Generate Font
 
 Steps:
 
@@ -73,7 +73,7 @@ Steps:
     * The files we are most interested in are the `./fonts/*.eot`, `./fonts/*.ttf`, and the `./index.html` files.
 6. To verify that the font looks proper, open the `./index.html` file in a web browser. If the icon doesn't look right, you may need to edit the SVG file and repeat the font generation process.
 
-## Step 3. Working with CSS and HTML ##
+## Step 3. Working with CSS and HTML
 
 Once you are satisfied with the appearance of your font, it is time to add it to your HTML and CSS markup.
 
@@ -137,8 +137,9 @@ _The Unicode (or "PUA code") for the custom font can be found in the HTML and CS
 
 **However, there is a problem** - the new icon font will replace the existing font of its container and all child elements and therefore removing any font styling you may have wanted to preserve. The next section will outline common issues and how to fix them and some best practices.
 
-## Common Issues ##
-### Preserving Existing Fonts ###
+## Common Issues
+
+### Preserving Existing Fonts
 
 In the example above, the new custom icon font was added to an element that has existing text which causes a problem - any other existing custom font will be overwritten within that container.
 
@@ -200,7 +201,7 @@ body {
 }
 ```
 
-### Images and Labels ###
+### Images and Labels
 
 It's common for images to be used in functional ways such as acting as a button within an anchor tag. For example:
 
@@ -226,7 +227,7 @@ a {
     font-family: 'CustomIcons';
 }
 a:before {
-    content: "\e001";  
+    content: "\e001";
 }
 ```
 
@@ -237,7 +238,7 @@ To bring back some semantics and to help improve accessibility, we use "aria-lab
 <a href="download.html" aria-label="Download our latest stuff!"></a>
 ```
 
-### Cross-Browser Oddities ###
+### Cross-Browser Oddities
 
 Icon fonts can appear different across browsers and across operating systems. For example, the following icon is rendered differently in Firefox in Mac OS X and in Windows despite being the same icon and the same browser.
 
@@ -246,7 +247,7 @@ Icon fonts can appear different across browsers and across operating systems. Fo
 
 To avoid these rendering problems, when creating the SVG images avoid using fine details - not only does this help eliminate details in the icon font being lost during rendering, it also helps improve usability through clearer icons.
 
-### IE8 Compatibility ###
+### IE8 Compatibility
 
 To ensure custom fonts get rendered properly in Internet Explorer 8, you will need to add `?#iefix') format('embedded-opentype')` to your CSS. For example:
 
@@ -263,11 +264,11 @@ The IE8 fix needs to be the first URL in the list of sources otherwise the font 
 
 Reference: [http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax](http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax)
 
-### Dealing with the TTF Unicode ###
+### Dealing with the TTF Unicode
 
 Ico Moon conveniently generates an HTML and CSS file for custom fonts which contain the Unicode to be used in your markup. However, in the scenario the original CSS or HTML files are unavailable, here are two ways to obtain the Unicode on Windows and Mac OS X 10.6+.
 
-**Obtaining Unicode in Windows**
+#### Obtaining Unicode in Windows
 
 1. Install the custom TTF font to the OS (usually a right-click then select "Install" from the context menu).
 2. Run Character Map (done by searching the Start menu, or by typing Win+R then "charmap").
@@ -276,7 +277,7 @@ Ico Moon conveniently generates an HTML and CSS file for custom fonts which cont
 
 ![Unicode character map](../images/Unicode-charmap.png)
 
-**Obtaining Unicode in Mac OS X 10.6 or Later**
+#### Obtaining Unicode in Mac OS X 10.6 or Later
 
 1. Enable Special Characters support as documented in this Apple Knowledge Base article: [OS X Lion: Enter special characters and symbols](http://support.apple.com/kb/ph3871)
 2. Install the custom TTF font to the OS (usually double-click, then "Install").

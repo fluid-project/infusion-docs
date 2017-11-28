@@ -7,16 +7,15 @@ category: Infusion
 The Infusion [Preferences Framework](PreferencesFramework.md) uses a _Settings Store_ to read and
 write preferences.
 
-## fluid.prefs.store ##
+## fluid.prefs.store
 
 A base grade to be used by any preference setting store.
 This component uses the following base [grades](ComponentGrades.md):
 
-* [`fluid.prefs.dataSource`](#fluid-prefs-datasource)
+* [`fluid.prefs.dataSource`](#fluidprefsdatasource)
 * [`fluid.contextAware`](ContextAwareness.md)
 
-
-## fluid.prefs.dataSource ##
+## fluid.prefs.dataSource
 
 A grade used by `fluid.prefs.store`; defines placeholders for `get` and `set` methods.
 
@@ -28,7 +27,7 @@ Method Placeholder  | Description
 <div class="infusion-docs-note"><strong>Note</strong> that no particular parameters are prescribed for these methods. It is up to the developer
 to choose whatever is appropriate for the particular implementation.</div>
 
-## fluid.prefs.cookieStore ##
+## fluid.prefs.cookieStore
 
 A settings store grade that uses a cookie for persistence.
 
@@ -48,7 +47,7 @@ A settings store grade that uses a cookie for persistence.
     </tbody>
 </table>
 
-## fluid.prefs.tempStore ##
+## fluid.prefs.tempStore
 
 A settings store mock that doesn't do persistence. This grade is useful for tests.
 
@@ -59,7 +58,7 @@ A settings store mock that doesn't do persistence. This grade is useful for test
         </tr>
         <tr>
             <td><code>get</code></td>
-            <td><code><a href="CoreAPI.md#fluid-identity-arg-">fluid.identity</a></code></td>
+            <td><code><a href="CoreAPI.md#fluididentityarg">fluid.identity</a></code></td>
         </tr>
         <tr>
             <td><code>set</code></td>
@@ -67,4 +66,3 @@ A settings store mock that doesn't do persistence. This grade is useful for test
         </tr>
     </tbody>
 </table>
-
