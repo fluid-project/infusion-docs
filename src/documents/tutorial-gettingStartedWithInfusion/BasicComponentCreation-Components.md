@@ -103,7 +103,7 @@ component directly using a JavaScript function call, Infusion components have a 
 * plain and **model** components accept a single argument: `options`
 * **view** and **renderer** components accept two arguments: `container` and `options`
 
-We'll get into what these arguments are when we talk each type of component later in this tutorial.
+We'll get into what these arguments are when we talk about each type of component later in this tutorial.
 
 ### Using IoC
 
