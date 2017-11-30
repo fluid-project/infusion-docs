@@ -25,9 +25,7 @@ The relationship between the controlling boolean preference and its dependent su
 * Not _every_ `always` panel must control a conditional subpanel.
 * Panel definitions are the same for controlling subpanels, conditional subpanels and regular subpanels; there is no difference.
 
-## Examples
-
-### Auxiliary schema for one controlling preference with two conditional preferences
+## Example: Auxiliary schema for one controlling preference with two conditional preferences
 
 ```json5
 {

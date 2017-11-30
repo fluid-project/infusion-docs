@@ -965,7 +965,7 @@ It is primarily used by the framework in its shorthand notation (see examples). 
 </tbody>
 </table>
 
-###### Example 2: Short notation
+##### Example 2: Short notation
 
 Note that this transform is implicit when using a string as a value to a key, where a `transform` directive would usually be expected.
 
@@ -1039,7 +1039,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 </tbody>
 </table>
 
-###### Example 2: The content of literal value will not be transformed further
+##### Example 2: The content of literal value will not be transformed further
 
 <table><thead>
 </thead><tbody>
@@ -1114,7 +1114,7 @@ Note that this transform is implicit when using a string as a value to a key, wh
 </tbody>
 </table>
 
-###### Example 2: Non-number string
+##### Example 2: Non-number string
 
 <table><thead>
 </thead><tbody>
@@ -1187,7 +1187,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-###### Example 2: Non-number string
+##### Example 2: Non-number string
 
 <table><thead>
 </thead><tbody>
@@ -1214,7 +1214,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-###### Example 3: Number conversion with scale
+##### Example 3: Number conversion with scale
 
 <table><thead>
 </thead><tbody>
@@ -1244,7 +1244,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-###### Example 4: Number conversion with scale and method
+##### Example 4: Number conversion with scale and method
 
 <table><thead>
 </thead><tbody>
@@ -1275,7 +1275,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-###### Example 5: Number conversion with invalid scale
+##### Example 5: Number conversion with invalid scale
 
 <table><thead>
 </thead><tbody>
@@ -1341,7 +1341,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-###### Example 2: Using path as input
+##### Example 2: Using path as input
 
 <table><thead>
 </thead><tbody>
@@ -1371,7 +1371,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-###### Example 3: Primitive value as input
+##### Example 3: Primitive value as input
 
 <table><thead>
 </thead><tbody>
@@ -1443,7 +1443,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-###### Example 2: Round to one decimal place
+##### Example 2: Round to one decimal place
 
 <table><thead>
 </thead><tbody>
@@ -1472,7 +1472,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-###### Example 3: Round to one decimal place using a specified rounding method
+##### Example 3: Round to one decimal place using a specified rounding method
 
 <table><thead>
 </thead><tbody>
@@ -1552,7 +1552,7 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 </tbody>
 </table>
 
-###### Example 2: Ignores undefined values
+##### Example 2: Ignores undefined values
 
 <table><thead>
 </thead><tbody>
@@ -1781,7 +1781,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-###### Example 2: Shorthand with non-primitive output values
+##### Example 2: Shorthand with non-primitive output values
 
 <table><thead>
 </thead><tbody>
@@ -1818,7 +1818,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-###### Example 3: Longhand syntax with noMatch
+##### Example 3: Longhand syntax with noMatch
 
 <table><thead>
 </thead><tbody>
@@ -1858,7 +1858,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-###### Example 4: Longhand syntax with partial Matches
+##### Example 4: Longhand syntax with partial Matches
 
 <table><thead>
 </thead><tbody>
@@ -1911,7 +1911,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-###### Example 5: defaultInput provided
+##### Example 5: defaultInput provided
 
 <table><thead>
 </thead><tbody>
@@ -1945,7 +1945,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </tbody>
 </table>
 
-###### Example 6: Nested transformation
+##### Example 6: Nested transformation
 
 <table><thead>
 </thead><tbody>
@@ -2150,7 +2150,7 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </tbody>
 </table>
 
-###### Example 2: Fallback from path
+##### Example 2: Fallback from path
 
 <table><thead>
 </thead><tbody>
@@ -2179,7 +2179,7 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </tbody>
 </table>
 
-###### Example 3: Nested transform
+##### Example 3: Nested transform
 
 <table><thead>
 </thead><tbody>
@@ -2218,7 +2218,7 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 </tbody>
 </table>
 
-###### Example 4: Using an undefined input
+##### Example 4: Using an undefined input
 
 If either the `left` or `right` (or their path equivalents) evaluate to `undefined` and there is no default in case of using path, the result of the transform will be `undefined`.
 
@@ -2300,7 +2300,7 @@ transform: {
 </tbody>
 </table>
 
-###### Example 2: Only some variables specified
+##### Example 2: Only some variables specified
 
 In this example, since no value is found at `some.path`, the factor will default to 1, outputting `12*1+0=12`. If a value was instead found (say, 12) the output would have been `12*12+0=144`
 
@@ -2329,7 +2329,7 @@ In this example, since no value is found at `some.path`, the factor will default
 </tbody>
 </table>
 
-###### Example 3: Only some variables specified
+##### Example 3: Only some variables specified
 
 This example uses the same transformation rule as above, but in this case a value is found at factorPath, so this will be used as factor. Since `offset` is not specified, the value 0 will be used for this.
 
@@ -2438,7 +2438,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-##### Example 2: Standard usage of quantize transformer - hitting lower bound
+#### Example 2: Standard usage of quantize transformer - hitting lower bound
 
 <table><thead>
 </thead><tbody>
@@ -2481,7 +2481,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-###### Example 3: Standard usage of quantize transformer - hitting upper bound
+#### Example 3: Standard usage of quantize transformer - hitting upper bound
 
 <table><thead>
 </thead><tbody>
@@ -2577,7 +2577,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-##### Example 2: Standard usage of inRange transformer (out of range)
+#### Example 2: Standard usage of inRange transformer (out of range)
 
 <table><thead>
 </thead><tbody>
@@ -2608,7 +2608,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-###### Example 3: Open ended usage of inRange transformer
+#### Example 3: Open ended usage of inRange transformer
 
 <table><thead>
 </thead><tbody>
@@ -2638,7 +2638,7 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 </tbody>
 </table>
 
-###### Example 4: Range endpoints are inclusive
+#### Example 4: Range endpoints are inclusive
 
 <table><thead>
 </thead><tbody>
@@ -2737,7 +2737,7 @@ In this example, the `key` provided in our transform function is `product`. This
 </tbody>
 </table>
 
-###### Example 2: Using InnerValue for transforms
+##### Example 2: Using InnerValue for transforms
 
 An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of the array should be declared here. The input paths within the innerValue block will be relative to the original array entry.
 
@@ -2863,7 +2863,7 @@ bar: [
 </tbody>
 </table>
 
-###### Example 2: Using InnerValue for transforms
+##### Example 2: Using InnerValue for transforms
 
 An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of the array should be declared here. The input paths within the innerValue block will be relative to the original array entry.
 
@@ -3430,7 +3430,7 @@ transform: {
 </tbody>
 </table>
 
-###### Example 2: Not defining presentValue and missingValue
+##### Example 2: Not defining presentValue and missingValue
 
 <table><thead>
 </thead><tbody>
@@ -3790,7 +3790,7 @@ Anything else (0, false, null, etc.) returns "false".
 </tbody>
 </table>
 
-###### Example 2: Add spaces and carriage returns to the stringified output.
+##### Example 2: Add spaces and carriage returns to the stringified output.
 
 You can pass the `space` option to control whether spaces are included between keys and values in the string output. A
 positive value also results in carriage returns between key/value pairs.  The default value for `space` is 0, which

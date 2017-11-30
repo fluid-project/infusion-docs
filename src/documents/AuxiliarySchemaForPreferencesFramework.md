@@ -43,7 +43,7 @@ Preference blocks can be given any property name, so long as the name is unique 
   * specifies the configuration for the enactor component
   * each preference block can specify only one enactor
 
-#### Panel properties
+### Panel properties
 
 * `type`
   * used to identify the component to use
@@ -57,7 +57,7 @@ Preference blocks can be given any property name, so long as the name is unique 
   * the path to the message bundle for the panel
   * provided the term name defined in [the top level `terms` property](#top-level-properties) for the path to the directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
 
-#### Enactor properties
+### Enactor properties
 
 * `type`
   * used to identify the component to use
