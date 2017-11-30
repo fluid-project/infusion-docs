@@ -18,7 +18,7 @@ var prefsEditor = fluid.prefs.create(container);
 var prefsEditorWithOptions = fluid.prefs.create(container, options);
 ```
 
-### Parameters
+## Parameters
 
 <table>
 <tr>
@@ -31,7 +31,7 @@ var prefsEditorWithOptions = fluid.prefs.create(container, options);
 </tr>
 </table>
 
-### Return Value
+## Return Value
 
 <table>
 <tr>
@@ -40,7 +40,7 @@ var prefsEditorWithOptions = fluid.prefs.create(container, options);
 </tr>
 </table>
 
-### Options
+## Options
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
@@ -64,7 +64,7 @@ var prefsEditorWithOptions = fluid.prefs.create(container, options);
 </tr>
 </table>
 
-#### Builder Options
+### Builder Options
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
@@ -108,7 +108,7 @@ name of a grade that includes an auxiliary schema.</td>
 If you provide both, they will be merged (with the `auxiliarySchema` overriding anything in the grade schema), but you
 must provide at least one.
 
-#### PrefsEditor Options
+### PrefsEditor Options
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>

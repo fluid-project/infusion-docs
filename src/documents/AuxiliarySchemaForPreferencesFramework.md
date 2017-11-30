@@ -49,7 +49,7 @@ will have the following properties:
   * specifies the configuration for the enactor component
   * each preference block can specify only one enactor
 
-#### Panel properties
+### Panel properties
 
 * `type`
   * used to identify the component to use
@@ -67,7 +67,7 @@ will have the following properties:
     directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by
     `messagePrefix` as part of the path
 
-#### Enactor properties
+### Enactor properties
 
 * `type`
   * used to identify the component to use

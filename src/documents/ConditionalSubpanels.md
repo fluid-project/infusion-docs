@@ -31,9 +31,7 @@ displayed only if the specified preference is true.
 * Panel definitions are the same for controlling subpanels, conditional subpanels and regular subpanels; there is no
   difference.
 
-## Examples
-
-### Auxiliary schema for one controlling preference with two conditional preferences
+## Example: Auxiliary schema for one controlling preference with two conditional preferences
 
 ```json5
 {

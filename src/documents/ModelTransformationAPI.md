@@ -1003,7 +1003,7 @@ It is primarily used by the framework in its shorthand notation (see examples). 
 </tbody>
 </table>
 
-###### Example 2: Short notation
+##### Example 2: Short notation
 
 Note that this transform is implicit when using a string as a value to a key, where a `transform` directive would
 usually be expected.
@@ -1081,7 +1081,7 @@ It will always produce the same value independent of the source model/document.
 </tbody>
 </table>
 
-###### Example 2: The content of literal value will not be transformed further
+##### Example 2: The content of literal value will not be transformed further
 
 <table><thead>
 </thead><tbody>
@@ -1159,7 +1159,7 @@ number, `undefined` will be returned.
 </tbody>
 </table>
 
-###### Example 2: Non-number string
+##### Example 2: Non-number string
 
 <table><thead>
 </thead><tbody>
@@ -1236,7 +1236,7 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
 </tbody>
 </table>
 
-###### Example 2: Non-number string
+##### Example 2: Non-number string
 
 <table><thead>
 </thead><tbody>
@@ -1263,7 +1263,7 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
 </tbody>
 </table>
 
-###### Example 3: Number conversion with scale
+##### Example 3: Number conversion with scale
 
 <table><thead>
 </thead><tbody>
@@ -1293,7 +1293,7 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
 </tbody>
 </table>
 
-###### Example 4: Number conversion with scale and method
+##### Example 4: Number conversion with scale and method
 
 <table><thead>
 </thead><tbody>
@@ -1324,7 +1324,7 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
 </tbody>
 </table>
 
-###### Example 5: Number conversion with invalid scale
+##### Example 5: Number conversion with invalid scale
 
 <table><thead>
 </thead><tbody>
@@ -1393,7 +1393,7 @@ object, 1 will be returned.
 </tbody>
 </table>
 
-###### Example 2: Using path as input
+##### Example 2: Using path as input
 
 <table><thead>
 </thead><tbody>
@@ -1423,7 +1423,7 @@ object, 1 will be returned.
 </tbody>
 </table>
 
-###### Example 3: Primitive value as input
+##### Example 3: Primitive value as input
 
 <table><thead>
 </thead><tbody>
@@ -1499,7 +1499,7 @@ rounding method to use and defaults to `"round"`. Numbers are rounded as follows
 </tbody>
 </table>
 
-###### Example 2: Round to one decimal place
+##### Example 2: Round to one decimal place
 
 <table><thead>
 </thead><tbody>
@@ -1528,7 +1528,7 @@ rounding method to use and defaults to `"round"`. Numbers are rounded as follows
 </tbody>
 </table>
 
-###### Example 3: Round to one decimal place using a specified rounding method
+##### Example 3: Round to one decimal place using a specified rounding method
 
 <table><thead>
 </thead><tbody>
@@ -1610,7 +1610,7 @@ Returns the first entry of the array that does not evaluate to undefined. The in
 </tbody>
 </table>
 
-###### Example 2: Ignores undefined values
+##### Example 2: Ignores undefined values
 
 <table><thead>
 </thead><tbody>
@@ -1856,7 +1856,7 @@ Else they should be objects with the same format in the longhand syntax describe
 </tbody>
 </table>
 
-###### Example 2: Shorthand with non-primitive output values
+##### Example 2: Shorthand with non-primitive output values
 
 <table><thead>
 </thead><tbody>
@@ -1893,7 +1893,7 @@ Else they should be objects with the same format in the longhand syntax describe
 </tbody>
 </table>
 
-###### Example 3: Longhand syntax with noMatch
+##### Example 3: Longhand syntax with noMatch
 
 <table><thead>
 </thead><tbody>
@@ -1933,7 +1933,7 @@ Else they should be objects with the same format in the longhand syntax describe
 </tbody>
 </table>
 
-###### Example 4: Longhand syntax with partial Matches
+##### Example 4: Longhand syntax with partial Matches
 
 <table><thead>
 </thead><tbody>
@@ -1986,7 +1986,7 @@ Else they should be objects with the same format in the longhand syntax describe
 </tbody>
 </table>
 
-###### Example 5: defaultInput provided
+##### Example 5: defaultInput provided
 
 <table><thead>
 </thead><tbody>
@@ -2020,7 +2020,7 @@ Else they should be objects with the same format in the longhand syntax describe
 </tbody>
 </table>
 
-###### Example 6: Nested transformation
+##### Example 6: Nested transformation
 
 <table><thead>
 </thead><tbody>
@@ -2233,7 +2233,7 @@ of the input variables can be used as fallbacks.
 </tbody>
 </table>
 
-###### Example 2: Fallback from path
+##### Example 2: Fallback from path
 
 <table><thead>
 </thead><tbody>
@@ -2262,7 +2262,7 @@ of the input variables can be used as fallbacks.
 </tbody>
 </table>
 
-###### Example 3: Nested transform
+##### Example 3: Nested transform
 
 <table><thead>
 </thead><tbody>
@@ -2301,7 +2301,7 @@ of the input variables can be used as fallbacks.
 </tbody>
 </table>
 
-###### Example 4: Using an undefined input
+##### Example 4: Using an undefined input
 
 If either the `left` or `right` (or their path equivalents) evaluate to `undefined` and there is no default in case of
 using path, the result of the transform will be `undefined`.
@@ -2390,7 +2390,7 @@ transform: {
 </tbody>
 </table>
 
-###### Example 2: Only some variables specified
+##### Example 2: Only some variables specified
 
 In this example, since no value is found at `some.path`, the factor will default to 1, outputting `12*1+0=12`. If a
 value was instead found (say, 12) the output would have been `12*12+0=144`
@@ -2420,7 +2420,7 @@ value was instead found (say, 12) the output would have been `12*12+0=144`
 </tbody>
 </table>
 
-###### Example 3: Only some variables specified
+##### Example 3: Only some variables specified
 
 This example uses the same transformation rule as above, but in this case a value is found at factorPath, so this will
 be used as factor. Since `offset` is not specified, the value 0 will be used for this.
@@ -2536,7 +2536,7 @@ range is from the previous `upperBound` to infinity.
 </tbody>
 </table>
 
-##### Example 2: Standard usage of quantize transformer - hitting lower bound
+#### Example 2: Standard usage of quantize transformer - hitting lower bound
 
 <table><thead>
 </thead><tbody>
@@ -2579,7 +2579,7 @@ range is from the previous `upperBound` to infinity.
 </tbody>
 </table>
 
-###### Example 3: Standard usage of quantize transformer - hitting upper bound
+#### Example 3: Standard usage of quantize transformer - hitting upper bound
 
 <table><thead>
 </thead><tbody>
@@ -2679,7 +2679,7 @@ specifying one of these.
 </tbody>
 </table>
 
-##### Example 2: Standard usage of inRange transformer (out of range)
+#### Example 2: Standard usage of inRange transformer (out of range)
 
 <table><thead>
 </thead><tbody>
@@ -2710,7 +2710,7 @@ specifying one of these.
 </tbody>
 </table>
 
-###### Example 3: Open ended usage of inRange transformer
+#### Example 3: Open ended usage of inRange transformer
 
 <table><thead>
 </thead><tbody>
@@ -2740,7 +2740,7 @@ specifying one of these.
 </tbody>
 </table>
 
-###### Example 4: Range endpoints are inclusive
+#### Example 4: Range endpoints are inclusive
 
 <table><thead>
 </thead><tbody>
@@ -2854,7 +2854,7 @@ in our output object. The output object will contain, for each key, the remainin
 </tbody>
 </table>
 
-###### Example 2: Using InnerValue for transforms
+##### Example 2: Using InnerValue for transforms
 
 An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of
 the array should be declared here. The input paths within the innerValue block will be relative to the original array
@@ -2997,7 +2997,7 @@ bar: [
 </tbody>
 </table>
 
-###### Example 2: Using InnerValue for transforms
+##### Example 2: Using InnerValue for transforms
 
 An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of
 the array should be declared here. The input paths within the innerValue block will be relative to the original array
@@ -3584,7 +3584,7 @@ transform: {
 </tbody>
 </table>
 
-###### Example 2: Not defining presentValue and missingValue
+##### Example 2: Not defining presentValue and missingValue
 
 <table><thead>
 </thead><tbody>
@@ -3954,7 +3954,7 @@ Transform an object to a string using `JSON.stringify`.
 </tbody>
 </table>
 
-###### Example 2: Add spaces and carriage returns to the stringified output.
+##### Example 2: Add spaces and carriage returns to the stringified output.
 
 You can pass the `space` option to control whether spaces are included between keys and values in the string output. A
 positive value also results in carriage returns between key/value pairs.  The default value for `space` is 0, which
