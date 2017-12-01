@@ -37,7 +37,6 @@ module.exports = function (grunt) {
                 options: {
                     config: {
                         // See https://github.com/DavidAnson/markdownlint#rules--aliases for rule names and meanings.
-                        "no-emphasis-as-header": false, // We use this far too often in fairly legitimate contexts i.e. for a line of actual emphasis that we should discuss
                         "no-duplicate-header": false, // We use duplicate nested headers, as in section 1 and 2 both have the same sub-section name.
                         "no-trailing-punctuation": false,  // This catches headings that are questions, which seems wrong.
                         "first-header-h1": false, // Docpad takes care of this for us.

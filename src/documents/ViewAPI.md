@@ -87,7 +87,7 @@ holding a label associated with a particular DOM node in the document.
 * `element {jQueryable}` A selector, DOM element or jQuery representing the DOM node on whose behalf a live region label is required
 * `text {String}` The string to be entered into the live region - this will be announced "soon" depending on the "politeness setting" attached to the `aria-live` attribute of the region (default: `"polite"`)
 * `options {AriaLabellerOptions}` [optional] A set of options for configuring the behaviour of the labeller. These options are described in the [table below](#structure-of-arialabelleroptions).
-* Returns: `{Component}` An Infusion [view component](ComponentConfigurationOptions.md#view-components) managing the interaction with the label. ***Note:*** disposing of this component is the responsibility of the caller. If you have destroyed the markup to which this component is attached, you must destroy the component using its `destroy()` method or it will leak. Successive calls to `fluid.updateAriaLabel` for the same DOM node will return the same component.
+* Returns: `{Component}` An Infusion [view component](ComponentConfigurationOptions.md#view-components) managing the interaction with the label. **Note:** disposing of this component is the responsibility of the caller. If you have destroyed the markup to which this component is attached, you must destroy the component using its `destroy()` method or it will leak. Successive calls to `fluid.updateAriaLabel` for the same DOM node will return the same component.
 
 #### Structure of `AriaLabellerOptions`
 
@@ -107,7 +107,7 @@ Infusion includes two "major utilities" for managing focus interactions, [`fluid
 
 ### fluid.globalDismissal(nodes[, dismissFunc])
 
-* `nodes {Object: String  → DomElement|jQuery}` A free hash of names onto nodes that a click ***outside*** of will trigger `dismissFunc`
+* `nodes {Object: String  → DomElement|jQuery}` A free hash of names onto nodes that a click **outside** of will trigger `dismissFunc`
 * `dismissFunc {Function: DomEvent  →  None}|Undefined` A function which will be executed when a "dismissal click" is received in the document. If this argument is not supplied, any existing dismissal function will be disarmed.
 
 Used in the stereotypical situation where a click event (morally, one which shifts focus outside a dialog or other region of interaction - but only actual `click` events
@@ -144,10 +144,10 @@ broadly useful.</div>
 
 | Name | Type | Description | Default |
 |------|------|-------------|---------|
-|`exclusions`|<code>Object: String  → DomElement&#124;jQuery</code>| A free hash of names onto nodes that a click ***outside*** of will trigger `handler`, *** OR *** that a focus event received within the time window of `delay` from a blur event on `control` will *** cancel *** notification of `handler`| none |
+|`exclusions`|<code>Object: String  → DomElement&#124;jQuery</code>| A free hash of names onto nodes that a click **outside** of will trigger `handler`, **OR** that a focus event received within the time window of `delay` from a blur event on `control` will **cancel** notification of `handler`| none |
 |`handler`|`Function: (jQueryable)  →  None`| A function which will be invoked when the component has determined that a meaningful blur has been triggered on `control`. It will be invoked with `control` as the argument.| none |
 |`delay`|`Number`| The interval of time (in ms) that the component will wait after receiving a `blur` event on `control` in order to determine that the reason is that another element within `exclusions` is being focused.|150|
-|`backDelay`|`Number`| The interval of time *** before *** a `blur` event in which the component will be sensitive to an anomalous `pre-focusing` of an element within `exclusions` (primarily useful on Internet Explorer)|100|
+|`backDelay`|`Number`| The interval of time **before** a `blur` event in which the component will be sensitive to an anomalous `pre-focusing` of an element within `exclusions` (primarily useful on Internet Explorer)|100|
 |`cancelByDefault`|`Boolean`| If `true`, the focus timer logic of `deadMansBlur` is disabled and it the user is expected to operate the component manually (unsupported API)|`false`|
 
 ### fluid.getLastFocusedElement()

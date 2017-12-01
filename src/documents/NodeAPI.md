@@ -79,7 +79,7 @@ Holds for public inspection Infusion's records of modules as registered via `flu
 
 ## Global nature of Infusion and self-deduping
 
-It is essential that just a ***single*** instance of Infusion's [node module](https://www.npmjs.com/package/infusion) is present in
+It is essential that just a **single** instance of Infusion's [node module](https://www.npmjs.com/package/infusion) is present in
 an application's module tree. This is essential for Infusion because of its global nature — duplicate
 modules will result in some [grade](ComponentGrades.md) definitions being sent to
 one Infusion instance and some to another, resulting in "global chaos". Normally `npm`'s standard deduplication algorithm is sufficient, but it can often fail in the case of version mismatches

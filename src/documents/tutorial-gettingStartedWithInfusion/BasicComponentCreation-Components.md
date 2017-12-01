@@ -94,7 +94,7 @@ In the rare case you need to construct a component directly using a JavaScript f
 * plain and **model** components accept a single argument: `options`
 * **view** and **renderer** components accept two arguments: `container` and `options`
 
-_(We'll get into what these arguments are soon.)_
+We'll get into what these arguments are when we talk about each type of component later in this tutorial.
 
 ### Using IoC
 

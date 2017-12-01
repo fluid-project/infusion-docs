@@ -209,7 +209,7 @@ Returns an array of size `n`, filled with increasing integers, starting at 0 or 
 * `target {Object|Array}` The target to be cleared
 * Returns: `{Undefined}`
 
-Clears an object or array of its contents. For objects, each property is deleted. *** The input argument will be destructively modified ***
+Clears an object or array of its contents. For objects, each property is deleted. **The input argument will be destructively modified.**
 
 ## Transforming and filtering
 
@@ -273,7 +273,7 @@ var floor = fluid.roundToDecimal(1.555, 2, "floor"); // rounded now holds 1.55
 
 ### fluid.remove_if(source, fn[, target])
 
-* `source {Array|Object}` The array or hash of objects to be scanned over. This structure *** will be modified in place ***. Note that in the case this is an array,
+* `source {Array|Object}` The array or hash of objects to be scanned over. This structure **will be modified in place**. Note that in the case this is an array,
   iteration will run from the end of the array towards the front, so that the index of elements yet to be removed will remain stable.
 * `fn {Function: (object {Any}, index {Number|String}) → Booleanish }` A predicate function determining whether an element should be
   removed. This accepts the standard signature `(object, index)`. If the predicate returns a "truthy" value, the corresponding object
@@ -283,7 +283,7 @@ var floor = fluid.roundToDecimal(1.555, 2, "floor"); // rounded now holds 1.55
 * Returns: `{Array|Object}` Either `target`, containing the removed elements, if it was supplied, or else `source`
   modified by the operation of removing the matched elements.
 
-Scan through a list or hash of objects, removing those which match a predicate. The source structure *** will be modified in place ***.
+Scan through a list or hash of objects, removing those which match a predicate. The source structure **will be modified in place**.
 
 ### fluid.getMembers(holder, path)
 
@@ -311,7 +311,7 @@ var names = fluid.getMembers(cattes, "name");
 * Returns: `{Array|Object}` the filtered object
 
 Accepts an object to be filtered, and a list of keys. Either all keys not present in
-the list are removed (the default), or all keys present in the list are removed (`exclude: true`). The suppled object *** is not modified *** but will be shallow cloned by this operation.
+the list are removed (the default), or all keys present in the list are removed (`exclude: true`). The suppled object **is not modified** but will be shallow cloned by this operation.
 
 ### fluid.censorKeys(toCensor, keys)
 
@@ -377,7 +377,7 @@ var CATTyears = fluid.hashToArray(hash, "species", function (newElement, oldElem
 * Returns: `{Array}` The flattened array.
 
 Converts an array consisting of a mixture of arrays and non-arrays into the concatenation of any inner arrays
-with the non-array elements. The original array *** will not be modified ***. See description of [mapcat](http://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
+with the non-array elements. The original array **will not be modified**. See description of [mapcat](http://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
 
 ### fluid.freezeRecursive(tofreeze)
 
@@ -447,7 +447,7 @@ Searches through the supplied object for the first value which matches the one s
 
 ### fluid.stableSort(array, func)
 
-* `array {Array of Any-Element}` The array to be sorted. *** This input array will be modified in place. ***
+* `array {Array of Any-Element}` The array to be sorted. **This input array will be modified in place.**
 * `func {Function: (a {Any-Element}, b {Any-Element}) → Number}` A comparator returning >0, 0, or <0 on pairs of elements representing their sort order (same contract as [Array.sort comparator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort))
 
 Applies a stable sorting algorithm to the supplied array and comparator (note that [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) in JavaScript is not specified
@@ -611,13 +611,13 @@ accepted from external users.
 
 ### fluid.log([logLevel, arg1, ... argn])
 
-* `logLevel {LogLevel}` [optional] One of the members of the `evel` structure or in general some `fluid.marker` with a numeric value holding a priority
+* `logLevel {LogLevel}` [optional] One of the members of the `fluid.logLevel` structure or in general some `fluid.marker` with a numeric value holding a priority
 * `arg1 ... argn {Stringable}` A sequence of arguments to be logged. By default these will be handed unchanged to the multiple arguments of `console.log`. It is wise to convert these
   to `String` yourself (e.g. by `JSON.stringify`) if i) this is safe, and ii) you would not be satisfied by the environment's rendering.
 
 Log a message to a suitable environmental console (in current implementations, `console.log`). If the first argument to `fluid.log` is
-one of the members of the [`evel`](#fluidloglevel) structure, this will be taken as the priority of the logged message - else it
-will default to [`evel.INFO`](#fluidloglevel). If the logged message priority does not exceed that set by the most recent call to the [`fluid.setLogging`](#fluidsetloggingloglevel) function,
+one of the members of the [`fluid.logLevel`](#fluidloglevel) structure, this will be taken as the priority of the logged message - else it
+will default to [`fluid.logLevel.INFO`](#fluidloglevel). If the logged message priority does not exceed that set by the most recent call to the [`fluid.setLogging`](#fluidsetloggingloglevel) function,
 the logging action will be suppressed.
 
 ### fluid.logLevel
@@ -640,8 +640,8 @@ of higher priority than higher numbers. The system maintains a current "logging 
 * `logLevel {Boolean|LogLevel}` The system logging level to be made current and to be pushed onto the top of the system's stack of logging levels.
 
 Push a value onto the stack of the system's current logging levels. This will become the system's current logging level until there is a corresponding call to `fluid.popLogging`. The argument may either be a boolean,
-in which case one of the standard logging levels (`true: evel.INFO` / `false: evel.IMPORTANT`) will be selected, or else one of the members of the `evel` structure or a `LogLevel` marker
-in general. The stack is initialised with a single element of `evel.IMPORTANT`.
+in which case one of the standard logging levels (`true: fluid.logLevel.INFO` / `false: fluid.logLevel.IMPORTANT`) will be selected, or else one of the members of the `fluid.logLevel` structure or a `LogLevel` marker
+in general. The stack is initialised with a single element of `fluid.logLevel.IMPORTANT`.
 
 ### fluid.popLogging()
 
@@ -653,7 +653,7 @@ If the stack has only its one original element, this call is a no-op.
 * `testLogLevel {LogLevel}` The log level against which the system's current logging level is to be checked.
 * Returns: `{Boolean}` - `true` if a message supplied at that log priority would be logged at the current logging level.
 
-Accepts one of the members of the `evel` structure or a `LogLevel` object in general. Returns `true` if
+Accepts one of the members of the `fluid.logLevel` structure or a `LogLevel` object in general. Returns `true` if
 a message supplied at that log priority would be logged at the current logging level. Clients who
 issue particularly expensive log payload arguments are recommended to guard their logging statements with this
 
@@ -675,7 +675,7 @@ the standard event `fluid.failureEvent`
 ### fluid.failureEvent
 
 * `log` - the namespace for the listener which logs the failure to a suitable environment. By default this fires to `fluid.logFailure` which forwards to `fluid.log` before also logging the state of the IoC system by
-  using `ctivity`
+  using  `fluid.logActivity`
 * `fail` - the namespace for the listener which enacts any failure behaviour. By default this calls `fluid.fail` but in a testing environment, for example, will react by failing any current test, or
   in an HTTP server by aborting the handling of any current request with a suitable HTTP status code and message.
 
@@ -730,7 +730,7 @@ we intend that Infusion global names should be handled in an analogous way.
 
 * `functionPath {String|Array of String}` The global path holding the function which is to be invoked
 * `args {Array|Any}` The array of arguments to be supplied to the function. If `args` is not an array, `fluid.makeArray` will be called on it first.
-* Returns: {Any} Any return value from the function which was invoked
+* Returns: `{Any}` Any return value from the function which was invoked
 
 Invokes a function held at a particular global path with the supplied arguments. Equivalent to `fluid.getGlobalValue` followed by `Function.apply(null, args)`.
 
@@ -748,21 +748,21 @@ to use named arguments, with names encoded in the defaults for a [`fluid.functio
 
 ## Storing and retrieving defaults
 
-Infusion's component system is organised around blocks of JSON which define [grades](ComponentGrades.md) - another way of describing a grade is as a component's *** default options ***, which
+Infusion's component system is organised around blocks of JSON which define [grades](ComponentGrades.md) - another way of describing a grade is as a component's **default options**, which
 appeals to a slightly more old-fashioned notion of what a component is. These options are registered into the system and read back from it by using the API `fluid.defaults`. If the options supplied to `fluid.defaults`
 represent a [component grade](ComponentOptionsAndDefaults.md), the framework will automatically construct and register a **component creator function** in the [global namespace](#the-global-namespace) at a path
-which matches the component's grade name. Note that not all defaults correspond to a component - some of them are descended from `fluid.function` in which case they represent a ***function grade*** and hold metadata
+which matches the component's grade name. Note that not all defaults correspond to a component - some of them are descended from `fluid.function` in which case they represent a **function grade** and hold metadata
 about it. Some defaults are not descended from a framework grade at all, and are designed to be used as mixins to other grades.
 
 ### fluid.defaults(gradeName[, options])
 
 * `gradeName {String}` The fully-qualified name of the grade whose defaults are to be read or written.
 * `options {Object}` [optional] The defaults which are to be registered for the grade. If this argument is omitted, the existing defaults are read and returned.
-* Returns: {Object}  If the function was called with 1 argument, any defaults already registered for the component. These read defaults will already have gone through [options merging](OptionsMerging.md) and have the contents
+* Returns: `{Object}`  If the function was called with 1 argument, any defaults already registered for the component. These read defaults will already have gone through [options merging](OptionsMerging.md) and have the contents
   of any parent grades resolved in them. If you want to read exactly the raw defaults information that was registered for this grade, instead use [`fluid.rawDefaults`](#fluidrawdefaultsgradename-options)
 
 ### fluid.rawDefaults(gradeName[, options])
 
 * `gradeName {String}` The fully-qualified name of the grade whose defaults are to be read or written.
 * `options {Object}` [optional] The defaults which are to be registered for the grade. If this argument is omitted, the existing defaults are read and returned.
-* Returns: {Object} The raw defaults registered for this grade, without being resolved against parent grades by [options merging](OptionsMerging.md).
+* Returns: `{Object}` The raw defaults registered for this grade, without being resolved against parent grades by [options merging](OptionsMerging.md).
