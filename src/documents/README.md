@@ -24,6 +24,8 @@ layout: default
 * [Model Transformation API](ModelTransformationAPI.md)
 * [View API](ViewAPI.md)
 * [DOM Binder API](DOMBinderAPI.md)
+* [Data Source API](DataSourceAPI.md)
+* [Remote Model API](RemoteModelAPI.md)
 * [node.js Support and API](NodeAPI.md)
 
 ## Inversion of Control

@@ -30,6 +30,8 @@
                     { "pageName": "Model Transformation API", "href": "/ModelTransformationAPI.html" },
                     { "pageName": "View API", "href": "/ViewAPI.html" },
                     { "pageName": "DOM Binder API", "href": "/DOMBinderAPI.html" },
+                    { "pageName": "Data Source API", "href": "/DataSourceAPI.html" },
+                    { "pageName": "Remote Model API", "href": "/RemoteModelAPI.html" },
                     { "pageName": "node.js Support and API", "href": "/NodeAPI.html" }
                 ]
             },
