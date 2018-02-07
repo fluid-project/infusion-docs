@@ -7,8 +7,8 @@ category: Infusion
 `fluid.remoteModelComponent` builds on top of [`fluid.modelComponent`](ComponentGrades.md) with the purpose of providing a buffer between a local and
 remote model that are attempting to stay in sync. For example a local model is being updated by user interaction, this is sent back
 to a remote server, which in turn tries to update the local model. If additional user actions occur during the roundtrip, an
-infinite loop of updates may occur. The remoteModel solves this by restricting the reading and writing to a single request at
-a time, and waits for one to complete before operating the next request.
+infinite loop of updates may occur. `fluid.remoteModelComponent` solves this by restricting reading and writing to a single request at a time,
+waiting for one request to complete before operating the next.
 
 ## Supported Events
 
