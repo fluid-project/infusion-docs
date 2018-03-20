@@ -126,4 +126,4 @@ All panels must supply a `header` selector, which will be used by the `fluid.pre
 
 ### Reorderer Component
 
-* The 'stylisticOffset' selector has been removed as it was of no use.
+* The `stylisticOffset` selector was no longer in use and has been removed.
