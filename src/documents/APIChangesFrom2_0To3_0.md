@@ -121,3 +121,9 @@ All panels must supply a `header` selector, which will be used by the `fluid.pre
         </tr>
     </tbody>
 </table>
+
+## Component API Changes
+
+### Reorderer Component
+
+* The 'stylisticOffset' selector has been removed as it was of no use.
