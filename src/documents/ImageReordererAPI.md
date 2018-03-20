@@ -235,7 +235,7 @@ selectors: {
     movables:    ".flc-reorderer-movable",
     selectables: ".flc-reorderer-movable",
     dropTargets: ".flc-reorderer-movable",
-    grabHandle:  "",
+    grabHandle:  ""
 }
                     </code>
                 </pre>
