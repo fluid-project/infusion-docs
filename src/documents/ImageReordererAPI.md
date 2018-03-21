@@ -226,7 +226,6 @@ The object must be a list of objects containing any subset of the following keys
 * `selectables`
 * `dropTargets`
 * `grabHandle`
-* `stylisticOffset`
             </td>
             <td>
                 <pre>
@@ -236,8 +235,7 @@ selectors: {
     movables:    ".flc-reorderer-movable",
     selectables: ".flc-reorderer-movable",
     dropTargets: ".flc-reorderer-movable",
-    grabHandle:  "",
-    stylisticOffset: ""
+    grabHandle:  ""
 }
                     </code>
                 </pre>
