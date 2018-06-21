@@ -1,0 +1,10 @@
+env:
+  DOCKER_IMAGE: "fluidprojectorg/infusion-docs:${BUILDKITE_COMMIT}"
+
+steps:
+  - name: "Build"
+    command:
+      - "docker build -t ${DOCKER_IMAGE} ."
+      - "docker push ${DOCKER_IMAGE}"
+      - "docker image rm -f ${DOCKER_IMAGE}"
+    timeout_in_minutes: 5

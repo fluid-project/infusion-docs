@@ -11,9 +11,9 @@ COPY --chown=node package.json /app/package.json
 WORKDIR /app
 RUN npm install
 
-# Generate website
+# Build and test website
 COPY --chown=node . /app
-RUN $(npm bin)/docpad generate --env static
+RUN npm test
 
 # Build final image
 FROM nginx:alpine
