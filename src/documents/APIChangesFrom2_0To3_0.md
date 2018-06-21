@@ -128,3 +128,9 @@ clickable arrows for navigating between adjusters in the small screen responsive
         </tr>
     </tbody>
 </table>
+
+## Component API Changes
+
+### Reorderer Component
+
+* The `stylisticOffset` selector was no longer in use and has been removed.

@@ -17,7 +17,7 @@ resource specification objects describing the resources to be fetched. The secon
 structure with the field `resourceText` filled in if the resources could be fetched. The last argument contains optional
 options guiding the fetch process.
 
-```javascript
+```snippet
 fluid.fetchResources(resourceSpecs, callback[, options]);
 ```
 
