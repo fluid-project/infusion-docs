@@ -23,4 +23,5 @@ steps:
   # Need to 'continue_on_failure' until we reach the cleanup stage, otherwise intermediary failure will abort build
   - name: "Cleanup"
     command:
-      - "docker image rm -f ${DOCKER_IMAGE}"
+      - "docker image rm -f ${DOCKER_IMAGE}:${BUILDKITE_COMMIT}"
+      - "docker image rm -f ${DOCKER_IMAGE}:latest"
