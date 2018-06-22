@@ -29,6 +29,7 @@
     "gpii-express": "1.0.11",
     "gpii-grunt-mdjson-lint": "1.0.0-dev.20171024T123903Z.3c91988",
     "grunt": "1.0.1",
+    "grunt-cli": "^1.2.0",
     "grunt-jsonlint": "1.1.0",
     "grunt-markdownlint": "1.0.42",
     "infusion": "3.0.0-dev.20171006T195039Z.a128358",
