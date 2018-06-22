@@ -13,6 +13,7 @@ RUN npm install
 
 # Build and test website
 COPY --chown=node . /app
+RUN $(npm bin)/grunt lint
 RUN npm test
 
 # Build final image
