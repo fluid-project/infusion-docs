@@ -15,6 +15,7 @@ steps:
     command:
       - "docker tag -t ${DOCKER_IMAGE}:latest ${DOCKER_IMAGE}:${BUILDKITE_COMMIT}"
       - "docker push ${DOCKER_IMAGE}:latest"
+      - "docker image rm -f ${DOCKER_IMAGE}:latest"
     branches: "master"
 
   - wait: ~
@@ -24,4 +25,3 @@ steps:
   - name: "Cleanup"
     command:
       - "docker image rm -f ${DOCKER_IMAGE}:${BUILDKITE_COMMIT}"
-      - "docker image rm -f ${DOCKER_IMAGE}:latest"
