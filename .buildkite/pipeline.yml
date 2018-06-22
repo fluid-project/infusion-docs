@@ -17,6 +17,7 @@ steps:
       - "docker push ${DOCKER_IMAGE}:latest"
       - "docker image rm -f ${DOCKER_IMAGE}:latest"
     branches: "master"
+    timeout_in_minutes: 1
 
   - wait: ~
     continue_on_failure: true
@@ -25,3 +26,4 @@ steps:
   - name: "Cleanup"
     command:
       - "docker image rm -f ${DOCKER_IMAGE}:${BUILDKITE_COMMIT}"
+    timeout_in_minutes: 1
