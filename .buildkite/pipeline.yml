@@ -1,29 +1,23 @@
 env:
   DOCKER_IMAGE: "fluidprojectorg/infusion-docs"
 
+# https://github.com/buildkite/feedback/issues/173
+agent_tags: &agent_tags
+  agents:
+    name: "${BUILDKITE_AGENT_META_DATA_NAME?}"
+
 steps:
   - name: "Build"
     command:
-      - "docker build -t ${DOCKER_IMAGE}:${BUILDKITE_COMMIT} ."
+      - "docker build -t ${DOCKER_IMAGE} ."
     timeout_in_minutes: 5
+    <<: *agent_tags
 
-  - wait: ~
-    continue_on_failure: true
+  - wait
 
-  # This must be a separate stage so we only publish changes that were merged into the master branch
   - name: "Release"
     command:
-      - "docker tag -t ${DOCKER_IMAGE}:latest ${DOCKER_IMAGE}:${BUILDKITE_COMMIT}"
-      - "docker push ${DOCKER_IMAGE}:latest"
-      - "docker image rm -f ${DOCKER_IMAGE}:latest"
+      - "docker push ${DOCKER_IMAGE}"
     branches: "master"
     timeout_in_minutes: 1
-
-  - wait: ~
-    continue_on_failure: true
-
-  # Need to 'continue_on_failure' until we reach the cleanup stage, otherwise intermediary failure will abort build
-  - name: "Cleanup"
-    command:
-      - "docker image rm -f ${DOCKER_IMAGE}:${BUILDKITE_COMMIT}"
-    timeout_in_minutes: 1
+    <<: *agent_tags
