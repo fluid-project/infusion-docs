@@ -255,7 +255,7 @@ that.msgLookup.lookup(value); // where value is either the string name or the ke
 
 ## Specifying a Localization
 
-The messageLoader is implemented using [fluid.resourceLoader](ResourceLoader.md). It takes `defaultLocale` and `locale` options for specifying which localized Message Bundle to fetch. The `locale` option specifies the localization desired. By default it is sourced from the prefsEditorLoader's settings object, `"{prefsEditorLoader}.settings.locale"`. The `defaultLocale` provides a fallback to use if the desired localization cannot be located. By default it is sourced from the prefsEditorLoader's `defaultLocale` option.
+The messageLoader is implemented using [fluid.resourceLoader](ResourceLoader.md). It takes `defaultLocale` and `locale` options for specifying which localized Message Bundle to fetch. The `locale` option specifies the localization desired. By default it is sourced from the prefsEditorLoader's settings object, `"{prefsEditorLoader}.settings.preferences.locale"`. The `defaultLocale` provides a fallback to use if the desired localization cannot be located. By default it is sourced from the prefsEditorLoader's `defaultLocale` option.
 
 See [fluid.resourceLoader options](ResourceLoader.html#options) for the accepted form of ```locale``` and ```defaultLocale```.
 See [fluid.resourceLoader fallback rules](ResourceLoader.html#fallback-rules-with-locale-and-defaultlocale) for fallback rules when attempting to locate a localization.
