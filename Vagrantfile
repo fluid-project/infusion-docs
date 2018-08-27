@@ -52,6 +52,7 @@ Vagrant.configure(2) do |config|
   # Build application
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     npm install
+    npm run docpad
   SHELL
 
 end
