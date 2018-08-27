@@ -11,16 +11,16 @@
     "test": "node tests/all-tests.js"
   },
   "dependencies": {
-    "docpad-plugin-ghpages": "2.6.1",
+    "docpad-plugin-ghpages": "2.7.0",
     "docpad-plugin-handlebars": "2.5.0",
-    "docpad-plugin-highlightjs": "2.5.0",
+    "docpad-plugin-highlightjs": "2.6.0",
     "docpad-plugin-markit": "2.4.0",
     "fs-extra": "4.0.2",
     "markdown-it-anchor": "5.0.2",
     "urijs": "1.19.0"
   },
   "devDependencies": {
-    "docpad": "6.80.7",
+    "docpad": "6.81.0",
     "eslint": "4.9.0",
     "eslint-config-fluid": "1.1.0",
     "eslint-plugin-markdown": "1.0.0-beta.6",
