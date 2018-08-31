@@ -3261,7 +3261,7 @@ Currently it does not support reading any of its values from the input model. Fu
 
 #### Description:
 
-Proxy transform to call any globally available function. The function to be called is passed via the `func` key, and the arguments passed are to the function are passed via the `args` key. If `args` is an array, each entry will be passed as individual arguments to the function. If `args` is an object, it will be passed to the function as a single argument which is the object - this is also true for any primitive datatype.
+Proxy transform to call any globally available function. The function to be called is passed via the `func` key, and the arguments to the function are passed via the `args` key. If `args` is an array, each entry will be passed as individual arguments to the function. If `args` is an object, it will be passed to the function as a single argument which is the object - this is also true for any primitive datatype.
 
 Does not support reading any of its values from the input model, and any value passed to this transform via the `func` and `args` keys are passed into the transform as literal values (i.e. further transforms will not be parsed).
 
