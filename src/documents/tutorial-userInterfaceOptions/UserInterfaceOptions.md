@@ -44,36 +44,39 @@ The rest of this tutorial will explain each of these steps in detail.
 3. Your `infusion` folder will include a single file containing all of the JavaScript you need (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later link to these files in your HTML files.
 4. Now that `infusion` is in your project directory, you can delete the `infusion-uiOptions-2.0.0.zip` (or similar name) from your download directory.
 
-###  Full Infusion library via NPM
+### Full Infusion library via NPM
 
 <strong>Note: </strong>
 This section assumes that you have [NPM/node.js](https://nodejs.org/en/) installed in your computer.
 
-1.  Get Infusion by typing the following in the command line (A new directory called `node_modules/infusion` will be created as a result): 
-```
-npm install infusion
-``` 
+1. Get Infusion by typing the following in the command line (A new directory called `node_modules/infusion` will be created as a result):
+
+   ```bash
+   npm install infusion
+   ```
 
 2. Using the command line, change directory into the infusion directory that's been created within node_modules.
+   * On Windows type:
 
-* On Windows type: 
-```cmd
-cd node_modules\infusion
-```
-* On Mac type:
-```bash
-cd node_modules/infusion
-```
+     ```bash
+     cd node_modules\infusion
+     ```
+
+   * On Mac type:
+
+     ```bash
+     cd node_modules/infusion
+     ```
+
 3. Now build Infusion by typing in:
 
-```
-npm install
-grunt
-``` 
-4. This will create a "products" directory in the Infusion directory. Within the `project_name/node_modules/infusion/products` directory, there is now a ZIP file called "infusion-all-2.0.0.zip" (the exact filename may be a little different depending on the release of Infusion available at the time you download it). 
+   ```bash
+   npm install
+   grunt
+   ```
 
+4. This will create a "products" directory in the Infusion directory. Within the `project_name/node_modules/infusion/products` directory, there is now a ZIP file called "infusion-all-2.0.0.zip" (the exact filename may be a little different depending on the release of Infusion available at the time you download it).
 5. Unzip this file using your preferred Unzipping program. Now move the resulting "infusion" directory to a location within your project.<div class="infusion-docs-note"><strong>Note:</strong> In this guide we will use the directory `my-project/lib/`.</div>
-
 6. Your infusion folder will include a single file containing all of the JavaScript you need (infusion-all.js), HTML templates, CSS files, and other components to get UI Options to work. You will later link to these files in your HTML files.
 
 ## Prepare your page
