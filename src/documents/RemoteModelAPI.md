@@ -235,7 +235,7 @@ For information on the different types of events, see [Infusion Event System](In
         <tr>
             <th>Description</th>
             <td>
-                Must be supplied by an implementor to provide the concrete implementation for fetching data from the remote source.
+                Must be supplied by an implementor to provide the concrete implementation for fetching data from the remote source. It must return a promise.
             </td>
         </tr>
         <tr>
@@ -278,7 +278,7 @@ For information on the different types of events, see [Infusion Event System](In
         <tr>
             <th>Description</th>
             <td>
-                Must be supplied by an implementor to provide the concrete implementation for writing data to the remote source.
+                Must be supplied by an implementor to provide the concrete implementation for writing data to the remote source. It must return a promise that is resolved/rejected after the write operation has been handled by the remote end point.
             </td>
         </tr>
         <tr>
@@ -309,6 +309,8 @@ Two synthetic events, `onFetch` and `afterFetch`, are fired during the processin
 
 Executing the `write` invoker adds a write request and returns a promise for the result. Only one request can be in flight (processing) at a time. If a fetch or write request is in flight, the write will be queued. If a write request is already in queue, the result of that request will be passed along to the current write request. When a write request is in flight, it will trigger the `writeImpl` invoker to perform the actual request.
 
-Two synthetic events, `onWrite` and `afterWrite`, are fired during the processing of a write. `onWrite` can be used to perform any necessary actions before running `writeImpl` (e.g. performing a fetch). `afterWrite` can be used to perform any necessary actions after running `writeImpl` (e.g. unblocking the queue, performing a fetch). If promises returned from `onWrite`, `afterWrite`, or `writeImpl` are rejected, the `onWriteError` event will be fired.
+Two synthetic events, `onWrite` and `afterWrite`, are fired during the processing of a write. `onWrite` can be used to perform any necessary actions before running `writeImpl` (e.g. performing a fetch). `afterWrite` can be used to perform any necessary actions after running `writeImpl` (e.g. updating the remote model, unblocking the queue, performing a fetch). If promises returned from `onWrite`, `afterWrite`, or `writeImpl` are rejected, the `onWriteError` event will be fired.
+
+By default, upon a successful write, the `afterWrite` event will trigger the `remote` model path to be updated with the values from the `local` model path. Because of this, the `writeImpl` must resolve/reject its promise after the write implementation has been handled by the remote end point, not simply after the request has been made.
 
 ![A flow diagram depicting the Write workflow](images/remoteModel_write_diagram.svg)
