@@ -124,6 +124,10 @@ All panels must supply a `header` selector, which will be used by the `fluid.pre
 
 ## Component API Changes
 
+### Tabs Component
+
+The `fluid.tabs` component has been removed.
+
 ### Reorderer Component
 
 * The `stylisticOffset` selector was no longer in use and has been removed.
