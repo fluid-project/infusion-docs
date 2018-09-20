@@ -32,7 +32,11 @@ docpad run --env static
 
 Point your browser to: `http://localhost:9778/`
 
-## Deploy to GitHub Pages
+## Deploy
+
+While GitHub Pages is not used to host [fluiproject.org](https://docs.fluidproject.org), our deployment process requires that the generated site be pushed to the `deploy` branch in the project repo. The contents of the `deploy` branch will automatically be served as the contents are changed.
+
+To generate and push to the `deploy` branch on the project repo run the following:
 
 ```shell
 npm run deploy
@@ -44,9 +48,9 @@ This runs the command:
 docpad deploy-ghpages --env static
 ```
 
-*WARNING* `deploy` will upload the site to the repository's `origin`. If you have cloned
+_**WARNING:** Deploying will upload the site to the `deploy` branch of the `origin` remote. If you have cloned
 from the production repository and you have push access, you will actually run the docs publication
-workflow against the live production branch, whichever branch you happen to be working on.
+workflow against the live production branch, regardless of whichever branch you happen to be working on._
 
 ## A Note on DocPad plugins
 
