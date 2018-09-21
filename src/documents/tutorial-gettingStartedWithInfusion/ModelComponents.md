@@ -16,7 +16,7 @@ Many components manage an internal [model](../FrameworkConcepts.md#model-objects
 
 The Infusion Framework provides supports for model-bearing components. When you declare a component to be a **model component**, the Framework will automatically construct a ChangeApplier, which wraps the model with special functions that can be used to query and modify the model. The [ChangeApplier](../ChangeApplier.md) helps to manage changes to the model, by maintaining lists of subscribers who can register interest in changes to different parts of it, and coordinating updates to this component's model with updates to other component models which are linked to it. It also allows you to add checks that can prevent changes to the model if necessary (e.g validation).
 
-## Declaring a Model Component ##
+## Declaring a Model Component
 
 To use a model with your component, you need to use the `fluid.modelComponent` grade. To do this:
 
@@ -26,14 +26,14 @@ To use a model with your component, you need to use the `fluid.modelComponent` g
 ```javascript
 fluid.defaults("tutorials.modelBearingComponent", {
     gradeNames: ["fluid.modelComponent"],
-    ...
+    // ...
     model: {
-        ...
+        // ...
     }
 });
 ```
 
-## Example: Currency Converter ##
+## Example: Currency Converter
 
 We can extend our currency converter example from the previous section by storing a set of rates for different currencies in its model, as well a user's selected currency and its value in original and converted forms:
 
@@ -67,6 +67,7 @@ fluid.defaults("tutorials.currencyConverter", {
         updateAmount: {
             funcName: "tutorials.currencyConverter.updateAmount",
             args: ["{that}", "{arguments}.0"] // amount
+        }
     },
     modelListeners: {
         convertedAmount: {
@@ -85,17 +86,18 @@ tutorials.currencyConverter.updateAmount = function (that, amount) {
     that.applier.change("convertedAmount", convertedAmount);
 };
 ```
-## Contents of the model and its relation to other models
+
+## Contents of the Model and Its Relation to Other Models
 
 The `model` record can consist of any JSON material, as well as containing [IoC references](../IoCReferences.md) to the models and options of other components, as well as [expanders](../ExpansionOfComponentOptions.md).
 Any IoC references to another component's model will set up a permanent [model relay](../ModelRelay.md) between the two models at the endpoints of the reference.
 This relay will be bidirectional - any updates propagated into either of the models linked by the relay by their respective ChangeAppliers will be relayed into the model at the other end of the link.
 
-## Using The Change Applier ##
+## Using The Change Applier
 
 The Framework will attach both your model and its ChangeApplier to the component object as top-level properties. Your methods can read the model directly, using `that.model.<some-path>`, but the ChangeApplier should be used to make any changes to the model, using `that.applier.change();`.
 
-## Example: Dated Component ##
+## Example: Dated Component
 
 As an example, let's consider a component that need to record a date. Your `model` will include a date field - if you wished to give it an initial default value of `null`
 (actually this practice is not recommended - it is better to only supply default values which are actually useful in a particular context), it could be initialised as follows:
@@ -103,7 +105,7 @@ As an example, let's consider a component that need to record a date. Your `mode
 ```javascript
 fluid.defaults("tutorials.modelBearingComponent", {
     gradeNames: ["fluid.modelComponent"],
-    ...
+    // ...
     model: {
         date: null
     }
@@ -117,7 +119,7 @@ Our work comes in two parts - firstly, writing a global helper function which re
 ```javascript
 tutorials.getCurrentDate = function () {
     return new Date();
- };
+};
 
 fluid.defaults("tutorials.datedComponent", {
     gradeNames: ["fluid.modelComponent"],
@@ -125,20 +127,21 @@ fluid.defaults("tutorials.datedComponent", {
         date: {
             expander: {
                 funcName: "tutorials.getCurrentDate"
-                }
-             }
-          }
+            }
+        }
     }
 });
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> There is a
-[compact form](../ExpansionOfComponentOptions.md#compact-format-for-expanders)
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> There is a [compact form](../ExpansionOfComponentOptions.md#compact-format-for-expanders)
 for writing an expander as a single string - we could have written the above definition
 instead with `date: "@expand:tutorials.getCurrentDate()"` in place of the small JSON
-block inside the model.</div>
+block inside the model.
+</div>
 
-## Example: Currency Converter ##
+## Example: Currency Converter
 
 The currency converter example we presented on the previous page might be more helpful if it supported more than one conversion rate. We can use a model to hold the available rates and to keep track of the currently-selected rate. We define this model in the component's defaults:
 

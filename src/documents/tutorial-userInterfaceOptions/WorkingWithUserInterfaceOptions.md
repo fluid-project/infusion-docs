@@ -12,16 +12,15 @@ This documentation assumes you are somewhat comfortable with writing and editing
 
 UI Options adds support for high contrast themes by transforming the colours on your website. Since contrast themes transform almost all aspects of the webpage, it's probable there will be some styling issues initially. This section aims to help you fix some common issues.
 
-
 UI Options transforms the user interface into one of four high contrast or one low contrast colour combinations:
 
 * high contrast
-    * black on white
-    * white on black
-    * black on yellow
-    * yellow on black
+  * black on white
+  * white on black
+  * black on yellow
+  * yellow on black
 * low contrast
-    * light grey on dark grey
+  * light grey on dark grey
 
 The themes attempt to remove any other colours from the interface, along with gradients, shadows, background images, and other styling that may reduce legibility. This type of contrast interface can be extremely helpful for users with different forms vision needs.
 
@@ -74,6 +73,7 @@ Scope your styles using the class name as shown in the following example. This e
     text-shadow: none;
 }
 ```
+
 <div class="infusion-docs-note"><strong>Note:</strong>
     <p>
         In some cases you may have to use the <code>!important</code> rule with your contrast styles to make them work. For example: <code>color: #ff0 !important;</code>.
@@ -111,11 +111,11 @@ Creating contrast styles can be simplified by mix-ins if you are using a CSS sty
 If you're using images to give your buttons or menu items a unique look, follow these guidelines:
 
 * use semantically appropriate tags for your graphics. For example, images important to your content should use `<img>`, and cosmetic images can be implemented as background images in CSS. UI Options can replace background images using CSS only.
-    * See [Using Images in Contrast Modes](./UsingImagesInContrastModes.md).
+  * See [Using Images in Contrast Modes](./UsingImagesInContrastModes.md).
 * ensure background images are sized to scale to fit their container (for more info, see [Background Size on Mozilla Developer](https://developer.mozilla.org/en-US/docs/CSS/background-size))
-    * contain and cover preserve proportions of image
-    * a percentage will stretch image
-        use `background-size: 100%;`
+  * contain and cover preserve proportions of image
+  * a percentage will stretch image
+  * use `background-size: 100%;`
 * don't build the label text into the image, instead consider using `<figure>` elements with a corresponding `<figcaption>` tag. See [`<figure>` on Mozilla Developer](https://developer.mozilla.org/en/docs/Web/HTML/Element/figure).
 * if the 'image' is a gradient, consider using CSS gradients. See [Style Effects and Legibility in Contrast Modes](./StyleEffectsAndLegibilityInContrastModes.md) for more information.
 

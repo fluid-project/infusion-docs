@@ -9,10 +9,15 @@ One of the primary functions of the Infusion [Preferences Framework](Preferences
 The Preferences Framework provides a utility that creates and instantiates a preferences editor in a single step, given [primary](PrimarySchemaForPreferencesFramework.md) and [auxiliary](AuxiliarySchemaForPreferencesFramework.md) schemas.
 
 ```javascript
-var prefsEditor = fluid.prefs.create(container[, options]);
+var prefsEditor = fluid.prefs.create(container);
+
+// or
+
+var prefsEditorWithOptions = fluid.prefs.create(container, options);
 ```
 
-### Parameters ###
+## Parameters
+
 <table>
 <tr>
     <td><code>container</code></td>
@@ -24,7 +29,7 @@ var prefsEditor = fluid.prefs.create(container[, options]);
 </tr>
 </table>
 
-### Return Value ###
+## Return Value
 
 <table>
 <tr>
@@ -33,7 +38,7 @@ var prefsEditor = fluid.prefs.create(container[, options]);
 </tr>
 </table>
 
-### Options ###
+## Options
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
@@ -51,7 +56,7 @@ var prefsEditor = fluid.prefs.create(container[, options]);
 </tr>
 </table>
 
-#### Builder Options ####
+### Builder Options
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
@@ -84,13 +89,16 @@ This option can be used to specify the names of grades that define schemas, as a
 
 If you provide both, they will be merged (with the `auxiliarySchema` overriding anything in the grade schema), but you must provide at least one.
 
-#### PrefsEditor Options ####
+### PrefsEditor Options
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Values</th><th>Default</th></tr>
 <tr>
     <td><code>storeType</code></td>
-    <td>(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a [Settings Store](SettingsStore.md).</td>
+    <td>
+
+(Optional) The string name of a <a href="ComponentGrades.md">grade</a> of a [Settings Store](SettingsStore.md).
+</td>
     <td>Integrators can define their own store grade by deriving from the built-in default grade <code>"fluid.prefs.store"</code> as a base grade and providing custom <code>get</code> and <code>set</code> methods.</td>
     <td><code>"fluid.prefs.cookieStore"</code></td>
 </tr>
@@ -134,24 +142,29 @@ If you provide both, they will be merged (with the `auxiliarySchema` overriding 
 </tr>
 </table>
 
-## Usage ##
+## Usage
 
 The simplest way to create a separated panel preferences editor is to provide the primary and auxiliary schema using the options:
+
 ```javascript
 var prefsEditor = fluid.prefs.create("#myPrefsEditor", {
     build: {
-        primarySchema: {...},
-        auxiliarySchema: {...}
+        primarySchema: {
+            // ...
+        },
+        auxiliarySchema: {
+            // ...
+        }
     }
 });
 ```
 
 The preferences editor will be instantiated and rendered into the container specified as the first argument to `fluid.prefs.create()`.
 
-## Examples ##
+## Examples
 
 ```javascript
- fluid.prefs.create("#myPrefsEditor", {
+fluid.prefs.create("#myPrefsEditor", {
     build: {
         gradeNames: ["fluid.prefs.auxSchema.starter"],
         auxiliarySchema: {

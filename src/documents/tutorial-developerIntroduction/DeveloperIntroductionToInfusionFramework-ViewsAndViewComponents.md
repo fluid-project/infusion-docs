@@ -20,7 +20,7 @@ Let's turn the "Hello, World!" component into a view component that writes its i
 </div>
 ```
 
-We introduce another style of invoker here, the ["this"-ist style](../Invokers.md#-this-ist-invoker-binding-to-a-oo-style-javascript-function-referencing-this-) that allows us to invoke functions whose implementation references the special Javascript `this` value. This style of invoker is important for integrating with non-Infusion code such as jQuery, as standard Javascript functions attached to objects expect a `this` value referring to the calling object.
+We introduce another style of invoker here, the ["this"-ist style](../Invokers.md#this-ist-invoker-binding-to-a-oo-style-javascript-function-referencing-this) that allows us to invoke functions whose implementation references the special Javascript `this` value. This style of invoker is important for integrating with non-Infusion code such as jQuery, as standard Javascript functions attached to objects expect a `this` value referring to the calling object.
 
 ``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {
@@ -49,7 +49,7 @@ fluid.defaults("fluidTutorial.helloWorld", {
         // method on a DOM node returned
         // using the DOM binder functionality
         displayHello: {
-            // This IoC reference lets us refer  
+            // This IoC reference lets us refer
             // to the DOM node bound to the
             // `messageArea` key by the selector
             // definition above; it returns a

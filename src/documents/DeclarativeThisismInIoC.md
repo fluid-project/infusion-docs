@@ -8,11 +8,11 @@ Typically in Infusion, all functions and components adhere to a **that-ist** app
 
 For more details on the differences between **that-ist** and **this-ist** approaches, as well as the reasoning behind why Infusion employs the former, see the [About this and that](http://fluidproject.org/blog/2008/07/21/about-this-and-that/) blog post.
 
-## Structure ##
+## Structure
 
 A **this-ist** function can be declaratively bound to [invokers](Invokers.md) and listeners in an IoC tree and takes the following structure:
 
-```javascript
+```json5
 {
     "this": "{that}.dom.elm",
     "method": "click",
@@ -59,7 +59,7 @@ A **this-ist** function can be declaratively bound to [invokers](Invokers.md) an
     </tbody>
 </table>
 
-## Examples ##
+## Examples
 
 In the following example, a **this-ist** function is used to attach a listener to the `onCreate` events: The jQuery `click()` function of the button identified by the `button` selector is used to bind the component's `writeText()` method to the click event.
 
@@ -68,14 +68,14 @@ fluid.defaults("demo.hw", {
     gradeNames: ["fluid.viewComponent"],
     selectors: {
         button: "demo-hw-button",
-    title: "demo-hw-title"
+        title: "demo-hw-title"
     },
     strings: {
         title: "Hello World!"
     },
     invokers: {
         // writes the supplied string to the title element
-    writeText: {
+        writeText: {
             "this": "{that}.dom.title",
             "method": "text",
             "args": ["{that}.options.strings.title"]
@@ -97,9 +97,9 @@ In the following example, taken from the Infusion Table of Contente component, *
 ```javascript
 fluid.defaults("fluid.tableOfContents", {
     gradeNames: ["fluid.viewComponent"],
-    ...
+    // ...
     invokers: {
-        ...
+        // ...
         hide: {
             "this": "{that}.dom.tocContainer",
             "method": "hide"
@@ -109,8 +109,8 @@ fluid.defaults("fluid.tableOfContents", {
             "method": "show"
         }
     }
-    ...
-}
+    //...
+});
 ```
 
 In the following example, taken from the Infusion Inline Edit component, a **this-ist** function is used to invoke the `init` function on the tinyMCE object associated with the component as a listener on the `onCreate` event.
@@ -125,8 +125,8 @@ fluid.defaults("fluid.inlineEdit.tinyMCE", {
             namespace: "initTinyMCE",
             args: "{that}.options.tinyMCE"
         }
-    },
-    ...
+    }
+    // ...
 });
 ```
 
@@ -135,13 +135,14 @@ In the following example, taken from the Infusion Pager component, a **this-ist*
 ```javascript
 fluid.defaults("fluid.pager", {
     gradeNames: ["fluid.viewComponent"],
-    ...
+    // ...
     listeners: {
         onCreate: {
             "this": "{that}.container",
             method: "attr",
             args: ["role", "application"]
-        },
-    ...
+        }
+        // ...
+    }
 });
 ```

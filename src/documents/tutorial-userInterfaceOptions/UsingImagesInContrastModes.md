@@ -64,6 +64,7 @@ While web images and graphics are typically implemented using `<img>` tags, usin
 Images on web pages are often implemented by using `<img>` tags. However, the `background` CSS property for images may be advantageous.
 
 To help decide whether to use an `<img>` element or a background image, a good rule of thumb would be to use:
+
 * `<img>` tags if the graphic is important as content (i.e. a graph, photo, or a diagram).
 * CSS `background` property for graphics that are cosmetic in nature, such as icons and logos.
 
@@ -72,16 +73,19 @@ The advantage of using `background` is that assistive technologies (like screen 
 <div class="infusion-docs-note"><strong>Note:</strong> UI Options changes the presentation of content by using CSS. Therefore images implemented with <code>&lt;img&gt;</code> HTML elements are not easily modified using CSS. It is possible to achieve a similar contrast effect by using <a href="https://developer.mozilla.org/en/docs/Web/CSS/filter">CSS filters</a>, but the results may not match the contrast mode.</div>
 
 ### Example Contrast Image Switching
+
 The following example shows how CSS can be used to switch background images with contrast versions.
 
 HTML:
+
 ```html
 <a class="site-logo" title="Example Company" href="http://www.example.com">
     Example Company
 </a>
 ```
 
-CSS
+CSS:
+
 ```css
 .site-logo {
     background-image: url("images/logo.png");

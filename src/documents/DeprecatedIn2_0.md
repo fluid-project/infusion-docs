@@ -8,7 +8,7 @@ This page contains a list of the features, APIs, and etc. that are deprecated as
 
 <div class="infusion-docs-note"><strong>Note:</strong> While the intention is to provide advance notice of future changes, the contents of this page may not be exhaustive.</div>
 
-## Components ##
+## Components
 
 <table>
     <thead>
@@ -25,7 +25,7 @@ This page contains a list of the features, APIs, and etc. that are deprecated as
     </tbody>
 </table>
 
-## Features ##
+## Features
 
 <table>
     <thead>

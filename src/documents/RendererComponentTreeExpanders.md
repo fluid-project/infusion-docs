@@ -5,6 +5,8 @@ noteRendererChangesPost15: true
 category: Infusion
 ---
 
+<div class="infusion-docs-note"><strong>Note:</strong> The Renderer Component Tree Expanders described on this page have been deprecated and will likely  be removed in a future release.  If you are using this already or want to use something like it, please get in touch with the infusion maintainers using the <a href="https://fluidproject.org/">IRC channel or mailing list links on our website</a>.</div>
+
 The Renderer offers some utility functions for simplifying the tree-creation process. These functions are called **expanders** because they expand information you provide into a full component tree. These expanders are specified in the prototree itself by name and and are provided options to control the expansion process. For example:
 
 ```javascript
@@ -28,14 +30,14 @@ var protoTree = {
             { "recordType:": "${recordlist.name.0}" },
             { "recordType:": "${recordlist.name.1}" },
             { "recordType:": "${recordlist.name.2}" },
-            { "recordType:": "${recordlist.name.3}" },
-            ...
+            { "recordType:": "${recordlist.name.3}" }
+            // ...
         ]
     }
 };
 ```
 
-## Using Expanders ##
+## Using Expanders
 
 Expanders are specified as wrappers around a component specification in the component tree: Instead of the usual `componentID: {specification}` form, the keyword `expander` is used, as shown below:
 
@@ -43,8 +45,8 @@ Expanders are specified as wrappers around a component specification in the comp
 var tree = {
     expander: {
         type: "fluid.renderer.repeat",
-        repeatID: "tab:",
-        ....
+        repeatID: "tab:"
+        // ...
     }
 };
 ```
@@ -56,22 +58,22 @@ var tree = {
     expander: [
         {
             type: "fluid.renderer.repeat",
-            repeatID: "tab:",
-            ....
+            repeatID: "tab:"
+            // ...
         },
         {
             type: "fluid.renderer.selection.inputs",
-            selectID: "language",
-            ....
-        },
-        ....
+            selectID: "language"
+            // ...
+        }
+        // ...
     ]
 };
 ```
 
-## Available Expanders ##
+## Available Expanders
 
-### Repetition Expander ###
+### Repetition Expander
 
 The repetition expander takes care of replicating part of the prototree as many times as are required based on the data in the the model.
 
@@ -134,7 +136,7 @@ The following fields are supported by the `fluid.renderer.repeat` expander:
     </tbody>
 </table>
 
-#### Example ####
+#### Example
 
 In this example, the `fluid.renderer.repeat` expander is being used to declare a tree for a set of tabs. The `controlledBy` property indicates that the data model field of tabs contains the data to be used.
 
@@ -160,7 +162,7 @@ cspace.tabsList.modelToTree = function (model, options) {
 };
 ```
 
-### Selection To Inputs Expander ###
+### Selection To Inputs Expander
 
 The simple **Select** protocomponent format shown on the [ProtoComponent Types](ProtoComponentTypes.md) page is sufficient for a `<select>` element, but radio buttons and check boxes must _also_ have entries for each button or box. The **selection to inputs** expander will automatically generate these entries based on the options available in the select.
 
@@ -219,7 +221,7 @@ The following fields are supported by the `fluid.renderer.selection.inputs` expa
     </tbody>
 </table>
 
-#### Example ####
+#### Example
 
 ```javascript
 var tree = {
@@ -238,7 +240,7 @@ var tree = {
 };
 ```
 
-### Condition Expander ###
+### Condition Expander
 
 The condition expander provides a mechanism for selecting between two alternative renderer component sub-trees based on the outcome of a condition e.g. the boolean evaluation of a value, or the return value of a function call.
 
@@ -287,84 +289,58 @@ The following fields are supported by the `fluid.renderer.condition` expander:
     </tbody>
 </table>
 
-#### Examples ####
+#### Examples
 
 In the following example, the `condition` is `that.options.showDeleteButton`. The renderer will evaluate the component's `showDeleteButton` option and if it is `true` will use the component tree specified by `trueTree`. Note that no `falseTree` is provided. If the option is `false` or not present, nothing will be rendered.
 
 ```javascript
-expander: {
-    type: "fluid.renderer.condition",
-    condition: that.options.showDeleteButton,
-    trueTree: {
-        deleteButton: {
-            decorators: [{
-                type: "attrs",
-                attributes: {
-                    value: that.options.strings.deleteButton
+my.conditional.modelToTree = function (model, options) {
+    var tree = {
+        expander: {
+            type: "fluid.renderer.condition",
+            condition: options.showDeleteButton,
+            trueTree: {
+                deleteButton: {
+                    decorators: [{
+                        type: "attrs",
+                        attributes: {
+                            value: options.strings.deleteButton
+                        }
+                    }, {
+                        type: "jQuery",
+                        func: "prop",
+                        args: {
+                            disabled: options.checkDeleteDisabling
+                        }
+                    }]
                 }
-            }, {
-                type: "jQuery",
-                func: "prop",
-                args: {
-                    disabled: that.checkDeleteDisabling
-                }
-            }]
+            }
         }
-    }
-}
-```
-
-In the following example, the `condition` is the return value of a call to `that.showMediumImage()`. If the function returns `true`, the image should be shown, and the `trueTree` component subtree will be used to render it. If the return value is `false`, the image should not be shown, and the `falseTree` subtree will be used to properly render the **empty space** instead of an image.
-
-```javascript
-expander: {
-    type: "fluid.renderer.condition",
-    condition: that.showMediumImage(),
-    trueTree: {
-        mediumImage: {
-            decorators: [{
-                type: "addClass",
-                classes: that.options.styles.mediumImage
-            }, {
-                type: "attrs",
-                attributes: {
-                    alt: that.options.strings.mediumImage,
-                    src: that.options.recordModel.fields
-                           && that.options.recordModel.fields.blobs
-                             && that.options.recordModel.fields.blobs.length > 0 ?
-                        that.options.recordModel.fields.blobs[0].imgMedium : ""
-                }
-            }]
-        },
-        mediaSnapshot: {
-            decorators: [{
-                type: "addClass",
-                classes: that.options.styles.mediaSnapshot
-            }]
-        }
-    },
-    falseTree: {
-        mediaSnapshot: {}
-    }
-}
+    };
+    return tree;
+};
 ```
 
 In the following example, the `condition` is a call to the function `cspace.header.assertMenuItemDisplay()` with a particular argument taken from the `itemName` subcomponent. If the function call returns `true`, the renderer component subtree specified by `trueTree` will be used.
 
 ```javascript
-expander: {
-    type: "fluid.renderer.condition",
-    condition: {
-        funcName: "cspace.header.assertMenuItemDisplay",
-        args: "${{itemName}.hide}"
-    },
-    trueTree: {
-        label: {
-            target: "${{item}.href}",
-            linktext: {
-                messagekey: "${{item}.name}"
+my.conditional.modelToTree = function (model, options) {
+    var tree = {
+        expander: {
+            type: "fluid.renderer.condition",
+            condition: {
+                funcName: "cspace.header.assertMenuItemDisplay",
+                args: "${{itemName}.hide}"
+            },
+            trueTree: {
+                label: {
+                    target: "${{item}.href}",
+                    linktext: {
+                        messagekey: "${{item}.name}"
+                    }
+                }
             }
         }
-    }
-}
+    };
+};
 ```

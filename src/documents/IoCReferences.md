@@ -49,7 +49,7 @@ References always take the syntactic form `{context-name}.some.path.segments`, w
                     <li>
                         &lt;index&gt; is the 0-based numeric index of the desired argument
                         <div class="infusion-docs-note"><strong>Note:</strong>
-                            The <code>arguments</code> context name can only be used in contexts where arguments are in scope - for example, as part of the arguments 
+                            The <code>arguments</code> context name can only be used in contexts where arguments are in scope - for example, as part of the arguments
                             to an <a href="InfusionEventSystem.md#registering-a-listener-to-an-event">event listener</a> or <a href="Invokers.md">invoker</a>, or within component configuration that is
                             being instantiated as part of a <a href="SubcomponentDeclaration.md#dynamic-subcomponents-with-a-source-event">dynamic component with a source event </a>.
                         </div>
@@ -62,7 +62,7 @@ References always take the syntactic form `{context-name}.some.path.segments`, w
             <td>
                 <ul>
                     <li>
-                        <code>{source}</code> refers to the particular instance of the <code>sources</code> array which was used to instantiate a 
+                        <code>{source}</code> refers to the particular instance of the <code>sources</code> array which was used to instantiate a
                         particular <a href="SubcomponentDeclaration.md#dynamic-components">dynamic component</a>. This context name is not valid outside a dynamic component definition.
                     </li>
                 </ul>
@@ -87,7 +87,7 @@ References always take the syntactic form `{context-name}.some.path.segments`, w
     </tbody>
 </table>
 
-## Where To Use IoC References ##
+## Where To Use IoC References
 
 IoC references may be used almost anywhere within a component's options, for example:
 
@@ -98,30 +98,30 @@ IoC references may be used almost anywhere within a component's options, for exa
 * in [events specifications](InfusionEventSystem.md#declaring-an-event-on-a-component), including as the left hand side key specifying an event in an events block
 * or indeed almost anywhere else
 
-## How IoC References are resolved ##
+## How IoC References are resolved
 
-For a conventional IoC reference (of the style `<componentRef>` rather than the style `<iocss expression>`), a search is begun upwards from the site of the reference in the component tree to find the first component which matches the context name. 
+For a conventional IoC reference (of the style `<componentRef>` rather than the style `<iocss expression>`), a search is begun upwards from the site of the reference in the component tree to find the first component which matches the context name.
 The following diagram shows a possible such reference site in green:
 
 <!-- Diagram source within Google Drawings at https://docs.google.com/drawings/d/14ESiMe0q8_lzVsAE-CkUvZdU42A_rs0_IfYg54pNFjA/edit -->
 
 ![IoC Context Resolution](images/IoC-scope.svg "IoC Context Resolution")
 
-The set of components which are in scope for resolution from this site are shown in yellow (circles) and orange (diamonds) in this diagram. These are components which are either 
+The set of components which are in scope for resolution from this site are shown in yellow (circles) and orange (diamonds) in this diagram. These are components which are either
 
 i) an ancestor of the component holding the reference site, or
 
 ii) a sibling of such a component.
 
-iii) a component anywhere in the tree which has been marked with the grade [fluid.resolveRoot](Contexts.md#global-components-fluid-resolveroot-and-fluid-resolverootsingle-) - these are the ones shown in orange diamonds
+iii) a component anywhere in the tree which has been marked with the grade [fluid.resolveRoot](Contexts.md#global-components-fluidresolveroot-and-fluidresolverootsingle) - these are the ones shown in orange diamonds
 
-The context reference matches a component if it matches via the 2nd, 3rd or 4th rules in the first row of the [above table](#reference-table) - **either** 
-it agrees with a fully-qualified grade or type name of a component, **or** it agrees with the last path segment of such a name, **or** it agrees with the component's member name. 
+The context reference matches a component if it matches via the 2nd, 3rd or 4th rules in the first row of the [above table](#reference-table) - **either**
+it agrees with a fully-qualified grade or type name of a component, **or** it agrees with the last path segment of such a name, **or** it agrees with the component's member name.
 If no context name matches anywhere in the tree, the reference expression resolves to `undefined`. In this case, if the path segments following the context name in the reference expression are not empty, the framework will throw an error.
 
 Components which are not in scope for resolution from the reference site (shown as a green pentagon) are shown as blue squares.
 
-## Examples of {&lt;componentRef&gt;} ##
+## Examples of {&lt;componentRef&gt;}
 
 In the example below, the IoC reference `{that}` refers to the component in which it is being used.
 
@@ -153,7 +153,7 @@ fluid.defaults("fluid.prefs.separatedPanel", {
 
 The above two examples are equivalent.
 
-In the example below, the IoC expression `{fluid.prefs.enactor.tableOfContents}` refers to the component being defined by the `defaults` block. 
+In the example below, the IoC expression `{fluid.prefs.enactor.tableOfContents}` refers to the component being defined by the `defaults` block.
 The short name `tableOfContents` must not be used here, because it would not be unique: It would be unclear whether the nickname was referring to `fluid.prefs.enactor.tableOfContents` or `fluid.tableOfContents`.
 
 ```javascript
@@ -163,13 +163,15 @@ fluid.defaults("fluid.prefs.enactor.tableOfContents", {
         tableOfContents: {
             type: "fluid.tableOfContents",
             container: "{fluid.prefs.enactor.tableOfContents}.container",
-            options: {...}
+            options: {
+                // ...
+            }
         }
     }
 });
 ```
 
-Another way to avoid the ambiguity mentioned above would be to use the member name, which is the name used when defining the subcomponent in the components block. 
+Another way to avoid the ambiguity mentioned above would be to use the member name, which is the name used when defining the subcomponent in the components block.
 In the example below `{toc}` refers to the name used to define the subcomponent in the component block.
 
 ```javascript
@@ -190,7 +192,7 @@ fluid.defaults("fluid.prefs.enactor.tableOfContents", {
 });
 ```
 
-## Examples of {&lt;componentRef&gt;}.&lt;path to member&gt; ##
+## Examples of {&lt;componentRef&gt;}.&lt;path to member&gt;
 
 The example below includes several IoC references. All of them are inside a subcomponent declaration and all include `{controllers}`, which in this case is a reference to the parent component. Specifically:
 
@@ -202,12 +204,12 @@ The example below includes several IoC references. All of them are inside a subc
 fluid.defaults("fluid.videoPlayer.controllers", {
     gradeNames: ["fluid.viewComponent"],
     selectors: {
-        scrubberContainer: ".flc-videoPlayer-scrubberContainer",
+        scrubberContainer: ".flc-videoPlayer-scrubberContainer"
     },
     events: {
         onScrub: null,
         onStartScrub: null,
-        afterScrub: null,
+        afterScrub: null
     },
     components: {
         scrubber: {
@@ -226,7 +228,7 @@ fluid.defaults("fluid.videoPlayer.controllers", {
 });
 ```
 
-## Examples of `{arguments}.n` ##
+## Examples of `{arguments}.n`
 
 The example below uses the `{arguments}.n` syntax to deliver the first and second arguments passed to listeners to the `onMove` event to the `fluid.moduleLayout.onMoveListener` function.
 
@@ -245,7 +247,7 @@ fluid.defaults("fluid.moduleLayoutHandler", {
 });
 ```
 
-## Examples of {&lt;iocss expression&gt;} ##
+## Examples of {&lt;iocss expression&gt;}
 
 The example below uses an [IoCSS](IoCSS.md) expression `{that > moreText}.options.selectors.images`. The expression refers to the `images` selector in the `moreText` subcomponent that is a direct descendent of the current component.
 
@@ -254,7 +256,7 @@ fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     selectors: {
         images: "img, [role~='img']"
-    },
+    }
 });
 fluid.defaults("gpii.explorationTool.enactorSet", {
     gradeNames: ["fluid.uiEnhancer.starterEnactors"],
@@ -271,9 +273,9 @@ fluid.defaults("gpii.explorationTool.enactorSet", {
 });
 ```
 
-## More Examples ##
+## More Examples
 
-### Example 1 ###
+### Example 1
 
 ```javascript
 // Range Annotator
@@ -293,20 +295,19 @@ fluid.defaults("fluid.pagedTable", {
         rangeAnnotator : {
             type : "fluid.pagedTable.rangeAnnotator"
         }
-    },
-    ...
+    }
+    // ...
 });
 ```
 
 The above example defines a `rangeAnnotator`, which is used as a subcomponent of a pagedTable. This definition uses several IoC references:
 
 * the expression "{pagedTable}.events.onRenderPageLinks" is used to refer to the onRenderPageLinks event of the pagedTable component
-
 * the IoC references:
-    * `{pagedTable}.events.onRenderPageLinks` refers to the `pagedTable` component
-    * `{arguments}.0` and `{arguments}.1` refer to the first and second arguments supplied when the source event is fired `onRenderPageLinks`
+  * `{pagedTable}.events.onRenderPageLinks` refers to the `pagedTable` component
+  * `{arguments}.0` and `{arguments}.1` refer to the first and second arguments supplied when the source event is fired `onRenderPageLinks`
 
-### Example 2 ###
+### Example 2
 
 ```javascript
 fluid.defaults("fluid.videoPlayer.languageControls.eventBinder", {
@@ -322,7 +323,7 @@ The above example uses two IoC references:
 * `{button}.events.onPress` refers to the `onPress` even of the `button` component
 * `{menu}.toggleView` refers to the `toggleView` method of the `menu` component
 
-### Example 3 ###
+### Example 3
 
 ```javascript
 fluid.defaults("fluid.uploader", {
@@ -346,7 +347,7 @@ The above example uses IoC references in the `distributeOptions` block:
 * `{that}.options` identifies the `options` block of the current `that` (i.e. `fluid.uploader`)
 * `{that > uploaderImpl}.options` identifies the `uploaderImpl` subcomponent of the current `that` (`fluid.uploader`) (see [IoCSS](IoCSS.md) for more information about this notation)
 
-## Reserved IoC Names ##
+## Reserved IoC Names
 
 The following context names are reserved within the IoC system:
 

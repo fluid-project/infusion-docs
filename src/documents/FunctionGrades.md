@@ -5,17 +5,17 @@ category: Infusion
 ---
 
 Most [grades](ComponentGrades.md) represent Infusion components - these are derived from the base grade `fluid.component`. However, some grades describe plain JavaScript functions - these are derived from the base grade `fluid.function`.
-The purpose of the Fluid API call [fluid.defaults](CoreAPI.md#fluid-defaults-gradename-options-) could be understood as providing *metadata* about some element of the system. In the case of a full component grade, this metadata is sufficient
+The purpose of the Fluid API call [fluid.defaults](CoreAPI.md#fluiddefaultsgradename-options) could be understood as providing *metadata* about some element of the system. In the case of a full component grade, this metadata is sufficient
 to allow the framework to automatically construct the creator function for the component. In the case of a function grade which describes an already existing function with a global name, the metadata supplies hints to the user about
 how to call the function and its purpose.
 
 ## Registering a global function
 
-A global function is registered within infusion at a stable place in its global namespace by working with the core API functions [fluid.registerNamespace](CoreAPI.md#fluid-registernamespace-path-) and
-[fluid.setGlobalValue](CoreAPI.md#fluid-setglobalvalue-path-value-) - in practice the latter is rarely used, in favour of directly setting members on namespace objects.
+A global function is registered within infusion at a stable place in its global namespace by working with the core API functions [fluid.registerNamespace](CoreAPI.md#fluidregisternamespacepath) and
+[fluid.setGlobalValue](CoreAPI.md#fluidsetglobalvaluepath-value) - in practice the latter is rarely used, in favour of directly setting members on namespace objects.
 
 If you are working in the browser, the global object (traditionally named `window`) coincides with Fluid's global object (which can be retrieved from `fluid.global` - assuming that you have already managed to resolve the `fluid` object itself).
-If you are working in node.js, you need to make calls to [fluid.registerNamespace](CoreAPI.md#fluid-registernamespace-path-) to bring parts of the global namespace into visibility as variables local to your file.
+If you are working in node.js, you need to make calls to [fluid.registerNamespace](CoreAPI.md#fluidregisternamespacepath) to bring parts of the global namespace into visibility as variables local to your file.
 
 A typical sequence could look like this:
 
@@ -24,14 +24,14 @@ var examples = fluid.registerNamespace("examples");
 
 examples.linearMap = function (m, x, c) {
     return m * x + c;
-}
+};
 ```
 
 This registers a global function named `examples.linearMap` into the global namespace.
 
 ## Registering defaults for a global function
 
-This function can be used as-is - however, one piece of metadata we could supply it might be an * argument map * allowing it to
+This function can be used as-is - however, one piece of metadata we could supply it might be an *argument map* allowing it to
 be invoked with named rather than positional arguments. We could do this as follows:
 
 ```javascript
@@ -47,7 +47,7 @@ fluid.defaults("examples.linearMap", {
 
 ## Invoking a global function with named arguments
 
-We can then invoke our function using [`fluid.invokeGradedFunction`](CoreAPI.md#fluid-invokegradedfunction-name-spec-) as follows:
+We can then invoke our function using [`fluid.invokeGradedFunction`](CoreAPI.md#fluidinvokegradedfunctionname-spec) as follows:
 
 ```javascript
 var result = fluid.invokeGradedFunction("examples.linearMap", {

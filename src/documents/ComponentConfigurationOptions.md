@@ -11,11 +11,12 @@ The particular set of options interpreted by the framework is determined by the 
 can define further grades which respond to yet further options, which they should document if they expect the options to be generally useful.
 This page briefly describes these predefined options and provides links to more information about the related framework functionality.
 
-## Options Supported By All Components Grades ##
+## Options Supported By All Components Grades
 
 The following options are supported by all component grades, that is, those derived from `fluid.component`:
 
-### `gradeNames` ###
+### `gradeNames`
+
 <table>
   <tr>
     <th>Description</th>
@@ -26,7 +27,7 @@ The following options are supported by all component grades, that is, those deri
     <td><pre>
 <code>fluid.defaults("component.name", {
     gradeNames: "fluid.modelComponent",
-    ...
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -36,7 +37,8 @@ The following options are supported by all component grades, that is, those deri
   </tr>
 </table>
 
-### `invokers` ###
+### `invokers`
+
 <table>
   <tr>
     <th>Description</th>
@@ -47,10 +49,14 @@ The following options are supported by all component grades, that is, those deri
     <td><pre>
 <code>fluid.defaults("component.name", {
     invokers: {
-        inv1: {...},
-        inv2: {...},
-    },
-    ...
+        inv1: {
+            // ...
+        },
+        inv2: {
+            // ...
+        }
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -60,7 +66,8 @@ The following options are supported by all component grades, that is, those deri
   </tr>
 </table>
 
-### `members` ###
+### `members`
+
 <table>
   <tr>
     <th>Description</th>
@@ -79,13 +86,14 @@ The following options are supported by all component grades, that is, those deri
         member1: "{that}.options.optionsValue",
         member2: "{theOther}.dom.otherSelector",
     },
-    ...
+    // ...
 });</code>
 </pre></td>
   </tr>
 </table>
 
-### `events` ###
+### `events`
+
 <table>
   <tr>
     <th>Description</th>
@@ -93,8 +101,11 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Notes</th>
-    <td>The Framework will create event firers for the listed events. The builtin events `onCreate`, `onDestroy` and `afterDestroy` will be fired automatically by the framework.
-    It is the responsibility of the component to fire user-defined events at the appropriate times.</td>
+    <td>
+
+The Framework will create event firers for the listed events. The builtin events `onCreate`, `onDestroy` and `afterDestroy` will be fired automatically by the framework.
+It is the responsibility of the component to fire user-defined events at the appropriate times.
+</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -103,8 +114,8 @@ The following options are supported by all component grades, that is, those deri
     events: {
         onSave: "preventable",
         onReady: null
-    },
-    ...
+    }
+    //...
 });</code>
 </pre></td>
   </tr>
@@ -114,7 +125,8 @@ The following options are supported by all component grades, that is, those deri
   </tr>
 </table>
 
-### `listeners` ###
+### `listeners`
+
 <table>
   <tr>
     <th>Description</th>
@@ -122,11 +134,14 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Notes</th>
-    <td>Both component developers and integrators can define listeners for events.
+    <td>
+
+Both component developers and integrators can define listeners for events.
 <a href="Invokers.md">Invokers</a> and the `fire` method of other events can be used as listeners here, as well as any function handle resulting from an <a href="ExpansionOfComponentOptions.md">Expanders</a>.
 Note that as well as being a simple string holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC Reference</a>
 to any other event held in the component tree (for example <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, the value associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a>
-or else follow the syntax of an invoker indicating that the registered listener receives a different signature from the one that the event has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).</td>
+or else follow the syntax of an invoker indicating that the registered listener receives a different signature from the one that the event has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).
+</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -162,7 +177,8 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-### `components` ###
+### `components`
+
 <table>
   <tr>
     <th>Description</th>
@@ -187,10 +203,10 @@ fluid.defaults("examples.eventedComponent", {
         subcomponent1: {
             type: "component.subcomp1",
             options: {...}
-        },
-        ...
-    },
-    ...
+        }
+        // ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -204,7 +220,8 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-### `distributeOptions` ###
+### `distributeOptions`
+
 <table>
   <tr>
     <th>Description</th>
@@ -221,7 +238,7 @@ fluid.defaults("examples.eventedComponent", {
         record: "another.grade.name",
         target: "{that target.grade.name}.options.gradeNames"
     }
-    ...
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -231,7 +248,8 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-### `mergePolicy` ###
+### `mergePolicy`
+
 <table>
   <tr>
     <th>Description</th>
@@ -239,9 +257,12 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Notes</th>
-    <td>It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy.
-    For example, some noxious circularly-liked structure such as a node.js HTTP `request` object should be protected in such a way. The 2.0 framework will automatically protect an object which fails the `fluid.isPlainObject` test, which will exclude
-    any object with a nondefault constructor or native type such as DOM elements, `TypedArray`s, Infusion components themselves, etc.</td>
+    <td>
+
+It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy.
+For example, some noxious circularly-liked structure such as a node.js HTTP `request` object should be protected in such a way. The 2.0 framework will automatically protect an object which fails the `fluid.isPlainObject` test, which will exclude
+any object with a nondefault constructor or native type such as DOM elements, `TypedArray`s, Infusion components themselves, etc.
+</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -249,10 +270,10 @@ fluid.defaults("examples.eventedComponent", {
 <code>fluid.defaults("component.name", {
     mergePolicy: {
         option1: "noexpand",
-        option2: "nomerge",
-        ....
-    },
-    ...
+        option2: "nomerge"
+        // ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -262,7 +283,8 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-### `dynamicComponents` ###
+### `dynamicComponents`
+
 <table>
   <tr>
     <th>Description</th>
@@ -282,11 +304,13 @@ fluid.defaults("examples.eventedComponent", {
         dynamic1: {
             type: "component.subcomp1",
             source: "{context}.someArray",
-            options: {...}
-        },
-        ...
-    },
-    ...
+            options: {
+                // ...
+            }
+        }
+        // ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -298,13 +322,14 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
 </table>
 
-## Model Components ##
+## Model Components
 
 Components defined with a grade of `fluid.modelComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
 
 See also: [Component Grades](ComponentGrades.md)
 
-### `model` ###
+### `model`
+
 <table>
   <tr>
     <th>Description</th>
@@ -318,8 +343,8 @@ See also: [Component Grades](ComponentGrades.md)
         pageIndex: undefined,
         pageSize: 10,
         totalRange: undefined
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -329,8 +354,8 @@ See also: [Component Grades](ComponentGrades.md)
 <code>var myPager = fluid.pager(container, {
     model: {
         pageIndex: 1
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -341,11 +366,15 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `modelListeners` ###
+### `modelListeners`
+
 <table>
   <tr>
     <th>Description</th>
-    <td>A record defining a set of functions wishing to be notified of changes to the `model`</td>
+    <td>
+
+A record defining a set of functions wishing to be notified of changes to the `model`
+</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -364,7 +393,8 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `modelRelay` ###
+### `modelRelay`
+
 <table>
   <tr>
     <th>Description</th>
@@ -395,7 +425,8 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-### `changeApplierOptions` ###
+### `changeApplierOptions`
+
 <table>
   <tr>
     <th>Description</th>
@@ -409,20 +440,25 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
 </table>
 
-## View Components ##
+## View Components
 
 Components defined with a grade of `fluid.viewComponent` are also model components, so they support
+
 * all of the [common options](#options-supported-by-all-components-grades) described above,
 * [`modelComponent` options](#model-components) described above
 * and those defined below.
 
 Component developers are free to define their own additional options.
 
-### `selectors` ###
+### `selectors`
+
 <table>
   <tr>
     <th>Description</th>
-    <td>A record containing named CSS-based selectors identifying where in the DOM relative to the component's `container` different elements can be found.</td>
+    <td>
+
+A record containing named CSS-based selectors identifying where in the DOM relative to the component's `container` different elements can be found.
+</td>
   </tr>
   <tr>
     <th>Notes</th>
@@ -438,8 +474,8 @@ Component developers are free to define their own additional options.
         indicator: ".flc-progress-indicator",
         label: ".flc-progress-label",
         ariaElement: ".flc-progress-bar"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -450,8 +486,8 @@ Component developers are free to define their own additional options.
     selectors: {
         indicator: "div.progress-indicator",
         label: "span.progress-label"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -461,7 +497,8 @@ Component developers are free to define their own additional options.
   </tr>
 </table>
 
-### `styles` ###
+### `styles`
+
 <table>
   <tr>
     <th>Description</th>
@@ -493,9 +530,10 @@ Component developers are free to define their own additional options.
 In addition to the options above, a View Component also accepts an additional argument named `container` which may be supplied either as the first argument to its [Creator Function](UnderstandingInfusionComponents.md)
 or else at top level in its [Subcomponent Record](SubcomponentDeclaration.md). It is not currently supported to supply this value as a standard option in the options record.
 
-## Renderer Components ##
+## Renderer Components
 
 Components defined with a grade of `rendererComponent` are also view components (and hence model components), so they support
+
 * all of the [common options](#options-supported-by-all-components-grades) described above,
 * [`modelComponent` options](#model-components) described above,
 * [`viewComponent` options](#view-components) described above,
@@ -505,7 +543,8 @@ Component developers are free to define their own additional options.
 
 <div class="infusion-docs-note"><strong>Note:</strong> The Infusion Renderer system will be rewritten completely before the Infusion 3.0 release - the use of the current renderer and component hierarchy is not recommended.</div>
 
-### `selectorsToIgnore` ###
+### `selectorsToIgnore`
+
 <table>
   <tr>
     <th>Description</th>
@@ -523,14 +562,15 @@ Component developers are free to define their own additional options.
         user: ".csc-header-user",
         userName: ".csc-header-userName"
     },
-    selectorsToIgnore: ["searchBox", "logout"],
-    ...
+    selectorsToIgnore: ["searchBox", "logout"]
+    // ...
 });</code>
 </pre></td>
   </tr>
 </table>
 
-### `repeatingSelectors` ###
+### `repeatingSelectors`
+
 <table>
   <tr>
     <th>Description</th>
@@ -548,14 +588,15 @@ Component developers are free to define their own additional options.
         user: ".csc-header-user",
         userName: ".csc-header-userName"
     },
-    repeatingSelectors: ["menuItem"],
-    ...
+    repeatingSelectors: ["menuItem"]
+    // ...
 });</code>
 </pre></td>
   </tr>
 </table>
 
-### `produceTree` ###
+### `produceTree`
+
 <table>
   <tr>
     <th>Description</th>
@@ -572,13 +613,13 @@ Component developers are free to define their own additional options.
     <td><pre>
 <code>cspace.confirmationDialog.produceTree = function (that) {
     var tree = {
-        ...
+        // ...
     };
     return tree;
 };
 fluid.defaults("cspace.confirmationDialog", {
-    produceTree: cspace.confirmationDialog.produceTree,
-    ...
+    produceTree: cspace.confirmationDialog.produceTree
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -589,7 +630,8 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `protoTree` ###
+### `protoTree`
+
 <table>
   <tr>
     <th>Description</th>
@@ -620,8 +662,8 @@ fluid.defaults("cspace.confirmationDialog", {
                 messagekey: "${{row}}"
             }
         }
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -645,7 +687,7 @@ fluid.defaults("cspace.confirmationDialog", {
             }
         }
     },
-    ...
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -657,7 +699,8 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `resources` ###
+### `resources`
+
 <table>
   <tr>
     <th>Description</th>
@@ -678,8 +721,8 @@ fluid.defaults("cspace.confirmationDialog", {
         footerTemplate: {
             href: "../templates/Footer.html"
         }
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -691,8 +734,8 @@ fluid.defaults("cspace.confirmationDialog", {
         footerTemplate: {
             href: "../templates/FrontPageFooter.html"
         }
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -702,7 +745,8 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `strings` ###
+### `strings`
+
 <table>
   <tr>
     <th>Description</th>
@@ -724,8 +768,8 @@ fluid.defaults("cspace.confirmationDialog", {
         relationshipType: "Select relationship type:",
         createNew: "Create new record:",
         addButton: "Add to current record"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -737,8 +781,8 @@ fluid.defaults("cspace.confirmationDialog", {
         relationshipType: "Select a relationship type from the list below:",
         createNew: "Create a new record:",
         addButton: "Add this record to the current record"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -748,7 +792,8 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `rendererFnOptions` ###
+### `rendererFnOptions`
+
 <table>
   <tr>
     <th>Description</th>
@@ -760,8 +805,8 @@ fluid.defaults("cspace.confirmationDialog", {
 <code>fluid.defaults("fluid.tableOfContents.levels", {
     rendererFnOptions: {
         noexpand: true
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -771,8 +816,8 @@ fluid.defaults("cspace.confirmationDialog", {
 <code>var recEditor = cspace.recordEditor(container, {
     rendererFnOptions: {
         rendererTargetSelector: "dialog"
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -783,7 +828,8 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `rendererOptions` ###
+### `rendererOptions`
+
 <table>
   <tr>
     <th>Description</th>
@@ -795,8 +841,8 @@ fluid.defaults("cspace.confirmationDialog", {
 <code>fluid.defaults("cspace.searchBox", {
     rendererOptions: {
         autoBind: false
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -806,8 +852,8 @@ fluid.defaults("cspace.confirmationDialog", {
 <code>var search = cspace.searchBox(container, {
     rendererOptions: {
         autoBind: true
-    },
-    ...
+    }
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -818,7 +864,8 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
 </table>
 
-### `renderOnInit` ###
+### `renderOnInit`
+
 <table>
   <tr>
     <th>Description</th>
@@ -829,8 +876,8 @@ fluid.defaults("cspace.confirmationDialog", {
     <td><pre>
 <code>fluid.defaults("cspace.login", {
     gradeNames: ["fluid.rendererComponent"],
-    renderOnInit: true,
-    ...
+    renderOnInit: true
+    // ...
 });</code>
 </pre></td>
   </tr>
@@ -838,8 +885,8 @@ fluid.defaults("cspace.confirmationDialog", {
     <th>Example Override</th>
     <td><pre>
 <code>var login = cspace.login(container, {
-    renderOnInit: false,
-    ...
+    renderOnInit: false
+    // ...
 });</code>
 </pre></td>
   </tr>
