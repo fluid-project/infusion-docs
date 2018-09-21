@@ -11,13 +11,13 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 * you have an existing implementation that makes use of UI Options and worked with the 1.4 Infusion release.
 * you are using the default classes
 
-## Dependency Changes ##
+## Dependency Changes
 
 <div class="infusion-docs-note"><strong>Note:</strong> actual paths may vary, as they are dependent on the location of infusion.</div>
 
 ### In 1.5
 
-#### CSS Files ####
+#### CSS Files
 
 ```html
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-reset-global.css" />
@@ -42,15 +42,15 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
 ```
 
-#### JS Files ####
+#### JS Files
 
-##### Using the infusion-all bundle #####
+##### Using the infusion-all bundle
 
 ```html
 <script type="text/javascript" src="infusion/infusion-all.js"></script>
 ```
 
-##### Using the individual files ######
+##### Using the individual files
 
 ```html
 <script type="text/javascript" src="infusion/lib/jquery/core/js/jquery.js"></script>
@@ -93,7 +93,7 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 
 ### In 1.4
 
-#### Theme Files ####
+#### Theme Files
 
 ```html
 <link rel="stylesheet" type="text/css" href="infusion/framework/fss/css/fss-reset-global.css" />
@@ -114,7 +114,7 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 <link rel="stylesheet" type="text/css" href="infusion/components/uiOptions/css/FatPanelUIOptions.css" />
 ```
 
-#### JS Files ####
+#### JS Files
 
 ```html
 <script type="text/javascript" src="infusion/lib/jquery/core/js/jquery.js"></script>
@@ -142,7 +142,7 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 <script type="text/javascript" src="infusion/components/tableOfContents/js/TableOfContents.js"></script>
 ```
 
-## Instantiation Changes ##
+## Instantiation Changes
 
 ### In 1.5
 
@@ -150,7 +150,7 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 fluid.uiOptions.prefsEditor("container", {
     terms: {
         templatePrefix: "pathToTemplates",
-        messagePrefix: "pathToMessages",
+        messagePrefix: "pathToMessages"
     },
     tocTemplate: "pathToTemplate"
 });

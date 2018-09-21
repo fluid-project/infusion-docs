@@ -11,14 +11,14 @@ or simply a unit of work or relationship between other components. This page pro
 If you're creating an entire web application, your application would be implemented as a component that
 coordinates interactions between other components that handle the different parts of your application.
 
-## Examples ##
+## Examples
 
 To help understand how a widget or application might be designed using components, consider some of
 the components in the Infusion Component Library:
 
 <div class="infusion-docs-note"><strong>Note:</strong> All of the example components presented here are <strong>view components</strong> which produce a visible UI in the browser. Other Infusion components expose no UI, and may run on the server in environments like node.js.</div>
 
-### Progress ###
+### Progress
 
 ![a horizontal progress bar](images/progress-example.png)
 
@@ -26,22 +26,22 @@ The Infusion Progress component is a single [view component](ComponentConfigurat
 that work together and are updated programmatically to show the progress of some activity. It has a
 pretty simple purpose and function, one that doesn't make much sense to try to chunk up into multiple components.
 
-### Inline Edit ###
+### Inline Edit
 
 ![The Inline Edit component with a hover tooltip showing](images/viewMode.png)
 
 The Inline Edit component allows the user to edit text in place, without switching to a new screen, by
-simply switching into an in-place edit mode. The view mode is implemented one way, with certain functionality (i.e. a tooltip, an affordance to edit), and the edit mode is implemented differently: it's an edit field. 
+simply switching into an in-place edit mode. The view mode is implemented one way, with certain functionality (i.e. a tooltip, an affordance to edit), and the edit mode is implemented differently: it's an edit field.
 Conceptually, these two modes are rather different, and so they're implemented as two separate subcomponents of the main Inline Edit component.
 
-### Uploader ###
+### Uploader
 
 ![The Uploader interface, showing a list of files queued for uploading.](images/uploader.png)
 
 The Uploader allows users to add several files to a queue and then upload them all at once. It is actually
 made up of several [subcomponents](SubcomponentDeclaration.md): It has the file queue view, which displays the files currently in the queue; it has a total progress bar at the bottom. In turn, the file queue view component has its own subcomponents.
 
-## What Does a Component Look Like? ##
+## What Does a Component Look Like?
 
 A component is a regular JavaScript object that has certain characteristics. The simplest varieties of Infusion Components, derived from [`fluid.component`](ComponentConfigurationOptions.md#options-supported-by-all-components-grades), will have:
 
@@ -54,13 +54,12 @@ A component is a regular JavaScript object that has certain characteristics. The
   * registered as `invokers` in the component's configuration, these can be invoked by users to trigger component functionality
 * events
   * registered as `events` in the component's configuration, these can be fired and listened to by users and the implementation
-  
+
 In addition, a component derived from [`fluid.modelComponent`](ComponentConfigurationOptions.md#model-components) will support:
 
 * a model
   * a free-form area where the component stores mutable state which is of interest to its end user
-  * changes in this area are managed by an automatically generated implementation attached to the component, a [ChangeApplier](ChangeApplier.md), which allows interested parties to register and deregister their interest in particular changes, 
-as well as allowing changes to one component's model to be automatically coordinated with changes in another.
+  * changes in this area are managed by an automatically generated implementation attached to the component, a [ChangeApplier](ChangeApplier.md), which allows interested parties to register and deregister their interest in particular changes, as well as allowing changes to one component's model to be automatically coordinated with changes in another.
 
 Components which manage a _view_ on behalf of their user, which is rooted at a particular node in the DOM, will derive from [`fluid.viewComponent`](ComponentConfigurationOptions.md#view-components) which then supports:
 
@@ -69,7 +68,7 @@ Components which manage a _view_ on behalf of their user, which is rooted at a p
 * a [DOM binder](DOMBinder.md)
   * associating names with scoped selectors and the DOM nodes that they match
 
-New kinds of components are created by passing configuration information to the [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-) function.
+New kinds of components are created by passing configuration information to the [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options) function.
 This function will generate the **creator function** that will be used to instantiate the component.
 The framework provides support for instantiating components of various [types, or 'grades'](ComponentGrades.md);
 as well, developers can create their own grades.
@@ -97,13 +96,13 @@ var myComponent = examples.tinyComponent();
 // Logs "My tiny component has started up" to the console
 ```
 
-You can understand this example better by reading documentation for [`fluid.defaults`](CoreAPI.md#fluid-defaults-gradename-options-), [`fluid.log`](CoreAPI.md#fluid-log-loglevel-arg1-argn-) and the [Component Lifecycle](ComponentLifecycle.md).
+You can understand this example better by reading documentation for [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), [`fluid.log`](CoreAPI.md#fluidlogloglevel-arg1-argn) and the [Component Lifecycle](ComponentLifecycle.md).
 
-## Instantiating A View Component ##
+## Instantiating A View Component
 
-In this section we instantiate a view component which is already defined in the framework, and configure it with some options of our own: 
+In this section we instantiate a view component which is already defined in the framework, and configure it with some options of our own:
 
-### Example ###
+### Example
 
 ```javascript
 var myInlineEdit = fluid.inlineEdit(".title-container", {

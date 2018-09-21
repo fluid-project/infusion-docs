@@ -7,7 +7,7 @@ category: Tutorials
 This article describes how to use the Infusion [Preferences Framework](../PreferencesFramework.md)
 to create Enactors, components that act in response to changes to a user's preferences.
 
-## Overview ##
+## Overview
 
 In the [Preferences Framework](../PreferencesFramework.md), "Enactors" are Infusion [components](../UnderstandingInfusionComponents.md) that act upon changes to user preferences.
 
@@ -21,26 +21,25 @@ The configuration information used to define an enactor must include certain req
 
 If the enactor will be modifying the view of the interface, you will also want to add the `fluid.viewComponent` grade as well as selectors.
 
-## PreferenceMap ##
+## PreferenceMap
 
 Each enactor defines a "preference map," which map the information in the [Primary Schema](../PrimarySchemaForPreferencesFramework.md) into your enactor. The preference map is used to copy the default preference value from the primary schema into the enactor's model. It can also be used to copy any other necessary information from the primary schema into the enactor, if relevant. The values can be mapped to any path in the Panels options, and then they can be accessed through those paths.
 
-### Format ###
+### Format
 
-```json
-
+```json5
 {
     "preferenceMap": {
         "<key of preference from primary schema>": {
-            "<path in enactor's options where value should be held>": "<key in primary schema where value held>",
-            ...
-        },
-        ...
+            "<path in enactor's options where value should be held>": "<key in primary schema where value held>"
+            // ...
+        }
+        // ...
     }
 }
 ```
 
-### Examples ###
+### Examples
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textSize", {
@@ -49,9 +48,9 @@ fluid.defaults("fluid.prefs.enactor.textSize", {
         "fluid.prefs.textSize": {
             "model.value": "value"
         }
-    },
-    ....
-}
+    }
+    // ...
+});
 ```
 
 ```javascript
@@ -61,9 +60,9 @@ fluid.defaults("fluid.prefs.enactor.emphasizeLinks", {
         "fluid.prefs.emphasizeLinks": {
             "model.value": "value"
         }
-    },
-    ....
-}
+    }
+    // ...
+});
 ```
 
 ```javascript
@@ -76,18 +75,18 @@ fluid.defaults("fluid.videoPlayer.panels.captionsSettings", {
         "fluid.videoPlayer.captionLanguage": {
             "model.language": "value"
         }
-    },
-    ....
-}
+    }
+    // ...
+});
 ```
 
-## Binding to Model Changes ##
+## Binding to Model Changes
 
 The most important thing that an enactor does is listen for changes to its model and act when changes occur. The [Preferences Framework](../PreferencesFramework.md) automatically binds the enactor's model to the user's preferences through the Preferences Map (described above). This means that if the user's preference changes (for example, through the preferences editor), the enactor's model will automatically be updated and a `modelChanged` event will be fired. All the enactor has to do is listen for that `modelChanged` event and carry out whatever adjustments are necessary. (For more information about model changes, see [ChangeApplier API](../ChangeApplierAPI.md); for more information about the events and listeners in general, see [Infusion Event System](../InfusionEventSystem.md)).
 
 `modelChanged` event listeners are bound in a special block of a component's defaults called `modelListeners`. The general format is shown below:
 
-```javascript
+```snippet
 modelListeners: {
     <modelpath>: {
         funcName: <listener name>,
@@ -98,9 +97,9 @@ modelListeners: {
 
 In the argument list of a model listener, the `change` object is the original change request, which can be used to access the new model value:
 
-```javascript
+```snippet
 {
-    path: [<model paths],
+    path: [<model paths>],
     value: <new value>,
     oldValue: <old value>
 }
@@ -114,7 +113,7 @@ gpii.pmt.enactors.magnification.magnify = function (that, newModel) {
 };
 
 fluid.defaults("gpii.pmt.enactors.magnification", {
-    ....
+    // ...
     modelListeners: {
         "magnificationFactor": {
             funcName: "gpii.pmt.enactors.magnification.magnify",
@@ -124,11 +123,11 @@ fluid.defaults("gpii.pmt.enactors.magnification", {
 });
 ```
 
-## Acting on model changes ##
+## Acting on model changes
 
 The actions that an enactor will take will be entirely dependent on what the enactor is for. It is up to the developer to create the necessary functions, etc. required.
 
-## Example: Line Spacing Enactor ##
+## Example: Line Spacing Enactor
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.lineSpace", {
@@ -171,7 +170,7 @@ fluid.prefs.enactor.lineSpace.set = function (that, newValue) {
 };
 ```
 
-## Example: Table of Contents Enactor ##
+## Example: Table of Contents Enactor
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.tableOfContents", {

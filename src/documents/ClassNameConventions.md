@@ -6,7 +6,7 @@ category: Infusion
 
 Infusion components use various conventions for defining CSS class names. These conventions prevent confusion, making it easier for developers and integrators to be clear on what's what when creating or using components.
 
-## CSS classnames ##
+## CSS classnames
 
 The template for **CSS classnames** (i.e. class names use for styling) take the form **fl-[fluid:thing]-[fluid:role]-[fluid:state]** with some guidelines:
 
@@ -26,7 +26,7 @@ Some examples of these class names:
 * `fl-grid-caption`: the caption of an image in a grid
 * `fl-widget-titlebar`: the titlebar of a widget
 
-## Infusion selectors ##
+## Infusion selectors
 
 The template for **Infusion selectors** (i.e. classnames used for programmatic manipulation of the DOM) take the form
 

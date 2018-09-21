@@ -8,7 +8,6 @@ Localization in the Preferences Framework makes use of Message Bundles: JSON fil
 
 ## Message Bundles
 
-
 Message Bundles are JSON files containing key/value pairs representing the message key and the localized text associated with it. Each set of localized text should be contained in its own Message Bundle.
 
 ```json
@@ -49,12 +48,15 @@ For a `fluid.prefs.panel` component, all of the `fluid.prefs.msgLookup` configur
 - add `fluid.prefs.msgLookup` as a [parent grade](ComponentGrades.md#specifying-parent-grades)
 - add an instance of `fluid.messageResolver` as a subcomponent with the member name `msgResolver`
 - link the messageBase to the fetched Message Bundle.
-    - e.g. using an IoC reference to the [messageLoader](#messageloader): `{messageLoader}.resources.<messageBundle>.resourceText`
+  - e.g. using an IoC reference to the [messageLoader](#messageloader): `{messageLoader}.resources.<messageBundle>.resourceText`
 - for an instance of `fluid.rendererComponent` it is also necessary to use the messageResolver's `resolve` method as the `messageLocator`
 
 #### Adding MsgLookup to a Component
 
-<div class="infusion-docs-note"><strong>Note:</strong> Renderer components require additional configuration. (See: [Adding MsgLookup to a Renderer Component](#adding-msglookup-to-a-renderer-component))</div>
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> Renderer components require additional configuration. (See: [Adding MsgLookup to a Renderer Component](#adding-msglookup-to-a-renderer-component))
+</div>
 
 ```javascript
 fluid.defaults("my.component", {
@@ -103,7 +105,7 @@ Message Bundles can be specified through the [auxiliary schema](AuxiliarySchemaF
 
 ### Example Auxiliary Schema
 
-```javascript
+```json5
 {
     "namespace": "fluid.prefs.constructed",
     "terms": {
@@ -164,7 +166,7 @@ When using a `fluid.rendererComponent`, strings from the Message Bundles are ren
     <tbody>
         <tr>
             <td valign="baseline"><pre><code>fluid.defaults("fluid.prefs.panels.linksControls", {
-    ...
+    // ...
     protoTree: {
         label: {messagekey: "linksLabel"},
         linksChoiceLabel: {messagekey: "linksChoiceLabel"},
@@ -188,12 +190,12 @@ Message Bundles can also be resolved directly through an [IoC reference](IoCRefe
 
 ```javascript
 fluid.defaults("fluid.slidingPanel", {
-    ...
+    // ...
     strings: {
         showText: "{that}.msgLookup.slidingPanelShowText",
         hideText: "{that}.msgLookup.slidingPanelHideText"
     }
-    ...
+    // ...
 });
 ```
 
@@ -205,8 +207,8 @@ There are other, more complex cases where an array of strings is required (for e
 It is accessed the same way that an individual string is referenced, except that reference should point to the key in the `stringArrayIndex` instead of a single string name. In the example below, the `stringArrayIndex` is used to define the `theme` string bundle, and the `theme` string bundle is referenced within the `protoTree.expander.tree` ('`optionnames: "${{that}.msgLookup.theme}"`'):
 
 ```javascript
-    fluid.defaults("fluid.prefs.panel.contrast", {
-    ...
+fluid.defaults("fluid.prefs.panel.contrast", {
+    // ...
     stringArrayIndex: {
         // the theme values correspond to message keys in the Message Bundle.
         theme: ["contrast-default", "contrast-bw", "contrast-wb", "contrast-by", "contrast-yb", "contrast-lgdg"]
@@ -226,7 +228,7 @@ It is accessed the same way that an individual string is referenced, except that
             }
         }
     }
-    ...
+    // ...
 });
 ```
 
@@ -263,7 +265,7 @@ See [fluid.resourceLoader fallback rules](ResourceLoader.html#fallback-rules-wit
 The Message Bundles should conform to the following naming convention to facilitate discovery by the messageResolver:
 `<bundle name>_<language code>_<country code>.json`
 
-The following are all valid Message Bundle names and will work with the above [Fallback Rules](#fallback-rules):
+The following are all valid Message Bundle names and will work with the above [Fallback Rules](ResourceLoader.html#fallback-rules-with-locale-and-defaultlocale):
 
 - prefsEditor_fr_CA.json
 - prefsEditor_fr.json

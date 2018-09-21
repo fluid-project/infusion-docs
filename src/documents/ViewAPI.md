@@ -15,7 +15,7 @@ dependent on running in a browser. See also the [DOM Binder API](DOMBinderAPI.md
 * Returns: `{String}` The unique id for the element - at the point of return, agrees with the node's `id` attribute.
 
 Allocate an id to the supplied element if it has none already, by a simple
-scheme resulting in ids "fluid-id-nnnn" where nnnn is a string returned from [fluid.allocateGuid](CoreAPI.md##fluid-allocateguid-).
+scheme resulting in ids "fluid-id-nnnn" where nnnn is a string returned from [fluid.allocateGuid](CoreAPI.md#fluidallocateguid).
 If the element already has an id allocated in the DOM, this existing id is returned unchanged.
 
 ### fluid.jById(id[, dokkument])
@@ -60,7 +60,7 @@ often unhelpful jQuery default of returning the overall document node.
 If `obj` is a jQuery, this function will return the first DOM element within it. Otherwise, the object will be returned unchanged.
 
 ### fluid.getDocument(element)
-     
+
 * `element {jQuery||DomElement}` The element to return the document for
 * Returns: `{Document}` The document in which it is to be found
 
@@ -77,7 +77,6 @@ implementation will defer to `jQuery.val`. If the supplied element is an HTML ra
 will automatically acquire all other elements sharing the same HTML `name` within the same `form` element before performing
 the read or write.
 
-
 ## ARIA Labeller
 
 A standalone utility and associated component for easily managing an [ARIA live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) and/or the [`aria-label`](http://www.w3.org/TR/wai-aria/complete#aria-label)
@@ -87,9 +86,8 @@ holding a label associated with a particular DOM node in the document.
 
 * `element {jQueryable}` A selector, DOM element or jQuery representing the DOM node on whose behalf a live region label is required
 * `text {String}` The string to be entered into the live region - this will be announced "soon" depending on the "politeness setting" attached to the `aria-live` attribute of the region (default: `"polite"`)
-* `options {AriaLabellerOptions}` [optional] A set of options for configuring the behaviour of the labeller. These options are described in the [table below](#structure-of-arialabelleroptions-).
-* Returns: `{Component}` An Infusion [view component](ComponentConfigurationOptions.md#view-components) managing the interaction with the label. ***Note:*** disposing of this component is the responsibility of the caller. If you have destroyed
-the markup to which this component is attached, you must destroy the component using its `destroy()` method or it will leak. Successive calls to `fluid.updateAriaLabel` for the same DOM node will return the same component.
+* `options {AriaLabellerOptions}` [optional] A set of options for configuring the behaviour of the labeller. These options are described in the [table below](#structure-of-arialabelleroptions).
+* Returns: `{Component}` An Infusion [view component](ComponentConfigurationOptions.md#view-components) managing the interaction with the label. **Note:** disposing of this component is the responsibility of the caller. If you have destroyed the markup to which this component is attached, you must destroy the component using its `destroy()` method or it will leak. Successive calls to `fluid.updateAriaLabel` for the same DOM node will return the same component.
 
 #### Structure of `AriaLabellerOptions`
 
@@ -105,11 +103,11 @@ an Infusion `fluid.viewComponent` of type `fluid.ariaLabeller`.
 
 ## Managing Focus and Blur
 
-Infusion includes two "major utilities" for managing focus interactions, [`fluid.globalDismissal`](#fluid-globaldismissal-nodes-dismissfunc-) and [`fluid.deadMansBlur`](#fluid-deadmansblur-control-options-), as well as a few minor utilities.
+Infusion includes two "major utilities" for managing focus interactions, [`fluid.globalDismissal`](#fluidglobaldismissalnodes-dismissfunc) and [`fluid.deadMansBlur`](#fluiddeadmansblurcontrol-options), as well as a few minor utilities.
 
 ### fluid.globalDismissal(nodes[, dismissFunc])
 
-* `nodes {Object: String  → DomElement|jQuery}` A free hash of names onto nodes that a click ***outside*** of will trigger `dismissFunc`
+* `nodes {Object: String  → DomElement|jQuery}` A free hash of names onto nodes that a click **outside** of will trigger `dismissFunc`
 * `dismissFunc {Function: DomEvent  →  None}|Undefined` A function which will be executed when a "dismissal click" is received in the document. If this argument is not supplied, any existing dismissal function will be disarmed.
 
 Used in the stereotypical situation where a click event (morally, one which shifts focus outside a dialog or other region of interaction - but only actual `click` events
@@ -122,7 +120,7 @@ to be armed again.
 ### fluid.deadMansBlur(control, options)
 
 * `control {jQueryable}` The control for which a blur interaction is to be managed.
-* `options {DeadMansBlurOptions}` A set of options managing the interaction, described in [table below](#structure-of-deadmansbluroptions-).
+* `options {DeadMansBlurOptions}` A set of options managing the interaction, described in [table below](#structure-of-deadmansbluroptions).
 * Returns: `{Component}` A component managing the interaction
 
 This utility is designed to compensate for the fact that delivery of blur events in browsers has always been extremely unreliable. Sometimes blur events
@@ -146,10 +144,10 @@ broadly useful.</div>
 
 | Name | Type | Description | Default |
 |------|------|-------------|---------|
-|`exclusions`|<code>Object: String  → DomElement&#124;jQuery</code>| A free hash of names onto nodes that a click ***outside*** of will trigger `handler`, *** OR *** that a focus event received within the time window of `delay` from a blur event on `control` will *** cancel *** notification of `handler`| none |
+|`exclusions`|<code>Object: String  → DomElement&#124;jQuery</code>| A free hash of names onto nodes that a click **outside** of will trigger `handler`, **OR** that a focus event received within the time window of `delay` from a blur event on `control` will **cancel** notification of `handler`| none |
 |`handler`|`Function: (jQueryable)  →  None`| A function which will be invoked when the component has determined that a meaningful blur has been triggered on `control`. It will be invoked with `control` as the argument.| none |
 |`delay`|`Number`| The interval of time (in ms) that the component will wait after receiving a `blur` event on `control` in order to determine that the reason is that another element within `exclusions` is being focused.|150|
-|`backDelay`|`Number`| The interval of time *** before *** a `blur` event in which the component will be sensitive to an anomalous `pre-focusing` of an element within `exclusions` (primarily useful on Internet Explorer)|100|
+|`backDelay`|`Number`| The interval of time **before** a `blur` event in which the component will be sensitive to an anomalous `pre-focusing` of an element within `exclusions` (primarily useful on Internet Explorer)|100|
 |`cancelByDefault`|`Boolean`| If `true`, the focus timer logic of `deadMansBlur` is disabled and it the user is expected to operate the component manually (unsupported API)|`false`|
 
 ### fluid.getLastFocusedElement()
@@ -159,6 +157,7 @@ broadly useful.</div>
 By means of registering a global listener to the synthetic jQuery [`focusin`](https://api.jquery.com/focusin/) event, allows the user to retrieve the last DOM element which was focused.
 
 ### fluid.focus(element)
+
 * `element {jQueryable}` An element onto which focus should be transferred
 
 This utility and `fluid.blur` should be used in test cases which are trying to test focus interactions, since the browser's fidelity in allowing focus to be moved programmatically is
@@ -169,6 +168,7 @@ often patchy. This utility will, in the following order, trigger the following:
 * The native DOM event `focus`
 
 ### fluid.blur(element)
+
 * `element {jQueryable}` An element which should lose focus as a result of receiving a `blur` event.
 
 This utility and `fluid.focus` should be used in test cases which are trying to test focus interactions, since the browser's fidelity in allowing focus to be moved programmatically is

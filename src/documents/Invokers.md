@@ -5,7 +5,7 @@ category: Infusion
 ---
 
 The public and implementation functions on your component ("methods",
-in OO terminology) are defined by configuration representing ***invokers***. 
+in OO terminology) are defined by configuration representing **invokers**.
 
 Invokers can bind free functions, IoC resolved functions, and
 `this` based functions to the component, and to the context of the component. Invokers allow the
@@ -15,9 +15,9 @@ representing the component itself in and out of the argument list, this also all
 more powerful reuse of existing functions where signature elements can be sourced freely from
 around the component tree and within the original argument list.
 
-## Types of Invokers ##
+## Types of Invokers
 
-### Standard invoker binding to a function using funcName, func ###
+### Standard invoker binding to a function using funcName, func
 
 An invoker can specified with either the **`funcName`** property to reference a free function by its
 global name (e.g. `fluid.copy`, `fluid.log`, etc.) or the **`func`** property to reference an existing
@@ -58,7 +58,7 @@ function unchanged.
     </tbody>
 </table>
 
-#### An invoker record in context ####
+#### An invoker record in context
 
 The following skeleton example defines an invoker named invokerName attached to a component of
 type component.name. When a component of the type is instantiated, for example with a line such
@@ -68,17 +68,18 @@ attached to the instance, callable under the name `invokerName` - e.g. as
 
 ```javascript
 fluid.defaults("component.name", {
-    ...
+    // ...
     invokers: {
         invokerName: {
-            funcName: <fully namespaced string name of function>,
-            args: <array of arguments>
-        },
-        ...
+            funcName: "my.namespaced.function",
+            args: [] // Array of arguments
+        }
+        // ...
     }
-    ...
+    // ...
 });
 ```
+
 __Example:__
 
 The following example defines a component of type `xyz.widget`, with two invokers named `addTwo`
@@ -91,7 +92,7 @@ function may be bound via its global name to any component.
 
 ```javascript
 fluid.defaults("xyz.widget", {
-    ...
+    // ...
     invokers: {
         addTwo: {
             funcName: "xyz.widget.add",
@@ -99,16 +100,16 @@ fluid.defaults("xyz.widget", {
         },
         subtractTwo: {
             func: "{parent}.subtract",
-            args: ["{arguments}.0", 2],
+            args: ["{arguments}.0", 2]
         }
     }
-    ...
+    // ...
 });
 
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
-#### Compact format for invokers ####
+#### Compact format for invokers
 
 Alternatively, invokers can be specified in a compact single line format. However, arguments
 specified in the invoker can only be strings or [IoC References](IoCReferences.md). Strings which can be converted
@@ -116,13 +117,12 @@ into Numbers or Booleans will be so converted before being interpreted.
 
 ```javascript
 fluid.defaults("component.name", {
-    ...
+    // ...
     invokers: {
         invokerName: "<fully namespaced string name of function>(<comma-separated ioc references>)"
-        },
-        ...
+        // ...
     }
-    ...
+    // ...
 });
 ```
 
@@ -130,12 +130,12 @@ __Example:__
 
 ```javascript
 fluid.defaults("xyz.widget", {
-    ...
+    // ...
     invokers: {
         addVal: "xyz.widget.add({that}.staticVal, {arguments}.0)",
         subtractVal: "{parent}.subtract({arguments}.0, {that}.staticVal)"
     }
-    ...
+    // ...
 });
 
 xyz.widget.add = function (a, b) {return a + b;};
@@ -145,7 +145,7 @@ __Example:__
 
 ```javascript
 fluid.defaults("fluid.uploader.fileQueue", {
-    ...
+    // ...
     invokers: {
         start: {
             funcName: "fluid.uploader.fileQueue.start",
@@ -154,14 +154,14 @@ fluid.defaults("fluid.uploader.fileQueue", {
         startFile: {
             funcName: "fluid.uploader.fileQueue.startFile",
             args: "{that}.currentBatch"
-        },
-        ...
-    },
-    ...
-}
+        }
+        //...
+    }
+    //...
+});
 ```
 
-### Invoker triggering a model change to some component's model ###
+### Invoker triggering a model change to some component's model
 
 If the invoker's record contains the field changePath (rather than the standard `func`/`funcName`)
 this is recognised as a special type of invoker triggering a change to a particular component's
@@ -169,7 +169,7 @@ model via its [ChangeApplier](ChangeApplier.md). This type of record is document
 section with the [ChangeApplier API](ChangeApplierAPI.md). The compact syntax may not be used with
 this variety of record.
 
-### "this"-ist invoker binding to a OO-style JavaScript function referencing "this" ###
+### "this"-ist invoker binding to a OO-style JavaScript function referencing "this"
 
 Specifying an invoker with a __`"this"`__ property allows the invocation of functions whose body
 makes a reference to the special JavaScript value `"this"`. These are generally functions external
@@ -217,20 +217,19 @@ invokers.
     </tbody>
 </table>
 
-
-#### Format ####
+#### Format
 
 ```javascript
 fluid.defaults("component.name", {
-    ...
+    // ...
     invokers: {
         invokerName: {
-            "this": <reference to an object>,
-            method: <string name of method on the object>,
-            args: <array of arguments>
+            "this": "console", // reference to an object
+            method: "log", // string name of method on the this-ist object
+            args: ["Hello, world."] // array of arguments
         }
     }
-    ...
+    // ...
 });
 ```
 
@@ -238,7 +237,7 @@ __Example:__
 
 ```javascript
 fluid.defaults("xyz.widget", {
-    ...
+    // ...
     invokers: {
         setAriaLabel: {
             "this": "{that}.dom.elm",
@@ -246,7 +245,7 @@ fluid.defaults("xyz.widget", {
             args: ["aria-label", "{arguments}.0"]
         }
     }
-    ...
+    // ...
 });
 ```
 
@@ -254,20 +253,20 @@ __Example:__
 
 ```javascript
 fluid.defaults("fluid.uploader.html5Strategy.browseButtonView", {
-    ...
+    // ...
     invokers: {
-        ...
+        // ...
         disable: {
             "this": "{that}.dom.fileInputs",
             method: "prop",
             args: ["disabled", true]
         }
-        ...
-    },
-    ...
-}
+        // ...
+    }
+    // ...
+});
 ```
 
-#### Compact format ####
+#### Compact format
 
 "this"-ist invokers have no equivalent compact syntax.

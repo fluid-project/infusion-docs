@@ -12,9 +12,9 @@ An Auxiliary Schema is a JSON document that defines the information needed to bu
 
 An auxiliary schema must contain some required properties, described below. In addition to these properties, developers are free to include any other properties their implementation may require.
 
-## Properties ##
+## Properties
 
-### Top-level properties ###
+### Top-level properties
 
 * `namespace` (optional; recommended)
   * the namespace of the component to call to initialize the constructed grades
@@ -29,9 +29,10 @@ An auxiliary schema must contain some required properties, described below. In a
   * the path to the template for the prefs editor itself
   * provided the term name defined in the `terms` block for the path to the directory containing the html templates is `templatePrefix`, use `%templatePrefix` to reference the prefix specified by `templatePrefix` as part of the path
 
-### Preference block properties ###
+### Preference block properties
 
 Preference blocks can be given any property name, so long as the name is unique within the schema. Preference blocks will have the following properties:
+
 * `type`
   * used to define the preference setting type
   * must match the string defined by the [Primary Schema](PrimarySchemaForPreferencesFramework.md)
@@ -42,7 +43,7 @@ Preference blocks can be given any property name, so long as the name is unique 
   * specifies the configuration for the enactor component
   * each preference block can specify only one enactor
 
-#### Panel properties ####
+### Panel properties
 
 * `type`
   * used to identify the component to use
@@ -56,12 +57,12 @@ Preference blocks can be given any property name, so long as the name is unique 
   * the path to the message bundle for the panel
   * provided the term name defined in [the top level `terms` property](#top-level-properties) for the path to the directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
 
-#### Enactor properties ####
+### Enactor properties
 
 * `type`
   * used to identify the component to use
 
-### Composite Panel properties ###
+### Composite Panel properties
 
 * `groups`
   * contains named composite panel blocks, similar to panel definitions described above
@@ -69,9 +70,9 @@ Preference blocks can be given any property name, so long as the name is unique 
 
 For detailed information about how to work with composite panels, see [Composite Panels](CompositePanels.md).
 
-## Example Auxiliary Schema ##
+## Example Auxiliary Schema
 
-```javascript
+```json5
 {
     // The author of the auxiliary schema will provide the namespace, which will be used
     //for the component to call to initialize the constructed grades.
@@ -218,16 +219,16 @@ For detailed information about how to work with composite panels, see [Composite
 }
 ```
 
-## Sharing data between panels and enactors ##
+## Sharing data between panels and enactors
 
 In some cases, panels and enactors may need to share data, such as a list of class names. In these cases, define the data at the root of the relevant preference block and reference it within the panel and enactor blocks, as seen in the example above (in the `contrast` and `textFont` preference blocks). The general structure and syntax is highlighted below:
 
-```javascript
+```json5
 {
     "prefBlockName": {
         "type": "typename",
         "dataToBeShared": {
-            ...
+            // ...
         },
         "enactor": {
             "type": "enactor.component.name",
@@ -236,18 +237,19 @@ In some cases, panels and enactors may need to share data, such as a list of cla
         "panel": {
             "type": "panel.component.name",
             "sharedData": "@prefBlockName.dataToBeShared",
-            ...
+            // ...
         }
+    }
 }
 ```
 
-## Configuring Multiple Panels and Enactors for a Single Preference ##
+## Configuring Multiple Panels and Enactors for a Single Preference
 
 Each preference block can contain configuration for _at most_ one enactor and one panel. If more than one enactor and/or panel needs to be configured for a given preference, you can create another preference block with a new namespace.
 
-```javascript
+```json5
 {
-    ...
+    // ...
     // Standard preference block configuration
     "textSize": {
         "type": "fluid.prefs.textSize",
@@ -275,11 +277,11 @@ Each preference block can contain configuration for _at most_ one enactor and on
             "message": "%messagePrefix/foo.json"
         }
     }
-    ...
+    // ...
 }
 ```
 
-## Configuring a Single Panel for Multiple Enactors and Preferences ##
+## Configuring a Single Panel for Multiple Enactors and Preferences
 
 Each preference block defines only one preference, even if multiple preferences (with their own enactors) are displayed in the _same panel_. In these cases, multiple preference blocks still need to be configured:
 
@@ -288,7 +290,7 @@ Each preference block defines only one preference, even if multiple preferences 
 
 The example below shows two preferences (`emphasizeLinks` and `inputsLarger`)  sharing the same panel `fluid.prefs.panels.linksControls`. The details for this panel are only defined in the preference block for `emphasizeLinks`.
 
-```javascript
+```json
 {
     "emphasizeLinks": {
         "type": "fluid.prefs.emphasizeLinks",

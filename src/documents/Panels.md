@@ -16,57 +16,61 @@ Panel defaults must include certain things:
 
 Each of these is explained below.
 
-## Grade ##
+## Grade
 
 Panels must be defined using the `fluid.prefs.panel` [grade](ComponentGrades.md), as shown in the following code block:
 
 ```javascript
 fluid.defaults("my.pref.panel", {
-    gradeNames: ["fluid.prefs.panel"],
-    ...
+    gradeNames: ["fluid.prefs.panel"]
+    // ...
 });
 ```
+
 Panels are, by default, [renderer components](RendererComponents.md), which automatically provide support for DOM binding, for a model and for events. Other grades can be combined with the Panel grade, if necessary. For example, if you are defining several panels which share common functionality, you can create a single grade that includes that functionality and uses the `fluid.prefs.panel` grade, then use your common grade for your panels, as illustrated in the following code sample:
 
 ```javascript
 // shared grade, defining common functionality
 fluid.defaults("my.pref.panelGrade", {
-    gradeNames: ["fluid.prefs.panel"],
-    <common defaults>
+    gradeNames: ["fluid.prefs.panel"]
+    // common defaults
 });
 
 // one specific panel, which uses the shared grade
 fluid.defaults("my.pref.panel2", {
-    gradeNames: ["my.pref.panelGrade"],
-    <defaults specific to panel 1>
+    gradeNames: ["my.pref.panelGrade"]
+    // defaults specific to panel 1
 });
 
 // another specific panel, which uses the shared grade
 fluid.defaults("my.pref.panel2", {
-    gradeNames: ["my.pref.panelGrade"],
-    <defaults specific to panel 2>
+    gradeNames: ["my.pref.panelGrade"]
+    // defaults specific to panel 2
 });
 ```
 
-## Preference Map (Schema Only) ##
+## Preference Map (Schema Only)
 
-<div class="infusion-docs-note"><strong>IMPORTANT NOTE:</strong> Preference Maps are **only** required if you are working with [schemas](PrimarySchemaForPreferencesFramework.md)). If you are using grades instead (only necessary in rare cases), you do **not** need a preference map.</div>
+<div class="infusion-docs-note">
+
+<strong>IMPORTANT NOTE:</strong> Preference Maps are **only** required if you are working with [schemas](PrimarySchemaForPreferencesFramework.md)). If you are using grades instead (only necessary in rare cases), you do **not** need a preference map.
+</div>
 
 A Preference Map is an option that allows you to map the information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md) into your Panel. For each relevant preference defined in the primary schema, the preference map specifies where in the current component's options the value should be store. This is used to pull the default preference value into the Panel's model, as well as any other relevant information.
 
 The format of a preference map is shown in the following code sample:
 
-```javascript
+```snippet
 preferenceMap: {
     <key from primary schema>: {
         <path in panel's model where value should be held>: <key in primary schema where value held>
-        <path in panel's model where value should be held>: <key in primary schema where value held>,
-        ...
+        <path in panel's model where value should be held>: <key in primary schema where value held>
+        // ...
     },
     <key from primary schema>: {
         <path in panel's model where value should be held>: <key in primary schema where value held>
-    },
-    ...
+    }
+    // ...
 }
 ```
 
@@ -83,8 +87,8 @@ fluid.defaults("fluid.prefs.panel.textFont", {
             "model.value": "value",
             "controlValues.textFont": "enum"
         }
-    },
-    ...
+    }
+    // ...
 });
 ```
 
@@ -99,20 +103,21 @@ fluid.defaults("fluid.prefs.panel.textSize", {
             "range.min": "minimum",
             "range.max": "maximum"
         }
-    },
-    ...
+    }
+    // ...
 });
 ```
 
-## Renderer Requirements ##
+## Renderer Requirements
 
 For detailed information about the Infusion Renderer, see [Renderer](Renderer.md) and its sub-pages. What follows is a brief overview of the renderer requirements of a Preferences Framework Panel.
 
-### Selectors ###
+### Selectors
 
 The `selectors` options is a list of names CSS-style selectors. They identify the elements in the HTML template that the Renderer will bind to the Panel's model values.
 
-__Example: A checkbox adjuster__
+#### Example: A checkbox adjuster
+
 ```javascript
 fluid.defaults("fluid.prefs.panel.layoutControls", {
     gradeNames: ["fluid.prefs.panel"],
@@ -129,11 +134,12 @@ fluid.defaults("fluid.prefs.panel.layoutControls", {
 });
 ```
 
-### Prototree (or produceTree function) ###
+### Prototree (or produceTree function)
 
 The `protoTree` option defines the Renderer component tree – the instructions to the Renderer for how to render the data. In general, it consists of one property per selector, defining how that particular element in the template should be used. The property will define which element in the data model to use, or a message key in a message bundle if the element is a label. See the [Renderer](Renderer.md) documentation for information on how to define Renderer protoTrees.
 
-__Example: A checkbox adjuster__
+#### Example: A checkbox adjuster
+
 ```javascript
 fluid.defaults("fluid.prefs.panel.layoutControls", {
     gradeNames: ["fluid.prefs.panel"],
@@ -152,13 +158,14 @@ fluid.defaults("fluid.prefs.panel.layoutControls", {
 
 In rare cases, it may not be possible to specify the protoTree in a declarative manner. In these cases, use the `produceTree` option to declare the name of a function that will generate the required protoTree.
 
-## Models and Model Changes ##
+## Models and Model Changes
 
 Panels are, by default, Infusion [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md): They automatically have a top-level property called `model` which holds the Panel's internal model representing the preference it acts upon. It is not necessary for you to define this property directly; its structure will be inferred from the preferences map. If you are working with grades instead of with schemas, the model will be inferred from the rules supplied for the Panel.
 
-## Examples ##
+## Examples
 
-__Example: A checkbox adjuster__
+### Example: A checkbox adjuster
+
 ```javascript
 fluid.defaults("demo.panels.speak", {
     gradeNames: ["fluid.prefs.panel"],
@@ -178,7 +185,8 @@ fluid.defaults("demo.panels.speak", {
 });
 ```
 
-__Example: A drop-down adjuster__
+### Example: A drop-down adjuster
+
 ```javascript
 fluid.defaults("demo.panels.language", {
     gradeNames: ["fluid.prefs.panel"],
@@ -206,7 +214,8 @@ fluid.defaults("demo.panels.language", {
 });
 ```
 
-__Example: Two adjusters: a textfieldSlider and a set of radio buttons__
+### Example: Two adjusters: a textfieldSlider and a set of radio buttons
+
 ```javascript
 fluid.defaults("demo.panels.vol", {
     gradeNames: ["fluid.prefs.panel"],
