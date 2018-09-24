@@ -209,11 +209,11 @@ The table of contents panel was refactored to be based off of the `fluid.prefs.p
             <td><code>"tocDescr"</code></td>
         </tr>
         <tr>
-            <td><code>""switchOn""</code></td>
+            <td><code>"switchOn"</code></td>
             <td></td>
         </tr>
         <tr>
-            <td><code>""switchOff""</code></td>
+            <td><code>"switchOff"</code></td>
             <td></td>
         </tr>
     </tbody>
@@ -309,11 +309,11 @@ The text to speech panel was refactored to be based off of the `fluid.prefs.pane
             <td><code>"speakDescr"</code></td>
         </tr>
         <tr>
-            <td><code>""switchOn""</code></td>
+            <td><code>"switchOn"</code></td>
             <td></td>
         </tr>
         <tr>
-            <td><code>""switchOff""</code></td>
+            <td><code>"switchOff"</code></td>
             <td></td>
         </tr>
     </tbody>
