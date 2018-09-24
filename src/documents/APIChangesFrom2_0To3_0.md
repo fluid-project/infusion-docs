@@ -145,24 +145,41 @@ The "Links and Buttons" adjusters and enactors are collapsed to a single prefere
 <table>
     <thead>
         <tr>
-            <th>In 3.0.0</th>
-            <th>In 2.0.0</th>
+            <th colspan="2">In 3.0.0</th>
+            <th colspan="2">In 2.0.0</th>
+        </tr>
+        <tr>
+            <th>Message Bundle</th>
+            <th>Property</th>
+            <th>Message Bundle</th>
+            <th>Property</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>
-                <ul>
-                    <li>enhanceInputs.json</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>emphasizeLinks.json</li>
-                    <li>inputsLarger.json</li>
-                    <li>linksControls.json</li>
-                <ul>
-            </td>
+            <td rowspan="5">enhanceInputs.json</td>
+            <td><code>label</code></td>
+            <td>linksControls.json</td>
+            <td><code>linksControlsLabel</code></td>
+        </tr>
+        <tr>
+            <td rowspan="2"><code>description</code></td>
+            <td>inputsLarger.json</td>
+            <td><code>inputsChoiceLabel</code></td>
+        </tr>
+        <tr>
+            <td>linksControls.json</td>
+            <td><code>LinksChoiceLabel</code></td>
+        </tr>
+        <tr>
+            <td><code>switchOn</code></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>switchOff</code></td>
+            <td></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
