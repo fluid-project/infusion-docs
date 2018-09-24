@@ -21,7 +21,7 @@
     },
     "devDependencies": {
         "eslint-config-fluid": "1.3.0",
-        "gpii-grunt-lint-all": "1.0.5-dev.20180904T103657Z.c351ca9",
+        "gpii-grunt-lint-all": "1.0.5",
         "gpii-express": "1.0.11",
         "grunt": "1.0.1",
         "infusion": "3.0.0-dev.20171006T195039Z.a128358",
