@@ -62,35 +62,32 @@ Any prefsEditor using the `fluid.prefs.arrowScrolling` grade, such as the one co
 
 #### Panel Changes
 
-The "Links and Buttons" adjusters and enactors are collapsed to a single preference called "Enhance Links".
-
 ##### Selectors
 
 All panels must supply a `header` selector, which will be used by the `fluid.prefs.arrowScrolling` grade to provide the clickable arrows for navigating between adjusters in the small screen responsive view.
 
-##### Message Bundle Keys
+##### Line Spacing
 
-###### Additions
+The "Line Spacing" panel was refactored to be based off of the `fluid.prefs.panel.stepperAjuster` grade.
 
-* enhanceInputs.json
-  * `"label"`
-  * `"description"`
-  * `"switchOn"`
-  * `"switchOff"`
-* speak.json
-  * `"switchOn"`
-  * `"switchOff"`
-* tableOfContents.json
-  * `"switchOn"`
-  * `"switchOff"`
+###### Model Changes
 
-###### Removals
+<table>
+    <thead>
+        <tr>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>value</code></td>
+            <td><code>lineSpace</code></td>
+        </tr>
+    </tbody>
+</table>
 
-* inputsLarger.json
-* emphasizeLinks.json
-* linksControls.json
-
-###### Changes
+###### Message Bundle Changes
 
 <table>
     <thead>
@@ -102,7 +99,225 @@ All panels must supply a `header` selector, which will be used by the `fluid.pre
     </thead>
     <tbody>
         <tr>
-            <td rowspan="2">speak.json</td>
+            <td rowspan="3">lineSpace.json</td>
+            <td><code>"label"</code></td>
+            <td><code>"lineSpaceLabel"</code></td>
+        </tr>
+        <tr>
+            <td><code>"description"</code></td>
+            <td><code>"lineSpaceDescr"</code></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><code>"multiplier"</code></td>
+        </tr>
+    </tbody>
+</table>
+
+##### Links and Buttons
+
+The "Links and Buttons" adjusters and enactors are collapsed to a single preference called "Enhance Inputs".
+
+###### Model Changes
+
+<table>
+    <thead>
+        <tr>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>value</code></td>
+            <td>
+                <ul>
+                    <li><code>links</code></li>
+                    <li><code>inputsLarger</code></li>
+                <ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+###### Message Bundle Changes
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">In 3.0.0</th>
+            <th colspan="2">In 2.0.0</th>
+        </tr>
+        <tr>
+            <th>Message Bundle</th>
+            <th>Property</th>
+            <th>Message Bundle</th>
+            <th>Property</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="5">enhanceInputs.json</td>
+            <td><code>label</code></td>
+            <td>linksControls.json</td>
+            <td><code>linksControlsLabel</code></td>
+        </tr>
+        <tr>
+            <td rowspan="2"><code>description</code></td>
+            <td>inputsLarger.json</td>
+            <td><code>inputsChoiceLabel</code></td>
+        </tr>
+        <tr>
+            <td>linksControls.json</td>
+            <td><code>LinksChoiceLabel</code></td>
+        </tr>
+        <tr>
+            <td><code>switchOn</code></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>switchOff</code></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+##### Table of Contents
+
+The table of contents panel was refactored to be based off of the `fluid.prefs.panel.switchAdjuster` grade.
+
+###### Model Changes
+
+<table>
+    <thead>
+        <tr>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>value</code></td>
+            <td><code>toc</code></td>
+        </tr>
+    </tbody>
+</table>
+
+###### Message Bundle Changes
+
+<table>
+    <thead>
+        <tr>
+            <th>Message Bundle</th>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="4">tableOfContents.json</td>
+            <td><code>"label"</code></td>
+            <td><code>"tocLabel"</code></td>
+        </tr>
+        <tr>
+            <td><code>"description"</code></td>
+            <td><code>"tocDescr"</code></td>
+        </tr>
+        <tr>
+            <td><code>"switchOn"</code></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>"switchOff"</code></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+##### Text Size
+
+The text size panel was refactored to be based off of the `fluid.prefs.panel.stepperAjuster` grade.
+
+###### Model Changes
+
+<table>
+    <thead>
+        <tr>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>value</code></td>
+            <td><code>textSize</code></td>
+        </tr>
+    </tbody>
+</table>
+
+###### Message Bundle Changes
+
+<table>
+    <thead>
+        <tr>
+            <th>Message Bundle</th>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="3">textSize.json</td>
+            <td><code>"label"</code></td>
+            <td><code>"textSizeLabel"</code></td>
+        </tr>
+        <tr>
+            <td><code>"description"</code></td>
+            <td><code>"textSizeDescr"</code></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><code>"multiplier"</code></td>
+        </tr>
+    </tbody>
+</table>
+
+##### Text to Speech
+
+The text to speech panel was refactored to be based off of the `fluid.prefs.panel.switchAdjuster` grade.
+
+###### Model Changes
+
+<table>
+    <thead>
+        <tr>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>value</code></td>
+            <td><code>speak</code></td>
+        </tr>
+    </tbody>
+</table>
+
+###### Message Bundle Changes
+
+<table>
+    <thead>
+        <tr>
+            <th>Message Bundle</th>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="4">speak.json</td>
             <td><code>"label"</code></td>
             <td><code>"speakLabel"</code></td>
         </tr>
@@ -111,13 +326,12 @@ All panels must supply a `header` selector, which will be used by the `fluid.pre
             <td><code>"speakDescr"</code></td>
         </tr>
         <tr>
-            <td rowspan="2">tableOfContents.json</td>
-            <td><code>"label"</code></td>
-            <td><code>"tocLabel"</code></td>
+            <td><code>"switchOn"</code></td>
+            <td></td>
         </tr>
         <tr>
-            <td><code>"description"</code></td>
-            <td><code>"tocDescr"</code></td>
+            <td><code>"switchOff"</code></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
