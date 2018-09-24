@@ -118,6 +118,28 @@ The "Line Spacing" panel was refactored to be based off of the `fluid.prefs.pane
 
 The "Links and Buttons" adjusters and enactors are collapsed to a single preference called "Enhance Inputs".
 
+###### Model Changes
+
+<table>
+    <thead>
+        <tr>
+            <th>In 3.0.0</th>
+            <th>In 2.0.0</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>value</code></td>
+            <td>
+                <ul>
+                    <li><code>links</code></li>
+                    <li><code>inputsLarger</code></li>
+                <ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ###### Message Bundle Changes
 
 <table>
@@ -141,10 +163,6 @@ The "Links and Buttons" adjusters and enactors are collapsed to a single prefere
                     <li>linksControls.json</li>
                 <ul>
             </td>
-        </tr>
-        <tr>
-            <td><code>value</code></td>
-            <td><code>textSize</code></td>
         </tr>
     </tbody>
 </table>
