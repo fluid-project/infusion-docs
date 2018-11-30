@@ -46,23 +46,25 @@ fluid.makeGradeLinkage("my.dataSource.linkage", ["fluid.dataSource.writable", "m
 
 ## Encoding
 
-During the `get` (read) and `set` (write) workflows, listeners are provided as handles for encoding and transforming the payload. For example serializing and deserializing the payload on it's way to and from a server. The encoding is implemented by a supplied encoding component which includes `parse` and `render` methods. For `get` the data is run through `parse`. For `set`, the data is run through `render` when being sent to the server, and any returned values are sent through `parse`.
+During the `get` (read) and `set` (write) workflows, `onRead` and `onWrite` [synthetic events](PromisesAPI.md#fluidpromisefiretransformeventevent-payload-options) are provided and usable as handles for encoding and transforming the payload; for example serializing and deserializing the payload on its way to and from a server. The encoding/decoding is implemented by a supplied encoding component which includes `parse` and `render` methods. For `get` the data is run through `parse`. For `set`, the data is run through `render` when being sent to the server, and any returned values are sent through `parse`.
 
-Two encoding classes are provided for use, `fluid.dataSource.encoding.JSON` (serializes/deserializes JSON data) and `fluid.dataSource.encoding.none` (provides no encoding/decoding transformation). If these do not meet the requirements necessary for the concrete dataSource, a different encoder subcomponent may be provided to the concrete dataSource grade.
+Two encoding classes are provided for use, `fluid.dataSource.encoding.JSON` (serializes/deserializes JSON data) and `fluid.dataSource.encoding.none` (provides no encoding/decoding transformation). However, other encoder subcomponents can be implemented and configured into the dataSource.
 
 The `onRead`, `onWrite`, and `onWriteResponse` event sequences can be used to further modify the data, in addition to the specific encoding transformations. Because the encoding happens as part of these event sequences, other transformation may be added before or after the encoding phase. For example providing [modelTransformations](ModelTransformationAPI.md) before/after serializing/deserializing JSON.
 
 ### fluid.dataSource.parseJSON(string)
 
-Deserializes a JSON string into a proper JavaScript object and returns a promise for the result. If there is an error, the promise will be rejected and contain the error message. Otherwise the promise will be resolved with the JavaScript object or `undefined` if the `string` value is falsey.
+Deserializes a JSON string into a proper JavaScript object and returns a promise for the result.
 
-* `string {String}` The JSON string to be deserialized
+* `string: {String}` The JSON string to be deserialized
+* Returns: `{Promise}` If there is an error, the promise will be rejected and contain the error message. Otherwise the promise will be resolved with the JavaScript object or `undefined` if the `string` value is falsey.
 
 ### fluid.dataSource.stringifyJSON(obj)
 
-Serializes a JavaScript object into a JSON string. If the object is undefined, an empty string is returned.
+Serializes a JavaScript object into a JSON string.
 
-* `obj {Object}` The JavaScript object to be serialized
+* `obj: {Object}` The JavaScript object to be serialized
+* Returns: `{String}` If the object is undefined, an empty string is returned.
 
 ## Core
 
