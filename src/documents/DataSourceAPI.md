@@ -4,11 +4,31 @@ layout: default
 category: Infusion
 ---
 
-The DataSource component provides the workflow for getting/setting (read/write) data from some data source. A data source may be an external database, cookie, in memory storage and etc. The specifics for accessing the data source must be provided in a concrete implementation. Additionally the payload of a request can be processed through an encoding step and other transformations during the get and set workflows.
+The DataSource component provides a workflow for getting/setting (read/write) data from a data source (an external database, cookie, in memory storage and etc). The specifics for accessing the data source must be provided in a concrete implementation. Additionally the payload of a request may be configured to be processed through an encoding/decoding step and other transformations during the get and set workflows.
 
 ## Grades and Linkage
 
-There are two main grades `fluid.dataSource` and `fluid.dataSource.writable`. `fluid.dataSource` contains the base configuration and includes configuration for getting (reading) in from a data source. `fluid.dataSource.writable` adds in the configuration for setting (writing) to a data source. If you need to read and write to a data source, you'll need to add concrete implementations for both of these grades and make use of [grade linkage](IoCAPI.md#fluidmakegradelinkagelinkagename-inputnames-outputnames) to apply the concrete writable grade to the datasource configuration. In this way one would only need to add the `fluid.dataSource.writable` grade to gain the configuration from the concrete writable grade.
+There are two main grades `fluid.dataSource` and `fluid.dataSource.writable`. `fluid.dataSource` contains the base configuration and includes configuration for getting (reading) from a data source. `fluid.dataSource.writable` adds the configuration for setting (writing) to a data source. Instances of `fluid.dataSource` will need to provide a concrete handler for the `"onRead.impl"` and those using `fluid.dataSource.writable` will also need to add one for the `"onWrite.impl"` listener.
+
+```javascript
+fluid.defaults("my.component", {
+    components: {
+        dataSource: {
+            type: "fluid.dataSource",
+            options: {
+                gradeNames: ["fluid.dataSource.writable"],
+                listeners: {
+                    // these would point at concrete implementations for performing the read and write operations.
+                    "onRead.impl": "my.component.doRead",
+                    "onRead.impl": "my.component.doWrite"
+                }
+            }
+        }
+    }
+});
+```
+
+When implementing a new kind of dataSource, where reading and writing functionality are needed, [grade linkage](IoCAPI.md#fluidmakegradelinkagelinkagename-inputnames-outputnames) is required to apply the concrete writable grade to the dataSource configuration. In this way, one would only need to add the `fluid.dataSource.writable` grade to gain the configuration from the concrete writable grade.
 
 ```javascript
 fluid.defaults("my.dataSource", {
