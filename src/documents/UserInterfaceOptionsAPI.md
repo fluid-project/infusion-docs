@@ -163,6 +163,43 @@ var uio = fluid.uiOptions.prefsEditor(".myContainer", {
 
 The options supported by UI Options are described below.
 
+### defaultLocale
+
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>defaultLocale</code> option allows you to specify the default locale and language of the UI Options interface. The locale specified must have associated JSON message files present in the source tree of Infusion at the path <code>src/framework/preferences/messages/</code>. The following locales are currently available in the latest version of Infusion: English (CA), English (US), Farsi, French, Spanish.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+                "en" (English (Canada))
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+<pre>
+<code>
+fluid.uiOptions.prefsEditor("#myContainer", {
+    defaultLocale: "fr"
+});
+</code>
+</pre>
+            </td>
+        </tr>
+        <tr>
+            <th>See also</th>
+            <td>
+                <a href="LocalizationInThePreferencesFramework.md">Localization in the Preferences Framework</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ### tocTemplate
 
 <table>
