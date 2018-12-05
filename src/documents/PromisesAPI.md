@@ -173,7 +173,7 @@ until the promise at the preceding position has resolved.
 * `payload {Any}` The original payload input to the transforming chain.
 * `options {Object}` [optional] A set of additional options to be supplied to each listener in the transform chain. Accepts two special options:
   * `reverse: {Boolean}` If `true`, the sequence of handlers will be notified in reverse order
-  * `filterNamespaces: {Array of String}` A collection of event [namespaces](InfusionEventSystem.md#namespaced-listeners) to be filtered out of the processing chain for this particular firing
+  * `filterNamespaces: {Array of String}` A collection of event [namespaces](InfusionEventSystem.md#namespaced-listeners) to be used in the processing chain for this particular firing; event namespaces not matching this collection will be filtered out.
 
 This is a slightly esoteric but very powerful API. To get a sense of its overall function, it could be compared with the standard [pipeline](https://github.com/cujojs/when/blob/master/docs/api.md#whenpipeline)
 algorithm supplied with [when.js](https://github.com/cujojs/when) - the concept is that an "initial payload" (which may be empty) is successively

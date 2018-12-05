@@ -92,6 +92,10 @@ module.exports = {
             html: true,
             plugins: ["markdown-it-anchor"],
             "markdown-it-anchor": {}
+        },
+        ghpages: {
+            deployRemote: "origin",
+            deployBranch: "deploy"
         }
     },
     events: {
