@@ -6,28 +6,26 @@
     "repository": "https://github.com/fluid-project/infusion-docs",
     "scripts": {
         "docpad": "docpad run --env static --out out",
-        "deploy": "docpad deploy-ghpages --env static",
         "pretest": "docpad generate --env static --out out",
         "test": "node tests/all-tests.js"
     },
     "dependencies": {
-        "urijs": "1.19.0",
-        "docpad-plugin-ghpages": "2.6.1",
-        "docpad-plugin-handlebars": "2.4.0",
-        "docpad-plugin-highlightjs": "2.5.0",
-        "docpad-plugin-markit": "2.4.0",
-        "fs-extra": "4.0.2",
-        "markdown-it-anchor": "4.0.0"
+        "docpad": "6.82.5",
+        "docpad-plugin-handlebars": "2.5.0",
+        "docpad-plugin-highlightjs": "2.6.0",
+        "docpad-plugin-marked": "2.5.0",
+        "fs-extra": "7.0.1",
+        "urijs": "1.19.1"
     },
     "devDependencies": {
         "eslint-config-fluid": "1.3.0",
-        "gpii-grunt-lint-all": "1.0.5-dev.20180904T103657Z.c351ca9",
-        "gpii-express": "1.0.11",
-        "grunt": "1.0.1",
+        "gpii-grunt-lint-all": "1.0.5",
+        "gpii-express": "1.0.15",
+        "grunt": "1.0.3",
         "infusion": "3.0.0-dev.20171006T195039Z.a128358",
-        "jsdom": "11.3.0",
-        "kettle": "1.7.0",
-        "node-jqunit": "1.1.7",
-        "request": "2.83.0"
+        "jsdom": "13.0.0",
+        "kettle": "1.9.0",
+        "node-jqunit": "1.1.8",
+        "request": "2.88.0"
     }
 }
