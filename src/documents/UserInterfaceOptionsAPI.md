@@ -127,8 +127,9 @@ For information on the different types of events, see [Infusion Event System](In
             <th>Description</th>
             <td>
                 This event fires when the UI Options interface has been rendered into the iframe.
-                <br><br>
-                <em><strong>Note:</strong> use <code>onReady</code> if the listener needs UI Options to be both rendered and ready to use.</em>
+                <div class="infusion-docs-note">
+                    <strong>Note:</strong> use <code>onReady</code> if the listener needs UI Options to be both rendered and ready to use.
+                </div>
             </td>
         </tr>
         <tr>
@@ -170,9 +171,10 @@ The options supported by UI Options are described below.
         <tr>
             <th>Description</th>
             <td>
-                The <code>defaultLocale</code> option allows you to specify the default locale and language of the UI Options interface. The locale specified must have associated JSON message files present in the source tree of Infusion at the path <code>src/framework/preferences/messages/</code>. The following locales are currently available in the latest version of Infusion: English (CA), English (US), Farsi, French, Spanish.
-                <br><br>
-                <em><strong>Note:</strong> Locales including both language and territory must specify the language tag followed by the territory separated by an underscore, in that order. E.g. for English (United States), the format would be <code>en_US</code>, or for French (Canada) it would be <code>fr_CA</code>. It is not case-specific, though it is recommended to express the language in lowercase, the territory in uppercase letters and to remain consistent with the naming of the localized message bundle file.</em>
+                The <code>defaultLocale</code> option allows you to specify the default locale and language of the UI Options interface. The locale specified must have associated JSON message files configured in the options, with the default location in Infusion being: <code>/src/framework/preferences/messages/</code>. The following locales are currently available in the latest version of Infusion: English (CA), English (US), Farsi, French, Spanish.
+                <div class="infusion-docs-note">
+                    <strong>Note:</strong> Locales including both language and territory must specify the language tag followed by the territory separated by an underscore, in that order. E.g. for English (United States), the format would be <code>en_US</code>, or for French (Canada) it would be <code>fr_CA</code>. It is not case-specific, though it is recommended to express the language in lowercase, the territory in uppercase letters and to remain consistent with the naming of the localized message bundle file.
+                </div>
             </td>
         </tr>
         <tr>
