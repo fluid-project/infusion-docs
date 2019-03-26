@@ -11,9 +11,10 @@
     },
     "dependencies": {
         "docpad": "6.82.5",
-        "docpad-plugin-handlebars": "github:waharnum/docpad-plugin-handlebars#fixFor6.8",
+        "docpad-plugin-handlebars": "github:waharnum/docpad-plugin-handlebars#fixFor6.8-build",
         "docpad-plugin-highlightjs": "2.6.0",
         "docpad-plugin-marked": "2.5.0",
+        "docpad-plugin-serve": "2.0.1",
         "fs-extra": "7.0.1",
         "urijs": "1.19.1"
     },
