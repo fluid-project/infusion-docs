@@ -89,44 +89,44 @@ module.exports = {
             }
         }
     },
-    // events: {
-    //     generateBefore: function () {
-    //         // Remove the previous incarnation of index.html since it causes a faulty redirect
-    //         fs.removeSync("out/index.html");
-    //     },
-    //     writeAfter: function () {
-    //         // Copy the images
-    //         fs.copySync(imagesSrcDir, imagesDestDir);
-    //
-    //         // Copy the contents of the out directory to
-    //         // out/infusion/<version>. We need to do this to prepare the
-    //         // structure for the ghpages plugin as it does not support
-    //         // deploying to a location other than the root.
-    //         fs.removeSync("tmp-out");
-    //         try {
-    //             fs.renameSync("out", "tmp-out");
-    //             fs.mkdirsSync("out");
-    //         } catch (e) {
-    //             console.log("Failed to rename out to tmp-out - copying instead: error ", e);
-    //             fs.copySync("out", "tmp-out");
-    //             try {
-    //                 fs.emptyDirSync("out");
-    //             } catch (e2) {
-    //                 console.log("Failed to empty dir out: error ", e2);
-    //             }
-    //         }
-    //         // Preserve anything that was correctly dumped into "infusion" on the previous round
-    //         if (fs.existsSync("tmp-out/infusion")) {
-    //             fs.renameSync("tmp-out/infusion", "out/infusion");
-    //         }
-    //
-    //         // Anything that was generated on this round gets copied into infusion
-    //         fs.copySync("tmp-out", "out/infusion/" + docsVersion);
-    //         fs.removeSync("tmp-out");
-    //
-    //         // Copy the files for GitHub Pages:
-    //         // redirect index.htmls and CNAME
-    //         fs.copySync(path.join(rootPath, "src", "ghpages-files"), "out");
-    //     }
-    // }
+    events: {
+        generateBefore: function () {
+            // Remove the previous incarnation of index.html since it causes a faulty redirect
+            fs.removeSync("out/index.html");
+        },
+        writeAfter: function () {
+            // Copy the images
+            fs.copySync(imagesSrcDir, imagesDestDir);
+
+            // Copy the contents of the out directory to
+            // out/infusion/<version>. We need to do this to prepare the
+            // structure for the ghpages plugin as it does not support
+            // deploying to a location other than the root.
+            fs.removeSync("tmp-out");
+            try {
+                fs.renameSync("out", "tmp-out");
+                fs.mkdirsSync("out");
+            } catch (e) {
+                console.log("Failed to rename out to tmp-out - copying instead: error ", e);
+                fs.copySync("out", "tmp-out");
+                try {
+                    fs.emptyDirSync("out");
+                } catch (e2) {
+                    console.log("Failed to empty dir out: error ", e2);
+                }
+            }
+            // Preserve anything that was correctly dumped into "infusion" on the previous round
+            if (fs.existsSync("tmp-out/infusion")) {
+                fs.renameSync("tmp-out/infusion", "out/infusion");
+            }
+
+            // Anything that was generated on this round gets copied into infusion
+            fs.copySync("tmp-out", "out/infusion/" + docsVersion);
+            fs.removeSync("tmp-out");
+
+            // Copy the files for GitHub Pages:
+            // redirect index.htmls and CNAME
+            fs.copySync(path.join(rootPath, "src", "ghpages-files"), "out");
+        }
+    }
 };
