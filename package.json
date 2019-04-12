@@ -11,7 +11,7 @@
         "test": "node tests/all-tests.js"
     },
     "dependencies": {
-        "urijs": "1.19.0",        
+        "urijs": "1.19.0",
         "docpad-plugin-ghpages": "2.6.1",
         "docpad-plugin-handlebars": "2.4.0",
         "docpad-plugin-highlightjs": "2.5.0",
@@ -29,5 +29,8 @@
         "kettle": "1.7.0",
         "node-jqunit": "1.1.7",
         "request": "2.83.0"
+    },
+    "peerDependencies": {
+        "docpad": "6.79.4"
     }
 }

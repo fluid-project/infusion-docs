@@ -6,3 +6,5 @@ services:
       - "${LISTEN_PORT}:80"
     expose:
       - 80
+    volumes:
+      - "./out:/usr/share/nginx/html"  
