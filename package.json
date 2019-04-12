@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "urijs": "1.19.0",
+        "docpad": "6.79.4",
         "docpad-plugin-ghpages": "2.6.1",
         "docpad-plugin-handlebars": "2.4.0",
         "docpad-plugin-highlightjs": "2.5.0",

@@ -1,4 +1,4 @@
-FROM node:10-alpine AS builder
+FROM node:8.15.1-alpine AS builder
 
 # Add OS-level dependencies
 RUN apk add --no-cache git

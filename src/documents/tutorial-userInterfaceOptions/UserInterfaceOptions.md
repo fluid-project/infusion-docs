@@ -26,7 +26,7 @@ You're putting together a website that you know will have a diverse audience. Yo
 
 These are the basic steps to add UI Options to your website:
 
-1. [Download and install the Infusion library](#download-and-install-the-ui-options-library)
+1. [Download and install the Infusion library](#download-and-install)
 2. [Prepare your page](#prepare-your-page)
     * [The Sliding Panel](#the-sliding-panel)
     * [The Table of Contents](#the-table-of-contents)
