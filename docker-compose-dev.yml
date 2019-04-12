@@ -1,0 +1,12 @@
+version: '3'
+services:
+  devsite:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    ports:
+      - "9778:9778"
+    expose:
+      - 9778
+    volumes:
+        - "./src:/app/src"
