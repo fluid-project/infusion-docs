@@ -14,7 +14,7 @@ Docker provides us with an environment to run Node 8 in that is separated from t
 
 ### Docker Dev Container (for local development purposes)
 
-Builds ands run site in DocPad, with a bind mount between local `src` and `src in container`, allowing for local development.
+Builds and runs the site in DocPad, with a bind mount between local `src` and `src in container`, allowing for local development.
 
 `docker-compose -f docker-compose-dev.yml up --build`
 

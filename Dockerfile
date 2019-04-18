@@ -3,7 +3,7 @@ FROM node:8.15.1-alpine AS builder
 # Add OS-level dependencies
 RUN apk add --no-cache git
 
-# Add docpad at global
+# Add docpad at global level
 RUN npm install -g docpad@6.79.4
 
 # Switch to regular user
