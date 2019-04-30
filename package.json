@@ -5,13 +5,14 @@
     "license": "CC-BY-3.0",
     "repository": "https://github.com/fluid-project/infusion-docs",
     "scripts": {
-        "docpad": "docpad run --env static --out out",
-        "deploy": "docpad deploy-ghpages --env static",
-        "pretest": "docpad generate --env static --out out",
+        "docpad": "node node_modules/docpad/bin/docpad run --env static --out out",
+        "deploy": "node node_modules/docpad/bin/docpad deploy-ghpages --env static",
+        "pretest": "node node_modules/docpad/bin/docpad generate --env static --out out",
         "test": "node tests/all-tests.js"
     },
     "dependencies": {
         "urijs": "1.19.0",
+        "docpad": "6.79.4",
         "docpad-plugin-ghpages": "2.6.1",
         "docpad-plugin-handlebars": "2.4.0",
         "docpad-plugin-highlightjs": "2.5.0",
