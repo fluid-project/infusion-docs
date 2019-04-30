@@ -19,9 +19,14 @@ Adding the settings store and enhancer requires a two-step process:
 
 ## Build the Settings Store and Enhancer
 
-Build the settings store and enhancer with a call to the Preferences Framework Builder (this call also builds a preferences editor, but you aren't required to instantiate it). The Builder can be used with either the `auxiliarySchema` property or with an auxiliary schema grade.
+Build the settings store and enhancer with a call to the Preferences Framework Builder (this call also builds a
+preferences editor, but you aren't required to instantiate it). The Builder can be used with either the
+`auxiliarySchema` property or with an auxiliary schema grade.
 
-<div class="infusion-docs-note"><strong>Note:</strong> Your auxiliary schema <strong>MUST</strong> specify a namespace. You'll need this namespace to access the components created by the builder.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> Your auxiliary schema <strong>MUST</strong> specify a namespace. You'll need this namespace
+    to access the components created by the builder.
+</div>
 
 ### Example: Using the Builder with the `auxiliarySchema` Property
 
@@ -64,4 +69,6 @@ Once you've run the builder, you can access the enhancer through the namespace y
 var enhancer = my.prefs.uie("body");
 ```
 
-The `uie` method will automatically instantiate both the settings store and the page enhancer, so you only need to make the one call. The settings store will automatically connect to the saved settings, and the enhancer will automatically use your enactors to adjust the page according to the settings.
+The `uie` method will automatically instantiate both the settings store and the page enhancer, so you only need to make
+the one call. The settings store will automatically connect to the saved settings, and the enhancer will automatically
+use your enactors to adjust the page according to the settings.

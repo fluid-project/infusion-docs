@@ -4,17 +4,19 @@ layout: default
 category: Tutorials
 ---
 
-All Infusion components support the definition of public functions using [invokers](../Invokers.md); among other uses, invokers allow related components to have different internal implementations of a function but present a common function to be called by other code. If we imagine a "Hello, World!" component, there are a variety of ways it might say "hello". Two of them are:
+All Infusion components support the definition of public functions using [invokers](../Invokers.md); among other uses,
+invokers allow related components to have different internal implementations of a function but present a common function
+to be called by other code. If we imagine a "Hello, World!" component, there are a variety of ways it might say "hello".
+Two of them are:
 
 * By printing to the web developer console via `console.log`
 * By displaying a message on a web page
 
-While there are [other styles of invokers possible](../Invokers.md#types-of-invokers), here we will use a style that allows us to refer to a free function (one not attached to a specific object).
+While there are [other styles of invokers possible](../Invokers.md#types-of-invokers), here we will use a style that
+allows us to refer to a free function (one not attached to a specific object).
 
-<div class="infusion-docs-note">
-
-You can check out the [Live Example of the code below on CodePen](http://codepen.io/waharnum/pen/MJbgEx?editors=1111)
-</div>
+<div class="infusion-docs-note">You can check out the [Live Example of the code below on
+CodePen](http://codepen.io/waharnum/pen/MJbgEx?editors=1111)</div>
 
 ``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {
@@ -48,6 +50,7 @@ var helloWorld = fluidTutorial.helloWorld({});
 helloWorld.sayHello();
 ```
 
-You will notice that the function we defined expects one argument, but we call the invoker without any arguments; this is because we've specified the argument to be supplied as part of the invoker.
+You will notice that the function we defined expects one argument, but we call the invoker without any arguments; this
+is because we've specified the argument to be supplied as part of the invoker.
 
 Next: [Events and Inversion of Control](DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.md)

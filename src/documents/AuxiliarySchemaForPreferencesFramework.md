@@ -10,7 +10,8 @@ An Auxiliary Schema is a JSON document that defines the information needed to bu
 * where to find HTML templates and string bundles,
 * what component(s) to use to act on preference settings.
 
-An auxiliary schema must contain some required properties, described below. In addition to these properties, developers are free to include any other properties their implementation may require.
+An auxiliary schema must contain some required properties, described below. In addition to these properties, developers
+are free to include any other properties their implementation may require.
 
 ## Properties
 
@@ -19,19 +20,24 @@ An auxiliary schema must contain some required properties, described below. In a
 * `namespace` (optional; recommended)
   * the namespace of the component to call to initialize the constructed grades
 * `loaderGrades` (optional)
-  * an array of grades to be applied to the `prefsEditorLoader`. To modify the default prefsEditor type (`"fluid.prefs.separatedPanel"`), a valid alternative should be supplied here.
+  * an array of grades to be applied to the `prefsEditorLoader`. To modify the default prefsEditor type
+    (`"fluid.prefs.separatedPanel"`), a valid alternative should be supplied here.
 * `terms`
-  * defines paths to directories containing the message files and template files. This property is used to define all common terms used by `fluid.prefs.resourceLoader`.
+  * defines paths to directories containing the message files and template files. This property is used to define all
+    common terms used by `fluid.prefs.resourceLoader`.
 * `message`
   * the path to the message bundle for the prefs editor itself
-  * provided the term name defined in the `terms` block for the path to the directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
+  * provided the term name defined in the `terms` block for the path to the directory containing the messages is
+    `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
 * `template`
   * the path to the template for the prefs editor itself
-  * provided the term name defined in the `terms` block for the path to the directory containing the html templates is `templatePrefix`, use `%templatePrefix` to reference the prefix specified by `templatePrefix` as part of the path
+  * provided the term name defined in the `terms` block for the path to the directory containing the html templates is
+    `templatePrefix`, use `%templatePrefix` to reference the prefix specified by `templatePrefix` as part of the path
 
 ### Preference block properties
 
-Preference blocks can be given any property name, so long as the name is unique within the schema. Preference blocks will have the following properties:
+Preference blocks can be given any property name, so long as the name is unique within the schema. Preference blocks
+will have the following properties:
 
 * `type`
   * used to define the preference setting type
@@ -52,10 +58,14 @@ Preference blocks can be given any property name, so long as the name is unique 
   * only used in the "`panel`" block
 * `template`
   * the path to the template for the panel
-  * provided the term name defined in [the top level `terms` property](#top-level-properties) for the path to the directory containing the templates is `templatePrefix`, use `%templatePrefix` to reference the prefix specified by `templatePrefix` as part of the path
+  * provided the term name defined in [the top level `terms` property](#top-level-properties) for the path to the
+    directory containing the templates is `templatePrefix`, use `%templatePrefix` to reference the prefix specified by
+    `templatePrefix` as part of the path
 * `message`
   * the path to the message bundle for the panel
-  * provided the term name defined in [the top level `terms` property](#top-level-properties) for the path to the directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by `messagePrefix` as part of the path
+  * provided the term name defined in [the top level `terms` property](#top-level-properties) for the path to the
+    directory containing the messages is `messagePrefix`, use `%messagePrefix` to reference the prefix specified by
+    `messagePrefix` as part of the path
 
 ### Enactor properties
 
@@ -221,7 +231,10 @@ For detailed information about how to work with composite panels, see [Composite
 
 ## Sharing data between panels and enactors
 
-In some cases, panels and enactors may need to share data, such as a list of class names. In these cases, define the data at the root of the relevant preference block and reference it within the panel and enactor blocks, as seen in the example above (in the `contrast` and `textFont` preference blocks). The general structure and syntax is highlighted below:
+In some cases, panels and enactors may need to share data, such as a list of class names. In these cases, define the
+data at the root of the relevant preference block and reference it within the panel and enactor blocks, as seen in the
+example above (in the `contrast` and `textFont` preference blocks). The general structure and syntax is highlighted
+below:
 
 ```json5
 {
@@ -245,7 +258,8 @@ In some cases, panels and enactors may need to share data, such as a list of cla
 
 ## Configuring Multiple Panels and Enactors for a Single Preference
 
-Each preference block can contain configuration for _at most_ one enactor and one panel. If more than one enactor and/or panel needs to be configured for a given preference, you can create another preference block with a new namespace.
+Each preference block can contain configuration for _at most_ one enactor and one panel. If more than one enactor and/or
+panel needs to be configured for a given preference, you can create another preference block with a new namespace.
 
 ```json5
 {
@@ -283,12 +297,15 @@ Each preference block can contain configuration for _at most_ one enactor and on
 
 ## Configuring a Single Panel for Multiple Enactors and Preferences
 
-Each preference block defines only one preference, even if multiple preferences (with their own enactors) are displayed in the _same panel_. In these cases, multiple preference blocks still need to be configured:
+Each preference block defines only one preference, even if multiple preferences (with their own enactors) are displayed
+in the _same panel_. In these cases, multiple preference blocks still need to be configured:
 
 * Each preference block declares the common panel type, and
 * the detail information for this panel is defined in any _one_ (and only one) of these panel block.
 
-The example below shows two preferences (`emphasizeLinks` and `inputsLarger`)  sharing the same panel `fluid.prefs.panels.linksControls`. The details for this panel are only defined in the preference block for `emphasizeLinks`.
+The example below shows two preferences (`emphasizeLinks` and `inputsLarger`)  sharing the same panel
+`fluid.prefs.panels.linksControls`. The details for this panel are only defined in the preference block for
+`emphasizeLinks`.
 
 ```json
 {

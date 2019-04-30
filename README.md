@@ -2,7 +2,8 @@
 
 ## Browse the Infusion Documentation on GitHub
 
-You can [browse the Infusion Documentation as static user friendly pages](http://docs.fluidproject.org/infusion/), or if you prefer, you can [browse the Infusion Documentation directly on GitHub](src/documents).
+You can [browse the Infusion Documentation as static user friendly pages](http://docs.fluidproject.org/infusion/), or if
+you prefer, you can [browse the Infusion Documentation directly on GitHub](src/documents).
 
 ## Build with DocPad
 
@@ -34,7 +35,9 @@ Point your browser to: `http://localhost:9778/`
 
 ## Deploy
 
-While GitHub Pages is not used to host [fluiproject.org](https://docs.fluidproject.org), our deployment process requires that the generated site be pushed to the `deploy` branch in the project repo. The contents of the `deploy` branch will automatically be served as the contents are changed.
+While GitHub Pages is not used to host [fluiproject.org](https://docs.fluidproject.org), our deployment process requires
+that the generated site be pushed to the `deploy` branch in the project repo. The contents of the `deploy` branch will
+automatically be served as the contents are changed.
 
 To generate and push to the `deploy` branch on the project repo run the following:
 

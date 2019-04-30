@@ -4,13 +4,21 @@ layout: default
 category: Infusion
 ---
 
-Typically in Infusion, all functions and components adhere to a **that-ist** approach. This approach implies that the meaning of any function value remains the same, however the function is invoked. This is in contrast to the **this-ist** approach used frequently in JavaScript code, where the context of a function (the value of `this` within its body) depends on where the caller has stored it before invoking it. When working with Infusion, there are times when you will need to interact with a library and or function that requires a `this`, which is a keyword typically intended to refer back to itself. The most common example would be using a jQuery element.
+Typically in Infusion, all functions and components adhere to a **that-ist** approach. This approach implies that the
+meaning of any function value remains the same, however the function is invoked. This is in contrast to the **this-ist**
+approach used frequently in JavaScript code, where the context of a function (the value of `this` within its body)
+depends on where the caller has stored it before invoking it. When working with Infusion, there are times when you will
+need to interact with a library and or function that requires a `this`, which is a keyword typically intended to refer
+back to itself. The most common example would be using a jQuery element.
 
-For more details on the differences between **that-ist** and **this-ist** approaches, as well as the reasoning behind why Infusion employs the former, see the [About this and that](http://fluidproject.org/blog/2008/07/21/about-this-and-that/) blog post.
+For more details on the differences between **that-ist** and **this-ist** approaches, as well as the reasoning behind
+why Infusion employs the former, see the [About this and
+that](http://fluidproject.org/blog/2008/07/21/about-this-and-that/) blog post.
 
 ## Structure
 
-A **this-ist** function can be declaratively bound to [invokers](Invokers.md) and listeners in an IoC tree and takes the following structure:
+A **this-ist** function can be declaratively bound to [invokers](Invokers.md) and listeners in an IoC tree and takes the
+following structure:
 
 ```json5
 {
@@ -31,23 +39,26 @@ A **this-ist** function can be declaratively bound to [invokers](Invokers.md) an
         <tr>
             <td>"this"</td>
             <td>
-                The <code>this</code> required by the function; the object that the function will be called on. Note that this property name must include the quotes (" ").
-
+                <p>
+                    The <code>this</code> required by the function; the object that the function will be called on. Note
+                    that this property name must include the quotes (" ").
+                </p>
                 <p>e.g. a jQuery object</p>
             </td>
         </tr>
         <tr>
             <td>method</td>
             <td>
-                The name of the function to be called.
-
+                <p>The name of the function to be called.</p>
                 <p>e.g. a jQuery function like "click"</p>
             </td>
         </tr>
         <tr>
             <td>args</td>
             <td>
-                <em>(Optional)</em> The argument or array of arguments to be passed into the function. This can include <a href="IoCReferences.md">IoC References</a> and expanders, in addition to strings, objects, booleans, etc.
+                <em>(Optional)</em> The argument or array of arguments to be passed into the function. This can include
+                <a href="IoCReferences.md">IoC References</a> and expanders, in addition to strings, objects, booleans,
+                etc.
             </td>
         </tr>
         <tr>
@@ -61,7 +72,9 @@ A **this-ist** function can be declaratively bound to [invokers](Invokers.md) an
 
 ## Examples
 
-In the following example, a **this-ist** function is used to attach a listener to the `onCreate` events: The jQuery `click()` function of the button identified by the `button` selector is used to bind the component's `writeText()` method to the click event.
+In the following example, a **this-ist** function is used to attach a listener to the `onCreate` events: The jQuery
+`click()` function of the button identified by the `button` selector is used to bind the component's `writeText()`
+method to the click event.
 
 ```javascript
 fluid.defaults("demo.hw", {
@@ -92,7 +105,8 @@ fluid.defaults("demo.hw", {
 });
 ```
 
-In the following example, taken from the Infusion Table of Contente component, **this-ist** functions are used to attach methods to the component object in the `invokers` option.
+In the following example, taken from the Infusion Table of Contente component, **this-ist** functions are used to attach
+methods to the component object in the `invokers` option.
 
 ```javascript
 fluid.defaults("fluid.tableOfContents", {
@@ -113,7 +127,8 @@ fluid.defaults("fluid.tableOfContents", {
 });
 ```
 
-In the following example, taken from the Infusion Inline Edit component, a **this-ist** function is used to invoke the `init` function on the tinyMCE object associated with the component as a listener on the `onCreate` event.
+In the following example, taken from the Infusion Inline Edit component, a **this-ist** function is used to invoke the
+`init` function on the tinyMCE object associated with the component as a listener on the `onCreate` event.
 
 ```javascript
 fluid.defaults("fluid.inlineEdit.tinyMCE", {
@@ -130,7 +145,8 @@ fluid.defaults("fluid.inlineEdit.tinyMCE", {
 });
 ```
 
-In the following example, taken from the Infusion Pager component, a **this-ist** function is used to set the container's `role` attribute to _"application"_ using the jQuery `attr()` function.
+In the following example, taken from the Infusion Pager component, a **this-ist** function is used to set the
+container's `role` attribute to _"application"_ using the jQuery `attr()` function.
 
 ```javascript
 fluid.defaults("fluid.pager", {

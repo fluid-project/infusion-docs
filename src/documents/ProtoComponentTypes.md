@@ -5,9 +5,13 @@ noteRendererChangesPost15: true
 category: Infusion
 ---
 
-The Renderer categorizes components into different types depending on the nature of the data that is to be rendered. Different component types will have different fields, but in general, the values of the fields will contain either the actual data or a reference to a data model containing the data. The component types are not stated explicitly in the object, but the type is inferred by the Renderer based on the presence of particular fields.
+The Renderer categorizes components into different types depending on the nature of the data that is to be rendered.
+Different component types will have different fields, but in general, the values of the fields will contain either the
+actual data or a reference to a data model containing the data. The component types are not stated explicitly in the
+object, but the type is inferred by the Renderer based on the presence of particular fields.
 
-The following tables describe the different types of components and the fields used by each component. In these tables, field names shown in bold text are the definitive fields that will indicate which type of component is being described.
+The following tables describe the different types of components and the fields used by each component. In these tables,
+field names shown in bold text are the definitive fields that will indicate which type of component is being described.
 
 <table>
     <thead>
@@ -71,7 +75,8 @@ var protoTree = {
         <tr>
             <th>Selection</th>
             <td>
-                A selection control where a user chooses either one or many options from a set of alternatives, such as a drop-down
+                A selection control where a user chooses either one or many options from a set of alternatives, such as
+                a drop-down
             </td>
             <td>
                 <pre><code>
@@ -81,7 +86,8 @@ componentID: {
     optionnames: [array of display strings]
 }
                 </code></pre>
-                For information on how to create trees for radio buttons and checkboxes, see <a href="RendererComponentTreeExpanders.md">Renderer Component Tree Expanders</a>.
+                For information on how to create trees for radio buttons and checkboxes, see <a
+                href="RendererComponentTreeExpanders.md">Renderer Component Tree Expanders</a>.
             </td>
             <td>
                 <pre><code>
@@ -136,7 +142,8 @@ componentID: {
         <tr>
             <th>Message</th>
             <td>
-                A component that encapsulates the data needed to resolve a localised message. Similar to a Bound, but the value is a key into a string bundle
+                A component that encapsulates the data needed to resolve a localised message. Similar to a Bound, but
+                the value is a key into a string bundle
             </td>
             <td>
                 <pre><code>
@@ -145,7 +152,9 @@ componentID: {
     args: [] // array of arguments to be interpolated into the message format
 }
                 </code></pre>
-                See <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/JavaProperties.js#L93-L115">fluid.formatMessage</a> for more information about message formatting.
+                See <a
+                href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/JavaProperties.js#L93-L115">fluid.formatMessage</a>
+                for more information about message formatting.
             </td>
             <td>
                 <pre><code>
