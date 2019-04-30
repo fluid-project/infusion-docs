@@ -4,10 +4,12 @@
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>{{document.title}} | Fluid Infusion</title>
-        <link rel="stylesheet" href="{{{relativeUrl '/css/normalize.css' document.url}}}">
-        <link rel="stylesheet" href="{{{relativeUrl '/css/foundation.css' document.url}}}">
+
+        <link rel="stylesheet" href="{{{relativeUrl '/lib/foundation/normalize.css' document.url}}}">
+        <link rel="stylesheet" href="{{{relativeUrl '/lib/foundation/foundation.css' document.url}}}">
         <link rel="stylesheet" href="{{{relativeUrl '/css/highlightjs-custom.css' document.url}}}">
-        <link rel="stylesheet" href="{{{relativeUrl '/css/octicons.css' document.url}}}">
+        <link rel="stylesheet" href="{{{relativeUrl '/lib/octicons/octicons.css' document.url}}}">
+
         <link rel="stylesheet" type="text/css" href="{{{relativeUrl '/lib/infusion/src/framework/preferences/css/Enactors.css' document.url}}}" />
         <link rel="stylesheet" type="text/css" href="{{{relativeUrl '/lib/infusion/src/framework/preferences/css/PrefsEditor.css' document.url}}}" />
         <link rel="stylesheet" type="text/css" href="{{{relativeUrl '/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css' document.url}}}" />
@@ -15,12 +17,16 @@
 
         <link rel="icon" type="image/png" href="{{{relativeUrl '/images/favico.png' document.url}}}">
 
-        <script type="text/javascript" src="{{{relativeUrl '/lib/infusion/infusion-uiOptions.js' document.url}}}"></script>
+        <script type="text/javascript" src="{{{relativeUrl '/lib/infusion/dist/infusion-all.js' document.url}}}"></script>
         <script type="text/javascript" src="{{{relativeUrl '/js/infusion-docs.js' document.url}}}"></script>
 
+        {{#ifEqual document.category "search"}}
+            <script type="text/javascript" src="{{{relativeUrl '/lib/fuse.js/fuse.js' document.url}}}"></script>
+            <script type="text/javascript" src="{{{relativeUrl '/js/search-digest.js' document.url}}}"></script>
+            <script type="text/javascript" src="{{{relativeUrl '/js/search.js' document.url}}}"></script>
+        {{/ifEqual}}
     </head>
     <body class="infusion-docs fl-theme-prefsEditor-default">
-
         <div class="container infusion-docs-container">
 
             <!-- Skip Link -->
@@ -50,7 +56,7 @@
                         "templatePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/html' document.url}}}",
                         "messagePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/messages' document.url}}}"
                     },
-                    "tocTemplate": "{{{relativeUrl '/lib/infusion/src/components/tableOfContents/html/TableOfContents.html' document.url}}}"
+                    "tocTemplate": "{{{relativeUrl '/lib/infusion/TableOfContents.html' document.url}}}"
                 });
             </script>
 
@@ -112,7 +118,15 @@
                         {{/if}}
 
                         <div class="infusion-docs-articleBody">
-                            {{{rewriteMdLinks content}}}
+                            {{#ifEqual document.category "search"}}
+                                <div class="docs-search">
+                                    <input type="text" class="docs-search-query" placeholder="Enter one or more search terms and press enter to search."/>
+
+                                    <div class="docs-search-results"></div>
+                                </div>
+                            {{else}}
+                                {{{rewriteMdLinks content}}}
+                            {{/ifEqual}}
                         </div>
                     </div>
 
@@ -129,7 +143,10 @@
         </div> <!-- end container -->
         <script>
             fluid.docs.onLoad();
-        </script>
+            {{#ifEqual document.category "search"}}
+                var searchComponent = fluid.docs.search(".docs-search");
+            {{/ifEqual}}
+    </script>
 
     </body>
 
