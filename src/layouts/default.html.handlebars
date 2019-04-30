@@ -21,6 +21,10 @@
         <script type="text/javascript" src="{{{relativeUrl '/js/infusion-docs.js' document.url}}}"></script>
 
         {{#ifEqual document.category "search"}}
+            <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-express/querystring-coding.js' document.url}}}"></script>
+            <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/transforms.js' document.url}}}"></script>
+            <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/binder.js' document.url}}}"></script>
+            <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-location-bar-relay/locationBar.js' document.url}}}"></script>
             <script type="text/javascript" src="{{{relativeUrl '/lib/fuse.js/fuse.js' document.url}}}"></script>
             <script type="text/javascript" src="{{{relativeUrl '/js/search-digest.js' document.url}}}"></script>
             <script type="text/javascript" src="{{{relativeUrl '/js/search.js' document.url}}}"></script>

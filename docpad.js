@@ -5,7 +5,7 @@
 
     Licensed under the Educational Community License (ECL), Version 2.0 or the New
     BSD license. You may not use this file except in compliance with one these
-    Licenses.
+    Licenses.`
 
     You may obtain a copy of the ECL 2.0 License and BSD License at
     https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
@@ -96,6 +96,18 @@ var copyDeps = function () {
         fuse: {
             dstDir: "out/infusion/development/lib/fuse.js",
             srcFiles: ["node_modules/fuse.js/dist/fuse.js"]
+        },
+        express: {
+            dstDir: "out/infusion/development/lib/gpii-express",
+            srcFiles: ["node_modules/gpii-express/src/js/lib"]
+        },
+        binder: {
+            dstDir: "out/infusion/development/lib/gpii-binder",
+            srcFiles: ["node_modules/gpii-binder/src/js"]
+        },
+        relay: {
+            dstDir: "out/infusion/development/lib/gpii-location-bar-relay",
+            srcFiles: ["node_modules/gpii-location-bar-relay/src/js"]
         }
     };
 

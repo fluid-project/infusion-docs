@@ -24,12 +24,9 @@
      *
      */
     fluid.docs.search.performSearch = function (that) {
-        var preSearchTime = Date.now();
-        if (that.fuse) {
-            var queryInput = that.locate("queryInput");
-            var queryString = queryInput.val();
-
-            var rawSearchResults = that.fuse.search(queryString);
+        if (that.fuse && that.model.qs && that.model.qs.length) {
+            var preSearchTime = Date.now();
+            var rawSearchResults = that.fuse.search(that.model.qs);
 
             // Use a map keyed by path to check for uniqueness and group results
             var resultsByPage = {};
@@ -54,8 +51,12 @@
             });
 
             fluid.docs.search.displayResults(that, orderedResults, rawSearchResults.length);
+            fluid.log("Search completed in " + (Date.now() - preSearchTime) + " ms");
         }
-        fluid.log("Search completed in " + (Date.now() - preSearchTime) + " ms");
+        else {
+            var resultsElement = that.locate("searchResults");
+            resultsElement.html(that.options.messages.noQuery);
+        }
     };
 
     /**
@@ -208,7 +209,7 @@
     };
 
     fluid.defaults("fluid.docs.search", {
-        gradeNames: ["fluid.viewComponent"],
+        gradeNames: ["gpii.locationBar", "gpii.binder.bindOnCreate", "fluid.viewComponent"],
         fuseOptions: {
             shouldSort: true,   // Sort by relevance, i.e. how well the content matches the search terms.
             /*
@@ -225,8 +226,8 @@
         events: {
             onRender: null
         },
-        members: {
-            fuse: false
+        messages: {
+            noQuery: "<p>Enter one or more search terms and press enter to search.</p>"
         },
         // TODO: Discuss our long term rendering strategy WRT Hugo, future Fluid, etc. and break this out better.
         templates: {
@@ -241,14 +242,19 @@
             searchResults: ".docs-search-results",
             extendedResultsToggle: ".search-extended-results-toggle"
         },
+        model: {
+            qs: ""
+        },
+        bindings: {
+            "queryInput": "qs"
+        },
+        members: {
+            fuse: false
+        },
         invokers: {
             search: {
                 funcName: "fluid.docs.search.performSearch",
                 args: ["{that}"]
-            },
-            searchOnEnter: {
-                funcName: "fluid.docs.search.filterByKeyPress",
-                args: [[13], "{arguments}.0", "{that}.search"] // activeKeys, event, callback
             },
             toggleExtendedResults: {
                 funcName: "fluid.docs.search.toggleExtendedResults",
@@ -264,12 +270,8 @@
                 funcName: "fluid.docs.search.processDigest",
                 args: ["{that}"]
             },
-
-            // Bind query field enter keypress.
-            "onCreate.bindQueryEnter": {
-                "this": "{that}.dom.queryInput",
-                method: "keypress",
-                args:   ["{that}.searchOnEnter"]
+            "onCreate.search": {
+                func: "{that}.search"
             },
 
             // Toggle "extended results".
@@ -282,6 +284,11 @@
                 "this": "{that}.dom.extendedResultsToggle",
                 method: "click",
                 args: ["{that}.toggleExtendedResults"]
+            }
+        },
+        modelListeners: {
+            "qs": {
+                func: "{that}.search"
             }
         }
     });
