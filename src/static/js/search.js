@@ -234,7 +234,7 @@
             header:     "<p>Displaying %results matching search results from %pages pages.</p>\n",
             pageMultiResultSummary: "<div class=\"search-result-single-page\"><h3><a href=\"%pagePath#%headingId\" target=\"_blank\">%pageTitle &gt; %headingText</a></h3><p class=\"search-context-highlight\">%body</p><p>Showing most relevant result, there are <a class=\"search-extended-results-toggle\" href=\"#\">%count additional entries</a> on the same page.</p> <div class=\"search-extended-results hidden\">\n%allEntries</div></div> \n",
             pageSingleResultSummary: "<div class=\"search-result-single-page\"><h3><a href=\"%pagePath#%headingId\" target=\"_blank\">%pageTitle &gt; %headingText</a></h3><p class=\"search-context-highlight\">%body</p></div> \n",
-            pageItem: "<div class=\"search-result-sub-entry\"><h5><a href=\"%pagePath#%headingId\">%pageTitle &gt; %headingText</a target=\"_blank\"></h5><p class=\"search-context-highlight\">%body</p></div> \n",
+            pageItem: "<div class=\"search-result-sub-entry\"><h5><a href=\"%pagePath#%headingId\" target=\"_blank\">%pageTitle &gt; %headingText</a></h5><p class=\"search-context-highlight\">%body</p></div> \n",
             footer:     ""
         },
         selectors: {
