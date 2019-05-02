@@ -20,14 +20,17 @@
         <script type="text/javascript" src="{{{relativeUrl '/lib/infusion/dist/infusion-all.js' document.url}}}"></script>
         <script type="text/javascript" src="{{{relativeUrl '/js/infusion-docs.js' document.url}}}"></script>
 
-        {{#ifEqual document.category "search"}}
-            <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-express/querystring-coding.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/transforms.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/binder.js' document.url}}}"></script>
+        <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-express/querystring-coding.js' document.url}}}"></script>
+        <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/transforms.js' document.url}}}"></script>
+        <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/binder.js' document.url}}}"></script>
+
+        {{#ifEqual document.category "Search"}}
             <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-location-bar-relay/locationBar.js' document.url}}}"></script>
             <script type="text/javascript" src="{{{relativeUrl '/lib/fuse.js/fuse.js' document.url}}}"></script>
             <script type="text/javascript" src="{{{relativeUrl '/js/search-digest.js' document.url}}}"></script>
             <script type="text/javascript" src="{{{relativeUrl '/js/search.js' document.url}}}"></script>
+        {{else}}
+            <script type="text/javascript" src="{{{relativeUrl '/js/mini-search.js' document.url}}}"></script>
         {{/ifEqual}}
     </head>
     <body class="infusion-docs fl-theme-prefsEditor-default">
@@ -85,26 +88,32 @@
 
             <div class="infusion-docs-mainBody">
                 <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
-                    {{#each siteStructure}}
+                    {{#ifEqual document.category "Search"}}
+                    {{else}}
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        {{#each siteStructure}}
                         {{! Output only the table of contents matching the current document's category }}
-                        {{#ifEqual category ../document.category}}
-                            <span class="infusion-docs-category">{{category}}</span>
-                            {{#each sections}}
-                                <span class="infusion-docs-sectionName">{{sectionName}}</span>
-                                <ul>
-                                    {{#each pages}}
-                                        <li>
-                                            {{#ifEqual href ../../../../document.url}}
-                                                <span class="infusion-docs-TOC-pageName">{{pageName}}</span>
-                                            {{else}}
-                                                <a href="{{relativeUrl href ../../../../../document.url}}"><span class="infusion-docs-TOC-pageName">{{pageName}}</span></a>
-                                            {{/ifEqual}}
-                                        </li>
-                                    {{/each}}
-                                </ul>
-                            {{/each}}
-                        {{/ifEqual}}
-                    {{/each}}
+                            {{#ifEqual category ../document.category}}
+                                <span class="infusion-docs-category">{{category}}</span>
+                                {{#each sections}}
+                                    <span class="infusion-docs-sectionName">{{sectionName}}</span>
+                                    <ul>
+                                        {{#each pages}}
+                                            <li>
+                                                {{#ifEqual href ../../../../document.url}}
+                                                    <span class="infusion-docs-TOC-pageName">{{pageName}}</span>
+                                                {{else}}
+                                                    <a href="{{relativeUrl href ../../../../../document.url}}"><span class="infusion-docs-TOC-pageName">{{pageName}}</span></a>
+                                                {{/ifEqual}}
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                {{/each}}
+                            {{/ifEqual}}
+                        {{/each}}
+                    {{/ifEqual}}
                 </nav>
 
                 <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
@@ -122,7 +131,7 @@
                         {{/if}}
 
                         <div class="infusion-docs-articleBody">
-                            {{#ifEqual document.category "search"}}
+                            {{#ifEqual document.category "Search"}}
                                 <div class="docs-search">
                                     <input type="text" class="docs-search-query" placeholder="Enter one or more search terms and press enter to search."/>
 
@@ -147,8 +156,10 @@
         </div> <!-- end container -->
         <script>
             fluid.docs.onLoad();
-            {{#ifEqual document.category "search"}}
-                var searchComponent = fluid.docs.search(".docs-search");
+            {{#ifEqual document.category "Search"}}
+                fluid.docs.search(".docs-search");
+            {{else}}
+                fluid.docs.search.mini(".docs-search-mini")
             {{/ifEqual}}
     </script>
 
