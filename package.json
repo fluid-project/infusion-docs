@@ -22,7 +22,7 @@
         "fs-extra": "4.0.2",
         "fuse.js": "3.4.4",
         "gpii-binder": "1.0.5",
-        "gpii-location-bar-relay": "1.0.3",
+        "gpii-location-bar-relay": "1.0.4",
         "infusion": "3.0.0-dev.20190328T144119Z.ec44dbfab",
         "markdown-it-anchor": "4.0.0",
         "mkdirp": "0.5.1",
