@@ -614,3 +614,21 @@ Instead have it appear around the enclosed
 .infusion-docs-blockcell {
   background-color: #fff;
 }
+.hidden {
+    display: none;
+}
+.search-context-highlight {
+    opacity: 0.5;
+}
+
+.search-context-highlight mark {
+    opacity: 1.0;
+}
+
+.search-result-single-page {
+    border-top: 1px solid #999999;
+}
+
+.search-result-sub-entry {
+    border-top: 1px solid #ffffff;
+}

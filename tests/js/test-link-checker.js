@@ -69,7 +69,7 @@ fluid.defaults("fluid.test.docs.linkChecker.environment", {
                         type: "gpii.express.router.static",
                         options: {
                             path:    "/",
-                            content: "%infusion-docs/tests/html"
+                            content: "%infusion-docs/tests/link-checker-fixtures"
                         }
                     }
                 }
