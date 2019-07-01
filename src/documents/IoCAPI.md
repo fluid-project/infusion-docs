@@ -234,7 +234,7 @@ This workflow enables some further features implemented alongside the transactio
 
 ### Workflow break hints:
 
-The ability to supply a "breakpoint hint" as part of the `options` member of the [fluid.beginTreeTransaction](#fluid-begintreetransaction-transactionoptions-) method. This specifies that the workflow process
+A "breakpoint hint" may be supplied as part of the `options` member of the [fluid.beginTreeTransaction](#fluid-begintreetransaction-transactionoptions-) method. This specifies that the workflow process
 should pause when it reaches a particular point. The two currently supported break points, `shells` and `observation` are described in the API documentation for
 [fluid.beginTreeTransaction](#fluid-begintreetransaction-transactionoptions-). This kind of hint is imagined useful for those implementing authoring supports for Infusion application, and allows for example for
 a cheap process which can validate some aspects of an Infusion application in an interactive way --- for example, whether given IoC references will resolve,
@@ -313,7 +313,7 @@ This shows the registration of one global workflow, `fluid.resolveModelSkeleton`
 framework has no priority annotation. It also shows the registration of a local workflow, `fluid.notifyInitModel` which
 is responsible for firing any [model listeners](ChangeApplierAPI.md#declarative-style-for-listening-to-changes) which need
 to be notified of initial model values as part of the [initial transaction](ModelRelay.md#the-initial-transaction). The
-[priority|Priorities.md] field attached here indicates that this should happen (if no further definition intervenes) immediately
+[priority](Priorities.md] field attached here indicates that this should happen (if no further definition intervenes) immediately
 before the `concludeComponentInit` action which fires `onCreate`.
 
 ### Global workflows
