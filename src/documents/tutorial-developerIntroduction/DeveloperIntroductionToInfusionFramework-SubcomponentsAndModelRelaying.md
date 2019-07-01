@@ -6,11 +6,15 @@ category: Tutorials
 
 A component can include other components within its configuration; these are referred to in Infusion as subcomponents.
 
-It's also common to want related components to coordinate state through their models; we can handle this through the [model relay](../ModelRelay.md) features.
+It's also common to want related components to coordinate state through their models; we can handle this through the
+[model relay](../ModelRelay.md) features.
 
-The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate subcomponents, and synchronizes the "hello" message through model relay. We'll also update the web page display to use a model listener to respond to model changes.
+The evolving "Hello, World!" component below splits out the two "hello" functions (console and web page) into separate
+subcomponents, and synchronizes the "hello" message through model relay. We'll also update the web page display to use a
+model listener to respond to model changes.
 
-<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/rjWBQN?editors=1111">Live Example of the code below on CodePen</a></div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
+href="http://codepen.io/waharnum/pen/rjWBQN?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ```javascript
 fluid.defaults("fluidTutorial.helloWorld", {
@@ -80,7 +84,10 @@ fluidTutorial.helloWorld.consoleHello = function (message) {
 
 ```
 
-Now, when we use the [ChangeApplier's](../ChangeApplier.md) `change` function to update the `message` on the parent component model, we'll see both the console and the web page display update, as the change to the parent component model's `message` value is propagated to the `message` value of each subcomponent's model, which triggers to the model listeners of each to invoke the "hello!" functions.
+Now, when we use the [ChangeApplier's](../ChangeApplier.md) `change` function to update the `message` on the parent
+component model, we'll see both the console and the web page display update, as the change to the parent component
+model's `message` value is propagated to the `message` value of each subcomponent's model, which triggers to the model
+listeners of each to invoke the "hello!" functions.
 
 ```javascript
 helloWorld.applier.change("message", "Hello, again, world.");

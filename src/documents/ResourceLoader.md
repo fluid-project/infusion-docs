@@ -232,12 +232,17 @@ fluid.defaults("fluid.messageLoader", {
 });
 ```
 
-This example requests to load a JSON file that contains translations. The `fluid.messageLoader` follows fallback rules below to satisfy the request:
+This example requests to load a JSON file that contains translations. The `fluid.messageLoader` follows fallback rules
+below to satisfy the request:
 
-1. look for a suffixed resource corresponding to the language code specified by the `locale` option: `../data/translation-fr_CA.json`
-2. look for a suffixed resource with the same language as the language code specified by the `locale` option: `../data/translation-fr.json`
-3. look for a suffixed resource corresponding to the language code specified by the `defaultLocale` option: `../data/translation-en_US.json`
-4. look for a suffixed resource with the same language as the language code specified by the `defaultLocale` option: `../data/translation-en.json`
+1. look for a suffixed resource corresponding to the language code specified by the `locale` option:
+   `../data/translation-fr_CA.json`
+2. look for a suffixed resource with the same language as the language code specified by the `locale` option:
+   `../data/translation-fr.json`
+3. look for a suffixed resource corresponding to the language code specified by the `defaultLocale` option:
+   `../data/translation-en_US.json`
+4. look for a suffixed resource with the same language as the language code specified by the `defaultLocale`
+   option: `../data/translation-en.json`
 5. look for a resource with the exact URL as specified through the `resources` option: `../data/translation.json`
 
 In addition to use within top-level `resourceOptions`, `locale` may also be supplied on an individual resource, in which case

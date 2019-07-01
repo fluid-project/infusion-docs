@@ -4,7 +4,8 @@ layout: default
 category: Infusion
 ---
 
-This page will walk you through the process of upgrading your existing 1.4 UI Options implementation to the 1.5 version. This tutorial assumes that:
+This page will walk you through the process of upgrading your existing 1.4 UI Options implementation to the 1.5 version.
+This tutorial assumes that:
 
 * you are already familiar with HTML, Javascript and CSS
 * you are familiar with what UI Options is and does
@@ -13,7 +14,9 @@ This page will walk you through the process of upgrading your existing 1.4 UI Op
 
 ## Dependency Changes
 
-<div class="infusion-docs-note"><strong>Note:</strong> actual paths may vary, as they are dependent on the location of infusion.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> actual paths may vary, as they are dependent on the location of infusion.
+</div>
 
 ### In 1.5
 
@@ -156,7 +159,10 @@ fluid.uiOptions.prefsEditor("container", {
 });
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> If you'd like to provide a custom theme to use as the default theme, you should use the <a href="../PreferencesFramework.md">Preferences Framework</a> instead</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> If you'd like to provide a custom theme to use as the default theme, you should use the <a
+    href="../PreferencesFramework.md">Preferences Framework</a> instead
+</div>
 
 ### In 1.4
 

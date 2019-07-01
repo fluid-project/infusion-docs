@@ -20,11 +20,13 @@ var switchUIWithOptions = fluid.switchUI(container, options);
 
 #### container
 
-The `container` parameter is a CSS-based [selector](http://api.jquery.com/category/selectors/), single-element jQuery object, or DOM element specifying the containing element for the Switch.
+The `container` parameter is a CSS-based [selector](http://api.jquery.com/category/selectors/), single-element jQuery
+object, or DOM element specifying the containing element for the Switch.
 
 #### options parameter
 
-The `options` parameter is an optional collection of name-value pairs that configure the Switch, as described in the [Options](#options) section below.
+The `options` parameter is an optional collection of name-value pairs that configure the Switch, as described in the
+[Options](#options) section below.
 
 ## Options
 
@@ -44,7 +46,8 @@ The `options` parameter is an optional collection of name-value pairs that confi
             <td><code>selectors</code></td>
             <td>
 
-JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more information.
+JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more
+information.
 </td>
             <td>The object may contain the following keys:
                 <ul>
@@ -67,7 +70,10 @@ selectors: {
         </tr>
         <tr>
             <td><code>strings</code></td>
-            <td>An object containing text to be used by the switch. These are displayed visually on the screen and/or provided as a label for an assistive technology.</td>
+            <td>
+                An object containing text to be used by the switch. These are displayed visually on the screen and/or
+                provided as a label for an assistive technology.
+            </td>
             <td>The object may contain the following keys:
                 <ul>
                     <li><code>label</code></li>
@@ -93,8 +99,11 @@ strings: {
             <td><code>attrs</code></td>
             <td>An object containing any HTML attributes to be added to the switch <code>control</code>.</td>
             <td>
-                An object containing any key/value pairs representing valid HTML attributes and their respective values. In particular, an integrator should define a key/value pairing for <code>"aria-label"</code> or <code>"aria-labelledby"</code>.
-                <div class="infusion-docs-note"><strong>Note:</strong> If the switch controls another element on the page, <code>"aria-controls"</code> should be added to indicate the relationship.</div>
+                An object containing any key/value pairs representing valid HTML attributes and their respective values.
+                In particular, an integrator should define a key/value pairing for <code>"aria-label"</code> or
+                <code>"aria-labelledby"</code>. <div class="infusion-docs-note"><strong>Note:</strong> If the switch
+                controls another element on the page, <code>"aria-controls"</code> should be added to indicate the
+                relationship.</div>
             </td>
             <td>
                 <pre>
@@ -126,7 +135,8 @@ model: {
 
 ### Selectors
 
-The `selectors` option is an object containing CSS-based selectors for the various parts of the Switch. Supported selectors are:
+The `selectors` option is an object containing CSS-based selectors for the various parts of the Switch. Supported
+selectors are:
 
 <table>
     <thead>
@@ -181,15 +191,23 @@ selectors: {
 
 ## Styling the Switch
 
-The Switch includes default CSS styles that are applied to its elements. The application of styles is based on known class names. The _default_ class names are described below, and can be used by including the Switch stylesheet:
+The Switch includes default CSS styles that are applied to its elements. The application of styles is based on known
+class names. The _default_ class names are described below, and can be used by including the Switch stylesheet:
 
 ```html
 <link href="components/switch/css/Switch.css" type="text/css" rel="stylesheet" media="all">;
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> Switch.css is generated from the Switch.styl Stylus file. See the <a href="https://github.com/fluid-project/infusion/blob/master/README.md#developing-with-the-preferences-framework">Developing with the Preferences Framework</a> section of the <a href="https://github.com/fluid-project/infusion/blob/master/README.md">Infusion README</a> for how to build Stylus files.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> Switch.css is generated from the Switch.styl Stylus file. See the <a
+    href="https://github.com/fluid-project/infusion/blob/master/README.md#developing-with-the-preferences-framework">Developing
+    with the Preferences Framework</a> section of the <a
+    href="https://github.com/fluid-project/infusion/blob/master/README.md">Infusion README</a> for how to build Stylus
+    files.
+</div>
 
-These styling classes should be added to the markup used by the Switch. To modify the appearance, one can modify the markup and/or override the style declarations applied to the classes.
+These styling classes should be added to the markup used by the Switch. To modify the appearance, one can modify the
+markup and/or override the style declarations applied to the classes.
 
 ### Default Classes
 
