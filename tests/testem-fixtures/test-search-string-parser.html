@@ -3,7 +3,7 @@
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Infusion Documentation Search Tests</title>
+    <title>Infusion Documentation Search String Parser Tests</title>
 
     <!-- TODO: Test framework dependencies -->
 
@@ -29,7 +29,6 @@
     <script type="text/javascript" src="../../node_modules/fuse.js/dist/fuse.js"></script>
     <script type="text/javascript" src="../../out/infusion/development/js/search-digest.js"></script>
     <script type="text/javascript" src="../../src/static/js/search-string-parser.js"></script>
-    <script type="text/javascript" src="../../src/static/js/search.js"></script>
 
     <!-- QUnit/jqUnit dependencies -->
     <script type="text/javascript" src="../../node_modules/infusion/tests/lib/qunit/js/qunit.js"></script>
@@ -43,26 +42,17 @@
     <link rel="stylesheet" href="../../node_modules/infusion/tests/lib/qunit/css/qunit.css"/>
 
     <!-- Our actual tests -->
-    <script type="text/javascript" src="./js/search-tests.js"></script>
+    <script type="text/javascript" src="./js/search-string-parser-tests.js"></script>
 </head>
 <body>
-    <h1 id="qunit-header">Infusion Docs Search Tests</h1>
+    <h1 id="qunit-header">Infusion Docs Search String Parser Tests</h1>
     <h2 id="qunit-banner"></h2>
     <div id="qunit-testrunner-toolbar"></div>
     <h2 id="qunit-userAgent"></h2>
     <ol id="qunit-tests"></ol>
 
     <div id="qunit-fixture">
-        <div class="docs-search">
-            <input type="text" class="docs-search-query" placeholder="Enter one or more search terms and press enter to search."/>
-
-            <div class="docs-search-results"></div>
-        </div>
     </div>
-
-    <script type="text/javascript">
-        fluid.test.runTests("fluid.test.docs.search.environment");
-    </script>
 </body>
 
 </html>

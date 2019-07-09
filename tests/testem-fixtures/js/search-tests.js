@@ -33,7 +33,6 @@
         jqUnit.assertTrue(message + " : maximum results", singlePageResultElements.length <= maxResults);
     };
 
-    // Searches should listen for the onRender before checking results in
     fluid.defaults("fluid.test.docs.search.caseHolder", {
         gradeNames: ["fluid.test.testCaseHolder"],
         modules: [{
@@ -88,7 +87,7 @@
         components: {
             search: {
                 createOnEvent: "{environment}.events.createSearch",
-                type: "fluid.docs.search",
+                type: "fluid.docs.search.base",
                 container: ".docs-search",
                 options: {
                     listeners: {

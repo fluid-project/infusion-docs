@@ -11,8 +11,12 @@
      */
     fluid.docs.search.processDigest = function (that) {
         var preIndexTime = Date.now();
+
         that.fuse = new Fuse(fluid.docs.search.digest, that.options.fuseOptions);
+
         fluid.log("Indexed in " + (Date.now() - preIndexTime) + " ms");
+
+        that.search();
     };
 
     /**
@@ -24,9 +28,11 @@
      *
      */
     fluid.docs.search.performSearch = function (that) {
-        if (that.fuse && that.model.qs && that.model.qs.length) {
+        if (that.model.qs && that.model.qs.length && that.fuse) {
             var preSearchTime = Date.now();
-            var rawSearchResults = that.fuse.search(that.model.qs);
+
+            var hasSearchWeighting = that.model.qs.match(/[\+\-\"]/);
+            var rawSearchResults= hasSearchWeighting ? fluid.docs.search.weightedSearch(that) : that.fuse.search(that.model.qs);
 
             // Use a map keyed by path to check for uniqueness and group results
             var resultsByPage = {};
@@ -57,6 +63,33 @@
             var resultsElement = that.locate("searchResults");
             resultsElement.html(that.options.messages.noQuery);
         }
+    };
+
+    /*
+        TODO: Update this once we are using lunr.js, which can enforce "must have" and "must not have", so that:
+
+        1. If there are required words/phrases, all of these are used in a "must have" search.
+        2. If there are no required words/phrases, add any "may have" results.
+        3. Filter out all "must not have" entries.
+
+        For "must have" phrases, all of their words are required, so we simply run one search and filter it down.
+
+        For "may have" phrases, run a standalone search for all words contained, then filter to just those that contain any
+        phrase.  Combine this with a search for all "may have" words.  If there is "must have" content, the results are
+        only used to optionally improve the search weighting of the "must have" content.
+
+        For "must not have" phrases, run a search for all words, then filter to just those that contain any phrase.
+
+     */
+    fluid.docs.search.weightedSearch = function (that) {
+        var parsedSearchString = fluid.docs.search.parseSearchString(that.model.qs);
+
+        var allWords = [];
+        fluid.each(["mustContainPhrases", "mustContainWords", "mayContainPhrases", "mayContainWords"], function (key){
+            allWords = allWords.concat(parsedSearchString[key]);
+        });
+
+        return that.fuse.search(allWords.join(" "));
     };
 
     /**
@@ -208,20 +241,20 @@
         extendedResultsElement.toggleClass("hidden");
     };
 
-    fluid.defaults("fluid.docs.search", {
-        gradeNames: ["gpii.locationBar", "gpii.binder.bindOnCreate", "fluid.viewComponent"],
+    // base grade without location bar, which causes problems in Testem tests.
+    fluid.defaults("fluid.docs.search.base", {
+        gradeNames: ["gpii.binder.bindOnCreate", "fluid.viewComponent"],
         fuseOptions: {
-            shouldSort: true,   // Sort by relevance, i.e. how well the content matches the search terms.
+            includeMatches: true, // Include the index of matching content so that we can highlight matches.
+            includeScore:   true, // Include the relevance score (0 = perfect match, 1 = no similarity) in the results.
+            shouldSort:     true, // Although we sometimes aggregate search results and order them ourselves, keep this for "simple" searches.
+            threshold: 0.1,       // Filter to only display search results that match at this level or better (lower).
+            distance: 10000,      // We use a low threshold and a high distance so that we have to more exactly match the search strings.
             /*
                 Each digest segment "body" contains a heading's-worth of rendered markdown.  See
                 src/scripts/create-search-digest.js for details.
             */
-            keys: ["body"],
-            includeMatches: true, // Include the index of matching content so that we can highlight matches.
-            includeScore: true,   // Include the relevance score (0 = perfect match, 1 = no similarity) in the results.
-            threshold: 0.1,       // Filter to only display search results that match at this level or better (lower).
-            distance: 10000       // We use a low threshold and a high distance so that we have to more exactly match the search strings.
-
+            keys: ["body"]
         },
         events: {
             onRender: null
@@ -270,9 +303,6 @@
                 funcName: "fluid.docs.search.processDigest",
                 args: ["{that}"]
             },
-            "onCreate.search": {
-                func: "{that}.search"
-            },
 
             // Toggle "extended results".
             "onRender.bindExtendedResultsToggleKeys": {
@@ -288,8 +318,13 @@
         },
         modelListeners: {
             "qs": {
-                func: "{that}.search"
+                func: "{that}.search",
+                excludeSource: "init"
             }
         }
+    });
+
+    fluid.defaults("fluid.docs.search", {
+        gradeNames: ["gpii.locationBar", "fluid.docs.search.base"]
     });
 })(fluid);

@@ -8,7 +8,8 @@ fluid.require("%infusion-docs");
 
 // No code coverage for now.  Eventually we may want it for src/static/js.
 var testemComponent = gpii.testem.base({
-    testPages:   [
+    testPages: [
+        "tests/testem-fixtures/test-search-string-parser.html",
         "tests/testem-fixtures/test-search.html"
     ],
     sourceDirs: {
