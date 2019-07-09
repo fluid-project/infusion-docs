@@ -1,9 +1,10 @@
-// Bundle our content so that it can be searched using Fuse.js
+// Bundle our content so that it can be searched using lunr.js on the client side.
 /* eslint-env node */
 "use strict";
 var fluid  = require("infusion");
 var fs     = require("fs");
 var path   = require("path");
+var lunr   = require("lunr");
 
 var MarkdownIt = require("markdown-it");
 var md = new MarkdownIt({ html :true });
@@ -59,9 +60,38 @@ fluid.docs.search.digester.scanAll = function (that) {
     fluid.docs.search.digester.scanSingleDir(resolvedStart, resolvedStart, that.digestBlocks);
 
     var resolvedOutputPath = fluid.module.resolvePath(that.options.outputPath);
-    var rawPayload = JSON.stringify(that.digestBlocks, null, 4);
-    var indentedPayload = rawPayload.replace(/^/mg, "    ").substring(4);
-    var output = fluid.stringTemplate(that.options.outputTemplate, { payload: indentedPayload });
+
+    var idx = lunr(function () {
+        // Ensure that the search results will have positional data we can use for highlighting.
+        this.metadataWhitelist = ["position"];
+
+        // We use the section (pagePath#heading) as our unique identifier.
+        this.ref("section");
+        this.field("title");
+        this.field("body");
+
+        that.digestBlocks.forEach(function (digestBlock) {
+            this.add({
+                section: digestBlock.pagePath + "#" + digestBlock.headingId,
+                title:   digestBlock.headingText,
+                body:    digestBlock.body
+            });
+        }, this);
+    });
+
+    var rawIndex = JSON.stringify(idx.toJSON(), null, 4);
+    var indentedIndex = rawIndex.replace(/^/mg, "    ").substring(4);
+
+    // Organise the digest into a map keyed by the "section"
+    var digestMap = {};
+    fluid.each(that.digestBlocks, function (digestBlock) {
+        digestMap[digestBlock.pagePath + "#" + digestBlock.headingId] = digestBlock;
+    });
+
+    var rawDigest = JSON.stringify(digestMap, null, 4);
+    var indentedDigest = rawDigest.replace(/^/mg, "    ").substring(4);
+
+    var output = fluid.stringTemplate(that.options.outputTemplate, { index: indentedIndex, digest: indentedDigest });
     fs.writeFileSync(resolvedOutputPath, output);
 };
 
@@ -116,7 +146,13 @@ fluid.docs.search.digester.scanSingleFile = function (filePath, rootPath, digest
 
     var rawSegments = mdContent.split(/^\#{2,}/m);
     var repairedSegments = fluid.transform(rawSegments, function (segment, index) {
-        return index === 0 ? segment : ("#" + segment);
+        var toModify = segment;
+        // Replace the docpad metadata with a single heading to avoid having the metadata appear literally in results that match the top-level of the page.
+        if (index === 0) {
+            toModify = segment.replace(/---.+title: *(.+)\n.+---\n/mi, "$1")
+        }
+
+        return "#" + toModify;
     });
 
     var fileHeadings = [];
@@ -162,7 +198,7 @@ fluid.defaults("fluid.docs.search.digester", {
     gradeNames: ["fluid.component"],
     documentsRoot: "%infusion-docs/src/documents",
     outputPath: "%infusion-docs/out/infusion/development/js/search-digest.js",
-    outputTemplate: "(function (fluid) {\n    \"use strict\";\n    fluid.registerNamespace(\"fluid.docs.search\");\n    fluid.docs.search.digest = %payload;\n})(fluid);\n",
+    outputTemplate: "(function (fluid) {\n    \"use strict\";\n    fluid.registerNamespace(\"fluid.docs.search\");\n    fluid.docs.search.digest = %digest;\n\n fluid.docs.search.index = %index; \n})(fluid);\n",
     members: {
         digestBlocks: []
     },

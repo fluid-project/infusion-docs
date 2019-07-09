@@ -26,7 +26,7 @@
 
         {{#ifEqual document.category "Search"}}
             <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-location-bar-relay/locationBar.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/lib/fuse.js/fuse.js' document.url}}}"></script>
+            <script type="text/javascript" src="{{{relativeUrl '/lib/lunr/lunr.min.js' document.url}}}"></script>
             <script type="text/javascript" src="{{{relativeUrl '/js/search-digest.js' document.url}}}"></script>
             <script type="text/javascript" src="{{{relativeUrl '/js/search.js' document.url}}}"></script>
         {{else}}
