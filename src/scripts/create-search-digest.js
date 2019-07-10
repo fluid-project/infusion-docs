@@ -67,14 +67,14 @@ fluid.docs.search.digester.scanAll = function (that) {
 
         // We use the section (pagePath#heading) as our unique identifier.
         this.ref("section");
-        this.field("title");
+        this.field("headingText");
         this.field("body");
 
         that.digestBlocks.forEach(function (digestBlock) {
             this.add({
-                section: digestBlock.pagePath + "#" + digestBlock.headingId,
-                title:   digestBlock.headingText,
-                body:    digestBlock.body
+                section:      digestBlock.pagePath + "#" + digestBlock.headingId,
+                headingText:  digestBlock.headingText,
+                body:         digestBlock.body
             });
         }, this);
     });
@@ -149,10 +149,10 @@ fluid.docs.search.digester.scanSingleFile = function (filePath, rootPath, digest
         var toModify = segment;
         // Replace the docpad metadata with a single heading to avoid having the metadata appear literally in results that match the top-level of the page.
         if (index === 0) {
-            toModify = segment.replace(/---.+title: *(.+)\n.+---\n/mi, "$1")
+            toModify = segment.replace(/---\ntitle: *([^\n]+)\n[^-]*---/mi, "$1")
         }
 
-        return "#" + toModify;
+        return "# " + toModify;
     });
 
     var fileHeadings = [];

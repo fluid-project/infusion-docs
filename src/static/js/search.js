@@ -43,28 +43,6 @@
             // Use an array storing individual grouped path entries to preserve the search order, as in:
             var orderedResults = [];
 
-            /*
-
-                    TODO: Update to work with the structure returned by lunr.js, as in:
-
-                    {
-                      "ref": "1395",
-                      "score": 0.725,
-                      "matchData": {
-                        "metadata": {
-                          "refer": {
-                            "body": {
-                              "position": [
-                                [ 414, 5 ],
-                                [ 891, 5 ]
-                              ]
-                            }
-                          }
-                        }
-                      }
-                    }
-
-                 */
             fluid.each(rawSearchResults, function (rawSearchResult) {
                 var item = fluid.docs.search.digest[rawSearchResult.ref];
                 var pageEntry = resultsByPage[item.pagePath];
@@ -78,10 +56,9 @@
                     orderedResults.push(pageEntry);
                 }
 
-                // TODO: update the highlighting function to use the lunr.js conventions.
-                //var itemWithHighlights = fluid.docs.search.highlightBody(item, rawSearchResult.matches);
-                //pageEntry.pageResults.push(itemWithHighlights);
-                pageEntry.pageResults.push(item);
+                var itemWithHighlights = fluid.docs.search.highlightItem(item, rawSearchResult.matchData);
+                pageEntry.pageResults.push(itemWithHighlights);
+                //pageEntry.pageResults.push(item);
             });
 
             fluid.docs.search.displayResults(that, orderedResults, rawSearchResults.length);
@@ -108,7 +85,7 @@
             }
 
             if (parsedSearchString.mustContainWords.length) {
-                query.term(lunr.tokenizer(parsedSearchString.mustNotContainWords), { presence: lunr.Query.presence.REQUIRED });
+                query.term(lunr.tokenizer(parsedSearchString.mustContainWords), { presence: lunr.Query.presence.REQUIRED });
             }
 
             // TODO: Filter to the phrase rather than all the individual words.
@@ -122,11 +99,11 @@
 
             // TODO: exclude the phrase rather than all the individual words.
             if(parsedSearchString.mustNotContainPhrases) {
-                query.term(lunr.tokenizer(parsedSearchString.mayContainWords), { presence: lunr.Query.presence.PROHIBITED });
+                query.term(lunr.tokenizer(parsedSearchString.mustNotContainPhrases), { presence: lunr.Query.presence.PROHIBITED });
             };
 
             if(parsedSearchString.mustNotContainWords) {
-                query.term(lunr.tokenizer(parsedSearchString.mayContainWords), { presence: lunr.Query.presence.PROHIBITED });
+                query.term(lunr.tokenizer(parsedSearchString.mustNotContainWords), { presence: lunr.Query.presence.PROHIBITED });
             };
         });
 
@@ -145,11 +122,6 @@
      * @property {String} pagePath - The relative path to the page within the site.
      * @property {Array<searchHit>} pageResults - The full list of search hits for this page, in order of relevance.
      * @property {String} title - The page's title.
-     *
-     * @typedef lunrMatch - A single piece of "match" data to locate a search hit in context, as returned by Fuse.js.
-     * @property {String} key - The field name of the matching field (always "body" in our case).
-     * @property {String} value - The full content that was searched.
-     * @property {Array<Array<Integer>>} indices - An array of two element vectors representing the start and end of a search hit in context.
      *
      */
 
@@ -214,76 +186,91 @@
         }
     };
 
-    /*
-
-        TODO: Update to work with the structure returned by lunr.js, as in:
-
-        {
-          "ref": "1395",
-          "score": 0.725,
-          "matchData": {
-            "metadata": {
-              "refer": {
-                "body": {
-                  "position": [
-                    [ 414, 5 ],
-                    [ 891, 5 ]
-                  ]
-                }
-              }
-            }
-          }
-        }
-
-     */
-
     /**
      *
-     * A function that finds the longest match within a given piece of content based on the match indices provided by
-     * Lunr.js.  The content is then trimmed to the nearest enclosing tag if available, so that we have a highlighted
-     * search hit within a relatively small piece of context.
+     * A function that finds the longest match within a given piece of content based on the match metadata provided by
+     * Lunr.js, which looks something like:
      *
-     * @param {searchHit} singleSearchResult - A single "search hit".
-     * @param {Array<lunrMatch>} matches - An array of indices representing the location of search hits in context.
-     * @return {String} - The original body, with the longest match highlighted and the content trimmed to the nearest tag enclosing the longest match.
+     * {
+     *   "metadata": {
+     *     "refer": {
+     *       "body": {
+     *         "position": [
+     *           [ 414, 5 ],
+     *           [ 891, 5 ]
+     *         ]
+     *       }
+     *     }
+     *   }
+     * }
+     *
+     * The above contains only hits in the "body" field, there may also be "title" hits.  Using this information, all
+     * title matches are highlighted.  For body content, we look for the longest match, then trim the content to the
+     * nearest enclosing tag, so that we have a highlighted search hit within a relatively small piece of context
+     * rather than displaying entire sections.
+     *
+     * @param {Object} matchingItem - The original record associated with a single "search hit".
+     * @param {Object} matchData - An array of indices representing the location of search hits in context and their length.
+     * @return {Object} - A copy of the matching item, with the longest match highlighted and the content trimmed to the nearest tag enclosing the longest match.
+     *
      */
-    fluid.docs.search.highlightBody = function (singleSearchResult, matches) {
-        var updatedSearchResult = fluid.copy(singleSearchResult);
+    fluid.docs.search.highlightItem = function (matchingItem, matchData) {
+        var updatedSearchResult = fluid.copy(matchingItem);
 
-        // find the longest match from all indexes.
-        var longestMatchCoordinates = false;
-        var longestMatchLength  = 0;
-        fluid.each(matches, function (match) {
-            fluid.each(match.indices, function (matchCoordinates) {
-                var matchLength = matchCoordinates[1] - matchCoordinates[0];
-                if (matchLength > longestMatchLength) {
-                    longestMatchLength = matchLength;
-                    longestMatchCoordinates = matchCoordinates;
-                }
+        // Trim to the longest match for each field.
+        var longestMatch = {
+            headingText: {
+                matchStart:  0,
+                matchLength: 0,
+                matchTerm:   ""
+            },
+            body: {
+                matchStart:  0,
+                matchLength: 0,
+                matchTerm:   ""
+            }
+        };
+
+        fluid.each(matchData.metadata, function (termMatches, term) {
+            fluid.each(["headingText", "body"], function (field) {
+                fluid.each(fluid.get(termMatches, [field, "position"]), function (singleMatchCoordinates) {
+                    if (singleMatchCoordinates[1] > longestMatch[field].matchLength) {
+                        longestMatch[field].matchStart  = singleMatchCoordinates[0];
+                        longestMatch[field].matchLength = singleMatchCoordinates[1];
+                        longestMatch[field].matchTerm   = term;
+                    }
+                });
             });
         });
 
-        // Highlight longest match, and trim to the nearest enclosing tag.
-        if (longestMatchLength) {
-            var startIndex = longestMatchCoordinates[0];
-            var endIndex   = longestMatchCoordinates[1];
-            var leader = singleSearchResult.body.substring(0, startIndex);
-            var lastTagInLeader = leader.lastIndexOf(">");
-            if (lastTagInLeader !== -1) {
-                leader = leader.substring(lastTagInLeader + 1);
+        fluid.each(["headingText", "body"], function (field) {
+            if (longestMatch[field].matchLength) {
+                var startIndex  = longestMatch[field].matchStart;
+                var endIndex    = startIndex + longestMatch[field].matchLength;
+                var leader      = matchingItem[field].substring(0, startIndex);
+                var toHighlight = matchingItem[field].substring(startIndex, (endIndex + 1));
+                var trailer     = matchingItem[field].substring(endIndex);
+
+                if (field === "body") {
+                    // Trim the leader and trailer to the nearest enclosing tag.
+                    if (longestMatch[field].matchLength) {
+                        var lastTagInLeader = leader.lastIndexOf(">");
+                        if (lastTagInLeader !== -1) {
+                            leader = leader.substring(lastTagInLeader + 1);
+                        }
+
+                        var matchText = matchingItem.body.substring(startIndex, (endIndex + 1));
+
+                        var firstTagInTrailer = trailer.indexOf("<");
+                        if (firstTagInTrailer !== -1) {
+                            trailer = trailer.substring(0, firstTagInTrailer);
+                        }
+                    }
+                }
+
+                updatedSearchResult[field] = leader + "<mark>" + toHighlight + "</mark>" + trailer;
             }
-
-            var matchText = singleSearchResult.body.substring(startIndex, (endIndex + 1));
-
-            var trailer = singleSearchResult.body.substring(endIndex + 1);
-            var firstTagInTrailer = trailer.indexOf("<");
-            if (firstTagInTrailer !== -1) {
-                trailer = trailer.substring(0, firstTagInTrailer);
-            }
-
-            var markedBody = leader + "<mark>" + matchText + "</mark>" + trailer;
-            updatedSearchResult.body = markedBody;
-        }
+        });
 
         return updatedSearchResult;
     };
