@@ -4,17 +4,21 @@ layout: default
 category: Tutorials
 ---
 
-Infusion's configuration-oriented components make it easier to restructure code, especially as a single component configuration becomes unwieldy. It's a common and expected pattern in Infusion to refactor components as a design evolves.
+Infusion's configuration-oriented components make it easier to restructure code, especially as a single component
+configuration becomes unwieldy. It's a common and expected pattern in Infusion to refactor components as a design
+evolves.
 
-In the example below, we extract the two "say hello" components into separate component definitions from the main component, then include them as subcomponents of the main component with their options appropriately configured. We'll also add a listener to the main component to announce (once) when its creation is complete.
+In the example below, we extract the two "say hello" components into separate component definitions from the main
+component, then include them as subcomponents of the main component with their options appropriately configured. We'll
+also add a listener to the main component to announce (once) when its creation is complete.
 
 In the process, we'll be looking at some other important characteristics of Infusion component design:
 
 1. Building freestanding components, then wiring them together for more complex behaviours.
-
 2. Overriding default component configuration when building up applications from separate components.
 
-<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/egBObY?editors=1111">Live Example of the code below on CodePen</a></div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
+href="http://codepen.io/waharnum/pen/egBObY?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ```javascript
 // The console hello functionality is now defined as a separate
@@ -103,7 +107,8 @@ fluid.defaults("fluidTutorial.helloWorld", {
 });
 ```
 
-We'll also create an instance of this component in a way that shows how any Infusion component defaults can be overridden:
+We'll also create an instance of this component in a way that shows how any Infusion component defaults can be
+overridden:
 
 ```javascript
 var helloWorld = fluidTutorial.helloWorld({
@@ -113,6 +118,8 @@ var helloWorld = fluidTutorial.helloWorld({
 });
 ```
 
-Notice that the initial message is changed - an Infusion grade definition created by `fluid.defaults` is exactly that, a default definition, and is fully extensible and reconfigurable even at runtime by passing in another block of configuration.
+Notice that the initial message is changed - an Infusion grade definition created by `fluid.defaults` is exactly that, a
+default definition, and is fully extensible and reconfigurable even at runtime by passing in another block of
+configuration.
 
 Next: [Overriding Invokers and Refactoring](DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.md)

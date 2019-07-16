@@ -5,15 +5,16 @@
 
     Licensed under the Educational Community License (ECL), Version 2.0 or the New
     BSD license. You may not use this file except in compliance with one these
-    Licenses.
+    Licenses.`
 
     You may obtain a copy of the ECL 2.0 License and BSD License at
     https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 */
 "use strict";
-var uri  = require("urijs");
-var path = require("path");
-var fs   = require("fs-extra");
+var uri    = require("urijs");
+var path   = require("path");
+var fs     = require("fs-extra");
+var mkdirp = require("mkdirp");
 
 var docsVersion = "development";
 
@@ -65,6 +66,71 @@ var rootPath = process.cwd();
 var imagesSrcDir = path.join(rootPath, "src", "documents", "images");
 var imagesDestDir = "out/images";
 
+var copyDeps = function () {
+    var depDefs = {
+        // The infusion distribution files.
+        infusionDist: {
+            dstDir: "out/infusion/development/lib/infusion/dist",
+            srcFiles: [
+                "node_modules/infusion/dist"
+            ]
+        },
+        // The full source.
+        infusionSrc: {
+            dstDir: "out/infusion/development/lib/infusion/src",
+            srcFiles: [
+                "node_modules/infusion/src"
+            ]
+        },
+        foundation: {
+            dstDir: "out/infusion/development/lib/foundation",
+            srcFiles: [
+                "node_modules/foundation-sites/css/foundation.css",
+                "node_modules/foundation-sites/css/normalize.css"
+            ]
+        },
+        octicons: {
+            dstDir: "out/infusion/development/lib/octicons",
+            srcFiles: ["node_modules/octicons/octicons"]
+        },
+        fuse: {
+            dstDir: "out/infusion/development/lib/fuse.js",
+            srcFiles: ["node_modules/fuse.js/dist/fuse.js"]
+        },
+        express: {
+            dstDir: "out/infusion/development/lib/gpii-express",
+            srcFiles: ["node_modules/gpii-express/src/js/lib"]
+        },
+        binder: {
+            dstDir: "out/infusion/development/lib/gpii-binder",
+            srcFiles: ["node_modules/gpii-binder/src/js"]
+        },
+        relay: {
+            dstDir: "out/infusion/development/lib/gpii-location-bar-relay",
+            srcFiles: ["node_modules/gpii-location-bar-relay/src/js"]
+        }
+    };
+
+    Object.keys(depDefs).forEach(function (depKey) {
+        var depDef = depDefs[depKey];
+        // Make sure the target directory exists
+        mkdirp.sync(depDef.dstDir);
+
+        // Copy each file to the target directory.
+        depDef.srcFiles.forEach(function (srcPath) {
+            var fileStats = fs.statSync(srcPath);
+            if (fileStats.isDirectory()) {
+                fs.copySync(srcPath, depDef.dstDir);
+            }
+            else if (fileStats.isFile()) {
+                var filename = path.basename(srcPath);
+                var dstFilePath = path.resolve(depDef.dstDir, filename);
+                fs.copyFileSync(srcPath, dstFilePath);
+            }
+        });
+    });
+};
+
 module.exports = {
     rootPath: rootPath,
     ignorePaths: [ imagesSrcDir ],
@@ -107,6 +173,9 @@ module.exports = {
             // Copy the images
             fs.copySync(imagesSrcDir, imagesDestDir);
 
+            // Copy all required dependencies
+            copyDeps();
+
             // Copy the contents of the out directory to
             // out/infusion/<version>. We need to do this to prepare the
             // structure for the ghpages plugin as it does not support
@@ -136,6 +205,9 @@ module.exports = {
             // Copy the files for GitHub Pages:
             // redirect index.htmls and CNAME
             fs.copySync(path.join(rootPath, "src", "ghpages-files"), "out");
+
+            // Generate the "canned" search index.
+            require("./src/scripts/create-search-digest");
         }
     }
 };

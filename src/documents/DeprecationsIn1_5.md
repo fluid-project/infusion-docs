@@ -4,7 +4,8 @@ layout: default
 category: Infusion
 ---
 
-This page contains a list of the features, API's, and etc. that were deprecated in Infusion 1.5, and removed in Infusion 2.0.
+This page contains a list of the features, API's, and etc. that were deprecated in Infusion 1.5, and removed in Infusion
+2.0.
 
 <table>
     <thead>
@@ -17,7 +18,9 @@ This page contains a list of the features, API's, and etc. that were deprecated 
         <tr>
             <td>FSS</td>
             <td>
-                There are no CSS Framework requirements for working with Infusion. Infusion's strategy going forward will be to use custom CSS for component specific styling and <a href="http://foundation.zurb.com/">Foundation</a> for demos, as needed.
+                There are no CSS Framework requirements for working with Infusion. Infusion's strategy going forward
+                will be to use custom CSS for component specific styling and <a
+                href="http://foundation.zurb.com/">Foundation</a> for demos, as needed.
             </td>
         </tr>
         <tr>
@@ -58,10 +61,11 @@ This page contains a list of the features, API's, and etc. that were deprecated 
             </td>
         </tr>
         <tr>
-            <td>manual component initialization (e.g. <code>fluid.initLittleComponent</code> and <code>fluid.initViewComponent</code>)</td>
             <td>
-                Use grades and <code>autoInit</code>
+                manual component initialization (e.g. <code>fluid.initLittleComponent</code> and
+                <code>fluid.initViewComponent</code>)
             </td>
+            <td>Use grades and <code>autoInit</code></td>
         </tr>
         <tr>
             <td>
@@ -108,7 +112,8 @@ This page contains a list of the features, API's, and etc. that were deprecated 
                 </ul>
             </td>
             <td>
-                Use <code>fluid.makeEventFier</code> instead of <code>fluid.event.getEventFier</code>; however, the signature for this method may change in 2.0.
+                Use <code>fluid.makeEventFier</code> instead of <code>fluid.event.getEventFier</code>; however, the
+                signature for this method may change in 2.0.
             </td>
         </tr>
         <tr>

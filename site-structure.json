@@ -252,5 +252,9 @@
                 ]
             }
         ]
+    },
+    {
+        "category": "Search",
+        "categoryHref": "/search.html"
     }
 ]

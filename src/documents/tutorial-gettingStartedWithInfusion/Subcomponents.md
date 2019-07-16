@@ -9,16 +9,21 @@ Part of the [Getting Started with Infusion Component Design Tutorial](GettingSta
 
 ---
 
-If you've done any object-oriented programming, you're probably familiar with the idea of packaging up functionality into small, reusable, modular bundles. The Infusion Framework provides many supports for designing your application as a collection of components that work together. Components can be combined with parent-child relationships, creating a **component** tree.
+If you've done any object-oriented programming, you're probably familiar with the idea of packaging up functionality
+into small, reusable, modular bundles. The Infusion Framework provides many supports for designing your application as a
+collection of components that work together. Components can be combined with parent-child relationships, creating a
+**component** tree.
 
 ## Declaring subcomponents
 
-Using the Inversion of Control system, subcomponents are declared in a special property of the parent's defaults called `components`. The `components` object is collection of key/value pairs:
+Using the Inversion of Control system, subcomponents are declared in a special property of the parent's defaults called
+`components`. The `components` object is collection of key/value pairs:
 
 * the key is a name for the subcomponent
 * the value is an object that describes the subcomponent.
 
-The subcomponent object can contain many properties, but the main one is the `type`, which is the string name of the subcomponent function.
+The subcomponent object can contain many properties, but the main one is the `type`, which is the string name of the
+subcomponent function.
 
 ```javascript
 // Define one subcomponent
@@ -55,7 +60,9 @@ In addition to the `type` of subcomponent, other configuration information can b
 
 ## Example: User Interface Options
 
-The Infusion [UI Options](../to-do/UserInterfaceOptions.md) component presents a collection of controls that allow a user to specify their preferences for customizing the presentation of the user interface and content resources. It works with the User Interface Enhancer (UI Enhancer), which carries out the transformations based on the recorded preferences.
+The Infusion [UI Options](../to-do/UserInterfaceOptions.md) component presents a collection of controls that allow a
+user to specify their preferences for customizing the presentation of the user interface and content resources. It works
+with the User Interface Enhancer (UI Enhancer), which carries out the transformations based on the recorded preferences.
 
 The UI Options component has a component tree as shown below. Essentially:
 
@@ -63,8 +70,10 @@ The UI Options component has a component tree as shown below. Essentially:
   * Separated Panel,
   * Full, without Preview, and
   * Full page, with Preview.
-* The 'separated panel' version is presented as a sliding panel at the top of a page, and so has a Sliding Panel subcomponent.
-* The 'separated panel' version applies changes directly to the page as they are being adjusted, so it has a Live Preview subcomponent.
+* The 'separated panel' version is presented as a sliding panel at the top of a page, and so has a Sliding Panel
+  subcomponent.
+* The 'separated panel' version applies changes directly to the page as they are being adjusted, so it has a Live
+  Preview subcomponent.
 * The 'full, with preview' version has a Preview subcomponent
 * The 'full page, without preview' version has no subcomponents other than UI Options.
 * The UI Options component has three subcomponents for the three different types of controls presented.
