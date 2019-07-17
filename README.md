@@ -23,7 +23,7 @@ Then, point your browser to: `http://localhost:9778/`
 
 ## Deploy
 
-While GitHub Pages is not used to host [fluiproject.org](https://docs.fluidproject.org), our deployment process requires
+While GitHub Pages is not used to host [fluidproject.org](https://docs.fluidproject.org), our deployment process requires
 that the generated site be pushed to the `deploy` branch in the project repo. The contents of the `deploy` branch will
 automatically be served as the contents are changed.
 

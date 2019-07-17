@@ -278,7 +278,7 @@ var max = Math.max.apply(null, numbers);
 
 Derived from Sindre Sorhus's [round-to node]( https://github.com/sindresorhus/round-to) module. (License: MIT)
 
-Rounds the supplied number to at most the number of decimal places indicated by the scale, omiting any trailing 0s.
+Rounds the supplied number to at most the number of decimal places indicated by the scale, omitting any trailing 0s.
 There are three possible rounding methods described below: "round", "ceil", "floor".
 
 * `"round"`: Numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
@@ -311,7 +311,7 @@ in place**.
 
 * `holder {Array|Object}` The container to be filtered
 * `path {String|Array of String}` An [EL path](FrameworkConcepts.md#el-paths) to be fetched from each top-level member
-* Returns: `{Array|Object}` A container of the same type as `holder`, with the members of `holder` deferenced by `path`.
+* Returns: `{Array|Object}` A container of the same type as `holder`, with the members of `holder` dereferenced by `path`.
 
 Extracts a particular member from each top-level member of a container, returning a new container of the same type.
 Example:
@@ -334,7 +334,7 @@ var names = fluid.getMembers(cattes, "name");
 * Returns: `{Array|Object}` the filtered object
 
 Accepts an object to be filtered, and a list of keys. Either all keys not present in the list are removed (the default),
-or all keys present in the list are removed (`exclude: true`). The suppled object **is not modified** but will be
+or all keys present in the list are removed (`exclude: true`). The supplied object **is not modified** but will be
 shallow cloned by this operation.
 
 ### fluid.censorKeys(toCensor, keys)

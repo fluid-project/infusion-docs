@@ -105,7 +105,7 @@ fluid.defaults("demo.hw", {
 });
 ```
 
-In the following example, taken from the Infusion Table of Contente component, **this-ist** functions are used to attach
+In the following example, taken from the Infusion Table of Contents component, **this-ist** functions are used to attach
 methods to the component object in the `invokers` option.
 
 ```javascript

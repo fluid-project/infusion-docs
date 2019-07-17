@@ -188,7 +188,7 @@ iii) other means. Functions supplied by jqUnit include `jqUnit.canonicaliseFunct
 Assert that the actual value object is a superset (considered in terms of shallow key coincidence) of the expected value
 object. The coincidence between `value` and `expected` is only in terms of top-level keys, but the comparison will use
 deep equality. That is, if `value` has any top-level keys in common with `expected`, they must compare equal by deep
-equality - but it may have extra top-level keys whose contents will be iignored. "Left hand" (expected) is a subset of
+equality - but it may have extra top-level keys whose contents will be ignored. "Left hand" (expected) is a subset of
 actual.
 
 ### jqUnit.assertRightHand(message, expected, value)
@@ -296,7 +296,7 @@ will compare equal to
 }
 ```
 
-* `expected {Object|Array}` A condensed JSON respresentation of a set of assertions to make about a subtree of DOM
+* `expected {Object|Array}` A condensed JSON representation of a set of assertions to make about a subtree of DOM
   nodes, or an array of these
 * `node {DOM|Array of DOM|jQuery}` The DOM node to be checked against `expected` - this may also be an array of DOM
   nodes or a jQuery object.

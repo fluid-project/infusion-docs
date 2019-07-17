@@ -38,7 +38,7 @@ var myAuxiliarySchema = {
 
 fluid.prefs.builder({
     primarySchema: myPrimarySchema,
-    auxiliaryScham: myAuxiliarySchema
+    auxiliarySchema: myAuxiliarySchema
 });
 ```
 
