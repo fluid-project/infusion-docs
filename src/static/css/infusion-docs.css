@@ -593,7 +593,7 @@ Instead have it appear around the enclosed
 }
 
 /* These definitions deal with complex formatted tables with alternating rows as seen in IoCTestingFramework.md
- * They originally appeared in the Confluence wiki formatted verion of the table */
+ * They originally appeared in the Confluence wiki formatted version of the table */
 /* copied from Confluence main-actions.css */
 .infusion-docs-complextable, .infusion-docs-complextable td, .infusion-docs-complextable th {
   border:1px solid #CCCCCC;

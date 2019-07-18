@@ -200,7 +200,7 @@ to the most heavyweight:
 * Firstly, a component can simply include a contextualised reference in its configuration, as we saw above - e.g.
   `{rootComponent1}.options.rootValue`. This value is fetched from the specified part of the context and becomes part of
   the component's options when it is instantiated
-* Secondly, an [options distribution](IoCSS.md) can be targetted at the component from elsewhere in the tree, using the
+* Secondly, an [options distribution](IoCSS.md) can be targeted at the component from elsewhere in the tree, using the
   IoCSS context expressions described above.
 * Thirdly, the component can derive from the [`fluid.contextAware`](ContextAwareness.md) grade in order to set up
   complex arbitration amongst multiple sources of context which can influence the component along several axes
