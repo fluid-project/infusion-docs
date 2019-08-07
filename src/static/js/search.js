@@ -3,6 +3,64 @@
     "use strict";
     fluid.registerNamespace("fluid.docs.search");
 
+    /*
+    {
+      "matchData": {
+        "metadata": {
+          "test": {
+            "headingText": {
+              "position": [[0, 7]]
+            },
+            "body": {
+              "position": [[ 5, 7 ], [ 29, 7 ]]
+            }
+          }
+        }
+      }
+    }
+     */
+    /**
+     *
+     * @typedef LunrMatchData
+     * @property {Object} metadata - Search metadata, keyed by the matching word or phrase, then the matching field, with
+     * an array reflecting the position in the content and the length of the match, as in:
+     * {
+     *   "test": {
+     *     "headingText": {
+     *       "position": [[0, 7]] // [position, length], [position, length], ...
+     *     },
+     *     "body": {
+     *       "position": [[ 5, 7 ], [ 29, 7 ]]
+     *     }
+     *   }
+     * }
+     *
+     * @typedef LunrResult
+     * @property {String} ref - The page name and section heading for the matching content.
+     * @property {Number} score - The "score" for the result, higher being more relevant.
+     * @property {LunrMatchData} matchData - Match data, including metadata used for highlighting.
+     *
+     *
+     * @typedef SearchHit - A single "search hit".
+     * @property {String} body - A trimmed and highlighted representation of the longest match in this "hit" in context.
+     * @property {String} headingId - If the search is associated with a linkable subheading, its ID (used for deep linking).
+     * @property {String} headingText - If the search is associated with a linkable subheading, its text.
+     * @property {String} pagePath - The relative path to the page within the site.
+     * @property {String} pageTitle - The page's title.
+     * @property {Number} score - The relative score for the match (higher is more relevant).
+     *
+     * @typedef PageResults - A grouping of search hits on a single page.
+     * @property {String} pagePath - The relative path to the page within the site.
+     * @property {Array<SearchHit>} pageResults - The full list of search hits for this page, in order of relevance.
+     * @property {String} title - The page's title.
+     *
+     * @typedef SearchResults
+     * @property {Object.<String, PageResults>} byPage
+     * @property {Object.<String, SearchHit>} bySection
+     * @property {Array<SearchHit>} ordered - An ordered list of results, with only the best result from each page, ordered by search score.
+     *
+     */
+
     /**
      * Process the pre-generated index created using src/scripts/create-search-digest.js.
      *
@@ -14,7 +72,7 @@
 
         that.index = lunr.Index.load(fluid.docs.search.index);
 
-        fluid.log("Loaded index in " + (Date.now() - preIndexTime) + " ms");
+        console.log("Loaded index in " + (Date.now() - preIndexTime) + " ms");
 
         // Initial state might have been relayed from the location bar by now.
         if (that.model.qs) {
@@ -35,34 +93,10 @@
             var preSearchTime = Date.now();
 
             var hasSearchWeighting = that.model.qs.match(/[\+\-\"]/);
-            var rawSearchResults= hasSearchWeighting ? fluid.docs.search.weightedSearch(that) : fluid.docs.search.simpleSearch(that);
+            var searchResults = hasSearchWeighting ? fluid.docs.search.weightedSearch(that) : fluid.docs.search.simpleSearch(that);
 
-            // Use a map keyed by path to check for uniqueness and group results
-            var resultsByPage = {};
-
-            // Use an array storing individual grouped path entries to preserve the search order, as in:
-            var orderedResults = [];
-
-            fluid.each(rawSearchResults, function (rawSearchResult) {
-                var item = fluid.docs.search.digest[rawSearchResult.ref];
-                var pageEntry = resultsByPage[item.pagePath];
-                if (!pageEntry) {
-                    pageEntry = {
-                        pagePath:    item.pagePath,
-                        pageTitle:   item.pageTitle,
-                        pageResults: []
-                    };
-                    resultsByPage[item.pagePath] = pageEntry;
-                    orderedResults.push(pageEntry);
-                }
-
-                var itemWithHighlights = fluid.docs.search.highlightItem(item, rawSearchResult.matchData);
-                pageEntry.pageResults.push(itemWithHighlights);
-                //pageEntry.pageResults.push(item);
-            });
-
-            fluid.docs.search.displayResults(that, orderedResults, rawSearchResults.length);
-            fluid.log("Search completed in " + (Date.now() - preSearchTime) + " ms");
+            fluid.docs.search.displayResults(that, searchResults);
+            console.log("Word searches completed in " + (Date.now() - preSearchTime) + " ms");
         }
         else {
             var resultsElement = that.locate("searchResults");
@@ -70,60 +104,322 @@
         }
     };
 
+    /**
+     *
+     * If we have no phrases or weighting, we can perform a much simpler single search.
+     *
+     * @param {Object} that - The search component itself.
+     * @return {SearchResults} - The results of the search.
+     */
     fluid.docs.search.simpleSearch = function (that) {
-        var results = that.index.search(that.model.qs);
+        var rawSearchResults = that.index.search(that.model.qs);
+
+        var results = fluid.docs.search.sectionRawResults(rawSearchResults);
+
+        fluid.docs.search.groupByPage(results);
+        fluid.docs.search.highlightMatches(results);
+
         return results;
     };
 
+    /**
+     *
+     * If we have phrases and/or weighting, we need to follow a more complex search strategy using filtering and/or
+     * merging of multiple sets of search results.
+     *
+     * @param {Object} that - The search component itself.
+     * @return {SearchResults} - The results of the search.
+     *
+     */
     fluid.docs.search.weightedSearch = function (that) {
         var parsedSearchString = fluid.docs.search.parseSearchString(that.model.qs);
 
-        var results = that.index.query(function (query) {
-            // TODO: Require the whole phrase rather than all the individual words
-            if (parsedSearchString.mustContainPhrases.length) {
-                query.term(lunr.tokenizer(parsedSearchString.mustContainPhrases), { presence: lunr.Query.presence.REQUIRED });
+        var results = { byPage: {}, bySection: {}, ordered: [] };
+
+        if (parsedSearchString.mayContainWords.length || parsedSearchString.mustContainWords.length ||
+            parsedSearchString.mustContainPhrases.length || parsedSearchString.mustNotContainWords.length ) {
+
+            // First search includes everything we can up front, we will start paring down from there.
+            var initialRawResults = that.index.query(function (query) {
+                if (parsedSearchString.mayContainWords.length) {
+                    query.term(lunr.tokenizer(parsedSearchString.mayContainWords), {presence: lunr.Query.presence.OPTIONAL});
+                }
+
+                // "may contain" phrases must be handled separately, otherwise we end up allowing each individual word in
+                // all phrases.
+
+                if (parsedSearchString.mustContainWords.length) {
+                    query.term(lunr.tokenizer(parsedSearchString.mustContainWords), {presence: lunr.Query.presence.REQUIRED});
+                }
+
+                // As all of the individual words in a "must contain" phrase must appear individually, require them all as
+                // individual words here and filter to exact phrases later on.
+                if (parsedSearchString.mustContainPhrases.length) {
+                    query.term(lunr.tokenizer(parsedSearchString.mustContainPhrases.join(" ")), {presence: lunr.Query.presence.REQUIRED});
+                }
+
+                if (parsedSearchString.mustNotContainWords.length) {
+                    query.term(lunr.tokenizer(parsedSearchString.mustNotContainWords), {presence: lunr.Query.presence.PROHIBITED});
+                }
+
+                // We cannot add "must not contain" phrases to the initial search because any word in the phrase might
+                // itself be OK on its own, so we leave these out and filter later on.
+            });
+
+            results = fluid.docs.search.sectionRawResults(initialRawResults);
+        }
+
+        if (parsedSearchString.mayContainPhrases.length) {
+            var mayContainWordResults = that.index.query(function (query) {
+                if (parsedSearchString.mayContainPhrases.length) {
+                    query.term(lunr.tokenizer(parsedSearchString.mayContainPhrases.join(" ")), {presence: lunr.Query.presence.OPTIONAL});
+                }
+            });
+
+            var sectionedPhraseResults = fluid.docs.search.sectionRawResults(mayContainWordResults);
+            var resultsContainingPhrases = fluid.docs.search.filterToAnyPhrase(sectionedPhraseResults, parsedSearchString.mayContainPhrases);
+            results = fluid.docs.search.addResults(results, resultsContainingPhrases);
+        }
+
+        if (parsedSearchString.mustContainPhrases.length) {
+            results = fluid.docs.search.filterToAllPhrases(results, parsedSearchString.mustContainPhrases);
+        }
+
+        if (parsedSearchString.mustNotContainPhrases.length) {
+            results = fluid.docs.search.excludeAllPhrases(results, parsedSearchString.mustNotContainPhrases);
+        }
+
+        fluid.docs.search.groupByPage(results);
+        fluid.docs.search.highlightMatches(results);
+
+        return results;
+    };
+
+
+    /**
+     *
+     * Sort function to order an array of combined search results by "score".
+     *
+     * @param {HighlightedResult} a - A single "sectioned" search result.
+     * @param {HighlightedResult} b - Another "sectioned" search result.
+     * @return {Integer} - Returns 0 if the records have the same score, -1 if a is higher, and 1 if b is higher.
+     *
+     */
+    fluid.docs.search.orderByScore = function (a, b) {
+        if (a.score === b.score) {
+            return 0;
+        }
+        else if (a.score < b.score) {
+            return 1;
+        }
+        else {
+            return -1;
+        }
+    };
+
+    /**
+     *
+     * Return the record with the highest score.
+     *
+     * @param {HighlightedResult} a - A single "sectioned" search result.
+     * @param {HighlightedResult} b - Another "sectioned" search result.
+     * @return {HighlightedResult} - The record with the highest `score` value.
+     *
+     */
+    fluid.docs.search.highestScoring = function (a, b) {
+        return fluid.docs.search.orderByScore(a, b) <= 0 ? a : b;
+    };
+
+    /**
+     *
+     * Combined two individual searches into a common set of results, with only the best matching of each duplicate,
+     * and resorted into the combined "score" ordering.
+     *
+     * @param {SearchResults} resultsBySection - A set of existing "sectioned" search results.
+     * @param {SearchResults} resultsToAdd - A second set of "sectioned" search results to add to the first set.
+     * @return {SearchResults} - All records from both sets, with any duplicates resolved in favour of the highest scoring entry.
+     *
+     */
+    fluid.docs.search.addResults = function (resultsBySection, resultsToAdd) {
+        var updatedResults = {
+            byPage:    {},
+            bySection: {},
+            ordered:   []
+        };
+
+        var allSectionKeys = fluid.keys(resultsBySection.bySection).concat(fluid.keys(resultsToAdd.bySection));
+        var distinctSectionKeyMap = {};
+        fluid.transform(allSectionKeys, function (sectionKey) { distinctSectionKeyMap[sectionKey] = true; });
+        var distinctSectionKeys = fluid.keys(distinctSectionKeyMap);
+
+        fluid.each(distinctSectionKeys, function (sectionKey) {
+            var existingSectionResult = resultsBySection.bySection[sectionKey];
+            var sectionResultToAdd    = resultsToAdd.bySection[sectionKey];
+
+            if (existingSectionResult && sectionResultToAdd) {
+                // keep the higher scoring match.
+                var highestScoringResult = fluid.docs.search.highestScoring(existingSectionResult, sectionResultToAdd);
+                updatedResults.bySection[sectionKey] = fluid.copy(highestScoringResult);
             }
-
-            if (parsedSearchString.mustContainWords.length) {
-                query.term(lunr.tokenizer(parsedSearchString.mustContainWords), { presence: lunr.Query.presence.REQUIRED });
+            else if (existingSectionResult) {
+                updatedResults.bySection[sectionKey] = fluid.copy(existingSectionResult);
             }
-
-            // TODO: Filter to the phrase rather than all the individual words.
-            if (parsedSearchString.mayContainPhrases) {
-                query.term(lunr.tokenizer(parsedSearchString.mayContainPhrases), { presence: lunr.Query.presence.OPTIONAL });
+            else if (sectionResultToAdd) {
+                updatedResults.bySection[sectionKey] = fluid.copy(sectionResultToAdd);
             }
+        });
 
-            if (parsedSearchString.mayContainWords.length) {
-                query.term(lunr.tokenizer(parsedSearchString.mayContainWords), { presence: lunr.Query.presence.OPTIONAL });
-            }
+        return updatedResults;
+    };
 
-            // TODO: exclude the phrase rather than all the individual words.
-            if(parsedSearchString.mustNotContainPhrases) {
-                query.term(lunr.tokenizer(parsedSearchString.mustNotContainPhrases), { presence: lunr.Query.presence.PROHIBITED });
-            };
+    /**
+     *
+     * Take a set of raw lunr.js results, highlight search matches, and then divide them by page+section.
+     *
+     * @param {Array<LunrResult>} rawSearchResults - The raw search results returned by lunr.js.
+     * @return {SearchResults} - The results, organised by page + section, and with search matches highlighted.
+     *
+     */
+    fluid.docs.search.sectionRawResults = function (rawSearchResults) {
+        var results = { byPage: {}, bySection: {}, ordered: []};
 
-            if(parsedSearchString.mustNotContainWords) {
-                query.term(lunr.tokenizer(parsedSearchString.mustNotContainWords), { presence: lunr.Query.presence.PROHIBITED });
-            };
+        fluid.each(rawSearchResults, function (rawSearchResult) {
+            var item = fluid.extend({}, rawSearchResult, fluid.docs.search.digest[rawSearchResult.ref]);
+            results.bySection[rawSearchResult.ref] = item;
         });
 
         return results;
     };
 
     /**
-     * @typedef searchHit - A single "search hit".
-     * @property {String} body - A trimmed and highlighted representation of the longest match in this "hit" in context.
-     * @property {String} headingId - If the search is associated with a linkable subheading, its ID (used for deep linking).
-     * @property {String} headingText - If the search is associated with a linkable subheading, its text, otherwise the page title.
-     * @property {String} pagePath - The relative path to the page within the site.
-     * @property {String} pageTitle - The page's title.
      *
-     * @typedef pageHits - A grouping of search hits on a single page.
-     * @property {String} pagePath - The relative path to the page within the site.
-     * @property {Array<searchHit>} pageResults - The full list of search hits for this page, in order of relevance.
-     * @property {String} title - The page's title.
+     * Go through a list of "sectioned" search results and highlight the longest match in each section.
+     *
+     * @param {SearchResults} sectionedResults - The original results, organised by page + section.
      *
      */
+    fluid.docs.search.highlightMatches = function (sectionedResults) {
+        fluid.each(sectionedResults.bySection, fluid.docs.search.highlightItem);
+    };
+
+    /**
+     *
+     * Take "sectioned" search results, group them by page, and ensure that they are ordered by score, with the best
+     * results first.
+     *
+     * @param {SearchResults} resultsBySection - The "sectioned" search results, which are modified in place.
+     * @param {Boolean} alreadyInOrder - Whether the results are already in order, or need to be ordered by score.
+     *
+     */
+    fluid.docs.search.groupByPage = function (resultsBySection, alreadyInOrder) {
+        resultsBySection.byPage  = {};
+        resultsBySection.ordered = [];
+
+        var sectionResults = fluid.values(resultsBySection.bySection);
+
+        if (!alreadyInOrder) {
+            sectionResults.sort(fluid.docs.search.orderByScore);
+        }
+
+        fluid.each(sectionResults, function (sectionResult) {
+            var pageEntry = resultsBySection.byPage[sectionResult.pagePath];
+            if (!pageEntry) {
+                pageEntry = {
+                    pagePath:    sectionResult.pagePath,
+                    pageTitle:   sectionResult.pageTitle,
+                    pageResults: []
+                };
+                resultsBySection.byPage[sectionResult.pagePath] = pageEntry;
+                resultsBySection.ordered.push(pageEntry);
+            }
+
+            pageEntry.pageResults.push(sectionResult);
+        });
+    };
+
+    /**
+     *
+     * Filter down existing "sectioned" results to only those that contain at least one specified phrase.
+     *
+     * @param {SearchResults} resultsBySection - Existing search results.
+     * @param {Array<String>} phrases - One or more phrases to filter by.
+     * @return {SearchResults} - A filtered version of the original results.
+     *
+     */
+    fluid.docs.search.filterToAnyPhrase = function (resultsBySection, phrases) {
+        return fluid.docs.search.filterToPhrases(resultsBySection, phrases, 1);
+    };
+
+    /**
+     *
+     * Filter down existing "sectioned" results to only those that contain all the specified phrases.
+     *
+     * @param {SearchResults} resultsBySection - Existing search results.
+     * @param {Array<String>} phrases - One or more phrases to filter by.
+     * @return {SearchResults} - A filtered version of the original results.
+     */
+    fluid.docs.search.filterToAllPhrases = function (resultsBySection, phrases) {
+        return fluid.docs.search.filterToPhrases(resultsBySection, phrases, phrases.length);
+    };
+
+    /**
+     *
+     * Filter down existing "sectioned" results to only those that do not contain any of the specified phrases.
+     *
+     * @param {SearchResults} resultsBySection - Existing search results.
+     * @param {Array<String>} phrases - One or more phrases to filter by.
+     * @return {SearchResults} - A filtered version of the original results.
+     *
+     */
+    fluid.docs.search.excludeAllPhrases = function (resultsBySection, phrases) {
+        return fluid.docs.search.filterToPhrases(resultsBySection, phrases, 1, true);
+    };
+
+
+    /**
+     *
+     * Filter existing "by section" search results by phrase content.
+     *
+     * @param {SearchResults} resultsBySection - Existing search results to filter.
+     * @param {Array<String>} phrases - One or more phrases to filter to.
+     * @param {Integer} minMatches - The minimum number of matches.  Typically set to 1 (any must match) or phrases.length (all must match).
+     * @param {Boolean} exclude - Whether to exclude rather than include matches.
+     * @return {SearchResults} - The filtered search results.
+     */
+    fluid.docs.search.filterToPhrases = function (resultsBySection, phrases, minMatches, exclude) {
+        var updatedResults = {
+            bySection: {}
+        };
+
+        fluid.each(resultsBySection.bySection, function (sectionResult, sectionKey) {
+            var originalContent = fluid.docs.search.digest[sectionKey];
+            var updatedMatchData = {};
+            var matches = 0;
+            fluid.each(phrases, function (phrase) {
+                var hasPhraseMatch = false;
+                fluid.each(["body", "headingText"], function (field) {
+                    var fieldContent = originalContent[field].toLowerCase();
+                    var phraseIndex = fieldContent.indexOf(phrase.toLowerCase());
+                    if (phraseIndex !== -1) {
+                        fluid.set(updatedMatchData, ["metadata", phrase, field, "position"], [[phraseIndex, phrase.length]]);
+                        hasPhraseMatch = true;
+                    }
+                });
+                if (hasPhraseMatch) {
+                    matches++;
+                }
+            });
+            if ((!exclude && matches >= minMatches) || (exclude && (matches < minMatches))) {
+                var updatedResult = fluid.copy(sectionResult);
+                if (!exclude) {
+                    updatedResult.matchData = updatedMatchData;
+                }
+                updatedResults.bySection[sectionKey] = updatedResult;
+            }
+        });
+
+        return updatedResults;
+    };
 
     /**
      *
@@ -134,10 +430,12 @@
      * @param {Integer} resultsCount - The total number of individual search hits within all grouped entries.
      *
      */
-    fluid.docs.search.displayResults = function (that, orderedAndGroupedResults, resultsCount) {
+    fluid.docs.search.displayResults = function (that, orderedAndGroupedResults) {
+        var pageCount = Object.keys(orderedAndGroupedResults.byPage).length;
+        var hitCount  = Object.keys(orderedAndGroupedResults.bySection).length;
         var resultsElement = that.locate("searchResults");
-        var htmlOutput = fluid.stringTemplate(that.options.templates.header, { pages: orderedAndGroupedResults.length, results: resultsCount });
-        fluid.each(orderedAndGroupedResults, function (pageEntry) {
+        var htmlOutput = fluid.stringTemplate(that.options.templates.header, { pages: pageCount, results: hitCount });
+        fluid.each(orderedAndGroupedResults.byPage, function (pageEntry) {
             var singlePageHtml = "";
 
             if (pageEntry.pageResults.length === 1) {
@@ -204,19 +502,15 @@
      *   }
      * }
      *
-     * The above contains only hits in the "body" field, there may also be "title" hits.  Using this information, all
+     * The above contains only hits in the "body" field, there may also be "headerText" hits.  Using this information, all
      * title matches are highlighted.  For body content, we look for the longest match, then trim the content to the
      * nearest enclosing tag, so that we have a highlighted search hit within a relatively small piece of context
-     * rather than displaying entire sections.
+     * rather than displaying entire sections.  Modifies the record in place.
      *
      * @param {Object} matchingItem - The original record associated with a single "search hit".
-     * @param {Object} matchData - An array of indices representing the location of search hits in context and their length.
-     * @return {Object} - A copy of the matching item, with the longest match highlighted and the content trimmed to the nearest tag enclosing the longest match.
      *
      */
-    fluid.docs.search.highlightItem = function (matchingItem, matchData) {
-        var updatedSearchResult = fluid.copy(matchingItem);
-
+    fluid.docs.search.highlightItem = function (matchingItem) {
         // Trim to the longest match for each field.
         var longestMatch = {
             headingText: {
@@ -231,7 +525,7 @@
             }
         };
 
-        fluid.each(matchData.metadata, function (termMatches, term) {
+        fluid.each(matchingItem.matchData.metadata, function (termMatches, term) {
             fluid.each(["headingText", "body"], function (field) {
                 fluid.each(fluid.get(termMatches, [field, "position"]), function (singleMatchCoordinates) {
                     if (singleMatchCoordinates[1] > longestMatch[field].matchLength) {
@@ -249,30 +543,20 @@
                 var endIndex    = startIndex + longestMatch[field].matchLength;
                 var leader      = matchingItem[field].substring(0, startIndex);
                 var toHighlight = matchingItem[field].substring(startIndex, (endIndex + 1));
-                var trailer     = matchingItem[field].substring(endIndex);
+                var trailer     = matchingItem[field].substring(endIndex + 1);
 
-                if (field === "body") {
-                    // Trim the leader and trailer to the nearest enclosing tag.
-                    if (longestMatch[field].matchLength) {
-                        var lastTagInLeader = leader.lastIndexOf(">");
-                        if (lastTagInLeader !== -1) {
-                            leader = leader.substring(lastTagInLeader + 1);
-                        }
+                var desiredContextLength = 120;
+                if (matchingItem[field].length > desiredContextLength) {
+                    var leaderCharsToInclude = leader.length < (desiredContextLength / 2) ? leader.length : (desiredContextLength / 2);
+                    leader = leader.substring(leader.length - leaderCharsToInclude);
 
-                        var matchText = matchingItem.body.substring(startIndex, (endIndex + 1));
-
-                        var firstTagInTrailer = trailer.indexOf("<");
-                        if (firstTagInTrailer !== -1) {
-                            trailer = trailer.substring(0, firstTagInTrailer);
-                        }
-                    }
+                    var trailerCharsToInclude = desiredContextLength - leaderCharsToInclude;
+                    trailer = trailer.substring(0, trailerCharsToInclude);
                 }
 
-                updatedSearchResult[field] = leader + "<mark>" + toHighlight + "</mark>" + trailer;
+                matchingItem[field] = leader + "<mark>" + toHighlight + "</mark>" + trailer;
             }
         });
-
-        return updatedSearchResult;
     };
 
     /**
@@ -304,8 +588,8 @@
         // TODO: Discuss our long term rendering strategy WRT Hugo, future Fluid, etc. and break this out better.
         templates: {
             header:     "<p>Displaying %results matching search results from %pages pages.</p>\n",
-            pageMultiResultSummary: "<div class=\"search-result-single-page\"><h3><a href=\"%pagePath#%headingId\" target=\"_blank\">%pageTitle &gt; %headingText</a></h3><p class=\"search-context-highlight\">%body</p><p>Showing most relevant result, there are <a class=\"search-extended-results-toggle\" href=\"#\">%count additional entries</a> on the same page.</p> <div class=\"search-extended-results hidden\">\n%allEntries</div></div> \n",
-            pageSingleResultSummary: "<div class=\"search-result-single-page\"><h3><a href=\"%pagePath#%headingId\" target=\"_blank\">%pageTitle &gt; %headingText</a></h3><p class=\"search-context-highlight\">%body</p></div> \n",
+            pageMultiResultSummary: "<div class=\"search-result-single-page\"><h4><a href=\"%pagePath#%headingId\" target=\"_blank\">%pageTitle &gt; %headingText</a></h4><p class=\"search-context-highlight\">%body</p><p>Showing most relevant result, there are <a class=\"search-extended-results-toggle\" href=\"#\">%count additional entries</a> on the same page.</p> <div class=\"search-extended-results hidden\">\n%allEntries</div></div> \n",
+            pageSingleResultSummary: "<div class=\"search-result-single-page\"><h4><a href=\"%pagePath#%headingId\" target=\"_blank\">%pageTitle &gt; %headingText</a></h4><p class=\"search-context-highlight\">%body</p></div> \n",
             pageItem: "<div class=\"search-result-sub-entry\"><h5><a href=\"%pagePath#%headingId\" target=\"_blank\">%pageTitle &gt; %headingText</a></h5><p class=\"search-context-highlight\">%body</p></div> \n",
             footer:     ""
         },

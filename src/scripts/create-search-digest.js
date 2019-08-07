@@ -1,10 +1,10 @@
 // Bundle our content so that it can be searched using lunr.js on the client side.
 /* eslint-env node */
 "use strict";
-var fluid  = require("infusion");
-var fs     = require("fs");
-var path   = require("path");
-var lunr   = require("lunr");
+var fluid   = require("infusion");
+var fs      = require("fs");
+var path    = require("path");
+var lunr    = require("lunr");
 
 var MarkdownIt = require("markdown-it");
 var md = new MarkdownIt({ html :true });
@@ -34,11 +34,6 @@ fluid.docs.search.digester.extractHeadingId = function (headingText) {
     else {
         return "";
     }
-};
-
-fluid.docs.search.digester.extractHeadingText = function (mdContent) {
-    var matches = mdContent.match(/^#+ *([^#\n]+) *#*\n/);
-    return matches ? matches[1] : false;
 };
 
 fluid.docs.search.digester.extractPageTitle = function (mdContent) {
@@ -98,7 +93,7 @@ fluid.docs.search.digester.scanAll = function (that) {
 /**
  *
  * @typedef digestBlock
- * @property {String} body - The renderered HTML for this digest segment.
+ * @property {String} body - The rendered HTML for this digest segment.
  * @property {String} headingId - If the search is associated with a linkable subheading, its ID (used for deep linking).
  * @property {String} headingText - If the search is associated with a linkable subheading, its text, otherwise the page title.
  * @property {String} pagePath - The relative path to the page within the site.
@@ -149,7 +144,7 @@ fluid.docs.search.digester.scanSingleFile = function (filePath, rootPath, digest
         var toModify = segment;
         // Replace the docpad metadata with a single heading to avoid having the metadata appear literally in results that match the top-level of the page.
         if (index === 0) {
-            toModify = segment.replace(/---\ntitle: *([^\n]+)\n[^-]*---/mi, "$1")
+            toModify = segment.replace(/---\ntitle: *([^\n]+)\n[^-]*---/mi, "$1");
         }
 
         return "# " + toModify;
@@ -158,40 +153,42 @@ fluid.docs.search.digester.scanSingleFile = function (filePath, rootPath, digest
     var fileHeadings = [];
 
     fluid.each(repairedSegments, function (segment) {
-        var headingText = fluid.docs.search.digester.extractHeadingText(segment);
+        var renderedContent = md.render(segment);
+        var headingMatches = renderedContent.match(/^(<h1>([^<]+)<\/h1>\n)/i);
+        var headingText = headingMatches ? headingMatches[2] : "";
+        var renderedBody = headingMatches ? renderedContent.substring(headingMatches[1].length) : renderedContent;
+        var cleanedBody = fluid.docs.search.digester.stripTags(renderedBody);
+
         var preferredHeadingId = fluid.docs.search.digester.extractHeadingId(headingText);
 
         // Check the preferred heading id for uniqueness and add a trailing numeral if needed.
         var actualHeadingId = preferredHeadingId;
-        var offset = 2;
-        while (fileHeadings.indexOf(actualHeadingId) !== -1) {
-            actualHeadingId = preferredHeadingId + "-" + offset;
-            offset++;
+
+        if (preferredHeadingId !== "") {
+            var offset = 2;
+            while (fileHeadings.indexOf(actualHeadingId) !== -1) {
+                actualHeadingId = preferredHeadingId + "-" + offset;
+                offset++;
+            }
+            fileHeadings.push(actualHeadingId);
         }
-        fileHeadings.push(actualHeadingId);
-
-        var rendereredContent = md.render(segment);
-
-        // We are rendering each sub-heading independently, which by default results in the headings become <h1>s.
-        // Here we resize them to make the search results consistent and more readable.
-        var contentWithResizedHeadings = rendereredContent.replace(/(<\/?h)1(>)/g, "$14$2");
 
         var digestBlock = {
             pagePath: relativePath,
             pageTitle: pageTitle,
             headingId: actualHeadingId,
-            body: contentWithResizedHeadings
+            headingText: headingText,
+            body: cleanedBody
         };
-
-        if (headingText) {
-            digestBlock.headingText = md.renderInline(headingText);
-        }
-        else {
-            digestBlock.headingText = pageTitle;
-        }
 
         digestBlocks.push(digestBlock);
     });
+};
+
+fluid.docs.search.digester.stripTags = function (rawHTML) {
+    var minusTags = rawHTML.replace(/<[^>]+>/g, "");
+    var collapsedWhitespace = minusTags.replace(/[\t\r\n ]+/g, " ");
+    return collapsedWhitespace;
 };
 
 fluid.defaults("fluid.docs.search.digester", {
