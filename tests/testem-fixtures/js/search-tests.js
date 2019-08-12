@@ -1,7 +1,7 @@
 /* globals jqUnit */
 (function (fluid, jqUnit, $) {
     "use strict";
-    fluid.registerNamespace("fluid.test.docs.search")
+    fluid.registerNamespace("fluid.test.docs.search");
 
     fluid.defaults("fluid.tests.search.searchCreationElement", {
         gradeNames: ["fluid.test.sequenceElement"],

@@ -56,7 +56,7 @@ Use illustration software to create an SVG version of the icon you want to use a
 Tips:
 
 * The dimensions of the graphic doesn't matter since everything will be scaled by the browser's font-rendering. However,
-all of the icons should be sized and drawn in a consistent fashion.
+  all of the icons should be sized and drawn in a consistent fashion.
 * Work in binary (i.e. black and white) and do not apply effects such as drop-shadows or embossing.
 * Sometimes the font conversion of the SVG may not work properly, so be prepared to edit your SVG file again.
 * Overlapping regions of shapes may cause a subtraction when converted in IcoMoon (i.e. it will render as transparent) -
@@ -64,8 +64,8 @@ all of the icons should be sized and drawn in a consistent fashion.
 
 Download Example SVG file: [pencil-icon-01.svg](../images/pencil-icon-01.svg)
 
-Consult the [Infusion Icons Visual Style Guide]
-(https://wiki.fluidproject.org/display/fluid/Infusion+Icons+Visual+Style+Guide) for how icons are created for Infusion.
+Consult the [Infusion Icons Visual Style Guide](https://wiki.fluidproject.org/display/fluid/Infusion+Icons+Visual+Style+Guide)
+for how icons are created for Infusion.
 
 ## Step 2. Generating the Font
 
@@ -79,6 +79,7 @@ dependencies, are installed, fonts can be generated with a config file.
 instructions)
 
 #### Example
+
 ```json
 {
     "src": [
@@ -180,8 +181,8 @@ HTML and CSS files are unavailable, you can retrieve the Unicode using one of th
 "[Dealing with the TTF Unicode](HowToCreateAndUseFontIcons.md#dealing-with-the-unicode)" below._
 
 **However, there is a problem** - the new icon font will replace the existing font of its container and all child
-*elements and therefore removing any font styling you may have wanted to preserve. The next section will outline common
-*issues and how to fix them and some best practices.
+elements and therefore removing any font styling you may have wanted to preserve. The next section will outline common
+issues and how to fix them and some best practices.
 
 ## Common Issues
 
@@ -256,7 +257,7 @@ body {
 It's common for images to be used in functional ways such as acting as a button within an anchor tag. For example:
 
 ```html
-<a href="download.html><img src="./images/download.png" alt="Download our latest stuff!"></a>
+<a href="download.html"><img src="./images/download.png" alt="Download our latest stuff!"></a>
 ```
 
 The problem here is if we replace the image in the anchor with an icon font, any text descriptions (the alt text)
@@ -344,14 +345,14 @@ markup. However, if the information about the Unicode values is lost, here are t
 ## What about SVG Icons
 
 SVG icons can be used as an alternative to icons supplied through an icon font. Below is a quick summary of the pros and
-cons of SVG Icons. For more information on SVG Icons see the 
+cons of SVG Icons. For more information on SVG Icons see the
 [Research SVG Icons](https://wiki.fluidproject.org/display/fluid/Research+SVG+Icons) wiki page.
 
 ### Benefits of SVG Icons
 
 * Can use multiple colours
 * Can support complex icons including multiple colours
-    * although it increases the complexity to style with CSS
+  * although it increases the complexity to style with CSS
 * Don't have to compile into a font
 
 ### Drawbacks of SVG Icons
