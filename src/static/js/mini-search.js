@@ -1,4 +1,3 @@
-/* globals Fuse */
 /*
 
     A "mini search" that intercepts the normal form submission and ensures that search queries are properly encoded so
