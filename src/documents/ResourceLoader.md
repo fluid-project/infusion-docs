@@ -145,7 +145,7 @@ identifying both the transport and the address of the resource to be loaded:
 </tr>
 <tr>
     <td><code>path</code></td>
-    <td>A relative or absolute filesystem path to be loaded via the node.js <a href="https://nodejs.org/api/fs.html><code>fs</code></a> API.
+    <td>A relative or absolute filesystem path to be loaded via the node.js <a href="https://nodejs.org/api/fs.html"><code>fs</code></a> API.
     As with <code>url</code>, this may include interpolated terms.</td>
     <td>String</td>
 </tr>
