@@ -283,7 +283,7 @@ the initial value for the property should be taken from the `“default”` prop
 </ul>
 
 A Preference Map can specify other destinations for Primary Schema information, besides the model.
-We'll see an example of this when we add antoher panel, later in this tutorial.
+We'll see an example of this when we add another panel, later in this tutorial.
 </dd>
 
 <dt>

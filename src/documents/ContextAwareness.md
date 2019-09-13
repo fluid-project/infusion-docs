@@ -40,7 +40,7 @@ of:
   API for eliminating checks created by `fluid.contextAware.makeChecks`
 * The [`fluid.contextAware.makeAdaptation`](#defining-and-broadcasting-a-fresh-adaptation-in-one-operation-with-fluidcontextawaremakeadaptation)
   API which can be used by 3rd parties to broadcast `contextAwareness` records into implementation components that they
-  which to make (more) adaptible
+  which to make (more) adaptable
 
 ## Simple example - speech API-aware component
 
@@ -205,7 +205,7 @@ The `checkRecord` structure which is used in the first row of the table above is
 
 ### Example `contextAwareness` record
 
-The most adaptible component in the framework is currently the [Uploader](UploaderAPI.md) which currently can respond to
+The most adaptable component in the framework is currently the [Uploader](UploaderAPI.md) which currently can respond to
 three "dimensions" of adaptation. Two of these, `technology` and `liveness`,  are advertised in its own
 `contextAwareness` record:
 

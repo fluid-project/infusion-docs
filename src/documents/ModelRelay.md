@@ -316,14 +316,14 @@ values to certain kinds of "integrated models".
 Compare these directives with the similar ones used for source guarding in [model
 listeners](ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks).
 
-#### Example showing propagation directive in explict relay
+#### Example showing propagation directive in explicit relay
 
 Here the same example that we saw illustrating explicit relay [above](#example-showing-explicit-relay-rule) showing the
 use of a propagation directive, in this case `backward: {excludeSource: "init"}`. In this case the directive is useful
 because we have added a default initial value `0.5` to the `volume` field at the forward end of the relay which
 conflicts with the value that the relay would establish as it synchronises the value `95` from the backward end. In this
 case, we want the backward value to take precedence during the initial transaction, but the relay to operate normally in
-both directions once both components are fully constructed. This component behaves identially as in the transcript in
+both directions once both components are fully constructed. This component behaves identically as in the transcript in
 the [above example](#example-showing-explicit-relay-rule).
 
 ```javascript

@@ -1053,7 +1053,7 @@ Uploader has a "demo" mode. In demo mode, the Uploader uses a special version of
 talking to a server. Most of the code is identical to the server mode because the same events are being fired and the
 model is exactly the same. Most of the code in the Uploader thinks that there is a server.
 
-To run locally you must specify `demo: true` in your compontent configuration:
+To run locally you must specify `demo: true` in your component configuration:
 
 ```javascript
 var myUploader = fluid.progressiveEnhanceableUploader(".flc-uploader", ".fl-ProgEnhance-basic", {

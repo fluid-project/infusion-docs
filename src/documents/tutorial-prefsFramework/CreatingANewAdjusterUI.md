@@ -85,7 +85,7 @@ and manipulate it. This includes the control elements themselves as well as any 
 unique style classes added by the code, etc.
 
 We recommend using different class names for selector classes and styling classes. This results in markup that may look
-a but redundent, but it ensures that there are no accidental errors resulting in changes to the way styling happens,
+a but redundant, but it ensures that there are no accidental errors resulting in changes to the way styling happens,
 etc.
 
 [Class Name Conventions](../ClassNameConventions.md)
@@ -241,7 +241,7 @@ For the radio buttons:
 <div class="infusion-docs-note">
     <strong>Note:</strong>
 
-Currently the description label must be placed before the on/off toggle to prevent spacing issues from occuring. This
+Currently the description label must be placed before the on/off toggle to prevent spacing issues from occurring. This
 will be addressed with a restyling of the on/off toggle with more details at the [FLUID-5708
 JIRA](https://issues.fluidproject.org/browse/FLUID-5708)
 </div>
