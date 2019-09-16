@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>ContextAwareness API | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion" class="infusion-docs-category-active">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Infusion</span>
+                                
+                                    <span class="infusion-docs-sectionName">Writing Configuration</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UnderstandingInfusionComponents.html"><span class="infusion-docs-TOC-pageName">Understanding Infusion Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentOptionsAndDefaults.html"><span class="infusion-docs-TOC-pageName">Understanding Component Options And Defaults</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentConfigurationOptions.html"><span class="infusion-docs-TOC-pageName">Component Configuration Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentGrades.html"><span class="infusion-docs-TOC-pageName">Component Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FunctionGrades.html"><span class="infusion-docs-TOC-pageName">Function Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="OptionsMerging.html"><span class="infusion-docs-TOC-pageName">Options Merging</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentLifecycle.html"><span class="infusion-docs-TOC-pageName">Component Lifecycle</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Priorities.html"><span class="infusion-docs-TOC-pageName">Priorities</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FrameworkConcepts.html"><span class="infusion-docs-TOC-pageName">Framework Concepts</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">API</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CoreAPI.html"><span class="infusion-docs-TOC-pageName">Core API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PromisesAPI.html"><span class="infusion-docs-TOC-pageName">Promises API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCAPI.html"><span class="infusion-docs-TOC-pageName">IoC API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelTransformationAPI.html"><span class="infusion-docs-TOC-pageName">Model Transformation API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewAPI.html"><span class="infusion-docs-TOC-pageName">View API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="NodeAPI.html"><span class="infusion-docs-TOC-pageName">node.js Support and API</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Inversion of Control</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseInfusionIoC.html"><span class="infusion-docs-TOC-pageName">How to Use Infusion IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SubcomponentDeclaration.html"><span class="infusion-docs-TOC-pageName">Subcomponent Declaration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Contexts.html"><span class="infusion-docs-TOC-pageName">Contexts</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">ContextAwareness</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ExpansionOfComponentOptions.html"><span class="infusion-docs-TOC-pageName">Expansion of Component Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCReferences.html"><span class="infusion-docs-TOC-pageName">IoC References</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCSS.html"><span class="infusion-docs-TOC-pageName">IoCSS</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeclarativeThisismInIoC.html"><span class="infusion-docs-TOC-pageName">Declarative this-ism In IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Events</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InfusionEventSystem.html"><span class="infusion-docs-TOC-pageName">Infusion Event System</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="EventInjectionAndBoiling.html"><span class="infusion-docs-TOC-pageName">Event injection and boiling</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Models</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplier.html"><span class="infusion-docs-TOC-pageName">ChangeApplier</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelRelay.html"><span class="infusion-docs-TOC-pageName">Model Relay</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Views</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinder.html"><span class="infusion-docs-TOC-pageName">DOM Binder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ClassNameConventions.html"><span class="infusion-docs-TOC-pageName">Class Name Conventions</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Renderer</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Renderer.html"><span class="infusion-docs-TOC-pageName">Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseTheRenderer.html"><span class="infusion-docs-TOC-pageName">How to Use the Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTrees.html"><span class="infusion-docs-TOC-pageName">Renderer Component Trees</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ProtoComponentTypes.html"><span class="infusion-docs-TOC-pageName">ProtoComponent Types</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTreeExpanders.html"><span class="infusion-docs-TOC-pageName">Renderer Component Tree Expanders</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Cutpoints.html"><span class="infusion-docs-TOC-pageName">Cutpoints</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererDecorators.html"><span class="infusion-docs-TOC-pageName">Renderer Decorators</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Loading Resources</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ResourceLoader.html"><span class="infusion-docs-TOC-pageName">Resource Loader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FetchResources.html"><span class="infusion-docs-TOC-pageName">fluid.fetchResources</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Builder.html"><span class="infusion-docs-TOC-pageName">Builder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PrimarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Primary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="AuxiliarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Auxiliary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SettingsStore.html"><span class="infusion-docs-TOC-pageName">Settings Store</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConnectingThePartsOfAPreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Connecting the Parts of a Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Enactors.html"><span class="infusion-docs-TOC-pageName">Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Panels.html"><span class="infusion-docs-TOC-pageName">Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CompositePanels.html"><span class="infusion-docs-TOC-pageName">Composite Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConditionalSubpanels.html"><span class="infusion-docs-TOC-pageName">Conditional Subpanels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="LocalizationInThePreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Localization in the Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Testing</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="jqUnit.html"><span class="infusion-docs-TOC-pageName">Unit Testing with jqUnit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCTestingFramework.html"><span class="infusion-docs-TOC-pageName">IoC Testing Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 1.5</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_4To1_5.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.4 to 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecationsIn1_5.html"><span class="infusion-docs-TOC-pageName">Deprecations In 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html"><span class="infusion-docs-TOC-pageName">UI Options Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/PagerMigration.html"><span class="infusion-docs-TOC-pageName">Pager Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 2.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_5To2_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.5 to 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecatedIn2_0.html"><span class="infusion-docs-TOC-pageName">Deprecated in 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 3.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom2_0To3_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 2.0 to 3.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>ContextAwareness API</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/ContextAwareness.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>The ContextAwareness API of Infusion provides a powerful suite of grades and utilities that allow a component to be
+responsive to aspects of its <a href="Contexts.html">context</a> in a flexible and open-ended way. A component can name particular
+kinds of <em>adaptations</em> (dimensions) that it is capable of, and for each of these adaptations, specify a list of
+environmental <em>checks</em> to be made in a particular order, which will result in particular adaptations being chosen. These
+adaptations are expressed through the addition of extra <a href="ComponentGrades.html">grade names</a> to the component during its
+construction.</p>
+<h3 id="when-and-how-to-apply-fluidcontextaware">When and how to apply <code>fluid.contextAware</code></h3>
+<p>For lightweight cases of context adaptation, the <a href="IoCSS.html"><code>distributeOptions</code></a> scheme suffices, in that it enables a
+component to be responsive to broadcasts &quot;advising&quot; it from around the component tree in a free-form and controllable
+away. However, when a component needs to take a clearer role in responding to potentially many kinds of requests for
+adaptation, where these can be organised around two or more &quot;axes&quot; or &quot;dimensions&quot; of adaptation that can be clearly
+named and identified, it should derive from the <code>fluid.contextAware</code> grade and advertise some of its dimensions of
+adaptations in its own options. These dimensions themselves can always be extended by further contributions to the
+component's options from all the usual sources - direct options, subcomponent options, and options distributions from
+elsewhere in the tree.</p>
+<p>Any component derived from <code>fluid.contextAware</code> will advertise an area of its options named <code>contextAwareness</code> which
+organises the rules for its adaptation in a hierarchical way - at the top level by &quot;adaptation&quot; and then at the nested
+level by &quot;checks&quot;.</p>
+<h3 id="structure-of-this-api">Structure of this API</h3>
+<p>This page describes how various features of the framework and the ContextAwareness API cooperate together. These consist
+of:</p>
+<ul>
+<li>The <a href="#adaptationrecord-members-in-a-contextawareness-record"><code>fluid.contextAware</code></a> grade and the <code>contextAwareness</code>
+area of options that it responds to to produce adaptations</li>
+<li>The <a href="#making-contexts-visible-and-removing-them-with-fluidcontextawaremakechecks-and-fluidcontextawareforgetchecks"><code>fluid.contextAware.makeChecks</code></a>
+API for converting aspects of the actual context or environment (e.g. capabilities of the browser, user's requirements
+or purpose of the application) into context names which <code>contextAwareness</code> can respond to</li>
+<li>The <a href="#making-contexts-visible-and-removing-them-with-fluidcontextawaremakechecks-and-fluidcontextawareforgetchecks"><code>fluid.contextAware.forgetChecks</code></a>
+API for eliminating checks created by <code>fluid.contextAware.makeChecks</code></li>
+<li>The <a href="#defining-and-broadcasting-a-fresh-adaptation-in-one-operation-with-fluidcontextawaremakeadaptation"><code>fluid.contextAware.makeAdaptation</code></a>
+API which can be used by 3rd parties to broadcast <code>contextAwareness</code> records into implementation components that they
+which to make (more) adaptable</li>
+</ul>
+<h2 id="simple-example-speech-api-aware-component">Simple example - speech API-aware component</h2>
+<p>This simple example invokes the <code>fluid.textToSpeech.isSupported</code> feature detector, which returns <code>true</code> if the current
+browser supports the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">HTML5 Speech API</a>. We use the
+<code>fluid.contextAware.makeChecks</code> function to assign the result of this feature detection to a <em>context</em> named
+<code>fluid.supportsTTS</code>. We can then use this context to conditionally switch in an extra <a href="ComponentGrades.html">grade name</a>,
+<code>examples.myComponent.speechAware</code> into the <code>examples.myComponent</code> component:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.contextAware.makeChecks({
+    <span class="hljs-string">"fluid.supportsTTS"</span>: <span class="hljs-string">"fluid.textToSpeech.isSupported"</span>
+});
+
+fluid.defaults(<span class="hljs-string">"examples.myComponent"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.component"</span>, <span class="hljs-string">"fluid.contextAware"</span>],
+    <span class="hljs-attr">contextAwareness</span>: {
+        <span class="hljs-attr">speechAware</span>: {
+            <span class="hljs-attr">checks</span>: {
+                <span class="hljs-attr">speechAware</span>: {
+                    <span class="hljs-attr">contextValue</span>: <span class="hljs-string">"{fluid.supportsTTS}"</span>,
+                    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"examples.myComponent.speechAware"</span>
+                }
+            },
+            <span class="hljs-attr">defaultGradeNames</span>: <span class="hljs-string">"examples.myComponent.nonSpeechAware"</span>
+        }
+    }
+});
+</code></pre>
+<p>The options within <code>contextAwareness</code> could be contributed by any integrator, not necessarily the component's original
+author, and have a layout that makes it easy to target and override parts of the existing structure with updated
+options.</p>
+<h2 id="adaptationrecord-members-in-a-contextawareness-record"><code>adaptationRecord</code> members in a <code>contextAwareness</code> record</h2>
+<p>Each component implementing <code>fluid.contextAware</code> accepts a top-level record in its options at the path named
+<code>contextAwareness</code>.</p>
+<p>The top level structure of the <code>contextAwareness</code> record consists of a free hash of <code>adaptationName</code> strings to
+<code>adaptationRecord</code> structures:</p>
+<pre class="highlight"><code class="hljs shell">{
+    &lt;adaptationName&gt; : &lt;adaptationRecord&gt;,
+    &lt;adaptationName&gt; : &lt;adaptationRecord&gt;,
+    ...
+}
+</code></pre>
+<p>The <code>adaptationName</code> strings are considered as namespaces for the purposes of <a href="Priorities.html">priority</a> resolution (see
+the <code>priority</code> entry in the following table). The elements of the <code>adaptationRecord</code> are described in the
+following table:</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">
+                Members of an <code>adaptationRecord</code> entry within the <code>contextAwareness</code> block of a
+                <code>fluid.contextAware</code> component<
+            /th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>checks</code> (optional)</td>
+            <td>Hash of <code>checkNamespace</code> to <code>checkRecord</code></td>
+            <td>
+                A free hash of namespace names for checks, to entries describing how a context check is to be made, and
+                what <code>gradeNames</code> should result if the check is successful. (See
+                <a href="#checkrecord-members-in-an-adaptationrecord">Structure of members in a checkRecord</a> below
+                for details.)
+            </td>
+        </tr>
+        <tr>
+            <td><code>defaultGradeNames</code> (optional)</td>
+            <td><code>String</code> or <code>Array of String</code></td>
+            <td>One or more <code>gradeNames</code> to be the result if none of the <code>checks</code> entries matches</td>
+        </tr>
+        <tr>
+            <td><code>priority</code> (optional)</td>
+            <td><code>Priority</code> value - see <a href="Priorities.html">Priorities</a> for a full explanation</td>
+            <td>
+                The priority (if any) that the <code>gradeNames</code> resulting from this dimension should have over
+                those resulting from any other dimension. This should be an entry of the form <code>before:adaptationName</code>
+                or <code>after:adaptationName</code> for one of the other dimensions attached to this component within
+                <code>contextAwareness</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>The result of the <code>contextAwareness</code> record is that a number of the elements within <code>checks</code> will be evaluated in the
+visible context, and result in a number of <code>gradeNames</code> which will then be contributed into the <code>gradeNames</code> of the
+instantiating component in a particular order. This order is governed by both the <code>priority</code> entry at the adaptation
+level as well as at the check level.</p>
+<h2 id="checkrecord-members-in-an-adaptationrecord"><code>checkRecord</code> members in an <code>adaptationRecord</code></h2>
+<p>The <code>checkRecord</code> structure which is used in the first row of the table above is described now:</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">
+                Members of a <code>checkRecord</code> entry within a <code>adaptationRecord</code> block of a
+                <code>fluid.contextAware</code> component
+            </th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>contextValue</code></td>
+            <td><code>String</code> <a href="IoCReferences.html">IoC reference</a></td>
+            <td>
+                A standard IoC reference, either consisting of a bare context reference such as <code>{contextName}</code>
+                or to a precise value such as <code>{contextName}.further.path</code> which should be sought by this
+                check. If a bare context name is supplied, the checked path will default to <code>options.value</code>.
+                If the context name does not match, the expression will evaluate to <code>undefined</code>
+            </td>
+        </tr>
+        <tr>
+            <td><code>equals</code> (optional)</td>
+            <td><code>String</code>, <code>Number</code> or <code>Boolean</code></td>
+            <td>
+                A value with which the context value fetched from <code>contextValue</code> should be checked. If
+                omitted, this defaults to <code>true</code>. The check will pass if the context value referenced in
+                <code>contextValue</code> can be found, and matches any value supplied in <code>equals</code> (or the
+                default of <code>true</code>).
+            </td>
+        </tr>
+        <tr>
+            <td><code>gradeNames</code> (optional)</td>
+            <td><code>String</code> or <code>Array of String</code></td>
+            <td>
+                One or more <code>gradeNames</code> that will be returned out to the <code>contextAwareness</code>
+                system if this check passes.
+            </td>
+        </tr>
+        <tr>
+            <td><code>priority</code> (optional)</td>
+            <td><code>Priority</code> value - see <a href="Priorities.html">Priorities</a> for a full explanation</td>
+            <td>
+                The priority (if any) that the <code>gradeNames</code> resulting from this dimension should have over
+                those resulting from any other dimension. This should be an entry of the form <code>before:adaptationName</code>
+                or <code>after:adaptationName</code> for one of the other dimensions attached to this component within
+                <code>contextAwareness</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="example-contextawareness-record">Example <code>contextAwareness</code> record</h3>
+<p>The most adaptable component in the framework is currently the <a href="UploaderAPI.html">Uploader</a> which currently can respond to
+three &quot;dimensions&quot; of adaptation. Two of these, <code>technology</code> and <code>liveness</code>,  are advertised in its own
+<code>contextAwareness</code> record:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"fluid.uploader"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.viewComponent"</span>, <span class="hljs-string">"fluid.contextAware"</span>],
+    <span class="hljs-attr">contextAwareness</span>: {
+        <span class="hljs-attr">technology</span>: {
+            <span class="hljs-attr">defaultGradeNames</span>: <span class="hljs-string">"fluid.uploader.singleFile"</span>
+        },
+        <span class="hljs-attr">liveness</span>: {
+            <span class="hljs-attr">priority</span>: <span class="hljs-string">"before:technology"</span>,
+            <span class="hljs-attr">checks</span>: {
+                <span class="hljs-attr">localDemoOption</span>: {
+                    <span class="hljs-attr">contextValue</span>: <span class="hljs-string">"{uploader}.options.demo"</span>,
+                    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.uploader.demo"</span>
+                }
+            },
+            <span class="hljs-attr">defaultGradeNames</span>: <span class="hljs-string">"fluid.uploader.live"</span>
+        }
+    }
+});
+</code></pre>
+<p><code>technology</code> refers to the implementation technology of the uploader. Although all technologies other than a modern
+HTML5 engine have been removed from the current framework image, the basic architecture to support other engines still
+exists and could be contributed to in future. The <code>liveness</code> adaptation relates to the mocking infrastructure for the
+Uploader which exists at two levels. Firstly, there is the &quot;demo uploader&quot; which mocks all of the engine-side
+implementation, and secondly the uploader can be run in various styles of integration tests which only mock the
+transport level which actually performs the file upload.</p>
+<h3 id="example-of-dynamically-broadcasting-a-fresh-adaptation">Example of dynamically broadcasting a fresh adaptation</h3>
+<p>Finally, a third dimension of adaptation is supported by the Uploader's capability to be configured in a way that it
+will respond to previous instances of its own API - in particular that delivered for Infusion 1.2, released in April
+2010, and Infusion 1.3, released in November 2010. This is implemented by allowing a dynamic contribution of a fresh
+dimension to the uploader's <code>contextAwareness</code> record from separate implementation files:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"fluid.uploader.compatibility.distributor.1_3"</span>, {
+    <span class="hljs-attr">distributeOptions</span>: {
+        <span class="hljs-attr">record</span>: {
+            <span class="hljs-string">"1_2"</span>: {
+                <span class="hljs-attr">contextValue</span>: <span class="hljs-string">"{fluid.uploader.requiredApi}.options.value"</span>,
+                <span class="hljs-attr">equals</span>: <span class="hljs-string">"fluid_1_2"</span>,
+                <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.uploader.compatibility.1_2"</span>
+            }
+        },
+        <span class="hljs-attr">target</span>: <span class="hljs-string">"{/ fluid.uploader}.options.contextAwareness.apiCompatibility.checks"</span>
+    }
+});
+
+<span class="hljs-comment">// Actually construct a component instance performing the options broadcast into all uploaders</span>
+fluid.constructSingle([], {
+    <span class="hljs-attr">singleRootType</span>: <span class="hljs-string">"fluid.uploader.compatibility.distributor"</span>,
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.uploader.compatibility.distributor.1_3"</span>
+});
+
+<span class="hljs-comment">// The grade that contextAwareness ends up contributing into the uploader, if the rule is activated</span>
+fluid.defaults(<span class="hljs-string">"fluid.uploader.compatibility.1_2"</span>, {
+    <span class="hljs-attr">transformOptions</span>: {
+        <span class="hljs-attr">transformer</span>: <span class="hljs-string">"fluid.model.transformWithRules"</span>,
+        <span class="hljs-attr">config</span>: fluid.compat.fluid_1_2.uploader.optionsRules
+    }
+});
+</code></pre>
+<p>The defaults block <code>fluid.uploader.compatibility.distributor.1_3</code> contains an options distribution which causes a third
+dimension to be allocated in the uploader's <code>contextAwareness</code>, named <code>apiCompatibility</code> — this can be done simply
+by arranging to broadcast the appropriate options into it. Once we have defined this options distribution, we actually
+need to construct a component instance which holds and operates them — this is done via the <code>fluid.constructSingle</code>
+line. This utility automatically arranges for a singleton instance, uniquified at the component tree's top level by the
+type <code>singleRootType</code> which has a very similar function to the option of the same name consumed by the
+<code>fluid.resolveRootSingle</code> grade described in the documentation on <a href="Contexts.html#global-components-fluidresolveroot-and-fluidresolverootsingle">Contexts</a>.</p>
+<p>Having shown the basic operation of the <em>receiver</em> of contextual information, we'll now describe the group of utilities,
+including <code>fluid.constructSingle</code> that we just met, which can be used by integrators and implementors to coordinate the
+visibility of context names and distributions from them.</p>
+<p>Note that the combined effect of the first two defaults blocks shown in this example can be achieved &quot;all-in-one&quot; by a
+single call to the dedicated utility <a href="#defining-and-broadcasting-a-fresh-adaptation-in-one-operation-with-fluidcontextawaremakeadaptation"><code>fluid.contextAware.makeAdaptation</code></a>.</p>
+<h2 id="making-contexts-visible-and-removing-them-with-fluidcontextawaremakechecks-and-fluidcontextawareforgetchecks">Making contexts visible and removing them with <code>fluid.contextAware.makeChecks</code> and <code>fluid.contextAware.forgetChecks</code></h2>
+<p>The <code>checkRecord</code> structures described in the table above, by default reference context paths which hold values at an
+option named <code>value</code> (by default holding the boolean <code>true</code>) which are compared against a value held
+<code>equals</code> (also defaulting to <code>true</code>). The <code>ContextAwareness</code> API includes two helper functions to assist
+integrators to construct components matching contexts of this form, and removing them when they are no longer required.</p>
+<p>These contexts can be issued with a call of the form:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.contextAware.makeChecks(checkStructure);
+</code></pre>
+<p>The <code>checkStructure</code> argument holds a hash of <code>contextName</code> strings to <code>checkEntry</code> records, of the form</p>
+<pre class="highlight"><code class="hljs shell">{
+&lt;contextName&gt; : &lt;checkEntry&gt;,
+&lt;contextName&gt; : &lt;checkEntry&gt;,
+...
+}
+</code></pre>
+<p>which is described in the following table:</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">
+                Members of a <code>checkEntry</code> record supplied as an argument to
+                <code>fluid.contextAware.makeChecks</code>
+            </th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>func</code>/<code>funcName</code></td>
+            <td><code>String</code> <a href="IoCReferences.html">IoC reference</a> or global function name</td>
+            <td>A function name or IoC reference to a function to be evaluated to produce the context value</td>
+        </tr>
+        <tr>
+            <td><code>value</code></td>
+            <td><code>String</code>, <code>Number</code> or <code>Boolean</code></td>
+            <td>
+                The value to be supplied at the <code>value</code> path in the options tructure of the constructed
+                context
+            </td>
+        </tr>
+<pre class="highlight"><code class="hljs apache"><span class="hljs-section">&lt;/tbody&gt;</span>
+</code></pre>
+</table>
+<p>You must supply exactly one of <code>func</code>, <code>funcName</code> or <code>value</code>.</p>
+<h3 id="example-of-fluidcontextawaremakechecks">Example of <code>fluid.contextAware.makeChecks</code></h3>
+<pre class="highlight"><code class="hljs javascript">fluid.contextAware.makeChecks({
+    <span class="hljs-string">"fluid.browser.supportsBinaryXHR"</span>: {
+        <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.enhance.supportsBinaryXHR"</span>
+    },
+    <span class="hljs-string">"fluid.browser.supportsFormData"</span>: {
+        <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.enhance.supportsFormData"</span>
+    }
+});
+</code></pre>
+<p>In the above example, the two global functions <code>fluid.enhance.supportsBinaryXHR</code> and <code>fluid.enhance.supportsFormData</code>
+will be executed, and their return values added into contexts with the names <code>fluid.browser.supportsBinaryXHR</code> and
+<code>fluid.browser.supportsFormData</code>.</p>
+<p>The contexts registered by <code>fluid.contextAware.makeChecks</code> can be erased from the system by the use of the call</p>
+<pre class="highlight"><code class="hljs shell">fluid.contextAware.forgetChecks(&lt;contextNames&gt;);
+</code></pre>
+<p>Here, <code>contextNames</code> is can hold either a <code>String</code> or <code>Array of String</code> holding the keys from the structures previously
+supplied to <code>fluid.contextAware.makeChecks</code></p>
+<h3 id="example-of-fluidcontextawareforgetchecks">Example of <code>fluid.contextAware.forgetChecks</code></h3>
+<p>For example, the checks registered in the above example <code>fluid.contextAware.makeChecks</code> call could be erased by a call
+to</p>
+<pre class="highlight"><code class="hljs javascript">fluid.contextAware.forgetChecks([<span class="hljs-string">"fluid.browser.supportsBinaryXHR"</span>,
+    <span class="hljs-string">"fluid.browser.supportsFormData"</span>]);
+</code></pre>
+<h2 id="defining-and-broadcasting-a-fresh-adaptation-in-one-operation-with-fluidcontextawaremakeadaptation">Defining and broadcasting a fresh adaptation in one operation with <code>fluid.contextAware.makeAdaptation</code></h2>
+<p>A very common use case is to define an adaptation (that is, a <code>distributeOptions</code> block which targets the
+<code>contextAwareness</code> area of a collection of components in the tree), and then to create an instance of a single,
+well-known component which actually broadcasts the adaptation. This was what we did in two steps (<code>fluid.defaults</code> plus
+<code>fluid.constructSingle</code>) in the above <a href="#example-of-dynamically-broadcasting-a-fresh-adaptation">example <code>contextAwareness</code> broadcast</a></p>
+<ul>
+<li>this can be done in a single step using the <code>fluid.contextAware.makeAdaptation</code> API.</li>
+</ul>
+<pre class="highlight"><code class="hljs shell">fluid.contextAware.makeAdaptation(&lt;adaptationRecord&gt;);
+</code></pre>
+<p>This accepts a single structure <code>adaptationRecord</code> with a number of required fields:</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">
+                Members of a <code>adaptationRecord</code> record supplied as an argument to
+                <code>fluid.contextAware.makeAdaptation</code>
+            </th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>distributionName</code></td>
+            <td><code>String</code></td>
+            <td>
+                A grade name &#8212; the name to be given to the <strong>fabricated grade</strong> which performs the
+                broadcast
+            </td>
+        </tr>
+        <tr>
+            <td><code>targetName</code></td>
+            <td><code>String</code></td>
+            <td>A grade name &#8212; the name of the grade to <strong>receive the adaptation</strong></td>
+        </tr>
+        <tr>
+            <td><code>adaptationName</code></td>
+            <td><code>String</code></td>
+            <td>
+                The name of the <code>contextAwareness</code> record (the top-level <code>adaptationRecord</code>) to
+                receive the broadcast record &#8212; this will be a simple string
+            </td>
+        </tr>
+        <tr>
+            <td><code>checkName</code></td>
+            <td><code>String</code></td>
+            <td>
+                The name of the <code>checkRecord</code> record (<strong>within</strong> the
+                <code>adaptationRecord</code>) to receive the broadcast record &#8212; this will be a simple string
+            </td>
+        </tr>
+        <tr>
+            <td><code>record</code></td>
+            <td><code>Object</code> (<code>checkRecord</code>)</td>
+            <td>
+                The <a href="#checkrecord-members-in-an-adaptationrecord"><code>checkRecord</code></a> which is to be
+                broadcast &#8212; containing fields <code>contextValue</code>, <code>gradeNames</code> etc.
+                <a href="#checkrecord-members-in-an-adaptationrecord">as described above</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="example-of-calling-fluidcontextawaremakeadaptation">Example of calling <code>fluid.contextAware.makeAdaptation</code></h3>
+<p>For example, the pair of calls in the above
+<a href="#example-of-dynamically-broadcasting-a-fresh-adaptation">example <code>contextAwareness</code> broadcast</a> could be achieved by the
+following single call to <code>fluid.contextAware.makeAdaptation</code>:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.contextAware.makeAdaptation({
+    <span class="hljs-attr">distributionName</span>: <span class="hljs-string">"fluid.uploader.compatibility.distributor.1_3"</span>,
+    <span class="hljs-attr">targetName</span>: <span class="hljs-string">"fluid.uploader"</span>,
+    <span class="hljs-attr">adaptationName</span>: <span class="hljs-string">"apiCompatibility"</span>,
+    <span class="hljs-attr">checkName</span>: <span class="hljs-string">"1_2"</span>,
+    <span class="hljs-attr">record</span>: {
+        <span class="hljs-attr">contextValue</span>: <span class="hljs-string">"{fluid.uploader.requiredApi}.options.value"</span>,
+        <span class="hljs-attr">equals</span>: <span class="hljs-string">"fluid_1_2"</span>,
+        <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.uploader.compatibility.1_2"</span>
+    }
+});
+</code></pre>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

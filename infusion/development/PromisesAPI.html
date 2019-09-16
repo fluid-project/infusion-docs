@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Infusion Promises API | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion" class="infusion-docs-category-active">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Infusion</span>
+                                
+                                    <span class="infusion-docs-sectionName">Writing Configuration</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UnderstandingInfusionComponents.html"><span class="infusion-docs-TOC-pageName">Understanding Infusion Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentOptionsAndDefaults.html"><span class="infusion-docs-TOC-pageName">Understanding Component Options And Defaults</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentConfigurationOptions.html"><span class="infusion-docs-TOC-pageName">Component Configuration Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentGrades.html"><span class="infusion-docs-TOC-pageName">Component Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FunctionGrades.html"><span class="infusion-docs-TOC-pageName">Function Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="OptionsMerging.html"><span class="infusion-docs-TOC-pageName">Options Merging</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentLifecycle.html"><span class="infusion-docs-TOC-pageName">Component Lifecycle</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Priorities.html"><span class="infusion-docs-TOC-pageName">Priorities</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FrameworkConcepts.html"><span class="infusion-docs-TOC-pageName">Framework Concepts</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">API</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CoreAPI.html"><span class="infusion-docs-TOC-pageName">Core API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Promises API</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCAPI.html"><span class="infusion-docs-TOC-pageName">IoC API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelTransformationAPI.html"><span class="infusion-docs-TOC-pageName">Model Transformation API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewAPI.html"><span class="infusion-docs-TOC-pageName">View API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="NodeAPI.html"><span class="infusion-docs-TOC-pageName">node.js Support and API</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Inversion of Control</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseInfusionIoC.html"><span class="infusion-docs-TOC-pageName">How to Use Infusion IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SubcomponentDeclaration.html"><span class="infusion-docs-TOC-pageName">Subcomponent Declaration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Contexts.html"><span class="infusion-docs-TOC-pageName">Contexts</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ContextAwareness.html"><span class="infusion-docs-TOC-pageName">ContextAwareness</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ExpansionOfComponentOptions.html"><span class="infusion-docs-TOC-pageName">Expansion of Component Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCReferences.html"><span class="infusion-docs-TOC-pageName">IoC References</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCSS.html"><span class="infusion-docs-TOC-pageName">IoCSS</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeclarativeThisismInIoC.html"><span class="infusion-docs-TOC-pageName">Declarative this-ism In IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Events</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InfusionEventSystem.html"><span class="infusion-docs-TOC-pageName">Infusion Event System</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="EventInjectionAndBoiling.html"><span class="infusion-docs-TOC-pageName">Event injection and boiling</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Models</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplier.html"><span class="infusion-docs-TOC-pageName">ChangeApplier</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelRelay.html"><span class="infusion-docs-TOC-pageName">Model Relay</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Views</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinder.html"><span class="infusion-docs-TOC-pageName">DOM Binder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ClassNameConventions.html"><span class="infusion-docs-TOC-pageName">Class Name Conventions</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Renderer</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Renderer.html"><span class="infusion-docs-TOC-pageName">Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseTheRenderer.html"><span class="infusion-docs-TOC-pageName">How to Use the Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTrees.html"><span class="infusion-docs-TOC-pageName">Renderer Component Trees</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ProtoComponentTypes.html"><span class="infusion-docs-TOC-pageName">ProtoComponent Types</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTreeExpanders.html"><span class="infusion-docs-TOC-pageName">Renderer Component Tree Expanders</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Cutpoints.html"><span class="infusion-docs-TOC-pageName">Cutpoints</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererDecorators.html"><span class="infusion-docs-TOC-pageName">Renderer Decorators</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Loading Resources</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ResourceLoader.html"><span class="infusion-docs-TOC-pageName">Resource Loader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FetchResources.html"><span class="infusion-docs-TOC-pageName">fluid.fetchResources</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Builder.html"><span class="infusion-docs-TOC-pageName">Builder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PrimarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Primary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="AuxiliarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Auxiliary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SettingsStore.html"><span class="infusion-docs-TOC-pageName">Settings Store</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConnectingThePartsOfAPreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Connecting the Parts of a Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Enactors.html"><span class="infusion-docs-TOC-pageName">Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Panels.html"><span class="infusion-docs-TOC-pageName">Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CompositePanels.html"><span class="infusion-docs-TOC-pageName">Composite Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConditionalSubpanels.html"><span class="infusion-docs-TOC-pageName">Conditional Subpanels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="LocalizationInThePreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Localization in the Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Testing</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="jqUnit.html"><span class="infusion-docs-TOC-pageName">Unit Testing with jqUnit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCTestingFramework.html"><span class="infusion-docs-TOC-pageName">IoC Testing Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 1.5</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_4To1_5.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.4 to 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecationsIn1_5.html"><span class="infusion-docs-TOC-pageName">Deprecations In 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html"><span class="infusion-docs-TOC-pageName">UI Options Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/PagerMigration.html"><span class="infusion-docs-TOC-pageName">Pager Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 2.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_5To2_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.5 to 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecatedIn2_0.html"><span class="infusion-docs-TOC-pageName">Deprecated in 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 3.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom2_0To3_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 2.0 to 3.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Infusion Promises API</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/PromisesAPI.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p><a href="https://en.wikipedia.org/wiki/Futures_and_promises">Promises</a> are a now widespread programming construct aiming to
+simplify coding of complex workflows involving values which may be available asynchronously (perhaps as a result of
+requiring I/O) or fallibly. JavaScript enjoys numerous competing libraries implementing this feature, such as
+<a href="https://github.com/cujojs/when">when.js</a>, <a href="http://documentup.com/kriskowal/q">Q</a> and
+<a href="https://github.com/petkaantonov/bluebird">Bluebird</a> as well as even multiple competing promise standards, such as
+<a href="https://promisesaplus.com/">Promises/A+</a> and others from <a href="http://wiki.commonjs.org/wiki/Promises">CommonJS</a>. Promises
+are even built into an upcoming version of the JavaScript language itself,
+<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">ES6</a>.</p>
+<p>Infusion required an extremely simple implementation which can evolve independently, as well as begin the process of
+merging with the general declarative facilities of <a href="HowToUseInfusionIoC.html">Infusion IoC</a> and hence become invisible as
+code. The implementation described here is a transitional, mostly procedural system on its way to being summarised as
+configuration - as numerous Infusion features have been in their turn over the years.</p>
+<h2 id="notes-on-interoperability">Notes on interoperability</h2>
+<p>As commented <a href="#commentary-on-requirements">below</a>, Infusion promises have taken a different set of tradeoffs to many of
+those elsewhere in the industry. In terms of interoperability, Infusion promises are at least universally recognised as
+a &quot;<a href="https://github.com/cujojs/when/blob/master/docs/api.md#when">foreign thenable</a>&quot; and hence can be easily adapted into
+promises of any of the other libraries. In terms of promise algorithms, since Infusion promises meet a weaker contract
+than usual, Infusion promises cannot safely be supplied to the promise algorithms of other libraries without adaptation.
+However, promises from foreign libraries can easily be used within Infusion's algorithms.</p>
+<h2 id="core-promises-api">Core Promises API</h2>
+<p>In our implementation/interpretation, a promise is, in terms of familiar constructions such as
+<a href="InfusionEventSystem.html">events</a>,</p>
+<ul>
+<li>A linked pair of event firers, named <code>resolve</code> and <code>reject</code></li>
+<li>At most one of these two events can be fired, at most one time in total</li>
+<li>Any listeners registered to either of the events after the point of firing will be able to recover the (unique) fired
+value at the point of registration</li>
+</ul>
+<p>Note that this description does not adequately account for the features of specification-conformant promises more widely
+used in the industry - since these implement chaining and asynchronous behaviours which we do not implement.</p>
+<h3 id="fluidpromise">fluid.promise()</h3>
+<ul>
+<li>Returns: <code>{Promise}</code></li>
+</ul>
+<p>Construct a fresh promise. This is the only point at which fresh promises are constructed within the core API. The
+structure of the returned <code>{Promise}</code> object comprises the following four members:</p>
+<h3 id="promisethenonresolve-onreject">promise.then(onResolve, onReject)</h3>
+<p>Adds handlers to either or both of the <code>resolve</code> or <code>reject</code> actions of the promise. Note that if the promise has
+already been rejected or resolved, the appropriate handler will be notified immediately on this registration.</p>
+<ul>
+<li><code>onResolve: {Function ({Any}) → {None}}</code> A callback to receive the successfully resolved value of the promise</li>
+<li><code>onReject: {Function ({Error}) → {None}}</code> A callback to receive a rejection of the promise, in the case its
+resolution fails.</li>
+</ul>
+<h3 id="promiseresolvevalue">promise.resolve(value)</h3>
+<p>Resolves the promise successfully, yielding the value <code>value</code> to any listeners which were previously registered as the
+first argument of <code>promise.then</code>. Any further attempts to call either <code>resolve</code> or <code>reject</code> will signal an assertion
+failure.</p>
+<ul>
+<li><code>value: {Any}</code> The value to be supplied as the resolution value of the promise</li>
+</ul>
+<h3 id="promiserejecterror">promise.reject(error)</h3>
+<p>Rejects the promise, yielding the error <code>error</code> to any listeners which were previously registered as the second
+argument of <code>promise.then</code>. Any further attempts to call either <code>resolve</code> or <code>reject</code> will signal an assertion failure.</p>
+<ul>
+<li><code>error: {Object|Error}</code> The value to be supplied as the rejection reason for the promise. It is recommended that this
+be an object with a boolean entry <code>isError: true</code> and a String <code>message</code> summarising the reason for the rejection.</li>
+</ul>
+<h3 id="promisedisposition">promise.disposition</h3>
+<p>The current disposition of the promise may be inspected at any time. This is a <code>String</code> value which encodes which, if
+any, of <code>resolve</code> or <code>reject</code> have been received by the promise. At the fresh construction of the promise, the member
+<code>disposition</code> holds the value <code>undefined</code>. If the promise has received <code>resolve</code>, <code>disposition</code> will hold the string
+<code>&quot;resolve&quot;</code>, or if the promise has received <code>reject</code>, <code>disposition</code> will hold the string <code>&quot;reject&quot;</code>.</p>
+<h2 id="commentary-on-requirements">Commentary on requirements</h2>
+<p>As well as evolvability and enormous simplicity, we had a couple of other somewhat soft requirements - readability, and
+debuggability. Modern promise specifications actually <strong>require</strong> that fresh promises are constructed at every chaining
+point, and that every promise resolves asynchronously even if its resolving value is available synchronously. Our
+implementation guarantees that no promise is constructed unless there is an explicit call to the constructor
+<code>fluid.promise()</code>. Thus it is easy to see at a glance exactly how many promises are in play in a given piece of code.
+Secondly, our implementation will synchronously relay a value which is available synchronously - this means that in the
+debugger, or other source of stack traces, the maximal size of stack will be visible to account for the cause of the
+promise resolution.</p>
+<p>Plenty of arguments exist against these choices - in fact, these choices place us firmly in the category of people who
+&quot;don't really understand promises and think of them as glorified ... callback aggregators&quot;. In the meantime, we have
+work to do. Infusion is about the elimination of code, and so we only have limited time to spend thinking about how to
+make the code we do have conform to a faulty ideal of what we dreamed that the virtues of conventional, synchronous code
+might once have been. However, it's worth noting that there is at least <a href="#promiseaccumulaterejectionreasonerror">one
+virtue</a> of conventional, synchronous code that is recaptured by no other promise
+system but ours. Also, this <a href="https://github.com/promises-aplus/promises-spec/issues/4">github issue</a> attached to the A+
+promises specification is a useful source of convincing argumentation that the decision in favour of universally
+asynchronous resolution is flawed.</p>
+<p>As a further landmark for discussion, note that in terms of the following very illuminating <a href="http://brianmckenna.org/blog/category_theory_promisesaplus">category
+theoretic</a> treatment of promises (itself rejected by
+mainstream promises proponents), our <code>then</code> method is very definitely <strong>not</strong> &quot;the name for <code>flatMap</code>&quot;. Our <code>then</code>
+method is simply a &quot;glorified callback aggregator&quot;.</p>
+<p>The implementation skeleton for Infusion's promises was taken from a code sample by John Hann (unscriptable) in this
+<a href="https://gist.github.com/unscriptable/814052">gist</a> - full credit and thanks, and please read the gist for some further
+commentary and coverage of limitations.</p>
+<h2 id="core-promises-utility-api">Core Promises Utility API</h2>
+<p>The library implements a few utilities without which it is inconvenient to use promises:</p>
+<h3 id="fluidispromisetotest">fluid.isPromise(totest)</h3>
+<ul>
+<li><code>totest {Any}</code> An object to be checked for being a promise</li>
+<li>Returns: <code>{Boolean}</code> If <code>totest</code> has a member <code>then</code> of type <code>Function</code>, returns <code>true</code>.</li>
+</ul>
+<p>Determines whether an object is a promise, for our purposes. Any object with a member <code>then</code> of type <code>Function</code> passes
+this test. This includes essentially every known variety, including jQuery promises. This test in fact identifies what
+in other libraries is termed a &quot;foreign thenable&quot;.</p>
+<h3 id="fluidtopromisevalue">fluid.toPromise(value)</h3>
+<ul>
+<li><code>value {Any}</code> A value to be converted (&quot;hoisted&quot;) to a promise</li>
+<li>Returns: <code>{Promise}</code> If the supplied value is already a promise, it is returned unchanged. Otherwise a fresh promise
+is created with the value as resolution and returned.</li>
+</ul>
+<p>Coerces any value to a promise. If it is already a promise, it is returned unchanged.</p>
+<h3 id="fluidpromisefollowsource-target">fluid.promise.follow(source, target)</h3>
+<ul>
+<li><code>source {Promise}</code> A promise which is to be followed in its resolution.</li>
+<li><code>target {Promise}</code> A promise which will follow the <code>source</code> in its resolution. <code>target</code> will receive a call to <code>then</code>
+causing it to resolve when <code>source</code> resolves, and reject when <code>source</code> rejects.</li>
+</ul>
+<p>Chains the resolution methods of one promise (target) so that they follow those of another (source). That is, whenever
+source resolves, target will resolve, or when source rejects, target will reject, with the same payloads in each case.</p>
+<h3 id="fluidpromisemapsource-func">fluid.promise.map(source, func)</h3>
+<ul>
+<li><code>source {Object|Promise}</code> An object or promise whose value is to be mapped by a function (if an object, will be
+converted first to a promise via <code>fluid.toPromise()</code>).</li>
+<li><code>func {Function: ({Any}) → {Any|Promise}}</code> A function which will map the resolved promise value. This function can
+return either an actual mapped value or a promise whose resolved value is the mapped value.</li>
+<li>Returns: <code>{Promise}</code> A promise for the resolved mapped value.</li>
+</ul>
+<p>Returns a promise whose resolved value is mapped from the source promise or value by the supplied function. If the input
+value is not a promise, it will be converted first to a promise via <code>fluid.toPromise()</code>. If the input promise rejects,
+its rejection reason will be propagated unmapped. Examples:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> promiseTwo = fluid.toPromise(<span class="hljs-number">2</span>);
+<span class="hljs-keyword">var</span> double = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) </span>{
+    <span class="hljs-keyword">return</span> value * <span class="hljs-number">2</span>;
+};
+<span class="hljs-keyword">var</span> promiseFour = fluid.promise.map(promiseTwo, double);
+</code></pre>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> promiseTwo = fluid.toPromise(<span class="hljs-number">2</span>);
+<span class="hljs-keyword">var</span> double = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) </span>{
+    <span class="hljs-keyword">return</span> fluid.promise().resolve(value * <span class="hljs-number">2</span>);
+};
+<span class="hljs-keyword">var</span> promiseFour = fluid.promise.map(promiseTwo, double);
+</code></pre>
+<h2 id="promise-algorithms">Promise algorithms</h2>
+<p>The only currently implemented promise algorithms are based around a core skeleton operating an array of promises in a
+linear sequence. These are responsive to an additional element of our promises API, the
+<a href="#promiseaccumulaterejectionreasonerror"><code>promise.accumulateRejectionReason</code></a> &quot;inverse API&quot; described below.</p>
+<h3 id="fluidpromisesequencesources-options">fluid.promise.sequence(sources[, options])</h3>
+<ul>
+<li><code>sources {Array of {Any|Promise|Function:(options {Object}) → {Any|Promise}}}</code> An array of sources of values or
+promises which will be evaluated in sequence.</li>
+<li><code>options {Object}</code> [optional] A structure of options which will be supplied to function members of <code>sources</code>.</li>
+</ul>
+<p>Accepts an array of values, promises, functions returning values or functions returning promises and evaluates them in
+sequence. Evaluating a value is a no-op which returns the value itself. Note that a standard name for a &quot;function
+returning a promise&quot; is a <em>task</em> - this implementation can be directly compared to
+<a href="https://github.com/cujojs/when/blob/master/docs/api.md#whensequence">sequence</a> in the <a href="https://github.com/cujojs/when">when.js
+library</a>.</p>
+<p>In the case that the source element is a function returning a promise (a task), <code>fluid.promise.sequence</code> will ensure
+that at most one of these in &quot;in flight&quot; at a time - that is, the succeeding function will not be invoked until the
+promise at the preceding position has resolved.</p>
+<h3 id="fluidpromisefiretransformeventevent-payload-options">fluid.promise.fireTransformEvent(event, payload[, options])</h3>
+<ul>
+<li><code>event {</code><a href="InfusionEventSystem.html"><code>Event</code></a><code>}</code> A &quot;pseudoevent&quot; whose listeners are to be treated as successive
+(asynchronous) stages in the process of transforming a payload.</li>
+<li><code>payload {Any}</code> The original payload input to the transforming chain.</li>
+<li><code>options {Object}</code> [optional] A set of additional options to be supplied to each listener in the transform chain.
+Accepts two special options:
+<ul>
+<li><code>reverse: {Boolean}</code> If <code>true</code>, the sequence of handlers will be notified in reverse order</li>
+<li><code>filterNamespaces: {Array of String}</code> A collection of event <a href="InfusionEventSystem.html#namespaced-listeners">namespaces</a>
+to be filtered out of the processing chain for this particular firing</li>
+</ul>
+</li>
+</ul>
+<p>This is a slightly esoteric but very powerful API. To get a sense of its overall function, it could be compared with the
+standard <a href="https://github.com/cujojs/when/blob/master/docs/api.md#whenpipeline">pipeline</a> algorithm supplied with
+<a href="https://github.com/cujojs/when">when.js</a> - the concept is that an &quot;initial payload&quot; (which may be empty) is
+successively transformed by sequential, possibly asynchronous, stages of a pipeline of functions. Each function accepts
+the return value of its predecessor, and may synchronously return a transformed payload, or a promise asynchronously
+yielding such a payload. It may also of course also return a promise which rejects, terminating the transform chain.</p>
+<p>This packaging of the pipeline algorithm is significantly more powerful, since it can call upon the
+<a href="Priorities.html">priority</a> feature of standard Infusion <a href="InfusionEventSystem.html">events</a> in order to allow processing
+elements to be integrated together from multiple sources, with each one free to insert themselves at any symbolically
+identified (by means of <code>before:</code> and <code>after:</code> type constraint priorities) position in the chain.</p>
+<p>Each listener to the &quot;transform event&quot; (we call this a &quot;pseudoevent&quot; precisely because each listener does not receive
+the <em>same</em> argument list as with traditional events, but instead receives the returned and resolved value of its
+precessor) has the following signature:</p>
+<ul>
+<li><code>listener {Function:(previousValue {Any}, options {Object}) → {Any|Promise}}</code> where <code>previousValue</code> is the resolved
+return from the previous listener notified in the chain, or the initial <code>payload</code> value supplied to
+<code>fluid.promise.fireTransformEvent</code> if it is the first in the chain, and <code>options</code> is the last argument to
+<code>fluid.promise.fireTransformEvent</code>.</li>
+</ul>
+<h2 id="inverse-api-recognised-by-promises-consumed-by-sequential-algorithms">Inverse API recognised by promises consumed by sequential algorithms</h2>
+<p>Both <code>fluid.promise.sequence</code> and <code>fluid.promise.fireTransformEvent</code> will recognise the following method supplied by the
+user on any promise returned by one of the sources in the sequence:</p>
+<h3 id="promiseaccumulaterejectionreasonerror">promise.accumulateRejectionReason(error)</h3>
+<ul>
+<li><code>error: {Object|Error}</code> A rejection which has been received from a promise &quot;to the right&quot; of this one in a promise
+sequence.</li>
+<li>Returns: <code>{Object|Error}</code> A rejection reason which has been &quot;wrapped&quot; or &quot;decorated&quot; in some way in order to add
+information about the function of <strong>this</strong> promise. For example, if this promise was intended to resolve by reading a
+file from the filesystem, the rejection reason could be decorated with a string like &quot;while reading file Xxxxx&quot;. It's
+important that the user's implementation preserves all the information in the original rejection reason - if it
+contains a string <code>message</code>, it should be prefixed or suffixed with the additional information, or if it contains an
+error stack, it should be left untouched.</li>
+</ul>
+<p>This is a form of &quot;inverse API&quot;. The promise API does not implement this method, but it can be implemented by any
+consumer of promises by adding a function with this signature named <code>accumulateRejectionReason</code> to a promise object.
+This method is only relevant when consuming a sequence of promises using one of Infusion's sequential <a href="#promise-algorithms">promise
+algorithms</a>.</p>
+<p>Let us imagine the promises in a sequence (array) laid out from left to right, in order of sequential execution. This
+method is called by a sequential promise algorithm when a promise somewhere in the sequence has rejected. Ordinarily,
+execution would pass directly to the overall rejection handler for the sequence. However, before this happens, the
+sequence algorithm will pass from <em>right to left</em>* from the point of rejection and inspect each of the promises in that
+section for an <code>accumulateRejectionReason</code> implementation.</p>
+<p>If an implementation is found, it will be called with the current rejection reason as an argument, and the return value
+will be used as the new rejection reason. The resolution algorithm then continues to the left with this new rejection
+reason in place, etc. Finally the fully accumulated rejection reason will be dispatched to the overall rejection
+handler.</p>
+<p>What familiar exception-handling pattern from synchronous code does this reproduce? It is the <strong>rethrowing pattern</strong>,
+described in the Java context by <a href="http://www.mindview.net/Etc/Discussions/CheckedExceptions/">Bruce Eckel</a>. Some more
+general commentary is on the &quot;original wiki&quot; at <a href="http://c2.com/cgi/wiki?NestedException">Nested Exception</a>. Thankfully,
+JavaScript is free of &quot;checked exception specifications&quot; but both the bathwater and baby have been thrown out in that it
+is also free of exception wrapping. The promises community is still so immature that the lack of this facility has not
+yet even been characterised. Here is some old-fashioned sequential code illustrating what is going on here:</p>
+<pre class="highlight"><code class="hljs java">
+<span class="hljs-keyword">try</span> {
+    fallibleThing()
+} <span class="hljs-keyword">catch</span> (e) {
+    e.message += <span class="hljs-string">" whilst doing what I was doing"</span>;
+    <span class="hljs-keyword">throw</span> e;
+}
+</code></pre>
+<p>The contents of the catch block correspond to the internals of the <code>accumulateRejectionReason</code> function. Note that this
+is impossible to emulate with standard promises since there is no reason for the system to revisit a previously seen
+source of promises to query it for more information. And outside the context of a sequential algorithm this construct
+has no meaning because there is no natural sense of &quot;before&quot; and &quot;after&quot; (or, correspondingly, &quot;above&quot; and &quot;below&quot; in
+the call stack) unless the sequential algorithm gives it one. So this facility could only ever be implemented with i) an
+extension to the base contract of a promise that ii) is recognised specially within the context of a sequential
+algorithm. This is not possible even in theory with &quot;industry standard promises&quot; since there is no stable concept of &quot;an
+instance of a promise&quot; - since their object identity is constantly changed after a chaining action.</p>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

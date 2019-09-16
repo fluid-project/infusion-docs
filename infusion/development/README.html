@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Infusion Documentation | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Infusion Documentation</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/README.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <h2 id="writing-configuration">Writing Configuration</h2>
+<ul>
+<li><a href="UnderstandingInfusionComponents.html">Understanding Infusion Components</a></li>
+<li><a href="ComponentOptionsAndDefaults.html">Understanding Component Options And Their Defaults</a></li>
+<li><a href="ComponentConfigurationOptions.html">Component Configuration Options</a></li>
+<li><a href="ComponentGrades.html">Component Grades</a></li>
+<li><a href="FunctionGrades.html">Function Grades</a></li>
+<li><a href="OptionsMerging.html">Options Merging</a></li>
+<li><a href="ComponentLifecycle.html">Component Lifecycle</a></li>
+<li><a href="Priorities.html">Priorities</a></li>
+<li><a href="FrameworkConcepts.html">Framework Concepts</a></li>
+</ul>
+<h2 id="api">API</h2>
+<ul>
+<li><a href="CoreAPI.html">Core API</a></li>
+<li><a href="PromisesAPI.html">Promises API</a></li>
+<li><a href="IoCAPI.html">IoC API</a></li>
+<li><a href="IoCAPI.html">ChangeApplier API</a></li>
+<li><a href="ModelTransformationAPI.html">Model Transformation API</a></li>
+<li><a href="ViewAPI.html">View API</a></li>
+<li><a href="DOMBinderAPI.html">DOM Binder API</a></li>
+<li><a href="NodeAPI.html">node.js Support and API</a></li>
+</ul>
+<h2 id="inversion-of-control">Inversion of Control</h2>
+<ul>
+<li><a href="HowToUseInfusionIoC.html">How To Use Infusion IoC</a></li>
+<li><a href="SubcomponentDeclaration.html">Subcomponent Declaration</a></li>
+<li><a href="Contexts.html">Contexts</a></li>
+<li><a href="ContextAwareness.html">ContextAwareness</a></li>
+<li><a href="Invokers.html">Invokers</a></li>
+<li><a href="ExpansionOfComponentOptions.html">Expansion Of Component Options</a></li>
+<li><a href="IoCReferences.html">IoC References</a></li>
+<li><a href="IoCSS.html">IoCSS</a></li>
+<li><a href="DeclarativeThisismInIoC.html">Declarative this-ism In IoC</a></li>
+</ul>
+<h2 id="events">Events</h2>
+<ul>
+<li><a href="InfusionEventSystem.html">Infusion Event System</a></li>
+<li><a href="EventInjectionAndBoiling.html">Event injection and boiling</a></li>
+</ul>
+<h2 id="models">Models</h2>
+<ul>
+<li><a href="ChangeApplier.html">ChangeApplier</a></li>
+<li><a href="ChangeApplierAPI.html">ChangeApplier API</a></li>
+<li><a href="ModelRelay.html">Model Relay</a></li>
+</ul>
+<h2 id="views">Views</h2>
+<ul>
+<li><a href="DOMBinder.html">DOM Binder</a></li>
+<li><a href="DOMBinderAPI.html">DOM Binder API</a></li>
+<li><a href="ClassNameConventions.html">Class Name Conventions</a></li>
+</ul>
+<h2 id="renderer">Renderer</h2>
+<ul>
+<li><a href="Renderer.html">Renderer</a></li>
+<li><a href="HowToUseTheRenderer.html">How To Use the Renderer</a></li>
+<li><a href="RendererComponentTrees.html">Renderer Component Trees</a></li>
+<li><a href="ProtoComponentTypes.html">ProtoComponent Types</a></li>
+<li><a href="RendererComponentTreeExpanders.html">Renderer Component Tree Expanders</a></li>
+<li><a href="Cutpoints.html">Cutpoints</a></li>
+<li><a href="RendererComponents.html">Renderer Components</a></li>
+<li><a href="RendererDecorators.html">Renderer Decorators</a></li>
+</ul>
+<h2 id="preferences-framework">Preferences Framework</h2>
+<ul>
+<li><a href="PreferencesFramework.html">Preferences Framework</a></li>
+<li><a href="PreferencesEditor.html">Preferences Editor</a></li>
+<li><a href="Builder.html">Builder</a></li>
+<li><a href="PrimarySchemaForPreferencesFramework.html">Primary Schema</a></li>
+<li><a href="AuxiliarySchemaForPreferencesFramework.html">Auxiliary Schema</a></li>
+<li><a href="SettingsStore.html">Settings Store</a></li>
+<li><a href="ConnectingThePartsOfAPreferencesEditor.html">Connecting the Parts of a Preferences Editor</a></li>
+<li><a href="Enactors.html">Enactors</a></li>
+<li><a href="Panels.html">Panels</a></li>
+<li><a href="CompositePanels.html">Composite Panels</a></li>
+<li><a href="ConditionalSubpanels.html">Conditional Subpanels</a></li>
+<li><a href="LocalizationInThePreferencesFramework.html">Localization in the Preferences Framework</a></li>
+</ul>
+<h2 id="testing">Testing</h2>
+<ul>
+<li><a href="jqUnit.html">Unit Testing with jqUnit</a></li>
+<li><a href="IoCTestingFramework.html">IoC Testing Framework</a></li>
+</ul>
+<h2 id="migrating-from-earlier-versions">Migrating from earlier versions</h2>
+<ul>
+<li>Migrating to Infusion 2.0
+<ul>
+<li><a href="APIChangesFrom1_5To2_0.html">API Changes from 1.5 to 2.0</a></li>
+</ul>
+</li>
+<li>Migrating to Infusion 1.5
+<ul>
+<li><a href="APIChangesFrom1_4To1_5.html">API Changes from 1.4 to 1.5</a></li>
+<li><a href="DeprecationsIn1_5.html">Deprecations In 1.5</a></li>
+<li><a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html">UI Options Migration</a></li>
+<li><a href="tutorial-migratingToInfusion1.5/PagerMigration.html">Pager Migration</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="tutorials">Tutorials</h2>
+<ul>
+<li><a href="tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html">Getting started with Infusion</a></li>
+<li>Preferences Framework
+<ul>
+<li><a href="tutorial-prefsFramework/CreatingAPrefsEditor.html">Creating a Preferences Editor</a></li>
+<li><a href="to-do/AddingPrefsEditorToSite.html">Adding a Basic Preferences Editor to a Site</a></li>
+<li><a href="to-do/WorkingWithPrefsEditorOnSite.html">Working With A Preferences Editor On Your Site</a></li>
+<li><a href="tutorial-prefsFramework/CreatingANewAdjusterUI.html">Creating a New Adjuster UI</a></li>
+</ul>
+</li>
+<li><a href="tutorial-userInterfaceOptions/UserInterfaceOptions.html">User Interface Options</a></li>
+<li>General
+<ul>
+<li><a href="tutorial-iconFonts/HowToCreateAndUseFontIcons.html">How to Create and Use Font Icons</a></li>
+<li><a href="tutorial-usingStringTemplates/UsingStringTemplates.html">Using String Templates</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="components">Components</h2>
+<ul>
+<li><a href="to-do/InlineEditAPI.html">Inline Edit</a></li>
+<li><a href="to-do/PagerAPI.html">Pager</a></li>
+<li><a href="to-do/ProgressAPI.html">Progress</a></li>
+<li><a href="to-do/ReordererAPI.html">Reorderer</a>
+<ul>
+<li><a href="to-do/ListReordererAPI.html">List Reorderer</a></li>
+<li><a href="to-do/GridReordererAPI.html">Grid Reorderer</a></li>
+<li><a href="to-do/LayoutReordererAPI.html">Layout Reorderer</a></li>
+<li><a href="ImageReordererAPI.html">Image Reorderer</a></li>
+</ul>
+</li>
+<li><a href="UserInterfaceOptionsAPI.html">User Interface Options</a></li>
+<li><a href="UploaderAPI.html">Uploader</a></li>
+<li><a href="to-do/UndoAPI.html">Undo</a></li>
+<li><a href="to-do/TableOfContentsAPI.html">Table of Contents</a></li>
+<li><a href="TextToSpeechAPI.html">Text to Speech</a></li>
+</ul>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

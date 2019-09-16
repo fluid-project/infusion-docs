@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Working with UI Options | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="../lib/foundation/normalize.css">
+        <link rel="stylesheet" href="../lib/foundation/foundation.css">
+        <link rel="stylesheet" href="../css/highlightjs-custom.css">
+        <link rel="stylesheet" href="../lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="../css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="../images/favico.png">
+
+        <script type="text/javascript" src="../lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="../js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="../lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="../js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "../lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "../lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "../lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="../index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="../index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="../index-tutorials.html" title="Tutorials" class="infusion-docs-category-active">Tutorials</a>
+                        
+                    
+                        
+                            <a href="../index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="../search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Tutorials</span>
+                                
+                                    <span class="infusion-docs-sectionName">Developer Introduction to the Infusion Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.html"><span class="infusion-docs-TOC-pageName">Opening Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html"><span class="infusion-docs-TOC-pageName">Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html"><span class="infusion-docs-TOC-pageName">Events and Inversion of Control</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html"><span class="infusion-docs-TOC-pageName">Models and Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html"><span class="infusion-docs-TOC-pageName">Views and View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html"><span class="infusion-docs-TOC-pageName">Subcomponents and Model Relaying</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.html"><span class="infusion-docs-TOC-pageName">Restructuring Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html"><span class="infusion-docs-TOC-pageName">Overriding Invokers and Refactoring</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.html"><span class="infusion-docs-TOC-pageName">Extending Designs with Existing Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html"><span class="infusion-docs-TOC-pageName">Transforming Model Relays</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html"><span class="infusion-docs-TOC-pageName">Concluding Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Getting Started with Infusion Component Design</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html"><span class="infusion-docs-TOC-pageName">Getting Started with Infusion Component Design</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"><span class="infusion-docs-TOC-pageName">Set up your environment</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"><span class="infusion-docs-TOC-pageName">Define a namespace and create a closure</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/PickAComponentType.html"><span class="infusion-docs-TOC-pageName">Pick a component type</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"><span class="infusion-docs-TOC-pageName">Basic Component Creation</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/ModelComponents.html"><span class="infusion-docs-TOC-pageName">Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/ViewComponents.html"><span class="infusion-docs-TOC-pageName">View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/Subcomponents.html"><span class="infusion-docs-TOC-pageName">Subcomponents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">General</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-usingStringTemplates/UsingStringTemplates.html"><span class="infusion-docs-TOC-pageName">Using String Templates</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-iconFonts/HowToCreateAndUseFontIcons.html"><span class="infusion-docs-TOC-pageName">How to Create and Use Font Icons</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingAPrefsEditor.html"><span class="infusion-docs-TOC-pageName">Creating a Preference Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingEnactors.html"><span class="infusion-docs-TOC-pageName">Creating Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/InstantiatingTheEnhancerAndSettingsStoreOnly.html"><span class="infusion-docs-TOC-pageName">Instantiating the Enhancer and Settings Store Only</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/StylingThePreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Styling the Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/AddingPrefsEditorToSite.html"><span class="infusion-docs-TOC-pageName">Adding a Basic Preferences Editor to a Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/WorkingWithPrefsEditorOnSite.html"><span class="infusion-docs-TOC-pageName">Working With A Preferences Editor On Your Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingANewAdjusterUI.html"><span class="infusion-docs-TOC-pageName">Creating a New Adjuster UI</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFrameworkMinimalFootprint/MinimalFootprint.html"><span class="infusion-docs-TOC-pageName">Minimal Footprint</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">User Interface Options</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UserInterfaceOptions.html"><span class="infusion-docs-TOC-pageName">Setting Up User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Working with User Interface Options</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UsingImagesInContrastModes.html"><span class="infusion-docs-TOC-pageName">Using Images in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="StyleEffectsAndLegibilityInContrastModes.html"><span class="infusion-docs-TOC-pageName">Style Effects and Legibility in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ContentPropertyHighContrast.html"><span class="infusion-docs-TOC-pageName">CSS &#x27;Content&#x27; Property in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Working with UI Options</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>Once User Interface Options or a Preferences Editor is incorporated into your website (see the <a href="./UserInterfaceOptions.html">User Interface Options
+tutorial</a> for installation procedure), it's important to ensure that the site transforms and
+responds correctly.</p>
+<p>This documentation assumes you are somewhat comfortable with writing and editing CSS.</p>
+<h2 id="contrast-themes">Contrast Themes</h2>
+<p>UI Options adds support for high contrast themes by transforming the colours on your website. Since contrast themes
+transform almost all aspects of the webpage, it's probable there will be some styling issues initially. This section
+aims to help you fix some common issues.</p>
+<p>UI Options transforms the user interface into one of four high contrast or one low contrast colour combinations:</p>
+<ul>
+<li>high contrast
+<ul>
+<li>black on white</li>
+<li>white on black</li>
+<li>black on yellow</li>
+<li>yellow on black</li>
+</ul>
+</li>
+<li>low contrast
+<ul>
+<li>light grey on dark grey</li>
+</ul>
+</li>
+</ul>
+<p>The themes attempt to remove any other colours from the interface, along with gradients, shadows, background images, and
+other styling that may reduce legibility. This type of contrast interface can be extremely helpful for users with
+different forms vision needs.</p>
+<p>UI Options applies contrast themes by adding a special class to the <code>&lt;body&gt;</code> element of the document and providing
+styles that are scoped to that class. You will likely need to create a few more special classes, scoped to the theme,
+for some areas of your site.</p>
+<p>To help you in creating a website that works well with UI Options, here are a few basic guidelines:</p>
+<ul>
+<li><a href="./UsingImagesInContrastModes.html">Make cosmetic graphics background images in CSS; create contrast versions; and use CSS to swap in the contrast versions when the themes are activated.</a></li>
+<li><a href="./StyleEffectsAndLegibilityInContrastModes.html">Improve clarity and legibility by removing gradients, shadows, and other styling effects.</a></li>
+<li><a href="./ContentPropertyHighContrast.html">Double-check use of CSS &quot;content&quot; property</a></li>
+</ul>
+<h2 id="how-to-define-special-styles-for-contrast-themes">How to define special styles for contrast themes</h2>
+<p>If something doesn't transform into contrast mode automatically when using the contrast adjustment, here's how you
+define styles to address those cases:</p>
+<h3 id="scope-your-styles-to-the-theme-name">Scope your styles to the theme name</h3>
+<p>UI Options will add the theme name as a class to the <code>&lt;body&gt;</code> element.</p>
+<ul>
+<li>yellow (<code>#FFFF00</code>) on black (<code>#000000</code>): <code>&lt;body class=&quot;fl-theme-yb&quot;&gt;</code></li>
+<li>white (<code>#FFFFFF</code>) on black (<code>#000000</code>): <code>&lt;body class=&quot;fl-theme-wb&quot;&gt;</code></li>
+<li>black (<code>#000000</code>) on yellow (<code>#FFFF00</code>): <code>&lt;body class=&quot;fl-theme-by&quot;&gt;</code></li>
+<li>black (<code>#000000</code>) on white (<code>#FFFFFF</code>): <code>&lt;body class=&quot;fl-theme-bw&quot;&gt;</code></li>
+<li>light grey (<code>#BDBDBB</code>) on dark grey (<code>#555555</code>): <code>&lt;body class=&quot;fl-theme-lgdg&quot;&gt;</code></li>
+</ul>
+<p>Scope your styles using the class name as shown in the following example. This example is for the yellow on black theme,
+which uses the class name <code>fl-theme-yb</code>:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fl-theme-yb"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"toolbar"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"helpLink"</span>&gt;</span>Help<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<pre class="highlight"><code class="hljs css"><span class="hljs-comment">/* default style for button */</span>
+<span class="hljs-selector-class">.toolbar</span> <span class="hljs-selector-class">.helpLink</span> {
+    <span class="hljs-attribute">outline</span>: solid <span class="hljs-number">0.2rem</span> <span class="hljs-number">#008cba</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#008cba</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#efefef</span>;
+    <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span> <span class="hljs-number">#FFFFFF</span>;
+}
+
+<span class="hljs-comment">/* high contrast for button */</span>
+<span class="hljs-selector-class">.fl-theme-yb</span> <span class="hljs-selector-class">.toolbar</span> <span class="hljs-selector-class">.helpLink</span> {
+    <span class="hljs-attribute">outline</span>: solid <span class="hljs-number">0.2rem</span> <span class="hljs-number">#ff0</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#ff0</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#000</span>;
+    <span class="hljs-attribute">text-shadow</span>: none;
+}
+</code></pre>
+<div class="infusion-docs-note"><strong>Note:</strong>
+    <p>
+        In some cases you may have to use the <code>!important</code> rule with your contrast styles to make them work.
+        For example: <code>color: #ff0 !important;</code>.
+    </p>
+    <p>
+        Using <code>!important</code> should be used carefully as documented in <a
+        href="https://css-tricks.com/when-using-important-is-the-right-choice/">this article on CSS-tricks.com</a>.
+    </p>
+</div>
+<h3 id="make-sure-you-have-styles-for-all-the-themes">Make sure you have styles for all the themes</h3>
+<p>UI Options defines five contrast themes:</p>
+<ul>
+<li>yellow (<code>#FFFF00</code>) on black (<code>#000000</code>): theme class name <code>fl-theme-yb</code></li>
+<li>white (<code>#FFFFFF</code>) on black (<code>#000000</code>): theme class name <code>fl-theme-wb</code></li>
+<li>black (<code>#000000</code>) on yellow (<code>#FFFF00</code>): theme class name <code>fl-theme-by</code></li>
+<li>black (<code>#000000</code>) on white (<code>#FFFFFF</code>): theme class name <code>fl-theme-bw</code></li>
+<li>light grey (<code>#BDBDBB</code>) on dark grey (<code>#555555</code>): theme class name <code>fl-theme-lgdg</code></li>
+</ul>
+<p>If you need to define a style for a contrast theme, you'll most likely need to define styles all the themes. The styles
+will likely look very similar to each other, with differences only related to the colours:</p>
+<pre class="highlight"><code class="hljs css"><span class="hljs-comment">/* contrast background icon for button. these images have a transparent background */</span>
+<span class="hljs-selector-class">.fl-theme-yb</span> <span class="hljs-selector-class">.toolbar</span> <span class="hljs-selector-class">.saveButton</span> { <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'images/save-yellow.png'</span>); }
+<span class="hljs-selector-class">.fl-theme-wb</span> <span class="hljs-selector-class">.toolbar</span> <span class="hljs-selector-class">.saveButton</span> { <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'images/save-white.png'</span>); }
+<span class="hljs-selector-class">.fl-theme-by</span> <span class="hljs-selector-class">.toolbar</span> <span class="hljs-selector-class">.saveButton</span>,
+<span class="hljs-selector-class">.fl-theme-bw</span> <span class="hljs-selector-class">.toolbar</span> <span class="hljs-selector-class">.saveButton</span> { <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'images/save-black.png'</span>); }
+<span class="hljs-selector-class">.fl-theme-lgdg</span> <span class="hljs-selector-class">.toolbar</span> <span class="hljs-selector-class">.saveButton</span> { <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'images/save-grey.png'</span>); }
+</code></pre>
+<p>Creating contrast styles can be simplified by mix-ins if you are using a CSS stylesheet language like Sass, Stylus, or
+LESS.</p>
+<h3 id="use-background-images-when-possible">Use background images when possible</h3>
+<p>If you're using images to give your buttons or menu items a unique look, follow these guidelines:</p>
+<ul>
+<li>use semantically appropriate tags for your graphics. For example, images important to your content should use <code>&lt;img&gt;</code>,
+and cosmetic images can be implemented as background images in CSS. UI Options can replace background images using CSS
+only.
+<ul>
+<li>See <a href="./UsingImagesInContrastModes.html">Using Images in Contrast Modes</a>.</li>
+</ul>
+</li>
+<li>ensure background images are sized to scale to fit their container (for more info, see
+<a href="https://developer.mozilla.org/en-US/docs/CSS/background-size">Background Size on Mozilla Developer</a>)
+<ul>
+<li>contain and cover preserve proportions of image</li>
+<li>a percentage will stretch image</li>
+<li>use <code>background-size: 100%;</code></li>
+</ul>
+</li>
+<li>don't build the label text into the image, instead consider using <code>&lt;figure&gt;</code> elements with a corresponding <code>&lt;figcaption&gt;</code>
+tag. See <a href="https://developer.mozilla.org/en/docs/Web/HTML/Element/figure"><code>&lt;figure&gt;</code> on Mozilla Developer</a>.</li>
+<li>if the 'image' is a gradient, consider using CSS gradients. See
+<a href="./StyleEffectsAndLegibilityInContrastModes.html">Style Effects and Legibility in Contrast Modes</a> for more information.</li>
+</ul>
+<h2 id="testing-your-changes-with-ui-options">Testing Your Changes With UI Options</h2>
+<h3 id="enlarge-the-font">Enlarge the font</h3>
+<p>Open the UI Options interface and use the &quot;Text Size&quot; control to enlarge the font. Check the site:</p>
+<ul>
+<li>does the text enlarge correctly?</li>
+<li>is the layout of the entire page still reasonable?</li>
+</ul>
+<p>To help make your webpage respond better with UI Options, see the suggestions in this article: <a href="https://wiki.fluidproject.org/display/fluid/How+to+make+your+page+more+responsive">&quot;How to make your page
+more responsive&quot;</a>.</p>
+<h3 id="increase-the-line-spacing">Increase the line spacing</h3>
+<p>Open the UI Options interface and use the &quot;Line Spacing&quot; control to increase the line spacing.</p>
+<ul>
+<li>If you use a pixel value, it will not scale when User Interface Options is used to increase line height.</li>
+<li>If you use em or percentages, the value not be inherited correctly by elements inside your element.</li>
+</ul>
+<p>The safest way to use line-height is as a unitless number, which will multiply the element's font size. This will also
+allow line heights to be adjusted by User Interface Options correctly. For more information, see the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height">MDN documentation
+on line-height</a>.</p>
+<p>If you find that the layout of your website does not lay out properly, or does not scale according to the text size, you
+may need to <a href="https://wiki.fluidproject.org/display/fluid/How+to+make+your+page+more+responsive#Howtomakeyourpagemoreresponsive-Useremoremforcontainersizes">switch to using <code>rem</code> or <code>em</code> values
+instead</a>.</p>
+<h3 id="try-each-of-the-themes">Try each of the themes</h3>
+<p>Open the UI Options interface and use the &quot;Colour &amp; Contrast&quot; control to select each of the contrast themes. Check the
+site:</p>
+<ul>
+<li>is all of the text in the correct colours?</li>
+<li>do buttons and links appear in the selected contrast?</li>
+<li>do icons and logos appear in the selected contrast?</li>
+<li>does anything still have shadows or gradients in the wrong colours?</li>
+<li>are hover and focus styles reasonable?</li>
+</ul>
+<p>In the cases where the contrast isn't being applied, you will need to create specific CSS rules to fix them. <a href="./StyleEffectsAndLegibilityInContrastModes.html">Style
+Effects and Legibility in Contrast Modes</a> describes the general approach
+of using CSS to fix contrast styling issues.</p>
+<h3 id="try-each-of-the-fonts">Try each of the fonts</h3>
+<p>Open the UI Options interface and use the &quot;Text Style&quot; control and select each of the different font styles. Check the
+site:</p>
+<ul>
+<li>is all of the text in the correct font?</li>
+<li>is the layout of the page still reasonable?</li>
+<li>some fonts take up more room than others, and sometimes selecting a different font might affect the overall layout of
+the page.</li>
+</ul>
+<p>To fix font related issues, you may have to fix styling issues related to overflow, text wrapping / breaking, margins,
+and padding.</p>
+<h3 id="enhance-links-and-enlarge-inputs">Enhance links and enlarge inputs</h3>
+<p>Open the UI Options interface and use the controls under &quot;Enhance Inputs&quot; to enhance links and buttons. Check the site:</p>
+<ul>
+<li>are links underlined, bolded and enlarged?</li>
+<li>are inputs (such as text fields and buttons) enlarged?</li>
+</ul>
+<p>A common issue occurs when links are styled to appear like buttons. UI Options will treat them as links despite them
+looking like buttons. Consider using the appropriate semantic markup for links and buttons instead. Links &quot;take you
+somewhere&quot;, whereas buttons &quot;do something&quot;. For an explanation of buttons vs. links, see &quot;<a href="https://css-tricks.com/use-button-element/">When to Use the Button
+Element</a>&quot; on CSS-Tricks.com.</p>
+<h3 id="check-table-of-contents">Check Table of Contents</h3>
+<p>Open the UI Options interface and use the control under &quot;Table of Contents&quot; to show the table of contents. Check the
+site:</p>
+<ul>
+<li>are all Headers appearing in the table of contents?</li>
+<li>do all links in the table of contents go to the proper place?</li>
+<li>are Headers marked as &quot;ignored&quot; correctly omitted from the table of contents?</li>
+</ul>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>
