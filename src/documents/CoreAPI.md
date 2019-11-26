@@ -328,10 +328,10 @@ var names = fluid.getMembers(cattes, "name");
 
 ### fluid.filterKeys(toFilter, keys[, exclude])
 
-* `toFilter {Array|Object}` The object to be filtered - this will be NOT modified by the operation
-* `keys {Array of String}` The list of keys to operate with
+* `toFilter {Object}` The object to be filtered - this will be NOT modified by the operation
+* `keys {String[]}` The list of keys to operate with
 * `exclude {Boolean}` [optional] If `true`, the keys listed are removed rather than included
-* Returns: `{Array|Object}` the filtered object
+* Returns: `{Object}` the filtered object
 
 Accepts an object to be filtered, and a list of keys. Either all keys not present in the list are removed (the default),
 or all keys present in the list are removed (`exclude: true`). The supplied object **is not modified** but will be
@@ -339,9 +339,9 @@ shallow cloned by this operation.
 
 ### fluid.censorKeys(toCensor, keys)
 
-* `toFilter {Array|Object}` The object to be filtered - this will be NOT modified by the operation
-* `keys {Array of String}` The list of keys to operate with
-* Returns: `{Array|Object}` A shallow clone of `toFilter` with the supplied keys removed
+* `toFilter {Object}` The object to be filtered - this will be NOT modified by the operation
+* `keys {String[]}` The list of keys to be excluded
+* Returns: `{Object}` A shallow clone of `toFilter` with the supplied keys removed
 
 A convenience wrapper for `fluid.filterKeys` with the argument `exclude` set to `true`. Returns a shallow clone of the
 supplied object with listed keys removed.
