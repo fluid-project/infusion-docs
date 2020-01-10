@@ -16,31 +16,34 @@ UI Options does three things:
 
 ![Screen shot of the UI Options Component](../images/uio-showcase.png "Screen shot of the UI Options Component")
 
-This tutorial assumes that:
-
-* you are already familiar with HTML, Javascript and CSS,
-* you are familiar with what the UI Options preferences editor is and does, and
-* now you just want to know how to add it to your website.
+You can try the [UI Options demo here](http://build.fluidproject.org/infusion/demos/uiOptions/).
 
 ## Scenario
 
 You're putting together a website that you know will have a diverse audience. You'd like to allow your visitors to
 customize the presentation of the site to their individual needs, by enlarging the text or increasing the visual
-contrast, for example. This tutorial will show you how to add the Infusion [UI
-Options](http://build.fluidproject.org/infusion/demos/uiOptions/) component to your site.
+contrast, for example. This tutorial will show you how to add the Infusion UI Options component to your site.
 
 These are the basic steps to add UI Options to your website:
 
-1. [Download and install the Infusion library](#download-and-install-the-ui-options-library)
+1. [Download and install the UI Options library](#download-and-install-the-ui-options-library)
 2. [Prepare your page](#prepare-your-page)
     * [The Sliding Panel](#the-sliding-panel)
     * [The Table of Contents](#the-table-of-contents)
 3. [Add dependencies to the page](#add-dependencies-to-the-page)
 4. [Add the UI Options component](#add-the-ui-options-component)
 
-The rest of this tutorial will explain each of these steps in detail.
+The rest of this tutorial will explain each of these steps in detail. This tutorial also assumes that you can work with HTML, Javascript and CSS.
 
 ## Download and install the UI Options library
+
+Get Infusion using one of these methods:
+* [Zip Package](https://github.com/fluid-project/infusion/releases/download/v2.0.0/infusion-uiOptions-2.0.0-source.zip)
+* [Github source](https://github.com/fluid-project/infusion)
+* npm via `npm i infusion`
+
+### Zip Package Method
+This method will download and install the last release of Infusion (2.0.0).
 
 1. [Download the UI Options library](https://github.com/fluid-project/infusion/releases/download/v2.0.0/infusion-uiOptions-2.0.0-source.zip)
   (there is also a [minified version UI Options](https://github.com/fluid-project/infusion/releases/download/v2.0.0/infusion-uiOptions-2.0.0-minified.zip)
@@ -48,11 +51,35 @@ The rest of this tutorial will explain each of these steps in detail.
 2. Unzip the contents of the downloaded ZIP file to a location within your project. This will result in a new directory
    `infusion`.<div class="infusion-docs-note"><strong>Note:</strong> In this guide we will use the directory
    `my-project/lib/`.</div>
-3. Your `infusion` folder will include a single file containing all of the JavaScript you need
+3. Your `infusion` directory will include a single file containing all of the JavaScript you need
    (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later
    link to these files in your HTML files.
 4. Now that `infusion` is in your project directory, you can delete the `infusion-uiOptions-2.0.0.zip` (or similar name)
    from your download directory.
+
+### Github Source Method
+This method will download and install the most recent development version of Infusion.
+
+1. Clone the Infusion Github repository anywhere to your local filesystem: `git clone https://github.com/fluid-project/infusion`. This will create a directory `infusion` containing the Infusion source code.
+2. Within the `infusion` directory, run `npm install` to get Infusion's dependencies.
+3. Build a version of Infusion with UI Options by running `grunt custom --include="uiOptions" --name="uiOptions"`. This will create a build of Infusion in the directory `infusion/build/`. Note: [Get Grunt](https://gruntjs.com/) if you don't have it installed.
+4. Your `infusion/build` directory will include a single file containing all of the JavaScript you need
+   (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later
+   link to these files in your HTML files.
+5. Rename the directory from `build` to `infusion`, and move (or copy) the `build` directory to your project (i.e. `my-project/lib/infusion`).
+6. Optional: You can now safely delete the `infusion` directory created in step 1.
+
+### npm Method
+This method will download and install the last release of Infusion (2.0.0).
+
+1. From your project directory, run `npm i infusion`.
+2. Within the `node_modules/infusion/` directory in your project, run `npm install` to get Infusion's dependencies.
+3. Then build a version of Infusion with UI Options by running `grunt custom --include="uiOptions" --name="uiOptions"`. This will create a build of Infusion in the `node_modules/infusion/build/` directory. Note: [Get Grunt](https://gruntjs.com/) if you don't have it installed.
+4. Your `node_modules/infusion/build` folder will include a single file containing all of the JavaScript you need
+   (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later
+   link to these files in your HTML files.
+5. Rename the directory from `build` to `infusion`, and move (or copy) the `build` directory to your project (i.e. `my-project/lib/infusion`).
+6. Optional: You can now safely delete the `infusion` directory created in step 1.
 
 ## Prepare your page
 
