@@ -4,13 +4,11 @@ layout: default
 category: Tutorials
 ---
 
-The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface
-and content resources so that they are personalized to the individual user's needs.
+The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
 
 UI Options does three things:
 
-* places a preferences editor dialog with a set of adjusters in a collapsible panel at the top of the page, accessible
-  through a button in the upper right corner of the page;
+* places a preferences editor dialog with a set of adjusters in a collapsible panel at the top of the page, accessible through a button in the upper right corner of the page;
 * instantiates a cookie-based [Settings Store](../SettingsStore.md) for storing the user's preferences; and
 * acts upon the user's preferences.
 
@@ -20,57 +18,37 @@ You can try the [UI Options demo here](http://build.fluidproject.org/infusion/de
 
 ## Scenario
 
-You're putting together a website that you know will have a diverse audience. You'd like to allow your visitors to
-customize the presentation of the site to their individual needs, by enlarging the text or increasing the visual
-contrast, for example. This tutorial will show you how to add the Infusion UI Options component to your site.
+You are putting together a website and would like to give visitors a way to customize the website presentation to their individual needs. This tutorial will show you how to add the Infusion UI Options component to your site.
 
 These are the basic steps to add UI Options to your website:
 
-1. [Download and install the UI Options library](#download-and-install-the-ui-options-library)
+1. [Download and install UI Options](#download-and-install-the-ui-options-library)
 2. [Prepare your page](#prepare-your-page)
     * [The Sliding Panel](#the-sliding-panel)
     * [The Table of Contents](#the-table-of-contents)
 3. [Add dependencies to the page](#add-dependencies-to-the-page)
 4. [Add the UI Options component](#add-the-ui-options-component)
 
-The rest of this tutorial will explain each of these steps in detail. This tutorial also assumes that you can work with HTML, Javascript and CSS.
+The rest of this tutorial will explain these steps and assumes that you can work with HTML, JavaScript and CSS.
 
 ## Download and install the UI Options library
 
-Get Infusion using one of these methods:
-* [Zip Package](https://github.com/fluid-project/infusion/releases/download/v2.0.0/infusion-uiOptions-2.0.0-source.zip)
-* [Github source](https://github.com/fluid-project/infusion)
-* npm via `npm i infusion`
+Get the latest Infusion release:
+* [Zip package of an Infusion release](https://github.com/fluid-project/infusion/releases)
+* Using npm: `npm i infusion`
 
-### Zip Package Method
-This method will download and install the last release of Infusion (2.0.0).
+If you prefer trying the latest development source code, you can visit [Infusion on GitHub](https://github.com/fluid-project/infusion).
 
-1. [Download the UI Options library](https://github.com/fluid-project/infusion/releases/download/v2.0.0/infusion-uiOptions-2.0.0-source.zip)
-  (there is also a [minified version UI Options](https://github.com/fluid-project/infusion/releases/download/v2.0.0/infusion-uiOptions-2.0.0-minified.zip)
-   for deployment purposes).
-2. Unzip the contents of the downloaded ZIP file to a location within your project. This will result in a new directory
-   `infusion`.<div class="infusion-docs-note"><strong>Note:</strong> In this guide we will use the directory
-   `my-project/lib/`.</div>
-3. Your `infusion` directory will include a single file containing all of the JavaScript you need
-   (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later
-   link to these files in your HTML files.
-4. Now that `infusion` is in your project directory, you can delete the `infusion-uiOptions-2.0.0.zip` (or similar name)
-   from your download directory.
+### Get Infusion UI Options Stable Release - Zip Package
+This method will download and install the most recent stable release of Infusion.
 
-### Github Source Method
-This method will download and install the most recent development version of Infusion.
+1. Download the latest Infusion UI Options Zip package from the [Infusion Releases page](https://github.com/fluid-project/infusion/releases). There are different packages of Infusion - download the file "`infusion-uiOptions-X.X.X-source.zip`" if you are only interested in UI Options.
+2. Unzip the contents of the downloaded ZIP file to a location within your project. This will result in a new directory `infusion`.<div class="infusion-docs-note"><strong>Note:</strong> In this guide we will use the directory `my-project/lib/`.</div>
+3. Your `infusion` directory will include a single file containing all of the JavaScript you need (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later link to these files in your HTML files.
+4. Now that `infusion` is in your project directory, you can delete the `infusion-uiOptions-X.X.X.zip` (or similar name) from your download directory.
 
-1. Clone the Infusion Github repository anywhere to your local filesystem: `git clone https://github.com/fluid-project/infusion`. This will create a directory `infusion` containing the Infusion source code.
-2. Within the `infusion` directory, run `npm install` to get Infusion's dependencies.
-3. Build a version of Infusion with UI Options by running `grunt custom --include="uiOptions" --name="uiOptions"`. This will create a build of Infusion in the directory `infusion/build/`. Note: [Get Grunt](https://gruntjs.com/) if you don't have it installed.
-4. Your `infusion/build` directory will include a single file containing all of the JavaScript you need
-   (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later
-   link to these files in your HTML files.
-5. Rename the directory from `build` to `infusion`, and move (or copy) the `build` directory to your project (i.e. `my-project/lib/infusion`).
-6. Optional: You can now safely delete the `infusion` directory created in step 1.
-
-### npm Method
-This method will download and install the last release of Infusion (2.0.0).
+###  Get Infusion UI Options Stable Release with `npm`
+This method will download and install the most recent stable release of Infusion.
 
 1. From your project directory, run `npm i infusion`.
 2. Within the `node_modules/infusion/` directory in your project, run `npm install` to get Infusion's dependencies.
@@ -81,12 +59,45 @@ This method will download and install the last release of Infusion (2.0.0).
 5. Rename the directory from `build` to `infusion`, and move (or copy) the `build` directory to your project (i.e. `my-project/lib/infusion`).
 6. Optional: You can now safely delete the `infusion` directory created in step 1.
 
+Summary of commands:
+```bash
+npm i infusion
+cd node_modules/infusion/
+grunt custom --include="uiOptions" --name="uiOptions"
+mv build/ my-project/lib/infusion
+```
+
+### Infusion Latest Development Source
+This method will download and install the current version of Infusion in development.
+
+<div class="infusion-docs-note">
+<strong>Note:</strong>
+Use the latest development source if you want to try out the latest changes and features. We recommend using a stable release for production situations by using one of the other methods above.
+</div>
+
+1. Clone the Infusion GitHub repository anywhere to your local filesystem: `git clone https://github.com/fluid-project/infusion`. This will create a directory `infusion` containing the Infusion source code.
+2. Within the `infusion` directory, run `npm install` to get Infusion's dependencies.
+3. Build a version of Infusion with UI Options by running `grunt custom --include="uiOptions" --name="uiOptions"`. This will create a build of Infusion in the directory `infusion/build/`. Note: [Get Grunt](https://gruntjs.com/) if you don't have it installed.
+4. Your `infusion/build` directory will include a single file containing all of the JavaScript you need
+   (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later
+   link to these files in your HTML files.
+5. Rename the directory from `build` to `infusion`, and move (or copy) the `build` directory to your project (i.e. `my-project/lib/infusion`).
+6. Optional: You can now safely delete the `infusion` directory created in step 1.
+
+Summary of commands:
+```bash
+git clone https://github.com/fluid-project/infusion
+cd infusion
+npm install
+grunt custom --include="uiOptions" --name="uiOptions"
+mv build/ my-project/lib/infusion
+```
+
 ## Prepare your page
 
 ### The Sliding Panel
 
-The UI Options component includes HTML templates for all the controls, so you don't need to create any HTML for them.
-You only need to add a small amount of markup to the top of your webpage to tell UI Options where to render itself.
+The UI Options component includes HTML templates for all the controls, so you don't need to create any HTML for them. You only need to add a small amount of markup to the top of your webpage to tell UI Options where to render itself.
 
 Insert the following markup at the beginning of your `<body>` tag:
 
@@ -111,8 +122,7 @@ Insert the following markup at the beginning of your `<body>` tag:
 
 The main `<div>` in this snippet contains two things:
 
-1. a `<div class="flc-slidingPanel-panel ...">` where an iframe will be inserted, containing the UI Options adjusters,
-   and
+1. a `<div class="flc-slidingPanel-panel ...">` where an iframe will be inserted, containing the UI Options adjusters, and
 2. a `<div class="flc-prefsEditor-separatedPanel ...">` where the sliding panel and button will be created.
 
 The elements in this snippet all have particular class names attached to them, and it's important to keep them:
@@ -120,23 +130,18 @@ The elements in this snippet all have particular class names attached to them, a
 * the class names starting with `flc-` are used to identify the elements to UI Options;
 * the class names starting with `fl-` are used for visual styling.
 
-Save this file to the top directory of your project. If you open this page in your browser now, you'll only see the
-button in the upper left corner, since we haven't set up the CSS and UI Options isn't present on the page yet:
+Save this file to the top directory of your project. If you open this page in your browser now, you'll only see the button in the upper left corner, since we haven't set up the CSS and UI Options isn't present on the page yet:
 
 ![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
 <div class="infusion-docs-note">
-    <strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label
-    and update it to reflect whether or not the panel is currently open. You can configure the text that the component
-    uses by setting its configuration parameters. Visit <a
-    href="../LocalizationInThePreferencesFramework.md">Localization in the Preferences Framework</a>.
+    <strong>Note:</strong>
+    It doesn't matter what text you put in the button. The UI Options component will add a label and update it to reflect whether or not the panel is currently open. You can configure the text that the component uses by setting its configuration parameters. Visit <a href="../LocalizationInThePreferencesFramework.md">Localization in the Preferences Framework</a>.
 </div>
 
 ### The Table of Contents
 
-One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a
-placeholder `<nav>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` and
-should appear after the `<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">` block:
+One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a placeholder `<nav>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` and should appear after the `<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">` block:
 
 ```html
 <body>
@@ -152,17 +157,14 @@ should appear after the `<div class="flc-prefsEditor-separatedPanel fl-prefsEdit
 </body>
 ```
 
-We recommend placing `<nav class="flc-toc-tocContainer">` near the top of your page so it's visible and easily
-accessible to keyboard users. You can add additional classes of your own to style the Table Of Contents to fit in with
-the look of your site.
+We recommend placing `<nav class="flc-toc-tocContainer">` near the top of your page so it's visible and easily accessible to keyboard users. You can add additional classes of your own to style the Table Of Contents to fit in with the look of your site.
 
 ## Add dependencies to the page
 
 * the CSS files, and
 * the main Infusion JavaScript file: `infusion-uiOptions.js`.
 
-In the `<head>` of your file, link to the CSS and Javascript files using `<link>` and `<script>` tags. Make sure to
-adjust the paths to reflect where you've saved the Infusion package.
+In the `<head>` of your file, link to the CSS and Javascript files using `<link>` and `<script>` tags. Make sure to adjust the paths to reflect where you've saved the Infusion package.
 
 ```html
 <head>
@@ -179,8 +181,7 @@ adjust the paths to reflect where you've saved the Infusion package.
 ```
 
 <div class="infusion-docs-note">
-    <strong>Note:</strong> If you are using the minified version of `infusion-uiOptions.js` (i.e. all of the whitespace
-    removed), you can still debug the code using the provided source map. For more information, visit <a
+    <strong>Note:</strong> If you are using the minified version of `infusion-uiOptions.js` (i.e. all of the whitespace removed), you can still debug the code using the provided source map. For more information, visit <a
     href="https://github.com/fluid-project/infusion/blob/master/README.md#source-maps">the Infusion Release Readme</a>.
 </div>
 
