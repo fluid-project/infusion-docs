@@ -1,9 +1,0 @@
-{
-    "extends": "eslint-config-fluid",
-    "env": {
-        "browser": true
-    },
-    "plugins": [
-        "markdown"
-    ]
-}
