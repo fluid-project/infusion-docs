@@ -91,8 +91,8 @@
                 <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
                     {{#ifEqual document.category "Search"}}
                     {{else}}
-                        <span class="infusion-docs-category">Search</span>
-                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+                        <label for="search" class="infusion-docs-category">Search</label>
+                        <p class="docs-search-mini"><input type="search" name="qs"/></p>
 
                         {{#each siteStructure}}
                         {{! Output only the table of contents matching the current document's category }}
