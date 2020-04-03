@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Creating a Preferences Editor | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="../lib/foundation/normalize.css">
+        <link rel="stylesheet" href="../lib/foundation/foundation.css">
+        <link rel="stylesheet" href="../css/highlightjs-custom.css">
+        <link rel="stylesheet" href="../lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="../css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="../images/favico.png">
+
+        <script type="text/javascript" src="../lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="../js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="../lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="../js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "../lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "../lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "../lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="../index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="../index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="../index-tutorials.html" title="Tutorials" class="infusion-docs-category-active">Tutorials</a>
+                        
+                    
+                        
+                            <a href="../index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="../search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Tutorials</span>
+                                
+                                    <span class="infusion-docs-sectionName">Developer Introduction to the Infusion Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.html"><span class="infusion-docs-TOC-pageName">Opening Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html"><span class="infusion-docs-TOC-pageName">Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html"><span class="infusion-docs-TOC-pageName">Events and Inversion of Control</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html"><span class="infusion-docs-TOC-pageName">Models and Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html"><span class="infusion-docs-TOC-pageName">Views and View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html"><span class="infusion-docs-TOC-pageName">Subcomponents and Model Relaying</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.html"><span class="infusion-docs-TOC-pageName">Restructuring Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html"><span class="infusion-docs-TOC-pageName">Overriding Invokers and Refactoring</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.html"><span class="infusion-docs-TOC-pageName">Extending Designs with Existing Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html"><span class="infusion-docs-TOC-pageName">Transforming Model Relays</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html"><span class="infusion-docs-TOC-pageName">Concluding Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Getting Started with Infusion Component Design</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html"><span class="infusion-docs-TOC-pageName">Getting Started with Infusion Component Design</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"><span class="infusion-docs-TOC-pageName">Set up your environment</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"><span class="infusion-docs-TOC-pageName">Define a namespace and create a closure</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/PickAComponentType.html"><span class="infusion-docs-TOC-pageName">Pick a component type</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"><span class="infusion-docs-TOC-pageName">Basic Component Creation</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/ModelComponents.html"><span class="infusion-docs-TOC-pageName">Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/ViewComponents.html"><span class="infusion-docs-TOC-pageName">View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/Subcomponents.html"><span class="infusion-docs-TOC-pageName">Subcomponents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">General</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-usingStringTemplates/UsingStringTemplates.html"><span class="infusion-docs-TOC-pageName">Using String Templates</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-iconFonts/HowToCreateAndUseFontIcons.html"><span class="infusion-docs-TOC-pageName">How to Create and Use Font Icons</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Creating a Preference Editor</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CreatingEnactors.html"><span class="infusion-docs-TOC-pageName">Creating Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InstantiatingTheEnhancerAndSettingsStoreOnly.html"><span class="infusion-docs-TOC-pageName">Instantiating the Enhancer and Settings Store Only</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="StylingThePreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Styling the Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/AddingPrefsEditorToSite.html"><span class="infusion-docs-TOC-pageName">Adding a Basic Preferences Editor to a Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/WorkingWithPrefsEditorOnSite.html"><span class="infusion-docs-TOC-pageName">Working With A Preferences Editor On Your Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CreatingANewAdjusterUI.html"><span class="infusion-docs-TOC-pageName">Creating a New Adjuster UI</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFrameworkMinimalFootprint/MinimalFootprint.html"><span class="infusion-docs-TOC-pageName">Minimal Footprint</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">User Interface Options</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/UserInterfaceOptions.html"><span class="infusion-docs-TOC-pageName">Setting Up User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.html"><span class="infusion-docs-TOC-pageName">Working with User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/UsingImagesInContrastModes.html"><span class="infusion-docs-TOC-pageName">Using Images in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes.html"><span class="infusion-docs-TOC-pageName">Style Effects and Legibility in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/ContentPropertyHighContrast.html"><span class="infusion-docs-TOC-pageName">CSS &#x27;Content&#x27; Property in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Creating a Preferences Editor</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/tutorial-prefsFramework/CreatingAPrefsEditor.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>This tutorial will walk you through the process of building a Preference Editor using the
+Infusion <a href="../PreferencesFramework.html">Preferences Framework</a>.</p>
+<div class="infusion-docs-note"><strong>Note:</strong> This tutorial is not yet complete.
+Where more information is still to come, this will be clearly noted.</div>
+<h2 id="introduction">Introduction</h2>
+<p>A Preferences Editor is a web application that supports the creation and modification of a user's preferred settings for
+a device or application. In this tutorial, we'll look at a functional – but very simple – Preference Editor and explain
+how it works. From there, we’ll learn about more features of the Preferences Framework by adding functionality to the
+Editor.</p>
+<p>Throughout this tutorial, you’ll find links into the documentation for various parts of Infusion and the Preferences
+Framework. You shouldn’t need to visit these links to follow the tutorial; they’re there in case you’re interested in
+reading more about something.</p>
+<h3 id="example-code">Example code</h3>
+<p>The source code used in this tutorial is one of the examples provided in the Infusion code base, which you can download
+from github: <a href="https://github.com/fluid-project/infusion">https://github.com/fluid-project/infusion</a>. You’ll find the
+code for the simple Preference Editor in the examples folder:
+<a href="https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor">https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor</a>.
+We recommend you download the Infusion library and load the example code into your favourite editor.</p>
+<figure>
+    <img src="../images/prefsEditorFolders.png" alt="the folder hierarchy of the sample code">
+    <figcaption>Figure 1: Folder hierarchy for the Preference Editor example</figcaption>
+</figure>
+<p>Your company, Awesome Cars, has created the world’s first flying car. The example code is a Preference Editor for the
+car. If you run a local webserver (for example using <a href="http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python">this
+approach</a>, or using
+<a href="https://www.mamp.info/en/">MAMP</a>) and navigate to the <code>index.html</code> file in a browser, you should see this interface:</p>
+<figure id="figure2">
+    <img src="../images/simplePrefsEditor.png" alt="The screen of the example Preference Editor">
+    <figcaption>Figure 2: The screen of the example Preference Editor</figcaption>
+</figure>
+<p>This Preference Editor has only one preference – a simple boolean setting for the car’s heated seats feature – and a
+Save button. Try it out: If you check the checkbox and click save, the state of the preference will be stored in a
+cookie, and when you reload the page, the checkbox will be set to the saved value. Go ahead, try it.</p>
+<p>Let’s talk about what we’re seeing in this interface:</p>
+<figure>
+    <img src="../images/prefsEditorParts.png" alt="The parts of a Preference Editor screen">
+    <figcaption>Figure 3: The parts of a Preference Editor screen</figcaption>
+</figure>
+<ul>
+<li>This Editor is a full-page editor, so all of what you see is Preferences Editor (the outer, blue dashed line).</li>
+<li>The content inside the rectangle (outlined with a green dashed line) is called a Panel – a container representing one
+(or more) preferences. This particular Editor has only one Panel, but a realistic Editor will likely have several.
+This tutorial will teach you what you need to know to add more Panels to this Editor.</li>
+<li>Inside the Panel is an Adjuster (outlined by the inner-most, orange dashed line) – the controls for adjusting a
+particular preference. This Panel has only one Adjuster in it, but you might want to create a Panel that has multiple
+Adjusters, say, in the case of very closely-related preferences.  This tutorial will teach you about creating Panels
+with multiple Adjusters.</li>
+</ul>
+<p>Let’s take a close look at the code.</p>
+<h4 id="primary-schema">Primary Schema</h4>
+<p>The <a href="../PrimarySchemaForPreferencesFramework.html">Primary Schema</a> is a document that defines the preferences for the
+Editor. The Primary Schema for our example Editor is defined in the <code>schemas/primary.js</code> file using the JSON schema
+format (you can learn about JSON schemas at <a href="http://json-schema.org/">http://json-schema.org/</a>):</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">/**
+ * Primary Schema
+ * This schema defines the "heated seats" preference edited by this preferences
+ * editor: its name, type, default value, etc.
+ */</span>
+fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.schemas.heatedSeats"</span>, {
+
+    <span class="hljs-comment">// the base grade for the schema;</span>
+    <span class="hljs-comment">// using this grade tells the framework that this is a primary schema</span>
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.schemas"</span>],
+
+    <span class="hljs-attr">schema</span>: {
+        <span class="hljs-comment">// the actual specification of the preference</span>
+        <span class="hljs-string">"awesomeCars.prefs.heatedSeats"</span>: {
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"boolean"</span>,
+            <span class="hljs-string">"default"</span>: <span class="hljs-literal">false</span>
+        }
+    }
+});
+</code></pre>
+<p>In this code snippet, the Primary Schema is created using a call to the Infusion Framework function <code>fluid.defaults().</code></p>
+<aside class="infusion-docs-callout">
+<p><code>fluid.defaults()</code> is one of the core functions in Infusion: It is used to create
+<a href="../UnderstandingInfusionComponents.html">components</a> (the building blocks of any Infusion application) and register
+them with the Framework.</p>
+</aside>
+<p><code>fluid.defaults()</code> accepts two arguments:</p>
+<ol>
+<li>a string name, and</li>
+<li>a JavaScript object containing <a href="../ComponentConfigurationOptions.html">options for configuring</a> the component.</li>
+</ol>
+<p>In the code snippet above, the first argument – the name – is <code>“awesomeCars.prefs.schemas.heatedSeats”</code>. The second
+argument – the options – is an object containing (in this case) two properties: <code>gradeNames</code> and <code>schema</code>:</p>
+<dl>
+    <dt>
+<p><code>gradeNames</code>
+</dt>
+<dd></p>
+<p>Almost every call to <code>fluid.defaults()</code> includes the <code>gradeNames</code> property in the options argument. This
+property defines the base <em><a href="../ComponentGrades.html">grade</a></em> for the component.
+<aside class="infusion-docs-callout"></p>
+<p>A <strong>grade</strong> is <em>very loosely</em> analogous to a class, in that the properties of the component are derived from the
+elements in the grade document. It’s actually a bit more complex than that; later, you’ll probably want to read the
+documentation about <a href="../ComponentGrades.html">Component Grades</a>. This tutorial will explain more about grades as it
+goes along.
+</aside>
+In a Primary Schema, the <code>gradeNames</code> property must include the grade <code>“fluid.prefs.schemas”</code>, which is defined by the
+Preferences Framework. <strong>Using this particular grade is what registers this component as a Primary Schema with the
+Framework.</strong> The Framework will automatically record this fact and use this Primary Schema with your Preference Editor.
+</dd>
+<dt></p>
+<p><code>schema</code>
+</dt>
+<dd>
+This property is the actual JSON definition of the preferences for this Preference Editor.
+</dd></p>
+</dl>
+<p>In this particular example, only a single preference is being defined; a boolean called
+<code>“awesomeCars.prefs.heatedSeats”</code>:</p>
+<pre class="highlight"><code class="hljs json">{
+    <span class="hljs-attr">"awesomeCars.prefs.heatedSeats"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"boolean"</span>,
+        <span class="hljs-attr">"default"</span>: <span class="hljs-literal">false</span>
+    }
+}
+</code></pre>
+<p>The key in the JSON definition is the name of the preference. This name will be used throughout the Preferences
+Framework to associate all the components related to the setting. The name can be anything, so long as it is used
+consistently, but keep in mind that it will be used in the persistent storage for the user's preference, and will be
+shared with other technologies that may wish to define enactors to respond to it. We recommend that it be thoughtfully
+namespaced and human-understandable.</p>
+<p>The value is an object containing the properties of the preference. Every preference in a Primary Schema must have at
+least two properties: <code>“type”</code> and <code>“default”</code>.  <em>Coming soon: More information about these two properties.</em></p>
+<h4 id="panel">Panel</h4>
+<p>A <a href="../Panels.html">Panel</a> is a <a href="../UnderstandingInfusionComponents.html">component</a> responsible for rendering the user
+interface controls for a preference and tying them to the internal model that represents the preference value. The Panel
+for the heated seats preference control is defined in the <code>prefsEditor.js</code> file:</p>
+<aside class="infusion-docs-callout">
+<p><a href="../UnderstandingInfusionComponents.html">Components</a> are the core building-blocks of any Infusion application. An
+Infusion component can represent a visible component on screen, a collection of related functionality (such as an
+object, as in object-orientation), or simply a unit of work or relationship between other components.</p>
+</aside>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">/**
+ * Panel for the heated seats preference
+ */</span>
+fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.panels.heatedSeats"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.panel"</span>],
+
+    <span class="hljs-comment">// the Preference Map maps the information in the primary schema to this panel</span>
+    <span class="hljs-attr">preferenceMap</span>: {
+        <span class="hljs-comment">// the key must match the name of the pref in the primary schema</span>
+        <span class="hljs-string">"awesomeCars.prefs.heatedSeats"</span>: {
+            <span class="hljs-comment">// this key, "model.heatedSeats", is the path into the panel's model</span>
+            <span class="hljs-comment">// where this preference is stored</span>
+            <span class="hljs-string">"model.heatedSeats"</span>: <span class="hljs-string">"default"</span>
+        }
+    },
+
+    <span class="hljs-comment">// selectors identify elements in the DOM that need to be accessed by the code;</span>
+    <span class="hljs-comment">// in this case, the Renderer will render data into these particular elements</span>
+    <span class="hljs-attr">selectors</span>: {
+        <span class="hljs-attr">heatedSeats</span>: <span class="hljs-string">".awec-heatedSeats"</span>
+    },
+
+    <span class="hljs-comment">// the ProtoTree is basically instructions to the Renderer</span>
+    <span class="hljs-comment">// the keys in the protoTree match the selectors above</span>
+    <span class="hljs-attr">protoTree</span>: {
+        <span class="hljs-comment">// "${heatedSeats}" is a reference to the last part of the model path in the preferenceMap</span>
+        <span class="hljs-attr">heatedSeats</span>: <span class="hljs-string">"${heatedSeats}"</span>
+    }
+});
+</code></pre>
+<p>In this code snippet, the Panel is created using a call to the Infusion Framework function
+<code>fluid.defaults()</code>, just as the Primary Schema was. As with the Primary Schema, the call to
+<code>fluid.defaults()</code> is passed two arguments:</p>
+<ol>
+<li>a string name (<code>&quot;awesomeCars.prefs.panels.heatedSeats&quot;</code>), and</li>
+<li>a JavaScript object containing options for configuring the component – in this case, the Panel.</li>
+</ol>
+<p>The screenshot in <a href="#figure2">Figure 2 (above)</a> shows what the Panel looks like to the user: A single checkbox
+and label, with a header above. The options for configuring this Panel
+include four properties: <code>gradeNames</code>, <code>preferenceMap</code>, <code>selectors</code> and <code>protoTree</code>:</p>
+<dl>
+<dt>
+<p><code>gradeNames</code></p>
+</dt>
+<dd>
+<p>As we saw with the Primary Schema, any call to <code>fluid.defaults()</code> must refer to any parent
+grades using the <code>gradeNames</code> property. Panels must use the <code>&quot;fluid.prefs.panel&quot;</code> grade.</p>
+</dd>
+<dt>
+<p><code>preferenceMap</code></p>
+</dt>
+<dd>A Panel must have a _ Preference Map_, which maps the information in the Primary Schema
+into your Panel. Let’s look at this one more closely:
+<pre class="highlight">
+<code class="hljs javascript">preferenceMap: {
+    "awesomeCars.prefs.heatedSeats": {
+        "model.heatedSeats": "default"
+    }
+}</code></pre>
+<p>The first line of the  Preference Map, <code>“awesomeCars.prefs.heatedSeats”</code>, is the name of the preference.
+This exactly matches the name we saw in the Primary Schema earlier. The value for this
+key is a JavaScript object that defines how this particular preference relates to the Panel’s
+internal data model.</p>
+<p>The content of this  Preference Map is a key/value pair:</p>
+<ul>
+<li>
+<p>The key, <code>“model.heatedSeats”</code>, is an <a href="../FrameworkConcepts.html#el-paths">EL path</a> into the
+Panel’s data model. An “EL path” is just a
+dot-separated path built from names. In this case, it means “the <code>heatedSeats</code>
+property of the <a href="../FrameworkConcepts.html#model-objects"><code>model</code></a> property” of the Panel.</p>
+<aside class="infusion-docs-callout">
+<p><a href="../FrameworkConcepts.html#model-objects">Models</a> are central to Infusion, which,
+while not formally a <a href="../FrameworkConcepts.html#mvc">Model-View-Controller framework</a>,
+embodies the the separation of concerns that is central to MVC.
+Most Infusion components have an internal model, for maintaining the state of the component.</p>
+</aside>
+</li>
+<li>
+<p>The value, <code>“default”</code>, is an EL path referencing the <code>“default”</code> property in the Primary Schema.</p>
+</li>
+</ul>
+<p>This  Preference Map is saying two things:</p>
+<ol>
+<li>
+<p>The preference called <code>“awesomeCars.prefs.heatedSeats”</code> should be stored in the Panel’s model
+in a property called <code>heatedSeats</code>, and</p>
+</li>
+<li>
+<p>the initial value for the property should be taken from the <code>“default”</code> property of the Primary Schema.</p>
+</li>
+</ul>
+<p>A Preference Map can specify other destinations for Primary Schema information, besides the model.
+We'll see an example of this when we add another panel, later in this tutorial.</p>
+</dd>
+<dt>
+<p><code>selectors</code></p>
+</dt>
+<dd>
+<p>A Panel is a <em><a href="../tutorial-gettingStartedWithInfusion/ViewComponents.html">view component</a></em> – a type of Infusion component
+that has a <em>view</em>, that is, a user interface. In order to maintain a separation between the code and the HTML for the
+view, the code interacts with the HTML through named <a href="../ComponentConfigurationOptions.html#selectors">selectors</a>: The
+code only references the name, and a Framework feature called the DOM Binder looks up the relevant DOM node for the name
+based on the information in this <code>selectors</code> option.</p>
+<p>Let’s look at this more closely:</p>
+<pre class="highlight">
+<code class="hljs javascript">selectors: {
+    heatedSeats: ".awec-heatedSeats"
+},</code></pre>
+<p>The content of a <code>selectors</code> property is a set of key/value pairs. The key is the name of the selector and the value is
+the selector itself. This property has only one selector, named <code>heatedSeats</code>. The value is the CSS selector
+<code>&quot;.awec-heatedSeats&quot;</code>. This selector references the actual checkbox in the template for the Panel. This template is
+found in the <code>html/heatedSeats.html</code> file, which looks like this:</p>
+<pre class="highlight">
+<code class="hljs html">&lt;section class="awe-panel"&gt;
+    &lt;h2&gt;Heated Seats&lt;/h2&gt;
+
+    &lt;label for="prefsEd-heatedSeats"&gt;Enable the heated seats when the car starts&lt;/label&gt;
+    &lt;input type="checkbox" id="prefsEd-heatedSeats" class="awec-heatedSeats"/&gt;
+&lt;/section&gt;</code></pre>
+<p>You can see the <code>“awec-heatedSeats”</code> class name on the <code>&lt;input&gt;</code> element.</p>
+</dd>
+<dt>
+<p><code>protoTree</code></p>
+</dt>
+<dd>
+<p>A Panel is also a <em><a href="../RendererComponents.html">Renderer component</a></em> – a type of Infusion component that uses the Infusion
+<a href="../Renderer.html">Renderer</a> to render the view based on data in the component’s model. The
+<em><a href="../RendererComponentTrees.html">protoTree</a></em> is the instructions for how the data in the component’s model maps to the
+template. Let’s look at this more closely:</p>
+<pre class="highlight">
+<code class="hljs javascript">protoTree: {
+    heatedSeats: "${heatedSeats}"
+}</code>
+</pre>
+<p>A protoTree contains key/value pairs, where</p>
+<ul>
+<li>the key is a selector <em>name</em> specified in the <code>selectors</code> option, and</li>
+<li>the value is the specification for what to render into the DOM node referenced by the selector.</li>
+</ul>
+<p>Here, the one key <code>heatedSeats</code> refers to the selector named <code>heatedSeats</code> i.e. the reference to the checkbox in the
+HTML template. The value is a reference to the <code>heatedSeats</code> property of Panel’s data model. In the Infusion Framework,
+an <em><a href="../IoCReferences.html">IoC reference</a></em> (IoC stands for Inversion of Control) is a reference to an object in the
+current context using a particular syntax – specifically, the form <code>{context-name}.some.path.segments</code>. <em>Coming soon:
+More information about IoC references.</em></p>
+</dd>
+</dl>
+<h4 id="auxiliary-schema">Auxiliary Schema</h4>
+<p>The <a href="../AuxiliarySchemaForPreferencesFramework.html">Auxiliary Schema</a> is a document that specifies all the things needed
+to actually build the Preference Editor. The Auxiliary Schema for our example Editor is defined in the
+<code>schemas/auxiliary.js</code> file:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.auxSchema"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.auxSchema"</span>],
+    <span class="hljs-attr">auxiliarySchema</span>: {
+          <span class="hljs-comment">// some code not shown</span>
+    }
+});
+</code></pre>
+<p>Again, we use <code>fluid.defaults()</code> to create the Schema. As with the Primary Schema and the Panel, <code>fluid.defaults()</code> is
+passed two arguments: 1) a string name (<code>&quot;awesomeCars.prefs.auxSchema&quot;</code>), and 2) a JavaScript object literal containing
+configuration options.</p>
+<p>Let’s look at the Schema itself in detail:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    auxiliarySchema: {
+        // the loaderGrade identifies the "base" form of preference editor desired
+        loaderGrades: ["fluid.prefs.fullNoPreview"],
+
+        // 'terms' are strings that can be re-used elsewhere in this schema;
+        terms: {
+            templatePrefix: "html"
+        },
+
+        // the main template for the preference editor itself
+        template: "%templatePrefix/prefsEditorTemplate.html",
+
+        heatedSeats: {
+            // this 'type' must match the name of the pref in the primary schema
+            type: "awesomeCars.prefs.heatedSeats",
+            panel: {
+                // this 'type' must match the name of the panel grade created for this pref
+                type: "awesomeCars.prefs.panels.heatedSeats",
+
+                // selector indicating where, in the main template, to place this panel
+                container: ".awec-heatedSeats",
+
+                // the template for this panel
+                template: "%templatePrefix/heatedSeats.html"
+            }
+        }
+    }
+}
+</code></pre>
+<p>An auxiliary schema can be generally divided into two kinds of properties:</p>
+<ol>
+<li>top-level members, defining globally-used values, and</li>
+<li>per-preference members (one per preference), defining the specific requirements for each preference.</li>
+</ol>
+<h5 id="loader-grade">Loader Grade</h5>
+<p>The <em>loader grade</em> specifies the <em>type</em> of Preference Editor:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    loaderGrades: ["fluid.prefs.fullNoPreview"]
+}
+</code></pre>
+<p>The Preference Framework provides three pre-defined types of Editor:</p>
+<ol>
+<li>separated panel (the default): This is a page-width panel collapsed at the top of the page; it slides down when
+activated by the user.</li>
+<li>full page, no preview: This is a Preference Editor that occupies the full page.</li>
+<li>full page, with preview: This is a Preference Editor that occupies the full page, but includes provisions for an
+iframe in the page to preview any changes made by the Editor.</li>
+</ol>
+<p>In the code snippet above, the <code>loaderGrades</code> option is used to specify the “full page, no preview” form.</p>
+<h5 id="templates">Templates</h5>
+<p>The Auxiliary Schema must declare where to find the main HTML template for the Preference Editor. In our example, this
+template is located in the same folder as other HTML templates. The Auxiliary Schema allows you to define <code>terms</code> –
+strings that can be re-used elsewhere in the schema. Here, it is being used to define, in a single place, the path to
+where the HTML templates are:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    terms: {
+        templatePrefix: "html"
+    }
+}
+</code></pre>
+<p>The template property specifies the main HTML template for the entire Preference Editor:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    template: "%templatePrefix/prefsEditorTemplate.html"
+}
+</code></pre>
+<p>You can see the full text of this file, <code>prefsEditorTemplate.html</code>, in the github repo:
+<a href="https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html">https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html</a>
+The main thing to note in the template is the placeholder for the Panel, in this example a <code>&lt;div&gt;</code> with the class
+<code>awec-heatedSeats</code>:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-comment">&lt;!-- placeholder for the heated seats preference panel --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"awec-heatedSeats"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>The Framework will insert the constructed Panel into this div
+</code></pre>
+<p>The Framework will insert the constructed Panel into this <code>&lt;div&gt;</code>.</p>
+<h5 id="preferences">Preferences</h5>
+<p>The next thing in the Auxiliary Schema is the configuration for the heated seats preference:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    heatedSeats: {
+        // this 'type' must match the name of the pref in the primary schema
+        type: "awesomeCars.prefs.heatedSeats",
+
+        panel: {
+            // this 'type' must match the name of the panel grade created for this pref
+            type: "awesomeCars.prefs.panels.heatedSeats",
+
+            // selector indicating where, in the main template, to place this panel
+            container: ".awec-heatedSeats",
+
+            // the template for this panel
+            template: "%templatePrefix/heatedSeats.html"
+        }
+    }
+}
+</code></pre>
+<p>(The name of the property, <code>heatedSeats</code>, can actually be anything, but it’s helpful to use the name
+of the preference.)</p>
+<p>In our example, the heated seats preference configuration includes two things:</p>
+<ol>
+<li>the type of the preference, and</li>
+<li>information about the Panel.</li>
+</ol>
+<p>The value of the <code>type</code> property is the name of the preference as defined in the Primary Schema.</p>
+<p>The value of the <code>panel</code> property is a JavaScript object containing configuration information
+for the Panel. Let’s look at each of the properties:</p>
+<dl>
+<dt>
+<p><code>type</code></p>
+</dt>
+<dd>
+<p>This is the name of the Panel that was defined in the call to <code>fluid.defaults()</code> above.</p>
+</dd>
+<dt>
+<p><code>container</code></p>
+</dt>
+<dd>
+<p>This is a CSS-based selector referencing the Panel’s placeholder element in the main HTML
+template – the one referenced by the <code>template</code> property above.</p>
+</dd>
+<dt>
+<p><code>template</code></p>
+</dt>
+<dd>
+<p>This is the path and filename of the HTML template for this Panel.
+Notice, in this example, how the <code>templatePrefix</code> term is being used.</p>
+</dd>
+</dl>
+<h4 id="instantiation">Instantiation</h4>
+<p>The last thing in the <code>js/prefsEditor.js</code> file is a call to the Preferences Framework
+function <a href="../PreferencesEditor.html"><code>fluid.prefs.create()</code></a>. This function actually creates the Preference Editor.
+It accepts two arguments:</p>
+<ol>
+<li>a CSS selector indicating the container element for the Preference Editor, and</li>
+<li>a JavaScript object containing configuration information for the Preference Editor.</li>
+</ol>
+<pre class="highlight"><code class="hljs javascript">awesomeCars.prefs.init = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">container</span>) </span>{
+    <span class="hljs-keyword">return</span> fluid.prefs.create(container, {
+        <span class="hljs-attr">build</span>: {
+            <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"awesomeCars.prefs.auxSchema"</span>]
+        }
+    });
+};
+</code></pre>
+<p>This function is invoked in the main HTML file for the Preference Editor, <code>index.html</code>. You can see the entire file
+here:
+<a href="https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/index.html">https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/index.html</a>.
+Let’s look at this invocation:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"preferencesEditor"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="actionscript">
+    awesomeCars.prefs.init(<span class="hljs-string">"#preferencesEditor"</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>In the HTML snippet above, the <code>&lt;div&gt;</code> is the container that the Preference Editor will be rendered inside of. The call
+to <code>awesomeCars.prefs.init()</code> is passed the ID of the element, <code>“#preferencesEditor”</code>, as the container argument.</p>
+<p>In the code snippet above, the first argument – <code>container</code> – is the CSS identifier passed to the function. The second
+argument – the options – is an object containing (in this case) one property: <code>build</code>. This option is a JavaScript
+object containing information that will be passed to the Builder, a key part of the Preferences Framework. The Builder
+is the core component responsible for actually building the Preference Editor based on all of the configuration
+information for the preferences, the Panels, etc. For our simple Preference Editor, the build options contains only one
+property: The grade name of our Auxiliary Schema:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    build: {
+        gradeNames: ["awesomeCars.prefs.auxSchema"]
+    }
+}
+</code></pre>
+<p>The Auxiliary Schema (plus the Primary Schema that was registered with the Framework automatically) contains all the
+information the Builder needs to construct the Preference Editor.</p>
+<h2 id="adding-another-preference">Adding another preference</h2>
+<p>Let’s use what we’ve learned so far to add another simple preference to the Editor: Preferred volume for the radio. This
+preference will be a number, and it will have a range of possible values.</p>
+<p>To add this preference, we’ll need to</p>
+<ol>
+<li>define the preference,</li>
+<li>create the Panel, and</li>
+<li>add the Panel to the Editor.</li>
+</ol>
+<h3 id="defining-the-preference">Defining the preference</h3>
+<p>We’ll edit the Primary Schema definition in <code>schemas/primary.js</code> to add the new preference definition. It’s <code>type</code> is
+<code>“number”</code>, and in addition to the default, we’ll have to define a minimum and maximum, as well as the step value:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.schemas.radioVolume"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.schemas"</span>],
+    <span class="hljs-attr">schema</span>: {
+        <span class="hljs-string">"awesomeCars.prefs.radioVolume"</span>: {
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"number"</span>,
+            <span class="hljs-string">"default"</span>: <span class="hljs-string">"2"</span>,
+            <span class="hljs-string">"minimum"</span>: <span class="hljs-string">"1"</span>,
+            <span class="hljs-string">"maximum"</span>: <span class="hljs-string">"5"</span>,
+            <span class="hljs-string">"divisibleBy"</span>: <span class="hljs-string">"0.5"</span>
+        }
+    }
+});
+</code></pre>
+<h3 id="creating-the-panel">Creating the Panel</h3>
+<h4 id="template-and-adjuster">Template and Adjuster</h4>
+<p>We will need an HTML template for the Panel. Since the preference is a range, we’ll use a slider for the Adjuster.</p>
+<p>Create a new file in the <code>html</code> folder called <code>radioVolume.html</code> and use a structure similar to the one already used for
+the heated seats template:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"awe-panel"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Radio Volume<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"prefsEd-radioVolume"</span>&gt;</span>Set the desired volume for the radio<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"prefsEd-radioVolume"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"awec-radioVolume"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</code></pre>
+<p>We’ve used an <code>&lt;input&gt;</code> with type <code>“range”</code> for the Adjuster. The template doesn’t need to set the min, max or value
+attributes; those are dependent on the Primary Schema and will be added in by the Preference Editor.</p>
+<h4 id="panel-component">Panel component</h4>
+<p>In the <code>prefsEditor.js</code> file, we'll create the Panel component for this preference. As with the heated seats Panel, we
+use a call to <code>fluid.defaults()</code> and set the grade to <code>“fluid.prefs.panel”</code>:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.panels.radioVolume"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.panel"</span>]
+    <span class="hljs-comment">// options will go here...</span>
+});
+</code></pre>
+<p>As with the heated seats Panel, we need a Preference Map:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.panels.radioVolume"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.panel"</span>],
+    <span class="hljs-attr">preferenceMap</span>: {
+        <span class="hljs-string">"awesomeCars.prefs.radioVolume"</span>: {
+            <span class="hljs-string">"model.radioVolume"</span>: <span class="hljs-string">"default"</span>
+        }
+    }
+    <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<p>The Panel component also needs to know about the minimum, maximum and step value defined in the Primary Schema. These
+values are not likely to change over the life of the component, so it’s not really appropriate to store them in the
+model. Instead, we create a <code>range</code> property as a component option:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.panels.radioVolume"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.panel"</span>],
+
+    <span class="hljs-attr">preferenceMap</span>: {
+        <span class="hljs-string">"awesomeCars.prefs.radioVolume"</span>: {
+            <span class="hljs-string">"model.radioVolume"</span>: <span class="hljs-string">"default"</span>
+        }
+    },
+    <span class="hljs-attr">range</span>: {
+        <span class="hljs-attr">min</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">max</span>: <span class="hljs-number">10</span>,
+        <span class="hljs-attr">step</span>: <span class="hljs-number">1</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<p>Finally, the Preference Map needs to tell the component to map the Primary Schema values into the <code>range</code> property:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.panels.radioVolume"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.panel"</span>],
+    <span class="hljs-attr">preferenceMap</span>: {
+        <span class="hljs-string">"awesomeCars.prefs.radioVolume"</span>: {
+            <span class="hljs-string">"model.radioVolume"</span>: <span class="hljs-string">"default"</span>,
+            <span class="hljs-string">"range.min"</span>: <span class="hljs-string">"minimum"</span>,
+            <span class="hljs-string">"range.max"</span>: <span class="hljs-string">"maximum"</span>,
+            <span class="hljs-string">"range.step"</span>: <span class="hljs-string">"divisibleBy"</span>
+        }
+    },
+    <span class="hljs-attr">range</span>: {
+        <span class="hljs-attr">min</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">max</span>: <span class="hljs-number">10</span>,
+        <span class="hljs-attr">step</span>: <span class="hljs-number">1</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<p>As we saw with the heated seats Panel, we need to define a selector to identify the HTML element where the preference
+value will be bound:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.panels.radioVolume"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.panel"</span>],
+    <span class="hljs-attr">preferenceMap</span>: {
+        <span class="hljs-string">"awesomeCars.prefs.radioVolume"</span>: {
+            <span class="hljs-string">"model.radioVolume"</span>: <span class="hljs-string">"default"</span>,
+            <span class="hljs-string">"range.min"</span>: <span class="hljs-string">"minimum"</span>,
+            <span class="hljs-string">"range.max"</span>: <span class="hljs-string">"maximum"</span>,
+            <span class="hljs-string">"range.step"</span>: <span class="hljs-string">"divisibleBy"</span>
+        }
+    },
+    <span class="hljs-attr">range</span>: {
+        <span class="hljs-attr">min</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">max</span>: <span class="hljs-number">10</span>,
+        <span class="hljs-attr">step</span>: <span class="hljs-number">1</span>
+    },
+    <span class="hljs-attr">selectors</span>: {
+        <span class="hljs-attr">radioVolume</span>: <span class="hljs-string">".awec-radioVolume"</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<p>Finally, we need to define the Renderer protoTree – the instructions for rendering the model value into the template.
+This protoTree will need to be a little bit more complicated than what we used for the heated seats preference. That
+protoTree needed to do only one thing: bind the model value to the input element. For the range input, we still need to
+bind the model value, but we <em>also</em> need to set the <code>min</code>, <code>max</code> and <code>step</code> attributes of the element. For this, a
+simple key/value pair isn’t enough. Instead of a simple string reference as the value, we’ll use an object with a value
+property:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    protoTree: {
+        radioVolume: {
+          value: "${radioVolume}"
+        }
+    }
+}
+</code></pre>
+<p>To this, we will add a <em><a href="../RendererDecorators.html">Renderer Decorator</a></em> to set the attributes using the contents of the
+<code>range</code> property:</p>
+<aside class="infusion-docs-callout">
+<p><a href="../RendererDecorators.html">Renderer Decorators</a> allow users of the Renderer to attach various things, such as functions,
+class names, etc., to the components at render time.</p>
+</aside>
+<pre class="highlight"><code class="hljs undefined">{
+    protoTree: {
+        radioVolume: {
+          value: "${radioVolume}",
+          decorators: [{
+              type: "attrs",
+              attributes: {
+                  min: "{that}.options.range.min",
+                  max: "{that}.options.range.max",
+                  step: "{that}.options.range.step"
+              }
+          }]
+        }
+    }
+}
+</code></pre>
+<p>So, this is what our final radio volume Panel component definition looks like:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.panels.radioVolume"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.panel"</span>],
+
+    <span class="hljs-attr">preferenceMap</span>: {
+        <span class="hljs-string">"awesomeCars.prefs.radioVolume"</span>: {
+            <span class="hljs-string">"model.radioVolume"</span>: <span class="hljs-string">"default"</span>,
+            <span class="hljs-string">"range.min"</span>: <span class="hljs-string">"minimum"</span>,
+            <span class="hljs-string">"range.max"</span>: <span class="hljs-string">"maximum"</span>,
+            <span class="hljs-string">"range.step"</span>: <span class="hljs-string">"divisibleBy"</span>
+        }
+    },
+
+    <span class="hljs-attr">range</span>: {
+        <span class="hljs-attr">min</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">max</span>: <span class="hljs-number">10</span>,
+        <span class="hljs-attr">step</span>: <span class="hljs-number">1</span>
+    },
+
+    <span class="hljs-attr">selectors</span>: {
+        <span class="hljs-attr">radioVolume</span>: <span class="hljs-string">".awec-radioVolume"</span>
+    },
+
+    <span class="hljs-attr">protoTree</span>: {
+        <span class="hljs-attr">radioVolume</span>: {
+            <span class="hljs-attr">value</span>: <span class="hljs-string">"${radioVolume}"</span>,
+            <span class="hljs-attr">decorators</span>: [{
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"attrs"</span>,
+                <span class="hljs-attr">attributes</span>: {
+                    <span class="hljs-attr">min</span>: <span class="hljs-string">"{that}.options.range.min"</span>,
+                    <span class="hljs-attr">max</span>: <span class="hljs-string">"{that}.options.range.max"</span>,
+                    <span class="hljs-attr">step</span>: <span class="hljs-string">"{that}.options.range.step"</span>
+                }
+            }]
+        }
+    }
+});
+</code></pre>
+<h3 id="adding-the-panel-to-the-editor">Adding the Panel to the Editor</h3>
+<p>We saw above that the main HTML template for the tool, <code>html/prefsEditorTemplate.html</code>,
+has a placeholder in it for the heated seats Panel.
+We will add another placeholder for the radio volume Panel:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-comment">&lt;!-- placeholder for the heated seats preference panel --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"awec-heatedSeats"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- placeholder for the radio volume preference panel --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"radioVolume"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>We’ll also need a property in the Auxiliary Schema, in <code>schemas/auxiliary.js</code>,  to provide the
+configuration options specific to the new Panel:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    radioVolume: {
+        type: "awesomeCars.prefs.radioVolume",
+        panel: {
+            type: "awesomeCars.prefs.panels.radioVolume",
+            container: ".awec-radioVolume",
+            template: "%templatePrefix/radioVolume.html"
+        }
+    }
+}
+</code></pre>
+<h2 id="saving-preferences">Saving Preferences</h2>
+<p>Right now, when you click the &quot;save&quot; button, the preferences are saved – if you reload the page,
+they're all there.
+How does that happen? Where are they saved to? And how would you change that?</p>
+<p>By default, the Preferences Framework automatically saves the preferences to a browser cookie.
+How does that happen?</p>
+<ul>
+<li>The template has a specific class on the &quot;save&quot; button: <code>flc-prefsEditor-save</code>.</li>
+<li>The Preferences Framework automatically binds a click handler to anything with that class.</li>
+<li>The click handler ultimately invokes the <code>set</code> method on the default <a href="../SettingsStore.html">settings store</a>, which is a
+<a href="../SettingsStore.html#fluidprefscookiestore">CookieStore</a>.</li>
+</ul>
+<p>Cookies are great for websites, but this is a car. The preferences need to be saved to the car's internal storage. We
+need to a) create a Settings Store that will save to the internal storage and b) tell the preferences editor to use that
+instead.</p>
+<p>The first step is to create a grade that uses the built-in <code>fluid.prefs.store</code>:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.store"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.store"</span>]
+});
+</code></pre>
+<p>We'll need to override the default <code>get()</code> and <code>set()</code> methods with our own versions. These methods are implemented as
+<a href="../Invokers.html">invokers</a>, which makes it easy to plug in our own functions:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.store"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.store"</span>],
+    <span class="hljs-attr">invokers</span>: {
+        <span class="hljs-attr">get</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"awesomeCars.prefs.store.get"</span>
+        },
+        <span class="hljs-attr">set</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"awesomeCars.prefs.store.set"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"{arguments}.0"</span>]
+        }
+    }
+});
+</code></pre>
+<p>Our <code>get</code> and <code>set</code> functions will need to do whatever is necessary to save and retrieve the preferences to the car's
+internal data storage:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"awesomeCars.prefs.store"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.prefs.store"</span>],
+    <span class="hljs-attr">invokers</span>: {
+        <span class="hljs-attr">get</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"awesomeCars.prefs.store.get"</span>
+        },
+        <span class="hljs-attr">set</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"awesomeCars.prefs.store.set"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"{arguments}.0"</span>]
+        }
+    }
+});
+
+awesomeCars.prefs.store.get = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// do whatever you need to do, to retrieve the settings</span>
+    <span class="hljs-keyword">return</span> settings;
+};
+awesomeCars.prefs.store.set = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">settings</span>) </span>{
+    <span class="hljs-comment">// do whatever you need to do to store the settings</span>
+};
+</code></pre>
+<p>Finally, we need to tell the preferences editor to use our new settings store instead of the default cookie store. We do
+this by using the <code>storeType</code> option when we create the editor (as we saw back in <a href="#instantiation">Instantiation</a>):</p>
+<pre class="highlight"><code class="hljs javascript">awesomeCars.prefs.init = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">container</span>) </span>{
+    <span class="hljs-keyword">return</span> fluid.prefs.create(container, {
+        <span class="hljs-attr">build</span>: {
+            <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"awesomeCars.prefs.auxSchema"</span>]
+        },
+        <span class="hljs-attr">prefsEditor</span>: {
+            <span class="hljs-comment">// specify the settings store to use</span>
+            <span class="hljs-attr">storeType</span>: <span class="hljs-string">"awesomeCars.prefs.store"</span>
+        }
+    });
+};
+</code></pre>
+<h2 id="coming-soon">Coming Soon:</h2>
+<p>Information about:</p>
+<ul>
+<li>Enactors</li>
+<li>More complicated Panels</li>
+<li>Localization</li>
+<li>Design consideration</li>
+<li>Case studies</li>
+</ul>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

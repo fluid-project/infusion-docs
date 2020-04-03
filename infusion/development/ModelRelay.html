@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Model Relay | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion" class="infusion-docs-category-active">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Infusion</span>
+                                
+                                    <span class="infusion-docs-sectionName">Writing Configuration</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UnderstandingInfusionComponents.html"><span class="infusion-docs-TOC-pageName">Understanding Infusion Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentOptionsAndDefaults.html"><span class="infusion-docs-TOC-pageName">Understanding Component Options And Defaults</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentConfigurationOptions.html"><span class="infusion-docs-TOC-pageName">Component Configuration Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentGrades.html"><span class="infusion-docs-TOC-pageName">Component Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FunctionGrades.html"><span class="infusion-docs-TOC-pageName">Function Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="OptionsMerging.html"><span class="infusion-docs-TOC-pageName">Options Merging</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentLifecycle.html"><span class="infusion-docs-TOC-pageName">Component Lifecycle</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Priorities.html"><span class="infusion-docs-TOC-pageName">Priorities</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FrameworkConcepts.html"><span class="infusion-docs-TOC-pageName">Framework Concepts</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">API</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CoreAPI.html"><span class="infusion-docs-TOC-pageName">Core API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PromisesAPI.html"><span class="infusion-docs-TOC-pageName">Promises API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCAPI.html"><span class="infusion-docs-TOC-pageName">IoC API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelTransformationAPI.html"><span class="infusion-docs-TOC-pageName">Model Transformation API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewAPI.html"><span class="infusion-docs-TOC-pageName">View API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="NodeAPI.html"><span class="infusion-docs-TOC-pageName">node.js Support and API</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Inversion of Control</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseInfusionIoC.html"><span class="infusion-docs-TOC-pageName">How to Use Infusion IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SubcomponentDeclaration.html"><span class="infusion-docs-TOC-pageName">Subcomponent Declaration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Contexts.html"><span class="infusion-docs-TOC-pageName">Contexts</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ContextAwareness.html"><span class="infusion-docs-TOC-pageName">ContextAwareness</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ExpansionOfComponentOptions.html"><span class="infusion-docs-TOC-pageName">Expansion of Component Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCReferences.html"><span class="infusion-docs-TOC-pageName">IoC References</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCSS.html"><span class="infusion-docs-TOC-pageName">IoCSS</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeclarativeThisismInIoC.html"><span class="infusion-docs-TOC-pageName">Declarative this-ism In IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Events</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InfusionEventSystem.html"><span class="infusion-docs-TOC-pageName">Infusion Event System</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="EventInjectionAndBoiling.html"><span class="infusion-docs-TOC-pageName">Event injection and boiling</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Models</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplier.html"><span class="infusion-docs-TOC-pageName">ChangeApplier</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Model Relay</span>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Views</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinder.html"><span class="infusion-docs-TOC-pageName">DOM Binder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ClassNameConventions.html"><span class="infusion-docs-TOC-pageName">Class Name Conventions</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Renderer</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Renderer.html"><span class="infusion-docs-TOC-pageName">Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseTheRenderer.html"><span class="infusion-docs-TOC-pageName">How to Use the Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTrees.html"><span class="infusion-docs-TOC-pageName">Renderer Component Trees</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ProtoComponentTypes.html"><span class="infusion-docs-TOC-pageName">ProtoComponent Types</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTreeExpanders.html"><span class="infusion-docs-TOC-pageName">Renderer Component Tree Expanders</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Cutpoints.html"><span class="infusion-docs-TOC-pageName">Cutpoints</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererDecorators.html"><span class="infusion-docs-TOC-pageName">Renderer Decorators</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Loading Resources</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ResourceLoader.html"><span class="infusion-docs-TOC-pageName">Resource Loader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FetchResources.html"><span class="infusion-docs-TOC-pageName">fluid.fetchResources</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Builder.html"><span class="infusion-docs-TOC-pageName">Builder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PrimarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Primary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="AuxiliarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Auxiliary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SettingsStore.html"><span class="infusion-docs-TOC-pageName">Settings Store</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConnectingThePartsOfAPreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Connecting the Parts of a Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Enactors.html"><span class="infusion-docs-TOC-pageName">Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Panels.html"><span class="infusion-docs-TOC-pageName">Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CompositePanels.html"><span class="infusion-docs-TOC-pageName">Composite Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConditionalSubpanels.html"><span class="infusion-docs-TOC-pageName">Conditional Subpanels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="LocalizationInThePreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Localization in the Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Testing</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="jqUnit.html"><span class="infusion-docs-TOC-pageName">Unit Testing with jqUnit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCTestingFramework.html"><span class="infusion-docs-TOC-pageName">IoC Testing Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 1.5</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_4To1_5.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.4 to 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecationsIn1_5.html"><span class="infusion-docs-TOC-pageName">Deprecations In 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html"><span class="infusion-docs-TOC-pageName">UI Options Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/PagerMigration.html"><span class="infusion-docs-TOC-pageName">Pager Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 2.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_5To2_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.5 to 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecatedIn2_0.html"><span class="infusion-docs-TOC-pageName">Deprecated in 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 3.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom2_0To3_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 2.0 to 3.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Model Relay</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/ModelRelay.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>Using the Infusion Model Relay system, you can supply declarative configuration which specifies rules for keeping
+multiple pieces of model state around the component tree automatically up to date with each other's changes.</p>
+<p>We sometimes use the term <em><strong>model skeleton</strong></em> to refer to a connected set of models around the component tree which are
+related together by relay rules. This term illustrates that these models form an inner core which arrive at a set of
+mutually consistent model values, before they start to notify listeners out in the periphery of each component
+(generally, in its view layer). The system might make several passes over a model skeleton in order to satisfy all the
+relay rules, and then update all <a href="ChangeApplierAPI.html#model-listener-declaration"><code>modelListeners</code></a> as a single
+operation — presenting them with a consistent snapshot of the state of the entire skeleton all at once. This
+guarantees that no model listener ever sees a model value which is inconsistent with the relay rules which are meant to
+be keeping them in step, which greatly enhances the reliability and clarity of the application design.</p>
+<p>Every Infusion component descended from the grade <code>fluid.modelComponent</code> (a model-bearing component) supports a
+configuration area named <code>modelRelay</code> in which these rules can be defined, as well as allowing a short-form <em>implicit
+syntax</em> in the <code>model</code> area which can be used where the model values to be synchronised are identical at each end of the
+relationship.</p>
+<h3 id="two-styles-for-configuring-model-relay">Two styles for configuring model relay</h3>
+<p>There are two styles of configuration for setting up model relay — firstly, using the <em><a href="#implicit-model-relay-style">implicit
+syntax</a></em> which just consists of <a href="IoCReferences.html">IoC References</a> from the model
+configuration for one model-bearing component to another — that is, in the component's configuration under the
+top-level <code>model</code> entry. Secondly, the <em><a href="#explicit-model-relay-style">explicit syntax</a></em> which involves an entry in the
+component's top-level <code>modelRelay</code> block expressing a more complex rule, most likely involving some form of <a href="ModelTransformationAPI.html">Model
+Transformation</a> to apply during the relay process. Both of these styles will set up a
+permanent and bidirectional relationship between the two models at the ends of the relay — the relationship will
+be established as the components construct (during the <em><a href="#the-initial-transaction">initial transaction</a></em>), and will
+persist until one of the components at the endpoints is destroyed.</p>
+<h3 id="how-model-relay-updates-propagate">How model relay updates propagate</h3>
+<p>A set of models which are linked by relay rules are called a <em><strong>model skeleton</strong></em>. Whenever an update (via its
+<a href="ChangeApplier.html">ChangeApplier</a>) is received to any model which is part of the skeleton, a <em><strong>transaction</strong></em> begins in
+order to propagate it to all the related models with which it should be synchronised. The framework will keep
+propagating the change to all the models in the skeleton until they have all been brought up to date — however,
+these updates will initially occur privately within the transaction and any external listeners (<code>modelListener</code>s) will
+not be notified during the update process. Once the framework has computed final synchronised values for all of the
+models in the skeleton, the transaction ends, and then all listeners (via their respective ChangeAppliers) will be
+notified all at once.</p>
+<p>If any of these listeners have a <a href="Priorities.html"><code>priority</code></a> field attached to the listener declaration, the framework
+will sort all of these listeners globally across the entire model skeleton impacted by the change, before starting to
+notify them.</p>
+<h3 id="the-initial-transaction">The initial transaction</h3>
+<p>Whenever a new model-bearing component (or an entire tree of model-bearing components) constructs, there will be a
+particular, large style of update transaction known as an <strong>initial transaction</strong>. This is very similar to any other
+synchronisation transaction caused by a <a href="#how-model-relay-updates-propagate">model relay update</a>, although it will
+typically involve more data since all of the initial values of all the involved models must be taken into account
+— these result from any of the normal sources for component configuration, including
+<a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/Fluid.js#L1519-L1539">defaults</a>,
+user-supplied values, <a href="IoCSS.html">distributed</a> options, etc. At the end of the initial transaction, any <a href="ChangeApplierAPI.html#model-listener-declaration">declaratively
+registered listeners</a> will observe all of the new models go through the
+transition from holding their primordial value of <code>undefined</code> to holding their correct synchronised initial values. As
+with any other relay update transaction, this will appear to all the observers to occur in a single step even though
+from the point of view of the framework it may be a complex process involving many passes through the components.</p>
+<p>You can control which components have the default values for their models honoured and which ignored during the initial
+transaction, by using the directives <code>forward</code> and <code>backward</code> in the <code>modelRelay</code> block - these are discussed in the
+section <a href="#controlling-propagation-through-a-relay-rule">Controlling Propagation Through a Relay Rule</a>.</p>
+<h2 id="implicit-model-relay-style">Implicit model relay style</h2>
+<p>This is the most straightforward style for setting up model relay. This takes the form of a simple <a href="IoCReferences.html">IoC
+Reference</a> between one component's model and other. Here is a component which has a child component
+which sets up a model relay relationship with it:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"examples.implicitModelRelay"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.modelComponent"</span>,
+    <span class="hljs-attr">model</span>: {
+        <span class="hljs-attr">parentValue</span>: <span class="hljs-number">3</span>
+    },
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-attr">child</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.modelComponent"</span>,
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">model</span>: {
+                    <span class="hljs-comment">// implicit relay rule setting up synchronisation with one field in parent's model</span>
+                    <span class="hljs-attr">childValue</span>: <span class="hljs-string">"{examples.implicitModelRelay}.model.parentValue"</span>
+                }
+            }
+        }
+    }
+});
+
+<span class="hljs-keyword">var</span> that = examples.implicitModelRelay();
+<span class="hljs-comment">// next line logs 3 - parent's value has been synchronised to child on construction</span>
+<span class="hljs-built_in">console</span>.log(that.child.model.childValue);
+</code></pre>
+<p>The IoC expression <code>{examples.implicitModelRelay}.model.parentValue</code> here refers from one field of the child's model
+called <code>childValue</code> to one field of the parent's model called <code>parentValue</code>. This sets up a permanent model relay
+linking these two fields. From the construction point onwards, the framework will ensure that all updates made to one
+field will be reflected in the other. The framework will naturally ensure that if either of the components at the
+endpoint are destroyed, the relay will be torn down.</p>
+<p>For example, here are some further pieces of code we could write, following on from the above example — these use
+the programmatic <a href="ChangeApplierAPI.html">ChangeApplier API</a> although in practice it is desirable to express as many such
+updates as declaratively as possible:</p>
+<pre class="highlight"><code class="hljs javascript">that.applier.change(<span class="hljs-string">"parentValue"</span>, <span class="hljs-number">4</span>);      <span class="hljs-comment">// update the parent's model field to hold the value 4</span>
+<span class="hljs-built_in">console</span>.log(that.child.model.childValue);   <span class="hljs-comment">// 4 - The child's model value has been updated</span>
+that.child.applier.change(<span class="hljs-string">"childValue"</span>, <span class="hljs-number">5</span>); <span class="hljs-comment">// update the child's model to hold the value 5</span>
+<span class="hljs-built_in">console</span>.log(that.model.parentValue);        <span class="hljs-comment">// 5 - The parent's model value has been updated</span>
+</code></pre>
+<h2 id="explicit-model-relay-style">Explicit model relay style</h2>
+<p>This style is used when we require a <a href="ModelTransformationAPI.html">Model Transformation</a> rule to mediate between the
+updates synchronising one model value with another, or more control over the occasions when the updates occur. The
+simple implicit style is only capable of &quot;moving&quot; the same value between one path and another. Sometimes different
+models choose different strategies for representing &quot;the same value&quot; — for example, one component might represent
+a sound volume level on a scale of 0-100, whereas another might use a range of 0-1. The framework is capable of
+accommodating this kind of difference in viewpoint by allowing the user to explicitly list a transformation rule
+relating one model's instance of a value with another. This is done using the <code>modelRelay</code> section of a component's
+top-level options. Here is the layout of this options section:</p>
+<h3 id="layout-of-top-level-modelrelay-section-of-fluidmodelcomponent-options">Layout of top-level <code>modelRelay</code> section of <code>fluid.modelComponent</code> options</h3>
+<p>The <code>modelRelay</code> options block may take one of the following three forms -</p>
+<ul>
+<li>A single <a href="#modelrelayblock-layout"><code>modelRelayBlock</code></a> holding a single model relay rule - <em>OR</em></li>
+<li>An array of <code>modelRelayBlock</code> sections - <em>OR</em></li>
+<li>A map of keys (namespaces) to <code>modelRelayBlock</code> sections</li>
+</ul>
+<p>The first and third cases are disambiguated by looking for a member of the block named <code>target</code> which holds a <code>String</code>
+value - required for a single <code>modelRelayBlock</code>.</p>
+<h3 id="modelrelayblock-layout"><code>modelRelayBlock</code> layout</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Option name</th><th>Type</th><th>Description</th><th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>source</code> (usual, but not required)</td>
+            <td>String (EL Reference or short local path)</td>
+            <td>
+<p>The source model path to be linked by this relay rule. This option can be omitted if all arguments to the transform are
+presented as IoC references in its definition — as, for example, with <code>fluid.transforms.free</code>.</p>
+</td>
+            <td><code>"volume"</code> / <code>"{someComponent}.model.volume"</code></td>
+        </tr>
+        <tr>
+            <td><code>target</code> (required)</td>
+            <td>String (EL Reference or short local path)</td>
+            <td>The target model path to be linked by this relay rule. This option must always be present.</td>
+            <td><code>"volume"</code> / <code>"{someComponent}.model.volume"</code></td>
+        </tr>
+        <tr>
+            <td><code>singleTransform</code></td>
+            <td>JSON (single <a href="ModelTransformationAPI.html">Model Transformation</a> rule)</td>
+            <td>
+                A short form which can be used where the transformation consists of just a single Model Transformation
+                transform rule. Use either this or <code>transform</code>
+            </td>
+            <td><code>
+{
+    type: "fluid.transforms.linearScale",
+    factor: 100
+}
+            </code> </td>
+        </tr>
+        <tr>
+            <td><code>transform</code></td>
+            <td>JSON (full <a href="ModelTransformationAPI.html">Model Transformation</a> document)</td>
+            <td>
+                A long form of <code>singleTransform</code> which allows any valid Model Transformation document to be
+                used to mediate the relay. This is an infrequently used form.
+            </td>
+            <td>
+                See the <a href="ModelTransformationAPI.html#list-of-available-transformations">list of available
+                transformation functions</a> for more information.
+            </td>
+        </tr>
+        <tr>
+            <td><code>forward</code> (optional)</td>
+            <td><code><a href="#sourcefilterrecord-in-an-explicit-model-relay-block">sourceFilterRecord</a></code></td>
+            <td>
+                Control the situations in which the <a href="#controlling-propagation-through-a-relay-rule">forward
+                leg</a> of the transform operates - by listing one or more <a
+                href="ChangeApplierAPI.html#source-tracking-and-filtering-in-model-listener-blocks">change sources</a>
+                which must match (<code>includeSource</code>) or not match (<code>excludeSource</code>) in the current
+                transaction.
+            </td>
+            <td><code>{excludeSource: "init"}</code></td>
+        </tr>
+        <tr>
+            <td><code>backward</code> (optional)</td>
+            <td><code><a href="#sourcefilterrecord-in-an-explicit-model-relay-block">sourceFilterRecord</a></code></td>
+            <td>
+                Control the situations in which the <a href="#controlling-propagation-through-a-relay-rule">backward
+                leg</a> of the transform operates - by listing one or more <a
+                href="ChangeApplierAPI.html#source-tracking-and-filtering-in-model-listener-blocks">change sources</a>
+                which must match (<code>includeSource</code>) or not match (<code>excludeSource</code>) in the current
+                transaction.
+            </td>
+            <td><code>{excludeSource: "init"}</code></td>
+        </tr>
+        <tr>
+            <td><code>namespace</code> (optional)</td>
+            <td><code>String</code></td>
+            <td>
+<p>Identifies this model relay rule uniquely within its parent component. This namespace may be used to override the relay
+rule from a derived <a href="ComponentGrades.html">grade</a>, or to control the priority of one relay rule with respect to
+another by using the <code>priority</code> field. Compare with the similar uses of namespaces within Infusion <a
+href="InfusionEventSystem.html#full-listener-record-form">events</a>, <a
+href="InfusionEventSystem.html#full-listener-record-form">model listeners</a>, etc. As with <code>modelListener</code>, this value
+will be taken from the key of the <code>modelRelayBlock</code> if it is in the &quot;map of keys&quot; form and the <code>namespace</code>
+member is absent.</p>
+</td>
+            <td><code>"resolveCentre"</code></td>
+        </tr>
+        <tr>
+            <td><code>priority</code> (optional)</td>
+            <td><code><a href="Priorities.html#supported-values-for-priorities">Priority</a> (Number|String)</code></td>
+            <td>
+                In complex scenarios where multiple model relay rules might be activated in response to a particular
+                invalidation of the model, it can be useful to be able to control which one is picked first. Depending
+                on the implementation of the model relay rules, very different model states might result from the final
+                relay resolution, and only one of these might be acceptable to the user.
+            </td>
+            <td><code>"after:resolveCentre"</code></td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="sourcefilterrecord-in-an-explicit-model-relay-block"><code>sourceFilterRecord</code> in an explicit model relay block</h4>
+<p>A <code>sourceFilterRecord</code> holds members with one or both of the names <code>excludeSource</code> and <code>includeSource</code>. These members
+hold one or more strings representing <a href="ChangeApplierAPI.html#source-tracking-and-filtering-in-model-listener-blocks">change
+sources</a> which can be used to control the
+situations in which the relay rule holding the record operates. These strings will be matched against all of the sources
+currently marked to the current transaction, and will prevent the relay being triggered (for <code>excludeSource</code> or allow it
+(for <code>includeSource</code>). These rules are exactly the same as the source matching rules for the members of the same names
+in a <a href="ChangeApplierAPI.html#source-tracking-and-filtering-in-model-listener-blocks"><code>modelListener</code></a> record.</p>
+<h4 id="example-showing-explicit-relay-rule">Example showing explicit relay rule</h4>
+<p>Here is an example of two components linked by explicit model relay representing the situation we described earlier:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"examples.explicitModelRelay"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.modelComponent"</span>,
+    <span class="hljs-attr">model</span>: {
+        <span class="hljs-attr">volume</span>: <span class="hljs-number">95</span>
+    },
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-attr">child</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.modelComponent"</span>,
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">modelRelay</span>: {
+                    <span class="hljs-attr">source</span>: <span class="hljs-string">"{examples.explicitModelRelay}.model.volume"</span>,
+                    <span class="hljs-attr">target</span>: <span class="hljs-string">"volume"</span>,
+                    <span class="hljs-attr">singleTransform</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.transforms.linearScale"</span>,
+                        <span class="hljs-attr">factor</span>: <span class="hljs-number">0.01</span>
+                    }
+                }
+            }
+        }
+    }
+});
+
+<span class="hljs-keyword">var</span> that = examples.explicitModelRelay();
+<span class="hljs-built_in">console</span>.log(that.child.model.volume); <span class="hljs-comment">// 0.95 - transformed during the initial transaction to sync with outer value</span>
+that.applier.change(<span class="hljs-string">"volume"</span>, <span class="hljs-number">50</span>);
+<span class="hljs-built_in">console</span>.log(that.child.model.volume); <span class="hljs-comment">// 0.5 - transformed to update with outer value</span>
+that.child.applier.change(<span class="hljs-string">"volume"</span>, <span class="hljs-number">1</span>);
+<span class="hljs-built_in">console</span>.log(that.model.volume);       <span class="hljs-comment">// 100 - inverse transformed to accept update from child component</span>
+</code></pre>
+<p>In general those transformations which are <em><strong>invertible</strong></em> are the best choice for this kind of linkage. If the
+transforms are not invertible (or have no inverse defined in the framework), the updates will propagate only in one
+direction. This can still be highly useful. In addition to its invertibility, the propagation of updates through a relay
+rule can be fine-tuned by the options <code>forward</code> and <code>backward</code>, as described in the following section.</p>
+<h4 id="controlling-propagation-through-a-relay-rule">Controlling propagation through a relay rule</h4>
+<p>Each explicit relay rule can accept options <code>forward</code> and <code>backward</code> which allows the configurer to control the
+occasions on which the relay is operated in those directions — that is, <code>forward</code> representing the direction from
+<code>source</code> to <code>target</code>, and <code>backward</code> representing the direction from <code>target</code> to <code>source</code>. If the transform is not
+invertible, the <code>backward</code> option is ignored, and the system will behave as if it read <code>backward: {excludeSource: &quot;*&quot;}</code>.</p>
+<p>Some use cases for controlling propagation relative to the <code>init</code> source are:</p>
+<ul>
+<li>Operating only during the <a href="#the-initial-transaction">initial transaction</a> with <code>includeSource: &quot;init&quot;</code>,</li>
+<li>Operating only during the &quot;mature life&quot; of the component after construction with <code>excludeSource: &quot;init&quot;</code></li>
+</ul>
+<p>Restricting the relay with <code>excludeSource: init</code> in one direction can often be useful to express the fact that whatever
+default value is configured into the model at the other end of the relay is to be ignored. This is frequently useful,
+since default model values typically propagate outwards from an implementation core and are normally expected to
+overwrite defaults which are held in more reusable components held at the periphery.</p>
+<p>A rule leg marked <code>excludeSource: &quot;*&quot;</code> can be useful to express the fact that a particular component is only expected to
+act as a source of updates and is not prepared to receive them from the outside — it may control some kind of
+device, for example, which by construction cannot accept input.</p>
+<p>A rule leg marked <code>includeSource: &quot;init&quot;</code> is less often useful, but can be helpful in contributing special initial
+values to certain kinds of &quot;integrated models&quot;.</p>
+<p>Compare these directives with the similar ones used for source guarding in <a href="ChangeApplierAPI.html#source-tracking-and-filtering-in-model-listener-blocks">model
+listeners</a>.</p>
+<h4 id="example-showing-propagation-directive-in-explicit-relay">Example showing propagation directive in explicit relay</h4>
+<p>Here the same example that we saw illustrating explicit relay <a href="#example-showing-explicit-relay-rule">above</a> showing the
+use of a propagation directive, in this case <code>backward: {excludeSource: &quot;init&quot;}</code>. In this case the directive is useful
+because we have added a default initial value <code>0.5</code> to the <code>volume</code> field at the forward end of the relay which
+conflicts with the value that the relay would establish as it synchronises the value <code>95</code> from the backward end. In this
+case, we want the backward value to take precedence during the initial transaction, but the relay to operate normally in
+both directions once both components are fully constructed. This component behaves identically as in the transcript in
+the <a href="#example-showing-explicit-relay-rule">above example</a>.</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"examples.modelRelayPropagation"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.modelComponent"</span>,
+    <span class="hljs-attr">model</span>: {
+        <span class="hljs-attr">volume</span>: <span class="hljs-number">95</span>
+    },
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-attr">child</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.modelComponent"</span>,
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">model</span>: {
+                    <span class="hljs-attr">volume</span>: <span class="hljs-number">0.5</span> <span class="hljs-comment">// conflicting default initial value</span>
+                },
+                <span class="hljs-attr">modelRelay</span>: {
+                    <span class="hljs-attr">source</span>: <span class="hljs-string">"{examples.modelRelayPropagation}.model.volume"</span>,
+                    <span class="hljs-attr">target</span>: <span class="hljs-string">"volume"</span>,
+                    <span class="hljs-attr">backward</span>: {
+                        <span class="hljs-attr">excludeSource</span>: <span class="hljs-string">"init"</span>
+                    },
+                    <span class="hljs-attr">singleTransform</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.transforms.linearScale"</span>,
+                        <span class="hljs-attr">factor</span>: <span class="hljs-number">0.01</span>
+                    }
+                }
+            }
+        }
+    }
+});
+</code></pre>
+<h4 id="applying-priorities-to-model-relay-rules">Applying priorities to model relay rules</h4>
+<p>Just as with many other directives in the framework (e.g. listeners, model listeners, options distributions, etc.) a
+model relay rule can be supplied with a <a href="Priorities.html">priority</a> annotation. In many cases, the exact order in which
+model relay rules are operated is not important, and the different orders will lead to the same final synchronised model
+state. However, in some cases where several transform-based model relay rules might react to the same model change, it
+might be important to ensure that one of them is always chosen first.</p>
+<h4 id="general-notes-on-model-relay-rules">General notes on model relay rules</h4>
+<p><strong>NOTE</strong>: Any plain function which accepts one argument and returns one argument is suitable to appear in the <code>type</code>
+*field of a <code>transform</code> or <code>singleTransform</code> rule — e.g. <code>fluid.identity</code>. This is a quick and easy way of setting
+*up &quot;ad hoc&quot; transforms. If the function accepts multiple arguments, or an argument which holds a complex structure
+*derived from several values around the model, you should instead use the transform with type <code>fluid.transform.free</code> and
+*encode them in its option named <code>args</code>. Note that no such transforms will be invertible — they can only propagate
+*updates from <code>source</code> to <code>target</code>.</p>
+<p><strong>NOTE</strong>: The documentation for the <a href="ModelTransformationAPI.html">available transformation functions</a> mentions,
+*for each input or output of the transform, a parallel option whose name ends in <code>Path</code> - e.g. <code>inputPath</code>,
+*<code>outputPath</code>, <code>leftPath</code>, <code>rightPath</code>, etc. - <strong><em>these forms with <code>Path</code> are not used in relay documents</em></strong> — the
+*relay system automatically takes up the role of gearing values to the arguments of transforms when you write an IoC
+*reference in any of those slots. Relay documents are just written with the simple option names, e.g. <code>input</code>, <code>output</code>,
+*<code>left</code>, <code>right</code> etc.</p>
+<h2 id="note-on-future-evolution-and-some-technicalities">Note on future evolution and some technicalities</h2>
+<p>The use of the term &quot;transactions&quot; to describe the process by which the model skeleton updates is not entirely
+consistent with its use elsewhere in the industry. Those interested in more semantic and detailed discussion can consult
+<a href="http://wiki.fluidproject.org/display/fluid/New+Notes+on+the+ChangeApplier">New Notes on the ChangeApplier</a> which
+describes how the new relay-capable implementation differs from the old one, and how our approach to and thinking about
+coordinated model updates is different to that of other frameworks. A more recent page of notes describing the future
+evolution of model relay can be found at <a href="http://wiki.fluidproject.org/display/fluid/New+New+Notes+on+the+ChangeApplier">New New Notes on the
+ChangeApplier</a>.</p>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

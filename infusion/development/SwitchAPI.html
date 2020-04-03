@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Switch API | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components" class="infusion-docs-category-active">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Components</span>
+                                
+                                    <span class="infusion-docs-sectionName"></span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/InlineEditAPI.html"><span class="infusion-docs-TOC-pageName">Inline Edit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/PagerAPI.html"><span class="infusion-docs-TOC-pageName">Pager</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ProgressAPI.html"><span class="infusion-docs-TOC-pageName">Progress</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ReordererAPI.html"><span class="infusion-docs-TOC-pageName">Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ListReordererAPI.html"><span class="infusion-docs-TOC-pageName">List Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/GridReordererAPI.html"><span class="infusion-docs-TOC-pageName">Grid Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/LayoutReordererAPI.html"><span class="infusion-docs-TOC-pageName">Layout Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ImageReordererAPI.html"><span class="infusion-docs-TOC-pageName">Image Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Switch</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextToSpeechAPI.html"><span class="infusion-docs-TOC-pageName">Text to Speech</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldAPI.html"><span class="infusion-docs-TOC-pageName">Textfield</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldSliderAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldSlider</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldStepperAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldStepper</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UserInterfaceOptionsAPI.html"><span class="infusion-docs-TOC-pageName">User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UploaderAPI.html"><span class="infusion-docs-TOC-pageName">Uploader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/UndoAPI.html"><span class="infusion-docs-TOC-pageName">Undo</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/TableOfContentsAPI.html"><span class="infusion-docs-TOC-pageName">Table of Contents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Switch API</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/SwitchAPI.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>The Switch component is a user interface widget for switching/toggling a setting, preference, option, etc.</p>
+<h2 id="creating-a-switch">Creating a Switch</h2>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> switchUI = fluid.switchUI(container);
+
+<span class="hljs-comment">// or</span>
+
+<span class="hljs-keyword">var</span> switchUIWithOptions = fluid.switchUI(container, options);
+</code></pre>
+<h3 id="parameters">Parameters</h3>
+<h4 id="container">container</h4>
+<p>The <code>container</code> parameter is a CSS-based <a href="http://api.jquery.com/category/selectors/">selector</a>, single-element jQuery
+object, or DOM element specifying the containing element for the Switch.</p>
+<h4 id="options-parameter">options parameter</h4>
+<p>The <code>options</code> parameter is an optional collection of name-value pairs that configure the Switch, as described in the
+<a href="#options">Options</a> section below.</p>
+<h2 id="options">Options</h2>
+<h3 id="general-options">General options</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>selectors</code></td>
+            <td>
+<p>JavaScript object defining CSS-style selectors for important DOM elements. See <a href="#selectors">Selectors</a> for more
+information.</p>
+</td>
+            <td>The object may contain the following keys:
+                <ul>
+                    <li><code>on</code></li>
+                    <li><code>off</code></li>
+                    <li><code>control</code></li>
+                </ul>
+            </td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">on</span>: <span class="hljs-string">".flc-switchUI-on"</span>,
+    off: <span class="hljs-string">".flc-switchUI-off"</span>,
+    control: <span class="hljs-string">".flc-switchUI-control"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>strings</code></td>
+            <td>
+                An object containing text to be used by the switch. These are displayed visually on the screen and/or
+                provided as a label for an assistive technology.
+            </td>
+            <td>The object may contain the following keys:
+                <ul>
+                    <li><code>label</code></li>
+                    <li><code>on</code></li>
+                    <li><code>off</code></li>
+                </ul>
+            </td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs dts"><span class="hljs-symbol">
+strings:</span> {
+    <span class="hljs-comment">// Specified by implementor</span>
+    <span class="hljs-comment">// text of label to apply the switch, must add to "aria-label" in the attrs block</span>
+<span class="hljs-symbol">    label:</span> <span class="hljs-string">""</span>,
+<span class="hljs-symbol">    on:</span> <span class="hljs-string">"on"</span>,
+<span class="hljs-symbol">    off:</span> <span class="hljs-string">"off"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>attrs</code></td>
+            <td>An object containing any HTML attributes to be added to the switch <code>control</code>.</td>
+            <td>
+                An object containing any key/value pairs representing valid HTML attributes and their respective values.
+                In particular, an integrator should define a key/value pairing for <code>"aria-label"</code> or
+                <code>"aria-labelledby"</code>. <div class="infusion-docs-note"><strong>Note:</strong> If the switch
+                controls another element on the page, <code>"aria-controls"</code> should be added to indicate the
+                relationship.</div>
+            </td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">attrs</span>: {
+    <span class="hljs-attribute">role</span>: <span class="hljs-string">"switch"</span>,
+    tabindex: <span class="hljs-number">0</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>model</code></td>
+            <td>The state of the switch.</td>
+            <td><code>true</code> is "on", <code>false</code> is "off"</td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">model</span>: {
+    <span class="hljs-attribute">enabled</span>: false
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="selectors">Selectors</h3>
+<p>The <code>selectors</code> option is an object containing CSS-based selectors for the various parts of the Switch. Supported
+selectors are:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>on</code></td>
+            <td>Identifies the element for the "on" identifier</td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">on</span>: <span class="hljs-string">".flc-switchUI-on"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>off</code></td>
+            <td>Identifies the element for the "off" identifier</td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">off</span>: <span class="hljs-string">".flc-switchUI-off"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>selectables</code></td>
+            <td>Identifies the DOM element that represents the actual UI switch control.</td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">control</span>: <span class="hljs-string">".flc-switchUI-control"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="styling-the-switch">Styling the Switch</h2>
+<p>The Switch includes default CSS styles that are applied to its elements. The application of styles is based on known
+class names. The <em>default</em> class names are described below, and can be used by including the Switch stylesheet:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"components/switch/css/Switch.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"all"</span>&gt;</span>;
+</code></pre>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> Switch.css is generated from the Switch.styl Stylus file. See the <a
+    href="https://github.com/fluid-project/infusion/blob/master/README.md#developing-with-the-preferences-framework">Developing
+    with the Preferences Framework</a> section of the <a
+    href="https://github.com/fluid-project/infusion/blob/master/README.md">Infusion README</a> for how to build Stylus
+    files.
+</div>
+<p>These styling classes should be added to the markup used by the Switch. To modify the appearance, one can modify the
+markup and/or override the style declarations applied to the classes.</p>
+<h3 id="default-classes">Default Classes</h3>
+<ul>
+<li><code>fl-switchUI</code> - Should be added to the switch container.</li>
+<li><code>fl-switchUI-text</code> - Should be applied to the &quot;on&quot; and &quot;off&quot; indicators.</li>
+<li><code>fl-switchUI-control</code> - Should be applied to the actual switch control.</li>
+<li><code>fl-switchUI-controlKnob</code> - Should be applied to the knob of the switch control.</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<p>The Switch dependencies can be met by including the <code>infusion-all.js</code> file in the header of the HTML file:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"infusion-all.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>Alternatively, the individual file requirements are:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"lib/jquery/core/js/jquery.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"lib/jquery/ui/js/jquery-ui.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/Fluid.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/jquery.keyboard-a11y.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/FluidDocument.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/FluidIoC.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/DataBinding.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/FluidView.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"components/switch/js/Switch.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>The Switch also requires the following stylesheet:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"components/switch/css/Switch.css"</span> /&gt;</span>
+</code></pre>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

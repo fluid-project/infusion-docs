@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>The IoC Testing Framework | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion" class="infusion-docs-category-active">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Infusion</span>
+                                
+                                    <span class="infusion-docs-sectionName">Writing Configuration</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UnderstandingInfusionComponents.html"><span class="infusion-docs-TOC-pageName">Understanding Infusion Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentOptionsAndDefaults.html"><span class="infusion-docs-TOC-pageName">Understanding Component Options And Defaults</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentConfigurationOptions.html"><span class="infusion-docs-TOC-pageName">Component Configuration Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentGrades.html"><span class="infusion-docs-TOC-pageName">Component Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FunctionGrades.html"><span class="infusion-docs-TOC-pageName">Function Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="OptionsMerging.html"><span class="infusion-docs-TOC-pageName">Options Merging</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentLifecycle.html"><span class="infusion-docs-TOC-pageName">Component Lifecycle</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Priorities.html"><span class="infusion-docs-TOC-pageName">Priorities</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FrameworkConcepts.html"><span class="infusion-docs-TOC-pageName">Framework Concepts</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">API</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CoreAPI.html"><span class="infusion-docs-TOC-pageName">Core API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PromisesAPI.html"><span class="infusion-docs-TOC-pageName">Promises API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCAPI.html"><span class="infusion-docs-TOC-pageName">IoC API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelTransformationAPI.html"><span class="infusion-docs-TOC-pageName">Model Transformation API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewAPI.html"><span class="infusion-docs-TOC-pageName">View API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="NodeAPI.html"><span class="infusion-docs-TOC-pageName">node.js Support and API</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Inversion of Control</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseInfusionIoC.html"><span class="infusion-docs-TOC-pageName">How to Use Infusion IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SubcomponentDeclaration.html"><span class="infusion-docs-TOC-pageName">Subcomponent Declaration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Contexts.html"><span class="infusion-docs-TOC-pageName">Contexts</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ContextAwareness.html"><span class="infusion-docs-TOC-pageName">ContextAwareness</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ExpansionOfComponentOptions.html"><span class="infusion-docs-TOC-pageName">Expansion of Component Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCReferences.html"><span class="infusion-docs-TOC-pageName">IoC References</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCSS.html"><span class="infusion-docs-TOC-pageName">IoCSS</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeclarativeThisismInIoC.html"><span class="infusion-docs-TOC-pageName">Declarative this-ism In IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Events</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InfusionEventSystem.html"><span class="infusion-docs-TOC-pageName">Infusion Event System</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="EventInjectionAndBoiling.html"><span class="infusion-docs-TOC-pageName">Event injection and boiling</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Models</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplier.html"><span class="infusion-docs-TOC-pageName">ChangeApplier</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelRelay.html"><span class="infusion-docs-TOC-pageName">Model Relay</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Views</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinder.html"><span class="infusion-docs-TOC-pageName">DOM Binder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ClassNameConventions.html"><span class="infusion-docs-TOC-pageName">Class Name Conventions</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Renderer</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Renderer.html"><span class="infusion-docs-TOC-pageName">Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseTheRenderer.html"><span class="infusion-docs-TOC-pageName">How to Use the Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTrees.html"><span class="infusion-docs-TOC-pageName">Renderer Component Trees</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ProtoComponentTypes.html"><span class="infusion-docs-TOC-pageName">ProtoComponent Types</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTreeExpanders.html"><span class="infusion-docs-TOC-pageName">Renderer Component Tree Expanders</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Cutpoints.html"><span class="infusion-docs-TOC-pageName">Cutpoints</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererDecorators.html"><span class="infusion-docs-TOC-pageName">Renderer Decorators</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Loading Resources</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ResourceLoader.html"><span class="infusion-docs-TOC-pageName">Resource Loader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FetchResources.html"><span class="infusion-docs-TOC-pageName">fluid.fetchResources</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Builder.html"><span class="infusion-docs-TOC-pageName">Builder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PrimarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Primary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="AuxiliarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Auxiliary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SettingsStore.html"><span class="infusion-docs-TOC-pageName">Settings Store</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConnectingThePartsOfAPreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Connecting the Parts of a Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Enactors.html"><span class="infusion-docs-TOC-pageName">Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Panels.html"><span class="infusion-docs-TOC-pageName">Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CompositePanels.html"><span class="infusion-docs-TOC-pageName">Composite Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConditionalSubpanels.html"><span class="infusion-docs-TOC-pageName">Conditional Subpanels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="LocalizationInThePreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Localization in the Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Testing</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="jqUnit.html"><span class="infusion-docs-TOC-pageName">Unit Testing with jqUnit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">IoC Testing Framework</span>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 1.5</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_4To1_5.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.4 to 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecationsIn1_5.html"><span class="infusion-docs-TOC-pageName">Deprecations In 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html"><span class="infusion-docs-TOC-pageName">UI Options Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/PagerMigration.html"><span class="infusion-docs-TOC-pageName">Pager Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 2.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_5To2_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.5 to 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecatedIn2_0.html"><span class="infusion-docs-TOC-pageName">Deprecated in 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 3.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom2_0To3_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 2.0 to 3.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>The IoC Testing Framework</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/IoCTestingFramework.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>The IoC Testing Framework is written using our existing <a href="jqUnit.html">jqUnit</a> wrapper for jQuery's
+<a href="http://qunitjs.com/">QUnit</a> as a base. The IoC Testing Framework is both written using Fluid's
+<a href="HowToUseInfusionIoC.html">IoC</a> system, as well as being designed to test components which are themselves written using
+IoC. This framework aims to extend our power to write tests in various directions at the same time. As well as creating
+an idiomatic way of writing <em>integration tests</em> addressed at realistic-sized chunks of applications, expressed as IoC
+component trees, the IoC testing framework also considerably eases the task of testing <em>complex event sequences</em> - that
+is, sequences of application state that are derived from an alternating conversation between user interaction and
+application response.</p>
+<h2 id="when-to-use-the-ioc-testing-framework">When to use the IoC Testing Framework</h2>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> The IoC Testing framework is primarily for integration testing requiring asynchrony, e.g. on
+    the client, testing that involves user interaction via the DOM, or AJAX requests; or alternatively on the server,
+    involving asynchronous I/O such as HTTP requests.
+    <p>If your tests don't involve a number of back-to-back asynchronous interactions, it is better to express them as
+    plain jqUnit tests.</p>
+</div>
+<h3 id="integration-testing-within-a-component-tree">Integration testing within a component tree</h3>
+<p>The concept of <em>context</em> in Infusion IoC is derived from the entire collection of components held in an IoC component
+tree. The behaviour of each component is potentially altered by all of the other components with which it is deployed.</p>
+<ul>
+<li>for a detailed guide to the operation of scope within Infusion IoC, please consult the page on
+<a href="Contexts.html">Contexts</a>.</li>
+</ul>
+<p>Therefore in order to test component behaviour in context, we need a testing system whose lifecycle (in particular, the
+lifecycle of setup and teardown common to all testing systems) is aligned with the lifecycle of component trees - as
+well as a testing system which enables testing directives to be referred to the components under test, wherever they may
+be in the tree.</p>
+<h3 id="event-sequence-testing">Event sequence testing</h3>
+<p>The idiom to be used when binding event listeners which are responsible for <em>implementing</em> application behaviour is very
+different from that to be used when <em>testing</em> the application behaviour. Implementation listeners are typically bound
+permanently - that is, for the entire lifecycle of the component holding the listener. This is in order to make
+application behaviour as regular as possible, and in order to make it as easy as possible to reason about application
+behaviour by excluding race conditions. However, when writing tests directed at an event stream, typically the behaviour
+required for the listener to each individual event in the sequence is different - since the testing assertion(s) held in
+the listener will be verifying a component state against required conditions which change with each successive event.
+This requirement often makes test fixture code convoluted and brittle, holding deeply nested sequences of event binding
+and unbinding operations held within listeners to other events. We need a system which allows such assertions to be
+expressed declaratively, with this sequence flattened out into a linear list of JSON elements corresponding to each
+successive state in the event chain.</p>
+<h2 id="how-to-use-the-ioc-testing-framework">How to Use the IoC Testing Framework</h2>
+<p>Writing fixtures using the IoC Testing framework requires the test implementor to derive from two special
+<a href="ComponentGrades.html">grades</a>, <code>fluid.test.testEnvironment</code> and <code>fluid.test.testCaseHolder</code>, which are packaged within
+the testing framework implementation in the file <code>IoCTestUtils.js</code>. The tester must derive their own component types
+from these grades, and assemble them into various component trees corresponding to the desired integration scenarios.</p>
+<p>The first type of component corresponds to the overall root of the component tree under test - the <em>test environment</em>,
+defined in the grade <code>fluid.test.testEnvironment</code>. The children of this component correspond to the entire &quot;application
+segment&quot; under test - this may be as large (as an entire application) or as small (as a single component) as required in
+order to comprise the desired fixture. These children are intermixed with components of the second type, the <em>test
+fixtures</em>, derived from the grade <code>fluid.test.testCaseHolder</code>. These fixture components are holders for declarative JSON
+configuration defining the sequence and structure of a group of test cases which are to be run.</p>
+<h3 id="modules-tests-and-sequence"><code>modules</code>, <code>tests</code> and <code>sequence</code></h3>
+<p>The standard structure inside a <code>fluid.test.testCaseHolder</code> has an outer layer of containment, <code>modules</code>, with members
+corresponding to QUnit <a href="https://api.qunitjs.com/QUnit.module/">modules</a>, and within that an entry named <code>tests</code>, holding
+an array of structures corresponding to QUnit <a href="https://api.qunitjs.com/QUnit.test/">test</a>. In ordinary use, each element
+<code>tests</code> then contains a member named <code>sequence</code> holding a list of <a href="#supported-fixture-records"><em>fixture records</em></a>.</p>
+<p>As well as containing a flat list of fixture records, <code>sequence</code> may also contain nested arrays of such records. These
+nested arrays will be flattened into a single array by use of the utility
+<a href="CoreAPI.html#fluidflattenarray"><code>fluid.flatten</code></a> before being processed. This helps in assembling complex sequences out
+of previously canned sequence segments. However, building up complex, reusable test sequences is best done by use of the
+<a href="IoCTestingFramework.html#using-sequencegrade-to-build-up-complex-reusable-test-sequences"><code>sequenceGrade</code></a> element,
+instead of the <code>sequence</code> element.</p>
+<h3 id="simple-example">Simple Example</h3>
+<p>This simple example shows the testing of a simple component, <code>fluid.tests.cat</code> which defines one
+<a href="InfusionEventSystem.html">event</a>, <code>onMakeSound</code>, and an <a href="Invokers.html">invoker</a> <code>makeSoundLater</code> which fires the event
+asynchronously with the supplied argument. Firstly, we define the component under test:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">/** Component under test **/</span>
+fluid.defaults(<span class="hljs-string">"fluid.tests.cat"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.component"</span>],
+    <span class="hljs-attr">events</span>: {
+        <span class="hljs-attr">onMakeSound</span>: <span class="hljs-literal">null</span>
+    },
+    <span class="hljs-attr">invokers</span>: {
+        <span class="hljs-attr">makeSoundLater</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.tests.cat.makeSoundLater"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"{that}"</span>, <span class="hljs-string">"{arguments}.0"</span>]
+        }
+    }
+});
+
+fluid.tests.cat.makeSoundLater = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">that, sound</span>) </span>{
+    fluid.invokeLater(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        that.events.onMakeSound.fire(sound);
+    });
+};
+</code></pre>
+<p>In order to test this single component, we embed it appropriately within a <em>testing environment</em>, derived from the grade
+<code>fluid.test.testEnvironment</code>, together with a component to hold the test fixtures named <code>fluid.tests.catTester</code>:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">/** Testing environment - holds both fixtures as well as components under test, exposes global test driver **/</span>
+fluid.defaults(<span class="hljs-string">"fluid.tests.catTestTree"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.test.testEnvironment"</span>],
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-attr">cat</span>: {       <span class="hljs-comment">// instance of component under test</span>
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.tests.cat"</span>
+        },
+        <span class="hljs-attr">catTester</span>: { <span class="hljs-comment">// instance of test fixtures</span>
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.tests.catTester"</span>
+        }
+    }
+});
+</code></pre>
+<p>Finally, we need to define the test fixture holder itself, <code>fluid.tests.catTester</code>, derived from
+<code>fluid.test.testCaseHolder</code>, as well as the test fixture code itself. This contains a simple sequence of 2 elements, the
+first of which is an active <a href="#supported-fixture-records">fixture record</a> which calls the invoker, and the second of
+which is a passive fixture record which waits for the event to be fired and makes an assertion that its argument is
+correct:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">/** Test Case Holder - holds declarative representation of test cases **/</span>
+fluid.defaults(<span class="hljs-string">"fluid.tests.catTester"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.test.testCaseHolder"</span>],
+    <span class="hljs-attr">modules</span>: [ <span class="hljs-comment">/* declarative specification of tests */</span> {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"Cat test case"</span>,
+        <span class="hljs-attr">tests</span>: [{
+            <span class="hljs-attr">expect</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"Test Asynchronous Meow"</span>,
+            <span class="hljs-attr">sequence</span>: [{
+                <span class="hljs-attr">func</span>: <span class="hljs-string">"{cat}.makeSoundLater"</span>,
+                <span class="hljs-attr">args</span>: <span class="hljs-string">"meow"</span>
+            }, {
+                <span class="hljs-attr">event</span>: <span class="hljs-string">"{cat}.events.onMakeSound"</span>,
+                <span class="hljs-attr">listener</span>: <span class="hljs-string">"fluid.tests.testCatSound"</span>
+            }]
+        }
+        ]
+    }]
+});
+
+fluid.tests.testCatSound = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">sound</span>) </span>{
+    jqUnit.assertEquals(<span class="hljs-string">"CATT sound is MEO"</span>, <span class="hljs-string">"meow"</span>, sound);
+};
+</code></pre>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> In straightforward cases, the test environment component (e.g.
+    <code>fluid.tests.catTestTree</code>), and the test fixture component (e.g. <code>fluid.tests.catTester</code>) can
+    be written as the same component.
+</div>
+<p>A more complex example of the <code>sequence</code> element appears below in the <a href="#testcaseholder-demonstrating-sequence-record">asyncTester
+example</a> below.</p>
+<p>In order to run this test case, we can either simply construct an instance of the environment tree by calling
+<code>fluid.tests.catTestTree()</code>, or submit its name to the global driver function <code>fluid.test.runTests</code> as
+<code>fluid.test.runTests(&quot;fluid.tests.catTestTree&quot;)</code>. The latter method should be used when running multiple environments
+within the same file to ensure that their execution is properly serialised.</p>
+<h3 id="supported-fixture-records">Supported fixture records</h3>
+<p>The IoC testing system currently supports the following 6 types of fixture record, which can be assigned to two
+categories - &quot;executors&quot;, which actively trigger an action, and &quot;binders&quot; which register some form of listener in order
+to receive an event from the tree under test. These are recognised using a &quot;duck typing system&quot; similar to that used in
+the Fluid Renderer. These records may either form the complete payload for a test held in the <code>tests</code> section of a
+<code>TestCaseHolder</code>, or may appear as elements of an array held in its <code>sequence</code> member, representing a sequence of
+actions (either executors or binders) to be performed by the test case.</p>
+<table class="infusion-docs-complextable">
+    <tr>
+        <th>Fixture name</th><th>Field name</th><th>Field type</th><th>Field description</th><th>Fixture category</th>
+    </tr>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="2" class="infusion-docs-blockcell">Function executor</td>
+        <td><code>func</code>/<code>funcName</code><a href="#ducktype"><sup>[&#42;]</sup></a></td>
+        <td><code>{Function|String}</td>
+        <td>
+            The function to be executed, represented either literally (not recommended) or as an IoC reference to a
+            function or the global name of one. It is also possible to use the <a
+            href="Invokers.html#compact-format-for-invokers">compact format for invokers</a> to encode the contents of
+            <code>args</code> within the IoC reference <code>func</code> in simple cases.
+        </td>
+        <td rowspan="2" class="infusion-docs-blockcell">executor</td>
+    </tr>
+    <tr>
+        <td><code>args</code> [optional]</td>
+        <td><code>{Object|Array}</td>
+        <td>The argument or arguments to be supplied to <code>function</code></td>
+    </tr>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="5" class="infusion-docs-blockcell">Event listener</td>
+        <td><code>event</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
+        <td><code>{String}</code></td>
+        <td>
+            Reference to the <a href="InfusionEventSystem.html">event</a> to which the listener will be bound. This may be
+            either a standard <a href="">IoC Reference</a> to an event above the testCaseHolder, or else a full <a
+            href="IoCSS.html#iocss-selectors">IoCSS reference</a> to an event anywhere in the tree.
+        </td>
+        <td rowspan="5" class="infusion-docs-blockcell">binder</td>
+    </tr>
+    <tr class="infusion-docs-alt-a-row">
+        <td><code>listener</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td>
+        <td><code>{Function|String}</code></td><td>Reference to the listener to be bound to the event</td>
+    </tr>
+    <tr class="infusion-docs-alt-a-row">
+        <td><code>args</code><a href="#alternatives"><sup>[&dagger;]</sup></a> [optional]</td>
+        <td><code>{Object|Array}</code></td>
+        <td>
+<p>Arguments to be supplied to the listener function when it is called - these may contain IoC references including
+references to the context <code>{arguments}</code> as described in <a href="EventInjectionAndBoiling.html#listener-boiling">Listener Boiling</a></p>
+</td>
+    </tr>
+    <tr class="infusion-docs-alt-b-row">
+        <td><code>listenerMaker</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>
+        <td><code>{Function|String}</code></td><td>A function which will produce a listener to be bound</td>
+    </tr>
+    <tr class="infusion-docs-alt-b-row">
+        <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td>
+        <td><code>Object/Array</code></td>
+        <td>The arguments to be supplied to the listener maker function in order to produce a listener</td>
+    </tr>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="6" class="infusion-docs-blockcell">Task</td>
+        <td><code>task</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
+        <td><code>{String}</code></td>
+        <td>Reference to a function returning a <a href="PromisesAPI.html">Promise</a> - such a function is known as a <a href="https://github.com/cujojs/when/blob/master/docs/api.md#task-execution">task</a>.</td>
+        <td rowspan="6" class="infusion-docs-blockcell">executor</td>
+    </tr>
+    <tr>
+        <td><code>args</code> [optional]</td>
+        <td><code>{Object|Array}</td>
+        <td>The argument or arguments to be supplied to the function <code>task</code></td>
+    </tr>
+    <tr class="infusion-docs-alt-a-row">
+        <td><code>resolve</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td>
+        <td><code>{Function|String}</code></td>
+        <td>
+            A function to be registered as an <a
+            href="PromisesAPI.html#promisethenonresolve-onreject"><code>onResolve</code></a> callback to the promise.
+            Exactly one out of the fields <code>resolve</code>, <code>reject</code> must be set.
+        </td>
+    </tr>
+    <tr class="infusion-docs-alt-a-row">
+        <td><code>resolveArgs</code><a href="#alternatives"><sup>[&dagger;]</sup></a> [optional]</td>
+        <td><code>{Object|Array}</code></td>
+        <td>
+            Arguments to be supplied to the <code>resolve</code> function when it is called - these may contain IoC
+            references including references to the context `{arguments}` as described in [Listener
+            Boiling](EventInjectionAndBoiling.md#listener-boiling).
+        </td>
+    </tr>
+    <tr class="infusion-docs-alt-b-row">
+        <td><code>reject</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>
+        <td><code>{Function|String}</code></td>
+        <td>
+            A function to be registered as an <a
+            href="PromisesAPI.html#promisethenonresolve-onreject"><code>onReject</code></a> callback to the promise.
+            Exactly one out of the fields <code>resolve</code>, <code>reject</code> must be set.
+        </td>
+    </tr>
+    <tr class="infusion-docs-alt-b-row">
+        <td><code>rejectArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td>
+        <td><code>{Object|Array}</code></td>
+        <td>
+<p>Arguments to be supplied to the <code>reject</code> function when it is called - these may contain IoC references
+including references to the context <code>{arguments}</code> as described in <a href="EventInjectionAndBoiling.html#listener-boiling">Listener
+Boiling</a>.</p>
+</td>
+    </tr>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="7" class="infusion-docs-blockcell">Change event listener</td>
+        <td><code>changeEvent</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
+        <td><code>{String}</code></td>
+        <td>
+            Reference to the change event to be listened to. Must be the <code>modelChanged</code> event attached to the
+            <a href="ChangeApplierAPI.html">ChangeApplier</a> of a component - e.g. a reference of the form
+            <code>{component}.applier.modelChanged</code>
+        </td>
+        <td rowspan="7" class="infusion-docs-blockcell">binder</td>
+    </tr>
+    <tr>
+        <td><code>path</code></td><td><code>{String}</code></td>
+        <td>
+            A path specification matching the EL paths for which the listener is to be registered, as per the <a
+            href="ChangeApplierAPI.html">ChangeApplier API</a>. Just one of <code>path</code> or <code>spec</code> should
+            be used.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>spec</code></td><td><code>{Object}<code></td><td>A record holding a structured description of the
+            required listener properties, as per the ChangeApplier API. Just one of <code>path</code> or
+            <code>spec</code> should be used.
+        </td>
+    </tr>
+    <tr class="infusion-docs-alt-a-row">
+        <td><code>listener</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td>
+        <td><code>{Function|String}</code></td><td>The listener to be bound to the event</td>
+    </tr>
+    <tr class="infusion-docs-alt-a-row">
+        <td><code>args</code><a href="#alternatives"><sup>[&dagger;]</sup></a> [optional]</td>
+        <td><code>{Object|Array}</code></td>
+        <td>
+<p>arguments to be supplied to the listener function when it is called - these may contain IoC references including
+references to the context <code>{arguments}</code> as described in <a href="EventInjectionAndBoiling.html#listener-boiling">Listener
+Boiling</a>. <code>{change}</code> is not currently supported.</p>
+</td>
+    </tr>
+    <tr class="infusion-docs-alt-b-row">
+        <td><code>listenerMaker</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>
+        <td><code>{Function|String}</code></td><td>A function which will produce a listener to be bound</td>
+    </tr>
+    <tr class="infusion-docs-alt-b-row">
+        <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td>
+        <td><code>{Object|Array}</code></td>
+        <td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+    </tr>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="3" class="infusion-docs-blockcell">jQuery event trigger</td><td><code>jQueryTrigger</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
+        <td><code>{String}</code></td>
+        <td>
+            The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered
+            via a call to <a href="http://api.jquery.com/trigger/"><code>jquery.trigger</code></a></td><td rowspan="3"
+            class="infusion-docs-blockcell">executor
+        </td>
+    </tr>
+    <tr>
+        <td><code>args</code> [optional]</td>
+        <td><code>{Object|Array}</code></td><td>additional arguments to be supplied to <code>
+            jQuery.trigger</code></td>
+    </tr>
+    <tr>
+        <td><code>element</code></td>
+        <td>
+            <code>{jQueryable}</code> (DOM element, jQuery, or selector)</td><td>The jQuery object on which the event is
+            to be triggered
+        </td>
+    </tr>
+    <tr class="infusion-docs-duckrow">
+        <td rowspan="6" class="infusion-docs-blockcell">jQuery event binder</td>
+        <td><code>jQueryBind</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
+        <td><code>{String}</code></td>
+        <td>
+            The name of a jQuery event for which a listener is to be registered via a call to <a
+            href="http://api.jquery.com/one/"><code>jquery.one</code></a></td><td rowspan="6"
+            class="infusion-docs-blockcell">binder
+        </td>
+    </tr>
+    <tr>
+        <td><code>element</code></td>
+        <td>
+            <code>{jQueryable}</code> (DOM element, jQuery, or selector)</td><td>The jQuery object on which a listener
+            is to be bound
+        </td>
+    </tr>
+    <tr>
+        <td><code>args</code> [optional]</td>
+        <td><code>{Object|Array}</code></td>
+        <td>additional arguments to be supplied to <code>jQuery.one</code></td>
+    </tr>
+    <tr class="infusion-docs-alt-a-row">
+        <td><code>listener</code><a href="#alternatives"><sup>[&dagger;]</sup></a></td>
+        <td><code>{Function|String}</code></td>
+        <td>The listener to be bound to the event</td>
+    </tr>
+    <tr class="infusion-docs-alt-b-row">
+        <td><code>listenerMaker</code><a href="#alternatives"><sup>[&Dagger;]</sup></a></td>
+        <td><code>{Function|String}</code></td>
+        <td>A function which will produce a listener to be bound</td>
+    </tr>
+    <tr class="infusion-docs-alt-b-row">
+        <td><code>makerArgs</code><a href="#alternatives"><sup>[&Dagger;]</sup></a> [optional]</td>
+        <td><code>{Object|Array}</code></td>
+        <td>arguments to be supplied to the listener maker function in order to produce a listener</td>
+    </tr>
+</table>
+<p>In each case in this table,</p>
+<ul>
+<li>In cases where &quot;Field type&quot; accepts a <code>String</code> and the description reads &quot;reference to&quot;, the field holds an
+<a href="IoCReferences.html">IoC reference</a> to the value in question.</li>
+<li><a id="ducktype"></a>Fields marked with [*] (grey rows) are the essential &quot;duck typing fields&quot; which define the type
+of the fixture records and are mandatory.</li>
+<li><a id="alternatives"></a>Fields marked with [†] (red rows) and [‡] (green rows) are alternatives to
+each other - they may not be used simultaneously within the same fixture. For example, you must use just one of the
+styles <code>listener</code> or <code>listenerMaker</code> to specify an event listener, or specify just one of <code>resolve</code> or <code>reject</code> to a
+task fixture.</li>
+</ul>
+<h2 id="more-advanced-use-of-the-ioc-testing-framework">More Advanced Use of the IoC Testing Framework</h2>
+<p>This section covers topics of interest to more advanced users of the IoC Testing Framework. These topics relate to more
+flexible and dynamic ways of building up test sequence fixtures, beyond simply listing them in the fixed array named
+<code>sequence</code>.</p>
+<h3 id="using-sequencegrade-to-build-up-complex-reusable-test-sequences">Using <code>sequenceGrade</code> to build up complex, reusable test sequences</h3>
+<p>A common patten is for groups of related tests to form an <em>ecology</em>, sharing some test sequence elements but with others
+interleaved between them and/or some others removed or reconfigured. Working with the raw <code>sequence</code> array directly will
+lead to this testing code becoming fragile as the sequence array indices will be unstable between different members of
+the ecology. Instead, the IoC Testing framework supports a variant element <code>sequenceGrade</code> which uses Infusion's
+<a href="Priorities.html">priority</a> system to allow sequences to be built up piece by piece using priority directives <code>after:</code> and
+<code>before:</code> expressing their relative positions in the sequence. <code>sequenceGrade</code> can be used together with the existing
+<code>sequence</code> element, but is more regularly used without it.</p>
+<p>The element <code>sequenceGrade</code> holds a string value, designating a component <a href="ComponentGrades.html">grade name</a> which has
+been implemented by the test case author, descended from the standard framework grade <code>fluid.test.sequence</code>. The
+framework will instantiate a component with this grade as a child component of the <code>testCaseHolder</code>, and then resolve
+its options path <code>sequenceElements</code>, whose keys represent namespaces and whose values are of a type
+<code>testSequenceElement</code>, the members of which are described in the following table:</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">
+                Members of a <code>testSequenceElement</code> entry within the <code>sequenceElements</code> block of a
+                <code>fluid.test.sequence</code> component
+            </th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>gradeNames</code> (optional)</td>
+            <td><code>{String|Array of String}</code></td>
+            <td>
+                One or more grade names, designating the grades of a component descended from
+                <code>fluid.test.sequenceElement</code>
+            </td>
+        </tr>
+        <tr>
+            <td><code>options</code> (optional)</td>
+            <td><code>{Object}</code></td>
+            <td>Any additional options required to construct the <code>fluid.test.sequenceElement</code></td>
+        </tr>
+        <tr>
+            <td><code>priority</code> (optional)</td>
+            <td><code>{Priority}</code> value - see <a href="Priorities.html">Priorities</a> for a full explanation</td>
+            <td>
+                The priority (if any) that the sequence element component should have over any others appearing within
+                the same <code>elements</code> block of its parent <code>fluid.test.sequence</code>. The namespaces used
+                in these priority constraints will be taken from the keys of the <code>elements</code> hash.
+            </td>
+        </tr>
+        <tr>
+            <td><code>namespace</code> (optional)</td>
+            <td><code>{String}</code></td>
+            <td>
+                If present, will override the key of this member of <code>elements</code> in representing the namespace
+                of this element.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>The members <code>gradeNames</code> and <code>options</code> in the above table collectively designate an Infusion component derived from
+<code>fluid.test.sequenceElement</code> — this component will be instantiated as a child component of the
+<code>fluid.test.testCaseHolder</code> and its options member <code>sequence</code> will be evaluated. This member <code>sequence</code> holds one or
+more <a href="#supported-fixture-records"><code>fixture elements</code></a> just as seen in the top-level
+<a href="#modules-tests-and-sequence"><code>sequence</code></a> element.</p>
+<p>Any fixture elements listed at the traditional top-level <code>sequence</code> member will be grandfathered in to this system with
+a namespace of <code>sequence</code> — for example, a <code>testSequenceElement</code> with a priority of <code>&quot;before:sequence&quot;</code> will be
+sorted before these elements.</p>
+<h4 id="example-of-sequence-building-using-sequencegrade">Example of sequence building using <code>sequenceGrade</code></h4>
+<p>Here is a simple example of building up a sequence of elements piece by piece, using <a href="Priorities.html">priority</a>
+constraints of the type <code>after:&lt;namespace&gt;</code> and <code>before:&lt;namespace&gt;</code>. At the top level, we define a compound
+<code>testEnvironment</code> and <code>testCaseHolder</code> that defines a single module holding a single test, referencing the grade
+<code>fluid.tests.elementPrioritySequence</code> as designating the overall sequence to be built up as a <code>sequenceGrade</code>. This
+grade is defined with four <code>testSequenceElement</code> entries, whose namespaces are <code>check</code>, <code>end</code>, <code>postBeginning</code> and
+<code>beginning</code> (deliberately defined in a different order to that which they will be executed in). These elements each
+specify a <code>priority</code> element to guide the order in which they should be sorted into a sequence. If you run this example,
+you will see them executed in the order <code>beginning</code>, <code>postBeginning</code>, <code>sequence</code> (the grandfathered-in top-level
+sequence), <code>end</code> and finally <code>check</code>.</p>
+<p>The sequence makes use of two reusable <code>sequenceElement</code> grades, <code>fluid.tests.elementPriority.log</code> which defines a
+sequence element which logs a console message (this fixture element uses the <a href="Invokers.html#compact-format-for-invokers">compact
+syntax</a> for encoding simple argument lists together with the function), and
+<code>fluid.tests.elementPriority.check</code> which defines a sequence element making a jqUnit assertion which always passes.</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"fluid.tests.elementPriority.log"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.test.sequenceElement"</span>,
+    <span class="hljs-attr">sequence</span>: [{
+        <span class="hljs-attr">func</span>: <span class="hljs-string">"fluid.log({that}.options.message)"</span>
+    }]
+});
+
+fluid.defaults(<span class="hljs-string">"fluid.tests.elementPriority.check"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.test.sequenceElement"</span>,
+    <span class="hljs-attr">sequence</span>: [{
+        <span class="hljs-attr">func</span>: <span class="hljs-string">"jqUnit.assert"</span>,
+        <span class="hljs-attr">args</span>: <span class="hljs-string">"I am the check, right at the end"</span>
+    }]
+});
+
+fluid.defaults(<span class="hljs-string">"fluid.tests.elementPrioritySequence"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.test.sequence"</span>,
+    <span class="hljs-attr">sequenceElements</span>: {
+        <span class="hljs-attr">check</span>: {
+            <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.tests.elementPriority.check"</span>,
+            <span class="hljs-attr">priority</span>: <span class="hljs-string">"after:end"</span>
+        },
+        <span class="hljs-attr">end</span>: {
+            <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.tests.elementPriority.log"</span>,
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">message</span>: <span class="hljs-string">"I am at the end, just before the check"</span>
+            },
+            <span class="hljs-attr">priority</span>: <span class="hljs-string">"after:sequence"</span>
+        },
+        <span class="hljs-attr">postBeginning</span>: {
+            <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.tests.elementPriority.log"</span>,
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">message</span>: <span class="hljs-string">"I come after the beginning"</span>
+            },
+            <span class="hljs-attr">priority</span>: <span class="hljs-string">"after:beginning"</span>
+        },
+        <span class="hljs-attr">beginning</span>: {
+            <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.tests.elementPriority.log"</span>,
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">message</span>: <span class="hljs-string">"I will be executed first"</span>
+            },
+            <span class="hljs-attr">priority</span>: <span class="hljs-string">"before:sequence"</span>
+        }
+    }
+});
+
+fluid.defaults(<span class="hljs-string">"fluid.tests.elementPriority"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.test.testEnvironment"</span>, <span class="hljs-string">"fluid.test.testCaseHolder"</span>],
+    <span class="hljs-attr">modules</span>: [{
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"Priority-driven grade budding"</span>,
+        <span class="hljs-attr">tests</span>: [{
+            <span class="hljs-attr">expect</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"Simple sequence of 4 active elements"</span>,
+            <span class="hljs-attr">sequenceGrade</span>: <span class="hljs-string">"fluid.tests.elementPrioritySequence"</span>,
+            <span class="hljs-attr">sequence</span>: [{
+                <span class="hljs-attr">func</span>: <span class="hljs-string">"fluid.log"</span>,
+                <span class="hljs-attr">args</span>: <span class="hljs-string">"I am the original sequence, in the middle"</span>
+            }]
+        }
+        ]
+    }]
+});
+</code></pre>
+<p>A further author could now use <a href="ComponentGrades.html">grade inheritance</a> to build on the above testing scenario to add
+their own element — for example, easily interleaving an extra step before the <code>end</code> step:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"fluid.tests.derivedElementPrioritySequence"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.tests.elementPrioritySequence"</span>,
+    <span class="hljs-attr">sequenceElements</span>: {
+        <span class="hljs-attr">beforeEnd</span>: {
+            <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.tests.elementPriority.log"</span>,
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">message</span>: <span class="hljs-string">"I come just before the end"</span>
+            },
+            <span class="hljs-attr">priority</span>: <span class="hljs-string">"before:end"</span>
+        }
+    }
+});
+
+fluid.defaults(<span class="hljs-string">"fluid.tests.derivedElementPriority"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.test.testEnvironment"</span>, <span class="hljs-string">"fluid.test.testCaseHolder"</span>],
+    <span class="hljs-attr">modules</span>: [{
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"Derived Priority-driven grade budding"</span>,
+        <span class="hljs-attr">tests</span>: [{
+            <span class="hljs-attr">expect</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"Sequence with extra element inserted before end"</span>,
+            <span class="hljs-attr">sequenceGrade</span>: <span class="hljs-string">"fluid.tests.derivedElementPrioritySequence"</span>
+        }]
+    }]
+});
+</code></pre>
+<h3 id="using-modulesource-for-dynamic-test-fixtures">Using <code>moduleSource</code> for dynamic test fixtures</h3>
+<p>To take complete control of the fixture building process, you can write arbitrary code returning the entire set of
+<code>modules</code> by replacing it with the entry <code>moduleSource</code> which takes the same form as an <a href="Invokers.html">invoker</a> record
+with entries <code>func</code>/<code>funcName</code> and <code>args</code>, and returns a list of fixtures in the same format as <code>modules</code>. Again, in a
+real example, this would use the <code>sequence</code> form of fixtures shown at the bottom of the page.</p>
+<p>Before choosing this option, you are encouraged to see how far you can go with the completely declarative approach
+involving <a href="IoCTestingFramework.html#using-sequencegrade-to-build-up-complex-reusable-test-sequences"><code>sequenceGrade</code></a>.</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">// Example of the above fixture written with "moduleSource"</span>
+<span class="hljs-comment">// Definition of modules as namespaced global so that it is available for others and processing</span>
+fluid.tests.catTesterModules = [{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"Cat test case"</span>,
+    <span class="hljs-attr">tests</span>: [{
+        <span class="hljs-attr">expect</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"Test Global Meow"</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"test"</span>,
+        <span class="hljs-attr">func</span>: <span class="hljs-string">"fluid.tests.globalCatTest"</span>,
+        <span class="hljs-attr">args</span>: <span class="hljs-string">"{cat}"</span>
+    }]
+}];
+
+<span class="hljs-comment">// A helper function which just returns the global -</span>
+<span class="hljs-comment">// realistically, it would assemble a sequence using more complex logic</span>
+fluid.tests.getCatModules = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> fluid.tests.catTesterModules;
+};
+
+fluid.defaults(<span class="hljs-string">"fluid.tests.catTester"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.test.testCaseHolder"</span>],
+    <span class="hljs-attr">moduleSource</span>: {
+        <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.tests.getCatModules"</span>
+    }
+});
+</code></pre>
+<h2 id="a-more-complex-example-using-sequence">A More Complex Example using <code>sequence</code></h2>
+<p>This example shows sequence testing of a view component <code>fluid.tests.asyncTest</code> with genuine asynchronous behaviour (as
+well as synchronous event-driven behaviour). The component under the test is an Infusion <a href="tutorial-gettingStartedWithInfusion/RendererComponents.html">Renderer
+component</a> which renders a button, and a model-bound text
+entry field. The component defines a listener to clicks to the button which asynchronously (via <code>window.setTimeout</code>)
+fires to an Infusion <a href="InfusionEventSystem.html">event</a> named <code>buttonClicked</code>. Separately, the component binds listeners to
+change events from the text field, which are corresponded with the standard ChangeApplier events resulting from
+corresponding changes to the component's model.</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">/** Component under test **/</span>
+fluid.defaults(<span class="hljs-string">"fluid.tests.asyncTest"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.rendererComponent"</span>],
+    <span class="hljs-attr">model</span>: {
+        <span class="hljs-attr">textValue</span>: <span class="hljs-string">"initialValue"</span>
+    },
+    <span class="hljs-attr">selectors</span>: {
+        <span class="hljs-attr">button</span>: <span class="hljs-string">".flc-async-button"</span>,
+        <span class="hljs-attr">textField</span>: <span class="hljs-string">".flc-async-text"</span>
+    },
+    <span class="hljs-attr">events</span>: {
+        <span class="hljs-attr">buttonClicked</span>: <span class="hljs-literal">null</span>
+    },
+    <span class="hljs-attr">protoTree</span>: {
+        <span class="hljs-attr">textField</span>: <span class="hljs-string">"${textValue}"</span>,
+        <span class="hljs-attr">button</span>: {
+            <span class="hljs-attr">decorators</span>: {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid"</span>,
+                <span class="hljs-attr">func</span>: <span class="hljs-string">"fluid.tests.buttonChild"</span>
+            }
+        }
+    }
+});
+
+fluid.defaults(<span class="hljs-string">"fluid.tests.buttonChild"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.viewComponent"</span>],
+    <span class="hljs-attr">events</span>: {
+        <span class="hljs-attr">buttonClicked</span>: <span class="hljs-string">"{asyncTest}.events.buttonClicked"</span>
+    },
+    <span class="hljs-attr">listeners</span>: {
+        <span class="hljs-string">"onCreate.bindClick"</span>: <span class="hljs-string">"fluid.tests.buttonChild.bindClick"</span>
+    }
+});
+
+fluid.tests.buttonChild.bindClick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">that</span>) </span>{
+    that.container.click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        setTimeout(that.events.buttonClicked.fire, <span class="hljs-number">1</span>);
+    });
+};
+</code></pre>
+<p>Just as with the simple cat testing example above, we embed this component together with a suitable <code>TestCaseHolder</code>
+within an overall <code>testEnvironment</code>:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"fluid.tests.asyncTestTree"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.test.testEnvironment"</span>],
+    <span class="hljs-attr">markupFixture</span>: <span class="hljs-string">".flc-async-root"</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-attr">asyncTest</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.tests.asyncTest"</span>,
+            <span class="hljs-attr">container</span>: <span class="hljs-string">".flc-async-root"</span>
+        },
+        <span class="hljs-attr">asyncTester</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.tests.asyncTester"</span>
+        }
+    }
+});
+</code></pre>
+<h3 id="walkthrough-of-the-example-sequence">Walkthrough of the example sequence</h3>
+<p>Finally, we show the contents of the associated <code>TestCaseHolder</code>. In this case, the 1 test it defines holds a sequence
+member prescribing a sequence of 11 states for the component, which run a total of 7 jqUnit assertions. These show
+records of 5 of the types defined above - the framework ensures the correct sequence of activities (including binding
+and unbinding of listeners registered in <code>binder</code> records) is operated.</p>
+<p>The sequence first initiates rendering of the overall component with a custom global function
+<code>fluid.tests.startRendering</code>, which checks that the component has rendered correctly and then initiates a click on the
+rendered button element. The sequence then checks for the expected asynchronous Fluid event firing - it then synthesises
+a further click on the button and checks for the same event again. It then synthesises an update to the rendered text
+field in the UI, and listens to the expected ChangeEvent generated by this update. It changes the field again to a
+different value and listens for the further ChangeEvent. Next, the sequence makes a direct call to a jqUnit assertion
+function to verify that the component's model has been updated properly. Finally, it returns to the button, directly
+simulating a click event using the <code>jQueryTrigger</code> fixture type, and listening to that event itself using the
+<code>jQueryBind</code> fixture type.</p>
+<p>The TestCaseHolder makes reference to a few global utility functions which are reproduced below.</p>
+<h3 id="testcaseholder-demonstrating-sequence-record"><code>testCaseHolder</code> demonstrating <code>sequence</code> record</h3>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"fluid.tests.asyncTester"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.test.testCaseHolder"</span>],
+    <span class="hljs-attr">newTextValue</span>:     <span class="hljs-string">"newTextValue"</span>,
+    <span class="hljs-attr">furtherTextValue</span>: <span class="hljs-string">"furtherTextValue"</span>,
+    <span class="hljs-attr">modules</span>: [ {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"Async test case"</span>,
+        <span class="hljs-attr">tests</span>: [{
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"Rendering sequence"</span>,
+            <span class="hljs-attr">expect</span>: <span class="hljs-number">7</span>,
+            <span class="hljs-attr">sequence</span>: [ {
+                <span class="hljs-attr">func</span>: <span class="hljs-string">"fluid.tests.startRendering"</span>,
+                <span class="hljs-attr">args</span>: [<span class="hljs-string">"{asyncTest}"</span>, <span class="hljs-string">"{instantiator}"</span>]
+            }, {
+                <span class="hljs-attr">listener</span>: <span class="hljs-string">"fluid.tests.checkEvent"</span>,
+                <span class="hljs-attr">event</span>: <span class="hljs-string">"{asyncTest}.events.buttonClicked"</span>
+            }, { <span class="hljs-comment">// manually click on the button</span>
+                <span class="hljs-attr">jQueryTrigger</span>: <span class="hljs-string">"click"</span>,
+                <span class="hljs-attr">element</span>: <span class="hljs-string">"{asyncTest}.dom.button"</span>
+            }, {
+                <span class="hljs-attr">listener</span>: <span class="hljs-string">"fluid.tests.checkEvent"</span>,
+                <span class="hljs-attr">event</span>: <span class="hljs-string">"{asyncTest}.events.buttonClicked"</span>
+            }, { <span class="hljs-comment">// Issue two requests via UI to change field, and check model update</span>
+                <span class="hljs-attr">func</span>: <span class="hljs-string">"fluid.tests.changeField"</span>,
+                <span class="hljs-attr">args</span>: [<span class="hljs-string">"{asyncTest}.dom.textField"</span>, <span class="hljs-string">"{asyncTester}.options.newTextValue"</span>]
+            }, {
+                 <span class="hljs-comment">// old-fashioned "listenerMaker" - discouraged in modern code</span>
+                <span class="hljs-attr">listenerMaker</span>: <span class="hljs-string">"fluid.tests.makeChangeChecker"</span>,
+                <span class="hljs-attr">args</span>: [<span class="hljs-string">"{asyncTester}.options.newTextValue"</span>, <span class="hljs-string">"textValue"</span>],
+                <span class="hljs-attr">path</span>: <span class="hljs-string">"textValue"</span>,
+                <span class="hljs-attr">changeEvent</span>: <span class="hljs-string">"{asyncTest}.applier.modelChanged"</span>
+            }, {
+                <span class="hljs-attr">func</span>: <span class="hljs-string">"fluid.tests.changeField"</span>,
+                <span class="hljs-attr">args</span>: [<span class="hljs-string">"{asyncTest}.dom.textField"</span>, <span class="hljs-string">"{asyncTester}.options.furtherTextValue"</span>]
+            }, {
+                <span class="hljs-attr">listenerMaker</span>: <span class="hljs-string">"fluid.tests.makeChangeChecker"</span>,
+                <span class="hljs-attr">makerArgs</span>: [<span class="hljs-string">"{asyncTester}.options.furtherTextValue"</span>, <span class="hljs-string">"textValue"</span>],
+                <span class="hljs-comment">// alternate style for registering listener</span>
+                <span class="hljs-attr">spec</span>: {<span class="hljs-attr">path</span>: <span class="hljs-string">"textValue"</span>, <span class="hljs-attr">priority</span>: <span class="hljs-string">"last"</span>},
+                <span class="hljs-attr">changeEvent</span>: <span class="hljs-string">"{asyncTest}.applier.modelChanged"</span>
+            }, {
+                <span class="hljs-attr">func</span>: <span class="hljs-string">"jqUnit.assertEquals"</span>,
+                <span class="hljs-attr">args</span>: [<span class="hljs-string">"Model updated"</span>, <span class="hljs-string">"{asyncTester}.options.furtherTextValue"</span>,
+                    <span class="hljs-string">"{asyncTest}.model.textValue"</span>]
+            }, { <span class="hljs-comment">// manually click on the button a final time with direct listener</span>
+                <span class="hljs-attr">jQueryTrigger</span>: <span class="hljs-string">"click"</span>,
+                <span class="hljs-attr">element</span>: <span class="hljs-string">"{asyncTest}.dom.button"</span>
+            }, {
+                <span class="hljs-attr">jQueryBind</span>: <span class="hljs-string">"click"</span>,
+                <span class="hljs-attr">element</span>: <span class="hljs-string">"{asyncTest}.dom.button"</span>,
+                <span class="hljs-attr">listener</span>: <span class="hljs-string">"fluid.tests.checkEvent"</span>
+            }
+            ]
+        }
+        ]
+    }]
+});
+
+fluid.tests.checkEvent = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    jqUnit.assert(<span class="hljs-string">"Button event relayed"</span>);
+};
+
+fluid.tests.changeField = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">field, value</span>) </span>{
+    field.val(value).change();
+};
+
+fluid.tests.makeChangeChecker = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">toCheck, path</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">newModel</span>) </span>{
+        <span class="hljs-keyword">var</span> newval = fluid.get(newModel, path);
+        jqUnit.assertEquals(<span class="hljs-string">"Expected model value "</span> + toCheck + <span class="hljs-string">" at path "</span> + path, toCheck , newval);
+    };
+};
+
+fluid.tests.startRendering = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">asyncTest, instantiator</span>) </span>{
+    asyncTest.refreshView();
+    <span class="hljs-keyword">var</span> decorators = fluid.renderer.getDecoratorComponents(asyncTest, instantiator);
+    <span class="hljs-keyword">var</span> decArray = fluid.values(decorators);
+    jqUnit.assertEquals(<span class="hljs-string">"Constructed one component"</span>, <span class="hljs-number">1</span>, decArray.length);
+    asyncTest.locate(<span class="hljs-string">"button"</span>).click();
+};
+</code></pre>
+<p>Such repetitive sequences of standardised fixtures are best factored into reusable grades of type
+<code>fluid.test.sequenceElement</code> as seen in the <a href="#example-of-sequence-building-using-sequencegrade">sequenceGrade example</a>
+above.</p>
+<h3 id="markupfixture-property-supporting-fixtures-written-against-markup-in-the-host-document"><code>markupFixture</code> property supporting fixtures written against markup in the host document</h3>
+<p>This environment shows use of the optional <code>markupFixture</code> property on the <code>testEnvironment</code>. Since the IoC testing
+framework operates setup/teardown on the unit of overall <code>testEnvironment</code>s, we cannot (should not) make use of QUnit's
+standard markup setup/teardown operated on the hard-wired DOM node with id <code>qunit-fixture</code>, which is on the unit of
+individual test cases. The <code>markupFixture</code> property is to be used where the overall environment makes use DOM material
+where its markup is rendered, which should be reset to its original value between runs of different <code>testEnvironment</code>s.
+The <code>markupFixture</code> property holds any jQueryable value, designating the overall root node of this DOM material. After
+the <code>testEnvironment</code> has been torn down, the framework will reset the markup within this root to the contents it
+enjoyed before setup of the environment.</p>
+<h3 id="sequence-progress-feedback-in-the-browser">Sequence progress feedback in the browser</h3>
+<p>When run in the browser, the framework will show feedback in the QUnit UI relating to the sequence point reached by the
+system. This can be used to diagnose the last successfully reached sequence point in the case of a &quot;hang&quot; caused by an
+unexpectedly missing event in the sequence.</p>
+<h3 id="sequence-hang-test-detection">Sequence hang test detection</h3>
+<p>If the next expected &quot;binder&quot; type fixture in a test sequence is not reached within a configurable interval, the console
+will log a message of the following form to help the user to diagnose how far the system has progressed through the
+sequence:</p>
+<pre class="highlight"><code class="hljs shell">21:26:33.262: Test case listener has not responded after 5000ms - at sequence pos 4 of 7 sequence element {
+"event": "{testEnvironment}.browser.events.onLoaded",
+"listener": "{testEnvironment}.browser.evaluate",
+"args": [
+{ Function
+
+    },
+    "md",
+    "[unified listing](http://ul.gpii.net/)"
+]
+} of fixture Confirm that the client-side renderer can render markdown...
+</code></pre>
+<p>The default value of the interval is 5000ms, which can be altered by supplying a value in ms to the option <code>hangWait</code> of
+the <code>testEnvironment</code>.</p>
+<h3 id="running-tests-in-the-nodejs-server-environment">Running tests in the node.js server environment</h3>
+<p>The IoC Testing Framework can also be used to run test sequences in the node.js server environment - in this case the
+above browser-related features (<code>markupFixture</code>, live sequence progress) are not provided. However, the sequence hang
+detection message appears in all environments.</p>
+<h2 id="design-discussion-about-the-testing-framework">Design Discussion about the Testing Framework</h2>
+<p>The framework was designed over October-December 2012, with initial call for implementation on the fluid-work mailing
+list at <a href="http://lists.idrc.ocad.ca/pipermail/fluid-work/2012-October/008615.html">October 31st</a>, continuing over a
+sequence of community meetings, and including a summary of work in progress on <a href="http://lists.idrc.ocad.ca/pipermail/fluid-work/2012-December/008652.html">December
+5th</a>. The overall goals for the testing
+framework were presented as these:</p>
+<ul>
+<li>To facilitate the testing of demands blocks that may be issued by integrators against components deployed in a
+particular (complex) context</li>
+<li>To automate and regularise the work of &quot;setup&quot; and &quot;teardown&quot; in complex integration scenarios, by deferring this to
+our standard IoC infrastructure</li>
+<li>To simplify the often tortuous logic required when using the &quot;nested callback style&quot; to test a particular sequence of
+asynchronous requests and responses (via events) issued against a component with complex behaviour</li>
+<li>To facilitate the reuse of testing code by allowing test fixtures to be aggregated into what are the two standard
+forms for our delivery of implementation - a) pure JSON structures which can be freely interchanged and transformed,
+b) free functions with minimum dependence on context and lifecycle</li>
+</ul>
+<p>The framework was given a substantial spring-cleaning in October 2016, implementing significant new features such as
+promise-based fixtures, and priority-driven sequence grade assembly, and some support for compact invokers. A few
+significant bugs remain, especially when listing multiple &quot;listener&quot;-type fixtures adjacent in the sequence - see
+<a href="https://issues.fluidproject.org/browse/FLUID-5502">FLUID-5502</a>. The support for model change event fixtures is also
+very old-fashioned and needs to be reformed - see <a href="https://issues.fluidproject.org/browse/FLUID-6077">FLUID-6077</a>.</p>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

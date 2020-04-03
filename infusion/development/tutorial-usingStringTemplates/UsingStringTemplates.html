@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Using String Templates | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="../lib/foundation/normalize.css">
+        <link rel="stylesheet" href="../lib/foundation/foundation.css">
+        <link rel="stylesheet" href="../css/highlightjs-custom.css">
+        <link rel="stylesheet" href="../lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="../css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="../images/favico.png">
+
+        <script type="text/javascript" src="../lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="../js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="../lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="../js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "../lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "../lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "../lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="../index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="../index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="../index-tutorials.html" title="Tutorials" class="infusion-docs-category-active">Tutorials</a>
+                        
+                    
+                        
+                            <a href="../index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="../search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Tutorials</span>
+                                
+                                    <span class="infusion-docs-sectionName">Developer Introduction to the Infusion Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.html"><span class="infusion-docs-TOC-pageName">Opening Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html"><span class="infusion-docs-TOC-pageName">Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html"><span class="infusion-docs-TOC-pageName">Events and Inversion of Control</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html"><span class="infusion-docs-TOC-pageName">Models and Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html"><span class="infusion-docs-TOC-pageName">Views and View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html"><span class="infusion-docs-TOC-pageName">Subcomponents and Model Relaying</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.html"><span class="infusion-docs-TOC-pageName">Restructuring Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html"><span class="infusion-docs-TOC-pageName">Overriding Invokers and Refactoring</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.html"><span class="infusion-docs-TOC-pageName">Extending Designs with Existing Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html"><span class="infusion-docs-TOC-pageName">Transforming Model Relays</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html"><span class="infusion-docs-TOC-pageName">Concluding Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Getting Started with Infusion Component Design</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html"><span class="infusion-docs-TOC-pageName">Getting Started with Infusion Component Design</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"><span class="infusion-docs-TOC-pageName">Set up your environment</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"><span class="infusion-docs-TOC-pageName">Define a namespace and create a closure</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/PickAComponentType.html"><span class="infusion-docs-TOC-pageName">Pick a component type</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"><span class="infusion-docs-TOC-pageName">Basic Component Creation</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/ModelComponents.html"><span class="infusion-docs-TOC-pageName">Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/ViewComponents.html"><span class="infusion-docs-TOC-pageName">View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/Subcomponents.html"><span class="infusion-docs-TOC-pageName">Subcomponents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">General</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Using String Templates</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-iconFonts/HowToCreateAndUseFontIcons.html"><span class="infusion-docs-TOC-pageName">How to Create and Use Font Icons</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingAPrefsEditor.html"><span class="infusion-docs-TOC-pageName">Creating a Preference Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingEnactors.html"><span class="infusion-docs-TOC-pageName">Creating Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/InstantiatingTheEnhancerAndSettingsStoreOnly.html"><span class="infusion-docs-TOC-pageName">Instantiating the Enhancer and Settings Store Only</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/StylingThePreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Styling the Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/AddingPrefsEditorToSite.html"><span class="infusion-docs-TOC-pageName">Adding a Basic Preferences Editor to a Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/WorkingWithPrefsEditorOnSite.html"><span class="infusion-docs-TOC-pageName">Working With A Preferences Editor On Your Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingANewAdjusterUI.html"><span class="infusion-docs-TOC-pageName">Creating a New Adjuster UI</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFrameworkMinimalFootprint/MinimalFootprint.html"><span class="infusion-docs-TOC-pageName">Minimal Footprint</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">User Interface Options</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/UserInterfaceOptions.html"><span class="infusion-docs-TOC-pageName">Setting Up User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.html"><span class="infusion-docs-TOC-pageName">Working with User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/UsingImagesInContrastModes.html"><span class="infusion-docs-TOC-pageName">Using Images in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes.html"><span class="infusion-docs-TOC-pageName">Style Effects and Legibility in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/ContentPropertyHighContrast.html"><span class="infusion-docs-TOC-pageName">CSS &#x27;Content&#x27; Property in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Using String Templates</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/tutorial-usingStringTemplates/UsingStringTemplates.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>In the Infusion <a href="../PreferencesFramework.html">Preference Framework</a>, a &quot;string template&quot; is a mechanism for <a href="http://en.wikipedia.org/wiki/String_interpolation">resolving
+(interpolating)</a> variables within a string.</p>
+<p>This tutorial covers why you might use string templates, and gives a basic example of how to use string templates to:</p>
+<ol>
+<li>Define &quot;templates&quot; (strings containing variables).</li>
+<li>Define &quot;terms&quot;, variables that will be replaced in templates.</li>
+<li>Override &quot;terms&quot; and &quot;templates&quot; from a child component.</li>
+</ol>
+<p>This tutorial assumes that you are already familiar with
+<a href="../tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html">Infusion</a>, and in particular with:</p>
+<ol>
+<li><a href="../tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html">Defining components</a></li>
+<li><a href="../Invokers.html">Defining invokers</a></li>
+<li><a href="../ExpansionOfComponentOptions.html">Defining and using expanders</a></li>
+</ol>
+<h2 id="why-do-we-need-string-templates">Why do we need &quot;string templates&quot;?</h2>
+<p>Let's talk about a common use case, in which we want to describe the location of files (configuration files, etc.)
+within a component's options. If we have a single file location, a full path is relatively easy to update.</p>
+<p>If we have a long list of paths, people who wish to extend or even configure our component must laboriously copy the
+full list of file paths and customize each one. This is likely to lead to &quot;copy and paste&quot; errors and unexpected
+behavior. It would be better if users could specify their own home directory and have all of our file paths work
+relative to that new location.</p>
+<p>String templates give us the ability to describe things like file paths using values like <code>%myPath/myFilename</code>. The
+percent values are placeholders for variable content that is replaced using a call to <code>fluid.stringTemplate</code> with the
+right options.</p>
+<h2 id="writing-a-component-that-uses-fluidstringtemplate">Writing a component that uses <code>fluid.stringTemplate</code>.</h2>
+<p>Here is a simple component that has a <code>templates</code> block (containing strings with variables) and a <code>terms</code> block
+(containing a map of variable names and replacement values). These names are arbitrary, you can name each of these
+whatever is most meaningful for your component.</p>
+<p>In this example, we've used an <code>expander</code> to provide &quot;convenience&quot; variables with the transformed values:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-meta">  "use strict"</span>;
+  <span class="hljs-comment">// special require form that permits use in browser as well as node.js</span>
+  <span class="hljs-keyword">var</span> fluid = fluid || <span class="hljs-built_in">require</span>(<span class="hljs-string">"infusion"</span>);
+  <span class="hljs-keyword">var</span> gpii  = fluid.registerNamespace(<span class="hljs-string">"gpii"</span>);
+
+  fluid.defaults(<span class="hljs-string">"gpii.sandbox.variables.simpler"</span>, {
+      <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+      <span class="hljs-attr">transformed</span>: {
+          <span class="hljs-attr">expander</span>: {
+              <span class="hljs-attr">func</span>: <span class="hljs-string">"{that}.parseTemplates"</span>
+          }
+      },
+      <span class="hljs-attr">terms</span>: {
+          <span class="hljs-attr">one</span>: <span class="hljs-string">"base one"</span>,
+          <span class="hljs-attr">two</span>: <span class="hljs-string">"base two"</span>
+      },
+      <span class="hljs-attr">templates</span>: {
+          <span class="hljs-attr">one</span>: <span class="hljs-string">"The term named 'one' is set to '%one'."</span>,
+          <span class="hljs-attr">two</span>: <span class="hljs-string">"The term named 'two' is set to '%two'."</span>
+      },
+      <span class="hljs-attr">invokers</span>: {
+          <span class="hljs-attr">parseTemplates</span>: {
+              <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.transform"</span>,
+              <span class="hljs-attr">args</span>: [<span class="hljs-string">"{that}.options.templates"</span>, <span class="hljs-string">"{that}.transformTemplate"</span>]
+          },
+          <span class="hljs-attr">transformTemplate</span>: {
+              <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.stringTemplate"</span>,
+              <span class="hljs-attr">args</span>: [<span class="hljs-string">"{arguments}.0"</span>, <span class="hljs-string">"{that}.options.terms"</span>]
+          }
+      }
+  });
+
+  <span class="hljs-keyword">var</span> simpler = gpii.sandbox.variables.simpler();
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"transformed options:\n"</span> + <span class="hljs-built_in">JSON</span>.stringify(simpler.options.transformed, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>));
+</code></pre>
+<p>That code produces output like the following:</p>
+<pre class="highlight"><code class="hljs shell">  transformed options:
+  {
+    "one": "The term named 'one' is set to 'base one'.",
+    "two": "The term named 'two' is set to 'base two'."
+  }
+</code></pre>
+<p>What makes this all work is our <code>invokers</code> block:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    invokers: {
+        parseTemplates: {
+            funcName: "fluid.transform",
+            args: ["{that}.options.templates", "{that}.transformTemplate"]
+        },
+        transformTemplate: {
+            funcName: "fluid.stringTemplate",
+            args: ["{arguments}.0", "{that}.options.terms"]
+        }
+    }
+}
+</code></pre>
+<p>The <code>parseTemplates</code> invoker calls <code>fluid.transform</code>, which runs a single function against every item in a map and
+returns an map containing the transformed results. We have configured <code>fluid.transform</code> to use our <code>transformTemplate</code>
+invoker to process each value in our map. The <code>transformTemplate</code> invoker calls <code>fluid.stringTemplate</code> with a list of
+arguments. The first argument is expected to point to an array of templates, and the second argument is expected to
+point to a map of variable names and replacement values.</p>
+<p>In our case, the map of variable names and replacement values is already contained in <code>{that}.options.terms</code>. The first
+argument is supplied by<code>fluid.transform</code>, which will pass the value of each array member to our invoker. Since
+<code>fluid.transform</code> will call our invoker with a single argument, we can use <code>{arguments}.0</code> to refer to the information
+passed by <code>fluid.transform</code> in our list of arguments.</p>
+<p>The final piece is handled by an <a href="../ExpansionOfComponentOptions.html#expanders"><code>expander</code> block</a>.</p>
+<pre class="highlight"><code class="hljs undefined">{
+    transformed: {
+        expander: {
+            func: "{that}.parseTemplates"
+        }
+    }
+}
+</code></pre>
+<p>The <code>expander</code> block will be replaced with the value returned by our <code>parseTemplates</code> invoker, and we will then have
+sensible output that we can work with in our own functions and IoC references.</p>
+<h3 id="overriding-options-from-a-child-component">Overriding options from a child component</h3>
+<p>In the next example, we will look at creating a child component that overrides some of our variables in its default
+configuration.  Here's the updated code:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-meta">  "use strict"</span>;
+  <span class="hljs-keyword">var</span> fluid = fluid || <span class="hljs-built_in">require</span>(<span class="hljs-string">"infusion"</span>);
+  <span class="hljs-keyword">var</span> gpii  = fluid.registerNamespace(<span class="hljs-string">"gpii"</span>);
+
+  fluid.defaults(<span class="hljs-string">"gpii.sandbox.variables.base"</span>, {
+      <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+      <span class="hljs-attr">terms</span>: {
+          <span class="hljs-attr">one</span>: <span class="hljs-string">"base one"</span>,
+          <span class="hljs-attr">two</span>: <span class="hljs-string">"base two"</span>
+      },
+      <span class="hljs-attr">templates</span>: {
+          <span class="hljs-attr">one</span>: <span class="hljs-string">"The term named 'one' is set to '%one'."</span>,
+          <span class="hljs-attr">two</span>: <span class="hljs-string">"The term named 'two' is set to '%two'."</span>
+      },
+      <span class="hljs-attr">listeners</span>: {
+          <span class="hljs-string">"onCreate.log"</span>: [
+              {
+                  <span class="hljs-attr">funcName</span>: <span class="hljs-string">"gpii.sandbox.variables.base.logState"</span>,
+                  <span class="hljs-attr">args</span>:     [<span class="hljs-string">"{that}"</span>, {<span class="hljs-attr">expander</span>: {<span class="hljs-attr">func</span>: <span class="hljs-string">"{that}.parseTemplates"</span>}}]
+              }
+          ]
+      },
+      <span class="hljs-attr">invokers</span>: {
+          <span class="hljs-attr">parseTemplates</span>: {
+              <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.transform"</span>,
+              <span class="hljs-attr">args</span>: [<span class="hljs-string">"{that}.options.templates"</span>, <span class="hljs-string">"{that}.transformTemplate"</span>]
+          },
+          <span class="hljs-attr">transformTemplate</span>: {
+              <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.stringTemplate"</span>,
+              <span class="hljs-attr">args</span>: [<span class="hljs-string">"{arguments}.0"</span>, <span class="hljs-string">"{that}.options.terms"</span>]
+          }
+      }
+  });
+
+  gpii.sandbox.variables.base.logState = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">that, parsed</span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"\nMy friends call me '"</span> + that.nickName + <span class="hljs-string">"'..."</span>);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"terms -&gt; one: "</span> + that.options.terms.one);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"terms -&gt; two: "</span> + that.options.terms.two);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"template one: "</span> + that.options.templates.one);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"template two: "</span> + that.options.templates.two);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"one, parsed : "</span> + parsed.one);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"two, parsed : "</span> + parsed.two);
+  };
+
+  fluid.defaults(<span class="hljs-string">"gpii.sandbox.variables.child"</span>, {
+      <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"gpii.sandbox.variables.base"</span>],
+      <span class="hljs-attr">templates</span>: {
+          <span class="hljs-attr">one</span>: <span class="hljs-string">"The term named one is set to '%one', also, I am a custom template."</span>
+      },
+      <span class="hljs-attr">terms</span>: {
+          <span class="hljs-attr">two</span>: <span class="hljs-string">"child two"</span>
+      }
+  });
+
+  gpii.sandbox.variables.child();
+</code></pre>
+<p>For this example, we're using our own invoker (<code>logState</code>) to display a range of variables. The <code>logState</code> function is
+called when our component is created, as configured in our <code>listeners</code> block:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    listeners: {
+        "onCreate.log": {
+            funcName: "gpii.sandbox.variables.base.logState",
+            args:     ["{that}", {expander: {func: "{that}.parseTemplates"}}]
+        }
+    }
+}
+</code></pre>
+<p>We are calling our <code>logState</code> function directly, with a full list of arguments (we could also have defined an invoker).
+Again, we used an <code>expander</code> to call <code>parseTemplates</code>, but <code>logState</code> doesn't know about or care about that part of the
+process. It just ends up with a map of transformed values.</p>
+<p>We also added a child component, <code>gpii.sandbox.variables.child</code>.  We have overridden one of the <code>terms</code> and one of the
+<code>templates</code>. This code produces output like:</p>
+<pre class="highlight"><code class="hljs console">  My friends call me 'child'...
+  terms -&gt; one: base one
+  terms -&gt; two: child two
+  template one: The term named one is set to '%one', also, I am a custom template.
+  template two: The term named 'two' is set to '%two'.
+  one, parsed : The term named one is set to 'base one', also, I am a custom template.
+  two, parsed : The term named 'two' is set to 'child two'.
+</code></pre>
+<p>We could also have created an instance of the parent variable using code like:</p>
+<pre class="highlight"><code class="hljs javascript">gpii.sandbox.variables.base({
+    <span class="hljs-attr">templates</span>: {
+        <span class="hljs-attr">one</span>: <span class="hljs-string">"The term named one is set to '%one', also, I am a custom template."</span>
+    },
+    <span class="hljs-attr">terms</span>: {
+        <span class="hljs-attr">two</span>: <span class="hljs-string">"configured two"</span>
+    }
+});
+</code></pre>
+<p>This would product output like:</p>
+<pre class="highlight"><code class="hljs console">  My friends call me 'base'...
+  terms -&gt; one: base one
+  terms -&gt; two: configured two
+  template one: The term named one is set to '%one', also, I am a custom template.
+  template two: The term named 'two' is set to '%two'.
+  one, parsed : The term named one is set to 'base one', also, I am a custom template.
+  two, parsed : The term named 'two' is set to 'configured two'.
+</code></pre>
+<p>This should give you a good idea how to extend or adapt existing components that use string templates.</p>
+<h3 id="working-with-empty-values">Working with empty values</h3>
+<p>It is important to know what happens when a term is missing or has no value.  Here's a quick example that covers a few
+common problems.</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-meta">  "use strict"</span>;
+  <span class="hljs-keyword">var</span> fluid = fluid || <span class="hljs-built_in">require</span>(<span class="hljs-string">"infusion"</span>);
+  <span class="hljs-keyword">var</span> gpii  = fluid.registerNamespace(<span class="hljs-string">"gpii"</span>);
+
+  fluid.registerNamespace(<span class="hljs-string">"gpii.sandbox.variables.empty"</span>);
+  fluid.defaults(<span class="hljs-string">"gpii.sandbox.variables.empty"</span>, {
+      <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+      <span class="hljs-attr">transformed</span>: {
+          <span class="hljs-attr">expander</span>: {
+              <span class="hljs-attr">func</span>: <span class="hljs-string">"{that}.parseTemplates"</span>
+          }
+      },
+      <span class="hljs-attr">terms</span>: {
+          <span class="hljs-attr">one</span>: <span class="hljs-string">"value one"</span>,
+          <span class="hljs-attr">two</span>: <span class="hljs-string">"value two"</span>
+      },
+      <span class="hljs-attr">templates</span>: {
+          <span class="hljs-attr">one</span>:   <span class="hljs-string">"The term named 'one' is set to '%one'."</span>,
+          <span class="hljs-attr">two</span>:   <span class="hljs-string">"The term named 'two' is set to '%two'."</span>,
+          <span class="hljs-attr">three</span>: <span class="hljs-string">"The term named 'three' is set to '%three'."</span>
+      },
+      <span class="hljs-attr">invokers</span>: {
+          <span class="hljs-attr">parseTemplates</span>: {
+              <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.transform"</span>,
+              <span class="hljs-attr">args</span>: [<span class="hljs-string">"{that}.options.templates"</span>, <span class="hljs-string">"{that}.transformTemplate"</span>]
+          },
+          <span class="hljs-attr">transformTemplate</span>: {
+              <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.stringTemplate"</span>,
+              <span class="hljs-attr">args</span>: [<span class="hljs-string">"{arguments}.0"</span>, <span class="hljs-string">"{that}.options.terms"</span>]
+          }
+      }
+  });
+
+  <span class="hljs-keyword">var</span> simpler = gpii.sandbox.variables.empty({
+      <span class="hljs-attr">terms</span>: {
+          <span class="hljs-attr">one</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">two</span>: <span class="hljs-string">"{empty}.options.bad.reference"</span>
+      }
+  });
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"transformed options:\n"</span> + <span class="hljs-built_in">JSON</span>.stringify(simpler.options.transformed, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>));
+</code></pre>
+<p>The output returned is:</p>
+<pre class="highlight"><code class="hljs console">  transformed options:
+  {
+    "one": "The term named 'one' is set to 'null'.",
+    "two": "The term named 'two' is set to 'value two'.",
+    "three": "The term named 'three' is set to '%three'."
+  }
+</code></pre>
+<p>We directly set the value of the term <code>one</code> to <code>null</code>, and that value was displayed in the transformed results, just as
+it would if we used string concatenation with a <code>null</code> value.</p>
+<p>Our configuration attempted to use a (bad) IoC reference to replace the value of the term <code>two</code>. Since the reference was
+not resolved, the default value from our <code>fluid.defaults</code> was used instead.</p>
+<p>There is no term defined that corresponds to the template <code>three</code>.  Variables with no corresponding <code>term</code> are left as
+raw percent references. You can use the percent operator in templates without escaping it, but be aware that if anyone
+adds a <code>term</code> that matches the value after the percent sign, the results may be unexpected.</p>
+<p>If you're having trouble with your transformed output, this example will hopefully help you troubleshoot further.</p>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

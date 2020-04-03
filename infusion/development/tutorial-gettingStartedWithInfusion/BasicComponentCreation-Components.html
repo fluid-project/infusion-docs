@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Basic Component Creation - Components | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="../lib/foundation/normalize.css">
+        <link rel="stylesheet" href="../lib/foundation/foundation.css">
+        <link rel="stylesheet" href="../css/highlightjs-custom.css">
+        <link rel="stylesheet" href="../lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="../css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="../images/favico.png">
+
+        <script type="text/javascript" src="../lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="../js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="../lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="../js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "../lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "../lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "../lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="../index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="../index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="../index-tutorials.html" title="Tutorials" class="infusion-docs-category-active">Tutorials</a>
+                        
+                    
+                        
+                            <a href="../index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="../search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Tutorials</span>
+                                
+                                    <span class="infusion-docs-sectionName">Developer Introduction to the Infusion Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.html"><span class="infusion-docs-TOC-pageName">Opening Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html"><span class="infusion-docs-TOC-pageName">Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html"><span class="infusion-docs-TOC-pageName">Events and Inversion of Control</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html"><span class="infusion-docs-TOC-pageName">Models and Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html"><span class="infusion-docs-TOC-pageName">Views and View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html"><span class="infusion-docs-TOC-pageName">Subcomponents and Model Relaying</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.html"><span class="infusion-docs-TOC-pageName">Restructuring Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html"><span class="infusion-docs-TOC-pageName">Overriding Invokers and Refactoring</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.html"><span class="infusion-docs-TOC-pageName">Extending Designs with Existing Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html"><span class="infusion-docs-TOC-pageName">Transforming Model Relays</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html"><span class="infusion-docs-TOC-pageName">Concluding Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Getting Started with Infusion Component Design</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="GettingStartedWithInfusion.html"><span class="infusion-docs-TOC-pageName">Getting Started with Infusion Component Design</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SetUpYourEnvironment.html"><span class="infusion-docs-TOC-pageName">Set up your environment</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DefineANamespaceAndCreateAClosure.html"><span class="infusion-docs-TOC-pageName">Define a namespace and create a closure</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PickAComponentType.html"><span class="infusion-docs-TOC-pageName">Pick a component type</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Basic Component Creation</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelComponents.html"><span class="infusion-docs-TOC-pageName">Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewComponents.html"><span class="infusion-docs-TOC-pageName">View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Subcomponents.html"><span class="infusion-docs-TOC-pageName">Subcomponents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">General</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-usingStringTemplates/UsingStringTemplates.html"><span class="infusion-docs-TOC-pageName">Using String Templates</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-iconFonts/HowToCreateAndUseFontIcons.html"><span class="infusion-docs-TOC-pageName">How to Create and Use Font Icons</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingAPrefsEditor.html"><span class="infusion-docs-TOC-pageName">Creating a Preference Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingEnactors.html"><span class="infusion-docs-TOC-pageName">Creating Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/InstantiatingTheEnhancerAndSettingsStoreOnly.html"><span class="infusion-docs-TOC-pageName">Instantiating the Enhancer and Settings Store Only</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/StylingThePreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Styling the Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/AddingPrefsEditorToSite.html"><span class="infusion-docs-TOC-pageName">Adding a Basic Preferences Editor to a Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/WorkingWithPrefsEditorOnSite.html"><span class="infusion-docs-TOC-pageName">Working With A Preferences Editor On Your Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingANewAdjusterUI.html"><span class="infusion-docs-TOC-pageName">Creating a New Adjuster UI</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFrameworkMinimalFootprint/MinimalFootprint.html"><span class="infusion-docs-TOC-pageName">Minimal Footprint</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">User Interface Options</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/UserInterfaceOptions.html"><span class="infusion-docs-TOC-pageName">Setting Up User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.html"><span class="infusion-docs-TOC-pageName">Working with User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/UsingImagesInContrastModes.html"><span class="infusion-docs-TOC-pageName">Using Images in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes.html"><span class="infusion-docs-TOC-pageName">Style Effects and Legibility in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/ContentPropertyHighContrast.html"><span class="infusion-docs-TOC-pageName">CSS &#x27;Content&#x27; Property in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Basic Component Creation - Components</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <hr>
+<p>Part of the <a href="GettingStartedWithInfusion.html">Getting Started with Infusion Component Design Tutorial</a></p>
+<hr>
+<p>Regardless of which grade of component you use, the basic structure will be the same. We'll use the simplest grade, a
+<strong>plain component</strong>, to illustrate what this structure is. In future pages explaining other grades, you'll see the same
+principles.</p>
+<p>The definition of a component involves two things:</p>
+<ol>
+<li>declare the component <strong>grade</strong> and any default values for the component's <strong>options</strong>. Options are used by users and
+integrators to customize the behaviour of a component.</li>
+<li>define any public <strong>functions</strong> (invokers) and other members that the component requires to do its work.</li>
+</ol>
+<h2 id="grade-and-default-options">Grade and Default Options</h2>
+<p>A component's grade and any default options are registered with the framework using a call to
+<a href="../CoreAPI.html#fluiddefaultsgradename-options"><code>fluid.defaults</code></a>, which has two parameters: the component name and an
+object containing the defaults. The parent grades for the component are specified in an array or single string in the
+defaults called <code>gradeNames</code>. For a plain component, specify the grade as <code>fluid.component</code>:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"tutorials.simpleComponent"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+    <span class="hljs-attr">option1</span>: <span class="hljs-string">"default value 1"</span>
+    <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<h3 id="options">Options</h3>
+<p>Integrators can override your defaults when they instantiate the component, to customize its appearance or behaviour.
+The framework will take care of <a href="../OptionsMerging.html">merging the integrator's values</a> with your defaults.</p>
+<p>We'll go through some examples of options, to give you an idea of what they're all about.</p>
+<h4 id="example-currency-converter-options">Example: Currency Converter Options</h4>
+<p>Suppose you're creating a currency converter. You might wish to specify a default conversion rate:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"tutorials.currencyConverter"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+    <span class="hljs-attr">exchangeRate</span>: <span class="hljs-number">1.035</span>
+});
+</code></pre>
+<h4 id="example-inline-edit">Example: Inline Edit</h4>
+<p>The Infusion <a href="../to-do/InlineEdit.html">Inline Edit</a> component uses a tooltip and defines (among other things) defaults
+for the delay before the tooltip appears, the text to display - even whether or not to enable it at all:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"fluid.inlineEdit"</span>, {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-attr">useTooltip</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">tooltipText</span>: <span class="hljs-string">"Select or press Enter to edit"</span>,
+    <span class="hljs-attr">tooltipDelay</span>: <span class="hljs-number">1000</span> <span class="hljs-comment">// in milliseconds</span>
+    <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<h4 id="example-progress">Example: Progress</h4>
+<p>The Infusion <a href="../to-do/Progress.html">Progress</a> component uses jQuery animations to show and hide a progress bar. The
+defaults include objects that are passed to jQuery to configure the animations:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"fluid.progress"</span>, {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-attr">showAnimation</span>: {
+        <span class="hljs-attr">params</span>: {
+            <span class="hljs-attr">opacity</span>: <span class="hljs-string">"show"</span>
+        },
+        <span class="hljs-attr">duration</span>: <span class="hljs-string">"slow"</span>
+    }, <span class="hljs-comment">// forwarded to $().fadeIn("slow")</span>
+
+    <span class="hljs-attr">hideAnimation</span>: {
+        <span class="hljs-attr">params</span>: {
+            <span class="hljs-attr">opacity</span>: <span class="hljs-string">"hide"</span>
+        },
+        <span class="hljs-attr">duration</span>: <span class="hljs-string">"slow"</span>
+    } <span class="hljs-comment">// forwarded to $().fadeOut("slow")</span>
+    <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<h2 id="the-creator-function">The Creator Function</h2>
+<p>All components have a <strong>creator function</strong>: a public function that is invoked to instantiate the component. The
+framework will instantiate the creator function for you automatically, given the component's default options. When your
+component is registered as a <a href="../SubcomponentDeclaration.html">subcomponent</a> of another component, the framework will also
+take responsibility for calling the creator function for you automatically. In the rare case you need to construct a
+component directly using a JavaScript function call, Infusion components have a standardized function signature:</p>
+<ul>
+<li>plain and <strong>model</strong> components accept a single argument: <code>options</code></li>
+<li><strong>view</strong> and <strong>renderer</strong> components accept two arguments: <code>container</code> and <code>options</code></li>
+</ul>
+<p>We'll get into what these arguments are when we talk about each type of component later in this tutorial.</p>
+<h3 id="using-ioc">Using IoC</h3>
+<h4 id="automatic-creator-function-generation">Automatic creator function generation</h4>
+<p>The <a href="../IoCAPI.html">IoC - Inversion of Control</a> system will automatically generate a component creator function for you.
+This is accomplished by registering default options deriving from the framework component grade <code>fluid.component</code>:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"tutorials.simpleComponent"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+    <span class="hljs-attr">option1</span>: <span class="hljs-string">"default value 1"</span>
+    <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<h4 id="public-api-methods">Public API methods</h4>
+<p>The standard means of adding public API functions to a component is to express them as <a href="../Invokers.html">invokers</a>. An
+invoker is a declarative record added into a components defaults, under the section <code>invokers</code>: the name of the record
+becomes the name of the public function which will be added. The invoker record defines the name of the public
+JavaScript function which should be executed when the method is called, as well as details of where the arguments that
+the function accepts should be sourced from - for example:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"tutorials.simpleComponent"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+    <span class="hljs-attr">option1</span>: <span class="hljs-string">"default value 1"</span>,
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-attr">invokers</span>: {
+        <span class="hljs-attr">publicFunction</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"tutorials.simpleComponent.publicFunction"</span>,
+            <span class="hljs-attr">args</span>: <span class="hljs-string">"{that}"</span>
+        }
+    }
+});
+
+<span class="hljs-comment">// implementation of the public function registered as an invoker above</span>
+tutorials.simpleComponent.publicFunction = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">that</span>) </span>{
+   <span class="hljs-comment">// ...</span>
+};
+</code></pre>
+<p>You will note that the function <code>tutorials.simpleComponent.publicFunction</code> is a standard JavaScript function that could
+even be invoked directly from code if this were found relevant - it need not be necessarily bound as a component method
+(although most component methods that accept <code>{that}</code> as an argument tend not to make sense without being provided an
+instance of the relevant component).</p>
+<h4 id="example-currency-converter">Example: Currency Converter</h4>
+<p>Here is the next stage of evolution of our currency converter sample, with a conversion function defined using an
+invoker:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"tutorials.currencyConverter"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+    <span class="hljs-attr">exchangeRate</span>: <span class="hljs-number">1.035</span>,
+    <span class="hljs-attr">invokers</span>: {
+        <span class="hljs-attr">convert</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"tutorials.currencyConverterAuto.convert"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"{that}.options.exchangeRate"</span>, <span class="hljs-string">"{arguments}.0"</span>] <span class="hljs-comment">// amount</span>
+        }
+    }
+});
+
+<span class="hljs-comment">// The conversion function</span>
+tutorials.currencyConverterAuto.convert = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">exchangeRate, amount</span>) </span>{
+    <span class="hljs-keyword">return</span> amount * exchangeRate;
+};
+</code></pre>
+<p>You'll notice that in this case we have been able to avoid binding to the entire component instance in our public
+function, and so our standalone public function <code>tutorials.currencyConverterAuto.convert</code> is of more general utility
+than just for building a component method. This has happened because its responsibilities are particularly well-defined,
+you should always take the opportunity to restrict the binding behaviour of your public functions in this way whenever
+it is appropriate.</p>
+<h2 id="defining-and-firing-events">Defining and firing <a href="../InfusionEventSystem.html">events</a></h2>
+<p>Many times, you will be creating a component that works in an environment where other things are operating, and it will
+probably need to notify those other things of key <strong>events</strong> in its lifecycle. Events can be used to trigger changes in
+the visual appearance of a component, or actions by other components. For example:</p>
+<ul>
+<li>the Infusion <a href="../to-do/Reorderer.html">Reorderer</a> component provides drag-and-drop functionality for lists, grids, etc.
+Its operation has several key events, such as when a move is initiated, when it's completed, etc.</li>
+<li>the Infusion <a href="../to-do/Uploader.html">Uploader</a> component, a queued multi-file uploader, has events including when a
+file is successfully added to the queue, when each file starts being uploaded, when each upload completes, etc.</li>
+</ul>
+<p>The Infusion Framework defines its own event system. Infusion events differ from browser events in that they are not
+bound to the DOM or its infrastructure. Infusion events can be used for anything, not only user-interface related
+events.</p>
+<h2 id="declaring-events-on-a-component">Declaring events on a component</h2>
+<p>All standard Fluid components descended from <code>fluid.component</code> support events. To take advantage of this,</p>
+<ul>
+<li>specify a grade of <code>fluid.component</code>, and</li>
+<li>include an <code>events</code> property in your defaults, listing the events your component will fire.</li>
+</ul>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"tutorials.eventedComponent"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-attr">events</span>: {
+        <span class="hljs-attr">onAnAction</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">afterAnAction</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">onAnotherAction</span>: <span class="hljs-string">"preventable"</span>,
+        <span class="hljs-attr">afterAnotherAction</span>: <span class="hljs-literal">null</span>
+    }
+});
+</code></pre>
+<p>The contents of the <code>events</code> object is a set of key-value pairs where the key is the event name and the value is the
+event type.</p>
+<ul>
+<li><strong>Event naming conventions</strong>: You can call your events anything you like, but Infusion has adopted the convention of
+prefacing events with on or after to indicate whether or not the event is being fired before some action is taken, or
+after the action has completed.</li>
+<li><strong>Event types</strong>: If the event is a standard event defined on this component, you will write <code>null</code> here. Event types
+supported by the framework are described at the <a href="../InfusionEventSystem.html">Infusion Event System</a>.  Another
+possibility is to inject an event appearing elsewhere in the component tree by use of an <a href="../IoCReferences.html">IoC reference</a>
+such as <code>{myOtherComponent}.events.myEvent</code>.</li>
+</ul>
+<h3 id="example-saving-and-deleting">Example: Saving and Deleting</h3>
+<p>Suppose you're creating a component that is responsible for managing records of some kind, or editing documents. An
+application like that is going to allow users to save their edits or remove the record altogether. You might create the
+following events for these actions:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">// Declare the events in the defaults</span>
+fluid.defaults(<span class="hljs-string">"tutorials.recordEditor"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.component"</span>,
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-attr">events</span>: {
+        <span class="hljs-attr">afterSave</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">onRemove</span>: <span class="hljs-string">"preventable"</span>,
+        <span class="hljs-attr">afterRemove</span>: <span class="hljs-literal">null</span>
+    }
+});
+</code></pre>
+<h2 id="firing-events">Firing Events</h2>
+<p>The framework will automatically set up event firers for all of your listed events. These will be attached to an object
+on your component called <code>events</code> and provide an API (and reference target) for you to fire events and add or remove
+listeners.</p>
+<h3 id="example-saving-and-deleting-2">Example: Saving and Deleting</h3>
+<p>Our record editor component will likely have public methods for the saving and removing of records. We will define these
+methods using the framework facility for <a href="../Invokers.html">invokers</a>. These methods will be responsible for firing the
+events.</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">// Declare the events in the defaults</span>
+fluid.defaults(<span class="hljs-string">"tutorials.recordEditor"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.component"</span>],
+    <span class="hljs-attr">events</span>: {
+        <span class="hljs-attr">afterSave</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">onRemove</span>: <span class="hljs-string">"preventable"</span>,
+        <span class="hljs-attr">afterRemove</span>: <span class="hljs-literal">null</span>
+    },
+    <span class="hljs-attr">invokers</span>: {
+        <span class="hljs-attr">save</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"tutorials.recordEditor.save"</span>,
+            <span class="hljs-attr">args</span>: <span class="hljs-string">"{that}"</span>
+        },
+        <span class="hljs-attr">remove</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"tutorials.recordEditor.remove"</span>,
+            <span class="hljs-attr">args</span>: <span class="hljs-string">"{that}"</span>
+        }
+    }
+});
+
+<span class="hljs-comment">// Add public methods that will fire events when they do things</span>
+tutorials.recordEditor.save = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">that</span>) </span>{
+    <span class="hljs-comment">// save stuff</span>
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-comment">// let anyone listening know the save has happened:</span>
+    that.events.afterSave.fire();
+};
+
+tutorials.recordEditor.remove = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">that</span>) </span>{
+    <span class="hljs-comment">// see if anyone listening objects to the removal:</span>
+    <span class="hljs-keyword">var</span> prevent = that.events.onRemove.fire();
+    <span class="hljs-keyword">if</span> (prevent === <span class="hljs-literal">false</span>) {
+        <span class="hljs-comment">// a listener prevented the move, don't do it</span>
+    }
+    <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// no one objects, go ahead and remove</span>
+        <span class="hljs-comment">// ...</span>
+        <span class="hljs-comment">// let listeners know that the remove has completed</span>
+        that.events.afterRemove.fire();
+    }
+};
+</code></pre>
+<p>Next: <a href="ModelComponents.html">Model Components</a></p>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

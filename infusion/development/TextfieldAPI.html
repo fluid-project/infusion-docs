@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Textfield | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components" class="infusion-docs-category-active">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Components</span>
+                                
+                                    <span class="infusion-docs-sectionName"></span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/InlineEditAPI.html"><span class="infusion-docs-TOC-pageName">Inline Edit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/PagerAPI.html"><span class="infusion-docs-TOC-pageName">Pager</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ProgressAPI.html"><span class="infusion-docs-TOC-pageName">Progress</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ReordererAPI.html"><span class="infusion-docs-TOC-pageName">Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ListReordererAPI.html"><span class="infusion-docs-TOC-pageName">List Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/GridReordererAPI.html"><span class="infusion-docs-TOC-pageName">Grid Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/LayoutReordererAPI.html"><span class="infusion-docs-TOC-pageName">Layout Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ImageReordererAPI.html"><span class="infusion-docs-TOC-pageName">Image Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SwitchAPI.html"><span class="infusion-docs-TOC-pageName">Switch</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextToSpeechAPI.html"><span class="infusion-docs-TOC-pageName">Text to Speech</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Textfield</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldSliderAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldSlider</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldStepperAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldStepper</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UserInterfaceOptionsAPI.html"><span class="infusion-docs-TOC-pageName">User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UploaderAPI.html"><span class="infusion-docs-TOC-pageName">Uploader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/UndoAPI.html"><span class="infusion-docs-TOC-pageName">Undo</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/TableOfContentsAPI.html"><span class="infusion-docs-TOC-pageName">Table of Contents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Textfield</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/TextfieldAPI.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>The <strong>Textfield</strong> is a small component for adding aria attributes and data binding to a HTML textfield. Typically this
+will be used in conjunction with a controller (e.g. <a href="TextfieldSliderAPI.html"><strong>Textfield Slider</strong></a>, <a href="TextfieldStepperAPI.html"><strong>Textfield
+Stepper</strong></a>) to restrict the values and pair with additional input methods.</p>
+<h2 id="creator">Creator</h2>
+<p>Use the following function to create a Textfield component:</p>
+<table>
+    <tbody>
+        <tr>
+            <th>Method</th>
+            <td>
+                <code>fluid.textfield(container, options);</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+<p>Instantiates the textfield component. Provides data binding between the HTML <code>&lt;input&gt;</code> and the component's model. Also
+provides options for setting an <code>&quot;aria-label&quot;</code> and/or <code>&quot;aria-labelledby&quot;</code> attribute.</p>
+</td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                <dl>
+                    <dt>container</dt>
+                    <dd>
+<p>A CSS-based selectors, single-element jQuery object, or DOM element that identifies HTML <code>&lt;input&gt;</code> to bind the Textfield
+component to.</p>
+</dd>
+                </dl>
+                <dl>
+                    <dt>options</dt>
+                    <dd>
+                        An optional data structure that configures the Textfield component, as described below.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <th>Returns</th>
+            <td>The Textfield component</td>
+        </tr>
+        <tr>
+            <th>Examples</th>
+            <td>
+
+<pre class="highlight"><code class="hljs dts">
+var textfield = fluid.textfield(<span class="hljs-string">".flc-textfield"</span>, {
+<span class="hljs-symbol">    model:</span> {
+<span class="hljs-symbol">        value:</span> <span class="hljs-string">"Hello World"</span>
+    },
+<span class="hljs-symbol">    strings:</span> {
+        <span class="hljs-string">"label"</span>: <span class="hljs-string">"Insert Demo Name"</span>
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="methods">Methods</h2>
+<h3 id="setmodel">setModel</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Method</th>
+            <td>
+                <code>textfield.setModel(event);</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>setModel</code> method allows for updating the model value based on an event. This is
+                primarily used internally for binding to the input's change event.
+            </td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                <dl>
+                    <dt>event</dt>
+                    <dd>
+                        A <a href="http://api.jquery.com/category/events/event-object/">jQuery event object</a>
+                        including a change value. The <code>setModel</code> method will source the change value from
+                        <code>event.target.value</code>.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="model-paths">Model Paths</h2>
+<p>The following model paths can be used with <a href="ChangeApplierAPI.html">model listeners</a>.</p>
+<ul>
+<li><code>model.value</code>: <code>undefined</code> by default but can contain any value that is valid for the input.</li>
+</ul>
+<h2 id="options">Options</h2>
+<h3 id="strings">strings</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>strings</code> option allows you to specify strings to be used by the component and is the
+                main location for localization. In particular this is used to set an <code>"aria-label"</code> to the
+                components container element, via the <code>attrs</code> option.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>Nothing specified by default</td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs actionscript">
+<span class="hljs-keyword">var</span> textfield = fluid.textfield(<span class="hljs-string">".flc-textfield"</span>, {
+    strings: {
+        <span class="hljs-string">"label"</span>: <span class="hljs-string">"Insert Demo Name"</span>
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="attrs">attrs</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>attrs</code> option allows you to specify attributes to be added on creation to the components
+                container element. In particular this is used to set aria attributes used by the component, such as
+                <code>"aria-labelledby"</code>.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>Nothing specified by default</td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs actionscript">
+<span class="hljs-keyword">var</span> textfield = fluid.textfield(<span class="hljs-string">".flc-textfield"</span>, {
+    attrs: {
+        <span class="hljs-string">"aria-labelledby"</span>: <span class="hljs-string">"elementID"</span>
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

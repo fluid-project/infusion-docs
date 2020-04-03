@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Component Configuration Options | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion" class="infusion-docs-category-active">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Infusion</span>
+                                
+                                    <span class="infusion-docs-sectionName">Writing Configuration</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UnderstandingInfusionComponents.html"><span class="infusion-docs-TOC-pageName">Understanding Infusion Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentOptionsAndDefaults.html"><span class="infusion-docs-TOC-pageName">Understanding Component Options And Defaults</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Component Configuration Options</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentGrades.html"><span class="infusion-docs-TOC-pageName">Component Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FunctionGrades.html"><span class="infusion-docs-TOC-pageName">Function Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="OptionsMerging.html"><span class="infusion-docs-TOC-pageName">Options Merging</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentLifecycle.html"><span class="infusion-docs-TOC-pageName">Component Lifecycle</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Priorities.html"><span class="infusion-docs-TOC-pageName">Priorities</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FrameworkConcepts.html"><span class="infusion-docs-TOC-pageName">Framework Concepts</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">API</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CoreAPI.html"><span class="infusion-docs-TOC-pageName">Core API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PromisesAPI.html"><span class="infusion-docs-TOC-pageName">Promises API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCAPI.html"><span class="infusion-docs-TOC-pageName">IoC API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelTransformationAPI.html"><span class="infusion-docs-TOC-pageName">Model Transformation API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewAPI.html"><span class="infusion-docs-TOC-pageName">View API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="NodeAPI.html"><span class="infusion-docs-TOC-pageName">node.js Support and API</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Inversion of Control</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseInfusionIoC.html"><span class="infusion-docs-TOC-pageName">How to Use Infusion IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SubcomponentDeclaration.html"><span class="infusion-docs-TOC-pageName">Subcomponent Declaration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Contexts.html"><span class="infusion-docs-TOC-pageName">Contexts</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ContextAwareness.html"><span class="infusion-docs-TOC-pageName">ContextAwareness</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ExpansionOfComponentOptions.html"><span class="infusion-docs-TOC-pageName">Expansion of Component Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCReferences.html"><span class="infusion-docs-TOC-pageName">IoC References</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCSS.html"><span class="infusion-docs-TOC-pageName">IoCSS</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeclarativeThisismInIoC.html"><span class="infusion-docs-TOC-pageName">Declarative this-ism In IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Events</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InfusionEventSystem.html"><span class="infusion-docs-TOC-pageName">Infusion Event System</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="EventInjectionAndBoiling.html"><span class="infusion-docs-TOC-pageName">Event injection and boiling</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Models</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplier.html"><span class="infusion-docs-TOC-pageName">ChangeApplier</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelRelay.html"><span class="infusion-docs-TOC-pageName">Model Relay</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Views</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinder.html"><span class="infusion-docs-TOC-pageName">DOM Binder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ClassNameConventions.html"><span class="infusion-docs-TOC-pageName">Class Name Conventions</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Renderer</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Renderer.html"><span class="infusion-docs-TOC-pageName">Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseTheRenderer.html"><span class="infusion-docs-TOC-pageName">How to Use the Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTrees.html"><span class="infusion-docs-TOC-pageName">Renderer Component Trees</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ProtoComponentTypes.html"><span class="infusion-docs-TOC-pageName">ProtoComponent Types</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTreeExpanders.html"><span class="infusion-docs-TOC-pageName">Renderer Component Tree Expanders</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Cutpoints.html"><span class="infusion-docs-TOC-pageName">Cutpoints</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererDecorators.html"><span class="infusion-docs-TOC-pageName">Renderer Decorators</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Loading Resources</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ResourceLoader.html"><span class="infusion-docs-TOC-pageName">Resource Loader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FetchResources.html"><span class="infusion-docs-TOC-pageName">fluid.fetchResources</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Builder.html"><span class="infusion-docs-TOC-pageName">Builder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PrimarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Primary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="AuxiliarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Auxiliary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SettingsStore.html"><span class="infusion-docs-TOC-pageName">Settings Store</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConnectingThePartsOfAPreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Connecting the Parts of a Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Enactors.html"><span class="infusion-docs-TOC-pageName">Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Panels.html"><span class="infusion-docs-TOC-pageName">Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CompositePanels.html"><span class="infusion-docs-TOC-pageName">Composite Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConditionalSubpanels.html"><span class="infusion-docs-TOC-pageName">Conditional Subpanels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="LocalizationInThePreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Localization in the Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Testing</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="jqUnit.html"><span class="infusion-docs-TOC-pageName">Unit Testing with jqUnit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCTestingFramework.html"><span class="infusion-docs-TOC-pageName">IoC Testing Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 1.5</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_4To1_5.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.4 to 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecationsIn1_5.html"><span class="infusion-docs-TOC-pageName">Deprecations In 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html"><span class="infusion-docs-TOC-pageName">UI Options Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/PagerMigration.html"><span class="infusion-docs-TOC-pageName">Pager Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 2.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_5To2_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.5 to 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecatedIn2_0.html"><span class="infusion-docs-TOC-pageName">Deprecated in 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 3.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom2_0To3_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 2.0 to 3.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Component Configuration Options</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/ComponentConfigurationOptions.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>Infusion components are configured using options that are defined by the component developer and customized by the
+integrator. While component developers are free to define whatever options are appropriate for their component, the
+Infusion Framework supports a number of predefined options.</p>
+<p>The particular set of options interpreted by the framework is determined by the <a href="ComponentGrades.html">Grades</a> that the
+component is derived from. Developers and integrators can define further grades which respond to yet further options,
+which they should document if they expect the options to be generally useful. This page briefly describes these
+predefined options and provides links to more information about the related framework functionality.</p>
+<h2 id="options-supported-by-all-components-grades">Options Supported By All Components Grades</h2>
+<p>The following options are supported by all component grades, that is, those derived from <code>fluid.component</code>:</p>
+<h3 id="gradenames"><code>gradeNames</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A <code>String</code> or <code>Array of String</code> <a href="ComponentGrades.html">grade names</a>.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs css"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>("<span class="hljs-selector-tag">component</span><span class="hljs-selector-class">.name</span>", {
+    <span class="hljs-attribute">gradeNames</span>: <span class="hljs-string">"fluid.modelComponent"</span>,
+    // ...
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="ComponentGrades.html">Component Grades</a></td>
+  </tr>
+</table>
+<h3 id="invokers"><code>invokers</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A record defining methods on the component whose arguments are resolved from the environment as well as the
+        direct argument list at invocation time.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"component.name"</span>, {
+    <span class="hljs-attribute">invokers</span>: {
+        <span class="hljs-attribute">inv1</span>: {
+            <span class="hljs-comment">// ...</span>
+        },
+        <span class="hljs-attribute">inv2</span>: {
+            <span class="hljs-comment">// ...</span>
+        }
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="Invokers.html">Invokers</a></td>
+  </tr>
+</table>
+<h3 id="members"><code>members</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A record defining properties to be added to the component object. These can be anything, including methods,
+        strings, objects, etc. Definitions are evaluated as IoC expressions.
+    </td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        Defining a method as a Function in <code>members</code> will differ from <code>invokers</code> in that the
+        arguments of members are not resolved at invocation time. The use of such function members is not recommended
+        except where very high invocation performance is required.  The right-hand-side may contain an
+        <a href="ExpansionOfComponentOptions.html">expander</a> definition, which may perhaps itself resolve onto an
+        <a href="Invokers.html">invoker</a>.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"component.name"</span>, {
+    <span class="hljs-attribute">members</span>: {
+        <span class="hljs-attribute">member1</span>: <span class="hljs-string">"{that}.options.optionsValue"</span>,
+        <span class="hljs-attribute">member2</span>: <span class="hljs-string">"{theOther}.dom.otherSelector"</span>,
+    },
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+</table>
+<h3 id="events"><code>events</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A record containing key/value pairs that define the events the component will fire: the keys are the event
+        names, the values define the type of the event (see <a href="InfusionEventSystem.html">Infusion Event System</a>
+        for information on the different event types).
+    </td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        The Framework will create event firers for the listed events. The builtin events `onCreate`, `onDestroy` and
+        `afterDestroy` will be fired automatically by the framework. It is the responsibility of the component to fire
+        user-defined events at the appropriate times.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td><pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"component.name"</span>, {
+    <span class="hljs-attribute">events</span>: {
+        <span class="hljs-attribute">onSave</span>: <span class="hljs-string">"preventable"</span>,
+        <span class="hljs-attribute">onReady</span>: null
+    }
+    <span class="hljs-comment">//...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="InfusionEventSystem.html">Infusion Event System</a></td>
+  </tr>
+</table>
+<h3 id="listeners"><code>listeners</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A record defining listener functions for the events supported by a component.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        Both component developers and integrators can define listeners for events. <a href="Invokers.html">Invokers</a>
+        and the `fire` method of other events can be used as listeners here, as well as any function handle resulting
+        from an <a href="ExpansionOfComponentOptions.html">Expanders</a>. Note that as well as being a simple string
+        holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.html">IoC
+        Reference</a> to any other event held in the component tree (for example
+        <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, the value
+        associated with the key may be a <a href="InfusionEventSystem.html">Listener Record</a> or else follow the syntax
+        of an invoker indicating that the registered listener receives a different signature from the one that the event
+        has fired (see <a href="EventInjectionAndBoiling.html">Event injection and boiling</a>).
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs typescript">examples.myListener = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-built_in">number</span>, condition</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Event listener received number "</span> + <span class="hljs-built_in">number</span> + <span class="hljs-string">" and condition "</span> + condition);
+};
+&lt;p&gt;fluid.defaults(<span class="hljs-string">"examples.eventedComponent"</span>, {
+gradeNames: [<span class="hljs-string">"fluid.component"</span>],
+events: {
+myEvent: <span class="hljs-literal">null</span>
+},
+listeners: {
+<span class="hljs-string">"myEvent.myNamespace"</span>: <span class="hljs-string">"examples.myListener"</span>
+}
+});</code></pre>
+</td></p>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td>
+<pre class="highlight"><code class="hljs actionscript"><span class="hljs-keyword">var</span> myComp = examples.eventedComponent({
+    listeners: {
+        <span class="hljs-string">"myEvent.myNamespace"</span>: <span class="hljs-string">"examples.myOtherListener"</span>,
+    }
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="InfusionEventSystem.html">Infusion Event System</a></td>
+  </tr>
+</table>
+<h3 id="components"><code>components</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A record containing named definitions of the component's subcomponents.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        This (the <strong>subcomponent record</strong>) is one of the core sources from which the options configuring a
+        component in a particular context. The total set of options sources are:
+        <ol>
+            <li>the original defaults record,</li>
+            <li>the subcomponent record,</li>
+            <li>direct user options (supplied to a component creator function),</li>
+            <li><a href="IoCSS.html">distributed options</a>.</li>
+        </ol>
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs nimrod">fluid.defaults(<span class="hljs-string">"component.name"</span>, {
+    components: {
+        subcomponent1: {
+            <span class="hljs-keyword">type</span>: <span class="hljs-string">"component.subcomp1"</span>,
+            options: <span class="hljs-meta">{...}</span>
+        }
+        // ...
+    }
+    // ...
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="SubcomponentDeclaration.html">Documentation: Subcomponents</a></td>
+  <tr>
+  <tr>
+    <th></th>
+    <td><a href="tutorial-gettingStartedWithInfusion/Subcomponents.html">Tutorial: Subcomponents</a></td>
+  </tr>
+</table>
+<h3 id="distributeoptions"><code>distributeOptions</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A record directing the framework to distribute options from this component to one or more other components in
+        the component tree. Either a single record, an <code>Array</code> or <code>Object</code> holding these records
+        is supported. In the <code>Object</code> form, the keys of the object will be taken to represent the
+        <code>namespace</code of the distribution.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"component.name"</span>, {
+    <span class="hljs-attribute">gradeNames</span>: [<span class="hljs-string">"fluid.component"</span>],
+    <span class="hljs-attribute">distributeOptions</span>: {
+        <span class="hljs-attribute">namespace</span>: <span class="hljs-string">"myDistribution"</span>,
+        <span class="hljs-attribute">record</span>: <span class="hljs-string">"another.grade.name"</span>,
+        <span class="hljs-attribute">target</span>: <span class="hljs-string">"{that target.grade.name}.options.gradeNames"</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="IoCSS.html">IoCSS for options distributions</a></td>
+  </tr>
+</table>
+<h3 id="mergepolicy"><code>mergePolicy</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A record providing instructions for how particular options should be merged when integrator options are merged
+        with default values.
+    </td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some
+        external library or framework from being corrupted by the options merging/expansion process by use of the
+        "nomerge" policy. For example, some noxious circularly-liked structure such as a node.js HTTP `request` object
+        should be protected in such a way. The 2.0 framework will automatically protect an object which fails the
+        `fluid.isPlainObject` test, which will exclude any object with a nondefault constructor or native type such as
+        DOM elements, `TypedArray`s, Infusion components themselves, etc.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"component.name"</span>, {
+    <span class="hljs-attribute">mergePolicy</span>: {
+        <span class="hljs-attribute">option1</span>: <span class="hljs-string">"noexpand"</span>,
+        <span class="hljs-attribute">option2</span>: <span class="hljs-string">"nomerge"</span>
+        <span class="hljs-comment">// ...</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="OptionsMerging.html">Options Merging</a></td>
+  </tr>
+</table>
+<h3 id="dynamiccomponents"><code>dynamicComponents</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        An object containing named definitions of the component's
+        <a href="SubcomponentDeclaration.html#dynamic-components">dynamic subcomponents</a>. Rather than exactly one
+        subcomponent being associated with its parent from these records, there may be one subcomponent per element of
+        an array, or one per firing of an event.
+    </td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        Some special context names will be available within the subcomponent's definition block, for example
+        <code>{source}</code> and <code>{sourcePath}</code> or <code>{arguments}</code>, derived from the material
+        responsible for constructing the component.  <em>This framework facility will be replaced by a more declarative
+        equivalent in time - ask on the
+        <a href="http://lists.idrc.ocad.ca/mailman/listinfo/fluid-work">fluid-work mailing list</a> or
+        <a href="https://wiki.fluidproject.org/display/fluid/IRC+Channel">#fluid-work IRC channel</a> if you seem to
+        find yourself needing to use it.</em>
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"component.name"</span>, {
+    <span class="hljs-attribute">dynamicComponents</span>: {
+        <span class="hljs-attribute">dynamic1</span>: {
+            <span class="hljs-attribute">type</span>: <span class="hljs-string">"component.subcomp1"</span>,
+            <span class="hljs-attribute">source</span>: <span class="hljs-string">"{context}.someArray"</span>,
+            <span class="hljs-attribute">options</span>: {
+                <span class="hljs-comment">// ...</span>
+            }
+        }
+        <span class="hljs-comment">// ...</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="SubcomponentDeclaration.html#dynamic-components">Documentation: Dynamic components</a></td>
+  <tr><th></th>
+    <td><a href="tutorial-gettingStartedWithInfusion/Subcomponents.html">Tutorial: Subcomponents</a></td>
+  </tr>
+</table>
+<h2 id="model-components">Model Components</h2>
+<p>Components defined with a grade of <code>fluid.modelComponent</code> support all of the
+<a href="#options-supported-by-all-components-grades">common options</a> described above, as well as those defined below. Component
+developers are free to define their own additional options.</p>
+<p>See also: <a href="ComponentGrades.html">Component Grades</a></p>
+<h3 id="model"><code>model</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An record containing the data model to be used by the component.</td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"fluid.pager"</span>, {
+    <span class="hljs-attribute">model</span>: {
+        <span class="hljs-attribute">pageIndex</span>: undefined,
+        <span class="hljs-attribute">pageSize</span>: <span class="hljs-number">10</span>,
+        <span class="hljs-attribute">totalRange</span>: undefined
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td>
+<pre class="highlight"><code class="hljs dts">var myPager = fluid.pager(container, {
+<span class="hljs-symbol">    model:</span> {
+<span class="hljs-symbol">        pageIndex:</span> <span class="hljs-number">1</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="FrameworkConcepts.html#model-objects">Model Objects</a><br/>
+        <a href="ChangeApplierAPI.html">ChangeApplier API</a><br/>
+  </tr>
+</table>
+<h3 id="modellisteners"><code>modelListeners</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A record defining a set of functions wishing to be notified of changes to the `model`
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs css"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>("<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.tests</span><span class="hljs-selector-class">.allChangeRecorder</span>", {
+    <span class="hljs-attribute">gradeNames</span>: <span class="hljs-string">"fluid.tests.changeRecorder"</span>,
+    modelListeners: {
+        <span class="hljs-string">""</span>: <span class="hljs-string">"{that}.record({change}.path, {change}.value, {change}.oldValue)"</span>
+    }
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="ChangeApplierAPI.html#model-listener-declaration">Model Listeners</a></td>
+  </tr>
+</table>
+<h3 id="modelrelay"><code>modelRelay</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A set of rules or constraints linking values held in this model to those elsewhere in the component tree (or to
+        other values within this model)
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"examples.volumeModelRelay"</span>, {
+    <span class="hljs-attribute">gradeNames</span>: [<span class="hljs-string">"fluid.modelComponent"</span>],
+    <span class="hljs-attribute">model</span>: {
+        <span class="hljs-attribute">volumeAsPercent</span>: <span class="hljs-number">95</span>,
+    },
+    <span class="hljs-attribute">modelRelay</span>: {
+        <span class="hljs-attribute">source</span>: <span class="hljs-string">"volumeAsPercent"</span>,
+        <span class="hljs-attribute">target</span>: <span class="hljs-string">"volumeAsFraction"</span>,
+        <span class="hljs-attribute">singleTransform</span>: {
+            <span class="hljs-attribute">type</span>: <span class="hljs-string">"fluid.transforms.linearScale"</span>,
+            <span class="hljs-attribute">factor</span>: <span class="hljs-number">0.01</span>
+        }
+    }
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="ModelRelay.html">Model Relay</a></td>
+  </tr>
+</table>
+<h3 id="changeapplieroptions"><code>changeApplierOptions</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        Options that will be passed on to the ChangeApplier constructed for this component. There are currently no such
+        options supported. This section is left as a placeholder, since such options, like lemon-soaked paper napkins,
+        will one day be supported here again.
+    </td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="ChangeApplierAPI.html">ChangeApplier API</a></td>
+  </tr>
+</table>
+<h2 id="view-components">View Components</h2>
+<p>Components defined with a grade of <code>fluid.viewComponent</code> are also model components, so they support</p>
+<ul>
+<li>all of the <a href="#options-supported-by-all-components-grades">common options</a> described above,</li>
+<li><a href="#model-components"><code>modelComponent</code> options</a> described above</li>
+<li>and those defined below.</li>
+</ul>
+<p>Component developers are free to define their own additional options.</p>
+<h3 id="selectors"><code>selectors</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A record containing named CSS-based selectors identifying where in the DOM relative to the component's
+        `container` different elements can be found.
+    </td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        The Framework will create a <a href="DOMBinder.html">DOM Binder</a> that should be used to access the elements
+        identified by selectors. The DOM Binder attaches a function to the component object called <code>locate()</code>
+        which retrieves the element given the selector name.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"fluid.progress"</span>, {
+    <span class="hljs-attribute">selectors</span>: {
+        <span class="hljs-attribute">displayElement</span>: <span class="hljs-string">".flc-progress"</span>,
+        <span class="hljs-attribute">progressBar</span>: <span class="hljs-string">".flc-progress-bar"</span>,
+        <span class="hljs-attribute">indicator</span>: <span class="hljs-string">".flc-progress-indicator"</span>,
+        <span class="hljs-attribute">label</span>: <span class="hljs-string">".flc-progress-label"</span>,
+        <span class="hljs-attribute">ariaElement</span>: <span class="hljs-string">".flc-progress-bar"</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td>
+<pre class="highlight"><code class="hljs dts">var myEdit = fluid.progress(container, {
+<span class="hljs-symbol">    selectors:</span> {
+<span class="hljs-symbol">        indicator:</span> <span class="hljs-string">"div.progress-indicator"</span>,
+<span class="hljs-symbol">        label:</span> <span class="hljs-string">"span.progress-label"</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="DOMBinder.html">DOM Binder</a></td>
+  </tr>
+</table>
+<h3 id="styles"><code>styles</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A record containing named CSS classes that the component will apply to its markup in order to achieve
+        state-dependent styling effects.
+    </td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        The contents of this block are not interpreted by the framework at all. The existence of this block amounts to a
+        helpful convention that implementors of view components are recommended to use, to organise and advertise the
+        CSS class names that they will apply on behalf of their users
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs dts">fluid.defaults(<span class="hljs-string">"demo.initGridReorderer"</span>, {
+<span class="hljs-symbol">    gradeNames:</span> [<span class="hljs-string">"fluid.reorderGrid"</span>],
+<span class="hljs-symbol">    styles:</span> {
+<span class="hljs-symbol">        dragging:</span> <span class="hljs-string">"demo-gridReorderer-dragging"</span>,
+<span class="hljs-symbol">        avatar:</span> <span class="hljs-string">"demo-gridReorderer-avatar"</span>,
+<span class="hljs-symbol">        selected:</span> <span class="hljs-string">"demo-gridReorderer-selected"</span>,
+<span class="hljs-symbol">        dropMarker:</span> <span class="hljs-string">"demo-gridReorderer-dropMarker"</span>
+    },
+<span class="hljs-symbol">    disableWrap:</span> true
+});</code></pre>
+</td>
+    </tr>
+</table>
+<p>In addition to the options above, a View Component also accepts an additional argument named <code>container</code> which may be
+supplied either as the first argument to its <a href="UnderstandingInfusionComponents.html">Creator Function</a> or else at top level
+in its <a href="SubcomponentDeclaration.html">Subcomponent Record</a>. It is not currently supported to supply this value as a
+standard option in the options record.</p>
+<h2 id="renderer-components">Renderer Components</h2>
+<p>Components defined with a grade of <code>rendererComponent</code> are also view components (and hence model components), so they
+support</p>
+<ul>
+<li>all of the <a href="#options-supported-by-all-components-grades">common options</a> described above,</li>
+<li><a href="#model-components"><code>modelComponent</code> options</a> described above,</li>
+<li><a href="#view-components"><code>viewComponent</code> options</a> described above,</li>
+<li>and those defined below.</li>
+</ul>
+<p>Component developers are free to define their own additional options.</p>
+<div class="infusion-docs-note"><strong>Note:</strong> The Infusion Renderer system will be rewritten completely before
+the Infusion 3.0 release - the use of the current renderer and component hierarchy is not recommended.</div>
+<h3 id="selectorstoignore"><code>selectorsToIgnore</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        An array of selector names identifying elements that will be ignored by the Renderer. These elements will be
+        displayed exactly as provided in the template, with no processing
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs dts">fluid.defaults(<span class="hljs-string">"cspace.header"</span>, {
+<span class="hljs-symbol">    selectors:</span> {
+<span class="hljs-symbol">        menuItem:</span> <span class="hljs-string">".csc-header-menu-item"</span>,
+<span class="hljs-symbol">        label:</span> <span class="hljs-string">".csc-header-link"</span>,
+<span class="hljs-symbol">        searchBox:</span> <span class="hljs-string">".csc-header-searchBox"</span>,
+<span class="hljs-symbol">        logout:</span> <span class="hljs-string">".csc-header-logout"</span>,
+<span class="hljs-symbol">        user:</span> <span class="hljs-string">".csc-header-user"</span>,
+<span class="hljs-symbol">        userName:</span> <span class="hljs-string">".csc-header-userName"</span>
+    },
+<span class="hljs-symbol">    selectorsToIgnore:</span> [<span class="hljs-string">"searchBox"</span>, <span class="hljs-string">"logout"</span>]
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+</table>
+<h3 id="repeatingselectors"><code>repeatingSelectors</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        An array of selector names identifying elements that will be repeated by the Renderer based on the data being
+        rendered. For example, the selector for a table row that will be replicated many times should appear in the list
+        of repeating selectors.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs dts">fluid.defaults(<span class="hljs-string">"cspace.header"</span>, {
+<span class="hljs-symbol">    selectors:</span> {
+<span class="hljs-symbol">        menuItem:</span> <span class="hljs-string">".csc-header-menu-item"</span>,
+<span class="hljs-symbol">        label:</span> <span class="hljs-string">".csc-header-link"</span>,
+<span class="hljs-symbol">        searchBox:</span> <span class="hljs-string">".csc-header-searchBox"</span>,
+<span class="hljs-symbol">        logout:</span> <span class="hljs-string">".csc-header-logout"</span>,
+<span class="hljs-symbol">        user:</span> <span class="hljs-string">".csc-header-user"</span>,
+<span class="hljs-symbol">        userName:</span> <span class="hljs-string">".csc-header-userName"</span>
+    },
+<span class="hljs-symbol">    repeatingSelectors:</span> [<span class="hljs-string">"menuItem"</span>]
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+</table>
+<h3 id="producetree"><code>produceTree</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A function that will return a <a href="RendererComponentTrees.html">Renderer Component Tree</a> for the component.
+    </td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        The referenced function must accept the component object as its only parameter and return a Renderer component
+        tree. <em>NOTE that if both <code>produceTree</code> and <code><a href="#prototree">protoTree</a></code> are
+        specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em>
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs actionscript">cspace.confirmationDialog.produceTree = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(that)</span> </span>{
+    <span class="hljs-keyword">var</span> tree = {
+        <span class="hljs-comment">// ...</span>
+    };
+    <span class="hljs-keyword">return</span> tree;
+};
+fluid.defaults(<span class="hljs-string">"cspace.confirmationDialog"</span>, {
+    produceTree: cspace.confirmationDialog.produceTree
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="#prototree">protoTree</a><br/>
+    <a href="RendererComponentTrees.html">Renderer Component Tree</a></td>
+  </tr>
+</table>
+<h3 id="prototree"><code>protoTree</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>A tree of Renderer <a href="ProtoComponentTypes.html">protocomponents</a>.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        <em>NOTE that if both <code><a href="#producetree">produceTree</a></code> and <code>protoTree</code> are
+        specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em>
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"cspace.searchTips"</span>, {
+    <span class="hljs-attribute">protoTree</span>: {
+        <span class="hljs-attribute">searchTips</span>: {<span class="hljs-attribute">decorators</span>: {<span class="hljs-string">"addClass"</span>: <span class="hljs-string">"{styles}.searchTips"</span>}},
+        <span class="hljs-attribute">title</span>: {
+            <span class="hljs-attribute">decorators</span>: {<span class="hljs-string">"addClass"</span>: <span class="hljs-string">"{styles}.title"</span>},
+            <span class="hljs-attribute">messagekey</span>: <span class="hljs-string">"searchTips-title"</span>
+        },
+        <span class="hljs-attribute">expander</span>: {
+            <span class="hljs-attribute">repeatID</span>: <span class="hljs-string">"instructions"</span>,
+            <span class="hljs-attribute">type</span>: <span class="hljs-string">"fluid.renderer.repeat"</span>,
+            <span class="hljs-attribute">pathAs</span>: <span class="hljs-string">"row"</span>,
+            <span class="hljs-attribute">controlledBy</span>: <span class="hljs-string">"messagekeys"</span>,
+            <span class="hljs-attribute">tree</span>: {
+                <span class="hljs-attribute">messagekey</span>: <span class="hljs-string">"${{row}}"</span>
+            }
+        }
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td>
+<pre class="highlight"><code class="hljs dts">var searchTips = cspace.searchTips(container, {
+<span class="hljs-symbol">    protoTree:</span> {
+<span class="hljs-symbol">        searchTips:</span> {decorators: {<span class="hljs-string">"addClass"</span>: <span class="hljs-string">"{styles}.searchTips"</span>}},
+<span class="hljs-symbol">        title:</span> {
+<span class="hljs-symbol">            decorators:</span> {<span class="hljs-string">"addClass"</span>: <span class="hljs-string">"{styles}.title"</span>},
+<span class="hljs-symbol">            messagekey:</span> <span class="hljs-string">"searchTips-title"</span>
+        },
+<span class="hljs-symbol">        expander:</span> {
+<span class="hljs-symbol">            repeatID:</span> <span class="hljs-string">"instructions"</span>,
+<span class="hljs-symbol">            type:</span> <span class="hljs-string">"fluid.renderer.repeat"</span>,
+<span class="hljs-symbol">            pathAs:</span> <span class="hljs-string">"row"</span>,
+<span class="hljs-symbol">            controlledBy:</span> <span class="hljs-string">"messagekeys"</span>,
+<span class="hljs-symbol">            tree:</span> {
+<span class="hljs-symbol">                messagekey:</span> <span class="hljs-string">"${{row}}"</span>
+            }
+        }
+    },
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="#producetree">produceTree</a><br/>
+    <a href="RendererComponentTrees.html">Renderer Component Tree</a><br/>
+    <a href="ProtoComponentTypes.html">ProtoComponent Types</a></td>
+  </tr>
+</table>
+<h3 id="resources"><code>resources</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An object that lists resources (such as HTML files, CSS files, data files) required by the component.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        The specified resources will be loaded automatically and the file content will be stored within the resources
+        object itself.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"component.name"</span>, {
+    <span class="hljs-attribute">resources</span>: {
+        <span class="hljs-attribute">headerTemplate</span>: {
+            <span class="hljs-attribute">href</span>: <span class="hljs-string">"../templates/Header.html"</span>
+        },
+        <span class="hljs-attribute">footerTemplate</span>: {
+            <span class="hljs-attribute">href</span>: <span class="hljs-string">"../templates/Footer.html"</span>
+        }
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td>
+<pre class="highlight"><code class="hljs dts">var myComp = component.name(container, {
+<span class="hljs-symbol">    resources:</span> {
+<span class="hljs-symbol">        footerTemplate:</span> {
+<span class="hljs-symbol">            href:</span> <span class="hljs-string">"../templates/FrontPageFooter.html"</span>
+        }
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/core/js/FluidRequests.js#L24-L50">fluid.fetchResources</a></code></td>
+  </tr>
+</table>
+<h3 id="strings"><code>strings</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>An object containing named strings or string templates. The strings will be used by the Renderer.</td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td>
+        The Framework will create a Message Resolver and add it to the component object if the <code>strings</code>
+        option is present.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"cspace.searchToRelateDialog"</span>, {
+    <span class="hljs-attribute">gradeNames</span>: [<span class="hljs-string">"fluid.rendererComponent"</span>],
+    <span class="hljs-attribute">strings</span>: {
+        <span class="hljs-attribute">createNewButton</span>: <span class="hljs-string">"Create"</span>,
+        <span class="hljs-attribute">title</span>: <span class="hljs-string">"Add Related %recordType Record"</span>,
+        <span class="hljs-attribute">closeAlt</span>: <span class="hljs-string">"close button"</span>,
+        <span class="hljs-attribute">relationshipType</span>: <span class="hljs-string">"Select relationship type:"</span>,
+        <span class="hljs-attribute">createNew</span>: <span class="hljs-string">"Create new record:"</span>,
+        <span class="hljs-attribute">addButton</span>: <span class="hljs-string">"Add to current record"</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td>
+<pre class="highlight"><code class="hljs dts">var myDialog = cspace.searchToRelateDialog(container, {
+<span class="hljs-symbol">    strings:</span> {
+<span class="hljs-symbol">        relationshipType:</span> <span class="hljs-string">"Select a relationship type from the list below:"</span>,
+<span class="hljs-symbol">        createNew:</span> <span class="hljs-string">"Create a new record:"</span>,
+<span class="hljs-symbol">        addButton:</span> <span class="hljs-string">"Add this record to the current record"</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/core/js/Fluid.js#L2441-L2451">fluid.messageResolver</a></code></td>
+  </tr>
+</table>
+<h3 id="rendererfnoptions"><code>rendererFnOptions</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>Options that will be passed directly to the renderer creation function, <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100">fluid.renderer.createRendererSubcomponent</a></code></td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"fluid.tableOfContents.levels"</span>, {
+    <span class="hljs-attribute">rendererFnOptions</span>: {
+        <span class="hljs-attribute">noexpand</span>: true
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td>
+<pre class="highlight"><code class="hljs dts">var recEditor = cspace.recordEditor(container, {
+<span class="hljs-symbol">    rendererFnOptions:</span> {
+<span class="hljs-symbol">        rendererTargetSelector:</span> <span class="hljs-string">"dialog"</span>
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="RendererComponents.html">Renderer Components</a><br/>
+    <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100">fluid.renderer.createRendererSubcomponent</a></code></td>
+  </tr>
+</table>
+<h3 id="rendereroptions"><code>rendererOptions</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        Options that will be included in the <code><a href="#rendererfnoptions">rendererFnOptions</a></code> as
+        <code>rendererOptions</code>
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs less"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>(<span class="hljs-string">"cspace.searchBox"</span>, {
+    <span class="hljs-attribute">rendererOptions</span>: {
+        <span class="hljs-attribute">autoBind</span>: false
+    }
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td>
+<pre class="highlight"><code class="hljs yaml"><span class="hljs-string">var</span> <span class="hljs-string">search</span> <span class="hljs-string">=</span> <span class="hljs-string">cspace.searchBox(container,</span> <span class="hljs-string">{</span>
+    <span class="hljs-attr">rendererOptions:</span> <span class="hljs-string">{</span>
+        <span class="hljs-attr">autoBind:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-string">}</span>
+    <span class="hljs-string">//</span> <span class="hljs-string">...</span>
+<span class="hljs-string">});</span></code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><a href="RendererComponents.html">Renderer Components</a><br/>
+    <code><a href="#rendererfnoptions">rendererFnOptions</a></code></td>
+  </tr>
+</table>
+<h3 id="renderoninit"><code>renderOnInit</code></h3>
+<table>
+  <tr>
+    <th>Description</th>
+    <td>
+        A boolean flag indicating whether or not the component should render itself automatically once initialization
+        has completed. By default, renderer components do not render themselves automatically.
+    </td>
+  </tr>
+  <tr>
+    <th>Example Definition</th>
+    <td>
+<pre class="highlight"><code class="hljs css"><span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.defaults</span>("<span class="hljs-selector-tag">cspace</span><span class="hljs-selector-class">.login</span>", {
+    <span class="hljs-attribute">gradeNames</span>: [<span class="hljs-string">"fluid.rendererComponent"</span>],
+    renderOnInit: true
+    // ...
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>Example Override</th>
+    <td>
+<pre class="highlight"><code class="hljs actionscript"><span class="hljs-keyword">var</span> login = cspace.login(container, {
+    renderOnInit: <span class="hljs-literal">false</span>
+    <span class="hljs-comment">// ...</span>
+});</code></pre>
+</td>
+  </tr>
+  <tr>
+    <th>See also</th>
+    <td><code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L190-L248">fluid.initRendererComponent</a></code></td>
+  </tr>
+</table>
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>User Interface Options API | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components" class="infusion-docs-category-active">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Components</span>
+                                
+                                    <span class="infusion-docs-sectionName"></span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/InlineEditAPI.html"><span class="infusion-docs-TOC-pageName">Inline Edit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/PagerAPI.html"><span class="infusion-docs-TOC-pageName">Pager</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ProgressAPI.html"><span class="infusion-docs-TOC-pageName">Progress</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ReordererAPI.html"><span class="infusion-docs-TOC-pageName">Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ListReordererAPI.html"><span class="infusion-docs-TOC-pageName">List Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/GridReordererAPI.html"><span class="infusion-docs-TOC-pageName">Grid Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/LayoutReordererAPI.html"><span class="infusion-docs-TOC-pageName">Layout Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ImageReordererAPI.html"><span class="infusion-docs-TOC-pageName">Image Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SwitchAPI.html"><span class="infusion-docs-TOC-pageName">Switch</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextToSpeechAPI.html"><span class="infusion-docs-TOC-pageName">Text to Speech</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldAPI.html"><span class="infusion-docs-TOC-pageName">Textfield</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldSliderAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldSlider</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldStepperAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldStepper</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">User Interface Options</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UploaderAPI.html"><span class="infusion-docs-TOC-pageName">Uploader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/UndoAPI.html"><span class="infusion-docs-TOC-pageName">Undo</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/TableOfContentsAPI.html"><span class="infusion-docs-TOC-pageName">Table of Contents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>User Interface Options API</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/UserInterfaceOptionsAPI.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>The <strong>User Interface Options (UI Options)</strong> component allows users to transform the presentation of the user interface
+and content resources so that they are personalized to the individual user's needs.</p>
+<p>UI Options does three things:</p>
+<ul>
+<li>places a preferences editor dialog with a set of six panels in a collapsible panel at the top of the page, accessible
+through a button in the upper right corner of the page;</li>
+<li>instantiates a cookie-based <a href="SettingsStore.html">Settings Store</a> for storing the user's preferences; and</li>
+<li>acts upon the user's preferences.</li>
+</ul>
+<p>UI Options is a convenient way to add a simple separated-panel preferences editor to any page. The interface will
+automatically support the set of &quot;starter&quot; preferences provided by the <a href="PreferencesFramework.html">Preferences Framework</a>,
+in their default configuration.</p>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> If you require any customization of UI Options, you should consider  using the <a
+    href="Builder.html">Builder</a> tool of the <a href="PreferencesFramework.html">Preferences Framework</a> directly.
+</div>
+<p><img src="images/uio-showcase.png" alt="Screen shot of the UI Options Component" title="Screen shot of the UI Options Component"></p>
+<h2 id="creator">Creator</h2>
+<p>Use the following function to create a UI Options component:</p>
+<table>
+    <tbody>
+        <tr>
+            <th>Method</th>
+            <td>
+                <code>fluid.uiOptions.prefsEditor(container, options);</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                Instantiate a separated panel version of the UI Options component, which displays the controls in a
+                sliding panel at the top of the page.
+            </td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                <dl>
+                    <dt>container</dt>
+                    <dd>
+                        A CSS-based selectors, single-element jQuery object, or DOM element that identifies the root DOM
+                        node where the UI Options interface should be placed.
+                    </dd>
+                    <dt>options</dt>
+                    <dd>
+                        An optional data structure that configures the UI Options component, as described below.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <th>Returns</th>
+            <td>The UI Options component</td>
+        </tr>
+        <tr>
+            <th>Examples</th>
+            <td>
+
+<pre class="highlight"><code class="hljs livescript">
+<span class="hljs-keyword">var</span> myUIO = fluid.uiOptions.prefsEditor(<span class="hljs-string">"<span class="hljs-subst">#myContainer</span>"</span>, {
+    tocTemplate: <span class="hljs-string">"../../components/tableOfContents/html/TableOfContents.html"</span>
+});
+</code></pre>
+
+            </td>
+        </tr>
+        <tr>
+            <th>Notes</th>
+            <td>
+                The UI Options uses the page itself as a live "preview:" As users adjust controls, the page is modified
+                accordingly.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="supported-events">Supported Events</h2>
+<p>Listeners can be attached to any supported events through a component's <code>listeners</code> option. Values can be a function
+reference (not a string function name) or an anonymous function definition, as illustrated below:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> myComponent = component.name(<span class="hljs-string">"#myContainerID"</span>, {
+    <span class="hljs-attr">listeners</span>: {
+        <span class="hljs-attr">eventName1</span>: functionName,
+        <span class="hljs-attr">eventName2</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">params</span>) </span>{
+            <span class="hljs-comment">// ...</span>
+        }
+    }
+});
+</code></pre>
+<p>For information on the different types of events, see <a href="InfusionEventSystem.html">Infusion Event System</a>.</p>
+<h3 id="onready">onReady</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                This event fires when the UI Options component is fully instantiated, rendered and ready to use.
+            </td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>default</td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                <dl>
+                    <dt>uio</dt>
+                    <dd>The instantiated UI Options component.</dd>
+                </dl>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="onprefseditorready">onPrefsEditorReady</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                This event fires when the UI Options interface has been rendered into the iframe.
+<pre class="highlight"><code class="hljs xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"infusion-docs-note"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Note:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> use <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>onReady<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> if the listener needs UI Options to be both rendered
+                and ready to use.
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Type<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>default<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Parameters<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>prefsEditorLoader<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>
+                    The instantiated preference editor loader component.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+</code></pre>
+</table>
+<h2 id="options">Options</h2>
+<p>The second argument to the creator function is the options argument. This is a JavaScript object containing name/value
+pairs: The name is the name of the option and the value is the desired setting. Components define their own default
+values for options, but integrators can override these defaults by providing new values using the options argument. For
+technical information about how options are merged with defaults, see <a href="OptionsMerging.html">Options Merging</a>.</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> uio = fluid.uiOptions.prefsEditor(<span class="hljs-string">".myContainer"</span>, {
+    <span class="hljs-attr">option1Name</span>: option1value,
+    <span class="hljs-attr">option2Name</span>: option2value
+    <span class="hljs-comment">// ...</span>
+});
+</code></pre>
+<p>The options supported by UI Options are described below.</p>
+<h3 id="defaultlocale">defaultLocale</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>defaultLocale</code> option allows you to specify the default locale and language of the UI
+                Options interface. The locale specified must have associated JSON message files configured in the
+                options, with the default location in Infusion being: <code>/src/framework/preferences/messages/</code>.
+                The following locales are currently available in the latest version of Infusion: English (CA), English
+                (US), Farsi, French, Spanish.
+                <div class="infusion-docs-note">
+                    <strong>Note:</strong> Locales including both language and territory must specify the language tag
+                    followed by the territory separated by an underscore, in that order. E.g. for English (United
+                    States), the format would be <code>en_US</code>, or for French (Canada) it would be
+                    <code>fr_CA</code>. It is not case-specific, though it is recommended to express the language in
+                    lowercase, the territory in uppercase letters and to remain consistent with the naming of the
+                    localized message bundle file.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+                "en" (English (Canada))
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.uiOptions</span><span class="hljs-selector-class">.prefsEditor</span>("<span class="hljs-selector-id">#myContainer</span>", {
+    <span class="hljs-attribute">defaultLocale</span>: <span class="hljs-string">"fr_CA"</span>
+});
+</code></pre>
+
+            </td>
+        </tr>
+        <tr>
+            <th>See also</th>
+            <td>
+                <a href="LocalizationInThePreferencesFramework.html">Localization in the Preferences Framework</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="toctemplate">tocTemplate</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>tocTemplate</code> option allows you to specify a custom relative path to the templates used
+                by generating table of contents. This template can be found in the source tree of the Infusion
+                distribution.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+                "../../components/tableOfContents/html/TableOfContents.html"
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.uiOptions</span><span class="hljs-selector-class">.prefsEditor</span>("<span class="hljs-selector-id">#myContainer</span>", {
+    <span class="hljs-attribute">tocTemplate</span>: <span class="hljs-string">"html/myTocTemplate.html"</span>
+});
+</code></pre>
+
+            </td>
+        </tr>
+        <tr>
+            <th>See also</th>
+            <td>
+                <a href="to-do/TableOfContentsAPI.html">Table of Contents API</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="terms">terms</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>terms</code> option allows you to specify custom relative paths to the templates and message
+                bundles used by the UI Options interface. These templates can be found in the source tree of the
+                Infusion distribution.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+{
+    <span class="hljs-attribute">templatePrefix</span>: <span class="hljs-string">"../../framework/preferences/html"</span>,
+    messagePrefix: <span class="hljs-string">"../../framework/preferences/messages"</span>
+}
+</code></pre>
+
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.uiOptions</span><span class="hljs-selector-class">.prefsEditor</span>("<span class="hljs-selector-id">#myContainer</span>", {
+    <span class="hljs-attribute">terms</span>: {
+        templatePrefix: <span class="hljs-string">"../infusion/framework/preferences/html"</span>,
+        messagePrefix: <span class="hljs-string">"../infusion/framework/preferences/messages"</span>
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="prefseditor">prefsEditor</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>prefsEditor</code> option allows you to specify a data structure to config the
+                <code>prefsEditor</code> component.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>null</td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs nimrod">
+fluid.uiOptions.prefsEditor(<span class="hljs-string">"#myContainer"</span>, {
+    prefsEditor: {
+        listeners: {
+            onReady: function (internalEditor) <span class="hljs-meta">{...}</span>
+            onReset: function (internalEditor) <span class="hljs-meta">{...}</span>
+        }
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="enhancertype">enhancerType</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>enhancerType</code> option allows you to specify a custom <code>enhancer</code> <a
+                href="ComponentGrades.html">grade</a> component.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>"fluid.pageEnhancer"</td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.uiOptions</span><span class="hljs-selector-class">.prefsEditor</span>("<span class="hljs-selector-id">#myContainer</span>", {
+    <span class="hljs-attribute">enhancerType</span>: <span class="hljs-string">"myNamespace.myUIEnhancer"</span>
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="storetype">storeType</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>storeType</code> option allows you to specify a custom <code>store</code> <a
+                href="ComponentGrades.html">grade</a> component.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>"fluid.prefs.globalSettingsStore"</td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.uiOptions</span><span class="hljs-selector-class">.prefsEditor</span>("<span class="hljs-selector-id">#myContainer</span>", {
+    <span class="hljs-attribute">storeType</span>: <span class="hljs-string">"myNamespace.mySettingsStore"</span>
+});
+</code></pre>
+
+            </td>
+        </tr>
+        <tr>
+            <th>See also</th>
+            <td>
+                <a href="SettingsStore.html#fluidprefscookiestore">Cookie Settings Store</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="lazyload">lazyLoad</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The `lazyLoad` option allows you to specify if the prefsEditor should be lazily loaded. When `lazyLoad`
+                is enabled, the contents of panel, including templates and message bundles are not loaded until the
+                panel is opened. This feature is useful for improving initial page load times, but will cause a brief
+                delay the first time the panel is opened.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>false</td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.uiOptions</span><span class="hljs-selector-class">.prefsEditor</span>("<span class="hljs-selector-id">#myContainer</span>", {
+    <span class="hljs-attribute">lazyLoad</span>: true
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

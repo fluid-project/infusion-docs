@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>How to Create and Use Font Icons | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="../lib/foundation/normalize.css">
+        <link rel="stylesheet" href="../lib/foundation/foundation.css">
+        <link rel="stylesheet" href="../css/highlightjs-custom.css">
+        <link rel="stylesheet" href="../lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="../lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="../css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="../images/favico.png">
+
+        <script type="text/javascript" src="../lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="../js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="../lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="../lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="../js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "../lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "../lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "../lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="../index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="../index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="../index-tutorials.html" title="Tutorials" class="infusion-docs-category-active">Tutorials</a>
+                        
+                    
+                        
+                            <a href="../index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="../search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Tutorials</span>
+                                
+                                    <span class="infusion-docs-sectionName">Developer Introduction to the Infusion Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.html"><span class="infusion-docs-TOC-pageName">Opening Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html"><span class="infusion-docs-TOC-pageName">Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html"><span class="infusion-docs-TOC-pageName">Events and Inversion of Control</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html"><span class="infusion-docs-TOC-pageName">Models and Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html"><span class="infusion-docs-TOC-pageName">Views and View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html"><span class="infusion-docs-TOC-pageName">Subcomponents and Model Relaying</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.html"><span class="infusion-docs-TOC-pageName">Restructuring Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html"><span class="infusion-docs-TOC-pageName">Overriding Invokers and Refactoring</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.html"><span class="infusion-docs-TOC-pageName">Extending Designs with Existing Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html"><span class="infusion-docs-TOC-pageName">Transforming Model Relays</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html"><span class="infusion-docs-TOC-pageName">Concluding Remarks</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Getting Started with Infusion Component Design</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html"><span class="infusion-docs-TOC-pageName">Getting Started with Infusion Component Design</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"><span class="infusion-docs-TOC-pageName">Set up your environment</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"><span class="infusion-docs-TOC-pageName">Define a namespace and create a closure</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/PickAComponentType.html"><span class="infusion-docs-TOC-pageName">Pick a component type</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"><span class="infusion-docs-TOC-pageName">Basic Component Creation</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/ModelComponents.html"><span class="infusion-docs-TOC-pageName">Model Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/ViewComponents.html"><span class="infusion-docs-TOC-pageName">View Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-gettingStartedWithInfusion/Subcomponents.html"><span class="infusion-docs-TOC-pageName">Subcomponents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">General</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-usingStringTemplates/UsingStringTemplates.html"><span class="infusion-docs-TOC-pageName">Using String Templates</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">How to Create and Use Font Icons</span>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingAPrefsEditor.html"><span class="infusion-docs-TOC-pageName">Creating a Preference Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingEnactors.html"><span class="infusion-docs-TOC-pageName">Creating Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/InstantiatingTheEnhancerAndSettingsStoreOnly.html"><span class="infusion-docs-TOC-pageName">Instantiating the Enhancer and Settings Store Only</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/StylingThePreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Styling the Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/AddingPrefsEditorToSite.html"><span class="infusion-docs-TOC-pageName">Adding a Basic Preferences Editor to a Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../to-do/WorkingWithPrefsEditorOnSite.html"><span class="infusion-docs-TOC-pageName">Working With A Preferences Editor On Your Site</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFramework/CreatingANewAdjusterUI.html"><span class="infusion-docs-TOC-pageName">Creating a New Adjuster UI</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-prefsFrameworkMinimalFootprint/MinimalFootprint.html"><span class="infusion-docs-TOC-pageName">Minimal Footprint</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">User Interface Options</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/UserInterfaceOptions.html"><span class="infusion-docs-TOC-pageName">Setting Up User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.html"><span class="infusion-docs-TOC-pageName">Working with User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/UsingImagesInContrastModes.html"><span class="infusion-docs-TOC-pageName">Using Images in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes.html"><span class="infusion-docs-TOC-pageName">Style Effects and Legibility in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="../tutorial-userInterfaceOptions/ContentPropertyHighContrast.html"><span class="infusion-docs-TOC-pageName">CSS &#x27;Content&#x27; Property in Contrast Modes</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>How to Create and Use Font Icons</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/tutorial-iconFonts/HowToCreateAndUseFontIcons.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>Using a font to render an icon has several advantages over the traditional method of using an image. This tutorial will
+explain how to create Font Icons.</p>
+<p>Some of the advantages of icons include:</p>
+<ul>
+<li>Scalable - works nicely regardless of client's magnification or view device DPI;</li>
+<li>Can change the colour with CSS;</li>
+<li>Can do everything traditional icons can (e.g. change opacity, rotation, etc.);</li>
+<li>Can add strokes, gradients, shadows, and etc.;</li>
+<li>Convert to text (with ligatures);</li>
+<li>Ligatures are read by screen readers;</li>
+<li>Changing icons to fonts is as simple as changing the font-family in CSS.</li>
+</ul>
+<p>However, there are some shortcomings to keep in mind:</p>
+<ul>
+<li>Icon fonts are generally mono tone in colour.</li>
+<li>IE8 and IE9 do not support ligatures.</li>
+<li>Globally changing fonts will cause the text vs the icon to show.</li>
+<li>In situations where there is existing text accompanying an icon, specific markup containers need to be created for the
+icon.</li>
+<li>Modifying icon fonts is as involved as generated a new icon graphic in the &quot;traditional&quot; way - there is no real time
+saved in that regard.</li>
+</ul>
+<h2 id="procedure-summary">Procedure Summary</h2>
+<ul>
+<li>Create the icon and save it as an SVG graphic.</li>
+<li>Use <a href="http://icomoon.io/">IcoMoon</a> to generate a font from an SVG graphic.</li>
+<li>Add the font to your markup. Example:</li>
+</ul>
+<pre class="highlight"><code class="hljs css"><span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.ttf'</span>),
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot'</span>);
+}
+
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.myLink-icon</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;
+}
+
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.myLink-icon</span><span class="hljs-selector-pseudo">:before</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">"\e000"</span>; <span class="hljs-comment">/* The custom Unicode (aka. PUA) for the icon you want. */</span>
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#ED3820</span>;   <span class="hljs-comment">/* Custom colour. */</span>
+}
+</code></pre>
+<h2 id="step-1-creating-an-svg-symbol">Step 1. Creating an SVG Symbol</h2>
+<p>Use illustration software to create an SVG version of the icon you want to use as a font.</p>
+<p>Tips:</p>
+<ul>
+<li>The dimensions of the graphic doesn't matter since everything will be scaled by the browser's font-rendering.</li>
+<li>Work in binary (i.e. black and white) and do not apply effects such as drop-shadows or embossing.</li>
+<li>Sometimes the font conversion of the SVG may not work properly, so be prepared to edit your SVG file again.</li>
+<li>Overlapping regions of shapes may cause a subtraction when converted in IcoMoon (i.e. it will render as transparent) -
+in this case you may need to build a single shape from these conflicting shapes, or ensure none of your shapes overlap.</li>
+</ul>
+<p>Download Example SVG file: <a href="../images/pencil-icon-01.svg">pencil-icon-01.svg</a></p>
+<h2 id="step-2-using-icomoon-to-generate-font">Step 2. Using IcoMoon to Generate Font</h2>
+<p>Steps:</p>
+<ol>
+<li>Go to <a href="http://icomoon.io/app">IcoMoon</a> (you can also run IcoMoon in &quot;offline&quot; mode in Chrome browser by installing
+the <a href="http://goo.gl/we6ra">IcoMoon Chrome app</a>)</li>
+<li>Import your SVG icon - select &quot;Import Icons&quot; and choose your SVG file.</li>
+<li>Select your icon from the list (should appear under &quot;Your Custom Icons&quot; section, and select the &quot;Font -&gt;&quot; button at
+the bottom of the screen.</li>
+<li>Save the ZIP file to a known location.
+<ul>
+<li>Note: selecting the &quot;Preferences&quot; button will give you options to name your CSS classes and files. It i
+recommended you use identifiers</li>
+</ul>
+</li>
+<li>Extract the contents of the ZIP file.
+<ul>
+<li>The files we are most interested in are the <code>./fonts/*.eot</code>, <code>./fonts/*.ttf</code>, and the <code>./index.html</code> files.</li>
+</ul>
+</li>
+<li>To verify that the font looks proper, open the <code>./index.html</code> file in a web browser. If the icon doesn't look right,
+you may need to edit the SVG file and repeat the font generation process.</li>
+</ol>
+<h2 id="step-3-working-with-css-and-html">Step 3. Working with CSS and HTML</h2>
+<p>Once you are satisfied with the appearance of your font, it is time to add it to your HTML and CSS markup.</p>
+<p>First, add or identify an element in your HTML markup for the new icon.</p>
+<p>For example you have the following existing HTML and CSS:</p>
+<pre class="highlight"><code class="hljs xml">/* Existing HTML markup before adding new icon font. */
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"contact.html"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"contact_form"</span>&gt;</span>Contact us<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> /*this where the new font icon will go */
+</code></pre>
+<pre class="highlight"><code class="hljs css"><span class="hljs-comment">/* Existing CSS markup for the HTML before adding new icon font. */</span>
+<span class="hljs-selector-id">#contact_form</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/envelope.png"</span>); <span class="hljs-comment">/*existing image that will be replaced by icon */</span>
+}
+</code></pre>
+<p>Next, add the new font to the CSS markup.</p>
+<pre class="highlight"><code class="hljs css"><span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;                <span class="hljs-comment">/*Specify the new font */</span>
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot?#iefix'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'embedded-opentype'</span>), <span class="hljs-comment">/* IE8 fix. */</span>
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.ttf'</span>),
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot'</span>);
+}
+
+<span class="hljs-selector-id">#contact_form</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/envelope.png"</span>); <span class="hljs-comment">/*existing image that will be replaced by icon */</span>
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;                <span class="hljs-comment">/*the new font icon */</span>
+}
+</code></pre>
+<p>Finally, add the new icon into the BEFORE pseudo class and delete any references to the old icon image.</p>
+<pre class="highlight"><code class="hljs css"><span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;                <span class="hljs-comment">/*Specify the new font */</span>
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot?#iefix'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'embedded-opentype'</span>), <span class="hljs-comment">/* IE8 fix. */</span>
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.ttf'</span>),
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot'</span>);
+}
+
+<span class="hljs-selector-id">#contact_form</span> {
+    <span class="hljs-comment">/* old icon image has been removed. */</span>
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;                <span class="hljs-comment">/*the new font icon */</span>
+}
+
+<span class="hljs-selector-id">#contact_form</span><span class="hljs-selector-pseudo">:before</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">"\e000"</span>;                          <span class="hljs-comment">/*the custom Unicode (aka. PUA) for the icon.*/</span>
+}
+</code></pre>
+<p>This is all that is needed to add the new icon to your markup. You will notice there is a line specific to IE8 - for
+more information on this, please see
+<a href="http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax">http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax</a>.</p>
+<h2 id="unicode-for-font">Unicode for font</h2>
+<p><em>The Unicode (or &quot;PUA code&quot;) for the custom font can be found in the HTML and CSS file generated by Ico Moon. If the
+HTML and CSS files are unavailable, you can retrieve the Unicode using one of the methods listed under the section
+&quot;<a href="HowToCreateAndUseFontIcons.html#dealing-with-the-ttf-unicode">Dealing with the TTF Unicode</a>&quot; below.</em></p>
+<p><strong>However, there is a problem</strong> - the new icon font will replace the existing font of its container and all child
+*elements and therefore removing any font styling you may have wanted to preserve. The next section will outline common
+*issues and how to fix them and some best practices.</p>
+<h2 id="common-issues">Common Issues</h2>
+<h3 id="preserving-existing-fonts">Preserving Existing Fonts</h3>
+<p>In the example above, the new custom icon font was added to an element that has existing text which causes a problem -
+any other existing custom font will be overwritten within that container.</p>
+<p>To illustrate this problem, assume Comic Sans is the font applied to the <code>&lt;body&gt;</code> element of our example, and an icon
+font added to the <code>&lt;a&gt;</code> anchor within the <code>&lt;body&gt;</code>. Comic Sans will appear throughout the document except for the
+contents within the <code>&lt;a&gt;</code>, which means &quot;Contact us&quot; will no longer be Comic Sans.</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    /* "Contact Us" should be in comic sans  */
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"contact.html"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"contact_form"</span>&gt;</span>Contact us<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<pre class="highlight"><code class="hljs css"><span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.ttf'</span>),
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot'</span>);
+}
+
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'Comic Sans MS'</span>;
+}
+
+<span class="hljs-selector-id">#contact_form</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;
+}
+
+<span class="hljs-selector-id">#contact_form</span><span class="hljs-selector-pseudo">:before</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">"\e000"</span>;
+}
+</code></pre>
+<p>To overcome this issue, a new separate element should be created in the HTML for the icon font with no other content
+contained within. The CSS file is then updated to reference this new markup structure.</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    /* "Contact Us" should be in comic sans */
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"#icon-envelope"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"contact.html"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"contact_form"</span>&gt;</span>Contact us<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<pre class="highlight"><code class="hljs css"><span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.ttf'</span>),
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot'</span>);
+}
+
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'Comic Sans MS'</span>;
+}
+
+<span class="hljs-selector-id">#icon-envelope</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;
+}
+
+<span class="hljs-selector-id">#icon-envelope</span><span class="hljs-selector-pseudo">:before</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">"\e000"</span>;
+}
+</code></pre>
+<h3 id="images-and-labels">Images and Labels</h3>
+<p>It's common for images to be used in functional ways such as acting as a button within an anchor tag. For example:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"download.html&gt;&lt;img src="</span><span class="hljs-attr">.</span>/<span class="hljs-attr">images</span>/<span class="hljs-attr">download.png</span>" <span class="hljs-attr">alt</span>=<span class="hljs-string">"Download our latest stuff!"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<p>The problem here is if we replace the image in the anchor with an icon font, any text descriptions (the alt text) will
+be removed as well - causing a possible usability and accessibility issue.</p>
+<pre class="highlight"><code class="hljs xml">/* The alt text is now gone, causing a usability and accessibility problem. */
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"download.html"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<pre class="highlight"><code class="hljs css"><span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.ttf'</span>),
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot'</span>);
+}
+
+<span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;
+}
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">"\e001"</span>;
+}
+</code></pre>
+<p>To bring back some semantics and to help improve accessibility, we use &quot;aria-label&quot; to describe the functionality.</p>
+<pre class="highlight"><code class="hljs xml">/* Aria-label takes the place of alt text. */
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"download.html"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Download our latest stuff!"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<h3 id="cross-browser-oddities">Cross-Browser Oddities</h3>
+<p>Icon fonts can appear different across browsers and across operating systems. For example, the following icon is
+rendered differently in Firefox in Mac OS X and in Windows despite being the same icon and the same browser.</p>
+<p><img src="../images/Icon-FF-OSX.png" alt="a partially displayed font icon on firefox, Mac system">
+<img src="../images/Icon-FF-windows.png" alt="a partially displayed font icon on firefox, Windows system"></p>
+<p>To avoid these rendering problems, when creating the SVG images avoid using fine details - not only does this help
+eliminate details in the icon font being lost during rendering, it also helps improve usability through clearer icons.</p>
+<h3 id="ie8-compatibility">IE8 Compatibility</h3>
+<p>To ensure custom fonts get rendered properly in Internet Explorer 8, you will need to add <code>?#iefix') format('embedded-opentype')</code> to your CSS. For example:</p>
+<pre class="highlight"><code class="hljs css"><span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'CustomIcons'</span>;                <span class="hljs-comment">/*Specify the new font */</span>
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot?#iefix'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'embedded-opentype'</span>), <span class="hljs-comment">/* IE8 fix. */</span>
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.ttf'</span>),
+         <span class="hljs-built_in">url</span>(<span class="hljs-string">'../fonts/CustomIcons.eot'</span>);
+}
+</code></pre>
+<p>The IE8 fix needs to be the first URL in the list of sources otherwise the font will not appear.</p>
+<p>Reference: <a href="http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax">http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax</a></p>
+<h3 id="dealing-with-the-ttf-unicode">Dealing with the TTF Unicode</h3>
+<p>Ico Moon conveniently generates an HTML and CSS file for custom fonts which contain the Unicode to be used in your
+markup. However, in the scenario the original CSS or HTML files are unavailable, here are two ways to obtain the Unicode
+on Windows and Mac OS X 10.6+.</p>
+<h4 id="obtaining-unicode-in-windows">Obtaining Unicode in Windows</h4>
+<ol>
+<li>Install the custom TTF font to the OS (usually a right-click then select &quot;Install&quot; from the context menu).</li>
+<li>Run Character Map (done by searching the Start menu, or by typing Win+R then &quot;charmap&quot;).</li>
+<li>Select the custom font from the Font drop-down menu. The glyphs in the custom font should now appear in the window.</li>
+<li>Select a character in the window. The Unicode will appear in the bottom-left corner in the status bar.</li>
+</ol>
+<p><img src="../images/Unicode-charmap.png" alt="Unicode character map"></p>
+<h4 id="obtaining-unicode-in-mac-os-x-106-or-later">Obtaining Unicode in Mac OS X 10.6 or Later</h4>
+<ol>
+<li>Enable Special Characters support as documented in this Apple Knowledge Base article:
+<a href="http://support.apple.com/kb/ph3871">OS X Lion: Enter special characters and symbols</a></li>
+<li>Install the custom TTF font to the OS (usually double-click, then &quot;Install&quot;).</li>
+<li>Launch the Font Book application.</li>
+<li>Also launch the Notes application.</li>
+<li>In Font Book, locate the custom font under Collection &gt; All Fonts. Select it. The custom font should now appear in
+the window.</li>
+<li>In Font Book, select / highlight the characters from the custom font. Select Copy (Command+C or right-click -&gt; Copy).</li>
+<li>In Notes, Paste the text (Command+V or right-click -&gt; Paste). The custom font should appear in Notepad.</li>
+<li>In Notes, select the pasted text. Then open the &quot;Edit&quot; menu an select &quot;Special Characters&quot;.</li>
+<li>Now a &quot;Characters&quot; window appears with &quot;Search&quot; results containing each character selected in the previous step.</li>
+<li>Select an icon in the &quot;Character&quot; panel. The Unicode will appear in the right column.</li>
+</ol>
+<p><img src="../images/mac-font-book.png" alt="Mac OS X Font Book"></p>
+<p>Above: An image showing the Mac OS X Font Book application with the custom characters highlighted.</p>
+<p><img src="../images/mac-characters-window.png" alt="Mac OS X Characters window"></p>
+<p>Above: An image showing the Mac OS X Characters window. The Unicode value for a custom character appears in the right
+most column.</p>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

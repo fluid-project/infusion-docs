@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Renderer Component Tree Expanders | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion" class="infusion-docs-category-active">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Infusion</span>
+                                
+                                    <span class="infusion-docs-sectionName">Writing Configuration</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UnderstandingInfusionComponents.html"><span class="infusion-docs-TOC-pageName">Understanding Infusion Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentOptionsAndDefaults.html"><span class="infusion-docs-TOC-pageName">Understanding Component Options And Defaults</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentConfigurationOptions.html"><span class="infusion-docs-TOC-pageName">Component Configuration Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentGrades.html"><span class="infusion-docs-TOC-pageName">Component Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FunctionGrades.html"><span class="infusion-docs-TOC-pageName">Function Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="OptionsMerging.html"><span class="infusion-docs-TOC-pageName">Options Merging</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentLifecycle.html"><span class="infusion-docs-TOC-pageName">Component Lifecycle</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Priorities.html"><span class="infusion-docs-TOC-pageName">Priorities</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FrameworkConcepts.html"><span class="infusion-docs-TOC-pageName">Framework Concepts</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">API</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CoreAPI.html"><span class="infusion-docs-TOC-pageName">Core API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PromisesAPI.html"><span class="infusion-docs-TOC-pageName">Promises API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCAPI.html"><span class="infusion-docs-TOC-pageName">IoC API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelTransformationAPI.html"><span class="infusion-docs-TOC-pageName">Model Transformation API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewAPI.html"><span class="infusion-docs-TOC-pageName">View API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="NodeAPI.html"><span class="infusion-docs-TOC-pageName">node.js Support and API</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Inversion of Control</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseInfusionIoC.html"><span class="infusion-docs-TOC-pageName">How to Use Infusion IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SubcomponentDeclaration.html"><span class="infusion-docs-TOC-pageName">Subcomponent Declaration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Contexts.html"><span class="infusion-docs-TOC-pageName">Contexts</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ContextAwareness.html"><span class="infusion-docs-TOC-pageName">ContextAwareness</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ExpansionOfComponentOptions.html"><span class="infusion-docs-TOC-pageName">Expansion of Component Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCReferences.html"><span class="infusion-docs-TOC-pageName">IoC References</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCSS.html"><span class="infusion-docs-TOC-pageName">IoCSS</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeclarativeThisismInIoC.html"><span class="infusion-docs-TOC-pageName">Declarative this-ism In IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Events</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InfusionEventSystem.html"><span class="infusion-docs-TOC-pageName">Infusion Event System</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="EventInjectionAndBoiling.html"><span class="infusion-docs-TOC-pageName">Event injection and boiling</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Models</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplier.html"><span class="infusion-docs-TOC-pageName">ChangeApplier</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelRelay.html"><span class="infusion-docs-TOC-pageName">Model Relay</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Views</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinder.html"><span class="infusion-docs-TOC-pageName">DOM Binder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ClassNameConventions.html"><span class="infusion-docs-TOC-pageName">Class Name Conventions</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Renderer</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Renderer.html"><span class="infusion-docs-TOC-pageName">Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseTheRenderer.html"><span class="infusion-docs-TOC-pageName">How to Use the Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTrees.html"><span class="infusion-docs-TOC-pageName">Renderer Component Trees</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ProtoComponentTypes.html"><span class="infusion-docs-TOC-pageName">ProtoComponent Types</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Renderer Component Tree Expanders</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Cutpoints.html"><span class="infusion-docs-TOC-pageName">Cutpoints</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererDecorators.html"><span class="infusion-docs-TOC-pageName">Renderer Decorators</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Loading Resources</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ResourceLoader.html"><span class="infusion-docs-TOC-pageName">Resource Loader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FetchResources.html"><span class="infusion-docs-TOC-pageName">fluid.fetchResources</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Builder.html"><span class="infusion-docs-TOC-pageName">Builder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PrimarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Primary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="AuxiliarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Auxiliary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SettingsStore.html"><span class="infusion-docs-TOC-pageName">Settings Store</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConnectingThePartsOfAPreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Connecting the Parts of a Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Enactors.html"><span class="infusion-docs-TOC-pageName">Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Panels.html"><span class="infusion-docs-TOC-pageName">Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CompositePanels.html"><span class="infusion-docs-TOC-pageName">Composite Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConditionalSubpanels.html"><span class="infusion-docs-TOC-pageName">Conditional Subpanels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="LocalizationInThePreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Localization in the Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Testing</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="jqUnit.html"><span class="infusion-docs-TOC-pageName">Unit Testing with jqUnit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCTestingFramework.html"><span class="infusion-docs-TOC-pageName">IoC Testing Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 1.5</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_4To1_5.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.4 to 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecationsIn1_5.html"><span class="infusion-docs-TOC-pageName">Deprecations In 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html"><span class="infusion-docs-TOC-pageName">UI Options Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/PagerMigration.html"><span class="infusion-docs-TOC-pageName">Pager Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 2.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_5To2_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.5 to 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecatedIn2_0.html"><span class="infusion-docs-TOC-pageName">Deprecated in 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 3.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom2_0To3_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 2.0 to 3.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Renderer Component Tree Expanders</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/RendererComponentTreeExpanders.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+                        <div class="infusion-docs-note"><strong>Note:</strong> The renderer will undergo significant changes post Infusion 1.5
+                        </div>
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <div class="infusion-docs-note">
+    <strong>Note:</strong> The Renderer Component Tree Expanders described on this page have been deprecated and will
+    likely  be removed in a future release.  If you are using this already or want to use something like it, please get
+    in touch with the infusion maintainers using the <a href="https://fluidproject.org/">IRC channel or mailing list
+    links on our website</a>.
+</div>
+<p>The Renderer offers some utility functions for simplifying the tree-creation process. These functions are called
+<strong>expanders</strong> because they expand information you provide into a full component tree. These expanders are specified in
+the prototree itself by name and and are provided options to control the expansion process. For example:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> protoTree = {
+    <span class="hljs-attr">expander</span>: {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.renderer.repeat"</span>,
+        <span class="hljs-attr">repeatID</span>: <span class="hljs-string">"recordType"</span>,
+        <span class="hljs-attr">controlledBy</span>: <span class="hljs-string">"recordlist.name"</span>,
+        <span class="hljs-attr">pathAs</span>: <span class="hljs-string">"elementPath"</span>,
+        <span class="hljs-attr">tree</span>: { <span class="hljs-attr">value</span>: <span class="hljs-string">"${{elementPath}}"</span> }
+    }
+};
+</code></pre>
+<p>This prototree above uses the <code>fluid.renderer.repeat</code> expander (described in more detail below), which repeats the
+provided <code>tree</code> based on the data found in data model at the path specified by <code>controlledBy</code>. The expander saves the
+developer the work of having to create a prototree with an array of Bound components with a <strong>&quot;:&quot;</strong> at the end of the ID
+(indicating a repeated element), one for each piece of data in the data model:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> protoTree = {
+    <span class="hljs-attr">recordType</span>: {
+        <span class="hljs-attr">children</span>: [
+            { <span class="hljs-string">"recordType:"</span>: <span class="hljs-string">"${recordlist.name.0}"</span> },
+            { <span class="hljs-string">"recordType:"</span>: <span class="hljs-string">"${recordlist.name.1}"</span> },
+            { <span class="hljs-string">"recordType:"</span>: <span class="hljs-string">"${recordlist.name.2}"</span> },
+            { <span class="hljs-string">"recordType:"</span>: <span class="hljs-string">"${recordlist.name.3}"</span> }
+            <span class="hljs-comment">// ...</span>
+        ]
+    }
+};
+</code></pre>
+<h2 id="using-expanders">Using Expanders</h2>
+<p>Expanders are specified as wrappers around a component specification in the component tree: Instead of the usual
+<code>componentID: {specification}</code> form, the keyword <code>expander</code> is used, as shown below:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> tree = {
+    <span class="hljs-attr">expander</span>: {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.renderer.repeat"</span>,
+        <span class="hljs-attr">repeatID</span>: <span class="hljs-string">"tab:"</span>
+        <span class="hljs-comment">// ...</span>
+    }
+};
+</code></pre>
+<p>You can also specify multiple expanders within a prototree by providing an array of expander specification in the
+<code>expander</code> field, as shown below:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> tree = {
+    <span class="hljs-attr">expander</span>: [
+        {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.renderer.repeat"</span>,
+            <span class="hljs-attr">repeatID</span>: <span class="hljs-string">"tab:"</span>
+            <span class="hljs-comment">// ...</span>
+        },
+        {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.renderer.selection.inputs"</span>,
+            <span class="hljs-attr">selectID</span>: <span class="hljs-string">"language"</span>
+            <span class="hljs-comment">// ...</span>
+        }
+        <span class="hljs-comment">// ...</span>
+    ]
+};
+</code></pre>
+<h2 id="available-expanders">Available Expanders</h2>
+<h3 id="repetition-expander">Repetition Expander</h3>
+<p>The repetition expander takes care of replicating part of the prototree as many times as are required based on the data
+in the the model.</p>
+<p>The following fields are supported by the <code>fluid.renderer.repeat</code> expander:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>tree</code></td>
+            <td>A prototree snippet to use for the repeated data</td>
+            <td>Object</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>controlledBy</code></td>
+            <td>EL path of repeated data in model</td>
+            <td>String</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>repeateID</code></td>
+            <td>the id to use</td>
+            <td>String</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>pathAs</code></td>
+            <td>
+                (<em>Optional</em>) The string that will be used in the tree to represent an instance of the repeated
+                data in the data model.
+            </td>
+            <td>String</td>
+            <td>none</td>
+        </tr>
+        <tr>
+            <td><code>type</code></td>
+            <td>The type of the expander</td>
+            <td><code>fluid.renderer.repeate</code></td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td><code>valueAs</code></td>
+            <td>(<em>Optional</em>)</td>
+            <td>String</td>
+            <td>none</td>
+        </tr>
+        <tr>
+            <td><code>ifEmpty</code></td>
+            <td>(<em>Optional</em>)</td>
+            <td>Boolean</td>
+            <td>false</td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="example">Example</h4>
+<p>In this example, the <code>fluid.renderer.repeat</code> expander is being used to declare a tree for a set of tabs. The
+<code>controlledBy</code> property indicates that the data model field of tabs contains the data to be used.</p>
+<pre class="highlight"><code class="hljs javascript">cspace.tabsList.modelToTree = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">model, options</span>) </span>{
+    <span class="hljs-keyword">var</span> tree = {
+        <span class="hljs-attr">expander</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.renderer.repeat"</span>,
+            <span class="hljs-attr">repeatID</span>: <span class="hljs-string">"tab:"</span>,
+            <span class="hljs-attr">controlledBy</span>: <span class="hljs-string">"tabs"</span>,
+            <span class="hljs-attr">pathAs</span>: <span class="hljs-string">"tabInfo"</span>,
+            <span class="hljs-attr">tree</span>: {
+                <span class="hljs-attr">tabLink</span>: {
+                    <span class="hljs-attr">target</span>: <span class="hljs-string">"${{tabInfo}.href}"</span>,
+                    <span class="hljs-attr">linktext</span>: {
+                        <span class="hljs-attr">messagekey</span>: <span class="hljs-string">"${{tabInfo}.name}"</span>
+                    }
+                }
+            }
+        }
+    };
+    <span class="hljs-keyword">return</span> tree;
+};
+</code></pre>
+<h3 id="selection-to-inputs-expander">Selection To Inputs Expander</h3>
+<p>The simple <strong>Select</strong> protocomponent format shown on the <a href="ProtoComponentTypes.html">ProtoComponent Types</a> page is
+sufficient for a <code>&lt;select&gt;</code> element, but radio buttons and check boxes must <em>also</em> have entries for each button or box.
+The <strong>selection to inputs</strong> expander will automatically generate these entries based on the options available in the
+select.</p>
+<p>The following fields are supported by the <code>fluid.renderer.selection.inputs</code> expander:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>type</code></td>
+            <td>The type of the expander</td>
+            <td><code>fluid.renderer.selection.inputs</code></td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td><code>selectId</code></td>
+            <td>The ID of the selection itself.</td>
+            <td>String</td>
+            <td>none</td>
+        </tr>
+        <tr>
+            <td><code>inputId</code></td>
+            <td>The ID of the input element associated with the select.</td>
+            <td>String</td>
+            <td>none</td>
+        </tr>
+        <tr>
+            <td><code>rowId</code></td>
+            <td>
+                The ID of the template for the row that is to be repeated for each possible selection.
+            </td>
+            <td>String</td>
+            <td>none</td>
+        </tr>
+        <tr>
+            <td><code>labelId</code></td>
+            <td>The ID of the label for the input element.</td>
+            <td>String</td>
+            <td>none</td>
+        </tr>
+        <tr>
+            <td><code>tree</code></td>
+            <td>
+                (<em>Optional</em>) The prototree snippet containing the selection that is to be expanded
+            </td>
+            <td>Object</td>
+            <td>none</td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="example-2">Example</h4>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> tree = {
+    <span class="hljs-attr">expander</span>: {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.renderer.selection.inputs"</span>,
+        <span class="hljs-attr">rowID</span>: <span class="hljs-string">"layout"</span>,
+        <span class="hljs-attr">labelID</span>: <span class="hljs-string">"layoutLabel"</span>,
+        <span class="hljs-attr">inputID</span>: <span class="hljs-string">"layoutChoice"</span>,
+        <span class="hljs-attr">selectID</span>: <span class="hljs-string">"layout-checkbox"</span>,
+        <span class="hljs-attr">tree</span>: {
+            <span class="hljs-attr">selection</span>: <span class="hljs-string">"${layouts.selection}"</span>,
+            <span class="hljs-attr">optionlist</span>: <span class="hljs-string">"${layouts.choices}"</span>,
+            <span class="hljs-attr">optionnames</span>: <span class="hljs-string">"${layouts.names}"</span>
+        }
+    }
+};
+</code></pre>
+<h3 id="condition-expander">Condition Expander</h3>
+<p>The condition expander provides a mechanism for selecting between two alternative renderer component sub-trees based on
+the outcome of a condition e.g. the boolean evaluation of a value, or the return value of a function call.</p>
+<p>The following fields are supported by the <code>fluid.renderer.condition</code> expander:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>type</code></td>
+            <td>The type of the expander</td>
+            <td><code>fluid.renderer.condition</code></td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td><code>condition</code></td>
+            <td>
+                An object that can be evaluated as true or false, or a function that returns a boolean.
+            </td>
+            <td>Object or Function</td>
+            <td>none</td>
+        </tr>
+        <tr>
+            <td><code>trueTree</code></td>
+            <td>
+                (<em>Optional</em>) A component sub-tree to be used in the case that the <code>condition</code>
+                evaluates to <code>true</code>.
+            </td>
+            <td>Object</td>
+            <td>none</td>
+        </tr>
+        <tr>
+            <td><code>falseTree</code></td>
+            <td>
+                (<em>Optional</em>) A component sub-tree to be used in the case that the <code>condition</code>
+                evaluates to <code>false</code>.
+            </td>
+            <td>Object</td>
+            <td>none</td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="examples">Examples</h4>
+<p>In the following example, the <code>condition</code> is <code>that.options.showDeleteButton</code>. The renderer will evaluate the component's
+<code>showDeleteButton</code> option and if it is <code>true</code> will use the component tree specified by <code>trueTree</code>. Note that no
+<code>falseTree</code> is provided. If the option is <code>false</code> or not present, nothing will be rendered.</p>
+<pre class="highlight"><code class="hljs javascript">my.conditional.modelToTree = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">model, options</span>) </span>{
+    <span class="hljs-keyword">var</span> tree = {
+        <span class="hljs-attr">expander</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.renderer.condition"</span>,
+            <span class="hljs-attr">condition</span>: options.showDeleteButton,
+            <span class="hljs-attr">trueTree</span>: {
+                <span class="hljs-attr">deleteButton</span>: {
+                    <span class="hljs-attr">decorators</span>: [{
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"attrs"</span>,
+                        <span class="hljs-attr">attributes</span>: {
+                            <span class="hljs-attr">value</span>: options.strings.deleteButton
+                        }
+                    }, {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"jQuery"</span>,
+                        <span class="hljs-attr">func</span>: <span class="hljs-string">"prop"</span>,
+                        <span class="hljs-attr">args</span>: {
+                            <span class="hljs-attr">disabled</span>: options.checkDeleteDisabling
+                        }
+                    }]
+                }
+            }
+        }
+    };
+    <span class="hljs-keyword">return</span> tree;
+};
+</code></pre>
+<p>In the following example, the <code>condition</code> is a call to the function <code>cspace.header.assertMenuItemDisplay()</code> with a
+particular argument taken from the <code>itemName</code> subcomponent. If the function call returns <code>true</code>, the renderer component
+subtree specified by <code>trueTree</code> will be used.</p>
+<pre class="highlight"><code class="hljs javascript">my.conditional.modelToTree = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">model, options</span>) </span>{
+    <span class="hljs-keyword">var</span> tree = {
+        <span class="hljs-attr">expander</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"fluid.renderer.condition"</span>,
+            <span class="hljs-attr">condition</span>: {
+                <span class="hljs-attr">funcName</span>: <span class="hljs-string">"cspace.header.assertMenuItemDisplay"</span>,
+                <span class="hljs-attr">args</span>: <span class="hljs-string">"${{itemName}.hide}"</span>
+            },
+            <span class="hljs-attr">trueTree</span>: {
+                <span class="hljs-attr">label</span>: {
+                    <span class="hljs-attr">target</span>: <span class="hljs-string">"${{item}.href}"</span>,
+                    <span class="hljs-attr">linktext</span>: {
+                        <span class="hljs-attr">messagekey</span>: <span class="hljs-string">"${{item}.name}"</span>
+                    }
+                }
+            }
+        }
+    };
+};
+</code></pre>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

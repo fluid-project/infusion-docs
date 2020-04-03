@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>ChangeApplier API | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion" class="infusion-docs-category-active">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Infusion</span>
+                                
+                                    <span class="infusion-docs-sectionName">Writing Configuration</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UnderstandingInfusionComponents.html"><span class="infusion-docs-TOC-pageName">Understanding Infusion Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentOptionsAndDefaults.html"><span class="infusion-docs-TOC-pageName">Understanding Component Options And Defaults</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentConfigurationOptions.html"><span class="infusion-docs-TOC-pageName">Component Configuration Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentGrades.html"><span class="infusion-docs-TOC-pageName">Component Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FunctionGrades.html"><span class="infusion-docs-TOC-pageName">Function Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="OptionsMerging.html"><span class="infusion-docs-TOC-pageName">Options Merging</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentLifecycle.html"><span class="infusion-docs-TOC-pageName">Component Lifecycle</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Priorities.html"><span class="infusion-docs-TOC-pageName">Priorities</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FrameworkConcepts.html"><span class="infusion-docs-TOC-pageName">Framework Concepts</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">API</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CoreAPI.html"><span class="infusion-docs-TOC-pageName">Core API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PromisesAPI.html"><span class="infusion-docs-TOC-pageName">Promises API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCAPI.html"><span class="infusion-docs-TOC-pageName">IoC API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">ChangeApplier API</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelTransformationAPI.html"><span class="infusion-docs-TOC-pageName">Model Transformation API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewAPI.html"><span class="infusion-docs-TOC-pageName">View API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="NodeAPI.html"><span class="infusion-docs-TOC-pageName">node.js Support and API</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Inversion of Control</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseInfusionIoC.html"><span class="infusion-docs-TOC-pageName">How to Use Infusion IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SubcomponentDeclaration.html"><span class="infusion-docs-TOC-pageName">Subcomponent Declaration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Contexts.html"><span class="infusion-docs-TOC-pageName">Contexts</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ContextAwareness.html"><span class="infusion-docs-TOC-pageName">ContextAwareness</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ExpansionOfComponentOptions.html"><span class="infusion-docs-TOC-pageName">Expansion of Component Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCReferences.html"><span class="infusion-docs-TOC-pageName">IoC References</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCSS.html"><span class="infusion-docs-TOC-pageName">IoCSS</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeclarativeThisismInIoC.html"><span class="infusion-docs-TOC-pageName">Declarative this-ism In IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Events</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InfusionEventSystem.html"><span class="infusion-docs-TOC-pageName">Infusion Event System</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="EventInjectionAndBoiling.html"><span class="infusion-docs-TOC-pageName">Event injection and boiling</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Models</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplier.html"><span class="infusion-docs-TOC-pageName">ChangeApplier</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">ChangeApplier API</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelRelay.html"><span class="infusion-docs-TOC-pageName">Model Relay</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Views</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinder.html"><span class="infusion-docs-TOC-pageName">DOM Binder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ClassNameConventions.html"><span class="infusion-docs-TOC-pageName">Class Name Conventions</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Renderer</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Renderer.html"><span class="infusion-docs-TOC-pageName">Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseTheRenderer.html"><span class="infusion-docs-TOC-pageName">How to Use the Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTrees.html"><span class="infusion-docs-TOC-pageName">Renderer Component Trees</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ProtoComponentTypes.html"><span class="infusion-docs-TOC-pageName">ProtoComponent Types</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTreeExpanders.html"><span class="infusion-docs-TOC-pageName">Renderer Component Tree Expanders</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Cutpoints.html"><span class="infusion-docs-TOC-pageName">Cutpoints</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererDecorators.html"><span class="infusion-docs-TOC-pageName">Renderer Decorators</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Loading Resources</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ResourceLoader.html"><span class="infusion-docs-TOC-pageName">Resource Loader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FetchResources.html"><span class="infusion-docs-TOC-pageName">fluid.fetchResources</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Builder.html"><span class="infusion-docs-TOC-pageName">Builder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PrimarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Primary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="AuxiliarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Auxiliary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SettingsStore.html"><span class="infusion-docs-TOC-pageName">Settings Store</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConnectingThePartsOfAPreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Connecting the Parts of a Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Enactors.html"><span class="infusion-docs-TOC-pageName">Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Panels.html"><span class="infusion-docs-TOC-pageName">Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CompositePanels.html"><span class="infusion-docs-TOC-pageName">Composite Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConditionalSubpanels.html"><span class="infusion-docs-TOC-pageName">Conditional Subpanels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="LocalizationInThePreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Localization in the Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Testing</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="jqUnit.html"><span class="infusion-docs-TOC-pageName">Unit Testing with jqUnit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCTestingFramework.html"><span class="infusion-docs-TOC-pageName">IoC Testing Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 1.5</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_4To1_5.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.4 to 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecationsIn1_5.html"><span class="infusion-docs-TOC-pageName">Deprecations In 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html"><span class="infusion-docs-TOC-pageName">UI Options Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/PagerMigration.html"><span class="infusion-docs-TOC-pageName">Pager Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 2.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_5To2_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.5 to 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecatedIn2_0.html"><span class="infusion-docs-TOC-pageName">Deprecated in 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 3.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom2_0To3_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 2.0 to 3.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>ChangeApplier API</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/ChangeApplierAPI.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>This section explains and documents the various Javascript API calls for instantiating and working with
+<a href="ChangeApplier.html">ChangeApplier</a>s.  In practice, users will use the ChangeAppliers which are automatically constructed
+for every <a href="tutorial-gettingStartedWithInfusion/ModelComponents.html">Model Component</a> as its top-level member applier and
+will not construct their own. Furthermore, a good deal of the use made of ChangeAppliers will take the form of
+<a href="FrameworkConcepts.html#declarative-configuration">Declarative Configuration</a> rather than literal JavaScript API calls.
+This page presents both programmatic calls and their declarative equivalents where they exist.</p>
+<h2 id="registering-interest-in-model-changes-using-a-changeapplier">Registering interest in model changes using a ChangeApplier</h2>
+<h3 id="declarative-style-for-listening-to-changes">Declarative style for listening to changes</h3>
+<p>The declarative style for registering interest in change events uses an entry in the <code>modelListeners</code> options area of a
+<code>modelComponent</code>. These listeners are attached to the applier during the construction process of the entire component
+(and its surrounding tree) and so will therefore become notified as part of the
+<a href="ModelRelay.html#the-initial-transaction">initial transaction</a> - they will therefore get to observe the model changing
+state from its primordial value of undefined to holding their initial resolved value. This is the <strong>recommended</strong> way of
+listening to model changes using the ChangeApplier system.</p>
+<p>Each record in the modelListeners block has the format <code>&lt;shortModelPathReference or namespace&gt;: &lt;modelListener declaration&gt;</code>.
+The left and right hand sides of this definition will be explained in the subsequent sections:</p>
+<h4 id="model-path-references">Model Path References</h4>
+<p>A <code>&lt;shortModelPathReference&gt;</code> has the form:</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">
+                Syntax definition for <code>&lt;shortModelPathReference&gt;</code> - the key in
+                <code>modelListeners</code> options block for a <code>modelComponent</code>
+            </th>
+        </tr>
+        <tr>
+            <th>Syntax</th>
+            <th>Meaning</th>
+            <th>Examples</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Simple String</td>
+            <td>Reference to a model path in this component</td>
+            <td>
+                <ul>
+                    <li><code>"modelPath"</code></li>
+                    <!-- the character * is destroyed by marked's gfm mode, but not by github markdown itself -->
+                    <li><code>"modelPath.&#42;"</code></li>
+                    <li><code>""</code></li>
+                    <li><code>"&#42;"</code></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>IoC Reference</td>
+            <td>Reference to a model path in another component</td>
+            <td>
+                <ul>
+                    <li><code>"{otherComponent}.model.modelPath"</code></li>
+                    <li><code>"{otherComponent}.model.modelPath.&#42;"</code></li>
+                    <li><code>"{otherComponent}.model"</code></li>
+                    <li><code>"{otherComponent}.model.&#42;"</code></li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>The key for a modelListener will be interpreted as a <code>&lt;shortModelPathReference&gt;</code> if the modelListener declaration does
+not contain a member named <code>path</code>. If the modelListener declaration includes <code>path</code>, then the key will be interpreted as
+a <em>namespace</em> instead, unless the declaration includes a <code>namespace</code> member, which takes priority as defining the
+namespace.</p>
+<p>The four examples presented in the <em>&quot;Examples&quot;</em> column are parallel for the two cases - they respectively match changes
+occurring in the same parts of the target model, only in the first row they match into the model attached to this
+component (the same one in which the <code>modelListeners</code> record appears) and in the second row they match into the model
+attached to another component - one referenced by the <a href="Contexts.html">Context Expression</a> <code>otherComponent</code>.</p>
+<p>Note that more complex path specifications may be provided in the <code>path</code> member of a model listener declaration.</p>
+<h4 id="model-listener-declaration">Model Listener Declaration</h4>
+<p>A model listener declaration block has the same form and meaning as any of the record types supported by
+<a href="Invokers.html">Invokers</a> and <a href="EventInjectionAndBoiling.html#listener-boiling">Listeners</a> - including the one-string compact
+syntax documented with <a href="Invokers.html#compact-format">Invokers</a>, and the use of <a href="Priorities.html">Priorities</a>. Like standard
+event listener entries, model listeners can provide a <code>namespace</code> entry. Just one model listener with a particular
+namespace will be registered on a particular ChangeApplier.</p>
+<p>A model listener declaration block includes three extra features beyond those found in ordinary event listeners. Firstly
+is the possibility of including a member <a href="#the-path-entry-in-a-model-listener-declaration"><code>path</code></a> of type
+<code>&lt;modelPathReference&gt;</code> (a <code>String</code> or <code>Object</code>), which can hold a more complex path specification for the model listener
+match than can be encoded in the single string in a <code>&lt;shortModelPathReference&gt;</code>, secondly the ability to filter a change
+based on its <a href="#source-tracking-and-filtering-in-model-listener-blocks"><em>source</em></a>, using the members <code>includeSource</code> and
+<code>excludeSource</code>, and finally the possibility that any IoC-resolved material in the listener declaration may match the
+special context name <a href="#the-special-context-change"><code>change</code></a> which corresponds to the model change that the listener is
+reacting to. These entries are described in the linked sections below:</p>
+<h4 id="the-path-entry-in-a-model-listener-declaration">The <code>path</code> entry in a model listener declaration</h4>
+<p>The <code>path</code> entry fulfils the same basic function as the <code>&lt;shortModelPathReference&gt;</code> which may form the key of the
+listener declaration, but allows a richer set of path specifications to be used for specifying which changes this model
+listener will respond to. Note that if the <code>path</code> entry is supplied, then the key of the listener will be interpreted as
+a <em>namespace</em> for the listener rather than as a path specification.</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">
+                Possible values for the <code>path</code> member of a model listener declaration (first two rows define
+                <code>&lt;modelPathReference&gt;</code>)
+            </th>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <th>Meaning</th>
+            <th>Examples</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>String</code></td>
+            <td>A <code>&lt;shortModelPathReference&gt;</code></td>
+            <td>
+                See examples in section <a href="#model-path-references">Model Path References</a>
+            </td>
+        </tr>
+        <tr>
+            <td><code>Object</code></td>
+            <td>A <code>&lt;modelPathRecord&gt;</code>, including members <ul>
+                <li><code>segs</code> (<code>Array</code> - required) and</li>
+                <li><code>context</code> (<code>String</code> - optional) which encodes the model path to be matched.</li>
+                </ul>
+                </td>
+            <td>
+                These examples encode exactly the same path expressions, in the same order as in the section
+                <a href="#model-path-references">Model Path References</a>
+                <ul>
+                    <li><code>{segs: ["modelPath"]}</code></li>
+                    <li><code>{segs: ["modelPath", "&#42;"]}</code></li>
+                    <li><code>{segs: []}</code></li>
+                    <li><code>{segs: ["&#42;"]}</code></li>
+                    <li><code>{segs: ["modelPath"], context: "otherComponent"}</code></li>
+                    <li><code>{segs: ["modelPath", "&#42;"], context: "otherComponent"}</code></li>
+                    <li><code>{segs: [], context: "otherComponent"}</code></li>
+                    <li><code>{segs: ["&#42;"], context: "otherComponent"}</code></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><code>Array</code></td>
+            <td>
+                An array of <code>&lt;modelPathReference&gt;</code>: members are either a String holding a
+                <code>&lt;shortModelPathReference&gt;</code> or an Object <code>&lt;modelPathRecord&gt;</code>. The
+                listener will be notified when <it>any</it> of these paths receive changes. Below is further information
+                on <a href="#matching-on-multiple-paths-in-a-single-model-listener-declaration"><code>matching on
+                multiple paths</code></a>
+            </td>
+            <td><code>[
+                    "position", {
+                        segs: ["windowHolders", "{that}.options.ourWindow"]
+                    }
+                ]</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="matching-on-multiple-paths-in-a-single-model-listener-declaration">Matching on multiple paths in a single model listener declaration</h4>
+<p>When the <code>path</code> member of a model listener declaration holds an <code>Array</code>, the listener will be notified when <it>any</it>
+of these paths receive changes.</p>
+<p>Note that a listener which specifies references to multiple component targets in such a list will only receive one
+notification per component at the end of a transaction where a change matches. For example, if the listener list
+contains <code>{otherComponent}.model.x.y</code> and <code>{otherComponent}.model.x</code>, the listener will only be notified once for
+<code>{otherComponent}</code> for a matching change. A listener which supplies an array of more than one element in
+<code>path</code> will not be able to make use of either the special context <a href="#the-special-context-change"><code>change</code></a>
+<strong>or</strong> the possibility of using the wildcard character <code>*</code> in the final path segment. Note that elements of
+<code>segs</code> may themselves consist of IoC references resolving to configuration in the tree (although they may not
+hold references to model material - they are evaluated just once when the component constructs).</p>
+<h4 id="the-special-context-change">The special context <code>change</code></h4>
+<p>An extra <a href="Contexts.html">context name</a> is available in a model listener block by the name of <code>change</code>. This is bound to
+the particular change event which triggered this listener. This context behaves as an object with the following fields:</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Members of the <code>{change}</code> object bound in a model listener declaration</th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>{change}.value</code></td>
+            <td>Any type</td>
+            <td>The new value which is now held at the model path matched by this model listener block</td>
+        </tr>
+        <tr>
+            <td><code>{change}.oldValue</code></td>
+            <td>Any type</td>
+            <td>
+                The previous value which was held at the matched model path, before it was overwritten by the change
+                being listened to
+            </td>
+        </tr>
+        <tr>
+            <td><code>{change}.path</code></td>
+            <td>String</td>
+            <td>
+                The path at which this change occurred. In general this will be the same as the path registered as the
+                <code>modelPathReference</code> for this block - however it may be one segment longer if a wildcard path
+                was used (see section on <a href="#wildcards-in-model-path-references">wildcards</a>)
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="source-tracking-and-filtering-in-model-listener-blocks">Source tracking and filtering in model listener blocks</h4>
+<p>Each transaction holding one or more changes is associated with a particular <em>source</em>. Model listeners can use two
+special directives, <code>excludeSource</code> and <code>includeSource</code> in order to register their interest or disinterest in receiving
+changes from particular sources. The default behaviour is to receive all changes from all sources. The values of these
+fields are single strings representing sources, or arrays of these strings. Three currently supported built-in sources
+are <code>init</code>, <code>relay</code> and <code>local</code> - in addition, arbitrary user-defined sources may be attached to a change by making use
+of the <code>source</code> element of a <a href="#declarative-style-for-triggering-a-change"><code>changeRecord</code></a> or argument in call to
+<a href="#programmatic-style-for-triggering-a-change"><code>applier.change</code></a>.</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Fields of a model listener declaration operating source filtering</th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>excludeSource</code></td>
+            <td><code>String/Array of String</code></td>
+            <td>A source or set of sources for which this listener should not receive notifications</td>
+        </tr>
+        <tr>
+            <td><code>includeSource</code></td>
+            <td><code>String/Array of String</code></td>
+            <td>
+                A source or set of sources for which this listener should receive notifications. If
+                <code>excludeSource</code> is empty, <em>only</em> changes from these sources will be received. If
+                <code>excludeSource</code> is not empty, these values will take priority.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>The values of built-in sources supported as values in <code>excludeSource</code> and <code>includeSource</code> are as follows:</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">
+                Values for built-in sources supported as entries in <code>excludeSource</code> and
+                <code>includeSource</code> as part of a model listener declaration
+            </th>
+        </tr>
+        <tr>
+            <th>Source</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>init</code></td>
+            <td>
+                The change arising from the <em>initial transaction</em>. During this change, the listener will observe
+                the value of the model changing from <code>undefined</code> to its consistent initial value, during the
+                overall process of component construction
+            </td>
+        </tr>
+        <tr>
+            <td><code>relay</code></td>
+            <td>
+                A change resulting from <a href="ModelRelay.html"><em>model relay</em></a> from another linked component
+                in the model skeleton, elsewhere in the component tree.
+            </td>
+        </tr>
+        <tr>
+            <td><code>local</code></td>
+            <td>
+                A change directly triggered via the ChangeApplier on this component - either via a declarative record
+                holding <code>changePath</code>, or programmatically using an <code>applier.change()</code> call
+            </td>
+        </tr>
+        <tr>
+            <td><code>*</code></td>
+            <td>Matches all sources</td>
+        </tr>
+    </tbody>
+</table>
+<h5 id="example-featuring-built-in-change-source-filtering">Example featuring built-in change source filtering:</h5>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"examples.sourceExample1"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.modelComponent"</span>],
+    <span class="hljs-attr">model</span>: {
+        <span class="hljs-attr">things</span>: <span class="hljs-string">"initial value"</span>
+    },
+    <span class="hljs-attr">modelListeners</span>: {
+        <span class="hljs-attr">things</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.log"</span>,
+            <span class="hljs-attr">excludeSource</span>: <span class="hljs-string">"init"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"Value changed to "</span>, <span class="hljs-string">"{change}.value"</span>]
+        }
+    }
+});
+
+<span class="hljs-keyword">var</span> that = examples.sourceExample1(); <span class="hljs-comment">// no log from this line</span>
+that.applier.change(<span class="hljs-string">"things"</span>, <span class="hljs-string">"new value"</span>); <span class="hljs-comment">// logs "Value changed to new value"</span>
+</code></pre>
+<p>This example will not log the transition from the initial model state of <code>undefined</code> to the console.
+It will, however, log the value <code>new value</code> triggered via the ChangeApplier API.</p>
+<h5 id="example-featuring-user-defined-change-source-filtering">Example featuring user-defined change source filtering</h5>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"examples.sourceExample2"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.modelComponent"</span>],
+    <span class="hljs-attr">model</span>: {
+        <span class="hljs-attr">position</span>: <span class="hljs-number">20</span>
+    },
+    <span class="hljs-attr">invokers</span>: {
+        <span class="hljs-attr">scrollTo</span>: {
+            <span class="hljs-attr">changePath</span>: <span class="hljs-string">"position"</span>,
+            <span class="hljs-attr">value</span>: <span class="hljs-string">"{arguments}.0"</span>,
+            <span class="hljs-attr">source</span>: <span class="hljs-string">"scrollbar"</span>
+        }
+    },
+    <span class="hljs-attr">modelListeners</span>: {
+        <span class="hljs-attr">position</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.log"</span>,
+            <span class="hljs-attr">excludeSource</span>: <span class="hljs-string">"scrollbar"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"Value changed to "</span>, <span class="hljs-string">"{change}.value"</span>]
+        }
+    }
+});
+
+<span class="hljs-keyword">var</span> that = examples.sourceExample2(); <span class="hljs-comment">// This will log the initial change to value 20</span>
+that.scrollTo(<span class="hljs-number">30</span>); <span class="hljs-comment">// This logs nothing - source "scrollbar" is excluded</span>
+that.applier.change(<span class="hljs-string">"position"</span>, <span class="hljs-number">40</span>); <span class="hljs-comment">// This will log "Value changed to 40"</span>
+</code></pre>
+<p>This example <em>will</em> log the transition from the initial model state of <code>undefined</code> to the console, since
+unlike <code>sourceExample1</code> it does not have <code>excludeSource: init</code>. However, changes caused to the model
+via the invoker <code>scrollTo</code> will not be logged since they have the source <code>scrollbar</code> marked
+to them. The third interactive line shows that changes to the model without any user source
+marking <em>will</em> be logged by the listener.</p>
+<h5 id="warning-and-workaround-for-issues-involving-initial-transaction-and-oncreate-race-issues">Warning and workaround for issues involving initial transaction and <code>onCreate</code> race issues</h5>
+<div class="infusion-docs-note">
+<p><strong>Note:</strong> The current implementation of the ChangeApplier has a bug
+(<a href="http://issues.fluidproject.org/browse/FLUID-5519">FLUID-5519</a>) which will often cause a model listener to be notified
+before much of the surrounding component has constructed. This can be annoying, since the model listener may want to
+rely on other infrastructure (e.g. invokers, etc.) that it cannot be sure have been constructed. For this reason,
+<code>excludeSource: &quot;init&quot;</code> is a useful way of stabilising this behaviour until the implementation is fixed (fix will be
+delivered as part of <a href="http://issues.fluidproject.org/browse/FLUID-4925">FLUID-4925</a>).</p>
+</div>
+<h4 id="wildcards-in-model-path-references">Wildcards in model path references</h4>
+<p>The last path segment of a model path reference may be <code>&quot;*&quot;</code>. Whether the reference has this <code>&quot;*&quot;</code> suffix or not, the
+reference matches exactly the same set of changes - the only difference is in how they are reported. A path reference
+of <code>&quot;things&quot;</code> will match all changes occurring below this path segment, and report all those occurring within a single
+transaction as a single change. A path reference of <code>&quot;things.*&quot;</code> will match the same changes, but will report one change
+for each immediately nested path segment touched by the changes. For example, the following definition will log just one</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"examples.pathExample1"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.modelComponent"</span>],
+    <span class="hljs-attr">modelListeners</span>: {
+        <span class="hljs-attr">things</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.log"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"{change}.value"</span>, <span class="hljs-string">"{change}.path"</span>]
+        }
+    }
+});
+
+<span class="hljs-keyword">var</span> that = examples.pathExample1();
+that.applier.change(<span class="hljs-string">"things"</span>, {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span>});
+<span class="hljs-comment">// this logs {a: 1, b: 2}, "things" to the console</span>
+</code></pre>
+<p>However, the following example which just differs in the listener path (swapping <code>&quot;things&quot;</code> for <code>&quot;things.*&quot;</code>) will log
+two changes:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"examples.pathExample2"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.modelComponent"</span>],
+    <span class="hljs-attr">modelListeners</span>: {
+        <span class="hljs-string">"things.*"</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"fluid.log"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"{change}.value"</span>, <span class="hljs-string">"{change}.path"</span>]
+        }
+    }
+});
+
+<span class="hljs-keyword">var</span> that = examples.pathExample2();
+that.applier.change(<span class="hljs-string">"things"</span>, {<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span>}); <span class="hljs-comment">// logs 2 lines</span>
+<span class="hljs-comment">// Line 1: 1, "things.a"</span>
+<span class="hljs-comment">// Line 2: 2, "things.b"</span>
+</code></pre>
+<p>The standard way to be notified of any changes to the model in a single notification is to use a model path reference
+consisting of the empty string <code>&quot;&quot;</code>. Use of <code>&quot;*&quot;</code> will react to the same changes, but will report multiple notifications
+for compound modifications as in the above example.</p>
+<p>It is not currently possible to supply more than one wildcard segment per path reference, or to supply the wildcard at
+any position in the string other than as the last path segment.</p>
+<h3 id="programmatic-style-for-listening-to-changes">Programmatic style for listening to changes</h3>
+<p>The programmatic style for registering interest in model changes uses an API exposed by the ChangeApplier on its member
+<code>modelChanged</code> that is very similar to that exposed by a standard <a href="InfusionEventSystem.html">Infusion Event</a> - the
+difference is that the <code>addListener</code> method accepts an extra 1st argument, <code>spec</code> - an <code>Object</code> which holds the same
+model path reference in <code>path</code> or <code>segs</code> documented in the previous section on declarative binding:</p>
+<pre class="highlight"><code class="hljs javascript">applier.modelChanged.addListener(spec, listener, namespace);
+applier.modelChanged.removeListener(listener);
+</code></pre>
+<p><code>spec</code> may also include the standard member <code>priority</code> seen in the declarative record.</p>
+<div class="infusion-docs-note">
+<p><strong>Note:</strong> This style of listening to changes is <strong>discouraged</strong>, but may be the right choice in some
+applications. For example - the listener to be attached may not be available at the time the component is constructed.
+Note that programmatically attached listeners will miss observation of the initial transaction as well as any other
+model changes that have occurred up to the point where they are registered.</p>
+</div>
+<p>The listener is notified after the change (or set of coordinated changes forming a transaction) has already been applied
+to the model. The signature for these listeners is</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listener</span>(<span class="hljs-params">value, oldValue, pathSegs, changeRequest, transaction</span>) </span>{
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>value</code></td>
+            <td>The new (current) model value held at the path for which this listener registered interest</td>
+        </tr>
+        <tr>
+            <td><code>oldValue</code></td>
+            <td>A "snapshot" of the previous model value held at that path</td>
+        </tr>
+        <tr>
+            <td><code>pathSegs</code></td>
+            <td>
+                An array of <code>String</code> path segments holding the path at which <code>value</code> and
+                <code>oldValue</code> are/were held
+            </td>
+        </tr>
+        <tr>
+            <td><code>changeRequest</code></td>
+            <td>
+                May contain a single <a href="#programmatic-style-for-triggering-a-change"><code>ChangeRequest</code></a>
+                object which was responsible for this change, but will often be empty. This signature element is not a
+                stable API
+            </td>
+        </tr>
+        <tr>
+            <td><code>transaction</code></td>
+            <td>
+                May contain a <a href="#operating-transactions-manually"><code>Transaction</code></a> object which this
+                change was bound to. Primarily useful for the <code>source</code> member which can be used to manually
+                check which change sources the transaction is marked to. This signature element is not a stable API
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Users will in most cases only be interested in the first argument in this signature.</p>
+<h2 id="triggering-a-change-using-a-changeapplier">Triggering a change using a ChangeApplier</h2>
+<h3 id="declarative-style-for-triggering-a-change">Declarative style for triggering a change</h3>
+<p>The declarative style for triggering model changes involves an IoC record (a <em>change record</em>) that is supported in
+various places in component configuration, in particular as part of the definition of both <a href="Invokers.html">Invokers</a> and
+<a href="InfusionEventSystem.html">Listeners</a> of an IoC-configured component.  This style of record is recognised by its use of
+the special member <code>changePath</code> (a &quot;<a href="https://en.wikipedia.org/wiki/Duck_typing">duck typing</a> field&quot;) which determines
+which path in which component model will receive the change.</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3"><code>changeRecord</code> for firing changes by declarative binding</th>
+        </tr>
+        <tr>
+            <th>Member</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>changePath</code></td>
+            <td><code>&lt;modelPathReference&gt; {String|Object}</code></td>
+            <td>
+                The reference to the model path in a model somewhere in the component tree where the change is to be
+                triggered. This has the same syntax as the model path references documented above for declarative
+                listening, only wildcard forms are not supported. Four examples:
+                <ul>
+                    <li><code>"modelPath"</code></li>
+                    <li><code>""</code></li>
+                    <li><code>"{otherComponent}.model.modelPath"</code></li>
+                    <li><code>"{otherComponent}.model"</code></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><code>value</code></td>
+            <td>Any type</td>
+            <td>
+                The value which should be stored at the path referenced by <code>changePath</code>. If this contains
+                compound objects (built with <code>{}</code>), these will be merged into the existing values in the
+                model. If this contains arrays (built with <code>[]</code>) these will overwrite existing values at that
+                path.
+            </td>
+        </tr>
+        <tr>
+            <td><code>type</code></td>
+            <td><code>String</code> (optional)</td>
+            <td>
+                If this holds the value <code>DELETE</code>, this change will remove the value held at
+                <code>changePath</code>. In this case, <code>value</code> should not be supplied. This is the
+                recommended way of removing material from a model - it has the effect of the <code>delete</code>
+                primitive of the JavaScript language. Sending changes holding a <code>value</code> of <code>null</code>
+                or <code>undefined</code> does not have the same effect, as per the JavaScript language spec.
+            </td>
+        </tr>
+        <tr>
+            <td><code>source</code></td>
+            <td><code>String/Array of String/Object</code>(optional)</td>
+            <td>
+                Any string or strings supplied here will be marked to the change as it propagates. Model listeners and
+                relay rules can then choose to opt in or opt out of responding to this change by means of the
+                <a href="#source-tracking-and-filtering-in-model-listener-blocks">source-related</a>
+                <code>includeSource</code> and <code>excludeSource</code> members in their records. If an
+                <code>Object</code> is supplied here, it is assumed that the sources are encoded in its keys, and its
+                values will be ignored.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="example-of-declarative-triggering-of-changes">Example of declarative triggering of changes</h4>
+<p>In the below example, we construct an invoker that will set the entire model of the current component to whatever value
+is supplied as its first argument - this is achieved by giving its record a <code>changePath</code> of <code>&quot;&quot;</code> and binding its <code>value</code>
+to <code>{arguments}.0</code>:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"examples.changeExample"</span>, {
+    <span class="hljs-attr">gradeNames</span>: [<span class="hljs-string">"fluid.modelComponent"</span>],
+    <span class="hljs-attr">model</span>: <span class="hljs-string">"initialValue"</span>,
+    <span class="hljs-attr">invokers</span>: {
+        <span class="hljs-attr">changer</span>: {
+            <span class="hljs-attr">changePath</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-attr">value</span>: <span class="hljs-string">"{arguments}.0"</span>
+        }
+    }
+});
+
+<span class="hljs-keyword">var</span> that = examples.changeExample();
+that.changer(<span class="hljs-string">"finalValue"</span>);
+<span class="hljs-built_in">console</span>.log(that.model); <span class="hljs-comment">// "finalValue"</span>
+</code></pre>
+<h3 id="programmatic-style-for-triggering-a-change">Programmatic style for triggering a change</h3>
+<p>There are two calls which can be used to fire a change request - one informal, using immediate arguments, and a more
+formal method which constructs a concrete <code>changeRequest</code> object.</p>
+<pre class="highlight"><code class="hljs javascript">applier.change(path, value, type, source);
+</code></pre>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">
+                Fields in a <code>changeRequest</code> object, or (in order) arguments to <code>applier.change</code>
+            </th>
+        </tr>
+        <tr>
+            <th>Path</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>path</code></td>
+            <td><code>String|Array of String</code></td>
+            <td>
+                An EL path into the model where the change is to occur, expressed either as a single string or an array
+                of path segments
+            </td>
+        </tr>
+        <tr>
+            <td><code>value</code></td>
+            <td>Any type</td>
+            <td>An object which is to be added into the model</td>
+        </tr>
+        <tr>
+            <td><code>type</code></td>
+            <td>(optional) <code>"ADD"</code> or <code>"DELETE"</code></td>
+            <td>
+                A key string indicating whether this is an <code>ADD</code> request (the default) or a
+                <code>DELETE</code> request (a request to unlink a part of the model)
+            </td>
+        </tr>
+        <tr>
+            <td><code>source</code></td>
+            <td>(optional) <code>String|Array of String|Object</code><code></td>
+            <td>
+                One or more strings representing <code>source</code>s which should be marked to this change. See
+                documentation on the <a href="#declarative-style-for-triggering-a-change"><code>source</code></a> member
+                of a <code>changeRecord</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>The semantics and values are exactly the same as described in the section on declarative triggering above - with the
+difference that IoC references may not be supplied for <code>path</code>.</p>
+<pre class="highlight"><code class="hljs javascript">applier.fireChangeRequest(changeRequest);
+</code></pre>
+<p>where a <code>changeRequest</code> is an object holding the above named parameters in named fields - e.g.
+<code>{path: &quot;modelPath&quot;, value: &quot;newValue&quot;}</code>. Note that a <code>changeRequest</code> is the same as a
+<a href="#declarative-style-for-triggering-a-change"><code>changeRecord</code></a> only the path is encoded in a field named <code>path</code> rather
+than <code>changePath</code>.</p>
+<p><code>change</code> and <code>fireChangeRequest</code> reach exactly the same implementation - the only difference is in the packaging of the
+arguments. For <code>change</code> they are spread out as a sequence of 4 arguments, whereas for <code>fireChangeRequest</code>, they are
+packaged up as named fields (<code>path</code>, <code>value</code> and <code>type</code>) of a plain JavaScript object. Such an object is called a
+<strong>changeRequest</strong> and is a convenient package for these requests to pass around in an event pipeline within the
+framework.</p>
+<p>The programmatic style for <strong>firing</strong> changes is less strongly discouraged than the programmatic style for <strong>listening</strong>
+to changes is - since it does not run into the same lifecycle issues that programmatic listeners do. However, the
+declarative style for triggering changes should be used wherever it can.</p>
+<h3 id="example-of-two-styles-of-declarative-model-listener-registration">Example of two styles of declarative model listener registration</h3>
+<p>Users can freely define very fine or coarse-grained listeners for changes in a model using the ChangeApplier. Here are
+some examples using the declarative model listener registration syntax:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.defaults(<span class="hljs-string">"my.component"</span>, {
+    <span class="hljs-attr">gradeNames</span>: <span class="hljs-string">"fluid.modelComponent"</span>,
+
+    <span class="hljs-attr">invokers</span>: {
+        <span class="hljs-attr">printChange</span>: {
+            <span class="hljs-string">"this"</span>: <span class="hljs-string">"console"</span>,
+            <span class="hljs-attr">method</span>: <span class="hljs-string">"log"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"{arguments}.0"</span>]
+        }
+    },
+
+    <span class="hljs-attr">model</span>: {
+        <span class="hljs-attr">cats</span>: {
+            <span class="hljs-attr">hugo</span>: {
+                <span class="hljs-attr">name</span>: <span class="hljs-string">"Hugo"</span>,
+                <span class="hljs-attr">colours</span>: [<span class="hljs-string">"white"</span>, <span class="hljs-string">"brown spots"</span>]
+            },
+            <span class="hljs-attr">clovis</span>: {
+                <span class="hljs-attr">name</span>: <span class="hljs-string">"THE CATTT!"</span>,
+                <span class="hljs-attr">colours</span>: [<span class="hljs-string">"white"</span>, <span class="hljs-string">"black spots"</span>, <span class="hljs-string">"black moustache"</span>]
+            }
+        }
+    },
+
+    <span class="hljs-attr">modelListeners</span>: {
+        <span class="hljs-comment">// Will fire individual change events whenever any part of "cats.hugo" changes.</span>
+        <span class="hljs-comment">// {change}.value will correspond to each changed path within "hugo".</span>
+        <span class="hljs-string">"cats.hugo.*"</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"{that}.printChange"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"{change}.value"</span>]
+        },
+
+        <span class="hljs-comment">// Will fire a single composite change event whenever any part of "cats.clovis" changes.</span>
+        <span class="hljs-comment">// {change}.value will contain the new state of the "clovis" object.</span>
+        <span class="hljs-string">"cats.clovis"</span>: {
+            <span class="hljs-attr">funcName</span>: <span class="hljs-string">"{that}.printChange"</span>,
+            <span class="hljs-attr">args</span>: [<span class="hljs-string">"{change}.value"</span>]
+        }
+    }
+});
+
+<span class="hljs-comment">// Example usage.</span>
+<span class="hljs-keyword">var</span> c = my.component();
+c.applier.change(<span class="hljs-string">"cats.hugo"</span>, {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"Hugonaut"</span>,
+    <span class="hljs-attr">colours</span>: [<span class="hljs-string">"hard to tell"</span>]
+});
+<span class="hljs-comment">// "Hugonaut"</span>
+<span class="hljs-comment">// ["hard to tell"]</span>
+
+c.applier.change(<span class="hljs-string">"cats.clovis.name"</span>, <span class="hljs-string">"THER CATTT!"</span>);
+<span class="hljs-comment">// {name: "THER CATTT!", colours: ["white", "black spots", "black moustache"]}</span>
+</code></pre>
+<h2 id="low-level-changeapplier-apis">Low-level ChangeApplier APIs</h2>
+<p>These are not recommended for typical users of the framework, and are not stable.</p>
+<h3 id="instantiating-a-changeapplier">Instantiating a ChangeApplier</h3>
+<p>Instantiating a ChangeApplier manually is not recommended in current versions of the framework. Its implementation is
+tightly bound into its location in an IoC component tree and should be constructed by the IoC system itself.</p>
+<h3 id="operating-transactions-manually">Operating transactions manually</h3>
+<p>A user may be interested in economising on notifications to model updates; by batching these up into a single
+transaction, there will just be a single notification of each listener which is impacted around the model skeleton. This
+facility is not a stable API (at the Infusion 2.0 version level and before); however, its use can't be strongly
+discouraged since it is the only way of avoiding certain unwanted model notifications, especially for sequences of
+changes which include a <code>DELETE</code>.</p>
+<p>A transaction can be opened using the <code>initiate()</code> method of the applier function which returns a transaction object:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> myApplier = myModelComponent.applier;
+<span class="hljs-keyword">var</span> myTransaction = myApplier.initiate();
+</code></pre>
+<p>The transaction object exposes an API which agrees with the ChangeApplier's own API for triggering changes, which can be
+used to trigger changes within the transaction:</p>
+<pre class="highlight"><code class="hljs javascript">myTransaction.fireChangeRequest(requestSpec1);
+myTransaction.fireChangeRequest(requestSpec2);
+<span class="hljs-comment">// ...</span>
+</code></pre>
+<p>The transaction can be completed using the <code>commit()</code> function of the transaction object:</p>
+<pre class="highlight"><code class="hljs javascript">myTransaction.commit();
+</code></pre>
+<p>A single <code>modelChanged</code> event will be fired on completion of the commit, regardless of the number of change requests.</p>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

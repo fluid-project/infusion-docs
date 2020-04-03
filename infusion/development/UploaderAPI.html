@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Uploader API | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components" class="infusion-docs-category-active">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Components</span>
+                                
+                                    <span class="infusion-docs-sectionName"></span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/InlineEditAPI.html"><span class="infusion-docs-TOC-pageName">Inline Edit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/PagerAPI.html"><span class="infusion-docs-TOC-pageName">Pager</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ProgressAPI.html"><span class="infusion-docs-TOC-pageName">Progress</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ReordererAPI.html"><span class="infusion-docs-TOC-pageName">Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ListReordererAPI.html"><span class="infusion-docs-TOC-pageName">List Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/GridReordererAPI.html"><span class="infusion-docs-TOC-pageName">Grid Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/LayoutReordererAPI.html"><span class="infusion-docs-TOC-pageName">Layout Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ImageReordererAPI.html"><span class="infusion-docs-TOC-pageName">Image Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SwitchAPI.html"><span class="infusion-docs-TOC-pageName">Switch</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextToSpeechAPI.html"><span class="infusion-docs-TOC-pageName">Text to Speech</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldAPI.html"><span class="infusion-docs-TOC-pageName">Textfield</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldSliderAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldSlider</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldStepperAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldStepper</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UserInterfaceOptionsAPI.html"><span class="infusion-docs-TOC-pageName">User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Uploader</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/UndoAPI.html"><span class="infusion-docs-TOC-pageName">Undo</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/TableOfContentsAPI.html"><span class="infusion-docs-TOC-pageName">Table of Contents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Uploader API</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/UploaderAPI.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>The Infusion Uploader provides an easy way for users to upload many files at once, providing useful feedback about the
+status and progress of each file along the way.</p>
+<p>Uploader implements a couple different ways to upload multiple files. With its built-in support for progressive
+enhancement, users will automatically receive a version of the Uploader best suited to the capabilities of their
+browsers. There are two different flavours of Uploader:</p>
+<ol>
+<li>Single file: delivered to browsers that don't support JavaScript and HTML 5</li>
+<li>HTML 5: the best and most widely-supported version of Uploader, suitable for modern browsers</li>
+</ol>
+<p>The HTML 5 version of the Uploader will be delivered to modern, standards-compliant browsers, including:</p>
+<ul>
+<li>Internet Explorer 10+</li>
+<li>Firefox 3.6+</li>
+<li>Safari 4+</li>
+<li>Google Chrome</li>
+</ul>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> As of Infusion 1.5, the Flash version of the Uploader has been removed due to a <a
+    href="https://nealpoole.com/blog/2012/05/xss-and-csrf-via-swf-applets-swfupload-plupload/">cross-site scripting
+    vulnerability</a>.
+</div>
+<h3 id="progressive-enhancement">Progressive Enhancement</h3>
+<p>The Uploader utilizes the concept of progressive enhancement. The goal is to ensure that the page is usable by the
+widest possible audience, even with old browsers or when JavaScript is turned off. This is done by specifying a regular
+file input element in the markup. When the Uploader is initialized, the Upload code will replace that element with the
+Fluid Uploader. As of Infusion 1.3, progressive enhancement will occur automatically by default. It can be overridden by
+choosing a specific upload strategy instead of using the <code>fluid.uploader.progressiveStrategy</code>.</p>
+<h3 id="upload-strategy">Upload Strategy</h3>
+<p>The Infusion Uploader, like many Fluid components, is really one interface to a collection of components that work
+together to provide a unified user experience.</p>
+<p>The Uploader provides a facade object, called a <code>strategy</code>, which represents the entire subsystem for a particular
+implementation of Uploader. There are currently two different strategies available to choose from:</p>
+<ol>
+<li><code>fluid.uploader.html5Strategy</code>, which provides the modern HTML 5 implementation of Uploader</li>
+<li><code>fluid.uploader.progressiveStrategy</code>, which uses the Infusion IoC - Inversion of Control System to deliver the best
+possible version of Uploader based on the capabilities of the user's browser.</li>
+</ol>
+<p>The default strategy for Uploader is <code>fluid.uploader.progressiveStrategy</code>.</p>
+<h3 id="upgrading">Upgrading</h3>
+<h4 id="upgrading-from-infusion-12">Upgrading from Infusion 1.2</h4>
+<p>The Uploader was substantially refactored for the Infusion 1.3 in order to support the new HTML 5 version. However, most
+users should be unaffected. All events, selectors, and classes remain compatible with previous versions. Since the
+Uploader's underlying structure has changed significantly, and support for Infusion's IoC System was introduced, several
+other configuration options have changed. In order to ease the transition, we've provided a compatibility file that will
+automatically transform your options from the old format to the new when you invoke <code>fluid.uploader()</code>. This can be
+enabled by including the <code>UploaderCompatibility-Infusion1.2.js</code> file your page. If you're not using a custom build of
+Infusion, you will also need to include the framework's <code>ModelTransformations.js</code> file.</p>
+<h2 id="creating-an-uploader">Creating an Uploader</h2>
+<p>To instantiate a new Uploader on your page using the recommended progressive enhancement feature:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> myUploader = fluid.uploader(container, options);
+</code></pre>
+<p>Returns: An Uploader component object. The resulting type may be either <code>fluid.uploader.multiFileUploader</code> or
+<code>fluid.uploader.singleFileUploader</code> depending on the capabilities of your user's browser. If you're programmatically
+calling methods on the Uploader, be sure to check its <code>typeName</code> or use duck typing first.</p>
+<h3 id="parameters">Parameters</h3>
+<h4 id="container">container</h4>
+<p>The <code>container</code> is a CSS-based <a href="http://docs.jquery.com/Selectors">selector</a>, single-element jQuery object, or DOM
+element that identifies the root DOM node of the Uploader markup.</p>
+<h4 id="options">options</h4>
+<p>The <code>options</code> object is an optional data structure that configures the Uploader, as described in the <a href="#options">Options</a>
+section below.</p>
+<h2 id="supported-events">Supported Events</h2>
+<p>The Uploader fires the following events</p>
+<table>
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Parameters</th>
+            <th>Parameters Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>onFileDialog</code></td>
+            <td>default</td>
+            <td>
+                The event is fired when the OS File Open dialog is displayed.
+            </td>
+            <td>none</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>onFilesSelected</code></td>
+            <td>default</td>
+            <td>
+                The event is fired when files have been selected for addition to the file queue.
+                <strong><em>HTML5 only.</em></strong>
+            </td>
+            <td><code>numFiles</code></td>
+            <td>The number of files selected.</td>
+        </tr>
+        <tr>
+            <td><code>afterFileQueued</code></td>
+            <td>default</td>
+            <td>
+                This event is fired for each file that is queued after the File Selection Dialog window is closed.
+            </td>
+            <td><code>file</code></td>
+            <td>
+                <dl>
+                    <dt><code>file</code></dt>
+                    <dd>
+                        the <a href="#file-objects">File object</a> that has just been added to the queue.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td><code>afterFileRemoved</code></td>
+            <td>default</td>
+            <td>
+                Event is fired for each file that is removed from the filequeue model
+            </td>
+            <td><code>file</code></td>
+            <td>
+                <dl>
+                    <dt><code>file</code></dt>
+                    <dd>
+                        the <a href="#file-objects">File object</a> that was just removed from the queue.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td><code>onQueueError</code></td>
+            <td>default</td>
+            <td>
+                This event is fired for each file that was not queued after the File Selection Dialog window is closed.
+            </td>
+            <td><code>file</code>, <code>errorCode</code></td>
+            <td>
+                <dl>
+                    <dt><code>file</code></dt>
+                    <dd>
+                        the <a href="#file-objects">File object</a> that failed to be added to the queue.
+                    </dd>
+                    <dt><code>errorCode</code></dt>
+                    <dd>
+                        indication of the reason for the file not being added to the queue.
+                    </dd>
+                </dl>
+                <em>
+                    <strong>Note:</strong> A file may not be queued for several reasons such as, the file exceeds the
+                    file size, the file is empty or a file or queue limit has been exceeded.
+                </em>
+            </td>
+        </tr>
+        <tr>
+            <td><code>afterFileDialog</code></td>
+            <td>default</td>
+            <td>
+                This event fires after the File Selection Dialog window has been closed and all the selected files have
+                been processed.
+            </td>
+            <td>none</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>onUploadStart</code></td>
+            <td>default</td>
+            <td>
+                This event at the beginning of the entire upload cycle.
+            </td>
+            <td><code>fileList</code></td>
+            <td>
+                <dl>
+                    <dt><code>fileList</code></dt>
+                    <dd>
+                        a list of the <a href="#file-objects">File objects</a> that will be uploaded to the server.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td><code>onFileStart</code></td>
+            <td>default</td>
+            <td>
+                This event is fired immediately before the file is uploaded.
+            </td>
+            <td><code>file</code></td>
+            <td>
+                <dl>
+                    <dt><code>file</code></dt>
+                    <dd>
+                        the <a href="#file-objects">File object</a> that has started to be uploaded.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td><code>onFileProgress</code></td>
+            <td>default</td>
+            <td>
+                This event is fired periodically by the upload manager during a file upload and is useful for providing
+                UI updates on the page. Also keeps up-to-date the overall progress of the currently uploading batch.
+            </td>
+            <td><code>file</code>, <code>fileBytesComplete</code>, <code>fileTotalBytes</code></td>
+            <td>
+                <dl>
+                    <dt><code>file</code></dt>
+                    <dd>
+                        the <a href="#file-objects">File object</a> for this progress event.
+                    </dd>
+                    <dt><code>fileBytesComplete</code></dt>
+                    <dd>
+                        the number of bytes for the current file that have been uploaded to the server
+                    </dd>
+                    <dt><code>fileTotalBytes</code></dt>
+                    <dd>the total size of the file in bytes.</dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td><code>onFileError</code></td>
+            <td>default</td>
+            <td>
+                This event is fired any time an individual file upload is interrupted or does not complete successfully.
+            </td>
+            <td><code>file</code>, <code>error</code>, <code>status</code>, <code>xhr</code></td>
+            <td>
+                <dl>
+                    <dt><code>file</code></dt>
+                    <dd>
+                        the <a href="#file-objects">File object</a> that errored.
+                    </dd>
+                    <dt><code>error</code></dt>
+                    <dd>
+                        whether the file failed because the user cancelled the upload or because of another file
+                        specific error Use fluid.uploader.fileStatusConstants to interpret the value.
+                    </dd>
+                    <dt><code>status</code></dt>
+                    <dd>
+                        xhr.status. 0 if the error occurs during the upload, otherwise, the HTTP status code.
+                    </dd>
+                    <dt><code>xhr</code><dt>
+                    <dd>
+                        Defaults to the ActiveXObject when available (IE), the XMLHttpRequest otherwise.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td><code>onFileSuccess</code></td>
+            <td>default</td>
+            <td>
+                This event is fired when an upload completes and the server returns a HTTP 200 status code.
+            </td>
+            <td><code>file</code>, <code>responseText</code>, <code>xhr</code></td>
+            <td>
+                <dl>
+                    <dt><code>file</code></dt>
+                    <dd>
+                        the <a href="#file-objects">File object</a> that has completed.
+                    </dd>
+                    <dt><code>responseText</code></dt>
+                    <dd>
+                        the response text returned from the server.
+                    </dd>
+                    <dt><code>xhr</code><dt>
+                    <dd>
+                        Defaults to the ActiveXObject when available (IE), the XMLHttpRequest otherwise.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td><code>afterFileComplete</code></td>
+            <td>default</td>
+            <td>
+                This event is fired for each file uploaded whether or not the file is uploaded successfully,
+                <code>onFileSuccess</code>, or the file failed to upload, <code>onFileError</code>. At this point the
+                upload process for the currently uploading file is complete and the upload for the next file in the
+                queue is started.
+            </td>
+            <td><code>file</code></td>
+            <td>
+                <dl>
+                    <dt><code>file</code></dt>
+                    <dd>
+                        the <a href="#file-objects">File object</a> that was successfully uploaded.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td><code>afterUploadComplete</code></td>
+            <td>default</td>
+            <td>
+                This event is fired at the end of an upload cycle when all the files have either been uploaded, failed
+                to upload, the user stopped the upload cycle, or there was an unrecoverable error in the upload process
+                and the upload cycle was stopped.
+            </td>
+            <td><code>fileList</code></td>
+            <td>
+                <dl>
+                    <dt><code>fileList</code></dt>
+                    <dd>
+                        the <a href="#file-objects">File objects</a> that "completed" (either succeeded or failed), in
+                        this upload.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="file-objects">File Objects</h3>
+<p>Many of the Uploader's events pass a <code>File</code> object as a parameter to the event listener. These objects provide useful
+information about the file, including its name, size in bytes, and its current status in the queue.</p>
+<p><code>File</code> object: a representation of each file in the file queue, as provided from the upload strategy. At the moment, the
+properties of this object will be slightly different depending on the strategy you're using. This will be addressed in a
+future release.</p>
+<p>Regardless of the strategy, the following properties will be available:</p>
+<ul>
+<li>id - (string) A unique id for each file in the queue</li>
+<li>name - (string) The file name. The path is not provided.</li>
+<li>size - (number) The file size in bytes</li>
+<li>filestatus - (number) The file's current status.
+<ul>
+<li>Use <code>fluid.uploader.fileStatusConstants</code> to interpret the value.</li>
+</ul>
+</li>
+</ul>
+<h4 id="file-status-constants">File Status Constants</h4>
+<p>The Uploader offers a set of constants used to denote the status of a particular file in the queue. These can be used
+when querying the filestatus property of a <a href="#file-objects">File object</a>.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Upload Error Constants</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.HTTP_ERROR</code></td>
+            <td>
+                An HTTP error occurred while uploading a file.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.MISSING_UPLOAD_URL</code></td>
+            <td>
+                The <code>uploadURL</code> was not correctly specified in the <code>uploadManager</code> options.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.IO_ERROR</code></td>
+            <td>
+                An IO error occurred while transferring the file.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.SECURITY_ERROR</code></td>
+            <td>
+                The upload caused a security error to occur.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.UPLOAD_LIMIT_EXCEEDED</code></td>
+            <td>
+                The user attempted to upload more files than allowed by the <code>fileUploadLimit</code> option for the
+                <code>uploadManager</code>.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.UPLOAD_FAILED</code></td>
+            <td>
+                The Uploader was unable to start uploading the file to the server.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.SPECIFIED_FILE_ID_NOT_FOUND</code></td>
+            <td>
+                This indicates an error in the Uploader and should be filed as a <a
+                href="http://issues.fluidproject.org/">bug</a>.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.FILE_VALIDATION_FAILED</code></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.FILE_CANCELLED</code></td>
+            <td>The upload was canceled by the user.</td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.errorConstants.UPLOAD_STOPPED</code></td>
+            <td>The upload was stopped by the user.</td>
+        </tr>
+        <tr>
+            <th>File Status Constants</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.fileStatusConstants.QUEUED</code></td>
+            <td>
+                The file is currently queued up and ready to be sent to the server.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.fileStatusConstants.IN_PROGRESS</code></td>
+            <td>
+                The file is currently being uploaded to the server.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.fileStatusConstants.ERROR</code></td>
+            <td>
+                An error occurred while trying to upload the file.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.fileStatusConstants.COMPLETE</code></td>
+            <td>
+                The file was successfully uploaded to the server.
+            </td>
+        </tr>
+        <tr>
+            <td><code>fluid.uploader.fileStatusConstants.CANCELLED</code></td>
+            <td>
+                The file was canceled by the user while in the process of being uploaded.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="options-2">Options</h2>
+<p>The Uploader supports a &quot;plug-and-play&quot; architecture that allows for many of the sub-components of the Uploader to be
+swapped out for other components or your own custom components. The best example of this is the <code>strategy</code> component,
+which allows you to choose between the <code>fluid.uploader.html5Strategy</code> and the <code>fluid.uploader.progressiveStrategy</code>.
+However you can also replace the Progress subcomponent and the FileQueueView subcomponent, with a customized version you
+have implemented yourself.</p>
+<p>The Uploader and its sub-components are also highly configurable; you can make many adjustments to the user experience
+through a combination of HTML, CSS and the built-in configuration options. To customize the component for your own
+needs, start with these out-of-the-box features. If you need more flexibility, feel free to to write your own
+sub-component.</p>
+<p>In addition to the Uploader options, there are also options specifically for the FileQueueView, Progress, and <code>strategy</code>
+subcomponents.</p>
+<h3 id="uploader-subcomponents">Uploader Subcomponents</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>strategy</code></td>
+            <td>
+                The strategy for how files are uploaded to the server (e.g. HTML 5, etc.)
+            </td>
+            <td>
+                <code>"fluid.uploader.progressiveStrategy"</code>,
+                <code>"fluid.uploader.html5Strategy"</code>
+            </td>
+            <td>
+                
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">strategy</span>: {
+    <span class="hljs-attribute">type</span>: <span class="hljs-string">"fluid.uploader.progressiveStrategy"</span>
+}
+</code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>fileQueueView</code></td>
+            <td>
+                Specifies the type of fileQueueView subcomponent to use.
+Currently there is only one fileQueueView sub-component.
+            </td>
+            <td>
+                <code>"fluid.fileQueueView"</code>
+            </td>
+            <td>
+                
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fileQueueView</span>: {
+    <span class="hljs-attribute">type</span>: <span class="hljs-string">"fluid.fileQueueView"</span>
+}
+</code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>totalProgressBar</code></td>
+            <td>
+                Specifies the type and options to use for the total progress bar.
+            </td>
+            <td>
+                See the <a href="to-do/ProgressAPI.html">Progress API documentation</a> for a full descriptions of the
+                available options.
+            </td>
+            <td>
+                
+<pre class="highlight"><code class="hljs dts"><span class="hljs-symbol">
+totalProgressBar:</span> {
+<span class="hljs-symbol">    type:</span> <span class="hljs-string">"fluid.progress"</span>,
+<span class="hljs-symbol">    options:</span> {
+<span class="hljs-symbol">        selectors:</span> {
+<span class="hljs-symbol">            progressBar:</span> <span class="hljs-string">".flc-uploader-queue-footer"</span>, (was <span class="hljs-string">".flc-uploader-scroller-footer"</span> in v1<span class="hljs-number">.0</span>)
+<span class="hljs-symbol">            displayElement:</span> <span class="hljs-string">".flc-uploader-total-progress"</span>,
+<span class="hljs-symbol">            label:</span> <span class="hljs-string">".flc-uploader-total-progress-text"</span>,
+<span class="hljs-symbol">            indicator:</span> <span class="hljs-string">".flc-uploader-total-progress"</span>,
+<span class="hljs-symbol">            ariaElement:</span> <span class="hljs-string">".flc-uploader-total-progress"</span>
+        }
+    }
+},
+</code></pre>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="uploader-options">Uploader Options</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>selectors</code></td>
+            <td>
+                Javascript object containing selectors for various fragments of the uploader markup
+            </td>
+            <td></td>
+            <td>see <a href="#selectors">Selectors</a> below</td>
+        </tr>
+        <tr>
+            <td><code>listeners</code></td>
+            <td>
+                JavaScript object containing events and the listeners that are attached to them.
+            </td>
+            <td>
+                Keys in the object are event names, values are functions or arrays of functions.
+            </td>
+            <td>see <a href="#supported-events">Supported Events</a></td>
+        </tr>
+        <tr>
+            <td><code>focusWithEvent</code></td>
+            <td>
+                Javascript object containing selectors for markup elements that should obtain focus after certain <a
+                href="#supported-events">events</a>.
+            </td>
+            <td>
+                Keys in the object are supported event names.
+                <p>
+                    <em><strong>Note:</strong> only specific methods in the Uploader have been factored to use this
+                    values.</em>
+                </p>
+            </td>
+            <td>
+                
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">focusWithEvent</span>: {
+    <span class="hljs-attribute">afterFileDialog</span>: <span class="hljs-string">"uploadButton"</span>,
+    afterUploadStart: <span class="hljs-string">"pauseButton"</span>,
+    afterUploadStop: <span class="hljs-string">"uploadButton"</span>
+},
+</code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>styles</code></td>
+            <td>
+                Specific class names used to achieve the look and feel of the different states of the Uploader
+            </td>
+            <td></td>
+            <td>
+                
+<pre class="highlight"><code class="hljs dts"><span class="hljs-symbol">
+styles:</span> {
+<span class="hljs-symbol">    disabled:</span> <span class="hljs-string">"fl-uploader-disabled"</span>,
+<span class="hljs-symbol">    hidden:</span> <span class="hljs-string">"fl-uploader-hidden"</span>,
+<span class="hljs-symbol">    dim:</span> <span class="hljs-string">"fl-uploader-dim"</span>,
+<span class="hljs-symbol">    totalProgress:</span> <span class="hljs-string">"fl-uploader-total-progress-okay"</span>,
+<span class="hljs-symbol">    totalProgressError:</span> <span class="hljs-string">"fl-uploader-total-progress-errored"</span>
+}
+</code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>strings</code></td>
+            <td>
+                Strings that are used in the Uploader. Note: The strings that contain tokens (example:
+                <code>%curFileN</code>) are passed through a string template parser.
+            </td>
+            <td></td>
+            <td>
+                <strong>v1.5</strong>
+                
+<pre class="highlight"><code class="hljs dts"><span class="hljs-symbol">
+strings:</span> {
+<span class="hljs-symbol">    progress:</span> {
+<span class="hljs-symbol">        fileUploadLimitLabel:</span> <span class="hljs-string">"%fileUploadLimit %fileLabel maximum"</span>,
+<span class="hljs-symbol">        noFiles:</span> <span class="hljs-string">"0 files"</span>,
+<span class="hljs-symbol">        toUploadLabel:</span> <span class="hljs-string">"%uploadedCount out of %totalCount files uploaded (%uploadedSize of %totalSize)"</span>,
+<span class="hljs-symbol">        totalProgressLabel:</span> <span class="hljs-string">"%uploadedCount out of %totalCount files uploaded (%uploadedSize of %totalSize)"</span>,
+<span class="hljs-symbol">        completedLabel:</span> <span class="hljs-string">"%uploadedCount out of %totalCount files uploaded (%uploadedSize of %totalSize)%errorString"</span>,
+<span class="hljs-symbol">        numberOfErrors:</span> <span class="hljs-string">", %errorsN %errorLabel"</span>,
+<span class="hljs-symbol">        singleFile:</span> <span class="hljs-string">"file"</span>,
+<span class="hljs-symbol">        pluralFiles:</span> <span class="hljs-string">"files"</span>,
+<span class="hljs-symbol">        singleError:</span> <span class="hljs-string">"error"</span>,
+<span class="hljs-symbol">        pluralErrors:</span> <span class="hljs-string">"errors"</span>
+    },
+<span class="hljs-symbol">    buttons:</span> {
+<span class="hljs-symbol">        browse:</span> <span class="hljs-string">"Browse Files"</span>,
+<span class="hljs-symbol">        addMore:</span> <span class="hljs-string">"Add More"</span>,
+<span class="hljs-symbol">        stopUpload:</span> <span class="hljs-string">"Stop Upload"</span>,
+<span class="hljs-symbol">        cancelRemaning:</span> <span class="hljs-string">"Cancel remaining Uploads"</span>,
+<span class="hljs-symbol">        resumeUpload:</span> <span class="hljs-string">"Resume Upload"</span>,
+<span class="hljs-symbol">        remove:</span> <span class="hljs-string">"Remove"</span>
+    }
+}
+</code></pre>
+                
+                <strong>v1.4</strong>
+                
+<pre class="highlight"><code class="hljs dts"><span class="hljs-symbol">
+strings:</span> {
+<span class="hljs-symbol">    progress:</span> {
+<span class="hljs-symbol">        fileUploadLimitLabel:</span> <span class="hljs-string">"%fileUploadLimit %fileLabel maximum"</span>,
+<span class="hljs-symbol">        toUploadLabel:</span> <span class="hljs-string">"To upload: %fileCount %fileLabel (%totalBytes)"</span>,
+<span class="hljs-symbol">        totalProgressLabel:</span> <span class="hljs-string">"Uploading: %curFileN of %totalFilesN %fileLabel (%currBytes of %totalBytes)"</span>,
+<span class="hljs-symbol">        completedLabel:</span> <span class="hljs-string">"Uploaded: %curFileN of %totalFilesN %fileLabel (%totalCurrBytes)%errorString"</span>,
+<span class="hljs-symbol">        numberOfErrors:</span> <span class="hljs-string">", %errorsN %errorLabel"</span>,
+<span class="hljs-symbol">        singleFile:</span> <span class="hljs-string">"file"</span>,
+<span class="hljs-symbol">        pluralFiles:</span> <span class="hljs-string">"files"</span>,
+<span class="hljs-symbol">        singleError:</span> <span class="hljs-string">"error"</span>,
+<span class="hljs-symbol">        pluralErrors:</span> <span class="hljs-string">"errors"</span>
+    },
+<span class="hljs-symbol">    buttons:</span> {
+<span class="hljs-symbol">        browse:</span> <span class="hljs-string">"Browse Files"</span>,
+<span class="hljs-symbol">        addMore:</span> <span class="hljs-string">"Add More"</span>,
+<span class="hljs-symbol">        stopUpload:</span> <span class="hljs-string">"Stop Upload"</span>,
+<span class="hljs-symbol">        cancelRemaning:</span> <span class="hljs-string">"Cancel remaining Uploads"</span>,
+<span class="hljs-symbol">        resumeUpload:</span> <span class="hljs-string">"Resume Upload"</span>
+    },
+<span class="hljs-symbol">    queue:</span> {
+<span class="hljs-symbol">        emptyQueue:</span> <span class="hljs-string">"File list: No files waiting to be uploaded."</span>,
+<span class="hljs-symbol">        queueSummary:</span> <span class="hljs-string">"File list:  %totalUploaded files uploaded, %totalInUploadQueue file waiting to be uploaded."</span>
+    }
+}
+</code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><code>demo</code></td>
+            <td>
+                Boolean indicating whether to run in "demo" mode. See <a href="#running-locally-demo-mode">Running
+                locally: "demo" mode</a> below.
+            </td>
+            <td>false</td>
+            <td><code>demo: false</code></td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="queuesettings-options">queueSettings Options</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>uploadURL</code></td>
+            <td>
+                The URL to which files should be sent via POST requests.
+            </td>
+            <td>String</td>
+            <td>""</td>
+        </tr>
+        <tr>
+            <td><code>fileUploadLimit</code></td>
+            <td>
+                The maximum number of files allowed to be uploaded. 0 is unlimited.
+            </td>
+            <td>Integer</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td><code>fileQueueLimit</code></td>
+            <td>
+                The number of files that can be queued at once before uploading them. 0 is unlimited
+            </td>
+            <td>Integer</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td><code>postParams</code></td>
+            <td>
+                Parameters to send along with the POST request to the server when uploading files.
+            </td>
+            <td>Javascript Object</td>
+            <td>{}</td>
+        </tr>
+        <tr>
+            <td><code>fileSizeLimit</code></td>
+            <td>
+                The maximum size of a file to send to the server. Files larger than this will not be added to the queue.
+            </td>
+            <td>Integer, specified in bytes</td>
+            <td>"20480"</td>
+        </tr>
+        <tr>
+            <td><code>fileTypes</code></td>
+            <td>
+                The type of files that are allowed to be uploaded. Each file type should be specified as *.[fluid:file
+                extension], separated by semicolons. Example: "*.jpg;*.jpeg;*.gif;*.tiff"
+            </td>
+            <td>String</td>
+            <td>
+                <strong>v1.4</strong>
+                <p>null</p>
+<pre class="highlight"><code class="hljs dts">            <span class="hljs-params">&lt;strong&gt;</span>v1<span class="hljs-number">.1</span><span class="hljs-params">&lt;/strong&gt;</span>
+            <span class="hljs-params">&lt;p&gt;</span><span class="hljs-string">"*"</span><span class="hljs-params">&lt;/p&gt;</span>
+
+            <span class="hljs-params">&lt;strong&gt;</span>v1<span class="hljs-number">.0</span><span class="hljs-params">&lt;/strong&gt;</span>
+            <span class="hljs-params">&lt;p&gt;</span><span class="hljs-string">"*.*"</span><span class="hljs-params">&lt;/p&gt;</span>
+        <span class="hljs-params">&lt;/td&gt;</span>
+    <span class="hljs-params">&lt;/tr&gt;</span>
+<span class="hljs-params">&lt;/tbody&gt;</span>
+</code></pre>
+</table>
+<h3 id="htmlstrategy-options">htmlStrategy Options</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>legacyBrowserFileLimit</code></td>
+            <td>
+                A special file size limit for older browsers (such as Firefox 3.6), which don't fully support HTML 5
+                file uploads.
+            </td>
+            <td>any integer value, specified in megabytes</td>
+            <td>100</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="selectors">Selectors</h3>
+<p>One of the options that can be provided to the Uploader is a set of CSS-based selectors identifying where in the DOM
+different elements can be found. The value for the option is itself a Javascript object containing name/value pairs:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    selectors: {
+        selector1Name: "selector 1 string",
+        selector2Name: "selector 2 string"
+        // ...
+    }
+}
+</code></pre>
+<p>The different parts of the Uploader interface each have their own set of selectors (though all selectors must be
+provided together in a single object). Each also has a default, as defined below:</p>
+<h4 id="general">General</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Selector Name</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>fileQueue</code></td>
+            <td>The container element of the File Queue.</td>
+            <td>".flc-uploader-queue"</td>
+        </tr>
+        <tr>
+            <td><code>browseButton</code></td>
+            <td>The Browse Files button.</td>
+            <td>".flc-uploader-button-browse"</td>
+        </tr>
+        <tr>
+            <td><code>uploadButton</code></td>
+            <td>The Upload button.</td>
+            <td>".flc-uploader-button-upload"</td>
+        </tr>
+        <tr>
+            <td><code>pauseButton</code></td>
+            <td>The Pause button.</td>
+            <td>".flc-uploader-button-pause"</td>
+        </tr>
+        <tr>
+            <td><code>totalFileProgressBar</code></td>
+            <td>The file container for the total progress bar.</td>
+            <td>".flc-uploader-queue-footer"</td>
+        </tr>
+        <tr>
+            <td><code>totalFileStatusText</code></td>
+            <td>
+                The element to write the total progress bar status text into.
+            </td>
+            <td>".flc-uploader-total-progress-text"</td>
+        </tr>
+        <tr>
+            <td><code>instructions</code></td>
+            <td>The element containing the browse files instructions.</td>
+            <td>".flc-uploader-browse-instructions"</td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="file-queue">File Queue</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Selector Name</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>fileRows</code></td>
+            <td>The files rows in the queue.</td>
+            <td>".flc-uploader-file"</td>
+        </tr>
+        <tr>
+            <td><code>fileName</code></td>
+            <td>
+                The container for the file's name. Scoped within an individual file row.
+            </td>
+            <td>".flc-uploader-file-name"</td>
+        </tr>
+        <tr>
+            <td><code>fileSize</code></td>
+            <td>
+                The container for the file's size. Scoped within an individual file row.
+            </td>
+            <td>".flc-uploader-file-size"</td>
+        </tr>
+        <tr>
+            <td><code>fileIconBtn</code></td>
+            <td>
+                The container for the file row icons. Scoped within an individual file row.
+            </td>
+            <td>".flc-uploader-file-action"</td>
+        </tr>
+        <tr>
+            <td><code>errorText</code></td>
+            <td>
+                The container for file specific error text. Scoped within an individual file row.
+            </td>
+            <td>".flc-uploader-file-error"</td>
+        </tr>
+        <tr>
+            <td><code>rowTemplate</code></td>
+            <td>
+                A template element to clone when creating new rows in the file queue.
+            </td>
+            <td>".flc-uploader-file-tmplt"</td>
+        </tr>
+        <tr>
+            <td><code>errorInfoRowTemplate</code></td>
+            <td>
+                A template element to close when displaying an error for an individual file.
+            </td>
+            <td>".flc-uploader-file-error-tmplt"</td>
+        </tr>
+        <tr>
+            <td><code>rowProgressorTemplate</code></td>
+            <td>
+                A template element to clone when creating the progress bar for a file row.
+            </td>
+            <td>".flc-uploader-file-progressor-tmplt"</td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="scroller">Scroller</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Selector Name</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>wrapper</code></td>
+            <td>A wrapper container around the scrollable element.</td>
+            <td>".flc-scroller"</td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="progress">Progress</h4>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> Please see the <a href="to-do/ProgressAPI.html">Progress API</a> document for a full
+    description of Fluid Progress.
+</div>
+<p>Uploader uses the following selector options for Progress:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    selectors: {
+        progressBar: ".flc-uploader-queue-footer",
+        displayElement: ".flc-uploader-total-progress",
+        label: ".flc-uploader-total-progress-text",
+        indicator: ".flc-uploader-total-progress",
+        ariaElement: ".flc-uploader-total-progress"
+    }
+}
+</code></pre>
+<p>Any selectors not provided as an option will revert to the default. Implementers may choose to use the default class
+names in their markup, or customize the selectors, or a combination of these two approaches.</p>
+<p>For example, if your markup uses all of the default selectors, except for the file queue selector and the remove button
+selector, you would provide the following selectors option:</p>
+<pre class="highlight"><code class="hljs undefined">{
+    selectors: {
+        fileQueue: "#my-file-queue",
+        removeButton: "#my-remove-button"
+    }
+}
+</code></pre>
+<h2 id="dependencies">Dependencies</h2>
+<h3 id="required">Required</h3>
+<p>The Uploader dependencies can be met by including in the header of the HTML file</p>
+<ul>
+<li>the minified infusion-all.js file</li>
+<li>the Fluid layout CSS file</li>
+<li>the Uploader CSS file</li>
+</ul>
+<p>as shown below:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/framework/core/css/fluid.css"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"components/uploader/css/Uploader.css"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/infusion-all.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>Alternatively, the individual file requirements are:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../../framework/core/css/fluid.css"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../css/Uploader.css"</span> /&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Fluid and jQuery Dependencies --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../lib/jquery/core/js/jquery.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../lib/jquery/ui/js/jquery.ui.core.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../framework/core/js/jquery.keyboard-a11y.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../framework/core/js/Fluid.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../framework/core/js/FluidDocument.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../framework/core/js/FluidView.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../framework/core/js/DataBinding.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../framework/core/js/FluidIoC.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../framework/enhancement/js/ProgressiveEnhancement.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Uploader dependencies --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/Uploader.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/FileQueue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/Scroller.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../progress/js/Progress.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/FileQueueView.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/HTML5UploaderSupport.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../js/DemoUploadManager.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="important-notes-for-developers">Important Notes for Developers</h2>
+<h3 id="running-locally-demo-mode">Running locally: &quot;demo&quot; mode</h3>
+<p>The Upload component requires a server component to accept the uploaded files.</p>
+<p>However there are times when you want to run the uploader with out a server: when working on integrating the component
+with your code, developing or testing the UI, or demonstrating the functionality of the code. For that reason the
+Uploader has a &quot;demo&quot; mode. In demo mode, the Uploader uses a special version of the uploadManager that pretends to be
+talking to a server. Most of the code is identical to the server mode because the same events are being fired and the
+model is exactly the same. Most of the code in the Uploader thinks that there is a server.</p>
+<p>To run locally you must specify <code>demo: true</code> in your component configuration:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> myUploader = fluid.progressiveEnhanceableUploader(<span class="hljs-string">".flc-uploader"</span>, <span class="hljs-string">".fl-ProgEnhance-basic"</span>, {
+    <span class="hljs-attr">demo</span>: <span class="hljs-literal">true</span>
+});
+</code></pre>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

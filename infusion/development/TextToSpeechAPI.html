@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Text To Speech API | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components" class="infusion-docs-category-active">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Components</span>
+                                
+                                    <span class="infusion-docs-sectionName"></span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/InlineEditAPI.html"><span class="infusion-docs-TOC-pageName">Inline Edit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/PagerAPI.html"><span class="infusion-docs-TOC-pageName">Pager</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ProgressAPI.html"><span class="infusion-docs-TOC-pageName">Progress</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ReordererAPI.html"><span class="infusion-docs-TOC-pageName">Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ListReordererAPI.html"><span class="infusion-docs-TOC-pageName">List Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/GridReordererAPI.html"><span class="infusion-docs-TOC-pageName">Grid Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/LayoutReordererAPI.html"><span class="infusion-docs-TOC-pageName">Layout Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ImageReordererAPI.html"><span class="infusion-docs-TOC-pageName">Image Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SwitchAPI.html"><span class="infusion-docs-TOC-pageName">Switch</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Text to Speech</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldAPI.html"><span class="infusion-docs-TOC-pageName">Textfield</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldSliderAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldSlider</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldStepperAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldStepper</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UserInterfaceOptionsAPI.html"><span class="infusion-docs-TOC-pageName">User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UploaderAPI.html"><span class="infusion-docs-TOC-pageName">Uploader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/UndoAPI.html"><span class="infusion-docs-TOC-pageName">Undo</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/TableOfContentsAPI.html"><span class="infusion-docs-TOC-pageName">Table of Contents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Text To Speech API</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/TextToSpeechAPI.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>The <strong>Text To Speech</strong> component uses <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section">Web Speech Synthesis
+API</a> to queue up and read texts.</p>
+<h2 id="browser-support">Browser Support</h2>
+<p>The Text To Speech component can be used in browsers that support <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section">Web Speech Synthesis
+API</a>. At the time of writing, July 26
+2016, these browsers include:</p>
+<ul>
+<li>Chrome 31+</li>
+<li>Chrome for Android 40+</li>
+<li>Safari 7.1+</li>
+<li>iOS Safari 7.1+</li>
+<li>MS Edge 14 (in Preview Release)</li>
+<li>Firefox 48+ (using the <code>media.webspeech.synth.enabled</code> about:config option)</li>
+</ul>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> find the latest browser support data for Web Speech Synthesis API from <a
+    href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.
+</div>
+<h2 id="creator">Creator</h2>
+<p>Use the following function to create a Text To Speech component:</p>
+<table>
+    <tbody>
+        <tr>
+            <th>Method</th>
+            <td>
+                <code>fluid.textToSpeech(options);</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                Instantiate the text to speech component. The methods of the instantiated component can be called to
+                queue up and read texts.
+            </td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                <dl>
+                    <dt>model.utteranceOpts</dt>
+                    <dd>
+                        An optional data structure supplied to the component model that configures the Text To Speech
+                        component behaviour, as described below. As part of the component model, can be managed through
+                        the <a href="ChangeApplierAPI.html">ChangeApplier API</a> to assist in coordination with other
+                        components.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <th>Returns</th>
+            <td>The Text To Speech component</td>
+        </tr>
+        <tr>
+            <th>Examples</th>
+            <td>
+
+<pre class="highlight"><code class="hljs properties">
+<span class="hljs-attr">var</span> <span class="hljs-string">tts = fluid.textToSpeech({</span>
+    <span class="hljs-attr">model</span>: <span class="hljs-string">{</span>
+        <span class="hljs-attr">utteranceOpts</span>: <span class="hljs-string">{</span>
+            <span class="hljs-attr">volume</span>: <span class="hljs-string">1</span>
+        <span class="hljs-attr">}</span>
+    <span class="hljs-attr">},</span>
+<span class="hljs-attr">});</span>
+</code></pre>
+
+            </td>
+        </tr>
+        <tr>
+            <th>See also</th>
+            <td>
+                <a href="#utteranceopts-option"><code>model.utteranceOpts</code> Options</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="supported-methods">Supported Methods</h2>
+<h3 id="queuespeech">queueSpeech</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Method</th>
+            <td>
+                <code>textToSpeech.queueSpeech(text, interrupt, options);</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>queueSpeech</code> method allows you to append <code>text</code> to the end of the queue to
+                begin speaking after the other texts in the queue have been spoken. Setting the <code>interrupt</code>
+                argument to true will remove all texts from the queue before adding <code>text</code> to the queue.
+            </td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                <dl>
+                    <dt>text</dt>
+                    <dd>
+                        The string of text to be appended to the queue and spoken.
+                    </dd>
+                    <dt>interrupt</dt>
+                    <dd>
+                        An optional boolean value. The default value is false. Setting it to true will remove all texts
+                        from the queue before adding the text. Setting it to false will not affect previously queued
+                        texts.
+                    </dd>
+                    <dt>options</dt>
+                    <dd>
+                        An optional javascript object. Allows for the configuration of the specific
+                        <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration
+                        passed in here takes the same form as <a
+                        href="#utteranceopts-option"><code>model.utteranceOpts</code></a> and will override them for
+                        this instance only.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.queueSpeech</span>("<span class="hljs-selector-tag">Hello</span> <span class="hljs-selector-tag">world</span>", <span class="hljs-selector-tag">false</span>, {
+    <span class="hljs-attribute">volume</span>: <span class="hljs-number">0.5</span>
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="cancel">cancel</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Method</th>
+            <td>
+                <code>textToSpeech.cancel();</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>cancel</code> method allows you to remove all texts from the queue. If a text is being spoken,
+                speaking ceases immediately.
+            </td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>none</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="pause">pause</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Method</th>
+            <td>
+                <code>textToSpeech.pause();</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>pause</code> method allows you to immediately pause any texts that are being spoken.
+            </td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>none</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="resume">resume</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Method</th>
+            <td>
+                <code>textToSpeech.resume();</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>resume</code> method allows you to resume speaking a text that was previously paused.
+            </td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>none</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="getvoices">getVoices</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Method</th>
+            <td>
+                <code>textToSpeech.getVoices();</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>getVoices</code> method allows you to get a list of all the voices that are supported by the
+                browser. This list is an array of <code>SpeechSynthesisVoice</code> objects. Each of these
+                <code>SpeechSynthesisVoice</code> objects has a number of attributes:
+                <ul>
+                    <li>name: A human-readable name that describes the voice.</li>
+                    <li>voiceURI: A URI specifying the location of the speech synthesis service for this voice.</li>
+                    <li>lang: The language code for this voice.</li>
+                    <li>default: Set to true if this is the default voice used by the browser.</li>
+                    <li>
+                        localService: The API can use both local and remote services to handle speech synthesis. If this
+                        attribute is set to true the speech synthesis for this voice is handled by a local service. If
+                        it’s false a remote service is being used. This attribute can be useful if you’re building an
+                        app that needs to work offline. You could use a remote service when an internet connection is
+                        present, and fallback to a local service if a connection is not available.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>none</td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="supported-events">Supported Events</h2>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> if needed, please read the <a href="InfusionEventSystem.html">Infusion Event System</a>
+    document for a full description of infusion events.
+</div>
+<p>The events fired by the Text To Speech component are described below.</p>
+<h3 id="onstart">onStart</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                This event fires when texts in the queue have begun to be spoken.
+            </td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>default</td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                none
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="onstop">onStop</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                This event fires when the speaking stops, which occurs when all the texts in the queue have been spoken
+                or the speaking is manually stopped.
+            </td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>default</td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                none
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="onerror">onError</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                This event fires when an error occurs that prevents the text from being spoken.</em></p>
+            </td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>default</td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                none
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="onspeechqueued">onSpeechQueued</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                This event fires when a text has been queued up to be spoken.
+            </td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>default</td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                <dl>
+                    <dt>text</dt>
+                    <dd>
+                        The text that has been added to the queue.
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="model-paths">Model Paths</h2>
+<p>The following model paths can be used with <a href="ChangeApplierAPI.html">model listeners</a> based on the current state of the
+speech:</p>
+<ul>
+<li><code>model.paused</code>: <code>true</code> if a spoken text is currently paused, <code>false</code> otherwise</li>
+<li><code>model.speaking</code>: <code>true</code> if text is being spoken (including in a paused state), <code>false</code> otherwise</li>
+<li><code>model.pending</code>: <code>true</code> if there are text items remaining to be spoken, <code>false</code> otherwise</li>
+</ul>
+<h2 id="modelutteranceopts-configuration"><a id="utteranceopts-option"></a><code>model.utteranceOpts</code> Configuration</h2>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.html">Component Configuration
+    Options</a> document for a full description of infusion component options.
+</div>
+<p>Configuration of the Text To Speech component can be done through <code>model.utteranceOpts</code>. This model path is a Javascript
+object that contains attributes that users can use to define the behaviour of the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#utterance-attributes">SpeechSynthesisUtterance
+instance</a> (a part of the web
+speech API that the Text To Speech component interacts with).</p>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> not all speech synthesizers support all these attributes and some may take different ranges.
+</div>
+<p>These attributes include:</p>
+<h3 id="text">text</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>text</code> attribute allows you to set the text that you wish to be spoken.
+                <div class="infusion-docs-note">
+                    <strong>Note:</strong> be careful with this attribute as it will override any text that was
+                    previously passed.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+                ""
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.textToSpeech</span>({
+    <span class="hljs-attribute">model</span>: {
+        utteranceOpts: {
+            text: <span class="hljs-string">"Override other texts"</span>
+        }
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="lang">lang</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>lang</code> attribute gives you ability to specify a <a
+                href="http://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the
+                voice.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+                Default to the language of the HTML document.
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.textToSpeech</span>({
+    <span class="hljs-attribute">model</span>: {
+        utteranceOpts: {
+            lang: <span class="hljs-string">"en-US"</span>
+        }
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="voice">voice</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>voice</code> attribute must be a <a
+                href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a>
+                object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a
+                href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can
+                select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a
+                href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code>
+                function of the browser directly.
+                <div class="infusion-docs-note">
+                    <strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page
+                    is loaded, and you may need to wait for the <a
+                    href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a>
+                    event to get a full list.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+                Default to the user agent default speech service. It varies depending on the browser configuration.
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs dts">
+<span class="hljs-params">&lt;p&gt;</span>var availableVoices = SpeechSynthesis.getVoices();
+var voiceToUse = availableVoices[<span class="hljs-number">0</span>];<span class="hljs-params">&lt;/p&gt;</span>
+<span class="hljs-params">&lt;p&gt;</span>fluid.textToSpeech({
+<span class="hljs-symbol">model:</span> {
+<span class="hljs-symbol">utteranceOpts:</span> {
+<span class="hljs-symbol">voice:</span> voiceToUse
+}
+}
+});
+</code></pre>
+
+</td>
+</tr>
+<tr>
+<th>See also</th>
+<td>
+Method <a href="#getvoices">getVoices()</a>
+</td>
+</tr>
+</tbody></p>
+</table>
+<h3 id="volume">volume</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>volume</code> attribute allows you to adjust the volume of the speech. This is a float value
+                between 0 and 1.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+                1
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.textToSpeech</span>({
+    <span class="hljs-attribute">model</span>: {
+        utteranceOpts: {
+            volume: <span class="hljs-number">0.5</span>
+        }
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="rate">rate</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>rate</code> attribute allows you to define the speed at which the text should be spoken. This
+                is a float value between 0 and 10.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+                1
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.textToSpeech</span>({
+    <span class="hljs-attribute">model</span>: {
+        utteranceOpts: {
+            rate: <span class="hljs-number">2.5</span>
+        }
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="pitch">pitch</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                The <code>pitch</code> attribute allows you to control how high or low the text is spoken. This is a
+                float value between 0 and 2.
+            </td>
+        </tr>
+        <tr>
+            <th>Default</th>
+            <td>
+                1
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+
+<pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">fluid</span><span class="hljs-selector-class">.textToSpeech</span>({
+    <span class="hljs-attribute">model</span>: {
+        utteranceOpts: {
+            pitch: <span class="hljs-number">1.2</span>
+        }
+    }
+});
+</code></pre>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

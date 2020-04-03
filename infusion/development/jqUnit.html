@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>jqUnit | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion" class="infusion-docs-category-active">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Infusion</span>
+                                
+                                    <span class="infusion-docs-sectionName">Writing Configuration</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UnderstandingInfusionComponents.html"><span class="infusion-docs-TOC-pageName">Understanding Infusion Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentOptionsAndDefaults.html"><span class="infusion-docs-TOC-pageName">Understanding Component Options And Defaults</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentConfigurationOptions.html"><span class="infusion-docs-TOC-pageName">Component Configuration Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentGrades.html"><span class="infusion-docs-TOC-pageName">Component Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FunctionGrades.html"><span class="infusion-docs-TOC-pageName">Function Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="OptionsMerging.html"><span class="infusion-docs-TOC-pageName">Options Merging</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentLifecycle.html"><span class="infusion-docs-TOC-pageName">Component Lifecycle</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Priorities.html"><span class="infusion-docs-TOC-pageName">Priorities</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FrameworkConcepts.html"><span class="infusion-docs-TOC-pageName">Framework Concepts</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">API</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CoreAPI.html"><span class="infusion-docs-TOC-pageName">Core API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PromisesAPI.html"><span class="infusion-docs-TOC-pageName">Promises API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCAPI.html"><span class="infusion-docs-TOC-pageName">IoC API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelTransformationAPI.html"><span class="infusion-docs-TOC-pageName">Model Transformation API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewAPI.html"><span class="infusion-docs-TOC-pageName">View API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="NodeAPI.html"><span class="infusion-docs-TOC-pageName">node.js Support and API</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Inversion of Control</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseInfusionIoC.html"><span class="infusion-docs-TOC-pageName">How to Use Infusion IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SubcomponentDeclaration.html"><span class="infusion-docs-TOC-pageName">Subcomponent Declaration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Contexts.html"><span class="infusion-docs-TOC-pageName">Contexts</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ContextAwareness.html"><span class="infusion-docs-TOC-pageName">ContextAwareness</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ExpansionOfComponentOptions.html"><span class="infusion-docs-TOC-pageName">Expansion of Component Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCReferences.html"><span class="infusion-docs-TOC-pageName">IoC References</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCSS.html"><span class="infusion-docs-TOC-pageName">IoCSS</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeclarativeThisismInIoC.html"><span class="infusion-docs-TOC-pageName">Declarative this-ism In IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Events</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InfusionEventSystem.html"><span class="infusion-docs-TOC-pageName">Infusion Event System</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="EventInjectionAndBoiling.html"><span class="infusion-docs-TOC-pageName">Event injection and boiling</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Models</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplier.html"><span class="infusion-docs-TOC-pageName">ChangeApplier</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelRelay.html"><span class="infusion-docs-TOC-pageName">Model Relay</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Views</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinder.html"><span class="infusion-docs-TOC-pageName">DOM Binder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ClassNameConventions.html"><span class="infusion-docs-TOC-pageName">Class Name Conventions</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Renderer</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Renderer.html"><span class="infusion-docs-TOC-pageName">Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseTheRenderer.html"><span class="infusion-docs-TOC-pageName">How to Use the Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTrees.html"><span class="infusion-docs-TOC-pageName">Renderer Component Trees</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ProtoComponentTypes.html"><span class="infusion-docs-TOC-pageName">ProtoComponent Types</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTreeExpanders.html"><span class="infusion-docs-TOC-pageName">Renderer Component Tree Expanders</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Cutpoints.html"><span class="infusion-docs-TOC-pageName">Cutpoints</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererDecorators.html"><span class="infusion-docs-TOC-pageName">Renderer Decorators</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Loading Resources</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ResourceLoader.html"><span class="infusion-docs-TOC-pageName">Resource Loader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FetchResources.html"><span class="infusion-docs-TOC-pageName">fluid.fetchResources</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Builder.html"><span class="infusion-docs-TOC-pageName">Builder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PrimarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Primary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="AuxiliarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Auxiliary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SettingsStore.html"><span class="infusion-docs-TOC-pageName">Settings Store</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConnectingThePartsOfAPreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Connecting the Parts of a Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Enactors.html"><span class="infusion-docs-TOC-pageName">Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Panels.html"><span class="infusion-docs-TOC-pageName">Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CompositePanels.html"><span class="infusion-docs-TOC-pageName">Composite Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConditionalSubpanels.html"><span class="infusion-docs-TOC-pageName">Conditional Subpanels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="LocalizationInThePreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Localization in the Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Testing</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Unit Testing with jqUnit</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCTestingFramework.html"><span class="infusion-docs-TOC-pageName">IoC Testing Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 1.5</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_4To1_5.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.4 to 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecationsIn1_5.html"><span class="infusion-docs-TOC-pageName">Deprecations In 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html"><span class="infusion-docs-TOC-pageName">UI Options Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/PagerMigration.html"><span class="infusion-docs-TOC-pageName">Pager Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 2.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_5To2_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.5 to 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecatedIn2_0.html"><span class="infusion-docs-TOC-pageName">Deprecated in 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 3.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom2_0To3_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 2.0 to 3.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>jqUnit</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/jqUnit.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>Bundled with infusion is <strong>jqUnit</strong>, a library modelled on the <a href="https://en.wikipedia.org/wiki/XUnit">xUnit</a> API style.
+jqUnit wraps base functionality provided by the popular <a href="https://qunitjs.com/">QUnit</a>. All of the QUnit base
+functionality remains available in a jqUnit fixture at the <code>QUnit</code> namespace, and you should consult the QUnit
+documentation for details of packaging markup-based fixtures and its own API semantic. However, jqUnit is a complete
+wrapper and it is possible and recommended to write complete test suites without reference to QUnit. jqUnit is based on
+the 1.x API of QUnit, and not the (currently unreleased) 2.x version of QUnit which is API incompatible with QUnit 1.x.</p>
+<p>As well as the use of jqUnit in the browser, there is also a node.js module,
+<a href="https://github.com/fluid-project/node-jqunit">node-jqunit</a> which allows the use of the same testing API for writing
+node.js tests.</p>
+<p>A more advanced piece of infrastructure is the <a href="IoCTestingFramework.html">IoC Testing Framework</a> which is useful for
+writing asynchronous test fixtures targeting Infusion's IoC <a href="UnderstandingInfusionComponents.html">component trees</a>. This
+is not a replacement for jqUnit but a library layered on top of it which is good for certain specialised purposes. If
+you are writing plain unit tests, as well as integration tests which don't have a highly asynchronous, conversational
+style, you should continue to write jqUnit fixtures. If you find you are writing large-scale integration or acceptance
+tests against significantly-sized parts of an application, that require sequences of asynchronous conversation, for
+example simulating user GUI interaction or HTTP requests, you should use the IoC Testing Framework.</p>
+<h2 id="organising-and-controlling-fixtures">Organising and controlling fixtures</h2>
+<h3 id="jqunitmodulename-hooks">jqUnit.module(name, hooks)</h3>
+<p>Starts a group of related tests which will display with the module's name as a prefix. Direct passthrough for
+<a href="http://api.qunitjs.com/QUnit.module/">QUnit.module</a></p>
+<h3 id="jqunittestname-testfunc">jqUnit.test(name, testFunc)</h3>
+<p>Registers (queues) a synchronous test fixture by providing a callback which will run it. Direct passthrough for
+<a href="http://api.qunitjs.com/QUnit.test/">QUnit.test</a>. This is equivalent to a call to <code>jqUnit.asyncTest</code>, where the fixture
+ends with <code>jqUnit.start</code>.</p>
+<h3 id="jqunitasynctestname-testfunc">jqUnit.asyncTest(name, testFunc)</h3>
+<p>Registers (queues) an asynchronous test fixture by providing a callback which will run it. Direct passthrough for
+<a href="http://api.qunitjs.com/QUnit.asyncTest/">QUnit.asyncTest</a>.</p>
+<h3 id="jqunitstart">jqUnit.start()</h3>
+<p>Restarts QUnit's progress through its fixtures, which were previously suspended by a call to <code>jqUnit.stop()</code>. The idiom
+is that whilst the system is suspended by <code>stop</code>, the test currently in progress is waiting for I/O and the test run
+will not proceed until it resumes. Note that QUnit's suspension has the semantics of a <a href="https://en.wikipedia.org/wiki/Semaphore_%28programming%29#Semantics_and_implementation">Counting
+Semaphore</a> in that repeated
+calls to <code>jqUnit.stop</code> are possible and must be matched by an equal number of calls to <code>jqUnit.start</code> before the system
+will resume. Direct passthrough for <a href="http://api.qunitjs.com/QUnit.start/">QUnit.start</a>.</p>
+<h3 id="jqunitstop">jqUnit.stop()</h3>
+<p>Suspends QUnit's progression through its fixtures. QUnit will not continue to the next queued test fixture until it has
+been resumed with <code>jqUnit.start</code>. Direct passthrough for <a href="http://api.qunitjs.com/QUnit.stop/">QUnit.start</a>.</p>
+<h3 id="jqunitexpectcount">jqUnit.expect(count)</h3>
+<p>Informs QUnit that it must receive a certain number of successful assertions in the current fixture, or else the fixture
+will fail. Note that multiple successive calls to <code>jqUnit.expect</code> within the same fixture will be <strong>cumulative</strong> - this
+is different to QUnit's base behaviour for <a href="http://api.qunitjs.com/expect/"><code>QUnit.expect</code></a> where successive calls to
+<code>QUnit.expect</code> will overwrite the framework's expected count.</p>
+<ul>
+<li><code>count: {Integer}</code> The number of (additional) successful assertions to be expected</li>
+</ul>
+<h2 id="assertion-methods">Assertion methods</h2>
+<p>jqUnit's assertion methods have the xUnit standard signature of <code>[message, expected, actual]</code> rather than QUnit's
+signature of <code>[actual, expected, message]</code>. In many cases they are direct passthroughs to the QUnit equivalents, but
+jqUnit does implement a few useful extra assertion types. In the following documentation we do not describe the standard
+<code>message</code> argument which is accepted as the first argument of every assertion. You may consider that each API section
+below contains an entry:</p>
+<ul>
+<li><code>{message: String}</code> Message describing the assertion</li>
+</ul>
+<h3 id="jqunitassertmessage">jqUnit.assert(message)</h3>
+<p>An assertion which unconditionally succeeds, and raises the successful assertion count by one. Equivalent to
+<a href="http://api.qunitjs.com/ok/"><code>QUnit.ok(true, message)</code></a>.</p>
+<h3 id="jqunitfailmessage">jqUnit.fail(message)</h3>
+<p>An assertion which unconditionally fails, and then aborts the current fixture. Equivalent to <a href="http://api.qunitjs.com/ok/"><code>QUnit.ok(false, message)</code></a>.</p>
+<h3 id="jqunitasserttruemessage-value">jqUnit.assertTrue(message, value)</h3>
+<ul>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is <code>true</code>. Equivalent to <a href="http://api.qunitjs.com/ok/"><code>QUnit.ok(value, message)</code></a>.</p>
+<h3 id="jqunitassertfalsemessage-value">jqUnit.assertFalse(message, value)</h3>
+<ul>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is <code>false</code>. Equivalent to <a href="http://api.qunitjs.com/ok/"><code>QUnit.ok(!value, message)</code></a>.</p>
+<h3 id="jqunitassertundefinedmessage-value">jqUnit.assertUndefined(message, value)</h3>
+<ul>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is <code>undefined</code>.</p>
+<h3 id="jqunitassertnotundefinedmessage-value">jqUnit.assertNotUndefined(message, value)</h3>
+<ul>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is not <code>undefined</code>.</p>
+<h3 id="jqunitassertnullmessage-value">jqUnit.assertNull(message, value)</h3>
+<ul>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is <code>null</code>.</p>
+<h3 id="jqunitassertnotnullmessage-value">jqUnit.assertNotNull(message, value)</h3>
+<ul>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is not <code>null</code>.</p>
+<h3 id="jqunitassertvaluemessage-value">jqUnit.assertValue(message, value)</h3>
+<ul>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is not <code>null</code> or <code>undefined</code>.</p>
+<h3 id="jqunitassertnovaluemessage-value">jqUnit.assertNoValue(message, value)</h3>
+<ul>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is either <code>null</code> or <code>undefined</code>.</p>
+<h3 id="jqunitassertequalsmessage-expected-value">jqUnit.assertEquals(message, expected, value)</h3>
+<ul>
+<li><code>expected {Any}</code> The expected value of <code>value</code></li>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is equal to the one supplied as <code>expected</code>. This will be performed by a strict equality
+check (<code>===</code>) - equivalent to <a href="http://api.qunitjs.com/strictEqual/"><code>QUnit.strictEqual(actual, expected, message)</code></a></p>
+<h3 id="jqunitassertnotequalsmessage-unexpected-value">jqUnit.assertNotEquals(message, unexpected value)</h3>
+<ul>
+<li><code>unexpected {Any}</code> The value that <code>value</code> is expected to differ from</li>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is not equal to the one supplied as <code>unexpected</code>. This will be performed by a strict
+inequality check (<code>!==</code>) - equivalent to <a href="http://api.qunitjs.com/notStrictEqual/"><code>QUnit.notStrictEqual(actual, expected, message)</code></a></p>
+<h3 id="jqunitassertdeepeqmessage-expected-value">jqUnit.assertDeepEq(message, expected, value)</h3>
+<ul>
+<li><code>expected {Any}</code> The expected value of <code>value</code></li>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is equal to the one supplied as <code>expected</code>. This will be performed by a deep equality
+check on the basis of properties only (ignoring constructors and prototypes) - equivalent to <a href="http://api.qunitjs.com/propEqual/"><code>QUnit.propEqual(actual, expected, message)</code></a></p>
+<h3 id="jqunitassertdeepneqmessage-unexpected-value">jqUnit.assertDeepNeq(message, unexpected, value)</h3>
+<ul>
+<li><code>unexpected {Any}</code> The value that <code>value</code> is expected to differ from</li>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Asserts that the supplied value is not equal to the one supplied as <code>unexpected</code>. This will be performed by a deep
+equality check on the basis of properties only (ignoring constructors and prototypes) -
+equivalent to <a href="http://api.qunitjs.com/notPropEqual/"><code>QUnit.notPropEqual(actual, expected, message)</code></a></p>
+<h3 id="jqunitassertcanoniseequalmessage-expected-value-canonfunc">jqUnit.assertCanoniseEqual(message, expected, value, canonFunc)</h3>
+<ul>
+<li><code>expected {Any}</code> The expected value of <code>value</code></li>
+<li><code>value {Any}</code> The value to be tested</li>
+<li><code>canonFunc {Function: (value {Any}) → Any}</code> A <a href="https://en.wikipedia.org/wiki/Canonicalization">canonicalisation</a>
+function which will be applied to both <code>expected</code> and <code>value</code> to reduce them to a common form in which they can then
+be compared by standard deep equality.</li>
+</ul>
+<p>Asserts that the supplied value is equal to the one supplied as <code>expected</code>, by deep equality and after applying a
+&quot;canonicalisation function&quot; to remove irrelevant differences between the two values. Useful canonicalisation functions
+could act i) to allow all Functions to compare equal, ii) to remove irrelevant differences in array order by sorting, or
+iii) other means. Functions supplied by jqUnit include <code>jqUnit.canonicaliseFunctions</code> and <code>jqUnit.sortTree</code>.</p>
+<h3 id="jqunitassertlefthandmessage-expected-value">jqUnit.assertLeftHand(message, expected, value)</h3>
+<ul>
+<li><code>expected {Any}</code> An expected subset of <code>value</code></li>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Assert that the actual value object is a superset (considered in terms of shallow key coincidence) of the expected value
+object. The coincidence between <code>value</code> and <code>expected</code> is only in terms of top-level keys, but the comparison will use
+deep equality. That is, if <code>value</code> has any top-level keys in common with <code>expected</code>, they must compare equal by deep
+equality - but it may have extra top-level keys whose contents will be ignored. &quot;Left hand&quot; (expected) is a subset of
+actual.</p>
+<h3 id="jqunitassertrighthandmessage-expected-value">jqUnit.assertRightHand(message, expected, value)</h3>
+<ul>
+<li><code>expected {Any}</code> An expected superset of <code>value</code></li>
+<li><code>value {Any}</code> The value to be tested</li>
+</ul>
+<p>Assert that the actual value object is a subset (considered in terms of shallow key coincidence) of the expected value
+object. This is the natural converse of <code>jqUnit.assertLeftHand</code> but this assertion is rarely used - it is less useful to
+assert that a payload is as expected but may be missing arbitrarily many top-level keys.</p>
+<h3 id="jqunitexpectframeworkdiagnosticmessage-toinvoke-errortexts">jqUnit.expectFrameworkDiagnostic(message, toInvoke, errorTexts)</h3>
+<p>Assert that the supplied callback will produce a framework diagnostic (that is, an exception descended from
+<code>fluid.FluidError</code>), containing the supplied text(s) somewhere in its error message - that is, the callback has invoked
+<a href="CoreAPI.html#fluidfailarg1-argn"><code>fluid.fail</code></a> with a message containing the entries in <code>errorTexts</code>.</p>
+<ul>
+<li><code>message {String}</code> The message prefix to be supplied for all the assertions this function issues</li>
+<li><code>toInvoke {Function}</code> A no-arg function holding the code to be tested for emission of the diagnostic
+<code>errorTexts {String|Array of String}</code> Either a single string or array of strings which the <code>message</code>&gt; field
+of the thrown exception will be tested against - each string must appear as a substring in the text</li>
+</ul>
+<h2 id="utilities-for-testing">Utilities for testing</h2>
+<h3 id="jqunitcanonicalisefunctionsvalue">jqUnit.canonicaliseFunctions(value)</h3>
+<p>A canonicalisation function, helpful for use with
+<a href="jqUnit.html#jqunitassertcanoniseequalmessage-expected-value-canonfunc">jqUnit.assertCanoniseEqual</a> - this will take any
+Functions within the supplied tree and replace them with the same Function reference (<code>fluid.identity</code>)</p>
+<ul>
+<li><code>value {Object}</code> Value to be canonicalised</li>
+<li>Returns: <code>{Object}</code> Deep clone of <code>value</code> with all functions replaced by the same reference</li>
+</ul>
+<h3 id="jqunitsorttreevalue">jqUnit.sortTree(value)</h3>
+<p>A canonicalisation function, helpful if supplying a <a href="RendererComponentTrees.html">renderer component tree</a> to
+<a href="jqUnit.html#jqunitassertcanoniseequalmessage-expected-value-canonfunc">jqUnit.assertCanoniseEqual</a> - this will sort each
+set of <code>children</code> in the tree recursively into a canonical order, where this order would not disturb the rendered
+result.</p>
+<h2 id="testing-in-the-browser">Testing in the browser</h2>
+<p>The QUnit browser UI requires a standard set of includes and markup to render properly. In the header (adjust include
+paths as appropriate):</p>
+<pre class="highlight"><code class="hljs xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"screen"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../../lib/qunit/css/qunit.css"</span> /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../lib/qunit/js/qunit.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../test-core/jqUnit/js/jqUnit.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>and in the body of the document:</p>
+<pre class="highlight"><code class="hljs xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"qunit-header"</span>&gt;</span>Your Test Name Here<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"qunit-banner"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"qunit-testrunner-toolbar"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"qunit-userAgent"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"qunit-tests"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Test HTML --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"qunit-fixture"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>Mysteriously, these UI element ids and their functions are not documented on the QUnit site itself - although you can
+find explanations of them in some 3rd party tutorials. Any markup used within test fixtures must be placed within the
+div with id <code>qunit-fixture</code> - QUnit will take care of tearing this down and restoring it in its original condition
+before the start of every test.</p>
+<p>Your test fixtures should be scheduled to start only once this markup has loaded - you can achieve this by either
+starting them within a <a href="https://api.jquery.com/ready/">$(document).ready</a> callback, or by writing a <code>&lt;script&gt;</code> block at
+the base of your HTML file which starts them.</p>
+<p><code>jqUnit</code> provides a special set of assertions and utilities for testing within the browser environment:</p>
+<h3 id="jqunitassertnode-message-expected-node">jqUnit.assertNode (message, expected, node)</h3>
+<p>Checks a subtree of DOM nodes descended for a particular node against a condensed JSON representation, allowing multiple
+aspects of a rendered UI to be checked in a single operation. Each attribute of each DOM node is attached as a direct
+property, the node's tag name is attached as <code>nodeName</code>, the node's element test is attached as <code>nodeText</code>, and then all
+children are recursively attached as the property <code>children</code>. In addition, at any stage, the entire nested markup may be
+attached as <code>nodeHTML</code>.</p>
+<p>As an example, the following markup:</p>
+<pre class="highlight"><code class="hljs xml">    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"a-link"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"a-source"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<p>will compare equal to</p>
+<pre class="highlight"><code class="hljs undefined">{
+   nodeName: "a",
+   href: "a-link",
+   children: [
+       {
+       nodeName: "img",
+       src: "a-source"
+       }
+   ]
+}
+</code></pre>
+<ul>
+<li><code>expected {Object|Array}</code> A condensed JSON representation of a set of assertions to make about a subtree of DOM
+nodes, or an array of these</li>
+<li><code>node {DOM|Array of DOM|jQuery}</code> The DOM node to be checked against <code>expected</code> - this may also be an array of DOM
+nodes or a jQuery object.</li>
+</ul>
+<h3 id="jqunitcanonicalisedomlist">jqUnit.canonicaliseDom(list)</h3>
+<p>Canonicalise a list of DOM elements (or a jQuery) by converting elements to their ids (allocated if necessary).</p>
+<ul>
+<li><code>list {Array of DOM|jQuery}</code> An array of DOM nodes or a jQuery</li>
+<li>Returns: {Array of String} An array of ids for the supplied nodes, allocated via
+<a href="ViewAPI.html#fluidallocatesimpleidelement">fluid.allocateSimpleId</a>.</li>
+</ul>
+<h3 id="jqunitassertdomequalsmessage-expected-actual">jqUnit.assertDomEquals(message, expected, actual)</h3>
+<p>Compare two lists of DOM elements (or jQueries) for being equal by virtue of containing the same DOM elements in the
+same order. This will be achieved by canonicalising the DOM elements onto their ids by means of the canonicalisation
+function <code>jqUnit.canonicaliseDom</code></p>
+<ul>
+<li><code>expected {Array of DOM|jQuery}</code> The expected list of DOM nodes</li>
+<li><code>actual {Array of DOM|jQuery}</code> The actual list of DOM nodes to be compared with <code>expected</code>.</li>
+</ul>
+<h3 id="jqunitisvisiblemsg-selector">jqUnit.isVisible(msg, selector)</h3>
+<p>Asserts that the DOM nodes identified by <code>selector</code> are visible, in terms of not matching the jQuery
+<a href="https://api.jquery.com/hidden-selector/"><code>:hidden</code></a> pseudoselector.</p>
+<ul>
+<li><code>selector {jQueryable}</code> The selector or other jQueryable identifying the DOM nodes to be tested for visibility</li>
+</ul>
+<h3 id="jqunitnotvisiblemsg-selector">jqUnit.notVisible(msg, selector)</h3>
+<p>Asserts that the DOM nodes identified by <code>selector</code> are not visible, in terms of matching the jQuery
+<a href="https://api.jquery.com/hidden-selector/"><code>:hidden</code></a> pseudoselector.</p>
+<ul>
+<li><code>selector {jQueryable}</code> The selector or other jQueryable identifying the DOM nodes to be tested for invisibility</li>
+</ul>
+<h3 id="jqunitassertnodeexists-msg-selector">jqUnit.assertNodeExists (msg, selector)</h3>
+<p>Asserts that there is at least one node matching the provided selector (or other jQueryable)</p>
+<ul>
+<li><code>selector {jQueryable}</code> The selector or other jQueryable identifying the DOM nodes to be checked for existence</li>
+</ul>
+<h3 id="jqunitassertnodenotexists-msg-selector">jqUnit.assertNodeNotExists (msg, selector)</h3>
+<p>Asserts that there are no nodes matching the provided selector (or other jQueryable)</p>
+<ul>
+<li><code>selector {jQueryable}</code> The selector or other jQueryable identifying the DOM nodes to be checked for nonexistence</li>
+</ul>
+<h3 id="jqunitsubvertanimations">jqUnit.subvertAnimations()</h3>
+<p>Overrides jQuery's animation routines to be synchronous. This can simplify tests which would otherwise have to wait for
+an unknown timeout for the DOM to come into an expected state after, say, a <code>jQuery.hide</code> or <code>jQuery.show</code>.</p>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

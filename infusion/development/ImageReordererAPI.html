@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Image Reorderer API | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components" class="infusion-docs-category-active">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Components</span>
+                                
+                                    <span class="infusion-docs-sectionName"></span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/InlineEditAPI.html"><span class="infusion-docs-TOC-pageName">Inline Edit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/PagerAPI.html"><span class="infusion-docs-TOC-pageName">Pager</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ProgressAPI.html"><span class="infusion-docs-TOC-pageName">Progress</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ReordererAPI.html"><span class="infusion-docs-TOC-pageName">Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/ListReordererAPI.html"><span class="infusion-docs-TOC-pageName">List Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/GridReordererAPI.html"><span class="infusion-docs-TOC-pageName">Grid Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/LayoutReordererAPI.html"><span class="infusion-docs-TOC-pageName">Layout Reorderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Image Reorderer</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SwitchAPI.html"><span class="infusion-docs-TOC-pageName">Switch</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextToSpeechAPI.html"><span class="infusion-docs-TOC-pageName">Text to Speech</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldAPI.html"><span class="infusion-docs-TOC-pageName">Textfield</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldSliderAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldSlider</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="TextfieldStepperAPI.html"><span class="infusion-docs-TOC-pageName">TextfieldStepper</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UserInterfaceOptionsAPI.html"><span class="infusion-docs-TOC-pageName">User Interface Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UploaderAPI.html"><span class="infusion-docs-TOC-pageName">Uploader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/UndoAPI.html"><span class="infusion-docs-TOC-pageName">Undo</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="to-do/TableOfContentsAPI.html"><span class="infusion-docs-TOC-pageName">Table of Contents</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Image Reorderer API</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/ImageReordererAPI.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>The Image Reorderer is a convenience function for applying the Reorderer to images within a collection. This page
+provides technical details of the API.</p>
+<h2 id="creating-an-image-reorderer">Creating an Image Reorderer</h2>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> myImageReorderer = fluid.reorderImages(container);
+
+<span class="hljs-comment">// or</span>
+
+<span class="hljs-keyword">var</span> myImageReordererWithOptions = fluid.reorderImages(container, options);
+</code></pre>
+<h3 id="parameters">Parameters</h3>
+<h4 id="container">container</h4>
+<p>The <code>container</code> parameter is a CSS-based <a href="http://api.jquery.com/category/selectors/">selector</a>, single-element jQuery
+object, or DOM element specifying the root node of the Reorderer.</p>
+<h4 id="options-parameter">options parameter</h4>
+<p>The <code>options</code> parameter is an optional collection of name-value pairs that configure the Image Reorderer, as described
+in the <a href="#options">Options</a> section below.</p>
+<h2 id="supported-events">Supported Events</h2>
+<p>The Image Reorderer fires the following events.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Parameters</th>
+            <th>Parameters Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p><code>onShowKeyboardDropWarning1</code></p>
+</td>
+            <td>default</td>
+            <td>
+                This event fires before a drop warning is displayed.
+            </td>
+            <td>
+<p><code>item</code>, <code>kbDropWarning</code></p>
+</td>
+            <td>
+<p><code>item</code>: The item being moved.
+<code>kbDropWarning</code>: The DOM element that contains the drop warning, and that will be displayed.</td>
+</tr>
+<tr>
+<td></p>
+<p><code>onSelect</code></p>
+</td>
+            <td>default</td>
+            <td>
+                This event fires when an item is selected by the user.
+            </td>
+            <td>
+<p><code>item</code></p>
+</td>
+            <td>
+<p><code>item</code>: The item being selected.</td>
+</tr>
+<tr>
+<td></p>
+<p><code>onBeginMove</code></p>
+</td>
+            <td>"preventable"</td>
+            <td>
+                This event fires just before a request to move is processed. Because the event is preventable, listeners
+                may prevent the move from happening.
+            </td>
+            <td>
+<p><code>item</code></p>
+</td>
+            <td>
+<p><code>item</code>: The item being moved.</td>
+</tr>
+<tr>
+<td></p>
+<p><code>onMove</code></p>
+</td>
+            <td>default</td>
+            <td>
+                This event fires just before an item is actually moved.
+            </td>
+            <td>
+<p><code>item</code>, <code>requestedPosition</code></p>
+</td>
+            <td>
+<p><code>item</code>: The item being moved.
+<code>requestedPosition</code>: An object describing the position that the user is trying to move the item into:</p>
+
+    <pre class="highlight"><code class="hljs arduino">
+requestedPosition = {
+element,
+<span class="hljs-comment">// the drop target</span>
+
+<span class="hljs-built_in">position</span>
+<span class="hljs-comment">// the position, relative to the drop target, that a dragged item should be dropped. One of BEFORE, AFTER, INSIDE, or REPLACE</span>
+}
+    </code></pre>
+
+</td>
+        </tr>
+        <tr>
+            <td>
+<p><code>afterMove</code></p>
+</td>
+            <td>default</td>
+            <td>
+<p>This event fires after an item has successfully been moved. For more information, see <a href="to-do/TalkingToTheServerUsingTheAfterMoveEvent.html">Talking to the Server Using The
+afterMove Event</a>.</p>
+<p>This event replaces the <code>afterMoveCallbackUrl</code> option, which was deprecated at version 1.1.2.</p>
+</td>
+            <td>
+<p><code>item</code>, <code>requestedPosition</code>, <code>movables</code></p>
+</td>
+            <td>
+<p><code>item</code>: The item being moved.
+<code>requestedPosition</code>: An object describing the position that the user is trying to move the item into:</p>
+
+    <pre class="highlight"><code class="hljs arduino">
+requestedPosition = {
+element,
+<span class="hljs-comment">// the drop target</span>
+
+<span class="hljs-built_in">position</span>
+<span class="hljs-comment">// the position, relative to the drop target, that a dragged item should be dropped. One of BEFORE, AFTER, INSIDE, or REPLACE</span>
+}
+    </code></pre>
+
+<p><code>movables</code>: A list of all of the movable elements.</p>
+</td>
+        </tr>
+        <tr>
+            <td>
+<p><code>onHover</code></p>
+</td>
+            <td>default</td>
+            <td>
+<p>This event fires when the cursor moves over top of an item, and when the cursor moves away from an item. The default
+listener either adds or removes the hover class (<code>styles.hover</code>) to/from the item.</p>
+</td>
+            <td>
+<p><code>item</code>, <code>state</code></p>
+</td>
+            <td>
+<p><code>item</code>: The item being moved.
+<code>state</code>: A boolean indicating whether the cursor is moving to (<code>true</code>) or away from (<code>false</code>) the item.</p>
+</td>
+        </tr>
+        <tr>
+            <td>
+<p><code>onRefresh</code></p>
+</td>
+            <td>default</td>
+            <td>
+<p>This event fires any time the order of the items changes, or when the <code>refresh()</code> function is called.</p>
+</td>
+            <td>none</td>
+            <td>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="options">Options</h2>
+<h3 id="general-options">General options</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p><code>selectors</code></p>
+</td>
+            <td>
+<p>JavaScript object defining CSS-style selectors for important DOM elements. See <a href="#selectors">Selectors</a> for more
+information.</p>
+</td>
+            <td>
+<p>The object must be a list of objects containing any subset of the following keys:</p>
+<ul>
+<li><code>dropWarning</code></li>
+<li><code>movables</code></li>
+<li><code>selectables</code></li>
+<li><code>dropTargets</code></li>
+<li><code>grabHandle</code>
+</td>
+<td>
+
+<pre class="highlight"><code class="hljs avrasm">
+<span class="hljs-symbol">selectors:</span> {
+<span class="hljs-symbol">dropWarning:</span> <span class="hljs-string">".flc-reorderer-dropWarning"</span>,
+<span class="hljs-symbol">movables:</span>    <span class="hljs-string">".flc-reorderer-movable"</span>,
+<span class="hljs-symbol">selectables:</span> <span class="hljs-string">".flc-reorderer-movable"</span>,
+<span class="hljs-symbol">dropTargets:</span> <span class="hljs-string">".flc-reorderer-movable"</span>,
+<span class="hljs-symbol">grabHandle:</span>  <span class="hljs-string">""</span>
+}
+</code></pre>
+
+</td>
+</tr>
+<tr>
+<td></li>
+</ul>
+<p><code>listeners</code></p>
+</td>
+            <td>JavaScript object containing listeners to be attached to the supported events.</td>
+            <td>Keys in the object are event names, values are functions or arrays of functions.</td>
+            <td>
+<p>See <a href="#supported-events">Supported Events</a></p>
+</td>
+        </tr>
+        <tr>
+            <td>
+<p><code>styles</code></p>
+</td>
+            <td>an object containing CSS class names for styling the Reorderer.</td>
+            <td>
+                The object may contain any of the keys defined in the default class names (shown to the right). Any
+                class names not provided will revert to the default.
+            </td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs dts"><span class="hljs-symbol">
+styles:</span> {
+<span class="hljs-symbol">    defaultStyle:</span> <span class="hljs-string">"fl-reorderer-movable-default"</span>,
+<span class="hljs-symbol">    selected:</span> <span class="hljs-string">"fl-reorderer-movable-selected"</span>,
+<span class="hljs-symbol">    dragging:</span> <span class="hljs-string">"fl-reorderer-movable-dragging"</span>,
+<span class="hljs-symbol">    mouseDrag:</span> <span class="hljs-string">"fl-reorderer-movable-dragging"</span>,
+<span class="hljs-symbol">    hover:</span> <span class="hljs-string">"fl-reorderer-movable-hover"</span>,
+<span class="hljs-symbol">    dropMarker:</span> <span class="hljs-string">"fl-reorderer-dropMarker"</span>,
+<span class="hljs-symbol">    avatar:</span> <span class="hljs-string">"fl-reorderer-avatar"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p><code>keysets</code></p>
+</td>
+            <td>
+                an object containing sets of keycodes to use for directional navigation, and for the modifier key used
+                for moving a movable item.
+            </td>
+            <td>
+The object must be a list of objects containing the following keys:
+<ul>
+<li><code>modifier</code> : a function that returns true or false, indicating whether or not the required modifier(s) are activated</li>
+<li><code>up</code></li>
+<li><code>down</code></li>
+<li><code>right</code></li>
+<li><code>left</code>
+</td>
+<td>
+
+<pre class="highlight"><code class="hljs ada">
+fluid.reorderer.defaultKeysets = [{
+modifier : <span class="hljs-keyword"><span class="hljs-keyword">function</span></span> (<span class="hljs-type">evt</span>) {
+<span class="hljs-keyword">return</span> evt.ctrlKey;
+},
+up : <span class="hljs-type">fluid.reorderer.keys.UP</span>,
+down : <span class="hljs-type">fluid.reorderer.keys.DOWN</span>,
+right : <span class="hljs-type">fluid.reorderer.keys.RIGHT</span>,
+left : <span class="hljs-type">fluid.reorderer.keys.LEFT</span>
+},
+{
+modifier : <span class="hljs-keyword"><span class="hljs-keyword">function</span></span> (<span class="hljs-type">evt</span>) {
+<span class="hljs-keyword">return</span> evt.ctrlKey;
+},
+up : <span class="hljs-type">fluid.reorderer.keys.i</span>,
+down : <span class="hljs-type">fluid.reorderer.keys.m</span>,
+right : <span class="hljs-type">fluid.reorderer.keys.k</span>,
+left : <span class="hljs-type">fluid.reorderer.keys.j</span>
+}];
+</code></pre>
+
+</td>
+</tr>
+<tr>
+<td></li>
+</ul>
+<p><code>selectablesTabindex</code></p>
+</td>
+            <td>Normally injected automatically from the layoutHandler</td>
+            <td>
+<p>String <a href="IoCReferences.html">IoC expression</a></td>
+<td>
+
+<pre class="highlight"><code class="hljs avrasm">
+<span class="hljs-symbol">selectablesTabindex:</span> <span class="hljs-string">"{that}.layoutHandler.options.selectablesTabindex"</span>
+</code></pre>
+
+</td>
+</tr>
+<tr>
+<td></p>
+<p><code>avatarCreator</code></p>
+</td>
+            <td>a function that returns a valid DOM node to be used as the dragging avatar</td>
+            <td></td>
+            <td>The item being dragged will be cloned</td>
+        </tr>
+        <tr>
+            <td>
+<p><code>disableWrap</code></p>
+</td>
+            <td>This option is used to disable wrapping of elements within the container.</td>
+            <td>boolean</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>
+<p><code>mergePolicy</code></p>
+</td>
+            <td>
+<p>an object describing how user options should be merged in with defaults
+For information on options merging, see <a href="OptionsMerging.html">Options Merging</a></p>
+</td>
+            <td></td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">mergePolicy</span>: {
+    <span class="hljs-attribute">keysets</span>: <span class="hljs-string">"replace"</span>,
+    <span class="hljs-string">"selectors.selectables"</span>:
+        <span class="hljs-string">"selectors.movables"</span>,
+    <span class="hljs-string">"selectors.dropTargets"</span>:
+        <span class="hljs-string">"selectors.movables"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="image-reorderer-options">Image Reorderer Options</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p><strong>Deprecated as of 1.1.2:</strong> <code>afterMoveCallbackUrl</code></p>
+</td>
+            <td>
+                If an URL is provided with this option, the current state of the component model will be sent to that
+                URL after a move is carried out using a default afterMove event handler.
+            </td>
+            <td>an URL</td>
+            <td>none</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="selectors">Selectors</h3>
+<p>The <code>selectors</code> option is an object containing CSS-based selectors for various parts of the Image Reorderer. Supported
+selectors are:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Default</th>
+            <th>Examples</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p><code>grabHandle</code></p>
+</td>
+            <td>
+                If present, identifies a single element within a movable item that the user must click on to drag the
+                movable item. (If not specified, the entire movable item can be clicked on.)
+            </td>
+            <td>""
+(empty string) </td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">grabHandle</span>: <span class="hljs-string">".title-bar"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p><code>dropTargets</code></p>
+</td>
+            <td>
+                Identifies the DOM elements contained within the Reorderer container that can have movable elements
+                dropped relative to them. Note that not all elements within the container need to be drop targets.
+            </td>
+            <td>same as movables</td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">dropTargets</span>: <span class="hljs-string">"div.dropTarget"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p><code>selectables</code></p>
+</td>
+            <td>
+                Identifies the DOM elements contained within the Reorderer container that can be selected using
+                keyboard. Note that selectable elements do not have to be movable.
+            </td>
+            <td>same as movables</td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">selectables</span>: <span class="hljs-string">"div.selectable"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p><code>movables</code></p>
+</td>
+            <td>
+                Identifies the DOM elements contained within the Reorderer container that can be moved using the
+                Reorderer.
+            </td>
+            <td>".flc-reorderer-movable"</td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">movables</span>: <span class="hljs-string">"div.movable"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+<p><code>dropWarning</code></p>
+</td>
+            <td>
+                Identifies a single element within the DOM that can be shown to display a warning when the user tries to
+                move an item where it can't be moved. It is assumed that this element contains whatever drop warning
+                text and mark-up the implementor desires.
+            </td>
+            <td>".flc-reorderer-dropWarning"</td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">dropWarning</span>: <span class="hljs-string">"#drop-warning"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="image-reorderer-specific-selector">Image Reorderer-specific Selector</h3>
+<p>The Image Reorderer supports one additional selector:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Values</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<p><code>imageTitle</code></p>
+</td>
+            <td>Identifies a DOM element that contains a title for the image</td>
+            <td>
+<p><code>&quot;.flc-reorderer-imageTitle&quot;</code></p>
+</td>
+            <td>
+                
+                    <pre class="highlight"><code class="hljs css">
+<span class="hljs-selector-tag">selectors</span>: {
+    <span class="hljs-attribute">imageTitle</span>: <span class="hljs-string">".caption"</span>
+}
+                    </code></pre>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="styling-the-image-reorderer">Styling the Image Reorderer</h2>
+<p>The Image Reorderer includes default CSS styles that it applies to the thumbnails. The application of styles is based on
+known class names. The <em>default</em> class names are described below, and can be used by including the Image Reorderer
+stylesheet:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"components/reorderer/css/imageReorderer.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"all"</span>&gt;</span>;
+</code></pre>
+<p>NOTE that the default class names can be overridden with your own classes using the <code>styles</code> option: refer to the
+<a href="#options">Options</a> section above.</p>
+<h3 id="default-classes">Default Classes</h3>
+<ul>
+<li><code>fl-reorderer-movable-default</code> - This class is applied to thumbnail elements in their default state.</li>
+<li><code>fl-reorderer-movable-selected</code> - This class is applied to the thumbnail that has been selected. The selected
+thumbnail item can be moved using keystrokes.</li>
+<li><code>fl-reorderer-movable-hover</code> - This class is applied to thumbnails when the mouse hovers over them.</li>
+<li><code>fl-reorderer-movable-dragging</code> - This class is applied to the thumbnail that is currently being moved.</li>
+<li><code>fl-reorderer-avatar</code> - This class is applied to the avatar, the image of the thumbnail as it is being dragged about
+by the mouse.</li>
+<li><code>fl-reorderer-dropMarker</code> - This class is applied to the drop target indicator when the mouse is used to drag a
+thumbnail.</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<p>The Image Reorderer dependencies can be met by including the <code>infusion-custom.js</code> file in the header of the HTML file:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"infusion-custom.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>Alternatively, the individual file requirements are:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"lib/jquery/core/js/jquery.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"lib/jquery/ui/js/jquery.ui.core.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"lib/jquery/ui/js/jquery.ui.widget.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"lib/jquery/ui/js/jquery.ui.mouse.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"lib/jquery/ui/js/jquery.ui.draggable.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/FluidDocument.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/jquery.keyboard-a11y.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/Fluid.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/FluidDOMUtilities.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/FluidIoC.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/FluidView.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"framework/core/js/DataBinding.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"components/reorderer/js/ReordererDOMUtilities.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"components/reorderer/js/GeometricManager.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"components/reorderer/js/Reorderer.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"components/reorderer/js/ImageReorderer.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>The Image Reorderer also requires the following stylesheets:</p>
+<pre class="highlight"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"framework/core/css/fluid.css"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"components/reorderer/css/Reorderer.css"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"components/reorderer/css/ImageReorderer.css"</span> /&gt;</span>
+</code></pre>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>

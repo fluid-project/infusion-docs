@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Infusion Core API | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="lib/foundation/normalize.css">
+        <link rel="stylesheet" href="lib/foundation/foundation.css">
+        <link rel="stylesheet" href="css/highlightjs-custom.css">
+        <link rel="stylesheet" href="lib/octicons/octicons.css">
+
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" href="css/infusion-docs.css">
+
+        <link rel="icon" type="image/png" href="images/favico.png">
+
+        <script type="text/javascript" src="lib/infusion/dist/infusion-all.js"></script>
+        <script type="text/javascript" src="js/infusion-docs.js"></script>
+
+        <script type="text/javascript" src="lib/gpii-express/querystring-coding.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/transforms.js"></script>
+        <script type="text/javascript" src="lib/gpii-binder/binder.js"></script>
+
+        
+            <script type="text/javascript" src="js/mini-search.js"></script>
+        
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "tocTemplate": "lib/infusion/TableOfContents.html"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="index.html" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    
+                    
+                        
+                            <a href="index.html" title="Infusion" class="infusion-docs-category-active">Infusion</a>
+                        
+                    
+                        
+                            <a href="index-tutorials.html" title="Tutorials">Tutorials</a>
+                        
+                    
+                        
+                            <a href="index-components.html" title="Components">Components</a>
+                        
+                    
+                        
+                            <a href="search.html" title="Search">Search</a>
+                        
+                    
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    
+                        <span class="infusion-docs-category">Search</span>
+                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+
+                        
+                        
+                            
+                                <span class="infusion-docs-category">Infusion</span>
+                                
+                                    <span class="infusion-docs-sectionName">Writing Configuration</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="UnderstandingInfusionComponents.html"><span class="infusion-docs-TOC-pageName">Understanding Infusion Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentOptionsAndDefaults.html"><span class="infusion-docs-TOC-pageName">Understanding Component Options And Defaults</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentConfigurationOptions.html"><span class="infusion-docs-TOC-pageName">Component Configuration Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentGrades.html"><span class="infusion-docs-TOC-pageName">Component Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FunctionGrades.html"><span class="infusion-docs-TOC-pageName">Function Grades</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="OptionsMerging.html"><span class="infusion-docs-TOC-pageName">Options Merging</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ComponentLifecycle.html"><span class="infusion-docs-TOC-pageName">Component Lifecycle</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Priorities.html"><span class="infusion-docs-TOC-pageName">Priorities</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FrameworkConcepts.html"><span class="infusion-docs-TOC-pageName">Framework Concepts</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">API</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <span class="infusion-docs-TOC-pageName">Core API</span>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PromisesAPI.html"><span class="infusion-docs-TOC-pageName">Promises API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCAPI.html"><span class="infusion-docs-TOC-pageName">IoC API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelTransformationAPI.html"><span class="infusion-docs-TOC-pageName">Model Transformation API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ViewAPI.html"><span class="infusion-docs-TOC-pageName">View API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="NodeAPI.html"><span class="infusion-docs-TOC-pageName">node.js Support and API</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Inversion of Control</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseInfusionIoC.html"><span class="infusion-docs-TOC-pageName">How to Use Infusion IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SubcomponentDeclaration.html"><span class="infusion-docs-TOC-pageName">Subcomponent Declaration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Contexts.html"><span class="infusion-docs-TOC-pageName">Contexts</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ContextAwareness.html"><span class="infusion-docs-TOC-pageName">ContextAwareness</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Invokers.html"><span class="infusion-docs-TOC-pageName">Invokers</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ExpansionOfComponentOptions.html"><span class="infusion-docs-TOC-pageName">Expansion of Component Options</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCReferences.html"><span class="infusion-docs-TOC-pageName">IoC References</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCSS.html"><span class="infusion-docs-TOC-pageName">IoCSS</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeclarativeThisismInIoC.html"><span class="infusion-docs-TOC-pageName">Declarative this-ism In IoC</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Events</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="InfusionEventSystem.html"><span class="infusion-docs-TOC-pageName">Infusion Event System</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="EventInjectionAndBoiling.html"><span class="infusion-docs-TOC-pageName">Event injection and boiling</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Models</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplier.html"><span class="infusion-docs-TOC-pageName">ChangeApplier</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ChangeApplierAPI.html"><span class="infusion-docs-TOC-pageName">ChangeApplier API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ModelRelay.html"><span class="infusion-docs-TOC-pageName">Model Relay</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Views</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinder.html"><span class="infusion-docs-TOC-pageName">DOM Binder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DOMBinderAPI.html"><span class="infusion-docs-TOC-pageName">DOM Binder API</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ClassNameConventions.html"><span class="infusion-docs-TOC-pageName">Class Name Conventions</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Renderer</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Renderer.html"><span class="infusion-docs-TOC-pageName">Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="HowToUseTheRenderer.html"><span class="infusion-docs-TOC-pageName">How to Use the Renderer</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTrees.html"><span class="infusion-docs-TOC-pageName">Renderer Component Trees</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ProtoComponentTypes.html"><span class="infusion-docs-TOC-pageName">ProtoComponent Types</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponentTreeExpanders.html"><span class="infusion-docs-TOC-pageName">Renderer Component Tree Expanders</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Cutpoints.html"><span class="infusion-docs-TOC-pageName">Cutpoints</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererComponents.html"><span class="infusion-docs-TOC-pageName">Renderer Components</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="RendererDecorators.html"><span class="infusion-docs-TOC-pageName">Renderer Decorators</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Loading Resources</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ResourceLoader.html"><span class="infusion-docs-TOC-pageName">Resource Loader</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="FetchResources.html"><span class="infusion-docs-TOC-pageName">fluid.fetchResources</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Preferences Framework</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Builder.html"><span class="infusion-docs-TOC-pageName">Builder</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="PrimarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Primary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="AuxiliarySchemaForPreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Auxiliary Schema</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="SettingsStore.html"><span class="infusion-docs-TOC-pageName">Settings Store</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConnectingThePartsOfAPreferencesEditor.html"><span class="infusion-docs-TOC-pageName">Connecting the Parts of a Preferences Editor</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Enactors.html"><span class="infusion-docs-TOC-pageName">Enactors</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="Panels.html"><span class="infusion-docs-TOC-pageName">Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="CompositePanels.html"><span class="infusion-docs-TOC-pageName">Composite Panels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="ConditionalSubpanels.html"><span class="infusion-docs-TOC-pageName">Conditional Subpanels</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="LocalizationInThePreferencesFramework.html"><span class="infusion-docs-TOC-pageName">Localization in the Preferences Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Testing</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="jqUnit.html"><span class="infusion-docs-TOC-pageName">Unit Testing with jqUnit</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="IoCTestingFramework.html"><span class="infusion-docs-TOC-pageName">IoC Testing Framework</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 1.5</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_4To1_5.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.4 to 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecationsIn1_5.html"><span class="infusion-docs-TOC-pageName">Deprecations In 1.5</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/UIOptionsMigration.html"><span class="infusion-docs-TOC-pageName">UI Options Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="tutorial-migratingToInfusion1.5/PagerMigration.html"><span class="infusion-docs-TOC-pageName">Pager Migration</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 2.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom1_5To2_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 1.5 to 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                
+                                                    <a href="DeprecatedIn2_0.html"><span class="infusion-docs-TOC-pageName">Deprecated in 2.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                                    <span class="infusion-docs-sectionName">Migrating to Infusion 3.0</span>
+                                    <ul>
+                                        
+                                            <li>
+                                                
+                                                    <a href="APIChangesFrom2_0To3_0.html"><span class="infusion-docs-TOC-pageName">API Changes from 2.0 to 3.0</span></a>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                        
+                            
+                        
+                    
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>Infusion Core API</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="https://github.com/fluid-project/infusion-docs/blob/master/src/documents/CoreAPI.md" target="_blank">Edit on GitHub</a></p>
+
+                        
+
+                        <div class="infusion-docs-articleBody">
+                            
+                                <p>This file documents some low-level APIs which are provided by Infusion at the JavaScript level. Note that since
+Infusion's more overarching aim is to enable declarative programming based on JSON structures, by means
+of its <a href="FrameworkConcepts.html#ioc">IoC</a> system, the documentation in this file doesn't cover very much
+of Infusion's real function. Please consult pages on <a href="ComponentGrades.html">Component Grades</a>,
+<a href="ComponentConfigurationOptions.html">Component Configuration Options</a>, the <a href="InfusionEventSystem.html">Infusion Event System</a>,
+etc. for coverage of these wider topics.</p>
+<h2 id="type-checking">Type checking</h2>
+<h3 id="fluidisvaluevalue">fluid.isValue(value)</h3>
+<ul>
+<li><code>value {Any}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied value is other than <code>null</code> or <code>undefined</code>.</p>
+<h3 id="fluidisprimitivevalue">fluid.isPrimitive(value)</h3>
+<ul>
+<li><code>value {Any}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied value is of a primitive JavaScript type (recognized: <code>String</code>, <code>Boolean</code>, <code>Number</code>,
+<code>Function</code>, and falsy values)</p>
+<h3 id="fluidisarrayabletotest">fluid.isArrayable(totest)</h3>
+<ul>
+<li><code>totest {Any}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied value can be treated as an array. The strategy used is an optimised
+approach taken from an earlier version of jQuery - detecting whether the <code>toString()</code> version
+of the object agrees with the textual form <code>[object Array]</code>, or else whether the object is a
+jQuery object (the most common source of &quot;fake arrays&quot;).</p>
+<h3 id="fluidisplainobjecttotest-strict">fluid.isPlainObject(totest[, strict])</h3>
+<ul>
+<li><code>totest {Any}</code></li>
+<li><code>strict {Boolean}</code> [optional] If <code>true</code>, only accepts plain Objects</li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied object is a plain JSON-forming container - that is, it is either a plain Object
+or a plain Array. If the <code>strict</code> argument holds <code>true</code>, only returns <code>true</code> if the supplied object is a plain Object.
+This method will accept as plain objects coming from other contexts (e.g. iframes or V8 contexts) if they were
+plain in that context.</p>
+<h3 id="fluidtypecodetotest">fluid.typeCode(totest)</h3>
+<ul>
+<li><code>totest {Any}</code></li>
+<li>Returns: <code>{String}</code></li>
+</ul>
+<p>Returns <code>primitive</code>, <code>array</code> or <code>object</code> depending on whether the supplied object has
+one of those types, by use of the <code>fluid.isPrimitive</code>, <code>fluid.isPlainObject</code> and <code>fluid.isArrayable</code> utilities</p>
+<h3 id="fluidisdomnodetotest">fluid.isDOMNode(totest)</h3>
+<ul>
+<li><code>totest {Any}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied object is a DOM node.</p>
+<h3 id="fluidisdomishtotest">fluid.isDOMish(totest)</h3>
+<ul>
+<li><code>totest {Any}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied object is a DOM node or a jQuery object.</p>
+<h3 id="fluidisuncopyabletotest">fluid.isUncopyable(totest)</h3>
+<ul>
+<li><code>totest {Any}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if it would be unwise to copy the supplied object. The framework will not attempt to copy any material
+which fails this test. An object which passes <code>fluid.isPrimitive</code>, <code>fluid.isDOMish</code> or fails <code>fluid.isPlainObject</code> will
+pass this test.</p>
+<h3 id="fluidiscomponenttotest">fluid.isComponent(totest)</h3>
+<ul>
+<li><code>totest {Any}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied object is an Infusion component.</p>
+<h3 id="fluidisdestroyedcomponent">fluid.isDestroyed(component)</h3>
+<ul>
+<li><code>component {Component}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied Infusion component has been <a href="ComponentLifecycle.html">destroyed</a>.</p>
+<h3 id="fluidhasgradeoptions-gradename">fluid.hasGrade(options, gradeName)</h3>
+<ul>
+<li><code>options {Object}</code></li>
+<li><code>gradeName {String}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied options (<a href="#fluiddefaultsgradename-options">defaults</a>) are the top-level options of a
+component which has the supplied grade. These must be options which have already been through options merging, since the
+test is a simpleminded one that simply checks whether the <code>gradeNames</code> entry in the options contains the supplied
+<code>gradeName</code>.</p>
+<h3 id="fluidcomponenthasgradecomponent-gradename">fluid.componentHasGrade(component, gradeName)</h3>
+<ul>
+<li><code>component {Component}</code></li>
+<li><code>gradeName {String}</code></li>
+<li>Returns: <code>{Boolean}</code></li>
+</ul>
+<p>Returns <code>true</code> if the supplied component has the supplied <code>gradeName</code> as a parent grade. This is a rapid check which
+uses the framework's internal data structures for the lookup.</p>
+<h2 id="basic-implementation-atoms">Basic implementation atoms</h2>
+<h3 id="fluididentityarg">fluid.identity(arg)</h3>
+<ul>
+<li><code>arg {Any}</code></li>
+<li>Returns: <code>{Any}</code></li>
+</ul>
+<h3 id="fluidnotimplemented">fluid.notImplemented()</h3>
+<p>A function which raises a failure if executed. This function name can also be used as a placeholder in
+<a href="Invokers.html">Invokers</a> and namespaced <a href="InfusionEventSystem.html">Listener</a> to create abstract (noninstantiable)
+<a href="ComponentGrades.html">Component Grades</a>.</p>
+<h3 id="fluideachsource-func">fluid.each(source, func)</h3>
+<ul>
+<li><code>source {Array|Object}</code> A container to be iterated over (may be null)</li>
+<li><code>func {Function} (element {Any}, index {Number|String}) → Any</code>. This function will be invoked once on each member of
+<code>source</code> and will receive the member and its key (either an integer for an array source, or a string for an object
+source)</li>
+<li>Returns: none</li>
+</ul>
+<p>Iterates over a supplied array or hash, invoking a function once for each member. Similar to
+<a href="http://api.jquery.com/jquery.each/"><code>jQuery.each</code></a> only the arguments to <code>func</code> are the right way round and the
+function does not explode on nonvalues. <code>fluid.each</code> on <code>null</code> or <code>undefined</code> is a no-op.</p>
+<h3 id="fluidinvokelaterfunc">fluid.invokeLater(func)</h3>
+<ul>
+<li><code>func {Function}</code> A function accepting zero arguments which is to be invoked later</li>
+<li>Returns: none</li>
+</ul>
+<p>A standard utility to schedule the invocation of a function after the current function call stack returns. On browsers
+this defaults to <code>setTimeout(func, 1)</code> but in other environments can be customised - e.g. to <code>process.nextTick</code> in
+node.js. In future, this could be optimised in the browser to not dispatch into the event queue.</p>
+<h3 id="fluidallocateguid">fluid.allocateGuid()</h3>
+<ul>
+<li>Returns: <code>{String}</code> A string of about a dozen characters that has made moderate efforts to be globally unique.</li>
+</ul>
+<p>Allocate a string value that will be unique within this Infusion instance (frame or process), and globally unique with
+high probability (50% chance of collision after a million trials). This has the structure <code>prefix-id</code> where <code>prefix</code> is
+the value of <code>fluid.fluidInstance</code> identifying this Infusion instance, and <code>id</code> is a increasing integer initialised at 1
+when this infusion instance starts up.</p>
+<h3 id="fluidadda-b">fluid.add(a, b)</h3>
+<ul>
+<li><code>a {Number}</code> The first operand to be added</li>
+<li><code>b {Number}</code> The second operand to be added</li>
+<li>Returns: <code>{Number}</code> The value of <code>a + b</code></li>
+</ul>
+<p>Returns the result of invoking the JavaScript operator <code>+</code> on its two arguments. This is a function convenient to
+supply, for example, to <a href="#fluidaccumulatelist-fn-initial"><code>fluid.accumulate</code></a> to sum a list of numbers.</p>
+<h2 id="creation-copying-and-destroying">Creation, copying and destroying</h2>
+<h3 id="fluidfreshcontainertocopy">fluid.freshContainer(tocopy)</h3>
+<ul>
+<li><code>tocopy {Object|Array}</code></li>
+<li>Returns: <code>{Object|Array}</code></li>
+</ul>
+<p>Return an empty container as the same type as the argument (either an array or hash). To be wise, the supplied argument
+should pass the <code>fluid.isPlainObject</code> test.</p>
+<h3 id="fluidcopytocopy">fluid.copy(tocopy)</h3>
+<ul>
+<li><code>tocopy {Any}</code></li>
+<li>Returns: <code>{Any}</code></li>
+</ul>
+<p>Performs a deep copy (clone) of its argument. This will guard against cloning a circular object by terminating if it
+reaches a path depth greater than <a href="#fluidstrategyrecursionbailout"><code>fluid.strategyRecursionBailout</code></a>. <code>fluid.copy</code> will
+not copy an object which passes <code>fluid.isUncopyable</code>.</p>
+<h3 id="fluidmakearrayarg">fluid.makeArray(arg)</h3>
+<ul>
+<li><code>arg {Any}</code></li>
+<li>Returns: <code>{Array}</code></li>
+</ul>
+<p>Converts the supplied argument to an array (or copies it if it is already an array), by a variety of strategies:</p>
+<ul>
+<li>If it is even slightly arrayable (has a numeric <code>length</code> property), its elements will be copied into a fresh array</li>
+<li>If it is not slightly arrayable, it will be placed into a 1-element array</li>
+<li>If it is undefined, a 0-element array will be returned</li>
+</ul>
+<h3 id="fluidgeneraten-generator-applyfunc">fluid.generate(n, generator[, applyFunc])</h3>
+<ul>
+<li><code>n {Integer}</code> The size of the array to be filled</li>
+<li><code>generator {Object|Function}</code> Either a value to be replicated or function to be called (if the <code>applyFunc</code> argument
+holds <code>true</code>). In case of a function, the signature is <code>(i {Integer}) → Any</code>, accepting the index position and
+returning the generated element.</li>
+<li><code>applyFunc {Boolean}</code> If <code>true</code>, the <code>generator</code> value is to be treated as a function</li>
+<li>Returns: <code>{Array}</code> An array of length <code>n</code> holding the generated elements</li>
+</ul>
+<p>Fills an array of given size with copies of a value or result of a function invocation</p>
+<h3 id="fluidiotan-first">fluid.iota(n[, first])</h3>
+<ul>
+<li><code>n {Integer}</code> Size of the filled array to be returned</li>
+<li><code>first {Number}</code> [optional, defaults to 0] First element to appear in the array</li>
+<li>Returns: <code>{Array}</code> An array of length <code>n</code> holding the generated elements</li>
+</ul>
+<p>Returns an array of size <code>n</code>, filled with increasing integers, starting at 0 or at the value specified by <code>first</code>. The
+name <code>iota</code> originally stems from the
+<a href="http://stackoverflow.com/questions/9244879/what-does-iota-of-stdiota-stand-for">APL</a> programming language.</p>
+<h3 id="fluidcleartarget">fluid.clear(target)</h3>
+<ul>
+<li><code>target {Object|Array}</code> The target to be cleared</li>
+<li>Returns: <code>{Undefined}</code></li>
+</ul>
+<p>Clears an object or array of its contents. For objects, each property is deleted. <strong>The input argument will be
+destructively modified.</strong></p>
+<h2 id="transforming-and-filtering">Transforming and filtering</h2>
+<h3 id="fluidtransformsource-fn1-fn2">fluid.transform(source, [fn1, fn2, ...])</h3>
+<ul>
+<li><code>source {Array|Object}</code> The initial container of objects to be transformed. If the source is neither an array nor an
+object, it will be returned untransformed</li>
+<li><code>fn_i {Function} (element {Any}, index {Number|String})→Any</code> (arbitrary number accepted) An arbitrary number of
+optional further arguments, all of type <code>Function</code>, accepting the signature <code>(element, index)</code>, where <code>element</code> is the
+list member to be transformed, and <code>index</code> is its index. Each function will be applied in turn to each member, which
+will be replaced by the return value from the function.</li>
+<li>Returns: <code>{Array|Object}</code> The finally transformed structure, where each member has been replaced by the original
+member acted on by the function or functions.</li>
+</ul>
+<p>Return a list or hash of objects, transformed by one or more functions. Similar to
+<a href="http://api.jquery.com/jquery.map/"><code>jQuery.map</code></a>, but accepts an arbitrary list of transformation functions and does
+not explode on null sources. <code>fluid.transform</code> on a non-array and non-object (e.g. <code>null</code>) is a no-op.</p>
+<h3 id="fluidaccumulatelist-fn-initial">fluid.accumulate(list, fn, initial)</h3>
+<ul>
+<li><code>list {Array}</code> The list of objects to be accumulated over.</li>
+<li><code>fn {Function: (object {Any}, total {Any-Total}, index {Integer}) → Any-Total}</code> An &quot;accumulation function&quot; accepting
+the signature <code>(object, total, index)</code> where <code>object</code> is the list member, <code>total</code> is the &quot;running total&quot; object (which
+is the return value from the previous invocation of <code>fn</code> or else <code>initial</code>), and index is the index number.</li>
+<li><code>arg {Any-Total}</code> The initial value for the &quot;running total&quot; object.</li>
+<li>Returns: <code>{Any-Total}</code> The final running total object as returned from the final invocation of the function on the
+last list member.</li>
+</ul>
+<p>Scan through a list of objects, &quot;accumulating&quot; a value over them (may be a straightforward &quot;sum&quot; or some other chained
+computation). &quot;accumulate&quot; is the name derived from the C++ STL, other names for this algorithm are &quot;reduce&quot; or
+&quot;<a href="https://en.wikipedia.org/wiki/Fold_%28higher-order_function%29">fold</a>&quot;. Example:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> numbers = fluid.iota(<span class="hljs-number">4</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// numbers now holds [1, 2, 3, 4]</span>
+<span class="hljs-keyword">var</span> sum = fluid.accumulate(numbers, fluid.add, <span class="hljs-number">0</span>); <span class="hljs-comment">// sum now holds 10</span>
+</code></pre>
+<p>Note that other common uses of <code>fluid.accumulate</code> (maximum and minimum) can be achieved through the multi-arg versions
+of <code>Math.max</code> and <code>Math.min</code>, e.g.</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> max = <span class="hljs-built_in">Math</span>.max.apply(<span class="hljs-literal">null</span>, numbers);
+</code></pre>
+<h3 id="fluidroundtodecimalnum-scale-method">fluid.roundToDecimal(num, scale, method)</h3>
+<ul>
+<li><code>num {Number}</code> The number to be rounded</li>
+<li><code>scale {Number}</code> The maximum number of decimal places to round to. If the scale is invalid (i.e falsey, not a number,
+negative value), it is treated as 0. If the scale is a floating point number, it is rounded to an integer.</li>
+<li><code>method {String}</code> <em>(optional)</em> Request a rounding method to use (&quot;round&quot;, &quot;ceil&quot;, &quot;floor&quot;). If nothing or an invalid
+method is provided, it will default to &quot;round&quot;.</li>
+</ul>
+<p>Derived from Sindre Sorhus's <a href="https://github.com/sindresorhus/round-to">round-to node</a> module. (License: MIT)</p>
+<p>Rounds the supplied number to at most the number of decimal places indicated by the scale, omitting any trailing 0s.
+There are three possible rounding methods described below: &quot;round&quot;, &quot;ceil&quot;, &quot;floor&quot;.</p>
+<ul>
+<li><code>&quot;round&quot;</code>: Numbers are rounded away from 0 (i.e 0.5 -&gt; 1, -0.5 -&gt; -1).</li>
+<li><code>&quot;ceil&quot;</code>: Numbers are rounded up</li>
+<li><code>&quot;floor&quot;</code>: Numbers are rounded down</li>
+</ul>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> rounded = fluid.roundToDecimal(<span class="hljs-number">1.555</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// rounded now holds 1.56</span>
+<span class="hljs-keyword">var</span> ceil = fluid.roundToDecimal(<span class="hljs-number">1.555</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"ceil"</span>); <span class="hljs-comment">// rounded now holds 1.56</span>
+<span class="hljs-keyword">var</span> floor = fluid.roundToDecimal(<span class="hljs-number">1.555</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"floor"</span>); <span class="hljs-comment">// rounded now holds 1.55</span>
+</code></pre>
+<h3 id="fluidremove-ifsource-fn-target">fluid.remove_if(source, fn[, target])</h3>
+<ul>
+<li><code>source {Array|Object}</code> The array or hash of objects to be scanned over. This structure <strong>will be modified in place</strong>.
+Note that in the case this is an array, iteration will run from the end of the array towards the front, so that the
+index of elements yet to be removed will remain stable.</li>
+<li><code>fn {Function: (object {Any}, index {Number|String}) → Booleanish }</code> A predicate function determining whether an
+element should be removed. This accepts the standard signature <code>(object, index)</code>. If the predicate returns a &quot;truthy&quot;
+value, the corresponding object will be removed from the source structure.</li>
+<li><code>target {Array|Object}</code> [optional] A target object of the same type as <code>source</code>, which will receive any objects
+removed from it.</li>
+<li>Returns: <code>{Array|Object}</code> Either <code>target</code>, containing the removed elements, if it was supplied, or else <code>source</code>
+modified by the operation of removing the matched elements.</li>
+</ul>
+<p>Scan through a list or hash of objects, removing those which match a predicate. The source structure <strong>will be modified
+in place</strong>.</p>
+<h3 id="fluidgetmembersholder-path">fluid.getMembers(holder, path)</h3>
+<ul>
+<li><code>holder {Array|Object}</code> The container to be filtered</li>
+<li><code>path {String|Array of String}</code> An <a href="FrameworkConcepts.html#el-paths">EL path</a> to be fetched from each top-level member</li>
+<li>Returns: <code>{Array|Object}</code> A container of the same type as <code>holder</code>, with the members of <code>holder</code> dereferenced by <code>path</code>.</li>
+</ul>
+<p>Extracts a particular member from each top-level member of a container, returning a new container of the same type.
+Example:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> cattes = [
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">"Huggoe"</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">"Arthur"</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">"THER CATTE"</span> }
+];
+<span class="hljs-keyword">var</span> names = fluid.getMembers(cattes, <span class="hljs-string">"name"</span>);
+<span class="hljs-comment">// names now holds ["Huggoe", "Arthur", "THER CATTE"];</span>
+</code></pre>
+<h3 id="fluidfilterkeystofilter-keys-exclude">fluid.filterKeys(toFilter, keys[, exclude])</h3>
+<ul>
+<li><code>toFilter {Object}</code> The object to be filtered - this will be NOT modified by the operation</li>
+<li><code>keys {String[]}</code> The list of keys to operate with</li>
+<li><code>exclude {Boolean}</code> [optional] If <code>true</code>, the keys listed are removed rather than included</li>
+<li>Returns: <code>{Object}</code> the filtered object</li>
+</ul>
+<p>Accepts an object to be filtered, and a list of keys. Either all keys not present in the list are removed (the default),
+or all keys present in the list are removed (<code>exclude: true</code>). The supplied object <strong>is not modified</strong> but will be
+shallow cloned by this operation.</p>
+<h3 id="fluidcensorkeystocensor-keys">fluid.censorKeys(toCensor, keys)</h3>
+<ul>
+<li><code>toFilter {Object}</code> The object to be filtered - this will be NOT modified by the operation</li>
+<li><code>keys {String[]}</code> The list of keys to be excluded</li>
+<li>Returns: <code>{Object}</code> A shallow clone of <code>toFilter</code> with the supplied keys removed</li>
+</ul>
+<p>A convenience wrapper for <code>fluid.filterKeys</code> with the argument <code>exclude</code> set to <code>true</code>. Returns a shallow clone of the
+supplied object with listed keys removed.</p>
+<h3 id="fluidkeysobject">fluid.keys(object)</h3>
+<ul>
+<li><code>object {Object}</code> The object to have its keys listed</li>
+<li>Returns: <code>{Array}</code> An array holding the keys of this object.</li>
+</ul>
+<p>Return the keys in the supplied object as an array. Note that this will return keys found in the prototype chain as well
+as &quot;own properties&quot;, unlike the builtin
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys"><code>Object.keys()</code></a></p>
+<h3 id="fluidvaluesobject">fluid.values(object)</h3>
+<ul>
+<li><code>object {Object}</code> The object to have its values listed</li>
+<li>Returns: <code>{Array}</code> An array holding the values of this object.</li>
+</ul>
+<p>Return the values in the supplied object as an array. This will return values found in the prototype chain as well as
+those attached to &quot;own properties&quot;.</p>
+<h3 id="fluidarraytohasharray">fluid.arrayToHash(array)</h3>
+<ul>
+<li><code>array {Array of String}</code> The array to be converted to a hash</li>
+<li>Returns: <code>{Object}</code> An object with value <code>true</code> for each key taken from a member of <code>array</code></li>
+</ul>
+<p>Converts an array into an object whose keys are the elements of the array, each with the value <code>true</code></p>
+<h3 id="fluidhashtoarrayhash-keyname-func">fluid.hashToArray(hash, keyName[, func])</h3>
+<ul>
+<li><code>hash {Array}</code> The hash to be transformed into an array</li>
+<li><code>keyName {String}</code> The name within the resulting array elements which will receive the string which used to form the
+element's key in <code>hash</code></li>
+<li><code>func {Function (newElement {Object), oldElement {Object}, key {String}) → Object }</code> [optional] receives
+<code>(newElement, oldElement, key)</code> where <code>newElement</code> is the freshly cloned element (a fresh <code>Object obj</code> which just has
+<code>obj[keyName] = key</code>), <code>oldElement</code> is the original hash's element, and <code>key</code> is the key of the element in the hash.
+The function returns the final element that will be added to the array - it may ignore <code>newElement</code> if it pleases and
+make an unrelated return. If the function makes no return, <code>newElement</code> will be used. If the function is not supplied,
+the old element is simply deep-cloned onto the new element (same effect as transform
+<code>fluid.transforms.objectToArray</code>).</li>
+</ul>
+<p>Converts a hash into an array by hoisting out the object's keys into an array element via the supplied String <code>key</code>, and
+then transforming the elements via an optional further function <code>func</code>. Note that without some further means of sorting
+the resulting array elements, the order of elements in the array will <a href="https://es5.github.io/#x12.6.4">not be defined</a>.
+Example:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> hash = {
+    <span class="hljs-string">"Proailurus"</span>:     <span class="hljs-number">25000000</span>,
+    <span class="hljs-string">"Pseudaelurus"</span>:   <span class="hljs-number">18500000</span>,
+    <span class="hljs-string">"Felis attica"</span>:   <span class="hljs-number">12000000</span>,
+    <span class="hljs-string">"Felis lunensis"</span>:  <span class="hljs-number">2500000</span>,
+    <span class="hljs-string">"CATT"</span>:              <span class="hljs-number">50000</span>
+};
+<span class="hljs-keyword">var</span> CATTyears = fluid.hashToArray(hash, <span class="hljs-string">"species"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">newElement, oldElement</span>) </span>{
+    newElement.yearsAgo = oldElement;
+});
+
+<span class="hljs-comment">// CATTyears now contains [ {</span>
+<span class="hljs-comment">//    species: "Proailurus",</span>
+<span class="hljs-comment">//    yearsAgo: 25000000</span>
+<span class="hljs-comment">//}, { // etc.</span>
+</code></pre>
+<h3 id="fluidflattenarray">fluid.flatten(array)</h3>
+<ul>
+<li><code>array {Array}</code> The array to be flattened</li>
+<li>Returns: <code>{Array}</code> The flattened array.</li>
+</ul>
+<p>Converts an array consisting of a mixture of arrays and non-arrays into the concatenation of any inner arrays with the
+non-array elements. The original array <strong>will not be modified</strong>. See description of
+<a href="http://martinfowler.com/articles/collection-pipeline/flat-map.html">mapcat</a> or <code>flat-map</code>.</p>
+<h3 id="fluidfreezerecursivetofreeze">fluid.freezeRecursive(tofreeze)</h3>
+<ul>
+<li><code>tofreeze {Array|Object}</code> The object to be frozen recursively</li>
+<li>Returns: <code>{Array|Object}</code> The supplied argument, recursively frozen</li>
+</ul>
+<p>Calls <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze"><code>Object.freeze</code></a>
+at each level of containment of the supplied object. This function is a no-op if a primitive value is supplied.</p>
+<h3 id="fluidpusharrayholder-member-topush">fluid.pushArray(holder, member, topush)</h3>
+<ul>
+<li><code>holder {Array|Object}</code> The holding object whose member is to receive the pushed element(s).</li>
+<li><code>member {String}</code> The member of the <code>holder</code> onto which the element(s) are to be pushed</li>
+<li><code>topush {Array|Object}</code> If an array, these elements will be added to the end of the array using <code>Array.push.apply</code>.
+If an object, it will be pushed to the end of the array using <code>Array.push</code>.</li>
+</ul>
+<p>Pushes an element or elements onto an array, initialising the array as a member of a holding object if it is not already
+allocated. The member of the holding object should either be <code>undefined</code> or hold an array at the time of the call.
+Example:</p>
+<pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> holder = {};
+fluid.pushArray(holder, <span class="hljs-string">"array"</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// holder.array now holds [3]</span>
+fluid.pushArray(holder, <span class="hljs-string">"array"</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>]); <span class="hljs-comment">// holder.array now holds [3, 4, 5]</span>
+</code></pre>
+<h2 id="sorting-and-searching">Sorting and searching</h2>
+<h3 id="fluidfindsource-func-deflt">fluid.find(source, func[, deflt])</h3>
+<ul>
+<li><code>source {Arrayable|Object}</code> The list or hash of objects to be searched.</li>
+<li><code>func {Function: (element {Any}, index {Number|String}) → Any}</code> A predicate function, acting on a member. A predicate
+which returns any value which is not <code>undefined</code> will terminate the search.</li>
+<li><code>deflt {Any}</code> [optional] A value to be returned in the case the predicate is not satisfied on any element a member.
+The default will be the natural value of <code>undefined</code></li>
+<li>Returns: The first return value from the predicate function which is not <code>undefined</code></li>
+</ul>
+<p>Scan through a list or hash of objects, terminating on the first member which satisfies a predicate function. The return
+is the return value from the predicate.</p>
+<h3 id="fluidfind-ifsource-func-deflt">fluid.find_if(source, func[, deflt])</h3>
+<ul>
+<li><code>source {Arrayable|Object}</code> The list or hash of objects to be searched.</li>
+<li><code>func {Function: (element {Any}, index {Number|String}) → Boolean}</code> A predicate function, acting on a member. A
+predicate which returns any value which is not <code>false</code> will terminate the search.</li>
+<li><code>deflt {Any}</code> [optional] A value to be returned in the case no predicate function matches a member. The default will
+be the natural value of <code>undefined</code></li>
+<li>Returns: The first element for which the value of the predicate function is not <code>false</code></li>
+</ul>
+<p>Scan through a list or hash of objects, terminating on the first member which matches a predicate function. The return
+value is the first element itself for which the predicate returns other than <code>false</code>.</p>
+<h3 id="fluidcontainstosearch-value">fluid.contains(tosearch, value)</h3>
+<ul>
+<li><code>tosearch {Object|Array}</code> The structure to be searched for the supplied value,</li>
+<li><code>value {Any}</code> The value to be searched for</li>
+<li>Returns: <code>{Boolean|Undefined}</code> Returns <code>true</code> if the value was found in the container</li>
+</ul>
+<p>Searches through the supplied structure, and returns <code>true</code> if the supplied value can be found, using <code>===</code> equality</p>
+<h3 id="fluidkeyforvaluetosearch-value">fluid.keyForValue(tosearch, value) {</h3>
+<ul>
+<li><code>tosearch {Object|Array}</code> The structure to be searched for the supplied value</li>
+<li><code>value {Any}</code> The value to be found. This will be compared against the structure's members using <code>===</code> equality.</li>
+<li>Returns: <code>{String|Integer|Undefined}</code> The first key (an <code>Integer</code> if <code>tosearch</code> is an <code>Array</code>) whose value matches the
+one supplied, or <code>undefined</code> if no value matches</li>
+</ul>
+<p>Searches through the supplied object for the first value which matches the one supplied.</p>
+<h3 id="fluidstablesortarray-func">fluid.stableSort(array, func)</h3>
+<ul>
+<li><code>array {Array of Any-Element}</code> The array to be sorted. <strong>This input array will be modified in place.</strong></li>
+<li><code>func {Function: (a {Any-Element}, b {Any-Element}) → Number}</code> A comparator returning &gt;0, 0, or &lt;0 on pairs of
+elements representing their sort order (same contract as
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">Array.sort comparator</a>)</li>
+</ul>
+<p>Applies a stable sorting algorithm to the supplied array and comparator (note that
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">Array.sort</a> in JavaScript
+is not specified to be stable). The algorithm used will be an insertion sort, which whilst quadratic in time, will
+perform well on small array sizes.</p>
+<h3 id="fluidcomparestringlengthascending">fluid.compareStringLength(ascending)</h3>
+<ul>
+<li><code>ascending {Booleanish}</code> <code>true</code> if a comparator is to be returned which sorts strings in ascending order of length</li>
+<li>Returns: <code>{Function: (a {String}, b {String}) → Number}</code> The comparator function to be used for sorting</li>
+</ul>
+<p>Produces a comparator function suitable for use with
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">Array.sort</a> or
+<a href="#fluidstablesortarray-func">fluid.stableSort</a> to sort an array of strings by length</p>
+<h2 id="parsing-and-rendering">Parsing and rendering</h2>
+<h3 id="fluidparseintegerstring">fluid.parseInteger(string)</h3>
+<ul>
+<li><code>string {String}</code> A string to be converted to an integer</li>
+<li>Returns: <code>{Integer|NaN}</code> The integer value, or <code>NaN</code> if the string does not represent an integer</li>
+</ul>
+<p>Returns the converted integer if the input string can be converted to an integer. Otherwise, returns <code>NaN</code>.</p>
+<h3 id="fluidstringtemplatetemplate-terms">fluid.stringTemplate(template, terms)</h3>
+<ul>
+<li><code>template {String}</code> A string with embedded tokens of the form <code>%value</code></li>
+<li><code>terms {Object: String → Stringable}</code> A hash which maps tokens to their required interpolated values</li>
+</ul>
+<p>A simple string interpolation system. Accepts a template string with embedded tokens of the form <code>%value</code>. Returns a new
+string with the tokens replaced by the specified values. Keys and values can be of any data type that can be coerced
+into a string. Tokens are not delimited in the template with any syntax - the implementation will replace the longest
+token which can be sourced from <code>terms</code>.</p>
+<h2 id="handling-models-and-paths">Handling models and paths</h2>
+<h3 id="fluidgetmodel-path">fluid.get(model, path)</h3>
+<ul>
+<li><code>model {Any}</code> The model object to be indirected into. This may be <code>undefined</code>, etc. without triggering an error.</li>
+<li><code>path {String|Array of String}</code> Either a period-separated <a href="FrameworkConcepts.html#el-paths">EL path</a> representing a
+chain of properties to be navigated, or else an array of path segments representing this</li>
+<li>Returns: <code>{Any}</code> The result of the indirection of the path into the supplied model</li>
+</ul>
+<p>Accesses an element nested within a <a href="FrameworkConcepts.html#model-objects">model object</a> at the supplied (EL) path.
+<code>fluid.get</code> can operate various special behaviour in encountering particular kinds of material - for example, any object
+with a function member named <code>resolvePathSegment</code> will hand resolution of the next path segment to that function if
+there is no corresponding concrete member. If <code>fluid.get</code> navigates off the end of the available model material, this
+will not trigger an error - all successive indirections will simply return <code>undefined</code>. <code>fluid.get</code> accepts various
+esoteric piece of configuration allowing it to operate indirection rules encoded in arbitrary JSON material - these are
+imperfectly supported, contact us if you are interested.</p>
+<h3 id="fluidgetimmediatemodel-path">fluid.getImmediate(model, path)</h3>
+<ul>
+<li><code>model {Any}</code> The model object to be indirected into. This may be <code>undefined</code>, etc. without triggering an error.</li>
+<li><code>path {Array of String}</code> An array of path segments representing representing a chain of properties to be navigated</li>
+<li>Returns: <code>{Any}</code> The result of the indirection of the path into the supplied model</li>
+</ul>
+<p>An extremely simplistic, high-performance variant of <code>fluid.get</code> that supports none of the same bells and whistles - it
+is only capable of navigating over concrete object properties that are actually present in the model, and the path must
+have already been parsed out into an array of segments. It still, however, operates the same semantic as <code>fluid.get</code> for
+navigating over undefined values.</p>
+<h3 id="fluidsetmodel-path-newvalue">fluid.set(model, path, newValue)</h3>
+<p>Writes a new value into a model at a specified path. This is performed by directly modifying the penultimately
+referenced model object (the one referenced by the first <code>n-1</code> path segments in <code>path</code>) by writing the value <code>newValue</code>
+to its property named after the final path segment. Other approaches to this task are possible (see <a href="https://wiki.fluidproject.org/display/fluid/New+New+Notes+on+the+ChangeApplier#NewNewNotesontheChangeApplier-Theseveralwaysofactuallyapplyingachange">New New Notes on
+the
+ChangeApplier</a>)
+but the fundamental invariant to be respected is that</p>
+<pre class="highlight"><code class="hljs javascript">fluid.get(model, fluid.set(model, path, value), path); <span class="hljs-comment">// === value</span>
+</code></pre>
+<p>Even a functional programmer could admit that. A slight wrinkle, however, is the behaviour of the special path <code>&quot;&quot;</code> or
+<code>[]</code>, attempting to write a value at the model root. This API is not capable of this and will fail in this case - since
+it is hampered at the language level by being unable to rewrite the object reference <code>model</code> which exists in the scope
+of its caller. The <code>ADD</code> message of the <a href="ChangeApplierAPI.html#programmatic-style-for-triggering-a-change">ChangeApplier</a>
+can be used to handle this case. Under its new semantics, the reference <code>model</code> is at a known address in its parent
+component which can be rebound.</p>
+<p>If the path <code>path</code> indirects beyond the range of concrete properties in <code>model</code>, the implementation will fill in any
+intermediate path levels with fresh instances of <code>{}</code> (in the manner of
+<a href="http://stackoverflow.com/questions/9820088/difference-between-mkdir-and-mkdirs-in-java-for-java-io-file"><code>mkdirs</code></a>).
+There are some esoteric extra arguments for <code>fluid.set</code> which will allow this to be done in a schema-aware way, for
+example filling in path levels with <code>[]</code> instead - <a href="https://wiki.fluidproject.org/display/fluid/Mailing+Lists">contact
+us</a> if you are interested.</p>
+<ul>
+<li><code>model {Object}</code> The model object to be indirected into. This must be an <code>Object</code>.</li>
+<li><code>path {String|Array of String}</code> Either a period-separated <a href="FrameworkConcepts.html#el-paths">EL path</a> representing a
+chain of properties to be navigated, or else an array of path segments representing this</li>
+<li><code>newValue: {Any}</code> The value to be written into <code>model</code> at the path <code>path</code></li>
+</ul>
+<h3 id="fluidmodelpairtochangesvalue-oldvalue-changepathprefix">fluid.modelPairToChanges(value, oldValue, changePathPrefix)</h3>
+<ul>
+<li><code>value {Any}</code> Model value to compare</li>
+<li><code>oldValue {Any}</code> Model value to compare</li>
+<li><code>changePathPrefix {String|Array of String}</code> [optional] Path prefix to prepend to change request paths</li>
+<li>Returns: <code>{Array of changeRequest}</code> An array of <code>changeRequest</code> objects</li>
+</ul>
+<p>Calculates the changes between the model values <code>value</code> and <code>oldValue</code> and
+returns an array of
+<a href="ChangeApplierAPI.html#programmatic-style-for-triggering-a-change"><code>changeRequest</code></a>
+objects. The optional argument <code>changePathPrefix</code> is prepended to the change
+path of each request (this is useful for generating change requests to be
+applied at a non-root path in a model).</p>
+<p>The returned array of change request objects may be used with
+<a href="ChangeApplierAPI.html#programmatic-style-for-triggering-a-change"><code>fluid.fireChanges()</code></a>.</p>
+<p>For example, if we call <code>fluid.modelPairToChanges</code> with <code>value</code> of <code>{b: 2}</code>
+and <code>oldValue</code> of <code>{a: 1}</code>:</p>
+<pre class="highlight"><code class="hljs javascript">fluid.modelPairToChanges({<span class="hljs-attr">b</span>: <span class="hljs-number">2</span>}, {<span class="hljs-attr">a</span>:<span class="hljs-number">1</span>});
+</code></pre>
+<p>we will receive this result:</p>
+<pre class="highlight"><code class="hljs undefined">[
+    {
+        path: [ "b" ],
+        value: 2,
+        type: "ADD"
+    },
+    {
+        path: [ "a" ],
+        value: null,
+        type: "DELETE"
+    }
+]
+</code></pre>
+<p>Indicating that the property &quot;b&quot; was added with value 2 and that the property
+&quot;a&quot; was removed.</p>
+<h3 id="fluidmodelparseelel">fluid.model.parseEL(EL)</h3>
+<ul>
+<li><code>EL {String}</code> The EL path to be parsed</li>
+<li>Returns: <code>{Array of String}</code> The EL path parsed as an array of path segments</li>
+</ul>
+<p>Parses a EL path expression by splitting it on the character <code>.</code>. This is a fast, low-quality implementation which
+assumes that no escaping of <code>.</code> characters is necessary.</p>
+<h3 id="fluidmodelcomposesegmentsseg1-seg2">fluid.model.composeSegments([seg1, seg2, ...])</h3>
+<ul>
+<li><code>seg1 ... segn {String}</code> The path segments to be composed</li>
+<li>Returns: <code>{String}</code> The EL path composed by concatenating the path segments.</li>
+</ul>
+<p>Compose any number of path segments, none of which may be empty. The inverse to <code>fluid.model.parseEL</code> - this is a fast,
+low-quality implementation which does no escaping.</p>
+<h3 id="fluidpathutilparseelel">fluid.pathUtil.parseEL(EL)</h3>
+<ul>
+<li><code>EL {String}</code> The EL path to be parsed</li>
+<li>Returns: <code>{Array of String}</code> The EL path parsed as an array of path segments</li>
+</ul>
+<p>Parses a EL path expression by splitting it on the period character &quot;<code>.</code>&quot;. This is an analog of <code>fluid.model.parseEL</code>
+that will escape the characters <code>.</code> as <code>\.</code> and <code>\</code> as <code>\\</code>, allowing all possible paths to be expressed. In modern
+JavaScript VMs, it is not much slower than <code>fluid.model.parseEL</code> and should be used in all applications where paths will
+be accepted from external users.</p>
+<h3 id="fluidpathutilcomposesegmentsseg1-seg2">fluid.pathUtil.composeSegments([seg1, seg2, ...])</h3>
+<ul>
+<li><code>seg1 ... segn {String}</code> The path segments to be composed</li>
+<li>Returns: <code>{String}</code> The EL path composed by concatenating the path segments.</li>
+</ul>
+<p>Compose any number of path segments, none of which may be empty. This is an analog of <code>fluid.pathUtil.parseEL</code> that will
+escape the characters <code>.</code> as <code>\.</code> and <code>\</code> as <code>\\</code>, allowing all possible paths to be expressed. In modern JavaScript
+VMs, it is not much slower than <code>fluid.pathUtil.composeSegments</code> and should be used in all applications where paths will
+be accepted from external users.</p>
+<h2 id="logging-and-error-handling">Logging and error handling</h2>
+<h3 id="fluidlogloglevel-arg1-argn">fluid.log([logLevel, arg1, ... argn])</h3>
+<ul>
+<li><code>logLevel {LogLevel}</code> [optional] One of the members of the <code>fluid.logLevel</code> structure or in general some
+<code>fluid.marker</code> with a numeric value holding a priority</li>
+<li><code>arg1 ... argn {Stringable}</code> A sequence of arguments to be logged. By default these will be handed unchanged to the
+multiple arguments of <code>console.log</code>. It is wise to convert these to <code>String</code> yourself (e.g. by <code>JSON.stringify</code>) if
+i) this is safe, and ii) you would not be satisfied by the environment's rendering.</li>
+</ul>
+<p>Log a message to a suitable environmental console (in current implementations, <code>console.log</code>). If the first argument to
+<code>fluid.log</code> is one of the members of the <a href="#fluidloglevel"><code>fluid.logLevel</code></a> structure, this will be taken as the
+priority of the logged message - else it will default to <a href="#fluidloglevel"><code>fluid.logLevel.INFO</code></a>. If the logged message
+priority does not exceed that set by the most recent call to the <a href="#fluidsetloggingloglevel"><code>fluid.setLogging</code></a>
+function, the logging action will be suppressed.</p>
+<h3 id="fluidloglevel">fluid.logLevel</h3>
+<p>A hash of strings to <code>LogLevel</code> constants, suitable for sending as the special, optional, first argument to <code>fluid.log</code>.
+These communicate a logging priority, with lower numbers of higher priority than higher numbers. The system maintains a
+current &quot;logging level&quot; as an internal piece of state, updated by <code>fluid.setLogging</code> and <code>fluid.popLogging</code> - any
+<code>fluid.log</code> statements whose supplied priority does not exceed the logging level will be inactive.</p>
+<table>
+<thead>
+<tr>
+<th>LogLevel</th>
+<th style="text-align:right">Priority</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fluid.logLevel.FATAL</code></td>
+<td style="text-align:right">0</td>
+<td>the very highest logging level, indicating that the process must now exit immediately due to a fatal error</td>
+</tr>
+<tr>
+<td><code>fluid.logLevel.FAIL</code></td>
+<td style="text-align:right">5</td>
+<td>a very high logging priority, corresponding to an assertion failure, similar to that of <code>fluid.fail</code> - the system will terminate shortly if not immediately</td>
+</tr>
+<tr>
+<td><code>fluid.logLevel.WARN</code></td>
+<td style="text-align:right">10</td>
+<td>a moderate logging priority, corresponding to a problem which most users would wish to be notified of, but is not sufficient to halt the system</td>
+</tr>
+<tr>
+<td><code>fluid.logLevel.IMPORTANT</code></td>
+<td style="text-align:right">12</td>
+<td>a moderate logging priority, corresponding to standard debugging messages. This is the level set by <code>fluid.setLogging(false)</code></td>
+</tr>
+<tr>
+<td><code>fluid.logLevel.INFO</code></td>
+<td style="text-align:right">15</td>
+<td>a low logging level, corresponding to verbose debugging messages. This is the level set by <code>fluid.setLogging(true)</code>.</td>
+</tr>
+<tr>
+<td><code>fluid.logLevel.TRACE</code></td>
+<td style="text-align:right">20</td>
+<td>a very low logging level, which if enabled would produce extremely voluminous output which would significantly slow execution and consume a lot of storage. This should only be enabled for short periods of time, perhaps conditional on some triggers surrounding an event of interest.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fluidsetloggingloglevel">fluid.setLogging(logLevel)</h3>
+<ul>
+<li><code>logLevel {Boolean|LogLevel}</code> The system logging level to be made current and to be pushed onto the top of the
+system's stack of logging levels.</li>
+</ul>
+<p>Push a value onto the stack of the system's current logging levels. This will become the system's current logging level
+until there is a corresponding call to <code>fluid.popLogging</code>. The argument may either be a boolean, in which case one of
+the standard logging levels (<code>true: fluid.logLevel.INFO</code> / <code>false: fluid.logLevel.IMPORTANT</code>) will be selected, or else
+one of the members of the <code>fluid.logLevel</code> structure or a <code>LogLevel</code> marker in general. The stack is initialised with a
+single element of <code>fluid.logLevel.IMPORTANT</code>.</p>
+<h3 id="fluidpoplogging">fluid.popLogging()</h3>
+<p>Pops one <code>LogLevel</code> value that was pushed onto the logging level stack by a previous call to <code>fluid.setLogging</code>. This
+will expose the previous element on top of the stack and restore the logging level that had previously been in effect.
+If the stack has only its one original element, this call is a no-op.</p>
+<h3 id="fluidpasslogleveltestloglevel">fluid.passLogLevel(testLogLevel)</h3>
+<ul>
+<li><code>testLogLevel {LogLevel}</code> The log level against which the system's current logging level is to be checked.</li>
+<li>Returns: <code>{Boolean}</code> - <code>true</code> if a message supplied at that log priority would be logged at the current logging level.</li>
+</ul>
+<p>Accepts one of the members of the <code>fluid.logLevel</code> structure or a <code>LogLevel</code> object in general. Returns <code>true</code> if a
+message supplied at that log priority would be logged at the current logging level. Clients who issue particularly
+expensive log payload arguments are recommended to guard their logging statements with this</p>
+<h3 id="fluiddologarg1-argn">fluid.doLog([arg1, ... argn])</h3>
+<p>The actual implementation to which <code>fluid.log</code> messages and other logging generated by the system are dispatched.
+Implemented to forward to <code>console.debug</code> and <code>console.log</code> but may be monkey-patched by clients who require an
+alternative implementation.</p>
+<h3 id="fluidfailarg1-argn">fluid.fail([arg1, ... argn])</h3>
+<p>The framework and clients can call this method in order to signal a hard assertion failure. The current contract of
+<code>fluid.fail</code> is that an implementation/log error has been discovered - the typical behaviour of the system is to halt or
+at the very least propagate an unhandled exception to the top process level which is likely to make the system's
+behaviour unstable. If this failure resulted from bad user or external input, do not call this function but instead
+signal it in a milder, more implementation-specific way - for example by sending an HTTP status code or showing a user
+message. As Infusion evolves to handle a more finely graded variety of dynamic authoring scenarios, this function will
+be broken up into variants which can signal failures of different severities.</p>
+<p>The current system behaviour is to throw a particular subclass of the standard <code>Error</code> type, of type <code>fluid.FluidError</code>.
+The behaviour of <code>fluid.fail</code> can be customised by contributing handlers to the standard event <code>fluid.failureEvent</code></p>
+<h3 id="fluidfailureevent">fluid.failureEvent</h3>
+<ul>
+<li><code>log</code> - the namespace for the listener which logs the failure to a suitable environment. By default this fires to
+<code>fluid.logFailure</code> which forwards to <code>fluid.log</code> before also logging the state of the IoC system by using
+<code>fluid.logActivity</code></li>
+<li><code>fail</code> - the namespace for the listener which enacts any failure behaviour. By default this calls <code>fluid.fail</code> but in
+a testing environment, for example, will react by failing any current test, or in an HTTP server by aborting the
+handling of any current request with a suitable HTTP status code and message.</li>
+</ul>
+<p>Every call to <code>fluid.fail</code> triggers a firing of this global event. This is a standard <a href="InfusionEventSystem.html">Infusion
+Event</a> with several handlers installed on startup to take on various functions. Extra handlers
+are registered, and the builtin handlers overriden, to customise error handling behaviour in various contexts - for
+example, when Infusion is running in node.js, is running a <a href="jqUnit.html">jqUnit test</a> or is running in
+<a href="https://github.com/fluid-project/kettle">Kettle</a> etc. There are two currently standard namespaces for listeners to this
+event:</p>
+<h3 id="fluidstrategyrecursionbailout">fluid.strategyRecursionBailout</h3>
+<p>A positive integer (default value 50) above which depth the framework's processing of configuration will bail out,
+assuming that it has become circularly linked. This can be customised by the user (although this is an unlikely
+requirement), and is read by algorithms such as <a href="#fluidisdestroyedcomponent"><code>fluid.copy</code></a> and during <a href="ExpansionOfComponentOptions.html">options
+expansion</a>.</p>
+<h2 id="the-global-namespace">The global namespace</h2>
+<p>Infusion is unusual amongst modern JavaScript systems in that it maintains a single, global namespace of fully qualified
+implementation names. For example, builtin Infusion grades are stored in this namespace at paths <code>fluid.*</code> and each
+project will in general allocate its own top-level name. Users are assisted to operate on this global namespace with
+some utility functions. Any user of Infusion who has successfully resolved the <code>fluid</code> object can access the root object
+for this namespace as <code>fluid.global</code>. In the browser, the root of this namespace coincides directly with the real global
+namespace, which conventionally is addressed as <code>window</code>. In a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">Web
+Worker</a> this object is
+conventionally known as <code>self</code>. In environments like node.js where a global namespace is discouraged (but not,
+thankfully, actively prohibited) the global object is not directly accessible and users will need to use these utilities
+or the helping reference <code>fluid.global</code>. See <a href="#fluidsetglobalvaluepath-value"><code>fluid.setGlobalValue</code></a> for some
+guidelines on the use of global names.</p>
+<h3 id="fluidregisternamespacepath">fluid.registerNamespace(path)</h3>
+<ul>
+<li><code>path {String|Array of String}</code> The global path at which the namespace is to be allocated</li>
+<li>Returns: <code>{Any}</code> Any current value held at the supplied path - or a freshly allocated <code>{}</code> to be held at that path if
+it was previously empty</li>
+</ul>
+<p>Ensures that the supplied path has an object allocated in the global namespace, and retrieves the current value. If no
+value is stored, a fresh <code>{}</code> will be assigned at the path, and to all currently empty paths leading to the global
+namespace root. Calls to <code>fluid.registerNamespace</code> are very common at the start of Infusion-aware <code>.js</code> files - they are
+analogous to <code>require</code> statements, only they do not cause any code to be loaded by themselves - but they can grant
+access to implementations which have been loaded by others, or else provide an intermediate node at which to export
+implementations to others.</p>
+<h3 id="fluidgetglobalvaluepath">fluid.getGlobalValue(path)</h3>
+<ul>
+<li><code>path {String|Array of String}</code> The global path from which the value is to be fetched</li>
+<li>Returns: <code>{Any}</code> The value that was stored at the path, or <code>undefined</code> if there is none.</li>
+</ul>
+<p>Returns any value held at a particular global path. This may be an object or a function, depending on what has been
+stored there.</p>
+<h3 id="fluidsetglobalvaluepath-value">fluid.setGlobalValue(path, value)</h3>
+<ul>
+<li><code>path {String|Array of String}</code> The global path at which the value is to be set.</li>
+<li><code>value {Any}</code> The value to be written to the global path. This should in general be a function or other immutable
+value, and an existing value should not be overwritten. This rule can be overlooked in a genuine architectural
+emergency.</li>
+</ul>
+<p>Write a value to a particular global path. Users are strongly discouraged from storing any mutable information at these
+paths, but it is accepted that in certain integration scenarios there can be little alternative. Please choose a
+properly qualified global path name that identifies your project (perhaps, derived from a <a href="https://en.wikipedia.org/wiki/Domain_name">domain
+name</a> or <a href="https://docs.npmjs.com/misc/faq#why-no-namespaces">npm package
+name</a>) that you have control over. The <a href="https://en.wikipedia.org/wiki/Java_package#Package_naming_conventions">Java package naming
+conventions</a> have proved effective at heading off
+such problems in the past and we intend that Infusion global names should be handled in an analogous way.</p>
+<h3 id="fluidinvokeglobalfunctionfunctionpath-args">fluid.invokeGlobalFunction(functionPath, args)</h3>
+<ul>
+<li><code>functionPath {String|Array of String}</code> The global path holding the function which is to be invoked</li>
+<li><code>args {Array|Any}</code> The array of arguments to be supplied to the function. If <code>args</code> is not an array, <code>fluid.makeArray</code>
+will be called on it first.</li>
+<li>Returns: <code>{Any}</code> Any return value from the function which was invoked</li>
+</ul>
+<p>Invokes a function held at a particular global path with the supplied arguments. Equivalent to <code>fluid.getGlobalValue</code>
+followed by <code>Function.apply(null, args)</code>.</p>
+<h3 id="fluidinvokegradedfunctionname-spec">fluid.invokeGradedFunction(name, spec)</h3>
+<ul>
+<li><code>name {String}</code> A global name which can be resolved to a <code>Function</code>. The defaults for this name must
+resolve onto a grade derived from <a href="FunctionGrades.html"><code>fluid.function</code></a>. The defaults record should also contain an
+entry <code>argumentMap</code>, a hash of argument names onto indexes.</li>
+<li><code>spec {Object}</code> A hash where the keys are keys of the functions <code>argumentMap</code>, and the values are the argument values
+to be sent to the function. The keys will be looked up in the <code>argumentMap</code> and the values resolved into a flat list
+of arguments.</li>
+<li>Returns: <code>{Any}</code> The return value from the function</li>
+</ul>
+<p>Invoke a global function by name and named arguments. A courtesy to allow declaratively encoded function calls to use
+named arguments, with names encoded in the defaults for a <a href="FunctionGrades.html"><code>fluid.function</code></a>, rather than bare
+arrays.</p>
+<h2 id="storing-and-retrieving-defaults">Storing and retrieving defaults</h2>
+<p>Infusion's component system is organised around blocks of JSON which define <a href="ComponentGrades.html">grades</a> - another way
+of describing a grade is as a component's <strong>default options</strong>, which appeals to a slightly more old-fashioned notion of
+what a component is. These options are registered into the system and read back from it by using the API
+<code>fluid.defaults</code>. If the options supplied to <code>fluid.defaults</code> represent a <a href="ComponentOptionsAndDefaults.html">component
+grade</a>, the framework will automatically construct and register a <strong>component creator
+function</strong> in the <a href="#the-global-namespace">global namespace</a> at a path which matches the component's grade name. Note
+that not all defaults correspond to a component - some of them are descended from <code>fluid.function</code> in which case they
+represent a <strong>function grade</strong> and hold metadata about it. Some defaults are not descended from a framework grade at
+all, and are designed to be used as mixins to other grades.</p>
+<h3 id="fluiddefaultsgradename-options">fluid.defaults(gradeName[, options])</h3>
+<ul>
+<li><code>gradeName {String}</code> The fully-qualified name of the grade whose defaults are to be read or written.</li>
+<li><code>options {Object}</code> [optional] The defaults which are to be registered for the grade. If this argument is omitted, the
+existing defaults are read and returned.</li>
+<li>Returns: <code>{Object}</code>  If the function was called with 1 argument, any defaults already registered for the component.
+These read defaults will already have gone through <a href="OptionsMerging.html">options merging</a> and have the contents of any
+parent grades resolved in them. If you want to read exactly the raw defaults information that was registered for this
+grade, instead use <a href="#fluidrawdefaultsgradename-options"><code>fluid.rawDefaults</code></a></li>
+</ul>
+<h3 id="fluidrawdefaultsgradename-options">fluid.rawDefaults(gradeName[, options])</h3>
+<ul>
+<li><code>gradeName {String}</code> The fully-qualified name of the grade whose defaults are to be read or written.</li>
+<li><code>options {Object}</code> [optional] The defaults which are to be registered for the grade. If this argument is omitted, the
+existing defaults are read and returned.</li>
+<li>Returns: <code>{Object}</code> The raw defaults registered for this grade, without being resolved against parent grades by
+<a href="OptionsMerging.html">options merging</a>.</li>
+</ul>
+
+                            
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            
+                fluid.docs.search.mini(".docs-search-mini")
+            
+    </script>
+
+    </body>
+
+</html>
