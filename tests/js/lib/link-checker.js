@@ -19,7 +19,7 @@
 /* eslint-env node */
 "use strict";
 var fluid   = require("infusion");
-var request = require("request");
+var urllib = require('urllib');
 var url     = require("url");
 var jsdom   = require("jsdom");
 
@@ -45,7 +45,7 @@ fluid.tests.docs.linkChecker.scanSinglePageOrFinish = function (that) {
         }
         else {
             // Retrieve the page and process it.
-            request(pageToScan, function (error, response, body) {
+            urllib.request(pageToScan,function(error,body,response){
                 fluid.tests.docs.linkChecker.processSingleResponse(that, pageToScan, error, response, body);
                 promise.resolve();
             });
@@ -132,7 +132,7 @@ fluid.tests.docs.linkChecker.processSingleResponse = function (that, pageToScan,
         pageResults.error = error;
     }
     else if (body) {
-        var dom = new jsdom.JSDOM(body);
+        var dom = new jsdom.JSDOM(body.toString());
 
         // Add the page's elements with IDs to our map of known placeholders.
         var pageIdNodeList = dom.window.document.querySelectorAll("[id]");

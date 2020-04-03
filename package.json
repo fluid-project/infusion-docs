@@ -39,7 +39,7 @@
         "jsdom": "11.3.0",
         "kettle": "1.7.0",
         "node-jqunit": "1.1.7",
-        "request": "2.83.0",
+        "urllib": "^2.34.2",
         "testem": "2.15.1"
     }
 }
