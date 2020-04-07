@@ -131,6 +131,41 @@ var copyDeps = function () {
     });
 };
 
+var UrlPrettifier = function(){
+    var docsPath = rootPath+"/out/infusion/development/"
+    //TODO: Remove coupling.
+    var documents = fs.readdirSync(docsPath).filter(function(value,index,arr){
+        return (value!="lib" && value!="css" && value!="fonts" && value!="images" && value!="js")
+    })
+    
+    //TODO: Improve on interation for n-level directories
+    documents.forEach(document=>{
+        var document_full_path = docsPath+document;
+            var fileStats = fs.statSync(document_full_path)
+        if(fileStats.isFile()){                     
+           var folder = document.split('.')[0];
+           if(folder!="index"){
+            var new_file_folder = docsPath+folder
+           if(!fs.existsSync(new_file_folder)){               
+               fs.moveSync(document_full_path, new_file_folder+"/index.html");
+        }         
+           }
+        }
+        else if(fileStats.isDirectory()){
+            var sub_dirs = fs.readdirSync(document_full_path);
+            sub_dirs.forEach(sub_document=>{
+                var folder = sub_document.split('.')[0];
+            var new_sub_folder = document_full_path+"/"+folder
+                if(!fs.existsSync(new_sub_folder)){    
+                    fs.moveSync(document_full_path+"/"+sub_document, new_sub_folder+"/index.html");
+             }
+                
+            })
+            
+        }      
+    })    
+}
+
 module.exports = {
     rootPath: rootPath,
     ignorePaths: [ imagesSrcDir ],
@@ -208,6 +243,7 @@ module.exports = {
 
             // Generate the "canned" search index.
             require("./src/scripts/create-search-digest");
+            UrlPrettifier();
         }
     }
 };
