@@ -12,7 +12,7 @@ component. Within a larger design, sometimes it is necessary to
 2. present an event with a particular signature fired by a component as one with a different signature in a listener
    (**event boiling**)
 
-Both of these capabilities rely on the [IoC - Inversion of Control](IoCAPI.md) system.
+Both of these capabilities rely on the [IoC - Inversion of Control](IoCAPI.md) systems.
 
 ## Event Injection
 

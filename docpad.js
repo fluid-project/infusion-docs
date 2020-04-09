@@ -40,8 +40,13 @@ var githubLocation = function () {
 // Helper function to build relative URLs:
 // Used for links to static resources such as CSS files. So that the generated
 // DocPad output is independent of the URL that it is hosted at.
+//TODO: Remove Coupling
 var relativeUrl = function (forUrl, relativeToUrl) {
-    return uri(forUrl).relativeTo(relativeToUrl);
+    if(relativeToUrl=="/index.html" || relativeToUrl=="/tutorials/index.html" || relativeToUrl=="/components/index.html"){
+        return uri(forUrl).relativeTo(relativeToUrl);
+    }else{
+        return "../"+uri(forUrl).relativeTo(relativeToUrl);
+    }
 };
 
 // Helper function to determine if two values are equal
@@ -132,36 +137,51 @@ var copyDeps = function () {
 };
 
 var UrlPrettifier = function(){
+    var deepCopy = function(source,target){      
+            var files = fs.readdirSync(source); 
+            files.forEach( function ( file ) {
+                var _targetFolder = file.split('.')[0];
+                var targetFolder = path.join( target, path.basename( source ),_targetFolder );
+                var sourceFile = path.join( source, file );
+                if ( fs.lstatSync( sourceFile ).isDirectory() ) {
+                    deepCopy( sourceFile, path.join( target, path.basename( source )));              
+                } else {
+                    if(_targetFolder!="index"){
+                        if ( !fs.existsSync( targetFolder ) ) {
+                            mkdirp.sync(targetFolder);
+                            fs.moveSync(sourceFile, targetFolder+"/index.html");
+                        }else{
+                            fs.emptyDirSync(targetFolder);
+                            fs.moveSync(sourceFile, targetFolder+"/index.html");
+                        }
+                }
+            }
+            } );  
+        }
     var docsPath = rootPath+"/out/infusion/development/"
     //TODO: Remove coupling.
     var documents = fs.readdirSync(docsPath).filter(function(value,index,arr){
         return (value!="lib" && value!="css" && value!="fonts" && value!="images" && value!="js")
-    })
-    
-    //TODO: Improve on interation for n-level directories
+    })  
     documents.forEach(document=>{
-        var document_full_path = docsPath+document;
-            var fileStats = fs.statSync(document_full_path)
+        //TODO: single level folder iteration logic into function
+        var document_full_path = path.join(docsPath,document);
+            var fileStats = fs.statSync(document_full_path);
         if(fileStats.isFile()){                     
            var folder = document.split('.')[0];
            if(folder!="index"){
-            var new_file_folder = docsPath+folder
-           if(!fs.existsSync(new_file_folder)){               
-               fs.moveSync(document_full_path, new_file_folder+"/index.html");
-        }         
+            var new_file_folder = path.join(docsPath,folder)
+           if(!fs.existsSync(new_file_folder)){    
+               mkdirp.sync(new_file_folder);
+               fs.moveSync(document_full_path, new_file_folder+"/index.html");           
+        }else{
+            fs.emptyDirSync(new_file_folder);
+            fs.moveSync(document_full_path, new_file_folder+"/index.html");
+        }           
            }
         }
         else if(fileStats.isDirectory()){
-            var sub_dirs = fs.readdirSync(document_full_path);
-            sub_dirs.forEach(sub_document=>{
-                var folder = sub_document.split('.')[0];
-            var new_sub_folder = document_full_path+"/"+folder
-                if(!fs.existsSync(new_sub_folder)){    
-                    fs.moveSync(document_full_path+"/"+sub_document, new_sub_folder+"/index.html");
-             }
-                
-            })
-            
+            deepCopy(document_full_path,docsPath);         
         }      
     })    
 }

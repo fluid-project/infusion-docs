@@ -1,258 +1,258 @@
 [
     {
         "category": "Infusion",
-        "categoryHref": "/index.html",
+        "categoryHref": "/",
         "sections":
         [
             {
                 "sectionName": "Writing Configuration",
                 "pages":
                 [
-                    { "pageName": "Understanding Infusion Components", "href": "/UnderstandingInfusionComponents.html" },
-                    { "pageName": "Understanding Component Options And Defaults", "href": "/ComponentOptionsAndDefaults.html" },
-                    { "pageName": "Component Configuration Options", "href": "/ComponentConfigurationOptions.html" },
-                    { "pageName": "Component Grades", "href": "/ComponentGrades.html" },
-                    { "pageName": "Function Grades", "href": "/FunctionGrades.html" },
-                    { "pageName": "Options Merging", "href": "/OptionsMerging.html" },
-                    { "pageName": "Component Lifecycle", "href": "/ComponentLifecycle.html" },
-                    { "pageName": "Priorities", "href": "/Priorities.html" },
-                    { "pageName": "Framework Concepts", "href": "/FrameworkConcepts.html"}
+                    { "pageName": "Understanding Infusion Components", "href": "/UnderstandingInfusionComponents" },
+                    { "pageName": "Understanding Component Options And Defaults", "href": "/ComponentOptionsAndDefaults" },
+                    { "pageName": "Component Configuration Options", "href": "/ComponentConfigurationOptions" },
+                    { "pageName": "Component Grades", "href": "/ComponentGrades" },
+                    { "pageName": "Function Grades", "href": "/FunctionGrades" },
+                    { "pageName": "Options Merging", "href": "/OptionsMerging" },
+                    { "pageName": "Component Lifecycle", "href": "/ComponentLifecycle" },
+                    { "pageName": "Priorities", "href": "/Priorities" },
+                    { "pageName": "Framework Concepts", "href": "/FrameworkConcepts"}
                 ]
             },
             {
                 "sectionName": "API",
                 "pages":
                 [
-                    { "pageName": "Core API", "href": "/CoreAPI.html" },
-                    { "pageName": "Promises API", "href": "/PromisesAPI.html" },
-                    { "pageName": "IoC API", "href": "/IoCAPI.html" },
-                    { "pageName": "ChangeApplier API", "href": "/ChangeApplierAPI.html" },
-                    { "pageName": "Model Transformation API", "href": "/ModelTransformationAPI.html" },
-                    { "pageName": "View API", "href": "/ViewAPI.html" },
-                    { "pageName": "DOM Binder API", "href": "/DOMBinderAPI.html" },
-                    { "pageName": "node.js Support and API", "href": "/NodeAPI.html" }
+                    { "pageName": "Core API", "href": "/CoreAPI" },
+                    { "pageName": "Promises API", "href": "/PromisesAPI" },
+                    { "pageName": "IoC API", "href": "/IoCAPI" },
+                    { "pageName": "ChangeApplier API", "href": "/ChangeApplierAPI" },
+                    { "pageName": "Model Transformation API", "href": "/ModelTransformationAPI" },
+                    { "pageName": "View API", "href": "/ViewAPI" },
+                    { "pageName": "DOM Binder API", "href": "/DOMBinderAPI" },
+                    { "pageName": "node.js Support and API", "href": "/NodeAPI" }
                 ]
             },
             {
                 "sectionName": "Inversion of Control",
                 "pages":
                 [
-                    { "pageName": "How to Use Infusion IoC", "href": "/HowToUseInfusionIoC.html" },
-                    { "pageName": "Subcomponent Declaration", "href": "/SubcomponentDeclaration.html" },
-                    { "pageName": "Contexts", "href": "/Contexts.html" },
-                    { "pageName": "ContextAwareness", "href": "/ContextAwareness.html" },
-                    { "pageName": "Invokers", "href": "/Invokers.html" },
-                    { "pageName": "Expansion of Component Options", "href": "/ExpansionOfComponentOptions.html" },
-                    { "pageName": "IoC References", "href": "/IoCReferences.html" },
-                    { "pageName": "IoCSS", "href": "/IoCSS.html" },
-                    { "pageName": "Declarative this-ism In IoC", "href": "/DeclarativeThisismInIoC.html" }
+                    { "pageName": "How to Use Infusion IoC", "href": "/HowToUseInfusionIoC" },
+                    { "pageName": "Subcomponent Declaration", "href": "/SubcomponentDeclaration" },
+                    { "pageName": "Contexts", "href": "/Contexts" },
+                    { "pageName": "ContextAwareness", "href": "/ContextAwareness" },
+                    { "pageName": "Invokers", "href": "/Invokers" },
+                    { "pageName": "Expansion of Component Options", "href": "/ExpansionOfComponentOptions" },
+                    { "pageName": "IoC References", "href": "/IoCReferences" },
+                    { "pageName": "IoCSS", "href": "/IoCSS" },
+                    { "pageName": "Declarative this-ism In IoC", "href": "/DeclarativeThisismInIoC" }
                 ]
             },
             {
                 "sectionName": "Events",
                 "pages":
                 [
-                    { "pageName": "Infusion Event System", "href": "/InfusionEventSystem.html" },
-                    { "pageName": "Event injection and boiling", "href": "/EventInjectionAndBoiling.html" }
+                    { "pageName": "Infusion Event System", "href": "/InfusionEventSystem" },
+                    { "pageName": "Event injection and boiling", "href": "/EventInjectionAndBoiling" }
                 ]
             },
             {
                 "sectionName": "Models",
                 "pages":
                 [
-                    { "pageName": "ChangeApplier", "href": "/ChangeApplier.html" },
-                    { "pageName": "ChangeApplier API", "href": "/ChangeApplierAPI.html" },
-                    { "pageName": "Model Relay", "href": "/ModelRelay.html" }
+                    { "pageName": "ChangeApplier", "href": "/ChangeApplier" },
+                    { "pageName": "ChangeApplier API", "href": "/ChangeApplierAPI" },
+                    { "pageName": "Model Relay", "href": "/ModelRelay" }
                 ]
             }, {
                 "sectionName": "Views",
                 "pages":
                 [
-                    { "pageName": "DOM Binder", "href": "/DOMBinder.html" },
-                    { "pageName": "DOM Binder API", "href": "/DOMBinderAPI.html" },
-                    { "pageName": "Class Name Conventions", "href": "/ClassNameConventions.html" }
+                    { "pageName": "DOM Binder", "href": "/DOMBinder" },
+                    { "pageName": "DOM Binder API", "href": "/DOMBinderAPI" },
+                    { "pageName": "Class Name Conventions", "href": "/ClassNameConventions" }
                 ]
             },
             {
                 "sectionName": "Renderer",
                 "pages":
                 [
-                    { "pageName": "Renderer", "href": "/Renderer.html" },
-                    { "pageName": "How to Use the Renderer", "href": "/HowToUseTheRenderer.html" },
-                    { "pageName": "Renderer Component Trees", "href": "/RendererComponentTrees.html" },
-                    { "pageName": "ProtoComponent Types", "href": "/ProtoComponentTypes.html" },
-                    { "pageName": "Renderer Component Tree Expanders", "href": "/RendererComponentTreeExpanders.html" },
-                    { "pageName": "Cutpoints", "href": "/Cutpoints.html" },
-                    { "pageName": "Renderer Components", "href": "/RendererComponents.html" },
-                    { "pageName": "Renderer Decorators", "href": "/RendererDecorators.html" }
+                    { "pageName": "Renderer", "href": "/Renderer" },
+                    { "pageName": "How to Use the Renderer", "href": "/HowToUseTheRenderer" },
+                    { "pageName": "Renderer Component Trees", "href": "/RendererComponentTrees" },
+                    { "pageName": "ProtoComponent Types", "href": "/ProtoComponentTypes" },
+                    { "pageName": "Renderer Component Tree Expanders", "href": "/RendererComponentTreeExpanders" },
+                    { "pageName": "Cutpoints", "href": "/Cutpoints" },
+                    { "pageName": "Renderer Components", "href": "/RendererComponents" },
+                    { "pageName": "Renderer Decorators", "href": "/RendererDecorators" }
                 ]
             },
             {
                 "sectionName": "Loading Resources",
                 "pages":
                 [
-                    { "pageName": "Resource Loader", "href": "/ResourceLoader.html" },
-                    { "pageName": "fluid.fetchResources", "href": "/FetchResources.html" }
+                    { "pageName": "Resource Loader", "href": "/ResourceLoader" },
+                    { "pageName": "fluid.fetchResources", "href": "/FetchResources" }
                 ]
             },
             {
                 "sectionName": "Preferences Framework",
                 "pages":
                 [
-                    { "pageName": "Preferences Framework", "href": "/PreferencesFramework.html" },
-                    { "pageName": "Preferences Editor", "href": "/PreferencesEditor.html" },
-                    { "pageName": "Builder", "href": "/Builder.html" },
-                    { "pageName": "Primary Schema", "href": "/PrimarySchemaForPreferencesFramework.html" },
-                    { "pageName": "Auxiliary Schema", "href": "/AuxiliarySchemaForPreferencesFramework.html" },
-                    { "pageName": "Settings Store", "href": "/SettingsStore.html" },
-                    { "pageName": "Connecting the Parts of a Preferences Editor", "href": "/ConnectingThePartsOfAPreferencesEditor.html" },
-                    { "pageName": "Enactors", "href": "/Enactors.html" },
-                    { "pageName": "Panels", "href": "/Panels.html" },
-                    { "pageName": "Composite Panels", "href": "/CompositePanels.html" },
-                    { "pageName": "Conditional Subpanels", "href": "/ConditionalSubpanels.html" },
-                    { "pageName": "Localization in the Preferences Framework", "href": "/LocalizationInThePreferencesFramework.html" }
+                    { "pageName": "Preferences Framework", "href": "/PreferencesFramework" },
+                    { "pageName": "Preferences Editor", "href": "/PreferencesEditor" },
+                    { "pageName": "Builder", "href": "/Builder" },
+                    { "pageName": "Primary Schema", "href": "/PrimarySchemaForPreferencesFramework" },
+                    { "pageName": "Auxiliary Schema", "href": "/AuxiliarySchemaForPreferencesFramework" },
+                    { "pageName": "Settings Store", "href": "/SettingsStore" },
+                    { "pageName": "Connecting the Parts of a Preferences Editor", "href": "/ConnectingThePartsOfAPreferencesEditor" },
+                    { "pageName": "Enactors", "href": "/Enactors" },
+                    { "pageName": "Panels", "href": "/Panels" },
+                    { "pageName": "Composite Panels", "href": "/CompositePanels" },
+                    { "pageName": "Conditional Subpanels", "href": "/ConditionalSubpanels" },
+                    { "pageName": "Localization in the Preferences Framework", "href": "/LocalizationInThePreferencesFramework" }
                 ]
             },
             {
                 "sectionName": "Testing",
                 "pages":
                 [
-                    { "pageName": "Unit Testing with jqUnit", "href": "/jqUnit.html" },
-                    { "pageName": "IoC Testing Framework", "href": "/IoCTestingFramework.html" }
+                    { "pageName": "Unit Testing with jqUnit", "href": "/jqUnit" },
+                    { "pageName": "IoC Testing Framework", "href": "/IoCTestingFramework" }
                 ]
             },
             {
                 "sectionName": "Migrating to Infusion 1.5",
                 "pages":
                 [
-                    { "pageName": "API Changes from 1.4 to 1.5", "href": "/APIChangesFrom1_4To1_5.html" },
-                    { "pageName": "Deprecations In 1.5", "href": "/DeprecationsIn1_5.html" },
-                    { "pageName": "UI Options Migration", "href": "/tutorial-migratingToInfusion1.5/UIOptionsMigration.html" },
-                    { "pageName": "Pager Migration", "href": "/tutorial-migratingToInfusion1.5/PagerMigration.html" }
+                    { "pageName": "API Changes from 1.4 to 1.5", "href": "/APIChangesFrom1_4To1_5" },
+                    { "pageName": "Deprecations In 1.5", "href": "/DeprecationsIn1_5" },
+                    { "pageName": "UI Options Migration", "href": "/tutorial-migratingToInfusion1.5/UIOptionsMigration" },
+                    { "pageName": "Pager Migration", "href": "/tutorial-migratingToInfusion1.5/PagerMigration" }
                 ]
             },
             {
                 "sectionName": "Migrating to Infusion 2.0",
                 "pages":
                 [
-                    { "pageName": "API Changes from 1.5 to 2.0", "href": "/APIChangesFrom1_5To2_0.html" },
-                    { "pageName": "Deprecated in 2.0", "href": "/DeprecatedIn2_0.html" }
+                    { "pageName": "API Changes from 1.5 to 2.0", "href": "/APIChangesFrom1_5To2_0" },
+                    { "pageName": "Deprecated in 2.0", "href": "/DeprecatedIn2_0" }
                 ]
             },
             {
                 "sectionName": "Migrating to Infusion 3.0",
                 "pages":
                 [
-                    { "pageName": "API Changes from 2.0 to 3.0", "href": "/APIChangesFrom2_0To3_0.html" }
+                    { "pageName": "API Changes from 2.0 to 3.0", "href": "/APIChangesFrom2_0To3_0" }
                 ]
             }
         ]
     },
     {
         "category": "Tutorials",
-        "categoryHref": "/index-tutorials.html",
+        "categoryHref": "/tutorials",
         "sections":
         [
             {
                 "sectionName":"Developer Introduction to the Infusion Framework",
                 "pages":
                 [
-                    { "pageName": "Opening Remarks", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks.html" },
-                    { "pageName": "Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components.html" },
-                    { "pageName": "Invokers", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers.html" },
-                    { "pageName": "Events and Inversion of Control", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl.html" },
-                    { "pageName": "Models and Model Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents.html" },
-                    { "pageName": "Views and View Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents.html" },
-                    { "pageName": "Subcomponents and Model Relaying", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.html" },
-                    { "pageName": "Restructuring Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents.html" },
-                    { "pageName": "Overriding Invokers and Refactoring", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring.html" },
-                    { "pageName": "Extending Designs with Existing Components", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents.html" },
-                    { "pageName": "Transforming Model Relays", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays.html" },
-                    { "pageName": "Concluding Remarks", "href": "/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks.html" }
+                    { "pageName": "Opening Remarks", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OpeningRemarks" },
+                    { "pageName": "Components", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Components" },
+                    { "pageName": "Invokers", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-Invokers" },
+                    { "pageName": "Events and Inversion of Control", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-EventsAndInversionOfControl" },
+                    { "pageName": "Models and Model Components", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ModelsAndModelComponents" },
+                    { "pageName": "Views and View Components", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ViewsAndViewComponents" },
+                    { "pageName": "Subcomponents and Model Relaying", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying" },
+                    { "pageName": "Restructuring Components", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-RestructuringComponents" },
+                    { "pageName": "Overriding Invokers and Refactoring", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-OverridingInvokersAndRefactoring" },
+                    { "pageName": "Extending Designs with Existing Components", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ExtendingDesignsWithExistingComponents" },
+                    { "pageName": "Transforming Model Relays", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-TransformingModelRelays" },
+                    { "pageName": "Concluding Remarks", "href": "/tutorials/tutorial-developerIntroduction/DeveloperIntroductionToInfusionFramework-ConcludingRemarks" }
                 ]
             },
             {
                 "sectionName":"Getting Started with Infusion Component Design",
                 "pages":
                 [
-                    { "pageName": "Getting Started with Infusion Component Design", "href": "/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion.html" },
-                    { "pageName": "Set up your environment", "href": "/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment.html"},
-                    { "pageName": "Define a namespace and create a closure", "href": "/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure.html"},
-                    { "pageName": "Pick a component type", "href": "/tutorial-gettingStartedWithInfusion/PickAComponentType.html"},
-                    { "pageName": "Basic Component Creation", "href": "/tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components.html"},
-                    { "pageName": "Model Components", "href": "/tutorial-gettingStartedWithInfusion/ModelComponents.html"},
-                    { "pageName": "View Components", "href": "/tutorial-gettingStartedWithInfusion/ViewComponents.html"},
-                    { "pageName": "Renderer Components", "href": "/tutorial-gettingStartedWithInfusion/RendererComponents.html"},
-                    { "pageName": "Subcomponents", "href": "/tutorial-gettingStartedWithInfusion/Subcomponents.html"}
+                    { "pageName": "Getting Started with Infusion Component Design", "href": "/tutorials/tutorial-gettingStartedWithInfusion/GettingStartedWithInfusion" },
+                    { "pageName": "Set up your environment", "href": "/tutorials/tutorial-gettingStartedWithInfusion/SetUpYourEnvironment"},
+                    { "pageName": "Define a namespace and create a closure", "href": "/tutorials/tutorial-gettingStartedWithInfusion/DefineANamespaceAndCreateAClosure"},
+                    { "pageName": "Pick a component type", "href": "/tutorials/tutorial-gettingStartedWithInfusion/PickAComponentType"},
+                    { "pageName": "Basic Component Creation", "href": "/tutorials/tutorial-gettingStartedWithInfusion/BasicComponentCreation-Components"},
+                    { "pageName": "Model Components", "href": "/tutorials/tutorial-gettingStartedWithInfusion/ModelComponents"},
+                    { "pageName": "View Components", "href": "/tutorials/tutorial-gettingStartedWithInfusion/ViewComponents"},
+                    { "pageName": "Renderer Components", "href": "/tutorials/tutorial-gettingStartedWithInfusion/RendererComponents"},
+                    { "pageName": "Subcomponents", "href": "/tutorials/tutorial-gettingStartedWithInfusion/Subcomponents"}
                 ]
             },
             {
                 "sectionName": "General",
                 "pages":
                 [
-                    { "pageName": "Using String Templates", "href": "/tutorial-usingStringTemplates/UsingStringTemplates.html" },
-                    { "pageName": "How to Create and Use Font Icons", "href": "/tutorial-iconFonts/HowToCreateAndUseFontIcons.html" }
+                    { "pageName": "Using String Templates", "href": "/tutorials/tutorial-usingStringTemplates/UsingStringTemplates" },
+                    { "pageName": "How to Create and Use Font Icons", "href": "/tutorials/tutorial-iconFonts/HowToCreateAndUseFontIcons" }
                 ]
             },
             {
                 "sectionName": "Preferences Framework",
                 "pages":
                 [
-                    { "pageName": "Creating a Preference Editor", "href": "/tutorial-prefsFramework/CreatingAPrefsEditor.html" },
-                    { "pageName": "Creating Enactors", "href": "/tutorial-prefsFramework/CreatingEnactors.html" },
-                    { "pageName": "Instantiating the Enhancer and Settings Store Only", "href": "/tutorial-prefsFramework/InstantiatingTheEnhancerAndSettingsStoreOnly.html" },
-                    { "pageName": "Styling the Preferences Editor", "href": "/tutorial-prefsFramework/StylingThePreferencesEditor.html" },
-                    { "pageName": "Adding a Basic Preferences Editor to a Site", "href": "/to-do/AddingPrefsEditorToSite.html" },
-                    { "pageName": "Working With A Preferences Editor On Your Site", "href": "/to-do/WorkingWithPrefsEditorOnSite.html" },
-                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorial-prefsFramework/CreatingANewAdjusterUI.html" },
-                    { "pageName": "Minimal Footprint", "href": "/tutorial-prefsFrameworkMinimalFootprint/MinimalFootprint.html" }
+                    { "pageName": "Creating a Preference Editor", "href": "/tutorials/tutorial-prefsFramework/CreatingAPrefsEditor" },
+                    { "pageName": "Creating Enactors", "href": "/tutorials/tutorial-prefsFramework/CreatingEnactors" },
+                    { "pageName": "Instantiating the Enhancer and Settings Store Only", "href": "/tutorials/tutorial-prefsFramework/InstantiatingTheEnhancerAndSettingsStoreOnly" },
+                    { "pageName": "Styling the Preferences Editor", "href": "/tutorials/tutorial-prefsFramework/StylingThePreferencesEditor" },
+                    { "pageName": "Adding a Basic Preferences Editor to a Site", "href": "/tutorials/to-do/AddingPrefsEditorToSite" },
+                    { "pageName": "Working With A Preferences Editor On Your Site", "href": "/tutorials/to-do/WorkingWithPrefsEditorOnSite" },
+                    { "pageName": "Creating a New Adjuster UI", "href": "/tutorials/tutorial-prefsFramework/CreatingANewAdjusterUI" },
+                    { "pageName": "Minimal Footprint", "href": "/tutorials/tutorial-prefsFrameworkMinimalFootprint/MinimalFootprint" }
                 ]
             },
             {
                 "sectionName": "User Interface Options",
                 "pages":
                 [
-                    { "pageName": "Setting Up User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" },
-                    { "pageName": "Working with User Interface Options", "href": "/tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.html"},
-                    { "pageName": "Using Images in Contrast Modes", "href": "/tutorial-userInterfaceOptions/UsingImagesInContrastModes.html"},
-                    { "pageName": "Style Effects and Legibility in Contrast Modes", "href": "/tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes.html"},
-                    { "pageName": "CSS 'Content' Property in Contrast Modes", "href": "/tutorial-userInterfaceOptions/ContentPropertyHighContrast.html"}
+                    { "pageName": "Setting Up User Interface Options", "href": "/tutorials/tutorial-userInterfaceOptions/UserInterfaceOptions" },
+                    { "pageName": "Working with User Interface Options", "href": "/tutorials/tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions"},
+                    { "pageName": "Using Images in Contrast Modes", "href": "/tutorials/tutorial-userInterfaceOptions/UsingImagesInContrastModes"},
+                    { "pageName": "Style Effects and Legibility in Contrast Modes", "href": "/tutorials/tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes"},
+                    { "pageName": "CSS 'Content' Property in Contrast Modes", "href": "/tutorials/tutorial-userInterfaceOptions/ContentPropertyHighContrast"}
                 ]
             }
         ]
     },
     {
         "category": "Components",
-        "categoryHref": "/index-components.html",
+        "categoryHref": "/components",
         "sections":
         [
             {
                 "sectionName": "",
                 "pages":
                 [
-                    { "pageName": "Inline Edit", "href": "/to-do/InlineEditAPI.html" },
-                    { "pageName": "Pager", "href": "/to-do/PagerAPI.html" },
-                    { "pageName": "Progress", "href": "/to-do/ProgressAPI.html" },
-                    { "pageName": "Reorderer", "href": "/to-do/ReordererAPI.html" },
-                    { "pageName": "List Reorderer", "href": "/to-do/ListReordererAPI.html" },
-                    { "pageName": "Grid Reorderer", "href": "/to-do/GridReordererAPI.html" },
-                    { "pageName": "Layout Reorderer", "href": "/to-do/LayoutReordererAPI.html" },
-                    { "pageName": "Image Reorderer", "href": "/ImageReordererAPI.html" },
-                    { "pageName": "Switch", "href": "/SwitchAPI.html" },
-                    { "pageName": "Text to Speech", "href": "/TextToSpeechAPI.html" },
-                    { "pageName": "Textfield", "href": "/TextfieldAPI.html" },
-                    { "pageName": "TextfieldSlider", "href": "/TextfieldSliderAPI.html" },
-                    { "pageName": "TextfieldStepper", "href": "/TextfieldStepperAPI.html" },
-                    { "pageName": "User Interface Options", "href": "/UserInterfaceOptionsAPI.html" },
-                    { "pageName": "Uploader", "href": "/UploaderAPI.html" },
-                    { "pageName": "Undo", "href": "/to-do/UndoAPI.html" },
-                    { "pageName": "Table of Contents", "href": "/to-do/TableOfContentsAPI.html" }
+                    { "pageName": "Inline Edit", "href": "/components/to-do/InlineEditAPI" },
+                    { "pageName": "Pager", "href": "/components/to-do/PagerAPI" },
+                    { "pageName": "Progress", "href": "/components/to-do/ProgressAPI" },
+                    { "pageName": "Reorderer", "href": "/components/to-do/ReordererAPI" },
+                    { "pageName": "List Reorderer", "href": "/components/to-do/ListReordererAPI" },
+                    { "pageName": "Grid Reorderer", "href": "/components/to-do/GridReordererAPI" },
+                    { "pageName": "Layout Reorderer", "href": "/components/to-do/LayoutReordererAPI" },
+                    { "pageName": "Image Reorderer", "href": "/components/ImageReordererAPI" },
+                    { "pageName": "Switch", "href": "/components/SwitchAPI" },
+                    { "pageName": "Text to Speech", "href": "/components/TextToSpeechAPI" },
+                    { "pageName": "Textfield", "href": "/components/TextfieldAPI" },
+                    { "pageName": "TextfieldSlider", "href": "/components/TextfieldSliderAPI" },
+                    { "pageName": "TextfieldStepper", "href": "/components/TextfieldStepperAPI" },
+                    { "pageName": "User Interface Options", "href": "/components/UserInterfaceOptionsAPI" },
+                    { "pageName": "Uploader", "href": "/components/UploaderAPI" },
+                    { "pageName": "Undo", "href": "/components/to-do/UndoAPI" },
+                    { "pageName": "Table of Contents", "href": "/components/to-do/TableOfContentsAPI" }
                 ]
             }
         ]
     },
     {
         "category": "Search",
-        "categoryHref": "/search.html"
+        "categoryHref": "/search"
     }
 ]
