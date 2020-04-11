@@ -126,9 +126,7 @@
                 "pages":
                 [
                     { "pageName": "API Changes from 1.4 to 1.5", "href": "/APIChangesFrom1_4To1_5" },
-                    { "pageName": "Deprecations In 1.5", "href": "/DeprecationsIn1_5" },
-                    { "pageName": "UI Options Migration", "href": "/tutorial-migratingToInfusion1.5/UIOptionsMigration" },
-                    { "pageName": "Pager Migration", "href": "/tutorial-migratingToInfusion1.5/PagerMigration" }
+                    { "pageName": "Deprecations In 1.5", "href": "/DeprecationsIn1_5" }
                 ]
             },
             {
@@ -217,6 +215,15 @@
                     { "pageName": "Using Images in Contrast Modes", "href": "/tutorials/tutorial-userInterfaceOptions/UsingImagesInContrastModes"},
                     { "pageName": "Style Effects and Legibility in Contrast Modes", "href": "/tutorials/tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes"},
                     { "pageName": "CSS 'Content' Property in Contrast Modes", "href": "/tutorials/tutorial-userInterfaceOptions/ContentPropertyHighContrast"}
+                ]
+            },
+            {
+                "sectionName": "Migrating to Infusion 1.5",
+                "pages":
+                [
+                    { "pageName": "UI Options Migration", "href": "/tutorials/tutorial-migratingToInfusion1.5/UIOptionsMigration" },
+                    { "pageName": "Pager Migration", "href": "/tutorials/tutorial-migratingToInfusion1.5/PagerMigration" }
+
                 ]
             }
         ]
