@@ -5,7 +5,7 @@ category: Tutorials
 ---
 
 This tutorial will walk you through the process of building a Preference Editor using the
-Infusion [Preferences Framework](../PreferencesFramework.md).
+Infusion [Preferences Framework](../../PreferencesFramework.md).
 
 <div class="infusion-docs-note"><strong>Note:</strong> This tutorial is not yet complete.
 Where more information is still to come, this will be clearly noted.</div>
@@ -30,7 +30,7 @@ code for the simple Preference Editor in the examples folder:
 We recommend you download the Infusion library and load the example code into your favourite editor.
 
 <figure>
-    <img src="../images/prefsEditorFolders.png" alt="the folder hierarchy of the sample code">
+    <img src="../../images/prefsEditorFolders.png" alt="the folder hierarchy of the sample code">
     <figcaption>Figure 1: Folder hierarchy for the Preference Editor example</figcaption>
 </figure>
 
@@ -40,7 +40,7 @@ approach](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server
 [MAMP](https://www.mamp.info/en/)) and navigate to the `index.html` file in a browser, you should see this interface:
 
 <figure id="figure2">
-    <img src="../images/simplePrefsEditor.png" alt="The screen of the example Preference Editor">
+    <img src="../../images/simplePrefsEditor.png" alt="The screen of the example Preference Editor">
     <figcaption>Figure 2: The screen of the example Preference Editor</figcaption>
 </figure>
 
@@ -51,7 +51,7 @@ cookie, and when you reload the page, the checkbox will be set to the saved valu
 Let’s talk about what we’re seeing in this interface:
 
 <figure>
-    <img src="../images/prefsEditorParts.png" alt="The parts of a Preference Editor screen">
+    <img src="../../images/prefsEditorParts.png" alt="The parts of a Preference Editor screen">
     <figcaption>Figure 3: The parts of a Preference Editor screen</figcaption>
 </figure>
 
@@ -68,7 +68,7 @@ Let’s take a close look at the code.
 
 #### Primary Schema
 
-The [Primary Schema](../PrimarySchemaForPreferencesFramework.md) is a document that defines the preferences for the
+The [Primary Schema](../../PrimarySchemaForPreferencesFramework.md) is a document that defines the preferences for the
 Editor. The Primary Schema for our example Editor is defined in the `schemas/primary.js` file using the JSON schema
 format (you can learn about JSON schemas at [http://json-schema.org/](http://json-schema.org/)):
 
@@ -99,14 +99,14 @@ In this code snippet, the Primary Schema is created using a call to the Infusion
 <aside class="infusion-docs-callout">
 
 `fluid.defaults()` is one of the core functions in Infusion: It is used to create
-[components](../UnderstandingInfusionComponents.md) (the building blocks of any Infusion application) and register
+[components](../../UnderstandingInfusionComponents.md) (the building blocks of any Infusion application) and register
 them with the Framework.
 </aside>
 
 `fluid.defaults()` accepts two arguments:
 
 1. a string name, and
-2. a JavaScript object containing [options for configuring](../ComponentConfigurationOptions.md) the component.
+2. a JavaScript object containing [options for configuring](../../ComponentConfigurationOptions.md) the component.
 
 In the code snippet above, the first argument – the name – is `“awesomeCars.prefs.schemas.heatedSeats”`. The second
 argument – the options – is an object containing (in this case) two properties: `gradeNames` and `schema`:
@@ -119,12 +119,12 @@ argument – the options – is an object containing (in this case) two properti
     <dd>
 
 Almost every call to `fluid.defaults()` includes the `gradeNames` property in the options argument. This
-property defines the base _[grade](../ComponentGrades.md)_ for the component.
+property defines the base _[grade](../../ComponentGrades.md)_ for the component.
         <aside class="infusion-docs-callout">
 
 A **grade** is _very loosely_ analogous to a class, in that the properties of the component are derived from the
 elements in the grade document. It’s actually a bit more complex than that; later, you’ll probably want to read the
-documentation about [Component Grades](../ComponentGrades.md). This tutorial will explain more about grades as it
+documentation about [Component Grades](../../ComponentGrades.md). This tutorial will explain more about grades as it
 goes along.
         </aside>
 In a Primary Schema, the `gradeNames` property must include the grade `“fluid.prefs.schemas”`, which is defined by the
@@ -163,13 +163,13 @@ least two properties: `“type”` and `“default”`.  _Coming soon: More info
 
 #### Panel
 
-A [Panel](../Panels.md) is a [component](../UnderstandingInfusionComponents.md) responsible for rendering the user
+A [Panel](../../Panels.md) is a [component](../../UnderstandingInfusionComponents.md) responsible for rendering the user
 interface controls for a preference and tying them to the internal model that represents the preference value. The Panel
 for the heated seats preference control is defined in the `prefsEditor.js` file:
 
 <aside class="infusion-docs-callout">
 
-[Components](../UnderstandingInfusionComponents.md) are the core building-blocks of any Infusion application. An
+[Components](../../UnderstandingInfusionComponents.md) are the core building-blocks of any Infusion application. An
 Infusion component can represent a visible component on screen, a collection of related functionality (such as an
 object, as in object-orientation), or simply a unit of work or relationship between other components.
 </aside>
@@ -256,7 +256,7 @@ property of the [`model`](../FrameworkConcepts.md#model-objects) property” of 
 
 <aside class="infusion-docs-callout">
 
-[Models](../FrameworkConcepts.md#model-objects) are central to Infusion, which,
+[Models](../../FrameworkConcepts.md#model-objects) are central to Infusion, which,
 while not formally a [Model-View-Controller framework](../FrameworkConcepts.md#mvc),
 embodies the the separation of concerns that is central to MVC.
 Most Infusion components have an internal model, for maintaining the state of the component.
@@ -531,7 +531,7 @@ Notice, in this example, how the `templatePrefix` term is being used.
 #### Instantiation
 
 The last thing in the `js/prefsEditor.js` file is a call to the Preferences Framework
-function [`fluid.prefs.create()`](../PreferencesEditor.md). This function actually creates the Preference Editor.
+function [`fluid.prefs.create()`](PreferencesEditor.md). This function actually creates the Preference Editor.
 It accepts two arguments:
 
 1. a CSS selector indicating the container element for the Preference Editor, and

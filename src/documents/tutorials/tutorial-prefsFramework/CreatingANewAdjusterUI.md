@@ -150,7 +150,7 @@ as inspiration.
 
 #### UI and MARKUP
 
-![a radio button styled colour and contrast panel](../images/radio-styled.png)
+![a radio button styled colour and contrast panel](../../images/radio-styled.png)
 
 ```html
 <h2>
@@ -236,7 +236,7 @@ For the radio buttons:
 
 #### UI and MARKUP
 
-![a checkbox styled table of contents panel](../images/checkbox-styled.png)
+![a checkbox styled table of contents panel](../../images/checkbox-styled.png)
 
 <div class="infusion-docs-note">
     <strong>Note:</strong>

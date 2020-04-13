@@ -62,7 +62,7 @@ Tips:
 * Overlapping regions of shapes may cause a subtraction when converted in IcoMoon (i.e. it will render as transparent) -
   in this case you may need to build a single shape from these conflicting shapes, or ensure none of your shapes overlap.
 
-Download Example SVG file: [pencil-icon-01.svg](../images/pencil-icon-01.svg)
+Download Example SVG file: [pencil-icon-01.svg](../../images/pencil-icon-01.svg)
 
 ## Step 2. Using IcoMoon to Generate Font
 
@@ -262,8 +262,8 @@ To bring back some semantics and to help improve accessibility, we use "aria-lab
 Icon fonts can appear different across browsers and across operating systems. For example, the following icon is
 rendered differently in Firefox in Mac OS X and in Windows despite being the same icon and the same browser.
 
-![a partially displayed font icon on firefox, Mac system](../images/Icon-FF-OSX.png)
-![a partially displayed font icon on firefox, Windows system](../images/Icon-FF-windows.png)
+![a partially displayed font icon on firefox, Mac system](../../images/Icon-FF-OSX.png)
+![a partially displayed font icon on firefox, Windows system](../../images/Icon-FF-windows.png)
 
 To avoid these rendering problems, when creating the SVG images avoid using fine details - not only does this help
 eliminate details in the icon font being lost during rendering, it also helps improve usability through clearer icons.
@@ -299,7 +299,7 @@ on Windows and Mac OS X 10.6+.
 3. Select the custom font from the Font drop-down menu. The glyphs in the custom font should now appear in the window.
 4. Select a character in the window. The Unicode will appear in the bottom-left corner in the status bar.
 
-![Unicode character map](../images/Unicode-charmap.png)
+![Unicode character map](../../images/Unicode-charmap.png)
 
 #### Obtaining Unicode in Mac OS X 10.6 or Later
 
@@ -316,11 +316,11 @@ on Windows and Mac OS X 10.6+.
 9. Now a "Characters" window appears with "Search" results containing each character selected in the previous step.
 10. Select an icon in the "Character" panel. The Unicode will appear in the right column.
 
-![Mac OS X Font Book](../images/mac-font-book.png)
+![Mac OS X Font Book](../../images/mac-font-book.png)
 
 Above: An image showing the Mac OS X Font Book application with the custom characters highlighted.
 
-![Mac OS X Characters window](../images/mac-characters-window.png)
+![Mac OS X Characters window](../../images/mac-characters-window.png)
 
 Above: An image showing the Mac OS X Characters window. The Unicode value for a custom character appears in the right
 most column.
