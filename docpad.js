@@ -26,8 +26,28 @@ var githubDocRoot = "https://github.com/fluid-project/infusion-docs/blob/master/
 // With this helper, we can write links to *.md files in our source files but
 // generate links to *.html in the DocPad output. This arrangement gives us
 // links that work both on the GitHub website and in the generated HTML.
+// For flexibilty,simply write the name of the .md file and the helper will automatically generate the .html link. 
 var rewriteMdLinks = function (content) {
-    return content.replace(/(<a\s[^>]*href="[\w-/\.]+)\.md(["#])/gm, "$1.html$2");
+  var getfullPath =function(filename){
+      var fullPath;
+      var append_parent = "/infusion/"+docsVersion;
+      var stripped_file = path.basename(filename);
+      siteStructure.forEach(site=>{
+        if(site.category!='Search'){
+          site.sections.forEach(section=>{
+              section.pages.forEach(page=>{
+                  if(stripped_file==path.basename(page.href,'.html')){
+                      fullPath = path.join(append_parent,page.href);                          
+                  }         
+              })        
+          }) 
+        }
+     })
+     return fullPath
+}
+     return content.replace(/([\w-/\.]+)\.md(["#])/gm, (match,p1,p2)=>{
+       return getfullPath(p1)+p2
+   }); 
 };
 
 // Helper function to build a URL for "Edit on GitHub" for the current document
