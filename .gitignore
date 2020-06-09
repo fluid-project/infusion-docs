@@ -3,3 +3,7 @@
 *~
 .project
 package-lock.json
+
+# 11ty folders
+/11ty/out/
+/11ty/node_modules/
