@@ -1,3 +1,4 @@
+require('./assets/js/create-search-digest');
 var hljs = require('highlight.js');
 
 module.exports = function (eleventyConfig) {
@@ -11,7 +12,6 @@ module.exports = function (eleventyConfig) {
 					   '</code></pre>';
 			  } catch (__) {}
 			}
-		
 			return '<pre class="highlight"><code class="hljs ' + lang + '">' + markdownit.utils.escapeHtml(str) + '</code></pre>';
 		}
     });
@@ -22,6 +22,10 @@ module.exports = function (eleventyConfig) {
         "node_modules/infusion/src": "lib/infusion/src",
         "node_modules/foundation-sites/css": "lib/foundation",
         "node_modules/octicons/octicons": "lib/octicons",
+        "node_modules/lunr": "lib/lunr",
+        "node_modules/gpii-express/src/js/lib": "lib/gpii-express",
+        "node_modules/gpii-binder/src/js": "lib/gpii-binder",
+        "node_modules/gpii-location-bar-relay/src/js": "lib/gpii-location-bar-relay",
         "assets/css": "css",
         "assets/fonts": "fonts",
         "assets/js": "js",

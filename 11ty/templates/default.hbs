@@ -20,19 +20,19 @@
         <script type="text/javascript" src="{{ url "/lib/infusion/dist/infusion-all.js" }}"></script>
         <script type="text/javascript" src="{{ url "/js/infusion-docs.js" }}"></script>
 
-        {{!-- <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-express/querystring-coding.js' document.url}}}"></script>
-        <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/transforms.js' document.url}}}"></script>
-        <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/binder.js' document.url}}}"></script> --}}
+        <script type="text/javascript" src="{{ url '/lib/gpii-express/querystring-coding.js' }}"></script>
+        <script type="text/javascript" src="{{ url '/lib/gpii-binder/transforms.js' }}"></script>
+        <script type="text/javascript" src="{{ url '/lib/gpii-binder/binder.js' }}"></script>
 
-        {{!-- {{#ifEqual document.category "Search"}}
-            <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-location-bar-relay/locationBar.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/lib/lunr/lunr.min.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/js/search-digest.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/js/search-string-parser.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/js/search.js' document.url}}}"></script>
+        {{#ifEqual category "Search"}}
+            <script type="text/javascript" src="{{ url '/lib/gpii-location-bar-relay/locationBar.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/lib/lunr/lunr.min.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/search-digest.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/search-string-parser.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/search.js' }}"></script>
         {{else}}
-            <script type="text/javascript" src="{{{relativeUrl '/js/mini-search.js' document.url}}}"></script>
-        {{/ifEqual}} --}}
+            <script type="text/javascript" src="{{ url '/js/mini-search.js' }}"></script>
+        {{/ifEqual}}
     </head>
     <body class="infusion-docs fl-theme-prefsEditor-default">
         <div class="container infusion-docs-container">
@@ -64,7 +64,7 @@
                         "templatePrefix": "{{ url "/lib/infusion/src/framework/preferences/html" }}",
                         "messagePrefix": "{{ url "/lib/infusion/src/framework/preferences/messages" }}"
                     },
-                    "tocTemplate": "{{ url "/lib/infusion/TableOfContents.html" }}"
+                    "tocTemplate": "{{ url "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html" }}"
                 });
             </script>
 
@@ -155,14 +155,14 @@
 
 
         </div> <!-- end container -->
-        {{!-- <script>
+        <script>
             fluid.docs.onLoad();
             {{#ifEqual category "Search"}}
                 fluid.docs.search(".docs-search");
             {{else}}
                 fluid.docs.search.mini(".docs-search-mini")
             {{/ifEqual}}
-    </script> --}}
+    </script>
 
     </body>
 
