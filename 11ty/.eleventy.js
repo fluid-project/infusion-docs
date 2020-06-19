@@ -50,6 +50,7 @@ module.exports = function (eleventyConfig) {
             output: "./out",
             includes: "../templates",
             data: "../_data"
-        }
+        },
+        pathPrefix: "/infusion/development/"
     }
 }

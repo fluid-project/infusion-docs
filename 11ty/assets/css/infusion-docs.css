@@ -1,52 +1,52 @@
 @font-face {
     font-family: "OpenSans", Arial, Helvetica;
-    src: url("/fonts/OpenSans-Regular.ttf") format('truetype');
+    src: url("../fonts/OpenSans-Regular.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "OpenSans-Bold";
-    src: url("/fonts/OpenSans-Bold.ttf") format('truetype');
+    src: url("../fonts/OpenSans-Bold.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "OpenSans-Semibold";
-    src: url("/fonts/OpenSans-Semibold.ttf") format('truetype');
+    src: url("../fonts/OpenSans-Semibold.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "OpenSans-Light";
-    src: url("/fonts/OpenSans-Light.ttf") format('truetype');
+    src: url("../fonts/OpenSans-Light.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "RobotoSlab";
-    src: url("/fonts/RobotoSlab-Regular.ttf") format('truetype');
+    src: url("../fonts/RobotoSlab-Regular.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "RobotoSlab-Bold";
-    src: url("/fonts/RobotoSlab-Bold.ttf") format('truetype');
+    src: url("../fonts/RobotoSlab-Bold.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "infusion-docs";
-    src: url("/fonts/infusion-docs.eot#iefix") format("embedded-opentype"), /*IE8 fix */
-         url("/fonts/infusion-docs.ttf"),
-         url("/fonts/infusion-docs.eot");
+    src: url("../fonts/infusion-docs.eot#iefix") format("embedded-opentype"), /*IE8 fix */
+         url("../fonts/infusion-docs.ttf"),
+         url("../fonts/infusion-docs.eot");
 }
 
 @font-face {
     font-family: "infusion_logo";
-    src: url("/fonts/infusion_logo.eot#iefix") format("embedded-opentype"), /*IE8 fix */
-         url("/fonts/infusion_logo.ttf"),
-         url("/fonts/infusion_logo.eot");
+    src: url("../fonts/infusion_logo.eot#iefix") format("embedded-opentype"), /*IE8 fix */
+         url("../fonts/infusion_logo.ttf"),
+         url("../fonts/infusion_logo.eot");
 }
 
 @font-face {
     font-family: "github";
-    src: url("/fonts/github-1.eot#iefix") format("embedded-opentype"), /*IE8 fix */
-         url("/fonts/github-1.ttf"),
-         url("/fonts/github-1.eot");
+    src: url("../fonts/github-1.eot#iefix") format("embedded-opentype"), /*IE8 fix */
+         url("../fonts/github-1.ttf"),
+         url("../fonts/github-1.eot");
 }
 
 html body {
