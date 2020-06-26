@@ -1,13 +1,12 @@
 {
-  "name": "11ty",
-  "version": "1.0.0",
-  "description": "",
+  "name": "infusion-docs",
+  "version": "1.5.0",
+  "description": "Infusion Documentation",
+  "license": "CC-BY-3.0",
+  "repository": "https://github.com/fluid-project/infusion-docs",
   "scripts": {
     "11ty": "eleventy --serve"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^0.11.0",
     "foundation-sites": "^5.5.2",
