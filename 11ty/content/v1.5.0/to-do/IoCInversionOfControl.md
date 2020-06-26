@@ -1,5 +1,5 @@
 ---
-title: IoC: Inversion of Control
+title: "IoC: Inversion of Control"
 layout: default
 ---
 

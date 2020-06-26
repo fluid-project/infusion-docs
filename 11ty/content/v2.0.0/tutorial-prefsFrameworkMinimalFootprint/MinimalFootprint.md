@@ -1,5 +1,5 @@
 ---
-title: Preferences Framework: Minimal Footprint
+title: "Preferences Framework: Minimal Footprint"
 layout: default
 category: Tutorials
 ---
