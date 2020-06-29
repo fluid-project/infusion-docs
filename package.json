@@ -6,6 +6,7 @@
     "repository": "https://github.com/fluid-project/infusion-docs",
     "scripts": {
         "11ty": "eleventy --serve",
+        "build": "eleventy",
         "test": "npm run test:node && npm run test:browser",
         "test:node": "node tests/all-node-tests.js",
         "test:browser": "node node_modules/testem/testem.js ci --file tests/testem.js"
