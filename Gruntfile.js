@@ -20,7 +20,7 @@ module.exports = function (grunt) {
                 options: {
                     configFile: ".eslintrc-md.json"
                 },
-                src: [ "./*.md","./src/documents/**/*.md" ]
+                src: [ "./*.md","./src/documents/**/*.md","!./src/documents/v*.*.*/**/*.md" ]
             }
         },
         jsonlint: {
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
             src: ["./src/**/*.json5", "tests/**/*.json5", "./*.json5"]
         },
         mdjsonlint: {
-            src: ["./*.md", "./**/*.md", "!./node_modules/**"]
+            src: ["./*.md", "./**/*.md", "!./node_modules/**", "!./src/documents/v*.*.*/**/*.md"]
         },
         markdownlint: {
             full: {
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
                         "ol-prefix": {style: "ordered"} // 1. 2. 3. etc
                     }
                 },
-                src: ["./*.md", "src/documents/**/*.md"]
+                src: ["./*.md", "src/documents/**/*.md", "!src/documents/v*.*.*/**/*.md"]
             }
         },
         mdlint: ["./*.md", "src/documents/**/*.md"]

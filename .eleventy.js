@@ -1,3 +1,4 @@
+require('./index')
 require('./src/scripts/create-search-digest');
 var hljs = require('highlight.js');
 
