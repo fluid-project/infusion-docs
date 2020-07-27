@@ -49,30 +49,24 @@ containing element such as a `<div>` or `<span>`.
         <tr>
             <td>drop-down</td>
             <td>
-                <pre><code>
-&lt;label for="magnifier-position"&gt;&lt;/label&gt;
-&lt;select id="magnifier-position"&gt;&lt;/select&gt;
-                </code></pre>
+                <pre class="highlight"><code class="hljs html">&lt;label for="magnifier-position"&gt;&lt;/label&gt;
+&lt;select id="magnifier-position"&gt;&lt;/select&gt;</code></pre>
             </td>
         </tr>
         <tr>
             <td>checkbox</td>
             <td>
-                <pre><code>
-&lt;input type="checkbox" id="media-choice"/&gt;
-&lt;label for="media-choice"&gt;&lt;/label&gt;
-                </code></pre>
+                <pre class="highlight"><code class="hljs html">&lt;input type="checkbox" id="media-choice"/&gt;
+&lt;label for="media-choice"&gt;&lt;/label&gt;</code></pre>
             </td>
         </tr>
         <tr>
             <td>radio button</td>
             <td>
-                <pre><code>
-&lt;div&gt;
+                <pre class="highlight"><code class="hljs html">&lt;div&gt;
     &lt;input type="radio" name="theme" id="bw" value="bw" /&gt;
     &lt;label for="bw"&gt;&lt;/label&gt;
-&lt;/div&gt;
-                </code></pre>
+&lt;/div&gt;</code></pre>
             </td>
         </tr>
     </tbody>
@@ -103,26 +97,21 @@ Some Examples
         <tr>
             <td>drop-down</td>
             <td>
-                <pre><code>
-&lt;label class="flc-prefsEditor-magPositionLabel" for="magnifier-position"&gt;&lt;/label&gt;
-&lt;select class="flc-prefsEditor-magPositionInput" id="magnifier-position"&gt;&lt;/select&gt;
-                </code></pre>
+                <pre class="highlight"><code class="hljs html">&lt;label class="flc-prefsEditor-magPositionLabel" for="magnifier-position"&gt;&lt;/label&gt;
+&lt;select class="flc-prefsEditor-magPositionInput" id="magnifier-position"&gt;&lt;/select&gt;</code></pre>
             </td>
         </tr>
         <tr>
             <td>checkbox</td>
             <td>
-                <pre><code>
-&lt;input class="flc-prefsEditor-captionsInput" type="checkbox" id="captions-choice"/&gt;
-&lt;label class="flc-prefsEditor-captionsLabel" for="captions-choice"&gt;&lt;/label&gt;
-                </code></pre>
+                <pre class="highlight"><code class="hljs html">&lt;input class="flc-prefsEditor-captionsInput" type="checkbox" id="captions-choice"/&gt;
+&lt;label class="flc-prefsEditor-captionsLabel" for="captions-choice"&gt;&lt;/label&gt;</code></pre>
             </td>
         </tr>
         <tr>
             <td>radio button</td>
             <td>
-                <pre><code>
-&lt;div class="flc-prefsEditor-themeRow"&gt;
+                <pre class="highlight"><code class="hljs html">&lt;div class="flc-prefsEditor-themeRow"&gt;
     &lt;input class="flc-prefsEditor-themeInput" type="radio" name="theme" id="bw" value="bw" /&gt;
     &lt;label class="flc-prefsEditor-themeLabel" for="bw"&gt;&lt;/label&gt;
 &lt;/div&gt;

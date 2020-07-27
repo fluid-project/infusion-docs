@@ -90,7 +90,7 @@ The properties allowed at top level in the subcomponent record are as follows:
                 This is the grade name of the type of subcomponent to be created. May be an <a
                 href="IoCReferences.md">IoC Reference</a>.
             </td>
-            <td><pre><code>subcomponent1: {
+            <td><pre class="highlight"><code class="hljs javascript">{subcomponent1: {
     type: "my.component.gradename"
 }</code></pre></td>
         </tr>
@@ -106,7 +106,7 @@ The properties allowed at top level in the subcomponent record are as follows:
                     for its type and <a href="ComponentGrades.md">grade names</a>.
                 </div>
             </td>
-            <td><pre><code>subcomponent1: {
+            <td><pre class="highlight"><code class="hljs javascript">{subcomponent1: {
     type: "fluid.mySubcomponent",
     options: {
         myOptions: "{name}.options.someOption"
@@ -128,7 +128,7 @@ The properties allowed at top level in the subcomponent record are as follows:
                     be destroyed and then recreated on every firing of the event after the first time.
                 </div>
             </td>
-            <td><pre><code>subcomponent1: {
+            <td><pre class="highlight"><code class="hljs javascript">{subcomponent1: {
     type: "fluid.mySubcomponent",
     createOnEvent: "someEvent"
 }</code></pre></td>
@@ -146,7 +146,7 @@ The properties allowed at top level in the subcomponent record are as follows:
                     see if a better solution can be found.
                 </div>
             </td>
-            <td><pre><code>subcomponent1: {
+            <td><pre class="highlight"><code class="hljs javascript">{subcomponent1: {
     type: "fluid.mySubcomponent",
     priority: "first"
 }</code></pre></td>

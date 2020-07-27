@@ -65,16 +65,14 @@ Use the following function to create a Text To Speech component:
         <tr>
             <th>Examples</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var tts = fluid.textToSpeech({
     model: {
         utteranceOpts: {
             volume: 1
         }
     },
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -135,12 +133,10 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.queueSpeech("Hello world", false, {
     volume: 0.5
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -412,16 +408,14 @@ These attributes include:
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             text: "Override other texts"
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -449,16 +443,14 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             lang: "en-US"
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -496,8 +488,7 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 
 var availableVoices = SpeechSynthesis.getVoices();
 var voiceToUse = availableVoices[0];
@@ -508,8 +499,7 @@ fluid.textToSpeech({
             voice: voiceToUse
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -542,16 +532,14 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             volume: 0.5
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -578,16 +566,14 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             rate: 2.5
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -614,16 +600,14 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             pitch: 1.2
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>

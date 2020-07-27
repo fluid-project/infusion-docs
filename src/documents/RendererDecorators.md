@@ -57,8 +57,7 @@ decorator in turn.
             <td>String</td>
             <td>jQuery function to be invoked</td>
             <td rowspan="2">
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "jQuery",
     func: "click",
     args: function() { $(this).hide(); }
@@ -81,8 +80,7 @@ decorators: [{
             <td>String</td>
             <td>Space-separated list of CSS class names</td>
             <td>
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "addClass",
     classes: "fl-widget fl-centred"
 }]
@@ -99,8 +97,7 @@ decorators: [{
             <td>String</td>
             <td>Space-separated list of CSS class names</td>
             <td>
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "removeClass",
     classes: "fl-hidden"
 }]
@@ -117,8 +114,7 @@ decorators: [{
             <td>String</td>
             <td>Global function name to be invoked</td>
             <td rowspan="4">
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "fluid",
     func: "fluid.componentName",
     container: container,
@@ -157,8 +153,7 @@ decorators: [{
                 under this key
             </td>
             <td>
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "identify",
     key: "mySpecialName"
 }]
@@ -175,8 +170,7 @@ decorators: [{
             <td>Object</td>
             <td>The attribute map to be applied to the rendered node</td>
             <td>
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "attrs",
     attributes: ""
 }]
@@ -193,8 +187,7 @@ decorators: [{
             <td>String</td>
             <td>Name of event handler to be bound</td>
             <td rowspan="2">
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "event",
     event: "click",
     handler: myHandler

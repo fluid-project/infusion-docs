@@ -67,12 +67,10 @@ Use the following function to create a UI Options component:
         <tr>
             <th>Examples</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var myUIO = fluid.uiOptions.prefsEditor("#myContainer", {
     tocTemplate: "../../components/tableOfContents/html/TableOfContents.html"
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -211,12 +209,10 @@ The options supported by UI Options are described below.
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.uiOptions.prefsEditor("#myContainer", {
     defaultLocale: "fr_CA"
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -250,12 +246,10 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.uiOptions.prefsEditor("#myContainer", {
     tocTemplate: "html/myTocTemplate.html"
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -283,28 +277,24 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Default</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 {
     templatePrefix: "../../framework/preferences/html",
     messagePrefix: "../../framework/preferences/messages"
-}
-</code>
+}</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.uiOptions.prefsEditor("#myContainer", {
     terms: {
         templatePrefix: "../infusion/framework/preferences/html",
         messagePrefix: "../infusion/framework/preferences/messages"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -329,8 +319,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.uiOptions.prefsEditor("#myContainer", {
     prefsEditor: {
         listeners: {
@@ -338,8 +327,7 @@ fluid.uiOptions.prefsEditor("#myContainer", {
             onReset: function (internalEditor) {...}
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -364,12 +352,10 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.uiOptions.prefsEditor("#myContainer", {
     enhancerType: "myNamespace.myUIEnhancer"
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -394,12 +380,10 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.uiOptions.prefsEditor("#myContainer", {
     storeType: "myNamespace.mySettingsStore"
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -432,12 +416,10 @@ fluid.uiOptions.prefsEditor("#myContainer", {
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.uiOptions.prefsEditor("#myContainer", {
     lazyLoad: true
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>

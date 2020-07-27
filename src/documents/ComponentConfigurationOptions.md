@@ -26,8 +26,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     gradeNames: "fluid.modelComponent",
     // ...
 });</code>
@@ -51,7 +50,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre><code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     invokers: {
         inv1: {
             // ...
@@ -92,8 +91,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     members: {
         member1: "{that}.options.optionsValue",
         member2: "{theOther}.dom.otherSelector",
@@ -125,7 +123,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre><code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     events: {
         onSave: "preventable",
         onReady: null
@@ -163,8 +161,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>examples.myListener = function (number, condition) {
+    <td><pre class="highlight"><code class="hljs javascript">examples.myListener = function (number, condition) {
     console.log("Event listener received number " + number + " and condition " + condition);
 };
 
@@ -181,8 +178,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myComp = examples.eventedComponent({
+    <td><pre class="highlight"><code class="hljs javascript">var myComp = examples.eventedComponent({
     listeners: {
         "myEvent.myNamespace": "examples.myOtherListener",
     }
@@ -217,8 +213,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     components: {
         subcomponent1: {
             type: "component.subcomp1",
@@ -254,8 +249,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     gradeNames: ["fluid.component"],
     distributeOptions: {
         namespace: "myDistribution",
@@ -295,8 +289,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     mergePolicy: {
         option1: "noexpand",
         option2: "nomerge"
@@ -338,8 +331,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     dynamicComponents: {
         dynamic1: {
             type: "component.subcomp1",
@@ -379,8 +371,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("fluid.pager", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("fluid.pager", {
     model: {
         pageIndex: undefined,
         pageSize: 10,
@@ -392,8 +383,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myPager = fluid.pager(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var myPager = fluid.pager(container, {
     model: {
         pageIndex: 1
     }
@@ -419,8 +409,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("fluid.tests.allChangeRecorder", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("fluid.tests.allChangeRecorder", {
     gradeNames: "fluid.tests.changeRecorder",
     modelListeners: {
         "": "{that}.record({change}.path, {change}.value, {change}.oldValue)"
@@ -446,8 +435,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("examples.volumeModelRelay", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("examples.volumeModelRelay", {
     gradeNames: ["fluid.modelComponent"],
     model: {
         volumeAsPercent: 95,
@@ -516,8 +504,7 @@ Component developers are free to define their own additional options.
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("fluid.progress", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("fluid.progress", {
     selectors: {
         displayElement: ".flc-progress",
         progressBar: ".flc-progress-bar",
@@ -531,8 +518,7 @@ Component developers are free to define their own additional options.
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myEdit = fluid.progress(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var myEdit = fluid.progress(container, {
     selectors: {
         indicator: "div.progress-indicator",
         label: "span.progress-label"
@@ -567,8 +553,7 @@ Component developers are free to define their own additional options.
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("demo.initGridReorderer", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("demo.initGridReorderer", {
     gradeNames: ["fluid.reorderGrid"],
     styles: {
         dragging: "demo-gridReorderer-dragging",
@@ -614,8 +599,7 @@ the Infusion 3.0 release - the use of the current renderer and component hierarc
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.header", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.header", {
     selectors: {
         menuItem: ".csc-header-menu-item",
         label: ".csc-header-link",
@@ -644,8 +628,7 @@ the Infusion 3.0 release - the use of the current renderer and component hierarc
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.header", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.header", {
     selectors: {
         menuItem: ".csc-header-menu-item",
         label: ".csc-header-link",
@@ -680,8 +663,7 @@ the Infusion 3.0 release - the use of the current renderer and component hierarc
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>cspace.confirmationDialog.produceTree = function (that) {
+    <td><pre class="highlight"><code class="hljs javascript">cspace.confirmationDialog.produceTree = function (that) {
     var tree = {
         // ...
     };
@@ -716,8 +698,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.searchTips", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.searchTips", {
     protoTree: {
         searchTips: {decorators: {"addClass": "{styles}.searchTips"}},
         title: {
@@ -740,8 +721,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var searchTips = cspace.searchTips(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var searchTips = cspace.searchTips(container, {
     protoTree: {
         searchTips: {decorators: {"addClass": "{styles}.searchTips"}},
         title: {
@@ -786,8 +766,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     resources: {
         headerTemplate: {
             href: "../templates/Header.html"
@@ -802,8 +781,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myComp = component.name(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var myComp = component.name(container, {
     resources: {
         footerTemplate: {
             href: "../templates/FrontPageFooter.html"
@@ -835,8 +813,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.searchToRelateDialog", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.searchToRelateDialog", {
     gradeNames: ["fluid.rendererComponent"],
     strings: {
         createNewButton: "Create",
@@ -852,8 +829,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myDialog = cspace.searchToRelateDialog(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var myDialog = cspace.searchToRelateDialog(container, {
     strings: {
         relationshipType: "Select a relationship type from the list below:",
         createNew: "Create a new record:",
@@ -878,8 +854,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("fluid.tableOfContents.levels", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("fluid.tableOfContents.levels", {
     rendererFnOptions: {
         noexpand: true
     }
@@ -889,8 +864,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var recEditor = cspace.recordEditor(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var recEditor = cspace.recordEditor(container, {
     rendererFnOptions: {
         rendererTargetSelector: "dialog"
     }
@@ -917,8 +891,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.searchBox", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.searchBox", {
     rendererOptions: {
         autoBind: false
     }
@@ -928,8 +901,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var search = cspace.searchBox(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var search = cspace.searchBox(container, {
     rendererOptions: {
         autoBind: true
     }
@@ -956,8 +928,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.login", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.login", {
     gradeNames: ["fluid.rendererComponent"],
     renderOnInit: true
     // ...
@@ -966,8 +937,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var login = cspace.login(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var login = cspace.login(container, {
     renderOnInit: false
     // ...
 });</code>

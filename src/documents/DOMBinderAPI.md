@@ -44,7 +44,7 @@ The DOM Binder object is attached to the component as a member called `dom`.
         <td>Object</td>
         <td>
             a collection of named jQuery selectors, of the form
-            <pre><code>{
+            <pre class="highlight"><code class="hljs javascript">{{
     name1: &lt;selector1&gt;,
     name2: &lt;selector2&gt;
     // ..

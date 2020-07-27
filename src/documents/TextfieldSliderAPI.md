@@ -51,8 +51,7 @@ Use the following function to create a Textfield Slider component:
         <tr>
             <th>Examples</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     strings: {
         "label": "Textfield Slider"
@@ -66,8 +65,7 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
         }
     },
     scale: 0
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -155,14 +153,12 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     strings: {
         "label": "Text Size"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -189,14 +185,12 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     attrs: {
         "aria-labelledby": "elementID"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -217,26 +211,22 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
         <tr>
             <th>Default</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 {
     container: "fl-textfieldSlider fl-focus"
-}
-</code>
+}</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     styles: {
         container: "fl-textfieldSlider fl-textfieldSlider-focus"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -257,28 +247,24 @@ var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
         <tr>
             <th>Default</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 {
     textfield: ".flc-textfieldSlider-field",
     slider: ".flc-textfieldSlider-slider"
-}
-</code>
+}</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldSlider = fluid.textfieldSlider(".flc-textfieldSlider", {
     selectors: {
         textfield: ".demo-textfieldSlider-field",
         slider: ".demo-textfieldSlider-slider"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>

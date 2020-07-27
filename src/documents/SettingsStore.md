@@ -35,11 +35,11 @@ A settings store grade that uses a cookie for persistence.
         </tr>
         <tr>
             <td><code>get</code></td>
-            <td><pre><code>fluid.prefs.cookieStore.get = function (cookieName)</code></pre></td>
+            <td><pre class="highlight"><code class="hljs javascript">{fluid.prefs.cookieStore.get = function (cookieName)</code></pre></td>
         </tr>
         <tr>
             <td><code>set</code></td>
-            <td><pre><code>fluid.prefs.cookieStore.set = function (settings, cookieOptions)</code></pre></td>
+            <td><pre class="highlight"><code class="hljs javascript">{fluid.prefs.cookieStore.set = function (settings, cookieOptions)</code></pre></td>
         </tr>
     </tbody>
 </table>
@@ -59,7 +59,7 @@ A settings store mock that doesn't do persistence. This grade is useful for test
         </tr>
         <tr>
             <td><code>set</code></td>
-            <td><pre><code>fluid.prefs.tempStore.set = function (settings, applier)</code></pre></td>
+            <td><pre class="highlight"><code class="hljs javascript">{fluid.prefs.tempStore.set = function (settings, applier)</code></pre></td>
         </tr>
     </tbody>
 </table>
