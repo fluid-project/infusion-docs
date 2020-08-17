@@ -4,7 +4,7 @@ layout: default
 category: Tutorials
 ---
 
-The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs.
+The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface and content resources so that they are personalized to the individual user's needs and preferences.
 
 UI Options does three things:
 
@@ -16,9 +16,11 @@ UI Options does three things:
 
 You can try the [UI Options demo here](http://build.fluidproject.org/infusion/demos/uiOptions/).
 
+UI Options is also available as a [Wordpress plugin](https://github.com/fluid-project/uio-wordpress-plugin) based on the latest stable release of Infusion, and as a [Drupal plugin](https://www.drupal.org/project/fluidui) (maintained by Open Concept).
+
 ## Scenario
 
-You are putting together a website and would like to give visitors a way to customize the website presentation to their individual needs. This tutorial will show you how to add the Infusion UI Options component to your site.
+You are putting together a website and would like to give visitors a way to customize the website presentation to their individual needs and preferences. This tutorial will show you how to add the Infusion UI Options component to your site.
 
 These are the basic steps to add UI Options to your website:
 
@@ -32,12 +34,6 @@ These are the basic steps to add UI Options to your website:
 The rest of this tutorial will explain these steps and assumes that you can work with HTML, JavaScript and CSS.
 
 ## Download and install the UI Options library
-
-Get the latest Infusion release:
-* [Zip package of an Infusion release](https://github.com/fluid-project/infusion/releases)
-* Using npm: `npm i infusion`
-
-If you prefer trying the latest development source code, you can visit [Infusion on GitHub](https://github.com/fluid-project/infusion).
 
 ### Get Infusion UI Options Stable Release - Zip Package
 This method will download and install the most recent stable release of Infusion.
@@ -59,7 +55,7 @@ This method will download and install the most recent stable release of Infusion
 5. Rename the directory from `build` to `infusion`, and move (or copy) the `build` directory to your project (i.e. `my-project/lib/infusion`).
 6. Optional: You can now safely delete the `infusion` directory created in step 1.
 
-Summary of commands:
+#### Summary of commands:
 ```bash
 npm i infusion
 cd node_modules/infusion/
@@ -72,19 +68,22 @@ This method will download and install the current version of Infusion in develop
 
 <div class="infusion-docs-note">
 <strong>Note:</strong>
-Use the latest development source if you want to try out the latest changes and features. We recommend using a stable release for production situations by using one of the other methods above.
+Use the latest development source
 </div>
+
+ Note: [Get Grunt](https://gruntjs.com/) if you don't have it installed.
+Prereqs: Node, npm, grunt, and grunt CLI
 
 1. Clone the Infusion GitHub repository anywhere to your local filesystem: `git clone https://github.com/fluid-project/infusion`. This will create a directory `infusion` containing the Infusion source code.
 2. Within the `infusion` directory, run `npm install` to get Infusion's dependencies.
-3. Build a version of Infusion with UI Options by running `grunt custom --include="uiOptions" --name="uiOptions"`. This will create a build of Infusion in the directory `infusion/build/`. Note: [Get Grunt](https://gruntjs.com/) if you don't have it installed.
+3. Build a version of Infusion with UI Options by running `grunt custom --include="uiOptions" --name="uiOptions"`. This will create a build of Infusion in the directory `infusion/build/`.
 4. Your `infusion/build` directory will include a single file containing all of the JavaScript you need
    (`infusion-uiOptions.js`), HTML templates, CSS files, and other components to get UI Options to work. You will later
    link to these files in your HTML files.
 5. Rename the directory from `build` to `infusion`, and move (or copy) the `build` directory to your project (i.e. `my-project/lib/infusion`).
 6. Optional: You can now safely delete the `infusion` directory created in step 1.
 
-Summary of commands:
+#### Summary of commands:
 ```bash
 git clone https://github.com/fluid-project/infusion
 cd infusion
