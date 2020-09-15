@@ -260,11 +260,10 @@ It's common for images to be used in functional ways such as acting as a button 
 <a href="download.html"><img src="./images/download.png" alt="Download our latest stuff!"></a>
 ```
 
-The problem here is if we replace the image in the anchor with an icon font, any text descriptions (the alt text)
-<!-- will be removed as well - causing a possible usability and accessibility issue. -->
+However if we replace the image in the anchor with an icon font, any text descriptions (the alt text of the original image) will be removed as well; potentially causing usability and accessibility issues.
 
 ```html
-/* The alt text is now gone, causing a usability and accessibility problem. */
+/* The alt text is now gone, causing a usability and accessibility issue. */
 <a href="download.html"></a>
 ```
 
