@@ -298,13 +298,19 @@ cons of SVG Icons. For more information on SVG Icons see the
 
 * Can use multiple colours
 * Can support complex icons including multiple colours
-  * although it increases the complexity to style with CSS
+  * See: [Styling SVG <use> Content with CSS](https://tympanus.net/codrops/2015/07/16/styling-svg-use-content-css/) for
+    a detailed explanation on styling SVGs with CSS.
 * Don't have to compile into a font
 
 ### Drawbacks of SVG Icons
 
-* Less browser support, although modern browsers should handle most features
+* Less browser support, although modern browsers should handle most features.
+  * See: [caniuse](https://caniuse.com/?search=svg) for more details on supported features.
 * Many different ways to add to a page, but only those that allow access to the SVG markup will permit styling via CSS
-* Styling multi-coloured SVGs can be complex and may not always be supported
-* Depending on how they are added to the page, may make reading page markup harder
-* Depending on how they are added to the page, may increase transfer size due to lack of caching.
+  * Embedding SVG markup directly into the page markup
+    * may make reading page markup harder
+    * Depending on how SVGs are added to the page, may increase transfer size due to lack of caching.
+  * `<use>` to import SVG into page markup
+    * Allows for styling and caching by referencing external SVGs
+    * Not supported in older browsers such as IE 11
+
