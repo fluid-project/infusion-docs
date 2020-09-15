@@ -16,7 +16,7 @@ As well as the use of jqUnit in the browser, there is also a node.js module,
 node.js tests.
 
 A more advanced piece of infrastructure is the [IoC Testing Framework](IoCTestingFramework.md) which is useful for
-writing asynchronous test fixtures targetting Infusion's IoC [component trees](UnderstandingInfusionComponents.md). This
+writing asynchronous test fixtures targeting Infusion's IoC [component trees](UnderstandingInfusionComponents.md). This
 is not a replacement for jqUnit but a library layered on top of it which is good for certain specialised purposes. If
 you are writing plain unit tests, as well as integration tests which don't have a highly asynchronous, conversational
 style, you should continue to write jqUnit fixtures. If you find you are writing large-scale integration or acceptance
@@ -188,7 +188,7 @@ iii) other means. Functions supplied by jqUnit include `jqUnit.canonicaliseFunct
 Assert that the actual value object is a superset (considered in terms of shallow key coincidence) of the expected value
 object. The coincidence between `value` and `expected` is only in terms of top-level keys, but the comparison will use
 deep equality. That is, if `value` has any top-level keys in common with `expected`, they must compare equal by deep
-equality - but it may have extra top-level keys whose contents will be iignored. "Left hand" (expected) is a subset of
+equality - but it may have extra top-level keys whose contents will be ignored. "Left hand" (expected) is a subset of
 actual.
 
 ### jqUnit.assertRightHand(message, expected, value)
@@ -296,7 +296,7 @@ will compare equal to
 }
 ```
 
-* `expected {Object|Array}` A condensed JSON respresentation of a set of assertions to make about a subtree of DOM
+* `expected {Object|Array}` A condensed JSON representation of a set of assertions to make about a subtree of DOM
   nodes, or an array of these
 * `node {DOM|Array of DOM|jQuery}` The DOM node to be checked against `expected` - this may also be an array of DOM
   nodes or a jQuery object.

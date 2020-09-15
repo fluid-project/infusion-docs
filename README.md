@@ -21,9 +21,24 @@ npm run docpad
 
 Then, point your browser to: `http://localhost:9778/`
 
+## Generating a Docker image
+
+You can serve the website from a [Docker](https://docs.docker.com/get-docker) container.
+
+Once you have Docker installed, run the following commands to build a Docker image and start a container:
+
+* Build the image: `docker build -t infusion-docs .`
+* Run the container: `docker run --name infusion-docs -p 8000:80 infusion-docs`
+
+The documentation will be available at [http://localhost:8000](http://localhost:8000)
+
+* To stop and remove the container: `docker rm -f infusion-docs`
+
+If you make changes to the documentation, repeat the steps to build the image and start a new container.
+
 ## Deploy
 
-While GitHub Pages is not used to host [fluiproject.org](https://docs.fluidproject.org), our deployment process requires
+While GitHub Pages is not used to host [fluidproject.org](https://docs.fluidproject.org), our deployment process requires
 that the generated site be pushed to the `deploy` branch in the project repo. The contents of the `deploy` branch will
 automatically be served as the contents are changed.
 

@@ -30,7 +30,7 @@ code for the simple Preference Editor in the examples folder:
 We recommend you download the Infusion library and load the example code into your favourite editor.
 
 <figure>
-    ![the folder hierarchy of the sample code](../images/prefsEditorFolders.png)
+    <img src="../images/prefsEditorFolders.png" alt="the folder hierarchy of the sample code">
     <figcaption>Figure 1: Folder hierarchy for the Preference Editor example</figcaption>
 </figure>
 
@@ -40,7 +40,7 @@ approach](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server
 [MAMP](https://www.mamp.info/en/)) and navigate to the `index.html` file in a browser, you should see this interface:
 
 <figure id="figure2">
-    ![The screen of the example Preference Editor](../images/simplePrefsEditor.png)
+    <img src="../images/simplePrefsEditor.png" alt="The screen of the example Preference Editor">
     <figcaption>Figure 2: The screen of the example Preference Editor</figcaption>
 </figure>
 
@@ -51,7 +51,7 @@ cookie, and when you reload the page, the checkbox will be set to the saved valu
 Let’s talk about what we’re seeing in this interface:
 
 <figure>
-    ![The parts of a Preference Editor screen](../images/prefsEditorParts.png)
+    <img src="../images/prefsEditorParts.png" alt="The parts of a Preference Editor screen">
     <figcaption>Figure 3: The parts of a Preference Editor screen</figcaption>
 </figure>
 
@@ -283,7 +283,7 @@ the initial value for the property should be taken from the `“default”` prop
 </ul>
 
 A Preference Map can specify other destinations for Primary Schema information, besides the model.
-We'll see an example of this when we add antoher panel, later in this tutorial.
+We'll see an example of this when we add another panel, later in this tutorial.
 </dd>
 
 <dt>

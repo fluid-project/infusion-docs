@@ -93,9 +93,9 @@ var copyDeps = function () {
             dstDir: "out/infusion/development/lib/octicons",
             srcFiles: ["node_modules/octicons/octicons"]
         },
-        fuse: {
-            dstDir: "out/infusion/development/lib/fuse.js",
-            srcFiles: ["node_modules/fuse.js/dist/fuse.js"]
+        lunr: {
+            dstDir: "out/infusion/development/lib/lunr",
+            srcFiles: ["node_modules/lunr"]
         },
         express: {
             dstDir: "out/infusion/development/lib/gpii-express",

@@ -64,4 +64,4 @@ this:
 * ![A horizontal navigation list with white text on black background.](../images/tutorial-uio-content-wb.png)
 * ![A horizontal navigation list with black text on white background.](../images/tutorial-uio-content-bw.png)
 * ![A horizontal navigation list with black text on yellow background.](../images/tutorial-uio-content-by.png)
-* ![A horizontal navigation list with light gret text on grey background.](../images/tutorial-uio-content-lgdg.png)
+* ![A horizontal navigation list with light grey text on grey background.](../images/tutorial-uio-content-lgdg.png)
