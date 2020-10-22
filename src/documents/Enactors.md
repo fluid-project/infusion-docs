@@ -38,7 +38,7 @@ fluid.defaults("my.pref.enactor", {
 Enactors are, by default, [model components](ComponentGrades.md), so they automatically provide support for a model and
 for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the
 DOM, the
-[`fluid.viewComponent`](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L40-L42)
+[`fluid.viewComponent`](https://github.com/fluid-project/infusion/blob/main/src/framework/core/js/FluidView.js#L40-L42)
 grade should be used, and the `selectors` option should be provided, as shown in the following example:
 
 ```javascript

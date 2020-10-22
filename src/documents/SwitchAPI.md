@@ -200,9 +200,9 @@ class names. The _default_ class names are described below, and can be used by i
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> Switch.css is generated from the Switch.styl Stylus file. See the <a
-    href="https://github.com/fluid-project/infusion/blob/master/README.md#developing-with-the-preferences-framework">Developing
+    href="https://github.com/fluid-project/infusion/blob/main/README.md#developing-with-the-preferences-framework">Developing
     with the Preferences Framework</a> section of the <a
-    href="https://github.com/fluid-project/infusion/blob/master/README.md">Infusion README</a> for how to build Stylus
+    href="https://github.com/fluid-project/infusion/blob/main/README.md">Infusion README</a> for how to build Stylus
     files.
 </div>
 
