@@ -1,7 +1,7 @@
 ---
 title: Pager 1.5 Migration
 layout: default
-category: Infusion
+category: Tutorials
 ---
 
 This page will walk you through the process of upgrading your existing 1.4 Pager component implementation to the new 1.5

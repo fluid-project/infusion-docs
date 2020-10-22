@@ -1,7 +1,7 @@
 ---
 title: UI Options 1.5 Migration
 layout: default
-category: Infusion
+category: Tutorials
 ---
 
 This page will walk you through the process of upgrading your existing 1.4 UI Options implementation to the 1.5 version.

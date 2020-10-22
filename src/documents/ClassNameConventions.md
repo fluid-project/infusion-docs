@@ -41,7 +41,7 @@ with the same guidelines as CSS selectors.
 
 Some examples of component selectors:
 
-* `flc-progress-label`: the label for a progress bar ([Progress](to-do/Progress.md) component)
+* `flc-progress-label`: the label for a progress bar ([Progress](../to-do/Progress) component)
 * `flc-reorderer-dropWarning`: the drop warning used with the reorderer ([Reorderer](to-do/Reorderer.md) component)
 * `flc-inlineEdit-textEditButton`: the 'edit' button used with an inline edit ([Inline Edit](to-do/InlineEdit.md) component
 * `flc-pager-pageLink-skip`: a page link that should be skipped ([Pager](to-do/Pager.md) component)

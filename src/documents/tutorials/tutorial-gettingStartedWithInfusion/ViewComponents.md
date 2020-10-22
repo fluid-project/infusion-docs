@@ -52,7 +52,7 @@ component's defaults, integrators can override the selectors without requiring a
 
 Consider a simple user interface for the currency converter example we looked at earlier:
 
-![Currency Converter Screenshot](../images/curr-converter-screenshot.png)
+![Currency Converter Screenshot](../../images/curr-converter-screenshot.png)
 
 There are several elements we'll need to identify:
 

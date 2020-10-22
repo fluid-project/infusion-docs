@@ -8,7 +8,7 @@ Infusion components are configured using options that are defined by the compone
 integrator. While component developers are free to define whatever options are appropriate for their component, the
 Infusion Framework supports a number of predefined options.
 
-The particular set of options interpreted by the framework is determined by the [Grades](ComponentGrades.md) that the
+The particular set of options interpreted by the framework is determined by the [Grades](../ComponentGrades) that the
 component is derived from. Developers and integrators can define further grades which respond to yet further options,
 which they should document if they expect the options to be generally useful. This page briefly describes these
 predefined options and provides links to more information about the related framework functionality.
@@ -22,7 +22,7 @@ The following options are supported by all component grades, that is, those deri
 <table>
   <tr>
     <th>Description</th>
-    <td>A <code>String</code> or <code>Array of String</code> <a href="ComponentGrades.md">grade names</a>.</td>
+    <td>A <code>String</code> or <code>Array of String</code> <a href="../ComponentGrades">grade names</a>.</td>
   </tr>
   <tr>
     <th>Example Definition</th>
@@ -35,7 +35,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="ComponentGrades.md">Component Grades</a></td>
+    <td><a href="../ComponentGrades">Component Grades</a></td>
   </tr>
 </table>
 
@@ -66,7 +66,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="Invokers.md">Invokers</a></td>
+    <td><a href="../Invokers">Invokers</a></td>
   </tr>
 </table>
 
@@ -86,8 +86,8 @@ The following options are supported by all component grades, that is, those deri
         Defining a method as a Function in <code>members</code> will differ from <code>invokers</code> in that the
         arguments of members are not resolved at invocation time. The use of such function members is not recommended
         except where very high invocation performance is required.  The right-hand-side may contain an
-        <a href="ExpansionOfComponentOptions.md">expander</a> definition, which may perhaps itself resolve onto an
-        <a href="Invokers.md">invoker</a>.
+        <a href="../ExpansionOfComponentOptions">expander</a> definition, which may perhaps itself resolve onto an
+        <a href="../Invokers">invoker</a>.
     </td>
   </tr>
   <tr>
@@ -111,7 +111,7 @@ The following options are supported by all component grades, that is, those deri
     <th>Description</th>
     <td>
         A record containing key/value pairs that define the events the component will fire: the keys are the event
-        names, the values define the type of the event (see <a href="InfusionEventSystem.md">Infusion Event System</a>
+        names, the values define the type of the event (see <a href="../InfusionEventSystem">Infusion Event System</a>
         for information on the different event types).
     </td>
   </tr>
@@ -136,7 +136,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="InfusionEventSystem.md">Infusion Event System</a></td>
+    <td><a href="../InfusionEventSystem">Infusion Event System</a></td>
   </tr>
 </table>
 
@@ -150,15 +150,15 @@ The following options are supported by all component grades, that is, those deri
   <tr>
     <th>Notes</th>
     <td>
-        Both component developers and integrators can define listeners for events. <a href="Invokers.md">Invokers</a>
+        Both component developers and integrators can define listeners for events. <a href="../Invokers">Invokers</a>
         and the `fire` method of other events can be used as listeners here, as well as any function handle resulting
-        from an <a href="ExpansionOfComponentOptions.md">Expanders</a>. Note that as well as being a simple string
-        holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC
+        from an <a href="../ExpansionOfComponentOptions">Expanders</a>. Note that as well as being a simple string
+        holding the name of an event on this component, a listener key may also be a full <a href="../IoCReferences">IoC
         Reference</a> to any other event held in the component tree (for example
         <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, the value
-        associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a> or else follow the syntax
+        associated with the key may be a <a href="../InfusionEventSystem">Listener Record</a> or else follow the syntax
         of an invoker indicating that the registered listener receives a different signature from the one that the event
-        has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).
+        has fired (see <a href="../EventInjectionAndBoiling">Event injection and boiling</a>).
     </td>
   </tr>
   <tr>
@@ -191,7 +191,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="InfusionEventSystem.md">Infusion Event System</a></td>
+    <td><a href="../InfusionEventSystem">Infusion Event System</a></td>
   </tr>
 </table>
 
@@ -211,7 +211,7 @@ fluid.defaults("examples.eventedComponent", {
             <li>the original defaults record,</li>
             <li>the subcomponent record,</li>
             <li>direct user options (supplied to a component creator function),</li>
-            <li><a href="IoCSS.md">distributed options</a>.</li>
+            <li><a href="../IoCSS">distributed options</a>.</li>
         </ol>
     </td>
   </tr>
@@ -232,11 +232,11 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="SubcomponentDeclaration.md">Documentation: Subcomponents</a></td>
+    <td><a href="../SubcomponentDeclaration">Documentation: Subcomponents</a></td>
   <tr>
   <tr>
     <th></th>
-    <td><a href="tutorial-gettingStartedWithInfusion/Subcomponents.md">Tutorial: Subcomponents</a></td>
+    <td><a href="../tutorials/tutorial-gettingStartedWithInfusion/Subcomponents">Tutorial: Subcomponents</a></td>
   </tr>
 </table>
 
@@ -268,7 +268,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="IoCSS.md">IoCSS for options distributions</a></td>
+    <td><a href="../IoCSS">IoCSS for options distributions</a></td>
   </tr>
 </table>
 
@@ -308,7 +308,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="OptionsMerging.md">Options Merging</a></td>
+    <td><a href="../OptionsMerging">Options Merging</a></td>
   </tr>
 </table>
 
@@ -319,7 +319,7 @@ fluid.defaults("examples.eventedComponent", {
     <th>Description</th>
     <td>
         An object containing named definitions of the component's
-        <a href="SubcomponentDeclaration.md#dynamic-components">dynamic subcomponents</a>. Rather than exactly one
+        <a href="../SubcomponentDeclaration#dynamic-components">dynamic subcomponents</a>. Rather than exactly one
         subcomponent being associated with its parent from these records, there may be one subcomponent per element of
         an array, or one per firing of an event.
     </td>
@@ -356,9 +356,9 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="SubcomponentDeclaration.md#dynamic-components">Documentation: Dynamic components</a></td>
+    <td><a href="../SubcomponentDeclaration#dynamic-components">Documentation: Dynamic components</a></td>
   <tr><th></th>
-    <td><a href="tutorial-gettingStartedWithInfusion/Subcomponents.md">Tutorial: Subcomponents</a></td>
+    <td><a href="../tutorials/tutorial-gettingStartedWithInfusion/Subcomponents">Tutorial: Subcomponents</a></td>
   </tr>
 </table>
 
@@ -368,7 +368,7 @@ Components defined with a grade of `fluid.modelComponent` support all of the
 [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component
 developers are free to define their own additional options.
 
-See also: [Component Grades](ComponentGrades.md)
+See also: [Component Grades](ComponentGrades)
 
 ### `model`
 
@@ -403,8 +403,8 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="FrameworkConcepts.md#model-objects">Model Objects</a><br/>
-        <a href="ChangeApplierAPI.md">ChangeApplier API</a><br/>
+    <td><a href="FrameworkConcepts#model-objects">Model Objects</a><br/>
+        <a href="ChangeApplierAPI">ChangeApplier API</a><br/>
   </tr>
 </table>
 
@@ -430,7 +430,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="ChangeApplierAPI.md#model-listener-declaration">Model Listeners</a></td>
+    <td><a href="ChangeApplierAPI#model-listener-declaration">Model Listeners</a></td>
   </tr>
 </table>
 
@@ -465,7 +465,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="ModelRelay.md">Model Relay</a></td>
+    <td><a href="ModelRelay">Model Relay</a></td>
   </tr>
 </table>
 
@@ -482,7 +482,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="ChangeApplierAPI.md">ChangeApplier API</a></td>
+    <td><a href="ChangeApplierAPI">ChangeApplier API</a></td>
   </tr>
 </table>
 
@@ -509,7 +509,7 @@ Component developers are free to define their own additional options.
   <tr>
     <th>Notes</th>
     <td>
-        The Framework will create a <a href="DOMBinder.md">DOM Binder</a> that should be used to access the elements
+        The Framework will create a <a href="DOMBinder">DOM Binder</a> that should be used to access the elements
         identified by selectors. The DOM Binder attaches a function to the component object called <code>locate()</code>
         which retrieves the element given the selector name.
     </td>
@@ -543,7 +543,7 @@ Component developers are free to define their own additional options.
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="DOMBinder.md">DOM Binder</a></td>
+    <td><a href="DOMBinder">DOM Binder</a></td>
   </tr>
 </table>
 
@@ -583,8 +583,8 @@ Component developers are free to define their own additional options.
 </table>
 
 In addition to the options above, a View Component also accepts an additional argument named `container` which may be
-supplied either as the first argument to its [Creator Function](UnderstandingInfusionComponents.md) or else at top level
-in its [Subcomponent Record](SubcomponentDeclaration.md). It is not currently supported to supply this value as a
+supplied either as the first argument to its [Creator Function](UnderstandingInfusionComponents) or else at top level
+in its [Subcomponent Record](SubcomponentDeclaration). It is not currently supported to supply this value as a
 standard option in the options record.
 
 ## Renderer Components
@@ -667,7 +667,7 @@ the Infusion 3.0 release - the use of the current renderer and component hierarc
   <tr>
     <th>Description</th>
     <td>
-        A function that will return a <a href="RendererComponentTrees.md">Renderer Component Tree</a> for the component.
+        A function that will return a <a href="RendererComponentTrees">Renderer Component Tree</a> for the component.
     </td>
   </tr>
   <tr>
@@ -696,7 +696,7 @@ fluid.defaults("cspace.confirmationDialog", {
   <tr>
     <th>See also</th>
     <td><a href="#prototree">protoTree</a><br/>
-    <a href="RendererComponentTrees.md">Renderer Component Tree</a></td>
+    <a href="RendererComponentTrees">Renderer Component Tree</a></td>
   </tr>
 </table>
 
@@ -705,7 +705,7 @@ fluid.defaults("cspace.confirmationDialog", {
 <table>
   <tr>
     <th>Description</th>
-    <td>A tree of Renderer <a href="ProtoComponentTypes.md">protocomponents</a>.</td>
+    <td>A tree of Renderer <a href="ProtoComponentTypes">protocomponents</a>.</td>
   </tr>
   <tr>
     <th>Notes</th>
@@ -765,8 +765,8 @@ fluid.defaults("cspace.confirmationDialog", {
   <tr>
     <th>See also</th>
     <td><a href="#producetree">produceTree</a><br/>
-    <a href="RendererComponentTrees.md">Renderer Component Tree</a><br/>
-    <a href="ProtoComponentTypes.md">ProtoComponent Types</a></td>
+    <a href="RendererComponentTrees">Renderer Component Tree</a><br/>
+    <a href="ProtoComponentTypes">ProtoComponent Types</a></td>
   </tr>
 </table>
 
@@ -900,7 +900,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="RendererComponents.md">Renderer Components</a><br/>
+    <td><a href="RendererComponents">Renderer Components</a><br/>
     <code><a href="https://github.com/fluid-project/infusion/blob/infusion-1.5.x/src/framework/renderer/js/RendererUtilities.js#L62-L100">fluid.renderer.createRendererSubcomponent</a></code></td>
   </tr>
 </table>
@@ -939,7 +939,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>See also</th>
-    <td><a href="RendererComponents.md">Renderer Components</a><br/>
+    <td><a href="RendererComponents">Renderer Components</a><br/>
     <code><a href="#rendererfnoptions">rendererFnOptions</a></code></td>
   </tr>
 </table>
