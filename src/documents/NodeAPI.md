@@ -5,7 +5,7 @@ category: Infusion
 ---
 
 Infusion's [core API](CoreAPI.md) and [IoC system](HowToUseInfusionIoC.md) are fully supported in node.js. Infusion is
-supplied with a standard [package.json](https://github.com/fluid-project/infusion/blob/master/package.json) file and
+supplied with a standard [package.json](https://github.com/fluid-project/infusion/blob/main/package.json) file and
 registered as a module in [npm's registry](https://www.npmjs.com/package/infusion). Infusion's global namespace model,
 as operated through functions such as [`fluid.registerNamespace`](CoreAPI.md#fluidregisternamespacepath) and
 [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), requires some care in the node.js environment which makes
