@@ -1,5 +1,7 @@
 # Infusion Documentation
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c9061766-d760-4eda-922f-da3b838a6013/deploy-status)](https://app.netlify.com/sites/fluid-infusion-docs/deploys)
+
 ## Browse the Infusion Documentation on GitHub
 
 You can [browse the Infusion Documentation as static user friendly pages](http://docs.fluidproject.org/infusion/), or if
