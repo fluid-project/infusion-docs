@@ -21,7 +21,7 @@ Try the [UI Options demo](http://build.fluidproject.org/infusion/demos/uiOptions
 UI Options is also available as a [Wordpress plugin](https://github.com/fluid-project/uio-wordpress-plugin) based on the
 latest stable release of Infusion, and as a [Drupal plugin](https://www.drupal.org/project/fluidui) (maintained by [OpenConcept](https://openconcept.ca)).
 
-## Scenario
+## Overview
 
 The goal is to put together a website and allow visitors a way to customize the website presentation to their
 individual needs and preferences. This tutorial will outline steps needed to Infusion UI Options component a site.
