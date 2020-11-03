@@ -61,7 +61,7 @@ instance of a component holding a [`distributeOptions`](IoCSS.md) block globally
 ### fluid.expand(material, that)
 
 [Expands](ExpansionOfComponentOptions.md) some options material in the context of a particular component - any [IoC
-References](IocReferences.md) and expanders held at any depth in the material will be expanded to hold their resolved
+References](IoCReferences.md) and expanders held at any depth in the material will be expanded to hold their resolved
 contents. The source `material` will not be modified.
 
 * `material {Object}` The configuration material to be expanded

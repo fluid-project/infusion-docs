@@ -26,11 +26,11 @@ reading more about something.
 The source code used in this tutorial is one of the examples provided in the Infusion code base, which you can download
 from github: [https://github.com/fluid-project/infusion](https://github.com/fluid-project/infusion). You’ll find the
 code for the simple Preference Editor in the examples folder:
-[https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor).
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor).
 We recommend you download the Infusion library and load the example code into your favourite editor.
 
 <figure>
-    ![the folder hierarchy of the sample code](../images/prefsEditorFolders.png)
+    <img src="../images/prefsEditorFolders.png" alt="the folder hierarchy of the sample code">
     <figcaption>Figure 1: Folder hierarchy for the Preference Editor example</figcaption>
 </figure>
 
@@ -40,7 +40,7 @@ approach](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server
 [MAMP](https://www.mamp.info/en/)) and navigate to the `index.html` file in a browser, you should see this interface:
 
 <figure id="figure2">
-    ![The screen of the example Preference Editor](../images/simplePrefsEditor.png)
+    <img src="../images/simplePrefsEditor.png" alt="The screen of the example Preference Editor">
     <figcaption>Figure 2: The screen of the example Preference Editor</figcaption>
 </figure>
 
@@ -51,7 +51,7 @@ cookie, and when you reload the page, the checkbox will be set to the saved valu
 Let’s talk about what we’re seeing in this interface:
 
 <figure>
-    ![The parts of a Preference Editor screen](../images/prefsEditorParts.png)
+    <img src="../images/prefsEditorParts.png" alt="The parts of a Preference Editor screen">
     <figcaption>Figure 3: The parts of a Preference Editor screen</figcaption>
 </figure>
 
@@ -452,7 +452,7 @@ The template property specifies the main HTML template for the entire Preference
 ```
 
 You can see the full text of this file, `prefsEditorTemplate.html`, in the github repo:
-[https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html)
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html)
 The main thing to note in the template is the placeholder for the Panel, in this example a `<div>` with the class
 `awec-heatedSeats`:
 
@@ -549,7 +549,7 @@ awesomeCars.prefs.init = function (container) {
 
 This function is invoked in the main HTML file for the Preference Editor, `index.html`. You can see the entire file
 here:
-[https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/index.html](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/index.html).
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/index.html](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/index.html).
 Let’s look at this invocation:
 
 ```html
