@@ -213,6 +213,7 @@
                 "pages":
                 [
                     { "pageName": "Setting Up User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" },
+                    { "pageName": "Getting User Interface Options", "href": "/tutorial-userInterfaceOptions/GettingUIOptions.html" },                  
                     { "pageName": "Working with User Interface Options", "href": "/tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.html"},
                     { "pageName": "Using Images in Contrast Modes", "href": "/tutorial-userInterfaceOptions/UsingImagesInContrastModes.html"},
                     { "pageName": "Style Effects and Legibility in Contrast Modes", "href": "/tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes.html"},
