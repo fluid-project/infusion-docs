@@ -6,9 +6,7 @@ category: Tutorials
 
 This document outlines different methods to obtain UI Options. Choose the best option that meets your needs.
 
-See [Setting Up User Interface Options](./UserInterfaceOptions.md) how-to guide for adding UI Options to your project.
-
-## Get Infusion UI Options Stable Release - Zip Package
+## Get Infusion UI Options stable release - Zip package
 
 This method will download and install the last published release of Infusion. For more current development versions,
 refer to the other methods below.
@@ -64,3 +62,7 @@ cd infusion
 npm install
 grunt custom --include="uiOptions" --name="uiOptions"
 ```
+
+## Adding UI Options to projects
+
+After obtaining Infusion with UI Options using one of the methods above, visit [Setting Up User Interface Options](./UserInterfaceOptions.md) how-to guide for instructions on adding UI Options to a project.

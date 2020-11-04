@@ -16,7 +16,7 @@ UI Options does three things:
 
 ![Screen shot of the UI Options Component](../images/uio-showcase.png "Screen shot of the UI Options Component")
 
-Try the [UI Options demo](http://build.fluidproject.org/infusion/demos/uiOptions/).
+Try the [UI Options demo](https://build-infusion.fluidproject.org/demos/uioptions/).
 
 UI Options is also available as a [Wordpress plugin](https://github.com/fluid-project/uio-wordpress-plugin) based on the
 latest stable release of Infusion, and as a [Drupal plugin](https://www.drupal.org/project/fluidui) (maintained by [OpenConcept](https://openconcept.ca)).
@@ -30,8 +30,8 @@ These are the basic steps to add UI Options:
 
 1. [Download and install UI Options](#download-and-install-the-ui-options-library)
 2. [Prepare your page](#prepare-the-page)
-    * [The Sliding Panel](#the-sliding-panel)
-    * [The Table of Contents](#the-table-of-contents)
+    * [The Sliding Panel](#add-the-sliding-panel)
+    * [The Table of Contents](#add-the-table-of-contents)
 3. [Add dependencies to the page](#add-dependencies-to-the-page)
 4. [Add the UI Options component](#add-the-ui-options-component)
 
@@ -43,7 +43,7 @@ Download and install UI Options using one of the methods outlined in [Getting Us
 
 ## Prepare the page
 
-### The Sliding Panel
+### Add the Sliding Panel
 
 The UI Options component includes HTML templates for all the controls, so it's not necessary to create any HTML for them.
 
@@ -96,7 +96,7 @@ button in the upper left corner, since we haven't set up the CSS and UI Options 
     Preferences Framework</a>.
 </div>
 
-### Adding UI Options' Table of Contents
+### Add the Table of Contents
 
 One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a
 placeholder `<nav>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` and
@@ -147,8 +147,7 @@ adjust the paths to reflect where you've saved the Infusion package.
     <strong>Notes:</strong>
     <ul>
         <li>If your project is already using `normalize.css` you can omit it from snippet above.</li>
-
-        <li>If you are using the minified version of `infusion-uio.js` (i.e. all of the whitespace
+        <li>If you are using the minified version of <code>infusion-uio.js</code> (i.e. all of the whitespace
         removed), you can still debug the code using the provided source map. For more information, visit <a
         href="https://github.com/fluid-project/infusion/blob/master/README.md#source-maps">the Infusion Release
         Readme</a>.</li>
