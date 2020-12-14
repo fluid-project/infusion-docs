@@ -40,7 +40,7 @@ package which requires the fewest requests. From the Infusion root directory run
 which will create a zip file containing all of the bundled code.
 
 See: "[How Do I Create an Infusion
-Package](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package)"
+Package](https://github.com/fluid-project/infusion/blob/main/README.md#how-do-i-create-an-infusion-package)"
 documentation for the full list of steps.
 
 ### Full Page Preferences Editor
@@ -70,7 +70,7 @@ The code consists of the following three parts:
    preferences to the page.
 3. `fluid.prefs.fullPreview` - The Full Page prefs editor, including a preview.
 
-(see: [fullPage.html](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/fullPage.html))
+(see: [fullPage.html](https://github.com/fluid-project/infusion/blob/main/examples/framework/preferences/minimalFootprint/fullPage.html))
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> The code snippet below can be loaded in through a JavaScript file or added directly to the
@@ -151,7 +151,7 @@ a browser cookie. The simple solution is to check for the presence of this cooki
 Settings Store and Page Enhancer if it's found.
 
 The following example makes use the functions provided by
-[loadScripts.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/loadScripts.js)
+[loadScripts.js](https://github.com/fluid-project/infusion/blob/main/examples/framework/preferences/minimalFootprint/js/loadScripts.js)
 to check the cookie and lazy load the required scripts:
 
 The first step is to check if a cookie for user preferences was set. If it is found, the necessary JavaScript files
@@ -159,7 +159,7 @@ should be loaded. By lazy loading the scripts we save on the download and proces
 not in use.
 
 (see:
-[loadScripts.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/loadScripts.js))
+[loadScripts.js](https://github.com/fluid-project/infusion/blob/main/examples/framework/preferences/minimalFootprint/js/loadScripts.js))
 
 <div class="infusion-docs-note">
 
@@ -185,7 +185,7 @@ build](#minified-custom-build) to be generated.
 ```
 
 The following is an example of an instantiation script.
-(see: [lazyLoad.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/lazyLoad.js))
+(see: [lazyLoad.js](https://github.com/fluid-project/infusion/blob/main/examples/framework/preferences/minimalFootprint/js/lazyLoad.js))
 
 ```javascript
 /**

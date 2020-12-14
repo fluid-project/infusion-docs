@@ -26,7 +26,7 @@ reading more about something.
 The source code used in this tutorial is one of the examples provided in the Infusion code base, which you can download
 from github: [https://github.com/fluid-project/infusion](https://github.com/fluid-project/infusion). You’ll find the
 code for the simple Preference Editor in the examples folder:
-[https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor).
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor).
 We recommend you download the Infusion library and load the example code into your favourite editor.
 
 <figure>
@@ -452,7 +452,7 @@ The template property specifies the main HTML template for the entire Preference
 ```
 
 You can see the full text of this file, `prefsEditorTemplate.html`, in the github repo:
-[https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html)
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html)
 The main thing to note in the template is the placeholder for the Panel, in this example a `<div>` with the class
 `awec-heatedSeats`:
 
@@ -549,7 +549,7 @@ awesomeCars.prefs.init = function (container) {
 
 This function is invoked in the main HTML file for the Preference Editor, `index.html`. You can see the entire file
 here:
-[https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/index.html](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/index.html).
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/index.html](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/index.html).
 Let’s look at this invocation:
 
 ```html
