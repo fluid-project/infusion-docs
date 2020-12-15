@@ -1,8 +1,3 @@
 [build]
   command = "npm run build"
   publish = "out"
-
-[[redirects]]
-  from = "/infusion/development/*"
-  to = "/"
-  status = 200
