@@ -60,7 +60,7 @@ module.exports = function (eleventyConfig) {
     return {
         dir: {
             input: "./src/documents",
-            output: "./out",
+            output: "./out/infusion/development",
             includes: "../layouts",
             data: "../_data"
         },

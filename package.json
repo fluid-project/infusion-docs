@@ -5,9 +5,9 @@
     "license": "CC-BY-3.0",
     "repository": "https://github.com/fluid-project/infusion-docs",
     "scripts": {
-        "start": "npm run serve",
-        "serve": "mkdirp out && eleventy --serve",
-        "build": "mkdirp out && eleventy",
+        "start": "rimraf out && npm run serve",
+        "serve": "rimraf out && mkdirp out/infusion/development && eleventy --serve",
+        "build": "rimraf out && mkdirp out/infusion/development && eleventy",
         "clean": "rimraf out",
         "test": "npm run test:node && npm run test:browser",
         "test:node": "node tests/all-node-tests.js",
