@@ -194,7 +194,7 @@ fluid.docs.search.digester.stripTags = function (rawHTML) {
 fluid.defaults("fluid.docs.search.digester", {
     gradeNames: ["fluid.component"],
     documentsRoot: "%infusion-docs/src/documents",
-    outputPath: "%infusion-docs/out/infusion/development/search-digest.js",
+    outputPath: "%infusion-docs/out/infusion/development/js/search-digest.js",
     outputTemplate: "(function (fluid) {\n    \"use strict\";\n    fluid.registerNamespace(\"fluid.docs.search\");\n    fluid.docs.search.digest = %digest;\n\n fluid.docs.search.index = %index; \n})(fluid);\n",
     members: {
         digestBlocks: []

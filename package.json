@@ -14,8 +14,9 @@
         "test:browser": "node node_modules/testem/testem.js ci --file tests/testem.js"
     },
     "dependencies": {
-        "@11ty/eleventy": "0.11.0",
+        "@11ty/eleventy": "0.11.1",
         "foundation-sites": "5.5.2",
+        "fs-extra": "^9.0.1",
         "gpii-binder": "1.0.5",
         "gpii-location-bar-relay": "1.0.4",
         "highlight.js": "10.0.3",
