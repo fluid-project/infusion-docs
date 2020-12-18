@@ -31,8 +31,10 @@ module.exports = function (eleventyConfig) {
 			return '<pre class="highlight"><code class="hljs ' + lang + '">' + markdownit.utils.escapeHtml(str) + '</code></pre>';
 		}
     });
+    var markdownItAnchor = require("markdown-it-anchor");
+    var markdownItLibrary = markdownit.use(markdownItAnchor);
 
-	eleventyConfig.setLibrary("md", markdownit);
+	eleventyConfig.setLibrary("md", markdownItLibrary);
     eleventyConfig.addPassthroughCopy({
         "node_modules/infusion/dist": "lib/infusion/dist",
         "node_modules/infusion/src": "lib/infusion/src",
