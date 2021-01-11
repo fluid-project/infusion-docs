@@ -79,9 +79,9 @@
                     {{! Highlight the (active) category the document belongs to. }}
                     {{#each siteStructure}}
                         {{#ifEqual category ../category}}
-                            <a href="{{ url categoryHref }}" title="{{category}}" class="infusion-docs-category-active">{{category}}</a>
+                            <a href="{{{ generateHrefWithPrefix categoryHref }}}" title="{{category}}" class="infusion-docs-category-active">{{category}}</a>
                         {{else}}
-                            <a href="{{ url categoryHref }}" title="{{category}}">{{category}}</a>
+                            <a href="{{{ generateHrefWithPrefix categoryHref }}}" title="{{category}}">{{category}}</a>
                         {{/ifEqual}}
                     {{/each}}
                 </nav>
@@ -106,7 +106,7 @@
                                                 {{#ifEqual href ../../../page.url}}
                                                     <span class="infusion-docs-TOC-pageName">{{pageName}}</span>
                                                 {{else}}
-                                                    <a href="{{ url href }}"><span class="infusion-docs-TOC-pageName">{{pageName}}</span></a>
+                                                    <a href="{{{ generateHrefWithPrefix href }}}"><span class="infusion-docs-TOC-pageName">{{pageName}}</span></a>
                                                 {{/ifEqual}}
                                             </li>
                                         {{/each}}

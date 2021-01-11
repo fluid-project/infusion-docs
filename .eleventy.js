@@ -62,6 +62,9 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addHandlebarsHelper("rewriteMdLinks", function(content) {
         return content.replace(/(<a\s[^>]*href="[\w-/\.]+)\.md(["#])/gm, "$1.html$2");
     });
+    eleventyConfig.addHandlebarsHelper("generateHrefWithPrefix", function(href) {
+        return "/infusion/development" + href;
+    });
     eleventyConfig.on("beforeBuild", () => {
         fs.removeSync("out");
         fs.removeSync("tmp-out");
