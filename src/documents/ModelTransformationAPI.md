@@ -1560,7 +1560,7 @@ rounding method to use and defaults to `"round"`. Numbers are rounded as follows
 
 ### Get first value of array (fluid.transforms.firstValue)
 
-**Type:** fluid.standardOuputTransformFunction
+**Type:** fluid.standardOutputTransformFunction
 
 #### Description:
 
@@ -1788,7 +1788,7 @@ mechanisms. Below is a summary of which term takes priority when the valueMapper
 * if `defaultInput` is provided, `inputPath` and `defaultInputPath` values ae ignored.
 * `inputPath` before `defaultInputPath`  - If an `inputPath` is provided, that value will be used, else
   `defaultInputPath` will be used.
-* `outputPath` before `defaultOutputValue`  - The `outputPath` will be used used if provded, else `defaultOutputPath`
+* `outputPath` before `defaultOutputValue`  - The `outputPath` will be used used if provided, else `defaultOutputPath`
   will.
 * `outputUndefinedValue` over `outputValue` over `defaultOutputValue` - If `outputUndefinedValue` is provided, it will
   always be used. If it is not provided, but `outputValue` is, this will be used. Finally, if neither are provided,

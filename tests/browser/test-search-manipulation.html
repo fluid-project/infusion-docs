@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Infusion Documentation Search Manipulation Tests</title>
+
+    <link rel="stylesheet" href="../../node_modules/foundation-sites/css/normalize.css">
+    <link rel="stylesheet" href="../../node_modules/foundation-sites/css/foundation.css">
+    <link rel="stylesheet" href="../../src/static/css/highlightjs-custom.css">
+    <link rel="stylesheet" href="../../node_modules/octicons/octicons/octicons.css">
+
+    <link rel="stylesheet" href="../../src/static/css/infusion-docs.css">
+
+    <link rel="icon" type="image/png" href="../../src/static/images/favico.png">
+
+    <script type="text/javascript" src="../../node_modules/infusion/dist/infusion-all.js"></script>
+
+    <!-- "all" is only enough if you don't want to run tests. -->
+    <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/utils/js/IoCTestUtils.js"></script>
+
+    <script type="text/javascript" src="../../node_modules/lunr/lunr.js"></script>
+    <script type="text/javascript" src="../../out/infusion/development/js/search-digest.js"></script>
+    <script type="text/javascript" src="../../src/static/js/search-string-parser.js"></script>
+    <script type="text/javascript" src="../../src/static/js/search.js"></script>
+
+    <!-- QUnit/jqUnit dependencies -->
+    <script type="text/javascript" src="../../node_modules/infusion/tests/lib/qunit/js/qunit.js"></script>
+
+    <!-- testem must be loaded after QUnit -->
+    <script src="/testem.js"></script>
+
+    <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
+    <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
+
+    <link rel="stylesheet" href="../../node_modules/infusion/tests/lib/qunit/css/qunit.css"/>
+
+    <!-- Our actual tests -->
+    <script type="text/javascript" src="js/search-manipulation-tests.js"></script>
+</head>
+<body>
+    <h1 id="qunit-header">Infusion Docs Search Manipulation Tests</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+
+    <div id="qunit-fixture">
+    </div>
+</body>
+
+</html>

@@ -8,7 +8,7 @@
     Licenses.`
 
     You may obtain a copy of the ECL 2.0 License and BSD License at
-    https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
+    https://github.com/fluid-project/infusion/raw/main/Infusion-LICENSE.txt
 */
 "use strict";
 var uri    = require("urijs");
@@ -20,7 +20,7 @@ var docsVersion = "development";
 
 // The documentation root on GitHub:
 // Used to build URLs for "Edit on GitHub" links
-var githubDocRoot = "https://github.com/fluid-project/infusion-docs/blob/master/src/documents/";
+var githubDocRoot = "https://github.com/fluid-project/infusion-docs/blob/main/src/documents/";
 
 // Helper function to rewrite *.md links to *.html:
 // With this helper, we can write links to *.md files in our source files but
@@ -93,9 +93,9 @@ var copyDeps = function () {
             dstDir: "out/infusion/development/lib/octicons",
             srcFiles: ["node_modules/octicons/octicons"]
         },
-        fuse: {
-            dstDir: "out/infusion/development/lib/fuse.js",
-            srcFiles: ["node_modules/fuse.js/dist/fuse.js"]
+        lunr: {
+            dstDir: "out/infusion/development/lib/lunr",
+            srcFiles: ["node_modules/lunr"]
         },
         express: {
             dstDir: "out/infusion/development/lib/gpii-express",

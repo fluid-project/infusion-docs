@@ -49,7 +49,7 @@ Query for all components matching a selector in a particular tree.
 Registers a grade into the system, and create a global instance of it, which ensures that any components where the
 grades listed in `inputNames` co-occur (that is, occur attached to the same component) will also be supplied the grades
 listed in `outputNames`. This is a shorthand for an effect that the user can achieve for themselves by constructing an
-instance of a component holding a [`distributeOptions`](IoCSS.md) block globally targetting the co-occuring grades.
+instance of a component holding a [`distributeOptions`](IoCSS.md) block globally targeting the co-occurring grades.
 
 * `linkageName {String}` The grade name which will hold the required options distribution. The component instance's
   global name will be derived from this grade name via [`fluid.typeNameToMemberName`](#fluidtypenametomembernametypename).
@@ -61,7 +61,7 @@ instance of a component holding a [`distributeOptions`](IoCSS.md) block globally
 ### fluid.expand(material, that)
 
 [Expands](ExpansionOfComponentOptions.md) some options material in the context of a particular component - any [IoC
-References](IocReferences.md) and expanders held at any depth in the material will be expanded to hold their resolved
+References](IoCReferences.md) and expanders held at any depth in the material will be expanded to hold their resolved
 contents. The source `material` will not be modified.
 
 * `material {Object}` The configuration material to be expanded

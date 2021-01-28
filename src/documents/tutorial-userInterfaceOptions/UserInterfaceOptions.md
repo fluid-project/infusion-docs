@@ -154,7 +154,7 @@ adjust the paths to reflect where you've saved the Infusion package.
 <div class="infusion-docs-note">
     <strong>Note:</strong> If you are using the minified version of `infusion-uiOptions.js` (i.e. all of the whitespace
     removed), you can still debug the code using the provided source map. For more information, visit <a
-    href="https://github.com/fluid-project/infusion/blob/master/README.md#source-maps">the Infusion Release Readme</a>.
+    href="https://github.com/fluid-project/infusion/blob/main/README.md#source-maps">the Infusion Release Readme</a>.
 </div>
 
 If you open this page in your browser now, you'll only see that the button has been styled differently: it is in the
