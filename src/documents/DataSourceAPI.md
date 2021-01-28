@@ -20,7 +20,7 @@ fluid.defaults("my.component", {
                 listeners: {
                     // these would point at concrete implementations for performing the read and write operations.
                     "onRead.impl": "my.component.doRead",
-                    "onRead.impl": "my.component.doWrite"
+                    "onWrite.impl": "my.component.doWrite"
                 }
             }
         }
