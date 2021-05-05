@@ -32,6 +32,7 @@ module.exports = function (eleventyConfig) {
     var markdownItLibrary = markdownit.use(markdownItAnchor);
 
     eleventyConfig.setLibrary("md", markdownItLibrary);
+
     eleventyConfig.addPassthroughCopy({
         "node_modules/infusion/dist": "lib/infusion/dist",
         "node_modules/infusion/src": "lib/infusion/src",
@@ -49,6 +50,9 @@ module.exports = function (eleventyConfig) {
         "src/icons": "/"
     });
 
+    // Helper function to determine if two values are equal
+    // Used to determine which table of contents category to display on a particular
+    // page.
     eleventyConfig.addHandlebarsHelper("ifEqual", function (a, b, options) {
         if (a === b) {
             return options.fn(this);
@@ -56,9 +60,16 @@ module.exports = function (eleventyConfig) {
             return options.inverse(this);
         }
     });
+
+    // Helper function to rewrite *.md links to *.html:
+    // With this helper, we can write links to *.md files in our source files but
+    // generate links to *.html in the DocPad output. This arrangement gives us
+    // links that work both on the GitHub website and in the generated HTML.
     eleventyConfig.addHandlebarsHelper("rewriteMdLinks", function (content) {
         return content.replace(/(<a\s[^>]*href="[\w-/\.]+)\.md(["#])/gm, "$1.html$2");
     });
+
+    // Helper function to add a prefix to a relative URL.
     eleventyConfig.addHandlebarsHelper("generateHrefWithPrefix", function (href) {
         return "/infusion/development" + href;
     });
