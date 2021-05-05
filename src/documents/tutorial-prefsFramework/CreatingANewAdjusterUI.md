@@ -104,7 +104,8 @@ Some Examples
         <tr>
             <td>checkbox</td>
             <td>
-                <pre class="highlight"><code class="hljs html">&lt;input class="flc-prefsEditor-captionsInput" type="checkbox" id="captions-choice"/&gt;
+                <pre class="highlight"><code class="hljs html">
+&lt;input class="flc-prefsEditor-captionsInput" type="checkbox" id="captions-choice"/&gt;
 &lt;label class="flc-prefsEditor-captionsLabel" for="captions-choice"&gt;&lt;/label&gt;</code></pre>
             </td>
         </tr>

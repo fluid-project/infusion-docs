@@ -213,9 +213,9 @@ fluid.defaults("examples.boiledListenerComponent", {
     },
     listeners: {
         simpleEvent: { // In practice it's unlikely that this listener would be written in the same grade as the event,
-                       // since this case there would be little reason for the signature to mismatch. It's more likely
-                       // this configuration would appear in another grade, or supplied as direct options,
-                       // subcomponent options, or distributeOptions
+            // since this case there would be little reason for the signature to mismatch. It's more likely
+            // this configuration would appear in another grade, or supplied as direct options,
+            // subcomponent options, or distributeOptions
             funcName: "examples.externalListener",
             args: ["{that}", "{arguments.0"]
         }

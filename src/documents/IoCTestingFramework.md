@@ -750,7 +750,7 @@ fluid.defaults("fluid.tests.asyncTester", {
                 func: "fluid.tests.changeField",
                 args: ["{asyncTest}.dom.textField", "{asyncTester}.options.newTextValue"]
             }, {
-                 // old-fashioned "listenerMaker" - discouraged in modern code
+                // old-fashioned "listenerMaker" - discouraged in modern code
                 listenerMaker: "fluid.tests.makeChangeChecker",
                 args: ["{asyncTester}.options.newTextValue", "textValue"],
                 path: "textValue",

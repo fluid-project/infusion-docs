@@ -231,7 +231,7 @@ grades using the `gradeNames` property. Panels must use the `"fluid.prefs.panel"
 
 `preferenceMap`
 </dt>
-<dd>A Panel must have a _ Preference Map_, which maps the information in the Primary Schema
+<dd>A Panel must have a _Preference Map_, which maps the information in the Primary Schema
 into your Panel. Let’s look at this one more closely:
 <pre class="highlight">
 <code class="hljs javascript">preferenceMap: {
@@ -360,7 +360,7 @@ to actually build the Preference Editor. The Auxiliary Schema for our example Ed
 fluid.defaults("awesomeCars.prefs.auxSchema", {
     gradeNames: ["fluid.prefs.auxSchema"],
     auxiliarySchema: {
-          // some code not shown
+        // some code not shown
     }
 });
 ```

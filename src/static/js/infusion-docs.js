@@ -1,6 +1,7 @@
 /* eslint-env browser:true node:false */
+"use strict";
+
 (function ($) {
-    "use strict";
     fluid.registerNamespace("fluid.docs");
 
     fluid.docs.findActivePageToc = function () {

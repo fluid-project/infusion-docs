@@ -186,7 +186,8 @@ When using a `fluid.rendererComponent`, strings from the Message Bundles are ren
     </thead>
     <tbody>
         <tr>
-            <td valign="baseline"><pre class="highlight"><code class="hljs javascript">{fluid.defaults("fluid.prefs.panels.linksControls", {
+            <td valign="baseline"><pre class="highlight"><code class="hljs javascript">
+{fluid.defaults("fluid.prefs.panels.linksControls", {
     // ...
     protoTree: {
         label: {messagekey: "linksLabel"},

@@ -669,7 +669,8 @@ straightforward:
     "my_pet": "Kaspar the Titanic Cat"
 }</code></pre></td>
 </tr>
-<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.literalValue",

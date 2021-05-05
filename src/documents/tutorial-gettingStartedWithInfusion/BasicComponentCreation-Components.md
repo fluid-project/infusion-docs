@@ -143,7 +143,7 @@ fluid.defaults("tutorials.simpleComponent", {
 
 // implementation of the public function registered as an invoker above
 tutorials.simpleComponent.publicFunction = function (that) {
-   // ...
+    // ...
 };
 ```
 

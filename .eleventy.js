@@ -9,8 +9,10 @@
     You may obtain a copy of the ECL 2.0 License and BSD License at
     https://github.com/fluid-project/infusion/raw/main/Infusion-LICENSE.txt
 */
-require('./index')
-var hljs = require('highlight.js');
+"use strict";
+
+require("./index");
+var hljs = require("highlight.js");
 var fs   = require("fs-extra");
 var path = require("path");
 
@@ -18,23 +20,23 @@ var rootPath = process.cwd();
 var docsVersion = "development";
 
 module.exports = function (eleventyConfig) {
-    var markdownit = require('markdown-it')({
-		html: true,
-		highlight: function (str, lang) {
-			if (lang && hljs.getLanguage(lang)) {
+    var markdownit = require("markdown-it")({
+        html: true,
+        highlight: function (str, lang) {
+            if (lang && hljs.getLanguage(lang)) {
 			  try {
-				return '<pre class="highlight"><code class="hljs ' + lang + '">' +
+                    return "<pre class=\"highlight\"><code class=\"hljs " + lang + "\">" +
 					   hljs.highlight(lang, str, true).value +
-					   '</code></pre>';
+					   "</code></pre>";
 			  } catch (__) {}
-			}
-			return '<pre class="highlight"><code class="hljs ' + lang + '">' + markdownit.utils.escapeHtml(str) + '</code></pre>';
-		}
+            }
+            return "<pre class=\"highlight\"><code class=\"hljs " + lang + "\">" + markdownit.utils.escapeHtml(str) + "</code></pre>";
+        }
     });
     var markdownItAnchor = require("markdown-it-anchor");
     var markdownItLibrary = markdownit.use(markdownItAnchor);
 
-	eleventyConfig.setLibrary("md", markdownItLibrary);
+    eleventyConfig.setLibrary("md", markdownItLibrary);
     eleventyConfig.addPassthroughCopy({
         "node_modules/infusion/dist": "lib/infusion/dist",
         "node_modules/infusion/src": "lib/infusion/src",
@@ -52,28 +54,28 @@ module.exports = function (eleventyConfig) {
         "src/documents/images": "images"
     });
 
-    eleventyConfig.addHandlebarsHelper("ifEqual", function(a, b, options) {
+    eleventyConfig.addHandlebarsHelper("ifEqual", function (a, b, options) {
         if (a === b) {
             return options.fn(this);
         } else {
             return options.inverse(this);
         }
     });
-    eleventyConfig.addHandlebarsHelper("rewriteMdLinks", function(content) {
+    eleventyConfig.addHandlebarsHelper("rewriteMdLinks", function (content) {
         return content.replace(/(<a\s[^>]*href="[\w-/\.]+)\.md(["#])/gm, "$1.html$2");
     });
-    eleventyConfig.addHandlebarsHelper("generateHrefWithPrefix", function(href) {
+    eleventyConfig.addHandlebarsHelper("generateHrefWithPrefix", function (href) {
         return "/infusion/development" + href;
     });
     eleventyConfig.on("beforeBuild", () => {
         fs.removeSync("out");
         fs.removeSync("tmp-out");
     });
-    eleventyConfig.on('afterBuild', () => {
+    eleventyConfig.on("afterBuild", () => {
         fs.moveSync("out", "tmp-out");
         fs.copySync("tmp-out", "out/infusion/" + docsVersion);
         fs.removeSync("tmp-out");
-        require('./src/scripts/create-search-digest');
+        require("./src/scripts/create-search-digest");
         fs.copySync(path.join(rootPath, "src", "ghpages-files"), "out");
     });
 
@@ -84,5 +86,5 @@ module.exports = function (eleventyConfig) {
             includes: "../layouts",
             data: "../_data"
         }
-    }
-}
+    };
+};
