@@ -11,8 +11,9 @@
 */
 "use strict";
 
-require("./index");
+require("./index.js");
 var hljs = require("highlight.js");
+var parseTransform = require("./src/transforms/parse.js");
 
 module.exports = function (eleventyConfig) {
     var markdownit = require("markdown-it")({
@@ -32,6 +33,8 @@ module.exports = function (eleventyConfig) {
     var markdownItLibrary = markdownit.use(markdownItAnchor);
 
     eleventyConfig.setLibrary("md", markdownItLibrary);
+
+    eleventyConfig.addTransform("parse", parseTransform);
 
     eleventyConfig.addPassthroughCopy({
         "node_modules/infusion/dist": "lib/infusion/dist",

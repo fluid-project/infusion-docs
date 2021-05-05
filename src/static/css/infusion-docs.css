@@ -166,7 +166,7 @@ a:focus {
 /* Styling for the hover links on headings */
 
 .infusion-docs .infusion-docs-anchor {
-    display: inline-block;
+    display: hidden;
     margin-left: -2rem;
     padding-right: 4px;
 }
@@ -174,10 +174,16 @@ a:focus {
 .infusion-docs-anchor .octicon-link {
     color: #000;
     vertical-align: middle;
+    visibility: hidden;
 }
 
 .infusion-docs-container a.infusion-docs-anchor:hover {
     background: inherit;
+}
+
+.infusion-docs-anchor:hover .octicon-link,
+.infusion-docs-anchor:focus .octicon-link {
+    visibility: visible;
 }
 
 .infusion-docs-anchor span {
