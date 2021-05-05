@@ -91,8 +91,8 @@
                 <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
                     {{#ifEqual category "Search"}}
                     {{else}}
-                        <span class="infusion-docs-category">Search</span>
-                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+                        <label for="search" class="infusion-docs-category">Search</label>
+                        <p class="docs-search-mini"><input id="search" type="search" name="qs"/></p>
 
                         {{#each siteStructure}}
                         {{! Output only the table of contents matching the current document's category }}
@@ -134,9 +134,10 @@
                         <div class="infusion-docs-articleBody">
                             {{#ifEqual category "Search"}}
                                 <div class="docs-search">
-                                    <input type="text" class="docs-search-query" placeholder="Enter one or more search terms and press enter to search."/>
+                                    <label for="search">Search</label>
+                                    <input id="search" type="search" class="docs-search-query" />
 
-                                    <div class="docs-search-results"></div>
+                                    <div class="docs-search-results">Enter one or more search terms and press enter to search.</div>
                                 </div>
                             {{else}}
                                 {{{ rewriteMdLinks content }}}
