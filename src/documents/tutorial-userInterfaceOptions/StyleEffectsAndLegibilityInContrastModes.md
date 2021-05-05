@@ -33,12 +33,12 @@ styles for contrast modes, it's important to remember to remove such shadows and
 
 This button uses a white drop shadow on the black text to provide an elegant embossed look:
 
-![A button with text label with a shadow effect.](../images/tutorial-uio-shadow-regular.png)
+![A button with text label with a shadow effect.](/images//tutorial-uio-shadow-regular.png)
 
 But such a shadow would be inappropriate for a high contrast theme. In this example (the yellow-on-black theme in this
 case), the text shadow is removed completely:
 
-![A button with a yellow yellow text label on a black background.](../images/tutorial-uio-shadow-hc.png)
+![A button with a yellow yellow text label on a black background.](/images//tutorial-uio-shadow-hc.png)
 
 ## Another Example - Gradients
 
@@ -71,9 +71,9 @@ the UI Options contrast class to improve legibility for contrast modes.
 ```
 
 In this example, a button was given a gradient effect:
-![Image of a button with white text label on a shaded blue background.](../images/tutorial-uio-button-regular.png)
+![Image of a button with white text label on a shaded blue background.](/images//tutorial-uio-button-regular.png)
 
 The CSS for the high-contrast version (in this example, "white-on-black") simply inverts the basic colour scheme to
 produce a 'button' effect, removing the gradient, shadow, and forcing the background and border colours to conform to
 the theme colours.
-![Image of a button with black text label on a solid white background.](../images/tutorial-uio-button-hc.png)
+![Image of a button with black text label on a solid white background.](/images//tutorial-uio-button-hc.png)

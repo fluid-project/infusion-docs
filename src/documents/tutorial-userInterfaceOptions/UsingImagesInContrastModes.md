@@ -13,7 +13,7 @@ and any other similarly static image. This page is divided into two sections:
 1. Creating contrast versions of your graphics using Photoshop (or similar image editing software), and
 2. Using CSS to switch between different contrast versions of the images.
 
-![A logo appearing properly with a yellow-on-black contrast theme](../images/tutorial-uio-good-bad-logos.png)
+![A logo appearing properly with a yellow-on-black contrast theme](/images//tutorial-uio-good-bad-logos.png)
 
 ## Converting Images With Transparency
 
@@ -41,7 +41,7 @@ In Photoshop, you can lock the transparent pixels in one of at least two ways:
 1. Type the '`/`' key, or
 2. In the "Layers" panel, click the 'lock pixels button (see image below).
 
-![Image of the Photoshop Layers panel with the mouse cursor hovering over the Lock transparent pixels button](../images/tutorial-uio-lock-pixels.png)
+![Image of the Photoshop Layers panel with the mouse cursor hovering over the Lock transparent pixels button](/images//tutorial-uio-lock-pixels.png)
 
 ### Step 2 - Fill the rest of the image with the desired colour
 
@@ -188,8 +188,8 @@ the previous example.
 
 In this example, the 'current page' tab has an inverted colour scheme. The default colour would appear as shown in the
 following image:
-![A graphical icon in its default colour of blue on white.](../images/tutorial-uio-icon-regular.png)
+![A graphical icon in its default colour of blue on white.](/images//tutorial-uio-icon-regular.png)
 
 The high contrast version of the theme inverts the colour, so in the "black-on-white" theme, for example, the graphic
 itself should appear white-on-black to keep with the original inverted style:
-![A graphical icon in black on white contrast theme.](../images/tutorial-uio-icon-hc.png)
+![A graphical icon in black on white contrast theme.](/images//tutorial-uio-icon-hc.png)

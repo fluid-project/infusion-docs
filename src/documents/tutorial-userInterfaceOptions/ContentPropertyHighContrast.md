@@ -35,7 +35,7 @@ bars to separate items on a horizontal navigation list as depicted by the follow
 ```
 
 The above example would look like this:
-![A horizontal navigation list with blue text on grey background.](../images/tutorial-uio-content-default.png)
+![A horizontal navigation list with blue text on grey background.](/images//tutorial-uio-content-default.png)
 
 To style this example, a new colour for `content` should be specified for each contrast. The updated CSS could look like
 this:
@@ -62,8 +62,8 @@ this:
 When properly styled, the `content` value will change according to the contrast theme. Our example would now look like
 this:
 
-* ![A horizontal navigation list with yellow text on black background.](../images/tutorial-uio-content-yb.png)
-* ![A horizontal navigation list with white text on black background.](../images/tutorial-uio-content-wb.png)
-* ![A horizontal navigation list with black text on white background.](../images/tutorial-uio-content-bw.png)
-* ![A horizontal navigation list with black text on yellow background.](../images/tutorial-uio-content-by.png)
-* ![A horizontal navigation list with light grey text on grey background.](../images/tutorial-uio-content-lgdg.png)
+* ![A horizontal navigation list with yellow text on black background.](/images//tutorial-uio-content-yb.png)
+* ![A horizontal navigation list with white text on black background.](/images//tutorial-uio-content-wb.png)
+* ![A horizontal navigation list with black text on white background.](/images//tutorial-uio-content-bw.png)
+* ![A horizontal navigation list with black text on yellow background.](/images//tutorial-uio-content-by.png)
+* ![A horizontal navigation list with light grey text on grey background.](/images//tutorial-uio-content-lgdg.png)

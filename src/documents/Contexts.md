@@ -65,7 +65,7 @@ in two kinds of "scopes" or "environments".
   [`fluid.resolveRoot`](#global-components-fluidresolveroot-and-fluidresolverootsingle) (see below) anywhere in the
   current component tree.
 
-![Diagram showing coloured squared representing components in a component tree](images/IoC-scope.svg)
+![Diagram showing coloured squared representing components in a component tree](/images/IoC-scope.svg)
 
 ## Global components: `fluid.resolveRoot` and `fluid.resolveRootSingle`
 

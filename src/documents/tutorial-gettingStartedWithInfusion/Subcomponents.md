@@ -79,7 +79,7 @@ The UI Options component has a component tree as shown below. Essentially:
 
 You can see from this tree that the UIOptions component is being re-used by the three different versions.
 
-![Diagram showing UI Option's component tree](../images/uiOptions-component-tree.svg)
+![Diagram showing UI Option's component tree](/images//uiOptions-component-tree.svg)
 
 These relationships can be expressed using the following definitions:
 

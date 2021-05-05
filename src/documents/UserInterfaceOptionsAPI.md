@@ -22,7 +22,7 @@ in their default configuration.
     href="Builder.md">Builder</a> tool of the <a href="PreferencesFramework.md">Preferences Framework</a> directly.
 </div>
 
-![Screen shot of the UI Options Component](images/uio-showcase.png "Screen shot of the UI Options Component")
+![Screen shot of the UI Options Component](/images/uio-showcase.png "Screen shot of the UI Options Component")
 
 ## Creator
 

@@ -13,7 +13,7 @@ UI Options does three things:
 * instantiates a cookie-based [Settings Store](../SettingsStore.md) for storing the user's preferences; and
 * acts upon the user's preferences.
 
-![Screen shot of the UI Options Component](../images/uio-showcase.png "Screen shot of the UI Options Component")
+![Screen shot of the UI Options Component](/images//uio-showcase.png "Screen shot of the UI Options Component")
 
 This tutorial assumes that:
 
@@ -95,7 +95,7 @@ The elements in this snippet all have particular class names attached to them, a
 Save this file to the top directory of your project. If you open this page in your browser now, you'll only see the
 button in the upper left corner, since we haven't set up the CSS and UI Options isn't present on the page yet:
 
-![Screen shot of the UI Options buttons, unstyled](../images/uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
+![Screen shot of the UI Options buttons, unstyled](/images//uio-buttons.png "Screen shot of the UI Options buttons, unstyled")
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> It doesn't matter what text you put in the button. The UI Options component will add a label
@@ -160,7 +160,7 @@ If you open this page in your browser now, you'll only see that the button has b
 upper right corner and the font has been changed. You can also see the bar of the sliding panel. The button still
 doesn't do anything, since we still haven't added the UI Options component to the page.
 
-![Screen shot of the UI Options buttons, styled](../images/uio-buttons-styled.png "Screen shot of the UI Options
+![Screen shot of the UI Options buttons, styled](/images//uio-buttons-styled.png "Screen shot of the UI Options
 buttons, styled")
 
 ## Add the UI Options component
@@ -267,7 +267,7 @@ UI Options is now fully functional on your page. Now, when you load your page in
 Display Preferences" button, you will see the UI Options controls, as shown in the image below. If you adjust the
 controls, you will see your changes being applied to the page.
 
-![Screen shot of UI Options](../images/uio.png "Screen shot of UI Options.")
+![Screen shot of UI Options](/images//uio.png "Screen shot of UI Options.")
 
 You may have to adjust your site's styles to work properly with UI Options. The ["Working With User Interface
 Options"](./WorkingWithUserInterfaceOptions.md) can help you get started.
