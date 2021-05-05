@@ -13,7 +13,7 @@ Component and various Renderer functions.
 ### Renderer Component
 
 If you are creating a component that requires the use of the Renderer, you should use the `fluid.rendererComponent`
-grade as a [parent grade](ComponentGrades.md) in your component's defaults block:
+grade as a [parent grade](ComponentGrades.md#specifying-parent-grades) in your component's defaults block:
 
 ```javascript
 fluid.defaults("my.component", {
@@ -38,7 +38,7 @@ For detailed information on how to use this method, see [Renderer Components](Re
 ### fluid.render
 
 If you are not using `fluid.rendererComponent`, you can use the primary renderer function,
-[fluid.render](https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/fluidRenderer.js#L1551-L1570):
+[fluid.render](https://github.com/fluid-project/infusion/blob/87616ab067769ce04623b5928dfded5ccddeb4da/src/framework/renderer/js/fluidRenderer.js#L1551-L1570):
 
 ```javascript
 var template = fluid.render(source, target, tree, options);
