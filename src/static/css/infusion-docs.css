@@ -632,6 +632,30 @@ Instead have it appear around the enclosed
     color: #555 !important;
 }
 
+.fl-theme-gw .infusion-docs-container a:hover,
+.fl-theme-gw .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-gw .fl-prefsEditor-buttons button:hover,
+.fl-theme-gw .infusion-docs-header a:hover::before {
+    background: #66c !important;
+    color: #fff !important;
+}
+
+.fl-theme-gd .infusion-docs-container a:hover,
+.fl-theme-gd .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-gd .fl-prefsEditor-buttons button:hover,
+.fl-theme-gd .infusion-docs-header a:hover::before {
+    background: #8080ff !important;
+    color: #222 !important;
+}
+
+.fl-theme-bbr .infusion-docs-container a:hover,
+.fl-theme-bbr .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+.fl-theme-bbr .fl-prefsEditor-buttons button:hover,
+.fl-theme-bbr .infusion-docs-header a:hover::before {
+    background-color: #009 !important;
+    color: #b96 !important;
+}
+
 /* These definitions deal with complex formatted tables with alternating rows as seen in IoCTestingFramework.md
  * They originally appeared in the Confluence wiki formatted version of the table */
 
