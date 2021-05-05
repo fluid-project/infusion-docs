@@ -78,7 +78,7 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>See also</th>
             <td>
-                <a href="#utteranceopts-option"><code>model.utteranceOpts</code> Options</a>
+                <a href="#modelutteranceopts-configuration"><code>model.utteranceOpts</code> Options</a>
             </td>
         </tr>
     </tbody>
@@ -123,7 +123,7 @@ var tts = fluid.textToSpeech({
                         An optional javascript object. Allows for the configuration of the specific
                         <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration
                         passed in here takes the same form as <a
-                        href="#utteranceopts-option"><code>model.utteranceOpts</code></a> and will override them for
+                        href="#modelutteranceopts-configuration"><code>model.utteranceOpts</code></a> and will override them for
                         this instance only.
                     </dd>
                 </dl>
@@ -366,7 +366,7 @@ speech:
 * `model.speaking`: `true` if text is being spoken (including in a paused state), `false` otherwise
 * `model.pending`: `true` if there are text items remaining to be spoken, `false` otherwise
 
-## <a id="utteranceopts-option"></a>`model.utteranceOpts` Configuration
+## `model.utteranceOpts` Configuration
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration
