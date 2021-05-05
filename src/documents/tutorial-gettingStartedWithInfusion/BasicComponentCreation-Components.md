@@ -1,6 +1,5 @@
 ---
 title: Basic Component Creation - Components
-layout: default
 category: Tutorials
 ---
 

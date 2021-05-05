@@ -1,6 +1,5 @@
 ---
 title: IoCSS
-layout: default
 category: Infusion
 ---
 

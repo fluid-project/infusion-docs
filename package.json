@@ -5,30 +5,30 @@
     "license": "CC-BY-3.0",
     "repository": "https://github.com/fluid-project/infusion-docs",
     "scripts": {
-        "start": "rimraf out && npm run serve",
-        "serve": "rimraf out && mkdirp out/infusion/development && eleventy --serve",
-        "build": "rimraf out && mkdirp out/infusion/development && eleventy",
-        "clean": "rimraf out",
+        "start": "npm-run-all -l clean dev",
+        "build": "npm-run-all -l clean build:*",
+        "build:eleventy": "cross-env ELEVENTY_ENV=production eleventy",
+        "clean": "rimraf dist",
+        "dev": "cross-env ELEVENTY_ENV=development eleventy --serve",
         "lint": "fluid-lint-all",
-        "test": "npm run test:node && npm run test:browser",
+        "test": "run-s test:*",
         "test:node": "node tests/all-node-tests.js",
         "test:browser": "node node_modules/testem/testem.js ci --file tests/testem.js"
     },
     "dependencies": {
         "@11ty/eleventy": "0.12.1",
         "foundation-sites": "5.5.2",
-        "fs-extra": "^9.0.1",
         "gpii-binder": "1.0.5",
         "gpii-location-bar-relay": "1.0.4",
         "highlight.js": "10.0.3",
         "infusion": "3.0.0-dev.20200326T173810Z.24ddb2718",
         "lunr": "2.3.6",
         "markdown-it-anchor": "4.0.0",
-        "mkdirp": "^1.0.4",
         "octicons": "3.1.0",
-        "rimraf": "^3.0.2"
+        "rimraf": "3.0.2"
     },
     "devDependencies": {
+        "cross-env": "7.0.3",
         "eslint": "7.25.0",
         "eslint-config-fluid": "2.0.0",
         "eslint-plugin-markdown": "2.1.0",
@@ -38,6 +38,7 @@
         "jsdom": "11.3.0",
         "kettle": "1.7.0",
         "node-jqunit": "1.1.7",
+        "npm-run-all": "4.1.5",
         "request": "2.83.0",
         "testem": "2.15.1"
     }

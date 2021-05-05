@@ -1,6 +1,5 @@
 ---
 title: Renderer Decorators
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---

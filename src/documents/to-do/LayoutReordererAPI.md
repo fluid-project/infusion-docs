@@ -1,6 +1,5 @@
 ---
 title: Layout Reorderer API
-layout: default
 category: Components
 ---
 

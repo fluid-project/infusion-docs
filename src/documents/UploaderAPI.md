@@ -1,6 +1,5 @@
 ---
 title: Uploader API
-layout: default
 category: Components
 ---
 

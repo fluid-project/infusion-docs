@@ -1,6 +1,5 @@
 ---
 title: Understanding Infusion Components
-layout: default
 category: Infusion
 ---
 

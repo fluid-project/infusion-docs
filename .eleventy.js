@@ -13,11 +13,6 @@
 
 require("./index");
 var hljs = require("highlight.js");
-var fs   = require("fs-extra");
-var path = require("path");
-
-var rootPath = process.cwd();
-var docsVersion = "development";
 
 module.exports = function (eleventyConfig) {
     var markdownit = require("markdown-it")({
@@ -49,9 +44,9 @@ module.exports = function (eleventyConfig) {
         "src/static/css": "css",
         "src/static/fonts": "fonts",
         "src/static/js": "js",
-        "src/static/images": "images",
         "src/scripts": "js",
-        "src/documents/images": "images"
+        "src/documents/images": "images",
+        "src/icons": "/"
     });
 
     eleventyConfig.addHandlebarsHelper("ifEqual", function (a, b, options) {
@@ -67,24 +62,11 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addHandlebarsHelper("generateHrefWithPrefix", function (href) {
         return "/infusion/development" + href;
     });
-    eleventyConfig.on("beforeBuild", () => {
-        fs.removeSync("out");
-        fs.removeSync("tmp-out");
-    });
-    eleventyConfig.on("afterBuild", () => {
-        fs.moveSync("out", "tmp-out");
-        fs.copySync("tmp-out", "out/infusion/" + docsVersion);
-        fs.removeSync("tmp-out");
-        require("./src/scripts/create-search-digest");
-        fs.copySync(path.join(rootPath, "src", "ghpages-files"), "out");
-    });
 
     return {
         dir: {
-            input: "./src/documents",
-            output: "./out",
-            includes: "../layouts",
-            data: "../_data"
+            input: "src",
+            output: "dist"
         }
     };
 };

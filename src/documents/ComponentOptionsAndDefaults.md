@@ -1,6 +1,5 @@
 ---
 title: Understanding Component Options And Their Defaults
-layout: default
 category: Infusion
 ---
 

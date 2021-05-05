@@ -1,6 +1,5 @@
 ---
 title: Uploader
-layout: default
 category: Components
 ---
 

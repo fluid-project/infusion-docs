@@ -1,6 +1,5 @@
 ---
 title: Component Grades
-layout: default
 category: Infusion
 ---
 

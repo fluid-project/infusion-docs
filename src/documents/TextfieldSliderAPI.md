@@ -1,6 +1,5 @@
 ---
 title: Textfield Slider
-layout: default
 category: Components
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Textfield Stepper
-layout: default
 category: Components
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Event Injection and Boiling
-layout: default
 category: Infusion
 ---
 

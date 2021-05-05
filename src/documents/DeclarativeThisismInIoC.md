@@ -1,6 +1,5 @@
 ---
 title: Declarative this-ism in IoC
-layout: default
 category: Infusion
 ---
 

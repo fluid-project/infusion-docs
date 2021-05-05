@@ -1,6 +1,5 @@
 ---
 title: Define a namespace and create a closure
-layout: default
 category: Tutorials
 ---
 

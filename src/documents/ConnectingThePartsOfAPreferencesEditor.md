@@ -1,6 +1,5 @@
 ---
 title: Connecting the Parts of a Preferences Editor
-layout: default
 category: Infusion
 ---
 

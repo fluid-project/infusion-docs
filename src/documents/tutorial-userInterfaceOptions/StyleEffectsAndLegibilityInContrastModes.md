@@ -1,6 +1,5 @@
 ---
 title: Style Effects and Legibility in Contrast Modes
-layout: default
 category: Tutorials
 ---
 
@@ -16,18 +15,19 @@ styles for contrast modes, it's important to remember to remove such shadows and
 
 ```css
 .idi-prefs-button {
-    color: #000000;
-    text-shadow: 0.1rem 0.1rem 0 #FFFFFF;
-    background-color: #E5E5E5;
+    background-color: #e5e5e5;
     background-image: url("images/preferences.png");
     background-position: 0.4em 50%;
     background-repeat: no-repeat;
+    color: #000;
+    text-shadow: 0.1rem 0.1rem 0 #fff;
     width: 8em;
 }
+
 .fl-theme-yb .idi-prefs-button {
-    text-shadow: none;
-    border: 0.1rem solid yellow;
     background-image: url("images/preferences-yellow.png");
+    border: 0.1rem solid yellow;
+    text-shadow: none;
 }
 ```
 
@@ -51,21 +51,22 @@ the UI Options contrast class to improve legibility for contrast modes.
 
 ```css
 .search-btn {
-  background: rgba(70,140,170,1);
-  background: -moz-linear-gradient(top, rgba(70,140,170,1) 0%, rgba(19,88,118,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(70,140,170,1)), color-stop(100%, rgba(19,88,118,1)));
-  background: -webkit-linear-gradient(top, rgba(70,140,170,1) 0%, rgba(19,88,118,1) 100%);
-  background: -ms-linear-gradient(top, rgba(70,140,170,1) 0%, rgba(19,88,118,1) 100%);
-  background: linear-gradient(to bottom, rgba(70,140,170,1) 0%, rgba(19,88,118,1) 100%);
-  border: medium none;
-  box-shadow: 0.1rem 0.1rem 0 #135876 inset, 0.1rem 0.1rem 0 #FFFFFF;
-  color: #FFFFFF;
+    background: rgba(70, 140, 170, 1);
+    background: -moz-linear-gradient(top, rgba(70, 140, 170, 1) 0%, rgba(19, 88, 118, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(70, 140, 170, 1)), color-stop(100%, rgba(19, 88, 118, 1)));
+    background: -webkit-linear-gradient(top, rgba(70, 140, 170, 1) 0%, rgba(19, 88, 118, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(70, 140, 170, 1) 0%, rgba(19, 88, 118, 1) 100%);
+    background: linear-gradient(to bottom, rgba(70, 140, 170, 1) 0%, rgba(19, 88, 118, 1) 100%);
+    border: medium none;
+    box-shadow: 0.1rem 0.1rem 0 #135876 inset, 0.1rem 0.1rem 0 #fff;
+    color: #fff;
 }
+
 .fl-theme-wb .search-btn {
-  background: #FFFFFF;
-  border-color: #000000;
-  color: #000000;
-  box-shadow: none;
+    background: #fff;
+    border-color: #000;
+    box-shadow: none;
+    color: #000;
 }
 ```
 

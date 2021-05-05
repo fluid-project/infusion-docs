@@ -1,6 +1,5 @@
 ---
 title: User Interface Options API
-layout: default
 category: Components
 ---
 

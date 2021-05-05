@@ -1,6 +1,5 @@
 ---
 title: Infusion Tutorials
-layout: default
 category: Tutorials
 ---
 

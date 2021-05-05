@@ -1,6 +1,5 @@
 ---
 title: Using String Templates
-layout: default
 category: Tutorials
 ---
 

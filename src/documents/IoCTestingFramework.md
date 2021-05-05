@@ -1,6 +1,5 @@
 ---
 title: The IoC Testing Framework
-layout: default
 category: Infusion
 ---
 

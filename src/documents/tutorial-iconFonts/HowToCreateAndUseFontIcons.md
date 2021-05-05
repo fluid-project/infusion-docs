@@ -1,6 +1,5 @@
 ---
 title: How to Create and Use Font Icons
-layout: default
 category: Tutorials
 ---
 
@@ -36,17 +35,18 @@ However, there are some shortcomings to keep in mind:
 ```css
 @font-face {
     font-family: 'CustomIcons';
-    src: url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    src:
+        url('../fonts/CustomIcons.ttf'),
+        url('../fonts/CustomIcons.eot');
 }
 
 a.myLink-icon {
     font-family: 'CustomIcons';
 }
 
-a.myLink-icon:before {
+a.myLink-icon::before {
+    color: #ed3820;   /* Custom colour. */
     content: "\e000"; /* The custom Unicode (aka. PUA) for the icon you want. */
-    color: #ED3820;   /* Custom colour. */
 }
 ```
 
@@ -97,7 +97,7 @@ For example you have the following existing HTML and CSS:
 ```css
 /* Existing CSS markup for the HTML before adding new icon font. */
 #contact_form {
-    background: url("../images/envelope.png"); /*existing image that will be replaced by icon */
+    background: url("../images/envelope.png"); /* existing image that will be replaced by icon */
 }
 ```
 
@@ -105,15 +105,16 @@ Next, add the new font to the CSS markup.
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';                /*Specify the new font */
-    src: url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), /* IE8 fix. */
-         url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    font-family: 'CustomIcons';                /* Specify the new font */
+    src:
+        url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), 
+         url('        CustomIcons.ttf'),
+         url('        CustomIcons.eot');
 }
 
 #contact_form {
-    background: url("../images/envelope.png"); /*existing image that will be replaced by icon */
-    font-family: 'CustomIcons';                /*the new font icon */
+    background: url("../images/envelope.png"); /* existing image that will be replaced by icon */
+    font-family: 'CustomIcons';                /* the new font icon */
 }
 ```
 
@@ -121,19 +122,20 @@ Finally, add the new icon into the BEFORE pseudo class and delete any references
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';                /*Specify the new font */
-    src: url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), /* IE8 fix. */
-         url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    font-family: 'CustomIcons';                /* Specify the new font */
+    src:
+        url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), 
+         url('        CustomIcons.ttf'),
+         url('        CustomIcons.eot');
 }
 
 #contact_form {
     /* old icon image has been removed. */
-    font-family: 'CustomIcons';                /*the new font icon */
+    font-family: 'CustomIcons';                /* the new font icon */
 }
 
-#contact_form:before {
-    content: "\e000";                          /*the custom Unicode (aka. PUA) for the icon.*/
+#contact_form::before {
+    content: "\e000";                          /* the custom Unicode (aka. PUA) for the icon. */
 }
 ```
 
@@ -172,8 +174,9 @@ contents within the `<a>`, which means "Contact us" will no longer be Comic Sans
 ```css
 @font-face {
     font-family: 'CustomIcons';
-    src: url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    src:
+        url('../fonts/CustomIcons.ttf'),
+        url('../fonts/CustomIcons.eot');
 }
 
 body {
@@ -184,7 +187,7 @@ body {
     font-family: 'CustomIcons';
 }
 
-#contact_form:before {
+#contact_form::before {
     content: "\e000";
 }
 ```
@@ -202,8 +205,9 @@ contained within. The CSS file is then updated to reference this new markup stru
 ```css
 @font-face {
     font-family: 'CustomIcons';
-    src: url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    src:
+        url('../fonts/CustomIcons.ttf'),
+        url('../fonts/CustomIcons.eot');
 }
 
 body {
@@ -214,7 +218,7 @@ body {
     font-family: 'CustomIcons';
 }
 
-#icon-envelope:before {
+#icon-envelope::before {
     content: "\e000";
 }
 ```
@@ -238,14 +242,16 @@ be removed as well - causing a possible usability and accessibility issue.
 ```css
 @font-face {
     font-family: 'CustomIcons';
-    src: url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    src:
+        url('../fonts/CustomIcons.ttf'),
+        url('../fonts/CustomIcons.eot');
 }
 
 a {
     font-family: 'CustomIcons';
 }
-a:before {
+
+a::before {
     content: "\e001";
 }
 ```
@@ -275,10 +281,11 @@ format('embedded-opentype')` to your CSS. For example:
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';                /*Specify the new font */
-    src: url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), /* IE8 fix. */
-         url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    font-family: 'CustomIcons';                /* Specify the new font */
+    src:
+        url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), 
+         url('        CustomIcons.ttf'),
+         url('        CustomIcons.eot');
 }
 ```
 

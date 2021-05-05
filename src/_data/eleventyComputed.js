@@ -1,9 +1,6 @@
 "use strict";
 
 module.exports = {
-    permalink: (data) => {
-        return data.page.filePathStem + ".html";
-    },
     // Helper function to build a URL for "Edit on GitHub" for the current document
     githubLocation: (data) => {
         // The documentation root on GitHub:

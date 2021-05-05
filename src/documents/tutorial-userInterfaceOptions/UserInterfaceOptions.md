@@ -1,6 +1,5 @@
 ---
 title: Setting Up User Interface Options
-layout: default
 category: Tutorials
 ---
 

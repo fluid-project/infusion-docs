@@ -1,6 +1,5 @@
 ---
 title: Using Images in Contrast Modes
-layout: default
 category: Tutorials
 ---
 
@@ -107,26 +106,30 @@ CSS:
     background-image: url("images/logo.png");
     background-repeat: no-repeat;
 }
+
 /* white logo for white-on-black theme */
 .fl-theme-wb .site-logo {
-    color: #fff;
     background-image: url("images/logo-white.png");
+    color: #fff;
 }
+
 /* yellow logo for yellow-on-black theme */
 .fl-theme-yb .site-logo {
-    color: #ff0;
     background-image: url("images/logo-yellow.png");
+    color: #ff0;
 }
+
 /* black logo for black-on-white and black-on-yellow themes */
 .fl-theme-bw .site-logo,
 .fl-theme-by .site-logo {
-    color: #000;
     background-image: url("images/logo-black.png");
+    color: #000;
 }
+
 /* light grey logo for light grey and dark grey theme */
 .fl-theme-lgdg .site-logo {
-    color: #bdbdbb;
     background-image: url("images/logo-grey.png");
+    color: #bdbdbb;
 }
 ```
 
@@ -160,21 +163,24 @@ the previous example.
 
 ```css
 .people.currentPage {
-  background-image: url("images/people-white.png");
-  background-position: 0.3em 50%;
-  background-repeat: no-repeat;
-  background-size: auto 75%;
-  padding-left: 2em;
-  background-color: #0076B0;
-  color: #FFFFFF;
+    background-color: #0076b0;
+    background-image: url("images/people-white.png");
+    background-position: 0.3em 50%;
+    background-repeat: no-repeat;
+    background-size: auto 75%;
+    color: #fff;
+    padding-left: 2em;
 }
+
 .fl-theme-by .people.currentPage {
     background-image: url("images/people-yellow.png");
 }
+
 .fl-theme-yb .idi-people.currentPage,
 .fl-theme-wb .idi-people.currentPage {
     background-image: url("images/people-black.png");
 }
+
 .fl-theme-lgdg .idi-people.currentPage {
     background-image: url("images/people-grey.png");
 }

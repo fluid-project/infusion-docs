@@ -1,6 +1,5 @@
 ---
 title: Composite Panels
-layout: default
 category: Infusion
 ---
 

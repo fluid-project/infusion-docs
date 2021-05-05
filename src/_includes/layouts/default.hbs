@@ -5,33 +5,33 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>{{ title }} | Fluid Infusion</title>
 
-        <link rel="stylesheet" href="{{ url "/infusion/development/lib/foundation/normalize.css" }}">
-        <link rel="stylesheet" href="{{ url "/infusion/development/lib/foundation/foundation.css" }}">
-        <link rel="stylesheet" href="{{ url "/infusion/development/css/highlightjs-custom.css" }}">
-        <link rel="stylesheet" href="{{ url "/infusion/development/lib/octicons/octicons.css" }}">
+        <link rel="stylesheet" href="{{ url "/lib/foundation/normalize.css" }}">
+        <link rel="stylesheet" href="{{ url "/lib/foundation/foundation.css" }}">
+        <link rel="stylesheet" href="{{ url "/css/highlightjs-custom.css" }}">
+        <link rel="stylesheet" href="{{ url "/lib/octicons/octicons.css" }}">
 
-        <link rel="stylesheet" type="text/css" href="{{ url "/infusion/development/lib/infusion/src/framework/preferences/css/Enactors.css" }}" />
-        <link rel="stylesheet" type="text/css" href="{{ url "/infusion/development/lib/infusion/src/framework/preferences/css/PrefsEditor.css" }}" />
-        <link rel="stylesheet" type="text/css" href="{{ url "/infusion/development/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" }}" />
-        <link rel="stylesheet" href="{{ url "/infusion/development/css/infusion-docs.css" }}">
+        <link rel="stylesheet" type="text/css" href="{{ url "/lib/infusion/src/framework/preferences/css/Enactors.css" }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url "/lib/infusion/src/framework/preferences/css/PrefsEditor.css" }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url "/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" }}" />
+        <link rel="stylesheet" href="{{ url "/css/infusion-docs.css" }}">
 
-        <link rel="icon" type="image/png" href="{{ url "/infusion/development/images/favico.png" }}">
+        <link rel="icon" type="image/png" href="{{ url "/favicon.png" }}">
 
-        <script type="text/javascript" src="{{ url "/infusion/development/lib/infusion/dist/infusion-all.js" }}"></script>
-        <script type="text/javascript" src="{{ url "/infusion/development/js/infusion-docs.js" }}"></script>
+        <script type="text/javascript" src="{{ url "/lib/infusion/dist/infusion-all.js" }}"></script>
+        <script type="text/javascript" src="{{ url "/js/infusion-docs.js" }}"></script>
 
-        <script type="text/javascript" src="{{ url '/infusion/development/lib/gpii-express/querystring-coding.js' }}"></script>
-        <script type="text/javascript" src="{{ url '/infusion/development/lib/gpii-binder/transforms.js' }}"></script>
-        <script type="text/javascript" src="{{ url '/infusion/development/lib/gpii-binder/binder.js' }}"></script>
+        <script type="text/javascript" src="{{ url '/lib/gpii-express/querystring-coding.js' }}"></script>
+        <script type="text/javascript" src="{{ url '/lib/gpii-binder/transforms.js' }}"></script>
+        <script type="text/javascript" src="{{ url '/lib/gpii-binder/binder.js' }}"></script>
 
         {{#ifEqual category "Search"}}
-            <script type="text/javascript" src="{{ url '/infusion/development/lib/gpii-location-bar-relay/locationBar.js' }}"></script>
-            <script type="text/javascript" src="{{ url '/infusion/development/lib/lunr/lunr.min.js' }}"></script>
-            <script type="text/javascript" src="{{ url '/infusion/development/js/search-digest.js' }}"></script>
-            <script type="text/javascript" src="{{ url '/infusion/development/js/search-string-parser.js' }}"></script>
-            <script type="text/javascript" src="{{ url '/infusion/development/js/search.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/lib/gpii-location-bar-relay/locationBar.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/lib/lunr/lunr.min.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/search-digest.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/search-string-parser.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/search.js' }}"></script>
         {{else}}
-            <script type="text/javascript" src="{{ url '/infusion/development/js/mini-search.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/mini-search.js' }}"></script>
         {{/ifEqual}}
     </head>
     <body class="infusion-docs fl-theme-prefsEditor-default">
@@ -61,10 +61,10 @@
             <script type="text/javascript">
                 fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
                     terms: {
-                        "templatePrefix": "{{ url "/infusion/development/lib/infusion/src/framework/preferences/html" }}",
-                        "messagePrefix": "{{ url "/infusion/development/lib/infusion/src/framework/preferences/messages" }}"
+                        "templatePrefix": "{{ url "/lib/infusion/src/framework/preferences/html" }}",
+                        "messagePrefix": "{{ url "/lib/infusion/src/framework/preferences/messages" }}"
                     },
-                    "tocTemplate": "{{ url "/infusion/development/lib/infusion/src/components/tableOfContents/html/TableOfContents.html" }}"
+                    "tocTemplate": "{{ url "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html" }}"
                 });
             </script>
 
@@ -72,7 +72,7 @@
 
             <header class="row infusion-docs-header">
                 <div class="infusion-docs-fluidLogo small-12 medium-3 column">
-                    <a class="infusion-docs-fluidLogoText" href="{{ url "/infusion/development/" }}" title="Infusion">infusion</a>
+                    <a class="infusion-docs-fluidLogoText" href="{{ url "/" }}" title="Infusion">infusion</a>
                 </div>
 
                 <nav class="infusion-docs-fluidCategories small-12 medium-9 column">

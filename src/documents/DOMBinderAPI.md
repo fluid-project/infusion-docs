@@ -1,6 +1,5 @@
 ---
 title: DOM Binder API
-layout: default
 category: Infusion
 ---
 

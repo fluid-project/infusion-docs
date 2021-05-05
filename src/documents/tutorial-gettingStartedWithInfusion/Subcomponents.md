@@ -1,6 +1,5 @@
 ---
 title: Subcomponents
-layout: default
 category: Tutorials
 ---
 

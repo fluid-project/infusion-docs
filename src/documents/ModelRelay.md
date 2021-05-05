@@ -1,6 +1,5 @@
 ---
 title: Model Relay
-layout: default
 category: Infusion
 ---
 

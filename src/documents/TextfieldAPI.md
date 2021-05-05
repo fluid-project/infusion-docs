@@ -1,6 +1,5 @@
 ---
 title: Textfield
-layout: default
 category: Components
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Preferences Framework
-layout: default
 category: Infusion
 ---
 

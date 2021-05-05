@@ -1,6 +1,5 @@
 ---
 title: ProtoComponent Types
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---

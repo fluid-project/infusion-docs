@@ -1,6 +1,5 @@
 ---
 title: Localization in the Preferences Framework
-layout: default
 category: Infusion
 ---
 

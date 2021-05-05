@@ -1,6 +1,5 @@
 ---
 title: Settings Store
-layout: default
 category: Infusion
 ---
 

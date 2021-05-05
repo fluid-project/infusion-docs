@@ -1,6 +1,5 @@
 ---
 title: IoC References
-layout: default
 category: Infusion
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Creating a New Adjuster UI
-layout: default
 category: Tutorials
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Contexts
-layout: default
 category: Infusion
 ---
 

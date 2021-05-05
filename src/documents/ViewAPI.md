@@ -1,6 +1,5 @@
 ---
 title: Infusion View API
-layout: default
 category: Infusion
 ---
 

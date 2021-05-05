@@ -1,6 +1,5 @@
 ---
 title: Pager API
-layout: default
 category: Components
 ---
 

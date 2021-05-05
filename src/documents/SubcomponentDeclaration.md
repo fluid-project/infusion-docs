@@ -1,6 +1,5 @@
 ---
 title: Subcomponent Declaration
-layout: default
 category: Infusion
 ---
 

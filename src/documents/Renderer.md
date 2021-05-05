@@ -1,6 +1,5 @@
 ---
 title: Renderer
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---

@@ -1,6 +1,5 @@
 ---
 title: Model Transformation API
-layout: default
 category: Infusion
 ---
 The **model transformation** framework is a core part of Infusion and allows you to transform an input

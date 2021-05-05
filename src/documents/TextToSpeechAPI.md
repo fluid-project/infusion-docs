@@ -1,6 +1,5 @@
 ---
 title: Text To Speech API
-layout: default
 category: Components
 ---
 

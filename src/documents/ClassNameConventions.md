@@ -1,6 +1,5 @@
 ---
 title: Class Name Conventions
-layout: default
 category: Infusion
 ---
 

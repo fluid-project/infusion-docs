@@ -1,6 +1,5 @@
 ---
 title: CSS "Content" Property in Contrast Modes
-layout: default
 category: Tutorials
 ---
 
@@ -20,18 +19,18 @@ bars to separate items on a horizontal navigation list as depicted by the follow
 
 ```css
 .topnav {
-  color: #0000ff;
-  list-style: none;
+    color: #00f;
+    list-style: none;
 }
 
 .topnav li {
-  float: left;
+    float: left;
 }
 
-.topnav li:after {
-  color: #0000ff;
-  content: "|";
-  padding: 0 2rem;
+.topnav li::after {
+    color: #00f;
+    content: "|";
+    padding: 0 2rem;
 }
 ```
 
@@ -42,18 +41,21 @@ To style this example, a new colour for `content` should be specified for each c
 this:
 
 ```css
-.fl-theme-yb .topnav li:after {
-  color: #FFFF00; /* yellow for yellow-on-black */
+.fl-theme-yb .topnav li::after {
+    color: #ff0; /* yellow for yellow-on-black */
 }
-.fl-theme-wb .topnav li:after {
-  color: #FFFFFF;  /* white for white-on-black */
+
+.fl-theme-wb .topnav li::after {
+    color: #fff;  /* white for white-on-black */
 }
-.fl-theme-by .topnav li:after,
-.fl-theme-bw .topnav li:after {
-  color: #000000; /* black for black-on-yellow and black-on-white */
+
+.fl-theme-by .topnav li::after,
+.fl-theme-bw .topnav li::after {
+    color: #000; /* black for black-on-yellow and black-on-white */
 }
-.fl-theme-lgdg .topnav li:after {
-  color: #bdbdbb;  /* light grey for light grey on dark grey */
+
+.fl-theme-lgdg .topnav li::after {
+    color: #bdbdbb;  /* light grey for light grey on dark grey */
 }
 ```
 

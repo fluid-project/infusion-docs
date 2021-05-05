@@ -1,6 +1,5 @@
 ---
 title: Component Configuration Options
-layout: default
 category: Infusion
 ---
 
