@@ -63,6 +63,10 @@ module.exports = function (eleventyConfig) {
         return "/infusion/development" + href;
     });
 
+    eleventyConfig.on("afterBuild", () => {
+        require("./src/scripts/create-search-digest");
+    });
+
     return {
         dir: {
             input: "src",
