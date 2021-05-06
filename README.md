@@ -32,6 +32,12 @@ To statically build the site using [Eleventy](https://11ty.dev):
 npm run build
 ```
 
+## Deploying the Infusion Documentation website
+
+The [Infusion Documentation website](http://docs.fluidproject.org/infusion/) is published with [Netlify](https://netlify.com)
+every time new content is pushed to the `main` branch of this repository. [Deploy previews](https://docs.netlify.com/site-deploys/overview/#deploy-preview-controls)
+are also generated for every pull request. For more information, please review Netlify's [documentation](https://docs.netlify.com).
+
 ## Generating a Docker image
 
 You can serve the website from a [Docker](https://docs.docker.com/get-docker) container.
