@@ -1,6 +1,5 @@
 ---
 title: UI Enhancer
-layout: default
 category: Infusion
 ---
 

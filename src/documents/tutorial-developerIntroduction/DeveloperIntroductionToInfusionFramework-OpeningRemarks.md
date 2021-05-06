@@ -1,6 +1,5 @@
 ---
 title: Developer Introduction to the Infusion Framework - Opening Remarks
-layout: default
 category: Tutorials
 ---
 Here we will boil down some of the basic concepts of Infusion for developers who may be interested in it, but uncertain

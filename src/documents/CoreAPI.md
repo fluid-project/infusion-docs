@@ -1,6 +1,5 @@
 ---
 title: Infusion Core API
-layout: default
 category: Infusion
 ---
 

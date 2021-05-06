@@ -1,6 +1,5 @@
 ---
 title: Infusion node.js Support and API
-layout: default
 category: Infusion
 ---
 

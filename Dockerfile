@@ -10,8 +10,7 @@ RUN npm install
 
 COPY . ./
 
-# The echo command is necessary to work around a bug in docpad 6.79.4
-RUN echo | $(npm bin)/docpad generate --env static --silent 
+RUN echo | npm run build
 
 
 FROM nginx:1.18.0-alpine

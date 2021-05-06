@@ -1,6 +1,5 @@
 ---
 title: Undo API
-layout: default
 category: Components
 ---
 

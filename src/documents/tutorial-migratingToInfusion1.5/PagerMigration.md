@@ -1,6 +1,5 @@
 ---
 title: Pager 1.5 Migration
-layout: default
 category: Infusion
 ---
 

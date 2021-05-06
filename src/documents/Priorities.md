@@ -1,6 +1,5 @@
 ---
 title: Priorities
-layout: default
 category: Infusion
 ---
 

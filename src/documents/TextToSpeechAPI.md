@@ -1,6 +1,5 @@
 ---
 title: Text To Speech API
-layout: default
 category: Components
 ---
 
@@ -65,23 +64,21 @@ Use the following function to create a Text To Speech component:
         <tr>
             <th>Examples</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var tts = fluid.textToSpeech({
     model: {
         utteranceOpts: {
             volume: 1
         }
     },
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>See also</th>
             <td>
-                <a href="#utteranceopts-option"><code>model.utteranceOpts</code> Options</a>
+                <a href="#modelutteranceopts-configuration"><code>model.utteranceOpts</code> Options</a>
             </td>
         </tr>
     </tbody>
@@ -125,8 +122,9 @@ var tts = fluid.textToSpeech({
                     <dd>
                         An optional javascript object. Allows for the configuration of the specific
                         <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration
-                        passed in here takes the same form as <a
-                        href="#utteranceopts-option"><code>model.utteranceOpts</code></a> and will override them for
+                        passed in here takes the same form as
+                        <a href="#modelutteranceopts-configuration"><code>model.utteranceOpts</code></a>
+                        and will override them for
                         this instance only.
                     </dd>
                 </dl>
@@ -135,12 +133,10 @@ var tts = fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.queueSpeech("Hello world", false, {
     volume: 0.5
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -371,7 +367,7 @@ speech:
 * `model.speaking`: `true` if text is being spoken (including in a paused state), `false` otherwise
 * `model.pending`: `true` if there are text items remaining to be spoken, `false` otherwise
 
-## <a id="utteranceopts-option"></a>`model.utteranceOpts` Configuration
+## `model.utteranceOpts` Configuration
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> if needed, please read the <a href="ComponentConfigurationOptions.md">Component Configuration
@@ -412,16 +408,14 @@ These attributes include:
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             text: "Override other texts"
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -449,16 +443,14 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             lang: "en-US"
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -496,8 +488,7 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 
 var availableVoices = SpeechSynthesis.getVoices();
 var voiceToUse = availableVoices[0];
@@ -508,8 +499,7 @@ fluid.textToSpeech({
             voice: voiceToUse
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -542,16 +532,14 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             volume: 0.5
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -578,16 +566,14 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             rate: 2.5
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -614,16 +600,14 @@ fluid.textToSpeech({
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 fluid.textToSpeech({
     model: {
         utteranceOpts: {
             pitch: 1.2
         }
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>

@@ -1,6 +1,5 @@
 ---
 title: ChangeApplier
-layout: default
 category: Infusion
 ---
 

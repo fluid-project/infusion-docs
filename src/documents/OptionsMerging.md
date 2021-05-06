@@ -1,6 +1,5 @@
 ---
 title: Options Merging
-layout: default
 category: Infusion
 ---
 

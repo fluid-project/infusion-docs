@@ -1,6 +1,5 @@
 ---
 title: Image Reorderer API
-layout: default
 category: Components
 ---
 

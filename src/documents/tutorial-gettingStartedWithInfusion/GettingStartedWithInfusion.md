@@ -1,6 +1,5 @@
 ---
 title: Getting Started with Infusion Component Design
-layout: default
 category: Tutorials
 ---
 

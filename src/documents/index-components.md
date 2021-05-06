@@ -1,6 +1,5 @@
 ---
 title: Infusion Components Documentation
-layout: default
 category: Components
 ---
 

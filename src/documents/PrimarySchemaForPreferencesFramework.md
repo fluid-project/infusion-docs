@@ -1,6 +1,5 @@
 ---
 title: Primary Schema for Preferences Framework
-layout: default
 category: Infusion
 ---
 

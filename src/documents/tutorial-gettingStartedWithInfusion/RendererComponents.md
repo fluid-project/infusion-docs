@@ -1,6 +1,5 @@
 ---
 title: Renderer Components
-layout: default
 category: Tutorials
 ---
 

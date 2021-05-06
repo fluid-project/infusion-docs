@@ -1,6 +1,5 @@
 ---
 title: ProtoComponent Types
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---
@@ -30,13 +29,11 @@ field names shown in bold text are the definitive fields that will indicate whic
             </td>
             <td>
             <!-- elements in <pre> aren't indented, as all the whitespace is included in the output -->
-                <pre><code>
-componentID: { fieldName: valueOrBinding }
+                <pre class="highlight"><code class="hljs javascript">componentID: { fieldName: valueOrBinding }
                 </code></pre>
             </td>
             <td>
-                <pre><code>
-var protoTree = {
+                <pre class="highlight"><code class="hljs javascript">var protoTree = {
     mainHeader: "Carving Woods",
     sectionHeader1: "Sassafras",
     sectionHeader1: "Butternut",
@@ -49,8 +46,7 @@ var protoTree = {
             <th>Array of Bound</th>
             <td>repeated Bound fields</td>
             <td>
-                <pre><code>
-componentID: {
+                <pre class="highlight"><code class="hljs javascript">componentID: {
     fieldName: [
         valueOrBinding1,
         valueOrBinding2
@@ -60,8 +56,7 @@ componentID: {
                 </code></pre>
             </td>
             <td>
-                <pre><code>
-var protoTree = {
+                <pre class="highlight"><code class="hljs javascript">var protoTree = {
     mainHeader: "Carving Woods",
     sectionHeaders: [
         "Sassafras",
@@ -79,8 +74,7 @@ var protoTree = {
                 a drop-down
             </td>
             <td>
-                <pre><code>
-componentID: {
+                <pre class="highlight"><code class="hljs javascript">componentID: {
     selection: valueOrBinding,
     optionlist: [array of internal values],
     optionnames: [array of display strings]
@@ -90,8 +84,7 @@ componentID: {
                 href="RendererComponentTreeExpanders.md">Renderer Component Tree Expanders</a>.
             </td>
             <td>
-                <pre><code>
-var protoTree = {
+                <pre class="highlight"><code class="hljs javascript">var protoTree = {
     contact-addressType1: {
         selection: "${fields.addressType1}",
         optionlist: ["Home", "Work"],
@@ -107,16 +100,14 @@ var protoTree = {
                 A reference to a URL, such as a hyperlink
             </td>
             <td>
-                <pre><code>
-componentID: {
+                <pre class="highlight"><code class="hljs javascript">componentID: {
     target: destinationUrl,
     linktext: stringToDisplay
 }
                 </code></pre>
             </td>
             <td>
-                <pre><code>
-var protoTree = {
+                <pre class="highlight"><code class="hljs javascript">var protoTree = {
     contact-addressType1: {
         target: "http://company.com/help/${topic.url}",
         linktext: "${topic.name}"
@@ -131,8 +122,7 @@ var protoTree = {
                 A component that contains other components in a free-form way
             </td>
             <td>
-                <pre><code>
-componentID: {
+                <pre class="highlight"><code class="hljs javascript">componentID: {
     children: [array of other protocomponents]
 }
                 </code></pre>
@@ -146,8 +136,7 @@ componentID: {
                 the value is a key into a string bundle
             </td>
             <td>
-                <pre><code>
-componentID: {
+                <pre class="highlight"><code class="hljs javascript">componentID: {
     messageKey: key,
     args: [] // array of arguments to be interpolated into the message format
 }
@@ -157,8 +146,7 @@ componentID: {
                 for more information about message formatting.
             </td>
             <td>
-                <pre><code>
-var protoTree = {
+                <pre class="highlight"><code class="hljs javascript">var protoTree = {
     instructions: {
         messageKey: "instructionKey",
         args: ["thing", 3, "%path1"]

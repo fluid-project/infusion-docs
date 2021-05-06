@@ -1,6 +1,5 @@
 ---
 title: ContextAwareness API
-layout: default
 category: Infusion
 ---
 

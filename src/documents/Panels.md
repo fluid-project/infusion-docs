@@ -1,6 +1,5 @@
 ---
 title: Panels
-layout: default
 category: Infusion
 ---
 

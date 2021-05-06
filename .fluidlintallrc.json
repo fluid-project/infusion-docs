@@ -1,0 +1,20 @@
+{
+    "eslint": {
+        "js": {
+            "includes": ["./.eleventy.js"],
+            "excludes": ["./tests/**/*.js"]
+        }
+    },
+    "lintspaces": {
+        "newlines": {
+            "excludes": [
+                "*.ttf"
+            ]
+        }
+    },
+    "stylelint": {
+        "excludes": [
+            "./src/static/css/foundation.min.css"
+        ]
+    }
+}

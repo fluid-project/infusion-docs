@@ -3,35 +3,35 @@
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>{{document.title}} | Fluid Infusion</title>
+        <title>{{ title }} | Fluid Infusion</title>
 
-        <link rel="stylesheet" href="{{{relativeUrl '/lib/foundation/normalize.css' document.url}}}">
-        <link rel="stylesheet" href="{{{relativeUrl '/lib/foundation/foundation.css' document.url}}}">
-        <link rel="stylesheet" href="{{{relativeUrl '/css/highlightjs-custom.css' document.url}}}">
-        <link rel="stylesheet" href="{{{relativeUrl '/lib/octicons/octicons.css' document.url}}}">
+        <link rel="stylesheet" href="{{ url "/lib/foundation/normalize.css" }}">
+        <link rel="stylesheet" href="{{ url "/lib/foundation/foundation.css" }}">
+        <link rel="stylesheet" href="{{ url "/css/highlightjs-custom.css" }}">
+        <link rel="stylesheet" href="{{ url "/lib/octicons/octicons.css" }}">
 
-        <link rel="stylesheet" type="text/css" href="{{{relativeUrl '/lib/infusion/src/framework/preferences/css/Enactors.css' document.url}}}" />
-        <link rel="stylesheet" type="text/css" href="{{{relativeUrl '/lib/infusion/src/framework/preferences/css/PrefsEditor.css' document.url}}}" />
-        <link rel="stylesheet" type="text/css" href="{{{relativeUrl '/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css' document.url}}}" />
-        <link rel="stylesheet" href="{{{relativeUrl '/css/infusion-docs.css' document.url}}}">
+        <link rel="stylesheet" type="text/css" href="{{ url "/lib/infusion/src/framework/preferences/css/Enactors.css" }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url "/lib/infusion/src/framework/preferences/css/PrefsEditor.css" }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url "/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" }}" />
+        <link rel="stylesheet" href="{{ url "/css/infusion-docs.css" }}">
 
-        <link rel="icon" type="image/png" href="{{{relativeUrl '/images/favico.png' document.url}}}">
+        <link rel="icon" type="image/png" href="{{ url "/favicon.png" }}">
 
-        <script type="text/javascript" src="{{{relativeUrl '/lib/infusion/dist/infusion-all.js' document.url}}}"></script>
-        <script type="text/javascript" src="{{{relativeUrl '/js/infusion-docs.js' document.url}}}"></script>
+        <script type="text/javascript" src="{{ url "/lib/infusion/dist/infusion-all.js" }}"></script>
+        <script type="text/javascript" src="{{ url "/js/infusion-docs.js" }}"></script>
 
-        <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-express/querystring-coding.js' document.url}}}"></script>
-        <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/transforms.js' document.url}}}"></script>
-        <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-binder/binder.js' document.url}}}"></script>
+        <script type="text/javascript" src="{{ url '/lib/gpii-express/querystring-coding.js' }}"></script>
+        <script type="text/javascript" src="{{ url '/lib/gpii-binder/transforms.js' }}"></script>
+        <script type="text/javascript" src="{{ url '/lib/gpii-binder/binder.js' }}"></script>
 
-        {{#ifEqual document.category "Search"}}
-            <script type="text/javascript" src="{{{relativeUrl '/lib/gpii-location-bar-relay/locationBar.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/lib/lunr/lunr.min.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/js/search-digest.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/js/search-string-parser.js' document.url}}}"></script>
-            <script type="text/javascript" src="{{{relativeUrl '/js/search.js' document.url}}}"></script>
+        {{#ifEqual category "Search"}}
+            <script type="text/javascript" src="{{ url '/lib/gpii-location-bar-relay/locationBar.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/lib/lunr/lunr.min.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/search-digest.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/search-string-parser.js' }}"></script>
+            <script type="text/javascript" src="{{ url '/js/search.js' }}"></script>
         {{else}}
-            <script type="text/javascript" src="{{{relativeUrl '/js/mini-search.js' document.url}}}"></script>
+            <script type="text/javascript" src="{{ url '/js/mini-search.js' }}"></script>
         {{/ifEqual}}
     </head>
     <body class="infusion-docs fl-theme-prefsEditor-default">
@@ -53,7 +53,7 @@
                 <div class="fl-panelBar">
                     <span class="fl-prefsEditor-buttons">
                         <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
-                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Display Preferences</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Preferences</button>
                     </span>
                 </div>
             </div>
@@ -61,10 +61,10 @@
             <script type="text/javascript">
                 fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
                     terms: {
-                        "templatePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/html' document.url}}}",
-                        "messagePrefix": "{{{relativeUrl '/lib/infusion/src/framework/preferences/messages' document.url}}}"
+                        "templatePrefix": "{{ url "/lib/infusion/src/framework/preferences/html" }}",
+                        "messagePrefix": "{{ url "/lib/infusion/src/framework/preferences/messages" }}"
                     },
-                    "tocTemplate": "{{{relativeUrl '/lib/infusion/TableOfContents.html' document.url}}}"
+                    "tocTemplate": "{{ url "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html" }}"
                 });
             </script>
 
@@ -72,16 +72,16 @@
 
             <header class="row infusion-docs-header">
                 <div class="infusion-docs-fluidLogo small-12 medium-3 column">
-                    <a class="infusion-docs-fluidLogoText" href="{{{relativeUrl '/index.html' document.url}}}" title="Infusion">infusion</a>
+                    <a class="infusion-docs-fluidLogoText" href="{{ url "/" }}" title="Infusion">infusion</a>
                 </div>
 
                 <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
                     {{! Highlight the (active) category the document belongs to. }}
                     {{#each siteStructure}}
-                        {{#ifEqual category ../document.category}}
-                            <a href="{{{relativeUrl categoryHref ../../document.url}}}" title="{{category}}" class="infusion-docs-category-active">{{category}}</a>
+                        {{#ifEqual category ../category}}
+                            <a href="{{{ generateHrefWithPrefix categoryHref }}}" title="{{category}}" class="infusion-docs-category-active">{{category}}</a>
                         {{else}}
-                            <a href="{{{relativeUrl categoryHref ../../document.url}}}" title="{{category}}">{{category}}</a>
+                            <a href="{{{ generateHrefWithPrefix categoryHref }}}" title="{{category}}">{{category}}</a>
                         {{/ifEqual}}
                     {{/each}}
                 </nav>
@@ -89,24 +89,24 @@
 
             <div class="infusion-docs-mainBody">
                 <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
-                    {{#ifEqual document.category "Search"}}
+                    {{#ifEqual category "Search"}}
                     {{else}}
-                        <span class="infusion-docs-category">Search</span>
-                        <p class="docs-search-mini"><input type="text" name="qs"/></p>
+                        <label for="search" class="infusion-docs-category">Search</label>
+                        <p class="docs-search-mini"><input id="search" type="search" name="qs"/></p>
 
                         {{#each siteStructure}}
                         {{! Output only the table of contents matching the current document's category }}
-                            {{#ifEqual category ../document.category}}
+                            {{#ifEqual category ../category}}
                                 <span class="infusion-docs-category">{{category}}</span>
                                 {{#each sections}}
                                     <span class="infusion-docs-sectionName">{{sectionName}}</span>
                                     <ul>
                                         {{#each pages}}
                                             <li>
-                                                {{#ifEqual href ../../../../document.url}}
+                                                {{#ifEqual href ../../../page.url}}
                                                     <span class="infusion-docs-TOC-pageName">{{pageName}}</span>
                                                 {{else}}
-                                                    <a href="{{relativeUrl href ../../../../../document.url}}"><span class="infusion-docs-TOC-pageName">{{pageName}}</span></a>
+                                                    <a href="{{{ generateHrefWithPrefix href }}}"><span class="infusion-docs-TOC-pageName">{{pageName}}</span></a>
                                                 {{/ifEqual}}
                                             </li>
                                         {{/each}}
@@ -122,24 +122,25 @@
 
                         <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
 
-                        <h1>{{document.title}}</h1>
+                        <h1>{{ title }}</h1>
 
-                        <p class="infusion-docs-githubLink"><a href="{{githubLocation}}" target="_blank">Edit on GitHub</a></p>
+                        <p class="infusion-docs-githubLink"><a href="{{ githubLocation }}" target="_blank">Edit on GitHub</a></p>
 
-                        {{#if document.noteRendererChangesPost15}}
+                        {{#if noteRendererChangesPost15 }}
                         <div class="infusion-docs-note"><strong>Note:</strong> The renderer will undergo significant changes post Infusion 1.5
                         </div>
                         {{/if}}
 
                         <div class="infusion-docs-articleBody">
-                            {{#ifEqual document.category "Search"}}
+                            {{#ifEqual category "Search"}}
                                 <div class="docs-search">
-                                    <input type="text" class="docs-search-query" placeholder="Enter one or more search terms and press enter to search."/>
+                                    <label for="search">Search</label>
+                                    <input id="search" type="search" class="docs-search-query" />
 
-                                    <div class="docs-search-results"></div>
+                                    <div class="docs-search-results">Enter one or more search terms and press enter to search.</div>
                                 </div>
                             {{else}}
-                                {{{rewriteMdLinks content}}}
+                                {{{ rewriteMdLinks content }}}
                             {{/ifEqual}}
                         </div>
                     </div>
@@ -158,7 +159,7 @@
         </div> <!-- end container -->
         <script>
             fluid.docs.onLoad();
-            {{#ifEqual document.category "Search"}}
+            {{#ifEqual category "Search"}}
                 fluid.docs.search(".docs-search");
             {{else}}
                 fluid.docs.search.mini(".docs-search-mini")

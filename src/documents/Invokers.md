@@ -1,6 +1,5 @@
 ---
 title: Invokers
-layout: default
 category: Infusion
 ---
 
