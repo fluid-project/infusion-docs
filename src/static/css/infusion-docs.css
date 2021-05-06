@@ -181,8 +181,12 @@ a:focus {
     background: inherit;
 }
 
-.infusion-docs-anchor:hover .octicon-link,
-.infusion-docs-anchor:focus .octicon-link {
+h1:hover .octicon-link,
+h1:focus .octicon-link,
+h2:hover .octicon-link,
+h2:focus .octicon-link,
+h3:hover .octicon-link,
+h3:focus .octicon-link {
     visibility: visible;
 }
 
