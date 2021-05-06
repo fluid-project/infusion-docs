@@ -122,8 +122,9 @@ var tts = fluid.textToSpeech({
                     <dd>
                         An optional javascript object. Allows for the configuration of the specific
                         <code>SpeechSynthesisUtterance</code> instance used for this particular text. The configuration
-                        passed in here takes the same form as <a
-                        href="#modelutteranceopts-configuration"><code>model.utteranceOpts</code></a> and will override them for
+                        passed in here takes the same form as
+                        <a href="#modelutteranceopts-configuration"><code>model.utteranceOpts</code></a>
+                        and will override them for
                         this instance only.
                     </dd>
                 </dl>
