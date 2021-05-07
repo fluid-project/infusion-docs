@@ -69,7 +69,7 @@ td {
 .fl-prefsEditor-buttons button:focus,
 .infusion-docs-TOC li a:focus .infusion-docs-TOC-pageName,
 a:focus {
-    outline: solid 0.2rem #008cba;
+    outline: solid 0.2rem hsl(195, 100%, 31%);
 }
 
 .infusion-docs-header a:focus,
@@ -201,6 +201,10 @@ h3:focus .octicon-link {
     width: 100%;
 }
 
+.infusion-docs-mainBody a {
+    color: hsl(195, 100%, 31%);
+}
+
 .infusion-docs-mainContent code a:hover,
 .infusion-docs-mainContent a:hover code,
 .infusion-docs-container a:hover {
@@ -237,8 +241,8 @@ h3:focus .octicon-link {
 .infusion-docs-mainContent code a,
 .infusion-docs-mainContent a code {
     background: 0;
-    border-bottom: 0.1rem dotted #008cba;
-    color: #008cba;
+    border-bottom: 0.1rem dotted hsl(195, 100%, 31%);
+    color: hsl(195, 100%, 31%);
     font-size: inherit;
 }
 
@@ -295,11 +299,11 @@ h3:focus .octicon-link {
 
 .infusion-docs-header a:hover {
     background: #f2f2f2;
-    color: #008cba;
+    color: hsl(195, 100%, 31%);
 }
 
 .infusion-docs-header a:hover::before {
-    color: #008cba;
+    color: hsl(195, 100%, 31%);
 }
 
 .infusion-docs-category-active {
@@ -338,6 +342,10 @@ h3:focus .octicon-link {
 
 .infusion-docs-TOC li:first-child {
     border-top: none;
+}
+
+.infusion-docs-TOC a {
+    display: inline-block;
 }
 
 .infusion-docs-category {
@@ -496,7 +504,7 @@ table div.infusion-docs-note {
 
 .infusion-docs-footer a:hover {
     background: #f2f2f2;
-    color: #008cba;
+    color: hsl(195, 100%, 31%);
 }
 
 .infusion-docs-footerInfusion {
