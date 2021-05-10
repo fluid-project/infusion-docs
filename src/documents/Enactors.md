@@ -1,6 +1,5 @@
 ---
 title: Enactors
-layout: default
 category: Infusion
 ---
 

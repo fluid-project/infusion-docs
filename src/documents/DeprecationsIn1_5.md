@@ -1,6 +1,5 @@
 ---
 title: Deprecations in 1.5
-layout: default
 category: Infusion
 ---
 

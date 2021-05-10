@@ -1,6 +1,5 @@
 ---
 title: Infusion Documentation
-layout: default
 ---
 
 ## Writing Configuration

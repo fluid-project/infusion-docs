@@ -1,6 +1,5 @@
 ---
 title: How To Use The Renderer
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---

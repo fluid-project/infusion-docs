@@ -1,6 +1,5 @@
 ---
 title: Pager
-layout: default
 category: Components
 ---
 

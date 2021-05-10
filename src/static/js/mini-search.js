@@ -4,8 +4,8 @@
     that the search form can handle them.
 
 */
+"use strict";
 (function (fluid) {
-    "use strict";
     fluid.registerNamespace("fluid.docs.search.mini");
 
     fluid.docs.search.mini.submitOnEnter = function (that, event) {

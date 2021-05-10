@@ -1,6 +1,5 @@
 ---
 title: Component Grades
-layout: default
 category: Infusion
 ---
 
@@ -217,7 +216,7 @@ Another possibility is to supply the additional gradeNames via a
 fluid.defaults("examples.rootComponent", {
     components: {
         myCombinedComponent: { // This component also behaves (except for typeName)
-                               // as if was created via examples.combinedComponent
+            // as if was created via examples.combinedComponent
             type: "examples.componentOne",
             options: {
                 gradeNames: "examples.componentTwo"

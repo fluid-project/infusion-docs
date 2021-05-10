@@ -1,6 +1,5 @@
 ---
 title: Infusion IoC API
-layout: default
 category: Infusion
 ---
 

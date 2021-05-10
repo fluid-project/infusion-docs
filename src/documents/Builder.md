@@ -1,6 +1,5 @@
 ---
 title: Builder
-layout: default
 category: Infusion
 ---
 

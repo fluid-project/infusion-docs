@@ -1,6 +1,5 @@
 ---
 title: How to Create and Use Font Icons
-layout: default
 category: Tutorials
 ---
 
@@ -36,17 +35,18 @@ However, there are some shortcomings to keep in mind:
 ```css
 @font-face {
     font-family: 'CustomIcons';
-    src: url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    src:
+        url('../fonts/CustomIcons.ttf'),
+        url('../fonts/CustomIcons.eot');
 }
 
 a.myLink-icon {
     font-family: 'CustomIcons';
 }
 
-a.myLink-icon:before {
+a.myLink-icon::before {
+    color: #ed3820;   /* Custom colour. */
     content: "\e000"; /* The custom Unicode (aka. PUA) for the icon you want. */
-    color: #ED3820;   /* Custom colour. */
 }
 ```
 
@@ -62,7 +62,7 @@ Tips:
 * Overlapping regions of shapes may cause a subtraction when converted in IcoMoon (i.e. it will render as transparent) -
   in this case you may need to build a single shape from these conflicting shapes, or ensure none of your shapes overlap.
 
-Download Example SVG file: [pencil-icon-01.svg](../images/pencil-icon-01.svg)
+Download Example SVG file: [pencil-icon-01.svg](/images//pencil-icon-01.svg)
 
 ## Step 2. Using IcoMoon to Generate Font
 
@@ -97,7 +97,7 @@ For example you have the following existing HTML and CSS:
 ```css
 /* Existing CSS markup for the HTML before adding new icon font. */
 #contact_form {
-    background: url("../images/envelope.png"); /*existing image that will be replaced by icon */
+    background: url("../images/envelope.png"); /* existing image that will be replaced by icon */
 }
 ```
 
@@ -105,15 +105,16 @@ Next, add the new font to the CSS markup.
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';                /*Specify the new font */
-    src: url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), /* IE8 fix. */
-         url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    font-family: 'CustomIcons';                /* Specify the new font */
+    src:
+        url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'),
+        url('        CustomIcons.ttf'),
+        url('        CustomIcons.eot');
 }
 
 #contact_form {
-    background: url("../images/envelope.png"); /*existing image that will be replaced by icon */
-    font-family: 'CustomIcons';                /*the new font icon */
+    background: url("../images/envelope.png"); /* existing image that will be replaced by icon */
+    font-family: 'CustomIcons';                /* the new font icon */
 }
 ```
 
@@ -121,19 +122,20 @@ Finally, add the new icon into the BEFORE pseudo class and delete any references
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';                /*Specify the new font */
-    src: url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), /* IE8 fix. */
-         url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    font-family: 'CustomIcons';                /* Specify the new font */
+    src:
+        url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'),
+        url('        CustomIcons.ttf'),
+        url('        CustomIcons.eot');
 }
 
 #contact_form {
     /* old icon image has been removed. */
-    font-family: 'CustomIcons';                /*the new font icon */
+    font-family: 'CustomIcons';                /* the new font icon */
 }
 
-#contact_form:before {
-    content: "\e000";                          /*the custom Unicode (aka. PUA) for the icon.*/
+#contact_form::before {
+    content: "\e000";                          /* the custom Unicode (aka. PUA) for the icon. */
 }
 ```
 
@@ -172,8 +174,9 @@ contents within the `<a>`, which means "Contact us" will no longer be Comic Sans
 ```css
 @font-face {
     font-family: 'CustomIcons';
-    src: url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    src:
+        url('../fonts/CustomIcons.ttf'),
+        url('../fonts/CustomIcons.eot');
 }
 
 body {
@@ -184,7 +187,7 @@ body {
     font-family: 'CustomIcons';
 }
 
-#contact_form:before {
+#contact_form::before {
     content: "\e000";
 }
 ```
@@ -202,8 +205,9 @@ contained within. The CSS file is then updated to reference this new markup stru
 ```css
 @font-face {
     font-family: 'CustomIcons';
-    src: url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    src:
+        url('../fonts/CustomIcons.ttf'),
+        url('../fonts/CustomIcons.eot');
 }
 
 body {
@@ -214,7 +218,7 @@ body {
     font-family: 'CustomIcons';
 }
 
-#icon-envelope:before {
+#icon-envelope::before {
     content: "\e000";
 }
 ```
@@ -238,14 +242,16 @@ be removed as well - causing a possible usability and accessibility issue.
 ```css
 @font-face {
     font-family: 'CustomIcons';
-    src: url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    src:
+        url('../fonts/CustomIcons.ttf'),
+        url('../fonts/CustomIcons.eot');
 }
 
 a {
     font-family: 'CustomIcons';
 }
-a:before {
+
+a::before {
     content: "\e001";
 }
 ```
@@ -262,8 +268,8 @@ To bring back some semantics and to help improve accessibility, we use "aria-lab
 Icon fonts can appear different across browsers and across operating systems. For example, the following icon is
 rendered differently in Firefox in Mac OS X and in Windows despite being the same icon and the same browser.
 
-![a partially displayed font icon on firefox, Mac system](../images/Icon-FF-OSX.png)
-![a partially displayed font icon on firefox, Windows system](../images/Icon-FF-windows.png)
+![a partially displayed font icon on firefox, Mac system](/images//Icon-FF-OSX.png)
+![a partially displayed font icon on firefox, Windows system](/images//Icon-FF-windows.png)
 
 To avoid these rendering problems, when creating the SVG images avoid using fine details - not only does this help
 eliminate details in the icon font being lost during rendering, it also helps improve usability through clearer icons.
@@ -275,10 +281,11 @@ format('embedded-opentype')` to your CSS. For example:
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';                /*Specify the new font */
-    src: url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), /* IE8 fix. */
-         url('../fonts/CustomIcons.ttf'),
-         url('../fonts/CustomIcons.eot');
+    font-family: 'CustomIcons';                /* Specify the new font */
+    src:
+        url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'),
+        url('        CustomIcons.ttf'),
+        url('        CustomIcons.eot');
 }
 ```
 
@@ -299,7 +306,7 @@ on Windows and Mac OS X 10.6+.
 3. Select the custom font from the Font drop-down menu. The glyphs in the custom font should now appear in the window.
 4. Select a character in the window. The Unicode will appear in the bottom-left corner in the status bar.
 
-![Unicode character map](../images/Unicode-charmap.png)
+![Unicode character map](/images//Unicode-charmap.png)
 
 #### Obtaining Unicode in Mac OS X 10.6 or Later
 
@@ -316,11 +323,11 @@ on Windows and Mac OS X 10.6+.
 9. Now a "Characters" window appears with "Search" results containing each character selected in the previous step.
 10. Select an icon in the "Character" panel. The Unicode will appear in the right column.
 
-![Mac OS X Font Book](../images/mac-font-book.png)
+![Mac OS X Font Book](/images//mac-font-book.png)
 
 Above: An image showing the Mac OS X Font Book application with the custom characters highlighted.
 
-![Mac OS X Characters window](../images/mac-characters-window.png)
+![Mac OS X Characters window](/images//mac-characters-window.png)
 
 Above: An image showing the Mac OS X Characters window. The Unicode value for a custom character appears in the right
 most column.

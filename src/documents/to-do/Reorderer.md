@@ -1,6 +1,5 @@
 ---
 title: Reorderer
-layout: default
 category: Components
 ---
 

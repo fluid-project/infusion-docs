@@ -1,6 +1,5 @@
 ---
 title: Component Lifecycle
-layout: default
 category: Infusion
 ---
 

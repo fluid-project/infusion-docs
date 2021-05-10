@@ -1,6 +1,5 @@
 ---
 title: Using String Templates
-layout: default
 category: Tutorials
 ---
 
@@ -43,40 +42,40 @@ whatever is most meaningful for your component.
 In this example, we've used an `expander` to provide "convenience" variables with the transformed values:
 
 ```javascript
-  "use strict";
-  // special require form that permits use in browser as well as node.js
-  var fluid = fluid || require("infusion");
-  var gpii  = fluid.registerNamespace("gpii");
+"use strict";
+// special require form that permits use in browser as well as node.js
+var fluid = fluid || require("infusion");
+var gpii  = fluid.registerNamespace("gpii");
 
-  fluid.defaults("gpii.sandbox.variables.simpler", {
-      gradeNames: "fluid.component",
-      transformed: {
-          expander: {
-              func: "{that}.parseTemplates"
-          }
-      },
-      terms: {
-          one: "base one",
-          two: "base two"
-      },
-      templates: {
-          one: "The term named 'one' is set to '%one'.",
-          two: "The term named 'two' is set to '%two'."
-      },
-      invokers: {
-          parseTemplates: {
-              funcName: "fluid.transform",
-              args: ["{that}.options.templates", "{that}.transformTemplate"]
-          },
-          transformTemplate: {
-              funcName: "fluid.stringTemplate",
-              args: ["{arguments}.0", "{that}.options.terms"]
-          }
-      }
-  });
+fluid.defaults("gpii.sandbox.variables.simpler", {
+    gradeNames: "fluid.component",
+    transformed: {
+        expander: {
+            func: "{that}.parseTemplates"
+        }
+    },
+    terms: {
+        one: "base one",
+        two: "base two"
+    },
+    templates: {
+        one: "The term named 'one' is set to '%one'.",
+        two: "The term named 'two' is set to '%two'."
+    },
+    invokers: {
+        parseTemplates: {
+            funcName: "fluid.transform",
+            args: ["{that}.options.templates", "{that}.transformTemplate"]
+        },
+        transformTemplate: {
+            funcName: "fluid.stringTemplate",
+            args: ["{arguments}.0", "{that}.options.terms"]
+        }
+    }
+});
 
-  var simpler = gpii.sandbox.variables.simpler();
-  console.log("transformed options:\n" + JSON.stringify(simpler.options.transformed, null, 2));
+var simpler = gpii.sandbox.variables.simpler();
+console.log("transformed options:\n" + JSON.stringify(simpler.options.transformed, null, 2));
 ```
 
 That code produces output like the following:
@@ -138,61 +137,61 @@ In the next example, we will look at creating a child component that overrides s
 configuration.  Here's the updated code:
 
 ```javascript
-  "use strict";
-  var fluid = fluid || require("infusion");
-  var gpii  = fluid.registerNamespace("gpii");
+"use strict";
+var fluid = fluid || require("infusion");
+var gpii  = fluid.registerNamespace("gpii");
 
-  fluid.defaults("gpii.sandbox.variables.base", {
-      gradeNames: "fluid.component",
-      terms: {
-          one: "base one",
-          two: "base two"
-      },
-      templates: {
-          one: "The term named 'one' is set to '%one'.",
-          two: "The term named 'two' is set to '%two'."
-      },
-      listeners: {
-          "onCreate.log": [
-              {
-                  funcName: "gpii.sandbox.variables.base.logState",
-                  args:     ["{that}", {expander: {func: "{that}.parseTemplates"}}]
-              }
-          ]
-      },
-      invokers: {
-          parseTemplates: {
-              funcName: "fluid.transform",
-              args: ["{that}.options.templates", "{that}.transformTemplate"]
-          },
-          transformTemplate: {
-              funcName: "fluid.stringTemplate",
-              args: ["{arguments}.0", "{that}.options.terms"]
-          }
-      }
-  });
+fluid.defaults("gpii.sandbox.variables.base", {
+    gradeNames: "fluid.component",
+    terms: {
+        one: "base one",
+        two: "base two"
+    },
+    templates: {
+        one: "The term named 'one' is set to '%one'.",
+        two: "The term named 'two' is set to '%two'."
+    },
+    listeners: {
+        "onCreate.log": [
+            {
+                funcName: "gpii.sandbox.variables.base.logState",
+                args:     ["{that}", {expander: {func: "{that}.parseTemplates"}}]
+            }
+        ]
+    },
+    invokers: {
+        parseTemplates: {
+            funcName: "fluid.transform",
+            args: ["{that}.options.templates", "{that}.transformTemplate"]
+        },
+        transformTemplate: {
+            funcName: "fluid.stringTemplate",
+            args: ["{arguments}.0", "{that}.options.terms"]
+        }
+    }
+});
 
-  gpii.sandbox.variables.base.logState = function (that, parsed) {
-      console.log("\nMy friends call me '" + that.nickName + "'...");
-      console.log("terms -> one: " + that.options.terms.one);
-      console.log("terms -> two: " + that.options.terms.two);
-      console.log("template one: " + that.options.templates.one);
-      console.log("template two: " + that.options.templates.two);
-      console.log("one, parsed : " + parsed.one);
-      console.log("two, parsed : " + parsed.two);
-  };
+gpii.sandbox.variables.base.logState = function (that, parsed) {
+    console.log("\nMy friends call me '" + that.nickName + "'...");
+    console.log("terms -> one: " + that.options.terms.one);
+    console.log("terms -> two: " + that.options.terms.two);
+    console.log("template one: " + that.options.templates.one);
+    console.log("template two: " + that.options.templates.two);
+    console.log("one, parsed : " + parsed.one);
+    console.log("two, parsed : " + parsed.two);
+};
 
-  fluid.defaults("gpii.sandbox.variables.child", {
-      gradeNames: ["gpii.sandbox.variables.base"],
-      templates: {
-          one: "The term named one is set to '%one', also, I am a custom template."
-      },
-      terms: {
-          two: "child two"
-      }
-  });
+fluid.defaults("gpii.sandbox.variables.child", {
+    gradeNames: ["gpii.sandbox.variables.base"],
+    templates: {
+        one: "The term named one is set to '%one', also, I am a custom template."
+    },
+    terms: {
+        two: "child two"
+    }
+});
 
-  gpii.sandbox.variables.child();
+gpii.sandbox.variables.child();
 ```
 
 For this example, we're using our own invoker (`logState`) to display a range of variables. The `logState` function is
@@ -259,46 +258,46 @@ It is important to know what happens when a term is missing or has no value.  He
 common problems.
 
 ```javascript
-  "use strict";
-  var fluid = fluid || require("infusion");
-  var gpii  = fluid.registerNamespace("gpii");
+"use strict";
+var fluid = fluid || require("infusion");
+var gpii  = fluid.registerNamespace("gpii");
 
-  fluid.registerNamespace("gpii.sandbox.variables.empty");
-  fluid.defaults("gpii.sandbox.variables.empty", {
-      gradeNames: "fluid.component",
-      transformed: {
-          expander: {
-              func: "{that}.parseTemplates"
-          }
-      },
-      terms: {
-          one: "value one",
-          two: "value two"
-      },
-      templates: {
-          one:   "The term named 'one' is set to '%one'.",
-          two:   "The term named 'two' is set to '%two'.",
-          three: "The term named 'three' is set to '%three'."
-      },
-      invokers: {
-          parseTemplates: {
-              funcName: "fluid.transform",
-              args: ["{that}.options.templates", "{that}.transformTemplate"]
-          },
-          transformTemplate: {
-              funcName: "fluid.stringTemplate",
-              args: ["{arguments}.0", "{that}.options.terms"]
-          }
-      }
-  });
+fluid.registerNamespace("gpii.sandbox.variables.empty");
+fluid.defaults("gpii.sandbox.variables.empty", {
+    gradeNames: "fluid.component",
+    transformed: {
+        expander: {
+            func: "{that}.parseTemplates"
+        }
+    },
+    terms: {
+        one: "value one",
+        two: "value two"
+    },
+    templates: {
+        one:   "The term named 'one' is set to '%one'.",
+        two:   "The term named 'two' is set to '%two'.",
+        three: "The term named 'three' is set to '%three'."
+    },
+    invokers: {
+        parseTemplates: {
+            funcName: "fluid.transform",
+            args: ["{that}.options.templates", "{that}.transformTemplate"]
+        },
+        transformTemplate: {
+            funcName: "fluid.stringTemplate",
+            args: ["{arguments}.0", "{that}.options.terms"]
+        }
+    }
+});
 
-  var simpler = gpii.sandbox.variables.empty({
-      terms: {
-          one: null,
-          two: "{empty}.options.bad.reference"
-      }
-  });
-  console.log("transformed options:\n" + JSON.stringify(simpler.options.transformed, null, 2));
+var simpler = gpii.sandbox.variables.empty({
+    terms: {
+        one: null,
+        two: "{empty}.options.bad.reference"
+    }
+});
+console.log("transformed options:\n" + JSON.stringify(simpler.options.transformed, null, 2));
 ```
 
 The output returned is:

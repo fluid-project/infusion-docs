@@ -1,6 +1,5 @@
 ---
 title: Framework Concepts
-layout: default
 category: Infusion
 ---
 

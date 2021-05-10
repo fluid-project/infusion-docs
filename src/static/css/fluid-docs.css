@@ -8,36 +8,36 @@ body {
 .fluid-docs-header,
 .fluid-docs-footer {
     background-color: #323232;
-    height: 7rem;
-    font-family: "Open Sans", Arial, Helvetica;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
+    height: 7rem;
 }
 
 .fluid-docs-header {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size: 1.6rem;
-    font-family: "Open Sans", Arial, Helvetica;
     letter-spacing: 0.2rem;
     padding: 2.5rem 0 0 2.5rem;
 }
 
 .fluid-docs-header a {
-    color: #66CCFF;
+    color: #6cf;
 }
 
 .fluid-docs-main-body {
-    min-height: 40rem;
     margin: 0;
+    min-height: 40rem;
 }
 
 .fluid-docs-content {
-    min-height: 40rem;
     height: 100%;
+    min-height: 40rem;
 }
 
 .fluid-docs-content h1 {
-    font-family: 'Roboto Slab';
-    font-size: 3.0rem;
+    font-family: 'Roboto Slab', serif;
+    font-size: 3rem;
     margin-top: 6rem;
-    padding-top: 1rem;
     padding-bottom: 2rem;
+    padding-top: 1rem;
 }
