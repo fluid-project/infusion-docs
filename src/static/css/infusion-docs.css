@@ -302,7 +302,8 @@ h3:focus .octicon-link {
     color: #008cba;
 }
 
-.infusion-docs-category-active {
+.infusion-docs-category-active,
+[aria-current="page"] {
     border-bottom: 0.2rem solid #ffb200;
 }
 

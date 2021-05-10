@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@11ty/eleventy": "0.12.1",
+        "@11ty/eleventy-navigation": "0.2.0",
         "foundation-sites": "5.5.2",
         "gpii-binder": "1.0.5",
         "gpii-location-bar-relay": "1.0.4",
