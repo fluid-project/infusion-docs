@@ -85,8 +85,7 @@
 
             <div class="infusion-docs-mainBody">
                 <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
-                    {% if category === "Search" %}
-                    {% else %}
+                    {% if category !== "Search" %}
                         <label for="search" class="infusion-docs-category">Search</label>
                         <p class="docs-search-mini"><input id="search" type="search" name="qs"/></p>
                         {% for group in siteStructure %}
