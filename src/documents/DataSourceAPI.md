@@ -1,6 +1,5 @@
 ---
 title: DataSource API
-layout: default
 category: Infusion
 ---
 

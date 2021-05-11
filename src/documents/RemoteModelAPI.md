@@ -1,6 +1,5 @@
 ---
 title: RemoteModel API
-layout: default
 category: Infusion
 ---
 
