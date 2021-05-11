@@ -341,7 +341,7 @@ After a fetch is performed, the local representation is rebased with the results
 re-applying the local model changes on top of the values returned from the fetch. In this way the local changes are not
 lost and take precedence over changes pulled down from the remote.
 
-![A flow diagram depicting the Fetch workflow](images/remoteModel_fetch_diagram.svg)
+![A flow diagram depicting the Fetch workflow](/images//remoteModel_fetch_diagram.svg)
 
 ## Write Workflow
 
@@ -361,4 +361,4 @@ By default, upon a successful write, the `afterWrite` event will trigger the `re
 values from the `local` model path. Because of this, the `writeImpl` must resolve/reject its promise after the write
 implementation has been handled by the remote end point, not simply after the request has been made.
 
-![A flow diagram depicting the Write workflow](images/remoteModel_write_diagram.svg)
+![A flow diagram depicting the Write workflow](/images//remoteModel_write_diagram.svg)
