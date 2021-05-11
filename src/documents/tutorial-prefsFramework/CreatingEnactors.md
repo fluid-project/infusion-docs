@@ -1,6 +1,5 @@
 ---
 title: Creating Enactors
-layout: default
 category: Tutorials
 ---
 
@@ -52,7 +51,7 @@ fluid.defaults("fluid.prefs.enactor.textSize", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "fluid.prefs.textSize": {
-            "model.value": "default"
+            "model.value": "value"
         }
     }
     // ...
@@ -64,7 +63,7 @@ fluid.defaults("fluid.prefs.enactor.emphasizeLinks", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor.styleElements"],
     preferenceMap: {
         "fluid.prefs.emphasizeLinks": {
-            "model.value": "default"
+            "model.value": "value"
         }
     }
     // ...
@@ -76,10 +75,10 @@ fluid.defaults("fluid.videoPlayer.panels.captionsSettings", {
     gradeNames: ["fluid.videoPlayer.panels.mediaSettings"],
     preferenceMap: {
         "fluid.videoPlayer.displayCaptions": {
-            "model.show": "default"
+            "model.show": "value"
         },
         "fluid.videoPlayer.captionLanguage": {
-            "model.language": "default"
+            "model.language": "value"
         }
     }
     // ...
@@ -149,7 +148,7 @@ fluid.defaults("fluid.prefs.enactor.lineSpace", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     preferenceMap: {
         "fluid.prefs.lineSpace": {
-            "model.value": "default"
+            "model.value": "value"
         }
     },
     fontSizeMap: {},  // must be supplied by implementors
@@ -192,7 +191,7 @@ fluid.defaults("fluid.prefs.enactor.tableOfContents", {
     gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor"],
     preferenceMap: {
         "fluid.prefs.tableOfContents": {
-            "model.toc": "default"
+            "model.toc": "value"
         }
     },
     tocTemplate: null,  // must be supplied by implementors

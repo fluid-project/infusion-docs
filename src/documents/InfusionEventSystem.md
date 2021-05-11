@@ -1,6 +1,5 @@
 ---
 title: Infusion Event System
-layout: default
 category: Infusion
 ---
 

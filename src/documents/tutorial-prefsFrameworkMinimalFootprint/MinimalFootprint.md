@@ -1,6 +1,5 @@
 ---
-title: Preferences Framework: Minimal Footprint
-layout: default
+title: "Preferences Framework: Minimal Footprint"
 category: Tutorials
 ---
 
@@ -40,7 +39,7 @@ package which requires the fewest requests. From the Infusion root directory run
 which will create a zip file containing all of the bundled code.
 
 See: "[How Do I Create an Infusion
-Package](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package)"
+Package](https://github.com/fluid-project/infusion/blob/main/README.md#how-do-i-create-an-infusion-package)"
 documentation for the full list of steps.
 
 ### Full Page Preferences Editor
@@ -70,7 +69,7 @@ The code consists of the following three parts:
    preferences to the page.
 3. `fluid.prefs.fullPreview` - The Full Page prefs editor, including a preview.
 
-(see: [fullPage.html](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/fullPage.html))
+(see: [fullPage.html](https://github.com/fluid-project/infusion/blob/main/examples/framework/preferences/minimalFootprint/fullPage.html))
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> The code snippet below can be loaded in through a JavaScript file or added directly to the
@@ -78,67 +77,67 @@ The code consists of the following three parts:
 </div>
 
 ```javascript
-    /*
-    /*
-     * The various starter gradeNames mentioned below indicate that the
-     * "starter" adjusters and enactors should be used. These correspond to the
-     * same set of adjusters and enactors used in a typical UI Options
-     * configuration. However, a custom set of adjusters and enactors could be
-     * configured instead.
-     */
+/*
+/*
+    * The various starter gradeNames mentioned below indicate that the
+    * "starter" adjusters and enactors should be used. These correspond to the
+    * same set of adjusters and enactors used in a typical UI Options
+    * configuration. However, a custom set of adjusters and enactors could be
+    * configured instead.
+    */
 
-    /**
-     * Initialize the PrefsEditor global settings store.
-     * The globalSettingsStore handles the storage and retrieval of preferences,
-     * by default it is configured to use the fluid.prefs.cookieStore
-     * which stores preferences in a browser cookie.
-     */
-    fluid.prefs.globalSettingsStore();
+/**
+ * Initialize the PrefsEditor global settings store.
+ * The globalSettingsStore handles the storage and retrieval of preferences,
+ * by default it is configured to use the fluid.prefs.cookieStore
+ * which stores preferences in a browser cookie.
+ */
+fluid.prefs.globalSettingsStore();
 
-    /**
-     * Initialize the UI Enhancer for the page.
-     */
-    fluid.pageEnhancer({
-        uiEnhancer: {
-            gradeNames: ["fluid.uiEnhancer.starterEnactors"],
-            // The UI Enhancer's Table of Contents uses an HTML template. This tells the component
-            // where to find that template.
-            tocTemplate: "../../../../src/components/tableOfContents/html/TableOfContents.html"
-        }
-    });
+/**
+ * Initialize the UI Enhancer for the page.
+ */
+fluid.pageEnhancer({
+    uiEnhancer: {
+        gradeNames: ["fluid.uiEnhancer.starterEnactors"],
+        // The UI Enhancer's Table of Contents uses an HTML template. This tells the component
+        // where to find that template.
+        tocTemplate: "../../../../src/components/tableOfContents/html/TableOfContents.html"
+    }
+});
 
-    fluid.prefs.fullPreview(".demo-prefsEditor-fullWithPreview", {
-        gradeNames: ["fluid.prefs.transformDefaultPanelsOptions", "fluid.prefs.initialModel.starter"],
-        // Tell PrefsEditor where to find all the resources, relative to this file
-        terms: {
-            // The Preferences Editor interface is defined by several HTML templates. The component
-            // needs to know where those templates are.
-            templatePrefix: "../../../../src/framework/preferences/html",
-            //  The strings used on Preferences Editor interface are defined in several JSON files. The component
-            //  needs to know where those files are.
-            messagePrefix: "../../../../src/framework/preferences/messages"
-        },
-        messageLoader: {
-            gradeNames: ["fluid.prefs.starterMessageLoader"]
-        },
-        templateLoader: {
-            gradeNames: ["fluid.prefs.starterFullPreviewTemplateLoader"]
-        },
-        prefsEditor: {
-            gradeNames: ["fluid.prefs.starterPanels", "fluid.prefs.uiEnhancerRelay"],
-            listeners: {
-                // Tells the PrefsEditor where to redirect to if the user cancels the operation.
-                // In this case, it goes back one step in the browser's history.
-                onCancel: {
-                    "this": window.history,
-                    method: "back"
-                }
+fluid.prefs.fullPreview(".demo-prefsEditor-fullWithPreview", {
+    gradeNames: ["fluid.prefs.transformDefaultPanelsOptions", "fluid.prefs.initialModel.starter"],
+    // Tell PrefsEditor where to find all the resources, relative to this file
+    terms: {
+        // The Preferences Editor interface is defined by several HTML templates. The component
+        // needs to know where those templates are.
+        templatePrefix: "../../../../src/framework/preferences/html",
+        //  The strings used on Preferences Editor interface are defined in several JSON files. The component
+        //  needs to know where those files are.
+        messagePrefix: "../../../../src/framework/preferences/messages"
+    },
+    messageLoader: {
+        gradeNames: ["fluid.prefs.starterMessageLoader"]
+    },
+    templateLoader: {
+        gradeNames: ["fluid.prefs.starterFullPreviewTemplateLoader"]
+    },
+    prefsEditor: {
+        gradeNames: ["fluid.prefs.starterPanels", "fluid.prefs.uiEnhancerRelay"],
+        listeners: {
+            // Tells the PrefsEditor where to redirect to if the user cancels the operation.
+            // In this case, it goes back one step in the browser's history.
+            onCancel: {
+                "this": window.history,
+                method: "back"
             }
-        },
-        preview: {
-            templateUrl: "html/prefsEditorPreview.html"
         }
-    });
+    },
+    preview: {
+        templateUrl: "html/prefsEditorPreview.html"
+    }
+});
 ```
 
 ### Lazy Loading
@@ -151,7 +150,7 @@ a browser cookie. The simple solution is to check for the presence of this cooki
 Settings Store and Page Enhancer if it's found.
 
 The following example makes use the functions provided by
-[loadScripts.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/loadScripts.js)
+[loadScripts.js](https://github.com/fluid-project/infusion/blob/main/examples/framework/preferences/minimalFootprint/js/loadScripts.js)
 to check the cookie and lazy load the required scripts:
 
 The first step is to check if a cookie for user preferences was set. If it is found, the necessary JavaScript files
@@ -159,7 +158,7 @@ should be loaded. By lazy loading the scripts we save on the download and proces
 not in use.
 
 (see:
-[loadScripts.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/loadScripts.js))
+[loadScripts.js](https://github.com/fluid-project/infusion/blob/main/examples/framework/preferences/minimalFootprint/js/loadScripts.js))
 
 <div class="infusion-docs-note">
 
@@ -185,7 +184,7 @@ build](#minified-custom-build) to be generated.
 ```
 
 The following is an example of an instantiation script.
-(see: [lazyLoad.js](https://github.com/fluid-project/infusion/blob/master/examples/framework/preferences/minimalFootprint/js/lazyLoad.js))
+(see: [lazyLoad.js](https://github.com/fluid-project/infusion/blob/main/examples/framework/preferences/minimalFootprint/js/lazyLoad.js))
 
 ```javascript
 /**

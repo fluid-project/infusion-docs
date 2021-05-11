@@ -1,6 +1,5 @@
 ---
 title: API Changes from 2.0 to 3.0
-layout: default
 category: Infusion
 ---
 
@@ -28,7 +27,7 @@ This section describes major APIs that were in common use. For information about
 
 By default, reset will only reset the `preferences` model path. Other model values will remain unchanged. If you'd like
 to also have these paths changed, add a listener to the `beforeReset` event to execute a fireChangeRequest for the model
-paths you need to reset. (See: [ArrowScrolling.js](https://github.com/fluid-project/infusion/blob/master/src/framework/preferences/js/ArrowScrolling.js))
+paths you need to reset. (See: [ArrowScrolling.js](https://github.com/fluid-project/infusion/blob/main/src/framework/preferences/js/ArrowScrolling.js))
 
 ```snippet
 listeners: {
@@ -65,6 +64,36 @@ will contain the following new model paths.
         </tr>
     </tbody>
 </table>
+
+#### Preference Map
+
+The keyword `"default"` was used to setup a model relay between an internal model and the preferences state. If no
+existing preference was stored, the value was taken from the `"default"` property of the related primary schema. The
+keyword has been changed to `"value"`.
+
+##### In 2.0
+
+```json
+{
+    "preferenceMap": {
+        "fluid.prefs.tableOfContents": {
+            "model.toc": "default"
+        }
+    }
+}
+```
+
+##### In 3.0
+
+```json
+{
+    "preferenceMap": {
+        "fluid.prefs.tableOfContents": {
+            "model.toc": "value"
+        }
+    }
+}
+```
 
 #### Panel Changes
 

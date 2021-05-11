@@ -1,6 +1,5 @@
 ---
 title: Panels
-layout: default
 category: Infusion
 ---
 
@@ -98,7 +97,7 @@ fluid.defaults("fluid.prefs.panel.textFont", {
     gradeNames: ["fluid.prefs.panel.classSwapper"],
     preferenceMap: {
         "fluid.prefs.textFont": {
-            "model.value": "default",
+            "model.value": "value",
             "controlValues.textFont": "enum"
         }
     }
@@ -115,7 +114,7 @@ fluid.defaults("fluid.prefs.panel.textSize", {
     gradeNames: ["fluid.prefs.panel.classSwapper"],
     preferenceMap: {
         "fluid.prefs.textSize": {
-            "model.value": "default",
+            "model.value": "value",
             "range.min": "minimum",
             "range.max": "maximum"
         }
@@ -197,7 +196,7 @@ fluid.defaults("demo.panels.speak", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "demo.speakText": {
-            "model.speakText": "default"
+            "model.speakText": "value"
         }
     },
     selectors: {
@@ -218,7 +217,7 @@ fluid.defaults("demo.panels.language", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "demo.language": {
-            "model.lang": "default",
+            "model.lang": "value",
             "controlValues.langStrings": "enum"
         }
     },
@@ -248,13 +247,13 @@ fluid.defaults("demo.panels.vol", {
     preferenceMap: {
         // pref map for the slider
         "demo.volume": {
-            "model.volume": "default",
+            "model.volume": "value",
             "range.min": "minimum",
             "range.max": "maximum"
         },
         // pref map for the radio button
         "demo.volPosition": {
-            "model.volPos": "default",
+            "model.volPos": "value",
             "controlValues.volPos": "enum"
         }
     },

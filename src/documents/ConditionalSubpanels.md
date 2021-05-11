@@ -1,6 +1,5 @@
 ---
 title: Conditional Subpanels
-layout: default
 category: Infusion
 ---
 

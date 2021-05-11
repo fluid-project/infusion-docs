@@ -1,6 +1,5 @@
 ---
 title: Auxiliary Schema for Preferences Framework
-layout: default
 category: Infusion
 ---
 

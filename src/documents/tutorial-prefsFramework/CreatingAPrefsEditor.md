@@ -1,6 +1,5 @@
 ---
 title: Creating a Preferences Editor
-layout: default
 category: Tutorials
 ---
 
@@ -26,11 +25,11 @@ reading more about something.
 The source code used in this tutorial is one of the examples provided in the Infusion code base, which you can download
 from github: [https://github.com/fluid-project/infusion](https://github.com/fluid-project/infusion). You’ll find the
 code for the simple Preference Editor in the examples folder:
-[https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor).
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor).
 We recommend you download the Infusion library and load the example code into your favourite editor.
 
 <figure>
-    <img src="../images/prefsEditorFolders.png" alt="the folder hierarchy of the sample code">
+    <img src="/images/prefsEditorFolders.png" alt="the folder hierarchy of the sample code">
     <figcaption>Figure 1: Folder hierarchy for the Preference Editor example</figcaption>
 </figure>
 
@@ -40,7 +39,7 @@ approach](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server
 [MAMP](https://www.mamp.info/en/)) and navigate to the `index.html` file in a browser, you should see this interface:
 
 <figure id="figure2">
-    <img src="../images/simplePrefsEditor.png" alt="The screen of the example Preference Editor">
+    <img src="/images/simplePrefsEditor.png" alt="The screen of the example Preference Editor">
     <figcaption>Figure 2: The screen of the example Preference Editor</figcaption>
 </figure>
 
@@ -51,7 +50,7 @@ cookie, and when you reload the page, the checkbox will be set to the saved valu
 Let’s talk about what we’re seeing in this interface:
 
 <figure>
-    <img src="../images/prefsEditorParts.png" alt="The parts of a Preference Editor screen">
+    <img src="/images/prefsEditorParts.png" alt="The parts of a Preference Editor screen">
     <figcaption>Figure 3: The parts of a Preference Editor screen</figcaption>
 </figure>
 
@@ -187,7 +186,7 @@ fluid.defaults("awesomeCars.prefs.panels.heatedSeats", {
         "awesomeCars.prefs.heatedSeats": {
             // this key, "model.heatedSeats", is the path into the panel's model
             // where this preference is stored
-            "model.heatedSeats": "default"
+            "model.heatedSeats": "value"
         }
     },
 
@@ -231,12 +230,12 @@ grades using the `gradeNames` property. Panels must use the `"fluid.prefs.panel"
 
 `preferenceMap`
 </dt>
-<dd>A Panel must have a _ Preference Map_, which maps the information in the Primary Schema
+<dd>A Panel must have a _Preference Map_, which maps the information in the Primary Schema
 into your Panel. Let’s look at this one more closely:
 <pre class="highlight">
 <code class="hljs javascript">preferenceMap: {
     "awesomeCars.prefs.heatedSeats": {
-        "model.heatedSeats": "default"
+        "model.heatedSeats": "value"
     }
 }</code></pre>
 
@@ -264,7 +263,7 @@ Most Infusion components have an internal model, for maintaining the state of th
 </li>
 <li>
 
-The value, `“default”`, is an EL path referencing the `“default”` property in the Primary Schema.
+The value, `“value”`, is an EL path referencing the stored value or the `“default”` property in the Primary Schema.
 </li>
 </ul>
 
@@ -360,7 +359,7 @@ to actually build the Preference Editor. The Auxiliary Schema for our example Ed
 fluid.defaults("awesomeCars.prefs.auxSchema", {
     gradeNames: ["fluid.prefs.auxSchema"],
     auxiliarySchema: {
-          // some code not shown
+        // some code not shown
     }
 });
 ```
@@ -452,7 +451,7 @@ The template property specifies the main HTML template for the entire Preference
 ```
 
 You can see the full text of this file, `prefsEditorTemplate.html`, in the github repo:
-[https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html)
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html)
 The main thing to note in the template is the placeholder for the Panel, in this example a `<div>` with the class
 `awec-heatedSeats`:
 
@@ -549,7 +548,7 @@ awesomeCars.prefs.init = function (container) {
 
 This function is invoked in the main HTML file for the Preference Editor, `index.html`. You can see the entire file
 here:
-[https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/index.html](https://github.com/fluid-project/infusion/tree/master/examples/framework/preferences/minimalEditor/index.html).
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/index.html](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/index.html).
 Let’s look at this invocation:
 
 ```html
@@ -652,7 +651,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default"
+            "model.radioVolume": "value"
         }
     }
     // ...
@@ -669,7 +668,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
 
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default"
+            "model.radioVolume": "value"
         }
     },
     range: {
@@ -688,7 +687,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default",
+            "model.radioVolume": "value",
             "range.min": "minimum",
             "range.max": "maximum",
             "range.step": "divisibleBy"
@@ -711,7 +710,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default",
+            "model.radioVolume": "value",
             "range.min": "minimum",
             "range.max": "maximum",
             "range.step": "divisibleBy"
@@ -781,7 +780,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
 
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default",
+            "model.radioVolume": "value",
             "range.min": "minimum",
             "range.max": "maximum",
             "range.step": "divisibleBy"

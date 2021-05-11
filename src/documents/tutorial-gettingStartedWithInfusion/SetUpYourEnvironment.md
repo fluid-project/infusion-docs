@@ -1,6 +1,5 @@
 ---
 title: Set up your environment
-layout: default
 category: Tutorials
 ---
 
@@ -19,9 +18,9 @@ Let's suppose you're creating a component that will carry out currency conversio
 Infusion:
 
 * Download the [latest release of Fluid Infusion](https://github.com/fluid-project/infusion/releases/) and unpack it
-  (or check out the [master branch](https://github.com/fluid-project/infusion) for the very latest, unreleased version).
-* Follow the instructions in the [Readme file](https://github.com/fluid-project/infusion/blob/master/README.md) to
-  [create your Infusion package](https://github.com/fluid-project/infusion/blob/master/README.md#how-do-i-create-an-infusion-package).
+  (or check out the [main branch](https://github.com/fluid-project/infusion) for the very latest, unreleased version).
+* Follow the instructions in the [Readme file](https://github.com/fluid-project/infusion/blob/main/README.md) to
+  [create your Infusion package](https://github.com/fluid-project/infusion/blob/main/README.md#how-do-i-create-an-infusion-package).
 * The build process places the output in a .zip file in the "products" folder. Unpack that archive and place the
   resulting "infusion" folder in a "lib" folder in your source hierarchy.
 

@@ -1,6 +1,5 @@
 ---
 title: Inline Edit API
-layout: default
 category: Components
 ---
 

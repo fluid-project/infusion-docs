@@ -1,6 +1,5 @@
 ---
 title: How to Use Infusion IoC
-layout: default
 category: Infusion
 ---
 

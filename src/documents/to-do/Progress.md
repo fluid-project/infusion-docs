@@ -1,6 +1,5 @@
 ---
 title: Progress
-layout: default
 category: Components
 ---
 

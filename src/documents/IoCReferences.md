@@ -1,6 +1,5 @@
 ---
 title: IoC References
-layout: default
 category: Infusion
 ---
 
@@ -138,7 +137,7 @@ name. The following diagram shows a possible such reference site in green:
     https://docs.google.com/drawings/d/14ESiMe0q8_lzVsAE-CkUvZdU42A_rs0_IfYg54pNFjA/edit
 -->
 
-![IoC Context Resolution](images/IoC-scope.svg "IoC Context Resolution")
+![IoC Context Resolution](/images/IoC-scope.svg "IoC Context Resolution")
 
 The set of components which are in scope for resolution from this site are shown in yellow (circles) and orange
 (diamonds) in this diagram. These are components which are either

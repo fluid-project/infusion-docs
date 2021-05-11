@@ -1,6 +1,5 @@
 ---
 title: Expansion of Component Options
-layout: default
 category: Infusion
 ---
 

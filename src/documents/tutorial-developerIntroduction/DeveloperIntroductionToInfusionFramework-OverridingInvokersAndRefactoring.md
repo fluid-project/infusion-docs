@@ -1,6 +1,5 @@
 ---
 title: Developer Introduction to the Infusion Framework - Overriding Invokers and Refactoring
-layout: default
 category: Tutorials
 ---
 

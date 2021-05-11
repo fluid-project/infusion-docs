@@ -1,6 +1,5 @@
 ---
 title: Renderer Component Tree Expanders
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---
