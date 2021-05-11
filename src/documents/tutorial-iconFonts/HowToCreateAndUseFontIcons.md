@@ -69,7 +69,9 @@ for how icons are created for Infusion.
 
 ## Step 2. Generating the Font
 
-In the past we recommended [IcoMoon](http://icomoon.io/app) to generate the icon font. We are now using [Infusion-Icons](https://www.npmjs.com/package/infusion-icons) because it provides an easier means of modifying the font and tracking PUA codes. With the Infusion-Icons fonts can be generated from a config file.
+In the past we recommended [IcoMoon](http://icomoon.io/app) to generate the icon font. We are now using
+[Infusion-Icons](https://www.npmjs.com/package/infusion-icons) because it provides an easier means of modifying the font
+and tracking PUA codes. With the Infusion-Icons fonts can be generated from a config file.
 
 (See: [Infusion-Icons README](https://github.com/fluid-project/infusion-icons/blob/master/README.md) for more detailed
 instructions)
@@ -119,7 +121,7 @@ Next, add the new font to the CSS markup.
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';                /* Specify the new font */
+    font-family: 'CustomIcons'; /* Specify the new font */
     src:
         url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), /* IE8 fix. */
         url('../fonts/CustomIcons.woff');
@@ -127,7 +129,7 @@ Next, add the new font to the CSS markup.
 
 #contact_form {
     background: url("../images/envelope.png"); /* existing image that will be replaced by icon */
-    font-family: 'CustomIcons;                /* the new font icon */
+    font-family: 'CustomIcons'; /* the new font icon */
 }
 ```
 
@@ -135,7 +137,7 @@ Finally, add the new icon into the BEFORE pseudo class and delete any references
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';                /* Specify the new font */
+    font-family: 'CustomIcons'; /* Specify the new font */
     src:
         url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'), /* IE8 fix. */
         url('../fonts/CustomIcons.woff');
@@ -143,11 +145,11 @@ Finally, add the new icon into the BEFORE pseudo class and delete any references
 
 #contact_form {
     /* old icon image has been removed. */
-    font-family: 'CustomIcons';                /* the new font icon */
+    font-family: 'CustomIcons'; /* the new font icon */
 }
 
 #contact_form::before {
-    content: "\e000";                          /* the custom Unicode (aka. PUA) for the icon. */
+    content: "\e000"; /* the custom Unicode (aka. PUA) for the icon. */
 }
 ```
 
@@ -176,9 +178,7 @@ contents within the `<a>`, which means "Contact us" will no longer be Comic Sans
 ```css
 @font-face {
     font-family: 'CustomIcons';
-    src:
-        url('../fonts/CustomIcons.ttf'),
-        url('../fonts/CustomIcons.eot');
+    src: url('../fonts/CustomIcons.woff');
 }
 
 body {
@@ -208,8 +208,7 @@ contained within. The CSS file is then updated to reference this new markup stru
 @font-face {
     font-family: 'CustomIcons';
     src:
-        url('../fonts/CustomIcons.ttf'),
-        url('../fonts/CustomIcons.eot');
+        url('../fonts/CustomIcons.woff');
 }
 
 body {
@@ -233,7 +232,8 @@ It's common for images to be used in functional ways such as acting as a button 
 <a href="download.html"><img src="./images/download.png" alt="Download our latest stuff!"></a>
 ```
 
-However if we replace the image in the anchor with an icon font, any text descriptions (the alt text of the original image) will be removed as well; potentially causing usability and accessibility issues.
+However if we replace the image in the anchor with an icon font, any text descriptions (the alt text of the original
+image) will be removed as well; potentially causing usability and accessibility issues.
 
 ```html
 /* The alt text is now gone, causing a usability and accessibility issue. */
@@ -244,8 +244,7 @@ However if we replace the image in the anchor with an icon font, any text descri
 @font-face {
     font-family: 'CustomIcons';
     src:
-        url('../fonts/CustomIcons.ttf'),
-        url('../fonts/CustomIcons.eot');
+        url('../fonts/CustomIcons.woff');
 }
 
 a {
@@ -266,8 +265,8 @@ To bring back some semantics and to help improve accessibility, we use "aria-lab
 
 ### Cross-Browser Oddities
 
-Icon fonts can appear different across browsers and across operating systems. For example, the following icon is
-rendered differently in Firefox in Mac OS X and in Windows despite being the same icon and the same browser.
+Icon fonts can appear different across browsers and operating systems. For example, the following icon is rendered
+differently in Firefox in Mac OS X and in Windows despite being the same icon and the same browser.
 
 ![a partially displayed font icon on firefox, Mac system](/images//Icon-FF-OSX.png)
 ![a partially displayed font icon on firefox, Windows system](/images//Icon-FF-windows.png)
@@ -283,11 +282,10 @@ format('embedded-opentype')` to your CSS. For example:
 
 ```css
 @font-face {
-    font-family: 'CustomIcons';                /* Specify the new font */
+    font-family: 'CustomIcons'; /* Specify the new font */
     src:
         url('../fonts/CustomIcons.eot?#iefix') format('embedded-opentype'),
-        url('        CustomIcons.ttf'),
-        url('        CustomIcons.eot');
+        url('CustomIcons.woff');
 }
 ```
 
@@ -320,4 +318,3 @@ cons of SVG Icons. For more information on SVG Icons see the
   * `<use>` to import SVG into page markup
     * Allows for styling and caching by referencing external SVGs
     * Not supported in older browsers such as IE 11
-
