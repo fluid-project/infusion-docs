@@ -1,6 +1,5 @@
 ---
 title: Settings Store
-layout: default
 category: Infusion
 ---
 
@@ -24,9 +23,6 @@ Method Placeholder  | Description
 `get`  | For retrieving preferences. Should return the preferences
 `set`  | For saving preferences. Should accept the preferences as an argument.
 
-<div class="infusion-docs-note"><strong>Note</strong> that no particular parameters are prescribed for these methods. It is up to the developer
-to choose whatever is appropriate for the particular implementation.</div>
-
 ## fluid.prefs.cookieStore
 
 A settings store grade that uses a cookie for persistence.
@@ -38,11 +34,11 @@ A settings store grade that uses a cookie for persistence.
         </tr>
         <tr>
             <td><code>get</code></td>
-            <td><pre><code>fluid.prefs.cookieStore.get = function (cookieName)</code></pre></td>
+            <td><pre class="highlight"><code class="hljs javascript">{fluid.prefs.cookieStore.get = function (cookieName)</code></pre></td>
         </tr>
         <tr>
             <td><code>set</code></td>
-            <td><pre><code>fluid.prefs.cookieStore.set = function (settings, cookieOptions)</code></pre></td>
+            <td><pre class="highlight"><code class="hljs javascript">{fluid.prefs.cookieStore.set = function (settings, cookieOptions)</code></pre></td>
         </tr>
     </tbody>
 </table>
@@ -62,7 +58,7 @@ A settings store mock that doesn't do persistence. This grade is useful for test
         </tr>
         <tr>
             <td><code>set</code></td>
-            <td><pre><code>fluid.prefs.tempStore.set = function (settings, applier)</code></pre></td>
+            <td><pre class="highlight"><code class="hljs javascript">{fluid.prefs.tempStore.set = function (settings, applier)</code></pre></td>
         </tr>
     </tbody>
 </table>

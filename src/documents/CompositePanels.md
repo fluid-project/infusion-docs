@@ -1,16 +1,20 @@
 ---
 title: Composite Panels
-layout: default
 category: Infusion
 ---
 
-Composite panels allow you to combine several small panels – subpanels – into one larger panel. Subpanels are defined normally in an [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md); Composite panels define a list of subpanels that should be included in the composite panel.
+Composite panels allow you to combine several small panels – subpanels – into one larger panel. Subpanels are defined
+normally in an [auxiliary schema](AuxiliarySchemaForPreferencesFramework.md); Composite panels define a list of
+subpanels that should be included in the composite panel.
 
-<div class="infusion-docs-note"><strong>Note:</strong> Subpanels <strong>must</strong> contain only one preference.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> Subpanels <strong>must</strong> contain only one preference.
+</div>
 
 ## Grades
 
-Composite panels must be defined with the `fluid.prefs.compositePanel` [grade](ComponentGrades.md), as shown in the following code block:
+Composite panels must be defined with the `fluid.prefs.compositePanel` [grade](ComponentGrades.md), as shown in the
+following code block:
 
 ```javascript
 fluid.defaults("my.panels.composite", {
@@ -19,12 +23,14 @@ fluid.defaults("my.panels.composite", {
 });
 ```
 
-It is expected that composite panels will be quite simple in most cases, functioning strictly as a container for subpanels. All they typically need are any selectors and prototrees needed for a label, heading, or anything general to the entire composite panel.
+It is expected that composite panels will be quite simple in most cases, functioning strictly as a container for
+subpanels. All they typically need are any selectors and prototrees needed for a label, heading, or anything general to
+the entire composite panel.
 
 Subpanels are defined with the `fluid.prefs.panel` grade, the same grade used for defining regular panels.
 
 ```javascript
-fluid.defaults("my.panels.subanel", {
+fluid.defaults("my.panels.subpanel", {
     gradeNames: ["fluid.prefs.panel"]
     // ...
 });
@@ -32,7 +38,8 @@ fluid.defaults("my.panels.subanel", {
 
 ## Composite Panel Definition
 
-A composite panel is defined in the auxiliary schema, in a special block called `groups`, which has the following general format:
+A composite panel is defined in the auxiliary schema, in a special block called `groups`, which has the following
+general format:
 
 ```snippet
 groups: {
@@ -48,11 +55,13 @@ groups: {
 }
 ```
 
-In the code block above, the `panels` list is an array of names. These are derived from the keys in the auxiliary schema that associate panels with preferences.
+In the code block above, the `panels` list is an array of names. These are derived from the keys in the auxiliary schema
+that associate panels with preferences.
 
 ## Templates
 
-A composite panel and its subpanels each have their own HTML template. The composite panel template must contain elements that will serve as containers for the subpanels.
+A composite panel and its subpanels each have their own HTML template. The composite panel template must contain
+elements that will serve as containers for the subpanels.
 
 ## Auxiliary Schema Declarations
 

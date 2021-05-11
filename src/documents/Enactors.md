@@ -1,17 +1,19 @@
 ---
 title: Enactors
-layout: default
 category: Infusion
 ---
 
-An Enactor is an [Infusion component](UnderstandingInfusionComponents.md) that "acts upon" a preference setting, making whatever adjustments that are necessary to enact the preference.
+An Enactor is an [Infusion component](UnderstandingInfusionComponents.md) that "acts upon" a preference setting, making
+whatever adjustments that are necessary to enact the preference.
 
 ## Requirements
 
-There are only a few requirements for an Enactor, since its nature is determined by the preference it acts upon. For example:
+There are only a few requirements for an Enactor, since its nature is determined by the preference it acts upon. For
+example:
 
 * the 'text size' enactor provided by the Preferences Framework defines functions that adjust CSS on the page;
-* a 'self-voicing' enactor defined for the GPII Exploration Tool defines functions that use a server-based text-to-speech engine to speak text found on the page.
+* a 'self-voicing' enactor defined for the GPII Exploration Tool defines functions that use a server-based
+  text-to-speech engine to speak text found on the page.
 
 Enactors defaults must include certain things:
 
@@ -22,7 +24,8 @@ Each of these is explained below.
 
 ### Grade
 
-Enactors must be defined using the `fluid.prefs.enactor` [grade](ComponentGrades.md), as shown in the following code block:
+Enactors must be defined using the `fluid.prefs.enactor` [grade](ComponentGrades.md), as shown in the following code
+block:
 
 ```javascript
 fluid.defaults("my.pref.enactor", {
@@ -31,7 +34,11 @@ fluid.defaults("my.pref.enactor", {
 });
 ```
 
-Enactors are, by default, [model components](ComponentGrades.md), so they automatically provide support for a model and for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the DOM, the [`fluid.viewComponent`](https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidView.js#L40-L42) grade should be used, and the `selectors` option should be provided, as shown in the following example:
+Enactors are, by default, [model components](ComponentGrades.md), so they automatically provide support for a model and
+for events. If other support is needed, other grades can be added. For example, if the enactor will be operating on the
+DOM, the
+[`fluid.viewComponent`](https://github.com/fluid-project/infusion/blob/main/src/framework/core/js/FluidView.js#L40-L42)
+grade should be used, and the `selectors` option should be provided, as shown in the following example:
 
 ```javascript
 fluid.defaults("my.pref.enactor", {
@@ -43,7 +50,9 @@ fluid.defaults("my.pref.enactor", {
 });
 ```
 
-If you are defining several enactors which share common functionality, you can create a single grade that includes that functionality and uses the `fluid.prefs.enactor` grade, then use your common grade for your enactors, as illustrated in the following code sample:
+If you are defining several enactors which share common functionality, you can create a single grade that includes that
+functionality and uses the `fluid.prefs.enactor` grade, then use your common grade for your enactors, as illustrated in
+the following code sample:
 
 ```javascript
 // shared grade, defining common functionality
@@ -69,10 +78,15 @@ fluid.defaults("my.pref.enactor2", {
 
 <div class="infusion-docs-note">
 
-<strong>IMPORTANT NOTE:</strong> Preference Maps are only required if you are working with [schemas](PrimarySchemaForPreferencesFramework.md). If you are using grades instead (only necessary in rare cases), you do not need a preference map.
+<strong>IMPORTANT NOTE:</strong> Preference Maps are only required if you are working with
+[schemas](PrimarySchemaForPreferencesFramework.md). If you are using grades instead (only necessary in rare cases),
+you do not need a preference map.
 </div>
 
-A Preference Map is an option that allows you to map the information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md) into your Enactor. For each relevant preference defined in the primary schema, the preference map specifies where in the current component's options the value should be store. This is used to pull the default preference value into the Enactor's model, as well as any other relevant information.
+A Preference Map is an option that allows you to map the information in the [Primary
+Schema](PrimarySchemaForPreferencesFramework.md) into your Enactor. For each relevant preference defined in the primary
+schema, the preference map specifies where in the current component's options the value should be store. This is used to
+pull the default preference value into the Enactor's model, as well as any other relevant information.
 
 The format of a preference map is shown in the follow code sample:
 
@@ -90,7 +104,9 @@ preferenceMap: {
 }
 ```
 
-Typically, an enactor will work with only a single preference and will only be concerned with the default value, so the preference map will be quite simple. The following example shows the preference map used in the Preference Framework's text font enactor:
+Typically, an enactor will work with only a single preference and will only be concerned with the default value, so the
+preference map will be quite simple. The following example shows the preference map used in the Preference Framework's
+text font enactor:
 
 ```javascript
 fluid.defaults("fluid.prefs.enactor.textFont", {
@@ -105,7 +121,11 @@ fluid.defaults("fluid.prefs.enactor.textFont", {
 
 ## Models and Model Changes
 
-Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md): They automatically have a top-level property called `model` which holds the Enactor's internal model representing the preference it acts upon. It is not necessary for you to define this property directly; its structure will be inferred from the preferences map. If you are working with grades instead of with schemas, the model will be inferred from the rules supplied for the Panel.
+Enactors are Infusion [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md): They automatically
+have a top-level property called `model` which holds the Enactor's internal model representing the preference it acts
+upon. It is not necessary for you to define this property directly; its structure will be inferred from the preferences
+map. If you are working with grades instead of with schemas, the model will be inferred from the rules supplied for the
+Panel.
 
 ## Examples
 

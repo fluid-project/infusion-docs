@@ -1,12 +1,14 @@
 ---
 title: Panels
-layout: default
 category: Infusion
 ---
 
-A Panel is an [Infusion component](UnderstandingInfusionComponents.md) that present adjusters, or controls, to the user to allow them to adjust the preference settings. Panels are [Renderer components](RendererComponents.md) that work with an HTML template.
+A Panel is an [Infusion component](UnderstandingInfusionComponents.md) that present adjusters, or controls, to the user
+to allow them to adjust the preference settings. Panels are [Renderer components](RendererComponents.md) that work with
+an HTML template.
 
-A Panel can contain any number of adjusters. If you need to combine several small panels into a larger panel, use [Composite Panels](CompositePanels.md).
+A Panel can contain any number of adjusters. If you need to combine several small panels into a larger panel, use
+[Composite Panels](CompositePanels.md).
 
 Panel defaults must include certain things:
 
@@ -27,7 +29,11 @@ fluid.defaults("my.pref.panel", {
 });
 ```
 
-Panels are, by default, [renderer components](RendererComponents.md), which automatically provide support for DOM binding, for a model and for events. Other grades can be combined with the Panel grade, if necessary. For example, if you are defining several panels which share common functionality, you can create a single grade that includes that functionality and uses the `fluid.prefs.panel` grade, then use your common grade for your panels, as illustrated in the following code sample:
+Panels are, by default, [renderer components](RendererComponents.md), which automatically provide support for DOM
+binding, for a model and for events. Other grades can be combined with the Panel grade, if necessary. For example, if
+you are defining several panels which share common functionality, you can create a single grade that includes that
+functionality and uses the `fluid.prefs.panel` grade, then use your common grade for your panels, as illustrated in the
+following code sample:
 
 ```javascript
 // shared grade, defining common functionality
@@ -53,10 +59,15 @@ fluid.defaults("my.pref.panel2", {
 
 <div class="infusion-docs-note">
 
-<strong>IMPORTANT NOTE:</strong> Preference Maps are **only** required if you are working with [schemas](PrimarySchemaForPreferencesFramework.md)). If you are using grades instead (only necessary in rare cases), you do **not** need a preference map.
+<strong>IMPORTANT NOTE:</strong> Preference Maps are **only** required if you are working with
+[schemas](PrimarySchemaForPreferencesFramework.md)). If you are using grades instead (only necessary in rare cases), you
+do **not** need a preference map.
 </div>
 
-A Preference Map is an option that allows you to map the information in the [Primary Schema](PrimarySchemaForPreferencesFramework.md) into your Panel. For each relevant preference defined in the primary schema, the preference map specifies where in the current component's options the value should be store. This is used to pull the default preference value into the Panel's model, as well as any other relevant information.
+A Preference Map is an option that allows you to map the information in the [Primary
+Schema](PrimarySchemaForPreferencesFramework.md) into your Panel. For each relevant preference defined in the primary
+schema, the preference map specifies where in the current component's options the value should be store. This is used to
+pull the default preference value into the Panel's model, as well as any other relevant information.
 
 The format of a preference map is shown in the following code sample:
 
@@ -74,7 +85,9 @@ preferenceMap: {
 }
 ```
 
-The content of a Panel's preference map will be dependent on the preferences being controlled and their types. The following example shows the preference map used in the Preference Framework's text font panel, which displays a drop-down menu listing different font choices. The preference map indicate:
+The content of a Panel's preference map will be dependent on the preferences being controlled and their types. The
+following example shows the preference map used in the Preference Framework's text font panel, which displays a
+drop-down menu listing different font choices. The preference map indicate:
 
 * the "`default`" field in the primary schema should be stored in the Panel's `model.value` property
 * the "`enum`" field in the primary schema should be stored in the Panel's `controlValues.textFont` property
@@ -92,7 +105,9 @@ fluid.defaults("fluid.prefs.panel.textFont", {
 });
 ```
 
-The following example shows the preference map used in the Preference Framework's text size panel, which displays a slider. The preference map indicates where in the primary schema to find the default, minimum and maximum values, and where in the Panel to store those values:
+The following example shows the preference map used in the Preference Framework's text size panel, which displays a
+slider. The preference map indicates where in the primary schema to find the default, minimum and maximum values, and
+where in the Panel to store those values:
 
 ```javascript
 fluid.defaults("fluid.prefs.panel.textSize", {
@@ -110,11 +125,13 @@ fluid.defaults("fluid.prefs.panel.textSize", {
 
 ## Renderer Requirements
 
-For detailed information about the Infusion Renderer, see [Renderer](Renderer.md) and its sub-pages. What follows is a brief overview of the renderer requirements of a Preferences Framework Panel.
+For detailed information about the Infusion Renderer, see [Renderer](Renderer.md) and its sub-pages. What follows is a
+brief overview of the renderer requirements of a Preferences Framework Panel.
 
 ### Selectors
 
-The `selectors` options is a list of names CSS-style selectors. They identify the elements in the HTML template that the Renderer will bind to the Panel's model values.
+The `selectors` options is a list of names CSS-style selectors. They identify the elements in the HTML template that the
+Renderer will bind to the Panel's model values.
 
 #### Example: A checkbox adjuster
 
@@ -136,7 +153,10 @@ fluid.defaults("fluid.prefs.panel.layoutControls", {
 
 ### Prototree (or produceTree function)
 
-The `protoTree` option defines the Renderer component tree – the instructions to the Renderer for how to render the data. In general, it consists of one property per selector, defining how that particular element in the template should be used. The property will define which element in the data model to use, or a message key in a message bundle if the element is a label. See the [Renderer](Renderer.md) documentation for information on how to define Renderer protoTrees.
+The `protoTree` option defines the Renderer component tree – the instructions to the Renderer for how to render the
+data. In general, it consists of one property per selector, defining how that particular element in the template should
+be used. The property will define which element in the data model to use, or a message key in a message bundle if the
+element is a label. See the [Renderer](Renderer.md) documentation for information on how to define Renderer protoTrees.
 
 #### Example: A checkbox adjuster
 
@@ -156,11 +176,16 @@ fluid.defaults("fluid.prefs.panel.layoutControls", {
 });
 ```
 
-In rare cases, it may not be possible to specify the protoTree in a declarative manner. In these cases, use the `produceTree` option to declare the name of a function that will generate the required protoTree.
+In rare cases, it may not be possible to specify the protoTree in a declarative manner. In these cases, use the
+`produceTree` option to declare the name of a function that will generate the required protoTree.
 
 ## Models and Model Changes
 
-Panels are, by default, Infusion [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md): They automatically have a top-level property called `model` which holds the Panel's internal model representing the preference it acts upon. It is not necessary for you to define this property directly; its structure will be inferred from the preferences map. If you are working with grades instead of with schemas, the model will be inferred from the rules supplied for the Panel.
+Panels are, by default, Infusion [model components](tutorial-gettingStartedWithInfusion/ModelComponents.md): They
+automatically have a top-level property called `model` which holds the Panel's internal model representing the
+preference it acts upon. It is not necessary for you to define this property directly; its structure will be inferred
+from the preferences map. If you are working with grades instead of with schemas, the model will be inferred from the
+rules supplied for the Panel.
 
 ## Examples
 

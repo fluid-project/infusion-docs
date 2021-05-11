@@ -1,59 +1,54 @@
 # Infusion Documentation
 
-## Browse the Infusion Documentation on GitHub
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c9061766-d760-4eda-922f-da3b838a6013/deploy-status)](https://app.netlify.com/sites/fluid-infusion-docs/deploys)
 
-You can [browse the Infusion Documentation as static user friendly pages](http://docs.fluidproject.org/infusion/), or if you prefer, you can [browse the Infusion Documentation directly on GitHub](src/documents).
+## Browse the Infusion Documentation
 
-## Build with DocPad
+You can [browse the Infusion Documentation website](http://docs.fluidproject.org/infusion/), or if
+you prefer, you can [browse the source documentation files directly on GitHub](src/documents).
 
-Install DocPad:
+## Working with the Infusion Documentation locally
 
-```shell
-npm install -g docpad
-```
+You must have [Node and NPM](https://nodejs.org/en/download/) installed in order to work on the Infusion Documentation
+locally (the LTS version is recommended).
 
-Get the node modules for this project:
+To install the dependencies for this project:
 
 ```shell
 npm install
 ```
 
-To generate the HTML and run the DocPad server locally:
+To serve the site locally in development mode with live reloading using [Eleventy](https://11ty.dev):
 
 ```shell
-npm run docpad
+npm run start
 ```
 
-This runs the command:
+Then, point your browser to: `http://localhost:8080/`
+
+To statically build the site using [Eleventy](https://11ty.dev):
 
 ```shell
-docpad run --env static
+npm run build
 ```
 
-Point your browser to: `http://localhost:9778/`
+## Deploying the Infusion Documentation website
 
-## Deploy
+The [Infusion Documentation website](http://docs.fluidproject.org/infusion/) is published with [Netlify](https://netlify.com)
+every time new content is pushed to the `main` branch of this repository. [Deploy previews](https://docs.netlify.com/site-deploys/overview/#deploy-preview-controls)
+are also generated for every pull request. For more information, please review Netlify's [documentation](https://docs.netlify.com).
 
-While GitHub Pages is not used to host [fluiproject.org](https://docs.fluidproject.org), our deployment process requires that the generated site be pushed to the `deploy` branch in the project repo. The contents of the `deploy` branch will automatically be served as the contents are changed.
+## Generating a Docker image
 
-To generate and push to the `deploy` branch on the project repo run the following:
+You can serve the website from a [Docker](https://docs.docker.com/get-docker) container.
 
-```shell
-npm run deploy
-```
+Once you have Docker installed, run the following commands to build a Docker image and start a container:
 
-This runs the command:
+* Build the image: `docker build -t infusion-docs .`
+* Run the container: `docker run --name infusion-docs -p 8000:80 infusion-docs`
 
-```shell
-docpad deploy-ghpages --env static
-```
+The documentation will be available at [http://localhost:8000](http://localhost:8000)
 
-_**WARNING:** Deploying will upload the site to the `deploy` branch of the `origin` remote. If you have cloned
-from the production repository and you have push access, you will actually run the docs publication
-workflow against the live production branch, regardless of whichever branch you happen to be working on._
+* To stop and remove the container: `docker rm -f infusion-docs`
 
-## A Note on DocPad plugins
-
-Changes to DocPad plugins used by this package only take effect when your `node_modules` directory is up to date.  It is
-therefore highly important to remove your existing `node_modules` and rerun `npm install` when pulling down updates to
-this repository.  Failure to do so may result in broken links, rendering errors, and other problems.
+If you make changes to the documentation, repeat the steps to build the image and start a new container.

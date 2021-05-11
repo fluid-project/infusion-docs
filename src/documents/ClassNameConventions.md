@@ -1,23 +1,27 @@
 ---
 title: Class Name Conventions
-layout: default
 category: Infusion
 ---
 
-Infusion components use various conventions for defining CSS class names. These conventions prevent confusion, making it easier for developers and integrators to be clear on what's what when creating or using components.
+Infusion components use various conventions for defining CSS class names. These conventions prevent confusion, making it
+easier for developers and integrators to be clear on what's what when creating or using components.
 
 ## CSS classnames
 
-The template for **CSS classnames** (i.e. class names use for styling) take the form **fl-[fluid:thing]-[fluid:role]-[fluid:state]** with some guidelines:
+The template for **CSS classnames** (i.e. class names use for styling) take the form
+**fl-[fluid:thing]-[fluid:role]-[fluid:state]** with some guidelines:
 
 1. multiple words are in camelCase, so they might look like **fl-[fluid:multiWordThing]-[fluid:multiWordRole]-[fluid:state]**
 2. components are always the first "thing", so they would look like **fl-[fluid:componentName]-[fluid:thing]-[fluid:role]-[fluid:state]**
 
-**[fluid:thing]** = _required_ the concept the class name is referring to at the most general yet still meaningful level (eg. fl-**tabs**, fl-**widget**, fl-**col**, fl-**container**, etc)
+**[fluid:thing]** = _required_ the concept the class name is referring to at the most general yet still meaningful level
+(eg. fl-**tabs**, fl-**widget**, fl-**col**, fl-**container**, etc)
 
-**[fluid:role]** = _optional_ the purpose or action of **THING**, which could be a more detailed version of **THING** (eg. fl-tabs-**centered**, fl-col-**flex**, fl-container-**500**, fl-widget-**titleBar**)
+**[fluid:role]** = _optional_ the purpose or action of **THING**, which could be a more detailed version of **THING**
+(eg. fl-tabs-**centered**, fl-col-**flex**, fl-container-**500**, fl-widget-**titleBar**)
 
-**[fluid:state]** = _optional_ a modifier of the **ROLE** or **THING**, which is only temporary and dependant on other actions (eg. fl-button-left-**disabled**, fl-widget-content-**draggable**)
+**[fluid:state]** = _optional_ a modifier of the **ROLE** or **THING**, which is only temporary and dependant on other
+actions (eg. fl-button-left-**disabled**, fl-widget-content-**draggable**)
 
 Some examples of these class names:
 

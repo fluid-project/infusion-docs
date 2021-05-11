@@ -1,6 +1,5 @@
 ---
 title: View Components
-layout: default
 category: Tutorials
 ---
 
@@ -9,10 +8,14 @@ Part of the [Getting Started with Infusion Component Design Tutorial](GettingSta
 
 ---
 
-In most cases, you will likely be creating a component that will actually want to do something with your HTML page: process form input, update displays, etc. plain and `model` components don't provide any support for this: you'll need a **view component**.
+In most cases, you will likely be creating a component that will actually want to do something with your HTML page:
+process form input, update displays, etc. plain and `model` components don't provide any support for this: you'll need a
+**view component**.
 
-A view component provides support for a model and events (i.e. it is a model component as well as a view component). It also provides supports for interaction with the DOM. The most useful of these is the [DOM Binder](../DOMBinder.md).
-If your application has a user interface, you likely have a list of DOM elements you're interested in working with. A DOM Binder provides very easy, configurable access to these elements.
+A view component provides support for a model and events (i.e. it is a model component as well as a view component). It
+also provides supports for interaction with the DOM. The most useful of these is the [DOM Binder](../DOMBinder.md). If
+your application has a user interface, you likely have a list of DOM elements you're interested in working with. A DOM
+Binder provides very easy, configurable access to these elements.
 
 ## Declaring a View Component
 
@@ -32,17 +35,23 @@ fluid.defaults("tutorials.viewBearingComponent", {
 });
 ```
 
-<div class="infusion-docs-note"><strong>Note:</strong> View components automatically also provide support for model and events, so you don't need to include those in your <code>gradeNames</code> list.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> View components automatically also provide support for model and events, so you don't need to
+    include those in your <code>gradeNames</code> list.
+</div>
 
 ### Selectors
 
-The `selectors` property in your defaults is the list of DOM elements you want to work with in your interface. The object is a list of named [CSS-based selectors](http://docs.jquery.com/Selectors). The names should be generic and refer to the nature of the interface element, such as "saveButton" or "sliderHandle." By specifying your selectors on your component's defaults, integrators can override the selectors without requiring any changes to your component.
+The `selectors` property in your defaults is the list of DOM elements you want to work with in your interface. The
+object is a list of named [CSS-based selectors](http://docs.jquery.com/Selectors). The names should be generic and refer
+to the nature of the interface element, such as "saveButton" or "sliderHandle." By specifying your selectors on your
+component's defaults, integrators can override the selectors without requiring any changes to your component.
 
 ## Example: Currency Converter
 
 Consider a simple user interface for the currency converter example we looked at earlier:
 
-![Currency Converter Screenshot](../images/curr-converter-screenshot.png)
+![Currency Converter Screenshot](/images//curr-converter-screenshot.png)
 
 There are several elements we'll need to identify:
 
@@ -51,7 +60,10 @@ There are several elements we'll need to identify:
 * the "Convert!" button
 * the output of the results
 
-We make sure our HTML has unique classes or IDs on each of these elements. The Infusion convention is to use class names that are prefaced with `flc-<componentName>` (where `flc` is short for "fluid component"). We'll adopt a similar convention here, and use a preface of `tut-currencyConverter-` for "tutorial currency converter". So here's what this might look like:
+We make sure our HTML has unique classes or IDs on each of these elements. The Infusion convention is to use class names
+that are prefaced with `flc-<componentName>` (where `flc` is short for "fluid component"). We'll adopt a similar
+convention here, and use a preface of `tut-currencyConverter-` for "tutorial currency converter". So here's what this
+might look like:
 
 ```html
 <h1>Currency Converter</h1>
@@ -84,6 +96,8 @@ fluid.defaults("tutorials.currencyConverter", {
 });
 ```
 
-So far we have not added any behaviour to this skeleton view component - we'll orchestrate together all the model, event and view code we've seen so far together into a working component in our final section on [Renderer Components](RendererComponents.md).
+So far we have not added any behaviour to this skeleton view component - we'll orchestrate together all the model, event
+and view code we've seen so far together into a working component in our final section on [Renderer
+Components](RendererComponents.md).
 
 Next: [Renderer Components](RendererComponents.md)

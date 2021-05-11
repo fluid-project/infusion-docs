@@ -1,5 +1,4 @@
 /node_modules/
-/out/
+/dist/
 *~
 .project
-package-lock.json

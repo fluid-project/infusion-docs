@@ -1,27 +1,24 @@
 ---
 title: Invokers
-layout: default
 category: Infusion
 ---
 
-The public and implementation functions on your component ("methods",
-in OO terminology) are defined by configuration representing **invokers**.
+The public and implementation functions on your component ("methods", in OO terminology) are defined by configuration
+representing **invokers**.
 
-Invokers can bind free functions, IoC resolved functions, and
-`this` based functions to the component, and to the context of the component. Invokers allow the
-signature received in the bound function to differ from the signature sent by the caller.
-As well as allowing the traditional OO facility for shifting the `that` argument
-representing the component itself in and out of the argument list, this also allows for much
-more powerful reuse of existing functions where signature elements can be sourced freely from
-around the component tree and within the original argument list.
+Invokers can bind free functions, IoC resolved functions, and `this` based functions to the component, and to the
+context of the component. Invokers allow the signature received in the bound function to differ from the signature sent
+by the caller. As well as allowing the traditional OO facility for shifting the `that` argument representing the
+component itself in and out of the argument list, this also allows for much more powerful reuse of existing functions
+where signature elements can be sourced freely from around the component tree and within the original argument list.
 
 ## Types of Invokers
 
 ### Standard invoker binding to a function using funcName, func
 
-An invoker can specified with either the **`funcName`** property to reference a free function by its
-global name (e.g. `fluid.copy`, `fluid.log`, etc.) or the **`func`** property to reference an existing
-function (perhaps another invoker) from elsewhere in the component tree.
+An invoker can specified with either the **`funcName`** property to reference a free function by its global name (e.g.
+`fluid.copy`, `fluid.log`, etc.) or the **`func`** property to reference an existing function (perhaps another invoker)
+from elsewhere in the component tree.
 
 <table>
     <thead>
@@ -163,21 +160,19 @@ fluid.defaults("fluid.uploader.fileQueue", {
 
 ### Invoker triggering a model change to some component's model
 
-If the invoker's record contains the field changePath (rather than the standard `func`/`funcName`)
-this is recognised as a special type of invoker triggering a change to a particular component's
-model via its [ChangeApplier](ChangeApplier.md). This type of record is documented in its own
-section with the [ChangeApplier API](ChangeApplierAPI.md). The compact syntax may not be used with
-this variety of record.
+If the invoker's record contains the field changePath (rather than the standard `func`/`funcName`) this is recognised as
+a special type of invoker triggering a change to a particular component's model via its
+[ChangeApplier](ChangeApplier.md). This type of record is documented in its own section with the [ChangeApplier
+API](ChangeApplierAPI.md). The compact syntax may not be used with this variety of record.
 
 ### "this"-ist invoker binding to a OO-style JavaScript function referencing "this"
 
-Specifying an invoker with a __`"this"`__ property allows the invocation of functions whose body
-makes a reference to the special JavaScript value `"this"`. These are generally functions external
-to the Infusion framework such as `console.log`, since it is a Fluid community standard to write "that"-ist functions
-whose execution is independent of the calling context. These can be any functions, but will most
-often be used for jQuery methods. See [Declarative this-ism in IoC](DeclarativeThisismInIoC.md)
-for more details. Note that the string `this` must always be quoted when appearing as a key as it is
-a JavaScript keyword.
+Specifying an invoker with a __`"this"`__ property allows the invocation of functions whose body makes a reference to
+the special JavaScript value `"this"`. These are generally functions external to the Infusion framework such as
+`console.log`, since it is a Fluid community standard to write "that"-ist functions whose execution is independent of
+the calling context. These can be any functions, but will most often be used for jQuery methods. See [Declarative
+this-ism in IoC](DeclarativeThisismInIoC.md) for more details. Note that the string `this` must always be quoted when
+appearing as a key as it is a JavaScript keyword.
 
 <table>
     <thead>
@@ -205,13 +200,12 @@ The name of the "thisist" function (attached to the <code>this</code> object des
             <td><code>args</code></td>
             <td><strong>Optional</strong><br/>
                 type: <code>array</code><br/>
-An array of arguments to be passed into the function specified by the <code>func</code> or <code>funcName</code> property. The
-values in the array can be of any type, including <a href="IoCReferences.md">IoC references</a>. In this
-context, you may also use references of the form <code>{arguments}.n</code>, where n is an integer
-indexing from 0 which refers to the position of the originating argument, to use arguments passed
-in when the invoker is called. If no args are specified, all of the arguments passed into the invoker
-are sent to the underlying function unchanged. Identical to role in <code>func/funcName</code> style
-invokers.
+An array of arguments to be passed into the function specified by the <code>func</code> or <code>funcName</code>
+property. The values in the array can be of any type, including <a href="IoCReferences.md">IoC references</a>. In this
+context, you may also use references of the form <code>{arguments}.n</code>, where n is an integer indexing from 0 which
+refers to the position of the originating argument, to use arguments passed in when the invoker is called. If no args
+are specified, all of the arguments passed into the invoker are sent to the underlying function unchanged. Identical to
+role in <code>func/funcName</code> style invokers.
             </td>
         </tr>
     </tbody>

@@ -1,6 +1,5 @@
 ---
 title: Basic Component Creation - Components
-layout: default
 category: Tutorials
 ---
 
@@ -9,18 +8,22 @@ Part of the [Getting Started with Infusion Component Design Tutorial](GettingSta
 
 ---
 
-Regardless of which grade of component you use, the basic structure will be the same. We'll use the simplest grade, a **plain component**, to illustrate what this structure is. In future pages explaining other grades, you'll see the same principles.
+Regardless of which grade of component you use, the basic structure will be the same. We'll use the simplest grade, a
+**plain component**, to illustrate what this structure is. In future pages explaining other grades, you'll see the same
+principles.
 
 The definition of a component involves two things:
 
-1. declare the component **grade** and any default values for the component's **options**. Options are used by users and integrators to customize the behaviour of a component.
+1. declare the component **grade** and any default values for the component's **options**. Options are used by users and
+   integrators to customize the behaviour of a component.
 2. define any public **functions** (invokers) and other members that the component requires to do its work.
 
 ## Grade and Default Options
 
 A component's grade and any default options are registered with the framework using a call to
-[`fluid.defaults`](../CoreAPI.md#fluiddefaultsgradename-options), which has two parameters:
-the component name and an object containing the defaults. The parent grades for the component are specified in an array or single string in the defaults called `gradeNames`. For a plain component, specify the grade as `fluid.component`:
+[`fluid.defaults`](../CoreAPI.md#fluiddefaultsgradename-options), which has two parameters: the component name and an
+object containing the defaults. The parent grades for the component are specified in an array or single string in the
+defaults called `gradeNames`. For a plain component, specify the grade as `fluid.component`:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
@@ -32,7 +35,8 @@ fluid.defaults("tutorials.simpleComponent", {
 
 ### Options
 
-Integrators can override your defaults when they instantiate the component, to customize its appearance or behaviour. The framework will take care of [merging the integrator's values](../OptionsMerging.md) with your defaults.
+Integrators can override your defaults when they instantiate the component, to customize its appearance or behaviour.
+The framework will take care of [merging the integrator's values](../OptionsMerging.md) with your defaults.
 
 We'll go through some examples of options, to give you an idea of what they're all about.
 
@@ -49,7 +53,8 @@ fluid.defaults("tutorials.currencyConverter", {
 
 #### Example: Inline Edit
 
-The Infusion [Inline Edit](../to-do/InlineEdit.md) component uses a tooltip and defines (among other things) defaults for the delay before the tooltip appears, the text to display - even whether or not to enable it at all:
+The Infusion [Inline Edit](../to-do/InlineEdit.md) component uses a tooltip and defines (among other things) defaults
+for the delay before the tooltip appears, the text to display - even whether or not to enable it at all:
 
 ```javascript
 fluid.defaults("fluid.inlineEdit", {
@@ -63,7 +68,8 @@ fluid.defaults("fluid.inlineEdit", {
 
 #### Example: Progress
 
-The Infusion [Progress](../to-do/Progress.md) component uses jQuery animations to show and hide a progress bar. The defaults include objects that are passed to jQuery to configure the animations:
+The Infusion [Progress](../to-do/Progress.md) component uses jQuery animations to show and hide a progress bar. The
+defaults include objects that are passed to jQuery to configure the animations:
 
 ```javascript
 fluid.defaults("fluid.progress", {
@@ -87,9 +93,11 @@ fluid.defaults("fluid.progress", {
 
 ## The Creator Function
 
-All components have a **creator function**: a public function that is invoked to instantiate the component. The framework will instantiate the creator function for you automatically, given the component's default options.
-When your component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another component, the framework will also take responsibility for calling the creator function for you automatically.
-In the rare case you need to construct a component directly using a JavaScript function call, Infusion components have a standardized function signature:
+All components have a **creator function**: a public function that is invoked to instantiate the component. The
+framework will instantiate the creator function for you automatically, given the component's default options. When your
+component is registered as a [subcomponent](../SubcomponentDeclaration.md) of another component, the framework will also
+take responsibility for calling the creator function for you automatically. In the rare case you need to construct a
+component directly using a JavaScript function call, Infusion components have a standardized function signature:
 
 * plain and **model** components accept a single argument: `options`
 * **view** and **renderer** components accept two arguments: `container` and `options`
@@ -100,7 +108,8 @@ We'll get into what these arguments are when we talk about each type of componen
 
 #### Automatic creator function generation
 
-The [IoC - Inversion of Control](../IoCAPI.md) system will automatically generate a component creator function for you. This is accomplished by registering default options deriving from the framework component grade `fluid.component`:
+The [IoC - Inversion of Control](../IoCAPI.md) system will automatically generate a component creator function for you.
+This is accomplished by registering default options deriving from the framework component grade `fluid.component`:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
@@ -112,9 +121,11 @@ fluid.defaults("tutorials.simpleComponent", {
 
 #### Public API methods
 
-The standard means of adding public API functions to a component is to express them as [invokers](../Invokers.md). An invoker is a declarative record added into a components defaults, under the section `invokers`:
-the name of the record becomes the name of the public function which will be added. The invoker record defines the name of the public JavaScript function which should be executed when the method is called,
-as well as details of where the arguments that the function accepts should be sourced from - for example:
+The standard means of adding public API functions to a component is to express them as [invokers](../Invokers.md). An
+invoker is a declarative record added into a components defaults, under the section `invokers`: the name of the record
+becomes the name of the public function which will be added. The invoker record defines the name of the public
+JavaScript function which should be executed when the method is called, as well as details of where the arguments that
+the function accepts should be sourced from - for example:
 
 ```javascript
 fluid.defaults("tutorials.simpleComponent", {
@@ -131,16 +142,19 @@ fluid.defaults("tutorials.simpleComponent", {
 
 // implementation of the public function registered as an invoker above
 tutorials.simpleComponent.publicFunction = function (that) {
-   // ...
+    // ...
 };
 ```
 
-You will note that the function `tutorials.simpleComponent.publicFunction` is a standard JavaScript function that could even be invoked directly from code if this were found relevant -
-it need not be necessarily bound as a component method (although most component methods that accept `{that}` as an argument tend not to make sense without being provided an instance of the relevant component).
+You will note that the function `tutorials.simpleComponent.publicFunction` is a standard JavaScript function that could
+even be invoked directly from code if this were found relevant - it need not be necessarily bound as a component method
+(although most component methods that accept `{that}` as an argument tend not to make sense without being provided an
+instance of the relevant component).
 
 #### Example: Currency Converter
 
-Here is the next stage of evolution of our currency converter sample, with a conversion function defined using an invoker:
+Here is the next stage of evolution of our currency converter sample, with a conversion function defined using an
+invoker:
 
 ```javascript
 fluid.defaults("tutorials.currencyConverter", {
@@ -160,19 +174,26 @@ tutorials.currencyConverterAuto.convert = function (exchangeRate, amount) {
 };
 ```
 
-You'll notice that in this case we have been able to avoid binding to the entire component instance in our public function, and so our standalone public function `tutorials.currencyConverterAuto.convert`
-is of more general utility than just for building a component method.
-This has happened because its responsibilities are particularly well-defined - you should always take the opportunity to restrict the binding behaviour of your public functions in this way whenever it is appropriate.
+You'll notice that in this case we have been able to avoid binding to the entire component instance in our public
+function, and so our standalone public function `tutorials.currencyConverterAuto.convert` is of more general utility
+than just for building a component method. This has happened because its responsibilities are particularly well-defined,
+you should always take the opportunity to restrict the binding behaviour of your public functions in this way whenever
+it is appropriate.
 
 ## Defining and firing [events](../InfusionEventSystem.md)
 
-Many times, you will be creating a component that works in an environment where other things are operating, and it will probably need to notify those other things of key **events** in its lifecycle.
-Events can be used to trigger changes in the visual appearance of a component, or actions by other components. For example:
+Many times, you will be creating a component that works in an environment where other things are operating, and it will
+probably need to notify those other things of key **events** in its lifecycle. Events can be used to trigger changes in
+the visual appearance of a component, or actions by other components. For example:
 
-* the Infusion [Reorderer](../to-do/Reorderer.md) component provides drag-and-drop functionality for lists, grids, etc. Its operation has several key events, such as when a move is initiated, when it's completed, etc.
-* the Infusion [Uploader](../to-do/Uploader.md) component, a queued multi-file uploader, has events including when a file is successfully added to the queue, when each file starts being uploaded, when each upload completes, etc.
+* the Infusion [Reorderer](../to-do/Reorderer.md) component provides drag-and-drop functionality for lists, grids, etc.
+  Its operation has several key events, such as when a move is initiated, when it's completed, etc.
+* the Infusion [Uploader](../to-do/Uploader.md) component, a queued multi-file uploader, has events including when a
+  file is successfully added to the queue, when each file starts being uploaded, when each upload completes, etc.
 
-The Infusion Framework defines its own event system. Infusion events differ from browser events in that they are not bound to the DOM or its infrastructure. Infusion events can be used for anything, not only user-interface related events.
+The Infusion Framework defines its own event system. Infusion events differ from browser events in that they are not
+bound to the DOM or its infrastructure. Infusion events can be used for anything, not only user-interface related
+events.
 
 ## Declaring events on a component
 
@@ -194,15 +215,22 @@ fluid.defaults("tutorials.eventedComponent", {
 });
 ```
 
-The contents of the `events` object is a set of key-value pairs where the key is the event name and the value is the event type.
+The contents of the `events` object is a set of key-value pairs where the key is the event name and the value is the
+event type.
 
-* **Event naming conventions**: You can call your events anything you like, but Infusion has adopted the convention of prefacing events with on or after to indicate whether or not the event is being fired before some action is taken, or after the action has completed.
-* **Event types**: If the event is a standard event defined on this component, you will write `null` here. Event types supported by the framework are described at the [Infusion Event System](../InfusionEventSystem.md).
-  Another possibility is to inject an event appearing elsewhere in the component tree by use of an [IoC reference](../IoCReferences.md) such as `{myOtherComponent}.events.myEvent`.
+* **Event naming conventions**: You can call your events anything you like, but Infusion has adopted the convention of
+  prefacing events with on or after to indicate whether or not the event is being fired before some action is taken, or
+  after the action has completed.
+* **Event types**: If the event is a standard event defined on this component, you will write `null` here. Event types
+  supported by the framework are described at the [Infusion Event System](../InfusionEventSystem.md).  Another
+  possibility is to inject an event appearing elsewhere in the component tree by use of an [IoC reference](../IoCReferences.md)
+  such as `{myOtherComponent}.events.myEvent`.
 
 ### Example: Saving and Deleting
 
-Suppose you're creating a component that is responsible for managing records of some kind, or editing documents. An application like that is going to allow users to save their edits or remove the record altogether. You might create the following events for these actions:
+Suppose you're creating a component that is responsible for managing records of some kind, or editing documents. An
+application like that is going to allow users to save their edits or remove the record altogether. You might create the
+following events for these actions:
 
 ```javascript
 // Declare the events in the defaults
@@ -219,11 +247,15 @@ fluid.defaults("tutorials.recordEditor", {
 
 ## Firing Events
 
-The framework will automatically set up event firers for all of your listed events. These will be attached to an object on your component called `events` and provide an API (and reference target) for you to fire events and add or remove listeners.
+The framework will automatically set up event firers for all of your listed events. These will be attached to an object
+on your component called `events` and provide an API (and reference target) for you to fire events and add or remove
+listeners.
 
 ### Example: Saving and Deleting
 
-Our record editor component will likely have public methods for the saving and removing of records. We will define these methods using the framework facility for [invokers](../Invokers.md). These methods will be responsible for firing the events.
+Our record editor component will likely have public methods for the saving and removing of records. We will define these
+methods using the framework facility for [invokers](../Invokers.md). These methods will be responsible for firing the
+events.
 
 ```javascript
 // Declare the events in the defaults

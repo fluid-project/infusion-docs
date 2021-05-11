@@ -1,6 +1,5 @@
 ---
 title: API Changes from 2.0 to 3.0
-layout: default
 category: Infusion
 ---
 
@@ -10,12 +9,15 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 ### Core Framework Changes
 
-This section describes major APIs that were in common use. For information about less widely-used features removed in 3.0, consult [Deprecations in 2.0](DeprecatedIn2_0.md).
+This section describes major APIs that were in common use. For information about less widely-used features removed in
+3.0, consult [Deprecations in 2.0](DeprecatedIn2_0.md).
 
 #### Model Transformations
 
-* `fluid.transforms.round` can take in `scale` and `method` options for rounding numbers to a decimal value. Additionally, numbers round away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
-* `fluid.transforms.valueMapper` takes an `defaultInput` option to provide the model data directly. This also provides a location for adding nested transformations.
+* `fluid.transforms.round` can take in `scale` and `method` options for rounding numbers to a decimal value.
+   Additionally, numbers round away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
+* `fluid.transforms.valueMapper` takes an `defaultInput` option to provide the model data directly. This also provides a
+   location for adding nested transformations.
 
 ### Preferences Framework
 
@@ -23,7 +25,9 @@ This section describes major APIs that were in common use. For information about
 
 ##### Reset
 
-By default, reset will only reset the `preferences` model path. Other model values will remain unchanged. If you'd like to also have these paths changed, add a listener to the `beforeReset` event to execute a fireChangeRequest for the model paths you need to reset. (See: [ArrowScrolling.js](https://github.com/fluid-project/infusion/blob/master/src/framework/preferences/js/ArrowScrolling.js))
+By default, reset will only reset the `preferences` model path. Other model values will remain unchanged. If you'd like
+to also have these paths changed, add a listener to the `beforeReset` event to execute a fireChangeRequest for the model
+paths you need to reset. (See: [ArrowScrolling.js](https://github.com/fluid-project/infusion/blob/main/src/framework/preferences/js/ArrowScrolling.js))
 
 ```snippet
 listeners: {
@@ -36,7 +40,8 @@ listeners: {
 
 ##### Model Paths
 
-Any prefsEditor using the `fluid.prefs.arrowScrolling` grade, such as the one contained in `fluid.prefs.separatedPanel`, will contain the following new model paths.
+Any prefsEditor using the `fluid.prefs.arrowScrolling` grade, such as the one contained in `fluid.prefs.separatedPanel`,
+will contain the following new model paths.
 
 <table>
     <thead>
@@ -92,7 +97,8 @@ The keyword `"default"` was used to setup a model relay between an internal mode
 
 ##### Selectors
 
-All panels must supply a `header` selector, which will be used by the `fluid.prefs.arrowScrolling` grade to provide the clickable arrows for navigating between adjusters in the small screen responsive view.
+All panels must supply a `header` selector, which will be used by the `fluid.prefs.arrowScrolling` grade to provide the
+clickable arrows for navigating between adjusters in the small screen responsive view.
 
 ##### Line Spacing
 

@@ -1,16 +1,23 @@
 ---
 title: Developer Introduction to the Infusion Framework - Transforming Model Relays
-layout: default
 category: Tutorials
 ---
 
-We've covered [simple model relays previously](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.md) as means of enabling two-way synchronization between the models of different components. What if we have a more complex need to coordinate model changes, such as deriving a value on one component model by transforming a value from another?
+We've covered [simple model relays
+previously](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.md) as means of enabling two-way
+synchronization between the models of different components. What if we have a more complex need to coordinate model
+changes, such as deriving a value on one component model by transforming a value from another?
 
-Infusion's answer to this is the [explicit model relay](../ModelRelay.md#explicit-model-relay-style), a more verbose configuration of relay behaviour that can specify complex logic as part of a component.
+Infusion's answer to this is the [explicit model relay](../ModelRelay.md#explicit-model-relay-style), a more verbose
+configuration of relay behaviour that can specify complex logic as part of a component.
 
-In the code below, we add a second `fluidTutorial.helloWorld.speakHello` subcomponent, but use a style of explicit model relay that allows us to pass a value through an intermediary function when coordinating changes. In this case, we define a function that reverses a string, and our `reverseSpeakHello` subcomponent will speak the message backwards after the `speakHello` subcomponent has spoken it.
+In the code below, we add a second `fluidTutorial.helloWorld.speakHello` subcomponent, but use a style of explicit model
+relay that allows us to pass a value through an intermediary function when coordinating changes. In this case, we define
+a function that reverses a string, and our `reverseSpeakHello` subcomponent will speak the message backwards after the
+`speakHello` subcomponent has spoken it.
 
-<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/gWGQyN?editors=1111">Live Example of the code below on CodePen</a></div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
+href="http://codepen.io/waharnum/pen/gWGQyN?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ```javascript
 var helloWorld;
@@ -150,10 +157,16 @@ helloWorld = fluidTutorial.helloWorld({
 });
 ```
 
-A main goal of Infusion is to enable us where possible to express our applications as [declarative configurations](../FrameworkConcepts.md#declarative-configuration), reducing the overhead for other developers (or ourselves, after we have stepped away from the code for some time...) to understand the flow of program data.
+A main goal of Infusion is to enable us where possible to express our applications as [declarative
+configurations](../FrameworkConcepts.md#declarative-configuration), reducing the overhead for other developers (or
+ourselves, after we have stepped away from the code for some time...) to understand the flow of program data.
 
-Transforming model relays reduce the amount of custom code we need to write to fulfill a common need: responding to data changing in one part of the program in another part of the program.
+Transforming model relays reduce the amount of custom code we need to write to fulfill a common need: responding to data
+changing in one part of the program in another part of the program.
 
-We have seen previously how [model relaying](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.md) can be used for value synchronization between parts of a program; when we add transformations to the relay syntax, we can achieve advanced coordination of program state where much of the complexity is embodied in the declarative configuration syntax.
+We have seen previously how [model relaying](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.md)
+can be used for value synchronization between parts of a program; when we add transformations to the relay syntax, we
+can achieve advanced coordination of program state where much of the complexity is embodied in the declarative
+configuration syntax.
 
 Next: [Concluding Remarks](DeveloperIntroductionToInfusionFramework-ConcludingRemarks.md)

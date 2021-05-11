@@ -1,11 +1,11 @@
 ---
 title: Renderer Components
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---
 
-If you are creating a component that requires the use of the Renderer, you should use the `fluid.rendererComponent` grade as a [parent grade](ComponentGrades.md) in your component's defaults block:
+If you are creating a component that requires the use of the Renderer, you should use the `fluid.rendererComponent`
+grade as a [parent grade](ComponentGrades.md) in your component's defaults block:
 
 ```javascript
 fluid.defaults("my.component", {
@@ -16,7 +16,8 @@ fluid.defaults("my.component", {
 var that = my.component();
 ```
 
-This function automates the work of constructing a component creator function, applying the Renderer, fetching templates, configuring cutpoints based on the DOM binder, as well as localisation via the string bundle.
+This function automates the work of constructing a component creator function, applying the Renderer, fetching
+templates, configuring cutpoints based on the DOM binder, as well as localisation via the string bundle.
 
 This function will:
 
@@ -26,7 +27,8 @@ This function will:
 
 ## Options for Renderer Components
 
-While developers are free to define whatever options they like for their component, a component descended from `fluid.rendererComponent`  will also understand certain options specific to the Renderer:
+While developers are free to define whatever options they like for their component, a component descended from
+`fluid.rendererComponent`  will also understand certain options specific to the Renderer:
 
 <table>
     <thead>
@@ -52,7 +54,8 @@ While developers are free to define whatever options they like for their compone
                 A list of resources (such as HTML files, CSS files, data files) that are required by the component.
             </td>
             <td>
-                Object as required by <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/FluidRequests.js#L24-L50">fluid.fetchResources</a>
+                Object as required by <a
+                href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/core/js/FluidRequests.js#L24-L50">fluid.fetchResources</a>
             </td>
             <td>none</td>
         </tr>
@@ -87,7 +90,8 @@ While developers are free to define whatever options they like for their compone
             </td>
             <td>Object</td>
             <td>
-                See the documentation for <a href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/RendererUtilities.js#L62-L100">fluid.renderer.createRendererSubcomponent</a>
+                See the documentation for <a
+                href="https://github.com/fluid-project/infusion/blob/infusion-1.5/src/framework/renderer/js/RendererUtilities.js#L62-L100">fluid.renderer.createRendererSubcomponent</a>
             </td>
         </tr>
         <tr>
@@ -101,7 +105,8 @@ While developers are free to define whatever options they like for their compone
         <tr>
             <td><code>repeatingSelectors</code></td>
             <td>
-                A list of any of the named selectors that reference elements that will be repeated when renderer (e.g. rows in a table)
+                A list of any of the named selectors that reference elements that will be repeated when renderer (e.g.
+                rows in a table)
             </td>
             <td>Array of Strings</td>
             <td>none</td>
@@ -117,7 +122,8 @@ While developers are free to define whatever options they like for their compone
         <tr>
             <td><code>protoTree</code></td>
             <td>
-                A data structure that represents the binding between the contents and data. Also see <a href="RendererComponentTrees.md">Renderer Component Trees</a> for more detail.
+                A data structure that represents the binding between the contents and data. Also see <a
+                href="RendererComponentTrees.md">Renderer Component Trees</a> for more detail.
             </td>
             <td>Object</td>
             <td>none</td>
@@ -141,7 +147,8 @@ While developers are free to define whatever options they like for their compone
 
 ## Events for Renderer-bearing Components
 
-_Note: The 3 events are fired in the order of prepareModelForRender, onRenderTree, afterRender. They are only intended for use by experts._
+_Note: The 3 events are fired in the order of prepareModelForRender, onRenderTree, afterRender. They are only intended
+for use by experts._
 
 ### prepareModelForRender
 
@@ -150,7 +157,8 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
         <tr>
             <th>Description</th>
             <td>
-                This event fires before the generation of protoTree. Whatever adjustment on the model, which is the protoTree is generated based on, is ideal to be performed at this event.
+                This event fires before the generation of protoTree. Whatever adjustment on the model, which is the
+                protoTree is generated based on, is ideal to be performed at this event.
             </td>
         </tr>
         <tr>
@@ -159,11 +167,13 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
                 <dl>
                     <dt><dfn><code>model</code></dfn></dt>
                     <dd>
-                        The internal <a href="tutorial-gettingStartedWithInfusion/ModelComponents.md">Model Component</a> that is used by this renderer component.
+                        The internal <a href="tutorial-gettingStartedWithInfusion/ModelComponents.md">Model
+                        Component</a> that is used by this renderer component.
                     </dd>
                     <dt><dfn><code>applier</code></dfn></dt>
                     <dd>
-                        The internal <a href="ChangeApplier.md">Change Applier Component</a> that is used by this renderer component.
+                        The internal <a href="ChangeApplier.md">Change Applier Component</a> that is used by this
+                        renderer component.
                     </dd>
                     <dt><dfn><code>that</code></dfn></dt>
                     <dd>The reference to the current renderer component.</dd>
@@ -190,7 +200,8 @@ _Note: The 3 events are fired in the order of prepareModelForRender, onRenderTre
         <tr>
             <th>Description</th>
             <td>
-                This event fires right before protoTree is rendered. This event is ideal for the final manipulation of the fully expanded protoTree.
+                This event fires right before protoTree is rendered. This event is ideal for the final manipulation of
+                the fully expanded protoTree.
             </td>
         </tr>
         <tr>
@@ -269,7 +280,8 @@ Expands the provided `tree`, generates cutpoints, and renders the `tree`.
 that.produceTree();
 ```
 
-This function is only present if a `protoTree` has been provided in the options. This function can be overridden by providing a `produceTree` in the options.
+This function is only present if a `protoTree` has been provided in the options. This function can be overridden by
+providing a `produceTree` in the options.
 
 ### refreshView()
 
@@ -277,7 +289,8 @@ This function is only present if a `protoTree` has been provided in the options.
 that.refreshView();
 ```
 
-This function calls `that.render(that.produceTree());` This function is only present if a `protoTree` has been provided in the options.
+This function calls `that.render(that.produceTree());` This function is only present if a `protoTree` has been provided
+in the options.
 
 ## Example: Rendering a select box
 
@@ -316,7 +329,7 @@ fluid.defaults("fluid.examples.renderer", {
     resources: {
         template: {
             forceCache: true,
-            url: "examples-rederer.html"
+            url: "examples-renderer.html"
         }
     }
 });
@@ -325,7 +338,7 @@ fluid.defaults("fluid.examples.renderer", {
 var that = fluid.examples.renderer("#options");
 ```
 
-The template _"examples-rederer.html"_ looks like,
+The template _"examples-renderer.html"_ looks like,
 
 ```html
 <form id="options" action="">
@@ -335,4 +348,5 @@ The template _"examples-rederer.html"_ looks like,
 </form>
 ```
 
-This example uses a renderer component to generate a drop down list box. The `protoTree` is the key option that establishes the binding between the `selectors` and data presented in `model`.
+This example uses a renderer component to generate a drop down list box. The `protoTree` is the key option that
+establishes the binding between the `selectors` and data presented in `model`.

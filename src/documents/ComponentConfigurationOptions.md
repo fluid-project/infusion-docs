@@ -1,15 +1,16 @@
 ---
 title: Component Configuration Options
-layout: default
 category: Infusion
 ---
 
-Infusion components are configured using options that are defined by the component developer and customized by the integrator.
-While component developers are free to define whatever options are appropriate for their component, the Infusion Framework supports a number of predefined options.
+Infusion components are configured using options that are defined by the component developer and customized by the
+integrator. While component developers are free to define whatever options are appropriate for their component, the
+Infusion Framework supports a number of predefined options.
 
-The particular set of options interpreted by the framework is determined by the [Grades](ComponentGrades.md) that the component is derived from. Developers and integrators
-can define further grades which respond to yet further options, which they should document if they expect the options to be generally useful.
-This page briefly describes these predefined options and provides links to more information about the related framework functionality.
+The particular set of options interpreted by the framework is determined by the [Grades](ComponentGrades.md) that the
+component is derived from. Developers and integrators can define further grades which respond to yet further options,
+which they should document if they expect the options to be generally useful. This page briefly describes these
+predefined options and provides links to more information about the related framework functionality.
 
 ## Options Supported By All Components Grades
 
@@ -24,8 +25,7 @@ The following options are supported by all component grades, that is, those deri
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     gradeNames: "fluid.modelComponent",
     // ...
 });</code>
@@ -42,12 +42,14 @@ The following options are supported by all component grades, that is, those deri
 <table>
   <tr>
     <th>Description</th>
-    <td>A record defining methods on the component whose arguments are resolved from the environment as well as the direct argument list at invocation time.</td>
+    <td>
+        A record defining methods on the component whose arguments are resolved from the environment as well as the
+        direct argument list at invocation time.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     invokers: {
         inv1: {
             // ...
@@ -71,17 +73,24 @@ The following options are supported by all component grades, that is, those deri
 <table>
   <tr>
     <th>Description</th>
-    <td>A record defining properties to be added to the component object. These can be anything, including methods, strings, objects, etc. Definitions are evaluated as IoC expressions.</td>
+    <td>
+        A record defining properties to be added to the component object. These can be anything, including methods,
+        strings, objects, etc. Definitions are evaluated as IoC expressions.
+    </td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td>Defining a method as a Function in <code>members</code> will differ from <code>invokers</code> in that the arguments of members are not resolved at invocation time. The use of such function members is not recommended except where very high invocation performance is required.
-        The right-hand-side may contain an <a href="ExpansionOfComponentOptions.md">expander</a> definition, which may perhaps itself resolve onto an <a href="Invokers.md">invoker</a>.</td>
+    <td>
+        Defining a method as a Function in <code>members</code> will differ from <code>invokers</code> in that the
+        arguments of members are not resolved at invocation time. The use of such function members is not recommended
+        except where very high invocation performance is required.  The right-hand-side may contain an
+        <a href="ExpansionOfComponentOptions.md">expander</a> definition, which may perhaps itself resolve onto an
+        <a href="Invokers.md">invoker</a>.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     members: {
         member1: "{that}.options.optionsValue",
         member2: "{theOther}.dom.otherSelector",
@@ -97,20 +106,23 @@ The following options are supported by all component grades, that is, those deri
 <table>
   <tr>
     <th>Description</th>
-    <td>A record containing key/value pairs that define the events the component will fire: the keys are the event names, the values define the type of the event (see <a href="InfusionEventSystem.md">Infusion Event System</a> for information on the different event types).</td>
+    <td>
+        A record containing key/value pairs that define the events the component will fire: the keys are the event
+        names, the values define the type of the event (see <a href="InfusionEventSystem.md">Infusion Event System</a>
+        for information on the different event types).
+    </td>
   </tr>
   <tr>
     <th>Notes</th>
     <td>
-
-The Framework will create event firers for the listed events. The builtin events `onCreate`, `onDestroy` and `afterDestroy` will be fired automatically by the framework.
-It is the responsibility of the component to fire user-defined events at the appropriate times.
-</td>
+        The Framework will create event firers for the listed events. The builtin events `onCreate`, `onDestroy` and
+        `afterDestroy` will be fired automatically by the framework. It is the responsibility of the component to fire
+        user-defined events at the appropriate times.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     events: {
         onSave: "preventable",
         onReady: null
@@ -135,18 +147,20 @@ It is the responsibility of the component to fire user-defined events at the app
   <tr>
     <th>Notes</th>
     <td>
-
-Both component developers and integrators can define listeners for events.
-<a href="Invokers.md">Invokers</a> and the `fire` method of other events can be used as listeners here, as well as any function handle resulting from an <a href="ExpansionOfComponentOptions.md">Expanders</a>.
-Note that as well as being a simple string holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC Reference</a>
-to any other event held in the component tree (for example <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, the value associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a>
-or else follow the syntax of an invoker indicating that the registered listener receives a different signature from the one that the event has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).
-</td>
+        Both component developers and integrators can define listeners for events. <a href="Invokers.md">Invokers</a>
+        and the `fire` method of other events can be used as listeners here, as well as any function handle resulting
+        from an <a href="ExpansionOfComponentOptions.md">Expanders</a>. Note that as well as being a simple string
+        holding the name of an event on this component, a listener key may also be a full <a href="IoCReferences.md">IoC
+        Reference</a> to any other event held in the component tree (for example
+        <code>"{parentComponent}.events.parentEvent"</code>. As well as being a simple function name, the value
+        associated with the key may be a <a href="InfusionEventSystem.md">Listener Record</a> or else follow the syntax
+        of an invoker indicating that the registered listener receives a different signature from the one that the event
+        has fired (see <a href="EventInjectionAndBoiling.md">Event injection and boiling</a>).
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>examples.myListener = function (number, condition) {
+    <td><pre class="highlight"><code class="hljs javascript">examples.myListener = function (number, condition) {
     console.log("Event listener received number " + number + " and condition " + condition);
 };
 
@@ -163,8 +177,7 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myComp = examples.eventedComponent({
+    <td><pre class="highlight"><code class="hljs javascript">var myComp = examples.eventedComponent({
     listeners: {
         "myEvent.myNamespace": "examples.myOtherListener",
     }
@@ -186,19 +199,20 @@ fluid.defaults("examples.eventedComponent", {
   </tr>
   <tr>
     <th>Notes</th>
-    <td>This (the <strong>subcomponent record</strong>) is one of the core sources from which the options configuring a component in a particular context. The total set of options sources are:
-    <ol>
-    <li>the original defaults record,</li>
-    <li>the subcomponent record,</li>
-    <li>direct user options (supplied to a component creator function),</li>
-    <li><a href="IoCSS.md">distributed options</a>.</li>
-    </ol>
+    <td>
+        This (the <strong>subcomponent record</strong>) is one of the core sources from which the options configuring a
+        component in a particular context. The total set of options sources are:
+        <ol>
+            <li>the original defaults record,</li>
+            <li>the subcomponent record,</li>
+            <li>direct user options (supplied to a component creator function),</li>
+            <li><a href="IoCSS.md">distributed options</a>.</li>
+        </ol>
     </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     components: {
         subcomponent1: {
             type: "component.subcomp1",
@@ -225,13 +239,16 @@ fluid.defaults("examples.eventedComponent", {
 <table>
   <tr>
     <th>Description</th>
-    <td>A record directing the framework to distribute options from this component to one or more other components in the component tree. Either a single record, an <code>Array</code> or <code>Object</code> holding these records is supported.
-    In the <code>Object</code> form, the keys of the object will be taken to represent the <code>namespace</code of the distribution.</td>
+    <td>
+        A record directing the framework to distribute options from this component to one or more other components in
+        the component tree. Either a single record, an <code>Array</code> or <code>Object</code> holding these records
+        is supported. In the <code>Object</code> form, the keys of the object will be taken to represent the
+        <code>namespace</code of the distribution.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     gradeNames: ["fluid.component"],
     distributeOptions: {
         namespace: "myDistribution",
@@ -253,21 +270,25 @@ fluid.defaults("examples.eventedComponent", {
 <table>
   <tr>
     <th>Description</th>
-    <td>A record providing instructions for how particular options should be merged when integrator options are merged with default values.</td>
+    <td>
+        A record providing instructions for how particular options should be merged when integrator options are merged
+        with default values.
+    </td>
   </tr>
   <tr>
     <th>Notes</th>
     <td>
-
-It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some external library or framework from being corrupted by the options merging/expansion process by use of the "nomerge" policy.
-For example, some noxious circularly-liked structure such as a node.js HTTP `request` object should be protected in such a way. The 2.0 framework will automatically protect an object which fails the `fluid.isPlainObject` test, which will exclude
-any object with a nondefault constructor or native type such as DOM elements, `TypedArray`s, Infusion components themselves, etc.
-</td>
+        It is uncommon to need this option. The most common use case is to protect "exotic values" derived from some
+        external library or framework from being corrupted by the options merging/expansion process by use of the
+        "nomerge" policy. For example, some noxious circularly-liked structure such as a node.js HTTP `request` object
+        should be protected in such a way. The 2.0 framework will automatically protect an object which fails the
+        `fluid.isPlainObject` test, which will exclude any object with a nondefault constructor or native type such as
+        DOM elements, `TypedArray`s, Infusion components themselves, etc.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     mergePolicy: {
         option1: "noexpand",
         option2: "nomerge"
@@ -288,18 +309,28 @@ any object with a nondefault constructor or native type such as DOM elements, `T
 <table>
   <tr>
     <th>Description</th>
-    <td>An object containing named definitions of the component's <a href="SubcomponentDeclaration.md#dynamic-components">dynamic subcomponents</a>. Rather than exactly one subcomponent being associated with its parent from these records, there may be one subcomponent per element of an array, or one per firing of an event.</td>
+    <td>
+        An object containing named definitions of the component's
+        <a href="SubcomponentDeclaration.md#dynamic-components">dynamic subcomponents</a>. Rather than exactly one
+        subcomponent being associated with its parent from these records, there may be one subcomponent per element of
+        an array, or one per firing of an event.
+    </td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td>Some special context names will be available within the subcomponent's definition block, for example <code>{source}</code> and <code>{sourcePath}</code> or <code>{arguments}</code>, derived from the material responsible for constructing the component.
-    <em>This framework facility will be replaced by a more declarative equivalent in time - ask on the <a href="http://lists.idrc.ocad.ca/mailman/listinfo/fluid-work">fluid-work mailing list</a>
-    or <a href="https://wiki.fluidproject.org/display/fluid/IRC+Channel">#fluid-work IRC channel</a> if you seem to find yourself needing to use it.</em></td>
+    <td>
+        Some special context names will be available within the subcomponent's definition block, for example
+        <code>{source}</code> and <code>{sourcePath}</code> or <code>{arguments}</code>, derived from the material
+        responsible for constructing the component.  <em>This framework facility will be replaced by a more declarative
+        equivalent in time - ask on the
+        <a href="http://lists.idrc.ocad.ca/mailman/listinfo/fluid-work">fluid-work mailing list</a> or
+        <a href="https://wiki.fluidproject.org/display/fluid/IRC+Channel">#fluid-work IRC channel</a> if you seem to
+        find yourself needing to use it.</em>
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     dynamicComponents: {
         dynamic1: {
             type: "component.subcomp1",
@@ -324,7 +355,9 @@ any object with a nondefault constructor or native type such as DOM elements, `T
 
 ## Model Components
 
-Components defined with a grade of `fluid.modelComponent` support all of the [common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component developers are free to define their own additional options.
+Components defined with a grade of `fluid.modelComponent` support all of the
+[common options](#options-supported-by-all-components-grades) described above, as well as those defined below. Component
+developers are free to define their own additional options.
 
 See also: [Component Grades](ComponentGrades.md)
 
@@ -337,8 +370,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("fluid.pager", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("fluid.pager", {
     model: {
         pageIndex: undefined,
         pageSize: 10,
@@ -350,8 +382,7 @@ See also: [Component Grades](ComponentGrades.md)
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myPager = fluid.pager(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var myPager = fluid.pager(container, {
     model: {
         pageIndex: 1
     }
@@ -372,14 +403,12 @@ See also: [Component Grades](ComponentGrades.md)
   <tr>
     <th>Description</th>
     <td>
-
-A record defining a set of functions wishing to be notified of changes to the `model`
-</td>
+        A record defining a set of functions wishing to be notified of changes to the `model`
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("fluid.tests.allChangeRecorder", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("fluid.tests.allChangeRecorder", {
     gradeNames: "fluid.tests.changeRecorder",
     modelListeners: {
         "": "{that}.record({change}.path, {change}.value, {change}.oldValue)"
@@ -398,12 +427,14 @@ A record defining a set of functions wishing to be notified of changes to the `m
 <table>
   <tr>
     <th>Description</th>
-    <td>A set of rules or constraints linking values held in this model to those elsewhere in the component tree (or to other values within this model)</td>
+    <td>
+        A set of rules or constraints linking values held in this model to those elsewhere in the component tree (or to
+        other values within this model)
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("examples.volumeModelRelay", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("examples.volumeModelRelay", {
     gradeNames: ["fluid.modelComponent"],
     model: {
         volumeAsPercent: 95,
@@ -430,8 +461,10 @@ A record defining a set of functions wishing to be notified of changes to the `m
 <table>
   <tr>
     <th>Description</th>
-    <td>Options that will be passed on to the ChangeApplier constructed for this component. There are currently no such options supported. This section is left as a placeholder, since such options,
-    like lemon-soaked paper napkins, will one day be supported here again.
+    <td>
+        Options that will be passed on to the ChangeApplier constructed for this component. There are currently no such
+        options supported. This section is left as a placeholder, since such options, like lemon-soaked paper napkins,
+        will one day be supported here again.
     </td>
   </tr>
   <tr>
@@ -456,18 +489,21 @@ Component developers are free to define their own additional options.
   <tr>
     <th>Description</th>
     <td>
-
-A record containing named CSS-based selectors identifying where in the DOM relative to the component's `container` different elements can be found.
-</td>
+        A record containing named CSS-based selectors identifying where in the DOM relative to the component's
+        `container` different elements can be found.
+    </td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td>The Framework will create a <a href="DOMBinder.md">DOM Binder</a> that should be used to access the elements identified by selectors. The DOM Binder attaches a function to the component object called <code>locate()</code> which retrieves the element given the selector name.</td>
+    <td>
+        The Framework will create a <a href="DOMBinder.md">DOM Binder</a> that should be used to access the elements
+        identified by selectors. The DOM Binder attaches a function to the component object called <code>locate()</code>
+        which retrieves the element given the selector name.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("fluid.progress", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("fluid.progress", {
     selectors: {
         displayElement: ".flc-progress",
         progressBar: ".flc-progress-bar",
@@ -481,8 +517,7 @@ A record containing named CSS-based selectors identifying where in the DOM relat
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myEdit = fluid.progress(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var myEdit = fluid.progress(container, {
     selectors: {
         indicator: "div.progress-indicator",
         label: "span.progress-label"
@@ -502,17 +537,22 @@ A record containing named CSS-based selectors identifying where in the DOM relat
 <table>
   <tr>
     <th>Description</th>
-    <td>A record containing named CSS classes that the component will apply to its markup in order to achieve state-dependent styling effects.</td>
+    <td>
+        A record containing named CSS classes that the component will apply to its markup in order to achieve
+        state-dependent styling effects.
+    </td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td>The contents of this block are not interpreted by the framework at all. The existence of this block amounts to a helpful convention that implementors of view components are recommended to use, to organise
-    and advertise the CSS class names that they will apply on behalf of their users</td>
+    <td>
+        The contents of this block are not interpreted by the framework at all. The existence of this block amounts to a
+        helpful convention that implementors of view components are recommended to use, to organise and advertise the
+        CSS class names that they will apply on behalf of their users
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("demo.initGridReorderer", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("demo.initGridReorderer", {
     gradeNames: ["fluid.reorderGrid"],
     styles: {
         dragging: "demo-gridReorderer-dragging",
@@ -523,16 +563,18 @@ A record containing named CSS-based selectors identifying where in the DOM relat
     disableWrap: true
 });</code>
 </pre></td>
-</tr>
-
+    </tr>
 </table>
 
-In addition to the options above, a View Component also accepts an additional argument named `container` which may be supplied either as the first argument to its [Creator Function](UnderstandingInfusionComponents.md)
-or else at top level in its [Subcomponent Record](SubcomponentDeclaration.md). It is not currently supported to supply this value as a standard option in the options record.
+In addition to the options above, a View Component also accepts an additional argument named `container` which may be
+supplied either as the first argument to its [Creator Function](UnderstandingInfusionComponents.md) or else at top level
+in its [Subcomponent Record](SubcomponentDeclaration.md). It is not currently supported to supply this value as a
+standard option in the options record.
 
 ## Renderer Components
 
-Components defined with a grade of `rendererComponent` are also view components (and hence model components), so they support
+Components defined with a grade of `rendererComponent` are also view components (and hence model components), so they
+support
 
 * all of the [common options](#options-supported-by-all-components-grades) described above,
 * [`modelComponent` options](#model-components) described above,
@@ -541,19 +583,22 @@ Components defined with a grade of `rendererComponent` are also view components 
 
 Component developers are free to define their own additional options.
 
-<div class="infusion-docs-note"><strong>Note:</strong> The Infusion Renderer system will be rewritten completely before the Infusion 3.0 release - the use of the current renderer and component hierarchy is not recommended.</div>
+<div class="infusion-docs-note"><strong>Note:</strong> The Infusion Renderer system will be rewritten completely before
+the Infusion 3.0 release - the use of the current renderer and component hierarchy is not recommended.</div>
 
 ### `selectorsToIgnore`
 
 <table>
   <tr>
     <th>Description</th>
-    <td>An array of selector names identifying elements that will be ignored by the Renderer. These elements will be displayed exactly as provided in the template, with no processing</td>
+    <td>
+        An array of selector names identifying elements that will be ignored by the Renderer. These elements will be
+        displayed exactly as provided in the template, with no processing
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.header", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.header", {
     selectors: {
         menuItem: ".csc-header-menu-item",
         label: ".csc-header-link",
@@ -574,12 +619,15 @@ Component developers are free to define their own additional options.
 <table>
   <tr>
     <th>Description</th>
-    <td>An array of selector names identifying elements that will be repeated by the Renderer based on the data being rendered. For example, the selector for a table row that will be replicated many times should appear in the list of repeating selectors.</td>
+    <td>
+        An array of selector names identifying elements that will be repeated by the Renderer based on the data being
+        rendered. For example, the selector for a table row that will be replicated many times should appear in the list
+        of repeating selectors.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.header", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.header", {
     selectors: {
         menuItem: ".csc-header-menu-item",
         label: ".csc-header-link",
@@ -600,18 +648,21 @@ Component developers are free to define their own additional options.
 <table>
   <tr>
     <th>Description</th>
-    <td>A function that will return a <a href="RendererComponentTrees.md">Renderer Component Tree</a> for the component.</td>
+    <td>
+        A function that will return a <a href="RendererComponentTrees.md">Renderer Component Tree</a> for the component.
+    </td>
   </tr>
   <tr>
     <th>Notes</th>
-    <td>The referenced function must accept the component object as its only parameter and return a Renderer component tree.
-
-<em>NOTE that if both <code>produceTree</code> and <code><a href="#prototree">protoTree</a></code> are specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em></td>
+    <td>
+        The referenced function must accept the component object as its only parameter and return a Renderer component
+        tree. <em>NOTE that if both <code>produceTree</code> and <code><a href="#prototree">protoTree</a></code> are
+        specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em>
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>cspace.confirmationDialog.produceTree = function (that) {
+    <td><pre class="highlight"><code class="hljs javascript">cspace.confirmationDialog.produceTree = function (that) {
     var tree = {
         // ...
     };
@@ -640,13 +691,13 @@ fluid.defaults("cspace.confirmationDialog", {
   <tr>
     <th>Notes</th>
     <td>
-<em>NOTE that if both <code><a href="#producetree">produceTree</a></code> and <code>protoTree</code> are specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em></td>
+        <em>NOTE that if both <code><a href="#producetree">produceTree</a></code> and <code>protoTree</code> are
+        specified, only the <code>produceTree</code> function will be used; the <code>protoTree</code> will be ignored.</em>
     </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.searchTips", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.searchTips", {
     protoTree: {
         searchTips: {decorators: {"addClass": "{styles}.searchTips"}},
         title: {
@@ -669,8 +720,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var searchTips = cspace.searchTips(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var searchTips = cspace.searchTips(container, {
     protoTree: {
         searchTips: {decorators: {"addClass": "{styles}.searchTips"}},
         title: {
@@ -708,12 +758,14 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Notes</th>
-    <td>The specified resources will be loaded automatically and the file content will be stored within the resources object itself.</td>
+    <td>
+        The specified resources will be loaded automatically and the file content will be stored within the resources
+        object itself.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("component.name", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("component.name", {
     resources: {
         headerTemplate: {
             href: "../templates/Header.html"
@@ -728,8 +780,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myComp = component.name(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var myComp = component.name(container, {
     resources: {
         footerTemplate: {
             href: "../templates/FrontPageFooter.html"
@@ -754,12 +805,14 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Notes</th>
-    <td>The Framework will create a Message Resolver and add it to the component object if the <code>strings</code> option is present.</td>
+    <td>
+        The Framework will create a Message Resolver and add it to the component object if the <code>strings</code>
+        option is present.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.searchToRelateDialog", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.searchToRelateDialog", {
     gradeNames: ["fluid.rendererComponent"],
     strings: {
         createNewButton: "Create",
@@ -775,8 +828,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var myDialog = cspace.searchToRelateDialog(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var myDialog = cspace.searchToRelateDialog(container, {
     strings: {
         relationshipType: "Select a relationship type from the list below:",
         createNew: "Create a new record:",
@@ -801,8 +853,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("fluid.tableOfContents.levels", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("fluid.tableOfContents.levels", {
     rendererFnOptions: {
         noexpand: true
     }
@@ -812,8 +863,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var recEditor = cspace.recordEditor(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var recEditor = cspace.recordEditor(container, {
     rendererFnOptions: {
         rendererTargetSelector: "dialog"
     }
@@ -833,12 +883,14 @@ fluid.defaults("cspace.confirmationDialog", {
 <table>
   <tr>
     <th>Description</th>
-    <td>Options that will be included in the <code><a href="#rendererfnoptions">rendererFnOptions</a></code> as <code>rendererOptions</code></td>
+    <td>
+        Options that will be included in the <code><a href="#rendererfnoptions">rendererFnOptions</a></code> as
+        <code>rendererOptions</code>
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.searchBox", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.searchBox", {
     rendererOptions: {
         autoBind: false
     }
@@ -848,8 +900,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var search = cspace.searchBox(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var search = cspace.searchBox(container, {
     rendererOptions: {
         autoBind: true
     }
@@ -869,12 +920,14 @@ fluid.defaults("cspace.confirmationDialog", {
 <table>
   <tr>
     <th>Description</th>
-    <td>A boolean flag indicating whether or not the component should render itself automatically once initialization has completed. By default, renderer components do not render themselves automatically.</td>
+    <td>
+        A boolean flag indicating whether or not the component should render itself automatically once initialization
+        has completed. By default, renderer components do not render themselves automatically.
+    </td>
   </tr>
   <tr>
     <th>Example Definition</th>
-    <td><pre>
-<code>fluid.defaults("cspace.login", {
+    <td><pre class="highlight"><code class="hljs javascript">fluid.defaults("cspace.login", {
     gradeNames: ["fluid.rendererComponent"],
     renderOnInit: true
     // ...
@@ -883,8 +936,7 @@ fluid.defaults("cspace.confirmationDialog", {
   </tr>
   <tr>
     <th>Example Override</th>
-    <td><pre>
-<code>var login = cspace.login(container, {
+    <td><pre class="highlight"><code class="hljs javascript">var login = cspace.login(container, {
     renderOnInit: false
     // ...
 });</code>

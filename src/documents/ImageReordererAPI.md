@@ -1,10 +1,10 @@
 ---
 title: Image Reorderer API
-layout: default
 category: Components
 ---
 
-The Image Reorderer is a convenience function for applying the Reorderer to images within a collection. This page provides technical details of the API.
+The Image Reorderer is a convenience function for applying the Reorderer to images within a collection. This page
+provides technical details of the API.
 
 ## Creating an Image Reorderer
 
@@ -20,11 +20,13 @@ var myImageReordererWithOptions = fluid.reorderImages(container, options);
 
 #### container
 
-The `container` parameter is a CSS-based [selector](http://api.jquery.com/category/selectors/), single-element jQuery object, or DOM element specifying the root node of the Reorderer.
+The `container` parameter is a CSS-based [selector](http://api.jquery.com/category/selectors/), single-element jQuery
+object, or DOM element specifying the root node of the Reorderer.
 
 #### options parameter
 
-The `options` parameter is an optional collection of name-value pairs that configure the Image Reorderer, as described in the [Options](#options) section below.
+The `options` parameter is an optional collection of name-value pairs that configure the Image Reorderer, as described
+in the [Options](#options) section below.
 
 ## Supported Events
 
@@ -83,7 +85,8 @@ The Image Reorderer fires the following events.
 </td>
             <td>"preventable"</td>
             <td>
-                This event fires just before a request to move is processed. Because the event is preventable, listeners may prevent the move from happening.
+                This event fires just before a request to move is processed. Because the event is preventable, listeners
+                may prevent the move from happening.
             </td>
             <td>
 
@@ -131,7 +134,8 @@ position
             <td>default</td>
             <td>
 
-This event fires after an item has successfully been moved. For more information, see [Talking to the Server Using The afterMove Event](to-do/TalkingToTheServerUsingTheAfterMoveEvent.md).
+This event fires after an item has successfully been moved. For more information, see [Talking to the Server Using The
+afterMove Event](to-do/TalkingToTheServerUsingTheAfterMoveEvent.md).
 
 This event replaces the `afterMoveCallbackUrl` option, which was deprecated at version 1.1.2.
 </td>
@@ -165,7 +169,8 @@ position
             <td>default</td>
             <td>
 
-This event fires when the cursor moves over top of an item, and when the cursor moves away from an item. The default listener either adds or removes the hover class (`styles.hover`) to/from the item.
+This event fires when the cursor moves over top of an item, and when the cursor moves away from an item. The default
+listener either adds or removes the hover class (`styles.hover`) to/from the item.
 </td>
             <td>
 
@@ -215,7 +220,8 @@ This event fires any time the order of the items changes, or when the `refresh()
 </td>
             <td>
 
-JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more information.
+JavaScript object defining CSS-style selectors for important DOM elements. See [Selectors](#selectors) for more
+information.
 </td>
             <td>
 
@@ -259,7 +265,10 @@ See [Supported Events](#supported-events)
 `styles`
 </td>
             <td>an object containing CSS class names for styling the Reorderer.</td>
-            <td>The object may contain any of the keys defined in the default class names (shown to the right). Any class names not provided will revert to the default.</td>
+            <td>
+                The object may contain any of the keys defined in the default class names (shown to the right). Any
+                class names not provided will revert to the default.
+            </td>
             <td>
                 <pre>
                     <code>
@@ -281,7 +290,10 @@ styles: {
 
 `keysets`
 </td>
-            <td>an object containing sets of keycodes to use for directional navigation, and for the modifier key used for moving a movable item.</td>
+            <td>
+                an object containing sets of keycodes to use for directional navigation, and for the modifier key used
+                for moving a movable item.
+            </td>
             <td>
 The object must be a list of objects containing the following keys:
 
@@ -396,7 +408,10 @@ mergePolicy: {
 
 <strong>Deprecated as of 1.1.2:</strong> `afterMoveCallbackUrl`
 </td>
-            <td>If an URL is provided with this option, the current state of the component model will be sent to that URL after a move is carried out using a default afterMove event handler.</td>
+            <td>
+                If an URL is provided with this option, the current state of the component model will be sent to that
+                URL after a move is carried out using a default afterMove event handler.
+            </td>
             <td>an URL</td>
             <td>none</td>
         </tr>
@@ -405,7 +420,8 @@ mergePolicy: {
 
 ### Selectors
 
-The `selectors` option is an object containing CSS-based selectors for various parts of the Image Reorderer. Supported selectors are:
+The `selectors` option is an object containing CSS-based selectors for various parts of the Image Reorderer. Supported
+selectors are:
 
 <table>
     <thead>
@@ -422,7 +438,10 @@ The `selectors` option is an object containing CSS-based selectors for various p
 
 `grabHandle`
 </td>
-            <td>If present, identifies a single element within a movable item that the user must click on to drag the movable item. (If not specified, the entire movable item can be clicked on.)</td>
+            <td>
+                If present, identifies a single element within a movable item that the user must click on to drag the
+                movable item. (If not specified, the entire movable item can be clicked on.)
+            </td>
             <td>""
 (empty string) </td>
             <td>
@@ -440,7 +459,10 @@ selectors: {
 
 `dropTargets`
 </td>
-            <td>Identifies the DOM elements contained within the Reorderer container that can have movable elements dropped relative to them. Note that not all elements within the container need to be drop targets.</td>
+            <td>
+                Identifies the DOM elements contained within the Reorderer container that can have movable elements
+                dropped relative to them. Note that not all elements within the container need to be drop targets.
+            </td>
             <td>same as movables</td>
             <td>
                 <pre>
@@ -457,7 +479,10 @@ selectors: {
 
 `selectables`
 </td>
-            <td>Identifies the DOM elements contained within the Reorderer container that can be selected using keyboard. Note that selectable elements do not have to be movable. </td>
+            <td>
+                Identifies the DOM elements contained within the Reorderer container that can be selected using
+                keyboard. Note that selectable elements do not have to be movable.
+            </td>
             <td>same as movables</td>
             <td>
                 <pre>
@@ -474,7 +499,10 @@ selectors: {
 
 `movables`
 </td>
-            <td>Identifies the DOM elements contained within the Reorderer container that can be moved using the Reorderer.</td>
+            <td>
+                Identifies the DOM elements contained within the Reorderer container that can be moved using the
+                Reorderer.
+            </td>
             <td>".flc-reorderer-movable"</td>
             <td>
                 <pre>
@@ -491,7 +519,11 @@ selectors: {
 
 `dropWarning`
 </td>
-            <td>Identifies a single element within the DOM that can be shown to display a warning when the user tries to move an item where it can't be moved. It is assumed that this element contains whatever drop warning text and mark-up the implementor desires.</td>
+            <td>
+                Identifies a single element within the DOM that can be shown to display a warning when the user tries to
+                move an item where it can't be moved. It is assumed that this element contains whatever drop warning
+                text and mark-up the implementor desires.
+            </td>
             <td>".flc-reorderer-dropWarning"</td>
             <td>
                 <pre>
@@ -545,22 +577,28 @@ selectors: {
 
 ## Styling the Image Reorderer
 
-The Image Reorderer includes default CSS styles that it applies to the thumbnails. The application of styles is based on known class names. The _default_ class names are described below, and can be used by including the Image Reorderer stylesheet:
+The Image Reorderer includes default CSS styles that it applies to the thumbnails. The application of styles is based on
+known class names. The _default_ class names are described below, and can be used by including the Image Reorderer
+stylesheet:
 
 ```html
 <link href="components/reorderer/css/imageReorderer.css" type="text/css" rel="stylesheet" media="all">;
 ```
 
-NOTE that the default class names can be overridden with your own classes using the `styles` option: refer to the [Options](#options) section above.
+NOTE that the default class names can be overridden with your own classes using the `styles` option: refer to the
+[Options](#options) section above.
 
 ### Default Classes
 
 * `fl-reorderer-movable-default` - This class is applied to thumbnail elements in their default state.
-* `fl-reorderer-movable-selected` - This class is applied to the thumbnail that has been selected. The selected thumbnail item can be moved using keystrokes.
+* `fl-reorderer-movable-selected` - This class is applied to the thumbnail that has been selected. The selected
+  thumbnail item can be moved using keystrokes.
 * `fl-reorderer-movable-hover` - This class is applied to thumbnails when the mouse hovers over them.
 * `fl-reorderer-movable-dragging` - This class is applied to the thumbnail that is currently being moved.
-* `fl-reorderer-avatar` - This class is applied to the avatar, the image of the thumbnail as it is being dragged about by the mouse.
-* `fl-reorderer-dropMarker` - This class is applied to the drop target indicator when the mouse is used to drag a thumbnail.
+* `fl-reorderer-avatar` - This class is applied to the avatar, the image of the thumbnail as it is being dragged about
+  by the mouse.
+* `fl-reorderer-dropMarker` - This class is applied to the drop target indicator when the mouse is used to drag a
+  thumbnail.
 
 ## Dependencies
 

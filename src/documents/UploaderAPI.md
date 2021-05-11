@@ -1,12 +1,14 @@
 ---
 title: Uploader API
-layout: default
 category: Components
 ---
 
-The Infusion Uploader provides an easy way for users to upload many files at once, providing useful feedback about the status and progress of each file along the way.
+The Infusion Uploader provides an easy way for users to upload many files at once, providing useful feedback about the
+status and progress of each file along the way.
 
-Uploader implements a couple different ways to upload multiple files. With its built-in support for progressive enhancement, users will automatically receive a version of the Uploader best suited to the capabilities of their browsers. There are two different flavours of Uploader:
+Uploader implements a couple different ways to upload multiple files. With its built-in support for progressive
+enhancement, users will automatically receive a version of the Uploader best suited to the capabilities of their
+browsers. There are two different flavours of Uploader:
 
 1. Single file: delivered to browsers that don't support JavaScript and HTML 5
 2. HTML 5: the best and most widely-supported version of Uploader, suitable for modern browsers
@@ -18,20 +20,31 @@ The HTML 5 version of the Uploader will be delivered to modern, standards-compli
 * Safari 4+
 * Google Chrome
 
-<div class="infusion-docs-note"><strong>Note:</strong> As of Infusion 1.5, the Flash version of the Uploader has been removed due to a <a href="https://nealpoole.com/blog/2012/05/xss-and-csrf-via-swf-applets-swfupload-plupload/">cross-site scripting vulnerability</a>.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> As of Infusion 1.5, the Flash version of the Uploader has been removed due to a <a
+    href="https://nealpoole.com/blog/2012/05/xss-and-csrf-via-swf-applets-swfupload-plupload/">cross-site scripting
+    vulnerability</a>.
+</div>
 
 ### Progressive Enhancement
 
-The Uploader utilizes the concept of progressive enhancement. The goal is to ensure that the page is usable by the widest possible audience, even with old browsers or when JavaScript is turned off. This is done by specifying a regular file input element in the markup. When the Uploader is initialized, the Upload code will replace that element with the Fluid Uploader. As of Infusion 1.3, progressive enhancement will occur automatically by default. It can be overridden by choosing a specific upload strategy instead of using the `fluid.uploader.progressiveStrategy`.
+The Uploader utilizes the concept of progressive enhancement. The goal is to ensure that the page is usable by the
+widest possible audience, even with old browsers or when JavaScript is turned off. This is done by specifying a regular
+file input element in the markup. When the Uploader is initialized, the Upload code will replace that element with the
+Fluid Uploader. As of Infusion 1.3, progressive enhancement will occur automatically by default. It can be overridden by
+choosing a specific upload strategy instead of using the `fluid.uploader.progressiveStrategy`.
 
 ### Upload Strategy
 
-The Infusion Uploader, like many Fluid components, is really one interface to a collection of components that work together to provide a unified user experience.
+The Infusion Uploader, like many Fluid components, is really one interface to a collection of components that work
+together to provide a unified user experience.
 
-The Uploader provides a facade object, called a `strategy`, which represents the entire subsystem for a particular implementation of Uploader. There are currently two different strategies available to choose from:
+The Uploader provides a facade object, called a `strategy`, which represents the entire subsystem for a particular
+implementation of Uploader. There are currently two different strategies available to choose from:
 
 1. `fluid.uploader.html5Strategy`, which provides the modern HTML 5 implementation of Uploader
-2. `fluid.uploader.progressiveStrategy`, which uses the Infusion IoC - Inversion of Control System to deliver the best possible version of Uploader based on the capabilities of the user's browser.
+2. `fluid.uploader.progressiveStrategy`, which uses the Infusion IoC - Inversion of Control System to deliver the best
+   possible version of Uploader based on the capabilities of the user's browser.
 
 The default strategy for Uploader is `fluid.uploader.progressiveStrategy`.
 
@@ -39,8 +52,13 @@ The default strategy for Uploader is `fluid.uploader.progressiveStrategy`.
 
 #### Upgrading from Infusion 1.2
 
-The Uploader was substantially refactored for the Infusion 1.3 in order to support the new HTML 5 version. However, most users should be unaffected. All events, selectors, and classes remain compatible with previous versions. Since the Uploader's underlying structure has changed significantly, and support for Infusion's IoC System was introduced, several other configuration options have changed.
-In order to ease the transition, we've provided a compatibility file that will automatically transform your options from the old format to the new when you invoke `fluid.uploader()`. This can be enabled by including the `UploaderCompatibility-Infusion1.2.js` file your page. If you're not using a custom build of Infusion, you will also need to include the framework's `ModelTransformations.js` file.
+The Uploader was substantially refactored for the Infusion 1.3 in order to support the new HTML 5 version. However, most
+users should be unaffected. All events, selectors, and classes remain compatible with previous versions. Since the
+Uploader's underlying structure has changed significantly, and support for Infusion's IoC System was introduced, several
+other configuration options have changed. In order to ease the transition, we've provided a compatibility file that will
+automatically transform your options from the old format to the new when you invoke `fluid.uploader()`. This can be
+enabled by including the `UploaderCompatibility-Infusion1.2.js` file your page. If you're not using a custom build of
+Infusion, you will also need to include the framework's `ModelTransformations.js` file.
 
 ## Creating an Uploader
 
@@ -50,17 +68,21 @@ To instantiate a new Uploader on your page using the recommended progressive enh
 var myUploader = fluid.uploader(container, options);
 ```
 
-Returns: An Uploader component object. The resulting type may be either `fluid.uploader.multiFileUploader` or `fluid.uploader.singleFileUploader` depending on the capabilities of your user's browser. If you're programmatically calling methods on the Uploader, be sure to check its `typeName` or use duck typing first.
+Returns: An Uploader component object. The resulting type may be either `fluid.uploader.multiFileUploader` or
+`fluid.uploader.singleFileUploader` depending on the capabilities of your user's browser. If you're programmatically
+calling methods on the Uploader, be sure to check its `typeName` or use duck typing first.
 
 ### Parameters
 
 #### container
 
-The `container` is a CSS-based [selector](http://docs.jquery.com/Selectors), single-element jQuery object, or DOM element that identifies the root DOM node of the Uploader markup.
+The `container` is a CSS-based [selector](http://docs.jquery.com/Selectors), single-element jQuery object, or DOM
+element that identifies the root DOM node of the Uploader markup.
 
 #### options
 
-The `options` object is an optional data structure that configures the Uploader, as described in the [Options](#options) section below.
+The `options` object is an optional data structure that configures the Uploader, as described in the [Options](#options)
+section below.
 
 ## Supported Events
 
@@ -147,7 +169,8 @@ The Uploader fires the following events
                     </dd>
                 </dl>
                 <em>
-                    <strong>Note:</strong> A file may not be queued for several reasons such as, the file exceeds the file size, the file is empty or a file or queue limit has been exceeded.
+                    <strong>Note:</strong> A file may not be queued for several reasons such as, the file exceeds the
+                    file size, the file is empty or a file or queue limit has been exceeded.
                 </em>
             </td>
         </tr>
@@ -155,7 +178,8 @@ The Uploader fires the following events
             <td><code>afterFileDialog</code></td>
             <td>default</td>
             <td>
-                This event fires after the File Selection Dialog window has been closed and all the selected files have been processed.
+                This event fires after the File Selection Dialog window has been closed and all the selected files have
+                been processed.
             </td>
             <td>none</td>
             <td></td>
@@ -196,7 +220,8 @@ The Uploader fires the following events
             <td><code>onFileProgress</code></td>
             <td>default</td>
             <td>
-                This event is fired periodically by the upload manager during a file upload and is useful for providing UI updates on the page. Also keeps up-to-date the overall progress of the currently uploading batch.
+                This event is fired periodically by the upload manager during a file upload and is useful for providing
+                UI updates on the page. Also keeps up-to-date the overall progress of the currently uploading batch.
             </td>
             <td><code>file</code>, <code>fileBytesComplete</code>, <code>fileTotalBytes</code></td>
             <td>
@@ -229,7 +254,8 @@ The Uploader fires the following events
                     </dd>
                     <dt><code>error</code></dt>
                     <dd>
-                        whether the file failed because the user cancelled the upload or because of another file specific error Use fluid.uploader.fileStatusConstants to interpret the value.
+                        whether the file failed because the user cancelled the upload or because of another file
+                        specific error Use fluid.uploader.fileStatusConstants to interpret the value.
                     </dd>
                     <dt><code>status</code></dt>
                     <dd>
@@ -270,7 +296,10 @@ The Uploader fires the following events
             <td><code>afterFileComplete</code></td>
             <td>default</td>
             <td>
-                This event is fired for each file uploaded whether or not the file is uploaded successfully, <code>onFileSuccess</code>, or the file failed to upload, <code>onFileError</code>. At this point the upload process for the currently uploading file is complete and the upload for the next file in the queue is started.
+                This event is fired for each file uploaded whether or not the file is uploaded successfully,
+                <code>onFileSuccess</code>, or the file failed to upload, <code>onFileError</code>. At this point the
+                upload process for the currently uploading file is complete and the upload for the next file in the
+                queue is started.
             </td>
             <td><code>file</code></td>
             <td>
@@ -286,14 +315,17 @@ The Uploader fires the following events
             <td><code>afterUploadComplete</code></td>
             <td>default</td>
             <td>
-                This event is fired at the end of an upload cycle when all the files have either been uploaded, failed to upload, the user stopped the upload cycle, or there was an unrecoverable error in the upload process and the upload cycle was stopped.
+                This event is fired at the end of an upload cycle when all the files have either been uploaded, failed
+                to upload, the user stopped the upload cycle, or there was an unrecoverable error in the upload process
+                and the upload cycle was stopped.
             </td>
             <td><code>fileList</code></td>
             <td>
                 <dl>
                     <dt><code>fileList</code></dt>
                     <dd>
-                        the <a href="#file-objects">File objects</a> that "completed" (either succeeded or failed), in this upload.
+                        the <a href="#file-objects">File objects</a> that "completed" (either succeeded or failed), in
+                        this upload.
                     </dd>
                 </dl>
             </td>
@@ -303,9 +335,12 @@ The Uploader fires the following events
 
 ### File Objects
 
-Many of the Uploader's events pass a `File` object as a parameter to the event listener. These objects provide useful information about the file, including its name, size in bytes, and its current status in the queue.
+Many of the Uploader's events pass a `File` object as a parameter to the event listener. These objects provide useful
+information about the file, including its name, size in bytes, and its current status in the queue.
 
-`File` object: a representation of each file in the file queue, as provided from the upload strategy. At the moment, the properties of this object will be slightly different depending on the strategy you're using. This will be addressed in a future release.
+`File` object: a representation of each file in the file queue, as provided from the upload strategy. At the moment, the
+properties of this object will be slightly different depending on the strategy you're using. This will be addressed in a
+future release.
 
 Regardless of the strategy, the following properties will be available:
 
@@ -317,7 +352,8 @@ Regardless of the strategy, the following properties will be available:
 
 #### File Status Constants
 
-The Uploader offers a set of constants used to denote the status of a particular file in the queue. These can be used when querying the filestatus property of a [File object](#file-objects).
+The Uploader offers a set of constants used to denote the status of a particular file in the queue. These can be used
+when querying the filestatus property of a [File object](#file-objects).
 
 <table>
     <thead>
@@ -354,7 +390,8 @@ The Uploader offers a set of constants used to denote the status of a particular
         <tr>
             <td><code>fluid.uploader.errorConstants.UPLOAD_LIMIT_EXCEEDED</code></td>
             <td>
-                The user attempted to upload more files than allowed by the <code>fileUploadLimit</code> option for the <code>uploadManager</code>.
+                The user attempted to upload more files than allowed by the <code>fileUploadLimit</code> option for the
+                <code>uploadManager</code>.
             </td>
         </tr>
         <tr>
@@ -366,7 +403,8 @@ The Uploader offers a set of constants used to denote the status of a particular
         <tr>
             <td><code>fluid.uploader.errorConstants.SPECIFIED_FILE_ID_NOT_FOUND</code></td>
             <td>
-                This indicates an error in the Uploader and should be filed as a <a href="http://issues.fluidproject.org/">bug</a>.
+                This indicates an error in the Uploader and should be filed as a <a
+                href="http://issues.fluidproject.org/">bug</a>.
             </td>
         </tr>
         <tr>
@@ -420,11 +458,19 @@ The Uploader offers a set of constants used to denote the status of a particular
 
 ## Options
 
-The Uploader supports a "plug-and-play" architecture that allows for many of the sub-components of the Uploader to be swapped out for other components or your own custom components. The best example of this is the `strategy` component, which allows you to choose between the `fluid.uploader.html5Strategy` and the `fluid.uploader.progressiveStrategy`. However you can also replace the Progress subcomponent and the FileQueueView subcomponent, with a customized version you have implemented yourself.
+The Uploader supports a "plug-and-play" architecture that allows for many of the sub-components of the Uploader to be
+swapped out for other components or your own custom components. The best example of this is the `strategy` component,
+which allows you to choose between the `fluid.uploader.html5Strategy` and the `fluid.uploader.progressiveStrategy`.
+However you can also replace the Progress subcomponent and the FileQueueView subcomponent, with a customized version you
+have implemented yourself.
 
-The Uploader and its sub-components are also highly configurable; you can make many adjustments to the user experience through a combination of HTML, CSS and the built-in configuration options. To customize the component for your own needs, start with these out-of-the-box features. If you need more flexibility, feel free to to write your own sub-component.
+The Uploader and its sub-components are also highly configurable; you can make many adjustments to the user experience
+through a combination of HTML, CSS and the built-in configuration options. To customize the component for your own
+needs, start with these out-of-the-box features. If you need more flexibility, feel free to to write your own
+sub-component.
 
-In addition to the Uploader options, there are also options specifically for the FileQueueView, Progress, and `strategy` subcomponents.
+In addition to the Uploader options, there are also options specifically for the FileQueueView, Progress, and `strategy`
+subcomponents.
 
 ### Uploader Subcomponents
 
@@ -448,12 +494,10 @@ In addition to the Uploader options, there are also options specifically for the
                 <code>"fluid.uploader.html5Strategy"</code>
             </td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 strategy: {
     type: "fluid.uploader.progressiveStrategy"
-}
-</code>
+}</code>
                 </pre>
             </td>
         </tr>
@@ -467,12 +511,10 @@ Currently there is only one fileQueueView sub-component.
                 <code>"fluid.fileQueueView"</code>
             </td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 fileQueueView: {
     type: "fluid.fileQueueView"
-}
-</code>
+}</code>
                 </pre>
             </td>
         </tr>
@@ -482,11 +524,11 @@ fileQueueView: {
                 Specifies the type and options to use for the total progress bar.
             </td>
             <td>
-                See the <a href="to-do/ProgressAPI.md">Progress API documentation</a> for a full descriptions of the available options.
+                See the <a href="to-do/ProgressAPI.md">Progress API documentation</a> for a full descriptions of the
+                available options.
             </td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 totalProgressBar: {
     type: "fluid.progress",
     options: {
@@ -498,8 +540,7 @@ totalProgressBar: {
             ariaElement: ".flc-uploader-total-progress"
         }
     }
-},
-</code>
+},</code>
                 </pre>
             </td>
         </tr>
@@ -539,23 +580,23 @@ totalProgressBar: {
         <tr>
             <td><code>focusWithEvent</code></td>
             <td>
-                Javascript object containing selectors for markup elements that should obtain focus after certain <a href="#supported-events">events</a>.
+                Javascript object containing selectors for markup elements that should obtain focus after certain <a
+                href="#supported-events">events</a>.
             </td>
             <td>
                 Keys in the object are supported event names.
                 <p>
-                    <em><strong>Note:</strong> only specific methods in the Uploader have been factored to use this values.</em>
+                    <em><strong>Note:</strong> only specific methods in the Uploader have been factored to use this
+                    values.</em>
                 </p>
             </td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 focusWithEvent: {
     afterFileDialog: "uploadButton",
     afterUploadStart: "pauseButton",
     afterUploadStop: "uploadButton"
-},
-</code>
+},</code>
                 </pre>
             </td>
         </tr>
@@ -566,30 +607,27 @@ focusWithEvent: {
             </td>
             <td></td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 styles: {
     disabled: "fl-uploader-disabled",
     hidden: "fl-uploader-hidden",
     dim: "fl-uploader-dim",
     totalProgress: "fl-uploader-total-progress-okay",
     totalProgressError: "fl-uploader-total-progress-errored"
-}
-</code>
+}</code>
                 </pre>
             </td>
         </tr>
         <tr>
             <td><code>strings</code></td>
             <td>
-                Strings that are used in the Uploader.
-Note: The strings that contain tokens (example: <code>%curFileN</code>) are passed through a string template parser.
+                Strings that are used in the Uploader. Note: The strings that contain tokens (example:
+                <code>%curFileN</code>) are passed through a string template parser.
             </td>
             <td></td>
             <td>
                 <strong>v1.5</strong>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 strings: {
     progress: {
         fileUploadLimitLabel: "%fileUploadLimit %fileLabel maximum",
@@ -611,12 +649,10 @@ strings: {
         resumeUpload: "Resume Upload",
         remove: "Remove"
     }
-}
-</code>
+}</code>
                 </pre>
                 <strong>v1.4</strong>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 strings: {
     progress: {
         fileUploadLimitLabel: "%fileUploadLimit %fileLabel maximum",
@@ -640,15 +676,15 @@ strings: {
         emptyQueue: "File list: No files waiting to be uploaded.",
         queueSummary: "File list:  %totalUploaded files uploaded, %totalInUploadQueue file waiting to be uploaded."
     }
-}
-</code>
+}</code>
                 </pre>
             </td>
         </tr>
         <tr>
             <td><code>demo</code></td>
             <td>
-                Boolean indicating whether to run in "demo" mode. See <a href="#running-locally-demo-mode">Running locally: "demo" mode</a> below.
+                Boolean indicating whether to run in "demo" mode. See <a href="#running-locally-demo-mode">Running
+                locally: "demo" mode</a> below.
             </td>
             <td>false</td>
             <td><code>demo: false</code></td>
@@ -711,7 +747,8 @@ strings: {
         <tr>
             <td><code>fileTypes</code></td>
             <td>
-                The type of files that are allowed to be uploaded. Each file type should be specified as *.[fluid:file extension], separated by semicolons. Example: "*.jpg;*.jpeg;*.gif;*.tiff"
+                The type of files that are allowed to be uploaded. Each file type should be specified as *.[fluid:file
+                extension], separated by semicolons. Example: "*.jpg;*.jpeg;*.gif;*.tiff"
             </td>
             <td>String</td>
             <td>
@@ -743,7 +780,8 @@ strings: {
         <tr>
             <td><code>legacyBrowserFileLimit</code></td>
             <td>
-                A special file size limit for older browsers (such as Firefox 3.6), which don't fully support HTML 5 file uploads.
+                A special file size limit for older browsers (such as Firefox 3.6), which don't fully support HTML 5
+                file uploads.
             </td>
             <td>any integer value, specified in megabytes</td>
             <td>100</td>
@@ -753,7 +791,8 @@ strings: {
 
 ### Selectors
 
-One of the options that can be provided to the Uploader is a set of CSS-based selectors identifying where in the DOM different elements can be found. The value for the option is itself a Javascript object containing name/value pairs:
+One of the options that can be provided to the Uploader is a set of CSS-based selectors identifying where in the DOM
+different elements can be found. The value for the option is itself a Javascript object containing name/value pairs:
 
 ```json5
 {
@@ -765,7 +804,8 @@ One of the options that can be provided to the Uploader is a set of CSS-based se
 }
 ```
 
-The different parts of the Uploader interface each have their own set of selectors (though all selectors must be provided together in a single object). Each also has a default, as defined below:
+The different parts of the Uploader interface each have their own set of selectors (though all selectors must be
+provided together in a single object). Each also has a default, as defined below:
 
 #### General
 
@@ -907,7 +947,10 @@ The different parts of the Uploader interface each have their own set of selecto
 
 #### Progress
 
-<div class="infusion-docs-note"><strong>Note:</strong> Please see the <a href="to-do/ProgressAPI.md">Progress API</a> document for a full description of Fluid Progress.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> Please see the <a href="to-do/ProgressAPI.md">Progress API</a> document for a full
+    description of Fluid Progress.
+</div>
 
 Uploader uses the following selector options for Progress:
 
@@ -923,9 +966,11 @@ Uploader uses the following selector options for Progress:
 }
 ```
 
-Any selectors not provided as an option will revert to the default. Implementers may choose to use the default class names in their markup, or customize the selectors, or a combination of these two approaches.
+Any selectors not provided as an option will revert to the default. Implementers may choose to use the default class
+names in their markup, or customize the selectors, or a combination of these two approaches.
 
-For example, if your markup uses all of the default selectors, except for the file queue selector and the remove button selector, you would provide the following selectors option:
+For example, if your markup uses all of the default selectors, except for the file queue selector and the remove button
+selector, you would provide the following selectors option:
 
 ```json5
 {
@@ -987,9 +1032,13 @@ Alternatively, the individual file requirements are:
 
 The Upload component requires a server component to accept the uploaded files.
 
-However there are times when you want to run the uploader with out a server: when working on integrating the component with your code, developing or testing the UI, or demonstrating the functionality of the code. For that reason the Uploader has a "demo" mode. In demo mode, the Uploader uses a special version of the uploadManager that pretends to be talking to a server. Most of the code is identical to the server mode because the same events are being fired and the model is exactly the same. Most of the code in the Uploader thinks that there is a server.
+However there are times when you want to run the uploader with out a server: when working on integrating the component
+with your code, developing or testing the UI, or demonstrating the functionality of the code. For that reason the
+Uploader has a "demo" mode. In demo mode, the Uploader uses a special version of the uploadManager that pretends to be
+talking to a server. Most of the code is identical to the server mode because the same events are being fired and the
+model is exactly the same. Most of the code in the Uploader thinks that there is a server.
 
-To run locally you must specify `demo: true` in your compontent configuration:
+To run locally you must specify `demo: true` in your component configuration:
 
 ```javascript
 var myUploader = fluid.progressiveEnhanceableUploader(".flc-uploader", ".fl-ProgEnhance-basic", {

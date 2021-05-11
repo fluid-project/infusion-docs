@@ -1,18 +1,23 @@
 ---
 title: Developer Introduction to the Infusion Framework - Views and View Components
-layout: default
 category: Tutorials
 ---
 
-View components are used to establish a binding between a specific DOM node on a web page and a specific instance of an Infusion component. View components serve an important role in relaxing the coupling between a component and any page markup it renders through the use of the [DOM Binder](../DOMBinder.md), making it easier to change component markup without changing component implementation.
+View components are used to establish a binding between a specific DOM node on a web page and a specific instance of an
+Infusion component. View components serve an important role in relaxing the coupling between a component and any page
+markup it renders through the use of the [DOM Binder](../DOMBinder.md), making it easier to change component markup
+without changing component implementation.
 
-View components require the specification of a page container for the component when creating them, as the first argument to the creator function:
+View components require the specification of a page container for the component when creating them, as the first
+argument to the creator function:
 
 `var helloWorld = fluidTutorial.helloWorld(".helloWorld", {});`
 
-<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a href="http://codepen.io/waharnum/pen/MJbgVR?editors=1111">Live Example of the code below on CodePen</a></div>
+<div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
+href="http://codepen.io/waharnum/pen/MJbgVR?editors=1111">Live Example of the code below on CodePen</a></div>
 
-Let's turn the "Hello, World!" component into a view component that writes its initial message to the screen as well, assuming we have this HTML on the page:
+Let's turn the "Hello, World!" component into a view component that writes its initial message to the screen as well,
+assuming we have this HTML on the page:
 
 ``` html
 <div class="helloWorld">
@@ -20,7 +25,11 @@ Let's turn the "Hello, World!" component into a view component that writes its i
 </div>
 ```
 
-We introduce another style of invoker here, the ["this"-ist style](../Invokers.md#this-ist-invoker-binding-to-a-oo-style-javascript-function-referencing-this) that allows us to invoke functions whose implementation references the special Javascript `this` value. This style of invoker is important for integrating with non-Infusion code such as jQuery, as standard Javascript functions attached to objects expect a `this` value referring to the calling object.
+We introduce another style of invoker here, the ["this"-ist
+style](../Invokers.md#this-ist-invoker-binding-to-a-oo-style-javascript-function-referencing-this) that allows us to
+invoke functions whose implementation references the special Javascript `this` value. This style of invoker is important
+for integrating with non-Infusion code such as jQuery, as standard Javascript functions attached to objects expect a
+`this` value referring to the calling object.
 
 ``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {
@@ -69,6 +78,8 @@ fluidTutorial.helloWorld.consoleHello = function (message) {
 
 ```
 
-You'll notice if you use the `changeApplier` from the console again like you did previously, the console message will update, but the screen displayed message won't. You may be able to guess this is because the screen displayed message isn't using a model listener. We'll address this in the next section.
+You'll notice if you use the `changeApplier` from the console again like you did previously, the console message will
+update, but the screen displayed message won't. You may be able to guess this is because the screen displayed message
+isn't using a model listener. We'll address this in the next section.
 
 Next: [Subcomponents and Model Relaying](DeveloperIntroductionToInfusionFramework-SubcomponentsAndModelRelaying.md)

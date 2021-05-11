@@ -1,6 +1,5 @@
 ---
 title: Understanding Component Options And Their Defaults
-layout: default
 category: Infusion
 ---
 
@@ -10,14 +9,15 @@ options that can be set by integrators to customize the behaviour. For example, 
 options for configuring the text content of the tooltip, the length of time the user must hover
 before the tooltip appears, the 'invitation text' that should be displayed in the field if it is empty, and other things.
 
-![image of an Inline Edit component with a tooltip](images/viewMode.png)
+![image of an Inline Edit component with a tooltip](/images/viewMode.png)
 
 Developers who are integrating an Inline Edit into their web application can use these options to
 customize the Inline Edit for their particular needs.
 
 A component creator will typically define default values for as many of the component's options as
 possible, so that the component will work "out of the box," without customization. This is done with
-a call to [fluid.defaults](CoreAPI.md#fluiddefaultsgradename-options), which registers the component's defaults with the Framework.
+a call to [fluid.defaults](CoreAPI.md#fluiddefaultsgradename-options), which registers the component's defaults with the
+Framework.
 
 When a component is instantiated, the first thing that the Framework does is merge any
 integrator-provided customizations with the component's defaults, before the initialization of the

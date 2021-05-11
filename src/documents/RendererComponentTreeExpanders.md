@@ -1,13 +1,19 @@
 ---
 title: Renderer Component Tree Expanders
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---
 
-<div class="infusion-docs-note"><strong>Note:</strong> The Renderer Component Tree Expanders described on this page have been deprecated and will likely  be removed in a future release.  If you are using this already or want to use something like it, please get in touch with the infusion maintainers using the <a href="https://fluidproject.org/">IRC channel or mailing list links on our website</a>.</div>
+<div class="infusion-docs-note">
+    <strong>Note:</strong> The Renderer Component Tree Expanders described on this page have been deprecated and will
+    likely  be removed in a future release.  If you are using this already or want to use something like it, please get
+    in touch with the infusion maintainers using the <a href="https://fluidproject.org/">IRC channel or mailing list
+    links on our website</a>.
+</div>
 
-The Renderer offers some utility functions for simplifying the tree-creation process. These functions are called **expanders** because they expand information you provide into a full component tree. These expanders are specified in the prototree itself by name and and are provided options to control the expansion process. For example:
+The Renderer offers some utility functions for simplifying the tree-creation process. These functions are called
+**expanders** because they expand information you provide into a full component tree. These expanders are specified in
+the prototree itself by name and and are provided options to control the expansion process. For example:
 
 ```javascript
 var protoTree = {
@@ -21,7 +27,10 @@ var protoTree = {
 };
 ```
 
-This prototree above uses the `fluid.renderer.repeat` expander (described in more detail below), which repeats the provided `tree` based on the data found in data model at the path specified by `controlledBy`. The expander saves the developer the work of having to create a prototree with an array of Bound components with a **":"** at the end of the ID (indicating a repeated element), one for each piece of data in the data model:
+This prototree above uses the `fluid.renderer.repeat` expander (described in more detail below), which repeats the
+provided `tree` based on the data found in data model at the path specified by `controlledBy`. The expander saves the
+developer the work of having to create a prototree with an array of Bound components with a **":"** at the end of the ID
+(indicating a repeated element), one for each piece of data in the data model:
 
 ```javascript
 var protoTree = {
@@ -39,7 +48,8 @@ var protoTree = {
 
 ## Using Expanders
 
-Expanders are specified as wrappers around a component specification in the component tree: Instead of the usual `componentID: {specification}` form, the keyword `expander` is used, as shown below:
+Expanders are specified as wrappers around a component specification in the component tree: Instead of the usual
+`componentID: {specification}` form, the keyword `expander` is used, as shown below:
 
 ```javascript
 var tree = {
@@ -51,7 +61,8 @@ var tree = {
 };
 ```
 
-You can also specify multiple expanders within a prototree by providing an array of expander specification in the `expander` field, as shown below:
+You can also specify multiple expanders within a prototree by providing an array of expander specification in the
+`expander` field, as shown below:
 
 ```javascript
 var tree = {
@@ -75,7 +86,8 @@ var tree = {
 
 ### Repetition Expander
 
-The repetition expander takes care of replicating part of the prototree as many times as are required based on the data in the the model.
+The repetition expander takes care of replicating part of the prototree as many times as are required based on the data
+in the the model.
 
 The following fields are supported by the `fluid.renderer.repeat` expander:
 
@@ -110,7 +122,8 @@ The following fields are supported by the `fluid.renderer.repeat` expander:
         <tr>
             <td><code>pathAs</code></td>
             <td>
-                (<em>Optional</em>) The string that will be used in the tree to represent an instance of the repeated data in the data model.
+                (<em>Optional</em>) The string that will be used in the tree to represent an instance of the repeated
+                data in the data model.
             </td>
             <td>String</td>
             <td>none</td>
@@ -138,7 +151,8 @@ The following fields are supported by the `fluid.renderer.repeat` expander:
 
 #### Example
 
-In this example, the `fluid.renderer.repeat` expander is being used to declare a tree for a set of tabs. The `controlledBy` property indicates that the data model field of tabs contains the data to be used.
+In this example, the `fluid.renderer.repeat` expander is being used to declare a tree for a set of tabs. The
+`controlledBy` property indicates that the data model field of tabs contains the data to be used.
 
 ```javascript
 cspace.tabsList.modelToTree = function (model, options) {
@@ -164,7 +178,10 @@ cspace.tabsList.modelToTree = function (model, options) {
 
 ### Selection To Inputs Expander
 
-The simple **Select** protocomponent format shown on the [ProtoComponent Types](ProtoComponentTypes.md) page is sufficient for a `<select>` element, but radio buttons and check boxes must _also_ have entries for each button or box. The **selection to inputs** expander will automatically generate these entries based on the options available in the select.
+The simple **Select** protocomponent format shown on the [ProtoComponent Types](ProtoComponentTypes.md) page is
+sufficient for a `<select>` element, but radio buttons and check boxes must _also_ have entries for each button or box.
+The **selection to inputs** expander will automatically generate these entries based on the options available in the
+select.
 
 The following fields are supported by the `fluid.renderer.selection.inputs` expander:
 
@@ -242,7 +259,8 @@ var tree = {
 
 ### Condition Expander
 
-The condition expander provides a mechanism for selecting between two alternative renderer component sub-trees based on the outcome of a condition e.g. the boolean evaluation of a value, or the return value of a function call.
+The condition expander provides a mechanism for selecting between two alternative renderer component sub-trees based on
+the outcome of a condition e.g. the boolean evaluation of a value, or the return value of a function call.
 
 The following fields are supported by the `fluid.renderer.condition` expander:
 
@@ -273,7 +291,8 @@ The following fields are supported by the `fluid.renderer.condition` expander:
         <tr>
             <td><code>trueTree</code></td>
             <td>
-                (<em>Optional</em>) A component sub-tree to be used in the case that the <code>condition</code> evaluates to <code>true</code>.
+                (<em>Optional</em>) A component sub-tree to be used in the case that the <code>condition</code>
+                evaluates to <code>true</code>.
             </td>
             <td>Object</td>
             <td>none</td>
@@ -281,7 +300,8 @@ The following fields are supported by the `fluid.renderer.condition` expander:
         <tr>
             <td><code>falseTree</code></td>
             <td>
-                (<em>Optional</em>) A component sub-tree to be used in the case that the <code>condition</code> evaluates to <code>false</code>.
+                (<em>Optional</em>) A component sub-tree to be used in the case that the <code>condition</code>
+                evaluates to <code>false</code>.
             </td>
             <td>Object</td>
             <td>none</td>
@@ -291,7 +311,9 @@ The following fields are supported by the `fluid.renderer.condition` expander:
 
 #### Examples
 
-In the following example, the `condition` is `that.options.showDeleteButton`. The renderer will evaluate the component's `showDeleteButton` option and if it is `true` will use the component tree specified by `trueTree`. Note that no `falseTree` is provided. If the option is `false` or not present, nothing will be rendered.
+In the following example, the `condition` is `that.options.showDeleteButton`. The renderer will evaluate the component's
+`showDeleteButton` option and if it is `true` will use the component tree specified by `trueTree`. Note that no
+`falseTree` is provided. If the option is `false` or not present, nothing will be rendered.
 
 ```javascript
 my.conditional.modelToTree = function (model, options) {
@@ -321,7 +343,9 @@ my.conditional.modelToTree = function (model, options) {
 };
 ```
 
-In the following example, the `condition` is a call to the function `cspace.header.assertMenuItemDisplay()` with a particular argument taken from the `itemName` subcomponent. If the function call returns `true`, the renderer component subtree specified by `trueTree` will be used.
+In the following example, the `condition` is a call to the function `cspace.header.assertMenuItemDisplay()` with a
+particular argument taken from the `itemName` subcomponent. If the function call returns `true`, the renderer component
+subtree specified by `trueTree` will be used.
 
 ```javascript
 my.conditional.modelToTree = function (model, options) {

@@ -1,6 +1,5 @@
 ---
 title: Model Transformation API
-layout: default
 category: Infusion
 ---
 The **model transformation** framework is a core part of Infusion and allows you to transform an input
@@ -21,7 +20,8 @@ The user may also operate model transformation rules manually by use of the
 
 ## List of available transformations
 
-Below is a list of all the available transformations in the framework. For details on each, see the individual description in the [Transformation Functions](ModelTransformationAPI.md#transformation-functions) section.
+Below is a list of all the available transformations in the framework. For details on each, see the individual
+description in the [Transformation Functions](ModelTransformationAPI.md#transformation-functions) section.
 
 * [fluid.transforms.value](ModelTransformationAPI.md#output-a-value-given-as-input-fluidtransformsvalue-and-fluidtransformsidentity)
 * [fluid.transforms.identity](ModelTransformationAPI.md#output-a-value-given-as-input-fluidtransformsvalue-and-fluidtransformsidentity)
@@ -59,15 +59,21 @@ Below is a list of all the available transformations in the framework. For detai
 Function to manually apply transformation rules to a source model. It will return the transformed source model.
 
 * `source {Object}` The input model to transform - this will not be modified
-* `rules {Transform}` A transformation rules object containing instructions on how to transform the model (see [below](#structure-of-a-transformation-document) for more information)
-* `options {Object}` A set of options governing the kind of transformation to be operated. At present this may contain the values:
-  * `isomorphic {Boolean}` If `true` indicating that the output model is to be governed by the same schema found in the input model, or
-  * `flatSchema {Object: String -> String}` Holding a flat schema object which consists of a hash of EL path specifications with wildcards, to the string values "array"/"object" defining the schema to be used to construct missing trunk values. This option is not part of the official API and might be subject to change.
+* `rules {Transform}` A transformation rules object containing instructions on how to transform the model (see
+  [below](#structure-of-a-transformation-document) for more information)
+* `options {Object}` A set of options governing the kind of transformation to be operated. At present this may contain
+  the values:
+  * `isomorphic {Boolean}` If `true` indicating that the output model is to be governed by the same schema found in the
+    input model, or
+  * `flatSchema {Object: String -> String}` Holding a flat schema object which consists of a hash of EL path
+    specifications with wildcards, to the string values "array"/"object" defining the schema to be used to construct
+    missing trunk values. This option is not part of the official API and might be subject to change.
 * Returns: `{Object}` The transformed model
 
 ## Structure of a transformation document
 
-The top-level structure of a full transformation document `{Transform}` is keyed by output [EL paths](FrameworkConcepts.md#el-paths) and looks like this:
+The top-level structure of a full transformation document `{Transform}` is keyed by output [EL
+paths](FrameworkConcepts.md#el-paths) and looks like this:
 
 ```snippet
 {
@@ -88,12 +94,15 @@ A `{SingleTransform}` record is as follows:
 }
 ```
 
-where `transform-type` is the name of a registered transformation function. This will be a [function grade](FunctionGrades.md) derived from the base grade `fluid.transformFunction`.
-Each transformation function can accept arbitrary additional options on the level of the "type" key, but many are derived from the grade `fluid.standardInputTransformFunction` which accept a standard input value named `input` (or path named `inputPath`) and/or derived from the grade `fluid.standardOutputTransformFunction`
-which accepts an output path named `outputPath`.
+where `transform-type` is the name of a registered transformation function. This will be a
+[function grade](FunctionGrades.md) derived from the base grade `fluid.transformFunction`. Each transformation function
+can accept arbitrary additional options on the level of the "type" key, but many are derived from the grade
+`fluid.standardInputTransformFunction` which accept a standard input value named `input` (or path named `inputPath`)
+and/or derived from the grade `fluid.standardOutputTransformFunction` which accepts an output path named `outputPath`.
 
 In general you should consult the below documentation for each transform function to
-see the names and interpretations of its options. Many transforms will themselves accept configuration of type `{SingleTransform}` in their options, leading transform documents to have a recursive structure.
+see the names and interpretations of its options. Many transforms will themselves accept configuration of type
+`{SingleTransform}` in their options, leading transform documents to have a recursive structure.
 
 ### Reserved words
 
@@ -143,11 +152,13 @@ In general, the reserved words of the model transformation system are:
 | `missingValue` | `fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray` |
 | `options` | `fluid.transforms.arrayToSetMembership`, `fluid.transforms.setMembershipToArray` |
 
-Besides these, most transformations have further reserved words. These are briefly listed here, with the transformation(s) they belong to. They will be more fully described for each relevant transformation.
+Besides these, most transformations have further reserved words. These are briefly listed here, with the
+transformation(s) they belong to. They will be more fully described for each relevant transformation.
 
 ## Grades of transformations
 
-Transformation can be registered with different grades (or types), which define how they handle inputs and outputs. The standard base grades recognized by the framework as follows:
+Transformation can be registered with different grades (or types), which define how they handle inputs and outputs. The
+standard base grades recognized by the framework as follows:
 
 ### standardInputTransformFunction
 
@@ -156,25 +167,35 @@ These transformations take a single input which can be defined in two ways:
 * `input`: As a constant or nested transform function
 * `inputPath`: As a path reference to the input (model) by using the key inputPath.
 
-If both keys are used in a transform declaration, the value found at the `inputPath` will be used if something is found there. If not, the transformer will default to using the value defined by `input`.
+If both keys are used in a transform declaration, the value found at the `inputPath` will be used if something is found
+there. If not, the transformer will default to using the value defined by `input`.
 
 More details are given on `input` and `inputPath` later in this document.
 
 ### standardOutputTransformFunction:
 
-These transformations only outputs a single value. The value of the output depends on the transformation, but the path to output can be defined by:
+These transformations only outputs a single value. The value of the output depends on the transformation, but the path
+to output can be defined by:
 
 * `outputPath`: An EL path to where the transformation should output its value to.
 
-The output path provided here is always relative to the current path. See section on building the output document structure, found further down.
+The output path provided here is always relative to the current path. See section on building the output document
+structure, found further down.
 
 ### standardTransformFunction:
 
-These transformations satisfy the requirements of both [`standardInputTransformFunction`](ModelTransformationAPI.html#standardinputtransformfunction) and [`standardOutputTransformFunction`](ModelTransformationAPI.html#standardoutputtransformfunction)
+These transformations satisfy the requirements of both
+[`standardInputTransformFunction`](ModelTransformationAPI.html#standardinputtransformfunction) and
+[`standardOutputTransformFunction`](ModelTransformationAPI.html#standardoutputtransformfunction)
 
 ### multiInputTransformFunction:
 
-These transformations allow for multiple inputs. In their default blocks, besides the gradename, they require an `inputVariables` key. The value of this should be a hash of key-value pairs, where the key is the variable name and the value is the default value to assign to the variable in case no matching constant or path is found. For each of the variables declared, the system will look up the source-model path defined by <variable>Path in the transform and the <variable> declared in the transform. They will behave in the same way as `input` and `inputPath`, where the path takes priority , so the non-path value can be used as fallback if nothing found at the path.
+These transformations allow for multiple inputs. In their default blocks, besides the gradename, they require an
+`inputVariables` key. The value of this should be a hash of key-value pairs, where the key is the variable name and the
+value is the default value to assign to the variable in case no matching constant or path is found. For each of the
+variables declared, the system will look up the source-model path defined by <variable>Path in the transform and the
+<variable> declared in the transform. They will behave in the same way as `input` and `inputPath`, where the path takes
+priority , so the non-path value can be used as fallback if nothing found at the path.
 
 An example of a multiInputTransformFunction declaration:
 
@@ -188,15 +209,28 @@ fluid.defaults("fluid.transforms.weirdScale", {
 });
 ```
 
-The above declaration defines two input variables; `factor` and `randomSeed`. Taking as an example the `factor`, the first thing that will be looked up in the transform is the value of `factorPath`. If it is defined, this path will be looked up in the source-model and this will be assigned to factor if found. If it is not found, the value (expanded if necessary) of the "factor" key of the transform will be used if found. If neither is found, the default value of 1 will be assigned to factor.
+The above declaration defines two input variables; `factor` and `randomSeed`. Taking as an example the `factor`, the
+first thing that will be looked up in the transform is the value of `factorPath`. If it is defined, this path will be
+looked up in the source-model and this will be assigned to factor if found. If it is not found, the value (expanded if
+necessary) of the "factor" key of the transform will be used if found. If neither is found, the default value of 1 will
+be assigned to factor.
 
-The inputVariables will be available to fluid.transforms.weirdScale as the first argument in the form of an object keyed by variable names with the values as described above.
+The inputVariables will be available to fluid.transforms.weirdScale as the first argument in the form of an object keyed
+by variable names with the values as described above.
 
 ### Combining standardInputTransformFunction and multiInputTransformFunction:
 
-A transformation can have both the grades `standardInputTransformFunction` and `multiInputTransformFunction`. This is useful if one has a variable named `input` (or `inputPath`) and want to take advantage of the frameworks built in support for `standardInputTransformations`, but also has other inputs that need supporting. The behavior will be a combination of the `standardInputTransformFunction` and `multiInputTransformFunction`. In the below example, the transform function will have three inputs available to resolve, namely `factor`, `offset` and `input` (and their `*Path` equivalents), with the `input` not requiring to be expressed in the `inputVariables` declaration of the defaults block.
+A transformation can have both the grades `standardInputTransformFunction` and `multiInputTransformFunction`. This is
+useful if one has a variable named `input` (or `inputPath`) and want to take advantage of the frameworks built in
+support for `standardInputTransformations`, but also has other inputs that need supporting. The behavior will be a
+combination of the `standardInputTransformFunction` and `multiInputTransformFunction`. In the below example, the
+transform function will have three inputs available to resolve, namely `factor`, `offset` and `input` (and their `*Path`
+equivalents), with the `input` not requiring to be expressed in the `inputVariables` declaration of the defaults block.
 
-The input variables will be available to the `fluid.transforms.scaleValue` function in the following way: the first argument is the `input` (as for the `standardInputTransformFunction`). The remaining variables will be passed as the second argument in the form of an object keyed by variable names with the values as described in the [multiInputTransformFunction section](ModelTransformationAPI.html#multiinputtransformfunction) above.
+The input variables will be available to the `fluid.transforms.scaleValue` function in the following way: the first
+argument is the `input` (as for the `standardInputTransformFunction`). The remaining variables will be passed as the
+second argument in the form of an object keyed by variable names with the values as described in the
+[multiInputTransformFunction section](ModelTransformationAPI.html#multiinputtransformfunction) above.
 
 ```javascript
 fluid.defaults("fluid.transforms.scaleValue", {
@@ -227,16 +261,13 @@ keyword results in its content being output to the current output path.
 </thead><tbody>
 <tr><th>source</td><th>rule</th><th>Output</th></tr>
 <tr><td>
-<pre><code>
-{
+<pre class="highlight"><code class="hljs javascript">{
     "my": {
         "number": 93.56
     }
-}
-</code></pre>
+}</code></pre>
 </td><td>
-<pre><code>
-{
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": {
             "literalValue": "integer"
@@ -248,17 +279,14 @@ keyword results in its content being output to the current output path.
             }
         }
     }
-}
-</code></pre>
+}</code></pre>
 </td><td>
-<pre><code>
-{
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": "integer"
         "value": 94
     }
-}
-</code></pre>
+}</code></pre>
 </td>
 </tr>
 </tbody>
@@ -296,14 +324,11 @@ Returning to the example in the previous section, this could be written as:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "number": 93.56
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "transform": [
         {
             "type": "fluid.transforms.literalValue",
@@ -315,25 +340,19 @@ Returning to the example in the previous section, this could be written as:
             "outputPath": "Magnification.value"
         }
     ]
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": "integer"
         "value": 94
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "number": 93.56
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": [
             {
@@ -347,16 +366,13 @@ Returning to the example in the previous section, this could be written as:
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": "integer"
         "value": 94
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -367,7 +383,8 @@ Looking at the first example, the `literalValue` transformation specifies that t
 
 The second example above, shows how the `outputPath` will be relative to the current output path. Since the entire block
 is keyed by `Magnification`, this becomes the current output path. When we encounter `outputPath: dataType`, this is
-interpreted as being relative to the `Magnification` path, and hence result in the full output path `Magnification.dataType`.
+interpreted as being relative to the `Magnification` path, and hence result in the full output path
+`Magnification.dataType`.
 
 ## Return values, Arrays of transforms and outputting arrays
 
@@ -379,14 +396,11 @@ This is the reason that something like the below works:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": {
             "type": "fluid.transforms.round",
@@ -400,15 +414,12 @@ This is the reason that something like the below works:
             "outputPath": "Percent"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "Percent": 154
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -428,14 +439,11 @@ anything output. Some examples to clarify this rule:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": [
             {
@@ -455,25 +463,19 @@ anything output. Some examples to clarify this rule:
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": "percent"
         "value": 154
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": [
             {
@@ -491,11 +493,8 @@ anything output. Some examples to clarify this rule:
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -518,15 +517,12 @@ As an example, take the following transformation:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "cat": "Kaspar the Titanic Cat",
         "frog": "Portuguese Steve"
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pets": [
         {
             "transform": {
@@ -545,17 +541,14 @@ As an example, take the following transformation:
             }
         }
     ]
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pets": [
         "Kaspar the Titanic Cat",
         undefined,
         "Portuguese Steve"
     ]
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -593,69 +586,51 @@ In this section, we will only show examples of using `inputPath`.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "cat": "Kaspar the Titanic Cat"
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
             "inputPath": "petlist.cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pet": "Kaspar the Titanic Cat"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "cat": "CATTOO"
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
             "inputPath": "petlist.cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pet": "CATTOO"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "dog": "Spot"
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
             "inputPath": "petlist.cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -679,43 +654,32 @@ straightforward:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "dog": "Snoopy"
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.literalValue",
             "input": "Kaspar the Titanic Cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pet": "Kaspar the Titanic Cat"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{}
-</code></pre></td><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.literalValue",
             "input": "Kaspar the Titanic Cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pet": "Kaspar the Titanic Cat"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -735,14 +699,11 @@ An `input` interprets the content as a nested transform if its value is an objec
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": {
             "type": "fluid.transforms.round",
@@ -756,24 +717,18 @@ An `input` interprets the content as a nested transform if its value is an objec
             "outputPath": "percent"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "percent": 154
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": {
             "type": "fluid.transforms.round",
@@ -788,15 +743,12 @@ An `input` interprets the content as a nested transform if its value is an objec
             "outputPath": "percent"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "sneakyPath": 154.12
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -824,15 +776,12 @@ The effect of this is that the input from the model (via path) will be used if i
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "cat": "Kaspar the Titanic Cat"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
@@ -840,20 +789,14 @@ The effect of this is that the input from the model (via path) will be used if i
             "input": "I have no cat"
         }
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": "Kaspar the Titanic Cat"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": { }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
@@ -861,11 +804,8 @@ The effect of this is that the input from the model (via path) will be used if i
             "input": "I have no cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-    "my_pet": "I have no cat"
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{"my_pet": "I have no cat"</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -909,16 +849,16 @@ The invertibility of each transform function will be described in connection to 
 ## Working with non-serialisable models
 
 The framework currently permits the use of model values which cannot be serialised directly to JSON (e.g. objects of
-type Date, Regexp, DOM nodes or other native types) - however, this is done at the user's own risk, understanding the limitations
-of this usage, and bearing in mind that in future the framework may forbid such models in some contexts. When the
-framework encounters any such object (strictly, any object which fails the
+type Date, Regexp, DOM nodes or other native types) - however, this is done at the user's own risk, understanding the
+limitations of this usage, and bearing in mind that in future the framework may forbid such models in some contexts.
+When the framework encounters any such object (strictly, any object which fails the
 [`fluid.isPlainObject`](CoreAPI.md#fluidisplainobjecttotest-strict) test), it will treat such an object as immutable,
 and if it appears in a relay or transform context, its object reference will simply be copied from the source to target
-document/model. This implies that with respect to these objects, if they are not immutable, the source and target documents
-will be aliased together, and any changes made to the native object will be reflected in both documents.
+document/model. This implies that with respect to these objects, if they are not immutable, the source and target
+documents will be aliased together, and any changes made to the native object will be reflected in both documents.
 
-See the entry on [model objects](FrameworkConcepts.md#model-objects)
-on the [Framework Concepts](FrameworkConcepts.md) for further discussion on this topic.
+See the entry on [model objects](FrameworkConcepts.md#model-objects) on the [Framework Concepts](FrameworkConcepts.md)
+for further discussion on this topic.
 
 ## Transformation Functions:
 
@@ -926,7 +866,9 @@ on the [Framework Concepts](FrameworkConcepts.md) for further discussion on this
 
 **Type:** standardTransformFunction
 
-**Description:** This transform takes an input value and outputs it. When an `inputPath` is present, the value is taken from that path.
+#### Description:
+
+This transform takes an input value and outputs it. When an `inputPath` is present, the value is taken from that path.
 Else the value found at `input` will be output (unless it is a `transform`, in which case it will be interpreted).
 It is primarily used by the framework in its shorthand notation (see examples). It is a synonym to `fluid.transforms.identity`.
 
@@ -939,53 +881,43 @@ It is primarily used by the framework in its shorthand notation (see examples). 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "balloon"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "myfavorite": {
         "transform": {
             "type": "fluid.transforms.value",
             "inputPath": "my.path"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myfavorite": "balloon"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 ##### Example 2: Short notation
 
-Note that this transform is implicit when using a string as a value to a key, where a `transform` directive would usually be expected.
+Note that this transform is implicit when using a string as a value to a key, where a `transform` directive would
+usually be expected.
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "balloon"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "myfavorite": "my.path"
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myfavorite": "balloon"
 }</code></pre></td>
 </tr>
@@ -996,7 +928,10 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 **Type:** standardOutputTransformFunction
 
-**Description:** Returns the value given as `input`, without attempting to do further transformations or interpretations for that value. It will always produce the same value independent of the source model/document.
+#### Description:
+
+Returns the value given as `input`, without attempting to do further transformations or interpretations for that value.
+It will always produce the same value independent of the source model/document.
 
 **Invertibility:** Partly invertible.
 
@@ -1018,23 +953,17 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.literalValue",
         "input": "some constant",
         "outputPath": "foo"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "foo": "some constant"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1044,11 +973,8 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.literalValue",
         "input": {
@@ -1059,18 +985,15 @@ Note that this transform is implicit when using a string as a value to a key, wh
         },
         "outputPath": "foo"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "transform": {
             "type": "fluid.transforms.helloworld",
             "input": "I'm not interpreted"
         }
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1079,7 +1002,10 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 **Type:** standardTransformFunction
 
-**Description:** Parses a string into a number. The number can be floating point or decimal. If the string is not parseable into a number, `undefined` will be returned.
+#### Description:
+
+Parses a string into a number. The number can be floating point or decimal. If the string is not parseable into a
+number, `undefined` will be returned.
 
 **Invertibility:** Partly invertible. The `input` default values are always ignored.
 
@@ -1090,26 +1016,21 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "100.91"
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToNumber",
         "inputPath": "my.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 100.91
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1119,24 +1040,19 @@ Note that this transform is implicit when using a string as a value to a key, wh
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "i am no number"
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToNumber",
         "inputPath": "my.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1145,14 +1061,18 @@ Note that this transform is implicit when using a string as a value to a key, wh
 
 **Type:** standardTransformFunction
 
-**Description:** Parses a number into a string. If the input is not a number, `undefined` will be returned.
-Can optionally provide a `scale` which denotes the maximum number of decimal places to round the number to and a rounding `method`. Trailing 0s are omitted and numbers are rounded as follows:
+#### Description:
+
+Parses a number into a string. If the input is not a number, `undefined` will be returned.
+Can optionally provide a `scale` which denotes the maximum number of decimal places to round the number to and a
+rounding `method`. Trailing 0s are omitted and numbers are rounded as follows:
 
 * `"round"`: Numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
 * `"ceil"`: Numbers are rounded up
 * `"floor"`: Numbers are rounded down
 
-If the `scale` value is not numerical or is `NaN`, it is treated as though it were not specified at all. The `method` is only used when a valid `scale` is provided, and defaults to `"round"`.
+If the `scale` value is not numerical or is `NaN`, it is treated as though it were not specified at all. The `method` is
+only used when a valid `scale` is provided, and defaults to `"round"`.
 
 **Invertibility:** Partly invertible. It is invertible when its domain is restricted to numbers.
 
@@ -1163,26 +1083,21 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": 100.91
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.numberToString",
         "inputPath": "my.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": "100.91"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1192,24 +1107,19 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "I'm a string"
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToNumber",
         "inputPath": "my.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1219,27 +1129,22 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": 100.91
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.numberToString",
         "inputPath": "my.path",
         "outputPath": "outie",
         "scale": 1
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": "100.9"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1249,14 +1154,12 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": 100.91
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.numberToString",
         "inputPath": "my.path",
@@ -1264,13 +1167,10 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
         "scale": 1,
         "method": "ceil"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": "101"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1280,27 +1180,22 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": 100.91
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.numberToString",
         "inputPath": "my.path",
         "outputPath": "outie",
         "scale": "one"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": "100.91"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1309,7 +1204,10 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 **Type:** standardTransformFunction
 
-**Description:** If the input is an array, the length of the array will be the output of this function. If the input is a primitive or object, 1 will be returned.
+#### Description:
+
+If the input is an array, the length of the array will be the output of this function. If the input is a primitive or
+object, 1 will be returned.
 
 **Invertibility:** Not invertible.
 
@@ -1320,23 +1218,17 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.count",
         "input": [ "foo", "bar" ],
         "outputPath": "howLong"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "howLong": 2
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1346,27 +1238,21 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": [ "foo", "bar" ]
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.count",
         "inputPath": "my.path",
         "outputPath": "howLong"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "howLong": 2
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1376,27 +1262,21 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "i am a string"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.count",
         "inputPath": "my.path",
         "outputPath": "howLong"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "howLong": 1
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1405,7 +1285,11 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 **Type:** standardTransformFunction
 
-**Description:** Rounds the input to the nearest integer, or to a decimal value if a `scale` value is provided. The `scale` option denotes the number of decimal places to round the number to and defaults to `0`. The `method` option denotes the rounding method to use and defaults to `"round"`. Numbers are rounded as follows:
+#### Description:
+
+Rounds the input to the nearest integer, or to a decimal value if a `scale` value is provided. The `scale` option
+denotes the number of decimal places to round the number to and defaults to `0`. The `method` option denotes the
+rounding method to use and defaults to `"round"`. Numbers are rounded as follows:
 
 * `"round"`: Numbers are rounded away from 0 (i.e 0.5 -> 1, -0.5 -> -1).
 * `"ceil"`: Numbers are rounded up
@@ -1420,25 +1304,19 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "myin": 123.41
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.round",
         "inputPath": "myin",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 123
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1448,26 +1326,20 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "myin": 123.41
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.round",
         "inputPath": "myin",
         "outputPath": "outie",
         "scale": 1
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 123.4
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1477,13 +1349,10 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "myin": 123.41
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.round",
         "inputPath": "myin",
@@ -1491,22 +1360,21 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
         "scale": 1,
         "method": "ceil"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 123.5
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 ### Get first value of array (fluid.transforms.firstValue)
 
-**Type:** fluid.standardOuputTransformFunction
+**Type:** fluid.standardOutputTransformFunction
 
-**Description:** Returns the first entry of the array that does not evaluate to undefined. The input is required to be of type array.
+#### Description:
+
+Returns the first entry of the array that does not evaluate to undefined. The input is required to be of type array.
 
 **Invertibility:** Not invertible
 
@@ -1528,26 +1396,20 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": "hello",
     "bar": "world"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.firstValue",
         "values": [ "foo", "bar" ],
         "outputPath": "myfirst"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myfirst": hello"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1557,25 +1419,19 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "bar": "world"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.firstValue",
         "values": [ "foo", "bar" ],
         "outputPath": "myfirst"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myfirst": world"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1584,7 +1440,10 @@ If the `scale` value is not numerical or is `NaN`, it is treated as though it we
 
 **type:** transformFunction
 
-**Description:** Deletes a path from the output document. This is useful when outputting a large structure to the output document, but you require deletion of a certain part of that structure.
+#### Description:
+
+Deletes a path from the output document. This is useful when outputting a large structure to the output document, but
+you require deletion of a certain part of that structure.
 
 The only option that `delete` supports is `outputPath`, which points to the outputPath to be deleted.
 
@@ -1603,31 +1462,26 @@ The only option that `delete` supports is `outputPath`, which points to the outp
 
 #### Examples:
 
-The `"": ""` in the transform would normally mean that the entire input model is copied without any transformations, but the delete transform ensures that the path "foo" is deleted.
+The `"": ""` in the transform would normally mean that the entire input model is copied without any transformations, but
+the delete transform ensures that the path "foo" is deleted.
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "hello": "world",
     "foo": "bar"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "": "",
     "transform": {
         "type": "fluid.transforms.delete",
         "outputPath": "foo"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
      "hello": "world"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1638,7 +1492,9 @@ The `"": ""` in the transform would normally mean that the entire input model is
 
 #### Description:
 
-This is a very powerful and flexible transformation function, which maps a defined collection of input values to corresponding output values by applying a matching algorithm. The input can be partly or fully matched, the result of the mapping can be customized on a per match basis. For further explanation, see the syntax and examples sections below.
+This is a very powerful and flexible transformation function, which maps a defined collection of input values to
+corresponding output values by applying a matching algorithm. The input can be partly or fully matched, the result of
+the mapping can be customized on a per match basis. For further explanation, see the syntax and examples sections below.
 
 **Invertibility:** Partly invertible.
 
@@ -1681,7 +1537,8 @@ ___Top level:___
   * The value to output by default.
   * Used if no `outputValue` is provided for a given match.
   * Optional if `outputValue` is provided for all matches
-  * The meaning of `defaultOutputValue` is NOT "the output in case no case matches" but "the `outputValue` that should be used in a case where it has not been explicitly written".
+  * The meaning of `defaultOutputValue` is NOT "the output in case no case matches" but "the `outputValue` that should
+    be used in a case where it has not been explicitly written".
 * `defaultOutputPath`
   * The output path used by default.
   * Used if no `outputPath` is provided for a given case.
@@ -1700,7 +1557,8 @@ ___Within `match`/`noMatch`:___
   * The input path to match against.
   * Overwrites `defaultInputPath` for the given directive.
 * `outputUndefinedValue`
-  * This will cause the match directive to return `undefined` as an output value, even if `outputValue` and `defaultOutputValue` are specified.
+  * This will cause the match directive to return `undefined` as an output value, even if `outputValue` and
+    `defaultOutputValue` are specified.
 
 ___Only within `match`:___
 
@@ -1710,21 +1568,30 @@ ___Only within `match`:___
   * Will always be interpreted literally (ie. no transforms allowed here)
 * `partialMatches`
   * Boolean flag, signifying whether this directive is allowed to match partly.
-  * If any exact match can be made (even if it contains a partialMatches flag), this beats a partial match. Else the best partial match (ie. deepest matching) will be selected. Else the value from `noMatch` will be used.
+  * If any exact match can be made (even if it contains a partialMatches flag), this beats a partial match. Else the
+    best partial match (ie. deepest matching) will be selected. Else the value from `noMatch` will be used.
   * If the two best partial matches are equally good, the first one listed will be returned.
 
 ##### Priority of keys at parsing:
 
-Some of the keys used in the ValueMapper conflict, in that they reference the same part of the transformation mechanisms. Below is a summary of which term takes priority when the valueMapper parses the keys:
+Some of the keys used in the ValueMapper conflict, in that they reference the same part of the transformation
+mechanisms. Below is a summary of which term takes priority when the valueMapper parses the keys:
 
 * if `defaultInput` is provided, `inputPath` and `defaultInputPath` values ae ignored.
-* `inputPath` before `defaultInputPath`  - If an `inputPath` is provided, that value will be used, else `defaultInputPath` will be used.
-* `outputPath` before `defaultOutputValue`  - The `outputPath` will be used used if provded, else `defaultOutputPath` will.
-* `outputUndefinedValue` over `outputValue` over `defaultOutputValue` - If `outputUndefinedValue` is provided, it will always be used. If it is not provided, but `outputValue` is, this will be used. Finally, if neither are provided, `defaultOutputValue` is used.
+* `inputPath` before `defaultInputPath`  - If an `inputPath` is provided, that value will be used, else
+  `defaultInputPath` will be used.
+* `outputPath` before `defaultOutputValue`  - The `outputPath` will be used used if provided, else `defaultOutputPath`
+  will.
+* `outputUndefinedValue` over `outputValue` over `defaultOutputValue` - If `outputUndefinedValue` is provided, it will
+  always be used. If it is not provided, but `outputValue` is, this will be used. Finally, if neither are provided,
+  `defaultOutputValue` is used.
 
 ##### Shorthand syntax:
 
-ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entries are interpreted as `inputValue` by the system. If `<outputX>` are primitive datatypes (string, number or boolean), they will be used directly as output. Else they should be objects with the same format in the longhand syntax described above - excluding support the `inputValue` option.
+ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entries are interpreted as `inputValue` by
+the system. If `<outputX>` are primitive datatypes (string, number or boolean), they will be used directly as output.
+Else they should be objects with the same format in the longhand syntax described above - excluding support the
+`inputValue` option.
 
 ```snippet
 {
@@ -1754,13 +1621,10 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     condition: "yes"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultInputPath: "condition",
@@ -1770,13 +1634,10 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
             "no": "negativeCATT"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "CATTOO": "positiveCATT"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1786,13 +1647,10 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     condition: "no"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultInputPath: "condition",
@@ -1807,13 +1665,10 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
                 outputValue: "negativeCATT"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myPath1": "negativeCATT"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1823,13 +1678,10 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     whichAnimal: "CATTOO"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultInputPath: "whichAnimal",
@@ -1847,13 +1699,10 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
             outputPath: "WhosThat",
             outputValue: "theNoMatchCATT"
         }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "WhosThat": "theNoMatchCATT"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1863,16 +1712,13 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     info: {
         "arms": 2,
         "ears": 2
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultInputPath: "info",
@@ -1900,13 +1746,10 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
             outputValue: "can handstand"
         }]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     creature: "can handstand"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1917,8 +1760,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </thead><tbody>
 <tr><th>rule</th><th>Output</th></tr>
 <tr>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultOutputPath: "creature",
@@ -1934,13 +1776,10 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
             outputValue: "can handstand"
         }]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     creature: "can handstand"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1951,8 +1790,7 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 </thead><tbody>
 <tr><th>rule</th><th>Output</th></tr>
 <tr>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultOutputPath: "creature",
@@ -1973,13 +1811,10 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
             outputValue: "can handstand"
         }]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     creature: "can handstand"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1990,7 +1825,12 @@ ValueMapper supports the shorthand syntax shown below. Here, the `<inputX>` entr
 
 #### Description:
 
-This will do a binary operation given the two operands (`left` and `right`) and the operator. You can reference to the input model for both left and right by using `leftPath` and `rightPath`. If both `rightPath` and `right` is given, a lookup will be done of `rightPath` first, and if nothing is found the constant from `right` will be used. Same goes for `left` and `leftPath`. Both the `left` and `right` operands are required (either in their path or constant form). The operator is also required. The result of the expansion will be the result of the binary operation, and this will be returned or output to the outputPath as any other `standardOutputTransformFunction`. Valid operands are:
+This will do a binary operation given the two operands (`left` and `right`) and the operator. You can reference to the
+input model for both left and right by using `leftPath` and `rightPath`. If both `rightPath` and `right` is given, a
+lookup will be done of `rightPath` first, and if nothing is found the constant from `right` will be used. Same goes for
+`left` and `leftPath`. Both the `left` and `right` operands are required (either in their path or constant form). The
+operator is also required. The result of the expansion will be the result of the binary operation, and this will be
+returned or output to the outputPath as any other `standardOutputTransformFunction`. Valid operands are:
 
 Arithmetic Operators (operands are required to be numbers, output will be a number):
 
@@ -2034,15 +1874,12 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": 200
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.binaryOp",
         "left": 100,
@@ -2050,13 +1887,10 @@ transform: {
         "operator": "+",
         "outputPath": "sum"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "sum": 300
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2066,15 +1900,12 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": 200
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.binaryOp",
         "left": 100,
@@ -2084,13 +1915,10 @@ transform: {
         "operator": "+",
         "outputPath": "sum"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "sum": 300
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2112,7 +1940,10 @@ transform: {
 
 #### Description:
 
-Based on the boolean `condition` constant (or the path to the inputModel `conditionPath`) either the value or `true` or `false` (`truePath`/`falsePath`, respectively) will be the result of the transform. The `condition` is required and either `true` or `false` (or both) - or their path equivalents - should be defined. As usual, the `*Path` equivalents of the input variables can be used as fallbacks.
+Based on the boolean `condition` constant (or the path to the inputModel `conditionPath`) either the value or `true` or
+`false` (`truePath`/`falsePath`, respectively) will be the result of the transform. The `condition` is required and
+either `true` or `false` (or both) - or their path equivalents - should be defined. As usual, the `*Path` equivalents
+of the input variables can be used as fallbacks.
 
 **Invertibility:** Not invertible
 
@@ -2123,15 +1954,12 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": true
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.condition",
         "conditionPath": "some.path",
@@ -2139,13 +1967,10 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
         "false": "It was false",
         "outputPath": "result"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": "It was true"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2155,11 +1980,8 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.condition",
         "conditionPath": "some.path",
@@ -2168,13 +1990,10 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
         "false": "It was false",
         "outputPath": "result"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": "It was true"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2184,15 +2003,12 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": true
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.condition",
         "conditionPath": "some.path",
@@ -2207,33 +2023,28 @@ Based on the boolean `condition` constant (or the path to the inputModel `condit
         "false": "It was false",
         "outputPath": "result"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": 300
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 ##### Example 4: Using an undefined input
 
-If either the `left` or `right` (or their path equivalents) evaluate to `undefined` and there is no default in case of using path, the result of the transform will be `undefined`.
+If either the `left` or `right` (or their path equivalents) evaluate to `undefined` and there is no default in case of
+using path, the result of the transform will be `undefined`.
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": true
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.condition",
         "conditionPath": "some.path",
@@ -2241,11 +2052,8 @@ If either the `left` or `right` (or their path equivalents) evaluate to `undefin
         "false": "It was false",
         "outputPath": "result"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2254,7 +2062,13 @@ If either the `left` or `right` (or their path equivalents) evaluate to `undefin
 
 **type:** multiInputTransformFunction, standardInputTransformFunction and standardOutputTransformFunction.
 
-**Description:** This will scale the input value using the equation: `value * factor + offset`. If `factor` is unspecified it will be interpreted as 1 and if `offset` is unspecified it will be interpreted as 0. Both `factor` and `offset` can references to the input model by using: `factorPath` and `offsetPath`, respectively. If both the path and constant for any of these values is defined, first the path is looked up, and if a value is found it will be used. Else the system will fallback to using the constant.
+#### Description:
+
+This will scale the input value using the equation: `value * factor + offset`. If `factor` is unspecified it will be
+interpreted as 1 and if `offset` is unspecified it will be interpreted as 0. Both `factor` and `offset` can references
+to the input model by using: `factorPath` and `offsetPath`, respectively. If both the path and constant for any of these
+values is defined, first the path is looked up, and if a value is found it will be used. Else the system will fallback
+to using the constant.
 
 **Invertibility:** Partly invertible.
 
@@ -2276,11 +2090,8 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.linearScale",
         "input": 12,
@@ -2288,13 +2099,10 @@ transform: {
         "offset": 100,
         "outputPath": "mypath"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "mypath": 220
-}
-</code></pre>
+}</code></pre>
 </td>
 </tr>
 </tbody>
@@ -2302,62 +2110,52 @@ transform: {
 
 ##### Example 2: Only some variables specified
 
-In this example, since no value is found at `some.path`, the factor will default to 1, outputting `12*1+0=12`. If a value was instead found (say, 12) the output would have been `12*12+0=144`
+In this example, since no value is found at `some.path`, the factor will default to 1, outputting `12*1+0=12`. If a
+value was instead found (say, 12) the output would have been `12*12+0=144`
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.linearScale",
         "input": 12,
         "factorPath": "some.path",
         "outputPath": "mypath"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "mypath": 12
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 ##### Example 3: Only some variables specified
 
-This example uses the same transformation rule as above, but in this case a value is found at factorPath, so this will be used as factor. Since `offset` is not specified, the value 0 will be used for this.
+This example uses the same transformation rule as above, but in this case a value is found at factorPath, so this will
+be used as factor. Since `offset` is not specified, the value 0 will be used for this.
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": 12
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.linearScale",
         "input": 12,
         "factorPath": "some.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 144
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2365,9 +2163,15 @@ This example uses the same transformation rule as above, but in this case a valu
 
 **type:** standardTransformFunction
 
-**Description:** If you have a continuous range of values (e.g. 0...*) and want to change that into discrete values, this is the transform to use. It also works as a non-linear scale of values, as you can define what ranges maps to what outputs.
+#### Description:
 
-The transform allows you to specify some ranges, defined by an `upperBound`. The first entry, the range will be the `upperBound` value to negative infinite. For the second entry, the range will be the range from the `upperBound` to (but excluding) the previous entry's `upperBound`. For the final entry no upper bound can be given, indicating that this range is from the previous `upperBound` to infinity.
+If you have a continuous range of values (e.g. 0...*) and want to change that into discrete values, this is the
+transform to use. It also works as a non-linear scale of values, as you can define what ranges maps to what outputs.
+
+The transform allows you to specify some ranges, defined by an `upperBound`. The first entry, the range will be the
+`upperBound` value to negative infinite. For the second entry, the range will be the range from the `upperBound` to (but
+excluding) the previous entry's `upperBound`. For the final entry no upper bound can be given, indicating that this
+range is from the previous `upperBound` to infinity.
 
 #### Syntax:
 
@@ -2393,22 +2197,19 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **Invertibility:** Not invertible.
 
-#### Examples:
+### Examples:
 
-##### Example 1: Standard usage of quantize transformer
+#### Example 1: Standard usage of quantize transformer
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 12
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.quantize",
         "inputPath": "my.input",
@@ -2428,30 +2229,24 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
             }
         ]
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "mysize": "normal"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
-##### Example 2: Standard usage of quantize transformer - hitting lower bound
+#### Example 2: Standard usage of quantize transformer - hitting lower bound
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 2
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.quantize",
         "inputPath": "my.input",
@@ -2471,30 +2266,24 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "mysize": "small"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
-##### Example 3: Standard usage of quantize transformer - hitting upper bound
+#### Example 3: Standard usage of quantize transformer - hitting upper bound
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 200
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.quantize",
         "inputPath": "my.input",
@@ -2514,13 +2303,10 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "mysize": "very big"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2528,7 +2314,11 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **type:** standardTransformFunction
 
-**Description:** Checks whether an `input` or `inputPath` is in a given range, outputs `true` or `false` depending on whether it is in that range. The range is indicated by `min` and `max`, both of which are inclusive. The range can be open-ended by not specifying one of these.
+#### Description:
+
+Checks whether an `input` or `inputPath` is in a given range, outputs `true` or `false` depending on whether it is in
+that range. The range is indicated by `min` and `max`, both of which are inclusive. The range can be open-ended by not
+specifying one of these.
 
 #### Syntax:
 
@@ -2544,22 +2334,19 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **Invertibility:** Not invertible.
 
-#### Examples:
+### Examples:
 
-##### Example 1: Standard usage of inRange transformer
+#### Example 1: Standard usage of inRange transformer
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 12
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
@@ -2567,30 +2354,24 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
         "min": 10,
         "max": 100
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "isInRange": true
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
-##### Example 2: Standard usage of inRange transformer (out of range)
+#### Example 2: Standard usage of inRange transformer (out of range)
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 110
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
@@ -2598,60 +2379,48 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
         "min": 10,
         "max": 100
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "isInRange": false
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
-##### Example 3: Open ended usage of inRange transformer
+#### Example 3: Open ended usage of inRange transformer
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 110
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
         "outputPath": "isInRange",
         "min": 10
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "isInRange": true
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
-##### Example 4: Range endpoints are inclusive
+#### Example 4: Range endpoints are inclusive
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 100
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
@@ -2659,13 +2428,10 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
         "min": 10,
         "max": 100
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "isInRange": true
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2674,13 +2440,26 @@ The transform allows you to specify some ranges, defined by an `upperBound`. The
 
 **type:** standardTransformFunction
 
-**Description:** This transform is one of the more specialized and complex transforms. It takes an array of objects as `input`, and outputs an object of objects. For each array entry, the value of a given key in that entry (from the `key` transform option) is used as key in the output object. The values in the output object are the remaining content of that arrays' entries.
+#### Description:
 
-This means that the transform requires a `key` defined - and that this should be present in each of the array-entries of the `input` - and that the values found for this key will be used to key the resulting object.
+This transform is one of the more specialized and complex transforms. It takes an array of objects as `input`, and
+outputs an object of objects. For each array entry, the value of a given key in that entry (from the `key` transform
+option) is used as key in the output object. The values in the output object are the remaining content of that arrays'
+entries.
 
-Besides the `key` and standard `input`/`inputPath` options, the indexArrayByKey transform allows optionally for a `innerValue`, which allows one do transforms on the values of the resulting output object. Note that within this `innerValue`, all `inputPath` (and other *Path declarations) are relative to the path defined by the `inputPath` of the indexArrayByKey transform.
+This means that the transform requires a `key` defined - and that this should be present in each of the array-entries of
+the `input` - and that the values found for this key will be used to key the resulting object.
 
-Note: this transform was developed in relation to the XMLSettingsHandler used by the GPII auto-personalization. This translates data from XML files (which often represents "morally indexed" data in repeating array-like constructs where the indexing key is held, for example, in an attribute) to JSON format. This transform makes it easier (possible) to reference the specific elements within one of these XML arrays that are otherwise only uniquely identifiable via their content (and not their order).
+Besides the `key` and standard `input`/`inputPath` options, the indexArrayByKey transform allows optionally for a
+`innerValue`, which allows one do transforms on the values of the resulting output object. Note that within this
+`innerValue`, all `inputPath` (and other *Path declarations) are relative to the path defined by the `inputPath` of the
+indexArrayByKey transform.
+
+Note: this transform was developed in relation to the XMLSettingsHandler used by the GPII auto-personalization. This
+translates data from XML files (which often represents "morally indexed" data in repeating array-like constructs where
+the indexing key is held, for example, in an attribute) to JSON format. This transform makes it easier (possible) to
+reference the specific elements within one of these XML arrays that are otherwise only uniquely identifiable via their
+content (and not their order).
 
 **Invertibility:** Partly invertible (into [`fluid.transforms.deindexIntoArrayByKey`](ModelTransformationAPI.html#create-an-object-indexed-with-keys-from-array-entries-fluidtransformsdeindexintoarraybykey)).
 
@@ -2701,63 +2480,60 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 ##### Example 1: Simple Example
 
-In this example, the `key` provided in our transform function is `product`. This means that for each entry in our input array, we will use the value found by the `product` key (i.e. "salad" and "candy", respectively) and use that as the key in our output object. The output object will contain, for each key, the remaining entries from the array entry's object.
+In this example, the `key` provided in our transform function is `product`. This means that for each entry in our input
+array, we will use the value found by the `product` key (i.e. "salad" and "candy", respectively) and use that as the key
+in our output object. The output object will contain, for each key, the remaining entries from the array entry's object.
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "bar": [
             { "product": "salad", "price": 10, "healthy": "yes" },
             { "product": "candy", "price": 18, "healthy": "no" }
         ]
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.indexArrayByKey",
         "inputPath": "foo.bar",
         "key": "product",
         "outputPath": "transformed"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "transformed": {
         "salad": { price: 10, healthy: "yes" },
         "candy": { price: 18, healthy: "no" }
     }
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
 ##### Example 2: Using InnerValue for transforms
 
-An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of the array should be declared here. The input paths within the innerValue block will be relative to the original array entry.
+An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of
+the array should be declared here. The input paths within the innerValue block will be relative to the original array
+entry.
 
-For the below example, in the second (innermost) `inputPath`, we refer to `info.healthy`, which is relative to the path defined by our outer `inputPath`. As can be seen the transform defined within `innerValue` is applied to the value of the output object.
+For the below example, in the second (innermost) `inputPath`, we refer to `info.healthy`, which is relative to the path
+defined by our outer `inputPath`. As can be seen the transform defined within `innerValue` is applied to the value of
+the output object.
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "bar": [
             { "product": "salad", "info": { "price": 10, "healthy": "yes" }},
             { "product": "candy", "info": { "price": 18, "healthy": "no", "tasty": "yes" }}
         ]
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.indexArrayByKey",
         "outputPath": "transformed",
@@ -2770,17 +2546,13 @@ For the below example, in the second (innermost) `inputPath`, we refer to `info.
             }
         }]
     }
-}
-
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "transformed": {
         "salad": "yes",
         "candy": "no"
     }
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2788,7 +2560,11 @@ For the below example, in the second (innermost) `inputPath`, we refer to `info.
 
 **type:** standardTransformFunction
 
-**Description:** Transforms an object of objects into an array of objects, by deindexing the object keys. The objects within the output object, will each contain a de-indexed key as an extra item, with the key for that new item being defined by the `key` parameter.
+#### Description:
+
+Transforms an object of objects into an array of objects, by deindexing the object keys. The objects within the output
+object, will each contain a de-indexed key as an extra item, with the key for that new item being defined by the `key`
+parameter.
 
 A brief illustration of this is given here:
 
@@ -2805,11 +2581,19 @@ A brief illustration of this is given here:
 }
 ```
 
-In the above case, the `key` option would be `animal`. The outer key-names are added to their respective object as an entry with a key `animal`.
+In the above case, the `key` option would be `animal`. The outer key-names are added to their respective object as an
+entry with a key `animal`.
 
-Besides the `key` and standard `input`/`inputPath` options, the `deindexIntoArrayByKey` transform allows optionally for a `innerValue`, which allows one do transforms on the values of the resulting output object. Note that within this `innerValue`, all `inputPath` (and other `*Path` declarations) are relative to the path defined by the `inputPath` of the `deindexIntoArrayByKey` transform.
+Besides the `key` and standard `input`/`inputPath` options, the `deindexIntoArrayByKey` transform allows optionally for
+a `innerValue`, which allows one do transforms on the values of the resulting output object. Note that within this
+`innerValue`, all `inputPath` (and other `*Path` declarations) are relative to the path defined by the `inputPath` of
+the `deindexIntoArrayByKey` transform.
 
-Note: this transform was developed in relation to the XMLSettingsHandler used by the GPII auto-personalization. This translates data from XML files (which often represents "morally indexed" data in repeating array-like constructs where the indexing key is held, for example, in an attribute) to JSON format. This transform makes it easier (possible) to reference the specific elements within one of these XML arrays that are otherwise only uniquely identifiable via their content (and not their order).
+Note: this transform was developed in relation to the XMLSettingsHandler used by the GPII auto-personalization. This
+translates data from XML files (which often represents "morally indexed" data in repeating array-like constructs where
+the indexing key is held, for example, in an attribute) to JSON format. This transform makes it easier (possible) to
+reference the specific elements within one of these XML arrays that are otherwise only uniquely identifiable via their
+content (and not their order).
 
 **Invertibility:** Partly invertible. (into is [`fluid.transforms.indexArrayByKey`](ModelTransformationAPI.html#creates-an-object-indexed-with-keys-from-array-entries-fluidtransformsindexarraybykey))
 
@@ -2830,58 +2614,54 @@ Note: this transform was developed in relation to the XMLSettingsHandler used by
 
 ##### Example 1: Simple Example
 
-In this example, the `key` provided in our transform function is `product`. This means that each of the keys within the object given as input, will be added as a value to the corresponding object with `product` as key.
+In this example, the `key` provided in our transform function is `product`. This means that each of the keys within the
+object given as input, will be added as a value to the corresponding object with `product` as key.
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "salad": { "price": 10, "healthy": "yes" },
         "candy": { "price": 18, "healthy": "no" }
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.deindexIntoArrayByKey",
         "inputPath": "foo",
         "outputPath": "bar",
         "key": "product"
     }
-}
-</code></pre></td><td>
-<pre><code>
-bar: [
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{bar: [
     { product: "salad", price: 10, healthy: "yes" },
     { product: "candy", price: 18, healthy: "no" }
-]
-</code></pre></td>
+]</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 ##### Example 2: Using InnerValue for transforms
 
-An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of the array should be declared here. The input paths within the innerValue block will be relative to the original array entry.
+An optional variable to the transform is `innerValue`. Any variable or transform that needs to refer to the content of
+the array should be declared here. The input paths within the innerValue block will be relative to the original array
+entry.
 
-For the below example, in the second (innermost) `inputPath`, we refer to `info.healthy`, which is relative to the path defined by our outer `inputPath`. As can be seen the transform defined within `innerValue` is applied to the value of the output object.
+For the below example, in the second (innermost) `inputPath`, we refer to `info.healthy`, which is relative to the path
+defined by our outer `inputPath`. As can be seen the transform defined within `innerValue` is applied to the value of
+the output object.
 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "salad": { "price": 10, "healthy": "yes" },
         "candy": { "price": 18, "healthy": "no" }
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.deindexIntoArrayByKey",
         "inputPath": "foo",
@@ -2893,20 +2673,15 @@ For the below example, in the second (innermost) `inputPath`, we refer to `info.
                 "inputPath": "",
                 "outputPath": "info.healthy"
             }
-
         }]
     }
-}
-
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "bar": [
         { product: "salad", info: { price: 10, healthy: "yes" }},
         { product: "candy", info: { price: 18, healthy: "no" }}
     ]
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2914,15 +2689,23 @@ For the below example, in the second (innermost) `inputPath`, we refer to `info.
 
 **Type:** standardTransformFunction
 
-**Description:** Returns the index of a given element in an array. This transform checks whether the given `input`/`inputPath` is in the array provided via `array`. If it is found, the index of the element is given. If it is not found, `-1` will be returned instead.
+#### Description:
 
-It furthermore allows for an `offset` to be provided, which will be added to the return value, and a `notFound` which will be returned in case the element is not found in the array. `notFound` is not allowed to be a positive integer, as this threatens invertibility.
+Returns the index of a given element in an array. This transform checks whether the given `input`/`inputPath` is in the
+array provided via `array`. If it is found, the index of the element is given. If it is not found, `-1` will be returned
+instead.
+
+It furthermore allows for an `offset` to be provided, which will be added to the return value, and a `notFound` which
+will be returned in case the element is not found in the array. `notFound` is not allowed to be a positive integer, as
+this threatens invertibility.
 
 The `offset` will be added to the output index, even if the element is not found.
 
 Returns `undefined` if no array is provided.
 
-**Invertibility:** Fully invertible (into [`fluid.transforms.dereference`](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluidtransformsdereference)) with the domain of values that are present in the array.
+**Invertibility:** Fully invertible (into
+*[`fluid.transforms.dereference`](ModelTransformationAPI.html#get-the-value-at-an-index-of-array-fluidtransformsdereference))
+*with the domain of values that are present in the array.
 
 #### Syntax:
 
@@ -2943,13 +2726,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "dog"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -2957,13 +2737,10 @@ Returns `undefined` if no array is provided.
             "inputPath": "element"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": 1
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2972,13 +2749,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "goat"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -2986,13 +2760,10 @@ Returns `undefined` if no array is provided.
             "inputPath": "element"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": -1
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3001,13 +2772,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "goat"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -3016,13 +2784,10 @@ Returns `undefined` if no array is provided.
             "notFound": "not there"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": "not there"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3031,13 +2796,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "dog"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -3046,13 +2808,10 @@ Returns `undefined` if no array is provided.
             "offset": 2
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": 3
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3061,13 +2820,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "goat"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -3076,13 +2832,10 @@ Returns `undefined` if no array is provided.
             "offset": 2
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": 1
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3092,7 +2845,8 @@ Returns `undefined` if no array is provided.
 
 #### Description:
 
-Returns the value of a given index in an array. This transform looks up the index given by `input`/`inputPath` in the array provided via `array`. It returns the value found at that index.
+Returns the value of a given index in an array. This transform looks up the index given by `input`/`inputPath` in the
+array provided via `array`. It returns the value found at that index.
 
 It allows for an `offset` to be provided, which will be added to the index that is being looked up.
 
@@ -3116,13 +2870,10 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": 1
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.dereference",
@@ -3130,13 +2881,10 @@ It allows for an `offset` to be provided, which will be added to the index that 
             "inputPath": "element"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": "dog"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3145,13 +2893,10 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": 0
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.dereference",
@@ -3160,13 +2905,10 @@ It allows for an `offset` to be provided, which will be added to the index that 
             "offset": 1
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": "dog"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3176,9 +2918,12 @@ It allows for an `offset` to be provided, which will be added to the index that 
 
 #### Description:
 
-Simple string template system. Takes a template string (via the `template` parameter) containing tokens in the form of "%value". Returns a new string with the tokens replaced by values specified in the `terms` parameter. Keys and values can be of any data type that can be coerced into a string. Arrays will work here as well.
+Simple string template system. Takes a template string (via the `template` parameter) containing tokens in the form of
+"%value". Returns a new string with the tokens replaced by values specified in the `terms` parameter. Keys and values
+can be of any data type that can be coerced into a string. Arrays will work here as well.
 
-Currently it does not support reading any of its values from the input model. Furthermore, both `template` and `terms` are read as literal values, and hence not further interpreted by the model transformation system.
+Currently it does not support reading any of its values from the input model. Furthermore, both `template` and `terms`
+are read as literal values, and hence not further interpreted by the model transformation system.
 
 **Invertibility:** Not invertible.
 
@@ -3199,11 +2944,8 @@ Currently it does not support reading any of its values from the input model. Fu
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.stringTemplate",
@@ -3217,13 +2959,10 @@ Currently it does not support reading any of its values from the input model. Fu
             "outputPath": "finalstring"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "finalstring": "Paused at: 12 of 14 files (100 Kb of 12000Gb)"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3232,11 +2971,8 @@ Currently it does not support reading any of its values from the input model. Fu
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.stringTemplate",
@@ -3245,13 +2981,10 @@ Currently it does not support reading any of its values from the input model. Fu
             "outputPath": "finalstring"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "finalstring": "Paused at: 12 of 14 files (100 Kb of 12000Gb)"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3261,9 +2994,13 @@ Currently it does not support reading any of its values from the input model. Fu
 
 #### Description:
 
-Proxy transform to call any globally available function. The function to be called is passed via the `func` key, and the arguments to the function are passed via the `args` key. If `args` is an array, each entry will be passed as individual arguments to the function. If `args` is an object, it will be passed to the function as a single argument which is the object - this is also true for any primitive datatype.
+Proxy transform to call any globally available function. The function to be called is passed via the `func` key, and the
+arguments passed are to the function are passed via the `args` key. If `args` is an array, each entry will be passed as
+individual arguments to the function. If `args` is an object, it will be passed to the function as a single argument
+which is the object - this is also true for any primitive datatype.
 
-Does not support reading any of its values from the input model, and any value passed to this transform via the `func` and `args` keys are passed into the transform as literal values (i.e. further transforms will not be parsed).
+Does not support reading any of its values from the input model, and any value passed to this transform via the `func`
+and `args` keys are passed into the transform as literal values (i.e. further transforms will not be parsed).
 
 **Invertibility:** Not invertible.
 
@@ -3292,10 +3029,8 @@ fluid.myfuncs.addThree = function (a, b, c) {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.free",
@@ -3304,13 +3039,10 @@ fluid.myfuncs.addThree = function (a, b, c) {
             "outputPath": "result",
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": 14
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3331,11 +3063,8 @@ fluid.myfuncs.addNumbers = function (options) {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.free",
@@ -3344,13 +3073,10 @@ fluid.myfuncs.addNumbers = function (options) {
             "outputPath": "result"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": 6
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3395,13 +3121,10 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "controls": [ "mouse", "keyboard" ]
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.arrayToSetMembership",
         "outputPath": "detections",
@@ -3415,18 +3138,15 @@ transform: {
             "headtracker": "hasHeadtracker"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "detections": {
         "hasMouse": "supported",
         "hasKeyboard": "supported",
         "hasTrackpad": "not supported",
         "hasHeadtracker": "not supported"
     }
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3435,13 +3155,10 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "controls": [ "mouse", "keyboard" ]
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.arrayToSetMembership",
         "outputPath": "detections",
@@ -3453,18 +3170,15 @@ transform: {
             "headtracker": "hasHeadtracker"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "detections": {
         "hasMouse": true,
         "hasKeyboard": true,
         "hasTrackpad": false,
         "hasHeadtracker": false
     }
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3472,7 +3186,9 @@ transform: {
 
 **Type:** standardTransformFunction
 
-**Description:** This is inverse of `fluid.transforms.arrayToSetMembership`. This transformation was developed to
+#### Description:
+
+This is inverse of `fluid.transforms.arrayToSetMembership`. This transformation was developed to
 accommodate a use case where a boolean list of system capabilities needed to be translated to an array containing only
 capabilities that were true.
 
@@ -3510,18 +3226,15 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "detections": {
         "hasMouse": "supported",
         "hasKeyboard": "supported",
         "hasTrackpad": "not supported",
         "hasHeadtracker": "not supported"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.setMembershipToArray",
         "inputPath": "detections",
@@ -3535,13 +3248,10 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
             "hasHeadtracker": "headtracker"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "controls": [ "mouse", "keyboard" ]
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3550,18 +3260,15 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "detections": {
         "hasMouse": true,
         "hasKeyboard": true,
         "hasTrackpad": false,
         "hasHeadtracker": false
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.setMembershipToArray",
         "inputPath": "detections",
@@ -3573,13 +3280,10 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
             "hasHeadtracker": "headtracker"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "controls": [ "mouse", "keyboard" ]
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3587,7 +3291,9 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
 
 **Type:** standardTransformFunction
 
-**Description:** Convert a String to a Boolean, for example, when working with HTML checkbox form element values.
+#### Description:
+
+Convert a String to a Boolean, for example, when working with HTML checkbox form element values.
 The following are all false: undefined, null, "", "0", "false", false, 0.  Everything else is true.
 
 **Invertibility:** Partly invertible via `fluid.transforms.booleanToString`.
@@ -3611,25 +3317,19 @@ The following are all false: undefined, null, "", "0", "false", false, 0.  Every
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "checkboxElement": "true"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToBoolean",
         "inputPath": "checkboxElement",
         "outputPath": "isChecked"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "isChecked": true
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3638,7 +3338,9 @@ The following are all false: undefined, null, "", "0", "false", false, 0.  Every
 
 **Type:** standardTransformFunction
 
-**Description:** Convert any value into a stringified boolean, i.e. either "true" or "false".
+#### Description:
+
+Convert any value into a stringified boolean, i.e. either "true" or "false".
 Anything that evaluates to true (1, true, "non empty string", {}, etc.) returns "true".
 Anything else (0, false, null, etc.) returns "false".
 
@@ -3663,25 +3365,19 @@ Anything else (0, false, null, etc.) returns "false".
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "isChecked": false
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.booleanToString",
         "inputPath": "isChecked",
         "outputPath": "checkboxElement"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "checkboxElement": "false"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3690,7 +3386,9 @@ Anything else (0, false, null, etc.) returns "false".
 
 **Type:** standardTransformFunction
 
-**Description:** Transform stringified JSON to an object using `JSON.parse`.  Returns `undefined` if the JSON string is invalid.
+#### Description:
+
+Transform stringified JSON to an object using `JSON.parse`.  Returns `undefined` if the JSON string is invalid.
 
 **Invertibility:** Partly invertible via `fluid.transforms.objectToJSONString`.
 
@@ -3713,27 +3411,21 @@ Anything else (0, false, null, etc.) returns "false".
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "string": "{ \"foo\": \"bar\" }"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.JSONstringToObject",
         "inputPath": "string",
         "outputPath": "object"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "object": {
         "foo": "bar"
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3742,7 +3434,9 @@ Anything else (0, false, null, etc.) returns "false".
 
 **Type:** standardTransformFunction
 
-**Description:** Transform an object to a string using `JSON.stringify`.
+#### Description:
+
+Transform an object to a string using `JSON.stringify`.
 
 **Invertibility:** Partly invertible via `fluid.transforms.JSONstringToObject`.
 
@@ -3765,27 +3459,21 @@ Anything else (0, false, null, etc.) returns "false".
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "object": {
         "foo": "bar"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.objectToJSONString",
         "inputPath": "object",
         "outputPath": "string"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "string": "{\"foo\":\"bar\"}"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3799,28 +3487,22 @@ disables spacing and line breaks.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "object": {
         "foo": "bar"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.objectToJSONString",
         "inputPath": "object",
         "outputPath": "string",
         "space": 2
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "string": "{\n  \"foo\":  \"bar\"\n}"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3829,7 +3511,9 @@ disables spacing and line breaks.
 
 **Type:** standardTransformFunction
 
-**Description:** Transform a string to a date using the Date constructor. Accepts (among other things) the date and
+#### Description:
+
+Transform a string to a date using the Date constructor. Accepts (among other things) the date and
 dateTime values returned by HTML5 date and dateTime inputs. This function allows you to create Date objects from an
 ISO-8601 string such as `2017-01-23T08:51:25.891Z`.
 It is intended to provide a consistent mechanism for recreating Date objects stored as strings.
@@ -3859,25 +3543,19 @@ although this can be done at your own risk. See the section on
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "string": "2016-11-23T15:28:19.052Z"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToDate",
         "inputPath": "string",
         "outputPath": "date"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "date": // A javascript Date object
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3886,7 +3564,9 @@ although this can be done at your own risk. See the section on
 
 **Type:** standardTransformFunction
 
-**Description:** Transform a Date object into a date string using its toISOString method.
+#### Description:
+
+Transform a Date object into a date string using its toISOString method.
 Strips the "time" portion away to produce date strings that are suitable for use with both HTML5 "date" inputs and
 JSON Schema "date" format string validation, for example: `2016-11-23`.
 If you wish to preserve the time, use `fluid.transforms.dateTimeToString` instead.
@@ -3917,25 +3597,19 @@ although this can be done at your own risk. See the section on
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "date": // A javascript Date object
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.dateToString",
         "inputPath": "object",
         "outputPath": "string"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "string": "2016-11-23"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3944,7 +3618,9 @@ although this can be done at your own risk. See the section on
 
 **Type:** standardTransformFunction
 
-**Description:** Transform a Date object into a date/time string using its toISOString method.
+#### Description:
+
+Transform a Date object into a date/time string using its toISOString method.
 Results in date strings that are suitable for use with both HTML5 "dateTime" inputs and JSON Schema "date-time" format
 string validation, for example: `2016-11-23T13:05:24.079Z`. A non-date object will be treated as `undefined`.
 
@@ -3973,25 +3649,19 @@ although this can be done at your own risk. See the section on
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "date": // A javascript Date object
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.dateTimeToString",
         "inputPath": "object",
         "outputPath": "string"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "string": "2016-11-23T15:28:19.052Z"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>

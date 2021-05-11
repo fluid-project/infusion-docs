@@ -1,6 +1,5 @@
 ---
 title: Contexts
-layout: default
 category: Infusion
 ---
 
@@ -62,10 +61,11 @@ in two kinds of "scopes" or "environments".
   components, searching __upwards__ through the tree from the parent of the component where the context
   name is held.
 * Following this, a search is made in the *resolver root*, which is notionally a separate tree
-  of components which holds all components which has been instantiated with the grade [`fluid.resolveRoot`](#global-components-fluidresolveroot-and-fluidresolverootsingle) (see below) anywhere in the
+  of components which holds all components which has been instantiated with the grade
+  [`fluid.resolveRoot`](#global-components-fluidresolveroot-and-fluidresolverootsingle) (see below) anywhere in the
   current component tree.
 
-![Diagram showing coloured squared representing components in a component tree](images/IoC-scope.svg)
+![Diagram showing coloured squared representing components in a component tree](/images/IoC-scope.svg)
 
 ## Global components: `fluid.resolveRoot` and `fluid.resolveRootSingle`
 
@@ -122,7 +122,8 @@ type whose instance was expected to be unique.
             <td><code>fluid.resolveRootSingle</code></td>
             <td>Yes</td>
             <td>
-                A fresh instance that holds the same value of the option <code>singleRootType</code> displaces the previous one from global visibility (but does not destroy it)
+                A fresh instance that holds the same value of the option <code>singleRootType</code> displaces the
+                previous one from global visibility (but does not destroy it)
             </td>
         </tr>
     </tbody>
@@ -143,15 +144,16 @@ var that2 = fluid.component({
 });
 ```
 
-However, in the following example, since `rootComponent1` has the grade `fluid.resolveRootSingle`, the instance `root1` can be seen by the
-second component. In addition, since it has `fluid.resolveRootSingle` rather than just `fluid.resolveRoot`, when we
-create a second instance of it, this instance becomes the globally visible one.
+However, in the following example, since `rootComponent1` has the grade `fluid.resolveRootSingle`, the instance `root1`
+can be seen by the second component. In addition, since it has `fluid.resolveRootSingle` rather than just
+`fluid.resolveRoot`, when we create a second instance of it, this instance becomes the globally visible one.
 
 <div class="infusion-docs-note">
 
-<strong>Note:</strong> In general, users must take care to destroy all such "free components" manually when they are no longer required. Since
-JavaScript does not supply schemes for reference tracking, there is no way for the framework to determine when a component is no
-longer being used. The user must call `destroy()` on such instances themselves.
+<strong>Note:</strong> In general, users must take care to destroy all such "free components" manually when they are
+no longer required. Since JavaScript does not supply schemes for reference tracking, there is no way for the
+framework to determine when a component is no longer being used. The user must call `destroy()` on such instances
+themselves.
 </div>
 
 ```javascript
@@ -191,10 +193,14 @@ that2.destroy();
 
 ## Allowing a component to adapt to its context
 
-There are three principal routes that a component can be influenced by its context, listed from the most straightforward to the most heavyweight:
+There are three principal routes that a component can be influenced by its context, listed from the most straightforward
+to the most heavyweight:
 
-* Firstly, a component can simply include a contextualised reference in its configuration, as we saw above - e.g. `{rootComponent1}.options.rootValue`. This
-  value is fetched from the specified part of the context and becomes part of the component's options when it is instantiated
-* Secondly, an [options distribution](IoCSS.md) can be targetted at the component from elsewhere in the tree, using the IoCSS context expressions described above.
-* Thirdly, the component can derive from the [`fluid.contextAware`](ContextAwareness.md) grade in order to set up complex arbitration amongst multiple sources of context
-  which can influence the component along several axes simultaneously.
+* Firstly, a component can simply include a contextualised reference in its configuration, as we saw above - e.g.
+  `{rootComponent1}.options.rootValue`. This value is fetched from the specified part of the context and becomes part of
+  the component's options when it is instantiated
+* Secondly, an [options distribution](IoCSS.md) can be targeted at the component from elsewhere in the tree, using the
+  IoCSS context expressions described above.
+* Thirdly, the component can derive from the [`fluid.contextAware`](ContextAwareness.md) grade in order to set up
+  complex arbitration amongst multiple sources of context which can influence the component along several axes
+  simultaneously.

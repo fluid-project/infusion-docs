@@ -1,10 +1,11 @@
 ---
 title: Textfield Stepper
-layout: default
 category: Components
 ---
 
-The **Textfield Stepper** is a user interface component for adjusting a number value using a [Textfield](TextfieldAPI.md) for direct entry of the value, along buttons for incrementing and decrementing the value. A user can also increment/decrement the values using the up/down arrow keys.
+The **Textfield Stepper** is a user interface component for adjusting a number value using a
+[Textfield](TextfieldAPI.md) for direct entry of the value, along buttons for incrementing and decrementing the value. A
+user can also increment/decrement the values using the up/down arrow keys.
 
 ## Creator
 
@@ -21,7 +22,8 @@ Use the following function to create a Textfield Stepper component:
         <tr>
             <th>Description</th>
             <td>
-                Instantiates the Textfield Stepper component. Connects a textfield and a pair of increment/decrement buttons to set a value. Entries are restricted to numbers within a given range.
+                Instantiates the Textfield Stepper component. Connects a textfield and a pair of increment/decrement
+                buttons to set a value. Entries are restricted to numbers within a given range.
             </td>
         </tr>
         <tr>
@@ -30,7 +32,8 @@ Use the following function to create a Textfield Stepper component:
                 <dl>
                     <dt>container</dt>
                     <dd>
-                        A CSS-based selectors, single-element jQuery object, or DOM element that identifies the root DOM node where the Textfield Stepper should be placed.
+                        A CSS-based selectors, single-element jQuery object, or DOM element that identifies the root DOM
+                        node where the Textfield Stepper should be placed.
                     </dd>
                 </dl>
                 <dl>
@@ -48,8 +51,7 @@ Use the following function to create a Textfield Stepper component:
         <tr>
             <th>Examples</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     strings: {
         "label": "Textfield Stepper"
@@ -63,8 +65,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         }
     },
     scale: 1
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -136,7 +137,8 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>addFocus</code> method adds the <code>focus</code> style classes to the element specified by the <code>focusContainer</code> selector.
+                The <code>addFocus</code> method adds the <code>focus</code> style classes to the element specified by
+                the <code>focusContainer</code> selector.
             </td>
         </tr>
         <tr>
@@ -159,7 +161,8 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>removeFocus</code> method removes the <code>focus</code> style classes from the element specified by the <code>focusContainer</code> selector.
+                The <code>removeFocus</code> method removes the <code>focus</code> style classes from the element
+                specified by the <code>focusContainer</code> selector.
             </td>
         </tr>
         <tr>
@@ -238,35 +241,33 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
         <tr>
             <th>Description</th>
             <td>
-                The <code>strings</code> option allows you to specify strings to be used by the component and is the main location for localization. Amongst other strings, this is used to set an <code>"aria-label"</code> to the textfield element, via the <code>attrs</code> option.
+                The <code>strings</code> option allows you to specify strings to be used by the component and is the
+                main location for localization. Amongst other strings, this is used to set an <code>"aria-label"</code>
+                to the textfield element, via the <code>attrs</code> option.
             </td>
         </tr>
         <tr>
             <th>Default</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 {
     increaseLabel: "increment",
     decreaseLabel: "decrement"
-}
-</code>
+}</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     strings: {
         "label": "Text Size",
         increaseLabel: "increase",
         decreaseLabel: "decrease"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -280,7 +281,10 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>. By default this option is passed along to and applied by the <a href="TextfieldAPI.md">textfield</a> subcomponent.
+                The <code>attrs</code> option allows you to specify attributes to be added on creation. In particular
+                this is used to set aria attributes used by the component, such as <code>"aria-labelledby"</code>. By
+                default this option is passed along to and applied by the <a href="TextfieldAPI.md">textfield</a>
+                subcomponent.
             </td>
         </tr>
         <tr>
@@ -290,14 +294,12 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     attrs: {
         "aria-labelledby": "elementID"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -311,34 +313,31 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>styles</code> option allows you to specify classes to be added programmatically and used for styling with CSS to the component.
+                The <code>styles</code> option allows you to specify classes to be added programmatically and used for
+                styling with CSS to the component.
             </td>
         </tr>
         <tr>
             <th>Default</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 {
     container: "fl-textfieldStepper",
     focus: "fl-textfieldStepper-focus"
-}
-</code>
+}</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     styles: {
         container: "fl-textfieldStepper-container",
         focus: "fl-focus"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -352,29 +351,27 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Description</th>
             <td>
-                The <code>selectors</code> option allows you to identify the elements within the component's markup for programmatically interacting with.
+                The <code>selectors</code> option allows you to identify the elements within the component's markup for
+                programmatically interacting with.
             </td>
         </tr>
         <tr>
             <th>Default</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 {
     textfield: ".flc-textfieldStepper-field",
     focusContainer: ".flc-textfieldStepper-focusContainer",
     increaseButton: ".flc-textfieldStepper-increase",
     decreaseButton: ".flc-textfieldStepper-decrease"
-}
-</code>
+}</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     selectors: {
         textfield: ".demo-textfieldStepper-field",
@@ -382,8 +379,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         increaseButton: ".demo-textfieldStepper-increase",
         decreaseButton: ".demo-textfieldStepper-decrease"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
