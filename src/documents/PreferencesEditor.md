@@ -1,6 +1,5 @@
 ---
 title: Preferences Editor
-layout: default
 category: Infusion
 ---
 

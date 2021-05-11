@@ -1,6 +1,5 @@
 ---
 title: Working With A Preferences Editor On Your Site
-layout: default
 category: Tutorials
 ---
 

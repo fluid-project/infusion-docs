@@ -1,6 +1,5 @@
 ---
 title: Textfield
-layout: default
 category: Components
 ---
 
@@ -54,8 +53,7 @@ component to.
         <tr>
             <th>Examples</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfield = fluid.textfield(".flc-textfield", {
     model: {
         value: "Hello World"
@@ -63,8 +61,7 @@ var textfield = fluid.textfield(".flc-textfield", {
     strings: {
         "label": "Insert Demo Name"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -133,14 +130,12 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfield = fluid.textfield(".flc-textfield", {
     strings: {
         "label": "Insert Demo Name"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -166,14 +161,12 @@ var textfield = fluid.textfield(".flc-textfield", {
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfield = fluid.textfield(".flc-textfield", {
     attrs: {
         "aria-labelledby": "elementID"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>

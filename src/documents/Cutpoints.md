@@ -1,6 +1,5 @@
 ---
 title: Cutpoints
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---

@@ -1,6 +1,5 @@
 ---
 title: Infusion Promises API
-layout: default
 category: Infusion
 ---
 [Promises](https://en.wikipedia.org/wiki/Futures_and_promises) are a now widespread programming construct aiming to

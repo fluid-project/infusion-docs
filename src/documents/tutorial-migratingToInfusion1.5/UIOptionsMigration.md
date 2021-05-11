@@ -1,6 +1,5 @@
 ---
 title: UI Options 1.5 Migration
-layout: default
 category: Infusion
 ---
 

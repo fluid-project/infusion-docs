@@ -1,6 +1,5 @@
 ---
 title: Inline Edit
-layout: default
 category: Components
 ---
 

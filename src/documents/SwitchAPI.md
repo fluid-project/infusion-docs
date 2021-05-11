@@ -1,6 +1,5 @@
 ---
 title: Switch API
-layout: default
 category: Components
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Localization in the Preferences Framework
-layout: default
 category: Infusion
 ---
 
@@ -186,7 +185,8 @@ When using a `fluid.rendererComponent`, strings from the Message Bundles are ren
     </thead>
     <tbody>
         <tr>
-            <td valign="baseline"><pre><code>fluid.defaults("fluid.prefs.panels.linksControls", {
+            <td valign="baseline"><pre class="highlight"><code class="hljs javascript">
+{fluid.defaults("fluid.prefs.panels.linksControls", {
     // ...
     protoTree: {
         label: {messagekey: "linksLabel"},
@@ -196,7 +196,7 @@ When using a `fluid.rendererComponent`, strings from the Message Bundles are ren
         inputsLarger: "${inputsLarger}"
     }
 });</code></pre></td>
-            <td valign="baseline"><pre><code>{
+            <td valign="baseline"><pre class="highlight"><code class="hljs javascript">{{
     "linksLabel": "Links &amp; buttons",
     "linksChoiceLabel": "Underline and bold",
     "inputsChoiceLabel": "Enlarge buttons, menus, text-fields, and other inputs"

@@ -1,5 +1,7 @@
 ---
 title: Search the Infusion Documentation
-layout: default
 category: Search
+eleventyNavigation:
+    key: Search
+    order: 4
 ---

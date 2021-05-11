@@ -1,6 +1,5 @@
 ---
-title: Preferences Framework: Minimal Footprint
-layout: default
+title: "Preferences Framework: Minimal Footprint"
 category: Tutorials
 ---
 
@@ -78,67 +77,67 @@ The code consists of the following three parts:
 </div>
 
 ```javascript
-    /*
-    /*
-     * The various starter gradeNames mentioned below indicate that the
-     * "starter" adjusters and enactors should be used. These correspond to the
-     * same set of adjusters and enactors used in a typical UI Options
-     * configuration. However, a custom set of adjusters and enactors could be
-     * configured instead.
-     */
+/*
+/*
+    * The various starter gradeNames mentioned below indicate that the
+    * "starter" adjusters and enactors should be used. These correspond to the
+    * same set of adjusters and enactors used in a typical UI Options
+    * configuration. However, a custom set of adjusters and enactors could be
+    * configured instead.
+    */
 
-    /**
-     * Initialize the PrefsEditor global settings store.
-     * The globalSettingsStore handles the storage and retrieval of preferences,
-     * by default it is configured to use the fluid.prefs.cookieStore
-     * which stores preferences in a browser cookie.
-     */
-    fluid.prefs.globalSettingsStore();
+/**
+ * Initialize the PrefsEditor global settings store.
+ * The globalSettingsStore handles the storage and retrieval of preferences,
+ * by default it is configured to use the fluid.prefs.cookieStore
+ * which stores preferences in a browser cookie.
+ */
+fluid.prefs.globalSettingsStore();
 
-    /**
-     * Initialize the UI Enhancer for the page.
-     */
-    fluid.pageEnhancer({
-        uiEnhancer: {
-            gradeNames: ["fluid.uiEnhancer.starterEnactors"],
-            // The UI Enhancer's Table of Contents uses an HTML template. This tells the component
-            // where to find that template.
-            tocTemplate: "../../../../src/components/tableOfContents/html/TableOfContents.html"
-        }
-    });
+/**
+ * Initialize the UI Enhancer for the page.
+ */
+fluid.pageEnhancer({
+    uiEnhancer: {
+        gradeNames: ["fluid.uiEnhancer.starterEnactors"],
+        // The UI Enhancer's Table of Contents uses an HTML template. This tells the component
+        // where to find that template.
+        tocTemplate: "../../../../src/components/tableOfContents/html/TableOfContents.html"
+    }
+});
 
-    fluid.prefs.fullPreview(".demo-prefsEditor-fullWithPreview", {
-        gradeNames: ["fluid.prefs.transformDefaultPanelsOptions", "fluid.prefs.initialModel.starter"],
-        // Tell PrefsEditor where to find all the resources, relative to this file
-        terms: {
-            // The Preferences Editor interface is defined by several HTML templates. The component
-            // needs to know where those templates are.
-            templatePrefix: "../../../../src/framework/preferences/html",
-            //  The strings used on Preferences Editor interface are defined in several JSON files. The component
-            //  needs to know where those files are.
-            messagePrefix: "../../../../src/framework/preferences/messages"
-        },
-        messageLoader: {
-            gradeNames: ["fluid.prefs.starterMessageLoader"]
-        },
-        templateLoader: {
-            gradeNames: ["fluid.prefs.starterFullPreviewTemplateLoader"]
-        },
-        prefsEditor: {
-            gradeNames: ["fluid.prefs.starterPanels", "fluid.prefs.uiEnhancerRelay"],
-            listeners: {
-                // Tells the PrefsEditor where to redirect to if the user cancels the operation.
-                // In this case, it goes back one step in the browser's history.
-                onCancel: {
-                    "this": window.history,
-                    method: "back"
-                }
+fluid.prefs.fullPreview(".demo-prefsEditor-fullWithPreview", {
+    gradeNames: ["fluid.prefs.transformDefaultPanelsOptions", "fluid.prefs.initialModel.starter"],
+    // Tell PrefsEditor where to find all the resources, relative to this file
+    terms: {
+        // The Preferences Editor interface is defined by several HTML templates. The component
+        // needs to know where those templates are.
+        templatePrefix: "../../../../src/framework/preferences/html",
+        //  The strings used on Preferences Editor interface are defined in several JSON files. The component
+        //  needs to know where those files are.
+        messagePrefix: "../../../../src/framework/preferences/messages"
+    },
+    messageLoader: {
+        gradeNames: ["fluid.prefs.starterMessageLoader"]
+    },
+    templateLoader: {
+        gradeNames: ["fluid.prefs.starterFullPreviewTemplateLoader"]
+    },
+    prefsEditor: {
+        gradeNames: ["fluid.prefs.starterPanels", "fluid.prefs.uiEnhancerRelay"],
+        listeners: {
+            // Tells the PrefsEditor where to redirect to if the user cancels the operation.
+            // In this case, it goes back one step in the browser's history.
+            onCancel: {
+                "this": window.history,
+                method: "back"
             }
-        },
-        preview: {
-            templateUrl: "html/prefsEditorPreview.html"
         }
-    });
+    },
+    preview: {
+        templateUrl: "html/prefsEditorPreview.html"
+    }
+});
 ```
 
 ### Lazy Loading

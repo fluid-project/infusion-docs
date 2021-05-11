@@ -1,6 +1,5 @@
 ---
 title: Table of Contents API
-layout: default
 category: Components
 ---
 

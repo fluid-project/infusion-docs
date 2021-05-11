@@ -1,6 +1,5 @@
 ---
 title: jqUnit
-layout: default
 category: Infusion
 ---
 

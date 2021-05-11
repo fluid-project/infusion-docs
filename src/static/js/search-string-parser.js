@@ -1,7 +1,6 @@
-/* global require */
+"use strict";
 var fluid = fluid || require("infusion");
 (function (fluid) {
-    "use strict";
     fluid.registerNamespace("fluid.docs.search");
 
     fluid.docs.search.parseSearchString = function (toParse) {

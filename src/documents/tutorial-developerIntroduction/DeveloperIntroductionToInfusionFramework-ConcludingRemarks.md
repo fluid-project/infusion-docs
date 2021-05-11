@@ -1,6 +1,5 @@
 ---
 title: Developer Introduction to the Infusion Framework - Concluding Remarks
-layout: default
 category: Tutorials
 ---
 

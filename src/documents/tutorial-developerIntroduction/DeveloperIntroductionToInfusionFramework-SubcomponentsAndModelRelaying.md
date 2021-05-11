@@ -1,6 +1,5 @@
 ---
 title: Developer Introduction to the Infusion Framework - Subcomponents and Model Relaying
-layout: default
 category: Tutorials
 ---
 

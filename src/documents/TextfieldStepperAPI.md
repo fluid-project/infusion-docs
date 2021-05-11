@@ -1,6 +1,5 @@
 ---
 title: Textfield Stepper
-layout: default
 category: Components
 ---
 
@@ -52,8 +51,7 @@ Use the following function to create a Textfield Stepper component:
         <tr>
             <th>Examples</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     strings: {
         "label": "Textfield Stepper"
@@ -67,8 +65,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         }
     },
     scale: 1
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -252,29 +249,25 @@ The following model paths can be used with [model listeners](ChangeApplierAPI.md
         <tr>
             <th>Default</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 {
     increaseLabel: "increment",
     decreaseLabel: "decrement"
-}
-</code>
+}</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     strings: {
         "label": "Text Size",
         increaseLabel: "increase",
         decreaseLabel: "decrease"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -301,14 +294,12 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     attrs: {
         "aria-labelledby": "elementID"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -329,28 +320,24 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Default</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 {
     container: "fl-textfieldStepper",
     focus: "fl-textfieldStepper-focus"
-}
-</code>
+}</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     styles: {
         container: "fl-textfieldStepper-container",
         focus: "fl-focus"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>
@@ -371,23 +358,20 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         <tr>
             <th>Default</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 {
     textfield: ".flc-textfieldStepper-field",
     focusContainer: ".flc-textfieldStepper-focusContainer",
     increaseButton: ".flc-textfieldStepper-increase",
     decreaseButton: ".flc-textfieldStepper-decrease"
-}
-</code>
+}</code>
 </pre>
             </td>
         </tr>
         <tr>
             <th>Example</th>
             <td>
-<pre>
-<code>
+<pre class="highlight"><code class="hljs javascript">
 var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
     selectors: {
         textfield: ".demo-textfieldStepper-field",
@@ -395,8 +379,7 @@ var textfieldStepper = fluid.textfieldStepper(".flc-textfieldStepper", {
         increaseButton: ".demo-textfieldStepper-increase",
         decreaseButton: ".demo-textfieldStepper-decrease"
     }
-});
-</code>
+});</code>
 </pre>
             </td>
         </tr>

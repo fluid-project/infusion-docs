@@ -1,6 +1,5 @@
 ---
 title: API Changes from 2.0 to 3.0
-layout: default
 category: Infusion
 ---
 

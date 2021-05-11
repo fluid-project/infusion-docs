@@ -1,6 +1,5 @@
 ---
 title: User Interface Options
-layout: default
 category: Components
 ---
 

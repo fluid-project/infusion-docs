@@ -1,6 +1,5 @@
 ---
 title: Developer Introduction to the Infusion Framework - Transforming Model Relays
-layout: default
 category: Tutorials
 ---
 
