@@ -65,6 +65,36 @@ will contain the following new model paths.
     </tbody>
 </table>
 
+#### Preference Map
+
+The keyword `"default"` was used to setup a model relay between an internal model and the preferences state. If no
+existing preference was stored, the value was taken from the `"default"` property of the related primary schema. The
+keyword has been changed to `"value"`.
+
+##### In 2.0
+
+```json
+{
+    "preferenceMap": {
+        "fluid.prefs.tableOfContents": {
+            "model.toc": "default"
+        }
+    }
+}
+```
+
+##### In 3.0
+
+```json
+{
+    "preferenceMap": {
+        "fluid.prefs.tableOfContents": {
+            "model.toc": "value"
+        }
+    }
+}
+```
+
 #### Panel Changes
 
 ##### Selectors

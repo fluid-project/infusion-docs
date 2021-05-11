@@ -186,7 +186,7 @@ fluid.defaults("awesomeCars.prefs.panels.heatedSeats", {
         "awesomeCars.prefs.heatedSeats": {
             // this key, "model.heatedSeats", is the path into the panel's model
             // where this preference is stored
-            "model.heatedSeats": "default"
+            "model.heatedSeats": "value"
         }
     },
 
@@ -235,7 +235,7 @@ into your Panel. Let’s look at this one more closely:
 <pre class="highlight">
 <code class="hljs javascript">preferenceMap: {
     "awesomeCars.prefs.heatedSeats": {
-        "model.heatedSeats": "default"
+        "model.heatedSeats": "value"
     }
 }</code></pre>
 
@@ -263,7 +263,7 @@ Most Infusion components have an internal model, for maintaining the state of th
 </li>
 <li>
 
-The value, `“default”`, is an EL path referencing the `“default”` property in the Primary Schema.
+The value, `“value”`, is an EL path referencing the stored value or the `“default”` property in the Primary Schema.
 </li>
 </ul>
 
@@ -651,7 +651,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default"
+            "model.radioVolume": "value"
         }
     }
     // ...
@@ -668,7 +668,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
 
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default"
+            "model.radioVolume": "value"
         }
     },
     range: {
@@ -687,7 +687,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default",
+            "model.radioVolume": "value",
             "range.min": "minimum",
             "range.max": "maximum",
             "range.step": "divisibleBy"
@@ -710,7 +710,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
     gradeNames: ["fluid.prefs.panel"],
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default",
+            "model.radioVolume": "value",
             "range.min": "minimum",
             "range.max": "maximum",
             "range.step": "divisibleBy"
@@ -780,7 +780,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
 
     preferenceMap: {
         "awesomeCars.prefs.radioVolume": {
-            "model.radioVolume": "default",
+            "model.radioVolume": "value",
             "range.min": "minimum",
             "range.max": "maximum",
             "range.step": "divisibleBy"
