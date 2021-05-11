@@ -3,27 +3,34 @@ title: Setting Up User Interface Options
 category: Tutorials
 ---
 
-The **User Interface Options (UI Options)** component allows users to transform the presentation of the user interface
-and content resources so that they are personalized to the individual user's needs and preferences.
+The **User Interface Options (UI Options)**, or **UIO** for short, component allows users to transform the presentation
+of the user interface and content resources so that they are personalized to an individual's own needs and preferences.
 
 UI Options does three things:
 
-* places a preferences editor dialog with a set of adjusters in a collapsible panel at the top of the page, accessible
-  through a button in the upper right corner of the page;
-* instantiates a cookie-based [Settings Store](../SettingsStore.md) for storing the user's preferences; and
-* acts upon the user's preferences.
+* places a preferences editor dialog, with a set of adjusters, in a collapsible panel at the top of the page; accessible
+  through a button at the upper right corner of the page;
+* instantiates a cookie-based [Settings Store](../SettingsStore.md) for storing the user's preferences
+* acts upon the user's preferences
+
+<div class="infusion-docs-note">
+<strong>Note:</strong>
+The above can all be configured or modified, but for simplicity, in this tutorial, we will talk about the default
+experience.
+</div>
 
 ![Screen shot of the UI Options Component](/images//uio-showcase.png "Screen shot of the UI Options Component")
 
 Try the [UI Options demo](https://build-infusion.fluidproject.org/demos/uioptions/).
 
 UI Options is also available as a [Wordpress plugin](https://github.com/fluid-project/uio-wordpress-plugin) based on the
-latest stable release of Infusion, and as a [Drupal plugin](https://www.drupal.org/project/fluidui) (maintained by [OpenConcept](https://openconcept.ca)).
+latest stable release of Infusion, and as a [Drupal plugin](https://www.drupal.org/project/fluidui)
+(maintained by [OpenConcept](https://openconcept.ca)).
 
 ## Overview
 
-The goal is to put together a website and allow visitors a way to customize the website presentation to their
-individual needs and preferences. This tutorial will outline steps needed to Infusion UI Options component a site.
+The goal is to put together a website and allow visitors a way to customize the website presentation to their own
+personal needs and preferences. This tutorial will outline the steps needed to setup UI Options on a site.
 
 These are the basic steps to add UI Options:
 
@@ -44,27 +51,41 @@ Download and install UI Options using one of the methods outlined in [Getting Us
 
 ### Add the Sliding Panel
 
-The UI Options component includes HTML templates for all the controls, so it's not necessary to create any HTML for them.
+The UI Options component includes HTML templates for all the controls, so it's not necessary to create any HTML for
+them.
 
-Insert the following markup at the beginning of the `<body>` tag to tell UI Options where to render itself:
+Insert the preference editor markup at the beginning of the `<body>` tag to instruct UI Options where to render:
 
 ```html
 <body>
+    <!-- BEGIN markup for Preference Editor -->
     <section class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+        <!--
+            This div is for the sliding panel bar that shows and hides the Preference Editor controls in the mobile view.
+            A separate panel bar for mobile displays is needed to preserver the correct tab order.
+        -->
+        <div class="fl-panelBar fl-panelBar-smallScreen">
+            <span class="fl-prefsEditor-buttons">
+                <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+            </span>
+        </div>
 
         <!-- This is the div that will contain the Preference Editor component -->
-        <div id="preferences" class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+        <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
 
-        <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
-        <div class="fl-panelBar">
+        <!--
+            This div is for the sliding panel bar that shows and hides the Preference Editor controls in the desktop view.
+            A separate panel bar for desktop displays is needed to preserver the correct tab order.
+        -->
+        <div class="fl-panelBar fl-panelBar-wideScreen">
             <span class="fl-prefsEditor-buttons">
-                <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-                <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset">
-                    <span class="fl-icon-undo"></span> Reset
-                </button>
+                <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
             </span>
         </div>
     </section>
+    <!-- END markup for Preference Editor -->
 
 
     <!-- the rest of your page here -->
@@ -72,10 +93,13 @@ Insert the following markup at the beginning of the `<body>` tag to tell UI Opti
 </body>
 ```
 
-The `<section>` element in this snippet contains two things:
+The `<section>` element in this snippet contains three things:
 
-1. a `<div class="flc-slidingPanel-panel ...">` where an iframe will be inserted, containing the UI Options adjusters, and
-2. a `<div class="flc-prefsEditor-separatedPanel ...">` where the sliding panel and button will be created.
+1. `<div class="flc-slidingPanel-panel ...">`: where an iframe will be inserted, containing the UI Options adjusters
+2. a `<div class="fl-panelBar fl-panelBar-smallScreen">`: where the sliding panel and button will be created for narrow
+screens (e.g. mobile)
+3. a `<div class="fl-panelBar fl-panelBar-wideScreen">`: where the sliding panel and button will be created for wide
+screens (e.g. desktop)
 
 The elements in this snippet all have particular class names attached to them, and it's important to keep them:
 
@@ -103,6 +127,7 @@ should appear after the `<div class="flc-prefsEditor-separatedPanel fl-prefsEdit
 
 ```html
 <body>
+    <!-- markup for Preference Editor -->
     <section class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
     <!-- ... -->
     </section>
@@ -122,7 +147,7 @@ accessible to keyboard users. Use additional classes to style the Table Of Conte
 
 ## Add dependencies to the page
 
-* the CSS files, and
+* the CSS files
 * the main Infusion JavaScript file: `infusion-uiOptions.js`.
 
 In the `<head>` of your file, link to the CSS and Javascript files using `<link>` and `<script>` tags. Make sure to
@@ -131,40 +156,34 @@ adjust the paths to reflect where you've saved the Infusion package.
 ```html
 <head>
     <!-- CSS files for UI Options-->
-    <link rel="stylesheet" type="text/css" href="lib/infusion/src/lib/normalize/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/core/css/fluid.css" />
     <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
     <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
     <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
 
     <!-- The Infusion Library for UI Options -->
-    <script type="text/javascript" src="lib/infusion/infusion-uiOptions.js"></script>
+    <script type="text/javascript" src="lib/infusion/infusion-uio.js"></script>
 </head>
 ```
 
 <div class="infusion-docs-note">
-    <strong>Notes:</strong>
-    <ul>
-        <li>If your project is already using `normalize.css` you can omit it from snippet above.</li>
-        <li>If you are using the minified version of <code>infusion-uio.js</code> (i.e. all of the whitespace
-        removed), you can still debug the code using the provided source map. For more information, visit <a
-        href="https://github.com/fluid-project/infusion/blob/master/README.md#source-maps">the Infusion Release
-        Readme</a>.</li>
-    </ul>
+    <strong>Note:</strong>
+    While <code>infusion-uio.js</code> is minified, (i.e. all of the whitespace removed), you can still debug the code
+    using the provided source map. For more information, visit <a href="https://github.com/fluid-project/infusion/blob/master/README.md#source-maps">
+    the Infusion Release Readme</a>.
 </div>
 
 If you open this page in your browser now, you'll only see that the button has been styled differently: it is in the
-upper right corner and the font has been changed. You can also see the bar of the sliding panel. The button still
-doesn't do anything, since we still haven't added the UI Options component to the page.
+upper right corner and the font has changed. You can also see the bar of the sliding panel. The button still isn't
+functional, because we have yet to add the UI Options component to the page.
 
 ![Screen shot of the UI Options buttons, styled](/images//uio-buttons-styled.png "Screen shot of the UI Options
 buttons, styled")
 
 ## Add the UI Options component
 
-Add the UI Options component to your page using the `<script>` tag like in the following example. This `<script>`
-block should appear after the `flc-prefsEditor-separatedPanel` `<div>` and after the
-`<nav class="flc-toc-tocContainer">`.
+Add the UI Options component to your page using a `<script>` tag. This `<script>` block should appear after the
+`flc-prefsEditor-separatedPanel` `<div>` and after the `<nav class="flc-toc-tocContainer">`.
 
 In this example, we place the `<script>` at the end of the webpage before the closing `</body>` tag.
 
@@ -206,11 +225,11 @@ In this example, we place the `<script>` at the end of the webpage before the cl
 This script calls the `fluid.uiOptions.prefsEditor()` function to create the component. The function takes two
 arguments:
 
-1. the selector of the container for the component, and
-2. an options object for configuring the component.
+1. the selector of the container for the component
+2. an options object for configuring the component
 
-The selector argument for our UI Options will be the classname `flc-prefsEditor-separatedPanel` of the `<section>` we created
-earlier.
+The selector for our UI Options component will be the classname `flc-prefsEditor-separatedPanel` of the `<section>` we
+created earlier.
 
 The options argument tells the component about four things:
 
@@ -221,7 +240,7 @@ The options argument tells the component about four things:
 
   In the example, the `terms.messagePrefix` option is referencing the default strings provided by the component.
 
-### For Infusion 2.0 (Deprecated in Master)
+### For Infusion 2.0 (Deprecated in Main)
 
 For Infusion 2.0, use the following `<script>` snippet:
 
@@ -249,35 +268,49 @@ Here's the complete example from start to finish. This example assumes the Infus
 <html lang="en">
     <head>
         <!-- CSS files for UI Options-->
-        <link rel="stylesheet" type="text/css" href="lib/infusion/src/lib/normalize/css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/core/css/fluid.css" />
         <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
         <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
-        <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link rel="stylesheet" type="text/css"
+            href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
 
         <!-- The Infusion Library for UI Options -->
-        <script type="text/javascript" src="lib/infusion/infusion-uiOptions.js"></script>
+        <script type="text/javascript" src="lib/infusion/infusion-uio.js"></script>
     </head>
-
     <body>
+        <!-- BEGIN markup for Preference Editor -->
         <section class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+            <!--
+                This div is for the sliding panel bar that shows and hides the Preference Editor controls in the mobile view.
+                A separate panel bar for mobile displays is needed to preserver the correct tab order.
+            -->
+            <div class="fl-panelBar fl-panelBar-smallScreen">
+                <span class="fl-prefsEditor-buttons">
+                    <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span>
+                        Reset</button>
+                </span>
+            </div>
 
             <!-- This is the div that will contain the Preference Editor component -->
-            <div id="preferences" class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+            <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
 
-            <!-- This div is for the sliding panel that shows and hides the Preference Editor controls for desktop / larger
-            screens -->
-            <div class="fl-panelBar">
+            <!--
+                This div is for the sliding panel bar that shows and hides the Preference Editor controls in the desktop view.
+                A separate panel bar for desktop displays is needed to preserver the correct tab order.
+            -->
+            <div class="fl-panelBar fl-panelBar-wideScreen">
                 <span class="fl-prefsEditor-buttons">
-                    <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-                    <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset">
-                        <span class="fl-icon-undo"></span> Reset
-                    </button>
+                    <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span>
+                        Reset</button>
                 </span>
             </div>
         </section>
+        <!-- END markup for Preference Editor -->
 
-        <nav class="flc-toc-tocContainer"> </nav>
+        <!-- the TOC container should appear after the flc-prefsEditor-separatedPanel container -->
+        <nav class="flc-toc-tocContainer"></nav>
 
         <!-- the rest of your page here -->
         <h1>My Website</h1>
@@ -301,7 +334,7 @@ Here's the complete example from start to finish. This example assumes the Infus
 
 ## Congratulations!
 
-UI Options should now be fully functional on your page. Now, when you load your page in your browser and click on the "Show
+UI Options should now be fully functional on your page. When you load your page in the browser and click on the "Show
 Display Preferences" button, you will see the UI Options controls, as shown in the image below. If you adjust the
 controls, you will see your changes being applied to the page.
 
