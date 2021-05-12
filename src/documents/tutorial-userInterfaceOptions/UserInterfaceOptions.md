@@ -123,7 +123,7 @@ button in the upper left corner, since we haven't set up the CSS and UI Options 
 
 One of the UI Options controls allows users to add a Table Of Contents to the top of the page. You need to add a
 placeholder `<nav>` to your page for the Table Of Contents. It should have a class of `"flc-toc-tocContainer"` and
-should appear after the `<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">` block:
+should appear after the `<section class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">` block:
 
 ```html
 <body>
@@ -183,7 +183,7 @@ buttons, styled")
 ## Add the UI Options component
 
 Add the UI Options component to your page using a `<script>` tag. This `<script>` block should appear after the
-`flc-prefsEditor-separatedPanel` `<div>` and after the `<nav class="flc-toc-tocContainer">`.
+`flc-prefsEditor-separatedPanel` `<section>` and after the `<nav class="flc-toc-tocContainer">`.
 
 In this example, we place the `<script>` at the end of the webpage before the closing `</body>` tag.
 
@@ -196,7 +196,7 @@ In this example, we place the `<script>` at the end of the webpage before the cl
     <!-- ... -->
     </section>
 
-    <!-- the TOC container should appear after the flc-prefsEditor-separatedPanel div -->
+    <!-- the TOC container should appear after the flc-prefsEditor-separatedPanel container -->
     <nav class="flc-toc-tocContainer"> </nav>
 
     <!-- ... -->
