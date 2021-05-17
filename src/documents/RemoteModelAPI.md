@@ -50,7 +50,7 @@ For information on how events work and how to configure listeners to them, see [
             <td>default</td>
         </tr>
         <tr>
-            <th>Parameters</th>
+            <th>Arguments</th>
             <td>Undefined</td>
         </tr>
     </tbody>
@@ -72,7 +72,7 @@ For information on how events work and how to configure listeners to them, see [
             <td>default</td>
         </tr>
         <tr>
-            <th>Parameters</th>
+            <th>Arguments</th>
             <td>
                 Any parameters passed along to the rejected promise. This may be an <code>Error</code> object, an error
                 message, and/or some other means of indicating the rejection reason.
@@ -98,7 +98,7 @@ For information on how events work and how to configure listeners to them, see [
             <td>default</td>
         </tr>
         <tr>
-            <th>Parameters</th>
+            <th>Arguments</th>
             <td>
                 <dt>data</dt>
                 <dd>
@@ -142,7 +142,7 @@ For information on how events work and how to configure listeners to them, see [
             <td>default</td>
         </tr>
         <tr>
-            <th>Parameters</th>
+            <th>Arguments</th>
             <td>
                 Any parameters passed along to the rejected promise. This may be an <code>Error</code> object, an error
                 message, and/or some other means of indicating the rejection reason.
@@ -168,7 +168,7 @@ For information on how events work and how to configure listeners to them, see [
             <td>default</td>
         </tr>
         <tr>
-            <th>Parameters</th>
+            <th>Arguments</th>
             <td>
                 <dt>data</dt>
                 <dd>
@@ -195,7 +195,7 @@ For information on how events work and how to configure listeners to them, see [
             <td>
                 Provides the buffered mapping of the portions of the components's model to the remote data that should
                 be kept in sync. An implementor must setup the <a href="ModelRelay.md">model relay(s)</a> between the
-                component's model data and what is contained in the <code>local</code> path.
+                provider of the model data and this component's <code>local</code> path.
             </td>
             <td><code>{}</code></td>
         </tr>
@@ -241,7 +241,7 @@ For information on how events work and how to configure listeners to them, see [
             <td><code>"fluid.remoteModelComponent.fetch"</code></td>
         </tr>
         <tr>
-            <th>Parameters</th>
+            <th>Arguments</th>
             <td>
                 <dt>that</dt>
                 <dd>
@@ -260,7 +260,7 @@ For information on how events work and how to configure listeners to them, see [
             <th>Description</th>
             <td>
                 Must be supplied by an implementor to provide the concrete implementation for fetching data from the
-                remote source. It must return a promise.
+                remote source. It must return a promise yielding the fetched data.
             </td>
         </tr>
         <tr>
@@ -285,7 +285,7 @@ For information on how events work and how to configure listeners to them, see [
             <td><code>"fluid.remoteModelComponent.write"</code></td>
         </tr>
         <tr>
-            <th>Parameters</th>
+            <th>Arguments</th>
             <td>
                 <dt>that</dt>
                 <dd>
@@ -313,7 +313,7 @@ For information on how events work and how to configure listeners to them, see [
             <td><code>"fluid.notImplemented"</code></td>
         </tr>
         <tr>
-            <th>Parameters</th>
+            <th>Arguments</th>
             <td>
                 <dt>payload</dt>
                 <dd>
@@ -359,6 +359,7 @@ fired.
 
 By default, upon a successful write, the `afterWrite` event will trigger the `remote` model path to be updated with the
 values from the `local` model path. Because of this, the `writeImpl` must resolve/reject its promise after the write
-implementation has been handled by the remote end point, not simply after the request has been made.
+implementation has been fully handled by the remote endpoint, not simply after the I/O for the request itself has
+concluded.
 
 ![A flow diagram depicting the Write workflow](/images//remoteModel_write_diagram.svg)
