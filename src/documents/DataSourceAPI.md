@@ -105,19 +105,6 @@ Serializes a JavaScript object into a JSON string.
 
 ## Core
 
-### fluid.dataSource.registerStandardPromiseHandlers(that, promise, options)
-
-Registers the default promise handlers for a dataSource operation:
-
-1. If the user has supplied a function in place of method `options`, register this function as a success handler
-2. If the user has supplied an `onError` handler in method `options`, this is registered, otherwise we register the
-firer of the dataSource's own `onError` method.
-
-* `that {Object}` The concrete dataSource component
-* `promise {Promise}` The promise to bind the resolution and reject handlers too
-* `options {Object|Function}` (optional) Either a function to be executed on resolution, or an object containing an
-`onError` ({onError: function}) handler executed on rejection.
-
 ### get(directModel, options)
 
 Fetches data from the configured dataSource, returning a promise yielding the fetched data.
