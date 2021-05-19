@@ -21,7 +21,8 @@ This section describes major APIs that were in common use. For information about
 
 #### Fluid Document
 
-`fluid.focus` and `fluid.blur` now return a ES6 promises resolved when the related DOM event fires. In Infusion 2.0, they would immediately return the node the event was bound to.
+`fluid.focus` and `fluid.blur` now return a ES6 promises resolved when the related DOM event fires. In Infusion 2.0,
+they would immediately return the node the event was bound to.
 
 ### Preferences Framework
 
