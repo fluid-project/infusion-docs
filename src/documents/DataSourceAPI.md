@@ -8,7 +8,7 @@ database, cookie, in memory storage and etc). The specifics for accessing the da
 implementation. Additionally the payload of a request may be configured to be processed through an encoding/decoding
 step and other transformations during the get and set workflows.
 
-## Grades and Linkage
+## Grades
 
 There are two main grades `fluid.dataSource` and `fluid.dataSource.writable`. `fluid.dataSource` contains the base
 configuration and includes configuration for getting (reading) from a data source. `fluid.dataSource.writable` adds the
@@ -22,7 +22,8 @@ fluid.defaults("my.component", {
         dataSource: {
             type: "fluid.dataSource",
             options: {
-                gradeNames: ["fluid.dataSource.writable"],
+                writableGrade: "fluid.dataSource.writable",
+                writable: true,
                 listeners: {
                     // these would point at concrete implementations for performing the read and write operations.
                     "onRead.impl": "my.component.doRead",
@@ -34,24 +35,39 @@ fluid.defaults("my.component", {
 });
 ```
 
-When implementing a new kind of dataSource, where reading and writing functionality are needed,
-[grade linkage](IoCAPI.md#fluidmakegradelinkagelinkagename-inputnames-outputnames) is used to apply the concrete
-writable grade to the dataSource configuration. In this way, a user who has already applied the name of a particular
-concrete read-only dataSource only needs to add `fluid.dataSource.writable` as a further mixin, in order to get a
-read/write implementation, regardless of what the original concrete grade was.
+When implementing a new kind of dataSource, where reading and writing functionality are needed, the `fluid.dataSource`
+and `fluid.dataSource.writable` grades can be used as base grades.
 
 ```javascript
 fluid.defaults("my.dataSource", {
-    gradeNames: ["fluid.dataSource"]
+    gradeNames: ["fluid.dataSource"],
+    writableGrade: "my.dataSource.writable",
+    listeners: {
+        // thise would point at a concrete implementation for performing the read operation.
+        "onRead.impl": "my.component.doRead"
+    }
     // add grade specific configuration
 });
 
 fluid.defaults("my.dataSource.writable", {
-    gradeNames: ["fluid.dataSource.writable"]
+    gradeNames: ["fluid.dataSource.writable"],
+    listeners: {
+        // thise would point at a concrete implementation for performing the write operation.
+        "onWrite.impl": "my.component.doWrite"
+    }
     // add grade specific configuration
 });
 
-fluid.makeGradeLinkage("my.dataSource.linkage", ["fluid.dataSource.writable", "my.dataSource"], "my.dataSource.writable");
+fluid.defaults("my.component", {
+    components: {
+        dataSource: {
+            type: "my.dataSource",
+            options: {
+                writable: true // Enables the data source's set function
+            }
+        }
+    }
+});
 ```
 
 ## Encoding
