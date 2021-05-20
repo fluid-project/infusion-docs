@@ -551,3 +551,7 @@ The `fluid.prefs.store` grade has been refactored to use [`fluid.dataSource`](Da
 ### Tabs Component
 
 The `fluid.tabs` component has been removed.
+
+### Textfield Slider
+
+Removed the [jQuery UI Slider](https://jqueryui.com/slider/), in favour of using a native [HTML5 range input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range).
