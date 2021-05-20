@@ -45,6 +45,10 @@ listeners: {
 
 ##### Model Paths
 
+A prefsEditor is configured with the [`fluid.remoteModelComponent`](RemoteModelAPI.md) grade. This adds a `local` and
+`remote` model path for managing model changes between the component and those stored elsewhere. Any model value that
+should be persisted must be relayed into the `local` model path.
+
 Any prefsEditor using the `fluid.prefs.arrowScrolling` grade, such as the one contained in `fluid.prefs.separatedPanel`,
 will contain the following new model paths.
 
@@ -512,6 +516,10 @@ The text to speech panel was refactored to be based off of the `fluid.prefs.pane
         </tr>
     </tbody>
 </table>
+
+#### Store Changes
+
+The `fluid.prefs.store` grade has been refactored to use [`fluid.dataSource`](DataSourceAPI.md) as its base grade.
 
 #### Primary Schema Changes
 
