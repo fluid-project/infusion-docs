@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 661 761" style="enable-background:new 0 0 661 761;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:none;stroke:#000000;}
+	.st2{font-family:'Helvetica';}
+	.st3{font-size:12px;}
+	.st4{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st5{enable-background:new    ;}
+	.st6{stroke:#000000;stroke-miterlimit:10;}
+	.st7{font-family:'MyriadPro-Regular';}
+</style>
+<path class="st0" d="z"/>
+<g transform="translate(.5 .5)">
+	<ellipse pointer-events="none" class="st1" cx="408" cy="35" rx="35" ry="20"/>
+	<text transform="matrix(1 0 0 1 392.4941 40.5)" class="st2 st3">Fetch</text>
+	<path pointer-events="none" class="st4" d="M410.5,85l60.5,55l-60.5,55L350,140L410.5,85z"/>
+	<path pointer-events="none" class="st1" d="M225,205h120v60H225V205z"/>
+	<text transform="matrix(1 0 0 1 242.8086 235)" class="st5"><tspan x="0" y="0" class="st2 st3">Follow Pending </tspan><tspan x="3.7" y="14.4" class="st2 st3">Fetch Request</tspan></text>
+	<path pointer-events="none" class="st1" d="M460,205h120v60H460V205z"/>
+	<text transform="matrix(1 0 0 1 487.4707 235)" class="st5"><tspan x="0" y="0" class="st2 st3">Add Pending </tspan><tspan x="-3" y="14.4" class="st2 st3">Fetch Request</tspan></text>
+	<path pointer-events="none" class="st4" d="M471,140h49v58.6"/>
+	<path pointer-events="none" class="st6" d="M520,203.9l-3.5-7l3.5,1.8l3.5-1.8L520,203.9z"/>
+	<path pointer-events="none" class="st4" d="M350,140h-65v58.6"/>
+	<path pointer-events="none" class="st6" d="M285,203.9l-3.5-7l3.5,1.8l3.5-1.8L285,203.9z"/>
+	<text transform="matrix(1 0 0 1 311.3828 135.5)" class="st2 st3">True</text>
+	<text transform="matrix(1 0 0 1 478.8281 135.5)" class="st2 st3">False</text>
+	<path pointer-events="none" class="st4" d="M460,235H351.4"/>
+	<path pointer-events="none" class="st6" d="M346.1,235l7-3.5l-1.8,3.5l1.8,3.5L346.1,235z"/>
+	<path pointer-events="none" class="st4" d="M408,55h3v23.6"/>
+	<path pointer-events="none" class="st6" d="M411,83.9l-3.5-7l3.5,1.8l3.5-1.8L411,83.9z"/>
+	<path pointer-events="none" class="st4" d="M285,305l65,60l-65,60l-65-60L285,305z"/>
+	<text transform="matrix(1 0 0 1 236.8057 370.5)" class="st2 st3">Request In Flight?</text>
+	<path pointer-events="none" class="st4" d="M285,265v33.6"/>
+	<path pointer-events="none" class="st6" d="M285,303.9l-3.5-7l3.5,1.8l3.5-1.8L285,303.9z"/>
+	<ellipse pointer-events="none" class="st1" cx="50" cy="525" rx="35" ry="20"/>
+	<text transform="matrix(1 0 0 1 27.4951 530.5)" class="st2 st3">Promise</text>
+	<path pointer-events="none" class="st4" d="M220,365H50v133.6"/>
+	<path pointer-events="none" class="st6" d="M50,503.9l-3.5-7l3.5,1.8l3.5-1.8L50,503.9z"/>
+	<path pointer-events="none" class="st1" d="M460,335h120v60H460V335z"/>
+	<path pointer-events="none" class="st4" d="M472,335v60 M568,335v60"/>
+	<text transform="matrix(1 0 0 1 498.3203 361.5)" class="st5"><tspan x="0" y="0" class="st2 st3">onFetch</tspan><tspan x="-5.3" y="14.4" class="st2 st3">Sequence</tspan></text>
+	<path pointer-events="none" class="st1" d="M460,435h120v60H460V435z"/>
+	<text transform="matrix(1 0 0 1 463.4697 470.5)" class="st2 st3">Set Request In Flight</text>
+	<path pointer-events="none" class="st4" d="M350,365h103.6"/>
+	<path pointer-events="none" class="st6" d="M458.9,365l-7,3.5l1.8-3.5l-1.8-3.5L458.9,365z"/>
+	<path pointer-events="none" class="st4" d="M520,395v33.6"/>
+	<path pointer-events="none" class="st6" d="M520,433.9l-3.5-7l3.5,1.8l3.5-1.8L520,433.9z"/>
+	<path pointer-events="none" class="st1" d="M460,535h120v60H460V535z"/>
+	<text transform="matrix(1 0 0 1 496.1572 570.5)" class="st2 st3">fetchImpl</text>
+	<path pointer-events="none" class="st4" d="M520,495v33.6"/>
+	<path pointer-events="none" class="st6" d="M520,533.9l-3.5-7l3.5,1.8l3.5-1.8L520,533.9z"/>
+	<text transform="matrix(1 0 0 1 536.8232 419.5)" class="st2 st3">Resolve</text>
+	<path pointer-events="none" class="st1" d="M460,645h185v100H460V645z"/>
+	<path pointer-events="none" class="st4" d="M479,645v100 M626,645v100"/>
+	<path pointer-events="none" class="st1" d="M198,475h175v100H198V475z"/>
+	<path pointer-events="none" class="st4" d="M216,475v100 M355,475v100"/>
+	<path pointer-events="none" class="st4" d="M460,695H50V551.4"/>
+	<path pointer-events="none" class="st6" d="M50,546.1l3.5,7l-3.5-1.8l-3.5,1.8L50,546.1z"/>
+	<path pointer-events="none" class="st4" d="M460,565h-43v-40h-37.6"/>
+	<path pointer-events="none" class="st6" d="M374.1,525l7-3.5l-1.8,3.5l1.8,3.5L374.1,525z"/>
+	<path pointer-events="none" class="st4" d="M198,525H91.4"/>
+	<path pointer-events="none" class="st6" d="M86.1,525l7-3.5l-1.8,3.5l1.8,3.5L86.1,525z"/>
+	<path pointer-events="none" class="st4" d="M490,395v30H329v43.6"/>
+	<path pointer-events="none" class="st6" d="M329,473.9l-3.5-7l3.5,1.8l3.5-1.8L329,473.9z"/>
+	<text transform="matrix(1 0 0 1 381.4932 419.5)" class="st2 st3">Reject</text>
+	<text transform="matrix(1 0 0 1 526.8232 629.5)" class="st2 st3">Resolve</text>
+	<text transform="matrix(1 0 0 1 396.4932 509.5)" class="st2 st3">Reject</text>
+	<text transform="matrix(1 0 0 1 136.3828 349.5)" class="st2 st3">True</text>
+	<text transform="matrix(1 0 0 1 374.8281 349.5)" class="st2 st3">False</text>
+	<path pointer-events="none" class="st4" d="M520,595v43.6"/>
+	<path pointer-events="none" class="st6" d="M520,643.9l-3.5-7l3.5,1.8l3.5-1.8L520,643.9z"/>
+	<text transform="matrix(1 0 0 1 373.2969 140)"><tspan x="0" y="0" class="st7 st3">Pending Fetch</tspan><tspan x="13.5" y="14.4" class="st7 st3">Request?</tspan></text>
+	<text transform="matrix(1 0 0 1 247.5703 491.1667)" class="st7 st3">onFetchError:</text>
+	<text transform="matrix(1 0 0 1 499.7783 661.833)" class="st7 st3">afterFetch Sequence:</text>
+	<rect x="226.8" y="505.7" class="st0" width="109.3" height="56.2"/>
+	<text transform="matrix(1 0 0 1 226.8333 514.1862)"><tspan x="0" y="0" class="st7 st3">•   Clear Pending</tspan><tspan x="11" y="14.4" class="st7 st3">Fetch Queue</tspan><tspan x="0" y="28.8" class="st7 st3">•   Remove Request </tspan><tspan x="11" y="43.2" class="st7 st3">In Flight</tspan></text>
+	<rect x="495.5" y="675.8" class="st0" width="109.3" height="56.2"/>
+	<text transform="matrix(1 0 0 1 495.5 684.2695)"><tspan x="0" y="0" class="st7 st3">•   Update Model</tspan><tspan x="0" y="14.4" class="st7 st3">•   Remove Request </tspan><tspan x="11" y="28.8" class="st7 st3">In Flight</tspan></text>
+</g>
+<path class="st0" d="z"/>
+</svg>
