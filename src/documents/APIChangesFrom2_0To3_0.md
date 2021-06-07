@@ -21,8 +21,8 @@ This section describes major APIs that were in common use. For information about
 
 #### Fluid Document
 
-`fluid.focus` and `fluid.blur` now return a ES6 promises resolved when the related DOM event fires. In Infusion 2.0,
-they would immediately return the node the event was bound to.
+`fluid.focus` and `fluid.blur` now return an ES6 promise resolved when the related DOM event fires. In Infusion 2.0,
+they would immediately return the node that the event was bound to.
 
 ### Preferences Framework
 
@@ -108,7 +108,7 @@ keyword has been changed to `"value"`.
 
 ##### Selectors
 
-The `panels` selector, by default `.flc-prefsEditor-panel`, is used to find all panel containers within the preferce
+The `panels` selector, by default `.flc-prefsEditor-panel`, is used to find all panel containers within the preference
 editor. The mobile presentation of UIO makes use of this to determine which panel is in view.
 
 ##### UI Options / Separated Panel
@@ -141,7 +141,7 @@ editor. The mobile presentation of UIO makes use of this to determine which pane
 <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
     <!--
         This div is for the sliding panel bar that shows and hides the Preference Editor controls in the mobile view.
-        A separate panel bar for mobile displays is needed to preserver the correct tab order.
+        A separate panel bar for mobile displays is needed to preserve the correct tab order.
     -->
     <div class="fl-panelBar fl-panelBar-smallScreen">
         <span class="fl-prefsEditor-buttons">
@@ -160,7 +160,7 @@ editor. The mobile presentation of UIO makes use of this to determine which pane
 
     <!--
         This div is for the sliding panel bar that shows and hides the Preference Editor controls in the desktop view.
-        A separate panel bar for desktop displays is needed to preserver the correct tab order.
+        A separate panel bar for desktop displays is needed to preserve the correct tab order.
     -->
     <div class="fl-panelBar fl-panelBar-wideScreen">
         <span class="fl-prefsEditor-buttons">
