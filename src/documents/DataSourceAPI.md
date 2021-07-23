@@ -20,7 +20,7 @@ sources and sinks of data.
 
 ## How to use a DataSource
 
-A DataSource is be implemented by a component derived from the [grade](ComponentGrades.md) `fluid.dataSource`, or, in addition,
+A DataSource is implemented by a component derived from the [grade](ComponentGrades.md) `fluid.dataSource`, or, in addition,
 `fluid.dataSource.writable` if the DataSource is writable.
 
 A read-only DataSource allows data to be read using the invoker `get`, whereas a writable DataSource in addition allows
