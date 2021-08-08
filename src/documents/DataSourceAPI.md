@@ -9,9 +9,13 @@ implementation. Additionally the payload of a request may be configured to be pr
 step and other transformations during the get and set workflows.
 
 Concrete DataSource implementations include `fluid.dataSource.url` which read and write data over HTTP both in the
-browser and in node.js, as well as `kettle.dataSource.file` available in node.js acting on the filesystem, and
-`fluid.prefs.cookieStore` which acts on cookies in the browser. Mixin grades include `kettle.dataSource.CouchDB` which
-is capable of imbuing a core DataSource with CouchDB-like persistence semantics.
+browser and in node.js, as well as [`kettle.dataSource.file`](https://github.com/fluid-project/kettle/blob/main/docs/DataSources.md#configuration-options-accepted-by-kettledatasourcefile)
+ available in node.js acting on the filesystem, and
+`fluid.prefs.cookieStore` which acts on cookies in the browser. Note that a `fluid.dataSource.url` implementation is
+only available in the browser in the upcoming Infusion 4.x. Mixin grades include [
+`kettle.dataSource.CouchDB`](https://github.com/fluid-project/kettle/blob/main/docs/DataSources.md#the-kettledatasourcecouchdb-mixin-grade)
+which is capable of imbuing a core DataSource with CouchDB-like persistence semantics. Grades in the
+`kettle` namespace are provided in Infusion's node.js companion project [Kettle](https://github.com/fluid-project/kettle).
 
 The workflow of a DataSource operates Infusion's
 [transforming promise chain](PromisesAPI.md#fluidpromisefiretransformeventevent-payload-options) algorithm for
