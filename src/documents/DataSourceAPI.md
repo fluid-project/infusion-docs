@@ -17,7 +17,7 @@ which is capable of imbuing a core DataSource with CouchDB-like persistence sema
 `kettle` namespace are provided in Infusion's node.js companion project [Kettle](https://github.com/fluid-project/kettle).
 
 <div class="infusion-docs-note">
-    <strong>Note:</strong> A browser implementation of <code>fluid.dataSource.url</code> is only available in the 
+    <strong>Note:</strong> A browser implementation of <code>fluid.dataSource.url</code> is only available in the
 upcoming Infusion 4.x.
 </div>
 
