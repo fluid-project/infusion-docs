@@ -8,9 +8,122 @@ database, cookie, in memory storage and etc). The specifics for accessing the da
 implementation. Additionally the payload of a request may be configured to be processed through an encoding/decoding
 step and other transformations during the get and set workflows.
 
-## Grades
+Concrete DataSource implementations include `fluid.dataSource.url` which read and write data over HTTP both in the
+browser and in node.js, as well as [`kettle.dataSource.file`](https://github.com/fluid-project/kettle/blob/main/docs/DataSources.md#configuration-options-accepted-by-kettledatasourcefile)
+ available in node.js acting on the filesystem, and
+`fluid.prefs.cookieStore` which acts on cookies in the browser. Mixin grades include [
+`kettle.dataSource.CouchDB`](https://github.com/fluid-project/kettle/blob/main/docs/DataSources.md#the-kettledatasourcecouchdb-mixin-grade)
+which is capable of imbuing a core DataSource with CouchDB-like persistence semantics. Grades in the
+`kettle` namespace are provided in Infusion's node.js companion project [Kettle](https://github.com/fluid-project/kettle).
 
-There are two main grades `fluid.dataSource` and `fluid.dataSource.writable`. `fluid.dataSource` contains the base
+<div class="infusion-docs-note">
+    <strong>Note:</strong> A browser implementation of <code>fluid.dataSource.url</code> is only available in the
+upcoming Infusion 4.x.
+</div>
+
+The workflow of a DataSource operates Infusion's
+[transforming promise chain](PromisesAPI.md#fluidpromisefiretransformeventevent-payload-options) algorithm for
+operating an open pipeline of functions which collaborate to asynchronously transform a data payload connecting
+sources and sinks of data.
+
+## How to use a DataSource
+
+A DataSource is implemented by a component derived from the [grade](ComponentGrades.md) `fluid.dataSource`, or, in addition,
+`fluid.dataSource.writable` if the DataSource is writable.
+
+A read-only DataSource allows data to be read using the invoker `get`, whereas a writable DataSource in addition allows
+data to be written using the invoker `set`. These each accept a configuration object named `directModel` as the first
+argument, encoding the coordinates of the data to be read or written.
+
+### get(directModel, options)
+
+Fetches data from the dataSource, returning a promise yielding the fetched data.
+
+* `directModel {Object}` The direct model expressing the "coordinates" of the model to be fetched
+* `options {Object}` A structure of options configuring the action of this get request - many of these will be specific
+to the particular concrete DataSource
+
+By default `get` is concretely implemented with `fluid.dataSource.get` which operates the core "transforming promise
+workflow". The initial listener provides the initial payload; which then proceeds through the transform chain to arrive
+at the final payload. A promise is returned with the final resolved payload.
+
+#### Example:
+
+Consider a simple in-memory read-only dataSource that contains the model data:
+
+```json
+{
+    "foo": {
+        "bar": "baz"
+    }
+}
+```
+
+For this dataSource, the `directModel` simply takes the form of a path indexing into the model using
+[fluid.get](CoreAPI.md#fluidgetmodel-path).
+
+The following call to get,
+
+```javascript
+dataSource.get("foo");
+```
+
+would return a promise yielding:
+
+```json
+{
+    "bar": "baz"
+}
+```
+
+### set(directModel, model, options)
+
+Sends data to the configured dataSource. May return a promise yielding the write response from the dataSource.
+
+* `directModel {Object}` The direct model expressing the "coordinates" of the model to be written
+* `model {Object}` The payload to be written to the dataSource
+* `options {Object}` A structure of options configuring the action of this set request - many of these will be specific
+to the particular concrete DataSource
+
+By default `set` is concretely implemented with `fluid.dataSource.set` which operates the core "transforming promise
+workflow". Any return from this is then pushed forwards through a range of the transforms (typically, just decoding it
+as JSON) on its way back to the user via the `onWriteResponse` event. A promise for the final resolved payload may be
+returned.
+
+#### Example:
+
+Consider a simple in-memory dataSource that contains the model data:
+
+```json
+{
+    "foo": {
+        "bar": "baz"
+    }
+}
+```
+
+Corresponding to the read-only API dataSource, the `directModel` of this dataSource accessed via `set` takes the
+form of path expressions dispatched to [fluid.set](CoreAPI.md#fluidsetmodel-path-newvalue).
+
+The following call to set,
+
+```javascript
+dataSource.set(["foo", "bar"], "qux");
+```
+
+could return a promise yielding:
+
+```json
+{
+    "foo": {
+        "bar": "qux"
+    }
+}
+```
+
+## Implementing or customising a DataSource
+
+There are two core base grades `fluid.dataSource` and `fluid.dataSource.writable`. `fluid.dataSource` contains the base
 configuration and includes configuration for getting (reading) from a data source. `fluid.dataSource.writable` adds the
 configuration for setting (writing) to a data source. Instances of `fluid.dataSource` will need to provide a concrete
 handler for the `"onRead.impl"` and those using `fluid.dataSource.writable` will also need to add one for the
@@ -88,6 +201,8 @@ the specific encoding transformations. Because the encoding happens as part of t
 transformations may be added before or after the encoding phase. For example providing
 [modelTransformations](ModelTransformationAPI.md) before/after serializing/deserializing JSON.
 
+## Standalone utilities packaged with DataSources
+
 ### fluid.dataSource.parseJSON(string)
 
 Deserializes a JSON string into a proper JavaScript object and returns a promise for the result.
@@ -102,90 +217,3 @@ Serializes a JavaScript object into a JSON string.
 
 * `obj: {Object}` The JavaScript object to be serialized
 * Returns: `{String}` If the object is undefined, an empty string is returned.
-
-## Core
-
-### get(directModel, options)
-
-Fetches data from the configured dataSource, returning a promise yielding the fetched data.
-
-* `directModel {Object}` The direct model expressing the "coordinates" of the model to be fetched
-* `options {Object}` A structure of options configuring the action of this get request - many of these will be specific
-to the particular concrete DataSource
-
-By default `get` is concretely implemented with `fluid.dataSource.get`; which operates the core "transforming promise
-workflow". The initial listener provides the initial payload; which then proceeds through the transform chain to arrive
-at the final payload. A promise is returned with the final resolved payload.
-
-#### Example:
-
-Consider a dataSource that contains the model data:
-
-```json
-{
-    "foo": {
-        "bar": "baz"
-    }
-}
-```
-
-The following call to get,
-
-```javascript
-get("foo");
-```
-
-would return a promise yielding:
-
-```json
-{
-    "bar": "baz"
-}
-```
-
-### set(directModel, model, options)
-
-Sends data to the configured dataSource. May return a promise yeilding the write response from the dataSource.
-
-* `directModel {Object}` The direct model expressing the "coordinates" of the model to be written
-* `model {Object}` The payload to be written to the dataSource
-* `options {Object}` A structure of options configuring the action of this set request - many of these will be specific
-to the particular concrete DataSource
-
-By default `set` is concretely implemented with `fluid.dataSource.set`; which operates the core "transforming promise
-workflow". Any return from this is then pushed forwards through a range of the transforms (typically, just decoding it
-as JSON) on its way back to the user via the `onWriteResponse` event. A promise for the final resolved payload may be
-returned.
-
-#### Example:
-
-Consider a dataSource that contains the model data:
-
-```json
-{
-    "foo": {
-        "bar": "baz"
-    }
-}
-```
-
-The following call to set,
-
-```javascript
-set(["foo", "bar"], "qux");
-```
-
-could return a promise yielding:
-
-```json
-{
-    "foo": {
-        "bar": "qux"
-    }
-}
-```
-
-<div class="infusion-docs-note">
-
-<strong>Note:</strong> The return value is highly dependent on the particular dataSource.
-</div>
