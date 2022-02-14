@@ -11,11 +11,15 @@ the styles for the enactors they are using in their particular configuration. Al
 
 ## Sass
 
-The styles for UI Options are written using [Sass](https://sass-lang.com), using
+The styles for UI Options are written in [Sass](https://sass-lang.com), using
 [SCSS syntax](https://sass-lang.com/documentation/syntax#scss). All of the related Sass files are contained within the
-`src/framework/preferences/css/sass`. These stylesheets are used to style the Preference Editors as well provide the
-means for applying enactor styles to a website. The Sass files may be used directly within an integrators own build
-tools. Additionally pre-compiled CSS equivalents are provided at `src/framework/preferences/css/`.
+`src/framework/preferences/css/sass` and compiled into CSS through the [`build:sass`](https://github.com/fluid-project/infusion#developing-with-the-preferences-framework)
+build step; which is automatically run for [builds](https://github.com/fluid-project/infusion#build-types) of Infusion.
+These stylesheets are used to style the Preference Editors as well provide the means for applying enactor styles to a
+website. The Sass files may be used directly within an integrator's own build tools. Additionally the pre-compiled CSS
+equivalents are provided at `src/framework/preferences/css/` of the published
+[npm package](https://www.npmjs.com/package/infusion) and [release](https://github.com/fluid-project/infusion/releases)
+zip bundles.
 
 <div class="infusion-docs-note">
 
