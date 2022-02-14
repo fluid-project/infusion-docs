@@ -9,6 +9,11 @@ responds correctly.
 
 This documentation assumes you are somewhat comfortable with writing and editing CSS.
 
+In addition to the methods below, [Integrating UI Options Styling Preferences](./IntegratingUIOptionsStylingPreferences.md),
+describes the [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+UI Options provides. These can be used as an alternative or additional approach for applying your own custom styling
+when a preference is applied.
+
 ## Contrast Themes
 
 UI Options adds support for high contrast themes by transforming the colours on your website. Since contrast themes
