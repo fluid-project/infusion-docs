@@ -27,3 +27,6 @@ jobs:
       - name: Build site
         run: |
           npm run build
+      - name: Hello, world.
+        run: |
+          echo 'hello, world.'
