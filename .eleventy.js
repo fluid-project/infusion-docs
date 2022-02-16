@@ -30,8 +30,12 @@ module.exports = function (eleventyConfig) {
             return "<pre class=\"highlight\"><code class=\"hljs " + lang + "\">" + markdownit.utils.escapeHtml(str) + "</code></pre>";
         }
     });
+
+    var string = require("string");
+    var slugify = s => string(s).slugify().toString();
+
     var markdownItAnchor = require("markdown-it-anchor");
-    var markdownItLibrary = markdownit.use(markdownItAnchor);
+    var markdownItLibrary = markdownit.use(markdownItAnchor, { slugify });
 
     eleventyConfig.setLibrary("md", markdownItLibrary);
 
