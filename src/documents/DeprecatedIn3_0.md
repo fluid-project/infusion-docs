@@ -70,3 +70,25 @@ Everything in the following namespaces are deprecated:
 
 * `fluid.XMLP.*`
 * `fluid.SAXStrings.*`
+
+## Bundles
+
+### Files
+
+The following bundles are no longer produced as part of the build process:
+
+* dist/infusion-all-no-jquery.min.js
+* dist/infusion-all-no-jquery.min.js.map
+* dist/infusion-all.min.js
+* dist/infusion-all.min.js.map
+* dist/infusion-framework-no-jquery.min.js
+* dist/infusion-framework-no-jquery.min.js.map
+* dist/infusion-framework.min.js
+* dist/infusion-framework.min.js.map
+* dist/infusion-uio-no-jquery.min.js
+* dist/infusion-uio-no-jquery.min.js.map
+* dist/infusion-uio.min.js
+* dist/infusion-uio.min.js.map
+
+We only produce minified javascript bundles now, so if you previously used one of the above minified files, you
+can simply update the relative path/filename to remove the `min`, i.e. `dist/infusion-all.js`.
