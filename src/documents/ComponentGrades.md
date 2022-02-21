@@ -50,16 +50,20 @@ blocks for external components and grades. The following table describes these g
         <tr>
             <td><code>fluid.modelComponent</code></td>
             <td>
-                A <it>model</it> component is a component that additionally provides supports for a component's model, and operations on it (<a href="tutorial-gettingStartedWithInfusion/ModelComponents.md">Tutorial - Model Components</a>).
-                These operations are mediated by a machine known as a <a href="ChangeApplierAPI.md"><code>ChangeApplier</code></a> which is automatically constructed for a model component. As well as exposing a programmatic API, this
-                also allows for declarative constraints and relationships to be enforced by means of the <a href="ModelRelay.md">model relay</a> system.
+                A <it>model</it> component is a component that additionally provides supports for a component's model,
+                and operations on it (<a href="tutorial-gettingStartedWithInfusion/ModelComponents.md">Tutorial - Model Components</a>).
+                These operations are mediated by a machine known as a <a href="ChangeApplierAPI.md"><code>ChangeApplier</code></a>
+                which is automatically constructed for a model component. As well as exposing a programmatic API, this
+                also allows for declarative constraints and relationships to be enforced by means of the
+                <a href="ModelRelay.md">model relay</a> system.
             </td>
         </tr>
         <tr>
             <td><code>fluid.viewComponent</code></td>
             <td>
-                A <it>view</it> component is a <code>fluid.modelComponent</code> that is bound to a DOM container node, 
-                holds a <a href="DOMBinder.md">DOM Binder</a> and supports a view (<a href="tutorial-gettingStartedWithInfusion/ViewComponents.md">Tutorial - View Components).
+                A <it>view</it> component is a <code>fluid.modelComponent</code> that is bound to a DOM container node,
+                holds a <a href="DOMBinder.md">DOM Binder</a> and supports a view
+                (<a href="tutorial-gettingStartedWithInfusion/ViewComponents.md">Tutorial - View Components</a>).
             </td>
         </tr>
         <tr>
@@ -78,8 +82,10 @@ blocks for external components and grades. The following table describes these g
                 A <it>renderer</it> component is a view component that also bears a renderer.
                 There are additional features provided by this component grade specified on the
                 <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md#useful-functions-and-events">
-                Useful functions and events</a> section of the <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a> page.
-                Note that the current Infusion renderer is deprecated and will be rebuilt in upcoming releases.
+                Useful functions and events</a> section of the
+                <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a>
+                page.
+                Note that the current Infusion renderer is deprecated and will be replaced in the Infusion 5.0 release.
             </td>
         </tr>
     </tbody>

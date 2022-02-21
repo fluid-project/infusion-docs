@@ -7,9 +7,9 @@ The Infusion API `fluid.fetchResources` is a low-level API which automates the w
 possibly asynchronously, using AJAX requests or from the current DOM. This API is deprecated and none of the framework
 core or components rely on it, however it will be retained for one further release cycle since it appears in a few
 pieces of example code and wrappers. The core framework grade [Resource Loader](ResourceLoader.md) should be used
-by any component wishing to issue I/O as part of component loading, or else a 
+by any component wishing to issue I/O as part of component loading, or else a
 [DataSource](https://github.com/fluid-project/kettle/blob/master/docs/DataSources.md) for I/O which may be issued
-repeatedly during a component's lifecycle. 
+repeatedly during a component's lifecycle.
 
 This API is deprecated and will be removed in an upcoming revision of the framework.
 
@@ -64,7 +64,7 @@ fluid.fetchResources(resourceSpecs, callback[, options]);
 ## Resource Specification
 
 The values in the `resourceSpecs` hash sent as the first argument to `fluid.fetchResources` are records of type
-`resourceSpec`. See the documentation for the [resourceSpec structure](ResourceLoader.md#resourcespec-structure) 
+`resourceSpec`. See the documentation for the [resourceSpec structure](ResourceLoader.md#resourcespec-structure)
 accepted by ``fluid.resourceLoader`` for the structure of these.
 
 On conclusion of the `fluid.fetchResources` call, the following additional fields will be filled in (as well as some
@@ -90,8 +90,8 @@ undocumented fields)
         <tr>
             <td><code>parsed</code></td>
             <td><code>Any</code></td>
-            <td>The parsed representation of <code>resourceText</code> into some structured form, if a <code>dataType</code> entry
-            for the <code>resourceSpec</code> entry was supplied or inferred.</td>
+            <td>The parsed representation of <code>resourceText</code> into some structured form, if a <code>dataType</code>
+            entry for the <code>resourceSpec</code> entry was supplied or inferred.</td>
         </tr>
         <tr>
             <td><code>fetchError</code></td>

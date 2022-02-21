@@ -16,8 +16,8 @@ Each member of ``resources`` is a structure named ``ResourceSpec`` specifying a 
 ### Minimal ``fluid.resourceLoader`` example
 
 Although we show an example here of constructing the resource loader as a free-standing component,
-a more typical usage would configure ``fluid.resourceLoader`` as a mixin to some [subcomponent](SubcomponentDeclaration.md) in a wider
-component tree:
+a more typical usage would configure ``fluid.resourceLoader`` as a mixin to some
+[subcomponent](SubcomponentDeclaration.md) in a wider component tree:
 
 ```javascript
 var resourceLoader = fluid.resourceLoader({
@@ -40,7 +40,8 @@ var resourceLoader = fluid.resourceLoader({
 
 Whilst the ``ResourceSpec`` structure by which a resource is configured to be loaded is always the same,
 depending on how the resource is requested, it may be loaded via a "fast path" or a "slow path".
-Any resource referenced from a component's ``model`` area (for a [fluid.modelComponent](tutorial-gettingStartedWithInfusion/ModelComponents.md)), for example,
+Any resource referenced from a component's ``model`` area (for a
+[fluid.modelComponent](tutorial-gettingStartedWithInfusion/ModelComponents.md)), for example,
 will be loaded via the "fast path" and will be available before the component's construction has completed. In fact,
 it will be available before the initial value of the component's model has been computed, in time to participate in the
 [initial transaction](ModelRelay.md#the-initial-transaction). Other kinds of "fast path" may be made available by
@@ -65,7 +66,6 @@ whereas in node.js this operates the native node [HTTP](https://nodejs.org/api/h
 For all transports, there is the possibility to pass arbitrary options through the ResourceLoader configuration
 structure to take full control of the loading process, whilst there is a central core of portable options supported
 in all environments.
-
 
 ### ``fluid.resourceLoader`` options
 
@@ -92,7 +92,8 @@ it is an Object with keys described in the [section on resourceSpecs](#resourceS
 
 <table>
     <tr>
-        <th colspan="3">Members within the <code>resourceOptions</code> structure at top level in the options <code>fluid.resourceLoader</code> component</th>
+        <th colspan="3">Members within the <code>resourceOptions</code> structure at top level in the options
+        <code>fluid.resourceLoader</code> component</th>
     </tr>
 <tr><th>Name</th><th>Description</th><th>Type</th></tr>
 <tr>
@@ -100,17 +101,27 @@ it is an Object with keys described in the [section on resourceSpecs](#resourceS
     <td>Contains a map of variable names and replacement values to compose the path to each physical file.
     The map structure complies with the format of the second <code>terms</code> argument of
     <a href="CoreAPI.html#fluidstringtemplatetemplate-terms">fluid.stringTemplate()</a> API.
-    Also see <a href="./tutorial-usingStringTemplates/UsingStringTemplates.html">Using String Templates</a> for more information.</td>
+    Also see <a href="./tutorial-usingStringTemplates/UsingStringTemplates.html">Using String Templates</a> for more
+    information.</td>
     <td>Object</td>
 </tr>
 <tr>
     <td><code>locale</code></td>
-    <td>Specifies the language code with the desired localization. Language codes are expected in a form similar to <a href="https://tools.ietf.org/html/bcp47">BCP 47 tags</a> but with a "_" instead of a "-" separating the language code from the country code. When specified, the resource loader will add a suffix of the locale value to each entry defined in the <code>resources</code> and look for them at the first attempt. If any such resource is not located, the resource loader follows <a href="ResourceLoader.html#fallback-rules-with-locale-and-defaultlocale">Fallback Rules</a> to attempt to find aother localization.</td>
+    <td>Specifies the language code with the desired localization. Language codes are expected in a form
+    similar to <a href="https://tools.ietf.org/html/bcp47">BCP 47 tags</a> but with a "_" instead of a "-" separating
+    the language code from the country code. When specified, the resource loader will add a suffix of the locale value
+    to each entry defined in the <code>resources</code> and look for them at the first attempt. If any such resource is
+    not located, the resource loader follows
+    <a href="ResourceLoader.html#fallback-rules-with-locale-and-defaultlocale">Fallback Rules</a> to attempt to
+    find another localization.</td>
     <td>String</td>
 </tr>
 <tr>
     <td><code>defaultLocale</code></td>
-    <td>Specifies the default language code. Provides a fallback to use if the desired localization cannot be located. See <code>locale</code> option for the format of language codes. Also See <a href="ResourceLoader.html#fallback-rules-with-locale-and-defaultlocale">Fallback Rules</a> for when <code>defaultLocale</code> value will be used.</td>
+    <td>Specifies the default language code. Provides a fallback to use if the desired localization cannot be located.
+    See <code>locale</code> option for the format of language codes. Also see
+    <a href="ResourceLoader.html#fallback-rules-with-locale-and-defaultlocale">Fallback Rules</a> for when
+    <code>defaultLocale</code> value will be used.</td>
     <td>String</td>
 </tr>
 <tr>
@@ -133,39 +144,48 @@ identifying both the transport and the address of the resource to be loaded:
 
 <table>
     <tr>
-        <th colspan="3">Duck typing fields determining <code>resourceSpec</code> transport within a <code>resourceSpec</code> structure for a <code>fluid.resourceLoader</code> component</th>
+        <th colspan="3">Duck typing fields determining <code>resourceSpec</code> transport within a
+        <code>resourceSpec</code> structure for a <code>fluid.resourceLoader</code> component</th>
     </tr>
 <tr><th>Name</th><th>Description</th><th>Type</th></tr>
 <tr>
     <td><code>url</code></td>
-    <td>A relative or absolute URL to be loaded via HTTP or HTTPS. This may include interpolated terms such as <code>%some-term</code>
+    <td>A relative or absolute URL to be loaded via HTTP or HTTPS. This may include interpolated terms such as
+    <code>%some-term</code>
     resolved via the <code>resourceLoader</code>'s <code>terms</code> structures.</td>
     <td>String</td>
 </tr>
 <tr>
     <td><code>path</code></td>
-    <td>A relative or absolute filesystem path to be loaded via the node.js <a href="https://nodejs.org/api/fs.html"><code>fs</code></a> API.
+    <td>A relative or absolute filesystem path to be loaded via the node.js
+    <a href="https://nodejs.org/api/fs.html"><code>fs</code></a> API.
     As with <code>url</code>, this may include interpolated terms.</td>
     <td>String</td>
 </tr>
 <tr>
     <td><code>resourceText</code></td>
-    <td>The complete literal resource text to be reported as loaded. This is useful in an infrastructural context where the required resource
-    has already been loaded or computed via some other means, and one merely needs to inject it into the <code>resourceLoader</code> workflow.</td>
+    <td>The complete literal resource text to be reported as loaded. This is useful in an infrastructural context
+    where the required resource
+    has already been loaded or computed via some other means, and one merely needs to inject it into the
+    <code>resourceLoader</code> workflow.</td>
     <td>String</td>
 </tr>
 <tr>
     <td><code>promiseFunc</code></td>
-    <td>A (IoC reference to a) function returning a promise which yields the required resource text. This will be invoked with
-    the arguments resolved from the <code>resourceSpec</code> field <code>promiseArgs</code> which may also be present.
+    <td>A (IoC reference to a) function returning a promise which yields the required resource text. This will be
+    invoked with the arguments resolved from the <code>resourceSpec</code> field <code>promiseArgs</code> which may
+    also be present.
     </td>
     <td>Function</td>
 </tr>
 <tr>
     <td><code>dataSource</code></td>
-    <td>A reference to a <code>fluid.dataSource</code> component whose <code>get</code> method will be invoked with the contents
-    of the <code>directModel</code> field in this <code>resourceSpec</code>. Documentation for core Infusion DataSources will
-    be ported soon, in the meantime you may refer to the docs on <a href="https://github.com/fluid-project/kettle/blob/master/docs/DataSources.md">
+    <td>A reference to a <code>fluid.dataSource</code> component whose <code>get</code> method will be invoked with
+    the contents
+    of the <code>directModel</code> field in this <code>resourceSpec</code>. Documentation for core Infusion
+    DataSources will
+    be ported soon, in the meantime you may refer to the docs on
+    <a href="https://github.com/fluid-project/kettle/blob/master/docs/DataSources.md">
     Kettle DataSources</a> and substitute <code>kettle</code> for <code>fluid</code> in all gradeNames.
     </td>
     <td>fluid.dataSource</td>
@@ -178,45 +198,56 @@ participating in the resource localisation algorithm based on path suffix. The o
 
 <table>
     <tr>
-        <th colspan="3">Members within a <code>resourceSpec</code> structure nested within the <code>resources</code> structure of a <code>fluid.resourceLoader</code> component</th>
+        <th colspan="3">Members within a <code>resourceSpec</code> structure nested within the <code>resources</code>
+        structure of a <code>fluid.resourceLoader</code> component</th>
     </tr>
 <tr><th>Name</th><th>Description</th><th>Type</th></tr>
 <tr>
     <td><code>[pathField]</code></td>
-    <td>The path to a pathed resource. This may be a relative or absolute URL or filesystem path. These paths can be actual path strings, for example, <code>../data/template.html</code>, or
-templating strings with embedded variables that have mapped replacement values defined in the <code>term</code> option, for example, <code>%prefix/template.html</code>.
-The format of templating paths complies with the format of the <code>template</code> argument of <a href="CoreAPI.html#fluidstringtemplatetemplate-terms">fluid.stringTemplate()</a> API.
-In addition, a localised suffix may be appended before the extension, in order to compute a localised version of the resource from the <code>locale</code> and
+    <td>The path to a pathed resource. This may be a relative or absolute URL or filesystem path. These paths can be
+    actual path strings, for example, <code>../data/template.html</code>, or
+    templating strings with embedded variables that have mapped replacement values defined in the <code>term</code> option,
+    for example, <code>%prefix/template.html</code>.
+    The format of templating paths complies with the format of the <code>template</code> argument of
+    <a href="CoreAPI.html#fluidstringtemplatetemplate-terms">fluid.stringTemplate()</a> API.
+    In addition, a localised suffix may be appended before the extension, in order to compute a localised version
+    of the resource from the <code>locale</code> and
 <code>defaultLocale</code> options.
     <td>String</td>
 </tr>
 <tr>
     <td><code>[nonPathField]</code></td>
-    <td>The duck typing field for a non-pathed resource. See the table above for the possibilities. Depending on the type of this
-    field, additional options may be accepted in this <code>resourceSpec</code> structure - i.e. <code>promiseFunc</code> will
-    accept <code>promiseArgs</code> and <code>dataSource</code> will accept <code>directModel</code>.
+    <td>The duck typing field for a non-pathed resource. See the table above for the possibilities. Depending on the
+    type of this
+    field, additional options may be accepted in this <code>resourceSpec</code> structure - i.e.
+    <code>promiseFunc</code> will accept <code>promiseArgs</code> and <code>dataSource</code> will accept
+    <code>directModel</code>.
     <td>String</td>
 </tr>
 <tr>
     <td><code>options</code></td>
-    <td>Contains "options" holding raw options to be forwarded to the underlying transport, e.g. XMLHttpRequest or the node HTTP API.</td>
+    <td>Contains "options" holding raw options to be forwarded to the underlying transport, e.g. XMLHttpRequest or
+    the node HTTP API.</td>
     <td>Object</td>
 </tr>
 <tr>
     <td><code>locale</code></td>
-    <td>As for <code>locale</code> of <a href="#resourceoptions-structure">resourceOptions</a>, but controlling the locale of this individual resource.
+    <td>As for <code>locale</code> of <a href="#resourceoptions-structure">resourceOptions</a>, but controlling the
+    locale of this individual resource.
     <td>String</td>
 </tr>
 <tr>
     <td><code>dataType</code></td>
-    <td>As for <code>dataType</code> of <a href="#resourceoptions-structure">resourceOptions</a>, but controlling the dataType of this individual resource.
+    <td>As for <code>dataType</code> of <a href="#resourceoptions-structure">resourceOptions</a>, but controlling the
+    dataType of this individual resource.
     <td>String</td>
 </tr>
 </table>
 
 ### Fallback Rules with `locale` and `defaultLocale`
 
-The `locale` and `defaultLocale` options within `resourceOptions` can be used to load localized resources, for example, to load messages in different languages.
+The `locale` and `defaultLocale` options within `resourceOptions` can be used to load localized resources, for example,
+to load messages in different languages.
 
 ```javascript
 fluid.defaults("fluid.messageLoader", {
@@ -244,8 +275,8 @@ below to satisfy the request:
    option: `../data/translation-en.json`
 5. look for a resource with the exact URL as specified through the `resources` option: `../data/translation.json`
 
-In addition to use within top-level `resourceOptions`, `locale` may also be supplied on an individual resource, in which case
-it overrides any choice from `locale` or `defaultLocale` at top level.
+In addition to use within top-level `resourceOptions`, `locale` may also be supplied on an individual resource, in which
+case it overrides any choice from `locale` or `defaultLocale` at top level.
 
 ### Events
 
@@ -264,7 +295,9 @@ A ``resourceLoader`` component fires the following events:
 <tr>
     <td><code>onResourceError</code></td>
     <td>Fired if a resource fails to load</td>
-    <td>A populated object with fetched resource text in the field `resourceText` for each entry. If an error occurs during a fetch, the <code>fetchError</code> field will be populated for that entry. This object can also be retrieved directly on the resource loader instance via the path <code>resources</code>.
+    <td>A populated object with fetched resource text in the field `resourceText` for each entry. If an error occurs
+    during a fetch, the <code>fetchError</code> field will be populated for that entry. This object can also be
+    retrieved directly on the resource loader instance via the path <code>resources</code>.
     </td>
 </tr>
 </table>

@@ -141,11 +141,15 @@ of arbitrary components at arbitrary paths in the (single, global) component tre
 Construct a component with the supplied options at the specified path in the component tree. The parent path of the
 location must already be a component.
 
-* `path {String|Array of String}` Path where the new component is to be constructed, represented as a string or array of segments
-* `options {Object}` Top-level options supplied to the component - must at the very least include a field `type` holding the component's type. Note that these are expressed
-  in the future-compatible [post-FLUID-5750](https://issues.fluidproject.org/browse/FLUID-5750) format with `type` alongside the component's options rather than at
-  a higher nested level as is currently required in local configuration supplied as [subcomponents](SubcomponentDeclaration.md).
-* `instantiator {Instantiator}` [optional] The instantiator holding the component to be created - if blank, the [global instantiator](#fluidglobalinstantiator) will be used
+* `path {String|Array of String}` Path where the new component is to be constructed, represented as a string or array
+  of segments
+* `options {Object}` Top-level options supplied to the component - must at the very least include a field `type` holding
+  the component's type. Note that these are expressed in the future-compatible
+  [post-FLUID-5750](https://issues.fluidproject.org/browse/FLUID-5750) format with `type` alongside the component's options
+  rather than at  a higher nested level as is currently required in local configuration supplied
+  as [subcomponents](SubcomponentDeclaration.md).
+* `instantiator {Instantiator}` [optional] The instantiator holding the component to be created - if blank, the
+  [global instantiator](#fluidglobalinstantiator) will be used
 * Returns: `{Component}` The constructed component
 
 ### fluid.constructChild(parent, memberName, options)
@@ -182,18 +186,25 @@ component member name.
 
 ## Potentia API methods
 
-These methods represent a further scheme for control over the instantiation process as operated by the "Nexus API methods" described in the previous section. As
-well as allowing for construction and destruction of material at arbitrary paths, these "Potentia methods" allow for the grouping of constructions and destructions
-into "tree transactions" in which instantiating components will be constructed simultaneously and so may be mutually referent. In addition, the framework rewrite
-which supports these (described under [FLUID-6148](https://issues.fluidproject.org/browse/FLUID-6148) and linked JIRAs) ensures that in the event of any failure
-during the transaction, the entire construction will be cleanly backed out, leaving the remaining component tree in a stable condition as it was before (except for
-any effects on component models and naturally any other side-effects unrelated to the component tree).
+These methods represent a further scheme for control over the instantiation process as operated by the
+"Nexus API methods" described in the previous section, and are new in Infusion 4.0.
+As well as allowing for construction and destruction of material at arbitrary paths, these "Potentia methods" allow
+for the grouping of constructions and destructions into
+"tree transactions" in which instantiating components will be constructed simultaneously and so may be mutually
+referent. In addition, the framework rewrite which supports these in Infusion 4.0 and higher (described under
+[FLUID-6148](https://issues.fluidproject.org/browse/FLUID-6148) and linked JIRAs) ensures that in the event of any
+failure during the transaction, the entire construction will be cleanly backed out, leaving the remaining component
+tree in a stable condition as it was before (except for any effects on component models and naturally any other
+side-effects unrelated to the component tree).
 
-These are named "potentia" methods because of their operation on a new source of state within Infusion, which has been named "potentia II" following its presentation
-in our [PPIG 2016 paper](https://github.com/amb26/papers/tree/master/ppig-2016a). The potentia II holds the records of component creation and destruction which have
-been scheduled for current or future tree transaction, but not yet acted on. Note that the current framework does not support more than one simultaneous tree
-transaction. In further discussion and API methods we will name the potentia II simply as "potentia", since the potentia I simply represents the contents of
-standard Infusion component [defaults](ComponentOptionsAndDefaults.md) with which there is no risk of confusion.
+These are named "potentia" methods because of their operation on a new source of state within Infusion, which has been
+named "potentia II" following its presentation in our
+[PPIG 2016 paper](https://github.com/amb26/papers/tree/master/ppig-2016a).
+The potentia II holds the records of component creation and destruction which have been scheduled for current or future
+tree transaction, but not yet acted on. Note that the current framework does not support more than one simultaneous tree
+transaction. In further discussion and API methods we will name the potentia II simply as "potentia", since the potentia
+I simply represents the contents of standard Infusion component [defaults](ComponentOptionsAndDefaults.md) with which
+there is no risk of confusion.
 
 ### fluid.beginTreeTransaction([transactionOptions])
 
@@ -203,24 +214,28 @@ unit via `fluid.commitPotentiae` or cancelled via `fluid.cancelTreeTransaction`.
 
 * `transactionOptions {Object}` [optional] A set of options configuring this tree transaction. This may include fields
   * `breakAt {String}` - one of the values:
-    * `shells`: signifying that this transaction should pause as soon as all component shells are constructed (see FLUID-4925)
-    * `observation`: signifying that this transaction should pause once the observation process of all components is concluded - that is,
-                  that all component options, members and invokers are evaluated.
+    * `shells`: signifying that this transaction should pause as soon as all component shells are constructed (see
+      FLUID-4925)
+    * `observation`: signifying that this transaction should pause once the observation process of all components is
+       concluded - that is, that all component options, members and invokers are evaluated.
 * Returns: `{String}` The id of the freshly allocated tree transaction.
 
 ### fluid.registerPotentia(potentia, transactionId)
 
-Signature as for `fluid.construct`. Registers the intention of constructing or destroying a component at a particular path. The action will
-occur once the transaction is committed.
+Signature as for `fluid.construct`. Registers the intention of constructing or destroying a component at a particular
+path. The action will occur once the transaction is committed.
 
 * `potentia {Potentia}` - A record designating the kind of change to occur. Fields:
   * `type {String}` Either `"create"` or `"destroy"`.
-  * `path {String|Array of String}` Path where the component is to be constructed or destroyed, represented as a string or array of segments
+  * `path {String|Array of String}` Path where the component is to be constructed or destroyed, represented as a string
+      or array of segments
   * `componentDepth {Number}` The depth of nesting of this record from the originally created component - defaults to 0
-  * `records: {Array of Object}` A component's construction record, as they would currently appear in a component's "options.components.x" record
-* `transactionId {String}` [optional] A transaction id in which to enlist this registration. If this is omitted, the current transaction
-     will be used, if there is one - otherwise, a fresh transaction will be allocated
-* Returns: `{String}` `transactionId` if it was supplied, or else any current transaction, or a freshly allocated one if there was none
+  * `records: {Array of Object}` A component's construction record, as they would currently appear in a component's
+    "options.components.x" record
+* `transactionId {String}` [optional] A transaction id in which to enlist this registration. If this is omitted, the
+    current transaction will be used, if there is one - otherwise, a fresh transaction will be allocated
+* Returns: `{String}` `transactionId` if it was supplied, or else any current transaction, or a freshly allocated one
+    if there was none
 
 ### fluid.commitPotentiae(transactionId, isCancel)
 
@@ -228,9 +243,11 @@ Commit all potentiae that have been enqueued through calls to `fluid.registerPot
 as well as any further potentiae which become enqueued through construction of these, potentially in multiple phases.
 
 * `transactionId {String}` The tree transaction to be committed
-* `isCancel {Boolean}`[optional] `true` if this commit action is a result of cancelling a previous transaction. In this case
-    the `pendingPotentia` element of the transaction will have been derived from the `restoreRecords` of that transaction.
-* Returns: `{Shadow|Undefined}` The shadow record for the first component to be constructed during the transaction, if any.
+* `isCancel {Boolean}`[optional] `true` if this commit action is a result of cancelling a previous transaction. In
+    this case the `pendingPotentia` element of the transaction will have been derived from the `restoreRecords` of that
+    transaction.
+* Returns: `{Shadow|Undefined}` The shadow record for the first component to be constructed during the transaction, if
+    any.
 
 ### fluid.cancelTreeTransaction(transactionId)
 
@@ -240,41 +257,50 @@ as well as any further potentiae which become enqueued through construction of t
 
 ## Instantiation workflow within a transaction
 
-After the FLUID-6148 rewrite, the instantiation of Infusion component trees is scheduled in a different way to before. The older framework simply started from the
-(necessarily single) root component designated by the construction call in progress, and cascaded in a data-driven way, following IoC references through its options and then any designated subcomponents.
-In the post-FLUID-6148 framework, this instantiation proceeds in a more carefully scheduled way. The first part of the process simply instantiates ___component shells___ for all components which
-participate in the transaction - that is,
-the actual component object references, their `typeName`, `gradeNames` and `distributeOptions` fields, and the minimum of their options and other material needed in order to decode these. These shells are
-constructed and wired together in the correct geometry before any other instantiation proceeds. After having assembled the shells, the framework then passes over them
-repeatedly in successive workflow stages --- where each component participating in the transaction is brought to one workflow state before any one moves on to the next.
+After the Infusion 4.0 rewrite, the instantiation of Infusion component trees is scheduled in a different way to
+before. The older framework simply started from the (necessarily single) root component designated by the construction
+call in progress, and cascaded in a data-driven way, following IoC references through its options and then any
+designated subcomponents.
+In the 4.0 framework, this instantiation proceeds in a more carefully scheduled way. The first part of the process
+simply instantiates ___component shells___ for all components which participate in the transaction - that is,
+the actual component object references, their `typeName`, `gradeNames` and `distributeOptions` fields, and the minimum
+of their options and other material needed in order to decode these. These shells are constructed and wired together
+in the correct geometry before any other instantiation proceeds. After having assembled the shells, the framework
+then passes over them repeatedly in successive workflow stages --- where each component participating in the
+transaction is brought to one workflow state before any one moves on to the next.
 
 This workflow enables some further features implemented alongside the transactional potentia instantiation scheme:
 
 ### Workflow break hints:
 
-A "breakpoint hint" may be supplied as part of the `options` member of the [fluid.beginTreeTransaction](#fluid-begintreetransaction-transactionoptions-) method. This specifies that the workflow process
-should pause when it reaches a particular point. The two currently supported break points, `shells` and `observation` are described in the API documentation for
-[fluid.beginTreeTransaction](#fluid-begintreetransaction-transactionoptions-). This kind of hint is imagined useful for those implementing authoring supports for Infusion application, and allows for example for
-a cheap process which can validate some aspects of an Infusion application in an interactive way --- for example, whether given IoC references will resolve,
-whether all referenced grades can be found, or whether particular options distributions will hit a target.
+A "breakpoint hint" may be supplied as part of the `options` member of the
+[fluid.beginTreeTransaction](#fluid-begintreetransaction-transactionoptions-) method. This specifies that the workflow
+process should pause when it reaches a particular point. The two currently supported break points,
+`shells` and `observation` are described in the API documentation for
+[fluid.beginTreeTransaction](#fluid-begintreetransaction-transactionoptions-). This kind of hint is imagined useful for
+those implementing authoring supports for Infusion application, and allows for example for a cheap process which can
+validate some aspects of an Infusion application in an interactive way --- for example, whether given IoC references
+will resolve, whether all referenced grades can be found, or whether particular options distributions will hit a target.
 
 ### Workflow functions
 
-The ability for any grade to contribute further workflow actions which the framework will execute at a configurable part of its
-sequence when instantiating groups of components in which include the grade appears. These are described in the next section.
+The ability for any grade to contribute further workflow actions which the framework will execute at a configurable
+part of its sequence when instantiating groups of components in which include the grade appears. These are described
+in the next section.
 
 ## Workflow functions
 
-An important new capability in the post-FLUID-6148 framework is the appearance of ___workflow functions___ which are used to
-organise the activity of both existing grades such as `fluid.modelComponent` and `fluid.rendererComponent` but also
-any further grades which the author wishes to enroll into this system. Note that this is an advanced capability and is
-not likely to be used by authors who are not trying to implement framework-like capabilities.
+An important new capability in the post-FLUID-6148 framework is the appearance of ___workflow functions___ which are
+used to organise the activity of both existing grades such as `fluid.modelComponent` and `fluid.rendererComponent` but
+also any further grades which the author wishes to enroll into this system. Note that this is an advanced capability
+and is not likely to be used by authors who are not trying to implement framework-like capabilities.
 
-The important abilities of workflow functions are to intercept the construction process across an entire tree of instantiating components,
-and to contribute their own workflow at a configurable point in this process. This scheme is expressed using component options registered
-in the grade's defaults under the newly recognised top-level key `workflows`. Participating grades list the names of global free
-functions operating their workflow in namespaced blocks, and control their position in the overall workflow sequence by using a
-`priority` field with the same syntax and semantics as seen in other framework areas controlled by [Priorities](Priorities.md).
+The important abilities of workflow functions are to intercept the construction process across an entire tree of
+instantiating components, and to contribute their own workflow at a configurable point in this process. This scheme
+is expressed using component options registered in the grade's defaults under the newly recognised top-level key
+`workflows`. Participating grades list the names of global free functions operating their workflow in namespaced
+blocks, and control their position in the overall workflow sequence by using a `priority` field with the same syntax
+and semantics as seen in other framework areas controlled by [Priorities](Priorities.md).
 
 ### Configuring a workflow function
 
@@ -282,49 +308,49 @@ The clearest way of showing how to configure a workflow function is to show the 
 definitions from the base grade `fluid.component` look as follows:
 
 ```javascript
-    fluid.defaults("fluid.component", {
+fluid.defaults("fluid.component", {
 // ...
-        workflows: {
-            local: {
-                concludeComponentObservation: {
-                    funcName: "fluid.concludeComponentObservation",
-                    priority: "first"
-                },
-                concludeComponentInit: {
-                    funcName: "fluid.concludeComponentInit",
-                    priority: "last"
-                }
+    workflows: {
+        local: {
+            concludeComponentObservation: {
+                funcName: "fluid.concludeComponentObservation",
+                priority: "first"
+            },
+            concludeComponentInit: {
+                funcName: "fluid.concludeComponentInit",
+                priority: "last"
             }
         }
-    });
+    }
+});
 ```
 
-This shows the configuration of two [local workflows](#local-workflows), `fluid.concludeComponentObservation` which will execute
-first, and `fluid.concludeComponentInit` which will execute last. The former completes the process of evaluating all component
-options, members, invokers and other top-level masterial, and the latter marks the component as fully constructed and fires its
-`onCreate` event.
+This shows the configuration of two [local workflows](#local-workflows), `fluid.concludeComponentObservation` which
+will execute first, and `fluid.concludeComponentInit` which will execute last. The former completes the process of
+evaluating all component options, members, invokers and other top-level masterial, and the latter marks the component
+as fully constructed and fires its `onCreate` event.
 
 The definitions from `fluid.modelComponent` look as follows:
 
 ```javascript
-    fluid.defaults("fluid.modelComponent", {
-        gradeNames: ["fluid.component"],
+fluid.defaults("fluid.modelComponent", {
+    gradeNames: ["fluid.component"],
 
-        workflows: {
-            global: {
-                resolveModelSkeleton: {
-                    funcName: "fluid.resolveModelSkeleton"
-                }
-            },
-            local: {
-                notifyInitModel: {
-                    funcName: "fluid.notifyInitModel",
-                    priority: "before:concludeComponentInit"
-                }
+    workflows: {
+        global: {
+            resolveModelSkeleton: {
+                funcName: "fluid.resolveModelSkeleton"
+            }
+        },
+        local: {
+            notifyInitModel: {
+                funcName: "fluid.notifyInitModel",
+                priority: "before:concludeComponentInit"
             }
         }
+    }
 // ...
-    });
+});
 ```
 
 This shows the registration of one global workflow, `fluid.resolveModelSkeleton` which since it is the only one in the core
@@ -338,34 +364,40 @@ before the `concludeComponentInit` action which fires `onCreate`.
 
 There are two kinds of workflow functions which may be contributed, global and local workflows. Global workflows represent
 particularly ambitious functionality which requires oversight of the entire instantiating tree, and all global workflows
-execute before any local workflows. The framework currently includes just one global workflow, the one which identifies and resolves the values
-of all model components throughout the instantiating tree's `model skeleton`, but further ones will be implemented as part of the upcoming
-framework's markup renderer for [FLUID-4260](https://issues.fluidproject.org/browse/FLUID-4260).
+execute before any local workflows. The framework currently includes just one global workflow, the one which identifies
+and resolves the values of all model components throughout the instantiating tree's `model skeleton`, but further ones
+will be implemented as part of the upcoming framework's markup renderer for Infusion 5.0 as described in
+[FLUID-4260](https://issues.fluidproject.org/browse/FLUID-4260).
 
 A global workflow function receives the signature:
 
 ### &lt;global.workflow.function.name&gt;(shadows)
 
-* `shadows {Array of Shadow}` An array of _all_ component shadows participating in this transaction, sorted in order from the root of the component
-    tree down to the leaves. Note that this includes all such components, and the implementor will need to make an explicit
-    [fluid.componentHasGrade](CoreAPI.html#fluid-componenthasgrade-component-gradename-) check in order to find the components of interest to it. A shadow
+* `shadows {Array of Shadow}` An array of _all_ component shadows participating in this transaction, sorted in order
+    from the root of the component
+    tree down to the leaves. Note that this includes all such components, and the implementor will need to make an
+    explicit [fluid.componentHasGrade](CoreAPI.html#fluid-componenthasgrade-component-gradename-) check in order to
+    find the components of interest to it. A shadow
     record includes various book-keeping fields of interest to the framework, but of primary interest is the member
-  * `that {Component}` The currently instantiating component. Much of the component's material at this point will be unevaluated. Any material which is
-        required by the component must have its observation triggered via `fluid.getForComponent`.
+  * `that {Component}` The currently instantiating component. Much of the component's material at this point will be
+    unevaluated. Any material which is required by the component must have its observation triggered via
+    `fluid.getForComponent`.
 
 ### Local workflows
 
-Local workflows execute once all global workflows have been run on the tree, and receive each component in the tree separately. These implement
-less ambitious, per-component functionality. Note that these receive the components in the ___reverse___ order to global workflow functions -
-that is, they receive components at the leaves of the tree first, and root components afterwards. This is by analogy with the standard
-object-oriented semantic that more nested components complete their construction before their parents.
+Local workflows execute once all global workflows have been run on the tree, and receive each component in the tree
+separately. These implement less ambitious, per-component functionality. Note that these receive the components in
+the ___reverse___ order to global workflow functions - that is, they receive components at the leaves of the tree
+first, and root components afterwards. This is by analogy with the standard object-oriented semantic that more nested
+components complete their construction before their parents.
 
 A local workflow function receives the signature:
 
 ### &lt;local.workflow.function.name&gt;(shadow)
 
-* `shadow {Shadow}` One shadow of a component participating in this transaction. These will be presented starting from the leaves of the tree
-    progressing up towards its roots. Note that as with global workflow functions, _all_ shadows in the tree, and an explicit
-    [fluid.componentHasGrade](CoreAPI.html#fluid-componenthasgrade-component-gradename-) check will again be required. As for global workflows,
-    the shadow's member `that` includes a partially evaluated component that may require calls to `fluid.getForComponent` in order to force
-    observation of some of its material.
+* `shadow {Shadow}` One shadow of a component participating in this transaction. These will be presented starting from
+    the leaves of the tree
+    progressing up towards its roots. Note that as with global workflow functions, _all_ shadows in the tree, and an
+    explicit [fluid.componentHasGrade](CoreAPI.html#fluid-componenthasgrade-component-gradename-) check will again be
+    required. As for global workflows, the shadow's member `that` includes a partially evaluated component that may
+    require calls to `fluid.getForComponent` in order to force observation of some of its material.
