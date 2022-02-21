@@ -11,6 +11,7 @@
         "clean": "rimraf dist",
         "dev": "cross-env ELEVENTY_ENV=development eleventy --serve",
         "lint": "fluid-lint-all",
+        "pretest": "npm run build",
         "test": "run-s test:*",
         "test:node": "node tests/all-node-tests.js",
         "test:browser": "node node_modules/testem/testem.js ci --file tests/testem.js"
