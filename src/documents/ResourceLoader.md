@@ -86,7 +86,7 @@ fluid.resourceLoader({
 ```
 
 In short form, a ``resourceSpec`` may simply consist of a String, in which case it is interpreted as a URL. Otherwise,
-it is an Object with keys described in the [section on resourceSpecs](#resourceSpec-structure).
+it is an Object with keys described in the [section on resourceSpecs](#resourcespec-structure).
 
 ### `resourceOptions` structure
 
