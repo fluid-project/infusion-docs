@@ -376,7 +376,7 @@ A global workflow function receives the signature:
 * `shadows {Array of Shadow}` An array of _all_ component shadows participating in this transaction, sorted in order
     from the root of the component
     tree down to the leaves. Note that this includes all such components, and the implementor will need to make an
-    explicit [fluid.componentHasGrade](CoreAPI.html#fluidcomponenthasgrade-component-gradename) check in order to
+    explicit [fluid.componentHasGrade](CoreAPI.html#fluidcomponenthasgradecomponent-gradename) check in order to
     find the components of interest to it. A shadow
     record includes various book-keeping fields of interest to the framework, but of primary interest is the member
   * `that {Component}` The currently instantiating component. Much of the component's material at this point will be
@@ -398,6 +398,6 @@ A local workflow function receives the signature:
 * `shadow {Shadow}` One shadow of a component participating in this transaction. These will be presented starting from
     the leaves of the tree
     progressing up towards its roots. Note that as with global workflow functions, _all_ shadows in the tree, and an
-    explicit [fluid.componentHasGrade](CoreAPI.html#fluidcomponenthasgrade-component-gradename) check will again be
+    explicit [fluid.componentHasGrade](CoreAPI.html#fluidcomponenthasgradecomponent-gradename) check will again be
     required. As for global workflows, the shadow's member `that` includes a partially evaluated component that may
     require calls to `fluid.getForComponent` in order to force observation of some of its material.
