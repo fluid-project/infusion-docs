@@ -1,6 +1,5 @@
 ---
 title: Instantiating the Enhancer and Settings Store Only
-layout: default
 category: Tutorials
 ---
 
@@ -38,7 +37,7 @@ var myAuxiliarySchema = {
 
 fluid.prefs.builder({
     primarySchema: myPrimarySchema,
-    auxiliaryScham: myAuxiliarySchema
+    auxiliarySchema: myAuxiliarySchema
 });
 ```
 

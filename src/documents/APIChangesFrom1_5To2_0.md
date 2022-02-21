@@ -1,6 +1,5 @@
 ---
 title: API Changes from 1.5 to 2.0
-layout: default
 category: Infusion
 ---
 
@@ -43,7 +42,7 @@ The component events `onAttach` and `onClear` have also been removed.
 
 In Infusion 1.5, standard invokers cached all of their arguments that were not part of `{arguments}` or `{that}.model`
 on their first use, unless they had the annotation `dynamic: true`. In 2.0, all invoker arguments are evaluated freshly
-on each invokation, and the `dynamic: true` annotation is no longer used.
+on each invocation, and the `dynamic: true` annotation is no longer used.
 
 #### Options distributions
 

@@ -1,6 +1,5 @@
 ---
 title: Infusion Event System
-layout: default
 category: Infusion
 ---
 
@@ -237,7 +236,7 @@ Injection and Boiling](EventInjectionAndBoiling.md) for more details of this pro
 This holds the same string that would have followed the listener name after a period in the "short form" described
 above. The namespace can serve three functions - i) to ensure that exactly one listener per namespace is registered with
 this event firer, ii) to serve as a convenient value by which the listener can be identified for later removal by a
-procedural call to `removeListener`, and iii) to allow the listener to be targetted by a _priority rule_ (see the next
+procedural call to `removeListener`, and iii) to allow the listener to be targeted by a _priority rule_ (see the next
 option for details).
 </td></tr>
   <tr>

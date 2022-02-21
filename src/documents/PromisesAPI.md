@@ -1,6 +1,5 @@
 ---
 title: Infusion Promises API
-layout: default
 category: Infusion
 ---
 [Promises](https://en.wikipedia.org/wiki/Futures_and_promises) are a now widespread programming construct aiming to
@@ -190,7 +189,7 @@ promise at the preceding position has resolved.
 
 ### fluid.promise.fireTransformEvent(event, payload[, options])
 
-* `event {`[`Event`](InfusionEventSystem.md)`}` A "pseudoevent" whose listeners are to be treated as sucessive
+* `event {`[`Event`](InfusionEventSystem.md)`}` A "pseudoevent" whose listeners are to be treated as successive
   (asynchronous) stages in the process of transforming a payload.
 * `payload {Any}` The original payload input to the transforming chain.
 * `options {Object}` [optional] A set of additional options to be supplied to each listener in the transform chain.

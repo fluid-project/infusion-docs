@@ -1,6 +1,5 @@
 ---
 title: fluid.fetchResources
-layout: default
 category: Infusion
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Understanding Infusion Components
-layout: default
 category: Infusion
 ---
 
@@ -25,7 +24,7 @@ the Infusion Component Library:
 
 ### Progress
 
-![a horizontal progress bar](images/progress-example.png)
+![a horizontal progress bar](/images/progress-example.png)
 
 The Infusion Progress component is a single [view component](ComponentConfigurationOptions.md#view-components) with no
 [subcomponents](SubcomponentDeclaration.md). It has a number of UI elements that work together and are updated
@@ -34,7 +33,7 @@ make much sense to try to chunk up into multiple components.
 
 ### Inline Edit
 
-![The Inline Edit component with a hover tooltip showing](images/viewMode.png)
+![The Inline Edit component with a hover tooltip showing](/images/viewMode.png)
 
 The Inline Edit component allows the user to edit text in place, without switching to a new screen, by simply switching
 into an in-place edit mode. The view mode is implemented one way, with certain functionality (i.e. a tooltip, an
@@ -43,7 +42,7 @@ rather different, and so they're implemented as two separate subcomponents of th
 
 ### Uploader
 
-![The Uploader interface, showing a list of files queued for uploading.](images/uploader.png)
+![The Uploader interface, showing a list of files queued for uploading.](/images/uploader.png)
 
 The Uploader allows users to add several files to a queue and then upload them all at once. It is actually made up of
 several [subcomponents](SubcomponentDeclaration.md): It has the file queue view, which displays the files currently in

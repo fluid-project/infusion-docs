@@ -1,6 +1,5 @@
 ---
 title: Renderer Decorators
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---
@@ -57,8 +56,7 @@ decorator in turn.
             <td>String</td>
             <td>jQuery function to be invoked</td>
             <td rowspan="2">
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "jQuery",
     func: "click",
     args: function() { $(this).hide(); }
@@ -81,8 +79,7 @@ decorators: [{
             <td>String</td>
             <td>Space-separated list of CSS class names</td>
             <td>
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "addClass",
     classes: "fl-widget fl-centred"
 }]
@@ -99,8 +96,7 @@ decorators: [{
             <td>String</td>
             <td>Space-separated list of CSS class names</td>
             <td>
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "removeClass",
     classes: "fl-hidden"
 }]
@@ -117,8 +113,7 @@ decorators: [{
             <td>String</td>
             <td>Global function name to be invoked</td>
             <td rowspan="4">
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "fluid",
     func: "fluid.componentName",
     container: container,
@@ -157,8 +152,7 @@ decorators: [{
                 under this key
             </td>
             <td>
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "identify",
     key: "mySpecialName"
 }]
@@ -175,8 +169,7 @@ decorators: [{
             <td>Object</td>
             <td>The attribute map to be applied to the rendered node</td>
             <td>
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "attrs",
     attributes: ""
 }]
@@ -193,8 +186,7 @@ decorators: [{
             <td>String</td>
             <td>Name of event handler to be bound</td>
             <td rowspan="2">
-                <pre><code>
-decorators: [{
+                <pre class="highlight"><code class="hljs javascript">decorators: [{
     type: "event",
     event: "click",
     handler: myHandler
@@ -332,7 +324,7 @@ In this case, the equivalent decorator instantiation takes the form:
 <strong>Note</strong> that rather than specifying `container` and `options` separately, one can instead set the member
 `args` to consist of the entire argument list - this might be useful for instantiating a non-Fluid component that does
 not conform to the general syntax. For example, the decorator above could be given a member `args: [container,
-options]`. The `args` member takes precendence if specified.
+options]`. The `args` member takes precedence if specified.
 </div>
 
 There is no specially dehydrated form for the `fluid` decorator – however, like all renderer decorators it may be

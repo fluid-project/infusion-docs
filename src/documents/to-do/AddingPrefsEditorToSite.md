@@ -1,6 +1,5 @@
 ---
 title: Adding a Basic Preferences Editor to a Site
-layout: default
 category: Tutorials
 ---
 

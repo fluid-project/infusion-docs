@@ -1,6 +1,5 @@
 ---
 title: Uploader API
-layout: default
 category: Components
 ---
 
@@ -495,12 +494,10 @@ subcomponents.
                 <code>"fluid.uploader.html5Strategy"</code>
             </td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 strategy: {
     type: "fluid.uploader.progressiveStrategy"
-}
-</code>
+}</code>
                 </pre>
             </td>
         </tr>
@@ -514,12 +511,10 @@ Currently there is only one fileQueueView sub-component.
                 <code>"fluid.fileQueueView"</code>
             </td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 fileQueueView: {
     type: "fluid.fileQueueView"
-}
-</code>
+}</code>
                 </pre>
             </td>
         </tr>
@@ -533,8 +528,7 @@ fileQueueView: {
                 available options.
             </td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 totalProgressBar: {
     type: "fluid.progress",
     options: {
@@ -546,8 +540,7 @@ totalProgressBar: {
             ariaElement: ".flc-uploader-total-progress"
         }
     }
-},
-</code>
+},</code>
                 </pre>
             </td>
         </tr>
@@ -598,14 +591,12 @@ totalProgressBar: {
                 </p>
             </td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 focusWithEvent: {
     afterFileDialog: "uploadButton",
     afterUploadStart: "pauseButton",
     afterUploadStop: "uploadButton"
-},
-</code>
+},</code>
                 </pre>
             </td>
         </tr>
@@ -616,16 +607,14 @@ focusWithEvent: {
             </td>
             <td></td>
             <td>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 styles: {
     disabled: "fl-uploader-disabled",
     hidden: "fl-uploader-hidden",
     dim: "fl-uploader-dim",
     totalProgress: "fl-uploader-total-progress-okay",
     totalProgressError: "fl-uploader-total-progress-errored"
-}
-</code>
+}</code>
                 </pre>
             </td>
         </tr>
@@ -638,8 +627,7 @@ styles: {
             <td></td>
             <td>
                 <strong>v1.5</strong>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 strings: {
     progress: {
         fileUploadLimitLabel: "%fileUploadLimit %fileLabel maximum",
@@ -661,12 +649,10 @@ strings: {
         resumeUpload: "Resume Upload",
         remove: "Remove"
     }
-}
-</code>
+}</code>
                 </pre>
                 <strong>v1.4</strong>
-                <pre>
-<code>
+                <pre class="highlight"><code class="hljs javascript">
 strings: {
     progress: {
         fileUploadLimitLabel: "%fileUploadLimit %fileLabel maximum",
@@ -690,8 +676,7 @@ strings: {
         emptyQueue: "File list: No files waiting to be uploaded.",
         queueSummary: "File list:  %totalUploaded files uploaded, %totalInUploadQueue file waiting to be uploaded."
     }
-}
-</code>
+}</code>
                 </pre>
             </td>
         </tr>
@@ -1053,7 +1038,7 @@ Uploader has a "demo" mode. In demo mode, the Uploader uses a special version of
 talking to a server. Most of the code is identical to the server mode because the same events are being fired and the
 model is exactly the same. Most of the code in the Uploader thinks that there is a server.
 
-To run locally you must specify `demo: true` in your compontent configuration:
+To run locally you must specify `demo: true` in your component configuration:
 
 ```javascript
 var myUploader = fluid.progressiveEnhanceableUploader(".flc-uploader", ".fl-ProgEnhance-basic", {

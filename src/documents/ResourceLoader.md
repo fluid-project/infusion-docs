@@ -1,6 +1,5 @@
 ---
 title: Resource Loader
-layout: default
 category: Infusion
 ---
 

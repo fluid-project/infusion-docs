@@ -1,6 +1,5 @@
 ---
 title: Working with UI Options
-layout: default
 category: Tutorials
 ---
 
@@ -9,6 +8,11 @@ tutorial](./UserInterfaceOptions.md) for installation procedure), it's important
 responds correctly.
 
 This documentation assumes you are somewhat comfortable with writing and editing CSS.
+
+In addition to the methods below, [Integrating UI Options Styling Preferences](./IntegratingUIOptionsStylingPreferences.md),
+describes the [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+UI Options provides. These can be used as an alternative or additional approach for applying your own custom styling
+when a preference is applied.
 
 ## Contrast Themes
 
@@ -69,17 +73,17 @@ which uses the class name `fl-theme-yb`:
 ```css
 /* default style for button */
 .toolbar .helpLink {
-    outline: solid 0.2rem #008cba;
-    color: #008cba;
     background: #efefef;
-    text-shadow: 1px 1px 0 #FFFFFF;
+    color: #008cba;
+    outline: solid 0.2rem #008cba;
+    text-shadow: 1px 1px 0 #fff;
 }
 
 /* high contrast for button */
 .fl-theme-yb .toolbar .helpLink {
-    outline: solid 0.2rem #ff0;
-    color: #ff0;
     background: #000;
+    color: #ff0;
+    outline: solid 0.2rem #ff0;
     text-shadow: none;
 }
 ```
@@ -110,11 +114,22 @@ will likely look very similar to each other, with differences only related to th
 
 ```css
 /* contrast background icon for button. these images have a transparent background */
-.fl-theme-yb .toolbar .saveButton { background-image: url('images/save-yellow.png'); }
-.fl-theme-wb .toolbar .saveButton { background-image: url('images/save-white.png'); }
+.fl-theme-yb .toolbar .saveButton {
+    background-image: url('images/save-yellow.png');
+}
+
+.fl-theme-wb .toolbar .saveButton {
+    background-image: url('images/save-white.png');
+}
+
 .fl-theme-by .toolbar .saveButton,
-.fl-theme-bw .toolbar .saveButton { background-image: url('images/save-black.png'); }
-.fl-theme-lgdg .toolbar .saveButton { background-image: url('images/save-grey.png'); }
+.fl-theme-bw .toolbar .saveButton {
+    background-image: url('images/save-black.png');
+}
+
+.fl-theme-lgdg .toolbar .saveButton {
+    background-image: url('images/save-grey.png');
+}
 ```
 
 Creating contrast styles can be simplified by mix-ins if you are using a CSS stylesheet language like Sass, Stylus, or

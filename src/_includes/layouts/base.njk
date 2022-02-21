@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>{{ title }} | Fluid Infusion</title>
+
+        <link rel="stylesheet" href="{{ "/lib/foundation/normalize.css" | url }}">
+        <link rel="stylesheet" href="{{ "/lib/foundation/foundation.css" | url }}">
+        <link rel="stylesheet" href="{{ "/css/highlightjs-custom.css" | url }}">
+        <link rel="stylesheet" href="{{ "/lib/octicons/octicons.css" | url }}">
+
+        <link rel="stylesheet" type="text/css" href="{{ "/lib/infusion/src/framework/preferences/css/Enactors.css" | url }}" />
+        <link rel="stylesheet" type="text/css" href="{{ "/lib/infusion/src/framework/preferences/css/PrefsEditor.css" | url }}" />
+        <link rel="stylesheet" type="text/css" href="{{ "/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" | url }}" />
+        <link rel="stylesheet" href="{{ "/css/infusion-docs.css" | url }}">
+
+        <link rel="icon" type="image/png" href="{{ "/favicon.png" | url }}">
+
+        <script type="text/javascript" src="{{ "/lib/infusion/dist/infusion-all.js" | url }}"></script>
+        <script type="text/javascript" src="{{ "/js/infusion-docs.js" | url }}"></script>
+
+        <script type="text/javascript" src="{{ '/lib/gpii-express/querystring-coding.js' | url }}"></script>
+        <script type="text/javascript" src="{{ '/lib/gpii-binder/transforms.js' | url }}"></script>
+        <script type="text/javascript" src="{{ '/lib/gpii-binder/binder.js' | url }}"></script>
+
+        {% if category === 'Search' %}
+            <script type="text/javascript" src="{{ '/lib/gpii-location-bar-relay/locationBar.js' | url }}"></script>
+            <script type="text/javascript" src="{{ '/lib/lunr/lunr.min.js' | url }}"></script>
+            <script type="text/javascript" src="{{ '/js/search-digest.js' | url }}"></script>
+            <script type="text/javascript" src="{{ '/js/search-string-parser.js' | url }}"></script>
+            <script type="text/javascript" src="{{ '/js/search.js' | url }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ '/js/mini-search.js' | url }}"></script>
+        {% endif %}
+    </head>
+    <body class="infusion-docs fl-theme-prefsEditor-default">
+        <div class="container infusion-docs-container">
+
+            <!-- Skip Link -->
+            <div id="skip">
+                <a href="#tableOfContents">Jump to Table of Contents</a>
+                <a href="#content">Skip to Content</a>
+            </div>
+            <!-- END skip link -->
+
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+                <div class="fl-panelBar">
+                    <span class="fl-prefsEditor-buttons">
+                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Preferences</button>
+                    </span>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+                    terms: {
+                        "templatePrefix": "{{ "/lib/infusion/src/framework/preferences/html" | url }}",
+                        "messagePrefix": "{{ "/lib/infusion/src/framework/preferences/messages" | url }}"
+                    },
+                    "tocTemplate": "{{ "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html" | url }}"
+                });
+            </script>
+
+            <!-- END markup for Preference Editor -->
+
+            <header class="row infusion-docs-header">
+                <div class="infusion-docs-fluidLogo small-12 medium-3 column">
+                    <a class="infusion-docs-fluidLogoText" href="{{ "/" | url }}" title="Infusion">infusion</a>
+                </div>
+
+                <nav class="infusion-docs-fluidCategories small-12 medium-9 column">
+                    {% set navItems = collections.all | eleventyNavigation %}
+                    {% for item in navItems %}
+                        <a href="{{ item.url }}"{% if page.url === item.url %} aria-current="page"{% endif %}{% if item.key === category%} class="infusion-docs-category-active"{% endif %}>{{ item.key }}</a>
+                    {% endfor %}
+                </nav>
+            </header>
+
+            <div class="infusion-docs-mainBody">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                    {% if category !== "Search" %}
+                        <label for="search" class="infusion-docs-category">Search</label>
+                        <p class="docs-search-mini"><input id="search" type="search" name="qs"/></p>
+                        {% for group in siteStructure %}
+                            {% if category === group.category %}
+                            <span class="infusion-docs-category">{{ category }}</span>
+                            {% for section in group.sections %}
+                            <span class="infusion-docs-sectionName">{{ section.sectionName }}</span>
+                            <ul>
+                            {% for child in section.pages %}
+                                <li>
+                                    {% if page.url === "/infusion/development" + child.href %}
+                                        <span class="infusion-docs-TOC-pageName">{{ child.pageName }}</span>
+                                    {% else %}
+                                        <a href="{{ child.href | addPrefix }}"><span class="infusion-docs-TOC-pageName">{{ child.pageName }}</span></a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                            </ul>
+                            {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </nav>
+
+                <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
+                    <div class="infusion-docs-articleContainer">
+
+                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+
+                        <h1>{{ title }}</h1>
+
+                        <p class="infusion-docs-githubLink"><a href="{{ githubLocation }}" target="_blank">Edit on GitHub</a></p>
+
+                        {% if noteRendererChangesPost15 %}
+                        <div class="infusion-docs-note"><strong>Note:</strong> The renderer will undergo significant changes post Infusion 1.5
+                        </div>
+                        {% endif %}
+
+                        <div class="infusion-docs-articleBody">
+                            {% if category === "Search" %}
+                                <div class="docs-search">
+                                    <label for="search">Search</label>
+                                    <input id="search" type="search" class="docs-search-query" />
+
+                                    <div class="docs-search-results">Enter one or more search terms and press enter to search.</div>
+                                </div>
+                            {% else %}
+                                {{ content | rewriteMdLinks | safe }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <footer class="row infusion-docs-footer">
+                        <p class="infusion-docs-footerInfusion">Infusion is created by the <a href="http://fluidproject.org/" target="_blank">Fluid Project</a>,<br/>
+                        a project of the <a href="http://idrc.ocad.ca/" target="_blank">Inclusive Design Research Centre</a> at <a href="http://www.ocadu.ca/" target="_blank">OCAD University</a>, funded by a grant from <a href="http://www.mellon.org/" target="_blank">The Andrew W. Mellon Foundation</a>.</p>
+                        <p>Hosting is provided by <a href="https://netlify.com/">Netlify</a>.</p>
+                    </footer>
+
+                </article>
+
+            </div>
+
+
+        </div> <!-- end container -->
+        <script>
+            fluid.docs.onLoad();
+            {% if category === 'Search' %}
+                fluid.docs.search(".docs-search");
+            {% else %}
+                fluid.docs.search.mini(".docs-search-mini")
+            {% endif %}
+    </script>
+
+    </body>
+
+</html>

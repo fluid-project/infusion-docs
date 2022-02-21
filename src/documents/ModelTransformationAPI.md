@@ -1,6 +1,5 @@
 ---
 title: Model Transformation API
-layout: default
 category: Infusion
 ---
 The **model transformation** framework is a core part of Infusion and allows you to transform an input
@@ -262,16 +261,13 @@ keyword results in its content being output to the current output path.
 </thead><tbody>
 <tr><th>source</td><th>rule</th><th>Output</th></tr>
 <tr><td>
-<pre><code>
-{
+<pre class="highlight"><code class="hljs javascript">{
     "my": {
         "number": 93.56
     }
-}
-</code></pre>
+}</code></pre>
 </td><td>
-<pre><code>
-{
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": {
             "literalValue": "integer"
@@ -283,17 +279,14 @@ keyword results in its content being output to the current output path.
             }
         }
     }
-}
-</code></pre>
+}</code></pre>
 </td><td>
-<pre><code>
-{
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": "integer"
         "value": 94
     }
-}
-</code></pre>
+}</code></pre>
 </td>
 </tr>
 </tbody>
@@ -331,14 +324,11 @@ Returning to the example in the previous section, this could be written as:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "number": 93.56
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "transform": [
         {
             "type": "fluid.transforms.literalValue",
@@ -350,25 +340,19 @@ Returning to the example in the previous section, this could be written as:
             "outputPath": "Magnification.value"
         }
     ]
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": "integer"
         "value": 94
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "number": 93.56
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": [
             {
@@ -382,16 +366,13 @@ Returning to the example in the previous section, this could be written as:
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": "integer"
         "value": 94
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -415,14 +396,11 @@ This is the reason that something like the below works:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": {
             "type": "fluid.transforms.round",
@@ -436,15 +414,12 @@ This is the reason that something like the below works:
             "outputPath": "Percent"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "Percent": 154
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -464,14 +439,11 @@ anything output. Some examples to clarify this rule:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": [
             {
@@ -491,25 +463,19 @@ anything output. Some examples to clarify this rule:
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "dataType": "percent"
         "value": 154
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": [
             {
@@ -527,11 +493,8 @@ anything output. Some examples to clarify this rule:
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -554,15 +517,12 @@ As an example, take the following transformation:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "cat": "Kaspar the Titanic Cat",
         "frog": "Portuguese Steve"
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pets": [
         {
             "transform": {
@@ -581,17 +541,14 @@ As an example, take the following transformation:
             }
         }
     ]
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pets": [
         "Kaspar the Titanic Cat",
         undefined,
         "Portuguese Steve"
     ]
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -629,69 +586,51 @@ In this section, we will only show examples of using `inputPath`.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "cat": "Kaspar the Titanic Cat"
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
             "inputPath": "petlist.cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pet": "Kaspar the Titanic Cat"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "cat": "CATTOO"
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
             "inputPath": "petlist.cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pet": "CATTOO"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "dog": "Spot"
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
             "inputPath": "petlist.cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -715,43 +654,32 @@ straightforward:
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "dog": "Snoopy"
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.literalValue",
             "input": "Kaspar the Titanic Cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pet": "Kaspar the Titanic Cat"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{}
-</code></pre></td><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.literalValue",
             "input": "Kaspar the Titanic Cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "my_pet": "Kaspar the Titanic Cat"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -771,14 +699,11 @@ An `input` interprets the content as a nested transform if its value is an objec
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": {
             "type": "fluid.transforms.round",
@@ -792,24 +717,18 @@ An `input` interprets the content as a nested transform if its value is an objec
             "outputPath": "percent"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "percent": 154
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "display": {
         "magnification": 1.5412
     }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "transform": {
             "type": "fluid.transforms.round",
@@ -824,15 +743,12 @@ An `input` interprets the content as a nested transform if its value is an objec
             "outputPath": "percent"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "Magnification": {
         "sneakyPath": 154.12
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -860,15 +776,12 @@ The effect of this is that the input from the model (via path) will be used if i
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": {
         "cat": "Kaspar the Titanic Cat"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
@@ -876,20 +789,14 @@ The effect of this is that the input from the model (via path) will be used if i
             "input": "I have no cat"
         }
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": "Kaspar the Titanic Cat"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "petlist": { }
-}
-</code></pre></td><td><pre><code>
-{
+}</code></pre></td><td><pre class="highlight"><code class="hljs javascript">{
     "my_pet": {
         "transform": {
             "type": "fluid.transforms.value",
@@ -897,11 +804,8 @@ The effect of this is that the input from the model (via path) will be used if i
             "input": "I have no cat"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-    "my_pet": "I have no cat"
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{"my_pet": "I have no cat"</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -977,28 +881,22 @@ It is primarily used by the framework in its shorthand notation (see examples). 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "balloon"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "myfavorite": {
         "transform": {
             "type": "fluid.transforms.value",
             "inputPath": "my.path"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myfavorite": "balloon"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1011,20 +909,15 @@ usually be expected.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "balloon"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "myfavorite": "my.path"
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myfavorite": "balloon"
 }</code></pre></td>
 </tr>
@@ -1060,23 +953,17 @@ It will always produce the same value independent of the source model/document.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.literalValue",
         "input": "some constant",
         "outputPath": "foo"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "foo": "some constant"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1086,11 +973,8 @@ It will always produce the same value independent of the source model/document.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.literalValue",
         "input": {
@@ -1101,18 +985,15 @@ It will always produce the same value independent of the source model/document.
         },
         "outputPath": "foo"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "transform": {
             "type": "fluid.transforms.helloworld",
             "input": "I'm not interpreted"
         }
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1135,26 +1016,21 @@ number, `undefined` will be returned.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "100.91"
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToNumber",
         "inputPath": "my.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 100.91
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1164,24 +1040,19 @@ number, `undefined` will be returned.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "i am no number"
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToNumber",
         "inputPath": "my.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1212,26 +1083,21 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": 100.91
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.numberToString",
         "inputPath": "my.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": "100.91"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1241,24 +1107,19 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "I'm a string"
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToNumber",
         "inputPath": "my.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1268,27 +1129,22 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": 100.91
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.numberToString",
         "inputPath": "my.path",
         "outputPath": "outie",
         "scale": 1
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": "100.9"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1298,14 +1154,12 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": 100.91
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.numberToString",
         "inputPath": "my.path",
@@ -1313,13 +1167,10 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
         "scale": 1,
         "method": "ceil"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": "101"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1329,27 +1180,22 @@ only used when a valid `scale` is provided, and defaults to `"round"`.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": 100.91
     }
 }</code></pre></td>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.numberToString",
         "inputPath": "my.path",
         "outputPath": "outie",
         "scale": "one"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": "100.91"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1372,23 +1218,17 @@ object, 1 will be returned.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.count",
         "input": [ "foo", "bar" ],
         "outputPath": "howLong"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "howLong": 2
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1398,27 +1238,21 @@ object, 1 will be returned.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": [ "foo", "bar" ]
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.count",
         "inputPath": "my.path",
         "outputPath": "howLong"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "howLong": 2
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1428,27 +1262,21 @@ object, 1 will be returned.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "path": "i am a string"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.count",
         "inputPath": "my.path",
         "outputPath": "howLong"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "howLong": 1
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1476,25 +1304,19 @@ rounding method to use and defaults to `"round"`. Numbers are rounded as follows
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "myin": 123.41
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.round",
         "inputPath": "myin",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 123
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1504,26 +1326,20 @@ rounding method to use and defaults to `"round"`. Numbers are rounded as follows
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "myin": 123.41
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.round",
         "inputPath": "myin",
         "outputPath": "outie",
         "scale": 1
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 123.4
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1533,13 +1349,10 @@ rounding method to use and defaults to `"round"`. Numbers are rounded as follows
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "myin": 123.41
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.round",
         "inputPath": "myin",
@@ -1547,20 +1360,17 @@ rounding method to use and defaults to `"round"`. Numbers are rounded as follows
         "scale": 1,
         "method": "ceil"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 123.5
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 ### Get first value of array (fluid.transforms.firstValue)
 
-**Type:** fluid.standardOuputTransformFunction
+**Type:** fluid.standardOutputTransformFunction
 
 #### Description:
 
@@ -1586,26 +1396,20 @@ Returns the first entry of the array that does not evaluate to undefined. The in
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": "hello",
     "bar": "world"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.firstValue",
         "values": [ "foo", "bar" ],
         "outputPath": "myfirst"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myfirst": hello"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1615,25 +1419,19 @@ Returns the first entry of the array that does not evaluate to undefined. The in
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "bar": "world"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.firstValue",
         "values": [ "foo", "bar" ],
         "outputPath": "myfirst"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myfirst": world"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1670,26 +1468,20 @@ the delete transform ensures that the path "foo" is deleted.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "hello": "world",
     "foo": "bar"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "": "",
     "transform": {
         "type": "fluid.transforms.delete",
         "outputPath": "foo"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
      "hello": "world"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1788,7 +1580,7 @@ mechanisms. Below is a summary of which term takes priority when the valueMapper
 * if `defaultInput` is provided, `inputPath` and `defaultInputPath` values ae ignored.
 * `inputPath` before `defaultInputPath`  - If an `inputPath` is provided, that value will be used, else
   `defaultInputPath` will be used.
-* `outputPath` before `defaultOutputValue`  - The `outputPath` will be used used if provded, else `defaultOutputPath`
+* `outputPath` before `defaultOutputValue`  - The `outputPath` will be used used if provided, else `defaultOutputPath`
   will.
 * `outputUndefinedValue` over `outputValue` over `defaultOutputValue` - If `outputUndefinedValue` is provided, it will
   always be used. If it is not provided, but `outputValue` is, this will be used. Finally, if neither are provided,
@@ -1829,13 +1621,10 @@ Else they should be objects with the same format in the longhand syntax describe
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     condition: "yes"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultInputPath: "condition",
@@ -1845,13 +1634,10 @@ Else they should be objects with the same format in the longhand syntax describe
             "no": "negativeCATT"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "CATTOO": "positiveCATT"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1861,13 +1647,10 @@ Else they should be objects with the same format in the longhand syntax describe
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     condition: "no"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultInputPath: "condition",
@@ -1882,13 +1665,10 @@ Else they should be objects with the same format in the longhand syntax describe
                 outputValue: "negativeCATT"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "myPath1": "negativeCATT"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1898,13 +1678,10 @@ Else they should be objects with the same format in the longhand syntax describe
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     whichAnimal: "CATTOO"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultInputPath: "whichAnimal",
@@ -1922,13 +1699,10 @@ Else they should be objects with the same format in the longhand syntax describe
             outputPath: "WhosThat",
             outputValue: "theNoMatchCATT"
         }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "WhosThat": "theNoMatchCATT"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1938,16 +1712,13 @@ Else they should be objects with the same format in the longhand syntax describe
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     info: {
         "arms": 2,
         "ears": 2
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultInputPath: "info",
@@ -1975,13 +1746,10 @@ Else they should be objects with the same format in the longhand syntax describe
             outputValue: "can handstand"
         }]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     creature: "can handstand"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -1992,8 +1760,7 @@ Else they should be objects with the same format in the longhand syntax describe
 </thead><tbody>
 <tr><th>rule</th><th>Output</th></tr>
 <tr>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultOutputPath: "creature",
@@ -2009,13 +1776,10 @@ Else they should be objects with the same format in the longhand syntax describe
             outputValue: "can handstand"
         }]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     creature: "can handstand"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2026,8 +1790,7 @@ Else they should be objects with the same format in the longhand syntax describe
 </thead><tbody>
 <tr><th>rule</th><th>Output</th></tr>
 <tr>
-<td><pre><code>
-{
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         type: "fluid.transforms.valueMapper",
         defaultOutputPath: "creature",
@@ -2048,13 +1811,10 @@ Else they should be objects with the same format in the longhand syntax describe
             outputValue: "can handstand"
         }]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     creature: "can handstand"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2114,15 +1874,12 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": 200
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.binaryOp",
         "left": 100,
@@ -2130,13 +1887,10 @@ transform: {
         "operator": "+",
         "outputPath": "sum"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "sum": 300
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2146,15 +1900,12 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": 200
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.binaryOp",
         "left": 100,
@@ -2164,13 +1915,10 @@ transform: {
         "operator": "+",
         "outputPath": "sum"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "sum": 300
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2206,15 +1954,12 @@ of the input variables can be used as fallbacks.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": true
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.condition",
         "conditionPath": "some.path",
@@ -2222,13 +1967,10 @@ of the input variables can be used as fallbacks.
         "false": "It was false",
         "outputPath": "result"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": "It was true"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2238,11 +1980,8 @@ of the input variables can be used as fallbacks.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.condition",
         "conditionPath": "some.path",
@@ -2251,13 +1990,10 @@ of the input variables can be used as fallbacks.
         "false": "It was false",
         "outputPath": "result"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": "It was true"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2267,15 +2003,12 @@ of the input variables can be used as fallbacks.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": true
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.condition",
         "conditionPath": "some.path",
@@ -2290,13 +2023,10 @@ of the input variables can be used as fallbacks.
         "false": "It was false",
         "outputPath": "result"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": 300
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2309,15 +2039,12 @@ using path, the result of the transform will be `undefined`.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": true
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.condition",
         "conditionPath": "some.path",
@@ -2325,11 +2052,8 @@ using path, the result of the transform will be `undefined`.
         "false": "It was false",
         "outputPath": "result"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{}
-</code></pre></td>
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2366,11 +2090,8 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.linearScale",
         "input": 12,
@@ -2378,13 +2099,10 @@ transform: {
         "offset": 100,
         "outputPath": "mypath"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "mypath": 220
-}
-</code></pre>
+}</code></pre>
 </td>
 </tr>
 </tbody>
@@ -2398,24 +2116,18 @@ value was instead found (say, 12) the output would have been `12*12+0=144`
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.linearScale",
         "input": 12,
         "factorPath": "some.path",
         "outputPath": "mypath"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "mypath": 12
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2428,28 +2140,22 @@ be used as factor. Since `offset` is not specified, the value 0 will be used for
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "some": {
         "path": 12
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.linearScale",
         "input": 12,
         "factorPath": "some.path",
         "outputPath": "outie"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "outie": 144
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2498,15 +2204,12 @@ range is from the previous `upperBound` to infinity.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 12
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.quantize",
         "inputPath": "my.input",
@@ -2526,13 +2229,10 @@ range is from the previous `upperBound` to infinity.
             }
         ]
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "mysize": "normal"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2541,15 +2241,12 @@ range is from the previous `upperBound` to infinity.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 2
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.quantize",
         "inputPath": "my.input",
@@ -2569,13 +2266,10 @@ range is from the previous `upperBound` to infinity.
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "mysize": "small"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2584,15 +2278,12 @@ range is from the previous `upperBound` to infinity.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 200
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.quantize",
         "inputPath": "my.input",
@@ -2612,13 +2303,10 @@ range is from the previous `upperBound` to infinity.
             }
         ]
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "mysize": "very big"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2653,15 +2341,12 @@ specifying one of these.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 12
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
@@ -2669,13 +2354,10 @@ specifying one of these.
         "min": 10,
         "max": 100
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "isInRange": true
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2684,15 +2366,12 @@ specifying one of these.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 110
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
@@ -2700,13 +2379,10 @@ specifying one of these.
         "min": 10,
         "max": 100
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "isInRange": false
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2715,28 +2391,22 @@ specifying one of these.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 110
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
         "outputPath": "isInRange",
         "min": 10
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "isInRange": true
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2745,15 +2415,12 @@ specifying one of these.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "my": {
         "input": 100
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.inRange",
         "inputPath": "my.input",
@@ -2761,13 +2428,10 @@ specifying one of these.
         "min": 10,
         "max": 100
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "isInRange": true
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -2823,34 +2487,28 @@ in our output object. The output object will contain, for each key, the remainin
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "bar": [
             { "product": "salad", "price": 10, "healthy": "yes" },
             { "product": "candy", "price": 18, "healthy": "no" }
         ]
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.indexArrayByKey",
         "inputPath": "foo.bar",
         "key": "product",
         "outputPath": "transformed"
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "transformed": {
         "salad": { price: 10, healthy: "yes" },
         "candy": { price: 18, healthy: "no" }
     }
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2867,18 +2525,15 @@ the output object.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "bar": [
             { "product": "salad", "info": { "price": 10, "healthy": "yes" }},
             { "product": "candy", "info": { "price": 18, "healthy": "no", "tasty": "yes" }}
         ]
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.indexArrayByKey",
         "outputPath": "transformed",
@@ -2891,17 +2546,13 @@ the output object.
             }
         }]
     }
-}
-
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "transformed": {
         "salad": "yes",
         "candy": "no"
     }
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -2969,30 +2620,24 @@ object given as input, will be added as a value to the corresponding object with
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "salad": { "price": 10, "healthy": "yes" },
         "candy": { "price": 18, "healthy": "no" }
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.deindexIntoArrayByKey",
         "inputPath": "foo",
         "outputPath": "bar",
         "key": "product"
     }
-}
-</code></pre></td><td>
-<pre><code>
-bar: [
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{bar: [
     { product: "salad", price: 10, healthy: "yes" },
     { product: "candy", price: 18, healthy: "no" }
-]
-</code></pre></td>
+]</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3010,16 +2655,13 @@ the output object.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "foo": {
         "salad": { "price": 10, "healthy": "yes" },
         "candy": { "price": 18, "healthy": "no" }
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.deindexIntoArrayByKey",
         "inputPath": "foo",
@@ -3031,20 +2673,15 @@ the output object.
                 "inputPath": "",
                 "outputPath": "info.healthy"
             }
-
         }]
     }
-}
-
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "bar": [
         { product: "salad", info: { price: 10, healthy: "yes" }},
         { product: "candy", info: { price: 18, healthy: "no" }}
     ]
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3089,13 +2726,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "dog"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -3103,13 +2737,10 @@ Returns `undefined` if no array is provided.
             "inputPath": "element"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": 1
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3118,13 +2749,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "goat"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -3132,13 +2760,10 @@ Returns `undefined` if no array is provided.
             "inputPath": "element"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": -1
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3147,13 +2772,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "goat"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -3162,13 +2784,10 @@ Returns `undefined` if no array is provided.
             "notFound": "not there"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": "not there"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3177,13 +2796,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "dog"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -3192,13 +2808,10 @@ Returns `undefined` if no array is provided.
             "offset": 2
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": 3
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3207,13 +2820,10 @@ Returns `undefined` if no array is provided.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": "goat"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.indexOf",
@@ -3222,13 +2832,10 @@ Returns `undefined` if no array is provided.
             "offset": 2
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": 1
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3263,13 +2870,10 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": 1
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.dereference",
@@ -3277,13 +2881,10 @@ It allows for an `offset` to be provided, which will be added to the index that 
             "inputPath": "element"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": "dog"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3292,13 +2893,10 @@ It allows for an `offset` to be provided, which will be added to the index that 
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "element": 0
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.dereference",
@@ -3307,13 +2905,10 @@ It allows for an `offset` to be provided, which will be added to the index that 
             "offset": 1
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "value": "dog"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3349,11 +2944,8 @@ are read as literal values, and hence not further interpreted by the model trans
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.stringTemplate",
@@ -3367,13 +2959,10 @@ are read as literal values, and hence not further interpreted by the model trans
             "outputPath": "finalstring"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "finalstring": "Paused at: 12 of 14 files (100 Kb of 12000Gb)"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3382,11 +2971,8 @@ are read as literal values, and hence not further interpreted by the model trans
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.stringTemplate",
@@ -3395,13 +2981,10 @@ are read as literal values, and hence not further interpreted by the model trans
             "outputPath": "finalstring"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "finalstring": "Paused at: 12 of 14 files (100 Kb of 12000Gb)"
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3446,10 +3029,8 @@ fluid.myfuncs.addThree = function (a, b, c) {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.free",
@@ -3458,13 +3039,10 @@ fluid.myfuncs.addThree = function (a, b, c) {
             "outputPath": "result",
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": 14
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3485,11 +3063,8 @@ fluid.myfuncs.addNumbers = function (options) {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{}
-</code></pre></td>
-<td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "value": {
         "transform": {
             "type": "fluid.transforms.free",
@@ -3498,13 +3073,10 @@ fluid.myfuncs.addNumbers = function (options) {
             "outputPath": "result"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "result": 6
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3549,13 +3121,10 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "controls": [ "mouse", "keyboard" ]
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.arrayToSetMembership",
         "outputPath": "detections",
@@ -3569,18 +3138,15 @@ transform: {
             "headtracker": "hasHeadtracker"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "detections": {
         "hasMouse": "supported",
         "hasKeyboard": "supported",
         "hasTrackpad": "not supported",
         "hasHeadtracker": "not supported"
     }
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3589,13 +3155,10 @@ transform: {
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "controls": [ "mouse", "keyboard" ]
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.arrayToSetMembership",
         "outputPath": "detections",
@@ -3607,18 +3170,15 @@ transform: {
             "headtracker": "hasHeadtracker"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "detections": {
         "hasMouse": true,
         "hasKeyboard": true,
         "hasTrackpad": false,
         "hasHeadtracker": false
     }
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3666,18 +3226,15 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "detections": {
         "hasMouse": "supported",
         "hasKeyboard": "supported",
         "hasTrackpad": "not supported",
         "hasHeadtracker": "not supported"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.setMembershipToArray",
         "inputPath": "detections",
@@ -3691,13 +3248,10 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
             "hasHeadtracker": "headtracker"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "controls": [ "mouse", "keyboard" ]
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3706,18 +3260,15 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "detections": {
         "hasMouse": true,
         "hasKeyboard": true,
         "hasTrackpad": false,
         "hasHeadtracker": false
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.setMembershipToArray",
         "inputPath": "detections",
@@ -3729,13 +3280,10 @@ If `presentValue` and `missingValue` are not defined they will default to: `true
             "hasHeadtracker": "headtracker"
         }
     }
-}
-</code></pre></td><td>
-<pre><code>
-{
+}</code></pre></td><td>
+<pre class="highlight"><code class="hljs javascript">{
     "controls": [ "mouse", "keyboard" ]
-}
-</code></pre></td></tr>
+}</code></pre></td></tr>
 </tbody>
 </table>
 
@@ -3769,25 +3317,19 @@ The following are all false: undefined, null, "", "0", "false", false, 0.  Every
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "checkboxElement": "true"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToBoolean",
         "inputPath": "checkboxElement",
         "outputPath": "isChecked"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "isChecked": true
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3823,25 +3365,19 @@ Anything else (0, false, null, etc.) returns "false".
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "isChecked": false
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.booleanToString",
         "inputPath": "isChecked",
         "outputPath": "checkboxElement"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "checkboxElement": "false"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3875,27 +3411,21 @@ Transform stringified JSON to an object using `JSON.parse`.  Returns `undefined`
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "string": "{ \"foo\": \"bar\" }"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.JSONstringToObject",
         "inputPath": "string",
         "outputPath": "object"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "object": {
         "foo": "bar"
     }
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3929,27 +3459,21 @@ Transform an object to a string using `JSON.stringify`.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "object": {
         "foo": "bar"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.objectToJSONString",
         "inputPath": "object",
         "outputPath": "string"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "string": "{\"foo\":\"bar\"}"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3963,28 +3487,22 @@ disables spacing and line breaks.
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "object": {
         "foo": "bar"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.objectToJSONString",
         "inputPath": "object",
         "outputPath": "string",
         "space": 2
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "string": "{\n  \"foo\":  \"bar\"\n}"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -4025,25 +3543,19 @@ although this can be done at your own risk. See the section on
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "string": "2016-11-23T15:28:19.052Z"
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.stringToDate",
         "inputPath": "string",
         "outputPath": "date"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "date": // A javascript Date object
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -4085,25 +3597,19 @@ although this can be done at your own risk. See the section on
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "date": // A javascript Date object
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.dateToString",
         "inputPath": "object",
         "outputPath": "string"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "string": "2016-11-23"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -4143,25 +3649,19 @@ although this can be done at your own risk. See the section on
 <table><thead>
 </thead><tbody>
 <tr><th>source</th><th>rule</th><th>Output</th></tr>
-<tr><td><pre><code>
-{
+<tr><td><pre class="highlight"><code class="hljs javascript">{
     "date": // A javascript Date object
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "transform": {
         "type": "fluid.transforms.dateTimeToString",
         "inputPath": "object",
         "outputPath": "string"
     }
-}
-</code></pre></td>
-<td><pre><code>
-{
+}</code></pre></td>
+<td><pre class="highlight"><code class="hljs javascript">{
     "string": "2016-11-23T15:28:19.052Z"
-}
-</code></pre></td>
+}</code></pre></td>
 </tr>
 </tbody>
 </table>

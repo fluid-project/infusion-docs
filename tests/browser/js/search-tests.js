@@ -33,14 +33,13 @@
         jqUnit.assertTrue(message + " : maximum results", singlePageResultElements.length <= maxResults);
     };
 
-    // Searches should listen for the onRender before checking results in
     fluid.defaults("fluid.test.docs.search.caseHolder", {
         gradeNames: ["fluid.test.testCaseHolder"],
         modules: [{
             name: "Documentation search tests",
             tests: [
                 {
-                    name: "We should be able to search for something.",
+                    name: "We should be able to search for a single word.",
                     sequenceGrade: "fluid.test.search.createSearchComponent",
                     sequence: [
                         {
@@ -59,7 +58,37 @@
                     ]
                 },
                 {
-                    name: "A search with no results should be handled properly.",
+                    name: "We should be able to search for a phrase.",
+                    sequenceGrade: "fluid.test.search.createSearchComponent",
+                    sequence: [
+                        {
+                            func: "{environment}.search.applier.change",
+                            args: ["qs", "\"integration testing\""]
+                        },
+                        {
+                            event: "{environment}.events.searchResultsRendered",
+                            listener: "fluid.test.docs.search.caseHolder.checkSearchResults",
+                            args: ["{environment}.search", "Optional phrase search.", 1, 100] // searchComponent, message, minResults, maxResults
+                        }
+                    ]
+                },
+                {
+                    name: "We should be able to perform a complex search using phrases and weighting.",
+                    sequenceGrade: "fluid.test.search.createSearchComponent",
+                    sequence: [
+                        {
+                            func: "{environment}.search.applier.change",
+                            args: ["qs", "testing -\"integration testing\""]
+                        },
+                        {
+                            event: "{environment}.events.searchResultsRendered",
+                            listener: "fluid.test.docs.search.caseHolder.checkSearchResults",
+                            args: ["{environment}.search", "Weighted phrase search.", 10, 1000] // searchComponent, message, minResults, maxResults
+                        }
+                    ]
+                },
+                {
+                    name: "A search with no matches should be handled properly.",
                     sequenceGrade: "fluid.test.search.createSearchComponent",
                     sequence: [
                         {
@@ -70,6 +99,21 @@
                             event: "{environment}.events.searchResultsRendered",
                             listener: "fluid.test.docs.search.caseHolder.checkSearchResults",
                             args: ["{environment}.search", "Search with no matches", 0, 0] // searchComponent, message, minResults, maxResults
+                        }
+                    ]
+                },
+                {
+                    name: "A search where all matches are excluded should be handled properly.",
+                    sequenceGrade: "fluid.test.search.createSearchComponent",
+                    sequence: [
+                        {
+                            func: "{environment}.search.applier.change",
+                            args: ["qs", "+\"infusion documentation\" -\"infusion documentation\""]
+                        },
+                        {
+                            event: "{environment}.events.searchResultsRendered",
+                            listener: "fluid.test.docs.search.caseHolder.checkSearchResults",
+                            args: ["{environment}.search", "Search that requires and excludes the same phrase", 0, 0] // searchComponent, message, minResults, maxResults
                         }
                     ]
                 }
@@ -88,7 +132,7 @@
         components: {
             search: {
                 createOnEvent: "{environment}.events.createSearch",
-                type: "fluid.docs.search",
+                type: "fluid.docs.search.base",
                 container: ".docs-search",
                 options: {
                     listeners: {

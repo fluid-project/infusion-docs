@@ -1,6 +1,5 @@
 ---
 title: Model Relay
-layout: default
 category: Infusion
 ---
 
@@ -316,14 +315,14 @@ values to certain kinds of "integrated models".
 Compare these directives with the similar ones used for source guarding in [model
 listeners](ChangeApplierAPI.md#source-tracking-and-filtering-in-model-listener-blocks).
 
-#### Example showing propagation directive in explict relay
+#### Example showing propagation directive in explicit relay
 
 Here the same example that we saw illustrating explicit relay [above](#example-showing-explicit-relay-rule) showing the
 use of a propagation directive, in this case `backward: {excludeSource: "init"}`. In this case the directive is useful
 because we have added a default initial value `0.5` to the `volume` field at the forward end of the relay which
 conflicts with the value that the relay would establish as it synchronises the value `95` from the backward end. In this
 case, we want the backward value to take precedence during the initial transaction, but the relay to operate normally in
-both directions once both components are fully constructed. This component behaves identially as in the transcript in
+both directions once both components are fully constructed. This component behaves identically as in the transcript in
 the [above example](#example-showing-explicit-relay-rule).
 
 ```javascript
@@ -367,18 +366,18 @@ might be important to ensure that one of them is always chosen first.
 #### General notes on model relay rules
 
 **NOTE**: Any plain function which accepts one argument and returns one argument is suitable to appear in the `type`
-*field of a `transform` or `singleTransform` rule &#8212; e.g. `fluid.identity`. This is a quick and easy way of setting
-*up "ad hoc" transforms. If the function accepts multiple arguments, or an argument which holds a complex structure
-*derived from several values around the model, you should instead use the transform with type `fluid.transform.free` and
-*encode them in its option named `args`. Note that no such transforms will be invertible &#8212; they can only propagate
-*updates from `source` to `target`.
+field of a `transform` or `singleTransform` rule &#8212; e.g. `fluid.identity`. This is a quick and easy way of setting
+up "ad hoc" transforms. If the function accepts multiple arguments, or an argument which holds a complex structure
+derived from several values around the model, you should instead use the transform with type `fluid.transform.free` and
+encode them in its option named `args`. Note that no such transforms will be invertible &#8212; they can only propagate
+updates from `source` to `target`.
 
 **NOTE**: The documentation for the <a href="ModelTransformationAPI.md">available transformation functions</a> mentions,
-*for each input or output of the transform, a parallel option whose name ends in `Path` - e.g. `inputPath`,
-*`outputPath`, `leftPath`, `rightPath`, etc. - **_these forms with `Path` are not used in relay documents_** &#8212; the
-*relay system automatically takes up the role of gearing values to the arguments of transforms when you write an IoC
-*reference in any of those slots. Relay documents are just written with the simple option names, e.g. `input`, `output`,
-*`left`, `right` etc.
+for each input or output of the transform, a parallel option whose name ends in `Path` - e.g. `inputPath`,
+`outputPath`, `leftPath`, `rightPath`, etc. - **_these forms with `Path` are not used in relay documents_** &#8212; the
+relay system automatically takes up the role of gearing values to the arguments of transforms when you write an IoC
+reference in any of those slots. Relay documents are just written with the simple option names, e.g. `input`, `output`,
+`left`, `right` etc.
 
 ## Note on future evolution and some technicalities
 

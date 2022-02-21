@@ -1,6 +1,5 @@
 ---
 title: Talking to the Server Using The afterMove Event
-layout: default
 category: API
 ---
 

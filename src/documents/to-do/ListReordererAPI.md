@@ -1,6 +1,5 @@
 ---
 title: List Reorderer API
-layout: default
 category: Components
 ---
 

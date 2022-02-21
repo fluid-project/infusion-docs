@@ -8,8 +8,8 @@ fluid.require("%infusion-docs");
 
 // No code coverage for now.  Eventually we may want it for src/static/js.
 var testemComponent = gpii.testem.base({
-    testPages:   [
-        "tests/testem-fixtures/test-search.html"
+    testPages: [
+        "tests/browser/all-tests.html"
     ],
     sourceDirs: {
         src: "%infusion-docs/src",
@@ -20,7 +20,7 @@ var testemComponent = gpii.testem.base({
         "node_modules": "%infusion-docs/node_modules"
     },
     testemOptions: {
-        skip: "PhantomJS,Safari,Chrome" // Headless Chrome is now its own entry, disable non-headless to avoid double-runs.
+        skip: "PhantomJS,Safari,Headless Chrome" // Headless Chrome crashes with GPU errors, so we use "headed" at the moment.
     }
 });
 

@@ -30,6 +30,8 @@
                     { "pageName": "Model Transformation API", "href": "/ModelTransformationAPI.html" },
                     { "pageName": "View API", "href": "/ViewAPI.html" },
                     { "pageName": "DOM Binder API", "href": "/DOMBinderAPI.html" },
+                    { "pageName": "Data Source API", "href": "/DataSourceAPI.html" },
+                    { "pageName": "Remote Model API", "href": "/RemoteModelAPI.html" },
                     { "pageName": "node.js Support and API", "href": "/NodeAPI.html" }
                 ]
             },
@@ -143,7 +145,8 @@
                 "sectionName": "Migrating to Infusion 3.0",
                 "pages":
                 [
-                    { "pageName": "API Changes from 2.0 to 3.0", "href": "/APIChangesFrom2_0To3_0.html" }
+                    { "pageName": "API Changes from 2.0 to 3.0", "href": "/APIChangesFrom2_0To3_0.html" },
+                    { "pageName": "Deprecated in 3.0", "href": "/DeprecatedIn3_0.html" }
                 ]
             }
         ]
@@ -212,8 +215,10 @@
                 "sectionName": "User Interface Options",
                 "pages":
                 [
+                    { "pageName": "Getting User Interface Options", "href": "/tutorial-userInterfaceOptions/GettingUIOptions.html" },
                     { "pageName": "Setting Up User Interface Options", "href": "/tutorial-userInterfaceOptions/UserInterfaceOptions.html" },
                     { "pageName": "Working with User Interface Options", "href": "/tutorial-userInterfaceOptions/WorkingWithUserInterfaceOptions.html"},
+                    { "pageName": "Integrating UI Options Styling Preferences", "href": "/tutorial-userInterfaceOptions/IntegratingUIOptionsStylingPreferences.html"},
                     { "pageName": "Using Images in Contrast Modes", "href": "/tutorial-userInterfaceOptions/UsingImagesInContrastModes.html"},
                     { "pageName": "Style Effects and Legibility in Contrast Modes", "href": "/tutorial-userInterfaceOptions/StyleEffectsAndLegibilityInContrastModes.html"},
                     { "pageName": "CSS 'Content' Property in Contrast Modes", "href": "/tutorial-userInterfaceOptions/ContentPropertyHighContrast.html"}

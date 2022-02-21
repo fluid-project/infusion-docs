@@ -1,6 +1,5 @@
 ---
 title: Function Grades
-layout: default
 category: Infusion
 ---
 

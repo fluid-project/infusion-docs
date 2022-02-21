@@ -1,6 +1,5 @@
 ---
 title: Composite Panels
-layout: default
 category: Infusion
 ---
 
@@ -31,7 +30,7 @@ the entire composite panel.
 Subpanels are defined with the `fluid.prefs.panel` grade, the same grade used for defining regular panels.
 
 ```javascript
-fluid.defaults("my.panels.subanel", {
+fluid.defaults("my.panels.subpanel", {
     gradeNames: ["fluid.prefs.panel"]
     // ...
 });

@@ -1,6 +1,5 @@
 ---
 title: Renderer Components
-layout: default
 noteRendererChangesPost15: true
 category: Infusion
 ---
@@ -330,7 +329,7 @@ fluid.defaults("fluid.examples.renderer", {
     resources: {
         template: {
             forceCache: true,
-            url: "examples-rederer.html"
+            url: "examples-renderer.html"
         }
     }
 });
@@ -339,7 +338,7 @@ fluid.defaults("fluid.examples.renderer", {
 var that = fluid.examples.renderer("#options");
 ```
 
-The template _"examples-rederer.html"_ looks like,
+The template _"examples-renderer.html"_ looks like,
 
 ```html
 <form id="options" action="">

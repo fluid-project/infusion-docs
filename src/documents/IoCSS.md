@@ -1,6 +1,5 @@
 ---
 title: IoCSS
-layout: default
 category: Infusion
 ---
 
@@ -17,7 +16,7 @@ should be distributed to components elsewhere in the tree. A typical, conservati
 distribute only *downwards* to its own subcomponents, but it is also possible to use the considerable power of
 `distributeOptions` to distribute to *any component anywhere* in the (global) component tree - naturally such power
 should be used with extreme discretion since it could very easily reduce a design to chaos. However, in many situations,
-for example when writing powerful authoring tools, this kind of power is completely indispensible.
+for example when writing powerful authoring tools, this kind of power is completely indispensable.
 
 ## Background for `distributeOptions`
 
@@ -99,7 +98,7 @@ hash of records, or single record containing the following properties:
 |`source`|(Mutually exclusive with `record`) An [IoC expression](IoCReferences.md) into the options structure of the source component, referencing what to copy to the target.|
 |&nbsp;&nbsp;`removeSource`|(Only possible if `source` is used) true/false: If true, the `source` options block is removed from its original site in the options structure when it is forwarded to the `target`.|
 |&nbsp;&nbsp;`exclusions`|(Only possible if `source` is used) A list of EL paths into the `source` material which should not be forwarded. Whether or not `removeSource` is used, these will be retained in their original position in the source component's options.|
-|`priority`|(Optional) a [Priority specification](Priorities.md) specifying how the priority of this distribution is to be resolved with respect to any other options distributions which are targetted at the same component in the tree as this one. Typically one will write `after:otherNamespace` to indicate that this distribution should be stronger than (i.e. should merge options on top of) another distribution whose `namespace` is `otherNamespace`, or `before:otherNamespace` to indicate that this distribution should be weaker than (have option merged on top of by) a distribution whose `namespace` is `otherNamespace`.|
+|`priority`|(Optional) a [Priority specification](Priorities.md) specifying how the priority of this distribution is to be resolved with respect to any other options distributions which are targeted at the same component in the tree as this one. Typically one will write `after:otherNamespace` to indicate that this distribution should be stronger than (i.e. should merge options on top of) another distribution whose `namespace` is `otherNamespace`, or `before:otherNamespace` to indicate that this distribution should be weaker than (have option merged on top of by) a distribution whose `namespace` is `otherNamespace`.|
 |`namespace`|(Optional, recommended) A `namespace` to identify this options distribution amongst others in an extended design. This can be used by the `priority` field of other distributions in order to defer to it or be deferred to by it. (The framework should also ensure to uniquify distributions with respect to namespace at the target - not currently implemented)|
 
 In the case that a hash of these records is provided, the keys of the structure will be interpreted as the `namespace`
@@ -209,7 +208,7 @@ fluid.defaults("fluid.tests.uploader", {
     distributeOptions: [{
         target: "{that > uploaderImpl}.options", // Target a directly nested component matching the context "uploaderImpl"
         source: "{that}.options", // Distribute ALL of our options there, except exclusions:
-        exclusions: ["components.uploaderContext", "components.uploaderImpl"] // options targetted directly at these subcomponents are left undisturbed in place
+        exclusions: ["components.uploaderContext", "components.uploaderImpl"] // options targeted directly at these subcomponents are left undisturbed in place
 
     }],
     progressiveCheckerOptions: {

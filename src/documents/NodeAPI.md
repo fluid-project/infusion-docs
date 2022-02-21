@@ -1,11 +1,10 @@
 ---
 title: Infusion node.js Support and API
-layout: default
 category: Infusion
 ---
 
 Infusion's [core API](CoreAPI.md) and [IoC system](HowToUseInfusionIoC.md) are fully supported in node.js. Infusion is
-supplied with a standard [package.json](https://github.com/fluid-project/infusion/blob/master/package.json) file and
+supplied with a standard [package.json](https://github.com/fluid-project/infusion/blob/main/package.json) file and
 registered as a module in [npm's registry](https://www.npmjs.com/package/infusion). Infusion's global namespace model,
 as operated through functions such as [`fluid.registerNamespace`](CoreAPI.md#fluidregisternamespacepath) and
 [`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), requires some care in the node.js environment which makes
@@ -47,7 +46,7 @@ Infusion includes a few small utilities to ease the process of working with a no
 ### fluid.module.register(name, baseDir, moduleRequire)
 
 This is an intensely useful method that will allow you to register your Infusion-aware module and its base path in
-Infusion's global registery of modules. This will allow you, for example, to later issue a call to
+Infusion's global registry of modules. This will allow you, for example, to later issue a call to
 `fluid.require("%myModule/myPath")` for any asset nested within that module, regardless of its location in the
 filesystem. Other productive uses of such records are imaginable — for example, issuing `require` directives for modules
 from their point of view, resolving cyclic references between modules, etc.

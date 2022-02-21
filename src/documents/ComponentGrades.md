@@ -1,6 +1,5 @@
 ---
 title: Component Grades
-layout: default
 category: Infusion
 ---
 
@@ -140,7 +139,7 @@ and secondly in the left-to-right order (defaults from the grade on the right ta
 the grade on the left). Those interested in fine details should note that this is a very different scheme to the
 [C3 linearization algorithm](https://en.wikipedia.org/wiki/C3_linearization) that is commonly used for resolving
 multiple inheritance. Other than preventing infinite cycles of resolution, the framework will allow the same grade to
-appear any number of times in the list of grades, and each time it will be effective in overriding definitions occuring
+appear any number of times in the list of grades, and each time it will be effective in overriding definitions occurring
 in grades to the left in the same `gradeNames` list.
 
 Here is a simple example:
@@ -222,7 +221,7 @@ Another possibility is to supply the additional gradeNames via a
 fluid.defaults("examples.rootComponent", {
     components: {
         myCombinedComponent: { // This component also behaves (except for typeName)
-                               // as if was created via examples.combinedComponent
+            // as if was created via examples.combinedComponent
             type: "examples.componentOne",
             options: {
                 gradeNames: "examples.componentTwo"

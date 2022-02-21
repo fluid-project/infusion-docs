@@ -1,6 +1,5 @@
 ---
 title: Deprecated in 2.0
-layout: default
 category: Infusion
 ---
 

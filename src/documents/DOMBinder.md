@@ -1,6 +1,5 @@
 ---
 title: DOM Binder
-layout: default
 category: Infusion
 ---
 
