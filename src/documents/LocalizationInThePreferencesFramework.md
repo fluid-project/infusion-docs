@@ -291,7 +291,7 @@ By default it is sourced from the prefsEditorLoader's settings object, `"{prefsE
 `defaultLocale` provides a fallback to use if the desired localization cannot be located. By default it is sourced from
 the prefsEditorLoader's `defaultLocale` option.
 
-See [fluid.resourceLoader options](ResourceLoader.md#fluid-resourceloader-options) for the accepted form of `locale` and
+See [fluid.resourceLoader options](ResourceLoader.md#fluidresourceloader-options) for the accepted form of `locale` and
 `defaultLocale`.
 
 See [fluid.resourceLoader fallback rules](ResourceLoader.html#fallback-rules-with-locale-and-defaultlocale) for fallback
