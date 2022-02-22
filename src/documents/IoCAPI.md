@@ -371,7 +371,7 @@ will be implemented as part of the upcoming framework's markup renderer for Infu
 
 A global workflow function receives the signature:
 
-### &lt;global.workflow.function.name&gt;(shadows)
+<code>&lt;global.workflow.function.name&gt;(shadows)</code> where
 
 * `shadows {Array of Shadow}` An array of _all_ component shadows participating in this transaction, sorted in order
     from the root of the component
@@ -393,7 +393,7 @@ components complete their construction before their parents.
 
 A local workflow function receives the signature:
 
-### &lt;local.workflow.function.name&gt;(shadow)
+<code>&lt;local.workflow.function.name&gt;(shadow)</code> where
 
 * `shadow {Shadow}` One shadow of a component participating in this transaction. These will be presented starting from
     the leaves of the tree
