@@ -19,7 +19,7 @@ var testemComponent = fluid.testem.base({
         "node_modules": "%infusion-docs/node_modules"
     },
     testemOptions: {
-        skip: "PhantomJS,Safari,Headless Chrome" // Headless Chrome crashes with GPU errors, so we use "headed" at the moment.
+        skip: "PhantomJS,Safari,Headless Chrome,IE" // Headless Chrome crashes with GPU errors, so we use "headed" at the moment.
     }
 });
 
