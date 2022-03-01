@@ -12,13 +12,11 @@
 var fluid = require("infusion");
 fluid.setLogging(true);
 
-var gpii = fluid.registerNamespace("gpii");
-
 var jqUnit = require("node-jqunit");
 fluid.require("%infusion-docs");
-fluid.require("%gpii-express");
+fluid.require("%fluid-express");
 
-gpii.express.loadTestingSupport();
+fluid.express.loadTestingSupport();
 
 require("./lib/link-checker");
 
@@ -31,7 +29,7 @@ fluid.test.docs.docpadLinks.checkResults = function (results) {
 };
 
 fluid.defaults("fluid.test.docs.docpadLinks.caseHolder", {
-    gradeNames: ["gpii.test.express.caseHolder"],
+    gradeNames: ["fluid.test.express.caseHolder"],
     rawModules: [{
         name: "Checking links within docpad-generated site...",
         tests: [
@@ -54,7 +52,7 @@ fluid.defaults("fluid.test.docs.docpadLinks.caseHolder", {
 });
 
 fluid.defaults("fluid.test.docs.docpadLinks.environment", {
-    gradeNames: ["gpii.test.express.testEnvironment"],
+    gradeNames: ["fluid.test.express.testEnvironment"],
     components: {
         linkChecker: {
             type: "fluid.tests.docs.linkChecker",
@@ -67,7 +65,7 @@ fluid.defaults("fluid.test.docs.docpadLinks.environment", {
             options: {
                 components: {
                     content: {
-                        type: "gpii.express.router.static",
+                        type: "fluid.express.router.static",
                         options: {
                             path:    "/",
                             content: "%infusion-docs/out"
