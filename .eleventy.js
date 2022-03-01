@@ -11,6 +11,15 @@
 */
 "use strict";
 
+var slugify = require("slugify");
+var cleanSlugify = function (string) {
+    return slugify(string, {
+        replacement: "-",
+        lower: true,
+        strict: true
+    });
+};
+
 require("./index.js");
 var hljs = require("highlight.js");
 var parseTransform = require("./src/transforms/parse.js");
@@ -31,11 +40,8 @@ module.exports = function (eleventyConfig) {
         }
     });
 
-    var string = require("string");
-    var slugify = s => string(s).slugify().toString();
-
     var markdownItAnchor = require("markdown-it-anchor");
-    var markdownItLibrary = markdownit.use(markdownItAnchor, { slugify });
+    var markdownItLibrary = markdownit.use(markdownItAnchor, { slugify: cleanSlugify });
 
     eleventyConfig.setLibrary("md", markdownItLibrary);
 
@@ -49,9 +55,9 @@ module.exports = function (eleventyConfig) {
         "node_modules/foundation-sites/css": "lib/foundation",
         "node_modules/octicons/octicons": "lib/octicons",
         "node_modules/lunr": "lib/lunr",
-        "node_modules/gpii-express/src/js/lib": "lib/gpii-express",
-        "node_modules/gpii-binder/src/js": "lib/gpii-binder",
-        "node_modules/gpii-location-bar-relay/src/js": "lib/gpii-location-bar-relay",
+        "node_modules/fluid-express/src/js/lib": "lib/fluid-express",
+        "node_modules/fluid-binder/src/js": "lib/fluid-binder",
+        "node_modules/fluid-location-bar-relay/src/js": "lib/fluid-location-bar-relay",
         "src/static/css": "css",
         "src/static/fonts": "fonts",
         "src/static/js": "js",

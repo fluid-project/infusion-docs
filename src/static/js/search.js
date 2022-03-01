@@ -579,7 +579,7 @@
 
     // base grade without location bar, which causes problems in Testem tests.
     fluid.defaults("fluid.docs.search.base", {
-        gradeNames: ["gpii.binder.bindOnCreate", "fluid.viewComponent"],
+        gradeNames: ["fluid.binder.bindOnCreate", "fluid.viewComponent"],
         events: {
             onRender: null
         },
@@ -649,6 +649,6 @@
     });
 
     fluid.defaults("fluid.docs.search", {
-        gradeNames: ["gpii.locationBar", "fluid.docs.search.base"]
+        gradeNames: ["fluid.locationBar", "fluid.docs.search.base"]
     });
 })(fluid);
