@@ -7,15 +7,14 @@
  */
 "use strict";
 var fluid = require("infusion");
-var gpii = fluid.registerNamespace("gpii");
 
 var url = require("url");
 
 var jqUnit = require("node-jqunit");
 fluid.require("%infusion-docs");
-fluid.require("%gpii-express");
+fluid.require("%fluid-express");
 
-gpii.express.loadTestingSupport();
+fluid.express.loadTestingSupport();
 
 require("./lib/link-checker");
 
@@ -30,7 +29,7 @@ fluid.test.docs.linkChecker.generateBaseUrl = function (basePath) {
 };
 
 fluid.defaults("fluid.test.docs.linkChecker.caseHolder", {
-    gradeNames: ["gpii.test.express.caseHolder"],
+    gradeNames: ["fluid.test.express.caseHolder"],
     rawModules: [{
         name: "Testing the link checker against a small site with variations on good and bad links...",
         tests: [
@@ -53,7 +52,7 @@ fluid.defaults("fluid.test.docs.linkChecker.caseHolder", {
 });
 
 fluid.defaults("fluid.test.docs.linkChecker.environment", {
-    gradeNames: ["gpii.test.express.testEnvironment"],
+    gradeNames: ["fluid.test.express.testEnvironment"],
     components: {
         linkChecker: {
             type: "fluid.tests.docs.linkChecker",
@@ -66,7 +65,7 @@ fluid.defaults("fluid.test.docs.linkChecker.environment", {
             options: {
                 components: {
                     content: {
-                        type: "gpii.express.router.static",
+                        type: "fluid.express.router.static",
                         options: {
                             path:    "/",
                             content: "%infusion-docs/tests/link-checker-fixtures"

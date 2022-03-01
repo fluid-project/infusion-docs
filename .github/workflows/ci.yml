@@ -7,23 +7,40 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    env:
+      HEADLESS: true
+
     steps:
       - uses: actions/checkout@v2
+
       - name: Cache node modules
         uses: actions/cache@v2
         with:
           path: node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+
       - name: Install dependencies
         run: |
           npm i
         env:
           CI: true
+
       - name: Lint files
         run: |
           npm run lint
         env:
           CI: true
+
       - name: Build site
         run: |
           npm run build
+
+      - name: Node tests
+        run: npm run test:node
+
+      - name: Browser Tests
+        run: xvfb-run --auto-servernum npm run test:browser
+
+      - name: Cleanup after xvfb
+        uses: bcomnes/cleanup-xvfb@v1
