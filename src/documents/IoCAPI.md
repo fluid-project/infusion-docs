@@ -371,7 +371,7 @@ will be implemented as part of the upcoming framework's markup renderer for Infu
 
 A global workflow function receives the signature:
 
-<code>&lt;global.workflow.function.name&gt;(shadows)</code> where
+`<global.workflow.function.name>(shadows)` where
 
 * `shadows {Array of Shadow}` An array of _all_ component shadows participating in this transaction, sorted in order
     from the root of the component
