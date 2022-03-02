@@ -393,7 +393,7 @@ components complete their construction before their parents.
 
 A local workflow function receives the signature:
 
-<code>&lt;local.workflow.function.name&gt;(shadow)</code> where
+`<local.workflow.function.name>(shadow)` where
 
 * `shadow {Shadow}` One shadow of a component participating in this transaction. These will be presented starting from
     the leaves of the tree
