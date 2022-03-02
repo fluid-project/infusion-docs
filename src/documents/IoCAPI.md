@@ -215,7 +215,7 @@ unit via `fluid.commitPotentiae` or cancelled via `fluid.cancelTreeTransaction`.
 * `transactionOptions {Object}` [optional] A set of options configuring this tree transaction. This may include fields
   * `breakAt {String}` - one of the values:
     * `shells`: signifying that this transaction should pause as soon as all component shells are constructed (see
-      FLUID-4925)
+     [ FLUID-4925](https://issues.fluidproject.org/browse/FLUID-4925))
     * `observation`: signifying that this transaction should pause once the observation process of all components is
        concluded - that is, that all component options, members and invokers are evaluated.
 * Returns: `{String}` The id of the freshly allocated tree transaction.
