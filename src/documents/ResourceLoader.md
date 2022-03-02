@@ -3,20 +3,20 @@ title: Resource Loader
 category: Infusion
 ---
 
-The Infusion Resource Loader ```fluid.resourceLoader``` is an [Infusion component](UnderstandingInfusionComponents.md)
+The Infusion Resource Loader `fluid.resourceLoader` is an [Infusion component](UnderstandingInfusionComponents.md)
 which offers a mechanism to load multiple resources in one shot. Whilst these resources may require an asynchronous
-I/O operation, ``fluid.resourceLoader`` can arrange to load these before component instantiation has finished.
+I/O operation, `fluid.resourceLoader` can arrange to load these before component instantiation has finished.
 Resources may be loaded over a variety of transports, such as HTTP/HTTPS, or
 directly from the filesystem if Infusion is running under `node.js`. These resources can be HTML templates, JSON objects
 or other kinds of static resources.
 
-The resources to be loaded are configured in a free hash held in the top-level ``resources`` option of the component.
-Each member of ``resources`` is a structure named ``ResourceSpec`` specifying a resource to be loaded.  
+The resources to be loaded are configured in a free hash held in the top-level `resources` option of the component.
+Each member of `resources` is a structure named `ResourceSpec` specifying a resource to be loaded.  
 
-### Minimal ``fluid.resourceLoader`` example
+### Minimal `fluid.resourceLoader` example
 
 Although we show an example here of constructing the resource loader as a free-standing component,
-a more typical usage would configure ``fluid.resourceLoader`` as a mixin to some
+a more typical usage would configure `fluid.resourceLoader` as a mixin to some
 [subcomponent](SubcomponentDeclaration.md) in a wider component tree:
 
 ```javascript
@@ -38,9 +38,9 @@ var resourceLoader = fluid.resourceLoader({
 
 ### ResourceLoader lifecycle
 
-Whilst the ``ResourceSpec`` structure by which a resource is configured to be loaded is always the same,
+Whilst the `ResourceSpec` structure by which a resource is configured to be loaded is always the same,
 depending on how the resource is requested, it may be loaded via a "fast path" or a "slow path".
-Any resource referenced from a component's ``model`` area (for a
+Any resource referenced from a component's `model` area (for a
 [fluid.modelComponent](tutorial-gettingStartedWithInfusion/ModelComponents.md)), for example,
 will be loaded via the "fast path" and will be available before the component's construction has completed. In fact,
 it will be available before the initial value of the component's model has been computed, in time to participate in the
@@ -48,31 +48,32 @@ it will be available before the initial value of the component's model has been 
 other core framework grades, for example the upcoming "new renderer".
 
 Any resource not loaded via the "fast path" will be loaded via the "slow path" and will have its fetch triggered by
-the component's ``onCreate`` event.
+the component's `onCreate` event.
 
 When all resources, via all routes, configured for the component, have been loaded, the resource loader fires
-an ```onResourcesLoaded``` event with an argument of the populated ``resources`` structure. These will each have fields
-filled in corresponding to the loaded resource, most importantly the field ``parsed`` holding a parsed (e.g. as JSON)
-representation of the resource, and also the original fetched resource text within the field ``resourceText``.
-This populated structure can also be retrieved directly on the resource loader instance via the path ```resources```.
+an `onResourcesLoaded` event with an argument of the populated `resources` structure. These will each have fields
+filled in corresponding to the loaded resource, most importantly the field `parsed` holding a parsed (e.g. as JSON)
+representation of the resource, and also the original fetched resource text within the field `resourceText`.
+This populated structure can also be retrieved directly on the resource loader instance via the path `resources`.
 
-Note that even if all of the component's resources have already been loaded via the "fast path", ``onResourcesLoaded`` will
-only fire once the component's ``onCreate`` event has concluded. If any resource loading fails, the event ``onResourceError``
-will be fired for the failing resource, and ``onResourcesLoaded`` will not fire.
+<div class="infusion-docs-note"><strong>Note:</strong> If all of the component's resources have already been loaded via
+the "fast path", <code>onResourcesLoaded</code> will only fire once the component's `onCreate` event has concluded.
+If any resource loading fails, the event <code>onResourceError</code> will be fired for the failing resource, and
+<code>onResourcesLoaded</code> will not fire.</div>
 
-The underlying implementation of ``fluid.resourceLoader`` is the low-level ``fluid.resourceFetcher`` mini-component.
+The underlying implementation of `fluid.resourceLoader` is the low-level `fluid.resourceFetcher` mini-component.
 In the browser, for URL resources, this operates a native [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest),
 whereas in node.js this operates the native node [HTTP](https://nodejs.org/api/http.html) or [HTTPS request API](https://nodejs.org/api/https.html).
 For all transports, there is the possibility to pass arbitrary options through the ResourceLoader configuration
 structure to take full control of the loading process, whilst there is a central core of portable options supported
 in all environments.
 
-### ``fluid.resourceLoader`` options
+### `fluid.resourceLoader` options
 
-We name the subset of component options particularly consumed by ``fluid.resourceLoader`` as ``resourceLoaderOptions``.
-``resourceLoaderOptions`` contains two top-level keys, ``resourceOptions``, and ``resources``, which are both optional.
+We name the subset of component options particularly consumed by `fluid.resourceLoader` as `resourceLoaderOptions`.
+`resourceLoaderOptions` contains two top-level keys, `resourceOptions`, and `resources`, which are both optional.
 
-Schematically, ``fluid.resourceLoader`` configuration looks like
+Schematically, `fluid.resourceLoader` configuration looks like
 
 ```snippet
 fluid.resourceLoader({
@@ -85,7 +86,7 @@ fluid.resourceLoader({
 })
 ```
 
-In short form, a ``resourceSpec`` may simply consist of a String, in which case it is interpreted as a URL. Otherwise,
+In short form, a `resourceSpec` may simply consist of a String, in which case it is interpreted as a URL. Otherwise,
 it is an Object with keys described in the [section on resourceSpecs](#resourcespec-structure).
 
 ### `resourceOptions` structure
@@ -138,8 +139,8 @@ it is an Object with keys described in the [section on resourceSpecs](#resources
 
 ### `resourceSpec` structure
 
-``resourceSpec`` entries are duck typed, with a duck typing field determining the type of transport to be used to load
-the resources. Each ``resourceSpec`` structure must contain exactly one out of the following duck typing fields,
+`resourceSpec` entries are duck typed, with a duck typing field determining the type of transport to be used to load
+the resources. Each `resourceSpec` structure must contain exactly one out of the following duck typing fields,
 identifying both the transport and the address of the resource to be loaded:
 
 <table>
@@ -192,9 +193,11 @@ identifying both the transport and the address of the resource to be loaded:
 </tr>
 </table>
 
-Two of the duck typing fields above (`url`, `path`) are "path fields" and can contain interpolated terms, as well as
+Two of the duck typing fields above (`url`, `path`) are "path fields" (represented in the table below by the placeholder
+name `pathField`) and can contain interpolated terms, as well as
 participating in the resource localisation algorithm based on path suffix. The other three (`resourceText`,
-`promiseFunc` and `dataSource`) are "non-path fields" and do not participate in interpolation or localisation.
+`promiseFunc` and `dataSource`) are "non-path fields" (represented in the table below by the placeholder name
+`nonPathField`) and do not participate in interpolation or localisation.
 
 <table>
     <tr>
@@ -280,7 +283,7 @@ case it overrides any choice from `locale` or `defaultLocale` at top level.
 
 ### Events
 
-A ``resourceLoader`` component fires the following events:
+A `resourceLoader` component fires the following events:
 
 <table>
 <tr><th>Name</th><th>Description</th><th>Arguments</th></tr>
@@ -305,7 +308,7 @@ A ``resourceLoader`` component fires the following events:
 ### Using `fluid.resourceLoader` - slow path
 
 The example below demonstrates when and how to use the fetched resource text in an IoC component tree. In this pattern,
-we postpone the instantiation of the component consuming the resources via ```createOnEvent``` until resources are ready.
+we postpone the instantiation of the component consuming the resources via `createOnEvent` until resources are ready.
 This is appropriate for resources loaded via the "slow path". For "fast path` resources with core framework support,
 this separation is not necessary.
 

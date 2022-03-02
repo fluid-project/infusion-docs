@@ -20,4 +20,5 @@ Previously this was only supported in node.js.
 #### Fluid View
 
 A few undocumented utilities, `fluid.dom.isContainer` and `fluid.dom.getElementText` were removed. Use the
-standard browser APIs [`element.contains`](https://developer.mozilla.org/en-US/docs/Web/API/Node/contains) and [`element.innerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText) instead.
+standard browser APIs [`element.contains`](https://developer.mozilla.org/en-US/docs/Web/API/Node/contains) and
+[`element.innerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText) instead.

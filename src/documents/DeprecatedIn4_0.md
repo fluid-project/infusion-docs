@@ -17,5 +17,5 @@ The following core documented utilities are deprecated:
 * `fluid.add`
 * `fluid.accumulate`
 
-Note that as of Infusion 3.0, the "old Renderer" and all components dependent on it (Table, PagedTable) were
-[deprecated](DeprecatedIn3_0.md). These will be removed in Infusion 5.0.
+<div class="infusion-docs-note"><strong>Note:</strong>Note As of Infusion 3.0, the "old Renderer" and all components
+dependent on it (Table, PagedTable) were [deprecated](DeprecatedIn3_0.md). These will be removed in Infusion 5.0.</div>

@@ -50,7 +50,7 @@ blocks for external components and grades. The following table describes these g
         <tr>
             <td><code>fluid.modelComponent</code></td>
             <td>
-                A <it>model</it> component is a component that additionally provides supports for a component's model,
+                A <em>model</em> component is a component that additionally provides supports for a component's model,
                 and operations on it (<a href="tutorial-gettingStartedWithInfusion/ModelComponents.md">Tutorial - Model Components</a>).
                 These operations are mediated by a machine known as a <a href="ChangeApplierAPI.md"><code>ChangeApplier</code></a>
                 which is automatically constructed for a model component. As well as exposing a programmatic API, this
@@ -61,7 +61,7 @@ blocks for external components and grades. The following table describes these g
         <tr>
             <td><code>fluid.viewComponent</code></td>
             <td>
-                A <it>view</it> component is a <code>fluid.modelComponent</code> that is bound to a DOM container node,
+                A <em>view</em> component is a <code>fluid.modelComponent</code> that is bound to a DOM container node,
                 holds a <a href="DOMBinder.md">DOM Binder</a> and supports a view
                 (<a href="tutorial-gettingStartedWithInfusion/ViewComponents.md">Tutorial - View Components</a>).
             </td>
@@ -69,7 +69,7 @@ blocks for external components and grades. The following table describes these g
         <tr>
             <td><code>fluid.resourceLoader</code></td>
             <td>
-                A <it>resource loader</it> component can configure the loading of any number of asynchronously available
+                A <em>resource loader</em> component can configure the loading of any number of asynchronously available
                 resources, possibly before component startup is complete. Since <code>fluid.resourceLoader</code> is a
                 mixin grade, it may be added to a <code>fluid.modelComponent</code>, <code>fluid.viewComponent</code>
                 or any other variety of Infusion component. A dedicated documentation page is available for
@@ -79,13 +79,14 @@ blocks for external components and grades. The following table describes these g
         <tr>
             <td><code>fluid.rendererComponent</code></td>
             <td>
-                A <it>renderer</it> component is a view component that also bears a renderer.
+                A <em>renderer</em> component is a view component that also bears a renderer.
                 There are additional features provided by this component grade specified on the
                 <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md#useful-functions-and-events">
                 Useful functions and events</a> section of the
                 <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a>
                 page.
-                Note that the current Infusion renderer is deprecated and will be replaced in the Infusion 5.0 release.
+                <div class="infusion-docs-note"><strong>Note:</strong>The current Infusion renderer is deprecated and
+                will be replaced in the Infusion 5.0 release.</div>
             </td>
         </tr>
     </tbody>
