@@ -154,7 +154,7 @@ location must already be a component.
 
 ### fluid.constructChild(parent, memberName, options)
 
-Constructs a subcomponent as a child of an existing component, via a call to `fluid.construct`. Note that if
+Constructs a subcomponent as a child of an existing component, via a call to `fluid.construct`. If
 a component already exists with the member name `memberName`, it will first be destroyed.
 
 * `parent` {Component} Component for which a child subcomponent is to be constructed
