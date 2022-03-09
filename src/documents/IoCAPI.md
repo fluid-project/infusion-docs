@@ -357,7 +357,7 @@ This shows the registration of one global workflow, `fluid.resolveModelSkeleton`
 framework has no priority annotation. It also shows the registration of a local workflow, `fluid.notifyInitModel` which
 is responsible for firing any [model listeners](ChangeApplierAPI.md#declarative-style-for-listening-to-changes) which need
 to be notified of initial model values as part of the [initial transaction](ModelRelay.md#the-initial-transaction). The
-[priority](Priorities.md] field attached here indicates that this should happen (if no further definition intervenes) immediately
+[priority](Priorities.md) field attached here indicates that this should happen (if no further definition intervenes) immediately
 before the `concludeComponentInit` action which fires `onCreate`.
 
 ### Global workflows
