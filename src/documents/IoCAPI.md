@@ -187,7 +187,7 @@ component member name.
 ## Potentia API methods
 
 These methods represent a further scheme for control over the instantiation process as operated by the
-"Nexus API methods" described in the previous section, and are new in Infusion 4.0.
+"[Nexus API methods](#nexus-api-methods)" described in the previous section, and are new in Infusion 4.0.
 As well as allowing for construction and destruction of material at arbitrary paths, these "Potentia methods" allow
 for the grouping of constructions and destructions into
 "tree transactions" in which instantiating components will be constructed simultaneously and so may be mutually
