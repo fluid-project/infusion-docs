@@ -309,7 +309,7 @@ A `resourceLoader` component fires the following events:
 
 The example below demonstrates when and how to use the fetched resource text in an IoC component tree. In this pattern,
 we postpone the instantiation of the component consuming the resources via `createOnEvent` until resources are ready.
-This is appropriate for resources loaded via the "slow path". For "fast path` resources with core framework support,
+This is appropriate for resources loaded via the "slow path". For "fast path" resources with core framework support,
 this separation is not necessary.
 
 ```javascript
