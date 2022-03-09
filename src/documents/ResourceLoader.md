@@ -298,7 +298,7 @@ A `resourceLoader` component fires the following events:
 <tr>
     <td><code>onResourceError</code></td>
     <td>Fired if a resource fails to load</td>
-    <td>A populated object with fetched resource text in the field `resourceText` for each entry. If an error occurs
+    <td>A populated object with fetched resource text in the field <code>resourceText</code> for each entry. If an error occurs
     during a fetch, the <code>fetchError</code> field will be populated for that entry. This object can also be
     retrieved directly on the resource loader instance via the path <code>resources</code>.
     </td>
