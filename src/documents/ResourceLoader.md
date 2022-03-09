@@ -291,15 +291,14 @@ A `resourceLoader` component fires the following events:
     <td><code>onResourcesLoaded</code></td>
     <td>Fired when all resources are finished loading.</td>
     <td>A populated object with parsed resource text in the field `parsed` for each entry.
-    <!-- If an error occurs during a fetch, the <code>fetchError</code> field will be populated for that entry.-->
     This object can also be retrieved directly on the resource loader instance via the path <code>resources</code>.
     </td>
 </tr>
 <tr>
     <td><code>onResourceError</code></td>
     <td>Fired if a resource fails to load</td>
-    <td>A populated object with fetched resource text in the field <code>resourceText</code> for each entry. If an error occurs
-    during a fetch, the <code>fetchError</code> field will be populated for that entry. This object can also be
+    <td>A populated object with fetched resource text in the field <code>resourceText</code> for each entry. If an error
+    occurs during a fetch, the <code>fetchError</code> field will be populated for that entry. This object can also be
     retrieved directly on the resource loader instance via the path <code>resources</code>.
     </td>
 </tr>
@@ -328,13 +327,13 @@ fluid.defaults("demo.resourcedUI", {
                     template: "%prefix/testTemplate.html"
                 },
                 listeners: {
-                    "onResourcesLoaded.escalate": "{fluid.UI}.events.onTemplatesReady"
+                    "onResourcesLoaded.escalate": "{resourcedUI}.events.onTemplatesReady"
                 }
             }
         },
         renderUI: {
             type: "fluid.viewComponent",
-            container: "{fluid.UI}.container",
+            container: "{resourcedUI}.container",
             createOnEvent: "onTemplatesReady",
             options: {
                 listeners: {

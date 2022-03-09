@@ -22,3 +22,11 @@ Previously this was only supported in node.js.
 A few undocumented utilities, `fluid.dom.isContainer` and `fluid.dom.getElementText` were removed. Use the
 standard browser APIs [`element.contains`](https://developer.mozilla.org/en-US/docs/Web/API/Node/contains) and
 [`element.innerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText) instead.
+
+#### ResourceLoader
+
+The `href` field in a `ResourceSpec` structure should be changed to `url`
+
+#### Component options
+
+All component options are immutable after component construction. A failure will occur on attempting to modify them.

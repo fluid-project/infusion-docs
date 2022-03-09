@@ -113,10 +113,10 @@ error checking:
 ```javascript
 var myResourceSpecs = {
     bodyTemplate: {
-        href: "templates/Body.html"
+        url: "templates/Body.html"
     },
     sidebarTemplate: {
-        href: "templates/Sidebar.html"
+        url: "templates/Sidebar.html"
     }
 };
 var myCallback = function (returnedResourceSpecs) {

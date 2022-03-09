@@ -132,9 +132,10 @@ Holds the global root component for the global instantiator's component tree.
 ## Nexus API methods
 
 These API methods are grouped together here since they were developed alongside the need to support the
-GPII [Nexus](https://wiki.gpii.net/w/The_Nexus), but they are of interest to others who are building frameworks
-or authoring systems layered on Infusion's component tree substrate. They allow for the construction and destruction
-of arbitrary components at arbitrary paths in the (single, global) component tree managed by this Infusion instance.
+GPII [Nexus](https://wiki.fluidproject.org/display/fluid/Nexus+API), but they are of interest to others who are building
+frameworks or authoring systems layered on Infusion's component tree substrate. They allow for the construction and
+destruction of arbitrary components at arbitrary paths in the (single, global) component tree managed by this Infusion
+instance.
 
 ### fluid.construct(path, options[, instantiator])
 

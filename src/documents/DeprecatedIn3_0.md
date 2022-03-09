@@ -8,6 +8,18 @@ This page contains a list of the features, APIs, and etc. that are deprecated as
 <div class="infusion-docs-note"><strong>Note:</strong> While the intention is to provide advance notice of future
 changes, the contents of this page may not be exhaustive.</div>
 
+## Core Framework
+
+### ResourceLoader
+
+The use of the `href` field in a `ResourceSpec` structure has been deprecated in this release and will be removed in
+Infusion 4.0. Use the `url` field instead.
+
+### Component options
+
+Modifying component options by direct assignment (e.g. with `that.options.key = value`) has been deprecated and will not
+be supported in Infusion 4.0. Component options will be immutable after component construction.
+
 ## Pager
 
 ### Files
