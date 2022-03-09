@@ -57,7 +57,7 @@ representation of the resource, and also the original fetched resource text with
 This populated structure can also be retrieved directly on the resource loader instance via the path `resources`.
 
 <div class="infusion-docs-note"><strong>Note:</strong> If all of the component's resources have already been loaded via
-the "fast path", <code>onResourcesLoaded</code> will only fire once the component's `onCreate` event has concluded.
+the "fast path", <code>onResourcesLoaded</code> will only fire once the component's <code>onCreate</code> event has concluded.
 If any resource loading fails, the event <code>onResourceError</code> will be fired for the failing resource, and
 <code>onResourcesLoaded</code> will not fire.</div>
 
