@@ -85,7 +85,7 @@ blocks for external components and grades. The following table describes these g
                 Useful functions and events</a> section of the
                 <a href="tutorial-gettingStartedWithInfusion/RendererComponents.md">Tutorial - Renderer Components</a>
                 page.
-                <div class="infusion-docs-note"><strong>Note:</strong>The current Infusion renderer is deprecated and
+                <div class="infusion-docs-note"><strong>Note:</strong> The current Infusion renderer is deprecated and
                 will be replaced in the Infusion 5.0 release.</div>
             </td>
         </tr>
