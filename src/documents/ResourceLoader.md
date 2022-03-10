@@ -290,7 +290,7 @@ A `resourceLoader` component fires the following events:
 <tr>
     <td><code>onResourcesLoaded</code></td>
     <td>Fired when all resources are finished loading.</td>
-    <td>A populated object with parsed resource text in the field `parsed` for each entry.
+    <td>A populated object with parsed resource text in the field <code>parsed</code> for each entry.
     This object can also be retrieved directly on the resource loader instance via the path <code>resources</code>.
     </td>
 </tr>
