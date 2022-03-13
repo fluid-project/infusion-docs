@@ -44,30 +44,59 @@
             </div>
             <!-- END skip link -->
 
-            <!-- BEGIN markup for Preference Editor -->
-            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
-                <!-- This is the div that will contain the Preference Editor component -->
-                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
-
-                <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
-                <div class="fl-panelBar">
-                    <span class="fl-prefsEditor-buttons">
-                        <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
-                        <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide">+ Show Preferences</button>
-                    </span>
-                </div>
-            </div>
-
-            <script type="text/javascript">
-                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-                    terms: {
-                        "templatePrefix": "{{ "/lib/infusion/src/framework/preferences/html" | url }}",
-                        "messagePrefix": "{{ "/lib/infusion/src/framework/preferences/messages" | url }}"
-                    },
-                    "tocTemplate": "{{ "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html" | url }}"
+            <script>
+                $(function () {
+                    var myUIO = fluid.uiOptions(".flc-prefsEditor-separatedPanel", {
+                        auxiliarySchema: {
+                            terms: {
+                                "templatePrefix": "{{ "/lib/infusion/src/framework/preferences/html" | url }}",
+                                "messagePrefix": "{{ "/lib/infusion/src/framework/preferences/messages" | url }}"
+                            },
+                            "fluid.prefs.tableOfContents": {
+                                enactor: {
+                                    "tocTemplate": "{{ "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html" | url }}",
+                                    "tocMessage": "{{ "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json" | url }}",
+                                    ignoreForToC: {
+                                        "overviewPanel": ".flc-overviewPanel"
+                                    }
+                                }
+                            }
+                        },
+                        prefsEditorLoader: {
+                            lazyLoad: true
+                        }
+                    });
+                    console.log(myUIO);
                 });
             </script>
 
+            <!-- BEGIN markup for Preference Editor -->
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <!--
+                    This div is for the sliding panel bar that shows and hides the Preference Editor controls in the mobile view.
+                    A separate panel bar for mobile displays is needed to preserver the correct tab order.
+                -->
+                <div class="fl-panelBar fl-panelBar-smallScreen">
+                    <span class="fl-prefsEditor-buttons">
+                        <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                        <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                    </span>
+                </div>
+
+                <!-- This is the div that will contain the Preference Editor component -->
+                <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+
+                <!--
+                    This div is for the sliding panel bar that shows and hides the Preference Editor controls in the desktop view.
+                    A separate panel bar for desktop displays is needed to preserver the correct tab order.
+                -->
+                <div class="fl-panelBar fl-panelBar-wideScreen">
+                    <span class="fl-prefsEditor-buttons">
+                        <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                        <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                    </span>
+                </div>
+            </div>
             <!-- END markup for Preference Editor -->
 
             <header class="row infusion-docs-header">
@@ -84,7 +113,7 @@
             </header>
 
             <div class="infusion-docs-mainBody">
-                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1">
+                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1" aria-label="section">
                     {% if category !== "Search" %}
                         <label for="search" class="infusion-docs-category">Search</label>
                         <p class="docs-search-mini"><input id="search" type="search" name="qs"/></p>
@@ -113,7 +142,7 @@
                 <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
                     <div class="infusion-docs-articleContainer">
 
-                        <div class="flc-toc-tocContainer infusion-docs-toc"> </div>
+                        <nav class="flc-toc-tocContainer infusion-docs-toc" aria-label="Table of Contents"> </nav>
 
                         <h1>{{ title }}</h1>
 
