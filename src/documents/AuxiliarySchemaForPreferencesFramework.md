@@ -16,11 +16,14 @@ are free to include any other properties their implementation may require.
 
 ### Top-level properties
 
-* `namespace` (optional; recommended)
+* `namespace` (optional)
   * the namespace of the component to call to initialize the constructed grades
 * `loaderGrades` (optional)
   * an array of grades to be applied to the `prefsEditorLoader`. To modify the default prefsEditor type
     (`"fluid.prefs.separatedPanel"`), a valid alternative should be supplied here.
+* `generatePanelContainers`
+  * Indicate if the panel containers should be generated. If `false` it is expected that the supplied template already
+    contains all of the necessary container elements. Default is `true`.
 * `terms`
   * defines paths to directories containing the message files and template files. This property is used to define all
     common terms used by `fluid.prefs.resourceLoader`.
@@ -35,12 +38,10 @@ are free to include any other properties their implementation may require.
 
 ### Preference block properties
 
-Preference blocks can be given any property name, so long as the name is unique within the schema. Preference blocks
-will have the following properties:
+Preference blocks are keyed off of the preference name, which is also used for the preference map and must match the
+string defined by the [Primary Schema](PrimarySchemaForPreferencesFramework.md). Preference blocks have  the following
+properties:
 
-* `type`
-  * used to define the preference setting type
-  * must match the string defined by the [Primary Schema](PrimarySchemaForPreferencesFramework.md)
 * `panel`
   * specifies the configuration for the panel component
   * each preference block can specify only one panel
@@ -83,10 +84,6 @@ For detailed information about how to work with composite panels, see [Composite
 
 ```json5
 {
-    // The author of the auxiliary schema will provide the namespace, which will be used
-    //for the component to call to initialize the constructed grades.
-    "namespace": "fluid.prefs.constructed",
-
     // The common terms to use in "template" and "message" properties in "panels" elements
     "terms": {
         // The template defined in "panels" element will take precedence over this definition.
@@ -101,235 +98,37 @@ For detailed information about how to work with composite panels, see [Composite
      // The path to the preferences editor own message file (e.g. the separated panel prefs editor message file)
     "message": "%messagePrefix/prefsEditor.json",
 
-    "textSize": {
-        "type": "fluid.prefs.textSize",
+    "fluid.prefs.textSize": {
+        "alias": "textSize",
         "enactor": {
             "type": "fluid.prefs.enactor.textSize"
         },
         "panel": {
-            "type": "fluid.prefs.panels.textSize",
-            "container": ".flc-prefsEditor-text-size",
-            "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
-            "message": "%messagePrefix/textSize.json"
+            "type": "fluid.prefs.panel.textSize",
+            "container": ".flc-prefsEditor-text-size",  // the css selector in the template where the panel is rendered
+            "message": "%messagePrefix/textSize.json",
+            "template": "%templatePrefix/PrefsEditorTemplate-textSize.html"
         }
-    },
-    "lineSpace": {
-        "type": "fluid.prefs.lineSpace",
-        "enactor": {
-            "type": "fluid.prefs.enactor.lineSpace",
-            "fontSizeMap": {
-                "xx-small": "9px",
-                "x-small": "11px",
-                "small": "13px",
-                "medium": "15px",
-                "large": "18px",
-                "x-large": "23px",
-                "xx-large": "30px"
+    }
+}
+```
+
+```JavaScript
+fluid.defaults("fluid.prefs.auxSchema.textSize", {
+    gradeNames: ["fluid.prefs.auxSchema"],
+    auxiliarySchema: {
+        "fluid.prefs.textSize": {
+            alias: "textSize",
+            enactor: {
+                type: "fluid.prefs.enactor.textSize"
+            },
+            panel: {
+                type: "fluid.prefs.panel.textSize",
+                container: ".flc-prefsEditor-text-size",  // the css selector in the template where the panel is rendered
+                message: "%messagePrefix/textSize.json",
+                template: "%templatePrefix/PrefsEditorTemplate-textSize.html"
             }
-        },
-        "panel": {
-            "type": "fluid.prefs.panels.lineSpace",
-            "container": ".flc-prefsEditor-line-space",
-            "template": "%templatePrefix/PrefsEditorTemplate-lineSpace.html",
-            "message": "%messagePrefix/lineSpace.json"
-        }
-    },
-    "textFont": {
-        "type": "fluid.prefs.textFont",
-        "classes": {
-            "default": "",
-            "times": "fl-font-uio-times",
-            "comic": "fl-font-uio-comic-sans",
-            "arial": "fl-font-uio-arial",
-            "verdana": "fl-font-uio-verdana"
-        },
-        "enactor": {
-            "type": "fluid.prefs.enactor.textFont",
-            "classes": "@textFont.classes"
-        },
-        "panel": {
-            "type": "fluid.prefs.panels.textFont",
-            "container": ".flc-prefsEditor-text-font",
-            "classnameMap": {"textFont": "@textFont.classes"},
-            "template": "%templatePrefix/PrefsEditorTemplate-textFont.html",
-            "message": "%messagePrefix/textFont.json"
-        }
-    },
-    "contrast": {
-        "type": "fluid.prefs.contrast",
-        "classes": {
-            "default": "fl-theme-default-prefsEditor",
-            "bw": "fl-theme-bw-prefsEditor fl-theme-bw",
-            "wb": "fl-theme-wb-prefsEditor fl-theme-wb",
-            "by": "fl-theme-by-prefsEditor fl-theme-by",
-            "yb": "fl-theme-yb-prefsEditor fl-theme-yb",
-            "lgdg": "fl-theme-lgdg-prefsEditor fl-theme-lgdg"
-        },
-        "enactor": {
-            "type": "fluid.prefs.enactor.contrast",
-            "classes": "@contrast.classes"
-        },
-        "panel": {
-            "type": "fluid.prefs.panels.contrast",
-            "container": ".flc-prefsEditor-contrast",
-            "classnameMap": {"theme": "@contrast.classes"},
-            "template": "%templatePrefix/PrefsEditorTemplate-contrast.html",
-            "message": "%messagePrefix/contrast.json"
-        }
-    },
-    "tableOfContents": {
-        "type": "fluid.prefs.tableOfContents",
-        "enactor": {
-            "type": "fluid.prefs.enactor.tableOfContents",
-            "tocTemplate": "../../../../components/tableOfContents/html/TableOfContents.html"
-        },
-        "panel": {
-            "type": "fluid.prefs.panels.layoutControls",
-            "container": ".flc-prefsEditor-layout-controls",
-            "template": "%templatePrefix/PrefsEditorTemplate-layout.html",
-            "message": "%messagePrefix/tableOfContents.json"
-        }
-    },
-    "emphasizeLinks": {
-        "type": "fluid.prefs.emphasizeLinks",
-        "enactor": {
-            "type": "fluid.prefs.enactor.emphasizeLinks",
-            "cssClass": "fl-link-enhanced"
-        },
-        "panel": {
-            "type": "fluid.prefs.panels.linksControls",
-            "container": ".flc-prefsEditor-links-controls",
-            "template": "%templatePrefix/PrefsEditorTemplate-links.html",
-            "message": "%messagePrefix/links.json"
-        }
-    },
-    "inputsLarger": {
-        "type": "fluid.prefs.inputsLarger",
-        "enactor": {
-            "type": "fluid.prefs.enactor.inputsLarger",
-            "cssClass": "fl-text-larger"
-        },
-        "panel": {
-            "type": "fluid.prefs.panel.inputsLarger",
-            "container": ".flc-prefsEditor-inputsLarger",  // the css selector in the template where the panel is rendered
-            "template": "%templatePrefix/PrefsEditorTemplate-inputsLarger.html",
-            "message": "%messagePrefix/inputsLarger.json"
-        }
-    },
-    groups: {
-        "linksControls": { // this defines a composite panel
-            "container": ".flc-prefsEditor-links-controls",
-            "template": "%templatePrefix/PrefsEditorTemplate-linksControls.html",
-            "message": "%messagePrefix/linksControls.json",
-            "type": "fluid.prefs.panel.linksControls",
-            "panels": ["emphasizeLinks", "inputsLarger"] // the composite panel includes these two subpanels
         }
     }
-}
-```
-
-## Sharing data between panels and enactors
-
-In some cases, panels and enactors may need to share data, such as a list of class names. In these cases, define the
-data at the root of the relevant preference block and reference it within the panel and enactor blocks, as seen in the
-example above (in the `contrast` and `textFont` preference blocks). The general structure and syntax is highlighted
-below:
-
-```json5
-{
-    "prefBlockName": {
-        "type": "typename",
-        "dataToBeShared": {
-            // ...
-        },
-        "enactor": {
-            "type": "enactor.component.name",
-            "sharedData": "@prefBlockName.dataToBeShared"
-        },
-        "panel": {
-            "type": "panel.component.name",
-            "sharedData": "@prefBlockName.dataToBeShared",
-            // ...
-        }
-    }
-}
-```
-
-## Configuring Multiple Panels and Enactors for a Single Preference
-
-Each preference block can contain configuration for _at most_ one enactor and one panel. If more than one enactor and/or
-panel needs to be configured for a given preference, you can create another preference block with a new namespace.
-
-```json5
-{
-    // ...
-    // Standard preference block configuration
-    "textSize": {
-        "type": "fluid.prefs.textSize",
-        "enactor": {
-            "type": "fluid.prefs.enactor.textSize"
-        },
-        "panel": {
-            "type": "fluid.prefs.panels.textSize",
-            "container": ".flc-prefsEditor-text-size",
-            "template": "%templatePrefix/PrefsEditorTemplate-textSize.html",
-            "message": "%messagePrefix/textSize.json"
-        }
-    },
-    // An additional panel and enactor configured for the same preference
-    // Note: the namespace, "additional", can be any valid string
-    "textSize.additional": {
-        "type": "fluid.prefs.textSize",
-        "enactor": {
-            "type": "fluid.prefs.enactor.foo"
-        },
-        "panel": {
-            "type": "fluid.prefs.panels.foo",
-            "container": ".flc-prefsEditor-foo",
-            "template": "%templatePrefix/PrefsEditorTemplate-foo.html",
-            "message": "%messagePrefix/foo.json"
-        }
-    }
-    // ...
-}
-```
-
-## Configuring a Single Panel for Multiple Enactors and Preferences
-
-Each preference block defines only one preference, even if multiple preferences (with their own enactors) are displayed
-in the _same panel_. In these cases, multiple preference blocks still need to be configured:
-
-* Each preference block declares the common panel type, and
-* the detail information for this panel is defined in any _one_ (and only one) of these panel block.
-
-The example below shows two preferences (`emphasizeLinks` and `inputsLarger`)  sharing the same panel
-`fluid.prefs.panels.linksControls`. The details for this panel are only defined in the preference block for
-`emphasizeLinks`.
-
-```json
-{
-    "emphasizeLinks": {
-        "type": "fluid.prefs.emphasizeLinks",
-        "enactor": {
-            "type": "fluid.prefs.enactor.emphasizeLinks",
-            "cssClass": "fl-link-enhanced"
-        },
-        "panel": {
-            "type": "fluid.prefs.panels.linksControls",
-            "container": ".flc-prefsEditor-links-controls",
-            "template": "%templatePrefix/PrefsEditorTemplate-links.html",
-            "message": "%messagePrefix/links.json"
-        }
-    },
-    "inputsLarger": {
-        "type": "fluid.prefs.inputsLarger",
-        "enactor": {
-            "type": "fluid.prefs.enactor.inputsLarger",
-            "cssClass": "fl-text-larger"
-        },
-        "panel": {
-            "type": "fluid.prefs.panels.linksControls"
-        }
-    }
-}
+});
 ```

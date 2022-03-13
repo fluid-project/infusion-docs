@@ -34,54 +34,27 @@ displayed only if the specified preference is true.
 
 ```json5
 {
-    auxiliarySchema: {
-        template: "%prefix/prefsEditor.html",
-        message: "%prefix/prefsEditor.json",
-        groups: {
-            speaking: {
-                "container": ".mpe-speaking",
-                "template": "%prefix/speaking.html",
-                "message": "%prefix/speaking.json",
-                "type": "demo.panels.speaking",
-                "panels": {
-                    // the 'speak' subpanel will always be displayed
-                    "always": ["speak"],
-                    // the volume and words-per-minute subpanels will only display when 'speak' is true
-                    "demo.speakText": ["vol", "wpm"]
-                }
-            }
-        },
-        speak: {
-            type: "demo.speakText",
-            enactor: {
-                type: "demo.enactors.speak"
-            },
-            panel: {
-                type: "demo.panels.speak",
-                container: ".mpe-speaking-onOff",
-                template: "%prefix/speak-template.html"
-            }
-        },
-        vol: {
-            type: "demo.volume",
-            enactor: {
-                type: "demo.enactors.vol"
-            },
-            panel: {
-                type: "demo.panels.vol",
-                container: ".mpe-speaking-vol",
-                template: "%prefix/slider-template.html"
-            }
-        },
-        wpm: {
-            type: "demo.wordsPerMinute",
-            enactor: {
-                type: "demo.enactors.wpm"
-            },
-            panel: {
-                type: "demo.panels.wpm",
-                container: ".mpe-speaking-wpm",
-                template: "%prefix/slider-template.html"
+    "template": "html/prefsEditor.html",
+    "generatePanelContainers": false,
+    "message": "%messagePrefix/prefsEditor.json",
+    "terms": {
+        "templatePrefix": "../shared/html",
+        "messagePrefix": "../shared/messages"
+    },
+    "groups": {
+        "speakIncrease": {
+            "container": ".mpe-speakIncrease",
+            "template": "%templatePrefix/speakIncrease.html",
+            "message": "%messagePrefix/speakIncrease.json",
+            "type": "example.panels.speakIncrease",
+            "panels": {
+                "always": ["example.speakText", "example.increaseSize"],
+                "example.speakText": ["example.volume", "example.wordsPerMinute"],
+                "example.increaseSize": [
+                    "example.cursorSize",
+                    "example.magnification",
+                    "example.magnifierPosition"
+                ]
             }
         }
     }

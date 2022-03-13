@@ -86,8 +86,7 @@ Auxiliary schema section defining panels:
 
 ```json5
 {
-    preference1: {
-        "type": "fluid.prefs.preference1",
+    "fluid.prefs.preference1": {
         "panel": {
             "type": "fluid.prefs.panel.subpanel1",
             // Reference to the selector defined in the composite panel template for subpanel1
@@ -96,8 +95,7 @@ Auxiliary schema section defining panels:
             "message": "%prefix/subpanel1.json"
         }
     },
-    preference2: {
-        "type": "fluid.prefs.preference2",
+    "fluid.prefs.preference2": {
         "panel": {
             "type": "fluid.prefs.panel.subpanel2",
             // Reference to the selector defined in the composite panel template for this subpanel2
@@ -106,13 +104,13 @@ Auxiliary schema section defining panels:
             "message": "%prefix/subpanel2.json"
         }
     },
-    groups: {
-        composite1: {
+    "groups": {
+        "composite1": {
             "container": ".my-composite-1",
             "template": "%prefix/composite1.html",
             "message": "%prefix/composite1.json",
             "type": "fluid.prefs.panel.composite1",
-            "panels": ["preference1", "preference2"]
+            "panels": ["fluid.prefs.preference1", "fluid.prefs.preference2"]
         }
     }
 }
