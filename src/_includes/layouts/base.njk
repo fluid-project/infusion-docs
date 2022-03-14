@@ -46,7 +46,7 @@
 
             <script>
                 $(function () {
-                    var myUIO = fluid.uiOptions(".flc-prefsEditor-separatedPanel", {
+                    fluid.uiOptions(".flc-prefsEditor-separatedPanel", {
                         auxiliarySchema: {
                             terms: {
                                 "templatePrefix": "{{ "/lib/infusion/src/framework/preferences/html" | url }}",
@@ -66,7 +66,6 @@
                             lazyLoad: true
                         }
                     });
-                    console.log(myUIO);
                 });
             </script>
 
