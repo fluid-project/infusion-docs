@@ -43,7 +43,7 @@ configured with the same set of starter preferences as UI Options has used in th
 
 ## Configuration
 
-With `fluid.uiOptions` being more generalized than it's predecessor, it no longer makes assumptions about which
+With `fluid.uiOptions` being more generalized than its predecessor, it no longer makes assumptions about which
 preferences it will work with. This means that configuration may no longer be hoisted to the top level; preferences and
 enactors are configured through the `auxiliarySchema` top level option, and the preference editor itself is configured
 through the `prefsEditorLoader` or `prefsEditor` top level options.
@@ -134,7 +134,7 @@ fluid.uiOptions(".flc-prefsEditor-separatedPanel", {
 Auxiliary Schemas are still used for defining/configuring a preference, but have been slightly restructured. Each
 preference is keyed off of the preference name (e.g. `fluid.prefs.letterSpace`) rather than an alias
 (e.g. `letterSpace`). This makes it easier to know the path the configure when supplying overrides. The auxillary
-schemas are no longer concerned with the configuration of the Preference Editor itself, and the parts individual
+schemas are no longer concerned with the configuration of the Preference Editor itself, and the parts of individual
 preferences can be used in a modular fashion. For example, in Infusion 3, it wasn't easy to use a subset of the
 "starter" preferences.
 
