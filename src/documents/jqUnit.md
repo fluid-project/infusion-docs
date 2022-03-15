@@ -203,7 +203,7 @@ assert that a payload is as expected but may be missing arbitrarily many top-lev
 
 Assert that the supplied callback will produce a framework diagnostic (that is, an exception descended from
 `fluid.FluidError`), containing the supplied text(s) somewhere in its error message - that is, the callback has invoked
-[`fluid.fail`](CoreAPI.md#fluidfailarg1-argn) with a message containing the entries in `errorTexts`.
+[`fluid.fail`](CoreAPI.md#fluidfailarg1--argn) with a message containing the entries in `errorTexts`.
 
 * `message {String}` The message prefix to be supplied for all the assertions this function issues
 * `toInvoke {Function}` A no-arg function holding the code to be tested for emission of the diagnostic
