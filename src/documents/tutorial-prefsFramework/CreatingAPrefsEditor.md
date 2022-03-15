@@ -375,29 +375,25 @@ Let’s look at the Schema itself in detail:
     auxiliarySchema: {
         // the loaderGrade identifies the "base" form of preference editor desired
         loaderGrades: ["fluid.prefs.fullNoPreview"],
+        componentGrades: {
+            messageLoader: "awesomeCars.prefs.messageLoader"
+        },
+
+        // Remove the default path as we have not configured core message bundles for this editor.
+        message: null,
 
         // 'terms' are strings that can be re-used elsewhere in this schema;
         terms: {
-            templatePrefix: "html"
+            templatePrefix: "html",
+            messagePrefix: "messages"
         },
 
         // the main template for the preference editor itself
         template: "%templatePrefix/prefsEditorTemplate.html",
 
-        heatedSeats: {
-            // this 'type' must match the name of the pref in the primary schema
-            type: "awesomeCars.prefs.heatedSeats",
-            panel: {
-                // this 'type' must match the name of the panel grade created for this pref
-                type: "awesomeCars.prefs.panels.heatedSeats",
-
-                // selector indicating where, in the main template, to place this panel
-                container: ".awec-heatedSeats",
-
-                // the template for this panel
-                template: "%templatePrefix/heatedSeats.html"
-            }
-        }
+        // indicates that the adjuster panel containers do not need to be generated and are included in the
+        // template.
+        "generatePanelContainers": false
     }
 }
 ```
@@ -462,16 +458,42 @@ The main thing to note in the template is the placeholder for the Panel, in this
 
 The Framework will insert the constructed Panel into this `<div>`.
 
-##### Preferences
+##### Messages
 
-The next thing in the Auxiliary Schema is the configuration for the heated seats preference:
+The Auxiliary Schema must declare where to find the main JSON message bundles for the Preference Editor. In our example,
+the messages are expected to be in the same folder as other message bundles. The Auxiliary Schema allows you to define
+`terms` – strings that can be re-used elsewhere in the schema. Here, it is being used to define, in a single place, the
+path to where the JSON message bundles are:
 
 ```json5
 {
-    heatedSeats: {
-        // this 'type' must match the name of the pref in the primary schema
-        type: "awesomeCars.prefs.heatedSeats",
+    terms: {
+        messagePrefix: "html"
+    }
+}
+```
 
+The message property specifies the main JSON message bundle for the entire Preference Editor. However, in this case one
+isn't used:
+
+```json5
+{
+    message: null
+}
+```
+
+You can see the full text of this file, `prefsEditorTemplate.html`, in the github repo:
+[https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html](https://github.com/fluid-project/infusion/tree/main/examples/framework/preferences/minimalEditor/html/prefsEditorTemplate.html)
+
+##### Preferences
+
+The next thing in the Auxiliary Schema is the configuration for the heated seats preference. This is actually defined
+in the `awesomeCars.prefs.auxSchema` auxiliary schema grade, which will be automatically picked up during instantiation.
+
+```json5
+{
+    // this key must match the name of the pref in the primary schema
+    "awesomeCars.prefs.heatedSeats": {
         panel: {
             // this 'type' must match the name of the panel grade created for this pref
             type: "awesomeCars.prefs.panels.heatedSeats",
@@ -480,21 +502,19 @@ The next thing in the Auxiliary Schema is the configuration for the heated seats
             container: ".awec-heatedSeats",
 
             // the template for this panel
-            template: "%templatePrefix/heatedSeats.html"
+            template: "%templatePrefix/heatedSeats.html",
+
+            // the message bundle for this panel
+            message: "%messagePrefix/heatedSeats.json"
         }
     }
 }
 ```
 
-(The name of the property, `heatedSeats`, can actually be anything, but it’s helpful to use the name
-of the preference.)
+(The name of the property, `awesomeCars.prefs.heatedSeats`, is the preference's name and must match the one specified in
+the primary schema.)
 
-In our example, the heated seats preference configuration includes two things:
-
-1. the type of the preference, and
-2. information about the Panel.
-
-The value of the `type` property is the name of the preference as defined in the Primary Schema.
+In our example, the heated seats preference configuration only needs to supply configuraiton informatio for the panel.
 
 The value of the `panel` property is a JavaScript object containing configuration information
 for the Panel. Let’s look at each of the properties:
@@ -525,26 +545,25 @@ template – the one referenced by the `template` property above.
 This is the path and filename of the HTML template for this Panel.
 Notice, in this example, how the `templatePrefix` term is being used.
 </dd>
+<dt>
+
+`message`
+</dt>
+<dd>
+
+This is the path and filename of the JSON message bundle for this Panel.
+Notice, in this example, how the `messagePrefix` term is being used.
+</dd>
 </dl>
 
 #### Instantiation
 
 The last thing in the `js/prefsEditor.js` file is a call to the Preferences Framework
-function [`fluid.prefs.create()`](../PreferencesEditor.md). This function actually creates the Preference Editor.
+function [`fluid.uiOptions()`](../UserInterfaceOptionsAPI.md). This function actually creates the Preference Editor.
 It accepts two arguments:
 
 1. a CSS selector indicating the container element for the Preference Editor, and
 2. a JavaScript object containing configuration information for the Preference Editor.
-
-```javascript
-awesomeCars.prefs.init = function (container) {
-    return fluid.prefs.create(container, {
-        build: {
-            gradeNames: ["awesomeCars.prefs.auxSchema"]
-        }
-    });
-};
-```
 
 This function is invoked in the main HTML file for the Preference Editor, `index.html`. You can see the entire file
 here:
@@ -555,27 +574,45 @@ Let’s look at this invocation:
 <div id="preferencesEditor"></div>
 
 <script type="text/javascript">
-    awesomeCars.prefs.init("#preferencesEditor");
+    fluid.uiOptions("#preferencesEditor", {
+        // the preference
+        preferences: ["awesomeCars.prefs.heatedSeats"],
+        auxiliarySchema: {
+            // the loaderGrade identifies the "base" form of preference editor desired
+            loaderGrades: ["fluid.prefs.fullNoPreview"],
+            componentGrades: {
+                messageLoader: "awesomeCars.prefs.messageLoader"
+            },
+
+            // Remove the default path as we have not configured core message bundles for this editor.
+            message: null,
+
+            // 'terms' are strings that can be re-used elsewhere in this schema;
+            terms: {
+                templatePrefix: "html",
+                messagePrefix: "messages"
+            },
+
+            // the main template for the preference editor itself
+            template: "%templatePrefix/prefsEditorTemplate.html",
+
+            // indicates that the adjuster panel containers do not need to be generated and are included in the
+            // template.
+            "generatePanelContainers": false
+        }
+    });
 </script>
 ```
 
 In the HTML snippet above, the `<div>` is the container that the Preference Editor will be rendered inside of. The call
-to `awesomeCars.prefs.init()` is passed the ID of the element, `“#preferencesEditor”`, as the container argument.
+to `fluid.uiOptions` is passed the ID of the element, `“#preferencesEditor”`, as the container argument.
 
 In the code snippet above, the first argument – `container` – is the CSS identifier passed to the function. The second
-argument – the options – is an object containing (in this case) one property: `build`. This option is a JavaScript
-object containing information that will be passed to the Builder, a key part of the Preferences Framework. The Builder
-is the core component responsible for actually building the Preference Editor based on all of the configuration
-information for the preferences, the Panels, etc. For our simple Preference Editor, the build options contains only one
-property: The grade name of our Auxiliary Schema:
-
-```json5
-{
-    build: {
-        gradeNames: ["awesomeCars.prefs.auxSchema"]
-    }
-}
-```
+argument, the options. This options are a JavaScript object containing information that will be passed to the Builder, a
+key part of the Preferences Framework. The Builder is the core component responsible for actually building the
+Preference Editor based on all of the configuration information for the preferences, the Panels, etc. For our simple
+Preference Editor, the options contain the preference we are defining along with the auxiliarySchema information for
+this particular instance.
 
 The Auxiliary Schema (plus the Primary Schema that was registered with the Framework automatically) contains all the
 information the Builder needs to construct the Preference Editor.
@@ -605,7 +642,7 @@ fluid.defaults("awesomeCars.prefs.schemas.radioVolume", {
             "default": "2",
             "minimum": "1",
             "maximum": "5",
-            "divisibleBy": "0.5"
+            "multipleOf": "0.5"
         }
     }
 });
@@ -690,7 +727,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
             "model.radioVolume": "value",
             "range.min": "minimum",
             "range.max": "maximum",
-            "range.step": "divisibleBy"
+            "range.step": "multipleOf"
         }
     },
     range: {
@@ -713,7 +750,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
             "model.radioVolume": "value",
             "range.min": "minimum",
             "range.max": "maximum",
-            "range.step": "divisibleBy"
+            "range.step": "multipleOf"
         }
     },
     range: {
@@ -783,7 +820,7 @@ fluid.defaults("awesomeCars.prefs.panels.radioVolume", {
             "model.radioVolume": "value",
             "range.min": "minimum",
             "range.max": "maximum",
-            "range.step": "divisibleBy"
+            "range.step": "multipleOf"
         }
     },
 
@@ -827,20 +864,24 @@ has a placeholder in it for the heated seats Panel.
 <div class="radioVolume"></div>
 ```
 
-We’ll also need a property in the Auxiliary Schema, in `schemas/auxiliary.js`,  to provide the
+We’ll also need to add additional auxiliary schema information in `schemas/auxiliary.js`,  to provide the
 configuration options specific to the new Panel:
 
-```json5
-{
-    radioVolume: {
-        type: "awesomeCars.prefs.radioVolume",
-        panel: {
-            type: "awesomeCars.prefs.panels.radioVolume",
-            container: ".awec-radioVolume",
-            template: "%templatePrefix/radioVolume.html"
+```JavaScript
+fluid.defaults("awesomeCarsRadioVolume.prefs.auxSchema", {
+    gradeNames: ["fluid.prefs.auxSchema"],
+
+    auxiliarySchema: {
+        // this key must match the name of the pref in the primary schema
+        "awesomeCars.prefs.radioVolume": {
+            panel: {
+                type: "awesomeCars.prefs.panels.radioVolume",
+                container: ".awec-radioVolume",
+                template: "%templatePrefix/radioVolume.html"
+            }
         }
     }
-}
+});
 ```
 
 ## Saving Preferences
@@ -917,17 +958,39 @@ Finally, we need to tell the preferences editor to use our new settings store in
 this by using the `storeType` option when we create the editor (as we saw back in [Instantiation](#instantiation)):
 
 ```javascript
-awesomeCars.prefs.init = function (container) {
-    return fluid.prefs.create(container, {
-        build: {
-            gradeNames: ["awesomeCars.prefs.auxSchema"]
+fluid.uiOptions("#preferencesEditor", {
+    // the preference
+    preferences: [
+        "awesomeCars.prefs.heatedSeats",
+        "awesomeCars.prefs.radioVolume"
+    ],
+    auxiliarySchema: {
+        // the loaderGrade identifies the "base" form of preference editor desired
+        loaderGrades: ["fluid.prefs.fullNoPreview"],
+        componentGrades: {
+            messageLoader: "awesomeCars.prefs.messageLoader"
         },
-        prefsEditor: {
-            // specify the settings store to use
-            storeType: "awesomeCars.prefs.store"
-        }
-    });
-};
+
+        // Remove the default path as we have not configured core message bundles for this editor.
+        message: null,
+
+        // 'terms' are strings that can be re-used elsewhere in this schema;
+        terms: {
+            templatePrefix: "html",
+            messagePrefix: "messages"
+        },
+
+        // the main template for the preference editor itself
+        template: "%templatePrefix/prefsEditorTemplate.html",
+
+        // indicates that the adjuster panel containers do not need to be generated and are included in the
+        // template.
+        "generatePanelContainers": false
+    },
+    store: {
+        storeType: "awesomeCars.prefs.store"
+    }
+});
 ```
 
 ## Coming Soon:

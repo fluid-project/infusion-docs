@@ -22,45 +22,72 @@ The format of a preference definition in the Primary Schema is as shown below:
 The `"namespaced.preference.name"` is the string that will be used throughout the Preferences Framework to identify the
 particular preference. It will be used to associate panels and enactors with the preference.
 
-## Example: Schema for Preferences Framework Starter Preferences
+## Example Primary Schemas
 
-```json5
+### Number
+
+```JSON5
 {
-    "fluid.prefs.textSize": {
-        "type": "number",
-        "default": 1,
-        "min": 1,
-        "max": 2,
-        "divisibleBy": 0.1
-    },
     "fluid.prefs.lineSpace": {
         "type": "number",
         "default": 1,
-        "min": 1,
-        "max": 2,
-        "divisibleBy": 0.1
-    },
+        "minimum": 0.7,
+        "maximum": 2,
+        "multipleOf": 0.1
+    }
+}
+```
+
+### Boolean
+
+```JSON5
+{
+    "fluid.prefs.tableOfContents": {
+        "type": "boolean",
+        "default": false
+    }
+}
+```
+
+### Enumerated
+
+```JSON5
+{
     "fluid.prefs.textFont": {
         "type": "string",
         "default": "default",
-        "enum": ["default", "times", "comic", "arial", "verdana"]
-    },
-    "fluid.prefs.contrast": {
-        "type": "string",
-        "default": "default",
-        "enum": ["default", "bw", "wb", "by", "yb"]
-    },
-    "fluid.prefs.layoutControls": {
-        "type": "boolean",
-        "default": false
-    },
-    "fluid.prefs.emphasizeLinks": {
-        "type": "boolean",
-        "defaults": false
-    },
-    "fluid.prefs.inputsLarger": {
-        "type": "boolean",
-        "defaults": false
+        "enum": ["default", "times", "comic", "arial", "verdana", "open-dyslexic"],
+        "enumLabels": [
+            "textFont-default",
+            "textFont-times",
+            "textFont-comic",
+            "textFont-arial",
+            "textFont-verdana",
+            "textFont-open-dyslexic"
+        ]
     }
 }
+```
+
+## Primary Schema Grade
+
+Typically primary schemas are defined within a primary schema grade. These are standard infusion
+[component grades](ComponentGrades.md) taking the base grade `fluid.prefs.schema` and a `schema` option containing the
+primary schema. Primary Schema grades are automatically located by the [Builder](Builder.md).
+
+### Example
+
+```JavaScript
+fluid.defaults("fluid.prefs.schemas.lineSpace", {
+    gradeNames: ["fluid.prefs.schemas"],
+    schema: {
+        "fluid.prefs.lineSpace": {
+            "type": "number",
+            "default": 1,
+            "minimum": 0.7,
+            "maximum": 2,
+            "multipleOf": 0.1
+        }
+    }
+});
 ```

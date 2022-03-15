@@ -23,10 +23,6 @@ experience.
 
 Try the [UI Options demo](https://build-infusion.fluidproject.org/demos/uioptions/).
 
-UI Options is also available as a [Wordpress plugin](https://github.com/fluid-project/uio-wordpress-plugin) based on the
-latest stable release of Infusion, and as a [Drupal plugin](https://www.drupal.org/project/fluidui)
-(maintained by [OpenConcept](https://openconcept.ca)).
-
 ## Overview
 
 The goal is to put together a website and allow visitors a way to customize the website presentation to their own
@@ -182,22 +178,45 @@ buttons, styled")
 
 ## Add the UI Options component
 
-Add the UI Options component to your page using a `<script>` tag. This `<script>` block should appear after the
-`flc-prefsEditor-separatedPanel` `<section>` and after the `<nav class="flc-toc-tocContainer">`.
+Add the UI Options component to your page using a `<script>` tag. The code needs to run after the markup has loaded, to
+ensure that the required DOM elements are available to bind to. This can be achieved using a jQuery's
+[`.ready()`](https://api.jquery.com/ready/) method, placing the `<script>` as the last element in the `<body>`, or
+importing the initialization code as separate JavaScript file with the [`defer`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer)
+attribute set.
 
-In this example, we place the `<script>` at the end of the webpage before the closing `</body>` tag.
+In this example, we place the `<script>` before the UIO markup and use jQuery's `.read()` method to ensure it runs after
+the DOM is ready.
 
 ```html
 <head>
     <!-- ... -->
 </head>
 <body>
+
+    <!-- Initialize the UI Options Javascript -->
+    <script>
+        fluid.uiOptions(".flc-prefsEditor-separatedPanel", {
+            auxiliarySchema: {
+                terms: {
+                    "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                    "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                },
+                "fluid.prefs.tableOfContents": {
+                    enactor: {
+                        "tocTemplate": "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+                        "tocMessage": "lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json"
+                    }
+                }
+            }
+        });
+    </script>
+
     <section class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
     <!-- ... -->
     </section>
 
     <!-- the TOC container should appear after the flc-prefsEditor-separatedPanel container -->
-    <nav class="flc-toc-tocContainer"> </nav>
+    <nav class="flc-toc-tocContainer" aria-label="Table of Contents"> </nav>
 
     <!-- ... -->
 
@@ -205,25 +224,10 @@ In this example, we place the `<script>` at the end of the webpage before the cl
     <h1>My Website</h1>
 
     <!-- ... -->
-
-    <!-- Initialize the UI Options Javascript -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-                terms: {
-                    "templatePrefix": "lib/infusion/src/framework/preferences/html",
-                    "messagePrefix": "lib/infusion/src/framework/preferences/messages"
-                },
-                "tocTemplate": "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
-                "tocMessage": "lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json",
-            });
-        });
-    </script>
 </body>
 ```
 
-This script calls the `fluid.uiOptions.prefsEditor()` function to create the component. The function takes two
-arguments:
+This script calls the `fluid.uiOptions()` function to create the component. The function takes two arguments:
 
 1. the selector of the container for the component
 2. an options object for configuring the component
@@ -233,30 +237,14 @@ created earlier.
 
 The options argument tells the component about four things:
 
-* `terms.templatePrefix` - path to the UI Options HTML templates,
-* `terms.messagePrefix` - path to the message bundles / strings that will be used in the interface,
-* `tocTemplate` - path to the Table of Contents template, and
-* `tocMessage` - path to the message bundle / strings for the Table of Contents.
+* `auxiliarySchema.terms.templatePrefix` - path to the UI Options HTML templates,
+* `auxiliarySchema.terms.messagePrefix` - path to the message bundles / strings that will be used in the interface,
+* `auxiliarySchema.fluid.prefs.tableOfContents.enactor.tocTemplate` - path to the Table of Contents template, and
+* `auxiliarySchema.fluid.prefs.tableOfContents.enactor.tocMessage` - path to the message bundle / strings for the Table
+  of Contents.
 
-  In the example, the `terms.messagePrefix` option is referencing the default strings provided by the component.
-
-### For Infusion 2.0 (Deprecated in Main)
-
-For Infusion 2.0, use the following `<script>` snippet:
-
-```html
-<script type="text/javascript">
-    $(document).ready(function () {
-        fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-            tocTemplate: "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
-            terms: {
-                templatePrefix: "lib/infusion/src/framework/preferences/html",
-                messagePrefix: "lib/infusion/src/framework/preferences/messages"
-            }
-        });
-    })
-</script>
-```
+In the example, the `auxiliarySchema.terms.messagePrefix` option is referencing the default strings provided by the
+component.
 
 ## Complete Example
 
@@ -271,14 +259,33 @@ Here's the complete example from start to finish. This example assumes the Infus
         <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/core/css/fluid.css" />
         <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/Enactors.css" />
         <link rel="stylesheet" type="text/css" href="lib/infusion/src/framework/preferences/css/PrefsEditor.css" />
-        <link rel="stylesheet" type="text/css"
-            href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css"
+        />
 
         <!-- The Infusion Library for UI Options -->
         <script type="text/javascript" src="lib/infusion/infusion-uio.js"></script>
     </head>
     <body>
-        <!-- BEGIN markup for Preference Editor -->
+        <!-- Initialize the UI Options Javascript -->
+        <script>
+            fluid.uiOptions(".flc-prefsEditor-separatedPanel", {
+                auxiliarySchema: {
+                    terms: {
+                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
+                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
+                    },
+                    "fluid.prefs.tableOfContents": {
+                        enactor: {
+                            "tocTemplate": "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+                            "tocMessage": "lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json"
+                        }
+                    }
+                }
+            });
+        </script>
         <section class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
             <!--
                 This div is for the sliding panel bar that shows and hides the Preference Editor controls in the mobile view.
@@ -287,8 +294,7 @@ Here's the complete example from start to finish. This example assumes the Infus
             <div class="fl-panelBar fl-panelBar-smallScreen">
                 <span class="fl-prefsEditor-buttons">
                     <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-                    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span>
-                        Reset</button>
+                    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
                 </span>
             </div>
 
@@ -302,32 +308,17 @@ Here's the complete example from start to finish. This example assumes the Infus
             <div class="fl-panelBar fl-panelBar-wideScreen">
                 <span class="fl-prefsEditor-buttons">
                     <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-                    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span>
-                        Reset</button>
+                    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
                 </span>
             </div>
         </section>
         <!-- END markup for Preference Editor -->
 
         <!-- the TOC container should appear after the flc-prefsEditor-separatedPanel container -->
-        <nav class="flc-toc-tocContainer"></nav>
+        <nav class="flc-toc-tocContainer" aria-label="Table of Contents"> </nav>
 
         <!-- the rest of your page here -->
         <h1>My Website</h1>
-
-        <!-- Initialize the UI Options Javascript -->
-        <script type="text/javascript">
-            $(document).ready(function () {
-                fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-                    terms: {
-                        "templatePrefix": "lib/infusion/src/framework/preferences/html",
-                        "messagePrefix": "lib/infusion/src/framework/preferences/messages"
-                    },
-                    "tocTemplate": "lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
-                    "tocMessage": "lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json",
-                });
-            });
-        </script>
     </body>
 </html>
 ```
