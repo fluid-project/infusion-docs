@@ -114,7 +114,7 @@ var myComponent = examples.tinyComponent();
 ```
 
 You can understand this example better by reading documentation for
-[`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), [`fluid.log`](CoreAPI.md#fluidlogloglevel-arg1-argn) and
+[`fluid.defaults`](CoreAPI.md#fluiddefaultsgradename-options), [`fluid.log`](CoreAPI.md#fluidlogloglevel-arg1--argn) and
 the [Component Lifecycle](ComponentLifecycle.md).
 
 ## Instantiating A View Component
