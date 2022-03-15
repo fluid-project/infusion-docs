@@ -20,6 +20,15 @@ Infusion 4.0. Use the `url` field instead.
 Modifying component options by direct assignment (e.g. with `that.options.key = value`) has been deprecated and will not
 be supported in Infusion 4.0. Component options will be immutable after component construction.
 
+## Preferences Framework / UI Options
+
+### Grades
+
+* `fluid.uiOptions.prefsEditor`
+* `fluid.prefs.create`
+
+These will be replaced by `fluid.uiOptions` accepting options for configuring instances of a preferences editor.
+
 ## Pager
 
 ### Files
