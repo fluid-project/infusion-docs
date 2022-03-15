@@ -11,13 +11,10 @@
 */
 "use strict";
 
-var slugify = require("slugify");
-var cleanSlugify = function (string) {
-    return slugify(string, {
-        replacement: "-",
-        lower: true,
-        strict: true
-    });
+var GithubSlugger = require("github-slugger");
+var githubSlugify = function (string) {
+    var slugger = new GithubSlugger();
+    return slugger.slug(string);
 };
 
 require("./index.js");
@@ -41,7 +38,7 @@ module.exports = function (eleventyConfig) {
     });
 
     var markdownItAnchor = require("markdown-it-anchor");
-    var markdownItLibrary = markdownit.use(markdownItAnchor, { slugify: cleanSlugify });
+    var markdownItLibrary = markdownit.use(markdownItAnchor, { slugify: githubSlugify });
 
     eleventyConfig.setLibrary("md", markdownItLibrary);
 
