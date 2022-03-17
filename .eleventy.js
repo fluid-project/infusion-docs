@@ -11,11 +11,7 @@
 */
 "use strict";
 
-var GithubSlugger = require("github-slugger");
-var githubSlugify = function (string) {
-    var slugger = new GithubSlugger();
-    return slugger.slug(string);
-};
+var githubSlugify = require("github-slugger").slug;
 
 require("./index.js");
 var hljs = require("highlight.js");
