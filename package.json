@@ -38,6 +38,7 @@
         "fluid-express": "1.0.18",
         "fluid-lint-all": "1.1.5",
         "fluid-testem": "2.1.15",
+        "github-slugger": "1.4.0",
         "jsdom": "19.0.0",
         "kettle": "2.3.0",
         "node-jqunit": "1.1.9",
