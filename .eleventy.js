@@ -1,5 +1,5 @@
 /*
-    Copyright 2014 OCAD University
+    Copyright 2014-2022 OCAD University
     Copyright 2017 Raising the Floor, International
 
     Licensed under the Educational Community License (ECL), Version 2.0 or the New
@@ -53,6 +53,7 @@ module.exports = function (eleventyConfig) {
         "node_modules/fluid-location-bar-relay/src/js": "lib/fluid-location-bar-relay",
         "src/static/css": "css",
         "src/static/fonts": "fonts",
+        "src/static/images": "images",
         "src/static/js": "js",
         "src/scripts": "js",
         "src/documents/images": "images",
