@@ -721,3 +721,32 @@ Instead have it appear around the enclosed
 .search-result-sub-entry {
     border-top: 1px solid #fff;
 }
+
+/* Infusion Mug */
+.infusion-docs-landing-heading {
+    column-gap: 3.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 4rem;
+    row-gap: 0;
+}
+
+.infusion-docs-landing-heading h1 {
+    padding-bottom: 0;
+}
+
+.infusion-docs-landing-heading .infusion-mug {
+    align-self: flex-end;
+    height: 10rem;
+    margin-bottom: -2.5rem;
+    min-height: 10rem;
+    min-width: 10rem;
+    width: 10rem;
+}
+
+.fl-theme-wb,
+.fl-theme-yb,
+.fl-theme-lgdg,
+.fl-theme-gd {
+    --steamColor: #888;
+}

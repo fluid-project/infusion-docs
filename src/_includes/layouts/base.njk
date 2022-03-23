@@ -143,7 +143,16 @@
 
                         <nav class="flc-toc-tocContainer infusion-docs-toc" aria-label="Table of Contents"> </nav>
 
-                        <h1>{{ title }}</h1>
+                        {% if page.fileSlug === "documents" %}
+                            <div class="infusion-docs-landing-heading">
+                                <h1>{{ title }}</h1>
+                                <svg class="infusion-mug" aria-hidden="true">
+                                    <use xlink:href="/images/sprites.svg#graphic-mug"></use>
+                                </svg>
+                            </div>
+                        {% else %}
+                            <h1>{{ title }}</h1>
+                        {% endif %}
 
                         <p class="infusion-docs-githubLink"><a href="{{ githubLocation }}" target="_blank">Edit on GitHub</a></p>
 
