@@ -12,6 +12,38 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 This section describes major APIs that were in common use. For information about less widely-used features removed in
 3.0, consult [Deprecations in 2.0](DeprecatedIn2_0.md).
 
+#### DataSources
+
+A new facility for representing sources or sinks of data as Infusion components has been implemented as
+[DataSources](DataSourceAPI.md). Implementing grades derived from ```fluid.dataSource``` allows the process of
+reading and writing data, e.g. from HTTP URLs, databases, and the filesystem, to be configured as an open pipeline
+of asynchronous transformations.
+
+Note that the scheme for configuring writable variants of datasource components has changed with respect to
+some previous development releases of Infusion, including several labelled as ```3.0.0-dev``` and ```4.0.0-dev```
+releases, as well as for some DataSources implemented in [Kettle](https://github.com/fluid-project/kettle) versions 1.x
+from which the DataSource implementation was originally ported. Under this older system, the writable variant of a
+dataSource was automatically configured by a [grade linkage](IoCAPI.md#fluidmakegradelinkagelinkagename-inputnames-outputnames)
+similar to
+
+````javascript
+fluid.makeGradeLinkage("kettle.dataSource.CouchDB.linkage", ["fluid.dataSource.writable", "kettle.dataSource.CouchDB"], "kettle.dataSource.CouchDB.writable");
+````
+
+which contributed a concrete writable implementation of a DataSource reacting to the co-occurrence of the base, read-only
+grade, e.g. ```kettle.dataSource.CouchDB``` and the abstract grade ```fluid.dataSource.writable```.
+
+The method of configuring writable DataSources in the final 3.0.0 Infusion release is harmonised with that occurring in
+2.x versions of Kettle and involves implementing a boolean flag option named ```writable``` and alongside it a
+string-valued option ```writableGrade``` holding the name of the concrete writable variant of the grade, e.g.
+
+````snippet
+    writableGrade: "fluid.dataSource.URL.writable"
+````
+
+See the documentation on [implementing a DataSource](DataSourceAPI.md#implementing-or-customising-a-datasource) for more
+details.
+
 #### Model Transformations
 
 * `fluid.transforms.round` can take in `scale` and `method` options for rounding numbers to a decimal value.
