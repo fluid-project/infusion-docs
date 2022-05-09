@@ -15,7 +15,7 @@ This section describes major APIs that were in common use. For information about
 #### DataSources
 
 A new facility for representing sources or sinks of data as Infusion components has been implemented as
-[DataSources](datasourcepi.md). Implementing grades derived from ```fluid.dataSource``` allows the process of
+[DataSources](DataSourceAPI.md). Implementing grades derived from ```fluid.dataSource``` allows the process of
 reading and writing data, e.g. from HTTP URLs, databases, and the filesystem, to be configured as an open pipeline
 of asynchronous transformations.
 
@@ -23,7 +23,7 @@ Note that the scheme for configuring writable variants of datasource components 
 some previous development releases of Infusion, including several labelled as ```3.0.0-dev``` and ```4.0.0-dev```
 releases, as well as for some DataSources implemented in [Kettle](https://github.com/fluid-project/kettle) versions 1.x
 from which the DataSource implementation was originally ported. Under this older system, the writable variant of a
-dataSource was automatically configured by a [grade linkage](iocapi.md#fluidmakegradelinkagelinkagename-inputnames-outputnames)
+dataSource was automatically configured by a [grade linkage](IoCAPI.md#fluidmakegradelinkagelinkagename-inputnames-outputnames)
 similar to
 
 ````javascript
@@ -41,7 +41,7 @@ string-valued option ```writableGrade``` holding the name of the concrete writab
     writableGrade: "fluid.dataSource.URL.writable"
 ````
 
-See the documentation on [implementing a DataSource](datasourceapi.md#implementing-or-customising-a-datasource) for more
+See the documentation on [implementing a DataSource](DataSourceAPI.md#implementing-or-customising-a-datasource) for more
 details.
 
 #### Model Transformations
