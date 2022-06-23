@@ -222,7 +222,7 @@ fluid.defaults("examples.boiledListenerComponent", {
 });
 
 var that = examples.boiledListenerComponent();
-that.fire(5, true); // listener above will log 5, that
+that.events.simpleEvent.fire(5, true); // listener above will log 5, that
 ```
 
 ### Injecting a Listener to an Event Elsewhere in the Tree
