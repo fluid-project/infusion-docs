@@ -126,7 +126,7 @@ fluid.defaults("fluid.tests.childComponent", {
 <div class="infusion-docs-note">
 
 <strong>Note:</strong> This technique is not generally recommended because of the possibility for unexpected effects
-when registering listeners with [namespaces](#InfusionEventSystem.md#namespaced-listeners). Since an injected event
+when registering listeners with [namespaces](InfusionEventSystem.md#namespaced-listeners). Since an injected event
 is exactly the same event as the original, namespaced listeners registered across the different sites will be
 deduplicated, meaning that only one will be registered per namespace. This is often an unexpected behaviour, so
 instead a more lightweight technique of [remotely registering listeners](#injecting-a-listener-to-an-event-elsewhere-in-the-tree)
