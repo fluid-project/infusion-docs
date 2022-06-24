@@ -9,9 +9,81 @@ component. Within a larger design, sometimes it is necessary to
 1. collaborate between multiple components in a component tree on **sharing** references to event firers (**event
    injection**)
 2. present an event with a particular signature fired by a component as one with a different signature in a listener
-   (**event boiling**)
+   (**event or listener boiling**)
 
 Both of these capabilities rely on the [IoC - Inversion of Control](IoCAPI.md) system.
+
+## Listener Boiling
+
+### Receiving a Different Signature in the Listener
+
+It often occurs that the signature of a function registered as a listener doesn't match the one fired by the event.
+Adapting to this mismatch in configuration is sometimes referred to as **listener boiling**.
+The syntax used for listener boiling is identical to that applied for defining [Invokers](Invokers.md).
+
+Here is an example of a component which defines a single event, `simpleEvent` - the firer for it uses a signature `(int
+value, boolean flag)` but we have a listener that requires a different signature `(Object that, int value)` where the first
+argument consists of the component itself and the 2nd argument consists of the supplied first argument:
+
+```javascript
+examples.externalListener = function (that, value) {
+    console.log("Received value ", value, " fired from component ", that);
+};
+
+fluid.defaults("examples.boiledListenerComponent", {
+    gradeNames: "fluid.component",
+    events: {
+        simpleEvent: null
+    },
+    listeners: {
+        simpleEvent: {
+            funcName: "examples.externalListener",
+            args: ["{that}", "{arguments.0"]
+        }
+    }
+});
+
+var that = examples.boiledListenerComponent();
+that.events.simpleEvent.fire(5, true); // listener above will log 5, that
+```
+
+### Injecting a Listener to an Event Elsewhere in the Tree
+
+Either together with or separate from the adjustment of listener signatures in the previous section, it is also possible
+to attach a listener to a component elsewhere in the tree than the one where the listener configuration is written.
+ Note that with this built-in syntax the listener can only be injected into (registered as a
+listener to) a component which is visible as a parent or a sibling of the current component, using a standard
+upward-matching [IoC Context Selector](Contexts.md). If you need the more powerful facility to inject a listener
+_downwards_ (that is, to one or more components that may not yet be constructed) please see the section describing the
+use of the [distributeOptions](IoCSS.md) options block.
+
+```javascript
+fluid.defaults("examples.injectedListenerParent", {
+    gradeNames: "fluid.component",
+    events: {
+        parentEvent: null
+    },
+    components: {
+        child: {
+            type: "fluid.component",
+            options: {
+                listeners: {
+                    "{injectedListenerParent}.events.parentEvent": "examples.externalListener"
+                }
+            }
+        }
+    }
+});
+
+var that = examples.injectedListenerParent();
+that.events.parentEvent.fire(that, 5); // strikes above listener through injected listener attachment
+```
+
+_Note that both of these kinds of boiling can be applied at the same time - that is, it is possible to adjust the
+signature of a listener using `args` at the same time as resolving to it elsewhere in the tree by means of an IoC
+reference key. Note also that all injected listeners automatically deregistered by the framework when the component
+which holds their record (e.g. the `child` component in this example) is destroyed - there is no need for the user to
+call `removeListener` manually._
 
 ## Event Injection
 
@@ -50,6 +122,18 @@ fluid.defaults("fluid.tests.childComponent", {
     }
 });
 ```
+
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> This technique is not generally recommended because of the possibility for unexpected effects
+when registering listeners with [namespaces](#InfusionEventSystem.md#namespaced-listeners). Since an injected event
+is exactly the same event as the original, namespaced listeners registered across the different sites will be
+deduplicated, meaning that only one will be registered per namespace. This is often an unexpected behaviour, so
+instead a more lightweight technique of [remotely registering listeners](#injecting-a-listener-to-an-event-elsewhere-in-the-tree)
+as described in the previous section is preferred. Alternatively, you may register the firer of one event as a listener
+to another, or used boiled events as described in the next section.
+
+</div>
 
 ### Alternative Choice of Scoping For Event Binding
 
@@ -107,7 +191,8 @@ differences can arise, for example, through the development of the codebases bei
 producer of the event is part of framework code which is not going to be updated for a long time, but has been written
 with a poorly planned API which does not expose crucial information which the event consumer requires.
 
-Suggestions are still welcomed for more a suitable name than **boiled events**.
+Suggestions are still welcomed for more a suitable name than **boiled events**. Since boiled events are distinct from
+their sources, they do not suffer from the namespacing risks highlighted for injected events.
 
 ### Boiling One Single Event
 
@@ -186,79 +271,3 @@ fluid.defaults("fluid.tests.eventChild3", {
 The same syntax can be used to boil events from the same component, where the references to source events can be
 simplified by specifying the events directly without IoC references, as shown in [Example 3](#example-3), since both
 source events and boiled event are residing on the same component.
-
-## Listener Boiling
-
-### Receiving a Different Signature in the Listener
-
-A more lightweight alternative to injecting or fabricating new events wholesale through boiling is to apply the process
-to just a single listener. This most often the appropriate approach, especially when the listener enjoys a signature
-that is not held in common with particularly many other functions around the architecture. The syntax used for listener
-boiling is actually identical to that applied for defining [Invokers](Invokers.md).
-
-Here is an example of a component which defines a single event, `simpleEvent` - the firer for it uses a signature `int
-value, boolean flag` but we have a listener that requires a different signature `Object that, int value` where the first
-argument consists of the component itself and the 2nd argument consists of the supplied first argument:
-
-```javascript
-examples.externalListener = function (that, value) {
-    console.log("Received value ", value, " fired from component ", that);
-};
-
-fluid.defaults("examples.boiledListenerComponent", {
-    gradeNames: "fluid.component",
-    events: {
-        simpleEvent: null
-    },
-    listeners: {
-        simpleEvent: { // In practice it's unlikely that this listener would be written in the same grade as the event,
-            // since this case there would be little reason for the signature to mismatch. It's more likely
-            // this configuration would appear in another grade, or supplied as direct options,
-            // subcomponent options, or distributeOptions
-            funcName: "examples.externalListener",
-            args: ["{that}", "{arguments.0"]
-        }
-    }
-});
-
-var that = examples.boiledListenerComponent();
-that.events.simpleEvent.fire(5, true); // listener above will log 5, that
-```
-
-### Injecting a Listener to an Event Elsewhere in the Tree
-
-Similarly to the previous section, rather than transmitting an entire event around the component tree just so that one
-listener can be attached to it, it is often more efficient (although it can be more confusing for the reader) to simply
-inject the listener itself. Note that with this built-in syntax the listener can only be injected into (registered as a
-listener to) a component which is visible as a parent or a sibling of the current component, using a standard
-upward-matching [IoC Context Selector](Contexts.md). If you need the more powerful facility to inject a listener
-_downwards_ (that is, to one or more components that may not yet be constructed) please see the section describing the
-use of the [distributeOptions](IoCSS.md) options block.
-
-```javascript
-fluid.defaults("examples.injectedListenerParent", {
-    gradeNames: "fluid.component",
-    events: {
-        parentEvent: null
-    },
-    components: {
-        child: {
-            type: "fluid.component",
-            options: {
-                listeners: {
-                    "{injectedListenerParent}.events.parentEvent": "examples.externalListener"
-                }
-            }
-        }
-    }
-});
-
-var that = examples.injectedListenerParent();
-that.events.parentEvent.fire(that, 5); // strikes above listener through injected listener attachment
-```
-
-_Note that both of these kinds of boiling can be applied at the same time - that is, it is possible to adjust the
-signature of a listener using `args` at the same time as resolving to it elsewhere in the tree by means of an IoC
-reference key. Note also that all injected listeners automatically deregistered by the framework when the component
-which holds their record (e.g. the `child` component in this example) is destroyed - there is no need for the user to
-call `removeListener` manually._
