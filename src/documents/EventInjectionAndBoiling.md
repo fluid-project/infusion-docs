@@ -38,7 +38,7 @@ fluid.defaults("examples.boiledListenerComponent", {
     listeners: {
         simpleEvent: {
             funcName: "examples.externalListener",
-            args: ["{that}", "{arguments.0"]
+            args: ["{that}", "{arguments}.0"]
         }
     }
 });
