@@ -81,9 +81,9 @@ that.events.parentEvent.fire(that, 5); // strikes above listener through injecte
 
 <div class="infusion-docs-note">
 
-<strong>Note:</strong> Both of these kinds of boiling can be applied at the same time - that is, it is possible to adjust the
-signature of a listener using `args` at the same time as resolving to it elsewhere in the tree by means of an IoC
-reference key. Note also that all injected listeners automatically deregistered by the framework when the component
+<strong>Note:</strong> Both of these kinds of boiling can be applied at the same time - that is, it is possible to
+adjust the signature of a listener using `args` at the same time as resolving to it elsewhere in the tree by means of an
+IoC reference key. Note also that all injected listeners automatically deregistered by the framework when the component
 which holds their record (e.g. the `child` component in this example) is destroyed - there is no need for the user to
 call `removeListener` manually.
 
