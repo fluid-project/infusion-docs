@@ -191,7 +191,7 @@ differences can arise, for example, through the development of the codebases bei
 producer of the event is part of framework code which is not going to be updated for a long time, but has been written
 with a poorly planned API which does not expose crucial information which the event consumer requires.
 
-Suggestions are still welcomed for more a suitable name than **boiled events**. Since boiled events are distinct from
+Suggestions are still welcomed for a more suitable name than **boiled events**. Because boiled events are distinct from
 their sources, they do not suffer from the namespacing risks highlighted for injected events.
 
 ### Boiling One Single Event
