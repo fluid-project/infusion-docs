@@ -409,7 +409,7 @@ flexible and dynamic ways of building up test sequence fixtures, beyond simply l
 
 ### Using `sequenceGrade` to build up complex, reusable test sequences
 
-A common patten is for groups of related tests to form an _ecology_, sharing some test sequence elements but with others
+A common patten is for groups of related tests to form an *ecology*, sharing some test sequence elements but with others
 interleaved between them and/or some others removed or reconfigured. Working with the raw `sequence` array directly will
 lead to this testing code becoming fragile as the sequence array indices will be unstable between different members of
 the ecology. Instead, the IoC Testing framework supports a variant element `sequenceGrade` which uses Infusion's

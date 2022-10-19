@@ -77,7 +77,7 @@ fluid.defaults("component.name", {
 });
 ```
 
-__Example:__
+**Example:**
 
 The following example defines a component of type `xyz.widget`, with two invokers named `addTwo`
 and `subtractTwo` - the former binds onto a free function named `xyz.widget.add`, the latter binds
@@ -123,7 +123,7 @@ fluid.defaults("component.name", {
 });
 ```
 
-__Example:__
+**Example:**
 
 ```javascript
 fluid.defaults("xyz.widget", {
@@ -138,7 +138,7 @@ fluid.defaults("xyz.widget", {
 xyz.widget.add = function (a, b) {return a + b;};
 ```
 
-__Example:__
+**Example:**
 
 ```javascript
 fluid.defaults("fluid.uploader.fileQueue", {
@@ -167,7 +167,7 @@ API](ChangeApplierAPI.md). The compact syntax may not be used with this variety 
 
 ### "this"-ist invoker binding to a OO-style JavaScript function referencing "this"
 
-Specifying an invoker with a __`"this"`__ property allows the invocation of functions whose body makes a reference to
+Specifying an invoker with a **`"this"`** property allows the invocation of functions whose body makes a reference to
 the special JavaScript value `"this"`. These are generally functions external to the Infusion framework such as
 `console.log`, since it is a Fluid community standard to write "that"-ist functions whose execution is independent of
 the calling context. These can be any functions, but will most often be used for jQuery methods. See [Declarative
@@ -227,7 +227,7 @@ fluid.defaults("component.name", {
 });
 ```
 
-__Example:__
+**Example:**
 
 ```javascript
 fluid.defaults("xyz.widget", {
@@ -243,7 +243,7 @@ fluid.defaults("xyz.widget", {
 });
 ```
 
-__Example:__
+**Example:**
 
 ```javascript
 fluid.defaults("fluid.uploader.html5Strategy.browseButtonView", {

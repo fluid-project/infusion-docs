@@ -25,7 +25,7 @@ module.exports = function (eleventyConfig) {
             if (lang && hljs.getLanguage(lang)) {
 			  try {
                     return "<pre class=\"highlight\"><code class=\"hljs " + lang + "\">" +
-					   hljs.highlight(lang, str, true).value +
+					   hljs.highlight(str, {language: lang, ignoreIllegals: true}).value +
 					   "</code></pre>";
 			  } catch (__) {}
             }

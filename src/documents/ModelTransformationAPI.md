@@ -111,8 +111,8 @@ In general, the reserved words of the model transformation system are:
 
 | key | Reserved in |
 |:----|:------------|
-| `transform` | ___everywhere___ |
-| `literalValue` | ___everywhere___ |
+| `transform` | ***everywhere*** |
+| `literalValue` | ***everywhere*** |
 | `type` | inside all `transform` blocks |
 | `inputPath` | inside all `standardInputTransformFunctions` |
 | `input` | inside all `standardInputTransformFunctions`, `fluid.transforms.linearScale` |
@@ -557,7 +557,7 @@ Notice the `undefined` value. This is the result of the second transform (since 
 `petlist.goldfish` input path, `undefined` is returned.
 
 The difference between this and the use of arrays in the previous sections is that in the previous section the array
-was used as _the value for a `transform` key_. When this is not the case, an array will be interpreted as a regular
+was used as *the value for a `transform` key*. When this is not the case, an array will be interpreted as a regular
 array as shown in the above example.
 
 ## Static inputs and nested transforms vs. reading from input model
@@ -839,7 +839,7 @@ vocabulary to describe different levels of invertibility:
 * **Partly Invertible:** `F(x)=F(G(F(x)))`
   * In this case, there is no condition on the output of `G` alone, but it is guaranteed that one can pipe an original
     input model through an `F->G` sequence an unlimited number of times and always get the same model `y` as output
-    (we say that `F(G)` is _[idempotent](https://en.wikipedia.org/wiki/Idempotence) on the image of `F`_)
+    (we say that `F(G)` is *[idempotent](https://en.wikipedia.org/wiki/Idempotence) on the image of `F`*)
 * **Not Invertible:** `G` **does not exist (or has not been defined in the framework)**
   * For non-invertible functions, there is either no logical way of deciding what an inverse would mean for that
     function, or there is no way to reproduce the original input document from an output document.
@@ -1524,7 +1524,7 @@ the mapping can be customized on a per match basis. For further explanation, see
 };
 ```
 
-___Top level:___
+***Top level:***
 
 * `defaultInput`
   * The direct input data to use.
@@ -1544,7 +1544,7 @@ ___Top level:___
   * Used if no `outputPath` is provided for a given case.
   * Optional if `outputPath` is provided for all matches.
 
-___Within `match`/`noMatch`:___
+***Within `match`/`noMatch`:***
 
 * `outputPath`
   * Path to output to if this case matches.
@@ -1560,7 +1560,7 @@ ___Within `match`/`noMatch`:___
   * This will cause the match directive to return `undefined` as an output value, even if `outputValue` and
     `defaultOutputValue` are specified.
 
-___Only within `match`:___
+***Only within `match`:***
 
 * `inputValue`
   * The value to check the input against.

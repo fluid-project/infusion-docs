@@ -196,7 +196,7 @@ When using a `fluid.rendererComponent`, strings from the Message Bundles are ren
         inputsLarger: "${inputsLarger}"
     }
 });</code></pre></td>
-            <td valign="baseline"><pre class="highlight"><code class="hljs javascript">{{
+            <td valign="baseline"><pre class="highlight"><code class="hljs javascript">{
     "linksLabel": "Links &amp; buttons",
     "linksChoiceLabel": "Underline and bold",
     "inputsChoiceLabel": "Enlarge buttons, menus, text-fields, and other inputs"

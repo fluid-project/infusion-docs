@@ -50,7 +50,7 @@ notify them.
 ### The initial transaction
 
 Whenever a new model-bearing component (or an entire tree of model-bearing components) constructs, there will be a
-particular, large style of update transaction known as an __initial transaction__. This is very similar to any other
+particular, large style of update transaction known as an **initial transaction**. This is very similar to any other
 synchronisation transaction caused by a [model relay update](#how-model-relay-updates-propagate), although it will
 typically involve more data since all of the initial values of all the involved models must be taken into account
 &#8212; these result from any of the normal sources for component configuration, including

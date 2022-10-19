@@ -363,11 +363,11 @@ that.scrollTo(30); // This logs nothing - source "scrollbar" is excluded
 that.applier.change("position", 40); // This will log "Value changed to 40"
 ```
 
-This example *will* log the transition from the initial model state of `undefined` to the console, since
+This example _will_ log the transition from the initial model state of `undefined` to the console, since
 unlike `sourceExample1` it does not have `excludeSource: init`. However, changes caused to the model
 via the invoker `scrollTo` will not be logged since they have the source `scrollbar` marked
 to them. The third interactive line shows that changes to the model without any user source
-marking *will* be logged by the listener.
+marking _will_ be logged by the listener.
 
 ##### Warning and workaround for issues involving initial transaction and `onCreate` race issues
 
