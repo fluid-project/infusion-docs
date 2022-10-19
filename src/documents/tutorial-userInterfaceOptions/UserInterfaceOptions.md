@@ -68,7 +68,7 @@ Insert the preference editor markup at the beginning of the `<body>` tag to inst
         </div>
 
         <!-- This is the div that will contain the Preference Editor component -->
-        <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+        <div class="flc-slidingPanel-panel"></div>
 
         <!--
             This div is for the sliding panel bar that shows and hides the Preference Editor controls in the desktop view.
@@ -91,7 +91,7 @@ Insert the preference editor markup at the beginning of the `<body>` tag to inst
 
 The `<section>` element in this snippet contains three things:
 
-1. `<div class="flc-slidingPanel-panel ...">`: where an iframe will be inserted, containing the UI Options adjusters
+1. `<div class="flc-slidingPanel-panel">`: where UI Options adjusters will e created
 2. a `<div class="fl-panelBar fl-panelBar-smallScreen">`: where the sliding panel and button will be created for narrow
 screens (e.g. mobile)
 3. a `<div class="fl-panelBar fl-panelBar-wideScreen">`: where the sliding panel and button will be created for wide
@@ -299,7 +299,7 @@ Here's the complete example from start to finish. This example assumes the Infus
             </div>
 
             <!-- This is the div that will contain the Preference Editor component -->
-            <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+            <div class="flc-slidingPanel-panel"></div>
 
             <!--
                 This div is for the sliding panel bar that shows and hides the Preference Editor controls in the desktop view.

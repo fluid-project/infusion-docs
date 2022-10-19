@@ -94,6 +94,13 @@ title: Infusion Documentation
 * Migrating to Infusion 1.5
   * [API Changes from 1.4 to 1.5](APIChangesFrom1_4To1_5.md)
   * [Deprecations In 1.5](DeprecationsIn1_5.md)
+  * [API Changes from 1.5 to 2.0](APIChangesFrom1_5To2_0.md)
+  * [Deprecations In 2.0](DeprecationsIn2_0.md)
+  * [API Changes from 2.0 to 3.0](APIChangesFrom2_0To3_0.md)
+  * [Deprecations In 3.0](DeprecationsIn3_0.md)
+  * [API Changes from 3.0 to 4.0](APIChangesFrom3_0To4_0.md)
+  * [Deprecations In 4.0](DeprecationsIn4_0.md)
+  * [API Changes from 4.0 to 4.5](APIChangesFrom4_0To4_5.md)
   * [UI Options Migration](tutorial-migratingToInfusion1.5/UIOptionsMigration.md)
   * [Pager Migration](tutorial-migratingToInfusion1.5/PagerMigration.md)
 

@@ -26,10 +26,6 @@ styling to make the interface match your application. All stylesheets are found 
             <td>separated panel</td>
         </tr>
         <tr>
-            <td>SeparatedPanelPrefsEditorFrame.css</td>
-            <td>the contents of the separated panel</td>
-        </tr>
-        <tr>
             <td>FullPrefsEditor.css</td>
             <td>all full-page versions</td>
         </tr>
