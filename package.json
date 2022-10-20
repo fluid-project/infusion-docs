@@ -26,7 +26,6 @@
         "infusion": "4.0.0-dev.20220209T141225Z.50bdbf8d1.main",
         "lunr": "2.3.9",
         "markdown-it-anchor": "8.6.5",
-        "octicons": "8.5.0",
         "rimraf": "3.0.2",
         "string": "^3.3.3"
     },
