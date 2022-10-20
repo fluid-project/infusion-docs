@@ -17,7 +17,7 @@
         "test:browser": "node node_modules/testem/testem.js ci --file tests/testem.js"
     },
     "dependencies": {
-        "@11ty/eleventy": "0.12.1",
+        "@11ty/eleventy": "1.0.2",
         "@11ty/eleventy-navigation": "0.3.5",
         "fluid-binder": "2.0.0",
         "fluid-location-bar-relay": "1.0.7",

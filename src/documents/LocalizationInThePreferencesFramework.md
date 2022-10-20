@@ -232,7 +232,7 @@ following:
 It is accessed the same way that an individual string is referenced, except that reference should point to the key in
 the `stringArrayIndex` instead of a single string name. In the example below, the `stringArrayIndex` is used to define
 the `theme` string bundle, and the `theme` string bundle is referenced within the `protoTree.expander.tree`
-('`optionnames: "${{that}.msgLookup.theme}"`'):
+('`optionnames: "{% raw %}${{that}.msgLookup.theme}{% endraw %}"`'):
 
 ```javascript
 fluid.defaults("fluid.prefs.panel.contrast", {
@@ -250,8 +250,8 @@ fluid.defaults("fluid.prefs.panel.contrast", {
             inputID: "themeInput",
             selectID: "theme-radio",
             tree: {
-                optionnames: "${{that}.msgLookup.theme}", // IoC reference to the array of strings
-                optionlist: "${{that}.options.controlValues.theme}",
+                optionnames: "{% raw %}${{that}.msgLookup.theme}{% endraw %}", // IoC reference to the array of strings
+                optionlist: "{% raw %}${{that}.options.controlValues.theme}{% endraw %}",
                 selection: "${value}"
             }
         }

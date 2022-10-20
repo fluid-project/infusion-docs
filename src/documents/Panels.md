@@ -231,8 +231,8 @@ fluid.defaults("demo.panels.language", {
     protoTree: {
         label: {messagekey: "langLabel"},
         language: {
-            optionnames: "${{that}.stringBundle.langs}",
-            optionlist: "${{that}.options.controlValues.langStrings}",
+            optionnames: "${% raw %}{{that}.stringBundle.langs}{% endraw %}",
+            optionlist: "${% raw %}{{that}.options.controlValues.langStrings}{% endraw %}",
             selection: "${lang}"
         }
     }
@@ -299,8 +299,8 @@ fluid.defaults("demo.panels.vol", {
             inputID: "volPosInput",
             selectID: "volControlPosition",
             tree: {
-                optionnames: "${{that}.stringBundle.volPos}",
-                optionlist: "${{that}.options.controlValues.volPos}",
+                optionnames: "${% raw %}{{that}.stringBundle.volPos}{% endraw %}",
+                optionlist: "${% raw %}{{that}.options.controlValues.volPos}{% endraw %}",
                 selection: "${volPos}"
             }
         }

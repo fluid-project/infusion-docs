@@ -44,7 +44,7 @@ the meaning and form of the context name can vary and have a different meaning i
                             <li>
                                 an entire <code>&lt;reference&gt;</code> string in itself. This is useful in highly
                                 dynamic cases where the context name should be determined from some other options
-                                material, e.g. <code>{{that}.options.targetContext}</code>
+                                material, e.g. <code>{% raw %}{{that}.options.targetContext}{% endraw %}</code>
                             </li>
                         </ul>
                     </li>
