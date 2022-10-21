@@ -58,7 +58,7 @@ Insert the preference editor markup at the beginning of the `<body>` tag to inst
     <section class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
         <!--
             This div is for the sliding panel bar that shows and hides the Preference Editor controls in the mobile view.
-            A separate panel bar for mobile displays is needed to preserver the correct tab order.
+            A separate panel bar for mobile displays is needed to preserve the correct tab order.
         -->
         <div class="fl-panelBar fl-panelBar-smallScreen">
             <span class="fl-prefsEditor-buttons">
@@ -72,7 +72,7 @@ Insert the preference editor markup at the beginning of the `<body>` tag to inst
 
         <!--
             This div is for the sliding panel bar that shows and hides the Preference Editor controls in the desktop view.
-            A separate panel bar for desktop displays is needed to preserver the correct tab order.
+            A separate panel bar for desktop displays is needed to preserve the correct tab order.
         -->
         <div class="fl-panelBar fl-panelBar-wideScreen">
             <span class="fl-prefsEditor-buttons">
@@ -289,7 +289,7 @@ Here's the complete example from start to finish. This example assumes the Infus
         <section class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
             <!--
                 This div is for the sliding panel bar that shows and hides the Preference Editor controls in the mobile view.
-                A separate panel bar for mobile displays is needed to preserver the correct tab order.
+                A separate panel bar for mobile displays is needed to preserve the correct tab order.
             -->
             <div class="fl-panelBar fl-panelBar-smallScreen">
                 <span class="fl-prefsEditor-buttons">
@@ -303,7 +303,7 @@ Here's the complete example from start to finish. This example assumes the Infus
 
             <!--
                 This div is for the sliding panel bar that shows and hides the Preference Editor controls in the desktop view.
-                A separate panel bar for desktop displays is needed to preserver the correct tab order.
+                A separate panel bar for desktop displays is needed to preserve the correct tab order.
             -->
             <div class="fl-panelBar fl-panelBar-wideScreen">
                 <span class="fl-prefsEditor-buttons">
