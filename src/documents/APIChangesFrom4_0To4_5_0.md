@@ -15,6 +15,13 @@ Framework error messages display readable component structure.
 
 ### Preferences Framework / UI Options (UIO)
 
+#### Style Influence from Hosting Site
+
+In Infusion 4.5.0, UI Options is no longer displayed in a separate iframe. It's now rendered as a section in the
+current page. This change make it possible that the style of the hosting site may affect the style of UI Options. The
+solution is to use [CSS specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to override the css
+from the hosting site on affected elements in UI Options.
+
 #### Template Changes
 
 Remove the css selector `flc-prefsEditor-iframe` from the UI Options template.
