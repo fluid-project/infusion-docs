@@ -25,6 +25,7 @@
         "highlight.js": "11.6.0",
         "infusion": "4.5.0",
         "lunr": "2.3.9",
+        "markdown-it": "13.0.1",
         "markdown-it-anchor": "8.6.5",
         "rimraf": "3.0.2",
         "string": "^3.3.3"
