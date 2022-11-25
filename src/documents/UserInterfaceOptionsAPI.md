@@ -469,7 +469,7 @@ For information on the different types of events, see [Infusion Event System](In
         <tr>
             <th>Description</th>
             <td>
-                This event fires when the UI Options interface has been rendered into the iframe.
+                This event fires when the UI Options interface has been rendered.
                 <div class="infusion-docs-note">
                     <strong>Note:</strong> use <code>onReady</code> if the listener needs UI Options to be both rendered
                     and ready to use.

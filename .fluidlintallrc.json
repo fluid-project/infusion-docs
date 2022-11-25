@@ -11,10 +11,5 @@
                 "*.ttf"
             ]
         }
-    },
-    "stylelint": {
-        "excludes": [
-            "./src/static/css/foundation.min.css"
-        ]
     }
 }

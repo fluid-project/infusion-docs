@@ -13,8 +13,8 @@ responsive to their context, conditioned by the visibility of certain strings kn
 at locations in the component tree. Each component in the tree exposes a collection of these
 __*context names*__, which are derived from the component's type and [grade names](ComponentGrades.md).
 
-All Infusion components are stored in a single-rooted **_component tree_** - this stores every component which
-has been instantiated in a particular **_Infusion context_**. This context is global to the JavaScript context
+All Infusion components are stored in a single-rooted __*component tree*__ - this stores every component which
+has been instantiated in a particular __*Infusion context*__. This context is global to the JavaScript context
 which has loaded Infusion - for example, a frame within a browser, or a node.js process.
 
 ## How context names are derived
@@ -69,7 +69,7 @@ in two kinds of "scopes" or "environments".
 
 ## Global components: `fluid.resolveRoot` and `fluid.resolveRootSingle`
 
-All Infusion components are stored in a single-rooted, global **_component tree_**. Even when you
+All Infusion components are stored in a single-rooted, global __*component tree*__. Even when you
 instantiate apparently "freely-floating" components with a line such as
 
 ```javascript
@@ -92,7 +92,7 @@ in prevalent "Design Patterns" dialogue. As commonly described, this pattern con
 
 The Infusion framework supplies two special grades, which allow the designer to arrange for both of these
 points to be controlled separately. For a start, any component which is supplied the grade `fluid.resolveRoot`,
-wherever it is constructed in the component tree, will become **_globally visible_** throughout the component
+wherever it is constructed in the component tree, will become __*globally visible*__ throughout the component
 tree, as if it had been constructed at its root. Secondly, a component which uses the grade
 `fluid.resolveRootSingle` will be able to arrange that a single instance of it is globally visible at any
 time. Constructing a further instance of such a component will displace the earlier instance from global

@@ -513,9 +513,20 @@ table div.infusion-docs-note {
 }
 
 .fl-prefsEditor-separatedPanel {
+    background-color: var(--fl-prefsEditorBgColor, #323232);
     position: fixed;
     width: 100%;
     z-index: 10;
+}
+
+/* Override css effects from the foundation package */
+.fl-prefsEditor-separatedPanel button {
+    margin: 0;
+    padding: 0;
+}
+
+.fl-prefsEditor-separatedPanel select {
+    padding: 0;
 }
 
 .fl-prefsEditor-separatedPanel .fl-panelBar .fl-prefsEditor-buttons {
@@ -749,4 +760,15 @@ Instead have it appear around the enclosed
 .fl-theme-lgdg,
 .fl-theme-gd {
     --steamColor: #888;
+}
+
+.fl-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }

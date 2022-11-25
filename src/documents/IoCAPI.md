@@ -263,7 +263,7 @@ before. The older framework simply started from the (necessarily single) root co
 call in progress, and cascaded in a data-driven way, following IoC references through its options and then any
 designated subcomponents.
 In the 4.0 framework, this instantiation proceeds in a more carefully scheduled way. The first part of the process
-simply instantiates ___component shells___ for all components which participate in the transaction - that is,
+simply instantiates **_component shells_** for all components which participate in the transaction - that is,
 the actual component object references, their `typeName`, `gradeNames` and `distributeOptions` fields, and the minimum
 of their options and other material needed in order to decode these. These shells are constructed and wired together
 in the correct geometry before any other instantiation proceeds. After having assembled the shells, the framework
@@ -291,7 +291,7 @@ in the next section.
 
 ## Workflow functions
 
-An important new capability in the post-FLUID-6148 framework is the appearance of ___workflow functions___ which are
+An important new capability in the post-FLUID-6148 framework is the appearance of **_workflow functions_** which are
 used to organise the activity of both existing grades such as `fluid.modelComponent` and `fluid.rendererComponent` but
 also any further grades which the author wishes to enroll into this system. Note that this is an advanced capability
 and is not likely to be used by authors who are not trying to implement framework-like capabilities.
@@ -388,7 +388,7 @@ A global workflow function receives the signature:
 
 Local workflows execute once all global workflows have been run on the tree, and receive each component in the tree
 separately. These implement less ambitious, per-component functionality. Note that these receive the components in
-the ___reverse___ order to global workflow functions - that is, they receive components at the leaves of the tree
+the **_reverse_** order to global workflow functions - that is, they receive components at the leaves of the tree
 first, and root components afterwards. This is by analogy with the standard object-oriented semantic that more nested
 components complete their construction before their parents.
 

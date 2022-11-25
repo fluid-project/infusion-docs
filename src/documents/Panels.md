@@ -60,7 +60,7 @@ fluid.defaults("my.pref.panel2", {
 <div class="infusion-docs-note">
 
 <strong>IMPORTANT NOTE:</strong> Preference Maps are **only** required if you are working with
-[schemas](PrimarySchemaForPreferencesFramework.md)). If you are using grades instead (only necessary in rare cases), you
+[schemas](PrimarySchemaForPreferencesFramework.md). If you are using grades instead (only necessary in rare cases), you
 do **not** need a preference map.
 </div>
 
@@ -231,8 +231,8 @@ fluid.defaults("demo.panels.language", {
     protoTree: {
         label: {messagekey: "langLabel"},
         language: {
-            optionnames: "${{that}.stringBundle.langs}",
-            optionlist: "${{that}.options.controlValues.langStrings}",
+            optionnames: "${% raw %}{{that}.stringBundle.langs}{% endraw %}",
+            optionlist: "${% raw %}{{that}.options.controlValues.langStrings}{% endraw %}",
             selection: "${lang}"
         }
     }
@@ -299,8 +299,8 @@ fluid.defaults("demo.panels.vol", {
             inputID: "volPosInput",
             selectID: "volControlPosition",
             tree: {
-                optionnames: "${{that}.stringBundle.volPos}",
-                optionlist: "${{that}.options.controlValues.volPos}",
+                optionnames: "${% raw %}{{that}.stringBundle.volPos}{% endraw %}",
+                optionlist: "${% raw %}{{that}.options.controlValues.volPos}{% endraw %}",
                 selection: "${volPos}"
             }
         }

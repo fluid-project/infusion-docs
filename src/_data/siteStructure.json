@@ -156,6 +156,13 @@
                     { "pageName": "API Changes from 3.0 to 4.0", "href": "/APIChangesFrom3_0To4_0.html" },
                     { "pageName": "Deprecated in 4.0", "href": "/DeprecatedIn4_0.html" }
                 ]
+            },
+            {
+                "sectionName": "Migrating to Infusion 4.5",
+                "pages":
+                [
+                    { "pageName": "API Changes from 4.0 to 4.5", "href": "/APIChangesFrom4_0To4_5_0.html" }
+                ]
             }
         ]
     },

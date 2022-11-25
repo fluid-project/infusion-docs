@@ -25,7 +25,7 @@ module.exports = function (eleventyConfig) {
             if (lang && hljs.getLanguage(lang)) {
 			  try {
                     return "<pre class=\"highlight\"><code class=\"hljs " + lang + "\">" +
-					   hljs.highlight(lang, str, true).value +
+					   hljs.highlight(str, {language: lang, ignoreIllegals: true}).value +
 					   "</code></pre>";
 			  } catch (__) {}
             }
@@ -46,7 +46,6 @@ module.exports = function (eleventyConfig) {
         "node_modules/infusion/dist": "lib/infusion/dist",
         "node_modules/infusion/src": "lib/infusion/src",
         "node_modules/foundation-sites/css": "lib/foundation",
-        "node_modules/octicons/octicons": "lib/octicons",
         "node_modules/lunr": "lib/lunr",
         "node_modules/fluid-express/src/js/lib": "lib/fluid-express",
         "node_modules/fluid-binder/src/js": "lib/fluid-binder",

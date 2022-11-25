@@ -22,7 +22,7 @@ var protoTree = {
         repeatID: "recordType",
         controlledBy: "recordlist.name",
         pathAs: "elementPath",
-        tree: { value: "${{elementPath}}" }
+        tree: { value: "{% raw %}${{elementPath}}{% endraw %}" }
     }
 };
 ```
@@ -164,9 +164,9 @@ cspace.tabsList.modelToTree = function (model, options) {
             pathAs: "tabInfo",
             tree: {
                 tabLink: {
-                    target: "${{tabInfo}.href}",
+                    target: "{% raw %}${{tabInfo}.href}{% endraw %}",
                     linktext: {
-                        messagekey: "${{tabInfo}.name}"
+                        messagekey: "{% raw %}${{tabInfo}.name}{% endraw %}"
                     }
                 }
             }
@@ -354,13 +354,13 @@ my.conditional.modelToTree = function (model, options) {
             type: "fluid.renderer.condition",
             condition: {
                 funcName: "cspace.header.assertMenuItemDisplay",
-                args: "${{itemName}.hide}"
+                args: "{% raw %}${{itemName}.hide}{% endraw %}"
             },
             trueTree: {
                 label: {
-                    target: "${{item}.href}",
+                    target: "{% raw %}${{item}.href}{% endraw %}",
                     linktext: {
-                        messagekey: "${{item}.name}"
+                        messagekey: "{% raw %}${{item}.name}{% endraw %}"
                     }
                 }
             }
