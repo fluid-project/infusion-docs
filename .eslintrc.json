@@ -9,7 +9,6 @@
     "parserOptions": {
         "ecmaVersion": 8
     },
-    "ignorePatterns": ["!.eleventy.js"],
     "plugins": [
         "markdown"
     ]
