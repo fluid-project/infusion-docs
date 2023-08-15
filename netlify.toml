@@ -1,11 +1,11 @@
 [build]
   command = "npm run build"
-  publish = "dist"
+  publish = "_site"
   ignore = "git log -1 --pretty=%B | grep dependabot"
 
 [dev]
   command = "npm run start"
   targetPort = 8080
-  publish = "dist"
+  publish = "_site"
   autoLaunch = false
   framework = "#custom"

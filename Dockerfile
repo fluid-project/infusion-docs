@@ -2,17 +2,16 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-RUN apk add --no-cache git 
-
 COPY package.json ./
+
+RUN apk add --no-cache git
 
 RUN npm install
 
 COPY . ./
 
-RUN echo | npm run build
-
+RUN npm run build
 
 FROM nginx:1.18.0-alpine
 
-COPY --from=builder /app/out /usr/share/nginx/html
+COPY --from=builder /app/_site /usr/share/nginx/html

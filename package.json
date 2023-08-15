@@ -8,7 +8,7 @@
         "start": "npm-run-all -l clean dev",
         "build": "npm-run-all -l clean build:*",
         "build:eleventy": "cross-env ELEVENTY_ENV=production eleventy",
-        "clean": "npx rimraf dist",
+        "clean": "rimraf _site",
         "dev": "cross-env ELEVENTY_ENV=development eleventy --serve",
         "lint": "fluid-lint-all",
         "pretest": "npm run build",
