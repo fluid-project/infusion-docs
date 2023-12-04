@@ -29,13 +29,10 @@ The left and right hand sides of this definition will be explained in the subseq
 A `<shortModelPathReference>` has the form:
 
 <table>
-    <thead>
-        <tr>
-            <th colspan="3">
-                Syntax definition for <code>&lt;shortModelPathReference&gt;</code> - the key in
-                <code>modelListeners</code> options block for a <code>modelComponent</code>
-            </th>
-        </tr>
+     <caption >
+                Syntax definition for shortModelPathReference - the key in modelListeners options block for a modelComponent
+    </caption>
+ <thead>
         <tr>
             <th>Syntax</th>
             <th>Meaning</th>
