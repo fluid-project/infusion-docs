@@ -37,4 +37,4 @@ jobs:
           npm run build
 
       - name: Node tests
-        run: npm run test:node
+        run: npm run test
