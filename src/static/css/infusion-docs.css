@@ -207,7 +207,11 @@ h3:focus .octicon-link {
 
 .infusion-docs-mainContent code a:hover,
 .infusion-docs-mainContent a:hover code,
-.infusion-docs-container a:hover {
+.infusion-docs-container a:hover,
+.infusion-docs-container a:hover::before {
+    --pagefind-ui-text: #ffcb00;
+    --pagefind-ui-background: ##323232;
+
     background: #323232;
     color: #ffcb00;
 }
@@ -561,10 +565,14 @@ table div.infusion-docs-note {
 }
 
 [class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-container a:hover,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-container a:hover::before,
 [class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
 [class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .fl-prefsEditor-buttons button:hover,
 [class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-header a:hover::before,
 [class*="fl-theme"]:not(.fl-theme-prefsEditor-default) mark {
+    --pagefind-ui-text: var(--fl-bgColor);
+    --pagefind-ui-background: var(--fl-fgColor);
+
     background-color: var(--fl-fgColor) !important;
     color: var(--fl-bgColor) !important;
 }
