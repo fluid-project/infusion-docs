@@ -645,6 +645,12 @@ table div.infusion-docs-note {
     width: 100%;
 }
 
+/* Pagefind search */
+
+.pagefind-search {
+    padding-block-end: 2rem;
+}
+
 /* Infusion Mug */
 .infusion-docs-landing-heading {
     column-gap: 3.75rem;
