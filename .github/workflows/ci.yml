@@ -37,10 +37,4 @@ jobs:
           npm run build
 
       - name: Node tests
-        run: npm run test:node
-
-      - name: Browser Tests
-        run: xvfb-run --auto-servernum npm run test:browser
-
-      - name: Cleanup after xvfb
-        uses: bcomnes/cleanup-xvfb@v1
+        run: npm run test
