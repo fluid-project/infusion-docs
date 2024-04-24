@@ -52,3 +52,9 @@ The documentation will be available at [http://localhost:8000](http://localhost:
 * To stop and remove the container: `docker rm -f infusion-docs`
 
 If you make changes to the documentation, repeat the steps to build the image and start a new container.
+
+## 3rd party software included
+
+### MIT License
+
+* [Heroicons v2.1.1](https://heroicons.com)

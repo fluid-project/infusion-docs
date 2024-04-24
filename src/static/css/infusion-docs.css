@@ -556,128 +556,30 @@ table div.infusion-docs-note {
 }
 
 /* Styles for high-contrast themes */
-.fl-theme-yb .infusion-docs-fluidLogoText::before,
-.fl-theme-yb .infusion-docs-callout::before {
-    color: #ff0 !important;
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
+    --pagefind-ui-text: var(--fl-fgColor);
 }
 
-.fl-theme-wb .infusion-docs-fluidLogoText::before,
-.fl-theme-wb .infusion-docs-callout::before {
-    color: #fff !important;
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-container a:hover,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .fl-prefsEditor-buttons button:hover,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-header a:hover::before,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) mark {
+    background-color: var(--fl-fgColor) !important;
+    color: var(--fl-bgColor) !important;
 }
 
-.fl-theme-by .infusion-docs-fluidLogoText::before,
-.fl-theme-bw .infusion-docs-fluidLogoText::before,
-.fl-theme-by .infusion-docs-callout::before,
-.fl-theme-bw .infusion-docs-callout::before {
-    color: #000 !important;
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-fluidLogoText::before,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-callout::before {
+    color: var(--fl-fgColor) !important;
 }
 
-.fl-theme-lgdg .infusion-docs-fluidLogoText::before,
-.fl-theme-lgdg .infusion-docs-callout::before {
-    color: #bdbdbb !important;
-}
-
-.fl-theme-bw a:focus,
-.fl-theme-bw .fl-prefsEditor-buttons button:focus,
-.fl-theme-bw a:focus .infusion-docs-TOC-pageName,
-.fl-theme-by a:focus,
-.fl-theme-by .fl-prefsEditor-buttons button:focus {
-    outline: 0.2rem solid #000 !important;
-}
-
-.fl-theme-wb a:focus,
-.fl-theme-wb a:focus .infusion-docs-TOC-pageName,
-.fl-theme-wb .fl-prefsEditor-buttons button:focus {
-    outline: 0.2rem solid #fff !important;
-}
-
-.fl-theme-yb a:focus,
-.fl-theme-yb a:focus .infusion-docs-TOC-pageName,
-.fl-theme-yb .fl-prefsEditor-buttons button:focus {
-    outline: 0.2rem solid #ff0 !important;
-}
-
-.fl-theme-lgdg a:focus,
-.fl-theme-lgdg a:focus .infusion-docs-TOC-pageName,
-.fl-theme-lgdg .fl-prefsEditor-buttons button:focus {
-    outline: 0.2rem solid #bdbdbb !important;
-}
-
-/*
-Focus style exception: don't have focus appear around the anchor.
-Instead have it appear around the enclosed
-*/
-.fl-theme-bw .infusion-docs-TOC li a:focus,
-.fl-theme-wb .infusion-docs-TOC li a:focus,
-.fl-theme-by .infusion-docs-TOC li a:focus,
-.fl-theme-yb .infusion-docs-TOC li a:focus,
-.fl-theme-lgdg .infusion-docs-TOC li a:focus {
-    outline: none !important;
-}
-
-.fl-theme-bw .infusion-docs-container a:hover,
-.fl-theme-bw .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
-.fl-theme-bw .fl-prefsEditor-buttons button:hover,
-.fl-theme-bw .infusion-docs-header a:hover::before {
-    background: #000 !important;
-    color: #fff !important;
-}
-
-.fl-theme-wb .infusion-docs-container a:hover,
-.fl-theme-wb .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
-.fl-theme-wb .fl-prefsEditor-buttons button:hover,
-.fl-theme-wb .infusion-docs-header a:hover::before {
-    background: #fff !important;
-    color: #000 !important;
-}
-
-.fl-theme-by .infusion-docs-container a:hover,
-.fl-theme-by .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
-.fl-theme-by .fl-prefsEditor-buttons button:hover,
-.fl-theme-by .infusion-docs-header a:hover::before {
-    background: #000 !important;
-    color: #ff0 !important;
-}
-
-.fl-theme-yb .infusion-docs-container a:hover,
-.fl-theme-yb .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
-.fl-theme-yb .fl-prefsEditor-buttons button:hover,
-.fl-theme-yb .infusion-docs-header a:hover::before {
-    background: #ff0 !important;
-    color: #000 !important;
-}
-
-.fl-theme-lgdg .infusion-docs-container a:hover,
-.fl-theme-lgdg .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
-.fl-theme-lgdg .fl-prefsEditor-buttons button:hover,
-.fl-theme-lgdg .infusion-docs-header a:hover::before {
-    background: #bdbdbb !important;
-    color: #555 !important;
-}
-
-.fl-theme-gw .infusion-docs-container a:hover,
-.fl-theme-gw .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
-.fl-theme-gw .fl-prefsEditor-buttons button:hover,
-.fl-theme-gw .infusion-docs-header a:hover::before {
-    background: #66c !important;
-    color: #fff !important;
-}
-
-.fl-theme-gd .infusion-docs-container a:hover,
-.fl-theme-gd .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
-.fl-theme-gd .fl-prefsEditor-buttons button:hover,
-.fl-theme-gd .infusion-docs-header a:hover::before {
-    background: #8080ff !important;
-    color: #222 !important;
-}
-
-.fl-theme-bbr .infusion-docs-container a:hover,
-.fl-theme-bbr .infusion-docs-container a:hover .infusion-docs-TOC-pageName,
-.fl-theme-bbr .fl-prefsEditor-buttons button:hover,
-.fl-theme-bbr .infusion-docs-header a:hover::before {
-    background-color: #009 !important;
-    color: #b96 !important;
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) a:focus,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .fl-prefsEditor-buttons button:focus,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-search-mini input:focus,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) .infusion-docs-search-mini button:focus,
+[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) a:focus .infusion-docs-TOC-pageName {
+    outline: 0.2rem solid var(--fl-fgColor) !important;
 }
 
 /* These definitions deal with complex formatted tables with alternating rows as seen in IoCTestingFramework.md
@@ -717,20 +619,22 @@ Instead have it appear around the enclosed
     display: none;
 }
 
-.search-context-highlight {
-    opacity: 0.5;
+/* search mini */
+
+.infusion-docs-search-mini {
+    display: flex;
+    margin-block: 1.5rem;
 }
 
-.search-context-highlight mark {
-    opacity: 1;
+.infusion-docs-search-mini button {
+    height: 2.3125rem;
+    padding: 0.5rem;
+    width: 2.3125rem;
 }
 
-.search-result-single-page {
-    border-top: 1px solid #999;
-}
-
-.search-result-sub-entry {
-    border-top: 1px solid #fff;
+.infusion-docs-search-mini button svg {
+    height: 100%;
+    width: 100%;
 }
 
 /* Infusion Mug */

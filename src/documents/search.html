@@ -1,0 +1,30 @@
+---
+title: Search the Infusion Documentation
+category: Search
+eleventyNavigation:
+    key: Search
+    order: 4
+---
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<div id="pagefind-search"></div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        let search = new PagefindUI({
+            element: "#pagefind-search",
+            showSubResults: true,
+            highlightParam: "highlight",
+            autofocus: true,
+            translations: {
+                search_label: "Search the Infusion Documentation"
+            }
+        });
+        let params = new URLSearchParams(window.location.search);
+        let query = params.get("q");
+
+        if (query) {
+            search.triggerSearch(query);
+        }
+    });
+</script>

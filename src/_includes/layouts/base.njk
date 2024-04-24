@@ -19,19 +19,10 @@
         <script type="text/javascript" src="{{ "/lib/infusion/dist/infusion-all.js" | url }}"></script>
         <script type="text/javascript" src="{{ "/js/infusion-docs.js" | url }}"></script>
 
-        <script type="text/javascript" src="{{ '/lib/fluid-express/querystring-coding.js' | url }}"></script>
-        <script type="text/javascript" src="{{ '/lib/fluid-binder/transforms.js' | url }}"></script>
-        <script type="text/javascript" src="{{ '/lib/fluid-binder/binder.js' | url }}"></script>
-
-        {% if category === 'Search' %}
-            <script type="text/javascript" src="{{ '/lib/fluid-location-bar-relay/locationBar.js' | url }}"></script>
-            <script type="text/javascript" src="{{ '/lib/lunr/lunr.min.js' | url }}"></script>
-            <script type="text/javascript" src="{{ '/js/search-digest.js' | url }}"></script>
-            <script type="text/javascript" src="{{ '/js/search-string-parser.js' | url }}"></script>
-            <script type="text/javascript" src="{{ '/js/search.js' | url }}"></script>
-        {% else %}
-            <script type="text/javascript" src="{{ '/js/mini-search.js' | url }}"></script>
-        {% endif %}
+        <script type="module">
+            await import('/pagefind/pagefind-highlight.js');
+            new PagefindHighlight({ highlightParam: "highlight" });
+        </script>
     </head>
     <body class="infusion-docs fl-theme-prefsEditor-default">
         <div class="container infusion-docs-container">
@@ -111,35 +102,47 @@
             </header>
 
             <div class="infusion-docs-mainBody">
-                <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1" aria-label="section">
-                    {% if category !== "Search" %}
-                        <label for="search" class="infusion-docs-category">Search</label>
-                        <p class="docs-search-mini"><input id="search" type="search" name="qs"/></p>
-                        {% for group in siteStructure %}
-                            {% if category === group.category %}
-                            <span class="infusion-docs-category">{{ category }}</span>
-                            {% for section in group.sections %}
-                            <span class="infusion-docs-sectionName">{{ section.sectionName }}</span>
-                            <ul>
-                            {% for child in section.pages %}
-                                <li>
-                                    {% if page.url === "/infusion/development" + child.href %}
-                                        <span class="infusion-docs-TOC-pageName">{{ child.pageName }}</span>
-                                    {% else %}
-                                        <a href="{{ child.href | addPrefix }}"><span class="infusion-docs-TOC-pageName">{{ child.pageName }}</span></a>
-                                    {% endif %}
-                                </li>
+                {% if category !== "Search" %}
+                    <nav id="tableOfContents" class="infusion-docs-TOC small-12 medium-3 column" tabindex="-1" aria-label="section">
+                            <form
+
+                                action={% if category === "Tutorials" %}"../search.html"{% else %}"search.html"{% endif %}
+                                class="infusion-docs-search-mini"
+                                role="search"
+                            >
+                                <label for="search" class="fl-hidden-accessible">Search the Infusion Documentation</label>
+                                <input id="search" type="search" name="q" placeholder="search" />
+                                <button class="fl-inverted-color" type="submit">
+                                    <span class="fl-hidden-accessible">Search</span>
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="/images/sprites.svg#search"></use>
+                                    </svg>
+                                </button>
+                            </form>
+                            {% for group in siteStructure %}
+                                {% if category === group.category %}
+                                <span class="infusion-docs-category">{{ category }}</span>
+                                {% for section in group.sections %}
+                                <span class="infusion-docs-sectionName">{{ section.sectionName }}</span>
+                                <ul>
+                                {% for child in section.pages %}
+                                    <li>
+                                        {% if page.url === "/infusion/development" + child.href %}
+                                            <span class="infusion-docs-TOC-pageName">{{ child.pageName }}</span>
+                                        {% else %}
+                                            <a href="{{ child.href | addPrefix }}"><span class="infusion-docs-TOC-pageName">{{ child.pageName }}</span></a>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                                {% endfor %}
+                                {% endif %}
                             {% endfor %}
-                            </ul>
-                            {% endfor %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </nav>
+                    </nav>
+                {% endif %}
 
                 <article id="content" class="infusion-docs-mainContent small-12 medium-9 column" tabindex="-1">
                     <div class="infusion-docs-articleContainer">
-
                         <nav class="flc-toc-tocContainer infusion-docs-toc" aria-label="Table of Contents"> </nav>
 
                         {% if page.fileSlug === "documents" %}
@@ -161,16 +164,7 @@
                         {% endif %}
 
                         <div class="infusion-docs-articleBody">
-                            {% if category === "Search" %}
-                                <div class="docs-search">
-                                    <label for="search">Search</label>
-                                    <input id="search" type="search" class="docs-search-query" />
-
-                                    <div class="docs-search-results">Enter one or more search terms and press enter to search.</div>
-                                </div>
-                            {% else %}
-                                {{ content | rewriteMdLinks | safe }}
-                            {% endif %}
+                            {{ content | rewriteMdLinks | safe }}
                         </div>
                     </div>
 
@@ -188,12 +182,7 @@
         </div> <!-- end container -->
         <script>
             fluid.docs.onLoad();
-            {% if category === 'Search' %}
-                fluid.docs.search(".docs-search");
-            {% else %}
-                fluid.docs.search.mini(".docs-search-mini")
-            {% endif %}
-    </script>
+        </script>
 
     </body>
 

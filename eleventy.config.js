@@ -1,5 +1,5 @@
 /*
-    Copyright 2014-2022 OCAD University
+    Copyright 2014-2024 OCAD University
     Copyright 2017 Raising the Floor, International
 
     Licensed under the Educational Community License (ECL), Version 2.0 or the New
@@ -12,6 +12,7 @@
 "use strict";
 
 var githubSlugify = require("github-slugger").slug;
+var {exec} = require("child_process");
 
 require("./index.js");
 var hljs = require("highlight.js");
@@ -72,8 +73,11 @@ module.exports = function (eleventyConfig) {
         return "/infusion/development" + href;
     });
 
-    eleventyConfig.on("afterBuild", () => {
-        require("./src/scripts/create-search-digest");
+    eleventyConfig.on("afterBuild", async () => {
+        // TODO: Once 11ty v3 is stable and the project updated to use it, it will be possible to use Pagefind's
+        // NodeJS API instead of calling `npx` with `exec`. This is because 11ty currently doesn't support ES6 modules.
+        // https://pagefind.app/docs/node-api/
+        await exec("npx pagefind");
     });
 
     return {
