@@ -48,6 +48,7 @@ module.exports = function (eleventyConfig) {
         "node_modules/infusion/src": "lib/infusion/src",
         "node_modules/foundation-sites/css": "lib/foundation",
         "node_modules/lunr": "lib/lunr",
+        "node_modules/octicons/octicons": "lib/octicons",
         "node_modules/fluid-express/src/js/lib": "lib/fluid-express",
         "node_modules/fluid-binder/src/js": "lib/fluid-binder",
         "node_modules/fluid-location-bar-relay/src/js": "lib/fluid-location-bar-relay",
