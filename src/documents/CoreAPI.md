@@ -556,7 +556,7 @@ Writes a new value into a model at a specified path. This is performed by direct
 referenced model object (the one referenced by the first `n-1` path segments in `path`) by writing the value `newValue`
 to its property named after the final path segment. Other approaches to this task are possible (see [New New Notes on
 the
-ChangeApplier](https://wiki.fluidproject.org/display/fluid/New+New+Notes+on+the+ChangeApplier#NewNewNotesontheChangeApplier-Theseveralwaysofactuallyapplyingachange))
+ChangeApplier](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11471098/New+New+Notes+on+the+ChangeApplier#NewNewNotesontheChangeApplier-Theseveralwaysofactuallyapplyingachange))
 but the fundamental invariant to be respected is that
 
 ```javascript
@@ -575,7 +575,7 @@ intermediate path levels with fresh instances of `{}` (in the manner of
 [`mkdirs`](https://stackoverflow.com/questions/9820088/difference-between-mkdir-and-mkdirs-in-java-for-java-io-file)).
 There are some esoteric extra arguments for `fluid.set` which will allow this to be done in a schema-aware way, for
 example filling in path levels with `[]` instead - [contact
-us](https://wiki.fluidproject.org/display/fluid/Mailing+Lists) if you are interested.
+us](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11577660/Mailing+Lists) if you are interested.
 
 * `model {Object}` The model object to be indirected into. This must be an `Object`.
 * `path {String|Array of String}` Either a period-separated [EL path](FrameworkConcepts.md#el-paths) representing a

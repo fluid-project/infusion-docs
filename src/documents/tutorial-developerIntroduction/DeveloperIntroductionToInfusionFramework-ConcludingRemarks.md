@@ -8,10 +8,13 @@ haven't covered, but with these foundational concepts, we hope you go on to furt
 
 We'll summarize what we've done below, then suggest some next steps.
 
-<div class="infusion-docs-note"><strong>Note:</strong> If you have feedback about this tutorial, we'd be glad to hear it
-via our <a href="https://wiki.fluidproject.org/display/fluid/IRC+Channel">IRC channels</a>, <a
-href="https://wiki.fluidproject.org/display/fluid/Mailing+Lists">mailing lists</a> or the Infusion <a
-href="https://issues.fluidproject.org/projects/FLUID/summary">issue tracker.</a></div>
+<div class="infusion-docs-note">
+  <strong>Note:</strong> If you have feedback about this tutorial, we'd be glad to hear it via our
+  <a href="https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11585501/Matrix+Channel">Matrix channels</a>,
+  <a href="https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11577660/Mailing+Lists">mailing lists</a>
+  or the Infusion
+  <a href="https://fluidproject.atlassian.net/jira/software/c/projects/FLUID/issues">issue tracker.</a>
+</div>
 
 ## Summing Up
 
@@ -57,6 +60,6 @@ href="https://issues.fluidproject.org/projects/FLUID/summary">issue tracker.</a>
 * Read [further documentation on Infusion](../), including many advanced topics not covered here such as
   [using Infusion in node.js](../NodeAPI.md), [advanced features of model transformation](../ModelTransformationAPI.md)
   and [unit testing](../jqUnit.md).
-* [Get involved](https://wiki.fluidproject.org/display/fluid/Get+Involved) in the [Fluid Project](https://fluidproject.org/),
+* [Get involved](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11547481/Get+Involved) in the [Fluid Project](https://fluidproject.org/),
   the open-source software community that supports, works with and evolves the Infusion framework.
 * See examples of software built with Infusion at projects like [FLOE](https://floeproject.org/) and the [GPII](https://raisingthefloor.org/the-global-public-infrastructure/).

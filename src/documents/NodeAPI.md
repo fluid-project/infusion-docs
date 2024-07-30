@@ -109,6 +109,6 @@ the top-level module in whatever application they are nested in, rather than the
 This is an architectural risk that we are aware of — in that it requires that all the cooperating modules within an
 Infusion application are compatible with a single version of Infusion, the one requested at the application's module
 root. Future work on [modularization of
-Infusion](https://wiki.fluidproject.org/display/fluid/Notes+on+Modularisation+of+Infusion) will address this risk by
-splitting Infusion into several smaller modules, only one of which (responsible for storing and retrieving grade
-definitions and module paths) requires to be application-global.
+Infusion](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11527165/Notes+on+Modularisation+of+Infusion) will
+address this risk by splitting Infusion into several smaller modules, only one of which (responsible for storing and
+retrieving grade definitions and module paths) requires to be application-global.

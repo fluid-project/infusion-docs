@@ -827,7 +827,7 @@ transformation rules).
 
 In practice, perfect inversion of a rule is not always possible. Unless extra information is kept, or extra
 information added about defaulting values, etc.,
-the inversion/lensing will be lossy (see [FLUID-5133](https://issues.fluidproject.org/browse/FLUID-5133) ).
+the inversion/lensing will be lossy (see [FLUID-5133](https://fluidproject.atlassian.net/browse/FLUID-5133) ).
 
 If we call our original transformation function `F`, input document `x` and output document `y`, a general
 transformation is described as follows: `F(x)=y`. If we say the inverse of `F` is called `G`, we use the following

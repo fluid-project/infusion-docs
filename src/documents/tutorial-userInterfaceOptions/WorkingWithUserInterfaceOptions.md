@@ -163,7 +163,7 @@ Open the UI Options interface and use the "Text Size" control to enlarge the fon
 * is the layout of the entire page still reasonable?
 
 To help make your webpage respond better with UI Options, see the suggestions in this article: ["How to make your page
-more responsive"](https://wiki.fluidproject.org/display/fluid/How+to+make+your+page+more+responsive).
+more responsive"](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11542033/How+to+make+your+page+more+responsive).
 
 ### Increase the line spacing
 
@@ -178,7 +178,7 @@ on line-height](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height).
 
 If you find that the layout of your website does not lay out properly, or does not scale according to the text size, you
 may need to [switch to using `rem` or `em` values
-instead](https://wiki.fluidproject.org/display/fluid/How+to+make+your+page+more+responsive#Howtomakeyourpagemoreresponsive-Useremoremforcontainersizes).
+instead](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11542033/How+to+make+your+page+more+responsive#Howtomakeyourpagemoreresponsive-Useremoremforcontainersizes).
 
 ### Try each of the themes
 

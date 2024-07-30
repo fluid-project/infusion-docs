@@ -876,5 +876,5 @@ framework were presented as these:
 The framework was given a substantial spring-cleaning in October 2016, implementing significant new features such as
 promise-based fixtures, and priority-driven sequence grade assembly, and some support for compact invokers. A few
 significant bugs remain, especially when listing multiple "listener"-type fixtures adjacent in the sequence - see
-[FLUID-5502](https://issues.fluidproject.org/browse/FLUID-5502). The support for model change event fixtures is also
-very old-fashioned and needs to be reformed - see [FLUID-6077](https://issues.fluidproject.org/browse/FLUID-6077).
+[FLUID-5502](https://fluidproject.atlassian.net/browse/FLUID-5502). The support for model change event fixtures is also
+very old-fashioned and needs to be reformed - see [FLUID-6077](https://fluidproject.atlassian.net/browse/FLUID-6077).
