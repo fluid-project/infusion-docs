@@ -68,8 +68,7 @@ Download Example SVG file: [pencil-icon-01.svg](/images//pencil-icon-01.svg)
 
 Steps:
 
-1. Go to [IcoMoon](http://icomoon.io/app) (you can also run IcoMoon in "offline" mode in Chrome browser by installing
-   the [IcoMoon Chrome app](http://goo.gl/we6ra))
+1. Go to [IcoMoon](https://icomoon.io/app/#/select)
 2. Import your SVG icon - select "Import Icons" and choose your SVG file.
 3. Select your icon from the list (should appear under "Your Custom Icons" section, and select the "Font ->" button at
    the bottom of the screen.

@@ -83,7 +83,7 @@ HTML `name` within the same `form` element before performing the read or write.
 
 A standalone utility and associated component for easily managing an [ARIA live
 region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) and/or the
-[`aria-label`](http://www.w3.org/TR/wai-aria/complete#aria-label) holding a label associated with a particular DOM node
+[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) holding a label associated with a particular DOM node
 in the document.
 
 ### fluid.updateAriaLabel(element, text[, options])

@@ -21,7 +21,7 @@ experience.
 
 ![Screen shot of the UI Options Component](/images//uio-showcase.png "Screen shot of the UI Options Component")
 
-Try the [UI Options demo](https://build-infusion.fluidproject.org/demos/uioptions/).
+Try the [UI Options demo](https://build-infusion.fluidproject.org/demos/uiOptions/).
 
 ## Overview
 

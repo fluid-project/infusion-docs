@@ -7,7 +7,7 @@ Whilst Infusion's [IoC](HowToUseInfusionIoC.md) is primarily a declarative syste
 JSON configuration, there are a few language-level APIs which are useful in dealing with the system. Some of these are
 externalisable in that there is a reasonable semantic for operating them from outside the JavaScript VM housing the
 component tree - these special APIs are grouped under the heading [Nexus API methods](#nexus-api-methods), named after
-the [Nexus component](https://wiki.gpii.net/w/Nexus_API) that will shortly be built around them.
+the [Nexus component](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11577865/Nexus+API) that will shortly be built around them.
 
 ## IoC utility methods
 

@@ -47,12 +47,12 @@ is that whilst the system is suspended by `stop`, the test currently in progress
 will not proceed until it resumes. Note that QUnit's suspension has the semantics of a [Counting
 Semaphore](https://en.wikipedia.org/wiki/Semaphore_%28programming%29#Semantics_and_implementation) in that repeated
 calls to `jqUnit.stop` are possible and must be matched by an equal number of calls to `jqUnit.start` before the system
-will resume. Direct passthrough for [QUnit.start](http://api.qunitjs.com/QUnit.start/).
+will resume. Direct passthrough for [QUnit.start](https://qunitjs.com/api/QUnit/start/).
 
 ### jqUnit.stop()
 
 Suspends QUnit's progression through its fixtures. QUnit will not continue to the next queued test fixture until it has
-been resumed with `jqUnit.start`. Direct passthrough for [QUnit.start](http://api.qunitjs.com/QUnit.stop/).
+been resumed with `jqUnit.start`. Direct passthrough for [QUnit.start](https://qunitjs.com/upgrade-guide-2.x/#introducing-assertasync).
 
 ### jqUnit.expect(count)
 

@@ -187,6 +187,6 @@ must also be housed in the `components` block of the parent component, rather th
 |fluid.pager.rangeAnnotator|fluid.pagedTable.rangeAnnotator|
 
 Note that the Pager Component remains in "Sneak Peek" mode for the 1.5 release and its API is not expected to be stable.
-Please get in touch with the Infusion team on IRC or the mailing lists (see
-[http://wiki.fluidproject.org/display/fluid/Collaborate](http://wiki.fluidproject.org/display/fluid/Collaborate)) if you
+Please get in touch with the Infusion team on Chat or the mailing lists (see
+[Get Involved](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11547481/Get+Involved)) if you
 are contemplating any non-trivial usage.

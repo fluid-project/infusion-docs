@@ -14,7 +14,6 @@ Below are some resources which discuss general website optimization strategies:
 * [https://developers.google.com/speed/](https://developers.google.com/speed/)
 * [https://developers.google.com/speed/docs/insights/rules](https://developers.google.com/speed/docs/insights/rules)
 * [https://developers.google.com/web/fundamentals/performance](https://developers.google.com/web/fundamentals/performance)
-* [https://www.maxcdn.com/blog/frontend-optimizations/](https://www.maxcdn.com/blog/frontend-optimizations/)
 * [https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/](https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/)
 * [https://hpbn.co](https://hpbn.co)
 

@@ -808,7 +808,7 @@ Write a value to a particular global path. Users are strongly discouraged from s
 paths, but it is accepted that in certain integration scenarios there can be little alternative. Please choose a
 properly qualified global path name that identifies your project (perhaps, derived from a [domain
 name](https://en.wikipedia.org/wiki/Domain_name) or [npm package
-name](https://docs.npmjs.com/misc/faq#why-no-namespaces)) that you have control over. The [Java package naming
+name](https://docs.npmjs.com/package-name-guidelines)) that you have control over. The [Java package naming
 conventions](https://en.wikipedia.org/wiki/Java_package#Package_naming_conventions) have proved effective at heading off
 such problems in the past and we intend that Infusion global names should be handled in an analogous way.
 

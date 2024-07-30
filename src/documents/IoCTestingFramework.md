@@ -858,9 +858,9 @@ detection message appears in all environments.
 ## Design Discussion about the Testing Framework
 
 The framework was designed over October-December 2012, with initial call for implementation on the fluid-work mailing
-list at [October 31st](http://lists.idrc.ocad.ca/pipermail/fluid-work/2012-October/008615.html), continuing over a
+list at [October 31st](https://lists.idrc.ocadu.ca/pipermail/fluid-work/2012-October/008615.html), continuing over a
 sequence of community meetings, and including a summary of work in progress on [December
-5th](http://lists.idrc.ocad.ca/pipermail/fluid-work/2012-December/008652.html). The overall goals for the testing
+5th](https://lists.idrc.ocadu.ca/pipermail/fluid-work/2012-December/008652.html). The overall goals for the testing
 framework were presented as these:
 
 * To facilitate the testing of demands blocks that may be issued by integrators against components deployed in a
