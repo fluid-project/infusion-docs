@@ -4,5 +4,5 @@ category: Components
 ---
 
 _This page is still under construction. An archived version can be found on the
-[Progress](http://wiki.fluidproject.org/display/docs/Progress) page of the [Infusion Documentation
-wiki](http://wiki.fluidproject.org/display/docs/Infusion+Documentation)._
+[Progress](https://fluidproject.atlassian.net/wiki/spaces/docs/pages/7079598/Progress) page of the [Infusion Documentation
+wiki](https://fluidproject.atlassian.net/wiki/spaces/docs/overview)._

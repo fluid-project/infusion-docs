@@ -303,8 +303,8 @@ Although this facility is powerful, the reader will note the peculiar asymmetry 
 framework may be directed to construct these components in a declarative way, but they may only be destroyed
 procedurally through a call to the component's `destroy()` function. An improved and properly symmetric version of this
 facility will be delivered as part of work on the new Fluid Renderer as described by
-[FLUID-5047](http://issues.fluidproject.org/browse/FLUID-5047) and related JIRAs, and the system described here will be
-withdrawn, as with previous "bridging technologies" such as the initFunction system.
+[FLUID-5047](https://fluidproject.atlassian.net/browse/FLUID-5047) and related JIRAs, and the system described here will
+be withdrawn, as with previous "bridging technologies" such as the initFunction system.
 
 ### Dynamic subcomponents with a source array
 

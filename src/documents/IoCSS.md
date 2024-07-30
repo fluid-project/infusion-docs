@@ -222,7 +222,7 @@ fluid.defaults("fluid.tests.uploader", {
 
 ## Example: broadcast via root to all components
 
-([All Husnock, everywhere](http://en.memory-alpha.org/wiki/Husnock))
+([All Husnock, everywhere](https://memory-alpha.fandom.com/wiki/Husnock))
 
 ```javascript
 

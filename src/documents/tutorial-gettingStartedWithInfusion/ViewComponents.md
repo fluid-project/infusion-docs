@@ -43,9 +43,9 @@ fluid.defaults("tutorials.viewBearingComponent", {
 ### Selectors
 
 The `selectors` property in your defaults is the list of DOM elements you want to work with in your interface. The
-object is a list of named [CSS-based selectors](http://docs.jquery.com/Selectors). The names should be generic and refer
-to the nature of the interface element, such as "saveButton" or "sliderHandle." By specifying your selectors on your
-component's defaults, integrators can override the selectors without requiring any changes to your component.
+object is a list of named [CSS-based selectors](https://api.jquery.com/category/selectors/). The names should be generic
+and refer to the nature of the interface element, such as "saveButton" or "sliderHandle." By specifying your selectors
+on your component's defaults, integrators can override the selectors without requiring any changes to your component.
 
 ## Example: Currency Converter
 

@@ -12,7 +12,7 @@ Part of the [Getting Started with Infusion Component Design Tutorial](GettingSta
 
 For this tutorial we'll assume this component is being created for your own use, not as a contribution to Infusion. If
 you do want to contribute your component to Infusion, the directory set-up and requirements will be a little different
-and is explained in [Contributing Code](http://wiki.fluidproject.org/display/fluid/Contributing+Code).
+and is explained in [Contributing Code](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11585981/Contributing+Code).
 
 Let's suppose you're creating a component that will carry out currency conversion. You'll need to get a copy of
 Infusion:

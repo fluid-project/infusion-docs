@@ -29,7 +29,7 @@ A new Infusion component grade is defined using the `fluid.defaults` function an
 might look like this:
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
-href="http://codepen.io/waharnum/pen/oBYvwx?editors=1111">Live Example of the code below on CodePen</a></div>
+href="https://codepen.io/waharnum/pen/oBYvwx?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ``` javascript
 // The first argument is the name of the new component, the second is the

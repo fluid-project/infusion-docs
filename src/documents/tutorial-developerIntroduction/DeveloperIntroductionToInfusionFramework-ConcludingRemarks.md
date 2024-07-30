@@ -57,6 +57,6 @@ href="https://issues.fluidproject.org/projects/FLUID/summary">issue tracker.</a>
 * Read [further documentation on Infusion](../), including many advanced topics not covered here such as
   [using Infusion in node.js](../NodeAPI.md), [advanced features of model transformation](../ModelTransformationAPI.md)
   and [unit testing](../jqUnit.md).
-* [Get involved](https://wiki.fluidproject.org/display/fluid/Get+Involved) in the [Fluid Project](http://fluidproject.org/),
+* [Get involved](https://wiki.fluidproject.org/display/fluid/Get+Involved) in the [Fluid Project](https://fluidproject.org/),
   the open-source software community that supports, works with and evolves the Infusion framework.
-* See examples of software built with Infusion at projects like [FLOE](http://floeproject.org/) and the [GPII](http://gpii.net/).
+* See examples of software built with Infusion at projects like [FLOE](https://floeproject.org/) and the [GPII](https://raisingthefloor.org/the-global-public-infrastructure/).

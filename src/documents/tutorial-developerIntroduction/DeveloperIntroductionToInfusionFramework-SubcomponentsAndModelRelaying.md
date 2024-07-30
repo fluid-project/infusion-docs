@@ -13,7 +13,7 @@ subcomponents, and synchronizes the "hello" message through model relay. We'll a
 model listener to respond to model changes.
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
-href="http://codepen.io/waharnum/pen/rjWBQN?editors=1111">Live Example of the code below on CodePen</a></div>
+href="https://codepen.io/waharnum/pen/rjWBQN?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ```javascript
 fluid.defaults("fluidTutorial.helloWorld", {

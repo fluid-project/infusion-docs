@@ -4,7 +4,7 @@ category: Infusion
 ---
 
 The IoC Testing Framework is written using our existing [jqUnit](jqUnit.md) wrapper for jQuery's
-[QUnit](http://qunitjs.com/) as a base. The IoC Testing Framework is both written using Fluid's
+[QUnit](https://qunitjs.com/) as a base. The IoC Testing Framework is both written using Fluid's
 [IoC](HowToUseInfusionIoC.md) system, as well as being designed to test components which are themselves written using
 IoC. This framework aims to extend our power to write tests in various directions at the same time. As well as creating
 an idiomatic way of writing *integration tests* addressed at realistic-sized chunks of applications, expressed as IoC
@@ -334,8 +334,8 @@ Boiling](EventInjectionAndBoiling.md#listener-boiling). `{change}` is not curren
         <td rowspan="3" class="infusion-docs-blockcell">jQuery event trigger</td><td><code>jQueryTrigger</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
         <td><code>{String}</code></td>
         <td>
-            The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered
-            via a call to <a href="http://api.jquery.com/trigger/"><code>jquery.trigger</code></a></td><td rowspan="3"
+            The name of a jQuery event (<a href="https://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered
+            via a call to <a href="https://api.jquery.com/trigger/"><code>jquery.trigger</code></a></td><td rowspan="3"
             class="infusion-docs-blockcell">executor
         </td>
     </tr>
@@ -357,7 +357,7 @@ Boiling](EventInjectionAndBoiling.md#listener-boiling). `{change}` is not curren
         <td><code>{String}</code></td>
         <td>
             The name of a jQuery event for which a listener is to be registered via a call to <a
-            href="http://api.jquery.com/one/"><code>jquery.one</code></a></td><td rowspan="6"
+            href="https://api.jquery.com/one/"><code>jquery.one</code></a></td><td rowspan="6"
             class="infusion-docs-blockcell">binder
         </td>
     </tr>
@@ -841,7 +841,7 @@ sequence:
 
     },
     "md",
-    "[unified listing](http://ul.gpii.net/)"
+    "[unified listing](https://ul.gpii.net/)"
 ]
 } of fixture Confirm that the client-side renderer can render markdown...
 ```

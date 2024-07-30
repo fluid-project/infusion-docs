@@ -20,7 +20,7 @@ var myImageReordererWithOptions = fluid.reorderImages(container, options);
 
 #### container
 
-The `container` parameter is a CSS-based [selector](http://api.jquery.com/category/selectors/), single-element jQuery
+The `container` parameter is a CSS-based [selector](https://api.jquery.com/category/selectors/), single-element jQuery
 object, or DOM element specifying the root node of the Reorderer.
 
 #### options parameter

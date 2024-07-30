@@ -383,8 +383,7 @@ reference in any of those slots. Relay documents are just written with the simpl
 
 The use of the term "transactions" to describe the process by which the model skeleton updates is not entirely
 consistent with its use elsewhere in the industry. Those interested in more semantic and detailed discussion can consult
-[New Notes on the ChangeApplier](http://wiki.fluidproject.org/display/fluid/New+Notes+on+the+ChangeApplier) which
-describes how the new relay-capable implementation differs from the old one, and how our approach to and thinking about
-coordinated model updates is different to that of other frameworks. A more recent page of notes describing the future
-evolution of model relay can be found at [New New Notes on the
-ChangeApplier](http://wiki.fluidproject.org/display/fluid/New+New+Notes+on+the+ChangeApplier).
+[New Notes on the ChangeApplier](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11672298/New+Notes+on+the+ChangeApplier)
+which describes how the new relay-capable implementation differs from the old one, and how our approach to and thinking
+about coordinated model updates is different to that of other frameworks. A more recent page of notes describing the
+future evolution of model relay can be found at [New New Notes on the ChangeApplier](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11471098/New+New+Notes+on+the+ChangeApplier).

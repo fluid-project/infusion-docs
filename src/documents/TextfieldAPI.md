@@ -93,7 +93,7 @@ var textfield = fluid.textfield(".flc-textfield", {
                 <dl>
                     <dt>event</dt>
                     <dd>
-                        A <a href="http://api.jquery.com/category/events/event-object/">jQuery event object</a>
+                        A <a href="https://api.jquery.com/category/events/event-object/">jQuery event object</a>
                         including a change value. The <code>setModel</code> method will source the change value from
                         <code>event.target.value</code>.
                     </dd>

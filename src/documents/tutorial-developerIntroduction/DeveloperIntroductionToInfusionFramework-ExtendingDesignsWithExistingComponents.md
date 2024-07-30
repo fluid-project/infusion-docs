@@ -21,7 +21,7 @@ We'll extend the code further using an existing Infusion [text to speech](../Tex
 work in a modern text to speech supporting browser:
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
-href="http://codepen.io/waharnum/pen/vgyBbe?editors=1111">Live Example of the code below on CodePen</a></div>
+href="https://codepen.io/waharnum/pen/vgyBbe?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ``` javascript
 fluid.defaults("fluidTutorial.helloWorld.sayHello", {

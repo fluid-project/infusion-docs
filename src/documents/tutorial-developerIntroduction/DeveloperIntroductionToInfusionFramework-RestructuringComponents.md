@@ -17,7 +17,7 @@ In the process, we'll be looking at some other important characteristics of Infu
 2. Overriding default component configuration when building up applications from separate components.
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
-href="http://codepen.io/waharnum/pen/egBObY?editors=1111">Live Example of the code below on CodePen</a></div>
+href="https://codepen.io/waharnum/pen/egBObY?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ```javascript
 // The console hello functionality is now defined as a separate

@@ -19,7 +19,7 @@ The introduction assumes:
   is built atop.
 
 We will build and evolve a ["Hello, World!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) implementation
-to demonstrate the core concepts, with live examples throughout using the [CodePen](http://codepen.io/) service.
+to demonstrate the core concepts, with live examples throughout using the [CodePen](https://codepen.io/) service.
 
 ## Infusion's Core Concepts
 

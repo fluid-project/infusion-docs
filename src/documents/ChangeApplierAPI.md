@@ -374,11 +374,11 @@ marking _will_ be logged by the listener.
 <div class="infusion-docs-note">
 
 <strong>Note:</strong> The current implementation of the ChangeApplier has a bug
-([FLUID-5519](http://issues.fluidproject.org/browse/FLUID-5519)) which will often cause a model listener to be notified
+([FLUID-5519](https://fluidproject.atlassian.net/browse/FLUID-5519)) which will often cause a model listener to be notified
 before much of the surrounding component has constructed. This can be annoying, since the model listener may want to
 rely on other infrastructure (e.g. invokers, etc.) that it cannot be sure have been constructed. For this reason,
 `excludeSource: "init"` is a useful way of stabilising this behaviour until the implementation is fixed (fix will be
-delivered as part of [FLUID-4925](http://issues.fluidproject.org/browse/FLUID-4925)).
+delivered as part of [FLUID-4925](https://fluidproject.atlassian.net/browse/FLUID-4925)).
 </div>
 
 #### Wildcards in model path references

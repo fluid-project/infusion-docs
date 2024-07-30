@@ -135,7 +135,7 @@ A function which raises a failure if executed. This function name can also be us
 * Returns: none
 
 Iterates over a supplied array or hash, invoking a function once for each member. Similar to
-[`jQuery.each`](http://api.jquery.com/jquery.each/) only the arguments to `func` are the right way round and the
+[`jQuery.each`](https://api.jquery.com/jquery.each/) only the arguments to `func` are the right way round and the
 function does not explode on nonvalues. `fluid.each` on `null` or `undefined` is a no-op.
 
 ### fluid.invokeLater(func)
@@ -214,7 +214,7 @@ Fills an array of given size with copies of a value or result of a function invo
 
 Returns an array of size `n`, filled with increasing integers, starting at 0 or at the value specified by `first`. The
 name `iota` originally stems from the
-[APL](http://stackoverflow.com/questions/9244879/what-does-iota-of-stdiota-stand-for) programming language.
+[APL](https://stackoverflow.com/questions/9244879/what-does-iota-of-stdiota-stand-for) programming language.
 
 ### fluid.clear(target)
 
@@ -238,7 +238,7 @@ destructively modified.**
   member acted on by the function or functions.
 
 Return a list or hash of objects, transformed by one or more functions. Similar to
-[`jQuery.map`](http://api.jquery.com/jquery.map/), but accepts an arbitrary list of transformation functions and does
+[`jQuery.map`](https://api.jquery.com/jquery.map/), but accepts an arbitrary list of transformation functions and does
 not explode on null sources. `fluid.transform` on a non-array and non-object (e.g. `null`) is a no-op.
 
 ### fluid.accumulate(list, fn, initial)
@@ -412,7 +412,7 @@ var CATTyears = fluid.hashToArray(hash, "species", function (newElement, oldElem
 
 Converts an array consisting of a mixture of arrays and non-arrays into the concatenation of any inner arrays with the
 non-array elements. The original array **will not be modified**. See description of
-[mapcat](http://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
+[mapcat](https://martinfowler.com/articles/collection-pipeline/flat-map.html) or `flat-map`.
 
 ### fluid.freezeRecursive(tofreeze)
 
@@ -572,7 +572,7 @@ component which can be rebound.
 
 If the path `path` indirects beyond the range of concrete properties in `model`, the implementation will fill in any
 intermediate path levels with fresh instances of `{}` (in the manner of
-[`mkdirs`](http://stackoverflow.com/questions/9820088/difference-between-mkdir-and-mkdirs-in-java-for-java-io-file)).
+[`mkdirs`](https://stackoverflow.com/questions/9820088/difference-between-mkdir-and-mkdirs-in-java-for-java-io-file)).
 There are some esoteric extra arguments for `fluid.set` which will allow this to be done in a schema-aware way, for
 example filling in path levels with `[]` instead - [contact
 us](https://wiki.fluidproject.org/display/fluid/Mailing+Lists) if you are interested.

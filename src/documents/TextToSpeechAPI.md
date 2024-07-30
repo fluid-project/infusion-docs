@@ -21,7 +21,7 @@ API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-sectio
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> find the latest browser support data for Web Speech Synthesis API from <a
-    href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.
+    href="https://caniuse.com/web-speech">caniuse.com</a>.
 </div>
 
 ## Creator
@@ -430,7 +430,7 @@ fluid.textToSpeech({
             <th>Description</th>
             <td>
                 The <code>lang</code> attribute gives you ability to specify a <a
-                href="http://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the
+                href="https://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the
                 voice.
             </td>
         </tr>

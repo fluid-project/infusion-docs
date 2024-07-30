@@ -24,7 +24,7 @@ Below are some resources which discuss general website optimization strategies:
 * [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading)
 
 To see a live version of the example outlined below, open the [Minimal Footprint - Preferences
-Framework](http://build.fluidproject.org/infusion/examples/framework/preferences/minimalFootprint/) example.
+Framework](https://build-infusion.fluidproject.org/examples/framework/preferences/minimalFootprint/) example.
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> The example outlined below uses individual JS files. However, these can be substituted by

@@ -19,7 +19,7 @@ This page contains a list of the features, API's, and etc. that were deprecated 
             <td>
                 There are no CSS Framework requirements for working with Infusion. Infusion's strategy going forward
                 will be to use custom CSS for component specific styling and <a
-                href="http://foundation.zurb.com/">Foundation</a> for demos, as needed.
+                href="https://get.foundation/">Foundation</a> for demos, as needed.
             </td>
         </tr>
         <tr>

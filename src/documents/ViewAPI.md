@@ -73,7 +73,7 @@ unchanged.
 * `newValue {String|Boolean|Array of String}` [optional] The value to be written - if omitted, the value will be read
 * Returns: `{String|Array of String}` The value read from the DOM, if required
 
-A generalisation of [`jQuery.val`](http://api.jquery.com/val/) to correctly handle the case of acquiring and setting the
+A generalisation of [`jQuery.val`](https://api.jquery.com/val/) to correctly handle the case of acquiring and setting the
 value of clustered radio button/checkbox sets, potentially, given a node corresponding to just one element. If the
 supplied element is not an HTML radio button or checkbox, the implementation will defer to `jQuery.val`. If the supplied
 element is an HTML radio button or checkbox, the function will automatically acquire all other elements sharing the same
@@ -83,8 +83,8 @@ HTML `name` within the same `form` element before performing the read or write.
 
 A standalone utility and associated component for easily managing an [ARIA live
 region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) and/or the
-[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) holding a label associated with a particular DOM node
-in the document.
+[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) holding a label
+associated with a particular DOM node in the document.
 
 ### fluid.updateAriaLabel(element, text[, options])
 
