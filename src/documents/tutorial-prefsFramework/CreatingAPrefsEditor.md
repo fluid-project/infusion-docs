@@ -36,7 +36,7 @@ We recommend you download the Infusion library and load the example code into yo
 Your company, Awesome Cars, has created the world’s first flying car. The example code is a Preference Editor for the
 car. If you run a local webserver (for example using [this
 approach](https://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python), or using
-[MAMP](https://www.mamp.info/en/)) and navigate to the `index.html` file in a browser, you should see this interface:
+[MAMP](https://www.mamp.info/en/mac/)) and navigate to the `index.html` file in a browser, you should see this interface:
 
 <figure id="figure2">
     <img src="/images/simplePrefsEditor.png" alt="The screen of the example Preference Editor">

@@ -78,7 +78,7 @@ If using the latest development source, there may be some differences in documen
 does not yet exist.
 </div>
 
-Requirements: [node](https://nodejs.org), [npm](https://www.npmjs.com/)
+Requirements: [node](https://nodejs.org/), [npm](https://www.npmjs.com/)
 
 1. Run `git clone https://github.com/fluid-project/infusion` to copy the Infusion GitHub repository to your local
 filesystem. This will create a directory `infusion` containing the Infusion source code.

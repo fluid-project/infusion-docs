@@ -11,7 +11,7 @@ directly from the filesystem if Infusion is running under `node.js`. These resou
 or other kinds of static resources.
 
 The resources to be loaded are configured in a free hash held in the top-level `resources` option of the component.
-Each member of `resources` is a structure named `ResourceSpec` specifying a resource to be loaded.  
+Each member of `resources` is a structure named `ResourceSpec` specifying a resource to be loaded.
 
 ### Minimal `fluid.resourceLoader` example
 
@@ -186,7 +186,7 @@ identifying both the transport and the address of the resource to be loaded:
     of the <code>directModel</code> field in this <code>resourceSpec</code>. Documentation for core Infusion
     DataSources will
     be ported soon, in the meantime you may refer to the docs on
-    <a href="https://github.com/fluid-project/kettle/blob/master/docs/DataSources.md">
+    <a href="https://github.com/fluid-project/kettle/blob/main/docs/DataSources.md">
     Kettle DataSources</a> and substitute <code>kettle</code> for <code>fluid</code> in all gradeNames.
     </td>
     <td>fluid.dataSource</td>

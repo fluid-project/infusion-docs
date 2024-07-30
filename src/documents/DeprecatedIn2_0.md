@@ -21,7 +21,7 @@ changes, the contents of this page may not be exhaustive.</div>
         <tr>
             <td><code>fluid.progress</code></td>
             <td>
-                HTML5 <a href="https://www.w3.org/TR/html5/forms.html#the-progress-element"><code>progress</code></a>
+                HTML5 <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element"><code>progress</code></a>
                 element
             </td>
         </tr>
@@ -42,7 +42,7 @@ changes, the contents of this page may not be exhaustive.</div>
             <td>jQuery UI Slider version of <code>fluid.textfieldSlider</code></td>
             <td>
                 Native HTML5 version of <code>fluid.textfieldSlider</code> making use of the
-                <a href="https://www.w3.org/TR/html5/forms.html#range-state-(type=range)"><code>range</code>
+                <a href="https://html.spec.whatwg.org/multipage/input.html#range-state-(type%3Drange)"><code>range</code>
                 input</a>
             </td>
         </tr>

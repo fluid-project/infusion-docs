@@ -9,7 +9,7 @@ you prefer, you can [browse the source documentation files directly on GitHub](s
 
 ## Working with the Infusion Documentation locally
 
-You must have [Node and NPM](https://nodejs.org/en/download/) installed in order to work on the Infusion Documentation
+You must have [Node and NPM](https://nodejs.org/en/download/package-manager) installed in order to work on the Infusion Documentation
 locally (the LTS version is recommended).
 
 To install the dependencies for this project:

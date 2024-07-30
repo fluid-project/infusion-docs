@@ -8,7 +8,7 @@ possibly asynchronously, using AJAX requests or from the current DOM. This API i
 core or components rely on it, however it will be retained for one further release cycle since it appears in a few
 pieces of example code and wrappers. The core framework grade [Resource Loader](ResourceLoader.md) should be used
 by any component wishing to issue I/O as part of component loading, or else a
-[DataSource](https://github.com/fluid-project/kettle/blob/master/docs/DataSources.md) for I/O which may be issued
+[DataSource](https://github.com/fluid-project/kettle/blob/main/docs/DataSources.md) for I/O which may be issued
 repeatedly during a component's lifecycle.
 
 This API is deprecated and will be removed in an upcoming revision of the framework.
