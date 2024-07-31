@@ -27,7 +27,7 @@ Context names are derived both from particular components in the tree which have
 (ancestors) and the __*static environment*__. The static environment can be thought of as a set of
 contexts which are global to the entire application (that is, a context managed by the JavaScript
 virtual machine operated by the runtime - for example that derived from a browser frame or
-[V8 context](https://developers.google.com/v8/embed#contexts)). These names can be matched by the
+[V8 context](https://v8.dev/#contexts)). These names can be matched by the
 names appearing in curly brackets at the beginning of EL path expressions like
 `"{contextName}.furtherPath"`. Each component in the tree can give rise to a context name through
 three strategies:

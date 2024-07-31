@@ -66,8 +66,8 @@ configuration defining the sequence and structure of a group of test cases which
 ### `modules`, `tests` and `sequence`
 
 The standard structure inside a `fluid.test.testCaseHolder` has an outer layer of containment, `modules`, with members
-corresponding to QUnit [modules](https://api.qunitjs.com/QUnit.module/), and within that an entry named `tests`, holding
-an array of structures corresponding to QUnit [test](https://api.qunitjs.com/QUnit.test/). In ordinary use, each element
+corresponding to QUnit [modules](https://qunitjs.com/api/QUnit/module/), and within that an entry named `tests`, holding
+an array of structures corresponding to QUnit [test](https://qunitjs.com/api/QUnit/test/). In ordinary use, each element
 `tests` then contains a member named `sequence` holding a list of [*fixture records*](#supported-fixture-records).
 
 As well as containing a flat list of fixture records, `sequence` may also contain nested arrays of such records. These

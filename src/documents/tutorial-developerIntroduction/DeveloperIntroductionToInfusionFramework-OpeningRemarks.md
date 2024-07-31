@@ -13,7 +13,7 @@ time.
 The introduction assumes:
 
 * You are familiar with the basics of [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript).
-* You know how to use a browser's [developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)
+* You know how to use a browser's [developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools)
   to access a console.
 * Ideally, you should also have some experience with the [jQuery](https://jquery.com/) JavaScript library that Infusion
   is built atop.

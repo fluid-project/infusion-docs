@@ -109,7 +109,7 @@ it is an Object with keys described in the [section on resourceSpecs](#resources
 <tr>
     <td><code>locale</code></td>
     <td>Specifies the language code with the desired localization. Language codes are expected in a form
-    similar to <a href="https://tools.ietf.org/html/bcp47">BCP 47 tags</a> but with a "_" instead of a "-" separating
+    similar to <a href="https://www.rfc-editor.org/info/bcp47">BCP 47 tags</a> but with a "_" instead of a "-" separating
     the language code from the country code. When specified, the resource loader will add a suffix of the locale value
     to each entry defined in the <code>resources</code> and look for them at the first attempt. If any such resource is
     not located, the resource loader follows

@@ -44,7 +44,7 @@ of:
 ## Simple example - speech API-aware component
 
 This simple example invokes the `fluid.textToSpeech.isSupported` feature detector, which returns `true` if the current
-browser supports the [HTML5 Speech API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html). We use the
+browser supports the [HTML5 Speech API](https://wicg.github.io/speech-api/). We use the
 `fluid.contextAware.makeChecks` function to assign the result of this feature detection to a _context_ named
 `fluid.supportsTTS`. We can then use this context to conditionally switch in an extra [grade name](ComponentGrades.md),
 `examples.myComponent.speechAware` into the `examples.myComponent` component:

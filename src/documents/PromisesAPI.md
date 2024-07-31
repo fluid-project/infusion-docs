@@ -9,7 +9,7 @@ requiring I/O) or fallibly. JavaScript enjoys numerous competing libraries imple
 [Bluebird](https://github.com/petkaantonov/bluebird) as well as even multiple competing promise standards, such as
 [Promises/A+](https://promisesaplus.com/) and others from [CommonJS](https://wiki.commonjs.org/wiki/Promises). Promises
 are even built into an upcoming version of the JavaScript language itself,
-[ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+[ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 Infusion required an extremely simple implementation which can evolve independently, as well as begin the process of
 merging with the general declarative facilities of [Infusion IoC](HowToUseInfusionIoC.md) and hence become invisible as
