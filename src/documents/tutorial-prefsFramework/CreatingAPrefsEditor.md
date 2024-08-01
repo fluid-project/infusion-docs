@@ -35,8 +35,8 @@ We recommend you download the Infusion library and load the example code into yo
 
 Your company, Awesome Cars, has created the world’s first flying car. The example code is a Preference Editor for the
 car. If you run a local webserver (for example using [this
-approach](http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python), or using
-[MAMP](https://www.mamp.info/en/)) and navigate to the `index.html` file in a browser, you should see this interface:
+approach](https://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python), or using
+[MAMP](https://www.mamp.info/en/mac/)) and navigate to the `index.html` file in a browser, you should see this interface:
 
 <figure id="figure2">
     <img src="/images/simplePrefsEditor.png" alt="The screen of the example Preference Editor">
@@ -69,7 +69,7 @@ Let’s take a close look at the code.
 
 The [Primary Schema](../PrimarySchemaForPreferencesFramework.md) is a document that defines the preferences for the
 Editor. The Primary Schema for our example Editor is defined in the `schemas/primary.js` file using the JSON schema
-format (you can learn about JSON schemas at [http://json-schema.org/](http://json-schema.org/)):
+format (you can learn about JSON schemas at <https://json-schema.org/>):
 
 ```javascript
 /**

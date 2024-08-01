@@ -15,7 +15,7 @@ While there are [other styles of invokers possible](../Invokers.md#types-of-invo
 allows us to refer to a free function (one not attached to a specific object).
 
 <div class="infusion-docs-note">You can check out the [Live Example of the code below on
-CodePen](http://codepen.io/waharnum/pen/MJbgEx?editors=1111)</div>
+CodePen](https://codepen.io/waharnum/pen/MJbgEx?editors=1111)</div>
 
 ``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {

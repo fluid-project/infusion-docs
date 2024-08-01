@@ -28,7 +28,7 @@ arguments, and refer to it from the `sayHello` invoker using IoC syntax. In the 
 `fluid.component` to a `fluid.modelComponent`.
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
-href="http://codepen.io/waharnum/pen/XpNrEr?editors=1111">Live Example of the code below on CodePen</a></div>
+href="https://codepen.io/waharnum/pen/XpNrEr?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {
@@ -68,7 +68,7 @@ invoking a function involving the changed model state. We'll implement this belo
 `sayHello` function with the message content each time it changes.
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
-href="http://codepen.io/waharnum/pen/oBYvPB?editors=1111">Live Example of the code below on CodePen</a></div>
+href="https://codepen.io/waharnum/pen/oBYvPB?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {

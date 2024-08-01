@@ -11,7 +11,7 @@ module.exports = {
             var githubDocRoot = "https://github.com/fluid-project/infusion-docs/blob/main/src";
             // In case we're on Windows, replace "\" in the path with "/"
             var relativePath = data.page.filePathStem.replace(/\\/g, "/");
-            return githubDocRoot + relativePath + ".md";
+            return `${githubDocRoot}${relativePath}.${data.page.inputPath.split(".").at(-1)}`;
         }
     }
 };

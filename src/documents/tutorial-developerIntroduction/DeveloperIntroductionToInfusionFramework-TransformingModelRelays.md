@@ -17,7 +17,7 @@ a function that reverses a string, and our `reverseSpeakHello` subcomponent will
 `speakHello` subcomponent has spoken it.
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
-href="http://codepen.io/waharnum/pen/gWGQyN?editors=1111">Live Example of the code below on CodePen</a></div>
+href="https://codepen.io/waharnum/pen/gWGQyN?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ```javascript
 var helloWorld;

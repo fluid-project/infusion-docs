@@ -5,7 +5,7 @@ category: Infusion
 
 One of the key principles that Infusion components operate on is configurability. Components have
 options that can be set by integrators to customize the behaviour. For example, the Infusion
-[Inline Edit](http://build.fluidproject.org/infusion/demos/inlineEdit/) component has
+[Inline Edit](https://build-infusion.fluidproject.org/demos/inlineEdit/) component has
 options for configuring the text content of the tooltip, the length of time the user must hover
 before the tooltip appears, the 'invitation text' that should be displayed in the field if it is empty, and other things.
 

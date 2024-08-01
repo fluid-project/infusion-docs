@@ -14,7 +14,7 @@ argument to the creator function:
 `var helloWorld = fluidTutorial.helloWorld(".helloWorld", {});`
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
-href="http://codepen.io/waharnum/pen/MJbgVR?editors=1111">Live Example of the code below on CodePen</a></div>
+href="https://codepen.io/waharnum/pen/MJbgVR?editors=1111">Live Example of the code below on CodePen</a></div>
 
 Let's turn the "Hello, World!" component into a view component that writes its initial message to the screen as well,
 assuming we have this HTML on the page:

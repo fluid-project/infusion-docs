@@ -13,6 +13,7 @@
 
 var githubSlugify = require("github-slugger").slug;
 var {exec} = require("child_process");
+const brokenLinksPlugin = require("eleventy-plugin-broken-links");
 
 require("./index.js");
 var hljs = require("highlight.js");
@@ -42,6 +43,13 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addTransform("parse", parseTransform);
 
     eleventyConfig.addPlugin(navigationPlugin);
+    eleventyConfig.addPlugin(brokenLinksPlugin, {
+        forbidden: "error",
+        broken: "error",
+        // Codepen links return 403
+        // see: https://github.com/bradleyburgess/eleventy-plugin-broken-links/issues/9
+        excludeUrls: ["https://codepen.io*"]
+    });
 
     eleventyConfig.addPassthroughCopy({
         "node_modules/infusion/dist": "lib/infusion/dist",

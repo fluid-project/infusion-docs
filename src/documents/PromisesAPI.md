@@ -5,11 +5,11 @@ category: Infusion
 [Promises](https://en.wikipedia.org/wiki/Futures_and_promises) are a now widespread programming construct aiming to
 simplify coding of complex workflows involving values which may be available asynchronously (perhaps as a result of
 requiring I/O) or fallibly. JavaScript enjoys numerous competing libraries implementing this feature, such as
-[when.js](https://github.com/cujojs/when), [Q](http://documentup.com/kriskowal/q) and
+[when.js](https://github.com/cujojs/when), [Q](https://github.com/kriskowal/q) and
 [Bluebird](https://github.com/petkaantonov/bluebird) as well as even multiple competing promise standards, such as
-[Promises/A+](https://promisesaplus.com/) and others from [CommonJS](http://wiki.commonjs.org/wiki/Promises). Promises
+[Promises/A+](https://promisesaplus.com/) and others from [CommonJS](https://wiki.commonjs.org/wiki/Promises). Promises
 are even built into an upcoming version of the JavaScript language itself,
-[ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+[ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 Infusion required an extremely simple implementation which can evolve independently, as well as begin the process of
 merging with the general declarative facilities of [Infusion IoC](HowToUseInfusionIoC.md) and hence become invisible as
@@ -99,7 +99,7 @@ promises specification is a useful source of convincing argumentation that the d
 asynchronous resolution is flawed.
 
 As a further landmark for discussion, note that in terms of the following very illuminating [category
-theoretic](http://brianmckenna.org/blog/category_theory_promisesaplus) treatment of promises (itself rejected by
+theoretic](https://brianmckenna.org/blog/category_theory_promisesaplus) treatment of promises (itself rejected by
 mainstream promises proponents), our `then` method is very definitely **not** "the name for `flatMap`". Our `then`
 method is simply a "glorified callback aggregator".
 
@@ -252,8 +252,8 @@ reason in place, etc. Finally the fully accumulated rejection reason will be dis
 handler.
 
 What familiar exception-handling pattern from synchronous code does this reproduce? It is the **rethrowing pattern**,
-described in the Java context by [Bruce Eckel](http://www.mindview.net/Etc/Discussions/CheckedExceptions/). Some more
-general commentary is on the "original wiki" at [Nested Exception](http://c2.com/cgi/wiki?NestedException). Thankfully,
+described in the Java context by Bruce Eckel. Some more
+general commentary is on the "original wiki" at [Nested Exception](https://wiki.c2.com/?NestedException). Thankfully,
 JavaScript is free of "checked exception specifications" but both the bathwater and baby have been thrown out in that it
 is also free of exception wrapping. The promises community is still so immature that the lack of this facility has not
 yet even been characterised. Here is some old-fashioned sequential code illustrating what is going on here:

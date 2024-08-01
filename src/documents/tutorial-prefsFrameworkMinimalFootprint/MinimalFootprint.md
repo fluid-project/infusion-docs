@@ -11,12 +11,11 @@ optimizations.
 
 Below are some resources which discuss general website optimization strategies:
 
-* [https://developers.google.com/speed/](https://developers.google.com/speed/)
-* [https://developers.google.com/speed/docs/insights/rules](https://developers.google.com/speed/docs/insights/rules)
-* [https://developers.google.com/web/fundamentals/performance](https://developers.google.com/web/fundamentals/performance)
-* [https://www.maxcdn.com/blog/frontend-optimizations/](https://www.maxcdn.com/blog/frontend-optimizations/)
-* [https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/](https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/)
-* [https://hpbn.co](https://hpbn.co)
+* [Analyze and optimize your website with PageSpeed tools](https://developers.google.com/speed/)
+* [Get Started with the PageSpeed Insights API](https://developers.google.com/speed/docs/insights/v5/get-started)
+* [Why does speed matter?](https://web.dev/learn/performance/why-speed-matters)
+* [Improving Smashing Magazine’s Web Performance: A Case Study](https://www.smashingmagazine.com/2014/09/improving-smashing-magazine-performance-case-study/)
+* [High Performance Browser Networking](https://hpbn.co)
 
 ## Optimization of the Preferences Framework
 
@@ -25,7 +24,7 @@ Below are some resources which discuss general website optimization strategies:
 * [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading)
 
 To see a live version of the example outlined below, open the [Minimal Footprint - Preferences
-Framework](http://build.fluidproject.org/infusion/examples/framework/preferences/minimalFootprint/) example.
+Framework](https://build-infusion.fluidproject.org/examples/framework/preferences/minimalFootprint/) example.
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> The example outlined below uses individual JS files. However, these can be substituted by

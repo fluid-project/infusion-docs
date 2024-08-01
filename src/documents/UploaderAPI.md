@@ -76,7 +76,7 @@ calling methods on the Uploader, be sure to check its `typeName` or use duck typ
 
 #### container
 
-The `container` is a CSS-based [selector](http://docs.jquery.com/Selectors), single-element jQuery object, or DOM
+The `container` is a CSS-based [selector](https://api.jquery.com/category/selectors/), single-element jQuery object, or DOM
 element that identifies the root DOM node of the Uploader markup.
 
 #### options
@@ -404,7 +404,7 @@ when querying the filestatus property of a [File object](#file-objects).
             <td><code>fluid.uploader.errorConstants.SPECIFIED_FILE_ID_NOT_FOUND</code></td>
             <td>
                 This indicates an error in the Uploader and should be filed as a <a
-                href="http://issues.fluidproject.org/">bug</a>.
+                href="https://fluidproject.atlassian.net/jira/software/c/projects/FLUID/issues">bug</a>.
             </td>
         </tr>
         <tr>

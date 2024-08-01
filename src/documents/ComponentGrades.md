@@ -203,8 +203,8 @@ Grades supplied as arguments to a constructing component in the `gradeNames` fie
 the particular component instance, as if a new `fluid.defaults` block had been issued creating a new "type" in the
 system - however, the main `type` of the component will not change. This facility could be thought of as a form of "type
 evolution" or
-[Schema evolution](http://scholarworks.umass.edu/cgi/viewcontent.cgi?article=1041&context=cs_faculty_pubs). All dynamic
-grades take precedence over (that is, are merged in after) all static grades.
+[Schema evolution](https://scholarworks.umass.edu/server/api/core/bitstreams/bb49378d-0387-491b-bc6e-fc6d077a0b6a/content).
+All dynamic grades take precedence over (that is, are merged in after) all static grades.
 
 ### Delivering a dynamic gradeName as a direct argument:
 

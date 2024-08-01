@@ -105,7 +105,7 @@ frameworks. The renderer reduces the entire binding and controller function of a
 interpretation and re-processing.
 
 Historically, the desire to be able to treat logic as data has strong roots, for example in the
-[LISP](http://en.wikipedia.org/wiki/Lisp_programming_language) community. However, where all application code is on a
+[LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)) community. However, where all application code is on a
 common footing, designs become tangled and hard to interpret. By providing domain-specific forms for carefully selected
 parts of an application's functionality, typically at the Controller level, the complexity of code operating on this
 data can be reduced and transparency increased. It is a productive middle ground, between all application code becoming
@@ -113,9 +113,9 @@ a candidate to be data (as in LISP), and none of it (as in Java).
 
 ## IoC
 
-IoC stands for [*Inversion of Control*](http://en.wikipedia.org/wiki/Inversion_of_control), the traditional name given
+IoC stands for [*Inversion of Control*](https://en.wikipedia.org/wiki/Inversion_of_control), the traditional name given
 to this programming concept by its early promoters, [Ralph Johnson](http://www.laputan.org/drc/drc.html) and [Martin
-Fowler](http://martinfowler.com/bliki/InversionOfControl.html). IoC is the technique that naturally results when trying
+Fowler](https://martinfowler.com/bliki/InversionOfControl.html). IoC is the technique that naturally results when trying
 to make sure that dependencies in a codebase are correctly organised. The goal is to eliminate cycles of knowledge and
 points of dependency weakness within an application architecture.
 

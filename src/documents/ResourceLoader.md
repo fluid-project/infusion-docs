@@ -11,7 +11,7 @@ directly from the filesystem if Infusion is running under `node.js`. These resou
 or other kinds of static resources.
 
 The resources to be loaded are configured in a free hash held in the top-level `resources` option of the component.
-Each member of `resources` is a structure named `ResourceSpec` specifying a resource to be loaded.  
+Each member of `resources` is a structure named `ResourceSpec` specifying a resource to be loaded.
 
 ### Minimal `fluid.resourceLoader` example
 
@@ -109,7 +109,7 @@ it is an Object with keys described in the [section on resourceSpecs](#resources
 <tr>
     <td><code>locale</code></td>
     <td>Specifies the language code with the desired localization. Language codes are expected in a form
-    similar to <a href="https://tools.ietf.org/html/bcp47">BCP 47 tags</a> but with a "_" instead of a "-" separating
+    similar to <a href="https://www.rfc-editor.org/info/bcp47">BCP 47 tags</a> but with a "_" instead of a "-" separating
     the language code from the country code. When specified, the resource loader will add a suffix of the locale value
     to each entry defined in the <code>resources</code> and look for them at the first attempt. If any such resource is
     not located, the resource loader follows
@@ -186,7 +186,7 @@ identifying both the transport and the address of the resource to be loaded:
     of the <code>directModel</code> field in this <code>resourceSpec</code>. Documentation for core Infusion
     DataSources will
     be ported soon, in the meantime you may refer to the docs on
-    <a href="https://github.com/fluid-project/kettle/blob/master/docs/DataSources.md">
+    <a href="https://github.com/fluid-project/kettle/blob/main/docs/DataSources.md">
     Kettle DataSources</a> and substitute <code>kettle</code> for <code>fluid</code> in all gradeNames.
     </td>
     <td>fluid.dataSource</td>

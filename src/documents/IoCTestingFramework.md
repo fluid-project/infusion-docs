@@ -4,7 +4,7 @@ category: Infusion
 ---
 
 The IoC Testing Framework is written using our existing [jqUnit](jqUnit.md) wrapper for jQuery's
-[QUnit](http://qunitjs.com/) as a base. The IoC Testing Framework is both written using Fluid's
+[QUnit](https://qunitjs.com/) as a base. The IoC Testing Framework is both written using Fluid's
 [IoC](HowToUseInfusionIoC.md) system, as well as being designed to test components which are themselves written using
 IoC. This framework aims to extend our power to write tests in various directions at the same time. As well as creating
 an idiomatic way of writing *integration tests* addressed at realistic-sized chunks of applications, expressed as IoC
@@ -66,8 +66,8 @@ configuration defining the sequence and structure of a group of test cases which
 ### `modules`, `tests` and `sequence`
 
 The standard structure inside a `fluid.test.testCaseHolder` has an outer layer of containment, `modules`, with members
-corresponding to QUnit [modules](https://api.qunitjs.com/QUnit.module/), and within that an entry named `tests`, holding
-an array of structures corresponding to QUnit [test](https://api.qunitjs.com/QUnit.test/). In ordinary use, each element
+corresponding to QUnit [modules](https://qunitjs.com/api/QUnit/module/), and within that an entry named `tests`, holding
+an array of structures corresponding to QUnit [test](https://qunitjs.com/api/QUnit/test/). In ordinary use, each element
 `tests` then contains a member named `sequence` holding a list of [*fixture records*](#supported-fixture-records).
 
 As well as containing a flat list of fixture records, `sequence` may also contain nested arrays of such records. These
@@ -334,8 +334,8 @@ Boiling](EventInjectionAndBoiling.md#listener-boiling). `{change}` is not curren
         <td rowspan="3" class="infusion-docs-blockcell">jQuery event trigger</td><td><code>jQueryTrigger</code> <a href="#ducktype"><sup>[&#42;]</sup></a></td>
         <td><code>{String}</code></td>
         <td>
-            The name of a jQuery event (<a href="http://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered
-            via a call to <a href="http://api.jquery.com/trigger/"><code>jquery.trigger</code></a></td><td rowspan="3"
+            The name of a jQuery event (<a href="https://api.jquery.com/trigger/">jQuery eventType</a>) to be triggered
+            via a call to <a href="https://api.jquery.com/trigger/"><code>jquery.trigger</code></a></td><td rowspan="3"
             class="infusion-docs-blockcell">executor
         </td>
     </tr>
@@ -357,7 +357,7 @@ Boiling](EventInjectionAndBoiling.md#listener-boiling). `{change}` is not curren
         <td><code>{String}</code></td>
         <td>
             The name of a jQuery event for which a listener is to be registered via a call to <a
-            href="http://api.jquery.com/one/"><code>jquery.one</code></a></td><td rowspan="6"
+            href="https://api.jquery.com/one/"><code>jquery.one</code></a></td><td rowspan="6"
             class="infusion-docs-blockcell">binder
         </td>
     </tr>
@@ -841,7 +841,7 @@ sequence:
 
     },
     "md",
-    "[unified listing](http://ul.gpii.net/)"
+    "[unified listing](https://ul.gpii.net/)"
 ]
 } of fixture Confirm that the client-side renderer can render markdown...
 ```
@@ -858,9 +858,9 @@ detection message appears in all environments.
 ## Design Discussion about the Testing Framework
 
 The framework was designed over October-December 2012, with initial call for implementation on the fluid-work mailing
-list at [October 31st](http://lists.idrc.ocad.ca/pipermail/fluid-work/2012-October/008615.html), continuing over a
+list at [October 31st](https://lists.idrc.ocadu.ca/pipermail/fluid-work/2012-October/008615.html), continuing over a
 sequence of community meetings, and including a summary of work in progress on [December
-5th](http://lists.idrc.ocad.ca/pipermail/fluid-work/2012-December/008652.html). The overall goals for the testing
+5th](https://lists.idrc.ocadu.ca/pipermail/fluid-work/2012-December/008652.html). The overall goals for the testing
 framework were presented as these:
 
 * To facilitate the testing of demands blocks that may be issued by integrators against components deployed in a
@@ -876,5 +876,5 @@ framework were presented as these:
 The framework was given a substantial spring-cleaning in October 2016, implementing significant new features such as
 promise-based fixtures, and priority-driven sequence grade assembly, and some support for compact invokers. A few
 significant bugs remain, especially when listing multiple "listener"-type fixtures adjacent in the sequence - see
-[FLUID-5502](https://issues.fluidproject.org/browse/FLUID-5502). The support for model change event fixtures is also
-very old-fashioned and needs to be reformed - see [FLUID-6077](https://issues.fluidproject.org/browse/FLUID-6077).
+[FLUID-5502](https://fluidproject.atlassian.net/browse/FLUID-5502). The support for model change event fixtures is also
+very old-fashioned and needs to be reformed - see [FLUID-6077](https://fluidproject.atlassian.net/browse/FLUID-6077).

@@ -4,12 +4,12 @@
 
 ## Browse the Infusion Documentation
 
-You can [browse the Infusion Documentation website](http://docs.fluidproject.org/infusion/), or if
+You can [browse the Infusion Documentation website](https://docs.fluidproject.org/infusion/), or if
 you prefer, you can [browse the source documentation files directly on GitHub](src/documents).
 
 ## Working with the Infusion Documentation locally
 
-You must have [Node and NPM](https://nodejs.org/en/download/) installed in order to work on the Infusion Documentation
+You must have [Node and NPM](https://nodejs.org/en/download/package-manager) installed in order to work on the Infusion Documentation
 locally (the LTS version is recommended).
 
 To install the dependencies for this project:
@@ -34,7 +34,7 @@ npm run build
 
 ## Deploying the Infusion Documentation website
 
-The [Infusion Documentation website](http://docs.fluidproject.org/infusion/) is published with [Netlify](https://netlify.com)
+The [Infusion Documentation website](https://docs.fluidproject.org/infusion/) is published with [Netlify](https://netlify.com)
 every time new content is pushed to the `main` branch of this repository. [Deploy previews](https://docs.netlify.com/site-deploys/overview/#deploy-preview-controls)
 are also generated for every pull request. For more information, please review Netlify's [documentation](https://docs.netlify.com).
 
@@ -47,7 +47,7 @@ Once you have Docker installed, run the following commands to build a Docker ima
 * Build the image: `docker build -t infusion-docs .`
 * Run the container: `docker run --name infusion-docs -p 8000:80 infusion-docs`
 
-The documentation will be available at [http://localhost:8000](http://localhost:8000)
+The documentation will be available at <http://localhost:8000>
 
 * To stop and remove the container: `docker rm -f infusion-docs`
 

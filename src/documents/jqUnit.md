@@ -27,18 +27,18 @@ example simulating user GUI interaction or HTTP requests, you should use the IoC
 ### jqUnit.module(name, hooks)
 
 Starts a group of related tests which will display with the module's name as a prefix. Direct passthrough for
-[QUnit.module](http://api.qunitjs.com/QUnit.module/)
+[QUnit.module](https://qunitjs.com/api/QUnit/module/)
 
 ### jqUnit.test(name, testFunc)
 
 Registers (queues) a synchronous test fixture by providing a callback which will run it. Direct passthrough for
-[QUnit.test](http://api.qunitjs.com/QUnit.test/). This is equivalent to a call to `jqUnit.asyncTest`, where the fixture
+[QUnit.test](https://qunitjs.com/api/QUnit/test/). This is equivalent to a call to `jqUnit.asyncTest`, where the fixture
 ends with `jqUnit.start`.
 
 ### jqUnit.asyncTest(name, testFunc)
 
 Registers (queues) an asynchronous test fixture by providing a callback which will run it. Direct passthrough for
-[QUnit.asyncTest](http://api.qunitjs.com/QUnit.asyncTest/).
+[QUnit.asyncTest](https://qunitjs.com/api/QUnit/test/).
 
 ### jqUnit.start()
 
@@ -47,19 +47,19 @@ is that whilst the system is suspended by `stop`, the test currently in progress
 will not proceed until it resumes. Note that QUnit's suspension has the semantics of a [Counting
 Semaphore](https://en.wikipedia.org/wiki/Semaphore_%28programming%29#Semantics_and_implementation) in that repeated
 calls to `jqUnit.stop` are possible and must be matched by an equal number of calls to `jqUnit.start` before the system
-will resume. Direct passthrough for [QUnit.start](http://api.qunitjs.com/QUnit.start/).
+will resume. Direct passthrough for [QUnit.start](https://qunitjs.com/api/QUnit/start/).
 
 ### jqUnit.stop()
 
 Suspends QUnit's progression through its fixtures. QUnit will not continue to the next queued test fixture until it has
-been resumed with `jqUnit.start`. Direct passthrough for [QUnit.start](http://api.qunitjs.com/QUnit.stop/).
+been resumed with `jqUnit.start`. Direct passthrough for [QUnit.start](https://qunitjs.com/upgrade-guide-2.x/#introducing-assertasync).
 
 ### jqUnit.expect(count)
 
 Informs QUnit that it must receive a certain number of successful assertions in the current fixture, or else the fixture
 will fail. Note that multiple successive calls to `jqUnit.expect` within the same fixture will be **cumulative** - this
-is different to QUnit's base behaviour for [`QUnit.expect`](http://api.qunitjs.com/expect/) where successive calls to
-`QUnit.expect` will overwrite the framework's expected count.
+is different to QUnit's base behaviour for [`QUnit.expect`](https://qunitjs.com/api/assert/expect/) where successive
+calls to `QUnit.expect` will overwrite the framework's expected count.
 
 * `count: {Integer}` The number of (additional) successful assertions to be expected
 
@@ -76,24 +76,24 @@ below contains an entry:
 ### jqUnit.assert(message)
 
 An assertion which unconditionally succeeds, and raises the successful assertion count by one. Equivalent to
-[`QUnit.ok(true, message)`](http://api.qunitjs.com/ok/).
+[`QUnit.ok(true, message)`](https://qunitjs.com/api/assert/ok/).
 
 ### jqUnit.fail(message)
 
 An assertion which unconditionally fails, and then aborts the current fixture. Equivalent to [`QUnit.ok(false,
-message)`](http://api.qunitjs.com/ok/).
+message)`](https://qunitjs.com/api/assert/ok/).
 
 ### jqUnit.assertTrue(message, value)
 
 * `value {Any}` The value to be tested
 
-Asserts that the supplied value is `true`. Equivalent to [`QUnit.ok(value, message)`](http://api.qunitjs.com/ok/).
+Asserts that the supplied value is `true`. Equivalent to [`QUnit.ok(value, message)`](https://qunitjs.com/api/assert/ok/).
 
 ### jqUnit.assertFalse(message, value)
 
 * `value {Any}` The value to be tested
 
-Asserts that the supplied value is `false`. Equivalent to [`QUnit.ok(!value, message)`](http://api.qunitjs.com/ok/).
+Asserts that the supplied value is `false`. Equivalent to [`QUnit.ok(!value, message)`](https://qunitjs.com/api/assert/ok/).
 
 ### jqUnit.assertUndefined(message, value)
 
@@ -137,7 +137,7 @@ Asserts that the supplied value is either `null` or `undefined`.
 * `value {Any}` The value to be tested
 
 Asserts that the supplied value is equal to the one supplied as `expected`. This will be performed by a strict equality
-check (`===`) - equivalent to [`QUnit.strictEqual(actual, expected, message)`](http://api.qunitjs.com/strictEqual/)
+check (`===`) - equivalent to [`QUnit.strictEqual(actual, expected, message)`](https://qunitjs.com/api/assert/strictEqual/)
 
 ### jqUnit.assertNotEquals(message, unexpected value)
 
@@ -146,7 +146,7 @@ check (`===`) - equivalent to [`QUnit.strictEqual(actual, expected, message)`](h
 
 Asserts that the supplied value is not equal to the one supplied as `unexpected`. This will be performed by a strict
 inequality check (`!==`) - equivalent to [`QUnit.notStrictEqual(actual, expected,
-message)`](http://api.qunitjs.com/notStrictEqual/)
+message)`](https://qunitjs.com/api/assert/notStrictEqual/)
 
 ### jqUnit.assertDeepEq(message, expected, value)
 
@@ -155,7 +155,7 @@ message)`](http://api.qunitjs.com/notStrictEqual/)
 
 Asserts that the supplied value is equal to the one supplied as `expected`. This will be performed by a deep equality
 check on the basis of properties only (ignoring constructors and prototypes) - equivalent to [`QUnit.propEqual(actual,
-expected, message)`](http://api.qunitjs.com/propEqual/)
+expected, message)`](https://qunitjs.com/api/assert/propEqual/)
 
 ### jqUnit.assertDeepNeq(message, unexpected, value)
 
@@ -164,7 +164,7 @@ expected, message)`](http://api.qunitjs.com/propEqual/)
 
 Asserts that the supplied value is not equal to the one supplied as `unexpected`. This will be performed by a deep
 equality check on the basis of properties only (ignoring constructors and prototypes) -
-equivalent to [`QUnit.notPropEqual(actual, expected, message)`](http://api.qunitjs.com/notPropEqual/)
+equivalent to [`QUnit.notPropEqual(actual, expected, message)`](https://qunitjs.com/api/assert/notPropEqual/)
 
 ### jqUnit.assertCanoniseEqual(message, expected, value, canonFunc)
 

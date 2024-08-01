@@ -7,7 +7,8 @@ Whilst Infusion's [IoC](HowToUseInfusionIoC.md) is primarily a declarative syste
 JSON configuration, there are a few language-level APIs which are useful in dealing with the system. Some of these are
 externalisable in that there is a reasonable semantic for operating them from outside the JavaScript VM housing the
 component tree - these special APIs are grouped under the heading [Nexus API methods](#nexus-api-methods), named after
-the [Nexus component](https://wiki.gpii.net/w/Nexus_API) that will shortly be built around them.
+the [Nexus component](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11577865/Nexus+API) that will shortly
+be built around them.
 
 ## IoC utility methods
 
@@ -132,10 +133,10 @@ Holds the global root component for the global instantiator's component tree.
 ## Nexus API methods
 
 These API methods are grouped together here since they were developed alongside the need to support the
-GPII [Nexus](https://wiki.fluidproject.org/display/fluid/Nexus+API), but they are of interest to others who are building
-frameworks or authoring systems layered on Infusion's component tree substrate. They allow for the construction and
-destruction of arbitrary components at arbitrary paths in the (single, global) component tree managed by this Infusion
-instance.
+GPII [Nexus](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11577865/Nexus+API), but they are of interest to
+others who are building frameworks or authoring systems layered on Infusion's component tree substrate. They allow for
+the construction and destruction of arbitrary components at arbitrary paths in the (single, global) component tree
+managed by this Infusion instance.
 
 ### fluid.construct(path, options[, instantiator])
 
@@ -146,7 +147,7 @@ location must already be a component.
   of segments
 * `options {Object}` Top-level options supplied to the component - must at the very least include a field `type` holding
   the component's type. Note that these are expressed in the future-compatible
-  [post-FLUID-5750](https://issues.fluidproject.org/browse/FLUID-5750) format with `type` alongside the component's options
+  [post-FLUID-5750](https://fluidproject.atlassian.net/browse/FLUID-5750) format with `type` alongside the component's options
   rather than at  a higher nested level as is currently required in local configuration supplied
   as [subcomponents](SubcomponentDeclaration.md).
 * `instantiator {Instantiator}` [optional] The instantiator holding the component to be created - if blank, the
@@ -193,7 +194,7 @@ As well as allowing for construction and destruction of material at arbitrary pa
 for the grouping of constructions and destructions into
 "tree transactions" in which instantiating components will be constructed simultaneously and so may be mutually
 referent. In addition, the framework rewrite which supports these in Infusion 4.0 and higher (described under
-[FLUID-6148](https://issues.fluidproject.org/browse/FLUID-6148) and linked JIRAs) ensures that in the event of any
+[FLUID-6148](https://fluidproject.atlassian.net/browse/FLUID-6148) and linked JIRAs) ensures that in the event of any
 failure during the transaction, the entire construction will be cleanly backed out, leaving the remaining component
 tree in a stable condition as it was before (except for any effects on component models and naturally any other
 side-effects unrelated to the component tree).
@@ -216,7 +217,7 @@ unit via `fluid.commitPotentiae` or cancelled via `fluid.cancelTreeTransaction`.
 * `transactionOptions {Object}` [optional] A set of options configuring this tree transaction. This may include fields
   * `breakAt {String}` - one of the values:
     * `shells`: signifying that this transaction should pause as soon as all component shells are constructed (see
-     [FLUID-4925](https://issues.fluidproject.org/browse/FLUID-4925))
+     [FLUID-4925](https://fluidproject.atlassian.net/browse/FLUID-4925))
     * `observation`: signifying that this transaction should pause once the observation process of all components is
        concluded - that is, that all component options, members and invokers are evaluated.
 * Returns: `{String}` The id of the freshly allocated tree transaction.
@@ -368,7 +369,7 @@ particularly ambitious functionality which requires oversight of the entire inst
 execute before any local workflows. The framework currently includes just one global workflow, the one which identifies
 and resolves the values of all model components throughout the instantiating tree's `model skeleton`, but further ones
 will be implemented as part of the upcoming framework's markup renderer for Infusion 5.0 as described in
-[FLUID-4260](https://issues.fluidproject.org/browse/FLUID-4260).
+[FLUID-4260](https://fluidproject.atlassian.net/browse/FLUID-4260).
 
 A global workflow function receives the signature:
 

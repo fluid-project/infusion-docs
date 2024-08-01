@@ -22,7 +22,7 @@ We can use a listener definition, the `onCreate` lifecycle event and IoC `{that}
 it's ready, rather than needing to be manually called:
 
 <div class="infusion-docs-note"><strong>Note:</strong> You can check out the <a
-href="http://codepen.io/waharnum/pen/LxbPQZ?editors=1111">Live Example of the code below on CodePen</a></div>
+href="https://codepen.io/waharnum/pen/LxbPQZ?editors=1111">Live Example of the code below on CodePen</a></div>
 
 ``` javascript
 fluid.defaults("fluidTutorial.helloWorld", {

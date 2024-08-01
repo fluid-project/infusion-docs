@@ -13,4 +13,4 @@ to navigate the content.
 
 See the Infusion website at:
 
-<http://fluidproject.org/infusion.html>
+<https://fluidproject.org/infusion>

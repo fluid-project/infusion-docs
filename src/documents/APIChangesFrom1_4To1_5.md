@@ -25,7 +25,7 @@ This page contains a list of the features, APIs, and etc. that have changed in I
 
 ### Uploader
 
-* Flash version removed (see: [FLUID-5354](http://issues.fluidproject.org/browse/FLUID-5354))
+* Flash version removed (see: [FLUID-5354](https://fluidproject.atlassian.net/browse/FLUID-5354))
 * Support for Firefox 3.x's implementation of HTML5 upload removed
 
 ## Framework API Changes

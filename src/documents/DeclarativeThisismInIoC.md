@@ -12,7 +12,7 @@ back to itself. The most common example would be using a jQuery element.
 
 For more details on the differences between **that-ist** and **this-ist** approaches, as well as the reasoning behind
 why Infusion employs the former, see the [About this and
-that](http://fluidproject.org/blog/2008/07/21/about-this-and-that/) blog post.
+that](https://fluidproject.atlassian.net/wiki/spaces/fluid/pages/11580702/About+this+and+that) blog post.
 
 ## Structure
 

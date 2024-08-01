@@ -21,7 +21,7 @@ experience.
 
 ![Screen shot of the UI Options Component](/images//uio-showcase.png "Screen shot of the UI Options Component")
 
-Try the [UI Options demo](https://build-infusion.fluidproject.org/demos/uioptions/).
+Try the [UI Options demo](https://build-infusion.fluidproject.org/demos/uiOptions/).
 
 ## Overview
 
@@ -165,7 +165,7 @@ adjust the paths to reflect where you've saved the Infusion package.
 <div class="infusion-docs-note">
     <strong>Note:</strong>
     While <code>infusion-uio.js</code> is minified, (i.e. all of the whitespace removed), you can still debug the code
-    using the provided source map. For more information, visit <a href="https://github.com/fluid-project/infusion/blob/master/README.md#source-maps">
+    using the provided source map. For more information, visit <a href="https://github.com/fluid-project/infusion/blob/main/README.md#source-maps">
     the Infusion Release Readme</a>.
 </div>
 

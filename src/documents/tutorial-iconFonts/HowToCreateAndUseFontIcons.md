@@ -29,7 +29,7 @@ However, there are some shortcomings to keep in mind:
 ## Procedure Summary
 
 * Create the icon and save it as an SVG graphic.
-* Use [IcoMoon](http://icomoon.io/) to generate a font from an SVG graphic.
+* Use [IcoMoon](https://icomoon.io/) to generate a font from an SVG graphic.
 * Add the font to your markup. Example:
 
 ```css
@@ -68,8 +68,7 @@ Download Example SVG file: [pencil-icon-01.svg](/images//pencil-icon-01.svg)
 
 Steps:
 
-1. Go to [IcoMoon](http://icomoon.io/app) (you can also run IcoMoon in "offline" mode in Chrome browser by installing
-   the [IcoMoon Chrome app](http://goo.gl/we6ra))
+1. Go to [IcoMoon](https://icomoon.io/app/#/select)
 2. Import your SVG icon - select "Import Icons" and choose your SVG file.
 3. Select your icon from the list (should appear under "Your Custom Icons" section, and select the "Font ->" button at
    the bottom of the screen.
@@ -141,7 +140,7 @@ Finally, add the new icon into the BEFORE pseudo class and delete any references
 
 This is all that is needed to add the new icon to your markup. You will notice there is a line specific to IE8 - for
 more information on this, please see
-[http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax](http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax).
+[The New Bulletproof @Font-Face syntax](https://blog.fontspring.com/2011/02/the-new-bulletproof-font-face-syntax/).
 
 ## Unicode for font
 
@@ -291,7 +290,7 @@ format('embedded-opentype')` to your CSS. For example:
 
 The IE8 fix needs to be the first URL in the list of sources otherwise the font will not appear.
 
-Reference: [http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax](http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax)
+Reference: [The New Bulletproof @Font-Face Syntax](https://blog.fontspring.com/2011/02/the-new-bulletproof-font-face-syntax/)
 
 ### Dealing with the TTF Unicode
 
@@ -311,7 +310,7 @@ on Windows and Mac OS X 10.6+.
 #### Obtaining Unicode in Mac OS X 10.6 or Later
 
 1. Enable Special Characters support as documented in this Apple Knowledge Base article:
-   [OS X Lion: Enter special characters and symbols](http://support.apple.com/kb/ph3871)
+   [OS X Lion: Enter special characters and symbols](https://support.apple.com/en-ca/guide/mac-help/mchlp1560/mac)
 2. Install the custom TTF font to the OS (usually double-click, then "Install").
 3. Launch the Font Book application.
 4. Also launch the Notes application.

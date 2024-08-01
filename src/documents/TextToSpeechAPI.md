@@ -4,12 +4,12 @@ category: Components
 ---
 
 The **Text To Speech** component uses [Web Speech Synthesis
-API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section) to queue up and read texts.
+API](https://wicg.github.io/speech-api/#tts-section) to queue up and read texts.
 
 ## Browser Support
 
 The Text To Speech component can be used in browsers that support [Web Speech Synthesis
-API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-section). At the time of writing, July 26
+API](https://wicg.github.io/speech-api/#tts-section). At the time of writing, July 26
 2016, these browsers include:
 
 * Chrome 31+
@@ -21,7 +21,7 @@ API](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#tts-sectio
 
 <div class="infusion-docs-note">
     <strong>Note:</strong> find the latest browser support data for Web Speech Synthesis API from <a
-    href="http://caniuse.com/#feat=web-speech">caniuse.com</a>.
+    href="https://caniuse.com/speech-recognition">caniuse.com</a>.
 </div>
 
 ## Creator
@@ -376,7 +376,7 @@ speech:
 
 Configuration of the Text To Speech component can be done through `model.utteranceOpts`. This model path is a Javascript
 object that contains attributes that users can use to define the behaviour of the [SpeechSynthesisUtterance
-instance](https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#utterance-attributes) (a part of the web
+instance](https://wicg.github.io/speech-api/#utterance-attributes) (a part of the web
 speech API that the Text To Speech component interacts with).
 
 <div class="infusion-docs-note">
@@ -430,7 +430,7 @@ fluid.textToSpeech({
             <th>Description</th>
             <td>
                 The <code>lang</code> attribute gives you ability to specify a <a
-                href="http://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the
+                href="https://www.ietf.org/rfc/bcp/bcp47.txt">BCP 47</a> language tag indicating the language of the
                 voice.
             </td>
         </tr>
@@ -465,16 +465,16 @@ fluid.textToSpeech({
             <th>Description</th>
             <td>
                 The <code>voice</code> attribute must be a <a
-                href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a>
+                href="https://wicg.github.io/speech-api/#speechsynthesisvoice"><code>SpeechSynthesisVoice</code></a>
                 object that specifies the speech synthesis voice that the web application wishes to use. Calling the <a
                 href="#getvoices">getVoices</a> method returns an array of all available voices, from which you can
                 select a valid <code>SpeechSynthesisVoice</code>, or you can call the <code><a
-                href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsgetvoices">SpeechSynthesis.getVoices()</a></code>
+                href="https://wicg.github.io/speech-api/#dom-speechsynthesis-getvoices">SpeechSynthesis.getVoices()</a></code>
                 function of the browser directly.
                 <div class="infusion-docs-note">
                     <strong>Note:</strong> in some browsers (such as Chrome), the voice list is populated after the page
                     is loaded, and you may need to wait for the <a
-                    href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#dfn-ttsonvoiceschanged">voiceschanged</a>
+                    href="https://wicg.github.io/speech-api/#dom-speechsynthesis-onvoiceschanged">voiceschanged</a>
                     event to get a full list.
                 </div>
             </td>

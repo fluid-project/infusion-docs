@@ -109,7 +109,7 @@ field names shown in bold text are the definitive fields that will indicate whic
             <td>
                 <pre class="highlight"><code class="hljs javascript">var protoTree = {
     contact-addressType1: {
-        target: "http://company.com/help/${topic.url}",
+        target: "https://company.com/help/${topic.url}",
         linktext: "${topic.name}"
     }
 };

@@ -94,7 +94,7 @@ The following example shows how CSS can be used to switch background images with
 HTML:
 
 ```html
-<a class="site-logo" title="Example Company" href="http://www.example.com">
+<a class="site-logo" title="Example Company" href="https://www.example.com">
     Example Company
 </a>
 ```
