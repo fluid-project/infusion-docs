@@ -181,12 +181,8 @@ a:focus {
     background: inherit;
 }
 
-h1:hover .octicon-link,
-h1:focus .octicon-link,
-h2:hover .octicon-link,
-h2:focus .octicon-link,
-h3:hover .octicon-link,
-h3:focus .octicon-link {
+:is(h1, h2, h3, h4, h5, h6):hover .octicon-link,
+:is(h1, h2, h3, h4, h5, h6):focus-within .octicon-link {
     visibility: visible;
 }
 
