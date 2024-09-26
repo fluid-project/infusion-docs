@@ -686,3 +686,27 @@ table div.infusion-docs-note {
     position: absolute;
     width: 1px;
 }
+
+@media only screen and (max-width: 639px) {
+    .infusion-docs-container .infusion-docs-header {
+        height: 10rem;
+    }
+    .infusion-docs-container .infusion-docs-fluidLogo {
+        margin-top: 3.5rem;
+    }
+    .infusion-docs-header .infusion-docs-fluidCategories {
+        margin-top: -3rem;
+    }
+    .infusion-docs-TOC {
+        border-top: 10rem solid;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .infusion-docs-container .infusion-docs-header {
+        height: 12.5rem;
+    }
+    .infusion-docs-TOC {
+        border-top: 12rem solid;
+    }
+}
