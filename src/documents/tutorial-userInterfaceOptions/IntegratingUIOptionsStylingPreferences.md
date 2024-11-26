@@ -30,6 +30,13 @@ not compiled into CSS.
 
 </div>
 
+<div class="infusion-docs-note">
+
+<strong>Note:</strong> using Sass files directly has been deprecated. In the future the sass file will likely be removed
+and only css files may be provided.
+
+</div>
+
 ## Enactor Stylesheets
 
 ### Base Stylesheets
@@ -66,6 +73,27 @@ with their application.
 to override default styles. If the drop-in styles need to be overridden, it may be better to use the <code>*_base</code>
 stylesheets and build up custom styles for the site.
 
+### Custom Drop-in Stylesheet
+
+You may find that for your particular application that you would like to have some control over the styling of your
+website, but are not yet able to fully integrate the CSS custom properties from the base stylesheets. In this case you
+could replicate the functionality of the Drop-in stylesheets for those parts you need to use overrides for in your own
+styles.
+
+For this it's best to review how the drop-in stylesheets are generated, but in short they make aggressive use of the
+`!important` flag to attempt to give the declarations the highest level precedence. You can follow a similar approach,
+or use other appropriate mechanisms for your given application.
+
+For example:
+
+```css
+/* When the text size preference is set, set the font-size to the value
+from --fl-textSize */
+.fl-textSize-enabled {
+    font-size: var(--fl-textSize) !important;
+}
+```
+
 </div>
 
 ## CSS Custom Properties
@@ -100,8 +128,12 @@ The contrast CSS custom properties are set when one of the contrast classes (e.g
 
 * `--fl-fgColor`: foreground colour, often text colour
 * `--fl-bgColor`: background colour
-* `--fl-linkColor`: text colour for links
-* `--fl-disabledColor`: text colour for disabled inputs
+* `--fl-linkColor`: text colour for links (deprecated: use `--fl-linkFgColor`)
+* `--fl-linkFgColor`: text colour for links
+* `--fl-linkBgColor`: background colour for links
+* `--fl-disabledColor`: text colour for disabled inputs (deprecated: use `--fl-disabledFgColor`)
+* `--fl-disabledFgColor`: text colour for disabled inputs
+* `--fl-disabledBgColor`: background colour for disabled inputs
 * `--fl-selectedFgColor`: colour for selected text
 * `--fl-selectedBgColor`: selection background colour
 * `--fl-buttonFgColor`: text colour for buttons
